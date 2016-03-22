@@ -1,0 +1,257 @@
+//
+//  RegisteredViewController.m
+//  QiLuTreeSeedlings
+//
+//  Created by 杨乐栋 on 16/3/9.
+//  Copyright © 2016年 guihuicaifu. All rights reserved.
+//
+
+#import "RegisteredViewController.h"
+#import "UIDefines.h"
+#import "HttpClient.h"
+#import "ToastView.h"
+#import "NSString+Phone.h"
+@interface RegisteredViewController ()<UITextFieldDelegate>
+@property (nonatomic,strong)UITextField *phoneTextField;
+@property (nonatomic,strong)UITextField *passWordTextField;
+@property (nonatomic,strong)UITextField *rePassWordTextField;
+@property (nonatomic,strong)UITextField *codeTextField;
+@property (nonatomic, strong) UIButton *getCodeButton;
+@property (nonatomic, assign) NSInteger codeCount;
+@property (nonatomic, strong) NSTimer *timer;
+@end
+
+@implementation RegisteredViewController
+@synthesize codeCount,timer;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.view setBackgroundColor:BGColor];
+    UIView *navView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 64)];
+    [navView setBackgroundColor:NavColor];
+    
+    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 20, 120, 44)];
+    [titleLab setText:@"注册"];
+    [titleLab setTextAlignment:NSTextAlignmentCenter];
+    [titleLab setTextColor:[UIColor whiteColor]];
+    [navView addSubview:titleLab];
+    
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 27, 30, 30)];
+    [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [navView addSubview:backBtn];
+    [self.view addSubview:navView];
+    self.phoneTextField=[self viewWithY:0 andImageName:@"phoneLiteImage" andTitle:@"手机号"];
+    self.phoneTextField.placeholder=@"请输入手机号";
+    self.phoneTextField.delegate=self;
+    self.phoneTextField.tag=10001;
+    self.phoneTextField.keyboardType=UIKeyboardTypeNumberPad;
+    
+    self.passWordTextField=[self viewWithY:1 andImageName:@"passwordLiteImage" andTitle:@"输入密码"];
+    self.passWordTextField.placeholder=@"请输入密码";
+    self.passWordTextField.delegate=self;
+    self.passWordTextField.tag=10002;
+    self.passWordTextField.secureTextEntry = YES;
+    
+    self.rePassWordTextField=[self viewWithY:2 andImageName:@"passwordLiteImage" andTitle:@"确认密码"];
+    self.rePassWordTextField.placeholder=@"确认密码";
+    self.rePassWordTextField.delegate=self;
+    self.rePassWordTextField.tag=10003;
+    self.rePassWordTextField.secureTextEntry = YES;
+    
+    self.codeTextField=[self viewWithY:3 andImageName:@"yanzhengCode" andTitle:@"验证码"];
+    self.codeTextField.placeholder=@"请输入验证码";
+    self.codeTextField.delegate=self;
+    self.codeTextField.tag=10004;
+    self.codeTextField.keyboardType=UIKeyboardTypeNumberPad;
+    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 4*50+74+20, kWidth-80, 40)];
+    [self.view addSubview:sureBtn];
+    [sureBtn addTarget:self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [sureBtn setBackgroundColor:NavColor];
+    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+}
+-(void)sureBtnAction
+{
+    if(self.phoneTextField.text.length!=11)
+    {
+        [ToastView showTopToast:@"手机号必须是11位"];
+        return;
+    }
+    if (![self.phoneTextField.text checkPhoneNumInput]) {
+        [ToastView showTopToast:@"手机号格式不正确"];
+        return;
+    }
+    if (self.passWordTextField.text.length<6||self.passWordTextField.text.length>12) {
+        [ToastView showTopToast:@"密码不得小于6位或大于12位"];
+        return;
+    }
+
+    if (!self.phoneTextField.text) {
+        [ToastView showTopToast:@"手机号和密码不能为空"];
+        return;
+        
+    }
+    if (!self.passWordTextField.text) {
+        [ToastView showTopToast:@"密码不能为空"];
+        return;
+    }
+    if(![self.passWordTextField.text isEqualToString:self.rePassWordTextField.text])
+    {
+        [ToastView showTopToast:@"两次输入的密码不一致"];
+        return;
+    }
+    if (self.codeTextField.text.length==0) {
+        [ToastView showTopToast:@"验证码不能为空"];
+        return;
+    }
+    
+    [HTTPCLIENT registeredUserWithPhone:self.phoneTextField.text withPassWord:self.passWordTextField.text withRepassWord:self.rePassWordTextField.text withCode:self.codeTextField.text Success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+           [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            [self performSelector:@selector(backBtnAction) withObject:nil afterDelay:0.7];
+        }else
+        {
+           [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    NSLog(@"注册");
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return [textField resignFirstResponder];
+}
+-(UITextField *)viewWithY:(CGFloat)Y andImageName:(NSString *)iamgeName andTitle:(NSString *)title
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, Y*50+74, kWidth, 50)];
+    UIImageView *phoneImageV =[[UIImageView alloc]initWithFrame:CGRectMake(15, 12, 25, 25)];
+    [phoneImageV setImage:[UIImage imageNamed:iamgeName]];
+    [view addSubview:phoneImageV];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    UILabel *phoneLab=[[UILabel alloc]initWithFrame:CGRectMake(45/320.f*kWidth,10, 70, 30)];
+    [phoneLab setTextColor:[UIColor blackColor]];
+    [phoneLab setText:title];
+    [view addSubview:phoneLab];
+    UITextField *phoneTextField=[[UITextField alloc]initWithFrame:CGRectMake(120/320.f*kWidth, 10, 180, 30)];
+    [view addSubview:phoneTextField];
+    UIImageView *linimageV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
+    [view addSubview:linimageV];
+    [linimageV setBackgroundColor:kLineColor];
+    if (Y==3) {
+        UIButton *getYanzhengBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-90, 10, 75, 35)];
+        self.getCodeButton=getYanzhengBtn;
+        [getYanzhengBtn setBackgroundColor:[UIColor orangeColor]];
+        [getYanzhengBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [view addSubview:getYanzhengBtn];
+        [getYanzhengBtn addTarget:self action:@selector(getcodeAction:) forControlEvents:UIControlEventTouchUpInside];
+        [getYanzhengBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        
+    }
+    [self.view addSubview:view];
+    return phoneTextField;
+}
+-(void)backBtnAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)getcodeAction:(UIButton *)sender
+{
+    if(self.phoneTextField.text.length!=11)
+    {
+        [ToastView showTopToast:@"手机号必须是11位"];
+        return;
+    }
+    if (![self.phoneTextField.text checkPhoneNumInput]) {
+        [ToastView showTopToast:@"手机号格式不正确"];
+        return;
+    }
+    [HTTPCLIENT getCodeShotMessageWtihPhone:self.phoneTextField.text andType:@"register" Success:^(id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+    } failure:^(NSError *error) {
+        
+    }];
+    [self setCode:@"60"];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+- (void)setCode:(NSString *)code
+{
+    codeCount = 59;
+    [self.getCodeButton setTitle:[NSString stringWithFormat:@"%@秒后", @(self.codeCount)] forState:UIControlStateNormal];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                             target:self
+                                           selector:@selector(changeTime) userInfo:nil repeats:YES];
+    self.getCodeButton.enabled=NO;
+     [self.getCodeButton setBackgroundColor:[UIColor grayColor]];
+}
+//
+
+#pragma mark -
+- (void)changeTime
+{
+    if (codeCount <= 1) {
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+        }
+        
+        self.getCodeButton.enabled=YES;
+        [self.getCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        self.getCodeButton.enabled=YES;
+        [self.getCodeButton setBackgroundColor:[UIColor orangeColor]];
+        return ;
+    }
+    codeCount --;
+    [self.getCodeButton setTitle:[NSString stringWithFormat:@"%@秒后", @(self.codeCount)] forState:UIControlStateNormal];
+
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (kHeight<=480) {
+        if (textField.tag==10003||textField.tag==10004) {
+            CGRect frame=self.view.frame;
+            frame.origin.y=-100;
+            [UIView animateWithDuration:0.1 animations:^{
+                self.view.frame=frame;
+            }];
+        }
+    }
+    
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (kHeight<=480) {
+        if (textField.tag==10003||textField.tag==10004) {
+            CGRect frame=self.view.frame;
+            frame.origin.y=0;
+            [UIView animateWithDuration:0.1 animations:^{
+                self.view.frame=frame;
+            }];
+        }
+    }
+
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.phoneTextField resignFirstResponder];
+    [self.passWordTextField resignFirstResponder];
+    [self.rePassWordTextField resignFirstResponder];
+    [self.codeTextField resignFirstResponder];
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
