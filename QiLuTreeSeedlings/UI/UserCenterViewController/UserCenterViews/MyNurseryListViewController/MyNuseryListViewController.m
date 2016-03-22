@@ -8,8 +8,9 @@
 
 #import "MyNuseryListViewController.h"
 #import "UIDefines.h"
+#import "PullTableView.h"
 @interface MyNuseryListViewController ()
-
+@property (nonatomic,strong) PullTableView *pullTableView;
 @end
 
 @implementation MyNuseryListViewController
