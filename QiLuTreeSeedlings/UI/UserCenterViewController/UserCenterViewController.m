@@ -14,6 +14,7 @@
 #import "UserInfoNomerTableViewCell.h"
 #import "HttpClient.h"
 #import "MyCollectViewController.h"
+#import "ZIKMySupplyViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -232,6 +233,15 @@
             [self.navigationController pushViewController:companyVC animated:YES];
         }
     }
+    else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            NSLog(@"我的供应");
+            [self hiddingSelfTabBar];
+            ZIKMySupplyViewController *mySupplyVC = [[ZIKMySupplyViewController alloc] init];
+            [self.navigationController pushViewController:mySupplyVC animated:YES];
+        }
+    }
+
 
 }
 @end
