@@ -17,8 +17,8 @@
 
 @interface SearchSuccessView()<PullTableViewDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)PullTableView *selfTableView;
-@property (nonatomic,strong)NSArray *sellDataAry;
-@property (nonatomic,strong)NSArray *buyDataAry;
+@property (nonatomic,strong)NSMutableArray *sellDataAry;
+@property (nonatomic,strong)NSMutableArray *buyDataAry;
 @property (nonatomic)NSInteger PageCount;
 
 @end
@@ -34,6 +34,7 @@
     if (self) {
         self.searchType=1;
         self.PageCount=1;
+        self.searchBAT=1;
         PullTableView *pullTableView =[[PullTableView alloc]initWithFrame:self.bounds];
         pullTableView.delegate=self;
         pullTableView.dataSource=self;
@@ -41,6 +42,8 @@
         self.selfTableView=pullTableView;
         [pullTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [self addSubview:pullTableView];
+        self.sellDataAry=[NSMutableArray array];
+        self.buyDataAry=[NSMutableArray array];
     }
     return self;
 }
@@ -62,7 +65,10 @@
             cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        cell.hotSellModel=self.sellDataAry[indexPath.row];
+        if (self.sellDataAry.count>=indexPath.row+1) {
+            cell.hotSellModel=self.sellDataAry[indexPath.row];
+        }
+        
         return cell;
     }else
     {
@@ -71,7 +77,10 @@
             cell=[[BuySearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 70)];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        cell.hotBuyModel=self.buyDataAry[indexPath.row];
+        if (self.buyDataAry.count>=indexPath.row+1) {
+            cell.hotBuyModel=self.buyDataAry[indexPath.row];
+        }
+        //cell.hotBuyModel=self.buyDataAry[indexPath.row];
         return cell;
     }
   
@@ -88,6 +97,14 @@
 }
 -(void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
+    self.PageCount++;
+    if (self.searchBAT==1) {
+        [self getListData];
+        return;
+    }
+    if (self.searchBAT==2) {
+        [self searchByScringList];
+    }
     
 }
 -(void)loadMoreAction
@@ -96,7 +113,17 @@
 }
 -(void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    
+    self.PageCount=1;
+    [self.sellDataAry removeAllObjects];
+    [self.buyDataAry removeAllObjects];
+    if (self.searchBAT==1) {
+        
+        [self getListData];
+        return;
+    }
+    if (self.searchBAT==2) {
+        [self searchByScringList];
+    }
 }
 -(void)triggerRefresh
 {    [self.selfTableView reloadData];
@@ -104,15 +131,24 @@
 }
 - (void)getListData
 {
-     self.PageCount=1;
+    
     if (self.searchType==1) {
         [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
              //NSLog(@"%@",responseObject);
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             NSArray *ary=[dic objectForKey:@"list"];
-            self.sellDataAry=[HotSellModel hotSellAryByAry:ary];
-            self.buyDataAry=@[];
+            NSArray *aryzz=[HotSellModel hotSellAryByAry:ary];
+            HotSellModel *aryzzLast =  [aryzz lastObject];
+            HotSellModel *dataLast =  [self.sellDataAry lastObject];
+            if (dataLast.uid!=aryzzLast.uid) {
+                [self.sellDataAry addObjectsFromArray:aryzz];
+            }else{
+                self.PageCount--;
+            }
+            [self.buyDataAry removeAllObjects];
             [self.selfTableView reloadData];
+            self.selfTableView.pullTableIsLoadingMore=NO;
+            self.selfTableView.pullTableIsRefreshing=NO;
         } failure:^(NSError *error) {
             
         }];
@@ -122,10 +158,19 @@
            // NSLog(@"%@",responseObject);
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             NSArray *ary=[dic objectForKey:@"list"];
-            self.buyDataAry=[HotBuyModel creathotBuyModelAryByAry:ary];
-            self.sellDataAry=@[];
+            NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:ary];
+            HotBuyModel *aryzzLast =  [aryzz lastObject];
+            HotBuyModel *dataLast =  [self.buyDataAry lastObject];
+            if (dataLast.uid!=aryzzLast.uid) {
+                [self.buyDataAry addObjectsFromArray:aryzz];
+            }else{
+                self.PageCount--;
+            }
+            
+            [self.sellDataAry removeAllObjects];;
             [self.selfTableView reloadData];
-
+            self.selfTableView.pullTableIsLoadingMore=NO;
+             self.selfTableView.pullTableIsRefreshing=NO;
         } failure:^(NSError *error) {
             
         }];
@@ -135,9 +180,13 @@
 -(void)searchViewActionWithSearchType:(NSInteger)type
 {
     self.searchType=type;
+    self.PageCount=1;
+    self.searchBAT=1;
     [self getListData];
 
 }
+
+
 -(void)searchViewActionWith:(NSString *)searchStr AndSearchType:(NSInteger)type
 {
        if (searchStr.length==0) {
@@ -145,36 +194,61 @@
         return;
     }
      self.PageCount=1;
+    self.searchBAT=2;
     self.searchStr=searchStr;
     self.searchType=type;
-   // HttpClient *httpClient=[HttpClient sharedClient];
+    [self searchByScringList];
+    
+}
+- (void)searchByScringList
+{
+    // HttpClient *httpClient=[HttpClient sharedClient];
     if (self.searchType==1) {
-       [HTTPCLIENT sellSearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithProductUid:self.productUid WithProductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
-           // NSLog(@"%@",responseObject);
+        [HTTPCLIENT sellSearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithProductUid:self.productUid WithProductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
+            // NSLog(@"%@",responseObject);
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             NSArray *ary=[dic objectForKey:@"list"];
-            self.sellDataAry=[HotSellModel hotSellAryByAry:ary];
-            self.buyDataAry=@[];
+            NSArray *aryzz=[HotSellModel hotSellAryByAry:ary];
+            
+            HotSellModel *aryzzLast =  [aryzz lastObject];
+            HotSellModel *dataLast =  [self.sellDataAry lastObject];
+            if (dataLast.uid!=aryzzLast.uid) {
+                [self.sellDataAry addObjectsFromArray:aryzz];
+            }else{
+                self.PageCount--;
+            }
+            
+            [self.buyDataAry removeAllObjects];
             [self.selfTableView reloadData];
+            self.selfTableView.pullTableIsLoadingMore=NO;
+             self.selfTableView.pullTableIsRefreshing=NO;
         } failure:^(NSError *error) {
             NSLog(@"%@",error);
         }];
- 
+        
     }
     if (self.searchType==2) {
         [HTTPCLIENT buySearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithproductUid:self.productUid WithproductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             if (dic) {
                 NSArray *Ary=[dic objectForKey:@"list"];
-                self.buyDataAry=[HotBuyModel creathotBuyModelAryByAry:Ary];
-                
+                NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:Ary];
+                HotBuyModel *aryzzLast =  [aryzz lastObject];
+                HotBuyModel *dataLast =  [self.buyDataAry lastObject];
+                if (dataLast.uid!=aryzzLast.uid) {
+                    [self.buyDataAry addObjectsFromArray:aryzz];
+                }else{
+                    self.PageCount--;
+                }
+                [self.sellDataAry removeAllObjects];
+                self.selfTableView.pullTableIsLoadingMore=NO;
+                self.selfTableView.pullTableIsRefreshing=NO;
             }
             [self.selfTableView reloadData];
         } failure:^(NSError *error) {
             
         }];
     }
-    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

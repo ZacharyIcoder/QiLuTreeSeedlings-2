@@ -32,7 +32,7 @@
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
-    [titleLab setText:@"企业信息"];
+    [titleLab setText:@"我的苗圃"];
     [titleLab setFont:[UIFont systemFontOfSize:15]];
     
     UIButton *editingBtnz=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];

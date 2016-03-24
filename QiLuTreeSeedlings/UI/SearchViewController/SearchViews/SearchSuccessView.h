@@ -15,6 +15,7 @@
 @interface SearchSuccessView : UIView
 @property (nonatomic,weak) id<SearchSuccessViewDelegatel> delegate;
 @property (nonatomic) NSInteger searchType;
+@property (nonatomic) NSInteger searchBAT;
 @property (nonatomic,copy) NSString *searchStr;
 @property (nonatomic,strong) NSMutableArray *dataAry;
 @property (nonatomic,strong)NSArray *shaixuanAry;
