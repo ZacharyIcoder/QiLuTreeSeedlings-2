@@ -976,4 +976,144 @@
     }];
 
 }
+
+#pragma mark ---------- 供求发布限制 -----------
+-(void)getSupplyRestrictWithToken:(NSString *)token withId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviceId:(NSString *)deviceID withType:(NSString *)typeInt success:(void (^)(id))success failure:(void (^)(NSError *))failure{
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL = @"api/supplybuy/checknursery";
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                              token,@"access_token",
+                              accessID,@"access_id",
+                              kclient_id,@"client_id",
+                              kclient_secret,@"client_secret",
+                              str,@"device_id",
+                              typeInt,@"type",
+                              nil];
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+    
+}
+
+#pragma mark ---------- 我的供应列表 -----------
+- (void)getMysupplyListWithToken:(NSString *)token withAccessId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviewId:(NSString *)deviceId withPage:(NSString *)page withPageSize:(NSString *)pageSize success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL = @"api/supply/my";
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                APPDELEGATE.userModel.access_token,@"access_token",
+                                APPDELEGATE.userModel.access_id,@"access_id",
+                                kclient_id,@"client_id",
+                                kclient_secret,@"client_secret",
+                                str,@"device_id",
+                                page,@"page",
+                                pageSize,@"pageSize",
+                                nil];
+    /*APPDELEGATE.userModel.access_token,@"access_token",
+     APPDELEGATE.userModel.access_id,@"access_id",*/
+    //NSLog(@"%@",postURL);
+    //NSLog(@"%@",parameters);
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+    
+}
+-(void)upDataImageIOS:(UIImage *)image
+              Success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure {
+    NSString *postURL = @"apiuploadios";
+    NSData* imageData;
+    
+    //判断图片是不是png格式的文件
+    if (UIImagePNGRepresentation(image)) {
+        //返回为png图像。
+        imageData = UIImagePNGRepresentation(image);
+    }else {
+        //返回为JPEG图像。
+        imageData = UIImageJPEGRepresentation(image, 0.0001);
+    }
+    //NSData *iconData =  UIImagePNGRepresentation(image);//UIImageJPEGRepresentation(image, 0.1);
+    //[GTMBase64 stringByEncodingData:iconData];
+    if (imageData.length>=1024*1024) {
+        CGSize newSize = {600,600};
+        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+    }
+    NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                myStringImageFile,@"file",
+                                @"gongyingtupian.png",@"fileName",
+                                nil];
+    //NSLog(@"%@",parameters);
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+    
+}
+
+#pragma mark-上传图片
+-(void)upDataImage:(UIImage *)image
+           Success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure;
+{
+    NSString *postURL = @"apiuploadios";
+    
+    NSData *iconData = UIImageJPEGRepresentation(image, 0.1);
+    //    self.responseSerializer =  [AFHTTPResponseSerializer serializer];//3840
+    //    self.requestSerializer  = [AFHTTPRequestSerializer serializer];
+    //    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    //    params[@"file"] = @"imagefile";
+    //    params[@"fileName"] = @"imagefileName.png";
+    //[GTMBase64 stringByEncodingData:iconData];
+    [self POST:postURL parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:iconData name:@"file" fileName:@"kong" mimeType:@"image/png/file"];
+        //[formData appendPartWithFileURL:[NSURL fileURLWithPath:[self documentFolderPath]] name:@"testImage" error:nil];
+        //[formData appendPartWithFileURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@kong",[self documentFolderPath]]] name:@"testImage" error:nil];
+        //[formData appendPartWithFileData:iconData name:@"imagefile" fileName:@"imagefileName" mimeType:@"image/png/file"];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+    
+}
+
+#pragma mark 从文档目录下获取Documents路径
+- (NSString *)documentFolderPath
+{
+    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+}
+
+-(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    
+    return UIImagePNGRepresentation(newImage);
+}
+
+
 @end

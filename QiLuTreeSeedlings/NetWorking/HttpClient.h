@@ -227,4 +227,60 @@
                       Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure;
 #define HTTPCLIENT [HttpClient sharedClient]
+
+#pragma mark ---------- 供求发布限制 -----------
+/**
+ *  发布求购和供应信息时，需要判断是否可发布
+ *
+ *  @param token        AccessToken
+ *  @param accessID     用户id
+ *  @param clientID     应用的API Key
+ *  @param clientSecret 应用的API Secret
+ *  @param deviceID     设备ID
+ *  @param typeInt      1:求购；2：供应
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)getSupplyRestrictWithToken:(NSString *)token
+                            withId:(NSString *)accessID
+                      withClientId:(NSString *)clientID
+                  withClientSecret:(NSString *)clientSecret
+                      withDeviceId:(NSString *)deviceID
+                          withType:(NSString *)typeInt
+                           success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 我的供应列表 -----------
+/**
+ *  我的供应信息列表
+ *
+ *  @param token        AccessToken
+ *  @param accessID     用户id
+ *  @param clientID     应用的API Key
+ *  @param clientSecret 应用的API Secret
+ *  @param deviceId     设备ID
+ *  @param page         当前页码（默认显示第一页）
+ *  @param pageSize     每页显示条数，（默认15条）
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)getMysupplyListWithToken:(NSString *)token
+                    withAccessId:(NSString *)accessID
+                    withClientId:(NSString *)clientID
+                withClientSecret:(NSString *)clientSecret
+                    withDeviewId:(NSString *)deviceId
+                        withPage:(NSString *)page
+                    withPageSize:(NSString *)pageSize
+                         success:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure;
+
+#pragma mark-上传图片
+-(void)upDataImage:(UIImage *)image
+           Success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 上传图片 -----------
+-(void)upDataImageIOS:(UIImage *)image
+              Success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure;
 @end
