@@ -10,8 +10,7 @@
 #import "HttpDefines.h"
 //#import "DataCache.h"
 #import "UIDefines.h"
-#define kclient_id @"00C6D374-930C-472B-9B98-D759ACD2F98D"
-#define kclient_secret @"49C851D0-C075-4630-99D6-1CF609697626"
+
 @implementation HttpClient
 + (instancetype)sharedClient {
     static HttpClient *_sharedClient = nil;
