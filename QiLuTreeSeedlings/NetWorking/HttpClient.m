@@ -498,7 +498,7 @@
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",[responseObject objectForKey:@"msg"]);
+        //NSLog(@"%@",[responseObject objectForKey:@"msg"]);
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
@@ -1115,5 +1115,40 @@
     return UIImagePNGRepresentation(newImage);
 }
 
+- (void)getTypeInfoSuccess:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure {
+    NSString *postURL = @"apiproducttype";
+//    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
+//                              @"10",@"keywordCount",
+//                              @"10",@"recommendCount",
+//                              @"5",@"supplyCount", nil];
+    [self GET:postURL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
+
+- (void)getProductWithTypeUid:(NSString *)typeUid
+                         type:(NSString *)type
+                      Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure {
+    NSString *postURL = @"apiproduct";
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  typeUid,@"typeUid",
+                                     type,@"type",nil];
+    [self GET:postURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+}
 
 @end

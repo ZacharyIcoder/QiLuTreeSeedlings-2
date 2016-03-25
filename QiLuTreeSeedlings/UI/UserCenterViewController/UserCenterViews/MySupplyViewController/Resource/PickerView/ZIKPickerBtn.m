@@ -22,7 +22,7 @@
 {
     if (self = [super init]) {
         
-        
+        self.urlDic = [[NSDictionary alloc] init];
     }
     
     return self;

@@ -37,7 +37,7 @@
         
         self.imageBtnArr = [[NSMutableArray alloc] initWithCapacity:2];
         self.photos = [[NSMutableArray alloc]  initWithCapacity:2];
-        
+        self.urlMArr = [[NSMutableArray alloc] initWithCapacity:2];
         self.pickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.pickBtn setImage:[UIImage imageNamed:@"添加图片"] forState:UIControlStateNormal];
         [self.pickBtn addTarget:self action:@selector(pickImageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -48,15 +48,20 @@
     return self;
 }
 
+- (void)addImageURL:(NSDictionary *)dic
+{
+    [self.urlMArr addObject:dic];
+}
 
-- (void)addImage:(UIImage *)image
+- (void)addImage:(UIImage *)image withUrl:(NSDictionary *)urlDic
 {
     
     [self.photos addObject:image];
-    
+    [self.urlMArr addObject:urlDic];
     
     ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
     [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
+    imageBtn.urlDic = urlDic;
     imageBtn.deleteDelegate = self;
     
     [self addSubview:imageBtn];
@@ -76,6 +81,10 @@
 
 - (void)removeImage:(UIImage *)image
 {
+    
+}
+
+-(void)removeImageURl:(NSDictionary *)dic {
     
 }
 
@@ -128,8 +137,8 @@
 {
     UIImage *image = [pickBtn currentBackgroundImage];
     [self.photos removeObject:image];
-    
-    
+    //[self.urlMArr removeObject:(nonnull id)]
+    [self.urlMArr removeObject:pickBtn.urlDic];
     [pickBtn removeFromSuperview];
     [self.imageBtnArr removeObject:pickBtn];
     [self setNeedsLayout];

@@ -15,12 +15,14 @@ typedef void(^TakePhotoBlock) ();
 @interface ZIKPickImageView: UIView
 
 
-- (void)addImage:(UIImage *)image;
+- (void)addImage:(UIImage *)image withUrl:(NSDictionary *)urlDic;
 - (void)removeImage:(UIImage *)image;
-
+- (void)addImageURL:(NSDictionary *)dic;
+- (void)removeImageURl:(NSDictionary *)dic;
 
 @property(nonatomic, copy) TakePhotoBlock takePhotoBlock;
 
 @property(nonatomic, strong) NSMutableArray *photos;
 
+@property(nonatomic, strong) NSMutableArray *urlMArr;
 @end

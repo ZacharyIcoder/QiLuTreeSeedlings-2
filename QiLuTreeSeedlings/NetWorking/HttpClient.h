@@ -283,4 +283,13 @@
 -(void)upDataImageIOS:(UIImage *)image
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 获取产品分类列表 -----------
+- (void)getTypeInfoSuccess:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 获取产品列表 -----------
+- (void)getProductWithTypeUid:(NSString *)typeUid
+                         type:(NSString *)type
+              Success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure;
+
 @end

@@ -188,7 +188,7 @@
     [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     button.layer.masksToBounds = YES;
     button.layer.cornerRadius = 6.0f;
-    button.layer.borderWidth = 0.8;
+    button.layer.borderWidth = 1;
     button.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     [button setTitle:@"发布供应" forState:UIControlStateNormal];
     [emptyUI addSubview:button];

@@ -20,5 +20,5 @@
 @interface ZIKPickerBtn : UIButton
 
 @property(nonatomic, assign) id<ZIKPickerBtnDeleteDelegate> deleteDelegate;
-
+@property(nonatomic, strong) NSDictionary *urlDic;
 @end
