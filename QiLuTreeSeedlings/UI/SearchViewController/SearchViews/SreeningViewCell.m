@@ -21,7 +21,7 @@
   
     if (self) {
         self.model=model;
-        self.answerAry=[[NSMutableArray alloc]init];
+        self.answerAry=[[NSMutableArray alloc]initWithCapacity:2];
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 95, 50)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameLab setTextColor:[UIColor blackColor]];
@@ -269,6 +269,9 @@
         [self jsonAnswerStr];
     }
     if (textField.tag==10002) {
+        if ([self.answerAry count]==0) {
+            [self.answerAry insertObject:@"" atIndex:0];
+        }
         [self.answerAry insertObject:textField.text atIndex:1];
         [self jsonAnswerStr];
     }
