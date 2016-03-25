@@ -53,7 +53,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDel
 }
 
 - (void)initUI {
-    self.supplyInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64-60-200) style:UITableViewStylePlain];
+    self.supplyInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, 218/*Height-64-60-200*/) style:UITableViewStylePlain];
     self.supplyInfoTableView.delegate   = self;
     self.supplyInfoTableView.dataSource = self;
     [self.view addSubview:self.supplyInfoTableView];
@@ -135,6 +135,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDel
         case 1: {
             ZIKSupplyPublishNameTableViewCell *nameCell = [ZIKSupplyPublishNameTableViewCell cellWithTableView:tableView];
             self.nameTextField = nameCell.nameTextField;
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(textFieldChanged:)
+                                                         name:UITextFieldTextDidChangeNotification
+                                                       object:self.nameTextField];
             self.sureButton = [[UIButton alloc] initWithFrame:CGRectMake(Width-65, 10, 50, 22)];
             //[self.sureButton setTitle:@"确定" forState:UIControlStateNormal];
             [self.sureButton setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
@@ -157,6 +161,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDel
 //    }
 //    [cell configureCell:self.supplyInfoMArr[indexPath.row]];
     return cell;
+}
+
+- (void)textFieldChanged:(UITextField *)textField {
+    self.sureButton.selected = NO;
 }
 
 - (void)sureButtonClick:(UIButton *)button {
@@ -192,7 +200,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDel
         SreeningViewCell *cell = [[SreeningViewCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i]];
         [cellAry addObject:cell.model];
         Y=CGRectGetMaxY(cell.frame);
-        cell.delegate = self;
+        //cell.delegate = self;
         [cell setBackgroundColor:[UIColor whiteColor]];
         [self.backScrollView addSubview:cell];
     }
@@ -221,7 +229,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDel
 }
 
 - (void)showSideView {
-    [self.nameTextField resignFirstResponder];
+    //[self.nameTextField resignFirstResponder];
     if (!self.sideView) {
         self.sideView = [[ZIKSideView alloc] initWithFrame:CGRectMake(Width, 0, Width, Height)];
     }
@@ -422,8 +430,8 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDel
     }
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.nameTextField resignFirstResponder];
-}
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    [self.nameTextField resignFirstResponder];
+//}
 
 @end

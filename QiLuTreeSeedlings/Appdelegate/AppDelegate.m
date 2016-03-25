@@ -31,18 +31,16 @@
     self.window.rootViewController = mainController;
     [self.window makeKeyAndVisible];
     [self initData];
-
-    //[IQKeyboardManager sharedManager].enable = NO;
     
-    self.userModel =[[UserInfoModel alloc]init];
+    self.userModel = [[UserInfoModel alloc]init];
     //自动登录
     NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
     NSString *token=[userDefaults objectForKey:kACCESS_TOKEN];
     NSString *uid=[userDefaults objectForKey:kACCESS_ID];
    // NSLog(@"%@---%@",token,uid);
     if (token&&uid) {
-        self.userModel.access_token=token;
-        self.userModel.access_id=uid;
+        self.userModel.access_token = token;
+        self.userModel.access_id = uid;
         [self reloadUserInfoSuccess:^(id responseObject) {
             
         } failure:^(NSError *error) {

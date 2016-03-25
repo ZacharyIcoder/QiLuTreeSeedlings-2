@@ -12,7 +12,7 @@
 
 @optional
 - (void)cellBeginEditing:(UITextField *)field;
--(void)cellKeyHight:(CGFloat)hight;
+- (void)cellKeyHight:(CGFloat)hight;
 - (void)cellEndEditing;
 @end
 @interface SreeningViewCell : UIView<UITextFieldDelegate>
