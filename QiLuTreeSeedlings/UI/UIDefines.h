@@ -13,17 +13,17 @@
 #import "ToastView.h"
 #import "UserInfoModel.h"
 #define APPDELEGATE     ((AppDelegate *)[UIApplication sharedApplication].delegate)
-#define ShowTopToast(text) {\
-[ToastView showToast:text\
-withOriginY:66.0f\
-withSuperView:APPDELEGATE.window];\
-}
-
-#define ShowToast(text) {\
-[ToastView showToast:text\
-withOriginY:[[UIScreen mainScreen] bounds].size.height-100\
-withSuperView:APPDELEGATE.window];\
-}
+//#define ShowTopToast(text) {\
+//[ToastView showToast:text\
+//withOriginY:66.0f\
+//withSuperView:APPDELEGATE.window];\
+//}
+//
+//#define ShowToast(text) {\
+//[ToastView showToast:text\
+//withOriginY:[[UIScreen mainScreen] bounds].size.height-100\
+//withSuperView:APPDELEGATE.window];\
+//}
 #define SCALING         (APPDELEGATE.scaling)
 
 #define kHeight [UIScreen mainScreen].bounds.size.height

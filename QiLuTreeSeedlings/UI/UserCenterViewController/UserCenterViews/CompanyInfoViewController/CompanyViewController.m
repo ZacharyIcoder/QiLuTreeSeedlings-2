@@ -289,7 +289,8 @@
 }
 
 - (void)selectedLocationInfo:(Province *)location
-{NSMutableString *namestr=[NSMutableString new];
+{
+    NSMutableString *namestr=[NSMutableString new];
     if (location.provinceID) {
         [namestr appendString:location.provinceName];
         self.AreaProvince=location.provinceID;
