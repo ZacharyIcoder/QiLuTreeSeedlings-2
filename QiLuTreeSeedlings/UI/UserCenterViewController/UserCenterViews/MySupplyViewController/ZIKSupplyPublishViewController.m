@@ -14,11 +14,12 @@
 #import "ZHHttpTool.h"
 #import "HttpClient.h"
 #import "ZIKSupplyPublishNameTableViewCell.h"
-#import "ZIKGreenButton.h"
+//#import "ZIKGreenButton.h"
 #import "ZIKSideView.h"
-
+#import "TreeSpecificationsModel.h"
+#import "SreeningViewCell.h"
 @interface ZIKSupplyPublishViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
-UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
+UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDelegate>
 {
     UITextField *titleTextField;
 }
@@ -26,14 +27,17 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 @property (nonatomic, weak  ) ZIKPickImageView *pickerImgView;
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
 @property (nonatomic, strong) NSMutableArray   *imageUrlMarr;
-@property (nonatomic, strong) ZIKGreenButton   *sureButton;
+@property (nonatomic, strong) UIButton         *sureButton;
 @property (nonatomic, strong) UITextField      *nameTextField;
 @property (nonatomic, strong) ZIKSideView      *sideView;
 @property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
+@property (nonatomic, strong) NSArray          *dataAry;
+@property (nonatomic, strong) NSMutableArray   *cellAry;
+@property (nonatomic, strong) UIScrollView     *backScrollView;
 @end
 
 @implementation ZIKSupplyPublishViewController
-
+@synthesize cellAry;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -43,17 +47,23 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 }
 
 - (void)initData {
-    self.imageUrlMarr = [NSMutableArray array];
+    self.imageUrlMarr          = [NSMutableArray array];
     self.productTypeDataMArray = [NSMutableArray array];
+    self.cellAry               = [NSMutableArray array];
 }
 
 - (void)initUI {
-    self.supplyInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64-60) style:UITableViewStylePlain];
+    self.supplyInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64-60-200) style:UITableViewStylePlain];
     self.supplyInfoTableView.delegate   = self;
     self.supplyInfoTableView.dataSource = self;
     [self.view addSubview:self.supplyInfoTableView];
     [self setExtraCellLineHidden:self.supplyInfoTableView];
-    
+
+    self.backScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.supplyInfoTableView.frame), kWidth, 200)];
+    [self.view addSubview:self.backScrollView];
+    [self.backScrollView setBackgroundColor:BGColor];
+
+
     UIButton *nextBtn = [[UIButton alloc] init];
     nextBtn.frame = CGRectMake(Width/2-50, Height-50, 100, 30);
     [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
@@ -125,9 +135,11 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         case 1: {
             ZIKSupplyPublishNameTableViewCell *nameCell = [ZIKSupplyPublishNameTableViewCell cellWithTableView:tableView];
             self.nameTextField = nameCell.nameTextField;
-            self.sureButton = [[ZIKGreenButton alloc] initWithFrame:CGRectMake(Width-65, 10, 50, 22)];
-            [self.sureButton setTitle:@"确定" forState:UIControlStateNormal];
-            [self.sureButton addTarget:self action:@selector(sureButtonClick) forControlEvents:UIControlEventTouchUpInside];
+            self.sureButton = [[UIButton alloc] initWithFrame:CGRectMake(Width-65, 10, 50, 22)];
+            //[self.sureButton setTitle:@"确定" forState:UIControlStateNormal];
+            [self.sureButton setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
+            [self.sureButton setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
+            [self.sureButton addTarget:self action:@selector(sureButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [nameCell.contentView addSubview:self.sureButton];
             cell = nameCell;
         }
@@ -147,7 +159,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     return cell;
 }
 
-- (void)sureButtonClick {
+- (void)sureButtonClick:(UIButton *)button {
     NSLog(@"确定按钮点击");
     NSLog(@"%@",self.nameTextField.text);
     if (self.nameTextField.text == nil || self.nameTextField.text.length == 0) {
@@ -158,7 +170,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
             NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
                 [self requestProductType];
-                
+            }
+            else {
+                NSDictionary *dic = [responseObject objectForKey:@"result"];
+                self.dataAry = [dic objectForKey:@"list"];
+                button.selected = YES;
+                [self creatScreeningCells];
             }
         } failure:^(NSError *error) {
             NSLog(@"%@",error);
@@ -166,10 +183,25 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     }
 }
 
+-(void)creatScreeningCells
+{
+    self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+    //    NSLog(@"%@",ary);
+    CGFloat Y=0;
+    for (int i=0; i<self.dataAry.count; i++) {
+        SreeningViewCell *cell = [[SreeningViewCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i]];
+        [cellAry addObject:cell.model];
+        Y=CGRectGetMaxY(cell.frame);
+        cell.delegate = self;
+        [cell setBackgroundColor:[UIColor whiteColor]];
+        [self.backScrollView addSubview:cell];
+    }
+    [self.backScrollView setContentSize:CGSizeMake(0, Y+60)];
+}
+
+
 - (void)requestProductType {
     [HTTPCLIENT getTypeInfoSuccess:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
-//        NSLog(@"%@",responseObject[@"success"]);
         if ([[responseObject objectForKey:@"success"] integerValue] == 1 ) {
             NSArray *typeListArray = [[responseObject objectForKey:@"result"] objectForKey:@"typeList"];
             if (typeListArray.count == 0) {
@@ -184,7 +216,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
             
         }
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+        //NSLog(@"%@",error);
     }];
 }
 
