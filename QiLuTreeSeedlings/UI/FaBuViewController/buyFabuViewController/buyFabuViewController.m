@@ -12,7 +12,7 @@
 #import "TreeSpecificationsModel.h"
 #import "SreeningViewCell.h"
 #import "buyFabuTijiaoViewController.h"
-@interface buyFabuViewController ()<cellBeginendDelegate,UITextFieldDelegate>
+@interface buyFabuViewController ()<UITextFieldDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
 @property (nonatomic,strong)UIButton *nameBtn;
@@ -189,7 +189,7 @@
         SreeningViewCell *cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i]];
         [cellAry addObject:cell.model];
         Y=CGRectGetMaxY(cell.frame);
-        cell.delegate=self;
+       // cell.delegate=self;
         [cell setBackgroundColor:[UIColor whiteColor]];
         [self.backScrollView addSubview:cell];
     }
@@ -199,35 +199,35 @@
 {
     self.nowTextField=field;
 }
--(void)cellEndEditing
-{
-    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-        return;
-    }
-    CGRect frame=self.backScrollView.frame;
-    frame.size.height=kHeight-44-44;
-    self.backScrollView.frame=frame;
-}
--(void)cellKeyHight:(CGFloat)hight
-{
-    if (self.backScrollView.frame.size.height==kHeight-hight-44-44) {
-        return;
-    }
-    CGRect frame=self.backScrollView.frame;
-    frame.size.height=kHeight-hight-44-44;
-    self.backScrollView.frame=frame;
-}
+//-(void)cellEndEditing
+//{
+//    if (self.backScrollView.frame.size.height==kHeight-44-44) {
+//        return;
+//    }
+//    CGRect frame=self.backScrollView.frame;
+//    frame.size.height=kHeight-44-44;
+//    self.backScrollView.frame=frame;
+//}
+//-(void)cellKeyHight:(CGFloat)hight
+//{
+//    if (self.backScrollView.frame.size.height==kHeight-hight-44-44) {
+//        return;
+//    }
+//    CGRect frame=self.backScrollView.frame;
+//    frame.size.height=kHeight-hight-44-44;
+//    self.backScrollView.frame=frame;
+//}
 -(void)hidingKey
 {
     if (self.nowTextField) {
         [self.nowTextField resignFirstResponder];
     }
-    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-        return;
-    }
-    CGRect frame=self.backScrollView.frame;
-    frame.size.height=kHeight-44-44;
-    self.backScrollView.frame=frame;
+//    if (self.backScrollView.frame.size.height==kHeight-44-44) {
+//        return;
+//    }
+//    CGRect frame=self.backScrollView.frame;
+//    frame.size.height=kHeight-44-44;
+//    self.backScrollView.frame=frame;
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {

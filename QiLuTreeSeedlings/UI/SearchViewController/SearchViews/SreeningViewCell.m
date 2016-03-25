@@ -66,27 +66,27 @@
             }
         }
         
-        //增加监听，当键盘出现或改变时收出消息
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-         
-                                                 selector:@selector(keyboardWillShow:)
-         
-                                                     name:UIKeyboardWillShowNotification
-         
-                                                   object:nil];
-        
-        
-        
-        //增加监听，当键退出时收出消息
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-         
-                                                 selector:@selector(keyboardWillHide:)
-         
-                                                     name:UIKeyboardWillHideNotification
-         
-                                                   object:nil];
+//        //增加监听，当键盘出现或改变时收出消息
+//        
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//         
+//                                                 selector:@selector(keyboardWillShow:)
+//         
+//                                                     name:UIKeyboardWillShowNotification
+//         
+//                                                   object:nil];
+//        
+//        
+//        
+//        //增加监听，当键退出时收出消息
+//        
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//         
+//                                                 selector:@selector(keyboardWillHide:)
+//         
+//                                                     name:UIKeyboardWillHideNotification
+//         
+//                                                   object:nil];
     }
     return self;
 }
@@ -185,27 +185,27 @@
 {
     //获取键盘的高度
     
-    NSDictionary *userInfo = [aNotification userInfo];
-    
-    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-    
-    CGRect keyboardRect = [aValue CGRectValue];
-    
-    CGFloat height = keyboardRect.size.height;
-    if (self.delegate) {
-        [self.delegate cellKeyHight:height];
-    }
+//    NSDictionary *userInfo = [aNotification userInfo];
+//    
+//    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+//    
+//    CGRect keyboardRect = [aValue CGRectValue];
+//    
+//    CGFloat height = keyboardRect.size.height;
+//    if (self.delegate) {
+//        [self.delegate cellKeyHight:height];
+//    }
 }
 
 
 //当键退出时调用
-- (void)keyboardWillHide:(NSNotification *)aNotification
-
-{
-    if (self.delegate) {
-        [self.delegate cellEndEditing];
-    }
-}
+//- (void)keyboardWillHide:(NSNotification *)aNotification
+//
+//{
+//    if (self.delegate) {
+//        [self.delegate cellEndEditing];
+//    }
+//}
 
 
 -(void)Type2Option1BtnAction:(UIButton *)sender
@@ -256,13 +256,13 @@
      [self addSubview:linView];
     [linView setBackgroundColor:kLineColor];
 }
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    if(self.delegate)
-    {
-        [self.delegate cellBeginEditing:textField];
-    }
-}
+//-(void)textFieldDidBeginEditing:(UITextField *)textField
+//{
+//    if(self.delegate)
+//    {
+//        [self.delegate cellBeginEditing:textField];
+//    }
+//}
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField.tag==10001) {
         [self.answerAry insertObject:textField.text atIndex:0];

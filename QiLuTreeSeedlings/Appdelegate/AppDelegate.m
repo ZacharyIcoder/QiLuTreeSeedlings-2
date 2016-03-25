@@ -12,7 +12,7 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "ToastView.h"
-//#import "KeyboardManager.h"
+#import "KeyboardManager.h"
 #define kGtAppId           @"dxb5cYhXBW6yYLPsAfvtGA"
 #define kGtAppKey          @"m2iC5d15as6Vub2OGIaxP6"
 #define kGtAppSecret       @"9IHKXKIl7G7ozrvkOMQvx7"

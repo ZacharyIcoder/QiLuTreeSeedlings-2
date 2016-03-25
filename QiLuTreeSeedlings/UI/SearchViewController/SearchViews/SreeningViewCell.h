@@ -8,16 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import "TreeSpecificationsModel.h"
-@protocol cellBeginendDelegate <NSObject>
+//<<<<<<< Updated upstream
+//@protocol cellBeginendDelegate <NSObject>
+//
+//@optional
+//- (void)cellBeginEditing:(UITextField *)field;
+//- (void)cellKeyHight:(CGFloat)hight;
+//- (void)cellEndEditing;
+//@end
+//=======
+//@protocol cellBeginendDelegate <NSObject>
+//
+//@optional
+////- (void)cellBeginEditing:(UITextField *)field;
+//////-(void)cellKeyHight:(CGFloat)hight;
+//////- (void)cellEndEditing;
+////@end
 
-@optional
-- (void)cellBeginEditing:(UITextField *)field;
-- (void)cellKeyHight:(CGFloat)hight;
-- (void)cellEndEditing;
-@end
 @interface SreeningViewCell : UIView<UITextFieldDelegate>
 @property (nonatomic,strong)TreeSpecificationsModel *model;
 @property (nonatomic,strong)NSMutableArray *answerAry;
-@property (nonatomic,weak)id <cellBeginendDelegate> delegate;
+//@property (nonatomic,weak)id <cellBeginendDelegate> delegate;
 -(id)initWithFrame:(CGRect)frame AndModel:(TreeSpecificationsModel *)model;
 @end

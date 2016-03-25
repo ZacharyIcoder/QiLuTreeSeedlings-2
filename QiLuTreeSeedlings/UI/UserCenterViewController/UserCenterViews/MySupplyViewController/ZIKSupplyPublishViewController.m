@@ -19,7 +19,7 @@
 #import "TreeSpecificationsModel.h"
 #import "SreeningViewCell.h"
 @interface ZIKSupplyPublishViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
-UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,cellBeginendDelegate>
+UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 {
     UITextField *titleTextField;
 }

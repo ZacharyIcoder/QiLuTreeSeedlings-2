@@ -14,7 +14,7 @@
 #import "TreeSpecificationsModel.h"
 #import "PickerLocation.h"
 #import "ToastView.h"
-@interface ScreeningView ()<UITextFieldDelegate,PickerLocationDelegate,cellBeginendDelegate>
+@interface ScreeningView ()<UITextFieldDelegate,PickerLocationDelegate>
 //@property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) UITextField *nameTextField;
 @property (nonatomic,strong)UIScrollView *backScrollView;
@@ -253,7 +253,7 @@
     SreeningViewCell *cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, 0.8*kWidth, 44) AndModel:self.dataAry[i]];
        [cellAry addObject:cell.model];
        Y=CGRectGetMaxY(cell.frame);
-       cell.delegate=self;
+       //cell.delegate=self;
        [self.backScrollView addSubview:cell];
     }
     [self.backScrollView setContentSize:CGSizeMake(0, Y)];
@@ -281,35 +281,35 @@
 //    frame.size.height=kHeight-345;
 //    self.backScrollView.frame=frame;
 }
--(void)cellKeyHight:(CGFloat)hight
-{
-    if (self.backScrollView.frame.size.height==kHeight-hight-44-44) {
-        return;
-    }
-    CGRect frame=self.backScrollView.frame;
-    frame.size.height=kHeight-hight-44-44;
-    self.backScrollView.frame=frame;
-}
--(void)cellEndEditing
-{
-    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-        return;
-    }
-    CGRect frame=self.backScrollView.frame;
-    frame.size.height=kHeight-44-44;
-    self.backScrollView.frame=frame;
-}
+//-(void)cellKeyHight:(CGFloat)hight
+//{
+//    if (self.backScrollView.frame.size.height==kHeight-hight-44-44) {
+//        return;
+//    }
+//    CGRect frame=self.backScrollView.frame;
+//    frame.size.height=kHeight-hight-44-44;
+//    self.backScrollView.frame=frame;
+//}
+//-(void)cellEndEditing
+//{
+////    if (self.backScrollView.frame.size.height==kHeight-44-44) {
+////        return;
+////    }
+////    CGRect frame=self.backScrollView.frame;
+////    frame.size.height=kHeight-44-44;
+////    self.backScrollView.frame=frame;
+//}
 -(void)hidingKey
 {
     if (self.nowTextFlield) {
         [self.nowTextFlield resignFirstResponder];
     }
-    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-        return;
-    }
-    CGRect frame=self.backScrollView.frame;
-    frame.size.height=kHeight-44-44;
-    self.backScrollView.frame=frame;
+//    if (self.backScrollView.frame.size.height==kHeight-44-44) {
+//        return;
+//    }
+//    CGRect frame=self.backScrollView.frame;
+//    frame.size.height=kHeight-44-44;
+//    self.backScrollView.frame=frame;
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
