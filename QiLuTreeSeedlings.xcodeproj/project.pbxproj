@@ -30,6 +30,13 @@
 		EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BDC1C5A06870018A7BD /* UIViewController+Ext.m */; };
 		EA0B2BE11C5A06D80018A7BD /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BE01C5A06D80018A7BD /* HomePageViewController.m */; };
 		EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BE31C5A07050018A7BD /* UserCenterViewController.m */; };
+		EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1120C41CA6220600857E48 /* myNuserNull@2x.png */; };
+		EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1120C61CA6228A00857E48 /* myNuserAdd@2x.png */; };
+		EA1120CB1CA6287900857E48 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1120CA1CA6287900857E48 /* NuserNullTableViewCell.m */; };
+		EA1120CE1CA62BE300857E48 /* NurseryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1120CD1CA62BE300857E48 /* NurseryModel.m */; };
+		EA1120D21CA65DF500857E48 /* NuseryDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1120D11CA65DF500857E48 /* NuseryDetialViewController.m */; };
+		EA1120D51CA675F800857E48 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1120D41CA675F800857E48 /* NuseryListTableViewCell.m */; };
+		EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1120D61CA678C000857E48 /* nuseryBase@2x.png */; };
 		EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4D81C93A57E00A33BD3 /* MyCollectViewController.m */; };
 		EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */; };
 		EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */; };
@@ -108,6 +115,7 @@
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
 		EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA671C89669800058A34 /* NSString+MD5.m */; };
+		EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */; };
 		EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA51C744D21007F207D /* HotBuyView.m */; };
 		EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA81C746A7B007F207D /* HotBuyViewCell.m */; };
 		EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB781961C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m */; };
@@ -286,6 +294,17 @@
 		EA0B2BE21C5A07050018A7BD /* UserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterViewController.h; sourceTree = "<group>"; };
 		EA0B2BE31C5A07050018A7BD /* UserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
 		EA0B2BE51C5A08520018A7BD /* UIDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDefines.h; sourceTree = "<group>"; };
+		EA1120C41CA6220600857E48 /* myNuserNull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myNuserNull@2x.png"; sourceTree = "<group>"; };
+		EA1120C61CA6228A00857E48 /* myNuserAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myNuserAdd@2x.png"; sourceTree = "<group>"; };
+		EA1120C91CA6287900857E48 /* NuserNullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuserNullTableViewCell.h; sourceTree = "<group>"; };
+		EA1120CA1CA6287900857E48 /* NuserNullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuserNullTableViewCell.m; sourceTree = "<group>"; };
+		EA1120CC1CA62BE300857E48 /* NurseryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NurseryModel.h; sourceTree = "<group>"; };
+		EA1120CD1CA62BE300857E48 /* NurseryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NurseryModel.m; sourceTree = "<group>"; };
+		EA1120D01CA65DF500857E48 /* NuseryDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryDetialViewController.h; sourceTree = "<group>"; };
+		EA1120D11CA65DF500857E48 /* NuseryDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryDetialViewController.m; sourceTree = "<group>"; };
+		EA1120D31CA675F800857E48 /* NuseryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryListTableViewCell.h; sourceTree = "<group>"; };
+		EA1120D41CA675F800857E48 /* NuseryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryListTableViewCell.m; sourceTree = "<group>"; };
+		EA1120D61CA678C000857E48 /* nuseryBase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nuseryBase@2x.png"; sourceTree = "<group>"; };
 		EA16C4D71C93A57E00A33BD3 /* MyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectViewController.h; sourceTree = "<group>"; };
 		EA16C4D81C93A57E00A33BD3 /* MyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectViewController.m; sourceTree = "<group>"; };
 		EA16C4DB1C93B5EB00A33BD3 /* noOneCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noOneCollectCell.h; sourceTree = "<group>"; };
@@ -404,6 +423,7 @@
 		EA8CAA641C8963D500058A34 /* DataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
 		EA8CAA661C89669800058A34 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		EA8CAA671C89669800058A34 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editngChange@2x.png"; sourceTree = "<group>"; };
 		EAA81BA41C744D21007F207D /* HotBuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotBuyView.h; sourceTree = "<group>"; };
 		EAA81BA51C744D21007F207D /* HotBuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyView.m; sourceTree = "<group>"; };
 		EAA81BA71C746A7B007F207D /* HotBuyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotBuyViewCell.h; sourceTree = "<group>"; };
@@ -865,6 +885,26 @@
 			path = Vender;
 			sourceTree = "<group>";
 		};
+		EA1120C81CA6231300857E48 /* myNuseryCells */ = {
+			isa = PBXGroup;
+			children = (
+				EA1120C91CA6287900857E48 /* NuserNullTableViewCell.h */,
+				EA1120CA1CA6287900857E48 /* NuserNullTableViewCell.m */,
+				EA1120D31CA675F800857E48 /* NuseryListTableViewCell.h */,
+				EA1120D41CA675F800857E48 /* NuseryListTableViewCell.m */,
+			);
+			path = myNuseryCells;
+			sourceTree = "<group>";
+		};
+		EA1120CF1CA65BFE00857E48 /* NuseryDetialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA1120D01CA65DF500857E48 /* NuseryDetialViewController.h */,
+				EA1120D11CA65DF500857E48 /* NuseryDetialViewController.m */,
+			);
+			path = NuseryDetialViewController;
+			sourceTree = "<group>";
+		};
 		EA16C4D61C93A29C00A33BD3 /* MycollectViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,6 +927,10 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */,
+				EA1120D61CA678C000857E48 /* nuseryBase@2x.png */,
+				EA1120C61CA6228A00857E48 /* myNuserAdd@2x.png */,
+				EA1120C41CA6220600857E48 /* myNuserNull@2x.png */,
 				EA75147F1C9B8E52003D63F1 /* supplyImageV@2x.png */,
 				EA75147B1C9B891E003D63F1 /* treeNameSure@2x.png */,
 				EA75147C1C9B891E003D63F1 /* treeNameSure2@2x.png */,
@@ -1212,6 +1256,8 @@
 		EACF3AF21CA116D600FA746C /* MyNurseryListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA1120CF1CA65BFE00857E48 /* NuseryDetialViewController */,
+				EA1120C81CA6231300857E48 /* myNuseryCells */,
 				EACF3AF31CA116F100FA746C /* MyNuseryListViewController.h */,
 				EACF3AF41CA116F100FA746C /* MyNuseryListViewController.m */,
 			);
@@ -1364,6 +1410,8 @@
 				EA7AE8E51C9663A500B43073 /* SupplyDetialMode.m */,
 				EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */,
 				EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */,
+				EA1120CC1CA62BE300857E48 /* NurseryModel.h */,
+				EA1120CD1CA62BE300857E48 /* NurseryModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1776,6 +1824,7 @@
 				EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */,
 				FC21BC891CA51C930041E2C3 /* IQKeyboardManager.bundle in Resources */,
 				FCF353F11CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
+				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
@@ -1795,16 +1844,19 @@
 				EA0B2BA61C59F5220018A7BD /* LaunchScreen.storyboard in Resources */,
 				EAF050F21C9293C200F435A9 /* homePageGreen@2x.png in Resources */,
 				EAEA07F01C5B085C003A0D8A /* lendMoneyAD2.jpg in Resources */,
+				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
 				FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */,
+				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
 				EA75147D1C9B891E003D63F1 /* treeNameSure@2x.png in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
+				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
 				FCF353D81CA3B515001ABA0A /* shangchuanzhaopian@3x.png in Resources */,
@@ -1887,6 +1939,7 @@
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
 				FCF353D91CA3B515001ABA0A /* StringAttribute.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
+				EA1120D21CA65DF500857E48 /* NuseryDetialViewController.m in Sources */,
 				EA040FBF1C8826D900E43B5E /* ToastView.m in Sources */,
 				EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */,
 				EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */,
@@ -1902,6 +1955,7 @@
 				FCF353DB1CA3B515001ABA0A /* ForegroundColorAttribute.m in Sources */,
 				EAE881F61C87C399001EFF14 /* BuySearchTableViewCell.m in Sources */,
 				EA0079191C80155E00FA66B1 /* SearchViewController.m in Sources */,
+				EA1120D51CA675F800857E48 /* NuseryListTableViewCell.m in Sources */,
 				EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */,
 				EA03405A1C891EFD00FBF148 /* TreeSpecificationsModel.m in Sources */,
 				FCF353EB1CA3B515001ABA0A /* ZIKMySupplyViewController.m in Sources */,
@@ -1918,6 +1972,7 @@
 				EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */,
 				EAF050F71C92965B00F435A9 /* UserInfoNomerTableViewCell.m in Sources */,
 				FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */,
+				EA1120CE1CA62BE300857E48 /* NurseryModel.m in Sources */,
 				FCF353FB1CA3E032001ABA0A /* ZIKSelectView.m in Sources */,
 				FC21BC7C1CA51C930041E2C3 /* IQNSArray+Sort.m in Sources */,
 				FC21BC7D1CA51C930041E2C3 /* IQUIScrollView+Additions.m in Sources */,
@@ -1977,6 +2032,7 @@
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
 				FCF353E81CA3B515001ABA0A /* ZIKArrowViewController.m in Sources */,
+				EA1120CB1CA6287900857E48 /* NuserNullTableViewCell.m in Sources */,
 				FCF353F81CA3D4D1001ABA0A /* ZIKSideView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

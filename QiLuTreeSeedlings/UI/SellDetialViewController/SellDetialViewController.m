@@ -260,7 +260,7 @@
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"供应详情"];
-    [titleLab setFont:[UIFont systemFontOfSize:14]];
+    [titleLab setFont:[UIFont systemFontOfSize:20]];
         [view addSubview:titleLab];
     UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
     self.collectionBtn = collectionBtn;

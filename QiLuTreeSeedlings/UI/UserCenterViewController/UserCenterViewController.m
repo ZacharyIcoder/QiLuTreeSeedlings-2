@@ -15,6 +15,7 @@
 #import "HttpClient.h"
 #import "MyCollectViewController.h"
 #import "ZIKMySupplyViewController.h"
+#import "MyNuseryListViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -231,6 +232,13 @@
             [self hiddingSelfTabBar];
             CompanyViewController *companyVC=[[CompanyViewController alloc]init];
             [self.navigationController pushViewController:companyVC animated:YES];
+            return;
+        }
+        if (indexPath.row==1) {
+            [self hiddingSelfTabBar];
+            MyNuseryListViewController *nuserListVC=[[MyNuseryListViewController alloc]init];
+            [self.navigationController pushViewController:nuserListVC animated:YES];
+
         }
     }
     else if (indexPath.section == 1) {

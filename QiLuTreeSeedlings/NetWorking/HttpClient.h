@@ -226,6 +226,24 @@
                  WithPageSize:(NSString *)pageSize
                       Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure;
+#pragma mark -苗圃详情
+-(void)nurseryDetialWithUid:(NSString *)uid
+                    Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
+#pragma mark -添加/修改苗圃信息
+-(void)saveNuresryWithUid:(NSString *)uid
+          WithNurseryName:(NSString *)nurseryName
+  WithnurseryAreaProvince:(NSString *)nurseryAreaProvince
+      WithnurseryAreaCity:(NSString *)nurseryAreaCity
+    WithnurseryAreaCounty:(NSString *)nurseryAreaCounty
+      WithnurseryAreaTown:(NSString *)nurseryAreaTown
+       WithnurseryAddress:(NSString *)nurseryAddress
+        WithchargelPerson:(NSString *)chargelPerson
+                WithPhone:(NSString *)phone
+                Withbrief:(NSString *)brief
+                  Success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure;
+
 #define HTTPCLIENT [HttpClient sharedClient]
 
 #pragma mark ---------- 供求发布限制 -----------

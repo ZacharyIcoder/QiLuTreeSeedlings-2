@@ -12,7 +12,7 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "ToastView.h"
-#import "KeyboardManager.h"
+//import "KeyboardManager.h"
 #define kGtAppId           @"dxb5cYhXBW6yYLPsAfvtGA"
 #define kGtAppKey          @"m2iC5d15as6Vub2OGIaxP6"
 #define kGtAppSecret       @"9IHKXKIl7G7ozrvkOMQvx7"
@@ -46,8 +46,9 @@
         } failure:^(NSError *error) {
             
         }];
+        
     }
-     //获取企业信息
+    //获取企业信息
     [self reloadCompanyInfo];
     // 通过 appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
@@ -68,8 +69,7 @@
             if (![[dic objectForKey:@"ishave"] isEqualToString:@"nocompany"]) {
                 self.companyModel=[BusinessMesageModel creatBusinessMessageModelByDic:dic];
             }
-            else
-            {
+            else{
                 
             }
         }

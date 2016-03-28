@@ -1,3 +1,4 @@
+
 //
 //  LoginView.m
 //  QiLuTreeSeedlings
@@ -10,6 +11,7 @@
 #import "UIDefines.h"
 #import "NSString+Phone.h"
 #import "ToastView.h"
+
 @interface LoginView ()<UITextFieldDelegate>
 @property (nonatomic,strong) UITextField *phoneTextField;
 @property (nonatomic,strong) UITextField *paswdTextField;

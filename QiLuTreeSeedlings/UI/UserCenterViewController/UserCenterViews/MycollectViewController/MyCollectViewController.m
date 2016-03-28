@@ -367,7 +367,7 @@
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"我的收藏"];
-    [titleLab setFont:[UIFont systemFontOfSize:17]];
+    [titleLab setFont:[UIFont systemFontOfSize:20]];
     [view addSubview:titleLab];
     
     return view;

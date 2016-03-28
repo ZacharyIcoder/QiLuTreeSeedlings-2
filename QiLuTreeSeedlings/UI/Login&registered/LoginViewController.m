@@ -65,6 +65,7 @@
             } failure:^(NSError *error) {
                 
             }];
+            [APPDELEGATE reloadCompanyInfo];
             
         }else
         {

@@ -139,7 +139,7 @@
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"发布求购信息"];
-    [titleLab setFont:[UIFont systemFontOfSize:14]];
+    [titleLab setFont:[UIFont systemFontOfSize:20]];
     [view addSubview:titleLab];
     return view;
 }

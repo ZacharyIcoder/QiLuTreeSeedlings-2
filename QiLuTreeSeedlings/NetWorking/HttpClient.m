@@ -976,7 +976,112 @@
     }];
 
 }
+#pragma mark -苗圃详情
+-(void)nurseryDetialWithUid:(NSString *)uid
+                    Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    
+    if (!str) {
+        str=@"用户未授权";
+    }
+    NSString *postURL = @"api/nursery/info";
+    NSDictionary *parameter=[NSDictionary dictionaryWithObjectsAndKeys:
+                             APPDELEGATE.userModel.access_token,@"access_token",
+                             APPDELEGATE.userModel.access_id,@"access_id",
+                             str,@"device_id",
+                             kclient_id,@"client_id",
+                             kclient_secret,@"client_secret",
+                             uid,@"nrseryId",
+                             nil];
+    [self POST:postURL parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
 
+}
+#pragma mark -添加/修改苗圃信息
+-(void)saveNuresryWithUid:(NSString *)uid
+          WithNurseryName:(NSString *)nurseryName
+  WithnurseryAreaProvince:(NSString *)nurseryAreaProvince
+      WithnurseryAreaCity:(NSString *)nurseryAreaCity
+    WithnurseryAreaCounty:(NSString *)nurseryAreaCounty
+      WithnurseryAreaTown:(NSString *)nurseryAreaTown
+       WithnurseryAddress:(NSString *)nurseryAddress
+        WithchargelPerson:(NSString *)chargelPerson
+                WithPhone:(NSString *)phone
+                Withbrief:(NSString *)brief
+                  Success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    
+    if (!str) {
+        str=@"用户未授权";
+    }
+    NSString *postURL = @"api/nursery/save";
+    NSDictionary *parameter=[NSDictionary dictionaryWithObjectsAndKeys:
+                             APPDELEGATE.userModel.access_token,@"access_token",
+                             APPDELEGATE.userModel.access_id,@"access_id",
+                             str,@"device_id",
+                             kclient_id,@"client_id",
+                             kclient_secret,@"client_secret",
+                             nil];
+    NSMutableDictionary *parameters=[[NSMutableDictionary alloc]initWithDictionary:parameter];
+    if (uid) {
+        [parameters setObject:uid forKey:@"uid"];
+    }
+    if (nurseryName) {
+        [parameters setObject:nurseryName forKey:@"nurseryName"];
+    }
+    if (nurseryAreaProvince) {
+        [parameters setObject:nurseryAreaProvince forKey:@"nurseryAreaProvince"];
+    }
+    if (nurseryAreaCity) {
+        [parameters setObject:nurseryAreaCity forKey:@"nurseryAreaCity"];
+    }else
+    {
+        [parameters setObject:@"" forKey:@"nurseryAreaCity"];
+    }
+    if (nurseryAreaCounty) {
+        [parameters setObject:nurseryAreaCounty forKey:@"nurseryAreaCounty"];
+    }else
+    {
+        [parameters setObject:@"" forKey:@"nurseryAreaCounty"];
+    }
+    if (nurseryAreaTown) {
+        [parameters setObject:nurseryAreaTown forKey:@"nurseryAreaTown"];
+    }
+    else{
+        [parameters setObject:@"" forKey:@"nurseryAreaTown"];
+    }
+    if (nurseryAddress) {
+        [parameters setObject:nurseryAddress forKey:@"nurseryAddress"];
+    }
+    if (chargelPerson) {
+        [parameters setObject:chargelPerson forKey:@"chargelPerson"];
+    }
+    if (phone) {
+        [parameters setObject:phone forKey:@"phone"];
+    }
+    if (brief) {
+        [parameters setObject:brief forKey:@"brief"];
+    }
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
 #pragma mark ---------- 供求发布限制 -----------
 -(void)getSupplyRestrictWithToken:(NSString *)token withId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviceId:(NSString *)deviceID withType:(NSString *)typeInt success:(void (^)(id))success failure:(void (^)(NSError *))failure{
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];

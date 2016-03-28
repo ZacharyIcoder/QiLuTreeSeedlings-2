@@ -72,7 +72,7 @@
     [self.view addSubview:navView];
     
     CGRect tempFrame=CGRectMake(0, 6, kWidth, 44);
-    companyNameField=[self mackViewWtihName:@"企业名称" alert:@"请输入企业名车" unit:@"" withFrame:tempFrame];
+    companyNameField=[self mackViewWtihName:@"企业名称" alert:@"请输入企业名称" unit:@"" withFrame:tempFrame];
     companyNameField.delegate=self;
     tempFrame.origin.y+=44;
     companyAddressField=[self mackViewWtihName:@"企业地址" alert:@"请输入企业地址" unit:@"" withFrame:tempFrame];
@@ -135,10 +135,16 @@
         GetCityDao *citydao=[GetCityDao new];
         [citydao openDataBase];
         NSString *str1=[citydao getCityNameByCityUid:APPDELEGATE.companyModel.companyAreaProvince];
+        [areaStr appendFormat:@"%@",str1];
         NSString *str2=[citydao getCityNameByCityUid:APPDELEGATE.companyModel.companyAreaCity];
+        if (str2) {
+            [areaStr appendFormat:@"%@",str2];
+        }
         NSString *str3=[citydao getCityNameByCityUid:APPDELEGATE.companyModel.companyAreaCounty];
+        if (str3) {
+            [areaStr appendFormat:@"%@",str3];
+        }
         [citydao closeDataBase];
-        [areaStr appendFormat:@"%@%@%@",str1,str2,str3];
         self.AreaProvince=APPDELEGATE.companyModel.companyAreaProvince;
         self.AreaCity=APPDELEGATE.companyModel.companyAreaCity;
         self.AreaCounty=APPDELEGATE.companyModel.companyAreaCounty;
@@ -323,7 +329,7 @@
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"企业信息"];
-    [titleLab setFont:[UIFont systemFontOfSize:15]];
+    [titleLab setFont:[UIFont systemFontOfSize:20]];
     
     UIButton *editingBtnz=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
     [editingBtnz setTitle:@"编辑" forState:UIControlStateNormal];
