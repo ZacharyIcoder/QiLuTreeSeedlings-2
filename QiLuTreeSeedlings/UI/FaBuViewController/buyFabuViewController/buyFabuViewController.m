@@ -115,7 +115,7 @@
     for (int i=0; i<cellAry.count; i++) {
         TreeSpecificationsModel *model=cellAry[i];
         if (model.anwser.length>0) {
-            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
+            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
                                model.anwser,@"anwser"
                                , nil];
             [screenTijiaoAry addObject:dic];

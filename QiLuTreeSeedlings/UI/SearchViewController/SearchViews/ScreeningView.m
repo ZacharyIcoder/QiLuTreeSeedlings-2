@@ -252,6 +252,7 @@
        
     SreeningViewCell *cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, 0.8*kWidth, 44) AndModel:self.dataAry[i]];
        [cellAry addObject:cell.model];
+
        Y=CGRectGetMaxY(cell.frame);
        //cell.delegate=self;
        [self.backScrollView addSubview:cell];

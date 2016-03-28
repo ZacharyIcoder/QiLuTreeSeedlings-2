@@ -12,6 +12,7 @@
 #import "ZIKMySupplyTableViewCell.h"
 #import "MJRefresh.h"
 #import "ZIKSupplyPublishViewController.h"
+#import "ZIKSupplyPublishVC.h"
 @interface ZIKMySupplyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
@@ -196,7 +197,7 @@
 }
 
 - (void)btnClick {
-    ZIKSupplyPublishViewController *spVC = [[ZIKSupplyPublishViewController alloc] init];
+    ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
     [self.navigationController pushViewController:spVC animated:YES];
 //
 //    if (self.isCanPublish) {

@@ -15,7 +15,10 @@
 #import "HttpClient.h"
 #import "MyCollectViewController.h"
 #import "ZIKMySupplyViewController.h"
+
 #import "MyNuseryListViewController.h"
+
+
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -246,6 +249,7 @@
             NSLog(@"我的供应");
             [self hiddingSelfTabBar];
             ZIKMySupplyViewController *mySupplyVC = [[ZIKMySupplyViewController alloc] init];
+             //ZIKSupplyPublishVC  *mySupplyVC = [[ZIKSupplyPublishVC alloc] init];
             [self.navigationController pushViewController:mySupplyVC animated:YES];
         }
     }
