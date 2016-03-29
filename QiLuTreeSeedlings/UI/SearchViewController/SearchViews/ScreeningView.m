@@ -169,18 +169,18 @@
 -(void)selectedLocationInfo:(Province *)location
 {
     NSMutableString *namestr=[NSMutableString new];
-    if (location.provinceID) {
+    if (location.code) {
         [namestr appendString:location.provinceName];
-        self.province=location.provinceID;
+        self.province=location.code;
     }
     
-    if (location.selectedCity.cityID) {
+    if (location.selectedCity.code) {
         [namestr appendString:location.selectedCity.cityName];
-        self.City=location.selectedCity.cityID;
+        self.City=location.selectedCity.code;
     }
-    if (location.selectedCity.selectedTowns.TownID) {
+    if (location.selectedCity.selectedTowns.code) {
         [namestr appendString:location.selectedCity.selectedTowns.TownName];
-        self.county=location.selectedCity.selectedTowns.TownID;
+        self.county=location.selectedCity.selectedTowns.code;
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];

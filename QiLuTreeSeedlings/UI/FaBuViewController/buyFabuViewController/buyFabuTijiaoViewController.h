@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BuyDetialModel.h"
 @interface buyFabuTijiaoViewController : UIViewController
--(id)initWithAry:(NSArray *)ary andTitle:(NSString *)title andProname:(NSString *)proname andProUid:(NSString *)proUid;
+-(id)initWithAry:(NSArray *)ary andTitle:(NSString *)title andProname:(NSString *)proname andProUid:(NSString *)proUid andDic:(NSDictionary *)dic andUid:(NSString *)uid;
 @end

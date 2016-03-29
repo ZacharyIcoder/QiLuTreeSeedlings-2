@@ -10,4 +10,5 @@
 
 @interface BuyDetialInfoViewController : UIViewController
 -(id)initWithSaercherInfo:(NSString *)uid;
+-(id)initMyDetialWithSaercherInfo:(NSString *)uid;
 @end

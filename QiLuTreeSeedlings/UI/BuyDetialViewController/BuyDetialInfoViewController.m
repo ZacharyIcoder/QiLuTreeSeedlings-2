@@ -15,6 +15,8 @@
 #import "BuySearchTableViewCell.h"
 #import "HotBuyModel.h"
 #import "BuySearchTableViewCell.h"
+#import "BuyDetialModel.h"
+#import "buyFabuViewController.h"
 @interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *navTitleLab;
@@ -23,6 +25,8 @@
 @property (nonatomic,strong)NSArray *specAry;
 @property (nonatomic,strong)NSArray *recommendeAry;
 @property (nonatomic,strong)NSString *uid;
+@property (nonatomic) NSInteger type;
+@property (nonatomic,strong)BuyDetialModel *model;
 @end
 
 @implementation BuyDetialInfoViewController
@@ -32,10 +36,13 @@
     if (self) {
         self.uid=uid;
       //  NSLog(@"%@",uid);
-        [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id Success:^(id responseObject) {
-            //NSLog(@"%@",[responseObject objectForKey:@"msg"]);
+        [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
+         WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
+            //NSLog(@"%@",responseObject);
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.infoDic=dic;
+             self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+             self.model.uid=uid;
             [self reloadMyView];
         } failure:^(NSError *error) {
             
@@ -44,13 +51,42 @@
         self.tableView.delegate=self;
         self.tableView.dataSource=self;
         [self.view addSubview:self.tableView];
+        UIView *navView =  [self makeNavView];
+        [self.view addSubview:navView];
+    }
+    return self;
+}
+-(id)initMyDetialWithSaercherInfo:(NSString *)uid
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+        //  NSLog(@"%@",uid);
+        [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
+                            WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
+                                //NSLog(@"%@",responseObject);
+                                NSDictionary *dic=[responseObject objectForKey:@"result"];
+                                self.infoDic=dic;
+                                self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                                self.model.uid=uid;
+                                [self reloadMyView];
+                            } failure:^(NSError *error) {
+                                
+                            }];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
+        self.tableView.delegate=self;
+        self.tableView.dataSource=self;
+        self.type=2;
+        [self.view addSubview:self.tableView];
+        UIView *navView =  [self makeNavView];
+        
+        [self.view addSubview:navView];
     }
     return self;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-   UIView *navView =  [self makeNavView];
-    [self.view addSubview:navView];
+  
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 //    UIView *messageView=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
 //    [messageView setBackgroundColor:[UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1]];
@@ -89,7 +125,7 @@
 }
 -(void)reloadMyView
 {
-    NSString *titleStr=[[self.infoDic objectForKey:@"detail"] objectForKey:@"title"];
+    NSString *titleStr=[[self.infoDic objectForKey:@"detail"] objectForKey:@"productName"];
     [self.navTitleLab setText:[NSString stringWithFormat:@"求购：%@",titleStr]];
     
     if ([[[self.infoDic objectForKey:@"detail"] objectForKey:@"collect"] integerValue]) {
@@ -116,16 +152,29 @@
     [titleLab setFont:[UIFont systemFontOfSize:14]];
     self.navTitleLab=titleLab;
     [view addSubview:titleLab];
+    if (self.type==2) {
+         UIButton *editingBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
+        [editingBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [editingBtn addTarget:self action:@selector(editingBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:editingBtn];
+    }else
+    {
+        UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
+        self.collectionBtn = collectionBtn;
+        [collectionBtn setImage:[UIImage imageNamed:@"collectionN"] forState:UIControlStateNormal];
+        [collectionBtn setImage:[UIImage imageNamed:@"collectionT"] forState:UIControlStateSelected];
+        [collectionBtn addTarget:self action:@selector(collectionBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:collectionBtn];
+    }
     
-    UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
-    self.collectionBtn = collectionBtn;
-    [collectionBtn setImage:[UIImage imageNamed:@"collectionN"] forState:UIControlStateNormal];
-     [collectionBtn setImage:[UIImage imageNamed:@"collectionT"] forState:UIControlStateSelected];
-    [collectionBtn addTarget:self action:@selector(collectionBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:collectionBtn];
     return view;
 }
-
+-(void)editingBtn:(UIButton *)sender
+{
+    buyFabuViewController *buyFabuVC=[[buyFabuViewController alloc]initWithModel:self.model];
+    
+    [self.navigationController pushViewController:buyFabuVC animated:YES];
+}
 -(void)collectionBtn:(UIButton *)sender
 {
     if (sender.selected==NO) {
@@ -133,7 +182,9 @@
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 [ToastView showTopToast:@"收藏成功"];
                 sender.selected=YES;
-                [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id Success:^(id responseObject) {
+                [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
+                 WithType:@"0" WithmemberCustomUid:@""
+                                     Success:^(id responseObject) {
                     if ([[responseObject objectForKey:@"success"] integerValue]) {
                         self.infoDic=[responseObject objectForKey:@"result"];
                     }else{
@@ -162,7 +213,7 @@
         }];
     }
 
-    NSLog(@"collectionBtnAction");
+   // NSLog(@"collectionBtnAction");
 }
 -(void)backBtnAction:(UIButton *)sender
 {
@@ -170,6 +221,9 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.type==2) {
+        return 4;
+    }
     return 5;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -207,8 +261,8 @@
     }else if(indexPath.section==3)
     {
         
-        NSString *labelText=[[self.infoDic objectForKey:@"detial"] objectForKey:@"description"];
-        if (!labelText) {
+        NSString *labelText=[[self.infoDic objectForKey:@"detail"] objectForKey:@"description"];
+        if (labelText.length==0) {
             labelText=@"暂无";
         }
       CGFloat height = [self getHeightWithContent:labelText width:kWidth-40 font:13];

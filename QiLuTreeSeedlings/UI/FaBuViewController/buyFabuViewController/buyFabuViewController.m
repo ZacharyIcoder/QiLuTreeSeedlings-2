@@ -22,10 +22,20 @@
 @property (nonatomic,strong)UIScrollView *backScrollView;
 @property (nonatomic,strong)UITextField *nowTextField;
 @property (nonatomic,strong)NSMutableArray *cellAry;
+@property (nonatomic,strong)BuyDetialModel *model;
+@property (nonatomic,strong)NSDictionary *baseMessageDic;
 @end
 
 @implementation buyFabuViewController
 @synthesize cellAry;
+-(id)initWithModel:(BuyDetialModel *)model
+{
+    self=[super init];
+    if (self) {
+        self.model=model;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -63,7 +73,7 @@
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.27, 0, kWidth*0.6, 44)];
     nameTextField.placeholder=@"请输入苗木名称";
     nameTextField.textColor=NavColor;
-    nameTextField.text=@"白玉兰";
+    nameTextField.text=@"油松";
     nameTextField.delegate=self;
   
     self.nameTextField=nameTextField;
@@ -87,6 +97,20 @@
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     UITapGestureRecognizer *tapgest=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidingKey)];
     [self.backScrollView addGestureRecognizer:tapgest];
+    
+    if(self.model)
+    {
+        [self editingMyBuy];
+    }
+}
+
+-(void)editingMyBuy
+{
+    self.titleTextField.text=self.model.title;
+    self.nameTextField.text=self.model.productName;
+    self.nameBtn.selected=YES;
+    self.productName=self.nameTextField.text;
+    [self getEditingMessage];
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -121,7 +145,7 @@
             [screenTijiaoAry addObject:dic];
         }
     }
-    buyFabuTijiaoViewController *buyfabuTJViewController=[[buyFabuTijiaoViewController alloc]initWithAry:screenTijiaoAry andTitle:self.titleTextField.text andProname:self.productName andProUid:self.productUid];
+    buyFabuTijiaoViewController *buyfabuTJViewController=[[buyFabuTijiaoViewController alloc]initWithAry:screenTijiaoAry andTitle:self.titleTextField.text andProname:self.productName andProUid:self.productUid andDic:self.baseMessageDic andUid:self.model.uid];
     [self.navigationController pushViewController:buyfabuTJViewController animated:YES];
     //NSLog(@"%@",screenTijiaoAry);
     
@@ -147,20 +171,11 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)nameBtnAction:(UIButton *)sender
+- (void)getTreeSHUXINGWithBtn:(UIButton *)sender
 {
-    if (sender.selected) {
-        return;
-    }
-    if (self.nameTextField.text.length==0) {
-        [ToastView showToast:@"请输入苗木名称"
-                 withOriginY:66.0f
-               withSuperView:APPDELEGATE.window];
-        return;
-    }
-    self.productName=self.nameTextField.text;
+    ;
     [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"2" Success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+       // NSLog(@"%@",responseObject);
         
         if (![[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showToast:[responseObject objectForKey:@"msg"]
@@ -179,14 +194,92 @@
         
     }];
 }
+-(void)getEditingMessage
+{
+    
+        [HTTPCLIENT myBuyEditingWithUid:self.model.uid Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"ProductSpec"];
+                self.productUid=[dic objectForKey:@"productUid"];
+                self.productName=[dic objectForKey:@"productName"];
+                self.baseMessageDic=[[responseObject objectForKey:@"result"] objectForKey:@"baseMsg"];
+                NSArray *ary=[dic objectForKey:@"bean"];
+                self.dataAry=ary;
+                [self creatSCreeningCellsWithAnswerWithAry:ary];
+            }else
+            {
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+   
+
+}
+-(void)nameBtnAction:(UIButton *)sender
+{
+    if (sender.selected) {
+        return;
+    }
+    if (self.nameTextField.text.length==0) {
+        [ToastView showToast:@"请输入苗木名称"
+                 withOriginY:66.0f
+               withSuperView:APPDELEGATE.window];
+        return;
+    }
+    self.productName=self.nameTextField.text;
+    [self getTreeSHUXINGWithBtn:sender];
+}
+-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
+{
+    //        if (self.model.spec.count>0) {
+    //            NSArray *specAry=self.model.spec;
+    //            for (int j=0; j<specAry.count; j++) {
+    //                NSDictionary *specDic=specAry[j];
+    //                TreeSpecificationsModel *model=self.dataAry[i];
+    //                if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
+    //                    cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i] andAnswer:@""];
+    //                }
+    //            }
+    //
+    //        }else
+    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+   
+    
+    //    NSLog(@"%@",ary);
+    CGFloat Y=88;
+    for (int i=0; i<self.dataAry.count; i++) {
+        TreeSpecificationsModel *model=self.dataAry[i];
+        SreeningViewCell *cell;
+        NSMutableString *answerStr=[NSMutableString string];
+        for (int j=0; j<specAry.count; j++) {
+            NSDictionary *specDic=specAry[j];
+            
+            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
+                answerStr=[specDic objectForKey:@"value"];
+            }
+        }
+        if ([answerStr isEqualToString:@"不限"]) {
+            answerStr = [NSMutableString string];
+        }
+        cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
+        [cellAry addObject:cell.model];
+        Y=CGRectGetMaxY(cell.frame);
+        // cell.delegate=self;
+        [cell setBackgroundColor:[UIColor whiteColor]];
+        [self.backScrollView addSubview:cell];
+    }
+    [self.backScrollView setContentSize:CGSizeMake(0, Y+60)];
+    
+}
 -(void)creatScreeningCells
 {
     self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
     //    NSLog(@"%@",ary);
     CGFloat Y=88;
     for (int i=0; i<self.dataAry.count; i++) {
-        
-        SreeningViewCell *cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i]];
+        SreeningViewCell *cell;
+        cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i]];
         [cellAry addObject:cell.model];
         Y=CGRectGetMaxY(cell.frame);
        // cell.delegate=self;

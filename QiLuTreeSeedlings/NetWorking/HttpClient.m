@@ -371,6 +371,8 @@
 #pragma mark-求购详情
 -(void)buyDetailWithUid:(NSString *)uid
            WithAccessID:(NSString *)access_id
+               WithType:(NSString *)type
+    WithmemberCustomUid:(NSString *)memberCustomUid
                 Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure
 {
@@ -386,6 +388,37 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
+}
+#pragma mark-我的求购编辑
+-(void)myBuyEditingWithUid:(NSString *)uid
+                   Success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    
+    if (!str) {
+        str=@"用户未授权";
+    }
+    //NSLog(@"%@",str);
+    NSString *postURL = @"/api/apibuy/update";
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                              APPDELEGATE.userModel.access_token,@"access_token",
+                              APPDELEGATE.userModel.access_id,@"access_id",
+                              str,@"device_id",
+                              kclient_id,@"client_id",
+                              kclient_secret,@"client_secret",
+                              uid,@"uid",
+                              nil];
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+    
+
 }
 #pragma mark-供应详情
 -(void)sellDetailWithUid:(NSString *)uid

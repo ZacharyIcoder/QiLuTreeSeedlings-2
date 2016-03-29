@@ -52,7 +52,7 @@
 {
     NSString *str;
     
-    NSString *sql = [NSString stringWithFormat:@"select name from area where id = %@",uid];
+    NSString *sql = [NSString stringWithFormat:@"select name from area where code = %@",uid];
     
     FMResultSet *frs = [self executeQuery:sql];
     while(frs.next)

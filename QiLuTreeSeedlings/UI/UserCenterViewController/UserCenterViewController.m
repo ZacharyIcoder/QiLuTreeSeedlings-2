@@ -18,8 +18,14 @@
 
 #import "MyNuseryListViewController.h"
 
+#import "MyBuyListViewController.h"
+#import "FaBuViewController.h"
+@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+
 #import "ZIKUserInfoSetViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate>
+>>>>>>> origin/master
 @property (nonatomic,strong) UITableView *tableView;
 @end
 
@@ -186,7 +192,10 @@
     if (self.tabBarController.selectedIndex==0) {
         return;
     }
-
+    
+    [self hiddingSelfTabBar];
+    FaBuViewController *fbVC=[[FaBuViewController alloc]init];
+    [self.navigationController pushViewController:fbVC animated:YES];
 //    ViewController *viewCCC=[[ViewController alloc]init];
 //    [self.navigationController pushViewController:viewCCC animated:YES];
 }
@@ -252,7 +261,7 @@
             [self hiddingSelfTabBar];
             MyNuseryListViewController *nuserListVC=[[MyNuseryListViewController alloc]init];
             [self.navigationController pushViewController:nuserListVC animated:YES];
-
+            return;
         }
     }
     else if (indexPath.section == 1) {
@@ -263,6 +272,14 @@
              //ZIKSupplyPublishVC  *mySupplyVC = [[ZIKSupplyPublishVC alloc] init];
             [self.navigationController pushViewController:mySupplyVC animated:YES];
         }
+        if (indexPath.row==1) {
+            [self hiddingSelfTabBar];
+            //我的求购
+            MyBuyListViewController *myBuyListVC=[[MyBuyListViewController alloc]init];
+            [self.navigationController pushViewController:myBuyListVC animated:YES];
+            return ;
+        }
+
     }
 
 

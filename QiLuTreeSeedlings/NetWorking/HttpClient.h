@@ -112,8 +112,14 @@
 #pragma mark-求购详情
 -(void)buyDetailWithUid:(NSString *)uid
            WithAccessID:(NSString *)access_id
+               WithType:(NSString *)type
+    WithmemberCustomUid:(NSString *)memberCustomUid
                 Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure;
+#pragma mark-我的求购编辑
+-(void)myBuyEditingWithUid:(NSString *)uid
+                   Success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure;
 #pragma mark-供应详情
 -(void)sellDetailWithUid:(NSString *)uid
             WithAccessID:(NSString *)access_id
