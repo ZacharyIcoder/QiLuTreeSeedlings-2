@@ -49,7 +49,7 @@
 -(void)editingBtnAction:(UIButton *)sender
 {
     buyFabuViewController *buyFaBuVC=[[buyFabuViewController alloc]init];
-    [self.navigationController pushViewController:buyFaBuVC animated:YES];
+    [self.navigationController pushViewController:buyFaBuVC animated:YES];       
 }
 -(void)getDataList
 {

@@ -17,6 +17,7 @@
 #import "ZIKMySupplyViewController.h"
 #import "MyNuseryListViewController.h"
 #import "MyBuyListViewController.h"
+#import "FaBuViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -182,7 +183,10 @@
     if (self.tabBarController.selectedIndex==0) {
         return;
     }
-
+    
+    [self hiddingSelfTabBar];
+    FaBuViewController *fbVC=[[FaBuViewController alloc]init];
+    [self.navigationController pushViewController:fbVC animated:YES];
 //    ViewController *viewCCC=[[ViewController alloc]init];
 //    [self.navigationController pushViewController:viewCCC animated:YES];
 }
