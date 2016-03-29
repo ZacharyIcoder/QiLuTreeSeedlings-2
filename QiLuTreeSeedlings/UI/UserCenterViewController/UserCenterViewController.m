@@ -16,6 +16,7 @@
 #import "MyCollectViewController.h"
 #import "ZIKMySupplyViewController.h"
 #import "MyNuseryListViewController.h"
+#import "MyBuyListViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -238,7 +239,7 @@
             [self hiddingSelfTabBar];
             MyNuseryListViewController *nuserListVC=[[MyNuseryListViewController alloc]init];
             [self.navigationController pushViewController:nuserListVC animated:YES];
-
+            return;
         }
     }
     else if (indexPath.section == 1) {
@@ -248,6 +249,14 @@
             ZIKMySupplyViewController *mySupplyVC = [[ZIKMySupplyViewController alloc] init];
             [self.navigationController pushViewController:mySupplyVC animated:YES];
         }
+        if (indexPath.row==1) {
+            [self hiddingSelfTabBar];
+            //我的求购
+            MyBuyListViewController *myBuyListVC=[[MyBuyListViewController alloc]init];
+            [self.navigationController pushViewController:myBuyListVC animated:YES];
+            return ;
+        }
+
     }
 
 

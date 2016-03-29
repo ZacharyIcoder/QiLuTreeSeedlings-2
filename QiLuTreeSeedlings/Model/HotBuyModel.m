@@ -14,7 +14,7 @@
     HotBuyModel *model=[[HotBuyModel alloc]init];
     if (dic) {
         model.area=[dic objectForKey:@"area"];
-        model.creatTime=[dic objectForKey:@"creatTime"];
+        model.creatTime=[dic objectForKey:@"createTime"];
         model.effective=[dic objectForKey:@"effective"];
         model.price=[dic objectForKey:@"price"];
         model.New=[[dic objectForKey:@"new"] integerValue];

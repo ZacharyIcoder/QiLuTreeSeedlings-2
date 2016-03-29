@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BuyDetialModel.h"
 @interface buyFabuViewController : UIViewController
-
+-(id)initWithModel:(BuyDetialModel *)model;
 @end
+

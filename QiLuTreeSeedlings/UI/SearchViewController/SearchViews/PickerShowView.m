@@ -80,7 +80,7 @@
 {
     NSString *selected = [self.datasArray objectAtIndex:[self.pickerView selectedRowInComponent:0]];
     NSInteger selectNum=[self.pickerView selectedRowInComponent:0];
-    if ([self.delegate respondsToSelector:@selector(selectInfo:)]) {
+    if ([self.delegate respondsToSelector:@selector(selectNum:)]) {
         [self.delegate selectInfo:selected];
         [self.delegate selectNum:selectNum];
     }

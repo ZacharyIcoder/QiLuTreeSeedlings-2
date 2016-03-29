@@ -28,10 +28,13 @@
 @property (nonatomic,copy)NSString *AreaCounty;
 @property (nonatomic,strong)UITextField *birefField;
 @property (nonatomic,strong)UITextField *nowTextField;
+@property (nonatomic,strong)NSDictionary *baseMessageDic;
+@property (nonatomic,strong)NSString *uid;
+@property (nonatomic,strong)UIButton *ectiveBtn;
 @end
 
 @implementation buyFabuTijiaoViewController
--(id)initWithAry:(NSArray *)ary andTitle:(NSString *)title andProname:(NSString *)proname andProUid:(NSString *)proUid
+-(id)initWithAry:(NSArray *)ary andTitle:(NSString *)title andProname:(NSString *)proname andProUid:(NSString *)proUid andDic:(NSDictionary *)dic andUid:(NSString *)uid
 {
     self=[super init];
     if (self) {
@@ -40,6 +43,8 @@
         self.proname=proname;
         self.ecttiv=1;
         self.prouid=proUid;
+        self.baseMessageDic=dic;
+        self.uid=uid;
     }
     return self;
 }
@@ -67,6 +72,7 @@
     [ecttiveView addSubview:ecttiveBtn];
     [ecttiveBtn setTitle:@"不限" forState:UIControlStateNormal];
     [ecttiveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.ectiveBtn=ecttiveBtn;
     [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=50;
     UIView *areaView=[[UIView alloc]initWithFrame:tempFrame];
@@ -97,6 +103,24 @@
     [tijiaoBtn setTitle:@"提交" forState:UIControlStateNormal];
 
     [self.view addSubview:tijiaoBtn];
+    if (self.baseMessageDic) {
+        
+        NSString *countStr=[self.baseMessageDic objectForKey:@"count"];
+       // NSLog(@"%@",countStr);
+        self.countTextField.text=[NSString stringWithFormat:@"%@",countStr];
+        self.priceTextField.text=[self.baseMessageDic objectForKey:@"price"];
+        self.birefField.text=[self.baseMessageDic objectForKey:@"remark"];
+        
+        [self.areaBtn setTitle:[self.baseMessageDic objectForKey:@"address"] forState:UIControlStateNormal];
+        self.AreaProvince=[self.baseMessageDic objectForKey:@"province"];
+        self.AreaCity=[self.baseMessageDic objectForKey:@"city"];
+        self.AreaCounty=[self.baseMessageDic objectForKey:@"county"];
+        self.ecttiv=[[self.baseMessageDic objectForKey:@"effective"] integerValue];
+         NSArray *ary = @[@"长期",@"一个月",@"三个月",@"半年",@"一年"];
+        [self.ectiveBtn setTitle:ary[self.ecttiv-1] forState:UIControlStateNormal];
+        
+        
+    }
 }
 -(void)tijiaoBtnAction:(UIButton *)sender
 {
@@ -111,7 +135,7 @@
         [ToastView showTopToast:@"请选择用苗城市"];
         return;
     }
-    [HTTPCLIENT fabuBuyMessageWithUid:@"" Withtitle:self.titleStr WithName:self.proname WithProductUid:self.prouid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:self.screeingAry Success:^(id responseObject) {
+    [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.proname WithProductUid:self.prouid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:self.screeingAry Success:^(id responseObject) {
 //        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"发布成功，即将返回首页"];
@@ -167,25 +191,23 @@
 - (void)selectedLocationInfo:(Province *)location
 {
     NSMutableString *namestr=[NSMutableString new];
-    if (location.provinceID) {
+    if (location.code) {
         [namestr appendString:location.provinceName];
-        self.AreaProvince=location.provinceID;
+        self.AreaProvince=location.code;
     }
     
-    if (location.selectedCity.cityID) {
+    if (location.selectedCity.code) {
         [namestr appendString:location.selectedCity.cityName];
-        self.AreaCity=location.selectedCity.cityID;
+        self.AreaCity=location.selectedCity.code;
     }
-    if (location.selectedCity.selectedTowns.TownID) {
+    if (location.selectedCity.selectedTowns.code) {
         [namestr appendString:location.selectedCity.selectedTowns.TownName];
-        self.AreaCounty=location.selectedCity.selectedTowns.TownID;
+        self.AreaCounty=location.selectedCity.selectedTowns.code;
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
     }
-    
-
 }
 -(void)ecttiveBtnAction
 {
@@ -245,8 +267,13 @@
 {
     NSLog(@"%ld",select+1);
     self.ecttiv=select+1;
+    //NSArray *ary = @[@"长期",@"一个月",@"三个月",@"半年",@"一年"];
+    
 }
-
+-(void)selectInfo:(NSString *)select
+{
+    [self.ectiveBtn setTitle:select forState:UIControlStateNormal];
+}
 /*
 #pragma mark - Navigation
 
