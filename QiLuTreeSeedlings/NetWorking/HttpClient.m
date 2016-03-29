@@ -54,15 +54,26 @@
                 Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure
 {
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
     NSString *postURL = @"api/updatename";
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                              token,@"access_token",
-                              accessID,@"access_id",
-                              clientSecret,@"client_secret",
-                              deviceID,@"device_id",
-                              name,@"name",
-                              nil];
-    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+//    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
+//                              token,@"access_token",
+//                              accessID,@"access_id",
+//                              clientID,@"client_id",
+//                              clientSecret,@"client_secret",
+//                              str,@"device_id",
+//                              name,@"name",
+//                              nil];
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"] = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"] = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"] = kclient_id;
+    parmers[@"client_secret"] = kclient_secret;
+    parmers[@"device_id"] = str;
+    parmers[@"name"] = name;
+
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
@@ -1313,25 +1324,25 @@
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
     NSString *postURL = @"api/apisupply/create";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                APPDELEGATE.userModel.access_token,@"access_token",
-                                APPDELEGATE.userModel.access_id,@"access_id",
-                                kclient_id,@"client_id",
-                                kclient_secret,@"client_secret",
-                                str,@"device_id",
-                                uid,@"uid",
-                                title,@"title",
-                                name,@"name",
-                                productUid,@"productUid",
-                                count,@"count",
-                                price,@"price",
-                                time,@"effectiveTime",
-                                remark,@"remark",
-                                nurseryUid,@"nurseryUid",
-                                imageUrls,@"imageUrls",
-                                imageCompressUrls,@"imageCompressUrls",
-                                nil];
-    NSLog(@"para:%@",parameters);
+//    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                APPDELEGATE.userModel.access_token,@"access_token",
+//                                APPDELEGATE.userModel.access_id,@"access_id",
+//                                kclient_id,@"client_id",
+//                                kclient_secret,@"client_secret",
+//                                str,@"device_id",
+//                                uid,@"uid",
+//                                title,@"title",
+//                                name,@"name",
+//                                productUid,@"productUid",
+//                                count,@"count",
+//                                price,@"price",
+//                                time,@"effectiveTime",
+//                                remark,@"remark",
+//                                nurseryUid,@"nurseryUid",
+//                                imageUrls,@"imageUrls",
+//                                imageCompressUrls,@"imageCompressUrls",
+//                                nil];
+//    NSLog(@"para:%@",parameters);
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"] = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"] = APPDELEGATE.userModel.access_id;

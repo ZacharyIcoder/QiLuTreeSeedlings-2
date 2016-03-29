@@ -234,7 +234,7 @@
         nurseryUidString = [nurseryUidString stringByAppendingString:[NSString stringWithFormat:@",%@",uid]];
     }];
     self.supplyModel.murseryUid = [nurseryUidString substringFromIndex:1];
-    NSLog(@"%@",self.supplyModel);
+    //NSLog(@"%@",self.supplyModel);
     self.supplyModel.remark = productDetailTextView.text;
     [self requestSaveSupplyInfo];
 }
@@ -275,8 +275,6 @@
 
 - (void)requestSaveSupplyInfo {
     [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:nil title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:nil Success:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
-//        NSLog(@"%@",responseObject[@"success"]);
         if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
              [ToastView showTopToast:@"发布成功"];
             for(UIViewController *controller in self.navigationController.viewControllers) {
@@ -285,13 +283,13 @@
                     [self.navigationController popToViewController:owr animated:YES];
                 }
             }
-
         }
         else {
-            NSLog(@"%@",responseObject[@"msg"]);
+            //NSLog(@"%@",responseObject[@"msg"]);
+            [ToastView showTopToast:responseObject[@"msg"]];
         }
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+        //NSLog(@"%@",error);
     }];
 }
 @end

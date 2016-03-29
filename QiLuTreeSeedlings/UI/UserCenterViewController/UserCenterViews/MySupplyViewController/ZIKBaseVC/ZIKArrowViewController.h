@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ZIKBaseViewController.h"
+#import "ZIKFunction.h"
+#import "HttpClient.h"
+
 @interface ZIKArrowViewController : ZIKBaseViewController
 /**
  *  视图标题

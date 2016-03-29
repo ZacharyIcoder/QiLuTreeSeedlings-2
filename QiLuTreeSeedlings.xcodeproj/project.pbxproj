@@ -206,6 +206,13 @@
 		FC49AE561CA9190700214D4B /* ZIKLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE541CA9190700214D4B /* ZIKLinkedList.m */; };
 		FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE581CA91E7B00214D4B /* BWTextView.m */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
+		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
+		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
+		FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149FB1CAA57B600672241 /* RSKTouchView.m */; };
+		FC614A011CAA57B600672241 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */; };
+		FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A031CAA58C200672241 /* ZIKFunction.m */; };
+		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
+		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -596,6 +603,21 @@
 		FC49AE581CA91E7B00214D4B /* BWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTextView.m; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
+		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
+		FC6149F61CAA57B600672241 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
+		FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
+		FC6149F81CAA57B600672241 /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageScrollView.h; sourceTree = "<group>"; };
+		FC6149F91CAA57B600672241 /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageScrollView.m; sourceTree = "<group>"; };
+		FC6149FA1CAA57B600672241 /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKTouchView.h; sourceTree = "<group>"; };
+		FC6149FB1CAA57B600672241 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
+		FC6149FC1CAA57B600672241 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		FC614A021CAA58C200672241 /* ZIKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKFunction.h; sourceTree = "<group>"; };
+		FC614A031CAA58C200672241 /* ZIKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKFunction.m; sourceTree = "<group>"; };
+		FC614A051CAA5BBC00672241 /* ZIKUserNameSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserNameSetViewController.h; sourceTree = "<group>"; };
+		FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserNameSetViewController.m; sourceTree = "<group>"; };
+		FC614A081CAA65C700672241 /* ZIKPasswordSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPasswordSetViewController.h; sourceTree = "<group>"; };
+		FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPasswordSetViewController.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -1561,10 +1583,31 @@
 		FC6149DC1CAA2E0600672241 /* UserInfoSetVC */ = {
 			isa = PBXGroup;
 			children = (
+				FC6149F41CAA57B600672241 /* RSKImageCropper */,
 				FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */,
 				FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */,
+				FC614A051CAA5BBC00672241 /* ZIKUserNameSetViewController.h */,
+				FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */,
+				FC614A081CAA65C700672241 /* ZIKPasswordSetViewController.h */,
+				FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */,
 			);
 			path = UserInfoSetVC;
+			sourceTree = "<group>";
+		};
+		FC6149F41CAA57B600672241 /* RSKImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				FC6149F51CAA57B600672241 /* RSKImageCropper.h */,
+				FC6149F61CAA57B600672241 /* RSKImageCropViewController.h */,
+				FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */,
+				FC6149F81CAA57B600672241 /* RSKImageScrollView.h */,
+				FC6149F91CAA57B600672241 /* RSKImageScrollView.m */,
+				FC6149FA1CAA57B600672241 /* RSKTouchView.h */,
+				FC6149FB1CAA57B600672241 /* RSKTouchView.m */,
+				FC6149FC1CAA57B600672241 /* UIImage+FixOrientation.h */,
+				FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */,
+			);
+			path = RSKImageCropper;
 			sourceTree = "<group>";
 		};
 		FCF353791CA3B514001ABA0A /* MySupplyViewController */ = {
@@ -1621,6 +1664,8 @@
 				FC49AE341CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m */,
 				FC49AE361CA8D36000214D4B /* ZIKUserIDetc.h */,
 				FC49AE371CA8D36000214D4B /* ZIKUserIDetc.m */,
+				FC614A021CAA58C200672241 /* ZIKFunction.h */,
+				FC614A031CAA58C200672241 /* ZIKFunction.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2014,6 +2059,7 @@
 				EAEA07F81C5B0B0F003A0D8A /* CircleViews.m in Sources */,
 				FCF353CC1CA3B515001ABA0A /* MJRefreshFooterView.m in Sources */,
 				FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */,
+				FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */,
 				FC21BC801CA51C930041E2C3 /* IQUIViewController+Additions.m in Sources */,
 				EA0B2BE11C5A06D80018A7BD /* HomePageViewController.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
@@ -2024,6 +2070,7 @@
 				FCF353D11CA3B515001ABA0A /* ZIKSupplyModel.m in Sources */,
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
+				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
 				EA03405D1C8927CB00FBF148 /* SreeningViewCell.m in Sources */,
 				EA4FF1BD1C9A8DB900441DC3 /* MyBuyListViewController.m in Sources */,
 				EAE32DDE1C7E97A600C4CEA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2052,6 +2099,7 @@
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,
+				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */,
 				FCF353DB1CA3B515001ABA0A /* ForegroundColorAttribute.m in Sources */,
 				EAE881F61C87C399001EFF14 /* BuySearchTableViewCell.m in Sources */,
@@ -2063,6 +2111,7 @@
 				EA29AA011C856159004913FF /* EGORefreshTableHeaderView.m in Sources */,
 				EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */,
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
+				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,
 				FC21BC7E1CA51C930041E2C3 /* IQUITextFieldView+Additions.m in Sources */,
 				EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */,
 				FCF353DA1CA3B515001ABA0A /* FontAttribute.m in Sources */,
@@ -2089,6 +2138,7 @@
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,
 				EA29AA031C856159004913FF /* MessageInterceptor.m in Sources */,
+				FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */,
 				EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */,
 				FCF353CF1CA3B515001ABA0A /* UIScrollView+MJRefresh.m in Sources */,
 				EA741A001C8FC69B00F54478 /* LoginView.m in Sources */,
@@ -2128,6 +2178,7 @@
 				FCF353CE1CA3B515001ABA0A /* UIScrollView+MJExtension.m in Sources */,
 				EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */,
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
+				FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -2143,6 +2194,7 @@
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
 				FCF353E81CA3B515001ABA0A /* ZIKArrowViewController.m in Sources */,
 				EA1120CB1CA6287900857E48 /* NuserNullTableViewCell.m in Sources */,
+				FC614A011CAA57B600672241 /* UIImage+FixOrientation.m in Sources */,
 				FCF353F81CA3D4D1001ABA0A /* ZIKSideView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
