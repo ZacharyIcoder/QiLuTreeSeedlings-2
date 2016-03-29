@@ -309,5 +309,24 @@
                          type:(NSString *)type
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure;
-
+#pragma mark ---------- 我的供应信息保存 -----------
+- (void)saveSupplyInfoWithAccessToken:(NSString *)accesToken
+                             accessId:(NSString *)accessId
+                             clientId:(NSString *)clientId
+                         clientSecret:(NSString *)clientSecret
+                             deviceId:(NSString *)deviceId
+                                  uid:(NSString *)uid
+                                title:(NSString *)title
+                                 name:(NSString *)name
+                           productUid:(NSString *)productUid
+                                count:(NSString *)count
+                                price:(NSString *)price
+                        effectiveTime:(NSString *)time
+                               remark:(NSString *)remark
+                           nurseryUid:(NSString *)nurseryUid
+                            imageUrls:(NSString *)imageUrls
+                    imageCompressUrls:(NSString *)imageCompressUrls
+          withSpecificationAttributes:(NSDictionary *)etcAttributes
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure ;
 @end

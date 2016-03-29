@@ -205,6 +205,7 @@
 		FC49AE551CA9190700214D4B /* ZIKIteratorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE511CA9190700214D4B /* ZIKIteratorNode.m */; };
 		FC49AE561CA9190700214D4B /* ZIKLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE541CA9190700214D4B /* ZIKLinkedList.m */; };
 		FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE581CA91E7B00214D4B /* BWTextView.m */; };
+		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -593,6 +594,8 @@
 		FC49AE541CA9190700214D4B /* ZIKLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKLinkedList.m; sourceTree = "<group>"; };
 		FC49AE571CA91E7B00214D4B /* BWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTextView.h; sourceTree = "<group>"; };
 		FC49AE581CA91E7B00214D4B /* BWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTextView.m; sourceTree = "<group>"; };
+		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
+		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -1420,6 +1423,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				FC6149DC1CAA2E0600672241 /* UserInfoSetVC */,
 				FCF353791CA3B514001ABA0A /* MySupplyViewController */,
 				EACF3AF21CA116D600FA746C /* MyNurseryListViewController */,
 				EA7056501C9F869900E9D253 /* CompanyInfoViewController */,
@@ -1552,6 +1556,15 @@
 				FC49AE541CA9190700214D4B /* ZIKLinkedList.m */,
 			);
 			path = "迭代器模式";
+			sourceTree = "<group>";
+		};
+		FC6149DC1CAA2E0600672241 /* UserInfoSetVC */ = {
+			isa = PBXGroup;
+			children = (
+				FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */,
+				FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */,
+			);
+			path = UserInfoSetVC;
 			sourceTree = "<group>";
 		};
 		FCF353791CA3B514001ABA0A /* MySupplyViewController */ = {
@@ -2086,6 +2099,7 @@
 				EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */,
 				EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */,
 				EA2727271C8A8767000B0719 /* GetCityDao.m in Sources */,
+				FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */,
 				FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */,
 				FCF353D01CA3B515001ABA0A /* UIView+MJExtension.m in Sources */,
 				EAEB63BD1C90FC1E0001ABC9 /* NSString+Phone.m in Sources */,

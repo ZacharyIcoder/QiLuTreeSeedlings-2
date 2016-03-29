@@ -111,10 +111,15 @@
     [view addSubview:btn];
     return view;
 }
+
 -(void)userImageBtnAction
 {
-    
+    NSLog(@"头像点击");
+    if ([self.userDelegate respondsToSelector:@selector(clickedHeadImage)]) {
+        [self.userDelegate clickedHeadImage];
+    }
 }
+
 -(void)setModel:(UserInfoModel *)model
 {
     _model=model;

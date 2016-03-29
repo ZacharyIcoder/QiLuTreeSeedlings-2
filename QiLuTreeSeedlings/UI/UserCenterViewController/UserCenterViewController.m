@@ -18,8 +18,8 @@
 
 #import "MyNuseryListViewController.h"
 
-
-@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "ZIKUserInfoSetViewController.h"
+@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @end
 
@@ -115,15 +115,17 @@
 {
     if (indexPath.section==0) {
         UserBigInfoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[UserBigInfoTableViewCell IDstr]];
-        
+
         if (!cell) {
             cell=[[UserBigInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 280)];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+             cell.userDelegate = self;
             [cell.collectBtn addTarget:self action:@selector(mycollectBtnAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.interBtn addTarget:self action:@selector(myJifenBtnAction) forControlEvents:UIControlEventTouchUpInside];
-            [cell.setingBtn addTarget:self action:@selector(setingBtn) forControlEvents:UIControlEventTouchUpInside];
+            [cell.setingBtn addTarget:self action:@selector(setBtnAction) forControlEvents:UIControlEventTouchUpInside];
 
         }
+
         if (APPDELEGATE.userModel.name) {
             cell.model=APPDELEGATE.userModel;
         }
@@ -188,11 +190,20 @@
 //    ViewController *viewCCC=[[ViewController alloc]init];
 //    [self.navigationController pushViewController:viewCCC animated:YES];
 }
-#pragma mark-我的设置
--(void)settingUserInfo
-{
-     NSLog(@"设置");
+
+#pragma mark - 设置
+- (void)setBtnAction {
+
 }
+
+#pragma mark - 我的设置
+-(void)clickedHeadImage
+{
+    ZIKUserInfoSetViewController *setVC = [[ZIKUserInfoSetViewController alloc] init];
+    [self hiddingSelfTabBar];
+    [self.navigationController pushViewController:setVC animated:YES];
+}
+
 #pragma mark-我的收藏
 -(void)mycollectBtnAction
 {

@@ -140,29 +140,37 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     self.nameBtn.selected = NO;
 }
 
+#pragma mark - 下一步按钮点击事件
 -(void)nextBtnAction:(UIButton *)sender
 {
     if (self.titleTextField.text.length == 0 || self.titleTextField.text == nil) {
-//        [ToastView showTopToast:@"请输入标题"];
-//        return;
+        [ToastView showTopToast:@"请输入标题"];
+        return;
     }
     if (self.nameTextField.text.length == 0 || self.nameTextField.text == nil || self.nameBtn.selected == NO) {
-//        [ToastView showTopToast:@"请先确定苗木名称"];
-//        return;
+        [ToastView showTopToast:@"请先确定苗木名称"];
+        return;
     }
     if (self.pickerImgView.urlMArr.count<3) {
-//        [ToastView showTopToast:@"请添加三张苗木图片"];
-//        return;
+        [ToastView showTopToast:@"请添加三张苗木图片"];
+        return;
     }
     self.supplyModel.title = self.titleTextField.text;
     self.supplyModel.name  = self.nameTextField.text;
+//    [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+//        [self.imageUrlsMarr addObject:dic[@"url"]];
+//        [self.imageCompressUrlsMarr addObject:dic[@"compressurl"]];
+//    }];
+    //NSString *urlSring = [self.imageUrlsMarr JSONString];
+    __block NSString *urlSring  = @"";
+    __block NSString *compressSring = @"";
     [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self.imageUrlsMarr addObject:dic[@"url"]];
-        [self.imageCompressUrlsMarr addObject:dic[@"compressurl"]];
+        urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
+        compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
     }];
-    NSString *urlSring = [self.imageUrlsMarr JSONString];
-    self.supplyModel.imageUrls = urlSring;
-    self.supplyModel.imageCompressUrls = [self.imageCompressUrlsMarr JSONString];
+    self.supplyModel.imageUrls = [urlSring substringFromIndex:1];
+    //self.supplyModel.imageCompressUrls = [self.imageCompressUrlsMarr JSONString];
+    self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
     ZIKSupplyPublishNextVC *nextVC = [[ZIKSupplyPublishNextVC alloc] init];
     nextVC.supplyModel = self.supplyModel;
     [self.navigationController pushViewController:nextVC animated:YES];
@@ -284,9 +292,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     [self.view addSubview:self.sideView];
 }
 
+#pragma mark - 实现选择苗木协议
 - (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {
     NSLog(@"%@",selectTitle);
     self.nameTextField.text = selectTitle;
+    //self.supplyModel.name = selectTitle;
+    self.supplyModel.productUid = selectId;
     [self.sideView removeSideViewAction];
 }
 
@@ -412,7 +423,13 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 NSLog(@"%@",responseObject[@"success"]);
                 NSLog(@"%@",responseObject[@"msg"]);
-                [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
+                if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+                    [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
+                }
+                else {
+                    NSLog(@"图片上传失败");
+                }
+
                 //self.pickerImgView.photos
             }
         } failure:^(NSError *error) {

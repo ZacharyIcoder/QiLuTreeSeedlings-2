@@ -15,6 +15,7 @@
 #import "ZIKNurseryListSelectButton.h"
 #import "BWTextView.h"
 #import "JSONKit.h"
+#import "ZIKMySupplyViewController.h"
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
 {
     UIButton *ecttiveBtn;
@@ -162,10 +163,10 @@
         }
             break;
         case 1: {
-            static NSString *cellIdentifyName = @"kFirstCellId";
-            UITableViewCell *secondSectionCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifyName];
+            static NSString *cellIdentifyName2 = @"kTwoCellId";
+            UITableViewCell *secondSectionCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifyName2];
             if (secondSectionCell == nil) {
-                secondSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName];
+                secondSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName2];
                 secondSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
             }
             if (indexPath.row == 0) {
@@ -227,9 +228,15 @@
         self.supplyModel.price = self.priceTextField.text;
     }
     self.supplyModel.effectiveTime = [NSString stringWithFormat:@"%ld",(long)self.ecttiv];
-    self.supplyModel.murseryUid = [self.nurseryUidMArray JSONString];
+    //self.supplyModel.murseryUid = [self.nurseryUidMArray JSONString];
+    __block NSString *nurseryUidString = @"";
+    [self.nurseryUidMArray enumerateObjectsUsingBlock:^(NSString *uid, NSUInteger idx, BOOL * _Nonnull stop) {
+        nurseryUidString = [nurseryUidString stringByAppendingString:[NSString stringWithFormat:@",%@",uid]];
+    }];
+    self.supplyModel.murseryUid = [nurseryUidString substringFromIndex:1];
     NSLog(@"%@",self.supplyModel);
     self.supplyModel.remark = productDetailTextView.text;
+    [self requestSaveSupplyInfo];
 }
 
 - (void)ecttiveBtnAction {
@@ -266,4 +273,25 @@
     [tableView setTableFooterView:view];
 }
 
+- (void)requestSaveSupplyInfo {
+    [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:nil title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:nil Success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject[@"success"]);
+        if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+             [ToastView showTopToast:@"发布成功"];
+            for(UIViewController *controller in self.navigationController.viewControllers) {
+                if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
+                    ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
+                    [self.navigationController popToViewController:owr animated:YES];
+                }
+            }
+
+        }
+        else {
+            NSLog(@"%@",responseObject[@"msg"]);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
 @end
