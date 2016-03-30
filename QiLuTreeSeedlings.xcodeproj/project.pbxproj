@@ -205,6 +205,7 @@
 		FC49AE551CA9190700214D4B /* ZIKIteratorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE511CA9190700214D4B /* ZIKIteratorNode.m */; };
 		FC49AE561CA9190700214D4B /* ZIKLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE541CA9190700214D4B /* ZIKLinkedList.m */; };
 		FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE581CA91E7B00214D4B /* BWTextView.m */; };
+		FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
 		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
@@ -213,6 +214,7 @@
 		FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A031CAA58C200672241 /* ZIKFunction.m */; };
 		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
 		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
+		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -601,6 +603,8 @@
 		FC49AE541CA9190700214D4B /* ZIKLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKLinkedList.m; sourceTree = "<group>"; };
 		FC49AE571CA91E7B00214D4B /* BWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTextView.h; sourceTree = "<group>"; };
 		FC49AE581CA91E7B00214D4B /* BWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTextView.m; sourceTree = "<group>"; };
+		FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyQRCodeViewController.h; sourceTree = "<group>"; };
+		FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyQRCodeViewController.m; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -618,6 +622,8 @@
 		FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserNameSetViewController.m; sourceTree = "<group>"; };
 		FC614A081CAA65C700672241 /* ZIKPasswordSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPasswordSetViewController.h; sourceTree = "<group>"; };
 		FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPasswordSetViewController.m; sourceTree = "<group>"; };
+		FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetialModel.h; sourceTree = "<group>"; };
+		FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetialModel.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -1462,6 +1468,8 @@
 		EAF8A53F1C867D56008B99D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */,
+				FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */,
 				EAF8A5401C867D7D008B99D2 /* HotSellModel.h */,
 				EAF8A5411C867D7D008B99D2 /* HotSellModel.m */,
 				EAF8A5431C867FF9008B99D2 /* HotBuyModel.h */,
@@ -1590,6 +1598,8 @@
 				FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */,
 				FC614A081CAA65C700672241 /* ZIKPasswordSetViewController.h */,
 				FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */,
+				FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */,
+				FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */,
 			);
 			path = UserInfoSetVC;
 			sourceTree = "<group>";
@@ -2065,6 +2075,7 @@
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
+				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
 				EAE32DF11C7E9C3800C4CEA2 /* AFImageDownloader.m in Sources */,
 				FCF353D11CA3B515001ABA0A /* ZIKSupplyModel.m in Sources */,
@@ -2098,6 +2109,7 @@
 				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
+				FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */,
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,
 				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */,

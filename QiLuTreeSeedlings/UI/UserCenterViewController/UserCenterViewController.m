@@ -20,12 +20,13 @@
 
 #import "MyBuyListViewController.h"
 #import "FaBuViewController.h"
-@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
-
-
 #import "ZIKUserInfoSetViewController.h"
+
+
+
+
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate>
->>>>>>> origin/master
+
 @property (nonatomic,strong) UITableView *tableView;
 @end
 

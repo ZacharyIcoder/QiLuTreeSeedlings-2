@@ -92,16 +92,22 @@
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure
 {
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+
+    if (!str) {
+        str=@"用户未授权";
+    }
     NSString *postURL = @"api/modifypassword";
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                              token,@"access_token",
-                              accessID,@"access_id",
-                              clientSecret,@"client_secret",
-                              deviceID,@"device_id",
-                              oldPwd,@"oldPassword",
-                              newPwd,@"plainPassword",
-                              nil];
-    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"oldPassword"]      = oldPwd;
+    parmers[@"plainPassword"]    = newPwd;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
@@ -146,18 +152,35 @@
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure
 {
-    NSString *postURL = @"fileUpload/uploadphoto";
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                              token,@"access_token",
-                              accessID,@"access_id",
-                              clientSecret,@"client_secret",
-                              deviceID,@"device_id",
-                              nil];
-    NSData *iconData=UIImageJPEGRepresentation(image, 0.1);
-    [self POST:postURL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFormData:iconData name:@"uploadFile"];
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+    NSString *postURL = @"fileUpload/uploadphotoios";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+
+    NSData* imageData;
+    //判断图片是不是png格式的文件
+    if (UIImagePNGRepresentation(image)) {
+        //返回为png图像。
+        imageData = UIImagePNGRepresentation(image);
+    }else {
+        //返回为JPEG图像。
+        imageData = UIImageJPEGRepresentation(image, 0.0001);
+    }
+    if (imageData.length>=1024*1024) {
+        CGSize newSize = {600,600};
+        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+    }
+    NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"file"]             = myStringImageFile;
+    parmers[@"fileName"]         = @"personHeadImage.png";
+    //NSLog(@"%@",parameters);
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -1177,6 +1200,7 @@
     }];
     
 }
+
 -(void)upDataImageIOS:(UIImage *)image
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure {
@@ -1324,41 +1348,22 @@
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
     NSString *postURL = @"api/apisupply/create";
-//    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                APPDELEGATE.userModel.access_token,@"access_token",
-//                                APPDELEGATE.userModel.access_id,@"access_id",
-//                                kclient_id,@"client_id",
-//                                kclient_secret,@"client_secret",
-//                                str,@"device_id",
-//                                uid,@"uid",
-//                                title,@"title",
-//                                name,@"name",
-//                                productUid,@"productUid",
-//                                count,@"count",
-//                                price,@"price",
-//                                time,@"effectiveTime",
-//                                remark,@"remark",
-//                                nurseryUid,@"nurseryUid",
-//                                imageUrls,@"imageUrls",
-//                                imageCompressUrls,@"imageCompressUrls",
-//                                nil];
-//    NSLog(@"para:%@",parameters);
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"] = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"] = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"] = kclient_id;
-    parmers[@"client_secret"] = kclient_secret;
-    parmers[@"device_id"] = str;
-    parmers[@"uid"] = uid;
-    parmers[@"title"] = title;
-    parmers[@"name"] = name;
-    parmers[@"productUid"] = productUid;
-    parmers[@"count"] = count;
-    parmers[@"price"] = price;
-    parmers[@"effectiveTime"] = time;
-    parmers[@"remark"] = remark;
-    parmers[@"nurseryUid"] = nurseryUid;
-    parmers[@"imageUrls"] = imageUrls;
+    NSMutableDictionary *parmers  = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]      = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]         = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]         = kclient_id;
+    parmers[@"client_secret"]     = kclient_secret;
+    parmers[@"device_id"]         = str;
+    parmers[@"uid"]               = uid;
+    parmers[@"title"]             = title;
+    parmers[@"name"]              = name;
+    parmers[@"productUid"]        = productUid;
+    parmers[@"count"]             = count;
+    parmers[@"price"]             = price;
+    parmers[@"effectiveTime"]     = time;
+    parmers[@"remark"]            = remark;
+    parmers[@"nurseryUid"]        = nurseryUid;
+    parmers[@"imageUrls"]         = imageUrls;
     parmers[@"imageCompressUrls"] = imageCompressUrls;
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
@@ -1367,8 +1372,6 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
-
-
 }
 
 @end
