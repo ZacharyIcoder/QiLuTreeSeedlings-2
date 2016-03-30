@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "StringAttributeHelper.h"
 #import "UIDefines.h"
+#import "ZIKFunction.h"
 @implementation ZIKMySupplyTableViewCell
 
 - (void)awakeFromNib {
@@ -34,16 +35,10 @@
         treeCountString = [NSString stringWithFormat:@"%@棵",model.count];
     }
     self.countLabel.text = treeCountString;
-    self.timeLabel.text  = model.createTime;
-//    //时间
-//    NSString* timeStr = model.createTime;//@"2011-01-26 17:40:50";
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
-//    [formatter setDateStyle:NSDateFormatterMediumStyle];
-//    [formatter setTimeStyle:NSDateFormatterShortStyle];
-//    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
-//    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
-//    [formatter setTimeZone:timeZone];
-    //价格
+    NSDate *timeDate = [ZIKFunction getDateFromString:model.createTime];
+    NSString *time = [ZIKFunction compareCurrentTime:timeDate];
+    self.timeLabel.text  = time;
+
     NSString *priceString = nil;
     if (model.price.floatValue >= 10000) {
         priceString = [NSString stringWithFormat:@"上车价 ¥%.1f万",model.price.floatValue/10000];

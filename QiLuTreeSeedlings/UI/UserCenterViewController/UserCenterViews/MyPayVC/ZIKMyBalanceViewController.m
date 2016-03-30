@@ -9,6 +9,7 @@
 #import "ZIKMyBalanceViewController.h"
 #import "ZIKMyBalanceFirstTableViewCell.h"
 #import "ZIKPayViewController.h"
+#import "ZIKPayRecordViewController.h"
 @interface ZIKMyBalanceViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray     *titlesArray;
 @property (nonatomic, strong) UITableView *myTalbeView;
@@ -35,7 +36,7 @@
 
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -60,7 +61,21 @@
         cell = firstCell;
     }
     else if (indexPath.section == 1) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+        static NSString *kCellTwoId = @"twoCellId";
+        UITableViewCell *twocell = [tableView dequeueReusableCellWithIdentifier:kCellTwoId];
+        if (!twocell) {
+            twocell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellTwoId];
+        }
+        twocell.textLabel.text = @"消费记录";
+        twocell.textLabel.textColor = [UIColor darkGrayColor];
+        twocell.imageView.image = [UIImage imageNamed:@"消费记录40x40"];
+
+        float sw=23/twocell.imageView.image.size.width;
+        float sh=25/twocell.imageView.image.size.height;
+        twocell.imageView.transform=CGAffineTransformMakeScale(sw,sh);
+
+        twocell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+        cell = twocell;
     }
     return cell;
 }
@@ -77,6 +92,8 @@
         }
     }
     else if (indexPath.section == 1) {
+        ZIKPayRecordViewController *payRecordVC = [[ZIKPayRecordViewController alloc] init];
+        [self.navigationController pushViewController:payRecordVC animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -99,12 +116,9 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [footView addSubview:btn];
         btn.frame = CGRectMake(40, 10, Width-80, 44);
-        //        [XtomFunction addbordertoView:btn radius:6.0f width:0.0f color:[UIColor clearColor]];
         [btn setBackgroundColor:NavColor];
         btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-        //btn.titleLabel.textColor = BackGorundColor;
         [btn setTitle:@"充值" forState:UIControlStateNormal];
-        //[btn setTitleColor:BB_White_Color forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         [btn addTarget:self action:@selector(sureButtonPress) forControlEvents:UIControlEventTouchUpInside];
     }

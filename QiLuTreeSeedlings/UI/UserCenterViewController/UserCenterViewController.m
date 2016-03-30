@@ -24,7 +24,7 @@
 
 #import "ZIKMyBalanceViewController.h"
 
-
+#import "ZIKSetViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -203,7 +203,8 @@
 
 #pragma mark - 设置
 - (void)setBtnAction {
-
+    ZIKSetViewController *setVC =  [[ZIKSetViewController alloc] init];
+    [self.navigationController pushViewController:setVC animated:YES];
 }
 
 #pragma mark - 我的设置
