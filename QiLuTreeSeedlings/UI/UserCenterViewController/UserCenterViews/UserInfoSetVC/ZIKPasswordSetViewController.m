@@ -106,7 +106,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    UIView *footView = [[UIView alloc]init];
+    UIView *footView = [[UIView alloc] init];
     if (0 == section)
     {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

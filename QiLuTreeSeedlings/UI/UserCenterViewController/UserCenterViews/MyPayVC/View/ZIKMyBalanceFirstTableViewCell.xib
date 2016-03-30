@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="210" id="KGk-i7-Jjw" customClass="ZIKMyBalanceFirstTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="209"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的余额大图标256x256.png" translatesAutoresizingMaskIntoConstraints="NO" id="K8v-gm-6oR">
+                        <rect key="frame" x="100" y="15" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="Nsf-lR-CUZ"/>
+                            <constraint firstAttribute="width" constant="120" id="m62-ar-5lD"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="账户余额(元)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU0-Ed-3w1">
+                        <rect key="frame" x="110" y="153" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="5S3-d7-cCm"/>
+                            <constraint firstAttribute="height" constant="21" id="KXz-Z2-ns1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6E-Ky-41S">
+                        <rect key="frame" x="60" y="182" width="200" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="K8v-gm-6oR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="4t6-8a-ahl"/>
+                    <constraint firstItem="oU0-Ed-3w1" firstAttribute="centerX" secondItem="n6E-Ky-41S" secondAttribute="centerX" id="9dr-Op-S30"/>
+                    <constraint firstItem="oU0-Ed-3w1" firstAttribute="top" secondItem="K8v-gm-6oR" secondAttribute="bottom" constant="18" id="9kP-u4-yap"/>
+                    <constraint firstItem="oU0-Ed-3w1" firstAttribute="centerX" secondItem="K8v-gm-6oR" secondAttribute="centerX" id="EQy-iJ-aec"/>
+                    <constraint firstItem="n6E-Ky-41S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="52" id="UCk-9n-zIC"/>
+                    <constraint firstItem="K8v-gm-6oR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ha8-Lu-HnB"/>
+                    <constraint firstItem="n6E-Ky-41S" firstAttribute="top" secondItem="oU0-Ed-3w1" secondAttribute="bottom" constant="8" symbolic="YES" id="zct-7f-UYD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="priceLabel" destination="n6E-Ky-41S" id="VUW-QM-W4b"/>
+            </connections>
+            <point key="canvasLocation" x="336" y="234"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="我的余额大图标256x256.png" width="256" height="256"/>
+    </resources>
+</document>

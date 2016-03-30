@@ -206,6 +206,12 @@
 		FC49AE561CA9190700214D4B /* ZIKLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE541CA9190700214D4B /* ZIKLinkedList.m */; };
 		FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE581CA91E7B00214D4B /* BWTextView.m */; };
 		FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */; };
+		FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F241CAB7C8900EBB2F8 /* NSString+Helper.m */; };
+		FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F281CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m */; };
+		FC4B4F2F1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F2D1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.m */; };
+		FC4B4F301CAB9F4F00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4B4F2E1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib */; };
+		FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4B4F311CABA0D300EBB2F8 /* 我的余额大图标256x256.png */; };
+		FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F341CABA30200EBB2F8 /* ZIKPayViewController.m */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
 		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
@@ -605,6 +611,16 @@
 		FC49AE581CA91E7B00214D4B /* BWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTextView.m; sourceTree = "<group>"; };
 		FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyQRCodeViewController.h; sourceTree = "<group>"; };
 		FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyQRCodeViewController.m; sourceTree = "<group>"; };
+		FC4B4F231CAB7C8900EBB2F8 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		FC4B4F241CAB7C8900EBB2F8 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		FC4B4F271CAB95F900EBB2F8 /* ZIKMyBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyBalanceViewController.h; sourceTree = "<group>"; };
+		FC4B4F281CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyBalanceViewController.m; sourceTree = "<group>"; };
+		FC4B4F2C1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyBalanceFirstTableViewCell.h; sourceTree = "<group>"; };
+		FC4B4F2D1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyBalanceFirstTableViewCell.m; sourceTree = "<group>"; };
+		FC4B4F2E1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyBalanceFirstTableViewCell.xib; sourceTree = "<group>"; };
+		FC4B4F311CABA0D300EBB2F8 /* 我的余额大图标256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的余额大图标256x256.png"; sourceTree = "<group>"; };
+		FC4B4F331CABA30200EBB2F8 /* ZIKPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayViewController.h; sourceTree = "<group>"; };
+		FC4B4F341CABA30200EBB2F8 /* ZIKPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayViewController.m; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -1451,6 +1467,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */,
 				FC6149DC1CAA2E0600672241 /* UserInfoSetVC */,
 				FCF353791CA3B514001ABA0A /* MySupplyViewController */,
 				EACF3AF21CA116D600FA746C /* MyNurseryListViewController */,
@@ -1588,9 +1605,50 @@
 			path = "迭代器模式";
 			sourceTree = "<group>";
 		};
+		FC4B4F221CAB7C8900EBB2F8 /* 生成二维码 */ = {
+			isa = PBXGroup;
+			children = (
+				FC4B4F231CAB7C8900EBB2F8 /* NSString+Helper.h */,
+				FC4B4F241CAB7C8900EBB2F8 /* NSString+Helper.m */,
+			);
+			path = "生成二维码";
+			sourceTree = "<group>";
+		};
+		FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */ = {
+			isa = PBXGroup;
+			children = (
+				FC4B4F2A1CAB970100EBB2F8 /* Model */,
+				FC4B4F2B1CAB970100EBB2F8 /* View */,
+				FC4B4F271CAB95F900EBB2F8 /* ZIKMyBalanceViewController.h */,
+				FC4B4F281CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m */,
+				FC4B4F331CABA30200EBB2F8 /* ZIKPayViewController.h */,
+				FC4B4F341CABA30200EBB2F8 /* ZIKPayViewController.m */,
+			);
+			path = MyPayVC;
+			sourceTree = "<group>";
+		};
+		FC4B4F2A1CAB970100EBB2F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC4B4F2B1CAB970100EBB2F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC4B4F311CABA0D300EBB2F8 /* 我的余额大图标256x256.png */,
+				FC4B4F2C1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.h */,
+				FC4B4F2D1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.m */,
+				FC4B4F2E1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FC6149DC1CAA2E0600672241 /* UserInfoSetVC */ = {
 			isa = PBXGroup;
 			children = (
+				FC4B4F221CAB7C8900EBB2F8 /* 生成二维码 */,
 				FC6149F41CAA57B600672241 /* RSKImageCropper */,
 				FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */,
 				FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */,
@@ -2002,6 +2060,7 @@
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
 				FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */,
+				FC4B4F301CAB9F4F00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib in Resources */,
 				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
@@ -2017,6 +2076,7 @@
 				EA5AAC411C8D2DF300660FC9 /* NomerMyCollectionBtn@2x.png in Resources */,
 				EA5AAC3A1C8D1BFB00660FC9 /* fabuBTN@2x.png in Resources */,
 				EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */,
+				FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */,
 				EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */,
 				EA7AE8EC1C96874400B43073 /* price@2x.png in Resources */,
 				EA7AE8EB1C96874400B43073 /* person@2x.png in Resources */,
@@ -2064,6 +2124,7 @@
 				EAE32DE21C7E97A600C4CEA2 /* UIProgressView+AFNetworking.m in Sources */,
 				FCF353CD1CA3B515001ABA0A /* MJRefreshHeaderView.m in Sources */,
 				FC21BC821CA51C930041E2C3 /* IQKeyboardManager.m in Sources */,
+				FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */,
 				EAE32DE11C7E97A600C4CEA2 /* UIImageView+AFNetworking.m in Sources */,
 				FC21BC881CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				EAEA07F81C5B0B0F003A0D8A /* CircleViews.m in Sources */,
@@ -2105,6 +2166,7 @@
 				EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */,
 				EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */,
 				FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */,
+				FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */,
 				EA29AA041C856159004913FF /* PullTableView.m in Sources */,
 				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
@@ -2115,6 +2177,7 @@
 				FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */,
 				FCF353DB1CA3B515001ABA0A /* ForegroundColorAttribute.m in Sources */,
 				EAE881F61C87C399001EFF14 /* BuySearchTableViewCell.m in Sources */,
+				FC4B4F2F1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.m in Sources */,
 				EA0079191C80155E00FA66B1 /* SearchViewController.m in Sources */,
 				EA1120D51CA675F800857E48 /* NuseryListTableViewCell.m in Sources */,
 				EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */,
@@ -2193,6 +2256,7 @@
 				FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
+				FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FCF353D31CA3B515001ABA0A /* ZIKPickerBtn.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,

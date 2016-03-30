@@ -22,7 +22,7 @@
 #import "FaBuViewController.h"
 #import "ZIKUserInfoSetViewController.h"
 
-
+#import "ZIKMyBalanceViewController.h"
 
 
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate>
@@ -281,6 +281,13 @@
             return ;
         }
 
+    }
+    else if (indexPath.section == 3) {
+        if (indexPath.row == 0) {
+            ZIKMyBalanceViewController *balanceVC = [[ZIKMyBalanceViewController alloc] init];
+            [self hiddingSelfTabBar];
+            [self.navigationController pushViewController:balanceVC animated:YES];
+        }
     }
 
 
