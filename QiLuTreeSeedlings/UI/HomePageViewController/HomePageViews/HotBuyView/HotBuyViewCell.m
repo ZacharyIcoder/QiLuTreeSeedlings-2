@@ -30,10 +30,10 @@
         [self.cityLab setText:@"临沂"];
         [self.cityLab setText:model.area];
         [self addSubview:self.cityLab];
-        UIImageView * timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width*0.5-25,35,13,13)];
+        UIImageView * timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width*0.5-45,35,13,13)];
         [timeImag setImage:[UIImage imageNamed:@"listtime"]];
          [self addSubview:timeImag];
-        self.timelLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width*0.5, 35, 50, 12)];
+        self.timelLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width*0.5-20, 35, 55, 12)];
         [self.timelLab setFont:[UIFont systemFontOfSize:11]];
          [self.timelLab setTextColor:[UIColor lightGrayColor]];
         //[self.timelLab setText:@"N天前"];

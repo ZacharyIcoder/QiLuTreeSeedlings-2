@@ -14,6 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.dataAry=ary;
         self.backScrollView=[[UIScrollView alloc]initWithFrame:self.bounds];
         [self addSubview:self.backScrollView];
     
@@ -32,6 +33,7 @@
             UIButton *likeBtn=[[UIButton alloc]init];
             likeBtn.layer.masksToBounds=YES;
             likeBtn.layer.cornerRadius=3;
+            likeBtn.tag=i;
             //[likeBtn setBackgroundColor:[UIColor grayColor]];
             [likeBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             [likeBtn setTitle:nameStr forState:UIControlStateNormal];
@@ -39,6 +41,7 @@
             [likeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             // NSLog(@"%f",strSize.width);
              [likeBtn.layer setBorderWidth:0.5];
+            [likeBtn addTarget:self action:@selector(likeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [likeBtn.layer setBorderColor:[UIColor lightGrayColor].CGColor];
             tempFrame.size.width=strSize.width+10.0;
             tempFrame.origin.x=tempX;
@@ -63,11 +66,17 @@
     }
     return self;
 }
+-(void)likeBtnAction:(UIButton *)sender
+{
+    if(self.delegate)
+    {
+        [self.delegate SearchRecommendViewSearchDIC:self.dataAry[sender.tag]];
+    }
+}
 -(UIView *)ViewWithSearchHistoryWithFram:(CGRect )fram
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray *searchHistoryAry=[userDefaults objectForKey:@"searchHistoryAry"];
-   // searchHistoryAry =@[@"",@"",@"",@""];
     UIView *view=[[UIView alloc]initWithFrame:fram];
     view.userInteractionEnabled=YES;
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 60, 20)];
