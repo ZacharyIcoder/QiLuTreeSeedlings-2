@@ -62,7 +62,6 @@
 		EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */; };
 		EA4FF1BD1C9A8DB900441DC3 /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4FF1BC1C9A8DB900441DC3 /* MyBuyListViewController.m */; };
 		EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA510EB21C98033900C5D071 /* FaBuViewController.m */; };
-		EA540F571CAA1438006A24FC /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA540F561CAA1438006A24FC /* BuyDetialModel.m */; };
 		EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */; };
 		EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC351C8D16F400660FC9 /* region@2x.png */; };
 		EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */; };
@@ -79,6 +78,10 @@
 		EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
+		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
+		EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */; };
+		EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */; };
+		EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */; };
 		EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7056521C9F86F500E9D253 /* CompanyViewController.m */; };
 		EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */; };
 		EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419ED1C8FB21600F54478 /* searchBtnAction@2x.png */; };
@@ -115,10 +118,6 @@
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
 		EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA671C89669800058A34 /* NSString+MD5.m */; };
 		EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */; };
-		EAA120D21CA8DE8600C0D988 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA120CA1CA8DE8600C0D988 /* NuserNullTableViewCell.m */; };
-		EAA120D31CA8DE8600C0D988 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA120CC1CA8DE8600C0D988 /* NuseryListTableViewCell.m */; };
-		EAA120D41CA8DE8600C0D988 /* MyNuseryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA120CE1CA8DE8600C0D988 /* MyNuseryListViewController.m */; };
-		EAA120D51CA8DE8600C0D988 /* NuseryDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA120D11CA8DE8600C0D988 /* NuseryDetialViewController.m */; };
 		EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA51C744D21007F207D /* HotBuyView.m */; };
 		EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA81C746A7B007F207D /* HotBuyViewCell.m */; };
 		EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB781961C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m */; };
@@ -207,7 +206,16 @@
 		FC49AE551CA9190700214D4B /* ZIKIteratorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE511CA9190700214D4B /* ZIKIteratorNode.m */; };
 		FC49AE561CA9190700214D4B /* ZIKLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE541CA9190700214D4B /* ZIKLinkedList.m */; };
 		FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE581CA91E7B00214D4B /* BWTextView.m */; };
+		FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
+		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
+		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
+		FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149FB1CAA57B600672241 /* RSKTouchView.m */; };
+		FC614A011CAA57B600672241 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */; };
+		FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A031CAA58C200672241 /* ZIKFunction.m */; };
+		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
+		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
+		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -365,8 +373,6 @@
 		EA4FF1BC1C9A8DB900441DC3 /* MyBuyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyListViewController.m; sourceTree = "<group>"; };
 		EA510EB11C98033900C5D071 /* FaBuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaBuViewController.h; sourceTree = "<group>"; };
 		EA510EB21C98033900C5D071 /* FaBuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaBuViewController.m; sourceTree = "<group>"; };
-		EA540F551CAA1438006A24FC /* BuyDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetialModel.h; sourceTree = "<group>"; };
-		EA540F561CAA1438006A24FC /* BuyDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetialModel.m; sourceTree = "<group>"; };
 		EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LISTtreeNumber@2x.png"; sourceTree = "<group>"; };
 		EA5AAC351C8D16F400660FC9 /* region@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "region@2x.png"; sourceTree = "<group>"; };
 		EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listtime@2x.png"; sourceTree = "<group>"; };
@@ -387,6 +393,14 @@
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
+		EA6B31B41CABA5F70068CCB5 /* NuserNullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuserNullTableViewCell.h; sourceTree = "<group>"; };
+		EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuserNullTableViewCell.m; sourceTree = "<group>"; };
+		EA6B31B61CABA5F70068CCB5 /* NuseryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryListTableViewCell.h; sourceTree = "<group>"; };
+		EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryListTableViewCell.m; sourceTree = "<group>"; };
+		EA6B31B81CABA5F70068CCB5 /* MyNuseryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNuseryListViewController.h; sourceTree = "<group>"; };
+		EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuseryListViewController.m; sourceTree = "<group>"; };
+		EA6B31BB1CABA5F70068CCB5 /* NuseryDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryDetialViewController.h; sourceTree = "<group>"; };
+		EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryDetialViewController.m; sourceTree = "<group>"; };
 		EA7056511C9F86F500E9D253 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
 		EA7056521C9F86F500E9D253 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
 		EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delectLiteBtn@2x.png"; sourceTree = "<group>"; };
@@ -438,14 +452,6 @@
 		EA8CAA661C89669800058A34 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		EA8CAA671C89669800058A34 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editngChange@2x.png"; sourceTree = "<group>"; };
-		EAA120C91CA8DE8600C0D988 /* NuserNullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuserNullTableViewCell.h; sourceTree = "<group>"; };
-		EAA120CA1CA8DE8600C0D988 /* NuserNullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuserNullTableViewCell.m; sourceTree = "<group>"; };
-		EAA120CB1CA8DE8600C0D988 /* NuseryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryListTableViewCell.h; sourceTree = "<group>"; };
-		EAA120CC1CA8DE8600C0D988 /* NuseryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryListTableViewCell.m; sourceTree = "<group>"; };
-		EAA120CD1CA8DE8600C0D988 /* MyNuseryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNuseryListViewController.h; sourceTree = "<group>"; };
-		EAA120CE1CA8DE8600C0D988 /* MyNuseryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuseryListViewController.m; sourceTree = "<group>"; };
-		EAA120D01CA8DE8600C0D988 /* NuseryDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryDetialViewController.h; sourceTree = "<group>"; };
-		EAA120D11CA8DE8600C0D988 /* NuseryDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryDetialViewController.m; sourceTree = "<group>"; };
 		EAA81BA41C744D21007F207D /* HotBuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotBuyView.h; sourceTree = "<group>"; };
 		EAA81BA51C744D21007F207D /* HotBuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyView.m; sourceTree = "<group>"; };
 		EAA81BA71C746A7B007F207D /* HotBuyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotBuyViewCell.h; sourceTree = "<group>"; };
@@ -599,8 +605,27 @@
 		FC49AE541CA9190700214D4B /* ZIKLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKLinkedList.m; sourceTree = "<group>"; };
 		FC49AE571CA91E7B00214D4B /* BWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTextView.h; sourceTree = "<group>"; };
 		FC49AE581CA91E7B00214D4B /* BWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTextView.m; sourceTree = "<group>"; };
+		FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyQRCodeViewController.h; sourceTree = "<group>"; };
+		FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyQRCodeViewController.m; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
+		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
+		FC6149F61CAA57B600672241 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
+		FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
+		FC6149F81CAA57B600672241 /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageScrollView.h; sourceTree = "<group>"; };
+		FC6149F91CAA57B600672241 /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageScrollView.m; sourceTree = "<group>"; };
+		FC6149FA1CAA57B600672241 /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKTouchView.h; sourceTree = "<group>"; };
+		FC6149FB1CAA57B600672241 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
+		FC6149FC1CAA57B600672241 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		FC614A021CAA58C200672241 /* ZIKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKFunction.h; sourceTree = "<group>"; };
+		FC614A031CAA58C200672241 /* ZIKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKFunction.m; sourceTree = "<group>"; };
+		FC614A051CAA5BBC00672241 /* ZIKUserNameSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserNameSetViewController.h; sourceTree = "<group>"; };
+		FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserNameSetViewController.m; sourceTree = "<group>"; };
+		FC614A081CAA65C700672241 /* ZIKPasswordSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPasswordSetViewController.h; sourceTree = "<group>"; };
+		FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPasswordSetViewController.m; sourceTree = "<group>"; };
+		FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetialModel.h; sourceTree = "<group>"; };
+		FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetialModel.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -1157,6 +1182,37 @@
 			path = HotSellView;
 			sourceTree = "<group>";
 		};
+		EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA6B31B31CABA5F70068CCB5 /* myNuseryCells */,
+				EA6B31B81CABA5F70068CCB5 /* MyNuseryListViewController.h */,
+				EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */,
+				EA6B31BA1CABA5F70068CCB5 /* NuseryDetialViewController */,
+			);
+			path = MyNurseryListViewController;
+			sourceTree = "<group>";
+		};
+		EA6B31B31CABA5F70068CCB5 /* myNuseryCells */ = {
+			isa = PBXGroup;
+			children = (
+				EA6B31B41CABA5F70068CCB5 /* NuserNullTableViewCell.h */,
+				EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */,
+				EA6B31B61CABA5F70068CCB5 /* NuseryListTableViewCell.h */,
+				EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */,
+			);
+			path = myNuseryCells;
+			sourceTree = "<group>";
+		};
+		EA6B31BA1CABA5F70068CCB5 /* NuseryDetialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA6B31BB1CABA5F70068CCB5 /* NuseryDetialViewController.h */,
+				EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */,
+			);
+			path = NuseryDetialViewController;
+			sourceTree = "<group>";
+		};
 		EA7056501C9F869900E9D253 /* CompanyInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1256,37 +1312,6 @@
 			path = DataCache;
 			sourceTree = "<group>";
 		};
-		EAA120C71CA8DE8600C0D988 /* MyNurseryListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EAA120C81CA8DE8600C0D988 /* myNuseryCells */,
-				EAA120CD1CA8DE8600C0D988 /* MyNuseryListViewController.h */,
-				EAA120CE1CA8DE8600C0D988 /* MyNuseryListViewController.m */,
-				EAA120CF1CA8DE8600C0D988 /* NuseryDetialViewController */,
-			);
-			path = MyNurseryListViewController;
-			sourceTree = "<group>";
-		};
-		EAA120C81CA8DE8600C0D988 /* myNuseryCells */ = {
-			isa = PBXGroup;
-			children = (
-				EAA120C91CA8DE8600C0D988 /* NuserNullTableViewCell.h */,
-				EAA120CA1CA8DE8600C0D988 /* NuserNullTableViewCell.m */,
-				EAA120CB1CA8DE8600C0D988 /* NuseryListTableViewCell.h */,
-				EAA120CC1CA8DE8600C0D988 /* NuseryListTableViewCell.m */,
-			);
-			path = myNuseryCells;
-			sourceTree = "<group>";
-		};
-		EAA120CF1CA8DE8600C0D988 /* NuseryDetialViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EAA120D01CA8DE8600C0D988 /* NuseryDetialViewController.h */,
-				EAA120D11CA8DE8600C0D988 /* NuseryDetialViewController.m */,
-			);
-			path = NuseryDetialViewController;
-			sourceTree = "<group>";
-		};
 		EAA81BA31C744D02007F207D /* HotBuyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1311,13 +1336,6 @@
 				EAB781A51C8EC4E200807B44 /* BuyDescriptionTableViewCell.m */,
 			);
 			path = buydetialInfoCell;
-			sourceTree = "<group>";
-		};
-		EACF3AF21CA116D600FA746C /* MyNurseryListViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MyNurseryListViewController;
 			sourceTree = "<group>";
 		};
 		EAE32DAE1C7E97A600C4CEA2 /* AFNetworking */ = {
@@ -1436,10 +1454,9 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
-				EAA120C71CA8DE8600C0D988 /* MyNurseryListViewController */,
+				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC6149DC1CAA2E0600672241 /* UserInfoSetVC */,
 				FCF353791CA3B514001ABA0A /* MySupplyViewController */,
-				EACF3AF21CA116D600FA746C /* MyNurseryListViewController */,
 				EA7056501C9F869900E9D253 /* CompanyInfoViewController */,
 				EA4FF1BA1C9A8D9800441DC3 /* MyBuyLIstViewController */,
 				EA16C4D61C93A29C00A33BD3 /* MycollectViewController */,
@@ -1454,6 +1471,8 @@
 		EAF8A53F1C867D56008B99D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */,
+				FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */,
 				EAF8A5401C867D7D008B99D2 /* HotSellModel.h */,
 				EAF8A5411C867D7D008B99D2 /* HotSellModel.m */,
 				EAF8A5431C867FF9008B99D2 /* HotBuyModel.h */,
@@ -1470,8 +1489,6 @@
 				EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */,
 				EA1120CC1CA62BE300857E48 /* NurseryModel.h */,
 				EA1120CD1CA62BE300857E48 /* NurseryModel.m */,
-				EA540F551CAA1438006A24FC /* BuyDetialModel.h */,
-				EA540F561CAA1438006A24FC /* BuyDetialModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1577,10 +1594,33 @@
 		FC6149DC1CAA2E0600672241 /* UserInfoSetVC */ = {
 			isa = PBXGroup;
 			children = (
+				FC6149F41CAA57B600672241 /* RSKImageCropper */,
 				FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */,
 				FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */,
+				FC614A051CAA5BBC00672241 /* ZIKUserNameSetViewController.h */,
+				FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */,
+				FC614A081CAA65C700672241 /* ZIKPasswordSetViewController.h */,
+				FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */,
+				FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */,
+				FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */,
 			);
 			path = UserInfoSetVC;
+			sourceTree = "<group>";
+		};
+		FC6149F41CAA57B600672241 /* RSKImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				FC6149F51CAA57B600672241 /* RSKImageCropper.h */,
+				FC6149F61CAA57B600672241 /* RSKImageCropViewController.h */,
+				FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */,
+				FC6149F81CAA57B600672241 /* RSKImageScrollView.h */,
+				FC6149F91CAA57B600672241 /* RSKImageScrollView.m */,
+				FC6149FA1CAA57B600672241 /* RSKTouchView.h */,
+				FC6149FB1CAA57B600672241 /* RSKTouchView.m */,
+				FC6149FC1CAA57B600672241 /* UIImage+FixOrientation.h */,
+				FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */,
+			);
+			path = RSKImageCropper;
 			sourceTree = "<group>";
 		};
 		FCF353791CA3B514001ABA0A /* MySupplyViewController */ = {
@@ -1637,6 +1677,8 @@
 				FC49AE341CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m */,
 				FC49AE361CA8D36000214D4B /* ZIKUserIDetc.h */,
 				FC49AE371CA8D36000214D4B /* ZIKUserIDetc.m */,
+				FC614A021CAA58C200672241 /* ZIKFunction.h */,
+				FC614A031CAA58C200672241 /* ZIKFunction.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2031,16 +2073,19 @@
 				EAEA07F81C5B0B0F003A0D8A /* CircleViews.m in Sources */,
 				FCF353CC1CA3B515001ABA0A /* MJRefreshFooterView.m in Sources */,
 				FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */,
+				FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */,
 				FC21BC801CA51C930041E2C3 /* IQUIViewController+Additions.m in Sources */,
 				EA0B2BE11C5A06D80018A7BD /* HomePageViewController.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
+				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
 				EAE32DF11C7E9C3800C4CEA2 /* AFImageDownloader.m in Sources */,
 				FCF353D11CA3B515001ABA0A /* ZIKSupplyModel.m in Sources */,
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
+				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
 				EA03405D1C8927CB00FBF148 /* SreeningViewCell.m in Sources */,
 				EA4FF1BD1C9A8DB900441DC3 /* MyBuyListViewController.m in Sources */,
 				EAE32DDE1C7E97A600C4CEA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2067,18 +2112,20 @@
 				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
+				FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */,
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,
+				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */,
 				FCF353DB1CA3B515001ABA0A /* ForegroundColorAttribute.m in Sources */,
 				EAE881F61C87C399001EFF14 /* BuySearchTableViewCell.m in Sources */,
 				EA0079191C80155E00FA66B1 /* SearchViewController.m in Sources */,
 				EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */,
 				EA03405A1C891EFD00FBF148 /* TreeSpecificationsModel.m in Sources */,
-				EAA120D41CA8DE8600C0D988 /* MyNuseryListViewController.m in Sources */,
 				FCF353EB1CA3B515001ABA0A /* ZIKMySupplyViewController.m in Sources */,
 				EA29AA011C856159004913FF /* EGORefreshTableHeaderView.m in Sources */,
 				EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */,
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
+				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,
 				FC21BC7E1CA51C930041E2C3 /* IQUITextFieldView+Additions.m in Sources */,
 				EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */,
 				FCF353DA1CA3B515001ABA0A /* FontAttribute.m in Sources */,
@@ -2100,18 +2147,19 @@
 				EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
 				EA29AA021C856159004913FF /* LoadMoreTableFooterView.m in Sources */,
+				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
 				FCF353D21CA3B515001ABA0A /* ZHHttpTool.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,
 				EA29AA031C856159004913FF /* MessageInterceptor.m in Sources */,
+				FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */,
 				EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */,
 				FCF353CF1CA3B515001ABA0A /* UIScrollView+MJRefresh.m in Sources */,
 				EA741A001C8FC69B00F54478 /* LoginView.m in Sources */,
 				FCF353D41CA3B515001ABA0A /* ZIKPickImageView.m in Sources */,
 				FCF353E21CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */,
 				EA75148D1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m in Sources */,
-				EAA120D31CA8DE8600C0D988 /* NuseryListTableViewCell.m in Sources */,
 				FC21BC851CA51C930041E2C3 /* IQBarButtonItem.m in Sources */,
 				EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */,
 				EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */,
@@ -2119,6 +2167,7 @@
 				FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */,
 				FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */,
 				FCF353D01CA3B515001ABA0A /* UIView+MJExtension.m in Sources */,
+				EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */,
 				EAEB63BD1C90FC1E0001ABC9 /* NSString+Phone.m in Sources */,
 				FCF353FE1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m in Sources */,
 				EA8CAA651C8963D500058A34 /* DataCache.m in Sources */,
@@ -2127,7 +2176,6 @@
 				EA0B2B951C59F5220018A7BD /* main.m in Sources */,
 				EAEA07FC1C5B285C003A0D8A /* YouLickView.m in Sources */,
 				EA2727191C8A7D8E000B0719 /* FMDatabaseAdditions.m in Sources */,
-				EA540F571CAA1438006A24FC /* BuyDetialModel.m in Sources */,
 				FC21BC841CA51C930041E2C3 /* IQTextView.m in Sources */,
 				FCF353EC1CA3B515001ABA0A /* ZIKSupplyPublishViewController.m in Sources */,
 				EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */,
@@ -2145,22 +2193,24 @@
 				FCF353CE1CA3B515001ABA0A /* UIScrollView+MJExtension.m in Sources */,
 				EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */,
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
+				FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FCF353D31CA3B515001ABA0A /* ZIKPickerBtn.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,
 				EA2727181C8A7D8E000B0719 /* FMDatabase.m in Sources */,
-				EAA120D51CA8DE8600C0D988 /* NuseryDetialViewController.m in Sources */,
 				FCF353F51CA3CEA7001ABA0A /* ZIKGreenButton.m in Sources */,
+				EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */,
 				EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */,
 				FCF353E41CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m in Sources */,
 				FCF353E91CA3B515001ABA0A /* ZIKBaseViewController.m in Sources */,
 				EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */,
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
+				EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */,
 				FCF353E81CA3B515001ABA0A /* ZIKArrowViewController.m in Sources */,
-				EAA120D21CA8DE8600C0D988 /* NuserNullTableViewCell.m in Sources */,
+				FC614A011CAA57B600672241 /* UIImage+FixOrientation.m in Sources */,
 				FCF353F81CA3D4D1001ABA0A /* ZIKSideView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

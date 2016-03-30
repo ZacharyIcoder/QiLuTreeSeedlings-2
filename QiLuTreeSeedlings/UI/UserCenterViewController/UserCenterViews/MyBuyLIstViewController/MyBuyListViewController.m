@@ -81,11 +81,13 @@
             }
 
         }
+
         self.pullTableView.pullTableIsRefreshing=NO;
         self.pullTableView.pullTableIsLoadingMore=NO;
     } failure:^(NSError *error) {
         self.pullTableView.pullTableIsRefreshing=NO;
         self.pullTableView.pullTableIsLoadingMore=NO;
+
     }];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -133,6 +135,7 @@
 }
 -(void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
+
     [self.dataAry removeAllObjects];
     PageCount=1;
     [self getDataList];
@@ -141,6 +144,7 @@
 {
     PageCount+=1;
     [self getDataList];
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
