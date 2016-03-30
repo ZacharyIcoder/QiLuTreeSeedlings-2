@@ -12,6 +12,7 @@
 #import "ZIKMySupplyTableViewCell.h"
 #import "MJRefresh.h"
 #import "ZIKSupplyPublishViewController.h"
+#import "ZIKSupplyPublishVC.h"
 @interface ZIKMySupplyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
@@ -28,8 +29,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNav];
-    [self initData];
+    //[self initData];
     [self initUI];
+    //[self requestData];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self initData];
     [self requestData];
 }
 
@@ -138,22 +145,17 @@
     //供求发布限制
     [httpClient getSupplyRestrictWithToken:APPDELEGATE.userModel.access_token  withId:APPDELEGATE.userModel.access_id withClientId:nil withClientSecret:nil withDeviceId:nil withType:@"2" success:^(id responseObject) {
         NSDictionary *dic=[responseObject objectForKey:@"result"];
-        NSLog(@"%@",dic);
-        NSLog(@"%@",dic[@"count"]);
         if ( [dic[@"count"] integerValue] == 0) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
             self.isCanPublish = NO;
-            NSLog(@"不可发布");
+            //NSLog(@"不可发布");
         }
         else {
-            NSLog(@"可发布");
+            //NSLog(@"可发布");
             self.isCanPublish = YES;
-            
         }
     } failure:^(NSError *error) {
         
     }];
-    
-
 }
 
 - (void)createEmptyUI {
@@ -196,19 +198,16 @@
 }
 
 - (void)btnClick {
-    ZIKSupplyPublishViewController *spVC = [[ZIKSupplyPublishViewController alloc] init];
-    [self.navigationController pushViewController:spVC animated:YES];
-//
-//    if (self.isCanPublish) {
-//        NSLog(@"可发布");
-//        ZIKSupplyPublishViewController *spVC = [[ZIKSupplyPublishViewController alloc] init];
-//        [self.navigationController pushViewController:spVC animated:YES];
-//
-//    }
-//    else {
-//        NSLog(@"不可发布");
-//        
-//    }
+    if (self.isCanPublish) {
+        //NSLog(@"可发布");
+        ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
+        [self.navigationController pushViewController:spVC animated:YES];
+    }
+    else {
+       // NSLog(@"不可发布");
+        [ToastView showTopToast:@"请先完善苗圃信息"];
+        return;
+    }
 }
 
 - (void)configNav {
@@ -216,14 +215,15 @@
     self.rightBarBtnTitleString = @"发布";
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-        NSLog(@"发布");
+        //NSLog(@"发布");
         if (weakSelf.isCanPublish) {
-            ZIKSupplyPublishViewController *spVC = [[ZIKSupplyPublishViewController alloc] init];
+            ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
             [weakSelf.navigationController pushViewController:spVC animated:YES];
 
         }
         else {
-            NSLog(@"不可发布");
+            //NSLog(@"不可发布");
+            [ToastView showTopToast:@"请先完善苗圃信息"];
         }
         
     };

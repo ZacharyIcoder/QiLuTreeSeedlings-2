@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HotBuyModel.h"
 @interface HotBuyViewCell : UIView
 @property (nonatomic,strong) UIButton *actionBtn;
 @property (nonatomic,strong) UILabel *titleLab;
@@ -15,5 +15,6 @@
 @property (nonatomic,strong)UILabel *timelLab;
 @property (nonatomic,strong)UILabel *priceLab;
 @property (nonatomic,strong)NSDictionary *dic;
--(id)initWithFrame:(CGRect)frame andDic:(NSDictionary*)dic;
+@property (nonatomic,strong) HotBuyModel *model;
+-(id)initWithFrame:(CGRect)frame andDic:(HotBuyModel*)model;
 @end

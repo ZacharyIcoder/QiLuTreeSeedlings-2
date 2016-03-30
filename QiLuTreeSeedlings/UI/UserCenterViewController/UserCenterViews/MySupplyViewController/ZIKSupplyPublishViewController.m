@@ -33,7 +33,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 @property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
 @property (nonatomic, strong) NSArray          *dataAry;
 @property (nonatomic, strong) NSMutableArray   *cellAry;
-@property (nonatomic, strong) UIScrollView     *backScrollView;
+@property (nonatomic, strong) UIView           *backScrollView;
 @end
 
 @implementation ZIKSupplyPublishViewController
@@ -53,19 +53,19 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 }
 
 - (void)initUI {
-    self.supplyInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, 218/*Height-64-60-200*/) style:UITableViewStylePlain];
+    self.supplyInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64-60) style:UITableViewStylePlain];
     self.supplyInfoTableView.delegate   = self;
     self.supplyInfoTableView.dataSource = self;
     [self.view addSubview:self.supplyInfoTableView];
     [self setExtraCellLineHidden:self.supplyInfoTableView];
 
-    self.backScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.supplyInfoTableView.frame), kWidth, 200)];
-    [self.view addSubview:self.backScrollView];
-    [self.backScrollView setBackgroundColor:BGColor];
-
+//    self.backScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(self.supplyInfoTableView.frame)+1, kWidth, Height-64-225-60)];
+//    [self.view addSubview:self.backScrollView];
+//    [self.backScrollView setBackgroundColor:BGColor];
+    //[twoCell addSubview:self.backScrollView];
 
     UIButton *nextBtn = [[UIButton alloc] init];
-    nextBtn.frame = CGRectMake(Width/2-50, Height-50, 100, 30);
+    nextBtn.frame = CGRectMake(40, Height-50, Width-80, 30);
     [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [nextBtn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     [self.view addSubview:nextBtn];
@@ -83,10 +83,16 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     else if (indexPath.section == 1) {
         return 44;
     }
+    else if (indexPath.section == 2) {
+        return  Height-64-225-60;
+    }
     return 100;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 2) {
+        return 0.0f;
+    }
     return 7.0f;
 }
 
@@ -97,8 +103,32 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 1) {
+        return 200;
+    }
+    return 0;
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;//self.supplyInfoMArr.count;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section == 1) {
+        UIView *footerView = [[UIView alloc] init];
+        footerView.backgroundColor = [UIColor yellowColor];
+        footerView.frame = CGRectMake(0, 0, Width, 200);
+        self.backScrollView = [[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 200)];
+        [footerView addSubview:self.backScrollView];
+        [self.backScrollView setBackgroundColor:BGColor];
+        return footerView;
+
+    }
+    else {
+        return nil;
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,7 +179,16 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         }
             break;
         case 2: {
-            
+//            static NSString *twoCellId = @"ktwoCellId";
+//            UITableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:twoCellId];
+//            if (twoCell == nil) {
+//                twoCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:twoCellId];
+//                self.backScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kWidth, Height-64-225-60)];
+//                [self.view addSubview:self.backScrollView];
+//                [self.backScrollView setBackgroundColor:BGColor];
+//                [twoCell addSubview:self.backScrollView];
+//            }
+//            cell = twoCell;
         }
             break;
         default:
@@ -204,7 +243,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         [cell setBackgroundColor:[UIColor whiteColor]];
         [self.backScrollView addSubview:cell];
     }
-    [self.backScrollView setContentSize:CGSizeMake(0, Y+60)];
+    //[self.backScrollView setContentSize:CGSizeMake(0, Y+60)];
 }
 
 
@@ -430,6 +469,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     }
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.supplyInfoTableView.contentSize = CGSizeMake(0,1000);
+}
 //-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    [self.nameTextField resignFirstResponder];
 //}

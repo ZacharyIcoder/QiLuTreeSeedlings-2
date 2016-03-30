@@ -1289,4 +1289,75 @@
     }];
 }
 
+#pragma mark ---------- 我的供应信息保存 -----------
+- (void)saveSupplyInfoWithAccessToken:(NSString *)accesToken
+                             accessId:(NSString *)accessId
+                             clientId:(NSString *)clientId
+                         clientSecret:(NSString *)clientSecret
+                             deviceId:(NSString *)deviceId
+                                  uid:(NSString *)uid
+                                title:(NSString *)title
+                                 name:(NSString *)name
+                           productUid:(NSString *)productUid
+                                count:(NSString *)count
+                                price:(NSString *)price
+                        effectiveTime:(NSString *)time
+                               remark:(NSString *)remark
+                           nurseryUid:(NSString *)nurseryUid
+                            imageUrls:(NSString *)imageUrls
+                    imageCompressUrls:(NSString *)imageCompressUrls
+          withSpecificationAttributes:(NSDictionary *)etcAttributes
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure {
+
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL = @"api/apisupply/create";
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                APPDELEGATE.userModel.access_token,@"access_token",
+                                APPDELEGATE.userModel.access_id,@"access_id",
+                                kclient_id,@"client_id",
+                                kclient_secret,@"client_secret",
+                                str,@"device_id",
+                                uid,@"uid",
+                                title,@"title",
+                                name,@"name",
+                                productUid,@"productUid",
+                                count,@"count",
+                                price,@"price",
+                                time,@"effectiveTime",
+                                remark,@"remark",
+                                nurseryUid,@"nurseryUid",
+                                imageUrls,@"imageUrls",
+                                imageCompressUrls,@"imageCompressUrls",
+                                nil];
+    NSLog(@"para:%@",parameters);
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"] = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"] = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"] = kclient_id;
+    parmers[@"client_secret"] = kclient_secret;
+    parmers[@"device_id"] = str;
+    parmers[@"uid"] = uid;
+    parmers[@"title"] = title;
+    parmers[@"name"] = name;
+    parmers[@"productUid"] = productUid;
+    parmers[@"count"] = count;
+    parmers[@"price"] = price;
+    parmers[@"effectiveTime"] = time;
+    parmers[@"remark"] = remark;
+    parmers[@"nurseryUid"] = nurseryUid;
+    parmers[@"imageUrls"] = imageUrls;
+    parmers[@"imageCompressUrls"] = imageCompressUrls;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+
+}
+
 @end

@@ -140,9 +140,17 @@
             NSArray *aryzz=[HotSellModel hotSellAryByAry:ary];
             HotSellModel *aryzzLast =  [aryzz lastObject];
             HotSellModel *dataLast =  [self.sellDataAry lastObject];
-            if (dataLast.uid!=aryzzLast.uid) {
-                [self.sellDataAry addObjectsFromArray:aryzz];
+            if (aryzz.count > 0) {
+                if ([dataLast.uid isEqualToString: aryzzLast.uid]) {
+                    [ToastView showTopToast:@"已无更多信息"];
+                    self.PageCount--;
+                }else{
+                    
+                    [self.sellDataAry addObjectsFromArray:aryzz];
+                }
+
             }else{
+                [ToastView showTopToast:@"已无更多信息"];
                 self.PageCount--;
             }
             [self.buyDataAry removeAllObjects];
@@ -161,11 +169,18 @@
             NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:ary];
             HotBuyModel *aryzzLast =  [aryzz lastObject];
             HotBuyModel *dataLast =  [self.buyDataAry lastObject];
-            if (dataLast.uid!=aryzzLast.uid) {
-                [self.buyDataAry addObjectsFromArray:aryzz];
+            if (aryzz.count>0) {
+                if ([dataLast.uid isEqualToString: aryzzLast.uid]) {
+                    [ToastView showTopToast:@"已无更多信息"];
+                    self.PageCount--;
+                }else{
+                    [self.buyDataAry addObjectsFromArray:aryzz];
+                }
             }else{
+                [ToastView showTopToast:@"已无更多信息"];
                 self.PageCount--;
             }
+            
             
             [self.sellDataAry removeAllObjects];;
             [self.selfTableView reloadData];
@@ -212,10 +227,19 @@
             
             HotSellModel *aryzzLast =  [aryzz lastObject];
             HotSellModel *dataLast =  [self.sellDataAry lastObject];
-            if (dataLast.uid!=aryzzLast.uid) {
-                [self.sellDataAry addObjectsFromArray:aryzz];
+            if (aryzz.count >0) {
+                if ([dataLast.uid isEqualToString:aryzzLast.uid]) {
+                    [ToastView showTopToast:@"已无更多信息"];
+                    self.PageCount--;
+                    
+                }else{
+                    [self.sellDataAry addObjectsFromArray:aryzz];
+                }
+
             }else{
+                [ToastView showTopToast:@"已无更多信息"];
                 self.PageCount--;
+
             }
             
             [self.buyDataAry removeAllObjects];
@@ -235,12 +259,21 @@
                 NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:Ary];
                 HotBuyModel *aryzzLast =  [aryzz lastObject];
                 HotBuyModel *dataLast =  [self.buyDataAry lastObject];
-                if (dataLast.uid!=aryzzLast.uid) {
-                    [self.buyDataAry addObjectsFromArray:aryzz];
+                if (aryzz.count>0) {
+                    if ([dataLast.uid isEqualToString:aryzzLast.uid]) {
+                        [ToastView showTopToast:@"已无更多信息"];
+                        self.PageCount--;
+                        
+                    }else{
+                        [self.buyDataAry addObjectsFromArray:aryzz];
+                    }
+
                 }else{
+                    [ToastView showTopToast:@"已无更多信息"];
                     self.PageCount--;
+
                 }
-                [self.sellDataAry removeAllObjects];
+               [self.sellDataAry removeAllObjects];
                 self.selfTableView.pullTableIsLoadingMore=NO;
                 self.selfTableView.pullTableIsRefreshing=NO;
             }

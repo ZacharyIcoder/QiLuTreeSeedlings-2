@@ -21,14 +21,19 @@
 #import "DataCache.h"
 #import "LoginViewController.h"
 #import "FaBuViewController.h"
+#import "MyCollectViewController.h"
+#import "BuyDetialInfoViewController.h"
+#import "SellDetialViewController.h"
 //#import "ViewController.h"
-@interface HomePageViewController ()<AdvertDelegate,HotBuyViewsDelegate,HotSellViewDelegate,CircleViewsDelegate>
+@interface HomePageViewController ()<AdvertDelegate,HotBuyViewsDelegate,HotSellViewDelegate,CircleViewsDelegate,YouLickViewDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong)NSArray *productDataAry;//猜你习惯
 @property (nonatomic,strong)NSArray *supplyDataAry;//热门供应
 @property (nonatomic,strong)NSArray *BuyDataAry;//热门求购
 @property (nonatomic,strong)CircleViews *circleViews;
 @property (nonatomic,strong)UIButton *loginBtn;
+@property (nonatomic,strong) HotSellView *hotSellView;
+@property (nonatomic,strong) HotBuyView *hotBuyView;
 @end
 
 @implementation HomePageViewController
@@ -52,17 +57,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+  
     HttpClient *httpClient=[HttpClient sharedClient];
     [httpClient getHomePageInfoSuccess:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.productDataAry=[GusseYourLikeModel creatGusseLikeAryByAry:[dic objectForKey:@"productList"]];
             self.supplyDataAry=[HotSellModel hotSellAryByAry:[dic objectForKey:@"supplyList"]];
-            self.BuyDataAry=[dic objectForKey:@"newBuyList"];
-//            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
-//            [[DataCache shareDateCache]saveWithData:jsonData path:@"shouye"];
-           // NSLog(@"%@",dic);
-            [self creatViewByNetInfo];
+            self.BuyDataAry=[HotBuyModel creathotBuyModelAryByAry:[dic objectForKey:@"newBuyList"]];
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:dic forKey:@"homePageCache"];
+            [userDefaults synchronize];
+            if (!_hotSellView) {
+                [self creatViewByNetInfo];
+            }else
+            {
+                _hotSellView.dataAry=self.supplyDataAry;
+                _hotBuyView.dataAry=self.BuyDataAry;
+            }
+            
         }
         
     } failure:^(NSError *error) {
@@ -90,11 +103,19 @@
     self.circleViews=circleView;
     circleView.delegate=self;
     [self.backScrollView addSubview:circleView];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dic = [userDefaults objectForKey:@"homePageCache"];
+    if (dic) {
+        self.productDataAry=[GusseYourLikeModel creatGusseLikeAryByAry:[dic objectForKey:@"productList"]];
+        self.supplyDataAry=[HotSellModel hotSellAryByAry:[dic objectForKey:@"supplyList"]];
+        self.BuyDataAry=[HotBuyModel creathotBuyModelAryByAry:[dic objectForKey:@"newBuyList"]];
+        [self creatViewByNetInfo];
+    }
    // [self creatViewByNetInfo];
 }
 -(UIView *)makeTitleViewWithTitle:(NSString *)title AndColor:(UIColor *)color andY:(CGFloat )y
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, y, 80, 30)];
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, y, kWidth, 30)];
      [view setBackgroundColor:[UIColor clearColor]];
     UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 5, 5, 20)];
     [imageV setBackgroundColor:color];
@@ -104,6 +125,7 @@
     titleLab.text=title;
     [titleLab setTextColor:color];
     [view addSubview:titleLab];
+    [self.backScrollView addSubview:view];
     return view;
     
 }
@@ -142,28 +164,64 @@
     CGRect tempFrame=self.circleViews.frame;
     tempFrame.origin.y+=tempFrame.size.height;
     
-    UIView *likeTitleV=[self makeTitleViewWithTitle:@"猜你喜欢" AndColor:[UIColor colorWithRed:254/255.f green:172/255.f blue:0 alpha:1] andY:tempFrame.origin.y];
-    [self.backScrollView addSubview:likeTitleV];
+    [self makeTitleViewWithTitle:@"猜你喜欢" AndColor:[UIColor colorWithRed:254/255.f green:172/255.f blue:0 alpha:1] andY:tempFrame.origin.y];
+    //[self.backScrollView addSubview:likeTitleV];
     tempFrame.origin.y+=30;
     tempFrame.size.height=120;
     YouLickView *lickView=[[YouLickView alloc]initWithFrame:tempFrame WithAry:self.productDataAry];
+    lickView.delegate=self;
     [self.backScrollView addSubview:lickView];
     
     
-    UIView *hotBuyTitleV=[self makeTitleViewWithTitle:@"热门求购" AndColor:[UIColor greenColor] andY:CGRectGetMaxY(lickView.frame)];
-    [self.backScrollView addSubview:hotBuyTitleV];
-    HotBuyView *hotBView=[[HotBuyView alloc]initWithAry:@[@"",@"",@"",@"",@""] andY:CGRectGetMaxY(hotBuyTitleV.frame)];
+    UIView *hotBuyTitleV=[self makeTitleViewWithTitle:@"热门求购" AndColor:[UIColor orangeColor] andY:CGRectGetMaxY(lickView.frame)];
+   // [self.backScrollView addSubview:hotBuyTitleV];
+    UIButton *moreHotBuyBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 30)];
+    [moreHotBuyBtn setTitle:@"更多" forState:UIControlStateNormal];
+    [moreHotBuyBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 7.5, 15, 15)];
+    [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
+    [hotBuyTitleV addSubview:hotMoreRowImgV];
+    [moreHotBuyBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [moreHotBuyBtn addTarget:self action:@selector(moreBtnHotAction:) forControlEvents:UIControlEventTouchUpInside];
+    [hotBuyTitleV addSubview:moreHotBuyBtn];
+    HotBuyView *hotBView=[[HotBuyView alloc]initWithAry:self.BuyDataAry andY:CGRectGetMaxY(hotBuyTitleV.frame)];
+    self.hotBuyView=hotBView;
     hotBView.delegate=self;
     [self.backScrollView addSubview:hotBView];
     // [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(hotBView.frame))];
     
-    UIView *hotSellTitleV=[self makeTitleViewWithTitle:@"热门供应" AndColor:[UIColor orangeColor] andY:CGRectGetMaxY(hotBView.frame)];
-    [self.backScrollView addSubview:hotSellTitleV];
+    UIView *hotSellTitleV=[self makeTitleViewWithTitle:@"热门供应" AndColor:NavColor andY:CGRectGetMaxY(hotBView.frame)];
+    UIButton *moreHotSellBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 30)];
+    [moreHotSellBtn setTitle:@"更多" forState:UIControlStateNormal];
+    [moreHotSellBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [moreHotSellBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [moreHotSellBtn addTarget:self action:@selector(moreBtnHotSellAction:) forControlEvents:UIControlEventTouchUpInside];
+    [hotSellTitleV addSubview:moreHotSellBtn];
+    UIImageView *sellMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 7.5, 15, 15)];
+    [sellMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
+    [hotSellTitleV addSubview:sellMoreRowImgV];
+
+    //[self.backScrollView addSubview:hotSellTitleV];
     // [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(hotSellTitleV.frame))];
     HotSellView *hotSellV=[[HotSellView alloc]initWith:CGRectGetMaxY(hotSellTitleV.frame) andAry:self.supplyDataAry];
+     self.hotSellView=hotSellV;
     [self.backScrollView addSubview:hotSellV];
     hotSellV.delegate=self;
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(hotSellV.frame))];
+}
+//更多热门求购按钮
+-(void)moreBtnHotAction:(UIButton *)sender
+{
+    [self hiddingSelfTabBar];
+    SearchViewController *searchViewController=[[SearchViewController alloc]initWithSearchType:2];
+    [self.navigationController pushViewController:searchViewController animated:YES];
+}
+//更多热门供应按钮
+-(void)moreBtnHotSellAction:(UIButton *)sender
+{
+    [self hiddingSelfTabBar];
+    SearchViewController *searchViewController=[[SearchViewController alloc]initWithSearchType:1];
+    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 //发布按钮
 -(void)fabuBtnAction
@@ -202,13 +260,35 @@
 {
     NSLog(@"点击了广告栏的%ld",(long)index);
 }
--(void)HotBuyViewsPush:(NSInteger)index
+//猜你喜欢点击效果
+-(void)YouLickViewsPush:(GusseYourLikeModel *)model
 {
-      NSLog(@"点击了热门求购的%ld",(long)index);
+    
+        SearchViewController *searVC=[[SearchViewController alloc]initWithSearchType:model.type andSaerChStr:model.productName];
+        [self hiddingSelfTabBar];
+        [self.navigationController pushViewController:searVC animated:YES];
+        return;
+    
 }
--(void)HotSellViewsPush:(NSInteger)index
+-(void)HotBuyViewsPush:(HotBuyModel *)model
 {
-    NSLog(@"点击了出售的%ld",(long)index);
+      //NSLog(@"点击了热门求购的%ld",(long)index);
+    if (!model) {
+        return;
+    }
+    BuyDetialInfoViewController *buyDetialVC=[[BuyDetialInfoViewController alloc]initWithSaercherInfo:model.uid];
+    [self hiddingSelfTabBar];
+    [self.navigationController pushViewController:buyDetialVC animated:YES];
+
+}
+-(void)HotSellViewsPush:(HotSellModel *)model
+{
+    if (!model) {
+        return;
+    }
+    SellDetialViewController *sellDetialVC=[[SellDetialViewController alloc]initWithUid:model];
+    [self hiddingSelfTabBar];
+    [self.navigationController pushViewController:sellDetialVC animated:YES];
 }
 //圆形按钮
 -(void)circleViewsPush:(NSInteger)index
@@ -224,6 +304,13 @@
         SearchViewController *searVC=[[SearchViewController alloc]initWithSearchType:2];
         [self hiddingSelfTabBar];
         [self.navigationController pushViewController:searVC animated:YES];
+        return;
+    }
+    
+    if (index==2) {
+        MyCollectViewController *myCollectVC=[[MyCollectViewController alloc]init];
+        [self hiddingSelfTabBar];
+        [self.navigationController pushViewController:myCollectVC animated:YES];
         return;
     }
 }

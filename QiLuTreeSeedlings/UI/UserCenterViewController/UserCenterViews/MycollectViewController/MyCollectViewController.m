@@ -18,6 +18,7 @@
 #import "noOneCollectCell.h"
 #import "BuyDetialInfoViewController.h"
 #import "SellDetialViewController.h"
+#import "SearchViewController.h"
 @interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate,UIScrollViewDelegate>
 @property (nonatomic,strong)UIImageView *moveImageV;
 //@property (nonatomic,strong)UIButton *nowBtn;
@@ -265,11 +266,17 @@
 }
 -(void)moreSellMessageActon
 {
-    NSLog(@"更多供应");
+    SearchViewController *searVC=[[SearchViewController alloc]initWithSearchType:1];
+    //[self hiddingSelfTabBar];
+    [self.navigationController pushViewController:searVC animated:YES];
+    return;
 }
 -(void)moreBuyMessageAction
 {
-    NSLog(@"更多求购");
+    SearchViewController *searVC=[[SearchViewController alloc]initWithSearchType:2];
+   // [self hiddingSelfTabBar];
+    [self.navigationController pushViewController:searVC animated:YES];
+    return;
 }
 -(void)LoadMorewith:(PullTableView *)pullTalbleView
 {

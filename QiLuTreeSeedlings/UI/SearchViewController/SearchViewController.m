@@ -60,6 +60,7 @@
         self.searchType=type;
         
         self.searchStr=searchStr;
+       
         self.searchSuccessView=[[SearchSuccessView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
         self.searchSuccessView.delegate=self;
         [self.view addSubview:self.searchSuccessView];
@@ -80,6 +81,13 @@
             }];
             
             
+        }else
+        {
+            if (!self.searchSuccessView) {
+                self.searchSuccessView=[[SearchSuccessView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
+                [self.view addSubview:self.searchSuccessView];
+            }
+            [self.searchSuccessView searchViewActionWith:searchStr AndSearchType:type];
         }
         
         
@@ -99,7 +107,9 @@
     {
         [self.chooseSBBtn setTitle:@"供应" forState:UIControlStateNormal];
     }
-    
+    if (self.searchStr.length>0) {
+       _searchMessageField.text=self.searchStr;
+    }
     
     //[self.view bringSubviewToFront:screeningV];
 
@@ -136,7 +146,8 @@
     UIButton *chooseSBBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 34)];
     [chooseSBBtn setTitle:@"供应" forState:UIControlStateNormal];
     //[chooseSBBtn setBackgroundColor:[UIColor grayColor]];
-    [chooseSBBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [chooseSBBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [chooseSBBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     self.chooseSBBtn=chooseSBBtn;
     [chooseSBBtn addTarget:self action:@selector(chooseSBBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:chooseSBBtn];
@@ -149,7 +160,7 @@
     searchMessageField.delegate=self;
     
     ////////
-    searchMessageField.text=@"油松";
+    //searchMessageField.text=@"油松";
     
     
     
