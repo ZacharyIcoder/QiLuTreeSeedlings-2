@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HotBuyModel.h"
 @protocol HotBuyViewsDelegate <NSObject>
 
-- (void)HotBuyViewsPush:(NSInteger)index;
+- (void)HotBuyViewsPush:(HotBuyModel *)model;
 
 @end
 @interface HotBuyView : UIView
 @property (nonatomic,weak) id<HotBuyViewsDelegate> delegate;
-
+@property (nonatomic,strong) NSArray *dataAry;
 -(id)initWithAry:(NSArray *)ary andY:(CGFloat)Y;
 @end

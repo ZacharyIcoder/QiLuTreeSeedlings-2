@@ -16,8 +16,8 @@
     if (self) {
         [self setFrame:CGRectMake(0, Y, kWidth, 60*ary.count)];
         for (int i=0; i<ary.count; i++) {
-            NSDictionary *dic=[[NSDictionary alloc]init];
-            HotBuyViewCell *cell=[[HotBuyViewCell alloc]initWithFrame:CGRectMake(0, i*60, kWidth, 60) andDic:dic];
+            HotBuyModel *model=ary[i];
+            HotBuyViewCell *cell=[[HotBuyViewCell alloc]initWithFrame:CGRectMake(0, i*60, kWidth, 60) andDic:model];
             [cell.actionBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];  
             [self addSubview:cell];
             cell.actionBtn.tag=i;
@@ -29,8 +29,16 @@
 -(void)btnAction:(UIButton *)sender
 {
     if (self.delegate) {
-        [self.delegate HotBuyViewsPush:sender.tag];
+       // [self.delegate HotBuyViewsPush:sender.tag];
+        if (_dataAry.count>sender.tag) {
+            HotBuyModel *model=self.dataAry[sender.tag];
+            [self.delegate HotBuyViewsPush:model];
+        }
     }
+}
+-(void)setDataAry:(NSArray *)dataAry
+{
+    _dataAry=dataAry;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
