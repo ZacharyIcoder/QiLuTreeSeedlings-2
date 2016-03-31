@@ -213,6 +213,7 @@
 #pragma mark - 设置
 - (void)setBtnAction {
     ZIKSetViewController *setVC =  [[ZIKSetViewController alloc] init];
+    [self hiddingSelfTabBar];
     [self.navigationController pushViewController:setVC animated:YES];
 }
 

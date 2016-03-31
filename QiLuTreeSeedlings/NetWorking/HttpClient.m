@@ -1341,7 +1341,7 @@
                            nurseryUid:(NSString *)nurseryUid
                             imageUrls:(NSString *)imageUrls
                     imageCompressUrls:(NSString *)imageCompressUrls
-          withSpecificationAttributes:(NSDictionary *)etcAttributes
+          withSpecificationAttributes:(NSArray *)etcAttributes
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure {
 
@@ -1365,6 +1365,14 @@
     parmers[@"nurseryUid"]        = nurseryUid;
     parmers[@"imageUrls"]         = imageUrls;
     parmers[@"imageCompressUrls"] = imageCompressUrls;
+    NSArray *array = etcAttributes[0];
+    for (int i=0; i < array.count; i++) {
+        NSDictionary *dic = array[i];
+        NSString *field =  dic[@"field"];
+        parmers[field]  = [dic objectForKey:@"anwser"];
+        //[parmers setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
+    }
+
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1373,5 +1381,36 @@
         failure(error);
     }];
 }
+
+#pragma mark ---------- 我的供应信息详情 -----------
+- (void)getMySupplyDetailInfoWithAccessToken:(NSString *)accesToken
+                                    accessId:(NSString *)accessId
+                                    clientId:(NSString *)clientId
+                                clientSecret:(NSString *)clientSecret
+                                    deviceId:(NSString *)deviceId
+                                         uid:(NSString *)uid
+                                     Success:(void (^)(id responseObject))success
+                                     failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL = @"api/supply/my/detail";
+    NSMutableDictionary *parmers  = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]      = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]         = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]         = kclient_id;
+    parmers[@"client_secret"]     = kclient_secret;
+    parmers[@"device_id"]         = str;
+    parmers[@"uid"]               = uid;
+
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+}
+
+
 
 @end

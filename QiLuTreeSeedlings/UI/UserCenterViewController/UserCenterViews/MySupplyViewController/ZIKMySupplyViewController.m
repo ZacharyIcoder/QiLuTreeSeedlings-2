@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 #import "ZIKSupplyPublishViewController.h"
 #import "ZIKSupplyPublishVC.h"
+#import "ZIKMySupplyDetailViewController.h"
 @interface ZIKMySupplyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
@@ -59,7 +60,7 @@
     self.mySupplyTableView.delegate =self;
     self.mySupplyTableView.dataSource = self;
     [self.view addSubview:self.mySupplyTableView];
-    [self setExtraCellLineHidden:self.mySupplyTableView];
+    [ZIKFunction setExtraCellLineHidden:self.mySupplyTableView];
     //self.mySupplyTableView.backgroundColor = [UIColor yellowColor];
 }
 
@@ -84,6 +85,7 @@
             self.page--;
             [self.mySupplyTableView footerEndRefreshing];
             //没有更多数据了
+            [ToastView showToast:@"没有更多数据了" withOriginY:Width/2 withSuperView:self.view];
             return;
         }
         else {
@@ -132,11 +134,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    ZIKWineCultureListModel *model = self.wineArray[indexPath.section];
-//    ZIKWineCultureDetailViewController *detailVC = [[ZIKWineCultureDetailViewController alloc] init];
-//    detailVC.wineCultureId = [NSString stringWithFormat:@"%ld",(long)model.id];
-//    detailVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
+    ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model.uid];
+    [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -144,10 +144,13 @@
     HttpClient *httpClient=[HttpClient sharedClient];
     //供求发布限制
     [httpClient getSupplyRestrictWithToken:APPDELEGATE.userModel.access_token  withId:APPDELEGATE.userModel.access_id withClientId:nil withClientSecret:nil withDeviceId:nil withType:@"2" success:^(id responseObject) {
-        NSDictionary *dic=[responseObject objectForKey:@"result"];
-        if ( [dic[@"count"] integerValue] == 0) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
+        NSDictionary *dic = [responseObject objectForKey:@"result"];
+        if ( [dic[@"count"] integerValue] == 0 ) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
             self.isCanPublish = NO;
             //NSLog(@"不可发布");
+        }
+        else if (APPDELEGATE.isNeedCompany == NO) {
+            self.isCanPublish = NO;
         }
         else {
             //NSLog(@"可发布");
@@ -205,7 +208,9 @@
     }
     else {
        // NSLog(@"不可发布");
-        [ToastView showTopToast:@"请先完善苗圃信息"];
+        //[ToastView showTopToast:@"请先完善苗圃信息"];
+        [ToastView showToast:@"请您先完善苗圃信息或者企业信息" withOriginY:Width/3 withSuperView:self.view];
+
         return;
     }
 }
@@ -223,7 +228,7 @@
         }
         else {
             //NSLog(@"不可发布");
-            [ToastView showTopToast:@"请先完善苗圃信息"];
+            [ToastView showToast:@"请您先完善苗圃信息或者企业信息" withOriginY:Width/3 withSuperView:weakSelf.view];
         }
         
     };
@@ -232,15 +237,6 @@
 - (void)initData {
     self.page = 1;
     self.supplyInfoMArr = [NSMutableArray array];
-}
-
-#pragma mark - 设置TableView空行分割线隐藏
-// 设置TableView空行分割线隐藏
-- (void)setExtraCellLineHidden: (UITableView *)tableView
-{
-    UIView *view = [UIView new];
-    view.backgroundColor = [UIColor clearColor];
-    [tableView setTableFooterView:view];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -332,7 +332,17 @@
                            nurseryUid:(NSString *)nurseryUid
                             imageUrls:(NSString *)imageUrls
                     imageCompressUrls:(NSString *)imageCompressUrls
-          withSpecificationAttributes:(NSDictionary *)etcAttributes
+          withSpecificationAttributes:(NSArray *)etcAttributes
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure ;
+#pragma mark ---------- 我的供应信息详情 -----------
+- (void)getMySupplyDetailInfoWithAccessToken:(NSString *)accesToken
+                                    accessId:(NSString *)accessId
+                                    clientId:(NSString *)clientId
+                                clientSecret:(NSString *)clientSecret
+                                    deviceId:(NSString *)deviceId
+                                         uid:(NSString *)uid
+                                     Success:(void (^)(id responseObject))success
+                                     failure:(void (^)(NSError *error))failure ;
+
 @end

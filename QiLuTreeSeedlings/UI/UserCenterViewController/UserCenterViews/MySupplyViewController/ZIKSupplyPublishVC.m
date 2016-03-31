@@ -86,7 +86,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     titleTextField.delegate = self;
     titleTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [self.backScrollView addSubview:titleView];
-    tempFrame.origin.y+=44.5;
+    tempFrame.origin.y += 44.5;
 
     ZIKPickImageView* pickView = [[ZIKPickImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLineView.frame), Width, 100)];
     pickView.backgroundColor = [UIColor whiteColor];
@@ -114,7 +114,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
                                                object:nameTextField];
     [nameView addSubview:nameTextField];
 
-    UIButton *nameBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];
+    UIButton *nameBtn = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];
     [nameView addSubview:nameBtn];
     [nameBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
@@ -124,7 +124,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     [nameView addSubview:nameLineView];
 
 
-    self.nameBtn=nameBtn;
+    self.nameBtn = nameBtn;
 
     UIButton *nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 44)];
     [self.view addSubview:nextBtn];
@@ -162,7 +162,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 //        [self.imageCompressUrlsMarr addObject:dic[@"compressurl"]];
 //    }];
     //NSString *urlSring = [self.imageUrlsMarr JSONString];
-    __block NSString *urlSring  = @"";
+    __block NSString *urlSring      = @"";
     __block NSString *compressSring = @"";
     [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
         urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
@@ -171,43 +171,31 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     self.supplyModel.imageUrls = [urlSring substringFromIndex:1];
     //self.supplyModel.imageCompressUrls = [self.imageCompressUrlsMarr JSONString];
     self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
+
+    NSMutableArray *screenTijiaoAry=[NSMutableArray array];
+    for (int i = 0; i < _cellAry.count; i++) {
+        TreeSpecificationsModel *model = _cellAry[i];
+        if (model.anwser.length>0) {
+            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
+                                 model.anwser,@"anwser"
+                                 , nil];
+            [screenTijiaoAry addObject:dic];
+        }
+    }
+    self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
     ZIKSupplyPublishNextVC *nextVC = [[ZIKSupplyPublishNextVC alloc] init];
     nextVC.supplyModel = self.supplyModel;
     [self.navigationController pushViewController:nextVC animated:YES];
-    //NSLog(@"%@",urlSring);
-//    if(!self.productUid)
-//    {
-//        [ToastView showTopToast:@"该苗木不存在"];
-//        return;
-//    }
-//    if (!self.productName) {
-//        [ToastView showTopToast:@"苗木名称不正确"];
-//        return;
-//    }
-//    NSMutableArray *screenTijiaoAry=[NSMutableArray array];
-//    for (int i=0; i<cellAry.count; i++) {
-//        TreeSpecificationsModel *model=cellAry[i];
-//        if (model.anwser.length>0) {
-//            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-//                               model.anwser,@"anwser"
-//                               , nil];
-//            [screenTijiaoAry addObject:dic];
-//        }
-//    }
-//    buyFabuTijiaoViewController *buyfabuTJViewController=[[buyFabuTijiaoViewController alloc]initWithAry:screenTijiaoAry andTitle:self.titleTextField.text andProname:self.productName andProUid:self.productUid];
-//    [self.navigationController pushViewController:buyfabuTJViewController animated:YES];
-//    //NSLog(@"%@",screenTijiaoAry);
-
 }
 
 - (void)nameBtnAction:(UIButton *)button {
-    NSLog(@"确定按钮点击");
+   // NSLog(@"确定按钮点击");
     if (button.selected) {
         return;
     }
-    NSLog(@"%@",self.nameTextField.text);
+    //NSLog(@"%@",self.nameTextField.text);
     if (self.nameTextField.text == nil || self.nameTextField.text.length == 0) {
-        NSLog(@"请输入苗木名称");
+        //NSLog(@"请输入苗木名称");
         [ToastView showToast:@"请输入苗木名称"
                  withOriginY:66.0f
                withSuperView:APPDELEGATE.window];
@@ -215,7 +203,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     }
     else {
         [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"1" Success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
+           // NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
                 [self requestProductType];
             }
@@ -226,7 +214,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
                 [self creatScreeningCells];
             }
         } failure:^(NSError *error) {
-            NSLog(@"%@",error);
+            //NSLog(@"%@",error);
         }];
     }
 
@@ -244,7 +232,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         }
     }];
     
-    for (int i=0; i<self.dataAry.count; i++) {
+    for (int i=0; i < self.dataAry.count; i++) {
         SreeningViewCell *cell = [[SreeningViewCell alloc] initWithFrame:CGRectMake(0, Y, 0.8*kWidth, 44) AndModel:self.dataAry[i]];
         //cell.backgroundColor = [UIColor whiteColor];
         [_cellAry addObject:cell.model];
@@ -261,6 +249,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
             NSArray *typeListArray = [[responseObject objectForKey:@"result"] objectForKey:@"typeList"];
             if (typeListArray.count == 0) {
                 NSLog(@"暂时没有产品信息!!!");
+                [ToastView showToast:@"暂时没有产品信息" withOriginY:Width/3 withSuperView:self.view];
             }
             else if (typeListArray.count > 0) {
                 self.productTypeDataMArray = (NSMutableArray *)typeListArray;

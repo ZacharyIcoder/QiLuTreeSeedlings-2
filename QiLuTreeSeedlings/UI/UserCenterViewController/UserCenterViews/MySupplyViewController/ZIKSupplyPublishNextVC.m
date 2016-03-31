@@ -65,7 +65,7 @@
     self.supplyInfoTableView.delegate   = self;
     self.supplyInfoTableView.dataSource = self;
     [self.view addSubview:self.supplyInfoTableView];
-    [self setExtraCellLineHidden:self.supplyInfoTableView];
+    [ZIKFunction setExtraCellLineHidden:self.supplyInfoTableView];
 
     UIButton *nextBtn = [[UIButton alloc] init];
     nextBtn.frame = CGRectMake(40, Height-60, Width-80, 44);
@@ -264,17 +264,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 设置TableView空行分割线隐藏
-// 设置TableView空行分割线隐藏
-- (void)setExtraCellLineHidden: (UITableView *)tableView
-{
-    UIView *view = [UIView new];
-    view.backgroundColor = [UIColor clearColor];
-    [tableView setTableFooterView:view];
-}
-
 - (void)requestSaveSupplyInfo {
-    [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:nil title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:nil Success:^(id responseObject) {
+    [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:nil title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:self.supplyModel.specificationAttributes Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
              [ToastView showTopToast:@"发布成功"];
             for(UIViewController *controller in self.navigationController.viewControllers) {

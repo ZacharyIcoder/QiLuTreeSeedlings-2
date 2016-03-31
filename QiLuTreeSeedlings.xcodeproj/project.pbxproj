@@ -227,6 +227,7 @@
 		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
 		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
 		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
+		FC6FED4E1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -655,6 +656,8 @@
 		FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPasswordSetViewController.m; sourceTree = "<group>"; };
 		FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetialModel.h; sourceTree = "<group>"; };
 		FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetialModel.m; sourceTree = "<group>"; };
+		FC6FED4C1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailViewController.h; sourceTree = "<group>"; };
+		FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailViewController.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -1722,6 +1725,8 @@
 				FCF353BE1CA3B515001ABA0A /* ZIKBaseVC */,
 				FCF353C51CA3B515001ABA0A /* ZIKMySupplyViewController.h */,
 				FCF353C61CA3B515001ABA0A /* ZIKMySupplyViewController.m */,
+				FC6FED4C1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.h */,
+				FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */,
 				FCF353C71CA3B515001ABA0A /* ZIKSupplyPublishViewController.h */,
 				FCF353C81CA3B515001ABA0A /* ZIKSupplyPublishViewController.m */,
 				FC49AE301CA8BA5B00214D4B /* ZIKSupplyPublishVC.h */,
@@ -2186,6 +2191,7 @@
 				EAB781A31C8EBEA600807B44 /* QIYeMessageTableViewCell.m in Sources */,
 				EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */,
 				FC21BC871CA51C930041E2C3 /* IQToolbar.m in Sources */,
+				FC6FED4E1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m in Sources */,
 				EAE32DE41C7E97A600C4CEA2 /* UIWebView+AFNetworking.m in Sources */,
 				EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */,
 				EAE32DDD1C7E97A600C4CEA2 /* AFNetworkActivityIndicatorManager.m in Sources */,

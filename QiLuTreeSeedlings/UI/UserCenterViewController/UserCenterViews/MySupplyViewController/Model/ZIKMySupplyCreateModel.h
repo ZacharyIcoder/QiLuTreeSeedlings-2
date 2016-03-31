@@ -56,5 +56,5 @@
 /**
  *  规格属性(英文名=value)
  */
-@property (nonatomic, copy) NSString *SpecificationAttributes;
+@property (nonatomic, copy) NSArray *specificationAttributes;
 @end
