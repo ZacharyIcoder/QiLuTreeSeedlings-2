@@ -74,6 +74,7 @@
         nameField.placeholder=@"请输入苗木名称";
         [nameView addSubview:nameField];
         nameField.text=@"白玉兰";
+        [nameField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         [nameField setTextColor:NavColor];
         [self.backScrollView addSubview:nameView];
         UIButton *quedingBtn=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nameField.frame)+5, 9, 50, 25)];
@@ -152,6 +153,14 @@
     [self hidingKey];
     [pickLocation showInView];
 }
+- (void)textFieldDidChange:(UITextField *)textField
+{
+    if (textField == self.nameTextField) {
+        if (self.nameBtn.selected==YES) {
+            self.nameBtn.selected=NO;
+        }
+    }
+}
 -(void)selectedLocationInfo:(Province *)location
 {
     NSMutableString *namestr=[NSMutableString new];
@@ -208,6 +217,8 @@
                withSuperView:APPDELEGATE.window];
         return;
     }
+    [self clearOldCellAction];
+    self.dataAry =nil;
     self.productName=self.nameTextField.text;
     [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:[NSString stringWithFormat:@"%ld",(long)self.searchType] Success:^(id responseObject) {
         NSLog(@"%@",responseObject);
@@ -328,6 +339,7 @@
     self.county=nil;
     self.goldsupplier=nil;
     self.gongyingBtn.selected=NO;
+    [self.areaBtn setTitle:@"地区" forState:UIControlStateNormal];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

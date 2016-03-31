@@ -38,6 +38,15 @@
 		EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */; };
 		EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */; };
 		EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */; };
+		EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1CF3FE1CACD11A00AF2D82 /* ActionView.m */; };
+		EA1CF4041CACD11A00AF2D82 /* loading01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF3FF1CACD11A00AF2D82 /* loading01@2x.png */; };
+		EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF4001CACD11A00AF2D82 /* loading02@2x.png */; };
+		EA1CF4061CACD11A00AF2D82 /* loading03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF4011CACD11A00AF2D82 /* loading03@2x.png */; };
+		EA1CF4071CACD11A00AF2D82 /* loading04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF4021CACD11A00AF2D82 /* loading04@2x.png */; };
+		EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF4081CACD4E300AF2D82 /* loading05@2x.png */; };
+		EA1CF4171CACD4E300AF2D82 /* loading06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF4091CACD4E300AF2D82 /* loading06@2x.png */; };
+		EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF40A1CACD4E300AF2D82 /* loading07@2x.png */; };
+		EA1CF4191CACD4E300AF2D82 /* loading08@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF40B1CACD4E300AF2D82 /* loading08@2x.png */; };
 		EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA262B271C8AC299001E8C9C /* PickerShowView.m */; };
 		EA2726FE1C8A7C06000B0719 /* areadb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EA2726FD1C8A7C06000B0719 /* areadb.sqlite */; };
 		EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2727011C8A7CCA000B0719 /* BaseDao.m */; };
@@ -342,6 +351,16 @@
 		EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = noOneCollectCell.m; sourceTree = "<group>"; };
 		EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCollectEmpy@2x.png"; sourceTree = "<group>"; };
 		EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myBuyNull@2x.png"; sourceTree = "<group>"; };
+		EA1CF3FD1CACD11A00AF2D82 /* ActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionView.h; sourceTree = "<group>"; };
+		EA1CF3FE1CACD11A00AF2D82 /* ActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionView.m; sourceTree = "<group>"; };
+		EA1CF3FF1CACD11A00AF2D82 /* loading01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading01@2x.png"; sourceTree = "<group>"; };
+		EA1CF4001CACD11A00AF2D82 /* loading02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading02@2x.png"; sourceTree = "<group>"; };
+		EA1CF4011CACD11A00AF2D82 /* loading03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading03@2x.png"; sourceTree = "<group>"; };
+		EA1CF4021CACD11A00AF2D82 /* loading04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading04@2x.png"; sourceTree = "<group>"; };
+		EA1CF4081CACD4E300AF2D82 /* loading05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading05@2x.png"; sourceTree = "<group>"; };
+		EA1CF4091CACD4E300AF2D82 /* loading06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading06@2x.png"; sourceTree = "<group>"; };
+		EA1CF40A1CACD4E300AF2D82 /* loading07@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading07@2x.png"; sourceTree = "<group>"; };
+		EA1CF40B1CACD4E300AF2D82 /* loading08@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading08@2x.png"; sourceTree = "<group>"; };
 		EA262B261C8AC299001E8C9C /* PickerShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerShowView.h; sourceTree = "<group>"; };
 		EA262B271C8AC299001E8C9C /* PickerShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerShowView.m; sourceTree = "<group>"; };
 		EA2726FD1C8A7C06000B0719 /* areadb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = areadb.sqlite; sourceTree = "<group>"; };
@@ -825,6 +844,7 @@
 		EA040FBC1C8826D900E43B5E /* ActivityView */ = {
 			isa = PBXGroup;
 			children = (
+				EA1CF3FC1CACD11A00AF2D82 /* actionview */,
 				EA040FBD1C8826D900E43B5E /* ToastView.h */,
 				EA040FBE1C8826D900E43B5E /* ToastView.m */,
 			);
@@ -1007,6 +1027,23 @@
 				EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */,
 			);
 			path = noOneCollectCell;
+			sourceTree = "<group>";
+		};
+		EA1CF3FC1CACD11A00AF2D82 /* actionview */ = {
+			isa = PBXGroup;
+			children = (
+				EA1CF4081CACD4E300AF2D82 /* loading05@2x.png */,
+				EA1CF4091CACD4E300AF2D82 /* loading06@2x.png */,
+				EA1CF40A1CACD4E300AF2D82 /* loading07@2x.png */,
+				EA1CF40B1CACD4E300AF2D82 /* loading08@2x.png */,
+				EA1CF3FD1CACD11A00AF2D82 /* ActionView.h */,
+				EA1CF3FE1CACD11A00AF2D82 /* ActionView.m */,
+				EA1CF3FF1CACD11A00AF2D82 /* loading01@2x.png */,
+				EA1CF4001CACD11A00AF2D82 /* loading02@2x.png */,
+				EA1CF4011CACD11A00AF2D82 /* loading03@2x.png */,
+				EA1CF4021CACD11A00AF2D82 /* loading04@2x.png */,
+			);
+			path = actionview;
 			sourceTree = "<group>";
 		};
 		EA2726F81C8A735F000B0719 /* Resource */ = {
@@ -2044,6 +2081,7 @@
 				EA7419F61C8FB5AA00F54478 /* selectBtnAction2@2x.png in Resources */,
 				EAF0510D1C92B3A000F435A9 /* tabbarBackImage1@2x.png in Resources */,
 				EAF050EA1C9286B800F435A9 /* myintegralImage@2x.png in Resources */,
+				EA1CF4071CACD11A00AF2D82 /* loading04@2x.png in Resources */,
 				EA29AA061C856159004913FF /* blueArrow@2x.png in Resources */,
 				EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */,
 				EAF050FB1C92A17400F435A9 /* mySellImageV@2x.png in Resources */,
@@ -2051,6 +2089,7 @@
 				EAEA07EF1C5B085C003A0D8A /* lendMoneyAD1.jpg in Resources */,
 				EA29AA081C856159004913FF /* whiteArrow@2x.png in Resources */,
 				FCF353E11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib in Resources */,
+				EA1CF4171CACD4E300AF2D82 /* loading06@2x.png in Resources */,
 				EAF0510F1C92B3E100F435A9 /* tabbarBackImage2@2x.png in Resources */,
 				EA03CCEC1C8FEFF80032BAD3 /* phoneImage@2x.png in Resources */,
 				EA29AA051C856159004913FF /* blackArrow@2x.png in Resources */,
@@ -2073,6 +2112,7 @@
 				FCF353F11CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
 				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
+				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
 				FCF353E31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
@@ -2088,6 +2128,8 @@
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
 				FC49AE4D1CA90E5C00214D4B /* 苗圃基地选择框.png in Resources */,
 				EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */,
+				EA1CF4041CACD11A00AF2D82 /* loading01@2x.png in Resources */,
+				EA1CF4191CACD4E300AF2D82 /* loading08@2x.png in Resources */,
 				EAF050EC1C928E3300F435A9 /* homePageNomer@2x.png in Resources */,
 				EAF051051C92A31000F435A9 /* zhanzhangtong@2x.png in Resources */,
 				EA5AAC421C8D2DF300660FC9 /* NomerSellMessageBtn@2x.png in Resources */,
@@ -2096,6 +2138,7 @@
 				EAEA07F01C5B085C003A0D8A /* lendMoneyAD2.jpg in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,
+				EA1CF4061CACD11A00AF2D82 /* loading03@2x.png in Resources */,
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
@@ -2107,8 +2150,10 @@
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
 				EA75147D1C9B891E003D63F1 /* treeNameSure@2x.png in Resources */,
+				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
+				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
 				FCF353D81CA3B515001ABA0A /* shangchuanzhaopian@3x.png in Resources */,
@@ -2185,6 +2230,7 @@
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
 				EA6B31C31CABCADC0068CCB5 /* MyBuyNullTableViewCell.m in Sources */,
+				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,
 				EA03405D1C8927CB00FBF148 /* SreeningViewCell.m in Sources */,
 				EA4FF1BD1C9A8DB900441DC3 /* MyBuyListViewController.m in Sources */,
 				EAE32DDE1C7E97A600C4CEA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
