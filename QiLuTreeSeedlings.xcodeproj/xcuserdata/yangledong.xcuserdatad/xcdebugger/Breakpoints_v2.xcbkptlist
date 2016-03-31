@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/UI/SellDetialViewController/sellDetialViewCell/SellQiyeInfoTableViewCell.m"
-            timestampString = "481094573.051335"
+            filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyViewController.m"
+            timestampString = "481095663.111558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-setModel:"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-requestData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

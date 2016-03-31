@@ -10,7 +10,7 @@
 #import "SupplyDetialMode.h"
 #import "SellBanderTableViewCell.h"
 #import "BuyOtherInfoTableViewCell.h"
-#import "SellQiyeInfoTableViewCell.h"
+#import "MySupplyOtherInfoTableViewCell.h"
 @interface ZIKMySupplyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSString                        *uid;
 @property (nonatomic, strong) SupplyDetialMode                *model;
@@ -45,6 +45,8 @@
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic = [responseObject objectForKey:@"result"];
                 SupplyDetialMode *model = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
+                model.supplybuyName=APPDELEGATE.userModel.name;
+                model.phone=APPDELEGATE.userModel.phone;
                 self.model = model;
                 self.nurseryDateArray = dic[@"nurseryNames"];
                 [self.tableView reloadData];
@@ -84,7 +86,7 @@
         return self.model.spec.count*30+10;
     }
     if (indexPath.section==2) {
-        return 130;
+        return self.nurseryDateArray.count*30+100;
     }
     if (indexPath.section==3) {
         NSString *labelText=self.model.descriptions;
@@ -179,8 +181,14 @@
         }
         if(indexPath.section==2)
         {
-            SellQiyeInfoTableViewCell *cell = [[SellQiyeInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 30*4+10)];
+            MySupplyOtherInfoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[MySupplyOtherInfoTableViewCell IDStr]];
+            if (!cell) {
+                cell = [[MySupplyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 30*4+10)];
+                cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            }
+            
             cell.model=self.model;
+            cell.nuseryAry=self.nurseryDateArray;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
         }

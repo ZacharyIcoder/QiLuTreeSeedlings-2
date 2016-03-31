@@ -47,11 +47,11 @@
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 44)];
         [backView setBackgroundColor:BGColor];
         [self addSubview:backView];
-        UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 7, 30, 30)];
+        UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
         [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
         [backBtn setImage:[UIImage imageNamed:@"backBtnBlack"] forState:UIControlStateNormal];
         [backView addSubview:backBtn];
-        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-30, 0, 60, 44)];
+        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-30, 3, 60, 44)];
         titleLab.text=@"筛选";
         [titleLab setTextColor:[UIColor blackColor]];
         titleLab.textAlignment=NSTextAlignmentCenter;
@@ -139,6 +139,11 @@
         [shaixuanBtn setBackgroundColor:NavColor];
         [shaixuanBtn setTitle:@"筛选" forState:UIControlStateNormal];
         [shaixuanBtn addTarget:self action:@selector(screeningViewAction) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*0.4, 44)];
+        [chongzhiBtn setBackgroundColor:kRGB(241, 157, 65, 1)];
+        [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
+        [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [shaixuanView addSubview:chongzhiBtn];
     }
     return self;
 }
@@ -160,6 +165,14 @@
             self.nameBtn.selected=NO;
         }
     }
+}
+-(void)chongzhiBtnAction:(UIButton *)sender
+{
+    [self clearOldCellAction];
+    for (TreeSpecificationsModel *model in self.dataAry) {
+        model.anwser=nil;
+    }
+    [self performSelector:@selector(creatScreeningCells) withObject:nil afterDelay:0.3];
 }
 -(void)selectedLocationInfo:(Province *)location
 {
@@ -233,7 +246,7 @@
             self.dataAry=[dic objectForKey:@"list"];
             sender.selected=YES;
             self.productUid=[dic objectForKey:@"productUid"];
-            
+            self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
         [self creatScreeningCells];
         }
     } failure:^(NSError *error) {
@@ -242,7 +255,7 @@
 }
 -(void)creatScreeningCells
 {
-    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+    
 //    NSLog(@"%@",ary);
     CGFloat Y=132;
    for (int i=0; i<self.dataAry.count; i++) {

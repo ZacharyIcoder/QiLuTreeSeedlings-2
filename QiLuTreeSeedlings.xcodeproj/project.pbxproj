@@ -164,6 +164,7 @@
 		EAEB63BD1C90FC1E0001ABC9 /* NSString+Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63BC1C90FC1E0001ABC9 /* NSString+Phone.m */; };
 		EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEB63BE1C911AA20001ABC9 /* yanzhengCode@2x.png */; };
 		EAEB63C21C9147D50001ABC9 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63C11C9147D50001ABC9 /* UserInfoModel.m */; };
+		EAED648F1CACF335000A228B /* MySupplyOtherInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAED648E1CACF335000A228B /* MySupplyOtherInfoTableViewCell.m */; };
 		EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF050E11C924BEE00F435A9 /* UserBigInfoTableViewCell.m */; };
 		EAF050E41C924FB300F435A9 /* userBigInfoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAF050E31C924FB300F435A9 /* userBigInfoBack@2x.png */; };
 		EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAF050E51C92538800F435A9 /* UserImageV@2x.png */; };
@@ -553,6 +554,8 @@
 		EAEB63BE1C911AA20001ABC9 /* yanzhengCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yanzhengCode@2x.png"; sourceTree = "<group>"; };
 		EAEB63C01C9147D50001ABC9 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		EAEB63C11C9147D50001ABC9 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
+		EAED648D1CACF335000A228B /* MySupplyOtherInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySupplyOtherInfoTableViewCell.h; sourceTree = "<group>"; };
+		EAED648E1CACF335000A228B /* MySupplyOtherInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySupplyOtherInfoTableViewCell.m; sourceTree = "<group>"; };
 		EAF050E01C924BEE00F435A9 /* UserBigInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBigInfoTableViewCell.h; sourceTree = "<group>"; };
 		EAF050E11C924BEE00F435A9 /* UserBigInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBigInfoTableViewCell.m; sourceTree = "<group>"; };
 		EAF050E31C924FB300F435A9 /* userBigInfoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userBigInfoBack@2x.png"; sourceTree = "<group>"; };
@@ -1369,6 +1372,8 @@
 				EA7AE8E21C9655E500B43073 /* SellBanderTableViewCell.m */,
 				EA7AE8ED1C96908B00B43073 /* SellQiyeInfoTableViewCell.h */,
 				EA7AE8EE1C96908B00B43073 /* SellQiyeInfoTableViewCell.m */,
+				EAED648D1CACF335000A228B /* MySupplyOtherInfoTableViewCell.h */,
+				EAED648E1CACF335000A228B /* MySupplyOtherInfoTableViewCell.m */,
 			);
 			path = sellDetialViewCell;
 			sourceTree = "<group>";
@@ -2290,6 +2295,7 @@
 				FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */,
 				EA1120CE1CA62BE300857E48 /* NurseryModel.m in Sources */,
 				FCF353FB1CA3E032001ABA0A /* ZIKSelectView.m in Sources */,
+				EAED648F1CACF335000A228B /* MySupplyOtherInfoTableViewCell.m in Sources */,
 				FC21BC7C1CA51C930041E2C3 /* IQNSArray+Sort.m in Sources */,
 				FC21BC7D1CA51C930041E2C3 /* IQUIScrollView+Additions.m in Sources */,
 				EAE32DDB1C7E97A600C4CEA2 /* AFURLResponseSerialization.m in Sources */,
