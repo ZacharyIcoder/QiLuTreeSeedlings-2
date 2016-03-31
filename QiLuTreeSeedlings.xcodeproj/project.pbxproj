@@ -37,6 +37,7 @@
 		EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4D81C93A57E00A33BD3 /* MyCollectViewController.m */; };
 		EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */; };
 		EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */; };
+		EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */; };
 		EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA262B271C8AC299001E8C9C /* PickerShowView.m */; };
 		EA2726FE1C8A7C06000B0719 /* areadb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EA2726FD1C8A7C06000B0719 /* areadb.sqlite */; };
 		EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2727011C8A7CCA000B0719 /* BaseDao.m */; };
@@ -82,6 +83,7 @@
 		EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */; };
 		EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */; };
 		EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */; };
+		EA6B31C31CABCADC0068CCB5 /* MyBuyNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31C21CABCADC0068CCB5 /* MyBuyNullTableViewCell.m */; };
 		EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7056521C9F86F500E9D253 /* CompanyViewController.m */; };
 		EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */; };
 		EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419ED1C8FB21600F54478 /* searchBtnAction@2x.png */; };
@@ -338,6 +340,7 @@
 		EA16C4DB1C93B5EB00A33BD3 /* noOneCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noOneCollectCell.h; sourceTree = "<group>"; };
 		EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = noOneCollectCell.m; sourceTree = "<group>"; };
 		EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCollectEmpy@2x.png"; sourceTree = "<group>"; };
+		EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myBuyNull@2x.png"; sourceTree = "<group>"; };
 		EA262B261C8AC299001E8C9C /* PickerShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerShowView.h; sourceTree = "<group>"; };
 		EA262B271C8AC299001E8C9C /* PickerShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerShowView.m; sourceTree = "<group>"; };
 		EA2726FD1C8A7C06000B0719 /* areadb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = areadb.sqlite; sourceTree = "<group>"; };
@@ -410,6 +413,8 @@
 		EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuseryListViewController.m; sourceTree = "<group>"; };
 		EA6B31BB1CABA5F70068CCB5 /* NuseryDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryDetialViewController.h; sourceTree = "<group>"; };
 		EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryDetialViewController.m; sourceTree = "<group>"; };
+		EA6B31C11CABCADC0068CCB5 /* MyBuyNullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBuyNullTableViewCell.h; sourceTree = "<group>"; };
+		EA6B31C21CABCADC0068CCB5 /* MyBuyNullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyNullTableViewCell.m; sourceTree = "<group>"; };
 		EA7056511C9F86F500E9D253 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
 		EA7056521C9F86F500E9D253 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
 		EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delectLiteBtn@2x.png"; sourceTree = "<group>"; };
@@ -1004,6 +1009,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */,
 				EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */,
 				EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */,
 				EA1120D61CA678C000857E48 /* nuseryBase@2x.png */,
@@ -1171,6 +1177,8 @@
 			children = (
 				EA4FF1BB1C9A8DB900441DC3 /* MyBuyListViewController.h */,
 				EA4FF1BC1C9A8DB900441DC3 /* MyBuyListViewController.m */,
+				EA6B31C11CABCADC0068CCB5 /* MyBuyNullTableViewCell.h */,
+				EA6B31C21CABCADC0068CCB5 /* MyBuyNullTableViewCell.m */,
 			);
 			path = MyBuyLIstViewController;
 			sourceTree = "<group>";
@@ -1478,12 +1486,9 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
-
 				FC4B4F3B1CABB7A900EBB2F8 /* SetVC */,
 				FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */,
-
 				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
-
 				FC6149DC1CAA2E0600672241 /* UserInfoSetVC */,
 				FCF353791CA3B514001ABA0A /* MySupplyViewController */,
 				EA7056501C9F869900E9D253 /* CompanyInfoViewController */,
@@ -2069,6 +2074,7 @@
 				EA03CCEF1C90035B0032BAD3 /* phoneLiteImage@2x.png in Resources */,
 				FC49AE4E1CA90E5C00214D4B /* 苗圃基地已选择框.png in Resources */,
 				EAF050F01C92939E00F435A9 /* userInfoNomer@2x.png in Resources */,
+				EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */,
 				EA03CCF11C9003AC0032BAD3 /* passwordLiteImage@2x.png in Resources */,
 				EAB7819A1C8E970F00807B44 /* collectionN@2x.png in Resources */,
 				EAF051011C92A2B700F435A9 /* mycompany@2x.png in Resources */,
@@ -2173,6 +2179,7 @@
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
+				EA6B31C31CABCADC0068CCB5 /* MyBuyNullTableViewCell.m in Sources */,
 				EA03405D1C8927CB00FBF148 /* SreeningViewCell.m in Sources */,
 				EA4FF1BD1C9A8DB900441DC3 /* MyBuyListViewController.m in Sources */,
 				EAE32DDE1C7E97A600C4CEA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2188,11 +2195,7 @@
 				FCF353D91CA3B515001ABA0A /* StringAttribute.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
 				FC49AE431CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m in Sources */,
-
 				FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */,
-				EA1120D21CA65DF500857E48 /* NuseryDetialViewController.m in Sources */,
-
-
 				EA040FBF1C8826D900E43B5E /* ToastView.m in Sources */,
 				EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */,
 				EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */,

@@ -69,8 +69,17 @@
     if (section==0||section==3||section==4) {
         return 1;
     }
-    if (section==1||section==2) {
+    if (section==1) {
         return 3;
+    }
+    if(section==2)
+    {
+        if (APPDELEGATE.userModel.isworkstation) {
+            return 3;
+        }else
+        {
+            return 2;
+        }
     }
     return 0;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "HotBuyModel.h"
-
+#import "ZIKFunction.h"
 @implementation HotBuyModel
 +(HotBuyModel *)hotBuyModelCreatByDic:(NSDictionary *)dic
 {
@@ -23,6 +23,8 @@
         model.count=[[dic objectForKey:@"count"] integerValue];
         model.uid=[dic objectForKey:@"uid"];
         model.supplybuyUid=[dic objectForKey:@"supplybuyUid"];
+        NSDate *creatTimeDate=[ZIKFunction getDateFromString:model.creatTime];
+        model.timeAger=[ZIKFunction compareCurrentTime:creatTimeDate];
     }
     return model;
 }

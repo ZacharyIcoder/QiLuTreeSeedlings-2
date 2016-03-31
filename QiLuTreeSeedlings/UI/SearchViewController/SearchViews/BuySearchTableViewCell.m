@@ -30,7 +30,7 @@
         UIImageView *dingweiImage=[[UIImageView alloc]initWithFrame:CGRectMake(20, 38, 15, 15)];
         [dingweiImage setImage:[UIImage imageNamed:@"region"]];
         [self addSubview:dingweiImage];
-        self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(38, 40, 40, 12)];
+        self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(38, 40, 60, 12)];
         [self.cityLab setFont:[UIFont systemFontOfSize:10]];
         [self.cityLab setText:@"临沂"];
         [self addSubview:self.cityLab];
@@ -67,13 +67,9 @@
     _hotBuyModel=hotBuyModel;
     self.titleLab.text=hotBuyModel.title;
     self.cityLab.text=hotBuyModel.area;
-    NSArray *timeAry=[hotBuyModel.creatTime componentsSeparatedByString:@" "];
-    NSString *time1Str=[timeAry firstObject];
-    NSArray *timeAry2=[time1Str componentsSeparatedByString:@"-"];
-    
-    if (timeAry2.count==3) {
-        self.timeLab.text=[NSString stringWithFormat:@"%@月%@日",timeAry2[1],timeAry2[2]];
-    }
+   
+        self.timeLab.text=hotBuyModel.timeAger;
+   
     
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];

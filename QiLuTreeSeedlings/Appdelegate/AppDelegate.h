@@ -19,6 +19,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) UserInfoModel *userModel;
 @property (nonatomic, strong) BusinessMesageModel *companyModel;
+@property (nonatomic)BOOL isCanPublishBuy;
 -(BOOL)isNeedLogin;
 -(BOOL)isNeedCompany;
 -(void)reloadUserInfoSuccess:(void (^)(id responseObject))success
@@ -26,7 +27,7 @@
 -(void)logoutAction;
 -(void)reloadCompanyInfo;
 - (void)saveContext;
-
+- (void)requestBuyRestrict;
 - (NSURL *)applicationDocumentsDirectory;
 @end
 

@@ -24,6 +24,7 @@
 @property (nonatomic,strong)NSMutableArray *cellAry;
 @property (nonatomic,strong)BuyDetialModel *model;
 @property (nonatomic,strong)NSDictionary *baseMessageDic;
+@property (nonatomic) BOOL isCanPublish;
 @end
 
 @implementation buyFabuViewController
@@ -75,7 +76,7 @@
     nameTextField.textColor=NavColor;
     nameTextField.text=@"油松";
     nameTextField.delegate=self;
-  
+  [nameTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     self.nameTextField=nameTextField;
     [nameView addSubview:nameTextField];
     UIButton *nameBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];
@@ -103,7 +104,14 @@
         [self editingMyBuy];
     }
 }
-
+- (void)textFieldDidChange:(UITextField *)textField
+{
+    if (textField == self.nameTextField) {
+        if (self.nameBtn.selected==YES) {
+            self.nameBtn.selected=NO;
+        }
+    }
+}
 -(void)editingMyBuy
 {
     self.titleTextField.text=self.model.title;
@@ -245,8 +253,11 @@
     //        }else
     self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
    
-    
-    //    NSLog(@"%@",ary);
+    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([myview isKindOfClass:[SreeningViewCell class]]) {
+            [myview removeFromSuperview];
+        }
+    }];
     CGFloat Y=88;
     for (int i=0; i<self.dataAry.count; i++) {
         TreeSpecificationsModel *model=self.dataAry[i];
@@ -269,7 +280,7 @@
         [cell setBackgroundColor:[UIColor whiteColor]];
         [self.backScrollView addSubview:cell];
     }
-    [self.backScrollView setContentSize:CGSizeMake(0, Y+60)];
+    [self.backScrollView setContentSize:CGSizeMake(0, Y+20)];
     
 }
 -(void)creatScreeningCells
@@ -277,51 +288,34 @@
     self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
     //    NSLog(@"%@",ary);
     CGFloat Y=88;
+    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([myview isKindOfClass:[SreeningViewCell class]]) {
+            [myview removeFromSuperview];
+        }
+    }];
     for (int i=0; i<self.dataAry.count; i++) {
         SreeningViewCell *cell;
         cell=[[SreeningViewCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i]];
         [cellAry addObject:cell.model];
         Y=CGRectGetMaxY(cell.frame);
-       // cell.delegate=self;
         [cell setBackgroundColor:[UIColor whiteColor]];
         [self.backScrollView addSubview:cell];
     }
-    [self.backScrollView setContentSize:CGSizeMake(0, Y+60)];
+    [self.backScrollView setContentSize:CGSizeMake(0, Y+20)];
 }
 -(void)cellBeginEditing:(UITextField *)field
 {
     self.nowTextField=field;
 }
-//-(void)cellEndEditing
-//{
-//    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-//        return;
-//    }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-44-44;
-//    self.backScrollView.frame=frame;
-//}
-//-(void)cellKeyHight:(CGFloat)hight
-//{
-//    if (self.backScrollView.frame.size.height==kHeight-hight-44-44) {
-//        return;
-//    }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-hight-44-44;
-//    self.backScrollView.frame=frame;
-//}
+
 -(void)hidingKey
 {
     if (self.nowTextField) {
         [self.nowTextField resignFirstResponder];
     }
-//    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-//        return;
-//    }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-44-44;
-//    self.backScrollView.frame=frame;
 }
+
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self hidingKey];

@@ -45,19 +45,13 @@
         [self addSubview:priceLab];
         self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width*0.9-25, 35, 45, 15)];
         [self.priceLab setFont:[UIFont systemFontOfSize:14]];
-         [self.priceLab setText:@"O元"];
-        NSArray *timeAry=[model.creatTime componentsSeparatedByString:@" "];
-        NSString *time1Str=[timeAry firstObject];
-        NSArray *timeAry2=[time1Str componentsSeparatedByString:@"-"];
-         
-         if (timeAry2.count==3) {
-             self.timelLab.text=[NSString stringWithFormat:@"%@月%@日",timeAry2[1],timeAry2[2]];
-         }
+        [self.priceLab setTextColor:[UIColor orangeColor]];
+       self.timelLab.text=  model.timeAger;
          NSArray *priceAry=[model.price componentsSeparatedByString:@"."];
          self.priceLab.text=[priceAry firstObject];
        
         [self addSubview:self.priceLab];
-          [self.priceLab setTextColor:[UIColor lightGrayColor]];
+          //[self.priceLab setTextColor:[UIColor lightGrayColor]];
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, self.frame.size.height-0.5, self.frame.size.width-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self addSubview:imageVLine];
@@ -69,13 +63,9 @@
     _model=model;
     self.titleLab.text=model.title;
     self.cityLab.text=model.area;
-    NSArray *timeAry=[model.creatTime componentsSeparatedByString:@" "];
-    NSString *time1Str=[timeAry firstObject];
-    NSArray *timeAry2=[time1Str componentsSeparatedByString:@"-"];
+  
+    self.timelLab.text=model.timeAger;
     
-    if (timeAry2.count==3) {
-        self.timelLab.text=[NSString stringWithFormat:@"%@月%@日",timeAry2[1],timeAry2[2]];
-    }
     NSArray *priceAry=[model.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];
 

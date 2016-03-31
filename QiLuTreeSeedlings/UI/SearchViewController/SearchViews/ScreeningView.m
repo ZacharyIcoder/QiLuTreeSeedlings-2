@@ -24,6 +24,7 @@
 @property (nonatomic,strong) UIButton *areaBtn;
 @property (nonatomic,weak) UITextField *nowTextFlield;
 @property (nonatomic,strong)NSMutableArray *cellAry;
+@property (nonatomic,strong)UIButton *nameBtn;
 @end
 @implementation ScreeningView
 @synthesize gongyingBtn,pickLocation,cellAry;
@@ -34,16 +35,6 @@
     if (self) {
         self.searchType=1;
         cellAry =[NSMutableArray array];
-//        cgd
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            CGRect tempxFrame = [[UIScreen mainScreen] bounds];
-//            if (!pickLocation) {
-//                pickLocation = [[PickerLocation alloc] initWithFrame:tempxFrame];
-//                
-//                pickLocation.locationDelegate = self;
-//            }
-//        });
-        
         [[NSNotificationCenter defaultCenter] addObserver:self
          
                                                  selector:@selector(hidingKey)
@@ -88,14 +79,9 @@
         UIButton *quedingBtn=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nameField.frame)+5, 9, 50, 25)];
         [nameView addSubview:quedingBtn];
         [quedingBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-//        [quedingBtn setTitleColor:NavColor forState:UIControlStateNormal];
-//        quedingBtn.layer.cornerRadius=3;
-//        quedingBtn.layer.borderColor=NavColor.CGColor;
-//        quedingBtn.layer.borderWidth=0.5;
-        //[quedingBtn setTitle:@"确定" forState:UIControlStateNormal];
         [quedingBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
         [quedingBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
-       // [nameView addSubview:quedingBtn];
+        self.nameBtn=quedingBtn;
         tempFrame.origin.y+=50;
         UIView *gongyingshangView=[[UIView alloc]initWithFrame:tempFrame];
         UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
@@ -254,7 +240,6 @@
        [cellAry addObject:cell.model];
 
        Y=CGRectGetMaxY(cell.frame);
-       //cell.delegate=self;
        [self.backScrollView addSubview:cell];
     }
     [self.backScrollView setContentSize:CGSizeMake(0, Y)];
@@ -282,35 +267,13 @@
 //    frame.size.height=kHeight-345;
 //    self.backScrollView.frame=frame;
 }
-//-(void)cellKeyHight:(CGFloat)hight
-//{
-//    if (self.backScrollView.frame.size.height==kHeight-hight-44-44) {
-//        return;
-//    }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-hight-44-44;
-//    self.backScrollView.frame=frame;
-//}
-//-(void)cellEndEditing
-//{
-////    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-////        return;
-////    }
-////    CGRect frame=self.backScrollView.frame;
-////    frame.size.height=kHeight-44-44;
-////    self.backScrollView.frame=frame;
-//}
+
 -(void)hidingKey
 {
     if (self.nowTextFlield) {
         [self.nowTextFlield resignFirstResponder];
     }
-//    if (self.backScrollView.frame.size.height==kHeight-44-44) {
-//        return;
-//    }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-44-44;
-//    self.backScrollView.frame=frame;
+
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -348,9 +311,23 @@
         [self.delegate creeingActionWithAry:screenTijiaoAry WithProvince:self.province WihtCity:self.City  WithCounty:self.county WithGoldsupplier:self.goldsupplier WithProductUid:self.productUid withProductName:self.productName
          ];
     }
-   // NSLog(@"%@",screenTijiaoAry);
-//    NSDictionary *dic=[]
     
+}
+-(void)clearOldCellAction
+{
+    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([myview isKindOfClass:[SreeningViewCell class]]) {
+            [myview removeFromSuperview];
+        }
+    }];
+    self.province=nil;
+    self.productUid=nil;
+    self.productName=nil;
+    self.City=nil;
+    [self.cellAry removeAllObjects];
+    self.county=nil;
+    self.goldsupplier=nil;
+    self.gongyingBtn.selected=NO;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

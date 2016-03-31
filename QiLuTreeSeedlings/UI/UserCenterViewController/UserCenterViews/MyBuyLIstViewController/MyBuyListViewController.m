@@ -16,6 +16,7 @@
 #import "BuySearchTableViewCell.h"
 #import "BuyDetialInfoViewController.h"
 #import "buyFabuViewController.h"
+#import "MyBuyNullTableViewCell.h"
 @interface MyBuyListViewController ()<UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate>
 @property (nonatomic) NSInteger PageCount;
 @property (nonatomic,strong) NSMutableArray *dataAry;
@@ -36,6 +37,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [APPDELEGATE requestBuyRestrict];
     [self makeNavView];
     PullTableView *tableView=[[PullTableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
     tableView.delegate=self;
@@ -43,11 +45,16 @@
     tableView.pullDelegate=self;
     [self.view addSubview:tableView];
     self.pullTableView=tableView;
+    [self.pullTableView setBackgroundColor:BGColor];
 }
 
 
 -(void)editingBtnAction:(UIButton *)sender
 {
+    if ([APPDELEGATE isCanPublishBuy]==NO) {
+        [ToastView showTopToast:@"暂无发布权限"];
+        return;
+    }
     buyFabuViewController *buyFaBuVC=[[buyFabuViewController alloc]init];
     [self.navigationController pushViewController:buyFaBuVC animated:YES];       
 }
@@ -100,12 +107,14 @@
     }
     
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.dataAry.count==0)
     {
         if (indexPath.row==0) {
-            UITableViewCell *cell=[[UITableViewCell alloc]init];
+            MyBuyNullTableViewCell *cell=[[MyBuyNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 260)];
+            [cell.fabuBtn addTarget:self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
     }else
@@ -148,7 +157,12 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.dataAry.count==0) {
+        return 260;
+    }else
+    {
     return 70;
+    }
 }
 -(void)backBtnAction:(UIButton *)sender
 {

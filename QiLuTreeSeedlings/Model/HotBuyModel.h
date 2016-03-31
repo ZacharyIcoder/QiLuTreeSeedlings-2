@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSString *supplybuyUid;
 @property (nonatomic)NSInteger New;
 @property (nonatomic)NSInteger effect;
+@property (nonatomic,strong) NSString *timeAger;
 +(HotBuyModel *)hotBuyModelCreatByDic:(NSDictionary *)dic;
 +(NSArray *)creathotBuyModelAryByAry:(NSArray *)ary;
 @end

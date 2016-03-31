@@ -41,12 +41,24 @@
     
     UILabel *valueLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 5, 200, 20)];
     NSArray *valueAry=[dic objectForKey:@"value"];
-    NSString *valueStr;
+    NSMutableString *valueStr;
     if (valueAry.count==1) {
-        valueStr=[NSString stringWithFormat:@"%@ %@",valueAry[0],[dic objectForKey:@"unit"]];
+        valueStr=[NSMutableString stringWithFormat:@"%@",valueAry[0]];
+        NSString *unit=[dic objectForKey:@"unit"];
+        if (unit.length>0) {
+            [valueStr appendString:unit];
+        }
     }else
     {
-        valueStr=[NSString stringWithFormat:@"%@~%@ %@",valueAry[0],[valueAry lastObject],[dic objectForKey:@"unit"]];
+        
+        if (valueAry.count>1) {
+            valueStr=[NSMutableString stringWithFormat:@"%@",valueAry[0]];
+            for (int k=1; k<valueAry.count; k++) {
+                [valueStr appendFormat:@"~%@",valueAry[k]];
+            }
+//            valueStr appendFormat:@" %@",
+        }
+        
     }
     
     valueLab.text=valueStr;

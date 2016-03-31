@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseTabBarController : UITabBarController
-
+@property (nonatomic,weak)UIButton *homePageBtn;
+@property (nonatomic,weak)UIButton *userInfoBtn;
 @end

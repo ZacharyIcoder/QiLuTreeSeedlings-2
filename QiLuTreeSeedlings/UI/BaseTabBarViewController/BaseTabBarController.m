@@ -16,8 +16,6 @@
 @interface BaseTabBarController ()
 @property UIView *BTabBar;
 @property BOOL TabBarHiden;
-@property (nonatomic,weak)UIButton *homePageBtn;
-@property (nonatomic,weak)UIButton *userInfoBtn;
 @end
 
 @implementation BaseTabBarController
@@ -126,19 +124,6 @@
             [self presentViewController:navVC animated:YES completion:^{
                 
             }];
-
-//            UIAlertController *alertV=[UIAlertController alertControllerWithTitle:@"未登录" message:@"您未登录，请先登录" preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *cancelAction=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//                            }];
-//            UIAlertAction *quedingAciton=[UIAlertAction actionWithTitle:@"登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                
-//            }];
-//            [alertV addAction:cancelAction];
-//            [alertV addAction:quedingAciton];
-//            
-//            [self presentViewController:alertV animated:YES completion:^{
-//                
-//            }];
             return;
         }
         self.selectedIndex=1;

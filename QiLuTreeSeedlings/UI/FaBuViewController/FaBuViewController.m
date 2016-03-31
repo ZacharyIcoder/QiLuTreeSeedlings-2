@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [APPDELEGATE requestBuyRestrict];
      UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
     [self.view setBackgroundColor:BGColor];
@@ -98,9 +99,17 @@
 }
 -(void)fabuBuyMessage
 {
-    buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
-    [self.navigationController pushViewController:fabuVC animated:YES];
+    if (APPDELEGATE.isCanPublishBuy) {
+        buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
+        [self.navigationController pushViewController:fabuVC animated:YES];
+    }else
+    {
+        [ToastView showTopToast:@"您没有求购发布权限"];
+    }
+
+    
 }
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

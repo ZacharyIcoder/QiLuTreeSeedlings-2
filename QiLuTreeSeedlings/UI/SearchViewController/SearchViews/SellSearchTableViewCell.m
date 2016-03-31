@@ -80,7 +80,7 @@
     self.titleLab.text=hotSellModel.title;
     self.numLab.text=hotSellModel.count;
     self.cityLab.text=hotSellModel.area;
-    
+    self.timeLab.text=  hotSellModel.timeAger;
 }
 - (void)awakeFromNib {
     // Initialization code

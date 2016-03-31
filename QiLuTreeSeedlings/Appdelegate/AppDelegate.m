@@ -33,7 +33,7 @@
     self.window.rootViewController = mainController;
     [self.window makeKeyAndVisible];
     [self initData];
-    
+
     self.userModel = [[UserInfoModel alloc]init];
     //自动登录
     NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
@@ -87,6 +87,23 @@
 {
     return (self.companyModel.uid) ? YES : NO;
 }
+- (void)requestBuyRestrict {
+    HttpClient *httpClient=[HttpClient sharedClient];
+    //供求发布限制
+    [httpClient getSupplyRestrictWithToken:APPDELEGATE.userModel.access_token  withId:APPDELEGATE.userModel.access_id withClientId:nil withClientSecret:nil withDeviceId:nil withType:@"1" success:^(id responseObject) {
+        NSDictionary *dic=[responseObject objectForKey:@"result"];
+        if ( [dic[@"count"] integerValue] == 0) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
+            self.isCanPublishBuy = NO;
+            //NSLog(@"不可发布");
+        }
+        else {
+            //NSLog(@"可发布");
+            self.isCanPublishBuy = YES;
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 -(void)reloadUserInfoSuccess:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure
 {
@@ -117,18 +134,10 @@
     [userDefaults removeObjectForKey:kACCESS_TOKEN];
     [userDefaults synchronize];
     self.userModel=[[UserInfoModel alloc]init];
+    BaseTabBarController *baseB=(BaseTabBarController *)self.window.rootViewController;
+    baseB.homePageBtn.selected=YES;
+    baseB.userInfoBtn.selected=NO;
 }
-
-
-
-
-
-
-
-
-
-
-
 #pragma mark - 用户通知(推送) _自定义方法
 
 /** 注册用户通知 */

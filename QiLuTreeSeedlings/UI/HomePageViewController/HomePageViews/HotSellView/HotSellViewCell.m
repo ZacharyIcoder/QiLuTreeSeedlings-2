@@ -79,13 +79,8 @@
         [lineV setBackgroundColor:kLineColor];
         self.numLab.text=[NSString stringWithFormat:@"%@",Model.count];
         
-        NSArray *timeAry=[Model.createTime componentsSeparatedByString:@" "];
-        NSString *time1Str=[timeAry firstObject];
-        NSArray *timeAry2=[time1Str componentsSeparatedByString:@"-"];
+                    self.timeLab.text=Model.timeAger;
         
-        if (timeAry2.count==3) {
-            self.timeLab.text=[NSString stringWithFormat:@"%@月%@日",timeAry2[1],timeAry2[2]];
-        }
         NSArray *priceAry=[Model.price componentsSeparatedByString:@"."];
         self.priceLab.text=[priceAry firstObject];
         [self addSubview:lineV];
@@ -98,13 +93,7 @@
      [self.bigImageV setImageWithURL:[NSURL URLWithString:model.iamge] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
     self.titleLab.text=model.title;
     self.numLab.text=[NSString stringWithFormat:@"%@",model.count];
-    NSArray *timeAry=[model.createTime componentsSeparatedByString:@" "];
-    NSString *time1Str=[timeAry firstObject];
-    NSArray *timeAry2=[time1Str componentsSeparatedByString:@"-"];
-    
-    if (timeAry2.count==3) {
-        self.timeLab.text=[NSString stringWithFormat:@"%@月%@日",timeAry2[1],timeAry2[2]];
-    }
+    self.timeLab.text=model.timeAger;
     NSArray *priceAry=[model.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];
     self.cityLab.text=model.area;
