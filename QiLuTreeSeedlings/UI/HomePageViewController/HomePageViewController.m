@@ -53,10 +53,14 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"showTabBar" object:nil];
 }
 
-
+-(void)login
+{
+        self.loginBtn.hidden=YES;
+  
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
   
     HttpClient *httpClient=[HttpClient sharedClient];
     [httpClient getHomePageInfoSuccess:^(id responseObject) {

@@ -45,9 +45,9 @@
         self.userModel.access_id = uid;
         ShowActionV();
         [self reloadUserInfoSuccess:^(id responseObject) {
-           RemoveActionV();
+          
         } failure:^(NSError *error) {
-           RemoveActionV();
+           
         }];
         
     }
@@ -109,9 +109,10 @@
                      failure:(void (^)(NSError *error))failure
 {
     [HTTPCLIENT getUserInfoByToken:self.userModel.access_token byAccessId:self.userModel.access_id Success:^(id responseObject) {
+        RemoveActionV();
         if (![[responseObject objectForKey:@"success"] integerValue]) {
             //NSLog(@"%@",responseObject);
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:nil];
             if ([[responseObject objectForKey:@"error_code"] integerValue]==401) {
                 [self logoutAction];
             }
@@ -124,7 +125,7 @@
         }
        
     } failure:^(NSError *error) {
-        
+        RemoveActionV();
     }];
 }
 -(void)logoutAction
