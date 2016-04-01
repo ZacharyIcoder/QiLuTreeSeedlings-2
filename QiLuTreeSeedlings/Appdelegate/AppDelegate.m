@@ -14,11 +14,17 @@
 #import "ToastView.h"
 
 #import "KeyboardManager.h"
+//友盟
+#import "UMSocial.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocialWechatHandler.h"
+//微信
+#import "WXApi.h"
 
 #define kGtAppId           @"dxb5cYhXBW6yYLPsAfvtGA"
 #define kGtAppKey          @"m2iC5d15as6Vub2OGIaxP6"
 #define kGtAppSecret       @"9IHKXKIl7G7ozrvkOMQvx7"
-@interface AppDelegate ()<GeTuiSdkDelegate>
+@interface AppDelegate ()<GeTuiSdkDelegate,WXApiDelegate>
 
 @end
 
@@ -33,6 +39,17 @@
     self.window.rootViewController = mainController;
     [self.window makeKeyAndVisible];
     [self initData];
+
+    /*******************友盟分享*******************/
+    [UMSocialData setAppKey:@"569c3c37e0f55a8e3b001658"];
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:@"wx81b3cb415126671c" appSecret:@"1b7fcde03f9b195e9bc66db37e62ff07" url:@"http://baidu.com"];
+    //设置分享到QQ/Qzone的应用Id，和分享url 链接
+    [UMSocialQQHandler setQQWithAppId:@"1105228677" appKey:@"APPkey:zFz7sJCdNgUhRmJi" url:@"http://www.qlmm.cn"];//16位0x41E07385
+    //向微信注册wx15fce880e520ad30
+    [WXApi registerApp:@"wx81b3cb415126671c" withDescription:@"齐鲁苗木网"];
+    /*******************友盟分享*******************/
+
 
     self.userModel = [[UserInfoModel alloc]init];
     //自动登录
@@ -452,5 +469,140 @@
         }
     }
 }
+
+
+#pragma mark - 微信支付
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return  [WXApi handleOpenURL:url delegate:self];
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    BOOL appJump;
+
+    if ([url.host isEqualToString:@"response_from_qq"] || [url.host isEqualToString:@"platformId=wechat"]) {
+
+        return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+    }
+
+    //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
+    if ([url.host isEqualToString:@"safepay"]) {
+//        appJump = YES;
+//        [[AlipaySDK defaultService]
+//         processOrderWithPaymentResult:url
+//         standbyCallback:^(NSDictionary *resultDic) {
+//
+//             NSString *aliRetValue = nil;
+//
+//             if([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"])
+//             {
+//                 aliRetValue = @"付款成功";
+//                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil userInfo:nil];
+//             }else
+//             {
+//                 aliRetValue = @"付款失败";
+//             }
+//
+//             UIAlertView *aliPayAlert = [[UIAlertView alloc]initWithTitle:@"支付" message:aliRetValue delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+//             aliPayAlert.delegate = self;
+//             aliPayAlert.tag = PAY_ALERT_TAG;
+//             [aliPayAlert show];
+//
+//
+//         }];
+    }else{   //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
+
+        if ([url.host isEqualToString:@"pay"]) {
+
+            appJump = [WXApi handleOpenURL:url delegate:self];
+
+        }else
+        {
+            appJump = [UMSocialSnsService handleOpenURL:url];
+
+        }
+    }
+    return  appJump;
+}
+
+#pragma mark -------WXPAY------------------------
+
+-(void) onReq:(BaseReq*)req
+{
+    if([req isKindOfClass:[GetMessageFromWXReq class]])
+    {
+        // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
+        NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
+        NSString *strMsg = @"微信请求App提供内容，App要调用sendResp:GetMessageFromWXResp返回给微信";
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        alert.tag = 1000;
+        [alert show];
+    }
+    else if([req isKindOfClass:[ShowMessageFromWXReq class]])
+    {
+        ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
+        WXMediaMessage *msg = temp.message;
+
+        //显示微信传过来的内容
+        WXAppExtendObject *obj = msg.mediaObject;
+
+        NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
+        NSString *strMsg = [NSString stringWithFormat:@"标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%lu bytes\n\n", msg.title, msg.description, obj.extInfo, (unsigned long)msg.thumbData.length];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else if([req isKindOfClass:[LaunchFromWXReq class]])
+    {
+        //从微信启动App
+        NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
+        NSString *strMsg = @"这是从微信启动的消息";
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+
+
+-(void) onResp:(BaseResp*)resp
+{
+
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    NSString *strTitle;
+
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+    }
+    if([resp isKindOfClass:[PayResp class]]){
+
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+
+        strTitle           = [NSString stringWithFormat:@"支付结果"];
+
+        switch (resp.errCode) {
+            case WXSuccess:
+                strMsg = @"支付结果：成功！";
+                //                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil userInfo:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
+                break;
+
+            default:
+
+                strMsg = [NSString stringWithFormat:@"支付结果：失败！"];
+                break;
+        }
+
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        alert.tag          = PAY_ALERT_TAG;
+//        [alert show];
+    }
+    
+    
+}
+
 
 @end
