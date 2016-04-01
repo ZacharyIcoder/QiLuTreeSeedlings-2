@@ -14,6 +14,7 @@
 {
     self=[super init];
     if (self) {
+        self.cellAry = [NSMutableArray array];
         [self setFrame:CGRectMake(0, Y, kWidth, 60*ary.count)];
         for (int i=0; i<ary.count; i++) {
             HotBuyModel *model=ary[i];
@@ -21,6 +22,7 @@
             [cell.actionBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];  
             [self addSubview:cell];
             cell.actionBtn.tag=i;
+            [self.cellAry addObject:cell];
             [self setBackgroundColor:[UIColor whiteColor]];
         }
     }
@@ -30,15 +32,21 @@
 {
     if (self.delegate) {
        // [self.delegate HotBuyViewsPush:sender.tag];
-        if (_dataAry.count>sender.tag) {
+//        if (_dataAry.count>sender.tag) {
             HotBuyModel *model=self.dataAry[sender.tag];
             [self.delegate HotBuyViewsPush:model];
-        }
+//        }
     }
 }
 -(void)setDataAry:(NSArray *)dataAry
 {
     _dataAry=dataAry;
+    for (int i = 0; i<self.cellAry.count; i++) {
+        HotBuyModel *model=self.dataAry[i];
+        HotBuyViewCell *cell=self.cellAry[i];
+        cell.model=model;
+    }
+    //NSLog(@"%lu",(unsigned long)dataAry.count);
 }
 /*
 // Only override drawRect: if you perform custom drawing.

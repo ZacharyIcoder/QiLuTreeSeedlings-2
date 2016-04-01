@@ -129,13 +129,14 @@
         RemoveActionV();
         if (![[responseObject objectForKey:@"success"] integerValue]) {
             //NSLog(@"%@",responseObject);
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:nil];
+            
             if ([[responseObject objectForKey:@"error_code"] integerValue]==401) {
                 [self logoutAction];
             }
             //NSLog(@"---%@",[responseObject objectForKey:@"msg"]);
         }else
         {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:nil];
             [self.userModel reloadInfoByDic:[responseObject objectForKey:@"result"]];
             success(responseObject);
             // NSLog(@"用户信息 %@",responseObject);

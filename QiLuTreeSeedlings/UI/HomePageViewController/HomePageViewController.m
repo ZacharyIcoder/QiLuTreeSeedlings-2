@@ -119,15 +119,16 @@
 }
 -(UIView *)makeTitleViewWithTitle:(NSString *)title AndColor:(UIColor *)color andY:(CGFloat )y
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, y, kWidth, 30)];
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, y, kWidth, 36)];
      [view setBackgroundColor:[UIColor clearColor]];
-    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 5, 5, 20)];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 7, 5, 22)];
     [imageV setBackgroundColor:color];
   
     [view addSubview:imageV];
-    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 70, 30)];
+    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 70, 36)];
     titleLab.text=title;
     [titleLab setTextColor:color];
+    [titleLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:titleLab];
     [self.backScrollView addSubview:view];
     return view;
@@ -168,9 +169,9 @@
     CGRect tempFrame=self.circleViews.frame;
     tempFrame.origin.y+=tempFrame.size.height;
     
-    [self makeTitleViewWithTitle:@"猜你喜欢" AndColor:[UIColor colorWithRed:254/255.f green:172/255.f blue:0 alpha:1] andY:tempFrame.origin.y];
+    [self makeTitleViewWithTitle:@"猜你喜欢" AndColor:[UIColor colorWithRed:253/255.f green:100/255.f blue:0 alpha:1] andY:tempFrame.origin.y];
     //[self.backScrollView addSubview:likeTitleV];
-    tempFrame.origin.y+=30;
+    tempFrame.origin.y+=36;
     tempFrame.size.height=120;
     YouLickView *lickView=[[YouLickView alloc]initWithFrame:tempFrame WithAry:self.productDataAry];
     lickView.delegate=self;
@@ -179,10 +180,10 @@
     
     UIView *hotBuyTitleV=[self makeTitleViewWithTitle:@"热门求购" AndColor:[UIColor orangeColor] andY:CGRectGetMaxY(lickView.frame)];
    // [self.backScrollView addSubview:hotBuyTitleV];
-    UIButton *moreHotBuyBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 30)];
+    UIButton *moreHotBuyBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
     [moreHotBuyBtn setTitle:@"更多" forState:UIControlStateNormal];
     [moreHotBuyBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 7.5, 15, 15)];
+    UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
     [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
     [hotBuyTitleV addSubview:hotMoreRowImgV];
     [moreHotBuyBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
@@ -195,13 +196,13 @@
     // [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(hotBView.frame))];
     
     UIView *hotSellTitleV=[self makeTitleViewWithTitle:@"热门供应" AndColor:NavColor andY:CGRectGetMaxY(hotBView.frame)];
-    UIButton *moreHotSellBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 30)];
+    UIButton *moreHotSellBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
     [moreHotSellBtn setTitle:@"更多" forState:UIControlStateNormal];
     [moreHotSellBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [moreHotSellBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [moreHotSellBtn addTarget:self action:@selector(moreBtnHotSellAction:) forControlEvents:UIControlEventTouchUpInside];
     [hotSellTitleV addSubview:moreHotSellBtn];
-    UIImageView *sellMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 7.5, 15, 15)];
+    UIImageView *sellMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
     [sellMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
     [hotSellTitleV addSubview:sellMoreRowImgV];
 
@@ -312,10 +313,18 @@
     }
     
     if (index==2) {
-        MyCollectViewController *myCollectVC=[[MyCollectViewController alloc]init];
-        [self hiddingSelfTabBar];
-        [self.navigationController pushViewController:myCollectVC animated:YES];
-        return;
+        if([APPDELEGATE isNeedLogin])
+        {
+            MyCollectViewController *myCollectVC=[[MyCollectViewController alloc]init];
+            [self hiddingSelfTabBar];
+            [self.navigationController pushViewController:myCollectVC animated:YES];
+            return;
+
+        }else
+        {
+            [ToastView showTopToast:@"请先登录"];
+        }
+        
     }
 }
 -(void)hiddingSelfTabBar

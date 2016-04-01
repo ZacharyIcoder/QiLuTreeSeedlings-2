@@ -60,6 +60,9 @@
         UIPageControl *pageController = [[UIPageControl alloc] initWithFrame:pageFrame];
         [pageController setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.2]];
         [self addSubview:pageController];
+        pageController.currentPageIndicatorTintColor = [UIColor colorWithRed:107/255.0f green:188/255.0f blue:85/255.0f alpha:1.0f];
+        
+        pageController.pageIndicatorTintColor = [UIColor whiteColor];
         self.pageController = pageController;
     }
     return self;

@@ -81,7 +81,7 @@
         return;
     }
     for (int i=0; i<nuseryAry.count; i++) {
-        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, i*30-5, kWidth-140, 30)];
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, i*30+5, kWidth-140, 30)];
         [lab setFont:[UIFont systemFontOfSize:13]];
         
          lab.numberOfLines=0;
@@ -97,7 +97,7 @@
     tempFrame.size.height=30;
     tempFrame.origin.y=CGRectGetMaxY(self.addressView.frame);
     
-    UILabel *fabuTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(20, tempFrame.origin.y+5, 80, 30)];
+    UILabel *fabuTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(20, tempFrame.origin.y, 80, 30)];
     [fabuTimeLab setFont:[UIFont systemFontOfSize:13]];
     [fabuTimeLab setTextAlignment:NSTextAlignmentRight];
     [fabuTimeLab setTextColor:[UIColor lightGrayColor]];
