@@ -35,6 +35,7 @@
     self=[super init];
     if (self) {
         self.uid=uid;
+        self.type=1;
       //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
          WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
@@ -73,7 +74,7 @@
                             } failure:^(NSError *error) {
                                 
                             }];
-        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStyleGrouped];
         self.tableView.delegate=self;
         self.tableView.dataSource=self;
         self.type=2;
@@ -92,23 +93,26 @@
 //    [messageView setBackgroundColor:[UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1]];
 //    UIImageView *messageView
 //    [self.view addSubview:messageView];
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
-    [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
-    [messageBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
-    [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
-    [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
-    //[messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
-    [self.view addSubview:messageBtn];
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, kHeight-50, kWidth/2, 50)];
-    [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
-    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
-    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
-    [phoneBtn setBackgroundColor:NavColor];
-    [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
-    //[messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
-    [self.view addSubview:phoneBtn];
+    if (self.type==1) {
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
+        [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
+        [messageBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+        [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
+        //[messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+        [self.view addSubview:messageBtn];
+        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, kHeight-50, kWidth/2, 50)];
+        [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:NavColor];
+        [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+        //[messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+        [self.view addSubview:phoneBtn];
+    }
+    
 
     // Do any additional setup after loading the view.
 }

@@ -22,7 +22,11 @@
     if (self) {
         self.model=model;
         self.answerAry=[[NSMutableArray alloc]initWithCapacity:2];
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 95, 50)];
+        int k=15;
+        if (frame.size.width<kWidth) {
+            k=10;
+        }
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(k, 0, 95, 50)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameLab setTextColor:[UIColor blackColor]];
          nameLab.text=model.name;

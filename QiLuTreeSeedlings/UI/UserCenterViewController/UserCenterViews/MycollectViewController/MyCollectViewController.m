@@ -55,7 +55,7 @@
     self.buyLikeAry=[NSMutableArray array];
     self.sellLikeAry=[NSMutableArray array];
     [self.view addSubview:navView];
-    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     UIButton *gongyingBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 64, kWidth/2, 44)];
     [gongyingBtn setTitle:@"供应信息" forState:UIControlStateNormal];
     [gongyingBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

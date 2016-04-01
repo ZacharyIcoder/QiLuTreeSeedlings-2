@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "ToastView.h"
 #import "UserInfoModel.h"
+#import "ActionView.h"
 #define APPDELEGATE     ((AppDelegate *)[UIApplication sharedApplication].delegate)
 //#define ShowTopToast(text) {\
 //[ToastView showToast:text\
@@ -46,4 +47,11 @@
 #define kACCESS_ID @"access_id"
 #define kACCESS_TOKEN @"access_token"
 #define kdeviceToken @"deviceToken"
+
+#define ShowActionV() {\
+[ActionView removeActionView];\
+[ActionView addActionView];\
+}
+
+#define RemoveActionV() [ActionView removeActionView]
 #endif

@@ -43,10 +43,11 @@
     if (token&&uid) {
         self.userModel.access_token = token;
         self.userModel.access_id = uid;
+        ShowActionV();
         [self reloadUserInfoSuccess:^(id responseObject) {
-            
+           RemoveActionV();
         } failure:^(NSError *error) {
-            
+           RemoveActionV();
         }];
         
     }

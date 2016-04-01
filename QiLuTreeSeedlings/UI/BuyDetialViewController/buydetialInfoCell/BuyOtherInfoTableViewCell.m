@@ -38,8 +38,8 @@
     [keylab setFont:[UIFont systemFontOfSize:13]];
     [keylab setTextColor:[UIColor lightGrayColor]];
     [view addSubview:keylab];
-    
-    UILabel *valueLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 5, 200, 20)];
+    UILabel *valueLab=[[UILabel alloc]initWithFrame:CGRectMake(130, -5, 185/320.f*kWidth, 40)];
+    valueLab.numberOfLines=0;
     NSArray *valueAry=[dic objectForKey:@"value"];
     NSMutableString *valueStr;
     if (valueAry.count==1) {
