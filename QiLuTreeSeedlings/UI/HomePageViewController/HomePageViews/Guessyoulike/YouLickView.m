@@ -18,7 +18,7 @@
         self.dataAry=dataAry;
         [self setBackgroundColor:[UIColor whiteColor]];
         int tempX=10;
-        CGRect tempFrame=CGRectMake(10, 10, 0, 20);
+        CGRect tempFrame=CGRectMake(10, 10, 0, 24);
         for (int i=0; i<dataAry.count; i++) {
             GusseYourLikeModel *model=dataAry[i];
             //NSString *nameStr=[dic objectForKey:@"productName"];
@@ -40,7 +40,7 @@
           
             if (CGRectGetMaxX(tempFrame)>=kWidth-10) {
                 tempFrame.origin.x=tempX=10;
-                tempFrame.origin.y+=25;
+                tempFrame.origin.y+=29;
             }
               tempX=CGRectGetMaxX(tempFrame)+5;
             [likeBtn setFrame:tempFrame];

@@ -583,6 +583,7 @@
         device_id=@"用户未授权";
     }
    // NSLog(@"%@",device_id);
+    ShowActionV();
     NSString *postURL = @"authorize";
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                               @"password",@"grant_type",
@@ -597,8 +598,10 @@
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         RemoveActionV();
         failure(error);
     }];
 
@@ -618,11 +621,14 @@
                               repassword,@"repassword",
                               code,@"code",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
         failure(error);
     }];
 }
@@ -637,11 +643,14 @@
                               phone,@"phone",
                               type,@"type",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
         failure(error);
     }];
 
@@ -696,11 +705,14 @@
                               kclient_id,@"client_id",
                               kclient_secret,@"client_secret",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
         failure(error);
     }];
 }

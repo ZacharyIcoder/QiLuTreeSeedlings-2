@@ -16,5 +16,6 @@
 @interface HotBuyView : UIView
 @property (nonatomic,weak) id<HotBuyViewsDelegate> delegate;
 @property (nonatomic,strong) NSArray *dataAry;
+@property (nonatomic,strong) NSMutableArray *cellAry;
 -(id)initWithAry:(NSArray *)ary andY:(CGFloat)Y;
 @end

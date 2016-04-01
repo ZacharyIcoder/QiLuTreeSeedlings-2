@@ -24,29 +24,32 @@
     if (self) {
         [self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 10, kWidth-20, 13)];
-        [self.titleLab setFont:[UIFont systemFontOfSize:12]];
+        [self.titleLab setFont:[UIFont systemFontOfSize:15]];
         [self.titleLab setText:@"标题"];
         [self addSubview:self.titleLab];
         UIImageView *dingweiImage=[[UIImageView alloc]initWithFrame:CGRectMake(20, 38, 15, 15)];
         [dingweiImage setImage:[UIImage imageNamed:@"region"]];
         [self addSubview:dingweiImage];
         self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(38, 40, 60, 12)];
-        [self.cityLab setFont:[UIFont systemFontOfSize:10]];
+        
+        [self.cityLab setFont:[UIFont systemFontOfSize:12]];
         [self.cityLab setText:@"临沂"];
+        [self.cityLab setTextColor:[UIColor lightGrayColor]];
         [self addSubview:self.cityLab];
         UIImageView * timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*0.5-45,38, 15, 15)];
          [timeImag setImage:[UIImage imageNamed:@"listtime"]];
         [self addSubview:timeImag];
         self.timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.5-20, 40, 55, 12)];
-        [self.timeLab setFont:[UIFont systemFontOfSize:11]];
+         [self.timeLab setTextColor:[UIColor lightGrayColor]];
+        [self.timeLab setFont:[UIFont systemFontOfSize:12]];
         [self.timeLab setText:@"N天前"];
         [self addSubview:self.timeLab];
         UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
-        [priceLab setFont:[UIFont systemFontOfSize:10]];
+        [priceLab setFont:[UIFont systemFontOfSize:12]];
         [priceLab setText:@"价格"];
         [self addSubview:priceLab];
-        
-        self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.9-15, 35, 65, 20)];
+         [priceLab setTextColor:[UIColor lightGrayColor]];
+        self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.9-25, 35, 65, 20)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];
         [self.priceLab setText:@"O元"];
         [self.priceLab setTextColor:[UIColor orangeColor]];

@@ -140,6 +140,7 @@
             NSArray *aryzz=[HotSellModel hotSellAryByAry:ary];
             HotSellModel *aryzzLast =  [aryzz lastObject];
             HotSellModel *dataLast =  [self.sellDataAry lastObject];
+            //NSLog(@"%@---%@",dataLast.uid,aryzzLast.uid);
             if (aryzz.count > 0) {
                 if ([dataLast.uid isEqualToString: aryzzLast.uid]) {
                     [ToastView showTopToast:@"已无更多信息"];

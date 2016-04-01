@@ -9,6 +9,7 @@
 #import "FaBuViewController.h"
 #import "UIDefines.h"
 #import "buyFabuViewController.h"
+#import "ZIKSupplyPublishVC.h"
 @interface FaBuViewController ()
 
 @end
@@ -95,17 +96,34 @@
 }
 -(void)fabuSupplyMessage
 {
-    
+    if (APPDELEGATE.isCanPublishBuy==NO)
+    {
+        [ToastView showTopToast:@"您没有求购发布权限"];
+        return;
+    }
+    if ([APPDELEGATE isNeedCompany]==NO) {
+        [ToastView showTopToast:@"请完善公司信息"];
+        return;
+    }
+    ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
+    [self.navigationController pushViewController:supplyLishVC animated:YES];
 }
 -(void)fabuBuyMessage
 {
-    if (APPDELEGATE.isCanPublishBuy) {
-        buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
-        [self.navigationController pushViewController:fabuVC animated:YES];
-    }else
+    if (APPDELEGATE.isCanPublishBuy==NO)
     {
         [ToastView showTopToast:@"您没有求购发布权限"];
+        return;
     }
+    if ([APPDELEGATE isNeedCompany]==NO) {
+        [ToastView showTopToast:@"请完善公司信息"];
+        return;
+    }
+        buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
+        [self.navigationController pushViewController:fabuVC animated:YES];
+   
+    
+    
 
     
 }

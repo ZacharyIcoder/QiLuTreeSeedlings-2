@@ -69,20 +69,16 @@
     [self.BTabBar addSubview:tabMageV2];
 
     //
-    UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 5, 34, 34)];
+    UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 3, 30, 30)];
     PageViewBtn.tag=1;
     self.homePageBtn=PageViewBtn;
-//    [PageViewBtn setBackgroundColor:[UIColor redColor]];
     [PageViewBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
     [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
     [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
     PageViewBtn.selected=YES;
-//    [PageViewBtn setTitle:@"首页" forState:UIControlStateNormal];
-//    [PageViewBtn setTitleColor:NavColor forState:UIControlStateSelected];
-//    [PageViewBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [self.BTabBar addSubview:PageViewBtn];
     
-    UIButton *UserViewBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 5, 34, 34)];
+    UIButton *UserViewBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 3, 30, 30)];
     self.userInfoBtn=UserViewBtn;
     [UserViewBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
     UserViewBtn.tag=2;
@@ -90,9 +86,7 @@
     [self.BTabBar addSubview:UserViewBtn];
     [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoNomer"] forState:UIControlStateNormal];
     [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoGreen"] forState:UIControlStateSelected];
-//    [UserViewBtn setTitle:@"个人中心" forState:UIControlStateNormal];
-//    [UserViewBtn setTitleColor:NavColor forState:UIControlStateSelected];
-//    [UserViewBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+
 
     UIButton *fabuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-25, -5, 50, 50)];
     [fabuBtn setImage:[UIImage imageNamed:@"fabuBTN"] forState:UIControlStateNormal];
@@ -135,7 +129,7 @@
 //发布按钮的点击
 -(void)FaBuButtonAction:(UIButton *)sender
 {
-    NSLog(@"%ld",(long)sender.tag);
+   // NSLog(@"%ld",(long)sender.tag);
     [[NSNotificationCenter defaultCenter]postNotificationName:@"fabuBtnAction" object:nil];
 }
 - (void)didReceiveMemoryWarning {
