@@ -25,6 +25,7 @@
 #import "ZIKMyBalanceViewController.h"
 
 #import "ZIKSetViewController.h"
+#import "ZIKMyCustomizedInfoViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -278,7 +279,7 @@
     }
     else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            NSLog(@"我的供应");
+            //NSLog(@"我的供应");
             [self hiddingSelfTabBar];
             ZIKMySupplyViewController *mySupplyVC = [[ZIKMySupplyViewController alloc] init];
              //ZIKSupplyPublishVC  *mySupplyVC = [[ZIKSupplyPublishVC alloc] init];
@@ -290,6 +291,12 @@
             MyBuyListViewController *myBuyListVC=[[MyBuyListViewController alloc]init];
             [self.navigationController pushViewController:myBuyListVC animated:YES];
             return ;
+        }
+        if (indexPath.row == 2) {
+            [self hiddingSelfTabBar];
+            ZIKMyCustomizedInfoViewController *customInfoVC = [[ZIKMyCustomizedInfoViewController alloc] init];
+            [self.navigationController pushViewController:customInfoVC animated:YES];
+            return;
         }
 
     }

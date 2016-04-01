@@ -344,5 +344,15 @@
                                          uid:(NSString *)uid
                                      Success:(void (^)(id responseObject))success
                                      failure:(void (^)(NSError *error))failure ;
+#pragma mark ---------- 我的订制信息 -----------
+- (void)getMyCustomizedListInfoWithPageNumber:(NSString *)pageNumber
+                                     pageSize:(NSString *)pageSize
+                                      Success:(void (^)(id responseObject))success
+                                      failure:(void (^)(NSError *error))failure ;
+#pragma mark ---------- 消费记录 -----------
+- (void)getConsumeRecordInfoWithPageNumber:(NSString *)pageNumber
+                                  pageSize:(NSString *)pageSize
+                                   Success:(void (^)(id responseObject))success
+                                   failure:(void (^)(NSError *error))failure ;
 
 @end

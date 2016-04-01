@@ -116,7 +116,7 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [footView addSubview:btn];
         btn.frame = CGRectMake(40, 10, Width-80, 44);
-        [btn setBackgroundColor:NavColor];
+        [btn setBackgroundColor:kRGB(241, 157, 65, 1)];
         btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [btn setTitle:@"充值" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:15];

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ZIKPayRecordTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="消费记录-充值.png" translatesAutoresizingMaskIntoConstraints="NO" id="jZr-70-YYI">
+                        <rect key="frame" x="8" y="8" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="3B5-y2-Ydx"/>
+                            <constraint firstAttribute="height" constant="25" id="sO7-ab-ftj"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erf-Wq-78U">
+                        <rect key="frame" x="41" y="12" width="97" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="euf-SF-moZ"/>
+                            <constraint firstAttribute="width" constant="97" id="oMg-Uf-w4C"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-01-01 17：50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5g-Kv-u86">
+                        <rect key="frame" x="36" y="37" width="219" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="rjd-oN-xlt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ ：-10元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edF-NY-rTc">
+                        <rect key="frame" x="152" y="12" width="160" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="LSY-Tc-3Hr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jZr-70-YYI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="24i-tF-qfe"/>
+                    <constraint firstItem="edF-NY-rTc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="34B-sj-9MC"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="F5g-Kv-u86" secondAttribute="trailing" constant="57" id="3ma-Rb-bUX"/>
+                    <constraint firstItem="F5g-Kv-u86" firstAttribute="top" secondItem="Erf-Wq-78U" secondAttribute="bottom" constant="4" id="D16-ou-oZh"/>
+                    <constraint firstItem="edF-NY-rTc" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="HSn-YQ-VeL"/>
+                    <constraint firstItem="Erf-Wq-78U" firstAttribute="leading" secondItem="jZr-70-YYI" secondAttribute="trailing" constant="8" id="T7t-qP-5SD"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="F5g-Kv-u86" secondAttribute="bottom" constant="-3" id="VVD-AH-t1I"/>
+                    <constraint firstItem="F5g-Kv-u86" firstAttribute="top" secondItem="edF-NY-rTc" secondAttribute="bottom" constant="4" id="bBH-E7-qrR"/>
+                    <constraint firstItem="Erf-Wq-78U" firstAttribute="leading" secondItem="jZr-70-YYI" secondAttribute="trailing" constant="8" id="fNX-3A-fZG"/>
+                    <constraint firstItem="jZr-70-YYI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="fWM-e8-03n"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="jZr-70-YYI" secondAttribute="bottom" constant="22" id="fs2-Sf-dMH"/>
+                    <constraint firstItem="edF-NY-rTc" firstAttribute="leading" secondItem="Erf-Wq-78U" secondAttribute="trailing" constant="14" id="jEU-J5-rrM"/>
+                    <constraint firstItem="F5g-Kv-u86" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="28" id="roM-Ee-6Da"/>
+                    <constraint firstItem="Erf-Wq-78U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="tFU-Am-anD"/>
+                    <constraint firstItem="edF-NY-rTc" firstAttribute="leading" secondItem="Erf-Wq-78U" secondAttribute="trailing" constant="14" id="xYE-Gs-Twi"/>
+                    <constraint firstItem="F5g-Kv-u86" firstAttribute="top" secondItem="edF-NY-rTc" secondAttribute="bottom" constant="4" id="zDG-yV-Q1P"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="priceLabel" destination="edF-NY-rTc" id="9z7-Fi-0Be"/>
+                <outlet property="timeLabel" destination="F5g-Kv-u86" id="5tJ-4G-D1k"/>
+                <outlet property="typeImgeView" destination="jZr-70-YYI" id="F3a-vh-d6f"/>
+                <outlet property="typeNameLabel" destination="Erf-Wq-78U" id="0vG-Lp-2h3"/>
+            </connections>
+            <point key="canvasLocation" x="300" y="309"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="消费记录-充值.png" width="36" height="36"/>
+    </resources>
+</document>
