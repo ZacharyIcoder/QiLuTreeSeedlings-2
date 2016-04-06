@@ -12,9 +12,9 @@
 
 
 
-//static NSString * const AFBaseURLString = @"http://192.168.1.115:8080/";
+static NSString * const AFBaseURLString = @"http://192.168.1.8:8082/";
 //http://115.28.228.147:8088/qlmm/
-static NSString * const AFBaseURLString = @"http://115.28.228.147:8088/qlmm/";
+//static NSString * const AFBaseURLString = @"http://115.28.228.147:8088/qlmm/";
 
 //static NSString *const AFBaseURLString = @"http://123.56.229.197:8084/qlmm/";
 
