@@ -1423,7 +1423,7 @@
     }];
 }
 
-#pragma mark ---------- 我的订制信息 -----------
+#pragma mark ---------- 收到的我的订制信息 -----------
 - (void)getMyCustomizedListInfoWithPageNumber:(NSString *)pageNumber
                                      pageSize:(NSString *)pageSize
                                       Success:(void (^)(id responseObject))success
@@ -1446,6 +1446,33 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
+
+}
+
+#pragma mark ---------- 我的定制信息列表 -----------
+- (void)getCustomSetListInfo:(NSString *)pageNumber
+                    pageSize:(NSString *)pageSize
+                     Success:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/member/push/customset";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+
 
 }
 

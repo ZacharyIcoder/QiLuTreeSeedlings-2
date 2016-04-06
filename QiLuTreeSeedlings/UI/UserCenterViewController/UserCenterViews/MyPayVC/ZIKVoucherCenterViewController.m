@@ -169,9 +169,10 @@
 - (void)sureButtonPress {
 //    ZIKPaySuccessViewController *paySuccessVC = [[ZIKPaySuccessViewController alloc] init];
 //    [self.navigationController pushViewController:paySuccessVC animated:YES];
+    
     if (self.lastIndexPath.row == 0) {
         NSLog(@"微信支付");
-        [HTTPCLIENT weixinPayOrder:@"0.01" Success:^(id responseObject) {
+        [HTTPCLIENT weixinPayOrder:self.price Success:^(id responseObject) {
             NSLog(@"%@",responseObject);
             NSDictionary *dict = responseObject[@"result"];
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
@@ -202,7 +203,7 @@
     else if (self.lastIndexPath.row == 1) {
         NSLog(@"支付宝支付");
         
-        [ZIKFunction zhiFuBao:self name:@"苗木充值" titile:@"苗木充值" price:@"0.01" orderId:APPDELEGATE.userModel.access_id];
+        [ZIKFunction zhiFuBao:self name:@"苗木充值" titile:@"苗木充值" price:self.price orderId:APPDELEGATE.userModel.access_id];
     }
     else if (self.lastIndexPath.row == 2) {
         NSLog(@"银联支付");

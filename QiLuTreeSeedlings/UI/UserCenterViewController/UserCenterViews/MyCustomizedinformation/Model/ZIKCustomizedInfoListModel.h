@@ -21,4 +21,8 @@
  *  发送时间
  */
 @property (nonatomic, copy) NSString *sendTime;
+/**
+ *  --true:已读；false：未读
+ */
+@property (nonatomic, copy) NSString *reads;
 @end

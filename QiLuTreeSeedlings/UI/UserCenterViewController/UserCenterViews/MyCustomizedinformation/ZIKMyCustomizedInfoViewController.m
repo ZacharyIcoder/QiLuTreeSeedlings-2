@@ -9,8 +9,8 @@
 #import "ZIKMyCustomizedInfoViewController.h"
 #import "ZIKCustomizedInfoListViewController.h"
 #import "MJRefresh.h"
-#import "ZIKCustomizedInfoListModel.h"
 #import "YYModel.h"
+#import "ZIKCustomizedInfoListModel.h"
 #import "ZIKCustomizedInfoListTableViewCell.h"
 #import "BuyDetialInfoViewController.h"
 @interface ZIKMyCustomizedInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -35,7 +35,7 @@
 
 - (void)configNav {
     self.vcTitle = @"定制信息";
-    self.rightBarBtnTitleString = @"设置";
+    self.rightBarBtnTitleString = @"定制";
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
         ZIKCustomizedInfoListViewController *listVC = [[ZIKCustomizedInfoListViewController alloc] init];

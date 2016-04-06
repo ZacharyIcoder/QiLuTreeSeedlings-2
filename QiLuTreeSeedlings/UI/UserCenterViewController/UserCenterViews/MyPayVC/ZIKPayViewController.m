@@ -50,7 +50,7 @@
 
 - (void)btnClick {
     ZIKVoucherCenterViewController *voucherVC = [[ZIKVoucherCenterViewController alloc] init];
-    voucherVC.price = nameTextField.text;
+    voucherVC.price = [NSString stringWithFormat:@"%.2f",nameTextField.text.floatValue];
     [self.navigationController pushViewController:voucherVC animated:YES];
 //    if ([ZIKFunction xfunc_check_strEmpty:nameTextField.text]) {
 //        [ToastView showTopToast:@"姓名为空!!!"];
