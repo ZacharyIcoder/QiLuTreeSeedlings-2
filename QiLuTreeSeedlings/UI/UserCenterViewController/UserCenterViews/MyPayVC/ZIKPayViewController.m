@@ -7,7 +7,7 @@
 //
 
 #import "ZIKPayViewController.h"
-
+#import "ZIKVoucherCenterViewController.h"
 @interface ZIKPayViewController ()
 {
     UITextField *nameTextField;
@@ -49,6 +49,9 @@
 }
 
 - (void)btnClick {
+    ZIKVoucherCenterViewController *voucherVC = [[ZIKVoucherCenterViewController alloc] init];
+    voucherVC.price = nameTextField.text;
+    [self.navigationController pushViewController:voucherVC animated:YES];
 //    if ([ZIKFunction xfunc_check_strEmpty:nameTextField.text]) {
 //        [ToastView showTopToast:@"姓名为空!!!"];
 //        return;

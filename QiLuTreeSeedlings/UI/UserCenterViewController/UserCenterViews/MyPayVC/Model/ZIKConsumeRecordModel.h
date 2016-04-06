@@ -18,11 +18,19 @@
  */
 @property (nonatomic, copy) NSString *time;
 /**
- *  //2代表充值，1代表消费
+ *  0代表收入，1代表支出
  */
 @property (nonatomic, copy) NSString *type;
 /**
- *   描述
+ *  //关联操作类型
  */
-@property (nonatomic, copy) NSString *typeName;
+@property (nonatomic, copy) NSString *opType;
+/**
+ *   交易明细
+ */
+@property (nonatomic, copy) NSString *reason;
+/**
+ *  关联操作编号
+ */
+@property (nonatomic, copy) NSString *opUid;
 @end

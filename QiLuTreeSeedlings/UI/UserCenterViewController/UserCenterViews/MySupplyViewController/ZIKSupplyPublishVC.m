@@ -266,6 +266,8 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 
 - (void)showSideView {
     //[self.nameTextField resignFirstResponder];
+     [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    //self.prefersStatusBarHidden = YES;
     if (!self.sideView) {
         self.sideView = [[ZIKSideView alloc] initWithFrame:CGRectMake(Width, 0, Width, Height)];
     }
@@ -280,7 +282,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     }];
     [self.view addSubview:self.sideView];
 }
-
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return YES; // 返回NO表示要显示，返回YES将hiden
+//}
 #pragma mark - 实现选择苗木协议
 - (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {
     NSLog(@"%@",selectTitle);
@@ -288,6 +293,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     //self.supplyModel.name = selectTitle;
     self.supplyModel.productUid = selectId;
     [self.sideView removeSideViewAction];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 - (void)textFieldChanged:(NSNotification *)obj {

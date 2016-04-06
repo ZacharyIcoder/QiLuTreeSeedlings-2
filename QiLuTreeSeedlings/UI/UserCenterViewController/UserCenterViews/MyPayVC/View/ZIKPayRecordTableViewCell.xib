@@ -28,7 +28,7 @@
                             <constraint firstAttribute="height" constant="21" id="euf-SF-moZ"/>
                             <constraint firstAttribute="width" constant="97" id="oMg-Uf-w4C"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -37,7 +37,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="rjd-oN-xlt"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -46,7 +46,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="LSY-Tc-3Hr"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -76,7 +76,7 @@
                 <outlet property="typeImgeView" destination="jZr-70-YYI" id="F3a-vh-d6f"/>
                 <outlet property="typeNameLabel" destination="Erf-Wq-78U" id="0vG-Lp-2h3"/>
             </connections>
-            <point key="canvasLocation" x="300" y="309"/>
+            <point key="canvasLocation" x="454" y="315"/>
         </tableViewCell>
     </objects>
     <resources>

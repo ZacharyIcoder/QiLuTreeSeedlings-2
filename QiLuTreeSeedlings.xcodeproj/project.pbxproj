@@ -269,12 +269,14 @@
 		FC50B34A1CAE4C4A0022A24C /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FC50B33C1CAE4C4A0022A24C /* openssl_wrapper.m */; };
 		FC50B34B1CAE4C4A0022A24C /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = FC50B33E1CAE4C4A0022A24C /* RSADataSigner.m */; };
 		FC50B34C1CAE4C4A0022A24C /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = FC50B3401CAE4C4A0022A24C /* RSADataVerifier.m */; };
+		FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC50B34E1CAE56320022A24C /* ZIKVoucherCenterViewController.m */; };
+		FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */ = {isa = PBXBuildFile; fileRef = FC50B3501CAE60D20022A24C /* 微信支付.png */; };
+		FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
 		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
 		FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149FB1CAA57B600672241 /* RSKTouchView.m */; };
 		FC614A011CAA57B600672241 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */; };
-		FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A031CAA58C200672241 /* ZIKFunction.m */; };
 		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
 		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
 		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
@@ -304,6 +306,15 @@
 		FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6FED851CAD103F000E2CA5 /* 支付宝支付.png */; };
 		FC6FED8C1CAD103F000E2CA5 /* 支付订单-充值金额背景.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6FED861CAD103F000E2CA5 /* 支付订单-充值金额背景.png */; };
 		FC6FED8D1CAD103F000E2CA5 /* 支付订单48x48.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6FED871CAD103F000E2CA5 /* 支付订单48x48.png */; };
+		FC7134221CB3465C0037D507 /* 待选.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7134201CB3465C0037D507 /* 待选.png */; };
+		FC7134231CB3465C0037D507 /* 已选.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7134211CB3465C0037D507 /* 已选.png */; };
+		FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC71342A1CB351500037D507 /* ZIKPaySuccessViewController.m */; };
+		FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC71342B1CB351500037D507 /* ZIKPaySuccessViewController.xib */; };
+		FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC71342E1CB352730037D507 /* 充值成功76x76-2.png */; };
+		FC7134301CB358140037D507 /* ZIKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A031CAA58C200672241 /* ZIKFunction.m */; };
+		FC7134351CB358720037D507 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134321CB358720037D507 /* RIButtonItem.m */; };
+		FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134341CB358720037D507 /* UIAlertView+Blocks.m */; };
+		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -879,6 +890,10 @@
 		FC50B33E1CAE4C4A0022A24C /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
 		FC50B33F1CAE4C4A0022A24C /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
 		FC50B3401CAE4C4A0022A24C /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
+		FC50B34D1CAE56320022A24C /* ZIKVoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKVoucherCenterViewController.h; sourceTree = "<group>"; };
+		FC50B34E1CAE56320022A24C /* ZIKVoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKVoucherCenterViewController.m; sourceTree = "<group>"; };
+		FC50B3501CAE60D20022A24C /* 微信支付.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "微信支付.png"; sourceTree = "<group>"; };
+		FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -933,6 +948,19 @@
 		FC6FED851CAD103F000E2CA5 /* 支付宝支付.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付宝支付.png"; sourceTree = "<group>"; };
 		FC6FED861CAD103F000E2CA5 /* 支付订单-充值金额背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付订单-充值金额背景.png"; sourceTree = "<group>"; };
 		FC6FED871CAD103F000E2CA5 /* 支付订单48x48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付订单48x48.png"; sourceTree = "<group>"; };
+		FC7134201CB3465C0037D507 /* 待选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "待选.png"; sourceTree = "<group>"; };
+		FC7134211CB3465C0037D507 /* 已选.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已选.png"; sourceTree = "<group>"; };
+		FC7134291CB351500037D507 /* ZIKPaySuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPaySuccessViewController.h; sourceTree = "<group>"; };
+		FC71342A1CB351500037D507 /* ZIKPaySuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPaySuccessViewController.m; sourceTree = "<group>"; };
+		FC71342B1CB351500037D507 /* ZIKPaySuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKPaySuccessViewController.xib; sourceTree = "<group>"; };
+		FC71342E1CB352730037D507 /* 充值成功76x76-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "充值成功76x76-2.png"; sourceTree = "<group>"; };
+		FC7134311CB358720037D507 /* RIButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		FC7134321CB358720037D507 /* RIButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		FC7134331CB358720037D507 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		FC7134341CB358720037D507 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
+		FC7134391CB3ABED0037D507 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
+		FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -1028,6 +1056,7 @@
 				FC50B1781CAE24AB0022A24C /* CoreGraphics.framework in Frameworks */,
 				FC50B1761CAE249A0022A24C /* libiconv.tbd in Frameworks */,
 				FC50B1741CAE247E0022A24C /* Security.framework in Frameworks */,
+				FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */,
 				EA741A121C8FEA5200F54478 /* CoreBluetooth.framework in Frameworks */,
 				FC50B1721CAE24400022A24C /* libWeChatSDK.a in Frameworks */,
 				FC50B3431CAE4C4A0022A24C /* libssl.a in Frameworks */,
@@ -1036,6 +1065,7 @@
 				FC50B1611CAE243F0022A24C /* libUMSocial_Sdk_5.0.1.a in Frameworks */,
 				EA741A0C1C8FEA3300F54478 /* CoreTelephony.framework in Frameworks */,
 				EA741A0A1C8FEA2300F54478 /* SystemConfiguration.framework in Frameworks */,
+				FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */,
 				EA741A081C8FEA1200F54478 /* CFNetwork.framework in Frameworks */,
 				EA741A061C8FEA0900F54478 /* libz.tbd in Frameworks */,
 				FC50B16C1CAE243F0022A24C /* libWeiboSDK.a in Frameworks */,
@@ -1279,6 +1309,7 @@
 		EA0B2BD21C59F6930018A7BD /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				FC7134371CB3ABED0037D507 /* 银联 */,
 				FC50B17B1CAE43AA0022A24C /* 支付 */,
 				FC50B1271CAE23E60022A24C /* 友盟 */,
 				EA741A011C8FE9E100F54478 /* GtSdkLib */,
@@ -1974,8 +2005,13 @@
 				FC4B4F281CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m */,
 				FC4B4F331CABA30200EBB2F8 /* ZIKPayViewController.h */,
 				FC4B4F341CABA30200EBB2F8 /* ZIKPayViewController.m */,
+				FC50B34D1CAE56320022A24C /* ZIKVoucherCenterViewController.h */,
+				FC50B34E1CAE56320022A24C /* ZIKVoucherCenterViewController.m */,
 				FC4B4F381CABAB6400EBB2F8 /* ZIKPayRecordViewController.h */,
 				FC4B4F391CABAB6400EBB2F8 /* ZIKPayRecordViewController.m */,
+				FC7134291CB351500037D507 /* ZIKPaySuccessViewController.h */,
+				FC71342A1CB351500037D507 /* ZIKPaySuccessViewController.m */,
+				FC71342B1CB351500037D507 /* ZIKPaySuccessViewController.xib */,
 			);
 			path = MyPayVC;
 			sourceTree = "<group>";
@@ -1985,6 +2021,10 @@
 			children = (
 				FC6FED791CAD0860000E2CA5 /* ZIKConsumeRecordModel.h */,
 				FC6FED7A1CAD0860000E2CA5 /* ZIKConsumeRecordModel.m */,
+				FC7134311CB358720037D507 /* RIButtonItem.h */,
+				FC7134321CB358720037D507 /* RIButtonItem.m */,
+				FC7134331CB358720037D507 /* UIAlertView+Blocks.h */,
+				FC7134341CB358720037D507 /* UIAlertView+Blocks.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2133,6 +2173,7 @@
 		FC50B17B1CAE43AA0022A24C /* 支付 */ = {
 			isa = PBXGroup;
 			children = (
+				FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */,
 				FC50B2DE1CAE4C490022A24C /* AlipaySDK.bundle */,
 				FC50B2DF1CAE4C490022A24C /* libcrypto.a */,
 				FC50B2E01CAE4C490022A24C /* libssl.a */,
@@ -2339,14 +2380,28 @@
 		FC6FED811CAD100F000E2CA5 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FC71342E1CB352730037D507 /* 充值成功76x76-2.png */,
+				FC50B3501CAE60D20022A24C /* 微信支付.png */,
 				FC6FED821CAD103F000E2CA5 /* 消费记录-充值.png */,
 				FC6FED831CAD103F000E2CA5 /* 消费记录-消费.png */,
 				FC6FED841CAD103F000E2CA5 /* 银联支付.png */,
 				FC6FED851CAD103F000E2CA5 /* 支付宝支付.png */,
 				FC6FED861CAD103F000E2CA5 /* 支付订单-充值金额背景.png */,
 				FC6FED871CAD103F000E2CA5 /* 支付订单48x48.png */,
+				FC7134201CB3465C0037D507 /* 待选.png */,
+				FC7134211CB3465C0037D507 /* 已选.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		FC7134371CB3ABED0037D507 /* 银联 */ = {
+			isa = PBXGroup;
+			children = (
+				FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */,
+				FC7134391CB3ABED0037D507 /* UPPayPlugin.h */,
+				FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */,
+			);
+			path = "银联";
 			sourceTree = "<group>";
 		};
 		FCF353791CA3B514001ABA0A /* MySupplyViewController */ = {
@@ -2638,7 +2693,6 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 784P3R2228;
 					};
 					EA0B2BAB1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
@@ -2713,12 +2767,14 @@
 				EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */,
 				FCF353DF1CA3B515001ABA0A /* 添加图片.png in Resources */,
 				EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */,
+				FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */,
 				FC50B1621CAE243F0022A24C /* UMSCommentDetailController.xib in Resources */,
 				EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */,
 				EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */,
 				FC21BC891CA51C930041E2C3 /* IQKeyboardManager.bundle in Resources */,
 				FCF353F11CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
 				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
+				FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
 				FC50B1631CAE243F0022A24C /* UMSCommentInputController.xib in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
@@ -2735,6 +2791,7 @@
 				EAF051011C92A2B700F435A9 /* mycompany@2x.png in Resources */,
 				EAB7819D1C8EA55600807B44 /* UserImage@2x.png in Resources */,
 				FC50B1601CAE243F0022A24C /* UMSocialLocalizable.strings in Resources */,
+				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
 				FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
 				FC6FED8D1CAD103F000E2CA5 /* 支付订单48x48.png in Resources */,
@@ -2748,6 +2805,7 @@
 				EA0B2BA61C59F5220018A7BD /* LaunchScreen.storyboard in Resources */,
 				EAF050F21C9293C200F435A9 /* homePageGreen@2x.png in Resources */,
 				EAEA07F01C5B085C003A0D8A /* lendMoneyAD2.jpg in Resources */,
+				FC7134221CB3465C0037D507 /* 待选.png in Resources */,
 				FC6FED6E1CACF833000E2CA5 /* 未读红点.png in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
@@ -2765,6 +2823,7 @@
 				FC4B4F301CAB9F4F00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib in Resources */,
 				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
+				FC7134231CB3465C0037D507 /* 已选.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
 				FC6FED8C1CAD103F000E2CA5 /* 支付订单-充值金额背景.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
@@ -2829,6 +2888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
+				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
 				FCF353E71CA3B515001ABA0A /* YYClassInfo.m in Sources */,
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
@@ -2860,8 +2920,10 @@
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
+				FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */,
 				EA6B31C31CABCADC0068CCB5 /* MyBuyNullTableViewCell.m in Sources */,
 				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,
+				FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */,
 				EA03405D1C8927CB00FBF148 /* SreeningViewCell.m in Sources */,
 				EA4FF1BD1C9A8DB900441DC3 /* MyBuyListViewController.m in Sources */,
 				EAE32DDE1C7E97A600C4CEA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2939,6 +3001,7 @@
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
 				FCF353D21CA3B515001ABA0A /* ZHHttpTool.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
+				FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */,
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,
 				EA29AA031C856159004913FF /* MessageInterceptor.m in Sources */,
 				FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */,
@@ -2986,7 +3049,6 @@
 				FCF353CE1CA3B515001ABA0A /* UIScrollView+MJExtension.m in Sources */,
 				EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */,
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
-				FC614A041CAA58C200672241 /* ZIKFunction.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
@@ -2999,6 +3061,7 @@
 				FC50B3441CAE4C4A0022A24C /* Order.m in Sources */,
 				EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */,
 				EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */,
+				FC7134301CB358140037D507 /* ZIKFunction.m in Sources */,
 				FCF353E41CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m in Sources */,
 				FCF353E91CA3B515001ABA0A /* ZIKBaseViewController.m in Sources */,
 				EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */,
@@ -3090,8 +3153,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3113,7 +3176,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "14bb64f8-bec5-4a06-9901-2ee07a410059";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3135,8 +3198,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -3151,7 +3214,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "14bb64f8-bec5-4a06-9901-2ee07a410059";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3166,11 +3229,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(SRCROOT)/../",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3193,8 +3258,9 @@
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuhtrh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3209,11 +3275,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(SRCROOT)/../",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3236,8 +3304,9 @@
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuhtrh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

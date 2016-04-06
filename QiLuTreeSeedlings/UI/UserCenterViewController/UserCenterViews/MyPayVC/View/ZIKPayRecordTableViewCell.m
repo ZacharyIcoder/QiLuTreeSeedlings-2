@@ -34,12 +34,15 @@
     if ([model.type isEqualToString:@"1"]) {//消费
     self.typeImgeView.image   = [UIImage imageNamed:@"消费记录-消费"];
     self.priceLabel.textColor = NavColor;
+    self.priceLabel.text = [NSString stringWithFormat:@"¥ : -%@",model.price];
     }
-    else if ([model.type isEqualToString:@"2"]) {//充值
+    else if ([model.type isEqualToString:@"0"]) {//充值
     self.typeImgeView.image   = [UIImage imageNamed:@"消费记录-充值"];
     self.priceLabel.textColor = kRGB(241, 157, 65, 1);
+    self.priceLabel.text = [NSString stringWithFormat:@"¥ : +%@",model.price];
     }
-    self.typeNameLabel.text   = model.typeName;
+
+    self.typeNameLabel.text   = model.reason;
     self.timeLabel.text       = model.time;
 }
 

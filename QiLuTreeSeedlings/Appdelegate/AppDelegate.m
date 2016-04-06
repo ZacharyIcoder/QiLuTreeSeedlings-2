@@ -20,6 +20,8 @@
 #import "UMSocialWechatHandler.h"
 //微信
 #import "WXApi.h"
+//支付宝
+#import <AlipaySDK/AlipaySDK.h>
 
 #define kGtAppId           @"dxb5cYhXBW6yYLPsAfvtGA"
 #define kGtAppKey          @"m2iC5d15as6Vub2OGIaxP6"
@@ -489,29 +491,29 @@
 
     //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
     if ([url.host isEqualToString:@"safepay"]) {
-//        appJump = YES;
-//        [[AlipaySDK defaultService]
-//         processOrderWithPaymentResult:url
-//         standbyCallback:^(NSDictionary *resultDic) {
-//
-//             NSString *aliRetValue = nil;
-//
-//             if([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"])
-//             {
-//                 aliRetValue = @"付款成功";
-//                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil userInfo:nil];
-//             }else
-//             {
-//                 aliRetValue = @"付款失败";
-//             }
-//
-//             UIAlertView *aliPayAlert = [[UIAlertView alloc]initWithTitle:@"支付" message:aliRetValue delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-//             aliPayAlert.delegate = self;
-//             aliPayAlert.tag = PAY_ALERT_TAG;
-//             [aliPayAlert show];
-//
-//
-//         }];
+        appJump = YES;
+        [[AlipaySDK defaultService]
+         processOrderWithPaymentResult:url
+         standbyCallback:^(NSDictionary *resultDic) {
+
+             NSString *aliRetValue = nil;
+
+             if([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"])
+             {
+                 aliRetValue = @"付款成功";
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil userInfo:nil];
+             }else
+             {
+                 aliRetValue = @"付款失败";
+             }
+
+             UIAlertView *aliPayAlert = [[UIAlertView alloc]initWithTitle:@"支付" message:aliRetValue delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+             aliPayAlert.delegate = self;
+             //aliPayAlert.tag = PAY_ALERT_TAG;
+             [aliPayAlert show];
+
+
+         }];
     }else{   //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
 
         if ([url.host isEqualToString:@"pay"]) {
