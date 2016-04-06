@@ -11,4 +11,6 @@
 @interface BaseTabBarController : UITabBarController
 @property (nonatomic,weak)UIButton *homePageBtn;
 @property (nonatomic,weak)UIButton *userInfoBtn;
+@property (nonatomic,strong) UILabel *homePageLab;
+@property (nonatomic,strong) UILabel *userLab;
 @end

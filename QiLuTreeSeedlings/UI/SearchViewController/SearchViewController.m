@@ -157,7 +157,7 @@
     [backView addSubview:lineV];
      UITextField * searchMessageField=[[UITextField alloc]initWithFrame:CGRectMake(65, 0, backView.frame.size.width-120, 34)];
     self.searchMessageField=searchMessageField;
-    searchMessageField.placeholder=@"请输入搜索信息";
+    searchMessageField.placeholder=@"请输入苗木关键词";
     searchMessageField.delegate=self;
     
     ////////
@@ -186,7 +186,7 @@
 
 -(void)screeingBtnAction
 {
-    ScreeningView *screeningV=[[ScreeningView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight) andSearch:@""];
+    ScreeningView *screeningV=[[ScreeningView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight) andSearch:self.searchMessageField.text];
 //    screeningV.
     self.screeningView=screeningV;
     screeningV.delegate=self;

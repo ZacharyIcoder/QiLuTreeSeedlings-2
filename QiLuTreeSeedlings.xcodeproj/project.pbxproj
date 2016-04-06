@@ -70,8 +70,11 @@
 		EA29AA071C856159004913FF /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA29A9FF1C856159004913FF /* grayArrow@2x.png */; };
 		EA29AA081C856159004913FF /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA29AA001C856159004913FF /* whiteArrow@2x.png */; };
 		EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */; };
+		EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */; };
 		EA4FF1BD1C9A8DB900441DC3 /* MyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4FF1BC1C9A8DB900441DC3 /* MyBuyListViewController.m */; };
 		EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA510EB21C98033900C5D071 /* FaBuViewController.m */; };
+		EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */; };
+		EA52ACE31CB4BE7900CE2210 /* MyIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */; };
 		EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */; };
 		EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC351C8D16F400660FC9 /* region@2x.png */; };
 		EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */; };
@@ -479,10 +482,16 @@
 		EA29AA001C856159004913FF /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		EA29AA091C857859004913FF /* SellSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellSearchTableViewCell.h; sourceTree = "<group>"; };
 		EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellSearchTableViewCell.m; sourceTree = "<group>"; };
+		EA2E28B61CAE613500186DA5 /* UserBigInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBigInfoView.h; sourceTree = "<group>"; };
+		EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBigInfoView.m; sourceTree = "<group>"; };
 		EA4FF1BB1C9A8DB900441DC3 /* MyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBuyListViewController.h; sourceTree = "<group>"; };
 		EA4FF1BC1C9A8DB900441DC3 /* MyBuyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyListViewController.m; sourceTree = "<group>"; };
 		EA510EB11C98033900C5D071 /* FaBuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaBuViewController.h; sourceTree = "<group>"; };
 		EA510EB21C98033900C5D071 /* FaBuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaBuViewController.m; sourceTree = "<group>"; };
+		EA52ACDA1CB4958900CE2210 /* FabutiaojiaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FabutiaojiaCell.h; sourceTree = "<group>"; };
+		EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FabutiaojiaCell.m; sourceTree = "<group>"; };
+		EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIntegralViewController.h; sourceTree = "<group>"; };
+		EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIntegralViewController.m; sourceTree = "<group>"; };
 		EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LISTtreeNumber@2x.png"; sourceTree = "<group>"; };
 		EA5AAC351C8D16F400660FC9 /* region@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "region@2x.png"; sourceTree = "<group>"; };
 		EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listtime@2x.png"; sourceTree = "<group>"; };
@@ -1324,6 +1333,8 @@
 				EA16C4DA1C93B5CE00A33BD3 /* noOneCollectCell */,
 				EA16C4D71C93A57E00A33BD3 /* MyCollectViewController.h */,
 				EA16C4D81C93A57E00A33BD3 /* MyCollectViewController.m */,
+				EA2E28B61CAE613500186DA5 /* UserBigInfoView.h */,
+				EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */,
 			);
 			path = MycollectViewController;
 			sourceTree = "<group>";
@@ -1541,6 +1552,15 @@
 			path = FaBuViewController;
 			sourceTree = "<group>";
 		};
+		EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */,
+				EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */,
+			);
+			path = MyIntegralViewController;
+			sourceTree = "<group>";
+		};
 		EA5AAC491C8D49B600660FC9 /* BuyDetialViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1666,6 +1686,8 @@
 			children = (
 				EA75148B1C9BEF09003D63F1 /* buyFabuTijiaoViewController.h */,
 				EA75148C1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m */,
+				EA52ACDA1CB4958900CE2210 /* FabutiaojiaCell.h */,
+				EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */,
 			);
 			name = buyFabuCell;
 			sourceTree = "<group>";
@@ -1846,6 +1868,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */,
 				FC6FED4F1CACEAE8000E2CA5 /* MyCustomizedinformation */,
 				FC4B4F3B1CABB7A900EBB2F8 /* SetVC */,
 				FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */,
@@ -2906,6 +2929,7 @@
 				FC21BC881CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				EAEA07F81C5B0B0F003A0D8A /* CircleViews.m in Sources */,
 				FCF353CC1CA3B515001ABA0A /* MJRefreshFooterView.m in Sources */,
+				EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */,
 				FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */,
 				FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */,
 				FC21BC801CA51C930041E2C3 /* IQUIViewController+Additions.m in Sources */,
@@ -2950,12 +2974,14 @@
 				EAE32DD71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m in Sources */,
 				FC50B34A1CAE4C4A0022A24C /* openssl_wrapper.m in Sources */,
 				EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */,
+				EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */,
 				EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */,
 				FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */,
 				FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */,
 				EA29AA041C856159004913FF /* PullTableView.m in Sources */,
 				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
+				EA52ACE31CB4BE7900CE2210 /* MyIntegralViewController.m in Sources */,
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
 				FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */,
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,

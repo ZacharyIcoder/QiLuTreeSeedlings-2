@@ -20,6 +20,7 @@
 @property (nonatomic,strong)NSMutableArray *sellDataAry;
 @property (nonatomic,strong)NSMutableArray *buyDataAry;
 @property (nonatomic)NSInteger PageCount;
+@property (nonatomic) NSInteger status;
 
 @end
 @implementation SearchSuccessView
@@ -35,6 +36,7 @@
         self.searchType=1;
         self.PageCount=1;
         self.searchBAT=1;
+        self.status=1;
         PullTableView *pullTableView =[[PullTableView alloc]initWithFrame:self.bounds];
         pullTableView.delegate=self;
         pullTableView.dataSource=self;
@@ -119,6 +121,7 @@
     if (self.searchBAT==1) {
         
         [self getListData];
+        self.status=1;
         return;
     }
     if (self.searchBAT==2) {
@@ -163,9 +166,10 @@
         }];
     }
     if (self.searchType==2) {
-        [HTTPCLIENT BuyListWithWithPageSize:@"15" WithStatus:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithStartNumber:@"" Success:^(id responseObject) {
+        [HTTPCLIENT BuyListWithWithPageSize:@"15" WithStatus:[NSString stringWithFormat:@"%ld",(long)self.status]WithStartNumber:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
            // NSLog(@"%@",responseObject);
             NSDictionary *dic=[responseObject objectForKey:@"result"];
+            self.status= [[dic objectForKey:@"status"] integerValue];
             NSArray *ary=[dic objectForKey:@"list"];
             NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:ary];
             HotBuyModel *aryzzLast =  [aryzz lastObject];
@@ -213,6 +217,8 @@
     self.searchBAT=2;
     self.searchStr=searchStr;
     self.searchType=type;
+    [self.sellDataAry removeAllObjects];
+    [self.buyDataAry removeAllObjects];
     [self searchByScringList];
     
 }

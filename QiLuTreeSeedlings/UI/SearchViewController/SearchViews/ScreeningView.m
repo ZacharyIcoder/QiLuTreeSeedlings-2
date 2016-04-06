@@ -33,6 +33,7 @@
 {
     self=[super initWithFrame:frame];
     if (self) {
+        
         self.searchType=1;
         cellAry =[NSMutableArray array];
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -53,7 +54,7 @@
         [backView addSubview:backBtn];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-30, 3, 60, 44)];
         titleLab.text=@"筛选";
-        [titleLab setTextColor:[UIColor blackColor]];
+        [titleLab setTextColor:[UIColor grayColor]];
         titleLab.textAlignment=NSTextAlignmentCenter;
         [backView addSubview:titleLab];
         self.backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0.2*kWidth, 44, 0.8*kWidth, kHeight-44-44)];
@@ -66,14 +67,16 @@
         nameLab.text=@"苗木名称";
         [nameLab setTextColor:[UIColor blackColor]];
         [nameView addSubview:nameLab];
-        
+        UIImageView *lineNameL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
+        [nameView addSubview:lineNameL];
+        [lineNameL setBackgroundColor:kLineColor];
         UITextField *nameField=[[UITextField alloc]initWithFrame:CGRectMake(80, 2, kWidth*0.8-75-80, 40)];
         self.nameTextField=nameField;
         nameField.tag=10001;
         nameField.delegate=self;
         nameField.placeholder=@"请输入苗木名称";
         [nameView addSubview:nameField];
-        nameField.text=@"白玉兰";
+        nameField.text=searchStr;
         [nameField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         [nameField setTextColor:NavColor];
         [self.backScrollView addSubview:nameView];
@@ -89,6 +92,10 @@
         
         gongyingLab.text=@"供应商";
         [gongyingLab setTextColor:[UIColor blackColor]];
+        UIImageView *lineGYL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
+        [gongyingshangView addSubview:lineGYL];
+        [lineGYL setBackgroundColor:kLineColor];
+        
         [gongyingshangView addSubview:gongyingLab];
         
         UIButton *nomegongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(60, 7,90, 30)];
@@ -120,29 +127,30 @@
         UIView *areaView=[[UIView alloc]initWithFrame:tempFrame];
         UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
         
-        [areaLab setText:@"选择地区"];
+        [areaLab setText:@"地区"];
         [areaView addSubview:areaLab];
         UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(90, 7, 130/320.f*kWidth, 30)];
         self.areaBtn=areaBtn;
-        [areaBtn setTitle:@"地区" forState:UIControlStateNormal];
+        [areaBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
         [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [areaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [areaBtn addTarget: self action:@selector(areaBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [areaView addSubview:areaBtn];
         [self.backScrollView addSubview:areaView];
         
-        UIView *shaixuanView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, CGRectGetMaxY(self.backScrollView.frame), kWidth*0.8, 44)];
+        UIView *shaixuanView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, CGRectGetMaxY(self.backScrollView.frame), kWidth*0.8, 50)];
         [shaixuanView setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:shaixuanView];
-        UIButton *shaixuanBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.4, 0, kWidth*0.4, 44)];
+        UIButton *shaixuanBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.43, 5, kWidth*0.3, 38)];
         [shaixuanView addSubview:shaixuanBtn];
         [shaixuanBtn setBackgroundColor:NavColor];
         [shaixuanBtn setTitle:@"筛选" forState:UIControlStateNormal];
         [shaixuanBtn addTarget:self action:@selector(screeningViewAction) forControlEvents:UIControlEventTouchUpInside];
-        UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*0.4, 44)];
+        UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.07, 5, kWidth*0.3, 38)];
         [chongzhiBtn setBackgroundColor:kRGB(241, 157, 65, 1)];
         [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
         [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [shaixuanView setBackgroundColor:BGColor];
         [shaixuanView addSubview:chongzhiBtn];
     }
     return self;

@@ -11,11 +11,13 @@
 #import "SellBanderTableViewCell.h"
 #import "BuyOtherInfoTableViewCell.h"
 #import "MySupplyOtherInfoTableViewCell.h"
+#import "HotSellModel.h"
 @interface ZIKMySupplyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSString                        *uid;
 @property (nonatomic, strong) SupplyDetialMode                *model;
 @property (nonatomic,strong ) UITableView                     *tableView;
 @property (nonatomic, strong) NSArray *nurseryDateArray;
+@property (nonatomic, strong) HotSellModel *hotSellModel;
 @end
 
 @implementation ZIKMySupplyDetailViewController
@@ -37,11 +39,14 @@
     };
 }
 
--(id)initMySupplyDetialWithUid:(NSString *)uid {
+-(id)initMySupplyDetialWithUid:(ZIKSupplyModel *)ZIKSupplyModel{
     self = [super init];
     if (self) {
-        self.uid = uid;
-        [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:uid Success:^(id responseObject) {
+        self.uid = ZIKSupplyModel.uid;
+        self.hotSellModel =[HotSellModel new];
+        self.hotSellModel.area=ZIKSupplyModel.area;
+        self.hotSellModel.title=ZIKSupplyModel.title;
+        [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:ZIKSupplyModel.uid Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic = [responseObject objectForKey:@"result"];
                 SupplyDetialMode *model = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
@@ -169,7 +174,7 @@
 {
     if (self.model) {
         if (indexPath.section==0) {
-            SellBanderTableViewCell *cell = [[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 330) andModel:self.model andHotSellModel:nil];
+            SellBanderTableViewCell *cell = [[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 330) andModel:self.model andHotSellModel:self.hotSellModel];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
         }

@@ -201,7 +201,10 @@
         } failure:^(NSError *error) {
             
         }];
+        return;
     }
+    
+    
     if (sender.selected) {
         [HTTPCLIENT deletesenderCollectWithIds:[[self.infoDic objectForKey:@"detail"] objectForKey:@"collectUid"] Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {

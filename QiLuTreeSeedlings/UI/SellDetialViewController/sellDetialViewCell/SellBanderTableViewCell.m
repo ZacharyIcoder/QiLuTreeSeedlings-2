@@ -34,6 +34,9 @@
         UIImageView *dingweiImageV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 2, 15, 15)];
         [view addSubview:dingweiImageV];
         [dingweiImageV setImage:[UIImage imageNamed:@"region"]];
+        if (hotModel.area.length==0) {
+            dingweiImageV.hidden=YES;
+        }
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, 80, 20)];
         [lab setFont:[UIFont systemFontOfSize:12]];
         lab.text=hotModel.area;

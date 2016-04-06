@@ -57,8 +57,15 @@
     [self.view addSubview:navView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     UIButton *gongyingBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 64, kWidth/2, 44)];
+    UIView *gongyingViw=[[UIView alloc]initWithFrame:gongyingBtn.frame];
+    [gongyingViw setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:gongyingViw];
     [gongyingBtn setTitle:@"供应信息" forState:UIControlStateNormal];
-    [gongyingBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    gongyingViw.layer.shadowColor = [UIColor grayColor].CGColor;//shadowColor阴影颜色
+    gongyingViw.layer.shadowOffset = CGSizeMake(0,3);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+    gongyingViw.layer.shadowOpacity = 0.5;//阴影透明度，默认0
+   gongyingViw.layer.shadowRadius = 3;//阴影半径，默认3
+    [gongyingBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [gongyingBtn setTitleColor:NavColor forState:UIControlStateSelected];
     gongyingBtn.tag=11;
     gongyingBtn.selected=YES;
@@ -72,14 +79,22 @@
     [qiugouBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [qiugouBtn setTitleColor:NavColor forState:UIControlStateSelected];
     qiugouBtn.tag=12;
+    UIView *qiugouViw=[[UIView alloc]initWithFrame:qiugouBtn.frame];
+    [qiugouViw setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:qiugouViw];
+    qiugouViw.layer.shadowColor = [UIColor grayColor].CGColor;//shadowColor阴影颜色
+    qiugouViw.layer.shadowOffset = CGSizeMake(0,3);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+    qiugouViw.layer.shadowOpacity = 0.5;//阴影透明度，默认0
+    qiugouViw.layer.shadowRadius = 3;//阴影半径，默认3
+    [self.view addSubview:qiugouViw];
     self.qiugouBtn=qiugouBtn;
     [qiugouBtn addTarget:self action:@selector(selectBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:qiugouBtn];
-    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(gongyingBtn.frame)-2.7, kWidth/2, 2.7)];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(gongyingBtn.frame)-0.7, kWidth/2, 2.7)];
     self.moveImageV=imageV;
     [imageV setBackgroundColor:NavColor];
     [self.view addSubview:imageV];
-    UIScrollView *backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(qiugouBtn.frame), kWidth, kHeight-CGRectGetMaxY(qiugouBtn.frame))];
+    UIScrollView *backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(qiugouBtn.frame)+2, kWidth, kHeight-CGRectGetMaxY(qiugouBtn.frame))];
     self.backScrollView=backScrollView;
     backScrollView.tag=111;
     backScrollView.showsHorizontalScrollIndicator = NO;

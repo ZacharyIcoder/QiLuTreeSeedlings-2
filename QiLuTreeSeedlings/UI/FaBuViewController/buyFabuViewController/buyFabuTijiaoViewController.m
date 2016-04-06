@@ -119,8 +119,7 @@
          NSArray *ary = @[@"长期",@"一个月",@"三个月",@"半年",@"一年"];
         [self.ectiveBtn setTitle:ary[self.ecttiv-1] forState:UIControlStateNormal];
         
-        
-    }
+        }
 }
 -(void)tijiaoBtnAction:(UIButton *)sender
 {
@@ -213,7 +212,7 @@
 {
     if (!self.ecttivePickerView) {
         self.ecttivePickerView=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        [self.ecttivePickerView resetPickerData:@[@"长期",@"一个月",@"三个月",@"半年",@"一年"]];
+        [self.ecttivePickerView resetPickerData:@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"永久"]];
         self.ecttivePickerView.delegate=self;
     }
     [self.ecttivePickerView showInView];
@@ -267,7 +266,7 @@
 {
     NSLog(@"%ld",select+1);
     self.ecttiv=select+1;
-    //NSArray *ary = @[@"长期",@"一个月",@"三个月",@"半年",@"一年"];
+    //@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"永久"]
     
 }
 -(void)selectInfo:(NSString *)select

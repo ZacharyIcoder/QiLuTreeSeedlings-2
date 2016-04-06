@@ -7,7 +7,7 @@
 //
 
 #import "ZIKRightBtnSringViewController.h"
-
+#import "ZIKSupplyModel.h"
 @interface ZIKMySupplyDetailViewController : ZIKRightBtnSringViewController
 ///**
 // *  供应ID
@@ -20,5 +20,5 @@
  *
  *  @return return value description
  */
--(id)initMySupplyDetialWithUid:(NSString *)uid;
+-(id)initMySupplyDetialWithUid:(ZIKSupplyModel *)ZIKSupplyModel;
 @end

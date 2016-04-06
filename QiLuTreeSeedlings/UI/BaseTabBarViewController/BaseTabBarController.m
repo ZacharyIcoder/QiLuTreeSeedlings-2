@@ -16,6 +16,7 @@
 @interface BaseTabBarController ()
 @property UIView *BTabBar;
 @property BOOL TabBarHiden;
+
 @end
 
 @implementation BaseTabBarController
@@ -72,21 +73,43 @@
     UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 3, 30, 30)];
     PageViewBtn.tag=1;
     self.homePageBtn=PageViewBtn;
-    [PageViewBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *pageActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 0, 30, 50)];
+    pageActionBtn.tag=1;
+   
+    [pageActionBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
+    
     [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
     [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
     PageViewBtn.selected=YES;
     [self.BTabBar addSubview:PageViewBtn];
+    UILabel *hompageLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 30, 30, 25)];
+    [hompageLab setFont:[UIFont systemFontOfSize:12]];
+    [hompageLab setTextAlignment:NSTextAlignmentCenter];
+    [hompageLab setTextColor:NavColor];
+    [hompageLab setText:@"首页"];
+    self.homePageLab=hompageLab;
+    [self.BTabBar addSubview:hompageLab];
+     [self.BTabBar addSubview:pageActionBtn];
     
     UIButton *UserViewBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 3, 30, 30)];
     self.userInfoBtn=UserViewBtn;
-    [UserViewBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *userActionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 0, 30,50)];
+    userActionBtn.tag=2;
+    
+    [userActionBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
     UserViewBtn.tag=2;
    // [UserViewBtn setBackgroundColor:[UIColor redColor]];
     [self.BTabBar addSubview:UserViewBtn];
     [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoNomer"] forState:UIControlStateNormal];
     [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoGreen"] forState:UIControlStateSelected];
-
+    UILabel *userLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44-15, 30, 60, 25)];
+    [userLab setFont:[UIFont systemFontOfSize:12]];
+    [userLab setTextAlignment:NSTextAlignmentCenter];
+    [userLab setTextColor:[UIColor lightGrayColor]];
+    [userLab setText:@"个人中心"];
+    self.userLab=userLab;
+    [self.BTabBar addSubview:userLab];
+    [self.BTabBar addSubview:userActionBtn];
 
     UIButton *fabuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-25, -5, 50, 50)];
     [fabuBtn setImage:[UIImage imageNamed:@"fabuBTN"] forState:UIControlStateNormal];
@@ -106,7 +129,9 @@
 {
     if (sender.tag==1) {
         self.selectedIndex=0;
-        sender.selected=YES;
+        self.homePageBtn.selected=YES;
+        [self.homePageLab setTextColor:NavColor];
+        [self.userLab setTextColor:[UIColor lightGrayColor]];
         self.userInfoBtn.selected=NO;
     }else
     {
@@ -120,8 +145,10 @@
             }];
             return;
         }
+        [self.userLab setTextColor:NavColor];
+        [self.homePageLab setTextColor:[UIColor lightGrayColor]];
         self.selectedIndex=1;
-        sender.selected=YES;
+        self.userInfoBtn.selected=YES;
         self.homePageBtn.selected=NO;
     }
 

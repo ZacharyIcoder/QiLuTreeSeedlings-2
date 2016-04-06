@@ -21,7 +21,7 @@
 
 //        _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         [_sharedClient.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        _sharedClient.requestSerializer.timeoutInterval = 10.f;
+        _sharedClient.requestSerializer.timeoutInterval = 100.f;
         [_sharedClient.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     });
     return _sharedClient;
@@ -594,7 +594,7 @@
                               device_id,@"device_id",
                               @"token",@"response_type",
                               nil];
-    //NSLog(@"%@",parameters);
+    NSLog(@"%@",parameters);
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -766,6 +766,7 @@
                               kclient_secret,@"client_secret",
                               supply_id,@"supply_id",
                               nil];
+    //NSLog(@"%@",parameters);
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

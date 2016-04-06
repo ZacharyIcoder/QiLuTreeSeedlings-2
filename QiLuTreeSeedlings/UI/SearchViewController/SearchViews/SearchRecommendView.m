@@ -84,9 +84,9 @@
     [titleLab setFont:[UIFont systemFontOfSize:15]];
     [titleLab setTextColor:[UIColor blackColor]];
     [view addSubview:titleLab];
-    CGRect tempFrame=CGRectMake(20, CGRectGetMaxY(titleLab.frame)-30, kWidth-20, 44);
+    CGRect tempFrame=CGRectMake(20, CGRectGetMaxY(titleLab.frame)+14+searchHistoryAry.count*44, kWidth-20, 44);
     for (int i=0; i<searchHistoryAry.count; i++) {
-        tempFrame.origin.y+=44;
+        tempFrame.origin.y-=44;
         NSDictionary *dic=[NSDictionary dictionaryWithObject:searchHistoryAry[i] forKey:@"title"];
         searchHistoryViewCell *cell=[[searchHistoryViewCell alloc]initWithFrame:tempFrame WithDic:dic];
         cell.actionBtn.tag=10+i;
@@ -95,7 +95,8 @@
         [cell.deleteBtn addTarget:self action:@selector(HistoryCellDeleteBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:cell];
     }
-    tempFrame.origin.y+=44;
+     tempFrame=CGRectMake(20, CGRectGetMaxY(titleLab.frame)-30+searchHistoryAry.count*44, kWidth-20, 44);
+    tempFrame.origin.y+=24;
     
     UIButton *clearHistoryBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-60, tempFrame.origin.y+20, 120, 25)];
     [clearHistoryBtn setTitle:@"删除搜索历史" forState:UIControlStateNormal];

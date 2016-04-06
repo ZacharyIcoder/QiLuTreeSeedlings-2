@@ -13,7 +13,7 @@
 #import "ZIKPickImageView.h"
 #import "ZIKSideView.h"
 #import "ZIKSelectView.h"
-#import "SreeningViewCell.h"
+#import "FabutiaojiaCell.h"
 #import "ZIKMySupplyCreateModel.h"
 #import "JSONKit.h"
 #import "ZIKSupplyPublishNextVC.h"
@@ -69,10 +69,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     CGRect tempFrame  = CGRectMake(0,0, kWidth, 44);
     UIView *titleView = [[UIView alloc] initWithFrame:tempFrame];
     UILabel *titleLab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 40, 44)];
+    [titleLab setFont:[UIFont systemFontOfSize:15]];
     [titleView addSubview:titleLab];
     [titleView setBackgroundColor:[UIColor whiteColor]];
     titleLab.text = @"标题";
     UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kWidth-70, 44)];
+    [titleTextField setFont:[UIFont systemFontOfSize:15]];
     titleTextField.placeholder  = @"请输入标题(限制在20字以内)";
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
@@ -99,14 +101,16 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     UIView *nameView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame)+15, kWidth, 44)];
     [nameView setBackgroundColor:[UIColor whiteColor]];
     [self.backScrollView addSubview:nameView];
-
+   
     UILabel *nameLab = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 80, 44)];
+    [nameLab setFont:[UIFont systemFontOfSize:15]];
     nameLab.text = @"苗木名称";
     [nameView addSubview:nameLab];
     UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(100, 0, kWidth-100-60, 44)];
     nameTextField.placeholder = @"请输入名称";
     nameTextField.textColor = NavColor;
     nameTextField.delegate=self;
+    [nameTextField setFont:[UIFont systemFontOfSize:15]];
     self.nameTextField=nameTextField;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(nameChange)
@@ -227,13 +231,13 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     CGFloat Y = 205;
 
     [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([myview isKindOfClass:[SreeningViewCell class]]) {
+        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
             [myview removeFromSuperview];
         }
     }];
     
     for (int i=0; i < self.dataAry.count; i++) {
-        SreeningViewCell *cell = [[SreeningViewCell alloc] initWithFrame:CGRectMake(0, Y, 0.8*kWidth, 44) AndModel:self.dataAry[i]];
+        FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 44) AndModel:self.dataAry[i] andAnswer:nil];
         //cell.backgroundColor = [UIColor whiteColor];
         [_cellAry addObject:cell.model];
         Y = CGRectGetMaxY(cell.frame);
