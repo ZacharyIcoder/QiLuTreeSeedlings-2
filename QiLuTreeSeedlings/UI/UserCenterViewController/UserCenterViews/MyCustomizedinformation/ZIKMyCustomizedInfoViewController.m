@@ -57,7 +57,7 @@
 
 - (void)initUI {
     self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64) style:UITableViewStylePlain];
-    self.myCustomizedInfoTableView.delegate =self;
+    self.myCustomizedInfoTableView.delegate   = self;
     self.myCustomizedInfoTableView.dataSource = self;
     [self.view addSubview:self.myCustomizedInfoTableView];
     [ZIKFunction setExtraCellLineHidden:self.myCustomizedInfoTableView];
@@ -140,34 +140,34 @@
 
 - (void)createEmptyUI {
     if (!emptyUI) {
-        emptyUI  = [[UIView alloc] init];
-        emptyUI.frame = CGRectMake(0, 64, Width, Height/2);
-        emptyUI.backgroundColor = [UIColor whiteColor];
+    emptyUI                 = [[UIView alloc] init];
+    emptyUI.frame           = CGRectMake(0, 64, Width, Height/2);
+    emptyUI.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:emptyUI];
     }
 
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(Width/2-50, 30, 100, 100);
-    imageView.image = [UIImage imageNamed:@"图片1"];
+    UIImageView *imageView  = [[UIImageView alloc] init];
+    imageView.frame         = CGRectMake(Width/2-50, 30, 100, 100);
+    imageView.image         = [UIImage imageNamed:@"图片1"];
     [emptyUI addSubview:imageView];
 
-    UILabel *label1 = [[UILabel alloc] init];
-    label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
-    label1.text = @"空空如也";
-    label1.textAlignment = NSTextAlignmentCenter;
-    label1.textColor = [UIColor lightGrayColor];
+    UILabel *label1         = [[UILabel alloc] init];
+    label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
+    label1.text             = @"空空如也~~";
+    label1.textAlignment    = NSTextAlignmentCenter;
+    label1.textColor        = [UIColor lightGrayColor];
     [emptyUI addSubview:label1];
 
-    UILabel *label2 = [[UILabel alloc] init];
-    label2.frame = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
-    label2.text = @"还没有收到任何定制信息";
-    label2.textColor = [UIColor lightGrayColor];
-    label2.textAlignment = NSTextAlignmentCenter;
+    UILabel *label2         = [[UILabel alloc] init];
+    label2.frame            = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
+    label2.text             = @"还没有收到任何定制信息";
+    label2.textColor        = [UIColor lightGrayColor];
+    label2.textAlignment    = NSTextAlignmentCenter;
     [emptyUI addSubview:label2];
 }
 
 - (void)initData {
-    self.page = 1;
+    self.page               = 1;
     self.customizedInfoMArr = [NSMutableArray array];
 }
 

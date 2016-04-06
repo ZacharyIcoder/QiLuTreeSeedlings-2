@@ -7,12 +7,15 @@
 //
 
 #import "ZIKMyBalanceFirstTableViewCell.h"
-
+#import "UIDefines.h"
 @implementation ZIKMyBalanceFirstTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.priceLabel.textColor = yellowButtonColor;
+    //NSLog(@"%@",APPDELEGATE.userModel.balance);
+    self.priceLabel.text = [NSString stringWithFormat:@"¥%.2f",APPDELEGATE.userModel.balance.floatValue];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

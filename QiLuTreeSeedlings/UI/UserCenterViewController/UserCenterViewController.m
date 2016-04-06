@@ -26,9 +26,13 @@
 
 #import "ZIKSetViewController.h"
 #import "ZIKMyCustomizedInfoViewController.h"
+
 #import "UserBigInfoView.h"
-@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate>
+#import "UMSocialControllerService.h"
+#import "UMSocial.h"
+@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
+
 @property (nonatomic,strong) UITableView *tableView;
 @end
 
@@ -317,7 +321,73 @@
             [self.navigationController pushViewController:balanceVC animated:YES];
         }
     }
+    else if (indexPath.section == 4) {
+        [self umengShare];
+    }
+}
 
+- (void)umengShare {
+
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"569c3c37e0f55a8e3b001658"
+                                      shareText:@"齐鲁苗木网"
+                                     shareImage:[UIImage imageNamed:@"myNuserNull@2x.png"]
+                                shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
+                                       delegate:self];
+    //[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
+    //    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ] content:@"sharTestQQ分享文字" image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+    //        if (response.responseCode == UMSResponseCodeSuccess) {
+    //            NSLog(@"分享成功！");
+    //        }
+    //    }];
+    //当分享消息类型为图文时，点击分享内容会跳转到预设的链接，设置方法如下
+    NSString *urlString = @"http://www.qlmm.cn";
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = urlString;
+
+    //如果是朋友圈，则替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = urlString;
+
+    [UMSocialData defaultData].extConfig.qqData.url    = urlString;
+    [UMSocialData defaultData].extConfig.qzoneData.url = urlString;
+    //设置微信好友title方法为
+    NSString *titleString = @"齐鲁苗木网";
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = titleString;
+
+    //设置微信朋友圈title方法替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = titleString;
+
+    //QQ设置title方法为
+
+    [UMSocialData defaultData].extConfig.qqData.title = titleString;
+
+    //Qzone设置title方法将平台参数名替换即可
+
+    [UMSocialData defaultData].extConfig.qzoneData.title = titleString;
 
 }
+
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    //NSLog(@"didClose is %d",fromViewControllerType);
+}
+
+//下面得到分享完成的回调
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+}
+
+-(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"finish share with response is %@",response);
+}
+
 @end

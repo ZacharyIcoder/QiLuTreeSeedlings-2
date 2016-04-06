@@ -59,6 +59,7 @@
     if (indexPath.section == 0) {
         ZIKMyBalanceFirstTableViewCell *firstCell = [ZIKMyBalanceFirstTableViewCell cellWithTableView:tableView];
         cell = firstCell;
+        firstCell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     else if (indexPath.section == 1) {
         static NSString *kCellTwoId = @"twoCellId";
@@ -116,7 +117,7 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [footView addSubview:btn];
         btn.frame = CGRectMake(40, 10, Width-80, 44);
-        [btn setBackgroundColor:kRGB(241, 157, 65, 1)];
+        [btn setBackgroundColor:yellowButtonColor];
         btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [btn setTitle:@"充值" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:15];

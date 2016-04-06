@@ -354,5 +354,16 @@
                                   pageSize:(NSString *)pageSize
                                    Success:(void (^)(id responseObject))success
                                    failure:(void (^)(NSError *error))failure ;
-
+#pragma mark ---------- 微信支付 -----------
+- (void)weixinPayOrder:(NSString *)price
+               Success:(void (^)(id responseObject))success
+               failure:(void (^)(NSError *error))failure;
+;
+#pragma mark ---------- 银联获取tn交易号方法 -----------
+- (void)getUnioPay:(NSString *)price
+           Success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure;
+- (void)getUnioPayTnString:(NSString *)price
+                   Success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure ;
 @end

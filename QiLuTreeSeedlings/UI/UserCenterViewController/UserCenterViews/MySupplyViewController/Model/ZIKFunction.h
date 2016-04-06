@@ -47,4 +47,7 @@
  *  @return 时间NSDate格式
  */
 +(NSDate *)getDateFromString:(NSString *)dateString;
++ (NSString *)weixinPayWithOrderID:(NSString *)orderID;
++ (void)zhiFuBao:(UIViewController *)controller name: (NSString*)name titile:(NSString*)title price:(NSString*)price orderId:(NSString*)orderId;
++ (NSString *)generateTradeNO;
 @end

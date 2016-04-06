@@ -1476,5 +1476,75 @@
 
 }
 
+- (void)weixinPayOrder:(NSString *)price
+                      Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure {
+    //NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    //NSString *str                = [userdefaults objectForKey:kdeviceToken];
+//    NSString *postURL            = @"apimember/pay/wx/notify/";
+    NSString *postURL            = @"apimember/pay/wx/order";
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"total_fee"]        = price;
+    parmers[@"memberUid"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"spbill_create_ip"] = kclient_id;
+//    parmers[@"client_secret"]    = kclient_secret;
+//    parmers[@"device_id"]        = str;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+}
+
+#pragma mark ---------- 银联获取tn交易号方法 -----------
+- (void)getUnioPay:(NSString *)price
+           Success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"apimember/pay/unionpay/order";
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"txnAmt"]        = price;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+//    [self GET:postURL parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//
+//    }];
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+
+}
+- (void)getUnioPayTnString:(NSString *)price
+                   Success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"apimember/pay/unionpay/order";
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"txnAmt"]        = price;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    //    [self GET:postURL parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    //
+    //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    //
+    //    }];
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
 
 @end
