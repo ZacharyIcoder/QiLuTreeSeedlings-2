@@ -140,6 +140,8 @@
     BaseTabBarController *baseB=(BaseTabBarController *)self.window.rootViewController;
     baseB.homePageBtn.selected=YES;
     baseB.userInfoBtn.selected=NO;
+    [baseB.homePageLab setTextColor:NavColor];
+    [baseB.userLab setTextColor:[UIColor lightGrayColor]];
 }
 #pragma mark - 用户通知(推送) _自定义方法
 

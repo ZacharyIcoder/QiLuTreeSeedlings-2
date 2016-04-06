@@ -15,7 +15,6 @@
 @property (nonatomic,strong) UserInfoModel *model;
 @property (nonatomic,strong) UIButton *collectBtn;
 @property (nonatomic,strong) UIButton *interBtn;
-@property (nonatomic,strong) UIButton *setingBtn;
 @property (nonatomic, assign) id<UserBigInfoTableViewCellDelegate>userDelegate;
 
 +(NSString *)IDstr;

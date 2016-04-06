@@ -15,7 +15,7 @@
 #import "HttpClient.h"
 #import "MyCollectViewController.h"
 #import "ZIKMySupplyViewController.h"
-
+#import "LoginViewController.h"
 #import "MyNuseryListViewController.h"
 
 #import "MyBuyListViewController.h"
@@ -26,8 +26,9 @@
 
 #import "ZIKSetViewController.h"
 #import "ZIKMyCustomizedInfoViewController.h"
-@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate>
-
+#import "UserBigInfoView.h"
+@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate>
+@property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong) UITableView *tableView;
 @end
 
@@ -40,6 +41,7 @@
 {
     [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
         [self.tableView reloadData];
+        self.userBigInfoV.model=APPDELEGATE.userModel;
     } failure:^(NSError *error) {
         
     }];
@@ -50,15 +52,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UserBigInfoView *userbigInfoV=[[UserBigInfoView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 200)];
+    userbigInfoV.userDelegate=self;
+    userbigInfoV.model=APPDELEGATE.userModel;
+    [self.view addSubview:userbigInfoV];
+    self.userBigInfoV=userbigInfoV;
+    [userbigInfoV.setingBtn addTarget:self action:@selector(setBtnAction) forControlEvents:UIControlEventTouchUpInside];
     self.navigationController.navigationBarHidden=YES;
       [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fabuBtnAction) name:@"fabuBtnAction" object:nil];
-//    [self.view setBackgroundColor:[UIColor redColor]];
-    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight-3) style:UITableViewStyleGrouped];
+    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 200, kWidth, kHeight-244) style:UITableViewStyleGrouped];
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //[self.tableView setBackgroundColor:[UIColor redColor]];
-    [self.view addSubview:self.tableView];
+[self.view addSubview:self.tableView];
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,7 +93,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 280;
+        return 60;
     }else
         return 44;
 }
@@ -134,12 +140,10 @@
         UserBigInfoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[UserBigInfoTableViewCell IDstr]];
 
         if (!cell) {
-            cell=[[UserBigInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 280)];
+            cell=[[UserBigInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 60)];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-             cell.userDelegate = self;
             [cell.collectBtn addTarget:self action:@selector(mycollectBtnAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.interBtn addTarget:self action:@selector(myJifenBtnAction) forControlEvents:UIControlEventTouchUpInside];
-            [cell.setingBtn addTarget:self action:@selector(setBtnAction) forControlEvents:UIControlEventTouchUpInside];
 
         }
 
@@ -200,6 +204,14 @@
 
 -(void)fabuBtnAction
 {
+    if([APPDELEGATE isNeedLogin]==NO)
+    {
+        [self hiddingSelfTabBar];
+        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        [self.navigationController pushViewController:loginViewController animated:YES];
+        [ToastView showTopToast:@"请先登录"];
+        return;
+    }
     if (self.tabBarController.selectedIndex==0) {
         return;
     }
@@ -207,8 +219,6 @@
     [self hiddingSelfTabBar];
     FaBuViewController *fbVC=[[FaBuViewController alloc]init];
     [self.navigationController pushViewController:fbVC animated:YES];
-//    ViewController *viewCCC=[[ViewController alloc]init];
-//    [self.navigationController pushViewController:viewCCC animated:YES];
 }
 
 #pragma mark - 设置
