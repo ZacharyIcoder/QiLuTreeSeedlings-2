@@ -161,6 +161,7 @@
         [btn setImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
         if ([self.model.anwser isEqualToString:self.model.optionList[i]]) {
             btn.selected=YES;
+            self.nowBtn=btn;
         }
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
         

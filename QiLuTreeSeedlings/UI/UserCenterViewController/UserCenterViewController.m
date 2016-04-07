@@ -23,10 +23,8 @@
 #import "ZIKUserInfoSetViewController.h"
 #import "MyIntegralViewController.h"
 #import "ZIKMyBalanceViewController.h"
-
-#import "ZIKSetViewController.h"
 #import "ZIKMyCustomizedInfoViewController.h"
-
+#import "SettingViewController.h"
 #import "UserBigInfoView.h"
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
@@ -250,7 +248,7 @@
 
 #pragma mark - 设置
 - (void)setBtnAction {
-    ZIKSetViewController *setVC =  [[ZIKSetViewController alloc] init];
+    SettingViewController *setVC =  [[SettingViewController alloc] init];
     [self hiddingSelfTabBar];
     [self.navigationController pushViewController:setVC animated:YES];
 }

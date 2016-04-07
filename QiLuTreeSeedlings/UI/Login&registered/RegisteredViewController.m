@@ -31,6 +31,7 @@
     
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 20, 120, 44)];
     [titleLab setText:@"注册"];
+    [titleLab setFont:[UIFont systemFontOfSize:21]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setTextColor:[UIColor whiteColor]];
     [navView addSubview:titleLab];
@@ -63,11 +64,16 @@
     self.codeTextField.delegate=self;
     self.codeTextField.tag=10004;
     self.codeTextField.keyboardType=UIKeyboardTypeNumberPad;
-    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 4*50+74+20, kWidth-80, 40)];
+    UILabel *zzzzLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 4*50+74+5, kWidth-80, 20)];
+    [zzzzLab setFont:[UIFont systemFontOfSize:13]];
+    [zzzzLab setTextColor:[UIColor lightGrayColor]];
+    [zzzzLab setText:@"验证码将发送到您所填写的手机上"];
+    [self.view addSubview:zzzzLab];
+    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 4*50+74+20+30, kWidth-80, 40)];
     [self.view addSubview:sureBtn];
     [sureBtn addTarget:self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [sureBtn setBackgroundColor:NavColor];
-    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [sureBtn setTitle:@"确认" forState:UIControlStateNormal];
 }
 -(void)sureBtnAction
 {
@@ -105,7 +111,7 @@
     }
     
     [HTTPCLIENT registeredUserWithPhone:self.phoneTextField.text withPassWord:self.passWordTextField.text withRepassWord:self.rePassWordTextField.text withCode:self.codeTextField.text Success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
             [self performSelector:@selector(backBtnAction) withObject:nil afterDelay:0.7];
@@ -117,7 +123,7 @@
     } failure:^(NSError *error) {
         
     }];
-    NSLog(@"注册");
+    //NSLog(@"注册");
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -132,16 +138,18 @@
     [view addSubview:phoneImageV];
     [view setBackgroundColor:[UIColor whiteColor]];
     UILabel *phoneLab=[[UILabel alloc]initWithFrame:CGRectMake(45/320.f*kWidth,10, 70, 30)];
+    [phoneLab setFont:[UIFont systemFontOfSize:16]];
     [phoneLab setTextColor:[UIColor blackColor]];
     [phoneLab setText:title];
     [view addSubview:phoneLab];
     UITextField *phoneTextField=[[UITextField alloc]initWithFrame:CGRectMake(120/320.f*kWidth, 10, 180, 30)];
     [view addSubview:phoneTextField];
+    [phoneTextField setFont:[UIFont systemFontOfSize:16]];
     UIImageView *linimageV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
     [view addSubview:linimageV];
     [linimageV setBackgroundColor:kLineColor];
     if (Y==3) {
-        UIButton *getYanzhengBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-90, 10, 75, 35)];
+        UIButton *getYanzhengBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-88, 12.5, 75, 30)];
         self.getCodeButton=getYanzhengBtn;
         [getYanzhengBtn setBackgroundColor:[UIColor orangeColor]];
         [getYanzhengBtn setTitle:@"获取验证码" forState:UIControlStateNormal];

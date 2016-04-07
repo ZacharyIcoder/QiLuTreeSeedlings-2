@@ -25,6 +25,7 @@
 #import "BuyDetialInfoViewController.h"
 #import "SellDetialViewController.h"
 #import "MJRefresh.h"
+#import "ZIKMyCustomizedInfoViewController.h"
 //#import "ViewController.h"
 @interface HomePageViewController ()<AdvertDelegate,HotBuyViewsDelegate,HotSellViewDelegate,CircleViewsDelegate,YouLickViewDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
@@ -370,6 +371,21 @@
         {
             [ToastView showTopToast:@"请先登录"];
         }
+        
+    }
+    if(index==3){
+        if([APPDELEGATE isNeedLogin])
+        {
+            [self hiddingSelfTabBar];
+            ZIKMyCustomizedInfoViewController *customInfoVC = [[ZIKMyCustomizedInfoViewController alloc] init];
+            [self.navigationController pushViewController:customInfoVC animated:YES];
+            return;
+            
+        }else
+        {
+            [ToastView showTopToast:@"请先登录"];
+        }
+
         
     }
 }

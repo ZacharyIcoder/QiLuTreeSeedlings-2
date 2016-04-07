@@ -10,7 +10,7 @@
 @protocol LoginViewDelegate <NSObject>
 
 - (void)LoginbtnAction:(NSString *)phone andPassword:(NSString *)pasword;
-
+-(void)reginSSSAction;
 @end
 @interface LoginView : UIView
 @property (nonatomic,weak) id<LoginViewDelegate> delegate;

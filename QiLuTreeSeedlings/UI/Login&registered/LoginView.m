@@ -64,8 +64,15 @@
         [self addSubview:loginBtn];
         [loginBtn setBackgroundColor:NavColor];
         [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [loginBtn setTitle:@"确定" forState:UIControlStateNormal];
+        [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [loginBtn addTarget:self action:@selector(loginBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *reginBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(loginBtn.frame)+20, kWidth-80, 40)];
+        [self addSubview:reginBtn];
+        [reginBtn setBackgroundColor:[UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1]];
+        [reginBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
+        [reginBtn setTitle:@"快速注册" forState:UIControlStateNormal];
+        [reginBtn addTarget:self action:@selector(reginBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     
     return self;
@@ -77,6 +84,12 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     return [textField resignFirstResponder];
+}
+-(void)reginBtnAction
+{
+    if (self.delegate) {
+        [self.delegate reginSSSAction];
+    }
 }
 -(void)loginBtnAction
 {

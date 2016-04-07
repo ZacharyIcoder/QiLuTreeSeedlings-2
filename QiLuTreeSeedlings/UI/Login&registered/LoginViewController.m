@@ -28,10 +28,11 @@
     [navView addSubview:backBtn];
     [self.view addSubview:navView];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 20, 120, 44)];
-    [titleLab setText:@"登录"];
+    [titleLab setText:@"帐号登录"];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setTextColor:[UIColor whiteColor]];
     [navView addSubview:titleLab];
+    [titleLab setFont:[UIFont systemFontOfSize:21]];
     UIButton *registeredBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 27, 40, 30)];
     [navView addSubview:registeredBtn];
     [registeredBtn setTitle:@"注册" forState:UIControlStateNormal];
@@ -44,6 +45,11 @@
 -(void)registeredBtnAction
 {
     //NSLog(@"注册");
+    RegisteredViewController *registVC=[[RegisteredViewController alloc]init];
+    [self.navigationController pushViewController:registVC animated:YES];
+}
+-(void)reginSSSAction
+{
     RegisteredViewController *registVC=[[RegisteredViewController alloc]init];
     [self.navigationController pushViewController:registVC animated:YES];
 }

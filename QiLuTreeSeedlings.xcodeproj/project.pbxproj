@@ -95,6 +95,7 @@
 		EA5DF94C1CB6399A00BE0E8C /* ZIKIntegraModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */; };
 		EA5DF94D1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */; };
 		EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */; };
+		EA5DF9521CB6484C00BE0E8C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9511CB6484C00BE0E8C /* SettingViewController.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
 		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
@@ -236,7 +237,6 @@
 		FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F341CABA30200EBB2F8 /* ZIKPayViewController.m */; };
 		FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4B4F361CABAB0F00EBB2F8 /* 消费记录40x40.png */; };
 		FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F391CABAB6400EBB2F8 /* ZIKPayRecordViewController.m */; };
-		FC4B4F3E1CABB7B500EBB2F8 /* ZIKSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F3D1CABB7B500EBB2F8 /* ZIKSetViewController.m */; };
 		FC50B1601CAE243F0022A24C /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC50B12A1CAE243F0022A24C /* UMSocialLocalizable.strings */; };
 		FC50B1611CAE243F0022A24C /* libUMSocial_Sdk_5.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1381CAE243F0022A24C /* libUMSocial_Sdk_5.0.1.a */; };
 		FC50B1621CAE243F0022A24C /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B13A1CAE243F0022A24C /* UMSCommentDetailController.xib */; };
@@ -527,6 +527,8 @@
 		EA5DF9491CB6399A00BE0E8C /* ZIKIntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraTableViewCell.h; sourceTree = "<group>"; };
 		EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraTableViewCell.m; sourceTree = "<group>"; };
 		EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKIntegraTableViewCell.xib; sourceTree = "<group>"; };
+		EA5DF9501CB6484C00BE0E8C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		EA5DF9511CB6484C00BE0E8C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
@@ -761,8 +763,6 @@
 		FC4B4F361CABAB0F00EBB2F8 /* 消费记录40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消费记录40x40.png"; sourceTree = "<group>"; };
 		FC4B4F381CABAB6400EBB2F8 /* ZIKPayRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordViewController.h; sourceTree = "<group>"; };
 		FC4B4F391CABAB6400EBB2F8 /* ZIKPayRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordViewController.m; sourceTree = "<group>"; };
-		FC4B4F3C1CABB7B500EBB2F8 /* ZIKSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSetViewController.h; sourceTree = "<group>"; };
-		FC4B4F3D1CABB7B500EBB2F8 /* ZIKSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSetViewController.m; sourceTree = "<group>"; };
 		FC50B12B1CAE243F0022A24C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		FC50B12D1CAE243F0022A24C /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		FC50B12E1CAE243F0022A24C /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -1614,6 +1614,15 @@
 			path = HotSellView;
 			sourceTree = "<group>";
 		};
+		EA5DF94F1CB6483300BE0E8C /* setViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5DF9501CB6484C00BE0E8C /* SettingViewController.h */,
+				EA5DF9511CB6484C00BE0E8C /* SettingViewController.m */,
+			);
+			path = setViewController;
+			sourceTree = "<group>";
+		};
 		EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1900,9 +1909,9 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				EA5DF94F1CB6483300BE0E8C /* setViewController */,
 				EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */,
 				FC6FED4F1CACEAE8000E2CA5 /* MyCustomizedinformation */,
-				FC4B4F3B1CABB7A900EBB2F8 /* SetVC */,
 				FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */,
 				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC6149DC1CAA2E0600672241 /* UserInfoSetVC */,
@@ -2097,15 +2106,6 @@
 				FC6FED7E1CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FC4B4F3B1CABB7A900EBB2F8 /* SetVC */ = {
-			isa = PBXGroup;
-			children = (
-				FC4B4F3C1CABB7B500EBB2F8 /* ZIKSetViewController.h */,
-				FC4B4F3D1CABB7B500EBB2F8 /* ZIKSetViewController.m */,
-			);
-			path = SetVC;
 			sourceTree = "<group>";
 		};
 		FC50B1271CAE23E60022A24C /* 友盟 */ = {
@@ -2957,7 +2957,6 @@
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
 				EAE32DF41C7E9D5000C4CEA2 /* HttpClient.m in Sources */,
-				FC4B4F3E1CABB7B500EBB2F8 /* ZIKSetViewController.m in Sources */,
 				FC21BC831CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */,
 				FC49AE4A1CA90CB000214D4B /* ZIKNurseryListSelectButton.m in Sources */,
@@ -2977,6 +2976,7 @@
 				EA0B2BE11C5A06D80018A7BD /* HomePageViewController.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
+				EA5DF9521CB6484C00BE0E8C /* SettingViewController.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
