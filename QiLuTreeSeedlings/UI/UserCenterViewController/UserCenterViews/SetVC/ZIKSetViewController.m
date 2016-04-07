@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.vcTitle = @"设置";
+    //self.vcTitle = @"设置";
     [self initUI];
 }
 

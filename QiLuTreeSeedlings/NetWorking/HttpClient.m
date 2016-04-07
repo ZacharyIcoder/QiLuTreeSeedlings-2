@@ -1630,6 +1630,7 @@
         failure(error);
     }];
 }
+
 #pragma mark ---------- 我的供应信息修改 -----------
 -(void)mySupplyUpdataWithUid:(NSString *)uid
                      Success:(void (^)(id responseObject))success
@@ -1654,4 +1655,41 @@
     }];
 
 }
+
+#pragma mark ---------- 我的订制设置保存 -----------
+- (void)saveMyCustomizedInfo:(NSString *)uid
+                  productUid:(NSString *)productUid
+ withSpecificationAttributes:(NSArray *)etcAttributes
+                     Success:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
+    NSString *str = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL = @"api/member/push/customset/create";
+    NSMutableDictionary *parmers  = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]      = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]         = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]         = kclient_id;
+    parmers[@"client_secret"]     = kclient_secret;
+    parmers[@"device_id"]         = str;
+    parmers[@"uid"]               = uid;
+    parmers[@"productUid"]        = productUid;
+    NSArray *array = etcAttributes[0];
+    for (int i=0; i < array.count; i++) {
+        NSDictionary *dic = array[i];
+        NSString *field =  dic[@"field"];
+        parmers[field]  = [dic objectForKey:@"anwser"];
+    }
+
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+    
+}
+
+
 @end
