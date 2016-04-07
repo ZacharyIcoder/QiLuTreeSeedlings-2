@@ -8,6 +8,6 @@
 
 #import "ZIKArrowViewController.h"
 
-@interface ZIKSetViewController : ZIKArrowViewController
+@interface ZIKSetViewController : ZIKBaseViewController
 
 @end

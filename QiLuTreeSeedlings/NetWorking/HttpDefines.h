@@ -12,20 +12,7 @@
 
 
 
-
-//static NSString * const AFBaseURLString = @"http://192.168.1.8:8082/";
-//http://115.28.228.147:8088/qlmm/
-//static NSString * const AFBaseURLString = @"http://115.28.228.147:8088/qlmm/";
-
-//http://192.168.1.8:8082/
-//static NSString * const AFBaseURLString = @"http://192.168.1.8:8082/qlmm/";
-static NSString * const AFBaseURLString = @"http://192.168.1.8:8082/qlmm/";
-
-//http://115.28.228.147:8088/qlmm/
-//static NSString * const AFBaseURLString = @"http://115.28.228.147:8088/qlmm/";
-
-
-//static NSString * const AFBaseURLString = @"http://192.168.1.8:8082/";
+static NSString * const AFBaseURLString = @"http://192.168.1.8:8082/";
 //http://115.28.228.147:8088/qlmm/
 //static NSString * const AFBaseURLString = @"http://115.28.228.147:8088/qlmm/";
 
@@ -40,4 +27,3 @@ static NSString * const AFBaseURLString = @"http://192.168.1.8:8082/qlmm/";
 /*********end支付宝相关end*********/
 
 #endif
-//#endif

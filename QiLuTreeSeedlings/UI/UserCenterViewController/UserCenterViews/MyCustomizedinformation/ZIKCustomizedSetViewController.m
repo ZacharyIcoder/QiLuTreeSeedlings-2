@@ -11,6 +11,7 @@
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
 #define kMaxLength 20
+#import "HttpClient.h"
 @interface ZIKCustomizedSetViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate>
 {
     UIView *priceView;
