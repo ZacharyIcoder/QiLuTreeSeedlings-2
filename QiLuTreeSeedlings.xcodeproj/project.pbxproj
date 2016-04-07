@@ -89,6 +89,7 @@
 		EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5AAC4E1C8D4A0100660FC9 /* BuyDetialInfoViewController.m */; };
 		EA5B26EB1C7D6E7100863F9D /* HotSellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26EA1C7D6E7100863F9D /* HotSellView.m */; };
 		EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */; };
+		EA5DF9421CB5F70F00BE0E8C /* IntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
 		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
@@ -509,6 +510,8 @@
 		EA5B26EA1C7D6E7100863F9D /* HotSellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellView.m; sourceTree = "<group>"; };
 		EA5B26EC1C7D6E8E00863F9D /* HotSellViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSellViewCell.h; sourceTree = "<group>"; };
 		EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellViewCell.m; sourceTree = "<group>"; };
+		EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegraTableViewCell.h; sourceTree = "<group>"; };
+		EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegraTableViewCell.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
@@ -1557,6 +1560,8 @@
 			children = (
 				EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */,
 				EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */,
+				EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */,
+				EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */,
 			);
 			path = MyIntegralViewController;
 			sourceTree = "<group>";
@@ -2944,6 +2949,7 @@
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
+				EA5DF9421CB5F70F00BE0E8C /* IntegraTableViewCell.m in Sources */,
 				FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */,
 				EA6B31C31CABCADC0068CCB5 /* MyBuyNullTableViewCell.m in Sources */,
 				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,

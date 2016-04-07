@@ -32,7 +32,7 @@
         [titleLab setTextColor:[UIColor whiteColor]];
         [titleLab setTextAlignment:NSTextAlignmentCenter];
         self.titleLab=titleLab;
-        [titleLab setText:@"未登录"];
+        //[titleLab setText:@"未登录"];
         [self addSubview:titleLab];
         [titleLab setFont:[UIFont systemFontOfSize:19]];
         UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 90, 90)];
@@ -52,6 +52,7 @@
         [phoneLab setTextAlignment:NSTextAlignmentCenter];
         self.phoneLab = phoneLab;
         [phoneLab setTextColor:[UIColor whiteColor]];
+        [phoneLab setText:@"登录"];
         [self addSubview:phoneLab];
         
         UILabel *gongyishangLab=[[UILabel alloc] initWithFrame:CGRectMake(kWidth/2-60, CGRectGetMaxY(phoneLab.frame), 120, 25)];
@@ -73,10 +74,20 @@
 -(void)setModel:(UserInfoModel *)model
 {
     _model=model;
-    self.titleLab.text=model.name;
-    [self.userImageV setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"UserImageV"]];
-    self.phoneLab.text=model.phone;
-    self.gongyiDLab.text=model.goldsupplier;
+    if (model.name.length>0) {
+        self.titleLab.text=model.name;
+        [self.userImageV setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"UserImageV"]];
+        self.phoneLab.text=model.phone;
+        self.gongyiDLab.text=model.goldsupplier;
+    }else
+    {
+        self.titleLab.text=@"";
+        [self.userImageV setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"UserImageV"]];
+        self.phoneLab.text=@"未登录";
+        self.gongyiDLab.text=@"";
+
+    }
+   
 }
 //self.titleLab.text=model.name;
 //[self.userImageV setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"UserImageV"]];

@@ -13,11 +13,12 @@
 {
     self=[super initWithFrame:frame];
     if (self) {
-        UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 24, 24)];
+        UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(20, 12, 20, 20)];
         [self addSubview:imageV];
         [imageV setImage:[UIImage imageNamed:imageName]];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(60, 0, 120, 44)];
         titleLab.text=title;
+        [titleLab setFont:[UIFont systemFontOfSize:15]];
         [self addSubview:titleLab];
         [titleLab setTextColor:[UIColor blackColor]];
         UIImageView *lineImage=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];

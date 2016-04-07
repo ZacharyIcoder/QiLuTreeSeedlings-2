@@ -135,16 +135,16 @@
         self.userInfoBtn.selected=NO;
     }else
     {
-        if (![APPDELEGATE isNeedLogin]) {
-            LoginViewController *loginViewController=[[LoginViewController alloc]init];
-            
-            UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
-            
-            [self presentViewController:navVC animated:YES completion:^{
-                
-            }];
-            return;
-        }
+//        if (![APPDELEGATE isNeedLogin]) {
+//            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+//            
+//            UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+//            
+//            [self presentViewController:navVC animated:YES completion:^{
+//                
+//            }];
+//            return;
+       // }
         [self.userLab setTextColor:NavColor];
         [self.homePageLab setTextColor:[UIColor lightGrayColor]];
         self.selectedIndex=1;

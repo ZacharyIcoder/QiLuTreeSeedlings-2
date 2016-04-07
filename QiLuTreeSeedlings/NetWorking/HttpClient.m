@@ -594,15 +594,48 @@
                               device_id,@"device_id",
                               @"token",@"response_type",
                               nil];
-    NSLog(@"%@",parameters);
+   // NSLog(@"%@",parameters);
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         RemoveActionV();
         success(responseObject);
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [self updataClient_id];
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          RemoveActionV();
         failure(error);
+    }];
+
+}
+-(void)updataClient_id
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *device_id = [userDefaults objectForKey:@"deviceToken"];
+    if (!device_id) {
+        device_id=@"用户未授权";
+        return;
+    }
+    NSString *postURL = @"api/client";
+    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
+                              APPDELEGATE.userModel.access_token,@"access_token",
+                              APPDELEGATE.userModel.access_id,@"access_id",
+                              device_id,@"device_id",
+                              kclient_id,@"client_id",
+                              kclient_secret,@"client_secret",
+                              device_id,@"cid",
+                              @"2",@"type",
+                              nil];
+
+
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       
     }];
 
 }
@@ -1573,5 +1606,28 @@
     }];
 
 }
-
+#pragma mark-个人积分
+-(void)getMyIntegralListWithPageNumber:(NSString *)pageNumber
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/integral/record";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = @"15";
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+}
 @end

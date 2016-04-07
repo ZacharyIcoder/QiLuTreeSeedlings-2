@@ -193,7 +193,10 @@
 -(void)myBuyInfoListWtihPage:(NSString *)page
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;
-
+#pragma mark-个人积分
+-(void)getMyIntegralListWithPageNumber:(NSString *)pageNumber
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure;
 #pragma mark -我的求购信息保存
 -(void)fabuBuyMessageWithUid:(NSString *)uid
                    Withtitle:(NSString *)title
