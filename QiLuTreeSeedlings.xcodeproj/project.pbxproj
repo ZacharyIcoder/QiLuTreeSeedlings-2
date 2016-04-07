@@ -89,6 +89,7 @@
 		EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5AAC4E1C8D4A0100660FC9 /* BuyDetialInfoViewController.m */; };
 		EA5B26EB1C7D6E7100863F9D /* HotSellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26EA1C7D6E7100863F9D /* HotSellView.m */; };
 		EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */; };
+		EA5DF9421CB5F70F00BE0E8C /* IntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
 		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
@@ -275,6 +276,9 @@
 		FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC50B34E1CAE56320022A24C /* ZIKVoucherCenterViewController.m */; };
 		FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */ = {isa = PBXBuildFile; fileRef = FC50B3501CAE60D20022A24C /* 微信支付.png */; };
 		FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */; };
+		FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC55FB911CB5018A008D9CAD /* ZIKCustomizedModel.m */; };
+		FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC55FB941CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m */; };
+		FC55FB971CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC55FB951CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
 		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
@@ -509,6 +513,8 @@
 		EA5B26EA1C7D6E7100863F9D /* HotSellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellView.m; sourceTree = "<group>"; };
 		EA5B26EC1C7D6E8E00863F9D /* HotSellViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSellViewCell.h; sourceTree = "<group>"; };
 		EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellViewCell.m; sourceTree = "<group>"; };
+		EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegraTableViewCell.h; sourceTree = "<group>"; };
+		EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegraTableViewCell.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
@@ -903,6 +909,11 @@
 		FC50B34E1CAE56320022A24C /* ZIKVoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKVoucherCenterViewController.m; sourceTree = "<group>"; };
 		FC50B3501CAE60D20022A24C /* 微信支付.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "微信支付.png"; sourceTree = "<group>"; };
 		FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		FC55FB901CB5018A008D9CAD /* ZIKCustomizedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKCustomizedModel.h; sourceTree = "<group>"; };
+		FC55FB911CB5018A008D9CAD /* ZIKCustomizedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKCustomizedModel.m; sourceTree = "<group>"; };
+		FC55FB931CB503BC008D9CAD /* ZIKCustomizedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKCustomizedTableViewCell.h; sourceTree = "<group>"; };
+		FC55FB941CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKCustomizedTableViewCell.m; sourceTree = "<group>"; };
+		FC55FB951CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKCustomizedTableViewCell.xib; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -1557,6 +1568,8 @@
 			children = (
 				EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */,
 				EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */,
+				EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */,
+				EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */,
 			);
 			path = MyIntegralViewController;
 			sourceTree = "<group>";
@@ -2370,6 +2383,8 @@
 			children = (
 				FC6FED711CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.h */,
 				FC6FED721CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m */,
+				FC55FB901CB5018A008D9CAD /* ZIKCustomizedModel.h */,
+				FC55FB911CB5018A008D9CAD /* ZIKCustomizedModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2380,6 +2395,9 @@
 				FC6FED741CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.h */,
 				FC6FED751CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.m */,
 				FC6FED761CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.xib */,
+				FC55FB931CB503BC008D9CAD /* ZIKCustomizedTableViewCell.h */,
+				FC55FB941CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m */,
+				FC55FB951CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2810,6 +2828,7 @@
 				FC6FED6B1CACF833000E2CA5 /* 图标.png in Resources */,
 				EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */,
 				EA03CCF11C9003AC0032BAD3 /* passwordLiteImage@2x.png in Resources */,
+				FC55FB971CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib in Resources */,
 				EAB7819A1C8E970F00807B44 /* collectionN@2x.png in Resources */,
 				EAF051011C92A2B700F435A9 /* mycompany@2x.png in Resources */,
 				EAB7819D1C8EA55600807B44 /* UserImage@2x.png in Resources */,
@@ -2944,6 +2963,7 @@
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
+				EA5DF9421CB5F70F00BE0E8C /* IntegraTableViewCell.m in Sources */,
 				FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */,
 				EA6B31C31CABCADC0068CCB5 /* MyBuyNullTableViewCell.m in Sources */,
 				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,
@@ -2961,6 +2981,7 @@
 				EAEB63C21C9147D50001ABC9 /* UserInfoModel.m in Sources */,
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
+				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
 				FCF353D91CA3B515001ABA0A /* StringAttribute.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
@@ -3079,6 +3100,7 @@
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
 				FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */,
+				FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				FCF353D31CA3B515001ABA0A /* ZIKPickerBtn.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,
@@ -3252,8 +3274,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3286,7 +3308,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuhtrh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3298,8 +3320,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3332,7 +3354,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuhtrh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

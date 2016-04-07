@@ -10,7 +10,9 @@
 #import "ZIKCustomizedSetViewController.h"
 #import "MJRefresh.h"
 #import "YYModel.h"
-
+#import "ZIKCustomizedModel.h"
+#import "BuyOtherInfoTableViewCell.h"
+#import "ZIKCustomizedTableViewCell.h"
 @interface ZIKCustomizedInfoListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
@@ -26,8 +28,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNav];
-    [self initData];
+    //[self initData];
     [self initUI];
+    //[self requestData];
+    NSLog(@"%@",  [NSString stringWithUTF8String:object_getClassName(self)]);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self initData];
     [self requestData];
 }
 
@@ -55,7 +64,7 @@
 }
 
 - (void)initUI {
-    self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64) style:UITableViewStylePlain];
+    self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64) style:UITableViewStyleGrouped];
     self.myCustomizedInfoTableView.delegate   = self;
     self.myCustomizedInfoTableView.dataSource = self;
     [self.view addSubview:self.myCustomizedInfoTableView];
@@ -68,7 +77,7 @@
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getCustomSetListInfo:page pageSize:@"15" Success:^(id responseObject) {
         NSDictionary *dic = [responseObject objectForKey:@"result"];
-        NSArray *array = dic[@"recordList"];
+        NSArray *array = dic[@"list"];
         if (array.count == 0 && self.page == 1) {
             [self.customizedInfoMArr removeAllObjects];
             [self.myCustomizedInfoTableView footerEndRefreshing];
@@ -92,8 +101,8 @@
                 [self.customizedInfoMArr removeAllObjects];
             }
             [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-//                ZIKCustomizedInfoListModel *model = [ZIKCustomizedInfoListModel yy_modelWithDictionary:dic];
-//                [self.customizedInfoMArr addObject:model];
+                ZIKCustomizedModel *model = [ZIKCustomizedModel yy_modelWithDictionary:dic];
+                [self.customizedInfoMArr addObject:model];
             }];
             [self.myCustomizedInfoTableView reloadData];
             [self.myCustomizedInfoTableView footerEndRefreshing];
@@ -105,33 +114,45 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64;
+    ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
+    return 44;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0f;
+    return 7.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    ZIKCustomizedModel *model = self.customizedInfoMArr[section];
+    return  model.spec.count*30+10;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.customizedInfoMArr.count;
+    return 1;//self.customizedInfoMArr.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;//self.supplyInfoMArr.count;
+    return self.customizedInfoMArr.count;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *backView = [[UIView alloc] init];
+    backView.backgroundColor = [UIColor whiteColor];
+    ZIKCustomizedModel *model = self.customizedInfoMArr[section];
+    backView.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+10);
+    BuyOtherInfoTableViewCell *cell = [[BuyOtherInfoTableViewCell alloc] initWithFrame:CGRectMake(0, 0, kWidth, backView.frame.size.height)];
+    cell.ary = model.spec;
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    [backView addSubview:cell];
+    return backView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *kZIKCustomizedInfoListTableViewCellID = @"kZIKCustomizedInfoListTableViewCellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKCustomizedInfoListTableViewCellID];
-//    if (cell == nil) {
-//        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKCustomizedInfoListTableViewCell" owner:self options:nil] lastObject];
-//    }
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kZIKCustomizedInfoListTableViewCellID];
-    }
-    //[cell configureCell:self.customizedInfoMArr[indexPath.row]];
+    ZIKCustomizedTableViewCell *cell = [ZIKCustomizedTableViewCell cellWithTableView:tableView];
+     ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
+    [cell configureCell:model];
     return cell;
-    //return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

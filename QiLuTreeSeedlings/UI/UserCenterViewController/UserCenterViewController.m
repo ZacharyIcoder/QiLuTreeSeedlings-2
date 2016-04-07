@@ -17,11 +17,11 @@
 #import "ZIKMySupplyViewController.h"
 #import "LoginViewController.h"
 #import "MyNuseryListViewController.h"
-
+#import "UINavController.h"
 #import "MyBuyListViewController.h"
 #import "FaBuViewController.h"
 #import "ZIKUserInfoSetViewController.h"
-
+#import "MyIntegralViewController.h"
 #import "ZIKMyBalanceViewController.h"
 
 #import "ZIKSetViewController.h"
@@ -30,9 +30,9 @@
 #import "UserBigInfoView.h"
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
-@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoTableViewCellDelegate,UMSocialUIDelegate>
+@interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
-
+@property (nonatomic,strong)UIView *logoutView;
 @property (nonatomic,strong) UITableView *tableView;
 @end
 
@@ -43,9 +43,22 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+//    if ([APPDELEGATE isNeedLogin]) {
+//        self.logoutView.hidden=NO;
+//    }else
+//    {
+//        self.logoutView.hidden=YES;
+//    }
+    self.userBigInfoV.model=APPDELEGATE.userModel;
+    [self.tableView reloadData];
     [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
-        [self.tableView reloadData];
-        self.userBigInfoV.model=APPDELEGATE.userModel;
+        
+        if ([[responseObject objectForKey:@"success"]integerValue]) {
+            [self.tableView reloadData];
+            self.userBigInfoV.model=APPDELEGATE.userModel;
+            //self.logoutView.hidden=;
+        }
+        
     } failure:^(NSError *error) {
         
     }];
@@ -58,7 +71,7 @@
     // Do any additional setup after loading the view.
     UserBigInfoView *userbigInfoV=[[UserBigInfoView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 200)];
     userbigInfoV.userDelegate=self;
-    userbigInfoV.model=APPDELEGATE.userModel;
+    
     [self.view addSubview:userbigInfoV];
     self.userBigInfoV=userbigInfoV;
     [userbigInfoV.setingBtn addTarget:self action:@selector(setBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -68,7 +81,10 @@
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-[self.view addSubview:self.tableView];
+    [self.view addSubview:self.tableView];
+    if ([APPDELEGATE isNeedLogin]) {
+        self.userBigInfoV.model=APPDELEGATE.userModel;
+    }
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -130,9 +146,15 @@
         [backView addSubview:iamgeV];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-20, 0, 100, 44)];
         [titleLab setText:@"退出登录"];
+        self.logoutView=backView;
         [backView addSubview:titleLab];
         [titleLab setTextColor:[UIColor whiteColor]];
         UIButton *lgoutBtn=[[UIButton alloc]initWithFrame:backView.bounds];
+        if ([APPDELEGATE isNeedLogin]) {
+            backView.hidden=NO;
+        }else{
+            backView.hidden=YES;
+        }
         [lgoutBtn addTarget:self action:@selector(logoutAction) forControlEvents:UIControlEventTouchUpInside];
         [backView addSubview:lgoutBtn];
     }
@@ -214,6 +236,7 @@
         LoginViewController *loginViewController=[[LoginViewController alloc]init];
         [self.navigationController pushViewController:loginViewController animated:YES];
         [ToastView showTopToast:@"请先登录"];
+        
         return;
     }
     if (self.tabBarController.selectedIndex==0) {
@@ -235,6 +258,16 @@
 #pragma mark - 我的设置
 -(void)clickedHeadImage
 {
+    if (![APPDELEGATE isNeedLogin]) {
+        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+         [ToastView showTopToast:@"请先登录"];
+        UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+        
+        [self presentViewController:navVC animated:YES completion:^{
+            
+        }];
+        return;
+    }
     ZIKUserInfoSetViewController *setVC = [[ZIKUserInfoSetViewController alloc] init];
     [self hiddingSelfTabBar];
     [self.navigationController pushViewController:setVC animated:YES];
@@ -243,6 +276,16 @@
 #pragma mark-我的收藏
 -(void)mycollectBtnAction
 {
+    if (![APPDELEGATE isNeedLogin]) {
+        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+         [ToastView showTopToast:@"请先登录"];
+        UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+        
+        [self presentViewController:navVC animated:YES completion:^{
+            
+        }];
+        return;
+    }
     MyCollectViewController *myCollectVC=[MyCollectViewController new];
     [self hiddingSelfTabBar];
     [self.navigationController pushViewController:myCollectVC animated:YES];
@@ -250,7 +293,19 @@
 #pragma mark-我的积分
 -(void)myJifenBtnAction
 {
-    NSLog(@"积分");
+    if (![APPDELEGATE isNeedLogin]) {
+        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        [ToastView showTopToast:@"请先登录"];
+        UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+        
+        [self presentViewController:navVC animated:YES completion:^{
+            
+        }];
+        return;
+    }
+     MyIntegralViewController *myCollectVC=[MyIntegralViewController new];
+    [self hiddingSelfTabBar];
+    [self.navigationController pushViewController:myCollectVC animated:YES];
 }
 #pragma mark-退出登录
 -(void)logoutAction
@@ -259,6 +314,7 @@
        
        if ([[responseObject objectForKey:@"success"] integerValue]) {
            self.tabBarController.selectedIndex=0;
+           self.logoutView.hidden=NO;
            [APPDELEGATE logoutAction];
        }
    } failure:^(NSError *error) {
@@ -276,6 +332,16 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+            if (![APPDELEGATE isNeedLogin]) {
+                LoginViewController *loginViewController=[[LoginViewController alloc]init];
+                [ToastView showTopToast:@"请先登录"];
+                UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+    
+                [self presentViewController:navVC animated:YES completion:^{
+    
+                }];
+                return;
+     }
     if (indexPath.section==2) {
         if (indexPath.row==0) {
             NSLog(@"企业信息");

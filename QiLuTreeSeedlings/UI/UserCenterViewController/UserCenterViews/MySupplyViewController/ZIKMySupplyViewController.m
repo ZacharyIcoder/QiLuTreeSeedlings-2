@@ -57,7 +57,7 @@
 
 - (void)initUI {
     self.mySupplyTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64) style:UITableViewStylePlain];
-    self.mySupplyTableView.delegate =self;
+    self.mySupplyTableView.delegate   = self;
     self.mySupplyTableView.dataSource = self;
     [self.view addSubview:self.mySupplyTableView];
     [ZIKFunction setExtraCellLineHidden:self.mySupplyTableView];

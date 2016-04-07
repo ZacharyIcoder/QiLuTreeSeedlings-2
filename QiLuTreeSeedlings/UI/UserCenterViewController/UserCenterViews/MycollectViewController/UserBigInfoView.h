@@ -14,5 +14,5 @@
 @interface UserBigInfoView : UIView
 @property (nonatomic,strong) UIButton *setingBtn;
 @property (nonatomic,strong) UserInfoModel *model;
-@property (nonatomic, assign) id<UserBigInfoViewDelegate>userDelegate;
+@property (nonatomic,weak) id<UserBigInfoViewDelegate>userDelegate;
 @end

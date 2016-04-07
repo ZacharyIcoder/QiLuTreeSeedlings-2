@@ -193,7 +193,10 @@
 -(void)myBuyInfoListWtihPage:(NSString *)page
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;
-
+#pragma mark-个人积分
+-(void)getMyIntegralListWithPageNumber:(NSString *)pageNumber
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure;
 #pragma mark -我的求购信息保存
 -(void)fabuBuyMessageWithUid:(NSString *)uid
                    Withtitle:(NSString *)title
@@ -372,4 +375,9 @@
 - (void)getUnioPayTnString:(NSString *)price
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure ;
-@end
+#pragma mark ---------- 我的订制设置保存 -----------
+- (void)saveMyCustomizedInfo:(NSString *)uid
+                  productUid:(NSString *)productUid
+ withSpecificationAttributes:(NSArray *)etcAttributes
+                     Success:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure ;
