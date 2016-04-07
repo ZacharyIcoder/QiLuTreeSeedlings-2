@@ -374,5 +374,9 @@
            failure:(void (^)(NSError *error))failure;
 - (void)getUnioPayTnString:(NSString *)price
                    Success:(void (^)(id responseObject))success
-                   failure:(void (^)(NSError *error))failure ;
+                   failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 我的供应信息修改 -----------
+-(void)mySupplyUpdataWithUid:(NSString *)uid
+                     Success:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure;
 @end
