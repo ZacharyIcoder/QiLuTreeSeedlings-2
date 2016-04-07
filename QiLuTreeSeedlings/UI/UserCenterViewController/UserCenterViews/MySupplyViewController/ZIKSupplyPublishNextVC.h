@@ -10,4 +10,5 @@
 #import "ZIKMySupplyCreateModel.h"
 @interface ZIKSupplyPublishNextVC : ZIKArrowViewController
 @property (nonatomic, strong) ZIKMySupplyCreateModel *supplyModel;
+-(id)initWithNurseryList:(NSArray *)nurseryAry WithbaseMsg:(NSDictionary *)baseDic;
 @end

@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void)configerView:(NSArray *)dataArray {
+- (void)configerView:(NSArray *)dataArray withSelectAry:(NSArray *)ary {
     self.list = [[ZIKLinkedList alloc] init];
     for (NSInteger i = 0; i < dataArray.count; i++) {
         ZIKNurseryListSelectButton *button = [[ZIKNurseryListSelectButton alloc] init];
@@ -36,6 +36,13 @@
         [button setTitle:dic[@"nurseryName"] forState:UIControlStateNormal];
         [self addSubview:button];
         [self.list addItem:button];
+        if (ary.count>0) {
+            for (NSString *uid in ary) {
+                if ([dic[@"nrseryId"] isEqualToString:uid]) {
+                    button.selected=YES;
+                }
+            }
+        }
     }
 }
 

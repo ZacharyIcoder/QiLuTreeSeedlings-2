@@ -70,7 +70,7 @@
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withPage:page withPageSize:@"15" success:^(id responseObject) {
         NSDictionary *dic = [responseObject objectForKey:@"result"];
-        NSLog(@"%@",dic);
+        //NSLog(@"%@",[responseObject objectForKey:@"msg"]);
         NSArray *array = dic[@"list"];
         if (array.count == 0 && self.page == 1) {
             [self.supplyInfoMArr removeAllObjects];

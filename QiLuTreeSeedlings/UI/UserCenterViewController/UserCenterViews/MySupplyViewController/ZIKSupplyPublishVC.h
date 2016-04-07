@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZIKArrowViewController.h"
+#import "SupplyDetialMode.h"
 @interface ZIKSupplyPublishVC : ZIKArrowViewController
-
+-(id)initWithModel:(SupplyDetialMode*)model;
 @end

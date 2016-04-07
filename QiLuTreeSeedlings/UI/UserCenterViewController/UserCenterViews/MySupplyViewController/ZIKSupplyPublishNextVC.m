@@ -30,18 +30,28 @@
 @property (nonatomic, assign) NSInteger      ecttiv;
 @property (nonatomic, strong) NSArray        *nurseryArray;
 @property (nonatomic, strong) NSMutableArray *nurseryUidMArray;
+@property (nonatomic, strong) NSDictionary *baseMsgDic;
+@property (nonatomic, strong) NSArray *oldnurseryArray;
 @end
 
 @implementation ZIKSupplyPublishNextVC
-
+-(id)initWithNurseryList:(NSArray *)nurseryAry WithbaseMsg:(NSDictionary *)baseDic
+{
+    self=[super init];
+    if (self) {
+        self.oldnurseryArray = nurseryAry;
+        self.baseMsgDic = baseDic;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.vcTitle = @"供应发布";
     [self requestMyNurseryList];
+
     [self initData];
     [self initUI];
-
 }
 
 - (void)requestMyNurseryList {
@@ -57,7 +67,12 @@
 - (void)initData {
     self.ecttiv = 1;
     self.titleMarray = @[@[@"数量",@"上车价",@"有效期"],@[@"苗圃基地",@"产品描述"]];
-    self.nurseryUidMArray = [NSMutableArray array];
+        self.nurseryUidMArray = [NSMutableArray array];
+    if (self.oldnurseryArray) {
+        for (NSDictionary *dic in self.oldnurseryArray) {
+            [self.nurseryUidMArray addObject:[dic objectForKey:@"uid"]];
+        }
+    }
 }
 
 - (void)initUI {
@@ -128,6 +143,10 @@
                     [firstSectionCell addSubview:label];
 
                 }
+                if (self.baseMsgDic) {
+                    self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMsgDic objectForKey:@"count"]];
+                }
+
                 self.countTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
                 self.countTextField.placeholder = @"请输入数量";
                 [firstSectionCell addSubview:self.countTextField];
@@ -146,11 +165,16 @@
                     [firstSectionCell addSubview:label];
                 }
                 self.priceTextField.placeholder = @"请输入价格";
+                if (self.baseMsgDic) {
+                 
+                    self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMsgDic objectForKey:@"price"]];
+                }
+
 
             }
             if (indexPath.row == 2) {
                 if (!ecttiveBtn) {
-                    ecttiveBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, 0, kWidth-200, 40)];
+                ecttiveBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, 0, kWidth-200, 40)];
                     [firstSectionCell addSubview:ecttiveBtn];
 
                 }
@@ -158,6 +182,16 @@
                 [ecttiveBtn setTitle:@"请选择有效期" forState:UIControlStateNormal];
                 [ecttiveBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
                 [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
+                if (self.baseMsgDic) {
+                    self.ecttiv=[[self.baseMsgDic objectForKey:@"effective"] integerValue];
+                    NSArray *effectiveAry = @[@"长期",@"一个月",@"三个月",@"半年",@"一年"];
+                    if (effectiveAry.count>=self.ecttiv) {
+                          NSString *effectiveStr=effectiveAry[self.ecttiv-1];
+                        [ecttiveBtn setTitle:effectiveStr forState:UIControlStateNormal];
+                    }
+                  
+                }
+
             }
             cell = firstSectionCell;
         }
@@ -172,12 +206,16 @@
             if (indexPath.row == 0) {
                 listView = [[ZIKNurseryListView alloc] init];
                 listView.frame = CGRectMake(100, 0, kWidth-200, self.nurseryArray.count*40);
-                [listView configerView:self.nurseryArray];
+                [listView configerView:self.nurseryArray withSelectAry:self.nurseryUidMArray];
                 [secondSectionCell addSubview:listView];
             }
             if (indexPath.row == 1) {
                 productDetailTextView  = [[BWTextView alloc] init];
                 productDetailTextView.placeholder = @"请输入产品描述...";
+                if (self.baseMsgDic) {
+                    productDetailTextView.text=[self.baseMsgDic objectForKey:@"remark"];
+                }
+
                 productDetailTextView.frame = CGRectMake(100, 5, kWidth-100-30, 90);
                 [secondSectionCell addSubview:productDetailTextView];
                // productDetailTextView.pl
@@ -206,6 +244,7 @@
         [ToastView showTopToast:@"请选择有效期"];
         return;
     }
+    [self.nurseryUidMArray removeAllObjects];
     ZIKIteratorNode *node = nil;
     [listView resetIterator];
     while (node = [listView nextObject]) {

@@ -17,7 +17,8 @@
 //#import "ZIKGreenButton.h"
 #import "ZIKSideView.h"
 #import "TreeSpecificationsModel.h"
-#import "SreeningViewCell.h"
+//#import "SreeningViewCell.h"
+#import "FabutiaojiaCell.h"
 @interface ZIKSupplyPublishViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
 UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 {
@@ -237,7 +238,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     //    NSLog(@"%@",ary);
     CGFloat Y=0;
     for (int i=0; i<self.dataAry.count; i++) {
-        SreeningViewCell *cell = [[SreeningViewCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i]];
+        FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i] andAnswer:nil] ;
         [cellAry addObject:cell.model];
         Y=CGRectGetMaxY(cell.frame);
         //cell.delegate = self;

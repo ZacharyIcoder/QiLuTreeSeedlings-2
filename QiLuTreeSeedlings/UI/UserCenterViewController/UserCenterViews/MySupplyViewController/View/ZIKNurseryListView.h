@@ -10,5 +10,5 @@
 #import "ZIKIteratorProtocol.h"
 @interface ZIKNurseryListView : UIView<ZIKIteratorProtocol>
 //@property (nonatomic,strong) NSMutableArray *buttonSelectArray;
-- (void)configerView:(NSArray *)dataArray;
+- (void)configerView:(NSArray *)dataArray withSelectAry:(NSArray *)ary;
 @end

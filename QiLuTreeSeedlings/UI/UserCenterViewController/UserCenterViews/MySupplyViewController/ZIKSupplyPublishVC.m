@@ -25,7 +25,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 @property (nonatomic, strong) UITableView      *supplyInfoTableView;
 @property (nonatomic, weak  ) ZIKPickImageView *pickerImgView;
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
-@property (nonatomic, strong) NSMutableArray   *imageUrlMarr;
+//@property (nonatomic, strong) NSMutableArray   *imageUrlMarr;
 @property (nonatomic, strong) UIButton         *sureButton;
 @property (nonatomic, strong) UITextField      *nameTextField;
 @property (nonatomic, strong) ZIKSideView      *sideView;
@@ -38,13 +38,22 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 @property (nonatomic,strong ) UIButton         *nameBtn;
 @property (nonatomic,strong ) UITextField      *nowTextField;
 @property (nonatomic,strong)  ZIKMySupplyCreateModel *supplyModel;
-@property (nonatomic, strong) NSMutableArray *imageUrlsMarr;
-@property (nonatomic, strong) NSMutableArray *imageCompressUrlsMarr;
-
+//@property (nonatomic, strong) NSMutableArray *imageUrlsMarr;
+//@property (nonatomic, strong) NSMutableArray *imageCompressUrlsMarr;
+@property (nonatomic,strong) SupplyDetialMode *model;
+@property (nonatomic,strong) NSArray *nurseryAry;
+@property (nonatomic,strong) NSDictionary *baseDic;
 @end
 
 @implementation ZIKSupplyPublishVC
-
+-(id)initWithModel:(SupplyDetialMode*)model
+{
+    self=[super init];
+    if (self) {
+        self.model=model;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -54,12 +63,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 }
 
 - (void)initData {
-    self.imageUrlMarr          = [NSMutableArray array];
+//    self.imageUrlMarr          = [NSMutableArray array];
     self.productTypeDataMArray = [NSMutableArray array];
     self.cellAry               = [NSMutableArray array];
     self.supplyModel           = [[ZIKMySupplyCreateModel alloc] init];
-    self.imageUrlsMarr         = [NSMutableArray array];
-    self.imageCompressUrlsMarr = [NSMutableArray array];
+//    self.imageUrlsMarr         = [NSMutableArray array];
+//    self.imageCompressUrlsMarr = [NSMutableArray array];
 }
 
 - (void)initUI {
@@ -138,8 +147,65 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     UITapGestureRecognizer *tapgest=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidingKey)];
     [self.backScrollView addGestureRecognizer:tapgest];
+    if (self.model) {
+        self.titleTextField.text=self.model.title;
+        self.nameTextField.text=self.model.productName;
+        self.nameBtn.selected=YES;
+        [HTTPCLIENT mySupplyUpdataWithUid:self.model.uid Success:^(id responseObject) {
+            if ([[ responseObject objectForKey:@"success"] integerValue]) {
+                NSDictionary *resultdic=[responseObject objectForKey:@"result"];
+                NSDictionary *ProductSpecDIc=[resultdic objectForKey:@"ProductSpec"];
+                NSArray *beanAry=[ProductSpecDIc objectForKey:@"bean"];
+                NSArray *iamgesAry=[resultdic objectForKey:@"images"];
+                NSArray *imagesCompressAry=[resultdic objectForKey:@"imagesCompress"];
+                self.nurseryAry=[resultdic objectForKey:@"nurseryList"];
+                self.baseDic=[resultdic objectForKey:@"baseMsg"];
+                [self creatSCreeningCellsWithAnswerWithAry:beanAry];
+            }else{
+                [ToastView showTopToast:[ responseObject objectForKey:@"msg"]];
+            }
+           
+        } failure:^(NSError *error) {
+            
+        }];
+    }
 }
+-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
+{
+    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:specAry];
+    
+    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
+            [myview removeFromSuperview];
+        }
+    }];
+    CGFloat Y=205;
+    for (int i=0; i<self.dataAry.count; i++) {
+        TreeSpecificationsModel *model=self.dataAry[i];
+        FabutiaojiaCell *cell;
+        NSMutableString *answerStr=[NSMutableString string];
+        for (int j=0; j<specAry.count; j++) {
+            NSDictionary *specDic=specAry[j];
+            
+            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
+                answerStr=[specDic objectForKey:@"value"];
+            }
+        }
+        if ([answerStr isEqualToString:@"不限"]) {
+            answerStr = [NSMutableString string];
+        }
+        
+        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
+        [_cellAry addObject:cell.model];
+        Y=CGRectGetMaxY(cell.frame);
+        // cell.delegate=self;
+        [cell setBackgroundColor:[UIColor whiteColor]];
+        [self.backScrollView addSubview:cell];
+    }
+    [self.backScrollView setContentSize:CGSizeMake(0, Y)];
+    self.backScrollView.backgroundColor = [UIColor whiteColor];
 
+}
 - (void)nameChange {
     self.nameBtn.selected = NO;
 }
@@ -155,26 +221,21 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         [ToastView showTopToast:@"请先确定苗木名称"];
         return;
     }
-    if (self.pickerImgView.urlMArr.count<3) {
-        [ToastView showTopToast:@"请添加三张苗木图片"];
-        return;
-    }
+//    if (self.pickerImgView.urlMArr.count<3) {
+//        [ToastView showTopToast:@"请添加三张苗木图片"];
+//        return;
+//    }
     self.supplyModel.title = self.titleTextField.text;
     self.supplyModel.name  = self.nameTextField.text;
-//    [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-//        [self.imageUrlsMarr addObject:dic[@"url"]];
-//        [self.imageCompressUrlsMarr addObject:dic[@"compressurl"]];
-//    }];
-    //NSString *urlSring = [self.imageUrlsMarr JSONString];
+
     __block NSString *urlSring      = @"";
     __block NSString *compressSring = @"";
     [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
         urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
         compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
     }];
-    self.supplyModel.imageUrls = [urlSring substringFromIndex:1];
-    //self.supplyModel.imageCompressUrls = [self.imageCompressUrlsMarr JSONString];
-    self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
+//    self.supplyModel.imageUrls = [urlSring substringFromIndex:1];
+//    self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
 
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
     for (int i = 0; i < _cellAry.count; i++) {
@@ -187,7 +248,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         }
     }
     self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
-    ZIKSupplyPublishNextVC *nextVC = [[ZIKSupplyPublishNextVC alloc] init];
+    ZIKSupplyPublishNextVC *nextVC = [[ZIKSupplyPublishNextVC alloc] initWithNurseryList:self.nurseryAry WithbaseMsg:self.baseDic];
     nextVC.supplyModel = self.supplyModel;
     [self.navigationController pushViewController:nextVC animated:YES];
 }
@@ -264,14 +325,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 
         }
     } failure:^(NSError *error) {
-        //NSLog(@"%@",error);
+        
     }];
 }
 
 - (void)showSideView {
-    //[self.nameTextField resignFirstResponder];
      [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    //self.prefersStatusBarHidden = YES;
     if (!self.sideView) {
         self.sideView = [[ZIKSideView alloc] initWithFrame:CGRectMake(Width, 0, Width, Height)];
     }

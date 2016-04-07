@@ -12,6 +12,7 @@
 #import "BuyOtherInfoTableViewCell.h"
 #import "MySupplyOtherInfoTableViewCell.h"
 #import "HotSellModel.h"
+#import "ZIKSupplyPublishVC.h"
 @interface ZIKMySupplyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSString                        *uid;
 @property (nonatomic, strong) SupplyDetialMode                *model;
@@ -33,9 +34,11 @@
 - (void)configNav {
     self.vcTitle = @"供应详情";
     self.rightBarBtnTitleString = @"编辑";
-    //__weak typeof(self) weakSelf = self;//解决循环引用的问题
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-        NSLog(@"编辑");
+//        NSLog(@"编辑");
+        ZIKSupplyPublishVC *zikSupplyPVC=[[ZIKSupplyPublishVC alloc]initWithModel:weakSelf.model];
+        [weakSelf.navigationController pushViewController:zikSupplyPVC animated:YES];
     };
 }
 
