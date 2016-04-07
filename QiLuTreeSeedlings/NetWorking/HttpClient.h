@@ -375,4 +375,11 @@
 - (void)getUnioPayTnString:(NSString *)price
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure ;
+#pragma mark ---------- 我的订制设置保存 -----------
+- (void)saveMyCustomizedInfo:(NSString *)uid
+                  productUid:(NSString *)productUid
+ withSpecificationAttributes:(NSArray *)etcAttributes
+                     Success:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure ;
+
 @end
