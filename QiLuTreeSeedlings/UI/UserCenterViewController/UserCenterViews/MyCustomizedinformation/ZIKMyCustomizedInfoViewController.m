@@ -127,6 +127,7 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKCustomizedInfoListTableViewCell" owner:self options:nil] lastObject];
     }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [cell configureCell:self.customizedInfoMArr[indexPath.row]];
     return cell;
 }

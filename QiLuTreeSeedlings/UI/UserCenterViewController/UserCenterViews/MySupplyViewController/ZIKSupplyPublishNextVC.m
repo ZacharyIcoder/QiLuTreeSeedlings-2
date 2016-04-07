@@ -65,7 +65,7 @@
 }
 
 - (void)initData {
-    self.ecttiv = 1;
+    self.ecttiv = 0;
     self.titleMarray = @[@[@"数量",@"上车价",@"有效期"],@[@"苗圃基地",@"产品描述"]];
         self.nurseryUidMArray = [NSMutableArray array];
     if (self.oldnurseryArray) {
@@ -259,6 +259,10 @@
         [ToastView showTopToast:@"请至少选择一个苗木基地"];
         return;
     }
+    if (self.ecttiv == 0) {
+        [ToastView showTopToast:@"请选择有效期"];
+        return;
+    }
     self.supplyModel.count = self.countTextField.text;
     if (self.priceTextField.text.length == 0 || self.priceTextField.text == nil) {
         self.supplyModel.price = @"面议";
@@ -307,12 +311,14 @@
     [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:nil title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:self.supplyModel.specificationAttributes Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
              [ToastView showTopToast:@"发布成功"];
-            for(UIViewController *controller in self.navigationController.viewControllers) {
-                if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
-                    ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
-                    [self.navigationController popToViewController:owr animated:YES];
-                }
-            }
+            [ToastView showTopToast:@"提交成功，即将返回"];
+            [self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
+//            for(UIViewController *controller in self.navigationController.viewControllers) {
+//                if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
+//                    ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
+//                    [self.navigationController popToViewController:owr animated:YES];
+//                }
+//            }
         }
         else {
             //NSLog(@"%@",responseObject[@"msg"]);
@@ -321,5 +327,9 @@
     } failure:^(NSError *error) {
         //NSLog(@"%@",error);
     }];
+}
+-(void)backRootView
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

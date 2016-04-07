@@ -90,6 +90,11 @@
 		EA5B26EB1C7D6E7100863F9D /* HotSellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26EA1C7D6E7100863F9D /* HotSellView.m */; };
 		EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */; };
 		EA5DF9421CB5F70F00BE0E8C /* IntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */; };
+		EA5DF9451CB6399300BE0E8C /* 我的积分-兑换.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF9431CB6399300BE0E8C /* 我的积分-兑换.png */; };
+		EA5DF9461CB6399300BE0E8C /* 我的积分-积分增加.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF9441CB6399300BE0E8C /* 我的积分-积分增加.png */; };
+		EA5DF94C1CB6399A00BE0E8C /* ZIKIntegraModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */; };
+		EA5DF94D1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */; };
+		EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
 		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
@@ -515,6 +520,13 @@
 		EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellViewCell.m; sourceTree = "<group>"; };
 		EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegraTableViewCell.h; sourceTree = "<group>"; };
 		EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegraTableViewCell.m; sourceTree = "<group>"; };
+		EA5DF9431CB6399300BE0E8C /* 我的积分-兑换.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的积分-兑换.png"; sourceTree = "<group>"; };
+		EA5DF9441CB6399300BE0E8C /* 我的积分-积分增加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的积分-积分增加.png"; sourceTree = "<group>"; };
+		EA5DF9471CB6399A00BE0E8C /* ZIKIntegraModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraModel.h; sourceTree = "<group>"; };
+		EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraModel.m; sourceTree = "<group>"; };
+		EA5DF9491CB6399A00BE0E8C /* ZIKIntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraTableViewCell.h; sourceTree = "<group>"; };
+		EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraTableViewCell.m; sourceTree = "<group>"; };
+		EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKIntegraTableViewCell.xib; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
@@ -1566,6 +1578,13 @@
 		EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA5DF9471CB6399A00BE0E8C /* ZIKIntegraModel.h */,
+				EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */,
+				EA5DF9491CB6399A00BE0E8C /* ZIKIntegraTableViewCell.h */,
+				EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */,
+				EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */,
+				EA5DF9431CB6399300BE0E8C /* 我的积分-兑换.png */,
+				EA5DF9441CB6399300BE0E8C /* 我的积分-积分增加.png */,
 				EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */,
 				EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */,
 				EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */,
@@ -2873,11 +2892,13 @@
 				FC6FED6C1CACF833000E2CA5 /* 图片1.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
 				EA75147D1C9B891E003D63F1 /* treeNameSure@2x.png in Resources */,
+				EA5DF9451CB6399300BE0E8C /* 我的积分-兑换.png in Resources */,
 				FC50B1701CAE243F0022A24C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				FC6FED801CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.xib in Resources */,
 				FC6FED781CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.xib in Resources */,
 				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
+				EA5DF9461CB6399300BE0E8C /* 我的积分-积分增加.png in Resources */,
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
@@ -2905,6 +2926,7 @@
 				EAF051031C92A2E600F435A9 /* myMiaoPu@2x.png in Resources */,
 				FC6FED681CACF833000E2CA5 /* 编辑修改.png in Resources */,
 				FCF353E51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
+				EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3000,6 +3022,7 @@
 				FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */,
 				FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */,
 				EA29AA041C856159004913FF /* PullTableView.m in Sources */,
+				EA5DF94D1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m in Sources */,
 				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
 				EA52ACE31CB4BE7900CE2210 /* MyIntegralViewController.m in Sources */,
@@ -3096,6 +3119,7 @@
 				FCF353CE1CA3B515001ABA0A /* UIScrollView+MJExtension.m in Sources */,
 				EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */,
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
+				EA5DF94C1CB6399A00BE0E8C /* ZIKIntegraModel.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
