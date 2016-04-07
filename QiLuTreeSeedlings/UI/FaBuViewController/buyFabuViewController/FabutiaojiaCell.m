@@ -20,6 +20,7 @@
     self=[super initWithFrame:frame];
     if (self) {
         self.model=model;
+        self.model.anwser=answer;
         self.answerAry=[[NSMutableArray alloc]initWithCapacity:2];
         int k=15;
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(k, 0, 110, 50)];

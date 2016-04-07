@@ -12,7 +12,6 @@
 #import "PickerShowView.h"
 #import "PickerLocation.h"
 #import "TreeSpecificationsModel.h"
-//#import "SreeningViewCell.h"
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
 #import "buyFabuTijiaoViewController.h"
@@ -57,7 +56,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.ecttiv=1;
+    self.ecttiv=0;
     self.productTypeDataMArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
     self.cellAry=[NSMutableArray array];
@@ -97,7 +96,6 @@
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.30, 0, kWidth*0.6, 44)];
     nameTextField.placeholder=@"请输入苗木名称";
     nameTextField.textColor=NavColor;
-    //nameTextField.text=@"油松";
     [nameTextField setFont:[UIFont systemFontOfSize:15]];
     nameTextField.delegate=self;
   [nameTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
@@ -283,6 +281,10 @@
         [ToastView showTopToast:@"苗木名称不正确"];
         return;
     }
+    if (self.ecttiv==0) {
+        [ToastView showTopToast:@"请选择有效期"];
+        return;
+    }
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
     for (int i=0; i<cellAry.count; i++) {
         TreeSpecificationsModel *model=cellAry[i];
@@ -309,7 +311,7 @@
     [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
         //        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
-            [ToastView showTopToast:@"发布成功，即将返回首页"];
+            [ToastView showTopToast:@"提交成功，即将返回"];
             [self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
         }else
         {
@@ -334,7 +336,14 @@
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
-    [titleLab setText:@"求购发布"];
+    if(self.model)
+    {
+        [titleLab setText:@"求购编辑"];
+    }else
+    {
+        [titleLab setText:@"求购发布"];
+    }
+    
     [titleLab setFont:[UIFont systemFontOfSize:20]];
     [view addSubview:titleLab];
     return view;
@@ -428,6 +437,7 @@
         if ([answerStr isEqualToString:@"不限"]) {
             answerStr = [NSMutableString string];
         }
+    
         cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
         [cellAry addObject:cell.model];
         Y=CGRectGetMaxY(cell.frame);
@@ -439,7 +449,24 @@
     otherframe.origin.y=Y+5;
     self.otherInfoView.frame=otherframe;
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherInfoView.frame)+5)];
-    
+    if (self.baseMessageDic) {
+        self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"count"]];
+        self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"price"]];
+        NSArray *ectiveAry = @[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"永久"];
+        NSInteger ective=[[self.baseMessageDic objectForKey:@"effective"] integerValue];
+        self.ecttiv=ective;
+        NSString *str=@"永久";
+        if (self.ecttiv<=10) {
+            str=ectiveAry[ective-1];
+        }
+        [self.ectiveBtn setTitle:str forState:UIControlStateNormal];
+        [self.areaBtn setTitle:[self.baseMessageDic objectForKey:@"address"] forState:UIControlStateNormal];
+        self.birefField.text=[self.baseMessageDic objectForKey:@"remark"];
+        self.AreaProvince=[self.baseMessageDic objectForKey:@"province"];
+        self.AreaCity=[self.baseMessageDic objectForKey:@"city"];
+        self.AreaCounty=[self.baseMessageDic objectForKey:@"county"];
+    }
+
 }
 -(void)creatScreeningCells
 {
