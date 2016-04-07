@@ -114,7 +114,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
+    //ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
     return 44;
 }
 
@@ -156,9 +156,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
-//    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithSaercherInfo:model.uid];
-//    [self.navigationController pushViewController:viewC animated:YES];
+    ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.row];
+    ZIKCustomizedSetViewController *viewC = [[ZIKCustomizedSetViewController alloc] initWithModel:model];
+    [self.navigationController pushViewController:viewC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

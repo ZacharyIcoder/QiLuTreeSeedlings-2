@@ -385,4 +385,8 @@
  withSpecificationAttributes:(NSArray *)etcAttributes
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 我的订制设置修改信息 -----------
+- (void)getMyCustomsetEditingWithUid:(NSString *)uid
+                             Success:(void (^)(id responseObject))success
+                             failure:(void (^)(NSError *error))failure;
 @end

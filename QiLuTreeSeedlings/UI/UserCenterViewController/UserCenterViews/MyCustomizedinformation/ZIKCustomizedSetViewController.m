@@ -17,28 +17,43 @@
     UIView *priceView;
     UILabel *priceLabel;
 }
-@property (nonatomic,strong ) UIScrollView     *backScrollView;
-@property (nonatomic, strong) UITextField      *nameTextField;
-@property (nonatomic,strong ) UIButton         *nameBtn;
-@property (nonatomic, strong) NSArray          *dataAry;
-@property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
-@property (nonatomic, strong) ZIKSideView      *sideView;
-@property (nonatomic, strong) NSString         *uid;//订制设置ID(添加时不传值，编辑时传值)
-@property (nonatomic, strong) NSString         *productUid;//产品ID
-@property (nonatomic, strong) NSString         *price;//定制价格
-@property (nonatomic, strong) NSMutableArray   *cellAry;
-@property (nonatomic, strong) NSArray          *specificationAttributes;
+@property (nonatomic,strong ) UIScrollView       *backScrollView;
+@property (nonatomic, strong) UITextField        *nameTextField;
+@property (nonatomic,strong ) UIButton           *nameBtn;
+@property (nonatomic, strong) NSArray            *dataAry;
+@property (nonatomic, strong) NSMutableArray     *productTypeDataMArray;
+@property (nonatomic, strong) ZIKSideView        *sideView;
+@property (nonatomic, strong) NSString           *uid;//订制设置ID(添加时不传值，编辑时传值)
+@property (nonatomic, strong) NSString           *productUid;//产品ID
+@property (nonatomic, strong) NSString           *price;//定制价格
+@property (nonatomic, strong) NSMutableArray     *cellAry;
+@property (nonatomic, strong) NSArray            *specificationAttributes;
+@property (nonatomic, strong) ZIKCustomizedModel *model;
+@property (nonatomic, strong) NSDictionary       *baseMessageDic;
 
 @end
 
 @implementation ZIKCustomizedSetViewController
-
+@synthesize cellAry;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.vcTitle = @"定制设置";
+    if (self.model) {
+        self.vcTitle = @"定制设置修改";
+    }
+    else {
+        self.vcTitle = @"定制设置";
+    }
     self.cellAry = [NSMutableArray array];
     [self initUI];
+}
+
+-(id)initWithModel:(ZIKCustomizedModel *)model {
+    self = [super init];
+    if (self) {
+        self.model = model;
+    }
+    return self;
 }
 
 - (void)initUI {
@@ -102,6 +117,85 @@
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 //    UITapGestureRecognizer *tapgest=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidingKey)];
 //    [self.backScrollView addGestureRecognizer:tapgest];
+    if (self.model) {
+        self.nameTextField.text=self.model.productName;
+        self.nameBtn.selected=YES;
+        [self getEditingMessage];
+//        [HTTPCLIENT mySupplyUpdataWithUid:self.model.uid Success:^(id responseObject) {
+//            if ([[ responseObject objectForKey:@"success"] integerValue]) {
+//                NSDictionary *resultdic=[responseObject objectForKey:@"result"];
+//                NSDictionary *ProductSpecDIc=[resultdic objectForKey:@"ProductSpec"];
+//                NSArray *beanAry=[ProductSpecDIc objectForKey:@"bean"];
+//                NSArray *iamgesAry=[resultdic objectForKey:@"images"];
+//                NSArray *imagesCompressAry=[resultdic objectForKey:@"imagesCompress"];
+//                self.nurseryAry=[resultdic objectForKey:@"nurseryList"];
+//                self.baseDic=[resultdic objectForKey:@"baseMsg"];
+                //[self creatSCreeningCellsWithAnswerWithAry:beanAry];
+//            }else{
+//                [ToastView showTopToast:[ responseObject objectForKey:@"msg"]];
+//            }
+//
+//        } failure:^(NSError *error) {
+//
+//        }];
+    }
+
+}
+
+-(void)getEditingMessage
+{
+    [HTTPCLIENT getMyCustomsetEditingWithUid:self.model.customsetUid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *dic = [[responseObject objectForKey:@"result"] objectForKey:@"ProductSpec"];
+            self.productUid = [dic objectForKey:@"productUid"];
+            //self.productName=[dic objectForKey:@"productName"];
+           // self.baseMessageDic = [[responseObject objectForKey:@"result"] objectForKey:@"baseMsg"];
+            NSArray *ary = [dic objectForKey:@"bean"];
+            self.dataAry=ary;
+            [self creatSCreeningCellsWithAnswerWithAry:ary];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+
+    }];
+}
+
+-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
+{
+    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+
+    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
+            [myview removeFromSuperview];
+        }
+    }];
+    CGFloat Y = 44+8+8;
+    for (int i=0; i<self.dataAry.count; i++) {
+        TreeSpecificationsModel *model=self.dataAry[i];
+        FabutiaojiaCell *cell;
+        NSMutableString *answerStr=[NSMutableString string];
+        for (int j=0; j<specAry.count; j++) {
+            NSDictionary *specDic=specAry[j];
+
+            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
+                answerStr=[specDic objectForKey:@"value"];
+            }
+        }
+        if ([answerStr isEqualToString:@"不限"]) {
+            answerStr = [NSMutableString string];
+        }
+
+        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
+        [cellAry addObject:cell.model];
+        Y=CGRectGetMaxY(cell.frame);
+        // cell.delegate=self;
+        [cell setBackgroundColor:[UIColor whiteColor]];
+        [self.backScrollView addSubview:cell];
+        [self.backScrollView setContentSize:CGSizeMake(0, Y)];
+    }
+
 }
 
 - (void)nameChange {
@@ -154,7 +248,7 @@
     for (int i=0; i < self.dataAry.count; i++) {
         FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 44) AndModel:self.dataAry[i] andAnswer:nil];
         //cell.backgroundColor = [UIColor whiteColor];
-        [_cellAry addObject:cell.model];
+        [cellAry addObject:cell.model];
         Y = CGRectGetMaxY(cell.frame);
         [self.backScrollView addSubview:cell];
     }
@@ -254,8 +348,8 @@
 #pragma  mark - 确认完成按钮点击事件
 - (void)nextBtnAction:(UIButton *)button {
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
-    for (int i = 0; i < _cellAry.count; i++) {
-        TreeSpecificationsModel *model = _cellAry[i];
+    for (int i = 0; i < cellAry.count; i++) {
+        TreeSpecificationsModel *model = cellAry[i];
         if (model.anwser.length>0) {
             NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
                                  model.anwser,@"anwser"
@@ -265,9 +359,14 @@
     }
     self.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
 
-   [HTTPCLIENT saveMyCustomizedInfo:nil productUid:self.productUid withSpecificationAttributes:self.specificationAttributes Success:^(id responseObject) {
+   [HTTPCLIENT saveMyCustomizedInfo:self.model.customsetUid productUid:self.productUid withSpecificationAttributes:self.specificationAttributes Success:^(id responseObject) {
        if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+           if (self.model) {
+               [ToastView showTopToast:@"修改成功"];
+           }
+           else {
            [ToastView showTopToast:@"发布成功"];
+           }
            [self.navigationController popViewControllerAnimated:YES];
 //           for(UIViewController *controller in self.navigationController.viewControllers) {
 //               if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
