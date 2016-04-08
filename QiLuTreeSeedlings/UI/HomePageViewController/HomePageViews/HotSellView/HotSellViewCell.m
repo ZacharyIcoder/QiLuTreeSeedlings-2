@@ -31,8 +31,8 @@
         [imageV setImageWithURL:[NSURL URLWithString:Model.iamge] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
         [self addSubview:imageV];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(100, 15, frame.size.width-100, 20)];
-        [titleLab setTextColor:[UIColor blackColor]];
-        [titleLab setFont:[UIFont systemFontOfSize:15]];
+        [titleLab setTextColor:titleLabColor];
+        [titleLab setFont:[UIFont systemFontOfSize:16]];
         self.titleLab=titleLab;
         [titleLab setText:Model.title];
         [self addSubview:titleLab];

@@ -47,6 +47,7 @@
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(imageV.frame)+5, CWith, 20)];
     nameLab.textAlignment=NSTextAlignmentCenter;
     nameLab.text=nameStr;
+    [nameLab setTextColor:[UIColor darkGrayColor]];
     [nameLab setFont:[UIFont systemFontOfSize:13]];
     [circleView addSubview:nameLab];
     return circleView;

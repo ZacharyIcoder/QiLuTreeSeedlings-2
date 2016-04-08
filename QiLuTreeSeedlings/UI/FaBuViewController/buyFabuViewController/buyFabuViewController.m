@@ -133,7 +133,7 @@
     UIButton *ecttiveBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 0, kWidth-200, 50)];
     [ecttiveView addSubview:ecttiveBtn];
     [ecttiveBtn setTitle:@"不限" forState:UIControlStateNormal];
-    [ecttiveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [ecttiveBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     self.ectiveBtn=ecttiveBtn;
     [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [ecttiveBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
@@ -150,7 +150,7 @@
     UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 0, kWidth-150, 50)];
     [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
-    [areaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [areaBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [areaView addSubview:areaBtn];
     self.areaBtn=areaBtn;
     [areaBtn addTarget:self action:@selector(areBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -264,8 +264,8 @@
 }
 -(void)nextBtnAction:(UIButton *)sender
 {
-    if (self.titleTextField.text.length<5) {
-        [ToastView showTopToast:@"标题不能小于五位"];
+    if (self.titleTextField.text.length==0) {
+        [ToastView showTopToast:@"标题不能为空"];
         return;
     }
     if (self.nameBtn.selected==NO) {

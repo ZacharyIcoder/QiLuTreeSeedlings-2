@@ -20,7 +20,7 @@
         titleLab.text=title;
         [titleLab setFont:[UIFont systemFontOfSize:15]];
         [self addSubview:titleLab];
-        [titleLab setTextColor:[UIColor blackColor]];
+        [titleLab setTextColor:titleLabColor];
         UIImageView *lineImage=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];
         [lineImage setBackgroundColor:kLineColor];
         [self addSubview:lineImage];

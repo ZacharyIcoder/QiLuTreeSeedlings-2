@@ -95,7 +95,7 @@
 		EA5DF94C1CB6399A00BE0E8C /* ZIKIntegraModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */; };
 		EA5DF94D1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */; };
 		EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */; };
-		EA5DF9521CB6484C00BE0E8C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9511CB6484C00BE0E8C /* SettingViewController.m */; };
+		EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
 		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
@@ -527,8 +527,8 @@
 		EA5DF9491CB6399A00BE0E8C /* ZIKIntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraTableViewCell.h; sourceTree = "<group>"; };
 		EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraTableViewCell.m; sourceTree = "<group>"; };
 		EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKIntegraTableViewCell.xib; sourceTree = "<group>"; };
-		EA5DF9501CB6484C00BE0E8C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		EA5DF9511CB6484C00BE0E8C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		EA5DF9531CB64FDF00BE0E8C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
@@ -1617,8 +1617,8 @@
 		EA5DF94F1CB6483300BE0E8C /* setViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EA5DF9501CB6484C00BE0E8C /* SettingViewController.h */,
-				EA5DF9511CB6484C00BE0E8C /* SettingViewController.m */,
+				EA5DF9531CB64FDF00BE0E8C /* SettingViewController.h */,
+				EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */,
 			);
 			path = setViewController;
 			sourceTree = "<group>";
@@ -2977,7 +2977,6 @@
 				EA0B2BE11C5A06D80018A7BD /* HomePageViewController.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
-				EA5DF9521CB6484C00BE0E8C /* SettingViewController.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
@@ -3071,6 +3070,7 @@
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
 				FCF353D21CA3B515001ABA0A /* ZHHttpTool.m in Sources */,
+				EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
 				FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */,
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,

@@ -18,7 +18,7 @@
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(30, 7, frame.size.width-60, 13)];
         [self.titleLab setFont:[UIFont systemFontOfSize:14]];
         [self.titleLab setText:@"标题"];
-        [self.titleLab setTextColor:[UIColor blackColor]];
+        [self.titleLab setTextColor:titleLabColor];
         [self addSubview:self.titleLab];
         self.titleLab.text=model.title;
         UIImageView *dingweiImage=[[UIImageView alloc]initWithFrame:CGRectMake(35, 35, 15, 15)];

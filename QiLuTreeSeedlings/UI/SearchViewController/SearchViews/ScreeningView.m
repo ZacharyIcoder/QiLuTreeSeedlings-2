@@ -133,7 +133,7 @@
         self.areaBtn=areaBtn;
         [areaBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
         [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        [areaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [areaBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [areaBtn addTarget: self action:@selector(areaBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [areaView addSubview:areaBtn];
         [self.backScrollView addSubview:areaView];

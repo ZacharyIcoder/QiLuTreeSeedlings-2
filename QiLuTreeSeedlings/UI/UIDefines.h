@@ -37,9 +37,9 @@
 #define BGColor         [UIColor colorWithRed:242/255.0f green:242/255.0f blue:242/255.0f alpha:1.0f] 
 //#define BGColor         [UIColor whiteColor]
 #define kLineColor       [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:1.0]
-#define yellowButtonColor kRGB(241, 157, 65, 1)
-
-
+#define yellowButtonColor kRGB(255, 152, 31, 1)
+#define titleLabColor kRGB(102, 102, 102, 1)
+#define detialLabColor kRGB(153, 153, 153, 1)
 #pragma mark- 对屏幕尺寸进行判断
 #define iPhone35Inch            (([[UIScreen mainScreen] bounds].size.height == 480) ? YES : NO)
 #define iPhone47InchLater       (([[UIScreen mainScreen] bounds].size.height >= 667) ? YES : NO)

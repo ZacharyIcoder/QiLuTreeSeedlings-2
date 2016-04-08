@@ -30,6 +30,7 @@
         titleLab=[[UILabel alloc]initWithFrame:CGRectMake(100, 15, frame.size.width-100, 20)];
         [titleLab setFont:[UIFont systemFontOfSize:15]];
         [titleLab setText:@"标题"];
+        [titleLab setTextColor:[UIColor darkGrayColor]];
         [self addSubview:titleLab];
         UIImageView *dingweiImageV=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+95, 42, 15, 15)];
         [dingweiImageV setImage:[UIImage imageNamed:@"region"]];

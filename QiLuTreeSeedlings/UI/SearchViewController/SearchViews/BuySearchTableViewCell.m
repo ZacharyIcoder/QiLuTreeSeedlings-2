@@ -24,6 +24,7 @@
     if (self) {
         [self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 10, kWidth-20, 13)];
+        [self.titleLab setTextColor:[UIColor darkGrayColor]];
         [self.titleLab setFont:[UIFont systemFontOfSize:15]];
         [self.titleLab setText:@"标题"];
         [self addSubview:self.titleLab];
