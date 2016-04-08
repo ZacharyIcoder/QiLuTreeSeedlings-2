@@ -35,15 +35,17 @@
 @end
 
 @implementation ZIKSupplyPublishNextVC
--(id)initWithNurseryList:(NSArray *)nurseryAry WithbaseMsg:(NSDictionary *)baseDic
+
+- (id)initWithNurseryList:(NSArray *)nurseryAry WithbaseMsg:(NSDictionary *)baseDic
 {
-    self=[super init];
+    self = [super init];
     if (self) {
         self.oldnurseryArray = nurseryAry;
-        self.baseMsgDic = baseDic;
+        self.baseMsgDic      = baseDic;
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -68,11 +70,11 @@
     self.ecttiv = 0;
     self.titleMarray = @[@[@"数量",@"上车价",@"有效期"],@[@"苗圃基地",@"产品描述"]];
         self.nurseryUidMArray = [NSMutableArray array];
-    if (self.oldnurseryArray) {
-        for (NSDictionary *dic in self.oldnurseryArray) {
-            [self.nurseryUidMArray addObject:[dic objectForKey:@"uid"]];
-        }
-    }
+//    if (self.oldnurseryArray) {
+//        for (NSDictionary *dic in self.oldnurseryArray) {
+//            [self.nurseryUidMArray addObject:[dic objectForKey:@"uid"]];
+//        }
+//    }
 }
 
 - (void)initUI {
@@ -132,6 +134,7 @@
             if (firstSectionCell == nil) {
                 firstSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName];
                 firstSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
+
             }
             if (indexPath.row == 0) {
                 if (!_countTextField) {
@@ -202,11 +205,17 @@
             if (secondSectionCell == nil) {
                 secondSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName2];
                 secondSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
+                listView = [[ZIKNurseryListView alloc] init];
             }
             if (indexPath.row == 0) {
-                listView = [[ZIKNurseryListView alloc] init];
+
                 listView.frame = CGRectMake(100, 0, kWidth-200, self.nurseryArray.count*40);
-                [listView configerView:self.nurseryArray withSelectAry:self.nurseryUidMArray];
+                //if (self.oldnurseryArray.count>0) {
+                    [listView configerView:self.nurseryArray withSelectAry:self.oldnurseryArray];
+//                }
+//                else {
+//                    [listView configerView:self.nurseryArray withSelectAry:self.nurseryUidMArray];
+//                }
                 [secondSectionCell addSubview:listView];
             }
             if (indexPath.row == 1) {
@@ -308,10 +317,15 @@
 }
 
 - (void)requestSaveSupplyInfo {
-    [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:nil title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:self.supplyModel.specificationAttributes Success:^(id responseObject) {
+    [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:self.baseMsgDic[@"uid"] title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:self.supplyModel.specificationAttributes Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-             [ToastView showTopToast:@"发布成功"];
-            [ToastView showTopToast:@"提交成功，即将返回"];
+            if (self.oldnurseryArray.count > 0 ) {
+                [ToastView showTopToast:@"修改成功"];
+            }
+            else {
+                [ToastView showTopToast:@"发布成功"];
+            }
+            //[ToastView showTopToast:@"提交成功，即将返回"];
             [self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
 //            for(UIViewController *controller in self.navigationController.viewControllers) {
 //                if([controller isKindOfClass:[ZIKMySupplyViewController class]]){

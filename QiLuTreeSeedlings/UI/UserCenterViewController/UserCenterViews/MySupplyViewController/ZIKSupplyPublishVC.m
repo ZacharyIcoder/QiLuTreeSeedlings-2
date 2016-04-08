@@ -146,22 +146,22 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    UITapGestureRecognizer *tapgest=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidingKey)];
+    UITapGestureRecognizer *tapgest = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidingKey)];
     [self.backScrollView addGestureRecognizer:tapgest];
     if (self.model) {
-        self.titleTextField.text=self.model.title;
-        self.nameTextField.text=self.model.productName;
-        self.nameBtn.selected=YES;
+        self.titleTextField.text = self.model.title;
+        self.nameTextField.text  = self.model.productName;
+        self.nameBtn.selected    = YES;
         [HTTPCLIENT mySupplyUpdataWithUid:self.model.uid Success:^(id responseObject) {
             if ([[ responseObject objectForKey:@"success"] integerValue]) {
-                NSDictionary *resultdic=[responseObject objectForKey:@"result"];
-                NSDictionary *ProductSpecDIc=[resultdic objectForKey:@"ProductSpec"];
-                NSArray *beanAry=[ProductSpecDIc objectForKey:@"bean"];
+                NSDictionary *resultdic       = [responseObject objectForKey:@"result"];
+                NSDictionary *ProductSpecDIc  = [resultdic objectForKey:@"ProductSpec"];
+                NSArray *beanAry              = [ProductSpecDIc objectForKey:@"bean"];
 
                 //处理图片数组
-                NSArray *imagesAry         = [resultdic objectForKey:@"images"];
-                NSArray *imagesCompressAry = [resultdic objectForKey:@"imagesCompress"];
-                NSArray *imagesDetailAry   = resultdic[@"imagesDetail"];
+                NSArray *imagesAry            = [resultdic objectForKey:@"images"];
+                NSArray *imagesCompressAry    = [resultdic objectForKey:@"imagesCompress"];
+                NSArray *imagesDetailAry      = resultdic[@"imagesDetail"];
                 NSMutableArray *imagesUrlMAry = [NSMutableArray arrayWithCapacity:2];
                 for (int i = 0; i < imagesAry.count; i++) {
 
@@ -181,8 +181,8 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
                 self.pickerImgView.urlMArr = imagesUrlMAry;
                 //处理图片数组结束
 
-                self.nurseryAry=[resultdic objectForKey:@"nurseryList"];
-                self.baseDic=[resultdic objectForKey:@"baseMsg"];
+                self.nurseryAry            = [resultdic objectForKey:@"nurseryList"];
+                self.baseDic               = [resultdic objectForKey:@"baseMsg"];
                 [self creatSCreeningCellsWithAnswerWithAry:beanAry];
             }else{
                 [ToastView showTopToast:[ responseObject objectForKey:@"msg"]];
@@ -193,9 +193,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         }];
     }
 }
+
 -(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
 {
-    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:specAry];
+    self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:specAry];
     
     [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
@@ -244,10 +245,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         [ToastView showTopToast:@"请先确定苗木名称"];
         return;
     }
-//    if (self.pickerImgView.urlMArr.count<3) {
-//        [ToastView showTopToast:@"请添加三张苗木图片"];
-//        return;
-//    }
+    if (self.pickerImgView.urlMArr.count<3) {
+        [ToastView showTopToast:@"请添加三张苗木图片"];
+        return;
+    }
     self.supplyModel.title = self.titleTextField.text;
     self.supplyModel.name  = self.nameTextField.text;
 
@@ -258,7 +259,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
     }];
     if (self.pickerImgView.urlMArr.count != 0) {
-        self.supplyModel.imageUrls = [urlSring substringFromIndex:1];
+        self.supplyModel.imageUrls         = [urlSring substringFromIndex:1];
         self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
     }
 

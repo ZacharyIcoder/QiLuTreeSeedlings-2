@@ -25,6 +25,28 @@
 
 - (void)configerView:(NSArray *)dataArray withSelectAry:(NSArray *)ary {
     self.list = [[ZIKLinkedList alloc] init];
+    if (ary.count > 0) {
+        for (NSInteger i = 0; i < ary.count; i++) {
+            ZIKNurseryListSelectButton *button = [[ZIKNurseryListSelectButton alloc] init];
+            NSDictionary *dic = ary[i];
+            button.frame      = CGRectMake(10, 10+i*40, 100, 20);
+            button.tag        = i;
+            [button setImage:[UIImage imageNamed:@"苗圃基地选择框"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"苗圃基地已选择框"] forState:UIControlStateSelected];
+            [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+            if ([dic[@"checked"] integerValue] == 1) {
+                button.selected = YES;
+            }
+            [button setTitle:dic[@"name"] forState:UIControlStateNormal];
+            [self addSubview:button];
+            [self.list addItem:button];
+//            if (ary.count>0) {
+//                for (NSString *uid in ary) {
+                 //}
+            //}
+        }
+        return;
+    }
     for (NSInteger i = 0; i < dataArray.count; i++) {
         ZIKNurseryListSelectButton *button = [[ZIKNurseryListSelectButton alloc] init];
         NSDictionary *dic = dataArray[i];
@@ -36,18 +58,19 @@
         [button setTitle:dic[@"nurseryName"] forState:UIControlStateNormal];
         [self addSubview:button];
         [self.list addItem:button];
-        if (ary.count>0) {
-            for (NSString *uid in ary) {
-                if ([dic[@"nrseryId"] isEqualToString:uid]) {
-                    button.selected=YES;
-                }
-            }
-        }
     }
 }
 
-- (void)buttonClick:(UIButton *)button {
+- (void)buttonClick:(ZIKNurseryListSelectButton *)button {
+    button.imageView.image = nil;
     button.selected = !button.selected;
+    NSLog(@"%d",button.selected);
+    NSLog(@"%@",button.imageView.image);
+    NSLog(@"%@",button.currentImage);
+    NSLog(@"%@",button.currentImage.description);
+    //[button setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    //[button setImage:[UIImage imageNamed:@"苗圃基地已选择框"] forState:UIControlStateSelected];
+
 }
 
 - (id)nextObject {
