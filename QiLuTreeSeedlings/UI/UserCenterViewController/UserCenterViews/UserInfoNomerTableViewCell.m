@@ -25,7 +25,7 @@
         [lineImage setBackgroundColor:kLineColor];
         [self addSubview:lineImage];
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
+        //self.detailTextLabel.text = @"mona";
         self.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     return self;

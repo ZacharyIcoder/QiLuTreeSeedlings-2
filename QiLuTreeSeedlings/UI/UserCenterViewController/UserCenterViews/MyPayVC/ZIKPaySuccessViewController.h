@@ -9,5 +9,7 @@
 #import "ZIKArrowViewController.h"
 
 @interface ZIKPaySuccessViewController : ZIKArrowViewController
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+- (IBAction)finishButton:(id)sender;
 
 @end

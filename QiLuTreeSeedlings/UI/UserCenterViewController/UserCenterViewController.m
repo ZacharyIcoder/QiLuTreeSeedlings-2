@@ -209,6 +209,15 @@
     if (indexPath.section==3) {
         if (indexPath.row==0) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myPalyInfo" andTitle:@"我的余额"];
+            UILabel *priceLabel = [[UILabel alloc] init];
+            priceLabel.frame = CGRectMake(Width-35-180, 12, 180, 20);
+            if (APPDELEGATE.userModel.balance) {
+                priceLabel.text = [NSString stringWithFormat:@"账户余额:¥%@",APPDELEGATE.userModel.balance];
+            }
+            priceLabel.font = [UIFont systemFontOfSize:12.0f];
+            priceLabel.textColor = detialLabColor;
+            priceLabel.textAlignment = NSTextAlignmentRight;
+            [cell addSubview:priceLabel];
             return cell;
         }
         

@@ -7,7 +7,7 @@
 //
 
 #import "ZIKPaySuccessViewController.h"
-
+#
 @interface ZIKPaySuccessViewController ()
 
 @end
@@ -34,4 +34,13 @@
 }
 */
 
+- (IBAction)finishButton:(id)sender {
+//                for(UIViewController *controller in self.navigationController.viewControllers) {
+//                    if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
+//                        ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
+//                        [self.navigationController popToViewController:owr animated:YES];
+//                    }
+//                }
+
+}
 @end

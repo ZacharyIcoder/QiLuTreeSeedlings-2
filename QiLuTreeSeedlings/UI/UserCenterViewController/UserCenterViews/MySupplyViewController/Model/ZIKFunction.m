@@ -68,10 +68,10 @@
 
     //将商品信息拼接成字符串
     NSString *orderSpec = [order description];
-    NSLog(@"orderSpec = %@",orderSpec);
+    //NSLog(@"orderSpec = %@",orderSpec);
 
     //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
-    NSLog(@"%@",privateKey);
+    //NSLog(@"%@",privateKey);
     //orderSpec = [orderSpec stringByAppendingString:[NSString stringWithFormat:@"?access_id=\"%@\"",orderId]];
     id<DataSigner> signer = CreateRSADataSigner(privateKey);
     NSString *signedString = [signer signString:orderSpec];
@@ -81,7 +81,7 @@
     if (signedString != nil) {
         orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
                        orderSpec, signedString, @"RSA"];
-        NSLog(@"str=%@",orderString);
+       // NSLog(@"str=%@",orderString);
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
 
             if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]) {
@@ -102,8 +102,8 @@
 
             }
             else if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"4000"]) {
-                NSLog(@"订单交易失败");
-                NSLog(@"%@",resultDic[@"memo"]);
+                //NSLog(@"订单交易失败");
+               // NSLog(@"%@",resultDic[@"memo"]);
             }
         }];
 

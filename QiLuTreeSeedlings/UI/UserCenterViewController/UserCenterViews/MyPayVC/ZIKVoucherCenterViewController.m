@@ -171,9 +171,9 @@
 //    [self.navigationController pushViewController:paySuccessVC animated:YES];
     
     if (self.lastIndexPath.row == 0) {
-        NSLog(@"微信支付");
+        //NSLog(@"微信支付");
         [HTTPCLIENT weixinPayOrder:self.price Success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
+            //NSLog(@"%@",responseObject);
             NSDictionary *dict = responseObject[@"result"];
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                 NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
@@ -190,23 +190,19 @@
 
             }
             else {
-                NSLog(@"%@",responseObject[@"msg"]);
+                //NSLog(@"%@",responseObject[@"msg"]);
             }
-            //if (responseObject[@"success"] == 0) {
-
-            //}
-
         } failure:^(NSError *error) {
 
         }];
     }
     else if (self.lastIndexPath.row == 1) {
-        NSLog(@"支付宝支付");
+        //NSLog(@"支付宝支付");
         
         [ZIKFunction zhiFuBao:self name:@"苗木充值" titile:@"苗木充值" price:self.price orderId:APPDELEGATE.userModel.access_id];
     }
     else if (self.lastIndexPath.row == 2) {
-        NSLog(@"银联支付");
+        //NSLog(@"银联支付");
         [ToastView showToast:@"银联支付暂未开通" withOriginY:Width/3 withSuperView:self.view];
         return;
         //[self getUPPay];
@@ -226,7 +222,7 @@
 //            
 //        }];
         [HTTPCLIENT getUnioPayTnString:@"0.01" Success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
+            //NSLog(@"%@",responseObject);
         } failure:^(NSError *error) {
 
         }];
@@ -243,15 +239,15 @@
 -(void )getUPPay{
    //__block NSString *tnSring = nil;
     [HTTPCLIENT getUnioPay:@"0.01" Success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
           NSString *  tnSring = [responseObject[@"result"] objectForKey:@"tn"];
-            NSLog(@"tnSring= %@",tnSring);
+            //NSLog(@"tnSring= %@",tnSring);
             [UPPayPlugin startPay:tnSring mode:@"00" viewController:self delegate:self];
 
         }
         else {
-            NSLog(@"%@",responseObject[@"msg"]);
+            //NSLog(@"%@",responseObject[@"msg"]);
         }
      //return [responseObject[@"result"] objectForKey:@"tn"];
     } failure:^(NSError *error) {
@@ -259,10 +255,11 @@
     }];
     //return tnSring;
 }
+
 #pragma mark UPPayPluginResult
 - (void)UPPayPluginResult:(NSString *)result
 {
-    NSLog(@"%@",result);
+    //NSLog(@"%@",result);
     if ([result isEqualToString:@"success"]) {
         //[self paySuccess:nil];
     }

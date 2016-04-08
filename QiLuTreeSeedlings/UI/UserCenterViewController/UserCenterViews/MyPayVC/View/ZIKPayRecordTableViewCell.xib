@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-01-01 17：50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5g-Kv-u86">
-                        <rect key="frame" x="36" y="37" width="219" height="16"/>
+                        <rect key="frame" x="36" y="40" width="219" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="219" id="we7-vb-rDw"/>
                         </constraints>
@@ -35,18 +35,19 @@
                         <rect key="frame" x="179" y="12" width="133" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="5SZ-CG-zWe"/>
+                            <constraint firstAttribute="width" priority="750" constant="133" id="ihf-W6-fNl"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erf-Wq-78U">
-                        <rect key="frame" x="41" y="12" width="130" height="24"/>
+                        <rect key="frame" x="41" y="10" width="130" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="130" id="X7c-jd-a6S"/>
                             <constraint firstAttribute="height" priority="750" constant="21" id="iaa-yS-3Kb"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -56,11 +57,11 @@
                     <constraint firstItem="edF-NY-rTc" firstAttribute="leading" secondItem="Erf-Wq-78U" secondAttribute="trailing" constant="8" id="9zt-5J-Vwh"/>
                     <constraint firstItem="edF-NY-rTc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="LLu-kQ-uuX"/>
                     <constraint firstItem="jZr-70-YYI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="NeS-7m-HZZ"/>
-                    <constraint firstItem="Erf-Wq-78U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="Ntt-6m-NR0"/>
+                    <constraint firstItem="Erf-Wq-78U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="Ntt-6m-NR0"/>
                     <constraint firstItem="Erf-Wq-78U" firstAttribute="leading" secondItem="jZr-70-YYI" secondAttribute="trailing" constant="8" id="O5e-Fm-hzJ"/>
                     <constraint firstItem="F5g-Kv-u86" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="28" id="QOu-G1-0Y1"/>
                     <constraint firstItem="jZr-70-YYI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="VJo-mX-Tkn"/>
-                    <constraint firstItem="F5g-Kv-u86" firstAttribute="top" secondItem="Erf-Wq-78U" secondAttribute="bottom" constant="1" id="qWG-79-c8X"/>
+                    <constraint firstItem="F5g-Kv-u86" firstAttribute="top" secondItem="Erf-Wq-78U" secondAttribute="bottom" constant="8" id="qWG-79-c8X"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

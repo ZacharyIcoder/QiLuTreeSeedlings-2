@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZIKPaySuccessViewController">
             <connections>
+                <outlet property="priceLabel" destination="1Ug-I3-KtJ" id="A4K-eL-bSg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -52,23 +53,26 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkE-Oe-U26">
                     <rect key="frame" x="285" y="332" width="30" height="30"/>
                     <state key="normal" title="完成"/>
+                    <connections>
+                        <action selector="finishButton:" destination="-1" eventType="touchUpInside" id="ufN-Go-ubQ"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="JXb-t8-3Ts" firstAttribute="top" secondItem="9Wu-nP-ZO2" secondAttribute="bottom" constant="25" id="7pV-l8-xa0"/>
+                <constraint firstItem="JXb-t8-3Ts" firstAttribute="top" secondItem="9Wu-nP-ZO2" secondAttribute="bottom" priority="250" constant="25" id="7pV-l8-xa0"/>
                 <constraint firstItem="skN-9A-5ME" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AA0-gJ-xO7"/>
-                <constraint firstItem="1Ug-I3-KtJ" firstAttribute="top" secondItem="JXb-t8-3Ts" secondAttribute="bottom" constant="25" id="B6b-M5-hHu"/>
+                <constraint firstItem="1Ug-I3-KtJ" firstAttribute="top" secondItem="JXb-t8-3Ts" secondAttribute="bottom" priority="250" constant="25" id="B6b-M5-hHu"/>
                 <constraint firstItem="gkE-Oe-U26" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CCv-BK-ZZW"/>
                 <constraint firstItem="9Wu-nP-ZO2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="115" id="HfX-jv-bO9"/>
                 <constraint firstItem="gkE-Oe-U26" firstAttribute="top" secondItem="1Ug-I3-KtJ" secondAttribute="bottom" constant="65" id="JlJ-Ik-YJb"/>
-                <constraint firstItem="gkE-Oe-U26" firstAttribute="top" secondItem="1Ug-I3-KtJ" secondAttribute="bottom" constant="65" id="Joe-db-R1l"/>
+                <constraint firstItem="gkE-Oe-U26" firstAttribute="top" secondItem="1Ug-I3-KtJ" secondAttribute="bottom" priority="250" constant="65" id="Joe-db-R1l"/>
                 <constraint firstItem="1Ug-I3-KtJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KFU-KJ-jEs"/>
                 <constraint firstItem="9Wu-nP-ZO2" firstAttribute="centerX" secondItem="JXb-t8-3Ts" secondAttribute="centerX" id="L9H-VM-WYb"/>
                 <constraint firstItem="9Wu-nP-ZO2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NCk-Az-GFj"/>
                 <constraint firstAttribute="trailing" secondItem="skN-9A-5ME" secondAttribute="trailing" id="Pv2-F1-yIW"/>
                 <constraint firstItem="1Ug-I3-KtJ" firstAttribute="top" secondItem="JXb-t8-3Ts" secondAttribute="bottom" constant="25" id="R9l-ts-fGp"/>
-                <constraint firstItem="JXb-t8-3Ts" firstAttribute="top" secondItem="9Wu-nP-ZO2" secondAttribute="bottom" constant="25" id="RDg-42-dYL"/>
+                <constraint firstItem="JXb-t8-3Ts" firstAttribute="top" secondItem="9Wu-nP-ZO2" secondAttribute="bottom" priority="250" constant="25" id="RDg-42-dYL"/>
                 <constraint firstItem="skN-9A-5ME" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="axd-Gs-i7C"/>
                 <constraint firstItem="skN-9A-5ME" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dJp-d6-52l"/>
                 <constraint firstItem="JXb-t8-3Ts" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qag-YA-f5d"/>
