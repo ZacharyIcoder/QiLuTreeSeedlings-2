@@ -36,7 +36,7 @@
                         <constraint firstAttribute="width" constant="136" id="o1E-Pg-vkT"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值金额(元):  ¥100.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-I3-KtJ">
@@ -46,7 +46,7 @@
                         <constraint firstAttribute="height" constant="21" id="Pv6-bN-GyG"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkE-Oe-U26">
@@ -73,7 +73,7 @@
                 <constraint firstItem="skN-9A-5ME" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dJp-d6-52l"/>
                 <constraint firstItem="JXb-t8-3Ts" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qag-YA-f5d"/>
             </constraints>
-            <point key="canvasLocation" x="319" y="376"/>
+            <point key="canvasLocation" x="449" y="376"/>
         </view>
     </objects>
     <resources>

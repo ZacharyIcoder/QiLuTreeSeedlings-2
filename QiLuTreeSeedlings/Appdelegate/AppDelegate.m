@@ -601,9 +601,9 @@
                 break;
         }
 
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//        alert.tag          = PAY_ALERT_TAG;
-//        [alert show];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        //alert.tag          = PAY_ALERT_TAG;
+        [alert show];
     }
     
     

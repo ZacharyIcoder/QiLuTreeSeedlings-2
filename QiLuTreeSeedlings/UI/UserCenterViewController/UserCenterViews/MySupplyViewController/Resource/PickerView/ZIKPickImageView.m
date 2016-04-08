@@ -19,6 +19,7 @@
 #import "UIView+MJExtension.h"
 
 #import "ZIKPickerBtn.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ZIKPickImageView ()<ZIKPickerBtnDeleteDelegate>
 
@@ -78,6 +79,39 @@
     [self setNeedsLayout];
 }
 
+- (void)addImageUrl:(UIImage *)image withUrl:(NSDictionary *)urlDic
+{
+
+    [self.photos addObject:image];
+
+    ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
+    [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
+    imageBtn.urlDic = urlDic;
+    imageBtn.deleteDelegate = self;
+
+    [self addSubview:imageBtn];
+
+    [self.imageBtnArr insertObject:imageBtn atIndex:self.imageBtnArr.count-1];
+
+    //最多允许添加9张图片
+
+    if (self.imageBtnArr.count == 4) {
+
+        self.pickBtn.hidden = YES;
+    }
+
+    [self setNeedsLayout];
+}
+
+-(void)setUrlMArr:(NSMutableArray *)urlMArr {
+    _urlMArr = urlMArr;
+    for (NSDictionary *dic in urlMArr) {
+        [self addImageUrl:[UIImage
+                        imageWithData:[NSData
+                                       dataWithContentsOfURL:[NSURL
+                                                              URLWithString:dic[@"compressurl"]]]] withUrl:dic];
+    }
+}
 
 - (void)removeImage:(UIImage *)image
 {
@@ -146,7 +180,5 @@
         self.pickBtn.hidden = NO;
     }
 }
-
-
 
 @end

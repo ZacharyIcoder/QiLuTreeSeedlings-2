@@ -85,6 +85,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kWidth-70, 44)];
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
     titleTextField.placeholder  = @"请输入标题(限制在20字以内)";
+    titleTextField.textColor = [UIColor blackColor];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
@@ -156,8 +157,30 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
                 NSDictionary *resultdic=[responseObject objectForKey:@"result"];
                 NSDictionary *ProductSpecDIc=[resultdic objectForKey:@"ProductSpec"];
                 NSArray *beanAry=[ProductSpecDIc objectForKey:@"bean"];
-                NSArray *iamgesAry=[resultdic objectForKey:@"images"];
-                NSArray *imagesCompressAry=[resultdic objectForKey:@"imagesCompress"];
+
+                //处理图片数组
+                NSArray *imagesAry         = [resultdic objectForKey:@"images"];
+                NSArray *imagesCompressAry = [resultdic objectForKey:@"imagesCompress"];
+                NSArray *imagesDetailAry   = resultdic[@"imagesDetail"];
+                NSMutableArray *imagesUrlMAry = [NSMutableArray arrayWithCapacity:2];
+                for (int i = 0; i < imagesAry.count; i++) {
+
+                    for (int j = 0; j < imagesCompressAry.count; j++) {
+
+                        for (int k = 0; k < imagesDetailAry.count; k++) {
+                            if (i == j && j == k) {
+                                NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
+                                dic[@"url"]         = imagesAry[i];
+                                dic[@"compressurl"] = imagesCompressAry[i];
+                                dic[@"detailurl"]   = imagesDetailAry[i];
+                                [imagesUrlMAry addObject:dic];
+                            }
+                        }
+                    }
+                };
+                self.pickerImgView.urlMArr = imagesUrlMAry;
+                //处理图片数组结束
+
                 self.nurseryAry=[resultdic objectForKey:@"nurseryList"];
                 self.baseDic=[resultdic objectForKey:@"baseMsg"];
                 [self creatSCreeningCellsWithAnswerWithAry:beanAry];
@@ -234,10 +257,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
         compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
     }];
-//    self.supplyModel.imageUrls = [urlSring substringFromIndex:1];
-//    self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
+    if (self.pickerImgView.urlMArr.count != 0) {
+        self.supplyModel.imageUrls = [urlSring substringFromIndex:1];
+        self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
+    }
 
-    NSMutableArray *screenTijiaoAry=[NSMutableArray array];
+    NSMutableArray *screenTijiaoAry = [NSMutableArray array];
     for (int i = 0; i < _cellAry.count; i++) {
         TreeSpecificationsModel *model = _cellAry[i];
         if (model.anwser.length>0) {
@@ -486,6 +511,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
                 }
                 else {
                     NSLog(@"图片上传失败");
+                    [UIColor darkGrayColor];
                 }
 
                 //self.pickerImgView.photos

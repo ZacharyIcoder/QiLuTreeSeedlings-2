@@ -69,6 +69,10 @@
      [self.mySupplyTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withPage:page withPageSize:@"15" success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+            return ;
+        }
         NSDictionary *dic = [responseObject objectForKey:@"result"];
         //NSLog(@"%@",[responseObject objectForKey:@"msg"]);
         NSArray *array = dic[@"list"];
