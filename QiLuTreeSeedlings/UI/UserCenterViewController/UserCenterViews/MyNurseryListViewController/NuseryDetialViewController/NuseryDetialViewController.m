@@ -248,7 +248,7 @@
     [view addSubview:nameLab];
     UIButton *Btn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.4, 44)];
     [Btn setTitle:alert forState:UIControlStateNormal];
-    [Btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [Btn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [Btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:Btn];
     UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];

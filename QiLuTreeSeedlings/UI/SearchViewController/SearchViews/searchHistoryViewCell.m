@@ -17,7 +17,7 @@
         [imageV setImage:[UIImage imageNamed:@"listtime"]];
         [self addSubview:imageV];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(30, 7, 80, 20)];
-        [titleLab setTextColor:[UIColor lightGrayColor]];
+        [titleLab setTextColor:detialLabColor];
         titleLab.text=[dic objectForKey:@"title"];
         [titleLab setFont:[UIFont systemFontOfSize:13]];
         [self addSubview:titleLab];

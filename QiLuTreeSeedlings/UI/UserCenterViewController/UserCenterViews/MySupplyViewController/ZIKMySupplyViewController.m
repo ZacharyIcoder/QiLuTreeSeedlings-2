@@ -182,23 +182,23 @@
     label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
     label1.text = @"您还没有发布任何的供应信息";
     label1.textAlignment = NSTextAlignmentCenter;
-    label1.textColor = [UIColor lightGrayColor];
+    label1.textColor = detialLabColor;
     [emptyUI addSubview:label1];
     
     UILabel *label2 = [[UILabel alloc] init];
     label2.frame = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
     label2.text = @"点击按钮发布";
-    label2.textColor = [UIColor lightGrayColor];
+    label2.textColor = detialLabColor;
     label2.textAlignment = NSTextAlignmentCenter;
     [emptyUI addSubview:label2];
     
     UIButton *button = [[UIButton alloc] init];
     button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [button setTitleColor:detialLabColor forState:UIControlStateNormal];
     button.layer.masksToBounds = YES;
     button.layer.cornerRadius = 6.0f;
     button.layer.borderWidth = 1;
-    button.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    button.layer.borderColor = [detialLabColor CGColor];
     [button setTitle:@"发布供应" forState:UIControlStateNormal];
     [emptyUI addSubview:button];
     [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];

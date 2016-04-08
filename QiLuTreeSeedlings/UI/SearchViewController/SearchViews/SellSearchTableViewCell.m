@@ -30,7 +30,7 @@
         titleLab=[[UILabel alloc]initWithFrame:CGRectMake(100, 15, frame.size.width-100, 20)];
         [titleLab setFont:[UIFont systemFontOfSize:15]];
         [titleLab setText:@"标题"];
-        [titleLab setTextColor:[UIColor darkGrayColor]];
+        [titleLab setTextColor:titleLabColor];
         [self addSubview:titleLab];
         UIImageView *dingweiImageV=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+95, 42, 15, 15)];
         [dingweiImageV setImage:[UIImage imageNamed:@"region"]];
@@ -38,7 +38,7 @@
         cityLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+20+95, 40, 100, 20)];
         [cityLab setFont:[UIFont systemFontOfSize:14]];
         cityLab.text=@"山东 临沂";
-        [cityLab setTextColor:[UIColor lightGrayColor]];
+        [cityLab setTextColor:detialLabColor];
         [self addSubview:cityLab];
         UIImageView *timeImagV=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.60+85, 43, 13, 13)];
         [timeImagV setImage:[UIImage imageNamed:@"listtime"]];
@@ -46,7 +46,7 @@
         timeLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.60+20/320.f*kWidth+85, 40, 70, 20)];
         [timeLab setFont:[UIFont systemFontOfSize:14]];
         timeLab.text=@"今天";
-         [timeLab setTextColor:[UIColor lightGrayColor]];
+         [timeLab setTextColor:detialLabColor];
         [self addSubview:timeLab];
         UIImageView *numImage=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+95, 72, 15, 15)];
         [numImage setImage:[UIImage imageNamed:@"LISTtreeNumber"]];
@@ -54,17 +54,17 @@
         numLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+20+95, 70, 90, 20)];
         [numLab setFont:[UIFont systemFontOfSize:14]];
         numLab.text=@"599棵";
-        [numLab setTextColor:[UIColor lightGrayColor]];
+        [numLab setTextColor:detialLabColor];
         [self addSubview:numLab];
         UILabel *shangcheLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65-10+75, 70, 50, 20)];
         [shangcheLab setFont:[UIFont systemFontOfSize:14]];
         shangcheLab.text=@"上车价";
-         [shangcheLab setTextColor:[UIColor lightGrayColor]];
+         [shangcheLab setTextColor:detialLabColor];
         [self addSubview:shangcheLab];
         priceLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65+80+30/320.f*kWidth, 68, 50, 20)];
         [priceLab setFont:[UIFont systemFontOfSize:18]];
 //        priceLab.text=@"50";
-        [priceLab setTextColor:[UIColor orangeColor]];
+        [priceLab setTextColor:yellowButtonColor];
         [self addSubview:priceLab];
         
         UIImageView *lineImageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, frame.size.height-0.5, frame.size.width, 0.5)];

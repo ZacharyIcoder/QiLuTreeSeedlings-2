@@ -82,10 +82,11 @@
     UILabel *cityNameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, kWidth*0.3, 44)];
     [cityView addSubview:cityNameLab];
     cityNameLab.text=@"地区";
+    [cityNameLab setTextColor:titleLabColor];
     [cityNameLab setFont:[UIFont systemFontOfSize:14]];
     UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.25, 0, kWidth*0.6, 44)];
     [cityBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
-    [cityBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [cityBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [cityBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [cityBtn setTitle:@"请选择公司所在城市" forState:UIControlStateNormal];
     [cityView addSubview:cityBtn];
@@ -378,6 +379,7 @@
     UIView *view=[[UIView alloc]initWithFrame:frame];
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, kWidth*0.3, 44)];
     nameLab.text=name;
+    [nameLab setTextColor:titleLabColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:nameLab];
@@ -386,6 +388,7 @@
     textField.clearButtonMode=UITextFieldViewModeWhileEditing;
     textField.placeholder=alert;
     [view addSubview:textField];
+    [textField setTextColor:detialLabColor];
     UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];
     [lineView setBackgroundColor:kLineColor];
     [view addSubview:lineView];

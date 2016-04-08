@@ -28,7 +28,7 @@
         }
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(k, 0, 95, 50)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
-        [nameLab setTextColor:[UIColor blackColor]];
+        [nameLab setTextColor:titleLabColor];
          nameLab.text=model.name;
         if (model.unit.length!=0) {
             nameLab.text=[NSString stringWithFormat:@"%@(%@)",model.name,model.unit];
@@ -83,7 +83,7 @@
         self.answerAry=[[NSMutableArray alloc]initWithCapacity:2];
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 95, 50)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
-        [nameLab setTextColor:[UIColor blackColor]];
+        [nameLab setTextColor:titleLabColor];
         nameLab.text=model.name;
         if (model.unit.length!=0) {
             nameLab.text=[NSString stringWithFormat:@"%@(%@)",model.name,model.unit];
@@ -143,7 +143,7 @@
     {
         [pickBtn setTitle:self.model.anwser forState:UIControlStateNormal];
     }
-    [pickBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     self.nowBtn=pickBtn;
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
     PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, kHeight-216, kWidth,216+44)];
@@ -261,7 +261,7 @@
     [zhiLab setFont:[UIFont systemFontOfSize:12]];
     zhiLab.text=@"至";
     zhiLab.textAlignment=NSTextAlignmentCenter;
-    [zhiLab setTextColor:[UIColor blackColor]];
+    [zhiLab setTextColor:titleLabColor];
     [self addSubview:zhiLab];
     UITextField *minTextfield=[[UITextField alloc]initWithFrame:CGRectMake(zhiLab.frame.origin.x-70, 10, 60, 30)];
     minTextfield.keyboardType=UIKeyboardTypeNumberPad;
@@ -279,7 +279,7 @@
     maxTextfield.keyboardType=UIKeyboardTypeNumberPad;
     [self addSubview:maxTextfield];
     UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-50, 10, 40, 30)];
-    [unitLab setTextColor:[UIColor blackColor]];
+    [unitLab setTextColor:titleLabColor];
     [unitLab setText:self.model.unit];
     [self addSubview:unitLab];
     UIImageView *linView=[[UIImageView alloc]initWithFrame:CGRectMake(10, self.frame.size.height,self.frame.size.width-20, 0.5)];

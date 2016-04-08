@@ -85,7 +85,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kWidth-70, 44)];
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
     titleTextField.placeholder  = @"请输入标题(限制在20字以内)";
-    titleTextField.textColor = [UIColor blackColor];
+    titleTextField.textColor = titleLabColor;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
@@ -99,7 +99,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     titleTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [self.backScrollView addSubview:titleView];
     tempFrame.origin.y += 44.5;
-
+    
     ZIKPickImageView* pickView = [[ZIKPickImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLineView.frame), Width, 100)];
     pickView.backgroundColor = [UIColor whiteColor];
     [self.backScrollView addSubview:pickView];

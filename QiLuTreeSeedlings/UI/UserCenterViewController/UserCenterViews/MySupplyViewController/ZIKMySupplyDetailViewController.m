@@ -148,7 +148,7 @@
         [lineView setBackgroundColor:kLineColor];
         [view addSubview:lineView];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-35, 0, 70, 50)];
-        [titleLab setTextColor:[UIColor blackColor]];
+        [titleLab setTextColor:titleLabColor];
         [titleLab setBackgroundColor:BGColor];
         [titleLab setTextAlignment:NSTextAlignmentCenter];
         [titleLab setText:@"猜你喜欢"];
@@ -162,7 +162,7 @@
     [view addSubview:linImag];
     UILabel *messageLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 5, 60, 20)];
     [messageLab setFont:[UIFont systemFontOfSize:13]];
-    [messageLab setTextColor:[UIColor lightGrayColor]];
+    [messageLab setTextColor:detialLabColor];
     [view addSubview:messageLab];
     if (section==1) {
         messageLab.text=@"苗木要求";

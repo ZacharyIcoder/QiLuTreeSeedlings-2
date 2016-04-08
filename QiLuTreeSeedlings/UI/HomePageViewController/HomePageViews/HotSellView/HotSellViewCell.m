@@ -42,7 +42,7 @@
         UILabel *cityLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+20+95, 40, 100, 20)];
         [cityLab setFont:[UIFont systemFontOfSize:14]];
         self.cityLab =cityLab;
-          [cityLab setTextColor:[UIColor lightGrayColor]];
+          [cityLab setTextColor:detialLabColor];
         cityLab.text=Model.area;
         [self addSubview:cityLab];
         UIImageView *timeImagV=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.60+85, 43, 13, 13)];
@@ -50,7 +50,7 @@
         [self addSubview:timeImagV];
         UILabel *timeLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.60+20/320.f*kWidth+85, 40, 70, 20)];
         [timeLab setFont:[UIFont systemFontOfSize:14]];
-          [timeLab setTextColor:[UIColor lightGrayColor]];
+          [timeLab setTextColor:detialLabColor];
         self.timeLab=timeLab;
         timeLab.text=@"今天";
         [self addSubview:timeLab];
@@ -59,14 +59,14 @@
         [self addSubview:numImage];
         UILabel *numLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+20+95, 70, 90, 20)];
         [numLab setFont:[UIFont systemFontOfSize:14]];
-          [numLab setTextColor:[UIColor lightGrayColor]];
+          [numLab setTextColor:detialLabColor];
         numLab.text=@"599棵";
         self.numLab=numLab;
         [self addSubview:numLab];
         UILabel *shangcheLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65-10+75, 70, 50, 20)];
         [shangcheLab setFont:[UIFont systemFontOfSize:14]];
         shangcheLab.text=@"上车价";
-          [shangcheLab setTextColor:[UIColor lightGrayColor]];
+          [shangcheLab setTextColor:detialLabColor];
         [self addSubview:shangcheLab];
         UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65+80+30/320.f*kWidth, 68, 50, 20)];
         [priceLab setTextColor:[UIColor orangeColor]];

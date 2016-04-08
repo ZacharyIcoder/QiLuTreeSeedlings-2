@@ -179,13 +179,13 @@
     label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
     label1.text             = @"您还没有定制任何信息~";
     label1.textAlignment    = NSTextAlignmentCenter;
-    label1.textColor        = [UIColor lightGrayColor];
+    label1.textColor        = detialLabColor;
     [emptyUI addSubview:label1];
 
     UILabel *label2         = [[UILabel alloc] init];
     label2.frame            = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
     label2.text             = @"点击右上角开始添加吧";
-    label2.textColor        = [UIColor lightGrayColor];
+    label2.textColor        = detialLabColor;
     label2.textAlignment    = NSTextAlignmentCenter;
     [emptyUI addSubview:label2];
 }

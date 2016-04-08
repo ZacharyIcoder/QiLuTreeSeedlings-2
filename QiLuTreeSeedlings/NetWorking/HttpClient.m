@@ -444,7 +444,7 @@
                               kclient_secret,@"client_secret",
                               uid,@"uid",
                               nil];
-    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [self GET:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
@@ -452,6 +452,9 @@
         failure(error);
     }];
     
+
+    // 4.创建参数字符串对象
+    //NSString *parmStr = @"access_id=0F14ED77-78E2-4441-9F1A-8FE080C9A6C1&access_token=1db43fde59854beb38c0423145d2e2bd&client_id=00C6D374-930C-472B-9B98-D759ACD2F98D&client_secret=49C851D0-C075-4630-99D6-1CF609697626&device_id=019672763a1f29acb97bbb8468d329b5b44a82642b04cafaa37a53a99044b82d&uid=3BD31D90-9F91-4492-BB97-C6052182F1AB";
 
 }
 #pragma mark-供应详情
@@ -1232,10 +1235,7 @@
                                 page,@"page",
                                 pageSize,@"pageSize",
                                 nil];
-    /*APPDELEGATE.userModel.access_token,@"access_token",
-     APPDELEGATE.userModel.access_id,@"access_id",*/
-    //NSLog(@"%@",postURL);
-    //NSLog(@"%@",parameters);
+
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
         

@@ -24,7 +24,7 @@
     if (self) {
         [self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 10, kWidth-20, 13)];
-        [self.titleLab setTextColor:[UIColor darkGrayColor]];
+        [self.titleLab setTextColor:titleLabColor];
         [self.titleLab setFont:[UIFont systemFontOfSize:15]];
         [self.titleLab setText:@"标题"];
         [self addSubview:self.titleLab];
@@ -35,13 +35,13 @@
         
         [self.cityLab setFont:[UIFont systemFontOfSize:12]];
         [self.cityLab setText:@"临沂"];
-        [self.cityLab setTextColor:[UIColor lightGrayColor]];
+        [self.cityLab setTextColor:detialLabColor];
         [self addSubview:self.cityLab];
         UIImageView * timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*0.5-45,38, 15, 15)];
          [timeImag setImage:[UIImage imageNamed:@"listtime"]];
         [self addSubview:timeImag];
         self.timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.5-20, 40, 55, 12)];
-         [self.timeLab setTextColor:[UIColor lightGrayColor]];
+         [self.timeLab setTextColor:detialLabColor];
         [self.timeLab setFont:[UIFont systemFontOfSize:12]];
         [self.timeLab setText:@"N天前"];
         [self addSubview:self.timeLab];
@@ -49,11 +49,11 @@
         [priceLab setFont:[UIFont systemFontOfSize:12]];
         [priceLab setText:@"价格"];
         [self addSubview:priceLab];
-         [priceLab setTextColor:[UIColor lightGrayColor]];
+         [priceLab setTextColor:detialLabColor];
         self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.9-25, 35, 65, 20)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];
         [self.priceLab setText:@"O元"];
-        [self.priceLab setTextColor:[UIColor orangeColor]];
+        [self.priceLab setTextColor:yellowButtonColor];
         [self addSubview:self.priceLab];
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, 69.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];

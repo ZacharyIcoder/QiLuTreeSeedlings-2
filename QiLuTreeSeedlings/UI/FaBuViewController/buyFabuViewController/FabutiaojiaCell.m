@@ -25,7 +25,7 @@
         int k=15;
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(k, 0, 110, 50)];
         [nameLab setFont:[UIFont systemFontOfSize:15]];
-        [nameLab setTextColor:[UIColor blackColor]];
+        [nameLab setTextColor:titleLabColor];
         nameLab.text=model.name;
         if (model.unit.length!=0) {
             nameLab.text=[NSString stringWithFormat:@"%@(%@)",model.name,model.unit];
@@ -84,7 +84,7 @@
     {
         [pickBtn setTitle:self.model.anwser forState:UIControlStateNormal];
     }
-    [pickBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     self.nowBtn=pickBtn;
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, kHeight-216, kWidth,216+44)];

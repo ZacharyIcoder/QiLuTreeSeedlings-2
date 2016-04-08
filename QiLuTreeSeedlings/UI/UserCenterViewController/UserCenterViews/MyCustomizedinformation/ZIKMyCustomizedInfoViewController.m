@@ -156,13 +156,13 @@
     label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
     label1.text             = @"空空如也~~";
     label1.textAlignment    = NSTextAlignmentCenter;
-    label1.textColor        = [UIColor lightGrayColor];
+    label1.textColor        = detialLabColor;
     [emptyUI addSubview:label1];
 
     UILabel *label2         = [[UILabel alloc] init];
     label2.frame            = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
     label2.text             = @"还没有收到任何定制信息";
-    label2.textColor        = [UIColor lightGrayColor];
+    label2.textColor        = detialLabColor;
     label2.textAlignment    = NSTextAlignmentCenter;
     [emptyUI addSubview:label2];
 }

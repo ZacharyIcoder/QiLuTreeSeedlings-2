@@ -65,7 +65,7 @@
     UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
     [messageBtn setBackgroundColor:[UIColor whiteColor]];
     [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
-    [messageBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
     [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
     [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
@@ -159,7 +159,7 @@
         [lineView setBackgroundColor:kLineColor];
         [view addSubview:lineView];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-35, 0, 70, 50)];
-        [titleLab setTextColor:[UIColor blackColor]];
+        [titleLab setTextColor:titleLabColor];
         [titleLab setBackgroundColor:BGColor];
         [titleLab setTextAlignment:NSTextAlignmentCenter];
         [titleLab setText:@"猜你喜欢"];
@@ -173,7 +173,7 @@
     [view addSubview:linImag];
     UILabel *messageLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 5, 60, 20)];
     [messageLab setFont:[UIFont systemFontOfSize:13]];
-    [messageLab setTextColor:[UIColor lightGrayColor]];
+    [messageLab setTextColor:detialLabColor];
     [view addSubview:messageLab];
     if (section==1) {
         messageLab.text=@"苗木要求";

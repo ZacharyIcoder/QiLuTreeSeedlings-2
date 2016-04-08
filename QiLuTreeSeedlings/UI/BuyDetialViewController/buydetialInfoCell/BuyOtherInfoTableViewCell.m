@@ -36,7 +36,7 @@
     keylab.text=[dic objectForKey:@"name"];
     [keylab setTextAlignment:NSTextAlignmentRight];
     [keylab setFont:[UIFont systemFontOfSize:13]];
-    [keylab setTextColor:[UIColor lightGrayColor]];
+    [keylab setTextColor:detialLabColor];
     [view addSubview:keylab];
     UILabel *valueLab=[[UILabel alloc]initWithFrame:CGRectMake(130, -5, 185/320.f*kWidth, 40)];
     valueLab.numberOfLines=0;

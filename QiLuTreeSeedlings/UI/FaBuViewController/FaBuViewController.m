@@ -41,7 +41,7 @@
     [view1 addSubview:titleLab1];
     UILabel *detialLab1=[[UILabel alloc]initWithFrame:CGRectMake(70, 50, 80, 40)];
     detialLab1.numberOfLines=2;
-    [detialLab1 setTextColor:[UIColor lightGrayColor]];
+    [detialLab1 setTextColor:detialLabColor];
     [detialLab1 setFont:[UIFont systemFontOfSize:13]];
     detialLab1.text = @"填写您要出售的苗木种类";
     [view1 addSubview:detialLab1];
@@ -63,7 +63,7 @@
     [view2 addSubview:titleLab2];
     UILabel *detialLab2=[[UILabel alloc]initWithFrame:CGRectMake(70, 50, 80, 40)];
     detialLab2.numberOfLines=2;
-    [detialLab2 setTextColor:[UIColor lightGrayColor]];
+    [detialLab2 setTextColor:detialLabColor];
     [detialLab2 setFont:[UIFont systemFontOfSize:13]];
     detialLab2.text = @"填写您需要的苗木种类";
     [view2 addSubview:detialLab2];

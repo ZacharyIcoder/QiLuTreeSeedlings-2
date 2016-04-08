@@ -66,7 +66,7 @@
     self.codeTextField.keyboardType=UIKeyboardTypeNumberPad;
     UILabel *zzzzLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 4*50+74+5, kWidth-80, 20)];
     [zzzzLab setFont:[UIFont systemFontOfSize:13]];
-    [zzzzLab setTextColor:[UIColor lightGrayColor]];
+    [zzzzLab setTextColor:detialLabColor];
     [zzzzLab setText:@"验证码将发送到您所填写的手机上"];
     [self.view addSubview:zzzzLab];
     UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 4*50+74+20+30, kWidth-80, 40)];
@@ -139,7 +139,7 @@
     [view setBackgroundColor:[UIColor whiteColor]];
     UILabel *phoneLab=[[UILabel alloc]initWithFrame:CGRectMake(45/320.f*kWidth,10, 70, 30)];
     [phoneLab setFont:[UIFont systemFontOfSize:16]];
-    [phoneLab setTextColor:[UIColor blackColor]];
+    [phoneLab setTextColor:titleLabColor];
     [phoneLab setText:title];
     [view addSubview:phoneLab];
     UITextField *phoneTextField=[[UITextField alloc]initWithFrame:CGRectMake(120/320.f*kWidth, 10, 180, 30)];

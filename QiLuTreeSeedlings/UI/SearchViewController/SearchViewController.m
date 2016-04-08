@@ -147,7 +147,7 @@
     UIButton *chooseSBBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 34)];
     [chooseSBBtn setTitle:@"供应" forState:UIControlStateNormal];
     //[chooseSBBtn setBackgroundColor:[UIColor grayColor]];
-    [chooseSBBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [chooseSBBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [chooseSBBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     self.chooseSBBtn=chooseSBBtn;
     [chooseSBBtn addTarget:self action:@selector(chooseSBBtnAction) forControlEvents:UIControlEventTouchUpInside];

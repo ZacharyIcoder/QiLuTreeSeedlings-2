@@ -219,7 +219,7 @@
    // [self.backScrollView addSubview:hotBuyTitleV];
     UIButton *moreHotBuyBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
     [moreHotBuyBtn setTitle:@"更多" forState:UIControlStateNormal];
-    [moreHotBuyBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [moreHotBuyBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
     [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
     [hotBuyTitleV addSubview:hotMoreRowImgV];
@@ -235,7 +235,7 @@
     UIView *hotSellTitleV=[self makeTitleViewWithTitle:@"热门供应" AndColor:NavColor andY:CGRectGetMaxY(hotBView.frame)];
     UIButton *moreHotSellBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
     [moreHotSellBtn setTitle:@"更多" forState:UIControlStateNormal];
-    [moreHotSellBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [moreHotSellBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [moreHotSellBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [moreHotSellBtn addTarget:self action:@selector(moreBtnHotSellAction:) forControlEvents:UIControlEventTouchUpInside];
     [hotSellTitleV addSubview:moreHotSellBtn];

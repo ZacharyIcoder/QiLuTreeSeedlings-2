@@ -65,7 +65,7 @@
         [nameView setBackgroundColor:[UIColor whiteColor]];
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
         nameLab.text=@"苗木名称";
-        [nameLab setTextColor:[UIColor blackColor]];
+        [nameLab setTextColor:titleLabColor];
         [nameView addSubview:nameLab];
         UIImageView *lineNameL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
         [nameView addSubview:lineNameL];
@@ -91,7 +91,7 @@
         UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
         
         gongyingLab.text=@"供应商";
-        [gongyingLab setTextColor:[UIColor blackColor]];
+        [gongyingLab setTextColor:titleLabColor];
         UIImageView *lineGYL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
         [gongyingshangView addSubview:lineGYL];
         [lineGYL setBackgroundColor:kLineColor];
@@ -104,7 +104,7 @@
         [nomegongyingbtn setTitle:@"普通供应商" forState:UIControlStateSelected];
           [nomegongyingbtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
     nomegongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
-        [nomegongyingbtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [nomegongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [nomegongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
         [nomegongyingbtn setImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
              [nomegongyingbtn setImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
@@ -116,7 +116,7 @@
         goldgongyingbtn.tag=111;
         [goldgongyingbtn setTitle:@"金牌供应商" forState:UIControlStateSelected];
         [goldgongyingbtn addTarget:self action:@selector(gongyingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        [goldgongyingbtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [goldgongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [goldgongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
         [goldgongyingbtn setImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
         [goldgongyingbtn setImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
@@ -133,7 +133,7 @@
         self.areaBtn=areaBtn;
         [areaBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
         [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        [areaBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [areaBtn addTarget: self action:@selector(areaBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [areaView addSubview:areaBtn];
         [self.backScrollView addSubview:areaView];

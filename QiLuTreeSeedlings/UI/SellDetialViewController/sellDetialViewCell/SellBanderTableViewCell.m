@@ -61,7 +61,7 @@
         [self addSubview:lineView];
         UIView *userView=[self viewWithTitle:model.supplybuyName andX:(kWidth-150)/4.f andColor:[UIColor blackColor] andImageName:@"person"];
         [self addSubview:userView];
-        UIView *numView=[self viewWithTitle:[NSString stringWithFormat:@"%@棵",model.count] andX:kWidth/2-25 andColor:[UIColor blackColor] andImageName:@"LISTtreeNumber"];
+        UIView *numView=[self viewWithTitle:[NSString stringWithFormat:@"%@棵",model.count] andX:kWidth/2-25 andColor:titleLabColor andImageName:@"LISTtreeNumber"];
         [self addSubview:numView];
         
         UIView *priceView=[self viewWithTitle:[NSString stringWithFormat:@"%@元/棵",model.price] andX:kWidth-(kWidth-150)/4.f-50 andColor:[UIColor orangeColor] andImageName:@"price"];

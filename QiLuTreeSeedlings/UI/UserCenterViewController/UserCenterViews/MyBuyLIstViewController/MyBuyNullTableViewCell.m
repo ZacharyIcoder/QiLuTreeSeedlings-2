@@ -22,13 +22,13 @@
         [imageV setImage:[UIImage imageNamed:@"myBuyNull"]];
         imageV.center=CGPointMake(kWidth/2, frame.size.height/2-55);
         UILabel *lab1=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-110, CGRectGetMaxY(imageV.frame)+10, 220, 20)];
-        [lab1 setTextColor:[UIColor lightGrayColor]];
+        [lab1 setTextColor:detialLabColor];
         [lab1 setTextAlignment:NSTextAlignmentCenter];
         [lab1 setText:@"您还没有发布任何求购信息"];
         [self addSubview:lab1];
         
         UILabel *lab2=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-100, CGRectGetMaxY(lab1.frame)+10, 200, 20)];
-        [lab2 setTextColor:[UIColor lightGrayColor]];
+        [lab2 setTextColor:detialLabColor];
         [lab2 setTextAlignment:NSTextAlignmentCenter];
         [lab2 setText:@"点击按钮发布"];
         [self addSubview:lab2];
@@ -43,7 +43,7 @@
         
         self.fabuBtn=fabuBtn;
         [self addSubview:fabuBtn];
-        [fabuBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [fabuBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     }
     return self;
 }

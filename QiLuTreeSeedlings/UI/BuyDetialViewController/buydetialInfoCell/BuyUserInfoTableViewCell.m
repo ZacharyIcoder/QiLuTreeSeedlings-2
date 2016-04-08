@@ -26,7 +26,7 @@
         iamgeV.layer.cornerRadius=35;
         UILabel *namezLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 17, 55, 20)];
         [namezLab setTextAlignment:NSTextAlignmentRight];
-        [namezLab setTextColor:[UIColor lightGrayColor]];
+        [namezLab setTextColor:detialLabColor];
         [namezLab setFont:[UIFont systemFontOfSize:13]];
         [namezLab setText:@"求购商"];
         [self addSubview:namezLab];
@@ -39,7 +39,7 @@
         
         UILabel *numebLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 40, 55, 20)];
         [numebLab setTextAlignment:NSTextAlignmentRight];
-        [numebLab setTextColor:[UIColor lightGrayColor]];
+        [numebLab setTextColor:detialLabColor];
         [numebLab setFont:[UIFont systemFontOfSize:13]];
         [numebLab setText:@"数量"];
         [self addSubview:numebLab];
@@ -51,7 +51,7 @@
         [self addSubview:self.numLab];
         UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 63, 55, 20)];
         [priceLab setTextAlignment:NSTextAlignmentRight];
-        [priceLab setTextColor:[UIColor lightGrayColor]];
+        [priceLab setTextColor:detialLabColor];
         [priceLab setFont:[UIFont systemFontOfSize:13]];
         [priceLab setText:@"价格(元)"];
         [self addSubview:priceLab];

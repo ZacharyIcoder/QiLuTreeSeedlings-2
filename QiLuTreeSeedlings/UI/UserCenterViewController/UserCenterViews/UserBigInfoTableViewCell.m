@@ -46,7 +46,7 @@
     //[titleLab setBackgroundColor:[UIColor redColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     titleLab.text=title;
-    [titleLab setTextColor:[UIColor lightGrayColor]];
+    [titleLab setTextColor:detialLabColor];
     [view addSubview:titleLab];
     UILabel *numLab=[[UILabel alloc]initWithFrame:CGRectMake(frame.size.width*0.5-10, 30, 80, 20)];
     [numLab setTextAlignment:NSTextAlignmentCenter];

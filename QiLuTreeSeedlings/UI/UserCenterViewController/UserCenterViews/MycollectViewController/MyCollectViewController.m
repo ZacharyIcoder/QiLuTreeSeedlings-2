@@ -76,7 +76,7 @@
     
     UIButton *qiugouBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, 64, kWidth/2, 44)];
     [qiugouBtn setTitle:@"求购信息" forState:UIControlStateNormal];
-    [qiugouBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [qiugouBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
     [qiugouBtn setTitleColor:NavColor forState:UIControlStateSelected];
     qiugouBtn.tag=12;
     UIView *qiugouViw=[[UIView alloc]initWithFrame:qiugouBtn.frame];

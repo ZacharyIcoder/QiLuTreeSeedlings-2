@@ -21,7 +21,7 @@
         UIView *topView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 0)];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 20)];
         [titleLab setText:@"热门搜索"];
-        [titleLab setTextColor:[UIColor blackColor]];
+        [titleLab setTextColor:titleLabColor];
         [topView addSubview:titleLab];
         [topView setBackgroundColor:BGColor];
        
@@ -38,11 +38,11 @@
             [likeBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             [likeBtn setTitle:nameStr forState:UIControlStateNormal];
             CGSize strSize=[self boundingRectWithSize:likeBtn.titleLabel.frame.size whithLab:likeBtn.titleLabel];
-            [likeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            [likeBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             // NSLog(@"%f",strSize.width);
              [likeBtn.layer setBorderWidth:0.5];
             [likeBtn addTarget:self action:@selector(likeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [likeBtn.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+            [likeBtn.layer setBorderColor:detialLabColor.CGColor];
             tempFrame.size.width=strSize.width+10.0;
             tempFrame.origin.x=tempX;
          
@@ -82,7 +82,7 @@
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 60, 20)];
     [titleLab setText:@"搜索历史"];
     [titleLab setFont:[UIFont systemFontOfSize:15]];
-    [titleLab setTextColor:[UIColor blackColor]];
+    [titleLab setTextColor:titleLabColor];
     [view addSubview:titleLab];
     CGRect tempFrame=CGRectMake(20, CGRectGetMaxY(titleLab.frame)+14+searchHistoryAry.count*44, kWidth-20, 44);
     for (int i=0; i<searchHistoryAry.count; i++) {

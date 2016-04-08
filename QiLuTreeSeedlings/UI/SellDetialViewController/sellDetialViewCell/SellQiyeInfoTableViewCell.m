@@ -22,7 +22,7 @@
         UILabel *dizhiLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 5, 80, 20)];
         [dizhiLab setFont:[UIFont systemFontOfSize:13]];
         [dizhiLab setTextAlignment:NSTextAlignmentRight];
-        [dizhiLab setTextColor:[UIColor lightGrayColor]];
+        [dizhiLab setTextColor:detialLabColor];
         dizhiLab.text=@"苗圃基地";
         [self addSubview:dizhiLab];
         
@@ -37,7 +37,7 @@
         UILabel *fabuTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 35, 80, 20)];
         [fabuTimeLab setFont:[UIFont systemFontOfSize:13]];
         [fabuTimeLab setTextAlignment:NSTextAlignmentRight];
-        [fabuTimeLab setTextColor:[UIColor lightGrayColor]];
+        [fabuTimeLab setTextColor:detialLabColor];
         fabuTimeLab.text=@"发布日期";
         [self addSubview:fabuTimeLab];
         
@@ -51,7 +51,7 @@
         UILabel *youxiaoTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 65, 80, 20)];
         [youxiaoTimeLab setFont:[UIFont systemFontOfSize:13]];
         [youxiaoTimeLab setTextAlignment:NSTextAlignmentRight];
-        [youxiaoTimeLab setTextColor:[UIColor lightGrayColor]];
+        [youxiaoTimeLab setTextColor:detialLabColor];
         youxiaoTimeLab.text=@"有效日期";
         [self addSubview:youxiaoTimeLab];
         
@@ -65,7 +65,7 @@
         UILabel *lianxiLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 95, 80, 20)];
         [lianxiLab setFont:[UIFont systemFontOfSize:13]];
         [lianxiLab setTextAlignment:NSTextAlignmentRight];
-        [lianxiLab setTextColor:[UIColor lightGrayColor]];
+        [lianxiLab setTextColor:detialLabColor];
         lianxiLab.text=@"联系方式";
         [self addSubview:lianxiLab];
         

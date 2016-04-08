@@ -39,7 +39,7 @@
     view.layer.borderColor=kLineColor.CGColor;
     view.layer.borderWidth=0.5;
     UIButton *btn=[[UIButton alloc]initWithFrame:view.bounds];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
     [view addSubview:btn];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];

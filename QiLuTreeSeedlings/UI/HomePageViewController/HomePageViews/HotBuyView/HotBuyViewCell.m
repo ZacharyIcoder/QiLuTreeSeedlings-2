@@ -26,7 +26,7 @@
         [self addSubview:dingweiImage];
         self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(50, 35, 60, 12)];
         [self.cityLab setFont:[UIFont systemFontOfSize:12]];
-        [self.cityLab setTextColor:[UIColor lightGrayColor]];
+        [self.cityLab setTextColor:detialLabColor];
         [self.cityLab setText:@"临沂"];
         [self.cityLab setText:model.area];
         [self addSubview:self.cityLab];
@@ -35,13 +35,13 @@
          [self addSubview:timeImag];
         self.timelLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width*0.5-20, 35, 55, 12)];
         [self.timelLab setFont:[UIFont systemFontOfSize:12]];
-         [self.timelLab setTextColor:[UIColor lightGrayColor]];
+         [self.timelLab setTextColor:detialLabColor];
         //[self.timelLab setText:@"N天前"];
         [self addSubview:self.timelLab];
         UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width*0.8-25, 35, 30, 13)];
         [priceLab setFont:[UIFont systemFontOfSize:12]];
         [priceLab setText:@"价格"];
-          [priceLab setTextColor:[UIColor lightGrayColor]];
+          [priceLab setTextColor:detialLabColor];
         [self addSubview:priceLab];
         self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width*0.9-25, 33, 45, 15)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];

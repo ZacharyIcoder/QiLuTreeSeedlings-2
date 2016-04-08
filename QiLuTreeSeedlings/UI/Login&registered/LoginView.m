@@ -33,7 +33,7 @@
         [phoneImageV setImage:[UIImage imageNamed:@"phoneLiteImage"]];
         [messageView addSubview:phoneImageV];
         UILabel *phoneLab=[[UILabel alloc]initWithFrame:CGRectMake(45/320.f*kWidth, lineView.frame.origin.y-45, 70, 30)];
-        [phoneLab setTextColor:[UIColor blackColor]];
+        [phoneLab setTextColor:titleLabColor];
         [phoneLab setText:@"手机号"];
         [messageView addSubview:phoneLab];
         UITextField *phoneTextField=[[UITextField alloc]initWithFrame:CGRectMake(120/320.f*kWidth,  lineView.frame.origin.y-45, 180, 30)];
@@ -48,7 +48,7 @@
         [pasdV setImage:[UIImage imageNamed:@"passwordLiteImage"]];
         [messageView addSubview:pasdV];
         UILabel *pwsdLab=[[UILabel alloc]initWithFrame:CGRectMake(45/320.f*kWidth, lineView.frame.origin.y+15, 70, 30)];
-        [pwsdLab setTextColor:[UIColor blackColor]];
+        [pwsdLab setTextColor:titleLabColor];
         [pwsdLab setText:@"密码"];
         UITextField *pasdTextField=[[UITextField alloc]initWithFrame:CGRectMake(120/320.f*kWidth,  lineView.frame.origin.y+15, 180, 30)];
         pasdTextField.placeholder=@"请输入您的密码";

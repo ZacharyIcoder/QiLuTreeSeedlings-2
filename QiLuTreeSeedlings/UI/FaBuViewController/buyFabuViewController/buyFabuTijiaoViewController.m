@@ -71,7 +71,7 @@
     UIButton *ecttiveBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 0, kWidth-200, 50)];
     [ecttiveView addSubview:ecttiveBtn];
     [ecttiveBtn setTitle:@"不限" forState:UIControlStateNormal];
-    [ecttiveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [ecttiveBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
     self.ectiveBtn=ecttiveBtn;
     [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=50;
@@ -86,7 +86,7 @@
     UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 0, kWidth-150, 50)];
     [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
-    [areaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [areaBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
     [areaView addSubview:areaBtn];
     self.areaBtn=areaBtn;
     [areaBtn addTarget:self action:@selector(areBtnAction:) forControlEvents:UIControlEventTouchUpInside];

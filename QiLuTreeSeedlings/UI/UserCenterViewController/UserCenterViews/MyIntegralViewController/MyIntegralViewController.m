@@ -49,7 +49,7 @@
     [self.view addSubview:zongjifenView];
     UILabel *labxx = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, kWidth, 20)];
     [labxx setTextAlignment:NSTextAlignmentCenter];
-    [labxx setTextColor:[UIColor blackColor]];
+    [labxx setTextColor:titleLabColor];
     [labxx setFont:[UIFont systemFontOfSize:17]];
     [labxx setText:@"总积分"];
     labxx.textColor = [UIColor darkGrayColor];
