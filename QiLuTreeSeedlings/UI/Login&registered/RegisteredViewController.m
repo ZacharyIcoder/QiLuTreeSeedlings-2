@@ -20,11 +20,12 @@
 @property (nonatomic, assign) NSInteger codeCount;
 @property (nonatomic, assign) NSInteger codeCount2;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *timer2;
 @property (nonatomic, strong) UILabel *timel1lab;
 @end
 
 @implementation RegisteredViewController
-@synthesize codeCount,timer,codeCount2;
+@synthesize codeCount,timer,timer2,codeCount2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:BGColor];
@@ -113,10 +114,8 @@
     }
     
     [HTTPCLIENT registeredUserWithPhone:self.phoneTextField.text withPassWord:self.passWordTextField.text withRepassWord:self.rePassWordTextField.text withCode:self.codeTextField.text Success:^(id responseObject) {
-        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [self registeredSuccessAction];
-            //[self performSelector:@selector(backBtnAction) withObject:nil afterDelay:3];
         }else
         {
            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -182,16 +181,16 @@
 }
 -(void)changBackTime
 {
-    timer = [NSTimer scheduledTimerWithTimeInterval:1
+    timer2 = [NSTimer scheduledTimerWithTimeInterval:1
                                              target:self
                                            selector:@selector(changeTime2) userInfo:nil repeats:YES];
 }
 -(void)changeTime2
 {
     if (codeCount2 <= 1) {
-        if (timer) {
-            [timer invalidate];
-            timer = nil;
+        if (timer2) {
+            [timer2 invalidate];
+            timer2 = nil;
             [self backBtnAction];
         }
     }

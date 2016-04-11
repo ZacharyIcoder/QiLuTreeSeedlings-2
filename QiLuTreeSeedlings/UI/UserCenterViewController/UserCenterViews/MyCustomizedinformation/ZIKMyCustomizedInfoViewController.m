@@ -44,14 +44,14 @@
 }
 
 - (void)requestData {
-    [self requestSellList:[NSString stringWithFormat:@"%ld",self.page]];
+    [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.myCustomizedInfoTableView addHeaderWithCallback:^{
-        [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
+        [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.myCustomizedInfoTableView addFooterWithCallback:^{
         weakSelf.page++;
-        [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
+        [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
 }
 

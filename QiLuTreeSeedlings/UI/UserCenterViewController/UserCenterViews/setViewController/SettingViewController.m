@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "AbountUsViewController.h"
+//#import "ToastView.h"
 @interface SettingViewController ()
 
 @end
@@ -25,7 +26,24 @@
 }
 -(void)yijianfankuiBtn
 {
-     NSLog(@"意见反馈");
+    UIAlertController *alertV= [UIAlertController alertControllerWithTitle:@"提示" message:@"感谢您的意见" preferredStyle:UIAlertControllerStyleAlert];
+    [alertV addTextFieldWithConfigurationHandler:^(UITextField *textField){
+        textField.placeholder = @"意见反馈";
+    }];
+    UIAlertAction *sellAction=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [ToastView showTopToast:@"感谢您的意见"];
+    }];
+    UIAlertAction *cancelAction=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertV addAction:cancelAction];
+    [alertV addAction:sellAction];
+    
+    
+    [self presentViewController:alertV animated:YES completion:^{
+        
+    }];
+
 }
 -(void)abountUSBtn
 {

@@ -134,7 +134,7 @@
         [ToastView showTopToast:@"请选择用苗城市"];
         return;
     }
-    [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.proname WithProductUid:self.prouid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:self.screeingAry Success:^(id responseObject) {
+    [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.proname WithProductUid:self.prouid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:self.screeingAry Success:^(id responseObject) {
 //        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"发布成功，即将返回首页"];

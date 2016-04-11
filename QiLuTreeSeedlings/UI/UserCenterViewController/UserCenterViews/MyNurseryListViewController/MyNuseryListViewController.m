@@ -138,7 +138,7 @@
 }
 -(void)getDataList
 {
-    [HTTPCLIENT getNurseryListWithPage:[NSString stringWithFormat:@"%ld",self.pageCount] WithPageSize:@"15" Success:^(id responseObject) {
+    [HTTPCLIENT getNurseryListWithPage:[NSString stringWithFormat:@"%ld",(long)self.pageCount] WithPageSize:@"15" Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSArray *ary=[responseObject objectForKey:@"result"];
             NSArray *aryzz=[NurseryModel creatNursweryListByAry:ary];

@@ -60,7 +60,7 @@
 }
 -(void)getDataList
 {
-    [HTTPCLIENT myBuyInfoListWtihPage:[NSString stringWithFormat:@"%ld",PageCount] Success:^(id responseObject) {
+    [HTTPCLIENT myBuyInfoListWtihPage:[NSString stringWithFormat:@"%ld",(long)PageCount] Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSArray *ary=[[responseObject objectForKey:@"result"] objectForKey:@"list"];
             NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:ary];
