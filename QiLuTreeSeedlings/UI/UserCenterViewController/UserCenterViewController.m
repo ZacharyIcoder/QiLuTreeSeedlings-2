@@ -212,7 +212,7 @@
             UILabel *priceLabel = [[UILabel alloc] init];
             priceLabel.frame = CGRectMake(Width-35-180, 12, 180, 20);
             if (APPDELEGATE.userModel.balance) {
-                priceLabel.text = [NSString stringWithFormat:@"账户余额:¥%@",APPDELEGATE.userModel.balance];
+                priceLabel.text = [NSString stringWithFormat:@"账户余额:¥%.2f",APPDELEGATE.userModel.balance.floatValue];
             }
             priceLabel.font = [UIFont systemFontOfSize:12.0f];
             priceLabel.textColor = detialLabColor;

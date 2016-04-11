@@ -62,6 +62,17 @@
     darkColor.effectRange = NSMakeRange(0, 3);
     
     self.priceLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
-    
+    if (model.isSelect) {
+        self.selected = YES;
+        self.isSelect = YES;
+        //self.selectionStyle = UITableViewCellSelectionStyleBlue;
+        //self.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    //self.isSelected  = model.
+   // self.isSelected;
+//    if (model.edit.integerValue == 1) {
+//        self.selected = YES;
+//    }
+
 }
 @end

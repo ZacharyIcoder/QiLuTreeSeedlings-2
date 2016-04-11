@@ -61,8 +61,8 @@
     }
     if (![[NSUserDefaults standardUserDefaults] objectForKey:Recharge] && nameTextField.text.integerValue<100)/*[[NSUserDefaults standardUserDefaults] setValue:@"yes" forKey:BB_XCONST_ISAUTO_LOGIN])*/
     {
-        [ToastView showTopToast:@"第一次充值金额不能低于100元"];
-        return;
+//        [ToastView showTopToast:@"第一次充值金额不能低于100元"];
+//        return;
     }
 
     ZIKVoucherCenterViewController *voucherVC = [[ZIKVoucherCenterViewController alloc] init];

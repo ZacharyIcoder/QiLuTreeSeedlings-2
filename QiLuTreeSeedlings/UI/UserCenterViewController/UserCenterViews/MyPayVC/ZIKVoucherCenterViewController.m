@@ -17,6 +17,8 @@
 #import "UPPayPlugin.h"
 #import "UPPayPluginDelegate.h"
 
+
+#import "ZIKPaySuccessViewController.h"
 @interface ZIKVoucherCenterViewController ()<UITableViewDelegate,UITableViewDataSource,UPPayPluginDelegate>
 @property (nonatomic, strong) UITableView *payTableView;
 @property (nonatomic, strong) NSIndexPath *lastIndexPath;
@@ -65,7 +67,20 @@
     [self.view addSubview:payTableView];
     self.lastIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess:) name:@"PaySuccessNotification" object:nil];
 }
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PaySuccessNotification" object:nil];
+}
+
+- (void)paySuccess:(NSDictionary *)dictionary
+{
+    ZIKPaySuccessViewController *successVC =   [[ZIKPaySuccessViewController alloc] initWithNibName:@"ZIKPaySuccessViewController" bundle:nil];
+    successVC.priceLabel.text = [NSString stringWithFormat:@"充值金额(元) : %@",self.price];
+    [self.navigationController pushViewController:successVC animated:YES];
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

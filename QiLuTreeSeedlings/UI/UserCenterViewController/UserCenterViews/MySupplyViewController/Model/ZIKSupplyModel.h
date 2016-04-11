@@ -41,4 +41,8 @@
  *  uid
  */
 @property (nonatomic,copy) NSString *uid;
+/**
+ *  是否选中
+ */
+@property (nonatomic,assign) BOOL isSelect;
 @end

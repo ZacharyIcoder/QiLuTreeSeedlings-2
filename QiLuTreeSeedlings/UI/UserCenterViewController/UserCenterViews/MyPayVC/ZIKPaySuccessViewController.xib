@@ -31,13 +31,13 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜您充值成功！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXb-t8-3Ts">
-                    <rect key="frame" x="232" y="200" width="136" height="21"/>
+                    <rect key="frame" x="210" y="200" width="180" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="H8O-pY-E6q"/>
-                        <constraint firstAttribute="width" constant="136" id="o1E-Pg-vkT"/>
+                        <constraint firstAttribute="width" constant="180" id="o1E-Pg-vkT"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" red="1" green="0.5924916107" blue="0.1272283977" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值金额(元):  ¥100.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-I3-KtJ">
@@ -51,8 +51,15 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkE-Oe-U26">
-                    <rect key="frame" x="285" y="332" width="30" height="30"/>
-                    <state key="normal" title="完成"/>
+                    <rect key="frame" x="183" y="332" width="235" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.59249161073825507" blue="0.12722839765100671" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="EKg-oJ-bBy"/>
+                        <constraint firstAttribute="width" constant="235" id="g4e-MB-6Xb"/>
+                    </constraints>
+                    <state key="normal" title="完成">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="finishButton:" destination="-1" eventType="touchUpInside" id="ufN-Go-ubQ"/>
                     </connections>
@@ -77,7 +84,7 @@
                 <constraint firstItem="skN-9A-5ME" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dJp-d6-52l"/>
                 <constraint firstItem="JXb-t8-3Ts" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qag-YA-f5d"/>
             </constraints>
-            <point key="canvasLocation" x="449" y="376"/>
+            <point key="canvasLocation" x="404" y="-3"/>
         </view>
     </objects>
     <resources>

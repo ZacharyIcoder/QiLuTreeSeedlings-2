@@ -284,6 +284,9 @@
 		FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC55FB911CB5018A008D9CAD /* ZIKCustomizedModel.m */; };
 		FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC55FB941CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m */; };
 		FC55FB971CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC55FB951CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib */; };
+		FC5808821CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5808801CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m */; };
+		FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5808811CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib */; };
+		FC5808861CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5808851CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
 		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
@@ -926,6 +929,11 @@
 		FC55FB931CB503BC008D9CAD /* ZIKCustomizedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKCustomizedTableViewCell.h; sourceTree = "<group>"; };
 		FC55FB941CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKCustomizedTableViewCell.m; sourceTree = "<group>"; };
 		FC55FB951CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKCustomizedTableViewCell.xib; sourceTree = "<group>"; };
+		FC58087F1CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKBottomDeleteTableViewCell.h; sourceTree = "<group>"; };
+		FC5808801CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKBottomDeleteTableViewCell.m; sourceTree = "<group>"; };
+		FC5808811CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKBottomDeleteTableViewCell.xib; sourceTree = "<group>"; };
+		FC5808841CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyBottomSelectButton.h; sourceTree = "<group>"; };
+		FC5808851CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyBottomSelectButton.m; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -2647,6 +2655,11 @@
 				FC49AE461CA90C4300214D4B /* ZIKNurseryListView.m */,
 				FC49AE481CA90CB000214D4B /* ZIKNurseryListSelectButton.h */,
 				FC49AE491CA90CB000214D4B /* ZIKNurseryListSelectButton.m */,
+				FC5808841CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.h */,
+				FC5808851CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m */,
+				FC58087F1CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.h */,
+				FC5808801CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m */,
+				FC5808811CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2813,6 +2826,7 @@
 				FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */,
 				EA5AAC3E1C8D294700660FC9 /* NomerBuyMessageBtn@2x.png in Resources */,
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
+				FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */,
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
 				EAF050E41C924FB300F435A9 /* userBigInfoBack@2x.png in Resources */,
 				EAF0510B1C92A87B00F435A9 /* loginoutimage@2x.png in Resources */,
@@ -3064,6 +3078,7 @@
 				FC6FED7B1CAD0860000E2CA5 /* ZIKConsumeRecordModel.m in Sources */,
 				FC21BC7D1CA51C930041E2C3 /* IQUIScrollView+Additions.m in Sources */,
 				EAE32DDB1C7E97A600C4CEA2 /* AFURLResponseSerialization.m in Sources */,
+				FC5808861CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m in Sources */,
 				EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
 				EA29AA021C856159004913FF /* LoadMoreTableFooterView.m in Sources */,
@@ -3081,6 +3096,7 @@
 				FCF353CF1CA3B515001ABA0A /* UIScrollView+MJRefresh.m in Sources */,
 				EA741A001C8FC69B00F54478 /* LoginView.m in Sources */,
 				FCF353D41CA3B515001ABA0A /* ZIKPickImageView.m in Sources */,
+				FC5808821CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m in Sources */,
 				FCF353E21CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */,
 				EA75148D1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m in Sources */,
 				FC21BC851CA51C930041E2C3 /* IQBarButtonItem.m in Sources */,

@@ -274,7 +274,7 @@
     }
     self.supplyModel.count = self.countTextField.text;
     if (self.priceTextField.text.length == 0 || self.priceTextField.text == nil) {
-        self.supplyModel.price = @"面议";
+        //self.supplyModel.price = @"面议";
     }
     else {
         self.supplyModel.price = self.priceTextField.text;

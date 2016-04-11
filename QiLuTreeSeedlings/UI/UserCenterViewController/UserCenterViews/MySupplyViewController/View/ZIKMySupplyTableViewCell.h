@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (nonatomic, assign) BOOL isSelect;
 - (void)configureCell:(ZIKSupplyModel *)model;
 @end

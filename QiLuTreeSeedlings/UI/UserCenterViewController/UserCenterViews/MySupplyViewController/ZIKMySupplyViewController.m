@@ -14,9 +14,13 @@
 #import "ZIKSupplyPublishViewController.h"
 #import "ZIKSupplyPublishVC.h"
 #import "ZIKMySupplyDetailViewController.h"
+#import "ZIKBottomDeleteTableViewCell.h"
 @interface ZIKMySupplyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
+    // 保存选中行数据
+    NSMutableArray *_removeArray;
+    ZIKBottomDeleteTableViewCell *bottomcell;
 }
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *supplyInfoMArr;//供应信息数组
@@ -62,11 +66,244 @@
     [self.view addSubview:self.mySupplyTableView];
     [ZIKFunction setExtraCellLineHidden:self.mySupplyTableView];
     //self.mySupplyTableView.backgroundColor = [UIColor yellowColor];
+    UILongPressGestureRecognizer *tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
+    [self.mySupplyTableView addGestureRecognizer:tapDeleteGR];
+
+//底部结算
+    bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
+    bottomcell.frame = CGRectMake(0, Height-44, Width, 44);
+    [self.view addSubview:bottomcell];
+    [bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    bottomcell.hidden = YES;
+    [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+- (void)deleteButtonClick {
+    __weak typeof(_removeArray) removeArr = _removeArray;
+    __weak __typeof(self) blockSelf = self;
+
+    __block NSString *uidString = @"";
+    [_removeArray enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+    }];
+    NSString *uids = [uidString substringFromIndex:1];
+    [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
+        //NSLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 1) {
+            //                [self.supplyInfoMArr removeObjectAtIndex:[indexPath row]];  //删除_data数组里的数据
+            //                [tableview deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];  //删除对应数据的cell
+            [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([blockSelf.supplyInfoMArr containsObject:model]) {
+                    [blockSelf.supplyInfoMArr removeObject:model];
+                }
+            }];
+            [blockSelf.mySupplyTableView reloadData];
+//            [blockSelf.mySupplyTableView deleteRowsAtIndexPaths:blockSelf.mySupplyTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (blockSelf.supplyInfoMArr.count == 0) {
+                [self requestData];
+                bottomcell.hidden = YES;
+                self.mySupplyTableView.editing = NO;
+//                emptyUI.hidden = NO;
+//                bottomcell.hidden = YES;
+            }
+        }
+        else {
+
+        }
+    } failure:^(NSError *error) {
+
+    }];
+
+}
+- (void)selectBtnClick {
+  bottomcell.isAllSelect ? (bottomcell.isAllSelect = NO) : (bottomcell.isAllSelect = YES);
+    if (bottomcell.isAllSelect) {
+        if (_removeArray.count > 0) {
+            [_removeArray removeAllObjects];
+        }
+        [self.supplyInfoMArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+            myModel.isSelect = YES;
+            [_removeArray addObject:myModel];
+        }];
+        //[self.mySupplyTableView deselectRowAtIndexPath:[self.mySupplyTableView indexPathForSelectedRow] animated:YES];
+    }
+    else if (bottomcell.isAllSelect == NO) {
+        [self.supplyInfoMArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+            myModel.isSelect = NO;
+        }];
+        if (_removeArray.count > 0) {
+            [_removeArray removeAllObjects];
+        }
+
+    }
+    [self totalCount];
+    [self.mySupplyTableView reloadData];
+}
+
+-(void)backBtnAction:(UIButton *)sender
+{
+    if (self.mySupplyTableView.editing) {
+        self.mySupplyTableView.editing = NO;
+        bottomcell.hidden = YES;
+        self.mySupplyTableView.frame = CGRectMake(0, 64, Width, Height-64);
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        [self.mySupplyTableView addHeaderWithCallback:^{//添加刷新控件
+            [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
+        }];
+
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)deleteCell {
+    if (!self.mySupplyTableView.editing)
+   {
+       // barButtonItem.title = @"Remove";
+        self.mySupplyTableView.editing = YES;
+        bottomcell.hidden = NO;
+        self.mySupplyTableView.frame = CGRectMake(0, 64, Width, Height-64-44);
+        [self.mySupplyTableView removeHeader];//编辑状态取消下拉刷新
+        bottomcell.isAllSelect = NO;
+        if (_removeArray.count > 0) {
+            [_removeArray enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                model.isSelect = NO;
+            }];
+            [_removeArray removeAllObjects];
+        }
+        [self totalCount];
+    }
+
+}
+
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+
+    [self.mySupplyTableView setEditing:YES animated:animated];
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.0f;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.supplyInfoMArr.count;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;//self.supplyInfoMArr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *kZIKMySupplyTableViewCellID = @"kZIKMySupplyTableViewCellID";
+    ZIKMySupplyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKMySupplyTableViewCellID];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKMySupplyTableViewCell" owner:self options:nil] lastObject];
+    }
+    [cell configureCell:self.supplyInfoMArr[indexPath.row]];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
+    ZIKMySupplyTableViewCell *cell = (ZIKMySupplyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    NSLog(@"%d",cell.selected);
+//    NSLog(@"%d",model.isSelect);
+    if (model.isSelect == YES) {
+        model.isSelect = NO;
+        cell.isSelect = NO;
+        cell.selected = NO;
+        // 删除反选数据
+        if ([_removeArray containsObject:model])
+        {
+            [_removeArray removeObject:model];
+        }
+        [self totalCount];
+        return;
+    }
+        // 判断编辑状态,必须要写
+        if (self.mySupplyTableView.editing)
+        {
+            //NSLog(@"didSelectRowAtIndexPath");
+            // 获取当前显示数据
+            //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
+            // 添加到我们的删除数据源里面
+            model.isSelect = YES;
+            [_removeArray addObject:model];
+            [self totalCount];
+            return;
+        }
+
+    //ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
+    ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
+    [self.navigationController pushViewController:detailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+// 反选方法
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 判断编辑状态,必须要写
+    if (self.mySupplyTableView.editing)
+    {
+        //NSLog(@"didDeselectRowAtIndexPath");
+        // 获取当前反选显示数据
+        ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
+        tempModel.isSelect = NO;
+        // 删除反选数据
+        if ([_removeArray containsObject:tempModel])
+        {
+            [_removeArray removeObject:tempModel];
+        }
+        [self totalCount];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)totalCount {
+    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
+    bottomcell.countLabel.text = countString;
+    if (_removeArray.count == self.supplyInfoMArr.count) {
+        bottomcell.isAllSelect = YES;
+    }
+    else {
+        bottomcell.isAllSelect = NO;
+    }
+}
+
+#pragma mark - 可选方法实现
+// 设置删除按钮标题
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Delete";
+}
+// 设置行是否可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+// 删除数据风格
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"commitEditingStyle");
 }
 
 - (void)requestSellList:(NSString *)page {
     //我的供应列表
-     [self.mySupplyTableView headerEndRefreshing];
+    [self.mySupplyTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withPage:page withPageSize:@"15" success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
@@ -102,46 +339,14 @@
                 ZIKSupplyModel *model = [ZIKSupplyModel yy_modelWithDictionary:dic];
                 [self.supplyInfoMArr addObject:model];
             }];
+            bottomcell.isAllSelect = NO;
             [self.mySupplyTableView reloadData];
             [self.mySupplyTableView footerEndRefreshing];
         }
-        
+
     } failure:^(NSError *error) {
-        
+
     }];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0f;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.supplyInfoMArr.count;
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;//self.supplyInfoMArr.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *kZIKMySupplyTableViewCellID = @"kZIKMySupplyTableViewCellID";
-    ZIKMySupplyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKMySupplyTableViewCellID];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKMySupplyTableViewCell" owner:self options:nil] lastObject];
-    }
-    [cell configureCell:self.supplyInfoMArr[indexPath.row]];
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
-    ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
-    [self.navigationController pushViewController:detailVC animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)requestSupplyRestrict {
@@ -165,33 +370,64 @@
     }];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)configNav {
+    self.vcTitle = @"我的供应";
+    self.rightBarBtnTitleString = @"发布";
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    self.rightBarBtnBlock = ^{
+        //NSLog(@"发布");
+        if (weakSelf.isCanPublish) {
+            ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
+            [weakSelf.navigationController pushViewController:spVC animated:YES];
+
+        }
+        else {
+            //NSLog(@"不可发布");
+            [ToastView showToast:@"请您先完善苗圃信息或者企业信息" withOriginY:Width/3 withSuperView:weakSelf.view];
+        }
+
+    };
+}
+
+- (void)initData {
+    self.page = 1;
+    self.supplyInfoMArr = [NSMutableArray array];
+    _removeArray = [[NSMutableArray alloc] init];
+}
+
 - (void)createEmptyUI {
     if (!emptyUI) {
         emptyUI  = [[UIView alloc] init];
-        emptyUI.frame = CGRectMake(0, 64, Width, Height/2);
-        emptyUI.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:emptyUI];
+
     }
-    
+    emptyUI.frame = CGRectMake(0, 64, Width, Height/2);
+    emptyUI.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:emptyUI];
+
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.frame = CGRectMake(Width/2-50, 30, 100, 100);
     imageView.image = [UIImage imageNamed:@"我的供应（空）"];
     [emptyUI addSubview:imageView];
-    
+
     UILabel *label1 = [[UILabel alloc] init];
     label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
     label1.text = @"您还没有发布任何的供应信息";
     label1.textAlignment = NSTextAlignmentCenter;
     label1.textColor = detialLabColor;
     [emptyUI addSubview:label1];
-    
+
     UILabel *label2 = [[UILabel alloc] init];
     label2.frame = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
     label2.text = @"点击按钮发布";
     label2.textColor = detialLabColor;
     label2.textAlignment = NSTextAlignmentCenter;
     [emptyUI addSubview:label2];
-    
+
     UIButton *button = [[UIButton alloc] init];
     button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
     [button setTitleColor:detialLabColor forState:UIControlStateNormal];
@@ -211,42 +447,12 @@
         [self.navigationController pushViewController:spVC animated:YES];
     }
     else {
-       // NSLog(@"不可发布");
+        // NSLog(@"不可发布");
         //[ToastView showTopToast:@"请先完善苗圃信息"];
         [ToastView showToast:@"请您先完善苗圃信息或者企业信息" withOriginY:Width/3 withSuperView:self.view];
 
         return;
     }
 }
-
-- (void)configNav {
-    self.vcTitle = @"我的供应";
-    self.rightBarBtnTitleString = @"发布";
-    __weak typeof(self) weakSelf = self;//解决循环引用的问题
-    self.rightBarBtnBlock = ^{
-        //NSLog(@"发布");
-        if (weakSelf.isCanPublish) {
-            ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
-            [weakSelf.navigationController pushViewController:spVC animated:YES];
-
-        }
-        else {
-            //NSLog(@"不可发布");
-            [ToastView showToast:@"请您先完善苗圃信息或者企业信息" withOriginY:Width/3 withSuperView:weakSelf.view];
-        }
-        
-    };
-}
-
-- (void)initData {
-    self.page = 1;
-    self.supplyInfoMArr = [NSMutableArray array];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

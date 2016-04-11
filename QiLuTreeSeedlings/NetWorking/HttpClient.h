@@ -389,4 +389,9 @@
 - (void)getMyCustomsetEditingWithUid:(NSString *)uid
                              Success:(void (^)(id responseObject))success
                              failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 我的供应信息批量删除 -----------
+- (void)deleteMySupplyInfo:(NSString *)uid
+                   Success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure;
+
 @end

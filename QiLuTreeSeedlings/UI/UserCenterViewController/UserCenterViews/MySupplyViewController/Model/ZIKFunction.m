@@ -89,12 +89,12 @@
                 //                UIAlertView *seccuss = [[UIAlertView alloc]initWithTitle:@"提示" message:@"支付成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
                 //                seccuss.tag = 166;
                 //                [seccuss show];
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
                 [[[UIAlertView alloc] initWithTitle:@"提示"
                                             message:@"支付成功!"
                                    cancelButtonItem:[RIButtonItem itemWithLabel:@"确定" action:^{
 
-                    [controller.navigationController popToRootViewControllerAnimated:YES];
+                    //[controller.navigationController popToRootViewControllerAnimated:YES];
 
 
                 }] otherButtonItems:nil, nil] show];
