@@ -10,6 +10,8 @@
 #import "AFHTTPSessionManager.h"
 @interface HttpClient : AFHTTPSessionManager
 + (instancetype)sharedClient;
+#pragma mark -网络异常判断
++(void)HTTPERRORMESSAGE:(NSError *)errorz;
 #pragma mark -首页
 - (void)getHomePageInfoSuccess:(void (^)(id responseObject))success
        failure:(void (^)(NSError *error))failure;

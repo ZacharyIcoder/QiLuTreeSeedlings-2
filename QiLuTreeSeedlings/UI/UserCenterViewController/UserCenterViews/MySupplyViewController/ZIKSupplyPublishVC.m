@@ -286,7 +286,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     }
     //NSLog(@"%@",self.nameTextField.text);
     if (self.nameTextField.text == nil || self.nameTextField.text.length == 0) {
-        //NSLog(@"请输入苗木名称");
         [ToastView showToast:@"请输入苗木名称"
                  withOriginY:66.0f
                withSuperView:APPDELEGATE.window];
@@ -296,6 +295,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"1" Success:^(id responseObject) {
            // NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
+                [ToastView showTopToast:@"该苗木不存在"];
                 [self requestProductType];
             }
             else {

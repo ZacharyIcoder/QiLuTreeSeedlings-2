@@ -116,9 +116,11 @@
      tempFrame=CGRectMake(0, 0, kWidth, 50);
     UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
     self.countTextField=countTextField;
+    countTextField.keyboardType=UIKeyboardTypeNumberPad;
     tempFrame.origin.y+=50;
     UITextField *priceTextField=[self mackViewWtihName:@"价格" alert:@"请输入单价" unit:@"元" withFrame:tempFrame];
     self.priceTextField=priceTextField;
+    priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
     tempFrame.origin.y+=50;
     UIView *ecttiveView=[[UIView alloc]initWithFrame:tempFrame];
     [ecttiveView setBackgroundColor:[UIColor whiteColor]];
@@ -296,7 +298,11 @@
         }
     }
     
-    
+    if(screenTijiaoAry.count==0)
+    {
+        [ToastView showTopToast:@"请填入至少一种规格"];
+        return;
+    }
     NSString *countStr=self.countTextField.text;
     NSString *priceStr=self.priceTextField.text;
     NSString *birefStr=self.birefField.text;
@@ -308,7 +314,7 @@
         [ToastView showTopToast:@"请选择用苗城市"];
         return;
     }
-    [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
+    [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
         //        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"提交成功，即将返回"];

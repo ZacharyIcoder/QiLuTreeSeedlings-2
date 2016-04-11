@@ -102,11 +102,7 @@
     [clearHistoryBtn setTitle:@"删除搜索历史" forState:UIControlStateNormal];
     [clearHistoryBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [clearHistoryBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-   // [clearHistoryBtn.layer setBorderWidth:0.5];
-    //[clearHistoryBtn.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [clearHistoryBtn addTarget:self action:@selector(clearHistoryBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-//    clearHistoryBtn.layer.masksToBounds=YES;
-//    clearHistoryBtn.layer.cornerRadius=3;
     [view addSubview:clearHistoryBtn];
     CGRect frame=view.frame;
     frame.size.height=CGRectGetMaxY(clearHistoryBtn.frame)+10;

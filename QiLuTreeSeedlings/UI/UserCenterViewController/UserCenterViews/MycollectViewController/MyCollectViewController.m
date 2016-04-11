@@ -56,13 +56,13 @@
     self.sellLikeAry=[NSMutableArray array];
     [self.view addSubview:navView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    UIButton *gongyingBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 64, kWidth/2, 44)];
+    UIButton *gongyingBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 64, kWidth/2+1, 44)];
     UIView *gongyingViw=[[UIView alloc]initWithFrame:gongyingBtn.frame];
     [gongyingViw setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:gongyingViw];
     [gongyingBtn setTitle:@"供应信息" forState:UIControlStateNormal];
     gongyingViw.layer.shadowColor = [UIColor grayColor].CGColor;//shadowColor阴影颜色
-    gongyingViw.layer.shadowOffset = CGSizeMake(0,3);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+    gongyingViw.layer.shadowOffset = CGSizeMake(-3,3);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
     gongyingViw.layer.shadowOpacity = 0.5;//阴影透明度，默认0
    gongyingViw.layer.shadowRadius = 3;//阴影半径，默认3
     [gongyingBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
@@ -83,7 +83,7 @@
     [qiugouViw setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:qiugouViw];
     qiugouViw.layer.shadowColor = [UIColor grayColor].CGColor;//shadowColor阴影颜色
-    qiugouViw.layer.shadowOffset = CGSizeMake(0,3);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+    qiugouViw.layer.shadowOffset = CGSizeMake(3.5,3);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
     qiugouViw.layer.shadowOpacity = 0.5;//阴影透明度，默认0
     qiugouViw.layer.shadowRadius = 3;//阴影半径，默认3
     [self.view addSubview:qiugouViw];

@@ -98,6 +98,15 @@
                 {
                     textField.placeholder=@"请输入信息";
                 }
+                if(self.model.dataType==1)
+                {
+                    textField.keyboardType=UIKeyboardTypeNumberPad;
+                }
+                if(self.model.dataType==2)
+                {
+                    textField.keyboardType=UIKeyboardTypeDecimalPad;
+                }
+
                 textField.delegate=self;
                 textField.tag=40001;
                 textField.clearButtonMode=UITextFieldViewModeWhileEditing;

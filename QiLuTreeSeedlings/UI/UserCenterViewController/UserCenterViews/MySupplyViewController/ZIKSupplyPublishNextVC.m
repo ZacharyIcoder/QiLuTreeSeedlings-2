@@ -151,6 +151,7 @@
                 }
 
                 self.countTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
+                self.countTextField.keyboardType=UIKeyboardTypeNumberPad;
                 self.countTextField.placeholder = @"请输入数量";
                 [firstSectionCell addSubview:self.countTextField];
 
@@ -167,6 +168,7 @@
                     label.textAlignment = NSTextAlignmentRight;
                     [firstSectionCell addSubview:label];
                 }
+               self.priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
                 self.priceTextField.placeholder = @"请输入价格";
                 if (self.baseMsgDic) {
                  

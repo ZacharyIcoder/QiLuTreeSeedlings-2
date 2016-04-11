@@ -34,6 +34,9 @@
 		EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1120C61CA6228A00857E48 /* myNuserAdd@2x.png */; };
 		EA1120CE1CA62BE300857E48 /* NurseryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1120CD1CA62BE300857E48 /* NurseryModel.m */; };
 		EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1120D61CA678C000857E48 /* nuseryBase@2x.png */; };
+		EA12E2691CBB416B009D8A8A /* AbountUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA12E2681CBB416B009D8A8A /* AbountUsViewController.m */; };
+		EA12E26B1CBB458B009D8A8A /* logV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA12E26A1CBB458B009D8A8A /* logV@2x.png */; };
+		EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA12E26C1CBB6BEA009D8A8A /* registeredSuccess@2x.png */; };
 		EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4D81C93A57E00A33BD3 /* MyCollectViewController.m */; };
 		EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */; };
 		EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */; };
@@ -438,6 +441,10 @@
 		EA1120CC1CA62BE300857E48 /* NurseryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NurseryModel.h; sourceTree = "<group>"; };
 		EA1120CD1CA62BE300857E48 /* NurseryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NurseryModel.m; sourceTree = "<group>"; };
 		EA1120D61CA678C000857E48 /* nuseryBase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nuseryBase@2x.png"; sourceTree = "<group>"; };
+		EA12E2671CBB416B009D8A8A /* AbountUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbountUsViewController.h; sourceTree = "<group>"; };
+		EA12E2681CBB416B009D8A8A /* AbountUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbountUsViewController.m; sourceTree = "<group>"; };
+		EA12E26A1CBB458B009D8A8A /* logV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logV@2x.png"; sourceTree = "<group>"; };
+		EA12E26C1CBB6BEA009D8A8A /* registeredSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "registeredSuccess@2x.png"; sourceTree = "<group>"; };
 		EA16C4D71C93A57E00A33BD3 /* MyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectViewController.h; sourceTree = "<group>"; };
 		EA16C4D81C93A57E00A33BD3 /* MyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectViewController.m; sourceTree = "<group>"; };
 		EA16C4DB1C93B5EB00A33BD3 /* noOneCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noOneCollectCell.h; sourceTree = "<group>"; };
@@ -1399,6 +1406,8 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA12E26C1CBB6BEA009D8A8A /* registeredSuccess@2x.png */,
+				EA12E26A1CBB458B009D8A8A /* logV@2x.png */,
 				EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */,
 				EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */,
 				EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */,
@@ -1627,6 +1636,8 @@
 			children = (
 				EA5DF9531CB64FDF00BE0E8C /* SettingViewController.h */,
 				EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */,
+				EA12E2671CBB416B009D8A8A /* AbountUsViewController.h */,
+				EA12E2681CBB416B009D8A8A /* AbountUsViewController.m */,
 			);
 			path = setViewController;
 			sourceTree = "<group>";
@@ -2838,6 +2849,7 @@
 				EAF050E81C92833A00F435A9 /* mycollectionImage@2x.png in Resources */,
 				EA75147E1C9B891E003D63F1 /* treeNameSure2@2x.png in Resources */,
 				FC49AE441CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
+				EA12E26B1CBB458B009D8A8A /* logV@2x.png in Resources */,
 				FC50B16D1CAE243F0022A24C /* WeiboSDK.bundle in Resources */,
 				EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */,
 				FCF353DF1CA3B515001ABA0A /* 添加图片.png in Resources */,
@@ -2939,6 +2951,7 @@
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
 				FC6FED8A1CAD103F000E2CA5 /* 银联支付.png in Resources */,
 				EAF051031C92A2E600F435A9 /* myMiaoPu@2x.png in Resources */,
+				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
 				FC6FED681CACF833000E2CA5 /* 编辑修改.png in Resources */,
 				FCF353E51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
 				EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */,
@@ -3110,6 +3123,7 @@
 				FCF353D01CA3B515001ABA0A /* UIView+MJExtension.m in Sources */,
 				EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */,
 				EAEB63BD1C90FC1E0001ABC9 /* NSString+Phone.m in Sources */,
+				EA12E2691CBB416B009D8A8A /* AbountUsViewController.m in Sources */,
 				FCF353FE1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m in Sources */,
 				EA8CAA651C8963D500058A34 /* DataCache.m in Sources */,
 				FCF353E61CA3B515001ABA0A /* NSObject+YYModel.m in Sources */,
@@ -3315,8 +3329,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3361,8 +3375,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;

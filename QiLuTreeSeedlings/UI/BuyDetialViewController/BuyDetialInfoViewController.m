@@ -175,6 +175,7 @@
 }
 -(void)editingBtn:(UIButton *)sender
 {
+    self.model.uid=self.uid;
     buyFabuViewController *buyFabuVC=[[buyFabuViewController alloc]initWithModel:self.model];
     
     [self.navigationController pushViewController:buyFabuVC animated:YES];

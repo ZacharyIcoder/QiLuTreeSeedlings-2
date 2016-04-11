@@ -19,25 +19,27 @@
     self=[super initWithFrame:frame];
     if (self) {
         [self setRestorationIdentifier:@"NuseryListTableViewCell"];
-        UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 20, 30, 30)];
+        UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(30, 20, 30, 30)];
         [self addSubview:iamgeV];
         UIImageView *iamgeVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 20, 33, 33)];
         [iamgeVV setImage:[UIImage imageNamed:@"editngChange"]];
         [self addSubview:iamgeVV];
         [iamgeV setImage:[UIImage imageNamed:@"nuseryBase"]];
-        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(55, 20, kWidth-105, 30)];
+        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(70, 20, kWidth-105, 30)];
         [titleLab setTextColor:[UIColor blackColor]];
         [self addSubview:titleLab];
         self.titleLab=titleLab;
-        UILabel *addressLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 60, kWidth-40, 20)];
+        UILabel *addressLab=[[UILabel alloc]initWithFrame:CGRectMake(33, 60, kWidth-40, 20)];
         [self addSubview:addressLab];
         self.addressLab=addressLab;
-        UILabel *chargePersonLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 85, kWidth-40, 20)];
+        UILabel *chargePersonLab=[[UILabel alloc]initWithFrame:CGRectMake(33, 85, kWidth-40, 20)];
         self.chargelPersonLab=chargePersonLab;
         [self addSubview:chargePersonLab];
     }
     return self;
 }
+
+
 +(NSString *)IdStr
 {
     return @"NuseryListTableViewCell";

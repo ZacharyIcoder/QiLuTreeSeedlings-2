@@ -7,7 +7,7 @@
 //
 
 #import "SettingViewController.h"
-
+#import "AbountUsViewController.h"
 @interface SettingViewController ()
 
 @end
@@ -29,7 +29,9 @@
 }
 -(void)abountUSBtn
 {
-    NSLog(@"关于我们");
+    //NSLog(@"关于我们");
+    AbountUsViewController *abountUnsVC=[[AbountUsViewController alloc]init];
+    [self.navigationController pushViewController:abountUnsVC animated:YES];
 }
 -(UIButton *)creatViewWithTitle:(NSString *)title andY:(CGFloat)Y
 {

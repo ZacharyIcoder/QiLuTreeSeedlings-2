@@ -18,11 +18,13 @@
 @property (nonatomic,strong)UITextField *codeTextField;
 @property (nonatomic, strong) UIButton *getCodeButton;
 @property (nonatomic, assign) NSInteger codeCount;
+@property (nonatomic, assign) NSInteger codeCount2;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) UILabel *timel1lab;
 @end
 
 @implementation RegisteredViewController
-@synthesize codeCount,timer;
+@synthesize codeCount,timer,codeCount2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:BGColor];
@@ -113,8 +115,8 @@
     [HTTPCLIENT registeredUserWithPhone:self.phoneTextField.text withPassWord:self.passWordTextField.text withRepassWord:self.rePassWordTextField.text withCode:self.codeTextField.text Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
-           [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-            [self performSelector:@selector(backBtnAction) withObject:nil afterDelay:0.7];
+            [self registeredSuccessAction];
+            //[self performSelector:@selector(backBtnAction) withObject:nil afterDelay:3];
         }else
         {
            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -125,7 +127,77 @@
     }];
     //NSLog(@"注册");
 }
-
+-(void)registeredSuccessAction
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
+    [view setBackgroundColor:kRGB(0, 0, 0, 0.3)];
+    [self.view addSubview:view];
+    
+    UIView *dsdsView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 190)];
+    [view addSubview:dsdsView];
+    [dsdsView setBackgroundColor:[UIColor whiteColor]];
+    UILabel *lab1=[[UILabel alloc]initWithFrame:CGRectMake(0, 30, kWidth, 30)];
+    [dsdsView addSubview:lab1];
+    [lab1 setTextColor:NavColor];
+    [lab1 setTextAlignment:NSTextAlignmentCenter];
+    [lab1 setText:@"恭喜您注册成功!"];
+    UILabel *lab2=[[UILabel alloc]initWithFrame:CGRectMake(0, 60, kWidth, 20)];
+    [dsdsView addSubview:lab2];
+    [lab2 setTextColor:NavColor];
+    [lab2 setTextAlignment:NSTextAlignmentCenter];
+    [lab2 setFont:[UIFont systemFontOfSize:14]];
+    NSDate *nowDate=[NSDate new];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    
+    [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+    NSString *timeStr=[dateformatter stringFromDate:nowDate];
+    [lab2 setText:timeStr];
+    UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(kWidth/2-110, 90, 220, 1)];
+    [lineView setBackgroundColor:NavColor];
+    [dsdsView addSubview:lineView];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth/2-110, 35, 40, 40)];
+    [imageV setImage:[UIImage imageNamed:@"registeredSuccess"]];
+    [dsdsView addSubview:imageV];
+    UILabel *phoneLab=[[UILabel alloc]initWithFrame:CGRectMake(0, 101, kWidth, 20)];
+    [dsdsView addSubview:phoneLab];
+    [phoneLab setTextColor:titleLabColor];
+    [phoneLab setTextAlignment:NSTextAlignmentCenter];
+    [phoneLab setFont:[UIFont systemFontOfSize:14]];
+    phoneLab.text=[NSString stringWithFormat:@"手机号：%@",self.phoneTextField.text];
+    
+    UILabel *timelLab1=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-74, 148, 10, 20)];
+    [timelLab1 setTextColor:yellowButtonColor];
+    [timelLab1 setText:@"3"];
+    [timelLab1 setFont:[UIFont systemFontOfSize:17]];
+    [dsdsView addSubview:timelLab1];
+    self.timel1lab=timelLab1;
+    UILabel *timelLab2=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-64, 150, 140, 20)];
+    [timelLab2 setTextColor:detialLabColor];
+    [timelLab2 setText:@"秒后跳转到登录页面"];
+   
+    [timelLab2 setFont:[UIFont systemFontOfSize:13]];
+    [dsdsView addSubview:timelLab2];
+    codeCount2=3;
+    [self changBackTime];
+}
+-(void)changBackTime
+{
+    timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                             target:self
+                                           selector:@selector(changeTime2) userInfo:nil repeats:YES];
+}
+-(void)changeTime2
+{
+    if (codeCount2 <= 1) {
+        if (timer) {
+            [timer invalidate];
+            timer = nil;
+            [self backBtnAction];
+        }
+    }
+    codeCount2--;
+    [self.timel1lab setText:[NSString stringWithFormat:@"%ld",(long)codeCount2]];
+}
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     return [textField resignFirstResponder];
@@ -177,8 +249,11 @@
         return;
     }
     [HTTPCLIENT getCodeShotMessageWtihPhone:self.phoneTextField.text andType:@"register" Success:^(id responseObject) {
-        
-        NSLog(@"%@",responseObject);
+        if([[responseObject objectForKey:@"success"] integerValue])
+        {
+            [ToastView showTopToast:@"验证码已成功发送，请稍后"];
+        }
+       // NSLog(@"%@",responseObject);
     } failure:^(NSError *error) {
         
     }];
@@ -188,6 +263,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)setCode:(NSString *)code
 {
     codeCount = 59;

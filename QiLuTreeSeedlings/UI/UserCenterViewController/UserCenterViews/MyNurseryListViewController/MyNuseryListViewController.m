@@ -40,7 +40,14 @@
     pullTableView.dataSource=self;
     pullTableView.pullDelegate=self;
     self.pullTableView=pullTableView;
+    UILongPressGestureRecognizer *longPressGr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressAction)];
+    longPressGr.minimumPressDuration=1.0;
+    [pullTableView addGestureRecognizer:longPressGr];
     // Do any additional setup after loading the view.
+}
+-(void)longPressAction
+{
+    [self.pullTableView setEditing:YES animated:YES];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -165,10 +172,17 @@
         self.pullTableView.pullTableIsLoadingMore=NO;
     }];
 }
-
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+}
 
 -(void)backBtnAction:(UIButton *)sender
 {
+    if (self.pullTableView.editing==YES) {
+        [self setEditing:NO animated:YES];
+        return;
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

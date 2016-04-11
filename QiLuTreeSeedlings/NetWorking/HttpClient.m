@@ -21,10 +21,16 @@
 
 //        _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         [_sharedClient.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        _sharedClient.requestSerializer.timeoutInterval = 100.f;
+        _sharedClient.requestSerializer.timeoutInterval = 30.f;
         [_sharedClient.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     });
     return _sharedClient;
+}
+#pragma mark -网络异常判断
++(void)HTTPERRORMESSAGE:(NSError *)errorz
+{
+    NSString *messageStr=[errorz.userInfo objectForKey:@"NSLocalizedDescription"];
+    [ToastView showTopToast:messageStr];
 }
 #pragma mark -首页
 - (void)getHomePageInfoSuccess:(void (^)(id responseObject))success
@@ -42,6 +48,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark -修改个人信息
@@ -79,6 +86,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-修改密码
@@ -113,6 +121,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
     
 }
@@ -140,6 +149,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-上传个人头像
@@ -185,6 +195,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-上传图片
@@ -203,6 +214,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
     
 }
@@ -236,6 +248,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-求购信息收藏列表
@@ -271,6 +284,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-供应信息收藏列表
@@ -301,6 +315,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -321,6 +336,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -343,6 +359,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -399,6 +416,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -421,6 +439,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-我的求购编辑
@@ -430,12 +449,13 @@
 {
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
-    
+//    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    self.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     if (!str) {
         str=@"用户未授权";
     }
     //NSLog(@"%@",str);
-    NSString *postURL = @"/api/apibuy/update";
+    NSString *postURL = @"api/apibuy/updateios";
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                               APPDELEGATE.userModel.access_token,@"access_token",
                               APPDELEGATE.userModel.access_id,@"access_id",
@@ -444,12 +464,13 @@
                               kclient_secret,@"client_secret",
                               uid,@"uid",
                               nil];
-    [self GET:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
     
 
@@ -474,6 +495,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-热门搜索
@@ -491,6 +513,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-供应检索
@@ -551,6 +574,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -572,6 +596,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-登录
@@ -610,6 +635,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          RemoveActionV();
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -666,6 +692,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         RemoveActionV();
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark-获取短信验证码
@@ -688,6 +715,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         RemoveActionV();
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -718,6 +746,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark -退出登录
@@ -750,8 +779,10 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         RemoveActionV();
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark -供应信息收藏
 -(void)collectSupplyWithSupplyNuresyid:(NSString *)nuresyid
                                Success:(void (^)(id responseObject))success
                                failure:(void (^)(NSError *error))failure
@@ -762,7 +793,6 @@
     if (!str) {
         str=@"用户未授权";
     }
-    //NSLog(@"%@",str);
     NSString *postURL = @"api/collect/supply/save";
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                               APPDELEGATE.userModel.access_token,@"access_token",
@@ -778,10 +808,11 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
-#pragma mark -保存求购信息收藏
+#pragma mark -求购信息收藏
 -(void)collectBuyWithSupplyID:(NSString *)supply_id
                       Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure
@@ -792,8 +823,7 @@
     if (!str) {
         str=@"用户未授权";
     }
-    //NSLog(@"%@",str);
-    NSString *postURL = @"/api/collect/buy/save";
+    NSString *postURL = @"api/collect/buy/saveios";
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                               APPDELEGATE.userModel.access_token,@"access_token",
                               APPDELEGATE.userModel.access_id,@"access_id",
@@ -802,13 +832,13 @@
                               kclient_secret,@"client_secret",
                               supply_id,@"supply_id",
                               nil];
-    //NSLog(@"%@",parameters);
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -840,6 +870,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -871,6 +902,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark -我的求购信息保存
@@ -975,6 +1007,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark -保存企业信息
@@ -1059,6 +1092,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark -苗圃列表信息
@@ -1089,6 +1123,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1118,6 +1153,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1195,6 +1231,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1217,6 +1254,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
     
 }
@@ -1243,6 +1281,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
     
 }
@@ -1279,6 +1318,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
     
 }
@@ -1308,6 +1348,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
     
 }
@@ -1348,6 +1389,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1367,6 +1409,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 
@@ -1425,6 +1468,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 
@@ -1454,6 +1498,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 
@@ -1479,6 +1524,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1505,6 +1551,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 
@@ -1532,6 +1579,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1556,6 +1604,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 
@@ -1579,6 +1628,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 
@@ -1603,6 +1653,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1628,6 +1679,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 
@@ -1652,6 +1704,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
@@ -1686,6 +1739,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
     
@@ -1711,6 +1765,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 
 }
