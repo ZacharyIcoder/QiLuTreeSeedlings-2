@@ -20,6 +20,7 @@
 @property (nonatomic)NSInteger New;
 @property (nonatomic)NSInteger effect;
 @property (nonatomic,strong) NSString *timeAger;
+@property (nonatomic,assign) BOOL isSelect;
 +(HotBuyModel *)hotBuyModelCreatByDic:(NSDictionary *)dic;
 +(NSArray *)creathotBuyModelAryByAry:(NSArray *)ary;
 @end

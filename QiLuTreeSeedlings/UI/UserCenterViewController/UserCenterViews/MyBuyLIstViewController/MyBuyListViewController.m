@@ -12,15 +12,18 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "ToastView.h"
-#import "PullTableView.h"
 #import "BuySearchTableViewCell.h"
 #import "BuyDetialInfoViewController.h"
 #import "buyFabuViewController.h"
 #import "MyBuyNullTableViewCell.h"
-@interface MyBuyListViewController ()<UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate>
+#import "ZIKBottomDeleteTableViewCell.h"
+@interface MyBuyListViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    ZIKBottomDeleteTableViewCell *bottomcell;
+}
 @property (nonatomic) NSInteger PageCount;
 @property (nonatomic,strong) NSMutableArray *dataAry;
-@property (nonatomic,strong) PullTableView *pullTableView;
+@property (nonatomic,strong) UITableView *pullTableView;
 @end
 
 @implementation MyBuyListViewController
@@ -39,13 +42,20 @@
     [super viewDidLoad];
     [APPDELEGATE requestBuyRestrict];
     [self makeNavView];
-    PullTableView *tableView=[[PullTableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
     tableView.delegate=self;
     tableView.dataSource=self;
-    tableView.pullDelegate=self;
     [self.view addSubview:tableView];
     self.pullTableView=tableView;
     [self.pullTableView setBackgroundColor:BGColor];
+    //底部结算
+    bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
+    bottomcell.frame = CGRectMake(0, kWidth-44, kHeight, 44);
+    [self.view addSubview:bottomcell];
+    [bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    bottomcell.hidden = YES;
+    [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
 
@@ -89,11 +99,8 @@
 
         }
 
-        self.pullTableView.pullTableIsRefreshing=NO;
-        self.pullTableView.pullTableIsLoadingMore=NO;
+        
     } failure:^(NSError *error) {
-        self.pullTableView.pullTableIsRefreshing=NO;
-        self.pullTableView.pullTableIsLoadingMore=NO;
 
     }];
 }
@@ -142,19 +149,19 @@
     }
     
 }
--(void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
-{
-
-    [self.dataAry removeAllObjects];
-    PageCount=1;
-    [self getDataList];
-}
--(void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
-{
-    PageCount+=1;
-    [self getDataList];
-
-}
+//-(void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
+//{
+//
+//    [self.dataAry removeAllObjects];
+//    PageCount=1;
+//    [self getDataList];
+//}
+//-(void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
+//{
+//    PageCount+=1;
+//    [self getDataList];
+//
+//}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.dataAry.count==0) {

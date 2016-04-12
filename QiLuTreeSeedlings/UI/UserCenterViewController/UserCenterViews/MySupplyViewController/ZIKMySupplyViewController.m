@@ -78,7 +78,7 @@
     [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
 }
-
+//删除按钮action
 - (void)deleteButtonClick {
     __weak typeof(_removeArray) removeArr = _removeArray;
     __weak __typeof(self) blockSelf = self;
@@ -116,6 +116,7 @@
     }];
 
 }
+//全选按钮
 - (void)selectBtnClick {
   bottomcell.isAllSelect ? (bottomcell.isAllSelect = NO) : (bottomcell.isAllSelect = YES);
     if (bottomcell.isAllSelect) {
@@ -157,7 +158,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-
+// 隐藏删除按钮
 - (void)deleteCell {
     if (!self.mySupplyTableView.editing)
    {
@@ -218,21 +219,21 @@
     ZIKMySupplyTableViewCell *cell = (ZIKMySupplyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
 //    NSLog(@"%d",cell.selected);
 //    NSLog(@"%d",model.isSelect);
-    if (model.isSelect == YES) {
-        model.isSelect = NO;
-        cell.isSelect = NO;
-        cell.selected = NO;
-        // 删除反选数据
-        if ([_removeArray containsObject:model])
-        {
-            [_removeArray removeObject:model];
-        }
-        [self totalCount];
-        return;
-    }
+ 
         // 判断编辑状态,必须要写
         if (self.mySupplyTableView.editing)
-        {
+        {   if (model.isSelect == YES) {
+            model.isSelect = NO;
+            cell.isSelect = NO;
+            cell.selected = NO;
+            // 删除反选数据
+            if ([_removeArray containsObject:model])
+            {
+                [_removeArray removeObject:model];
+            }
+            [self totalCount];
+            return;
+        }
             //NSLog(@"didSelectRowAtIndexPath");
             // 获取当前显示数据
             //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];

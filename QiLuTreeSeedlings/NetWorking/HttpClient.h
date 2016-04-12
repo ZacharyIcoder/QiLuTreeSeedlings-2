@@ -395,5 +395,8 @@
 - (void)deleteMySupplyInfo:(NSString *)uid
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;
-
+#pragma mark 我的求购信息批量删除
+- (void)deleteMyBuyInfo:(NSString *)uids
+                Success:(void (^)(id responseObject))success
+                failure:(void (^)(NSError *error))failure;
 @end
