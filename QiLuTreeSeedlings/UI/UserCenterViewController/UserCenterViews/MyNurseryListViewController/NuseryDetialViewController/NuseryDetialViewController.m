@@ -223,12 +223,14 @@
     nameLab.text=name;
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view setBackgroundColor:[UIColor whiteColor]];
+    [nameLab setTextColor:titleLabColor];
     [view addSubview:nameLab];
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.4, 44)];
     [textField setFont:[UIFont systemFontOfSize:14]];
     textField.clearButtonMode=UITextFieldViewModeWhileEditing;
     textField.placeholder=alert;
     textField.delegate=self;
+    [textField setTextColor:detialLabColor];
     [view addSubview:textField];
     UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];
     [lineView setBackgroundColor:kLineColor];
@@ -243,6 +245,7 @@
     UIView *view=[[UIView alloc]initWithFrame:frame];
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, kWidth*0.3, 44)];
     nameLab.text=name;
+    [nameLab setTextColor:titleLabColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:nameLab];

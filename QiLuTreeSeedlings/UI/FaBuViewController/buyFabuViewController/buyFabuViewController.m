@@ -310,6 +310,17 @@
         [ToastView showTopToast:@"请填写求购数量"];
         return;
     }
+    if ([self isPureInt:countStr]==NO) {
+        [ToastView showTopToast:@"请检查输入的数量格式是否正确"];
+        return;
+    }
+    if (priceStr.length>0) {
+        if ([self isPureFloat:priceStr]==NO) {
+            [ToastView showTopToast:@"请检查输入的价格格式是否正确"];
+            return;
+        }
+    }
+   
     if (self.AreaProvince.length==0) {
         [ToastView showTopToast:@"请选择用苗城市"];
         return;
@@ -326,6 +337,32 @@
     } failure:^(NSError *error) {
         
     }];
+}
+//1. 整形判断
+
+- (BOOL)isPureInt:(NSString *)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    int val;
+    
+    return [scan scanInt:&val] && [scan isAtEnd];
+    
+}
+
+
+
+
+//2.浮点形判断：
+
+- (BOOL)isPureFloat:(NSString *)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    float val;
+    
+    return [scan scanFloat:&val] && [scan isAtEnd];
+    
 }
 -(void)backRootView
 {

@@ -39,6 +39,7 @@
     pullTableView.delegate=self;
     pullTableView.dataSource=self;
     pullTableView.pullDelegate=self;
+    pullTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.pullTableView=pullTableView;
     UILongPressGestureRecognizer *longPressGr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressAction)];
     longPressGr.minimumPressDuration=1.0;

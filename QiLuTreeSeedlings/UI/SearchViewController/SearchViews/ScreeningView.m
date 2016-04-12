@@ -145,12 +145,12 @@
         UIView *shaixuanView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, CGRectGetMaxY(self.backScrollView.frame), kWidth*0.8, 50)];
         [shaixuanView setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:shaixuanView];
-        UIButton *shaixuanBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.43, 5, kWidth*0.3, 38)];
+        UIButton *shaixuanBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.43, 0, kWidth*0.3, 38)];
         [shaixuanView addSubview:shaixuanBtn];
         [shaixuanBtn setBackgroundColor:NavColor];
         [shaixuanBtn setTitle:@"筛选" forState:UIControlStateNormal];
         [shaixuanBtn addTarget:self action:@selector(screeningViewAction) forControlEvents:UIControlEventTouchUpInside];
-        UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.07, 5, kWidth*0.3, 38)];
+        UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.07, 0, kWidth*0.3, 38)];
         [chongzhiBtn setBackgroundColor:kRGB(241, 157, 65, 1)];
         [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
         [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];

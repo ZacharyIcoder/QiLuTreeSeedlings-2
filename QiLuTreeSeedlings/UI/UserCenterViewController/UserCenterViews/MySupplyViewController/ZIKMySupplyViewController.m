@@ -98,7 +98,6 @@
                 }
             }];
             [blockSelf.mySupplyTableView reloadData];
-//            [blockSelf.mySupplyTableView deleteRowsAtIndexPaths:blockSelf.mySupplyTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
             if (blockSelf.supplyInfoMArr.count == 0) {
                 [self requestData];
                 bottomcell.hidden = YES;

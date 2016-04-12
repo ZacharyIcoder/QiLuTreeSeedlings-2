@@ -50,6 +50,7 @@
     tableView.dataSource=self;
     [self.view addSubview:tableView];
     self.pullTableView=tableView;
+     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UILongPressGestureRecognizer *tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
     [tableView addGestureRecognizer:tapDeleteGR];
 //    tableView add
@@ -108,6 +109,7 @@
     [HTTPCLIENT deleteMyBuyInfo:uids Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showTopToast:@"删除成功"];
+            [_removeArray removeAllObjects];
             [removeArr enumerateObjectsUsingBlock:^(HotBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([blockSelf.dataAry containsObject:model]) {
                     [blockSelf.dataAry removeObject:model];
@@ -139,9 +141,17 @@
             [_removeArray removeAllObjects];
         }
         [self.dataAry enumerateObjectsUsingBlock:^(HotBuyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            myModel.isSelect = YES;
-            [_removeArray addObject:myModel];
+            if(myModel.effect==0)
+            {
+                myModel.isSelect = YES;
+                [_removeArray addObject:myModel];
+            }
+          
         }];
+        NSInteger effectCount=self.dataAry.count-_removeArray.count;
+        if (effectCount>0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"有%ld条在有效期内，不可删除",effectCount]];
+        }
         //[self.mySupplyTableView deselectRowAtIndexPath:[self.mySupplyTableView indexPathForSelectedRow] animated:YES];
     }
     else if (bottomcell.isAllSelect == NO) {
@@ -159,12 +169,13 @@
 - (void)totalCount {
     NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
     bottomcell.countLabel.text = countString;
-    if (_removeArray.count == self.dataAry.count) {
-        bottomcell.isAllSelect = YES;
-    }
-    else {
-        bottomcell.isAllSelect = NO;
-    }
+    bottomcell.isAllSelect = YES;
+    [self.dataAry enumerateObjectsUsingBlock:^(HotBuyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (myModel.effect==0&&myModel.isSelect == NO) {
+            bottomcell.isAllSelect = NO;
+        }
+        
+    }];
 }
 
 -(void)editingBtnAction:(UIButton *)sender
@@ -261,7 +272,14 @@
     
     // 判断编辑状态,必须要写
     if (self.pullTableView.editing)
-    {   if (model.isSelect == YES) {
+    {
+        
+        if (model.effect==1) {
+            [ToastView showTopToast:@"该条在有效期内"];
+            [tableView deselectRowAtIndexPath:indexPath animated:NO];
+            return;
+        }
+        if (model.isSelect == YES) {
         model.isSelect = NO;
         cell.isSelect = NO;
         cell.selected = NO;

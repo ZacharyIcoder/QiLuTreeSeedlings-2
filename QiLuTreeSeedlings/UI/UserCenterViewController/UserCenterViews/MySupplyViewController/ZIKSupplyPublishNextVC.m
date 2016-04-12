@@ -50,10 +50,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.vcTitle = @"供应发布";
-    [self requestMyNurseryList];
+  
+    
 
     [self initData];
     [self initUI];
+    if (self.oldnurseryArray.count>0) {
+        [self.supplyInfoTableView reloadData];
+    }else
+    {
+        [self requestMyNurseryList];
+    }
 }
 
 - (void)requestMyNurseryList {
@@ -98,7 +105,13 @@
     }
     else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            return self.nurseryArray.count * 40;
+            if (self.oldnurseryArray.count>0) {
+                return self.oldnurseryArray.count * 40;
+            }else
+            {
+               return self.nurseryArray.count * 40; 
+            }
+            
         }
         else if (indexPath.row == 1) {
             return 100;
@@ -211,10 +224,17 @@
             }
             if (indexPath.row == 0) {
 
-                listView.frame = CGRectMake(100, 0, kWidth-200, self.nurseryArray.count*40);
-                //if (self.oldnurseryArray.count>0) {
+                
+                if (self.oldnurseryArray.count>0) {
+                    listView.frame = CGRectMake(100, 0, kWidth-200, self.oldnurseryArray.count*40);
+                }else
+                {
+                  listView.frame = CGRectMake(100, 0, kWidth-200, self.nurseryArray.count*40);
+                }
+                
+                if (self.oldnurseryArray.count>0) {
                     [listView configerView:self.nurseryArray withSelectAry:self.oldnurseryArray];
-//                }
+                }
 //                else {
 //                    [listView configerView:self.nurseryArray withSelectAry:self.nurseryUidMArray];
 //                }
@@ -255,6 +275,16 @@
         [ToastView showTopToast:@"请选择有效期"];
         return;
     }
+    if ([self isPureInt:self.countTextField.text]==NO) {
+        [ToastView showTopToast:@"请检查输入的数量格式是否正确"];
+        return;
+    }
+    if (self.priceTextField.text.length>0) {
+        if ([self isPureFloat:self.priceTextField.text]==NO) {
+            [ToastView showTopToast:@"请检查输入的价格格式是否正确"];
+            return;
+        }
+    }
     [self.nurseryUidMArray removeAllObjects];
     ZIKIteratorNode *node = nil;
     [listView resetIterator];
@@ -292,7 +322,32 @@
     self.supplyModel.remark = productDetailTextView.text;
     [self requestSaveSupplyInfo];
 }
+//1. 整形判断
 
+- (BOOL)isPureInt:(NSString *)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    int val;
+    
+    return [scan scanInt:&val] && [scan isAtEnd];
+    
+}
+
+
+
+
+//2.浮点形判断：
+
+- (BOOL)isPureFloat:(NSString *)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    float val;
+    
+    return [scan scanFloat:&val] && [scan isAtEnd];
+    
+}
 - (void)ecttiveBtnAction {
     if (!self.ecttivePickerView) {
         self.ecttivePickerView = [[PickerShowView alloc] initWithFrame:[UIScreen mainScreen].bounds];

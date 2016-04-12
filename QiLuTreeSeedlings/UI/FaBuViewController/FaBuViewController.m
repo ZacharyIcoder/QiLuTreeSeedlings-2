@@ -82,12 +82,6 @@
     [titleLab setText:@"选择发布类型"];
     [titleLab setFont:[UIFont systemFontOfSize:20]];
     [view addSubview:titleLab];
-//    UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
-//    self.collectionBtn = collectionBtn;
-//    [collectionBtn setImage:[UIImage imageNamed:@"collectionN"] forState:UIControlStateNormal];
-//    [collectionBtn setImage:[UIImage imageNamed:@"collectionT"] forState:UIControlStateSelected];
-//    [collectionBtn addTarget:self action:@selector(collectionBtn:) forControlEvents:UIControlEventTouchUpInside];
-//    [view addSubview:collectionBtn];
     return view;
 }
 -(void)backBtnAction:(UIButton *)sender
@@ -121,11 +115,6 @@
     }
         buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
         [self.navigationController pushViewController:fabuVC animated:YES];
-   
-    
-    
-
-    
 }
     
 - (void)didReceiveMemoryWarning {

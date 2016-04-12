@@ -35,7 +35,7 @@
             [button setImage:[UIImage imageNamed:@"苗圃基地已选择框"] forState:UIControlStateSelected];
             [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             if ([dic[@"checked"] integerValue] == 1) {
-                //button.selected = YES;
+                button.selected = YES;
             }
             [button setTitle:dic[@"name"] forState:UIControlStateNormal];
             [self addSubview:button];
@@ -58,16 +58,18 @@
         [button setTitle:dic[@"nurseryName"] forState:UIControlStateNormal];
         [self addSubview:button];
         [self.list addItem:button];
+        
     }
 }
 
 - (void)buttonClick:(ZIKNurseryListSelectButton *)button {
     button.imageView.image = nil;
     button.selected = !button.selected;
-    NSLog(@"%d",button.selected);
-    NSLog(@"%@",button.imageView.image);
-    NSLog(@"%@",button.currentImage);
-    NSLog(@"%@",button.currentImage.description);
+   
+//    NSLog(@"%d",button.selected);
+//    NSLog(@"%@",button.imageView.image);
+//    NSLog(@"%@",button.currentImage);
+//    NSLog(@"%@",button.currentImage.description);
     //[button setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     //[button setImage:[UIImage imageNamed:@"苗圃基地已选择框"] forState:UIControlStateSelected];
 
