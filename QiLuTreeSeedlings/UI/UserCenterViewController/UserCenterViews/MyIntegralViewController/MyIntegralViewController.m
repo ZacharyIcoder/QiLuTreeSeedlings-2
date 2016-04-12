@@ -61,7 +61,7 @@
     [zongjifenLab setTextAlignment:NSTextAlignmentCenter];
     [zongjifenView addSubview:zongjifenLab];
     self.zongjifenLab      = zongjifenLab;
-    UITableView *tableView = [[ UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(zongjifenView.frame), kWidth, kHeight-64) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[ UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(zongjifenView.frame), kWidth, kHeight-64-100) style:UITableViewStyleGrouped];
     [self.view addSubview:tableView];
     tableView.delegate     = self;
     tableView.dataSource   = self;
@@ -88,7 +88,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKIntegraTableViewCell *cell = [ZIKIntegraTableViewCell cellWithTableView:tableView];
-    [cell configureCell:self.dataArray[indexPath.section]];
+    [cell configureCell:self.dataArray[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
