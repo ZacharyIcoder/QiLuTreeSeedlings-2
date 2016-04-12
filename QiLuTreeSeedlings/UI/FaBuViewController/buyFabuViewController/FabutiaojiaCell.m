@@ -37,7 +37,7 @@
         if (self.model.type==1) {
             if (self.model.dataType==3||self.model.dataType==2||self.model.dataType==1) {
                 UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(125, 0, 150/320.f*kWidth, 50)];
-                textField.placeholder=self.model.alert;
+                textField.placeholder=self.model.name;
                 if(self.model.alert.length==0)
                 {
                     textField.placeholder=@"请输入信息";

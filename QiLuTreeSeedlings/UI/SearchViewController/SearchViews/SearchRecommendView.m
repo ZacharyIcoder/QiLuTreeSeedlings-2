@@ -41,7 +41,7 @@
             [likeBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             // NSLog(@"%f",strSize.width);
              [likeBtn.layer setBorderWidth:0.5];
-            [likeBtn addTarget:self action:@selector(likeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+            [likeBtn addTarget:self action:@selector(hotSaerchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [likeBtn.layer setBorderColor:detialLabColor.CGColor];
             tempFrame.size.width=strSize.width+10.0;
             tempFrame.origin.x=tempX;
@@ -194,7 +194,7 @@
         }
     }
     if (self.delegate) {
-        [self.delegate SearchRecommendViewSearch:searchStr];
+        [self.delegate SearchRecommendViewSearchDIC:self.dataAry[sender.tag]];
     }
 }
 @end

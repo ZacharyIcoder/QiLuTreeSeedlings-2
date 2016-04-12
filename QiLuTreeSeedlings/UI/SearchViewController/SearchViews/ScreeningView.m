@@ -83,9 +83,13 @@
         UIButton *quedingBtn=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nameField.frame)+5, 9, 50, 25)];
         [nameView addSubview:quedingBtn];
         [quedingBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        
         [quedingBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
         [quedingBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
         self.nameBtn=quedingBtn;
+        if (searchStr.length>0) {
+            [self nameBtnAction:quedingBtn];
+        }
         tempFrame.origin.y+=50;
         UIView *gongyingshangView=[[UIView alloc]initWithFrame:tempFrame];
         UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];

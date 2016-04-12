@@ -271,7 +271,7 @@
         return;
     }
     if (self.nameBtn.selected==NO) {
-        [ToastView showTopToast:@"请先筛选"];
+        [ToastView showTopToast:@"请先确认苗木名称"];
         return;
     }
     if(!self.productUid)

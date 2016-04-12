@@ -93,11 +93,7 @@
         if (self.model.type==1) {
             if (self.model.dataType==3) {
                 UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 0, 130/320.f*kWidth, 50)];
-                textField.placeholder=self.model.alert;
-                if(self.model.alert.length==0)
-                {
-                    textField.placeholder=@"请输入信息";
-                }
+                textField.placeholder=self.model.name;
                 if(self.model.dataType==1)
                 {
                     textField.keyboardType=UIKeyboardTypeNumberPad;
