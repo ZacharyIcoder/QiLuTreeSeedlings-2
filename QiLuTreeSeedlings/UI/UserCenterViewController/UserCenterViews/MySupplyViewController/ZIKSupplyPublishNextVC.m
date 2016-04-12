@@ -172,7 +172,7 @@
                 self.priceTextField.placeholder = @"请输入价格";
                 if (self.baseMsgDic) {
                  
-                    self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMsgDic objectForKey:@"price"]];
+                    self.priceTextField.text = [NSString stringWithFormat:@"%@",[self.baseMsgDic objectForKey:@"price"]];
                 }
 
 

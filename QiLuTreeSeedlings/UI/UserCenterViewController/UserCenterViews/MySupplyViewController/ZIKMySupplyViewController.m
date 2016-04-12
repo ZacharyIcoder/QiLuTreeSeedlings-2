@@ -91,6 +91,7 @@
     [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
+            [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
             [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([blockSelf.supplyInfoMArr containsObject:model]) {
                     [blockSelf.supplyInfoMArr removeObject:model];
@@ -103,12 +104,16 @@
                 bottomcell.hidden = YES;
                 self.mySupplyTableView.editing = NO;
             }
+            if (_removeArray.count > 0) {
+                [_removeArray removeAllObjects];
+            }
+            [self totalCount];
         }
         else {
-
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
         }
     } failure:^(NSError *error) {
-
+        //[HTTPCLIENT]
     }];
 
 }
@@ -266,8 +271,9 @@
 }
 
 - (void)totalCount {
-    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
-    bottomcell.countLabel.text = countString;
+//    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
+//    bottomcell.countLabel.text = countString;
+    bottomcell.count = _removeArray.count;
     if (_removeArray.count == self.supplyInfoMArr.count) {
         bottomcell.isAllSelect = YES;
     }
@@ -295,7 +301,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"commitEditingStyle");
+    //NSLog(@"commitEditingStyle");
 }
 
 - (void)requestSellList:(NSString *)page {

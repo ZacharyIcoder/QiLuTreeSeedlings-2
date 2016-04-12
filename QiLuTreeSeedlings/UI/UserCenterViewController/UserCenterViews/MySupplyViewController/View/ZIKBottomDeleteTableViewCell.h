@@ -29,7 +29,7 @@
 /**
  *  数量
  */
-@property (nonatomic, copy  ) NSString                    *count;
+@property (nonatomic, assign  ) NSInteger                   count;
 
 /**
  *  实例化cell

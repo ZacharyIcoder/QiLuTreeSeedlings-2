@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1600"
             endingLineNumber = "1600"
-            landmarkName = "-getUnioPayTnString:Success:failure:"
+            landmarkName = "-weixinPayOrder:Success:failure:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -90,7 +90,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "482116620.248976"
+                  timestampString = "482128635.69352"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1601"
@@ -105,7 +105,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "482116620.249084"
+                  timestampString = "482128635.69362"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1603"
@@ -138,7 +138,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MyCustomizedinformation/ZIKCustomizedSetViewController.m"
-                  timestampString = "482116620.249787"
+                  timestampString = "482128635.694295"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "362"
@@ -153,7 +153,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MyCustomizedinformation/ZIKCustomizedSetViewController.m"
-                  timestampString = "482116620.249949"
+                  timestampString = "482128635.694419"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "363"
@@ -249,7 +249,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1413"
             endingLineNumber = "1413"
-            landmarkName = "-saveSupplyInfoWithAccessToken:accessId:clientId:clientSecret:deviceId:uid:title:name:productUid:count:price:effectiveTime:remark:nurseryUid:imageUrls:imageCompressUrls:withSpecificationAttributes:Success:failure:"
+            landmarkName = "-getProductWithTypeUid:type:Success:failure:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -260,7 +260,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "482116620.253955"
+                  timestampString = "482128635.697312"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1413"
@@ -275,7 +275,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "482116620.254058"
+                  timestampString = "482128635.697415"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1413"
@@ -290,7 +290,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "482116620.254138"
+                  timestampString = "482128635.697494"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1413"
@@ -419,7 +419,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/Model/ZIKFunction.m"
-                  timestampString = "482116620.258507"
+                  timestampString = "482128635.700672"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -434,7 +434,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/Model/ZIKFunction.m"
-                  timestampString = "482116620.258675"
+                  timestampString = "482128635.700782"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "87"
@@ -483,7 +483,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyViewController.m"
-                  timestampString = "482116620.260004"
+                  timestampString = "482128635.70196"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "86"
@@ -498,7 +498,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyViewController.m"
-                  timestampString = "482116620.260119"
+                  timestampString = "482128635.702061"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "86"
@@ -513,7 +513,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyViewController.m"
-                  timestampString = "482116620.260209"
+                  timestampString = "482128635.702148"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "86"
@@ -546,7 +546,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyViewController.m"
-                  timestampString = "482116620.260988"
+                  timestampString = "482128635.702934"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
@@ -561,7 +561,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/%E8%8B%97%E4%BF%A1%E9%80%9A/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyViewController.m"
-                  timestampString = "482116620.261092"
+                  timestampString = "482128635.703034"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
@@ -583,7 +583,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1730"
             endingLineNumber = "1730"
-            landmarkName = "-deleteMySupplyInfo:Success:failure:"
+            landmarkName = "-saveMyCustomizedInfo:productUid:withSpecificationAttributes:Success:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -594,12 +594,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MyCustomizedinformation/ZIKCustomizedInfoListViewController.m"
-            timestampString = "482116477.644041"
+            timestampString = "482122592.51157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-selectBtnClick"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MyCustomizedinformation/ZIKCustomizedInfoListViewController.m"
+            timestampString = "482122655.47588"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-deleteButtonClick"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKSupplyPublishNextVC.m"
+            timestampString = "482124070.23362"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "-requestSaveSupplyInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

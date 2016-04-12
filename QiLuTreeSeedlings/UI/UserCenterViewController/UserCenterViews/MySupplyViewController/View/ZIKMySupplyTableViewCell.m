@@ -21,6 +21,8 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    //self.backgroundColor = [UIColor blueColor];
+    self.selectionStyle = UITableViewCellSelectionStyleBlue;
 }
 
 -(void)configureCell:(ZIKSupplyModel *)model {

@@ -140,7 +140,7 @@
         uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.customsetUid]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
+    [HTTPCLIENT deleteCustomSetInfo:uids Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
             [removeArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -155,6 +155,10 @@
                 bottomcell.hidden = YES;
                 self.myCustomizedInfoTableView.editing = NO;
             }
+            if (_removeArray.count > 0) {
+                [_removeArray removeAllObjects];
+            }
+            [self totalCount];
         }
         else {
 
@@ -275,7 +279,7 @@
     backView.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+10);
     BuyOtherInfoTableViewCell *cell = [[BuyOtherInfoTableViewCell alloc] initWithFrame:CGRectMake(0, 0, kWidth, backView.frame.size.height)];
     cell.ary = model.spec;
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [backView addSubview:cell];
     return backView;
 }

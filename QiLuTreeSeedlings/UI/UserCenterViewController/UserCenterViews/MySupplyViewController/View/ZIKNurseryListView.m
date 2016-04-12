@@ -35,7 +35,7 @@
             [button setImage:[UIImage imageNamed:@"苗圃基地已选择框"] forState:UIControlStateSelected];
             [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             if ([dic[@"checked"] integerValue] == 1) {
-                button.selected = YES;
+                //button.selected = YES;
             }
             [button setTitle:dic[@"name"] forState:UIControlStateNormal];
             [self addSubview:button];

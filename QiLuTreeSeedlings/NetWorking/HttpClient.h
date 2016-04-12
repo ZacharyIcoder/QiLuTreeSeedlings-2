@@ -399,4 +399,10 @@
 - (void)deleteMyBuyInfo:(NSString *)uids
                 Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 我的定制信息批量删除 -----------
+- (void)deleteCustomSetInfo:(NSString *)uids
+                    Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
+
+
 @end
