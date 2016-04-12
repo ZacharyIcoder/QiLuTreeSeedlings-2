@@ -24,6 +24,7 @@
 @property (nonatomic,strong) NSString *nurseryAreaTown;
 @property (nonatomic,strong) NSString *phone;
 @property (nonatomic,strong) NSString *uid;
+@property (nonatomic) BOOL isSelect;
 @property (nonatomic,strong) NSString *updateTime;
 +(NurseryModel *)creaNursweryModelByDic:(NSDictionary *)dic;
 +(NSMutableArray *)creatNursweryListByAry:(NSArray *)ary;

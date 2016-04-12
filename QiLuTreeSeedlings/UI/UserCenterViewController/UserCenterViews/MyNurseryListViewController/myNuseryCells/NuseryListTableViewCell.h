@@ -10,5 +10,6 @@
 #import "NurseryModel.h"
 @interface NuseryListTableViewCell : UITableViewCell
 @property (nonatomic,strong) NurseryModel *model;
+@property (nonatomic) BOOL isSelect;
 +(NSString *)IdStr;
 @end

@@ -67,6 +67,10 @@
     //设置：在0-3个单位长度内的内容显示成红色
     [chargelPersonLabstr addAttribute:NSForegroundColorAttributeName value:titleLabColor range:NSMakeRange(0, 3)];
     self.chargelPersonLab.attributedText=chargelPersonLabstr;
+    if (model.isSelect==YES) {
+        self.selected=YES;
+        self.isSelect=YES;
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

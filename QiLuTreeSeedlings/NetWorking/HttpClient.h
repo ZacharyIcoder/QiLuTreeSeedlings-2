@@ -404,5 +404,8 @@
                     Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
 
-
+#pragma mark 我的苗圃信息批量删除
+- (void)deleteMyNuseryInfo:(NSString *)uids
+                Success:(void (^)(id responseObject))success
+                failure:(void (^)(NSError *error))failure;
 @end

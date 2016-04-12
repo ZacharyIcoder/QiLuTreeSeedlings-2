@@ -98,6 +98,11 @@
 }
 //删除按钮action
 - (void)deleteButtonClick {
+    
+    if (_removeArray.count<=0) {
+        [ToastView showTopToast:@"您未选择删除数据"];
+        return;
+    }
     __weak typeof(_removeArray) removeArr = _removeArray;
     __weak __typeof(self) blockSelf = self;
     
@@ -109,7 +114,7 @@
     [HTTPCLIENT deleteMyBuyInfo:uids Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showTopToast:@"删除成功"];
-            [_removeArray removeAllObjects];
+           
             [removeArr enumerateObjectsUsingBlock:^(HotBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([blockSelf.dataAry containsObject:model]) {
                     [blockSelf.dataAry removeObject:model];
@@ -123,6 +128,7 @@
                 bottomcell.hidden = YES;
                 self.pullTableView.editing = NO;
             }
+             [_removeArray removeAllObjects];
             [self totalCount];
         }
         else {
@@ -180,9 +186,13 @@
 
 -(void)editingBtnAction:(UIButton *)sender
 {
+    
     if ([APPDELEGATE isCanPublishBuy]==NO) {
         [ToastView showTopToast:@"暂无发布权限"];
         return;
+    }
+    if (self.pullTableView.editing) {
+        [self deleteCell];
     }
     buyFabuViewController *buyFaBuVC=[[buyFabuViewController alloc]init];
     [self.navigationController pushViewController:buyFaBuVC animated:YES];       
