@@ -11,6 +11,7 @@
 @interface ZIKCustomizedTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (nonatomic, assign) BOOL isSelect;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 - (void)configureCell:(ZIKCustomizedModel *)model;
 

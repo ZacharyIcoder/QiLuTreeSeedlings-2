@@ -17,15 +17,19 @@
 /**
  *  选中数量
  */
-@property (weak, nonatomic  ) IBOutlet UILabel           *countLabel;
+@property (weak, nonatomic  ) IBOutlet UILabel                     *countLabel;
 /**
  *  删除按钮
  */
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic  ) IBOutlet UIButton                    *deleteButton;
 /**
  *  是否选择
  */
 @property (nonatomic, assign) BOOL                        isAllSelect;
+/**
+ *  数量
+ */
+@property (nonatomic, copy  ) NSString                    *count;
 
 /**
  *  实例化cell

@@ -13,9 +13,14 @@
 #import "ZIKCustomizedModel.h"
 #import "BuyOtherInfoTableViewCell.h"
 #import "ZIKCustomizedTableViewCell.h"
+#import "ZIKBottomDeleteTableViewCell.h"
 @interface ZIKCustomizedInfoListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
+    // 保存选中行数据
+    NSMutableArray *_removeArray;
+    ZIKBottomDeleteTableViewCell *bottomcell;
+
 }
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
@@ -69,6 +74,19 @@
     self.myCustomizedInfoTableView.dataSource = self;
     [self.view addSubview:self.myCustomizedInfoTableView];
     [ZIKFunction setExtraCellLineHidden:self.myCustomizedInfoTableView];
+
+    UILongPressGestureRecognizer *tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
+    [self.myCustomizedInfoTableView addGestureRecognizer:tapDeleteGR];
+
+    //底部结算
+    bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
+    bottomcell.frame = CGRectMake(0, Height-44, Width, 44);
+    [self.view addSubview:bottomcell];
+    [bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    bottomcell.hidden = YES;
+    [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+
+
 }
 
 - (void)requestSellList:(NSString *)page {
@@ -113,6 +131,120 @@
     }];
 }
 
+- (void)deleteButtonClick {
+    __weak typeof(_removeArray) removeArr = _removeArray;
+    __weak __typeof(self) blockSelf = self;
+
+    __block NSString *uidString = @"";
+    [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.customsetUid]];
+    }];
+    NSString *uids = [uidString substringFromIndex:1];
+    [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
+        //NSLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 1) {
+            [removeArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([blockSelf.customizedInfoMArr containsObject:model]) {
+                    [blockSelf.customizedInfoMArr removeObject:model];
+                }
+            }];
+            [blockSelf.myCustomizedInfoTableView reloadData];
+            //            [blockSelf.mySupplyTableView deleteRowsAtIndexPaths:blockSelf.mySupplyTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (blockSelf.customizedInfoMArr.count == 0) {
+                [self requestData];
+                bottomcell.hidden = YES;
+                self.myCustomizedInfoTableView.editing = NO;
+            }
+        }
+        else {
+
+        }
+    } failure:^(NSError *error) {
+
+    }];
+
+}
+- (void)selectBtnClick {
+    bottomcell.isAllSelect ? (bottomcell.isAllSelect = NO) : (bottomcell.isAllSelect = YES);
+    if (bottomcell.isAllSelect) {
+        if (_removeArray.count > 0) {
+            [_removeArray removeAllObjects];
+        }
+        [self.customizedInfoMArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+            myModel.isSelect = YES;
+            [_removeArray addObject:myModel];
+        }];
+        //[self.mySupplyTableView deselectRowAtIndexPath:[self.mySupplyTableView indexPathForSelectedRow] animated:YES];
+    }
+    else if (bottomcell.isAllSelect == NO) {
+        [self.customizedInfoMArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+            myModel.isSelect = NO;
+        }];
+        if (_removeArray.count > 0) {
+            [_removeArray removeAllObjects];
+        }
+
+    }
+    [self totalCount];
+    [self.myCustomizedInfoTableView reloadData];
+}
+
+-(void)backBtnAction:(UIButton *)sender
+{
+    if (self.myCustomizedInfoTableView.editing) {
+        self.myCustomizedInfoTableView.editing = NO;
+        bottomcell.hidden = YES;
+        self.myCustomizedInfoTableView.frame = CGRectMake(0, 64, Width, Height-64);
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        [self.myCustomizedInfoTableView addHeaderWithCallback:^{//添加刷新控件
+            [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
+        }];
+
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)deleteCell {
+    if (!self.myCustomizedInfoTableView.editing)
+    {
+        // barButtonItem.title = @"Remove";
+        self.myCustomizedInfoTableView.editing = YES;
+        bottomcell.hidden = NO;
+        self.myCustomizedInfoTableView.frame = CGRectMake(0, 64, Width, Height-64-44);
+        [self.myCustomizedInfoTableView removeHeader];//编辑状态取消下拉刷新
+        bottomcell.isAllSelect = NO;
+        if (_removeArray.count > 0) {
+            [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                model.isSelect = NO;
+            }];
+            [_removeArray removeAllObjects];
+        }
+        [self totalCount];
+    }
+
+}
+
+- (void)totalCount {
+    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
+    bottomcell.countLabel.text = countString;
+    if (_removeArray.count == self.customizedInfoMArr.count) {
+        bottomcell.isAllSelect = YES;
+    }
+    else {
+        bottomcell.isAllSelect = NO;
+    }
+}
+
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+
+    [self.myCustomizedInfoTableView setEditing:YES animated:animated];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
     return 44;
@@ -155,11 +287,87 @@
     return cell;
 }
 
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.row];
+//    ZIKCustomizedSetViewController *viewC = [[ZIKCustomizedSetViewController alloc] initWithModel:model];
+//    [self.navigationController pushViewController:viewC animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.row];
+    ZIKCustomizedTableViewCell *cell = (ZIKCustomizedTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    //    NSLog(@"%d",cell.selected);
+    //    NSLog(@"%d",model.isSelect);
+        // 判断编辑状态,必须要写
+    if (self.myCustomizedInfoTableView.editing)
+    {
+        if (model.isSelect == YES) {
+            model.isSelect = NO;
+            cell.isSelect = NO;
+            cell.selected = NO;
+            // 删除反选数据
+            if ([_removeArray containsObject:model])
+            {
+                [_removeArray removeObject:model];
+            }
+            [self totalCount];
+            return;
+        }
+
+        //NSLog(@"didSelectRowAtIndexPath");
+        // 获取当前显示数据
+        //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
+        // 添加到我们的删除数据源里面
+        model.isSelect = YES;
+        [_removeArray addObject:model];
+        [self totalCount];
+        return;
+    }
+
     ZIKCustomizedSetViewController *viewC = [[ZIKCustomizedSetViewController alloc] initWithModel:model];
     [self.navigationController pushViewController:viewC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+// 反选方法
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 判断编辑状态,必须要写
+    if (self.myCustomizedInfoTableView.editing)
+    {
+        //NSLog(@"didDeselectRowAtIndexPath");
+        // 获取当前反选显示数据
+        ZIKCustomizedModel *tempModel = [self.customizedInfoMArr objectAtIndex:indexPath.row];
+        tempModel.isSelect = NO;
+        // 删除反选数据
+        if ([_removeArray containsObject:tempModel])
+        {
+            [_removeArray removeObject:tempModel];
+        }
+        [self totalCount];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - 可选方法实现
+// 设置删除按钮标题
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Delete";
+}
+// 设置行是否可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+// 删除数据风格
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"commitEditingStyle");
 }
 
 - (void)createEmptyUI {
@@ -193,6 +401,7 @@
 - (void)initData {
     self.page               = 1;
     self.customizedInfoMArr = [NSMutableArray array];
+    _removeArray = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {

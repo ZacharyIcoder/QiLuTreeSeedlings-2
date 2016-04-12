@@ -91,8 +91,6 @@
     [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
-            //                [self.supplyInfoMArr removeObjectAtIndex:[indexPath row]];  //删除_data数组里的数据
-            //                [tableview deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];  //删除对应数据的cell
             [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([blockSelf.supplyInfoMArr containsObject:model]) {
                     [blockSelf.supplyInfoMArr removeObject:model];
@@ -104,8 +102,6 @@
                 [self requestData];
                 bottomcell.hidden = YES;
                 self.mySupplyTableView.editing = NO;
-//                emptyUI.hidden = NO;
-//                bottomcell.hidden = YES;
             }
         }
         else {

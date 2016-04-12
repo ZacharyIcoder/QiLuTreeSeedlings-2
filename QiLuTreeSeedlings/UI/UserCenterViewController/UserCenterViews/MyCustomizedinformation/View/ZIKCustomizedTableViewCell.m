@@ -34,6 +34,11 @@
 - (void)configureCell:(ZIKCustomizedModel *)model {
     self.nameLabel.text  = model.productName;
     self.priceLabel.text = [NSString stringWithFormat:@"¥%@/条",model.price];
+    if (model.isSelect) {
+        self.isSelect = model.isSelect;
+        self.selected = model.isSelect;
+    }
+
 }
 
 @end
