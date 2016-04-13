@@ -326,6 +326,7 @@
 {
       //NSLog(@"点击了热门求购的%ld",(long)index);
     if (!model) {
+        [ToastView showTopToast:@"网速慢，请稍候"];
         return;
     }
     BuyDetialInfoViewController *buyDetialVC=[[BuyDetialInfoViewController alloc]initWithSaercherInfo:model.uid];

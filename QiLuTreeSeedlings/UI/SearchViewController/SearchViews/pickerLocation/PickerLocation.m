@@ -8,6 +8,7 @@
 
 #import "PickerLocation.h"
 #import "GetCityDao.h"
+#import "UIDefines.h"
 @implementation Town
 
 @synthesize TownID = _TownID;
@@ -173,10 +174,10 @@
 - (void)createAddressToolBar:(CGRect)rect
 {
     UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:rect];
-    pickerDateToolbar.barStyle =  UIBarStyleBlack;
+    pickerDateToolbar.barStyle =  UIBarStyleDefault;
     pickerDateToolbar.translucent = YES;
     [pickerDateToolbar sizeToFit];
-    
+    [pickerDateToolbar setBackgroundColor:NavColor];
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"   取消" style:UIBarButtonItemStyleDone target:self action:@selector(pickerCancel:)];
     [barItems addObject:cancelButton];

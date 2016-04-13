@@ -40,28 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //增加监听，当键盘出现或改变时收出消息
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//     
-//                                             selector:@selector(keyboardWillShow:)
-//     
-//                                                 name:UIKeyboardWillShowNotification
-//     
-//                                               object:nil];
-    
-    
-    
-    //增加监听，当键退出时收出消息
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//     
-//                                             selector:@selector(keyboardWillHide:)
-//     
-//                                                 name:UIKeyboardWillHideNotification
-//     
-//                                               object:nil];
-
     pickCityView=[[PickerLocation alloc]initWithFrame:[UIScreen mainScreen].bounds];
     pickCityView.locationDelegate=self;
     self.backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 44, kWidth, kHeight-64-44)];
@@ -242,14 +220,6 @@
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-//    if (backScrollView.frame.size.height==kHeight-64-44) {
-//        return;
-//    }else
-//    {
-//        CGRect frame=backScrollView.frame;
-//        frame.size.height=kHeight-64-44;
-//        backScrollView.frame=frame;
-//    }
 
 }
 -(void)cityBtnAction:(UIButton *)sender
@@ -264,36 +234,7 @@
     [self.nowTextField resignFirstResponder];
     
 }
-////当键盘出现或改变时调用
-//
-//- (void)keyboardWillShow:(NSNotification *)aNotification
-//
-//{
-//    //获取键盘的高度
-//    
-//    NSDictionary *userInfo = [aNotification userInfo];
-//    
-//    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-//    
-//    CGRect keyboardRect = [aValue CGRectValue];
-//    
-//    CGFloat height = keyboardRect.size.height;
-//    if (backScrollView.frame.size.height==kHeight-height-64-44) {
-//        return;
-//    }else
-//    {
-//        CGRect frame=backScrollView.frame;
-//        frame.size.height=kHeight-height-64-44;
-//        backScrollView.frame=frame;
-//    }
-//}
 
-
-//当键退出时调用
-//- (void)keyboardWillHide:(NSNotification *)aNotification
-//{
-//    
-//}
 
 - (void)selectedLocationInfo:(Province *)location
 {
@@ -301,22 +242,34 @@
     if (location.code) {
         [namestr appendString:location.provinceName];
         self.AreaProvince=location.code;
+    }else
+    {
+        self.AreaProvince=nil;
     }
     
     if (location.selectedCity.code) {
         [namestr appendString:location.selectedCity.cityName];
         self.AreaCity=location.selectedCity.code;
+    }else
+    {
+        self.AreaCity=nil;
+        
     }
     if (location.selectedCity.selectedTowns.code) {
         [namestr appendString:location.selectedCity.selectedTowns.TownName];
         self.AreaCounty=location.selectedCity.selectedTowns.code;
+    }else
+    {
+        self.AreaCounty=nil;
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
+    }else{
+        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+        
     }
-
-    
 }
 -(UIView *)makeNavView
 {

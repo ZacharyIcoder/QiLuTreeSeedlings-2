@@ -23,15 +23,17 @@
 //支付宝
 #import <AlipaySDK/AlipaySDK.h>
 
+//引导页
+#import "EAIntroView.h"
 #define kGtAppId           @"dxb5cYhXBW6yYLPsAfvtGA"
 #define kGtAppKey          @"m2iC5d15as6Vub2OGIaxP6"
 #define kGtAppSecret       @"9IHKXKIl7G7ozrvkOMQvx7"
-@interface AppDelegate ()<GeTuiSdkDelegate,WXApiDelegate>
-
+@interface AppDelegate ()<GeTuiSdkDelegate,WXApiDelegate,EAIntroDelegate>
+@property (nonatomic,strong)EAIntroView *intro;
 @end
 
 @implementation AppDelegate
-
+@synthesize intro;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -51,7 +53,7 @@
     //向微信注册wx15fce880e520ad30
     [WXApi registerApp:@"wx81b3cb415126671c" withDescription:@"齐鲁苗木网"];
     /*******************友盟分享*******************/
-
+   [self requestInitInfo];  
 
     self.userModel = [[UserInfoModel alloc]init];
     //自动登录
@@ -59,6 +61,7 @@
     NSString *token=[userDefaults objectForKey:kACCESS_TOKEN];
     NSString *uid=[userDefaults objectForKey:kACCESS_ID];
    // NSLog(@"%@---%@",token,uid);
+    
     if (token&&uid) {
         self.userModel.access_token = token;
         self.userModel.access_id = uid;
@@ -70,17 +73,57 @@
         }];
         
     }
+    
     //获取企业信息
     [self reloadCompanyInfo];
     // 通过 appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
     
-    // 注册APNS
-    [self registerUserNotification];
+    
     
     // 处理远程通知启动APP
     [self receiveNotificationByLaunchingOptions:launchOptions];
     return YES;
+}
+- (void)requestInitInfo {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"diyici"]) {
+        // 注册APNS
+        [self registerUserNotification];
+        //[self judgeLogin];//判断是否需要登录
+    }else{
+      
+        [self showIntroWithCrossDissolve];
+    }
+    
+}
+
+- (void)showIntroWithCrossDissolve {
+    int height=(int)kHeight;
+    EAIntroPage *page1 = [EAIntroPage page];
+    page1.title        = @"";
+    page1.desc         = @"";
+    page1.bgImage      = [UIImage imageNamed:[NSString stringWithFormat:@"1miaomu%d",height*2]];
+    //page1.titleImage   = [UIImage imageNamed:@"original"];
+    
+    EAIntroPage *page2 = [EAIntroPage page];
+    page2.title        = @"";
+    page2.desc         = @"";
+    page2.bgImage      = [UIImage imageNamed:[NSString stringWithFormat:@"2miaomu%d",height*2]];
+    //page2.titleImage   = [UIImage imageNamed:@"supportcat"];
+    
+    
+    intro = [[EAIntroView alloc] initWithFrame:self.window.bounds andPages:@[page1,page2]];
+    
+    [intro setDelegate:self];
+    [intro showInView:self.window animateDuration:0.0];
+}
+
+- (void)introDidFinish {
+      [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"diyici"];
+    [intro hideWithFadeOutDuration:0.0f];
+    intro = nil;
+    // 注册APNS
+    [self registerUserNotification];
 }
 -(void)reloadCompanyInfo
 {

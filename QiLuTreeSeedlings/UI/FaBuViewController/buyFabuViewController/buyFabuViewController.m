@@ -203,19 +203,33 @@
     if (location.code) {
         [namestr appendString:location.provinceName];
         self.AreaProvince=location.code;
+    }else
+    {
+        self.AreaProvince=nil;
     }
     
     if (location.selectedCity.code) {
         [namestr appendString:location.selectedCity.cityName];
         self.AreaCity=location.selectedCity.code;
+    }else
+    {
+        self.AreaCity=nil;
+        
     }
     if (location.selectedCity.selectedTowns.code) {
         [namestr appendString:location.selectedCity.selectedTowns.TownName];
         self.AreaCounty=location.selectedCity.selectedTowns.code;
+    }else
+    {
+        self.AreaCounty=nil;
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
+    }else{
+        [self.areaBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+        
     }
 }
 -(void)ecttiveBtnAction

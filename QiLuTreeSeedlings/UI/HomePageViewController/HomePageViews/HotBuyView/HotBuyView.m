@@ -31,11 +31,10 @@
 -(void)btnAction:(UIButton *)sender
 {
     if (self.delegate) {
-       // [self.delegate HotBuyViewsPush:sender.tag];
-//        if (_dataAry.count>sender.tag) {
             HotBuyModel *model=self.dataAry[sender.tag];
+        NSLog(@"%@",model.uid);
             [self.delegate HotBuyViewsPush:model];
-//        }
+
     }
 }
 -(void)setDataAry:(NSArray *)dataAry
