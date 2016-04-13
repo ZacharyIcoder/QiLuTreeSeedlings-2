@@ -33,7 +33,7 @@
     //logoImageView.frame = CGRectMake(CGRectGetMidX(qrCodeImageView.frame)-10, CGRectGetMidY(qrCodeImageView.frame)-10, 20, 20);
     logoImageView.frame = CGRectMake(qrCodeImageView.frame.size.width/2-20, qrCodeImageView.frame.size.height/2-20, 40, 40);
 
-    logoImageView.image = [UIImage imageNamed:@"我的供应（空）"];
+    logoImageView.image = [UIImage imageNamed:@"logV"];
     [qrCodeImageView addSubview:logoImageView];
 }
 
@@ -41,15 +41,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

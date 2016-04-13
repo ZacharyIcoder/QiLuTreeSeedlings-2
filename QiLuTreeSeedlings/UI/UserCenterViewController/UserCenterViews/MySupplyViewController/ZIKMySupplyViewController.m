@@ -110,6 +110,7 @@
                 [self requestData];
                 bottomcell.hidden = YES;
                 self.mySupplyTableView.editing = NO;
+                self.mySupplyTableView.frame = CGRectMake(0, 64, Width, Height-64);
             }
             if (_removeArray.count > 0) {
                 [_removeArray removeAllObjects];

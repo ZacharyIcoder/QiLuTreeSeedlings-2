@@ -43,7 +43,9 @@
         self.priceLabel.textColor  = NavColor;
     }
     self.timeLable.text = model.createTime;
+    self.timeLable.textColor = detialLabColor;
     self.titleLable.text = model.level;
+    self.timeLable.textColor = titleLabColor;
 }
 
 @end

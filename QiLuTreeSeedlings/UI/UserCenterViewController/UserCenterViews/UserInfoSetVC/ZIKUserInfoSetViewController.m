@@ -93,6 +93,7 @@
         }
     }
     cell.textLabel.text = titlesArray[indexPath.section][indexPath.row];
+    cell.textLabel.textColor = titleLabColor;
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
@@ -115,6 +116,7 @@
             case 1: {
                 cellNameLabel.frame = CGRectMake(55, 7, kWidth-55-30, 30);
                 cellNameLabel.text = APPDELEGATE.userModel.name;
+                cellNameLabel.textColor = titleLabColor;
                 cellNameLabel.textAlignment = NSTextAlignmentRight;
                 [cell addSubview:cellNameLabel];
             }
@@ -134,6 +136,7 @@
     else if (indexPath.section == 1) {
         cellPhoneLabel.frame = CGRectMake(55, 7, kWidth-55-15, 30);
         cellPhoneLabel.text = APPDELEGATE.userModel.phone;
+        cellPhoneLabel.textColor = titleLabColor;
         cellPhoneLabel.textAlignment = NSTextAlignmentRight;
         [cell addSubview:cellPhoneLabel];
         cell.accessoryType = UITableViewCellAccessoryNone; //不显示最右边的箭头

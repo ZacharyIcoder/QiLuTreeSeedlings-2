@@ -28,6 +28,7 @@
 -(void)configureCell:(ZIKSupplyModel *)model {
     [self.iconImageView setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
     self.titleLabel.text = model.title;
+    self.timeLabel.textColor = titleLabColor;
     //棵数
     NSString *treeCountString = nil;
     if (model.count.integerValue>=10000) {
@@ -37,6 +38,7 @@
         treeCountString = [NSString stringWithFormat:@"%@棵",model.count];
     }
     self.countLabel.text = treeCountString;
+    self.countLabel.textColor = detialLabColor;
     NSDate *timeDate = [ZIKFunction getDateFromString:model.createTime];
     NSString *time = [ZIKFunction compareCurrentTime:timeDate];
     self.timeLabel.text  = time;
@@ -60,7 +62,7 @@
     partFont.font = [UIFont systemFontOfSize:14.0f];
     partFont.effectRange = NSMakeRange(0, 5);
     ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
-    darkColor.color = [UIColor darkGrayColor];
+    darkColor.color = detialLabColor;
     darkColor.effectRange = NSMakeRange(0, 3);
     
     self.priceLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];

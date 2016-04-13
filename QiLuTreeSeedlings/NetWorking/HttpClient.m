@@ -218,6 +218,7 @@
     }];
     
 }
+
 #pragma mark-站长信息列表
 -(void)getWrokStationListWithToken:(NSString *)token
                       WithAccessID:(NSString *)accessID
@@ -231,19 +232,21 @@
                         Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure
 {
-    NSString *postURL = @"api/wrokStationListoutme";
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                              token,@"access_token",
-                              accessID,@"access_id",
-                              clientSecret,@"client_secret",
-                              deviceID,@"device_id",
-                              workstationUId,@"workstationUId",
-                              areaCode,@"areaCode",
-                              page,@"page",
-                              pageSize,@"pageSize",
-                              nil];
-    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-        
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/wrokStationListoutme";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"workstationUId"]   = APPDELEGATE.userModel.workstationUId;
+    parmers[@"areaCode"]         = areaCode;
+    parmers[@"page"]             = page;
+    parmers[@"pageSize"]         = pageSize;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -251,6 +254,7 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+
 #pragma mark-求购信息收藏列表
 -(void)collectBuyListWithToken:(NSString *)token
                   WithAccessID:(NSString *)accessID
@@ -1789,6 +1793,7 @@
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
 #pragma mark 我的求购信息批量删除
