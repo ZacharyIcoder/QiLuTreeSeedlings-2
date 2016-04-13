@@ -59,8 +59,7 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.BTabBar=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-kTABBARH, kWidth, kTABBARH)];
     [self.view addSubview:self.BTabBar];
-    
-    [self.BTabBar setBackgroundColor:[UIColor colorWithRed:245/255.f green:245/255.f blue:245/255.f alpha:1]];
+    [self.BTabBar setBackgroundColor:[UIColor whiteColor]];
     self.tabBar.hidden=YES;
     UIImageView *tabMageV1=[[UIImageView alloc]initWithFrame:CGRectMake(0, -7, kWidth, 50)];
     [self.BTabBar addSubview:tabMageV1];

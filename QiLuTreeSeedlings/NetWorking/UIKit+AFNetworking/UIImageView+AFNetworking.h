@@ -80,6 +80,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setImageWithURL:(NSURL *)url
        placeholderImage:(nullable UIImage *)placeholderImage;
 
+//- (void)setImageWithURL:(NSURL *)url
+//       placeholderImage:(nullable UIImage *)placeholderImage
+//       success;
 /**
  Asynchronously downloads an image from the specified URL request, and sets it once the request is finished. Any previous image request for the receiver will be cancelled.
 

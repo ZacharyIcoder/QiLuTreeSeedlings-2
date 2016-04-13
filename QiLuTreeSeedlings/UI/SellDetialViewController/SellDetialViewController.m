@@ -16,12 +16,14 @@
 #import "BuyOtherInfoTableViewCell.h"
 #import "SellQiyeInfoTableViewCell.h"
 #import "SellSearchTableViewCell.h"
-@interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "BigImageViewShowView.h"
+@interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIButton *collectionBtn;
 @property (nonatomic,strong)SupplyDetialMode *model;
 @property (nonatomic,strong)NSArray *guseLikeAry;
 @property (nonatomic,strong)HotSellModel *hotModel;
+@property (nonatomic,strong)BigImageViewShowView *bigImageVShowV;
 @end
 
 @implementation SellDetialViewController
@@ -32,17 +34,20 @@
     if (self) {
         
         [HTTPCLIENT sellDetailWithUid:model.uid WithAccessID:APPDELEGATE.userModel.access_id Success:^(id responseObject) {
-                NSLog(@"供应详情：%@",responseObject);
+            
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                 SupplyDetialMode *model=[SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
                 self.model=model;
-                
+                  BigImageViewShowView *bigImageVShowV=[[BigImageViewShowView  alloc]initWithImageAry:model.images];
+                self.bigImageVShowV=bigImageVShowV;
+                [self.view addSubview:bigImageVShowV];
                 if(model.collect)
                 {
                     self.collectionBtn.selected=YES;
                 }
                 self.guseLikeAry=[HotSellModel hotSellAryByAry:[dic objectForKey:@"list"]];
+              
                 [self.tableView reloadData];
             }
         } failure:^(NSError *error) {
@@ -79,6 +84,7 @@
     [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
     //[messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [self.view addSubview:phoneBtn];
+    
     //    [APPDELEGATE]
 }
 -(void)CallAction
@@ -189,6 +195,7 @@
     if (self.model) {
         if (indexPath.section==0) {
             SellBanderTableViewCell *cell=[[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 330) andModel:self.model andHotSellModel:self.hotModel];
+            cell.delegate=self;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -214,10 +221,12 @@
         if (labelText.length==0) {
             labelText=@"暂无";
         }
+        
         CGFloat height = [self getHeightWithContent:labelText width:kWidth-40 font:13];
         //NSLog(@"%f",height);
         UITableViewCell *cell=[[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, kWidth, height+20)];
         UILabel *cellLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, kWidth-40, height)];
+        [cellLab setTextColor:titleLabColor];
         [cellLab setFont:[UIFont systemFontOfSize:13]];
         cellLab.numberOfLines=0;
         [cell addSubview:cellLab];
@@ -237,6 +246,14 @@
     }
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
+}
+//图片点击效果
+-(void)showBigImageWtihIndex:(NSInteger)index
+{
+    if (self.bigImageVShowV) {
+      [self.bigImageVShowV showWithIndex:index];
+    }
+    
 }
 //获取字符串的高度
 -(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
@@ -323,7 +340,6 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ary options:NSJSONWritingPrettyPrinted error:&parseError];
     
    NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",str);
     return str;
 }
 - (void)didReceiveMemoryWarning {

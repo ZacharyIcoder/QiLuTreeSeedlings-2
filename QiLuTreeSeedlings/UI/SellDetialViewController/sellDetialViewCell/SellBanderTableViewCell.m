@@ -25,7 +25,12 @@
         scrollView.pagingEnabled=YES;
         for (int i=0; i<imagAry.count ; i++) {
             UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*i, 0, kWidth, 210)];
+            UIButton *BTN=[[UIButton alloc]initWithFrame:imageV.frame];
+            BTN.tag=i;
+            
+            [BTN addTarget:self action:@selector(BtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [imageV setImageWithURL:[NSURL URLWithString:imagAry[i]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+             [scrollView addSubview:BTN];
             [scrollView addSubview:imageV];
         }
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,210-20, kWidth,20)];
@@ -39,6 +44,7 @@
         }
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, 80, 20)];
         [lab setFont:[UIFont systemFontOfSize:12]];
+        [lab setTextColor:titleLabColor];
         lab.text=hotModel.area;
         [lab setTextColor:[UIColor whiteColor]];
         [view addSubview:lab];
@@ -59,12 +65,12 @@
         UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(titleLab.frame)+5, kWidth-40, 0.5)];
         [lineView setBackgroundColor:kLineColor];
         [self addSubview:lineView];
-        UIView *userView=[self viewWithTitle:model.supplybuyName andX:(kWidth-150)/4.f andColor:[UIColor blackColor] andImageName:@"person"];
+        UIView *userView=[self viewWithTitle:model.supplybuyName andX:(kWidth-150)/4.f andColor:titleLabColor andImageName:@"person"];
         [self addSubview:userView];
         UIView *numView=[self viewWithTitle:[NSString stringWithFormat:@"%@棵",model.count] andX:kWidth/2-25 andColor:titleLabColor andImageName:@"LISTtreeNumber"];
         [self addSubview:numView];
         
-        UIView *priceView=[self viewWithTitle:[NSString stringWithFormat:@"%@元/棵",model.price] andX:kWidth-(kWidth-150)/4.f-50 andColor:[UIColor orangeColor] andImageName:@"price"];
+        UIView *priceView=[self viewWithTitle:[NSString stringWithFormat:@"%@元/棵",model.price] andX:kWidth-(kWidth-150)/4.f-50 andColor:yellowButtonColor andImageName:@"price"];
         [self addSubview:priceView];
     }
     return self;
@@ -84,6 +90,12 @@
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [view addSubview:titleLab];
     return view;
+}
+-(void)BtnAction:(UIButton *)sender
+{
+    if (self.delegate) {
+        [self.delegate showBigImageWtihIndex:sender.tag];
+    }
 }
 - (void)awakeFromNib {
     // Initialization code

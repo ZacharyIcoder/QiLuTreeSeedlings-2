@@ -301,7 +301,7 @@
     self.searchSuccessView.goldsupplier=goldsupplier;
     self.searchSuccessView.productUid=productUid;
     self.searchSuccessView.shaixuanAry=ary;
-    NSLog(@"%@",productName);
+   
     [self.searchSuccessView searchViewActionWith:productName AndSearchType:self.searchType];
 }
 -(void)SearchRecommendViewSearch:(NSString *)searchStr
@@ -315,7 +315,7 @@
         self.searchSuccessView=[[SearchSuccessView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
         [self.view addSubview:self.searchSuccessView];
     }
-    
+    self.searchMessageField.text=searchStr;
     [self.searchSuccessView searchViewActionWith:searchStr AndSearchType:self.searchType];
 }
 -(void)SearchRecommendViewSearchDIC:(NSDictionary *)dic

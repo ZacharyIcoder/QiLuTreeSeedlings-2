@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HomePageViewController : UIViewController
+#import "ZIKBaseViewController.h"
+@interface HomePageViewController : ZIKBaseViewController
 @property (nonatomic,strong) NSArray *dataAry;
 @end

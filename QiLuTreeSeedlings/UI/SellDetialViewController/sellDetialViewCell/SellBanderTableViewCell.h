@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SupplyDetialMode.h"
 #import "HotSellModel.h"
-@interface SellBanderTableViewCell : UITableViewCell
+@protocol SellBanderDelegate <NSObject>
 
+- (void)showBigImageWtihIndex:(NSInteger )index;
+
+@end
+@interface SellBanderTableViewCell : UITableViewCell
+@property (nonatomic,weak) id<SellBanderDelegate>delegate;
 -(id)initWithFrame:(CGRect)frame andModel:(SupplyDetialMode*)model andHotSellModel:(HotSellModel *)hotModel;
 @end

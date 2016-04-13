@@ -41,12 +41,6 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-//    if ([APPDELEGATE isNeedLogin]) {
-//        self.logoutView.hidden=NO;
-//    }else
-//    {
-//        self.logoutView.hidden=YES;
-//    }
     self.userBigInfoV.model=APPDELEGATE.userModel;
     [self.tableView reloadData];
     [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
@@ -54,7 +48,6 @@
         if ([[responseObject objectForKey:@"success"]integerValue]) {
             [self.tableView reloadData];
             self.userBigInfoV.model=APPDELEGATE.userModel;
-            //self.logoutView.hidden=;
         }
         
     } failure:^(NSError *error) {
