@@ -166,6 +166,7 @@
                 self.countTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
                 self.countTextField.keyboardType=UIKeyboardTypeNumberPad;
                 self.countTextField.placeholder = @"请输入数量";
+                self.countTextField.textColor = titleLabColor;
                 [firstSectionCell addSubview:self.countTextField];
 
 
@@ -174,6 +175,7 @@
                 if (!_priceTextField) {
                     self.priceTextField = [[UITextField alloc] init];
                     self.priceTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
+                    self.priceTextField.textColor = titleLabColor;
                     [firstSectionCell addSubview:self.priceTextField];
                     UILabel *label = [[UILabel alloc] init];
                     label.frame = CGRectMake(kWidth-50, 5, 40, 30);
@@ -246,7 +248,7 @@
                 if (self.baseMsgDic) {
                     productDetailTextView.text=[self.baseMsgDic objectForKey:@"remark"];
                 }
-
+                productDetailTextView.textColor = titleLabColor;
                 productDetailTextView.frame = CGRectMake(100, 5, kWidth-100-30, 90);
                 [secondSectionCell addSubview:productDetailTextView];
                // productDetailTextView.pl

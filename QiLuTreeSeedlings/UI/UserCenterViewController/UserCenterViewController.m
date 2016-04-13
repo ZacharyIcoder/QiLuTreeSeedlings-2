@@ -28,6 +28,7 @@
 #import "UserBigInfoView.h"
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
+#import "ZIKStationAgentViewController.h"//站长通
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -361,6 +362,12 @@
             [self hiddingSelfTabBar];
             MyNuseryListViewController *nuserListVC=[[MyNuseryListViewController alloc]init];
             [self.navigationController pushViewController:nuserListVC animated:YES];
+            return;
+        }
+        if (indexPath.row == 2) {
+            [self hiddingSelfTabBar];
+            ZIKStationAgentViewController *stationVC = [[ZIKStationAgentViewController alloc] init];
+            [self.navigationController pushViewController:stationVC animated:YES];
             return;
         }
     }

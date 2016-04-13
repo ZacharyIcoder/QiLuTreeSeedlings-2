@@ -17,10 +17,13 @@
 #import "ZIKMySupplyCreateModel.h"
 #import "JSONKit.h"
 #import "ZIKSupplyPublishNextVC.h"
+
+#import "WHC_PhotoListCell.h"
+#import "WHC_PictureListVC.h"
 #define kMaxLength 20
 
 @interface ZIKSupplyPublishVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
-UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
+UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictureVCDelegate>
 
 @property (nonatomic, strong) UITableView      *supplyInfoTableView;
 @property (nonatomic, weak  ) ZIKPickImageView *pickerImgView;
@@ -48,9 +51,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 @implementation ZIKSupplyPublishVC
 -(id)initWithModel:(SupplyDetialMode*)model
 {
-    self=[super init];
+    self = [super init];
     if (self) {
-        self.model=model;
+        self.model = model;
     }
     return self;
 }
@@ -471,21 +474,21 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
         [self presentViewController:picker animated:YES completion:nil];
     }else
     {
-        NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+        //NSLog(@"模拟其中无法打开照相机,请在真机中使用");
     }
 }
 
 //打开本地相册
 -(void)LocalPhoto
 {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.navigationBar.barTintColor = NavColor;
-
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.delegate = self;
-    //设置选择后的图片可被编辑
-    //    picker.allowsEditing = YES;
-    [self presentViewController:picker animated:YES completion:nil];
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.navigationBar.barTintColor = NavColor;
+//
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    picker.delegate = self;
+//    //设置选择后的图片可被编辑
+//    //    picker.allowsEditing = YES;
+//    [self presentViewController:picker animated:YES completion:nil];
 }
 
 //当选择一张图片后进入这里
@@ -498,45 +501,28 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
     {
         //先把图片转成NSData
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        //        NSData *iconData = UIImagePNGRepresentation(image);//UIImageJPEGRepresentation(image, 0.1);
-        //[self saveImage:image WithName:@"kong"];
-        //2016-3-22
         HttpClient *httpClient  = [HttpClient sharedClient];
         [httpClient upDataImageIOS:image Success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
+           // NSLog(@"%@",responseObject);
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                NSLog(@"%@",responseObject[@"success"]);
-                NSLog(@"%@",responseObject[@"msg"]);
+                //NSLog(@"%@",responseObject[@"success"]);
+                //NSLog(@"%@",responseObject[@"msg"]);
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                     [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
                 }
                 else {
-                    NSLog(@"图片上传失败");
+                    //NSLog(@"图片上传失败");
+                    [ToastView showToast:@"上传图片失败" withOriginY:200 withSuperView:self.view];
                     [UIColor darkGrayColor];
                 }
 
                 //self.pickerImgView.photos
             }
         } failure:^(NSError *error) {
-            NSLog(@"%@",error);
-            NSLog(@"上传图片失败");
+            //NSLog(@"%@",error);
+            //NSLog(@"上传图片失败");
+            [ToastView showToast:@"上传图片失败" withOriginY:200 withSuperView:self.view];
         }];
-        //        [httpClient upDataImage:image Success:^(id responseObject) {
-        //           // NSLog(@"上传成功");
-        //             [self.pickerImgView addImage:image];
-        //            //NSDictionary *dic=[responseObject objectForKey:@"success"];
-        //           //NSLog(@"%@",dic);
-        //            NSLog(@"%@",responseObject);
-        //           // NSLog(@"%@",responseObject[@"msg"]);
-        //            NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        //            NSLog(@"%@",string);
-        //            //NSLog(@"%@",responseObject)
-        //        } failure:^(NSError *error) {
-        //            NSLog(@"%@",error.description);
-        //            NSLog(@"%@",error);
-        //        }];
-
-
         [picker dismissViewControllerAnimated:YES completion:nil];
     }
 
@@ -592,7 +578,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"%ld",(long)buttonIndex);
+    //NSLog(@"%ld",(long)buttonIndex);
     if(alertView.tag == 300)//是否退出编辑
     {
         if (buttonIndex == 1) {
@@ -637,7 +623,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate>
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self hidingKey];
+    //[self hidingKey];
 }
 
 @end
