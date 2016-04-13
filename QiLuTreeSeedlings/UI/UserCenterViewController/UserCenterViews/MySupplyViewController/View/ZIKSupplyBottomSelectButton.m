@@ -14,16 +14,17 @@
         [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         self.titleLabel.font = [UIFont systemFontOfSize:15];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        //self.backgroundColor = [UIColor yellowColor];
 
     }
     return self;
 }
 
 - (CGRect)imageRectForContentRect:(CGRect)contentRect {
-    CGFloat h = 25;
+    CGFloat h = 23;
     CGFloat w = h;
     CGFloat x = 5;
-    CGFloat y = 10;
+    CGFloat y = 2;
     return CGRectMake(x, y, w, h);
 }
 

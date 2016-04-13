@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-01-01 17：50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5g-Kv-u86">
-                        <rect key="frame" x="36" y="40" width="219" height="16"/>
+                        <rect key="frame" x="36" y="39" width="219" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="219" id="we7-vb-rDw"/>
                         </constraints>
@@ -37,17 +37,17 @@
                             <constraint firstAttribute="height" constant="21" id="5SZ-CG-zWe"/>
                             <constraint firstAttribute="width" priority="750" constant="133" id="ihf-W6-fNl"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erf-Wq-78U">
-                        <rect key="frame" x="41" y="10" width="130" height="22"/>
+                        <rect key="frame" x="41" y="10" width="130" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="130" id="X7c-jd-a6S"/>
                             <constraint firstAttribute="height" priority="750" constant="21" id="iaa-yS-3Kb"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>

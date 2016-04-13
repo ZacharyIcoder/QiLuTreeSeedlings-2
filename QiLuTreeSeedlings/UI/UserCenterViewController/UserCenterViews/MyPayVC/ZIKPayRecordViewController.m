@@ -51,6 +51,7 @@
     [self.view addSubview:self.myCustomizedInfoTableView];
     [ZIKFunction setExtraCellLineHidden:self.myCustomizedInfoTableView];
 }
+
 - (void)requestSellList:(NSString *)page {
     //NSLog(@"page:%@",page);
     //我的消费列表

@@ -15,24 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="au9-JS-IAn" customClass="ZIKNurseryListSelectButton">
-                        <rect key="frame" x="8" y="10" width="100" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="9Kz-AX-hf5"/>
-                            <constraint firstAttribute="height" constant="32" id="bvy-Az-m8f"/>
-                        </constraints>
-                        <state key="normal" image="苗圃基地选择框.png">
-                            <attributedString key="attributedTitle">
-                                <fragment content="全选">
-                                    <attributes>
-                                        <font key="NSFont" size="18" name=".PingFangSC-Regular"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                        </state>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bez-AH-1Ho">
-                        <rect key="frame" x="215" y="11" width="100" height="30"/>
+                        <rect key="frame" x="215" y="8" width="100" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="KNX-Tg-vHV"/>
                             <constraint firstAttribute="width" constant="100" id="mGj-1W-1Wv"/>
@@ -42,31 +26,31 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：0条" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weJ-v5-hW6">
-                        <rect key="frame" x="116" y="15" width="91" height="21"/>
+                        <rect key="frame" x="128" y="15" width="79" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhG-DU-LNf" customClass="ZIKSupplyBottomSelectButton">
+                        <rect key="frame" x="8" y="10" width="92" height="30"/>
+                        <state key="normal" title="全选">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="weJ-v5-hW6" firstAttribute="leading" secondItem="au9-JS-IAn" secondAttribute="trailing" constant="8" id="0Yy-No-o3w"/>
                     <constraint firstItem="weJ-v5-hW6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="2lt-y7-EfD"/>
                     <constraint firstItem="bez-AH-1Ho" firstAttribute="leading" secondItem="weJ-v5-hW6" secondAttribute="trailing" constant="8" id="PU6-68-SaF"/>
-                    <constraint firstItem="au9-JS-IAn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WCX-08-mda"/>
                     <constraint firstAttribute="trailingMargin" secondItem="bez-AH-1Ho" secondAttribute="trailing" constant="-3" id="acM-oW-aOU"/>
-                    <constraint firstItem="au9-JS-IAn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="afS-SV-cnS"/>
-                    <constraint firstItem="bez-AH-1Ho" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="pjd-Zd-Ye5"/>
+                    <constraint firstItem="bez-AH-1Ho" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="pjd-Zd-Ye5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="countLabel" destination="weJ-v5-hW6" id="QTB-9Z-RI6"/>
                 <outlet property="deleteButton" destination="bez-AH-1Ho" id="Qt1-9d-aou"/>
-                <outlet property="seleteImageButton" destination="au9-JS-IAn" id="hAK-Cv-xnQ"/>
+                <outlet property="seleteImageButton" destination="HhG-DU-LNf" id="MuU-IB-QSa"/>
             </connections>
             <point key="canvasLocation" x="-34" y="322"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="苗圃基地选择框.png" width="32" height="32"/>
-    </resources>
 </document>

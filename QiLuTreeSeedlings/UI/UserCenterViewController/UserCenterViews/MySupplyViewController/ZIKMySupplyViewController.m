@@ -43,6 +43,9 @@
     [super viewWillAppear:YES];
     [self initData];
     [self requestData];
+    self.mySupplyTableView.editing = NO;
+    bottomcell.hidden = YES;
+    self.mySupplyTableView.frame = CGRectMake(0, 64, Width, Height-64);
 }
 
 - (void)requestData {
@@ -50,6 +53,7 @@
     [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.mySupplyTableView addHeaderWithCallback:^{
+        weakSelf.page = 1;
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.mySupplyTableView addFooterWithCallback:^{
@@ -80,6 +84,10 @@
 }
 //删除按钮action
 - (void)deleteButtonClick {
+    if (_removeArray.count  == 0) {
+        [ToastView showToast:@"请选择要删除的选项" withOriginY:200 withSuperView:self.view];
+        return;
+    }
     __weak typeof(_removeArray) removeArr = _removeArray;
     __weak __typeof(self) blockSelf = self;
 
@@ -210,7 +218,9 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKMySupplyTableViewCell" owner:self options:nil] lastObject];
     }
-    [cell configureCell:self.supplyInfoMArr[indexPath.row]];
+    if (self.supplyInfoMArr.count > 0) {
+        [cell configureCell:self.supplyInfoMArr[indexPath.row]];
+    }
     return cell;
 }
 
