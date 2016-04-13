@@ -325,7 +325,7 @@
 -(void)HotBuyViewsPush:(HotBuyModel *)model
 {
       //NSLog(@"点击了热门求购的%ld",(long)index);
-    if (!model) {
+    if (model==nil) {
         [ToastView showTopToast:@"网速慢，请稍候"];
         return;
     }
