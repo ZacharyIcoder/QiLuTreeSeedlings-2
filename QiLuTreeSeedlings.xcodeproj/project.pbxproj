@@ -3329,8 +3329,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ledong yang (784P3R2228)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3365,7 +3365,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7b03a90e-bd21-444a-812f-34323891cade";
 			};
 			name = Debug;
 		};
@@ -3375,8 +3375,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ledong yang (784P3R2228)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3411,7 +3411,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7b03a90e-bd21-444a-812f-34323891cade";
 			};
 			name = Release;
 		};

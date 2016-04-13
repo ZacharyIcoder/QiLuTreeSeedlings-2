@@ -175,6 +175,10 @@
 }
 -(void)editingBtn:(UIButton *)sender
 {
+    if (self.model.state==0||self.model.state==1||self.model.state==5) {
+        [ToastView showTopToast:@"该条求购不可编辑"];
+        return;
+    }
     self.model.uid=self.uid;
     buyFabuViewController *buyFabuVC=[[buyFabuViewController alloc]initWithModel:self.model];
     
@@ -399,15 +403,4 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

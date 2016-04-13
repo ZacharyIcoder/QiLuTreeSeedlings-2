@@ -222,6 +222,7 @@
                 self.price = [dic objectForKey:@"price"];
                 priceView.hidden = NO;
                 priceLabel.text = [NSString stringWithFormat:@"¥%@/条",self.price];
+                self.productUid=[dic objectForKey:@"productUid"];
                 button.selected = YES;
                 [self creatScreeningCells];
             }
