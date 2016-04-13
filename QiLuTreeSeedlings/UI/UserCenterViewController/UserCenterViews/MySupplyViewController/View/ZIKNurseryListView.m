@@ -63,7 +63,7 @@
 }
 
 - (void)buttonClick:(ZIKNurseryListSelectButton *)button {
-    button.imageView.image = nil;
+    //button.imageView.image = nil;
     button.selected = !button.selected;
    
 //    NSLog(@"%d",button.selected);

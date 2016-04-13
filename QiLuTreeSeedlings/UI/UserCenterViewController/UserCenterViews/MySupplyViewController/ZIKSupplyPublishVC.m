@@ -481,14 +481,37 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 //打开本地相册
 -(void)LocalPhoto
 {
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.navigationBar.barTintColor = NavColor;
-//
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    picker.delegate = self;
-//    //设置选择后的图片可被编辑
-//    //    picker.allowsEditing = YES;
-//    [self presentViewController:picker animated:YES completion:nil];
+//    WHC_PictureListVC  * vc = [WHC_PictureListVC new];
+//    vc.delegate = self;
+//    vc.maxChoiceImageNumberumber = 9;
+//    [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
+
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.navigationBar.barTintColor = NavColor;
+
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.delegate = self;
+    //设置选择后的图片可被编辑
+    //    picker.allowsEditing = YES;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark - WHC_ChoicePictureVCDelegate
+- (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
+    [self.pickerImgView addImage:nil withUrl:nil];
+//    for (UIView * subView in _imageSV.subviews) {
+//        if([subView isKindOfClass:[UIImageView class]]){
+//            [subView removeFromSuperview];
+//        }
+//    }
+//    [_imageArr removeAllObjects];
+//    _imageArr = photoArr.mutableCopy;
+//    for (NSInteger i = 0; i < photoArr.count; i++) {
+//        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i * CGRectGetWidth(_imageSV.frame), 0, CGRectGetWidth(_imageSV.frame), CGRectGetHeight(_imageSV.frame))];
+//        imageView.image = photoArr[i];
+//        [_imageSV addSubview:imageView];
+//    }
+//    _imageSV.contentSize = CGSizeMake(photoArr.count * CGRectGetWidth(_imageSV.frame), 0);
 }
 
 //当选择一张图片后进入这里

@@ -222,7 +222,9 @@
             if (secondSectionCell == nil) {
                 secondSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName2];
                 secondSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
-                listView = [[ZIKNurseryListView alloc] init];
+                if (!listView) {
+                    listView = [[ZIKNurseryListView alloc] init];
+                }
             }
             if (indexPath.row == 0) {
 
@@ -237,9 +239,9 @@
                 if (self.oldnurseryArray.count>0) {
                     [listView configerView:self.nurseryArray withSelectAry:self.oldnurseryArray];
                 }
-//                else {
-//                    [listView configerView:self.nurseryArray withSelectAry:self.nurseryUidMArray];
-//                }
+                else {
+                    [listView configerView:self.nurseryArray withSelectAry:nil];
+                }
                 [secondSectionCell addSubview:listView];
             }
             if (indexPath.row == 1) {
@@ -268,6 +270,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - 下一步按钮点击事件
 - (void)nextBtnClick {
     if (self.countTextField.text.length == 0 || self.countTextField.text == nil) {
         [ToastView showTopToast:@"请输入数量"];
@@ -294,8 +297,14 @@
         ZIKNurseryListSelectButton *button = node.item;
         if (button.selected) {
             //NSLog(@"%@",button.titleLabel.text);
-            NSDictionary *dic = self.nurseryArray[button.tag];
-            [self.nurseryUidMArray addObject:dic[@"nrseryId"]];
+            if (self.oldnurseryArray.count>0) {
+                NSDictionary *dic = self.oldnurseryArray[button.tag];
+                [self.nurseryUidMArray addObject:dic[@"uid"]];
+            }
+            else {
+                NSDictionary *dic = self.nurseryArray[button.tag];
+                [self.nurseryUidMArray addObject:dic[@"nrseryId"]];
+            }
         }
     }
     if (self.nurseryUidMArray.count == 0) {
