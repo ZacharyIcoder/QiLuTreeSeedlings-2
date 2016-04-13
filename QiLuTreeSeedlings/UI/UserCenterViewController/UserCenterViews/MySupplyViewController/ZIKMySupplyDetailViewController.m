@@ -13,12 +13,14 @@
 #import "MySupplyOtherInfoTableViewCell.h"
 #import "HotSellModel.h"
 #import "ZIKSupplyPublishVC.h"
-@interface ZIKMySupplyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "BigImageViewShowView.h"
+@interface ZIKMySupplyDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SellBanderDelegate>
 @property (nonatomic, strong) NSString                        *uid;
 @property (nonatomic, strong) SupplyDetialMode                *model;
 @property (nonatomic,strong ) UITableView                     *tableView;
 @property (nonatomic, strong) NSArray *nurseryDateArray;
 @property (nonatomic, strong) HotSellModel *hotSellModel;
+@property (nonatomic,strong)BigImageViewShowView *bigImageVShowV;
 @end
 
 @implementation ZIKMySupplyDetailViewController
@@ -56,6 +58,9 @@
                 model.supplybuyName=APPDELEGATE.userModel.name;
                 model.phone=APPDELEGATE.userModel.phone;
                 self.model = model;
+                BigImageViewShowView *bigImageVShowV=[[BigImageViewShowView  alloc]initWithImageAry:model.images];
+                self.bigImageVShowV=bigImageVShowV;
+                [self.view addSubview:bigImageVShowV];
                 self.nurseryDateArray = dic[@"nurseryNames"];
                 [self.tableView reloadData];
             }
@@ -178,6 +183,7 @@
     if (self.model) {
         if (indexPath.section==0) {
             SellBanderTableViewCell *cell = [[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 330) andModel:self.model andHotSellModel:self.hotSellModel];
+            cell.delegate=self;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -233,7 +239,12 @@
                                         context:nil];
     return rect.size.height;
 }
-
+-(void)showBigImageWtihIndex:(NSInteger)index
+{
+    if (self.bigImageVShowV) {
+        [self.bigImageVShowV showWithIndex:index];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
