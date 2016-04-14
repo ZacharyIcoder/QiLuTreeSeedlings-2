@@ -14,7 +14,6 @@
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
-#import "buyFabuTijiaoViewController.h"
 @interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;

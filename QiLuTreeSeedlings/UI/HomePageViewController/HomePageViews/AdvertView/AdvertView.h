@@ -17,7 +17,7 @@
 @end
 
 
-@interface AdvertView : UIView
+@interface AdvertView : UITableViewCell
 
 @property (nonatomic) id<AdvertDelegate> delegate;
 

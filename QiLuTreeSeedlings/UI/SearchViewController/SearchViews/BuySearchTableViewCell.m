@@ -55,7 +55,7 @@
         [self.priceLab setText:@"O元"];
         [self.priceLab setTextColor:yellowButtonColor];
         [self.contentView addSubview:self.priceLab];
-        UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, 69.5, kWidth-26, 0.5)];
+        UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, frame.size.height-0.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self.contentView addSubview:imageVLine];
 

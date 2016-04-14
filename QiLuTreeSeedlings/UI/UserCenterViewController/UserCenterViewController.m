@@ -314,9 +314,10 @@
    [HTTPCLIENT logoutInfoByToken:APPDELEGATE.userModel.access_token byAccessId:APPDELEGATE.userModel.access_id Success:^(id responseObject) {
        
        if ([[responseObject objectForKey:@"success"] integerValue]) {
-           self.tabBarController.selectedIndex=0;
+          
            self.logoutView.hidden=NO;
            [APPDELEGATE logoutAction];
+            self.tabBarController.selectedIndex=0;
        }
    } failure:^(NSError *error) {
        

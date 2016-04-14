@@ -7,7 +7,7 @@
 //
 
 #import "ZIKStationAgentTableViewCell.h"
-
+#import "UIDefines.h"
 @implementation ZIKStationAgentTableViewCell
 
 - (void)awakeFromNib {
@@ -26,6 +26,12 @@
     ZIKStationAgentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ZIKStationAgentTableViewCellID];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKStationAgentTableViewCell" owner:self options:nil] lastObject];
+        cell.workstationNameLabel.textColor=titleLabColor;
+        cell.chargelPersonLabel.textColor=titleLabColor;
+        cell.phoneLabel.textColor=titleLabColor;
+      
+        cell.areaLabel.textColor=titleLabColor;
+
     }
     return cell;
 }

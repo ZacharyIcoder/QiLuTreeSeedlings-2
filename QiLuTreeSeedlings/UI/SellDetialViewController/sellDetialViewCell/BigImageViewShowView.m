@@ -32,9 +32,9 @@
             __weak typeof(imageV) weakimageV = imageV;
             [imageV setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"MoRentu"] success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
                 [weakimageV setImage:image];
-                //NSLog(@"%lf",);
+               // NSLog(@"%lf--%lf",image.size.width,image.size.height);
                float scanl = (float)kWidth/image.size.width;
-                CGFloat imagheight=image.size.width*scanl;
+                CGFloat imagheight=(CGFloat)image.size.height*scanl;
                 CGRect tempFrame=weakimageV.frame;
                 tempFrame.size.height=imagheight;
                 weakimageV.frame=tempFrame;

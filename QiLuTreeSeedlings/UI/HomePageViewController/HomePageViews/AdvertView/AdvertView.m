@@ -45,7 +45,7 @@
     if (self) {
         //[self setBackgroundColor:[UIColor greenColor]];
         
-        CGRect scrollFrame = CGRectMake(frame.origin.x  , frame.origin.y, frame.size.width, frame.size.height);
+        CGRect scrollFrame = CGRectMake(0  , 0, frame.size.width, frame.size.height);
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
         scrollView.delegate = self;
         [scrollView setBackgroundColor:[UIColor whiteColor]];
@@ -53,7 +53,7 @@
         [scrollView setShowsHorizontalScrollIndicator:NO];
         [scrollView setShowsVerticalScrollIndicator:NO];
         [scrollView setBounces:NO];
-        [self addSubview:scrollView];
+        [self.contentView addSubview:scrollView];
         self.scrollView = scrollView;
         
         CGRect pageFrame = CGRectMake(0, scrollFrame.size.height-20, scrollFrame.size.width, 20);

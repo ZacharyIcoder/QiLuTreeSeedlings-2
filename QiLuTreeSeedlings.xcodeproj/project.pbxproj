@@ -28,7 +28,6 @@
 		EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2BD71C59F88D0018A7BD /* tabbarBackImag.png */; };
 		EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BDA1C5A06870018A7BD /* UINavController.m */; };
 		EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BDC1C5A06870018A7BD /* UIViewController+Ext.m */; };
-		EA0B2BE11C5A06D80018A7BD /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BE01C5A06D80018A7BD /* HomePageViewController.m */; };
 		EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BE31C5A07050018A7BD /* UserCenterViewController.m */; };
 		EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1120C41CA6220600857E48 /* myNuserNull@2x.png */; };
 		EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1120C61CA6228A00857E48 /* myNuserAdd@2x.png */; };
@@ -129,7 +128,6 @@
 		EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA75147F1C9B8E52003D63F1 /* supplyImageV@2x.png */; };
 		EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7514811C9B9181003D63F1 /* buyImageV@2x.png */; };
 		EA7514861C9BA41F003D63F1 /* buyFabuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7514851C9BA41F003D63F1 /* buyFabuViewController.m */; };
-		EA75148D1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA75148C1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m */; };
 		EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8DE1C96538700B43073 /* SellDetialViewController.m */; };
 		EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8E21C9655E500B43073 /* SellBanderTableViewCell.m */; };
 		EA7AE8E61C9663A500B43073 /* SupplyDetialMode.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8E51C9663A500B43073 /* SupplyDetialMode.m */; };
@@ -155,6 +153,7 @@
 		EAAFCFB61CBE265100EB894F /* 2miaomu1334.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAFCFB41CBE265100EB894F /* 2miaomu1334.png */; };
 		EAAFCFB91CBE267700EB894F /* 1miaomu1472.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAFCFB71CBE267700EB894F /* 1miaomu1472.png */; };
 		EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAFCFB81CBE267700EB894F /* 2miaomu1472.png */; };
+		EAAFCFBD1CBE3C0D00EB894F /* HomePageTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAFCFBC1CBE3C0D00EB894F /* HomePageTViewController.m */; };
 		EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB781961C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m */; };
 		EAB7819A1C8E970F00807B44 /* collectionN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB781981C8E970F00807B44 /* collectionN@2x.png */; };
 		EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB781991C8E970F00807B44 /* collectionT@2x.png */; };
@@ -458,8 +457,6 @@
 		EA0B2BDA1C5A06870018A7BD /* UINavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavController.m; sourceTree = "<group>"; };
 		EA0B2BDB1C5A06870018A7BD /* UIViewController+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Ext.h"; sourceTree = "<group>"; };
 		EA0B2BDC1C5A06870018A7BD /* UIViewController+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Ext.m"; sourceTree = "<group>"; };
-		EA0B2BDF1C5A06D80018A7BD /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
-		EA0B2BE01C5A06D80018A7BD /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		EA0B2BE21C5A07050018A7BD /* UserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterViewController.h; sourceTree = "<group>"; };
 		EA0B2BE31C5A07050018A7BD /* UserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
 		EA0B2BE51C5A08520018A7BD /* UIDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDefines.h; sourceTree = "<group>"; };
@@ -608,8 +605,6 @@
 		EA7514811C9B9181003D63F1 /* buyImageV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyImageV@2x.png"; sourceTree = "<group>"; };
 		EA7514841C9BA41F003D63F1 /* buyFabuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buyFabuViewController.h; sourceTree = "<group>"; };
 		EA7514851C9BA41F003D63F1 /* buyFabuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buyFabuViewController.m; sourceTree = "<group>"; };
-		EA75148B1C9BEF09003D63F1 /* buyFabuTijiaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buyFabuTijiaoViewController.h; sourceTree = "<group>"; };
-		EA75148C1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buyFabuTijiaoViewController.m; sourceTree = "<group>"; };
 		EA7AE8DD1C96538700B43073 /* SellDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellDetialViewController.h; sourceTree = "<group>"; };
 		EA7AE8DE1C96538700B43073 /* SellDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellDetialViewController.m; sourceTree = "<group>"; };
 		EA7AE8E11C9655E500B43073 /* SellBanderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellBanderTableViewCell.h; sourceTree = "<group>"; };
@@ -649,6 +644,8 @@
 		EAAFCFB41CBE265100EB894F /* 2miaomu1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2miaomu1334.png; sourceTree = "<group>"; };
 		EAAFCFB71CBE267700EB894F /* 1miaomu1472.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1miaomu1472.png; sourceTree = "<group>"; };
 		EAAFCFB81CBE267700EB894F /* 2miaomu1472.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2miaomu1472.png; sourceTree = "<group>"; };
+		EAAFCFBB1CBE3C0D00EB894F /* HomePageTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTViewController.h; sourceTree = "<group>"; };
+		EAAFCFBC1CBE3C0D00EB894F /* HomePageTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTViewController.m; sourceTree = "<group>"; };
 		EAB781951C8E8C8C00807B44 /* BuyUserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyUserInfoTableViewCell.h; sourceTree = "<group>"; };
 		EAB781961C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyUserInfoTableViewCell.m; sourceTree = "<group>"; };
 		EAB781981C8E970F00807B44 /* collectionN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collectionN@2x.png"; sourceTree = "<group>"; };
@@ -1404,8 +1401,8 @@
 			isa = PBXGroup;
 			children = (
 				EAEA07E11C5AF257003A0D8A /* HomePageViews */,
-				EA0B2BDF1C5A06D80018A7BD /* HomePageViewController.h */,
-				EA0B2BE01C5A06D80018A7BD /* HomePageViewController.m */,
+				EAAFCFBB1CBE3C0D00EB894F /* HomePageTViewController.h */,
+				EAAFCFBC1CBE3C0D00EB894F /* HomePageTViewController.m */,
 			);
 			path = HomePageViewController;
 			sourceTree = "<group>";
@@ -1821,8 +1818,6 @@
 		EA7514871C9BA68C003D63F1 /* buyFabuCell */ = {
 			isa = PBXGroup;
 			children = (
-				EA75148B1C9BEF09003D63F1 /* buyFabuTijiaoViewController.h */,
-				EA75148C1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m */,
 				EA52ACDA1CB4958900CE2210 /* FabutiaojiaCell.h */,
 				EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */,
 			);
@@ -3174,7 +3169,6 @@
 				FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */,
 				FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */,
 				FC21BC801CA51C930041E2C3 /* IQUIViewController+Additions.m in Sources */,
-				EA0B2BE11C5A06D80018A7BD /* HomePageViewController.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
@@ -3287,7 +3281,6 @@
 				FCF353D41CA3B515001ABA0A /* ZIKPickImageView.m in Sources */,
 				FC5808821CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m in Sources */,
 				FCF353E21CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */,
-				EA75148D1C9BEF09003D63F1 /* buyFabuTijiaoViewController.m in Sources */,
 				FC21BC851CA51C930041E2C3 /* IQBarButtonItem.m in Sources */,
 				FC6FED7F1CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.m in Sources */,
 				EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */,
@@ -3348,6 +3341,7 @@
 				EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */,
 				FC50B3481CAE4C4A0022A24C /* MD5DataSigner.m in Sources */,
 				FC50B3461CAE4C4A0022A24C /* DataSigner.m in Sources */,
+				EAAFCFBD1CBE3C0D00EB894F /* HomePageTViewController.m in Sources */,
 				FC5337C11CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m in Sources */,
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,

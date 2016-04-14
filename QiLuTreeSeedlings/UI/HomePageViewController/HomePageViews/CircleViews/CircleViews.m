@@ -7,6 +7,7 @@
 //
 
 #import "CircleViews.h"
+#import "UIDefines.h"
 @interface CircleViews ()
 @property (nonatomic,strong) NSArray *dataAry;
 @end
@@ -33,9 +34,9 @@
 
 -(UIView *)makeCircleViewWtihName:(NSString *)nameStr WithImagName:(NSString *)imagName WithNum:(int)i
 {
-    int CWith=self.frame.size.width/4;
-    UIView *circleView=[[UIView alloc]initWithFrame:CGRectMake(i*CWith, 0, CWith, self.frame.size.height)];
-    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(circleView.frame.size.width/2-43/2, self.frame.size.height/2-31, 43, 43)];
+    int CWith=kWidth/4;
+    UIView *circleView=[[UIView alloc]initWithFrame:CGRectMake(i*CWith, 0, CWith, 100)];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(circleView.frame.size.width/2-43/2,100/2-31, 43, 43)];
     [imageV setImage:[UIImage imageNamed:imagName]];
     imageV.layer.masksToBounds=YES;
     imageV.layer.cornerRadius=43/2;
@@ -55,7 +56,6 @@
 
 -(void)circleBtnAction:(UIButton *)sender
 {
-    NSLog(@"%ld",(long)sender.tag);
     if (self.delegate) {
         [self.delegate circleViewsPush:sender.tag];
     }

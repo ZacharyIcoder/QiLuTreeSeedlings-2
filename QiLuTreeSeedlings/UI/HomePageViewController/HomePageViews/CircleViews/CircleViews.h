@@ -12,6 +12,6 @@
 - (void)circleViewsPush:(NSInteger)index;
 
 @end
-@interface CircleViews : UIView
+@interface CircleViews : UITableViewCell
 @property (nonatomic,weak) id<CircleViewsDelegate> delegate;
 @end

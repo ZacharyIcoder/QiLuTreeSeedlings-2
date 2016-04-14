@@ -8,7 +8,7 @@
 
 #import "BaseTabBarController.h"
 #import "UINavController.h"
-#import "HomePageViewController.h"
+#import "HomePageTViewController.h"
 #import "UserCenterViewController.h"
 #import "UIDefines.h"
 #import "LoginViewController.h"
@@ -115,7 +115,7 @@
     [fabuBtn addTarget:self action:@selector(FaBuButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.BTabBar addSubview:fabuBtn];
     
-    HomePageViewController *homePageVC=[[HomePageViewController alloc]init];
+    HomePageTViewController *homePageVC=[[HomePageTViewController alloc]init];
     UINavController *homePageNav=[[UINavController alloc]initWithRootViewController:homePageVC];
     
     UserCenterViewController *userCenterVC=[[UserCenterViewController alloc]init];
