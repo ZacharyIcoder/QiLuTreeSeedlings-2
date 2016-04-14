@@ -503,18 +503,20 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         HttpClient *httpClient  = [HttpClient sharedClient];
         [httpClient upDataImageIOS:image Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);
-            RemoveActionV();
+
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 //NSLog(@"%@",responseObject[@"success"]);
                 //NSLog(@"%@",responseObject[@"msg"]);
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                     [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
                     [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:self.view];
+                    RemoveActionV();
                 }
                 else {
                     //NSLog(@"图片上传失败");
                     [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:self.view];
                     [UIColor darkGrayColor];
+                    RemoveActionV();
                 }
 
                 //self.pickerImgView.photos

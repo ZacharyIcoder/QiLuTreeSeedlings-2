@@ -2995,11 +2995,8 @@
 				EA5AAC3E1C8D294700660FC9 /* NomerBuyMessageBtn@2x.png in Resources */,
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
 				FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */,
-
 				EAAFCFB61CBE265100EB894F /* 2miaomu1334.png in Resources */,
-
 				FC5337C41CBE1710008BFB11 /* 站长通-电话图标.png in Resources */,
-
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
 				EAF050E41C924FB300F435A9 /* userBigInfoBack@2x.png in Resources */,
 				EAF0510B1C92A87B00F435A9 /* loginoutimage@2x.png in Resources */,
@@ -3514,8 +3511,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3548,7 +3545,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomukong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3560,8 +3557,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (VK6D835JV5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (VK6D835JV5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3594,7 +3591,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomukong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

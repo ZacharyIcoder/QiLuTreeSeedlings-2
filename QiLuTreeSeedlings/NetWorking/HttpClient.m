@@ -1302,15 +1302,21 @@
         imageData = UIImagePNGRepresentation(image);
     }else {
         //返回为JPEG图像。
-        imageData = UIImageJPEGRepresentation(image, 0.0001);
+        imageData = UIImageJPEGRepresentation(image, 0.5);
     }
     //NSData *iconData =  UIImagePNGRepresentation(image);//UIImageJPEGRepresentation(image, 0.1);
     //[GTMBase64 stringByEncodingData:iconData];
-    if (imageData.length>=1024*1024) {
-        CGSize newSize = {600,600};
-        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+    NSLog(@"%d",imageData.length);
+    while  (imageData.length>=1024*1024) {
+//        CGSize newSize = {1024,768};
+//        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+     float scale = (float)    (1024 *1024) / imageData.length;
+        imageData = [self imageCompressWithSimple:image scale:scale];
+        NSLog(@"%ld",imageData.length);
+
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+    NSLog(@"%ld",myStringImageFile.length);
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 myStringImageFile,@"file",
                                 @"gongyingtupian.png",@"fileName",
@@ -1376,6 +1382,21 @@
     UIGraphicsEndImageContext();
     // Return the new image.
     
+    return UIImagePNGRepresentation(newImage);
+}
+//等比缩放
+//通过缩放系数
+- (NSData *)imageCompressWithSimple:(UIImage*)image scale:(float)scale
+{
+    CGSize size = image.size;
+    CGFloat width = size.width;
+    CGFloat height = size.height;
+    CGFloat scaledWidth = width * scale;
+    CGFloat scaledHeight = height * scale;
+    UIGraphicsBeginImageContext(size); // this will crop
+    [image drawInRect:CGRectMake(0,0,scaledWidth,scaledHeight)];
+    UIImage* newImage= UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     return UIImagePNGRepresentation(newImage);
 }
 
