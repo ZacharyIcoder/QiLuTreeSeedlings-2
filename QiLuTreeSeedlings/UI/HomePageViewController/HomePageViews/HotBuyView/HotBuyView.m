@@ -32,7 +32,7 @@
 {
     if (self.delegate) {
             HotBuyModel *model=self.dataAry[sender.tag];
-        NSLog(@"%@",model.uid);
+        //NSLog(@"%@",model.uid);
             [self.delegate HotBuyViewsPush:model];
 
     }

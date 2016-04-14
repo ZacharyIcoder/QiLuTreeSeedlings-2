@@ -734,7 +734,6 @@
     if (!str) {
         str=@"用户未授权";
     }
-    NSLog(@"%@",str);
     NSString *postURL = @"api/account/info";
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                               token,@"access_token",

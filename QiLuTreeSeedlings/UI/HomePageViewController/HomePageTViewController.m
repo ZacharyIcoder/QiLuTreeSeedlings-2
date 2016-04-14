@@ -54,6 +54,7 @@
     tableView.dataSource=self;
     [self.view addSubview:tableView];
     self.tableView=tableView;
+    tableView = nil;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak __typeof(self) blockSelf = self;
     [tableView addHeaderWithCallback:^{
@@ -326,7 +327,7 @@
 //广告页面点击
 -(void)advertPush:(NSInteger)index
 {
-    NSLog(@"点击了广告页%ld",index);
+    //NSLog(@"点击了广告页%ld",index);
 }
 //圆形按钮
 -(void)circleViewsPush:(NSInteger)index

@@ -370,7 +370,6 @@
 		FCF353CF1CA3B515001ABA0A /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353881CA3B514001ABA0A /* UIScrollView+MJRefresh.m */; };
 		FCF353D01CA3B515001ABA0A /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3538A1CA3B515001ABA0A /* UIView+MJExtension.m */; };
 		FCF353D11CA3B515001ABA0A /* ZIKSupplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3538D1CA3B515001ABA0A /* ZIKSupplyModel.m */; };
-		FCF353D21CA3B515001ABA0A /* ZHHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353911CA3B515001ABA0A /* ZHHttpTool.m */; };
 		FCF353D31CA3B515001ABA0A /* ZIKPickerBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353941CA3B515001ABA0A /* ZIKPickerBtn.m */; };
 		FCF353D41CA3B515001ABA0A /* ZIKPickImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353961CA3B515001ABA0A /* ZIKPickImageView.m */; };
 		FCF353D51CA3B515001ABA0A /* shanchutupian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF353971CA3B515001ABA0A /* shanchutupian@2x.png */; };
@@ -1094,8 +1093,6 @@
 		FCF3538A1CA3B515001ABA0A /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		FCF3538C1CA3B515001ABA0A /* ZIKSupplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyModel.h; sourceTree = "<group>"; };
 		FCF3538D1CA3B515001ABA0A /* ZIKSupplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyModel.m; sourceTree = "<group>"; };
-		FCF353901CA3B515001ABA0A /* ZHHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHttpTool.h; sourceTree = "<group>"; };
-		FCF353911CA3B515001ABA0A /* ZHHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHttpTool.m; sourceTree = "<group>"; };
 		FCF353931CA3B515001ABA0A /* ZIKPickerBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickerBtn.h; sourceTree = "<group>"; };
 		FCF353941CA3B515001ABA0A /* ZIKPickerBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickerBtn.m; sourceTree = "<group>"; };
 		FCF353951CA3B515001ABA0A /* ZIKPickImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickImageView.h; sourceTree = "<group>"; };
@@ -2708,7 +2705,6 @@
 				FC49AE581CA91E7B00214D4B /* BWTextView.m */,
 				FC49AE4F1CA9190700214D4B /* 迭代器模式 */,
 				FC49AE391CA8DE4000214D4B /* json */,
-				FCF3538F1CA3B515001ABA0A /* NetTool */,
 				FCF353921CA3B515001ABA0A /* PickerView */,
 				FCF353971CA3B515001ABA0A /* shanchutupian@2x.png */,
 				FCF353981CA3B515001ABA0A /* shanchutupian@3x.png */,
@@ -2721,15 +2717,6 @@
 				FC49AE4C1CA90E5C00214D4B /* 苗圃基地已选择框.png */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		FCF3538F1CA3B515001ABA0A /* NetTool */ = {
-			isa = PBXGroup;
-			children = (
-				FCF353901CA3B515001ABA0A /* ZHHttpTool.h */,
-				FCF353911CA3B515001ABA0A /* ZHHttpTool.m */,
-			);
-			path = NetTool;
 			sourceTree = "<group>";
 		};
 		FCF353921CA3B515001ABA0A /* PickerView */ = {
@@ -3275,7 +3262,6 @@
 				EA29AA021C856159004913FF /* LoadMoreTableFooterView.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
-				FCF353D21CA3B515001ABA0A /* ZHHttpTool.m in Sources */,
 				EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
 				FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */,

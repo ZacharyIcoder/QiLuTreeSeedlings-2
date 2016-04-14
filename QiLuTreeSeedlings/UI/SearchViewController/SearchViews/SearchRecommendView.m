@@ -125,7 +125,7 @@
 }
 -(void)HistoryCellActionBtnAction:(UIButton *)sender
 {
-    NSLog(@"HistoryCellActionBtnAction :%ld",(long)sender.tag);
+    //NSLog(@"HistoryCellActionBtnAction :%ld",(long)sender.tag);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray *searchHistoryAry=[userDefaults objectForKey:@"searchHistoryAry"];
     int xx=sender.tag%10;
@@ -137,7 +137,7 @@
 }
 -(void)HistoryCellDeleteBtnAction:(UIButton *)sender
 {
-     NSLog(@"HistoryCellDeleteBtnAction :%ld",(long)sender.tag);
+     //NSLog(@"HistoryCellDeleteBtnAction :%ld",(long)sender.tag);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
     if (searchHistoryAry.count==1) {
