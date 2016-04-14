@@ -23,12 +23,6 @@
 @implementation MyIntegralViewController
 @synthesize pamgeNum;
 
--(void)viewWillAppear:(BOOL)animated
-{
-
-    //[self getDataList];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

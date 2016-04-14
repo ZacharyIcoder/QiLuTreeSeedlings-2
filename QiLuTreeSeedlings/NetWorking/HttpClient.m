@@ -648,7 +648,6 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *device_id = [userDefaults objectForKey:@"deviceToken"];
     if (!device_id) {
-        device_id=@"用户未授权";
         return;
     }
     NSString *postURL = @"api/client";

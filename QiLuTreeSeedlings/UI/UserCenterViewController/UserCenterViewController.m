@@ -42,6 +42,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.userBigInfoV.model=APPDELEGATE.userModel;
     [self.tableView reloadData];
     [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
@@ -317,7 +318,7 @@
           
            self.logoutView.hidden=NO;
            [APPDELEGATE logoutAction];
-            self.tabBarController.selectedIndex=0;
+            
        }
    } failure:^(NSError *error) {
        

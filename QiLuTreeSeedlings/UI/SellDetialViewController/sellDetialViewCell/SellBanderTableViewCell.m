@@ -30,6 +30,9 @@
             
             [BTN addTarget:self action:@selector(BtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [imageV setImageWithURL:[NSURL URLWithString:imagAry[i]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+            [imageV setContentMode:UIViewContentModeScaleAspectFill];
+            
+            imageV.clipsToBounds = YES;
              [scrollView addSubview:BTN];
             [scrollView addSubview:imageV];
         }
@@ -59,7 +62,7 @@
         [view addSubview:viewsImageV];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 215, kWidth-18*2, 20)];
         [titleLab setFont:[UIFont systemFontOfSize:15]];
-        //[titleLab setTextColor:[UIColor lightGrayColor]];
+        [titleLab setTextColor:titleLabColor];
         titleLab.text=hotModel.title;
         [self addSubview:titleLab];
         UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(titleLab.frame)+5, kWidth-40, 0.5)];

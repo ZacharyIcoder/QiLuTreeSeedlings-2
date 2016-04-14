@@ -157,7 +157,7 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 180.f/320.f*kWidth)];
+        AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 160.f/320.f*kWidth)];
         adView.delegate=self;
         [adView setAdInfo];
         return adView;
@@ -201,7 +201,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 180.f/320.f*kWidth;
+        return 160.f/320.f*kWidth;
     }
     if (indexPath.section==1) {
         return 100;
@@ -448,6 +448,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     if (APPDELEGATE.isNeedLogin) {
         self.loginBtn.hidden=YES;
     }else

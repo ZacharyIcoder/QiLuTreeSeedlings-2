@@ -93,6 +93,9 @@
    
     CGRect tempFrame=self.addressView.frame;
     tempFrame.size.height=nuseryAry.count*30;
+    if (tempFrame.size.height<30) {
+        tempFrame.size.height=30;
+    }
     self.addressView.frame=tempFrame;
     tempFrame.size.height=30;
     tempFrame.origin.y=CGRectGetMaxY(self.addressView.frame);

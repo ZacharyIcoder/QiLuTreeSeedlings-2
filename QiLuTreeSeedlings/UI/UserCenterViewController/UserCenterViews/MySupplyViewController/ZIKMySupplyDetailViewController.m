@@ -99,7 +99,11 @@
         return self.model.spec.count*30+10;
     }
     if (indexPath.section==2) {
+        if (self.nurseryDateArray.count==0) {
+            return 130;
+        }else{
         return self.nurseryDateArray.count*30+100;
+        }
     }
     if (indexPath.section==3) {
         NSString *labelText=self.model.descriptions;
