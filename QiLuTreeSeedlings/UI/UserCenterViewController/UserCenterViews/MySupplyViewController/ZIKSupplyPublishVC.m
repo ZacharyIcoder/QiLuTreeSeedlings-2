@@ -481,24 +481,52 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 //打开本地相册
 -(void)LocalPhoto
 {
-//    WHC_PictureListVC  * vc = [WHC_PictureListVC new];
-//    vc.delegate = self;
-//    vc.maxChoiceImageNumberumber = 9;
-//    [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
+    WHC_PictureListVC  * vc = [WHC_PictureListVC new];
+    vc.delegate = self;
+    vc.maxChoiceImageNumberumber = 3-self.pickerImgView.urlMArr.count;
+    [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
 
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.navigationBar.barTintColor = NavColor;
-
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.delegate = self;
-    //设置选择后的图片可被编辑
-    //    picker.allowsEditing = YES;
-    [self presentViewController:picker animated:YES completion:nil];
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.navigationBar.barTintColor = NavColor;
+//
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    picker.delegate = self;
+//    //设置选择后的图片可被编辑
+//    //    picker.allowsEditing = YES;
+//    [self presentViewController:picker animated:YES completion:nil];
 }
 
 #pragma mark - WHC_ChoicePictureVCDelegate
 - (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
-    [self.pickerImgView addImage:nil withUrl:nil];
+    for (UIImage *image in photoArr) {
+        ShowActionV();
+        HttpClient *httpClient  = [HttpClient sharedClient];
+        [httpClient upDataImageIOS:image Success:^(id responseObject) {
+            // NSLog(@"%@",responseObject);
+            RemoveActionV();
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                //NSLog(@"%@",responseObject[@"success"]);
+                //NSLog(@"%@",responseObject[@"msg"]);
+                if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+                    [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
+                    [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:self.view];
+                }
+                else {
+                    //NSLog(@"图片上传失败");
+                    [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:self.view];
+                    [UIColor darkGrayColor];
+                }
+
+                //self.pickerImgView.photos
+            }
+        } failure:^(NSError *error) {
+            //NSLog(@"%@",error);
+            //NSLog(@"上传图片失败");
+            RemoveActionV();
+            [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:self.view];
+        }];
+    }
+    //[self.pickerImgView addImage:nil withUrl:nil];
 //    for (UIView * subView in _imageSV.subviews) {
 //        if([subView isKindOfClass:[UIImageView class]]){
 //            [subView removeFromSuperview];
@@ -524,14 +552,17 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     {
         //先把图片转成NSData
         UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        ShowActionV();
         HttpClient *httpClient  = [HttpClient sharedClient];
         [httpClient upDataImageIOS:image Success:^(id responseObject) {
            // NSLog(@"%@",responseObject);
+            RemoveActionV();
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 //NSLog(@"%@",responseObject[@"success"]);
                 //NSLog(@"%@",responseObject[@"msg"]);
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                     [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
+                    [ToastView showToast:@"图片上传成功" withOriginY:200 withSuperView:self.view];
                 }
                 else {
                     //NSLog(@"图片上传失败");

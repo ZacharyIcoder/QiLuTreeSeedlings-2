@@ -33,13 +33,17 @@
 }
 
 - (void)requestData {
+    ShowActionV();
     [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.myCustomizedInfoTableView addHeaderWithCallback:^{
+        weakSelf.page = 1;
+        ShowActionV();
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.myCustomizedInfoTableView addFooterWithCallback:^{
         weakSelf.page++;
+        ShowActionV();
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
 }
@@ -54,6 +58,7 @@
 
 - (void)requestSellList:(NSString *)page {
     //NSLog(@"page:%@",page);
+    RemoveActionV();
     //我的消费列表
     [self.myCustomizedInfoTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
@@ -112,7 +117,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKPayRecordTableViewCell *cell = [ZIKPayRecordTableViewCell cellWithTableView:tableView];
-    [cell configureCell:self.customizedInfoMArr[indexPath.row]];
+    if (self.customizedInfoMArr.count > 0) {
+        [cell configureCell:self.customizedInfoMArr[indexPath.row]];
+    }
     return cell;
 }
 

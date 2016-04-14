@@ -88,7 +88,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKIntegraTableViewCell *cell = [ZIKIntegraTableViewCell cellWithTableView:tableView];
-    [cell configureCell:self.dataArray[indexPath.row]];
+    if (self.dataArray.count > 0) {
+        [cell configureCell:self.dataArray[indexPath.row]];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -100,20 +102,25 @@
 }
 
 - (void)requestData {
+    ShowActionV();
     [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.integralTableView addHeaderWithCallback:^{
+        weakSelf.page = 1;
+        ShowActionV();
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.integralTableView addFooterWithCallback:^{
         weakSelf.page++;
+        ShowActionV();
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
 }
 
 - (void)requestSellList:(NSString *)page {
-    NSLog(@"page:%@",page);
+    //NSLog(@"page:%@",page);
     //我的消费列表
+    RemoveActionV();
     [self.integralTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMyIntegralListWithPageNumber:page Success:^(id responseObject) {

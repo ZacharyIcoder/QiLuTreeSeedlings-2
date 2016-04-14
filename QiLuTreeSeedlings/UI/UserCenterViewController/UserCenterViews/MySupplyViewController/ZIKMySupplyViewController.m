@@ -50,6 +50,7 @@
 
 - (void)requestData {
     [self requestSupplyRestrict];
+    ShowActionV();
     [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.mySupplyTableView addHeaderWithCallback:^{
@@ -317,6 +318,7 @@
 
 - (void)requestSellList:(NSString *)page {
     //我的供应列表
+    RemoveActionV();
     [self.mySupplyTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withPage:page withPageSize:@"15" success:^(id responseObject) {
