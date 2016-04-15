@@ -68,12 +68,14 @@
     CGRect tempFrame=CGRectMake(0,0, kWidth, 44);
     UIView *titleView=[[UIView alloc]initWithFrame:tempFrame];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, kWidth*0.25, 44)];
+    [titleLab setTextColor:titleLabColor];
     [titleLab setFont:[UIFont systemFontOfSize:15]];
     [titleView addSubview:titleLab];
     [titleView setBackgroundColor:[UIColor whiteColor]];
     titleLab.text=@"标题";
     UITextField *titleTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.27, 0, kWidth*0.6, 44)];
     titleTextField.placeholder=@"请输入标题";
+    [titleTextField setTextColor:detialLabColor];
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
     self.titleTextField=titleTextField;
     UIImageView *titleLineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-10, 0.5)];
@@ -90,7 +92,7 @@
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15/320.f*kWidth, 0, kWidth*0.25, 44)];
     nameLab.text=@"苗木名称";
     [nameLab setFont:[UIFont systemFontOfSize:15]];
-
+    [nameLab setTextColor:titleLabColor];
     [nameView addSubview:nameLab];
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.30, 0, kWidth*0.6, 44)];
     nameTextField.placeholder=@"请输入苗木名称";
@@ -101,6 +103,7 @@
     self.nameTextField=nameTextField;
     [nameView addSubview:nameTextField];
     UIButton *nameBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];
+    [nameBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
    [nameView addSubview:nameBtn];
     [nameBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
@@ -130,6 +133,7 @@
     [ecttiveView addSubview:lineImagV];
     [self.otherInfoView addSubview:ecttiveView];
     [ecttNameLab setText:@"有效期"];
+    [ecttNameLab setTextColor:titleLabColor];
     [ecttNameLab setFont:[UIFont systemFontOfSize:15]];
     UIButton *ecttiveBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 0, kWidth-200, 50)];
     [ecttiveView addSubview:ecttiveBtn];
@@ -146,6 +150,7 @@
     [areaView addSubview:lineImagV2];
     UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
     areaLab.text=@"用苗地";
+    [areaLab setTextColor:titleLabColor];
     [areaLab setFont:[UIFont systemFontOfSize:15]];
     [areaView addSubview:areaLab];
     UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 0, kWidth-150, 50)];
@@ -246,19 +251,22 @@
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, kWidth*0.3, 44)];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
     nameLab.text=name;
+    [nameLab setTextColor:titleLabColor];
     [view setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:nameLab];
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.6, 44)];
     textField.placeholder=alert;
     textField.delegate=self;
+    [textField setTextColor:detialLabColor];
     [textField setFont:[UIFont systemFontOfSize:15]];
     [view addSubview:textField];
     UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
     [unitLab setFont:[UIFont systemFontOfSize:15]];
     [unitLab setTextAlignment:NSTextAlignmentRight];
     [unitLab setText:unit];
+    [unitLab setTextColor:detialLabColor];
     [view addSubview:unitLab];
-    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-10, 0.5)];
+    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];
     [lineView setBackgroundColor:kLineColor];
     [view addSubview:lineView];
     [self.otherInfoView addSubview:view];
@@ -516,7 +524,9 @@
             str=ectiveAry[ective-1];
         }
         [self.ectiveBtn setTitle:str forState:UIControlStateNormal];
-        [self.areaBtn setTitle:[self.baseMessageDic objectForKey:@"address"] forState:UIControlStateNormal];
+        NSString *addressStr=[self.baseMessageDic objectForKey:@"address"];
+      addressStr =  [addressStr stringByReplacingOccurrencesOfString:@"null" withString:@""];
+        [self.areaBtn setTitle:addressStr forState:UIControlStateNormal];
         self.birefField.text=[self.baseMessageDic objectForKey:@"remark"];
         self.AreaProvince=[self.baseMessageDic objectForKey:@"province"];
         self.AreaCity=[self.baseMessageDic objectForKey:@"city"];

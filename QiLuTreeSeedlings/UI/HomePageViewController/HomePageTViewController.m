@@ -54,7 +54,6 @@
     tableView.dataSource=self;
     [self.view addSubview:tableView];
     self.tableView=tableView;
-    tableView = nil;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak __typeof(self) blockSelf = self;
     [tableView addHeaderWithCallback:^{
