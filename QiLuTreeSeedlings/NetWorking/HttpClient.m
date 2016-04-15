@@ -198,6 +198,22 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+-(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+
+    return UIImagePNGRepresentation(newImage);
+}
+
 #pragma mark-上传图片
 -(void)upDataIamge:(UIImage *)image
                        Success:(void (^)(id responseObject))success
@@ -1290,35 +1306,12 @@
     
 }
 
--(void)upDataImageIOS:(UIImage *)image
+-(void)upDataImageIOS:(NSString *)imageString
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure {
     NSString *postURL = @"apiuploadios";
-    NSData* imageData;
-    
-    //判断图片是不是png格式的文件
-    if (UIImagePNGRepresentation(image)) {
-        //返回为png图像。
-        imageData = UIImagePNGRepresentation(image);
-    }else {
-        //返回为JPEG图像。
-        imageData = UIImageJPEGRepresentation(image, 0.5);
-    }
-    //NSData *iconData =  UIImagePNGRepresentation(image);//UIImageJPEGRepresentation(image, 0.1);
-    //[GTMBase64 stringByEncodingData:iconData];
-    NSLog(@"%d",imageData.length);
-    while  (imageData.length>=1024*1024) {
-//        CGSize newSize = {1024,768};
-//        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
-     float scale = (float)    (1024 *1024) / imageData.length;
-        imageData = [self imageCompressWithSimple:image scale:scale];
-        NSLog(@"%ld",imageData.length);
-
-    }
-    NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
-    NSLog(@"%ld",myStringImageFile.length);
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                myStringImageFile,@"file",
+                                imageString,@"file",
                                 @"gongyingtupian.png",@"fileName",
                                 nil];
     //NSLog(@"%@",parameters);
@@ -1332,6 +1325,7 @@
     }];
     
 }
+
 
 #pragma mark-上传图片
 -(void)upDataImage:(UIImage *)image
@@ -1361,43 +1355,6 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
     
-}
-
-#pragma mark 从文档目录下获取Documents路径
-- (NSString *)documentFolderPath
-{
-    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-}
-
--(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
-{
-    // Create a graphics image context
-    UIGraphicsBeginImageContext(newSize);
-    // new size
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    // Get the new image from the context
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // End the context
-    UIGraphicsEndImageContext();
-    // Return the new image.
-    
-    return UIImagePNGRepresentation(newImage);
-}
-//等比缩放
-//通过缩放系数
-- (NSData *)imageCompressWithSimple:(UIImage*)image scale:(float)scale
-{
-    CGSize size = image.size;
-    CGFloat width = size.width;
-    CGFloat height = size.height;
-    CGFloat scaledWidth = width * scale;
-    CGFloat scaledHeight = height * scale;
-    UIGraphicsBeginImageContext(size); // this will crop
-    [image drawInRect:CGRectMake(0,0,scaledWidth,scaledHeight)];
-    UIImage* newImage= UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return UIImagePNGRepresentation(newImage);
 }
 
 - (void)getTypeInfoSuccess:(void (^)(id responseObject))success

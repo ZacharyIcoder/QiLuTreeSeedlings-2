@@ -309,7 +309,7 @@
            failure:(void (^)(NSError *error))failure;
 
 #pragma mark ---------- 上传图片 -----------
--(void)upDataImageIOS:(UIImage *)image
+-(void)upDataImageIOS:(NSString *)imageString
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 获取产品分类列表 -----------

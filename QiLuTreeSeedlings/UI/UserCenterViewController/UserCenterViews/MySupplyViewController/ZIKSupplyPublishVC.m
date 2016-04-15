@@ -65,6 +65,31 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self initUI];
 }
 
+//-(void)dealloc {
+//    NSLog(@"dealloc");
+//}
+//-(void)viewDidDisappear:(BOOL)animated {
+//    [super viewDidDisappear:YES];
+//
+//    [self.pickerImgView removeFromSuperview];
+//     self.pickerImgView = nil;
+//
+//}
+//-(void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:YES];
+//
+//    [self.pickerImgView removeFromSuperview];
+//    self.pickerImgView = nil;
+//
+//}
+//-(void)backBtnAction:(UIButton *)sender
+//{
+////       [self.pickerImgView removeFromSuperview];
+////        self.pickerImgView = nil;
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+
+
 - (void)initData {
 //    self.imageUrlMarr          = [NSMutableArray array];
     self.productTypeDataMArray = [NSMutableArray array];
@@ -107,8 +132,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     pickView.backgroundColor = [UIColor whiteColor];
     [self.backScrollView addSubview:pickView];
     self.pickerImgView = pickView;
+    __weak typeof(self) weakSelf = self;
     self.pickerImgView.takePhotoBlock = ^{
-        [self openMenu];
+        [weakSelf openMenu];
     };
 
     UIView *nameView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame)+15, kWidth, 44)];
@@ -498,19 +524,51 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 #pragma mark - WHC_ChoicePictureVCDelegate
 - (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
-    for (UIImage *image in photoArr) {
+//    [photoArr enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
+//
+//    }];
+    for ( UIImage *image in photoArr) {
         ShowActionV();
         HttpClient *httpClient  = [HttpClient sharedClient];
-        [httpClient upDataImageIOS:image Success:^(id responseObject) {
+        NSData* imageData = nil;
+
+//            //判断图片是不是png格式的文件
+//            if (UIImagePNGRepresentation(image)) {
+//                //返回为png图像。
+//                imageData = UIImagePNGRepresentation(image);
+//            }else {
+//                //返回为JPEG图像。
+//                imageData = UIImageJPEGRepresentation(image, 0.5);
+//            }
+        //    //NSData *iconData =  UIImagePNGRepresentation(image);//UIImageJPEGRepresentation(image, 0.1);
+        ////    //[GTMBase64 stringByEncodingData:iconData];
+        ////    NSLog(@"%d",imageData.length);
+//            while  (imageData.length>=1024*1024) {
+//                CGSize newSize = {kWidth/1024,kHeight};
+//                imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+//            }
+        //float scale = (float)    kWidth / image.size.width;
+        //imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+        //imageData = [self imageCompressWithSimple:image scale:scale];
+        //NSLog(@"%ld",imageData.length);
+        //    }
+        imageData  = [self  imageData:image];
+        //NSLog(@"%ld",imageData.length);
+        //imageData = [self imageWithImageSimple:image scaledToSize:<#(CGSize)#>]
+
+        NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+        //NSLog(@"%ld",myStringImageFile.length);
+        [httpClient upDataImageIOS:myStringImageFile Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);
 
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 //NSLog(@"%@",responseObject[@"success"]);
                 //NSLog(@"%@",responseObject[@"msg"]);
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-                    [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
+                    [self.pickerImgView addImage:[UIImage imageWithData:imageData] withUrl:responseObject[@"result"]];
                     [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:self.view];
                     RemoveActionV();
+                    
                 }
                 else {
                     //NSLog(@"图片上传失败");
@@ -522,27 +580,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 //self.pickerImgView.photos
             }
         } failure:^(NSError *error) {
-            //NSLog(@"%@",error);
-            //NSLog(@"上传图片失败");
+
             RemoveActionV();
             [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:self.view];
         }];
     }
-    //[self.pickerImgView addImage:nil withUrl:nil];
-//    for (UIView * subView in _imageSV.subviews) {
-//        if([subView isKindOfClass:[UIImageView class]]){
-//            [subView removeFromSuperview];
-//        }
-//    }
-//    [_imageArr removeAllObjects];
-//    _imageArr = photoArr.mutableCopy;
-//    for (NSInteger i = 0; i < photoArr.count; i++) {
-//        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i * CGRectGetWidth(_imageSV.frame), 0, CGRectGetWidth(_imageSV.frame), CGRectGetHeight(_imageSV.frame))];
-//        imageView.image = photoArr[i];
-//        [_imageSV addSubview:imageView];
-//    }
-//    _imageSV.contentSize = CGSizeMake(photoArr.count * CGRectGetWidth(_imageSV.frame), 0);
-}
+ }
 
 //当选择一张图片后进入这里
 -(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -553,15 +596,20 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     if ([type isEqualToString:@"public.image"])
     {
         //先把图片转成NSData
-        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+      __weak  UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         ShowActionV();
         HttpClient *httpClient  = [HttpClient sharedClient];
-        [httpClient upDataImageIOS:image Success:^(id responseObject) {
-           // NSLog(@"%@",responseObject);
-            RemoveActionV();
+        NSData* imageData = nil;
+        imageData  = [self imageData:image];
+        NSLog(@"%ld",imageData.length);
+
+        NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+        NSLog(@"%ld",myStringImageFile.length);
+
+        [httpClient upDataImageIOS:myStringImageFile Success:^(id responseObject) {
+             RemoveActionV();
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                //NSLog(@"%@",responseObject[@"success"]);
-                //NSLog(@"%@",responseObject[@"msg"]);
+
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                     [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
                     [ToastView showToast:@"图片上传成功" withOriginY:200 withSuperView:self.view];
@@ -572,11 +620,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                     [UIColor darkGrayColor];
                 }
 
-                //self.pickerImgView.photos
-            }
+             }
         } failure:^(NSError *error) {
-            //NSLog(@"%@",error);
-            //NSLog(@"上传图片失败");
+
             [ToastView showToast:@"上传图片失败" withOriginY:200 withSuperView:self.view];
         }];
         [picker dismissViewControllerAnimated:YES completion:nil];
@@ -681,5 +727,71 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 {
     //[self hidingKey];
 }
+
+
+-(NSData *)imageData:(UIImage *)myimage
+{
+    __weak typeof(myimage) weakImage = myimage;
+    NSData *data = UIImageJPEGRepresentation(weakImage, 1.0);
+    if (data.length>100*1024) {
+        if (data.length>1024*1024) {//1M以及以上
+            data = UIImageJPEGRepresentation(weakImage, 0.1);
+        }
+        else if (data.length>512*1024) {//0.5M-1M
+            data = UIImageJPEGRepresentation(weakImage, 0.9);
+        }
+        else if (data.length>200*1024) {//0.25M-0.5M
+            data=UIImageJPEGRepresentation(weakImage, 0.9);
+        }
+    }
+    return data;
+}
+//-(NSData *)imageData:(UIImage *)myimage
+//{
+//    NSData *data = UIImageJPEGRepresentation(myimage, 1.0);
+//    while (data.length>1024*1024) {
+//        data = UIImageJPEGRepresentation(myimage, 0.2);
+//    }
+//    return data;
+//}
+//
+//#pragma mark 从文档目录下获取Documents路径
+//- (NSString *)documentFolderPath
+//{
+//    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+//}
+
+-(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+
+    return UIImagePNGRepresentation(newImage);
+}
+
+//等比缩放
+//通过缩放系数
+- (NSData *)imageCompressWithSimple:(UIImage*)image scale:(float)scale
+{
+    CGSize size = image.size;
+    CGFloat width = size.width;
+    CGFloat height = size.height;
+    CGFloat scaledWidth = width * scale;
+    CGFloat scaledHeight = height * scale;
+    UIGraphicsBeginImageContext(size); // this will crop
+    [image drawInRect:CGRectMake(0,0,scaledWidth,scaledHeight)];
+    UIImage* newImage= UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return UIImagePNGRepresentation(newImage);
+}
+
 
 @end
