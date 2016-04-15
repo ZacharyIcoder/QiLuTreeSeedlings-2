@@ -221,7 +221,8 @@
                 self.dataAry = [dic objectForKey:@"list"];
                 self.price = [dic objectForKey:@"price"];
                 priceView.hidden = NO;
-                priceLabel.text = [NSString stringWithFormat:@"¥%@/条",self.price];
+                priceLabel.text = [NSString stringWithFormat:@"¥%.1f/条",self.price.floatValue];
+                priceLabel.textColor = yellowButtonColor;
                 self.productUid=[dic objectForKey:@"productUid"];
                 button.selected = YES;
                 [self creatScreeningCells];
@@ -303,7 +304,7 @@
 //}
 #pragma mark - 实现选择苗木协议
 - (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {
-    NSLog(@"%@",selectTitle);
+   // NSLog(@"%@",selectTitle);
     self.nameTextField.text = selectTitle;
     //self.supplyModel.name = selectTitle;
     //self.supplyModel.productUid = selectId;
@@ -324,8 +325,9 @@
         // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
         if (!position) {
             if (toBeString.length > kMaxLength) {
-                NSLog(@"最多%d个字符!!!",kMaxLength);
+                //NSLog(@"最多%d个字符!!!",kMaxLength);
                 //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] withOriginY:250 withSuperView:self.view];
                 textField.text = [toBeString substringToIndex:kMaxLength];
                 return;
             }
@@ -339,7 +341,8 @@
     else{
         if (toBeString.length > kMaxLength) {
             //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
-            NSLog(@"最多%d个字符!!!",kMaxLength);
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] withOriginY:250 withSuperView:self.view];
             textField.text = [toBeString substringToIndex:kMaxLength];
             return;
         }

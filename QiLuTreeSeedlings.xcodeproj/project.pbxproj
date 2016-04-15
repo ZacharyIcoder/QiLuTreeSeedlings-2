@@ -21,8 +21,6 @@
 		EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2B9F1C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld */; };
 		EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2BA21C59F5220018A7BD /* Assets.xcassets */; };
 		EA0B2BA61C59F5220018A7BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2BA41C59F5220018A7BD /* LaunchScreen.storyboard */; };
-		EA0B2BB11C59F5220018A7BD /* QiLuTreeSeedlingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BB01C59F5220018A7BD /* QiLuTreeSeedlingsTests.m */; };
-		EA0B2BBC1C59F5230018A7BD /* QiLuTreeSeedlingsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BBB1C59F5230018A7BD /* QiLuTreeSeedlingsUITests.m */; };
 		EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BCB1C59F6930018A7BD /* AppDelegate.m */; };
 		EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BD51C59F6ED0018A7BD /* BaseTabBarController.m */; };
 		EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2BD71C59F88D0018A7BD /* tabbarBackImag.png */; };
@@ -395,7 +393,6 @@
 		FCF353E91CA3B515001ABA0A /* ZIKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353C21CA3B515001ABA0A /* ZIKBaseViewController.m */; };
 		FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353C41CA3B515001ABA0A /* ZIKRightBtnSringViewController.m */; };
 		FCF353EB1CA3B515001ABA0A /* ZIKMySupplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353C61CA3B515001ABA0A /* ZIKMySupplyViewController.m */; };
-		FCF353EC1CA3B515001ABA0A /* ZIKSupplyPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353C81CA3B515001ABA0A /* ZIKSupplyPublishViewController.m */; };
 		FCF353F01CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353EE1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m */; };
 		FCF353F11CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF353EF1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib */; };
 		FCF353F51CA3CEA7001ABA0A /* ZIKGreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353F41CA3CEA7001ABA0A /* ZIKGreenButton.m */; };
@@ -444,11 +441,7 @@
 		EA0B2BA51C59F5220018A7BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA0B2BA71C59F5220018A7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA0B2BAC1C59F5220018A7BD /* QiLuTreeSeedlingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiLuTreeSeedlingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA0B2BB01C59F5220018A7BD /* QiLuTreeSeedlingsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiLuTreeSeedlingsTests.m; sourceTree = "<group>"; };
-		EA0B2BB21C59F5220018A7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA0B2BB71C59F5220018A7BD /* QiLuTreeSeedlingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiLuTreeSeedlingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA0B2BBB1C59F5230018A7BD /* QiLuTreeSeedlingsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiLuTreeSeedlingsUITests.m; sourceTree = "<group>"; };
-		EA0B2BBD1C59F5230018A7BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA0B2BCA1C59F6930018A7BD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA0B2BCB1C59F6930018A7BD /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EA0B2BD41C59F6ED0018A7BD /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
@@ -1137,8 +1130,6 @@
 		FCF353C41CA3B515001ABA0A /* ZIKRightBtnSringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKRightBtnSringViewController.m; sourceTree = "<group>"; };
 		FCF353C51CA3B515001ABA0A /* ZIKMySupplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyViewController.h; sourceTree = "<group>"; };
 		FCF353C61CA3B515001ABA0A /* ZIKMySupplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyViewController.m; sourceTree = "<group>"; };
-		FCF353C71CA3B515001ABA0A /* ZIKSupplyPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishViewController.h; sourceTree = "<group>"; };
-		FCF353C81CA3B515001ABA0A /* ZIKSupplyPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishViewController.m; sourceTree = "<group>"; };
 		FCF353ED1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishNameTableViewCell.h; sourceTree = "<group>"; };
 		FCF353EE1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishNameTableViewCell.m; sourceTree = "<group>"; };
 		FCF353EF1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPublishNameTableViewCell.xib; sourceTree = "<group>"; };
@@ -1273,8 +1264,6 @@
 			children = (
 				EA741A131C8FEA5600F54478 /* Frameworks */,
 				EA0B2B921C59F5220018A7BD /* QiLuTreeSeedlings */,
-				EA0B2BAF1C59F5220018A7BD /* QiLuTreeSeedlingsTests */,
-				EA0B2BBA1C59F5230018A7BD /* QiLuTreeSeedlingsUITests */,
 				EA0B2B911C59F5220018A7BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1317,24 +1306,6 @@
 				EA0B2B941C59F5220018A7BD /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		EA0B2BAF1C59F5220018A7BD /* QiLuTreeSeedlingsTests */ = {
-			isa = PBXGroup;
-			children = (
-				EA0B2BB01C59F5220018A7BD /* QiLuTreeSeedlingsTests.m */,
-				EA0B2BB21C59F5220018A7BD /* Info.plist */,
-			);
-			path = QiLuTreeSeedlingsTests;
-			sourceTree = "<group>";
-		};
-		EA0B2BBA1C59F5230018A7BD /* QiLuTreeSeedlingsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EA0B2BBB1C59F5230018A7BD /* QiLuTreeSeedlingsUITests.m */,
-				EA0B2BBD1C59F5230018A7BD /* Info.plist */,
-			);
-			path = QiLuTreeSeedlingsUITests;
 			sourceTree = "<group>";
 		};
 		EA0B2BC91C59F6930018A7BD /* Appdelegate */ = {
@@ -2649,8 +2620,6 @@
 				FCF353C61CA3B515001ABA0A /* ZIKMySupplyViewController.m */,
 				FC6FED4C1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.h */,
 				FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */,
-				FCF353C71CA3B515001ABA0A /* ZIKSupplyPublishViewController.h */,
-				FCF353C81CA3B515001ABA0A /* ZIKSupplyPublishViewController.m */,
 				FC49AE301CA8BA5B00214D4B /* ZIKSupplyPublishVC.h */,
 				FC49AE311CA8BA5B00214D4B /* ZIKSupplyPublishVC.m */,
 				FC49AE3D1CA8EF0E00214D4B /* ZIKSupplyPublishNextVC.h */,
@@ -2920,7 +2889,11 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
+<<<<<<< HEAD
 						DevelopmentTeam = 784P3R2228;
+=======
+						DevelopmentTeam = L674B6W9DX;
+>>>>>>> origin/master
 					};
 					EA0B2BAB1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
@@ -3296,7 +3269,6 @@
 				EAEA07FC1C5B285C003A0D8A /* YouLickView.m in Sources */,
 				EA2727191C8A7D8E000B0719 /* FMDatabaseAdditions.m in Sources */,
 				FC21BC841CA51C930041E2C3 /* IQTextView.m in Sources */,
-				FCF353EC1CA3B515001ABA0A /* ZIKSupplyPublishViewController.m in Sources */,
 				FC6FED551CACEDA7000E2CA5 /* ZIKCustomizedInfoListViewController.m in Sources */,
 				EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */,
 				FCF353DC1CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.m in Sources */,
@@ -3353,7 +3325,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA0B2BB11C59F5220018A7BD /* QiLuTreeSeedlingsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3361,7 +3332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA0B2BBC1C59F5230018A7BD /* QiLuTreeSeedlingsUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3499,7 +3469,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+>>>>>>> origin/master
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -3533,7 +3507,11 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+>>>>>>> origin/master
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3545,7 +3523,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+>>>>>>> origin/master
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -3579,7 +3561,11 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomu;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+>>>>>>> origin/master
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

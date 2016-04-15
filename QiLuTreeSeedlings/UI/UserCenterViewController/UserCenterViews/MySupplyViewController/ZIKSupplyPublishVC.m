@@ -371,7 +371,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         if ([[responseObject objectForKey:@"success"] integerValue] == 1 ) {
             NSArray *typeListArray = [[responseObject objectForKey:@"result"] objectForKey:@"typeList"];
             if (typeListArray.count == 0) {
-                NSLog(@"暂时没有产品信息!!!");
+                //NSLog(@"暂时没有产品信息!!!");
                 [ToastView showToast:@"暂时没有产品信息" withOriginY:Width/3 withSuperView:self.view];
             }
             else if (typeListArray.count > 0) {
@@ -380,7 +380,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             }
         }
         else if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
-
+               [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/3 withSuperView:self.view];
         }
     } failure:^(NSError *error) {
         
