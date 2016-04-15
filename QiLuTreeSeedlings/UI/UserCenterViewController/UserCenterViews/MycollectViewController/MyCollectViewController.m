@@ -47,6 +47,10 @@
     [self getbuyDataAryWtihPage:[NSString stringWithFormat:@"%ld",(long)buyPageCount] andPageSiz:@"10"];
     [self getSellDataAryWithPage:[NSString stringWithFormat:@"%ld",(long)sellPageCount] andPageSize:@"10"];
 }
+-(void)dealloc
+{
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIView *navView=[self makeNavView];

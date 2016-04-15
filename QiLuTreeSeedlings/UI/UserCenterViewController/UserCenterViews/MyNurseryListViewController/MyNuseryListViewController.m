@@ -28,9 +28,14 @@
 @implementation MyNuseryListViewController
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.pageCount=1;
     [self.dataAry removeAllObjects];
     [self getDataList];
+}
+-(void)dealloc
+{
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

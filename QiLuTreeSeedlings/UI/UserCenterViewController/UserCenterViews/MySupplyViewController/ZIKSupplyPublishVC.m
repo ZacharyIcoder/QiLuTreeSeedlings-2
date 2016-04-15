@@ -8,7 +8,6 @@
 
 #import "ZIKSupplyPublishVC.h"
 #import "UIDefines.h"
-#import "ZHHttpTool.h"
 #import "HttpClient.h"
 #import "ZIKPickImageView.h"
 #import "ZIKSideView.h"
@@ -56,6 +55,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         self.model = model;
     }
     return self;
+}
+-(void)dealloc
+{
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

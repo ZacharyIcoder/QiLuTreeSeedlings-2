@@ -16,10 +16,10 @@
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *companyNameField;
 @property (nonatomic,strong) UITextField *companyAddressField;
-@property (nonatomic,strong) NSString *AreaProvince;
-@property (nonatomic,strong) NSString *AreaCity;
-@property (nonatomic,strong) NSString *AreaTown;
-@property (nonatomic,strong) NSString *AreaCounty;
+@property (nonatomic,copy) NSString *AreaProvince;
+@property (nonatomic,copy) NSString *AreaCity;
+@property (nonatomic,copy) NSString *AreaTown;
+@property (nonatomic,copy) NSString *AreaCounty;
 @property (nonatomic,strong) UITextField *legalPersonField;
 @property (nonatomic,strong) UITextField *phoneField;
 @property (nonatomic,strong) UITextField *zipcodeField;
@@ -195,13 +195,14 @@
         [ToastView showTopToast:@"请填写公司简介"];
         return;
     }
+    __weak __typeof(self) blockSelf = self;
     [HTTPCLIENT saveCompanyInfoWithUid:APPDELEGATE.companyModel.uid     WithCompanyName:companyNameField.text WithCompanyAddress:companyAddressField.text WithcompanyAreaProvince:AreaProvince WithcompanyAreaCity:AreaCity WithcompanyAreaCounty:AreaCounty WithcompanyAreaTown:AreaTown WithlegalPerson:legalPersonField.text Withphone:phoneField.text Withzipcode:zipcodeField.text Withbrief:briefField.text Success:^(id responseObject) {
       //  NSLog(@"%@",responseObject);
         if([[responseObject objectForKey:@"success"] integerValue])
         {
-            self.editingBtn.hidden=NO;
-            self.editingBtn.selected=NO;
-            [self endEditing];
+            blockSelf.editingBtn.hidden=NO;
+            blockSelf.editingBtn.selected=NO;
+            [blockSelf endEditing];
             [APPDELEGATE reloadCompanyInfo];
         }
         else

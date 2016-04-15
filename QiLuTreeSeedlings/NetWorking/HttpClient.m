@@ -664,7 +664,6 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *device_id = [userDefaults objectForKey:@"deviceToken"];
     if (!device_id) {
-        device_id=@"用户未授权";
         return;
     }
     NSString *postURL = @"api/client";
@@ -751,7 +750,6 @@
     if (!str) {
         str=@"用户未授权";
     }
-    NSLog(@"%@",str);
     NSString *postURL = @"api/account/info";
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                               token,@"access_token",

@@ -7,7 +7,6 @@
 //
 
 #import "AdvertView.h"
-
 @interface AdvertView () <UIScrollViewDelegate>
 
 @property (nonatomic,  strong) UIScrollView *scrollView;
@@ -56,7 +55,7 @@
         [self.contentView addSubview:scrollView];
         self.scrollView = scrollView;
         
-        CGRect pageFrame = CGRectMake(0, scrollFrame.size.height-20, scrollFrame.size.width, 20);
+        CGRect pageFrame = CGRectMake(0, scrollFrame.size.height-20, self.frame.size.width, 20);
         UIPageControl *pageController = [[UIPageControl alloc] initWithFrame:pageFrame];
         [pageController setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.2]];
         [self addSubview:pageController];
@@ -86,7 +85,7 @@
 - (void)setAdInfo
 {
     
-    NSArray *imageAry= @[@"lendMoneyAD1.jpg", @"lendMoneyAD2.jpg"];
+    NSArray *imageAry= @[@"bannelSmall1.jpg", @"bannelSmall2.jpg",@"bannelSmall3.jpg", @"bannelSmall4.jpg"];
     [self.pageController setNumberOfPages:[imageAry count]];
     CGRect imageFrame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     imageFrame.origin = CGPointZero;
@@ -96,21 +95,22 @@
     [self.scrollView addSubview:firstImageView];
     imageFrame.origin.x += imageFrame.size.width;
     
-    NSInteger tag = 22222;
-    for (NSString *image in imageAry) {
+   
+    for (int i =0;  i<imageAry.count; i++) {
+        NSString *image=imageAry[i];
         UIButton *button = [[UIButton alloc] initWithFrame:imageFrame];
         [button addTarget:self
                    action:@selector(buttonClicked:)
          forControlEvents:UIControlEventTouchUpInside];
-        [button setTag:tag];
+        //[button setTag:tag];
         [self.scrollView addSubview:button];
-        
+        [button setTag:i];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
         [imageView setImage:[UIImage imageNamed:image]];
         [self.scrollView addSubview:imageView];
         
         imageFrame.origin.x += imageFrame.size.width;
-        tag += 1;
+        
     }
     
     UIImageView *lastImageView = [[UIImageView alloc] initWithFrame:imageFrame];
@@ -159,11 +159,10 @@
 - (void)buttonClicked:(UIButton *)button
 {
     NSInteger tag = button.tag;
-    if (tag == 22222) {
         if ([self.delegate respondsToSelector:@selector(advertPush:)]) {
             [self.delegate advertPush:tag];
         }
-    }
+    
 }
 
 

@@ -204,6 +204,7 @@
     baseB.userInfoBtn.selected=NO;
     [baseB.homePageLab setTextColor:NavColor];
     [baseB.userLab setTextColor:[UIColor lightGrayColor]];
+    baseB.selectedIndex=0;
 }
 #pragma mark - 用户通知(推送) _自定义方法
 
