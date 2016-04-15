@@ -1295,16 +1295,15 @@
     NSData* imageData;
     
     //判断图片是不是png格式的文件
-    if (UIImagePNGRepresentation(image)) {
+    __weak typeof(image)weakimage=image;
+    if (UIImagePNGRepresentation(weakimage)) {
         //返回为png图像。
-        imageData = UIImagePNGRepresentation(image);
+        imageData = UIImagePNGRepresentation(weakimage);
     }else {
         //返回为JPEG图像。
-        imageData = UIImageJPEGRepresentation(image, 0.5);
+        imageData = UIImageJPEGRepresentation(weakimage, 0.5);
     }
     //NSData *iconData =  UIImagePNGRepresentation(image);//UIImageJPEGRepresentation(image, 0.1);
-    //[GTMBase64 stringByEncodingData:iconData];
-    NSLog(@"%d",imageData.length);
     while  (imageData.length>=1024*1024) {
 //        CGSize newSize = {1024,768};
 //        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];

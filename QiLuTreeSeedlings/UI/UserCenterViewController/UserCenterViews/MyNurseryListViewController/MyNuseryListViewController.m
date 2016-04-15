@@ -33,6 +33,10 @@
     [self.dataAry removeAllObjects];
     [self getDataList];
 }
+-(void)dealloc
+{
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataAry=[NSMutableArray array];

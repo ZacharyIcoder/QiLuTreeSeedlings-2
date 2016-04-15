@@ -26,6 +26,10 @@
 @end
 
 @implementation SearchViewController
+-(void)dealloc
+{
+     
+}
 -(id)initWithSearchType:(NSInteger)type
 {
     self=[super init];

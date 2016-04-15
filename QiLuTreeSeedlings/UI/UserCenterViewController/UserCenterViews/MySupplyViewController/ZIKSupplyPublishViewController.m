@@ -11,7 +11,6 @@
 #import "ZIKSupplyPublishSingleTableViewCell.h"
 #import "ZIKSupplyPublishPickImageViewTableViewCell.h"
 #import "UIDefines.h"
-#import "ZHHttpTool.h"
 #import "HttpClient.h"
 #import "ZIKSupplyPublishNameTableViewCell.h"
 //#import "ZIKGreenButton.h"
