@@ -13,6 +13,7 @@
 @interface ZIKMyBalanceViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray     *titlesArray;
 @property (nonatomic, strong) UITableView *myTalbeView;
+@property (nonatomic, strong) NSString *moneyPrice;
 
 @end
 
@@ -27,14 +28,35 @@
     [self initUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self getprice];
+}
+
+- (void)getprice {
+    [HTTPCLIENT getAmountInfo:nil Success:^(id responseObject) {
+        //NSLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 1) {
+            self.moneyPrice = [responseObject[@"result"] objectForKey:@"money"];
+            [self.myTalbeView reloadData];
+        }
+        else {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:250 withSuperView:self.view];
+        }
+
+    } failure:^(NSError *error) {
+
+    }];
+}
+
 - (void)initUI {
     myTalbeView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStylePlain];
     myTalbeView.delegate = self;
     myTalbeView.dataSource = self;
     [self.view addSubview:myTalbeView];
     [ZIKFunction setExtraCellLineHidden:myTalbeView];
-
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
@@ -58,6 +80,9 @@
     UITableViewCell *cell = nil;
     if (indexPath.section == 0) {
         ZIKMyBalanceFirstTableViewCell *firstCell = [ZIKMyBalanceFirstTableViewCell cellWithTableView:tableView];
+        if (self.moneyPrice) {
+            [firstCell configureCell:self.moneyPrice];
+        }
         cell = firstCell;
         firstCell.selectionStyle = UITableViewCellSelectionStyleNone;
     }

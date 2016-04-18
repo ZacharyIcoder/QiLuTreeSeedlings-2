@@ -408,4 +408,9 @@
 - (void)deleteMyNuseryInfo:(NSString *)uids
                 Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 获得当前用户余额 -----------
+- (void)getAmountInfo:(NSString *)nilString
+              Success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure;
+
 @end

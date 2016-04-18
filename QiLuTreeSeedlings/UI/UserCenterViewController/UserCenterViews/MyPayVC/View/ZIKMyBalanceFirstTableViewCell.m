@@ -33,7 +33,8 @@
     return cell;
 }
 
-- (void)configureCell:(id)model {
+- (void)configureCell:(NSString *)priceString {
+    self.priceLabel.text = [NSString stringWithFormat:@"¥%.2f",priceString.floatValue];
 }
 
 @end

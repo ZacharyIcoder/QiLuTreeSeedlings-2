@@ -8,6 +8,7 @@
 
 #import "ZIKPaySuccessViewController.h"
 #import "ZIKMyBalanceViewController.h"
+#define Recharge @"Is top-up for the first time"
 @interface ZIKPaySuccessViewController ()
 
 @end
@@ -19,6 +20,8 @@
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = @"支付订单";
     self.priceLabel.text = [NSString stringWithFormat:@"充值金额(元) : %@",self.price];
+    [[NSUserDefaults standardUserDefaults] setValue:@"yes" forKey:Recharge];
+//#define Recharge @"Is top-up for the first time"*/
 }
 
 - (void)didReceiveMemoryWarning {
