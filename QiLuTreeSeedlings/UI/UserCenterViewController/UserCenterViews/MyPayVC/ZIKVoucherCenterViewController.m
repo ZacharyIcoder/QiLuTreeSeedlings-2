@@ -78,6 +78,7 @@
 {
     ZIKPaySuccessViewController *successVC =   [[ZIKPaySuccessViewController alloc] initWithNibName:@"ZIKPaySuccessViewController" bundle:nil];
     successVC.priceLabel.text = [NSString stringWithFormat:@"充值金额(元) : %@",self.price];
+    successVC.price = self.price;
     [self.navigationController pushViewController:successVC animated:YES];
 }
 

@@ -14,7 +14,8 @@
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
-@interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate>
+#define kMaxLength 20
+@interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
 @property (nonatomic,strong)UIButton *nameBtn;
@@ -77,6 +78,11 @@
     titleTextField.placeholder=@"请输入标题";
     [titleTextField setTextColor:detialLabColor];
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:titleTextField];
+
     self.titleTextField=titleTextField;
     UIImageView *titleLineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-10, 0.5)];
     [titleLineView setBackgroundColor:kLineColor];
@@ -412,10 +418,10 @@
     [view addSubview:titleLab];
     return view;
 }
--(void)backBtnAction:(UIButton *)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//-(void)backBtnAction:(UIButton *)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 - (void)getTreeSHUXINGWithBtn:(UIButton *)sender
 {
     ;
@@ -640,5 +646,60 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+
+    NSString *toBeString = textField.text;
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kMaxLength) {
+               // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kMaxLength];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kMaxLength) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kMaxLength];
+            return;
+        }
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //NSLog(@"%ld",(long)buttonIndex);
+    if(alertView.tag == 300)//是否退出编辑
+    {
+        if (buttonIndex == 1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+}
+-(void)backBtnAction:(UIButton *)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要退出编辑？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+    [alert show];
+    alert.tag = 300;
+    alert.delegate = self;
+
+    //[self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

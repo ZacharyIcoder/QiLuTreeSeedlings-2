@@ -36,7 +36,7 @@
     //[self initData];
     [self initUI];
     //[self requestData];
-    NSLog(@"%@",  [NSString stringWithUTF8String:object_getClassName(self)]);
+    //NSLog(@"%@",  [NSString stringWithUTF8String:object_getClassName(self)]);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -138,6 +138,10 @@
 }
 
 - (void)deleteButtonClick {
+    if (_removeArray.count  == 0) {
+        [ToastView showToast:@"请选择要删除的选项" withOriginY:200 withSuperView:self.view];
+        return;
+    }
     __weak typeof(_removeArray) removeArr = _removeArray;
     __weak __typeof(self) blockSelf = self;
 
@@ -292,8 +296,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKCustomizedTableViewCell *cell = [ZIKCustomizedTableViewCell cellWithTableView:tableView];
-     ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
-    [cell configureCell:model];
+    if (self.customizedInfoMArr.count > 0) {
+           ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
+           [cell configureCell:model];
+    }
     return cell;
 }
 
@@ -377,7 +383,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"commitEditingStyle");
+    //NSLog(@"commitEditingStyle");
 }
 
 - (void)createEmptyUI {

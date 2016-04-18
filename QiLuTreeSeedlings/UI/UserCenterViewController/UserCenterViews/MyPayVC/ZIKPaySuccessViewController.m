@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = @"支付订单";
+    self.priceLabel.text = [NSString stringWithFormat:@"充值金额(元) : %@",self.price];
 }
 
 - (void)didReceiveMemoryWarning {

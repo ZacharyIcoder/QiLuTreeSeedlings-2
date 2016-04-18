@@ -406,7 +406,7 @@
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"569c3c37e0f55a8e3b001658"
                                       shareText:@"齐鲁苗木网"
-                                     shareImage:[UIImage imageNamed:@"myNuserNull@2x.png"]
+                                     shareImage:[UIImage imageNamed:@"logV@2x.png"]
                                 shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
                                        delegate:self];
     //[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]

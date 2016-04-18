@@ -262,7 +262,7 @@
 #pragma mark - 请求上传头像
 - (void)requestUploadHeadImage:(UIImage *)image {
     [HTTPCLIENT upDataUserImageWithToken:nil WithAccessID:nil WithClientID:nil WithClientSecret:nil WithDeviceID:nil WithUserIamge:image Success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
             [ToastView showTopToast:@"上传成功"];
             _globalHeadImage = image;

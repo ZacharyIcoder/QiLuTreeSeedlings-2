@@ -10,6 +10,7 @@
 
 @interface ZIKPaySuccessViewController : ZIKArrowViewController
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (copy, nonatomic) NSString *price;
 - (IBAction)finishButton:(id)sender;
 
 @end
