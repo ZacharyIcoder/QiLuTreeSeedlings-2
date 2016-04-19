@@ -412,5 +412,11 @@
 - (void)getAmountInfo:(NSString *)nilString
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 是否首次充值 -----------
+- (void)isFirstRecharge:(NSString *)nilString
+                Success:(void (^)(id responseObject))success
+                failure:(void (^)(NSError *error))failure;
+
+
 
 @end
