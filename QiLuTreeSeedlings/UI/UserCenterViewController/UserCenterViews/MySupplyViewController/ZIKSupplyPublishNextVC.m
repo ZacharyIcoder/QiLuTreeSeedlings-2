@@ -147,6 +147,7 @@
             if (firstSectionCell == nil) {
                 firstSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName];
                 firstSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
+                firstSectionCell.textLabel.font   = [UIFont systemFontOfSize:15.0f];
 
             }
             if (indexPath.row == 0) {
@@ -155,6 +156,8 @@
                     UILabel *label = [[UILabel alloc] init];
                     label.frame = CGRectMake(kWidth-50, 5, 40, 30);
                     label.text = @"棵";
+                    //label.textColor = titleLabColor;
+                    label.font = [UIFont systemFontOfSize:15.0f];
                     label.textAlignment = NSTextAlignmentRight;
                     [firstSectionCell addSubview:label];
 
@@ -166,7 +169,8 @@
                 self.countTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
                 self.countTextField.keyboardType=UIKeyboardTypeNumberPad;
                 self.countTextField.placeholder = @"请输入数量";
-                self.countTextField.textColor = titleLabColor;
+                //self.countTextField.textColor = titleLabColor;
+                self.countTextField.font = [UIFont systemFontOfSize:15.0f];
                 [firstSectionCell addSubview:self.countTextField];
 
 
@@ -180,6 +184,7 @@
                     UILabel *label = [[UILabel alloc] init];
                     label.frame = CGRectMake(kWidth-50, 5, 40, 30);
                     label.text = @"元";
+                    label.font = [UIFont systemFontOfSize:15.0f];
                     label.textAlignment = NSTextAlignmentRight;
                     [firstSectionCell addSubview:label];
                 }
@@ -199,6 +204,7 @@
 
                 }
                 ecttiveBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+                ecttiveBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f];
                 [ecttiveBtn setTitle:@"请选择有效期" forState:UIControlStateNormal];
                 [ecttiveBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
                 [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -222,6 +228,7 @@
             if (secondSectionCell == nil) {
                 secondSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName2];
                 secondSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
+                secondSectionCell.textLabel.font = [UIFont systemFontOfSize:15.0f];
                 if (!listView) {
                     listView = [[ZIKNurseryListView alloc] init];
                 }
@@ -246,6 +253,7 @@
             }
             if (indexPath.row == 1) {
                 productDetailTextView  = [[BWTextView alloc] init];
+                productDetailTextView.font = [UIFont systemFontOfSize:15.0f];
                 productDetailTextView.placeholder = @"请输入产品描述...";
                 if (self.baseMsgDic) {
                     productDetailTextView.text=[self.baseMsgDic objectForKey:@"remark"];
