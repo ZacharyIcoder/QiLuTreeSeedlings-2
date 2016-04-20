@@ -15,6 +15,7 @@
 #import "NuseryDetialViewController.h"
 #import "MJRefresh.h"
 #import "ZIKBottomDeleteTableViewCell.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface MyNuseryListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
@@ -206,8 +207,7 @@
         cell.model=model;
         return cell;
     }
-//     UITableViewCell *cell;
-//    return cell;
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -268,6 +268,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];

@@ -7,7 +7,7 @@
 //
 
 #import "SearchSuccessView.h"
-#import "PullTableView.h"
+#import "MJRefresh.h"
 #import "SellSearchTableViewCell.h"
 #import "HttpClient.h"
 #import "UIDefines.h"
@@ -15,8 +15,8 @@
 #import "HotBuyModel.h"
 #import "BuySearchTableViewCell.h"
 
-@interface SearchSuccessView()<PullTableViewDelegate,UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic,strong)PullTableView *selfTableView;
+@interface SearchSuccessView()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,strong)UITableView *selfTableView;
 @property (nonatomic,strong)NSMutableArray *sellDataAry;
 @property (nonatomic,strong)NSMutableArray *buyDataAry;
 @property (nonatomic)NSInteger PageCount;
@@ -37,11 +37,36 @@
         self.PageCount=1;
         self.searchBAT=1;
         self.status=1;
-        PullTableView *pullTableView =[[PullTableView alloc]initWithFrame:self.bounds];
+        UITableView *pullTableView =[[UITableView alloc]initWithFrame:self.bounds];
         pullTableView.delegate=self;
         pullTableView.dataSource=self;
-        pullTableView.pullDelegate=self;
+       // pullTableView.pullDelegate=self;
         self.selfTableView=pullTableView;
+        __weak typeof(self) weakSelf=self;
+        [pullTableView addHeaderWithCallback:^{
+            weakSelf.PageCount=1;
+            [weakSelf.sellDataAry removeAllObjects];
+            [weakSelf.buyDataAry removeAllObjects];
+            if (weakSelf.searchBAT==1) {
+                
+                [weakSelf getListData];
+                weakSelf.status=1;
+                return;
+            }
+            if (weakSelf.searchBAT==2) {
+                [weakSelf searchByScringList];
+            }
+        }];
+        [pullTableView addFooterWithCallback:^{
+            weakSelf.PageCount++;
+            if (weakSelf.searchBAT==1) {
+                [weakSelf getListData];
+               
+            }
+            if (weakSelf.searchBAT==2) {
+                [weakSelf searchByScringList];
+            }
+        }];
         [pullTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [self addSubview:pullTableView];
         self.sellDataAry=[NSMutableArray array];
@@ -97,41 +122,9 @@
     }
  
 }
--(void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
-{
-    self.PageCount++;
-    if (self.searchBAT==1) {
-        [self getListData];
-        return;
-    }
-    if (self.searchBAT==2) {
-        [self searchByScringList];
-    }
-    
-}
--(void)loadMoreAction
-{   [self.selfTableView reloadData];
-    self.selfTableView.pullTableIsLoadingMore=NO;
-}
--(void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
-{
-    self.PageCount=1;
-    [self.sellDataAry removeAllObjects];
-    [self.buyDataAry removeAllObjects];
-    if (self.searchBAT==1) {
-        
-        [self getListData];
-        self.status=1;
-        return;
-    }
-    if (self.searchBAT==2) {
-        [self searchByScringList];
-    }
-}
--(void)triggerRefresh
-{    [self.selfTableView reloadData];
-    self.selfTableView.pullTableIsRefreshing=NO;
-}
+
+
+
 - (void)getListData
 {
     
@@ -159,10 +152,11 @@
             }
             [self.buyDataAry removeAllObjects];
             [self.selfTableView reloadData];
-            self.selfTableView.pullTableIsLoadingMore=NO;
-            self.selfTableView.pullTableIsRefreshing=NO;
+            [self.selfTableView headerEndRefreshing];
+            [self.selfTableView footerEndRefreshing];
         } failure:^(NSError *error) {
-            
+            [self.selfTableView headerEndRefreshing];
+            [self.selfTableView footerEndRefreshing];
         }];
     }
     if (self.searchType==2) {
@@ -189,10 +183,11 @@
             
             [self.sellDataAry removeAllObjects];;
             [self.selfTableView reloadData];
-            self.selfTableView.pullTableIsLoadingMore=NO;
-             self.selfTableView.pullTableIsRefreshing=NO;
+            [self.selfTableView headerEndRefreshing];
+            [self.selfTableView footerEndRefreshing];
         } failure:^(NSError *error) {
-            
+            [self.selfTableView headerEndRefreshing];
+            [self.selfTableView footerEndRefreshing];
         }];
     }
 }
@@ -251,10 +246,11 @@
             
             [self.buyDataAry removeAllObjects];
             [self.selfTableView reloadData];
-            self.selfTableView.pullTableIsLoadingMore=NO;
-             self.selfTableView.pullTableIsRefreshing=NO;
+            [self.selfTableView headerEndRefreshing];
+            [self.selfTableView footerEndRefreshing];
         } failure:^(NSError *error) {
-            NSLog(@"%@",error);
+            [self.selfTableView headerEndRefreshing];
+            [self.selfTableView footerEndRefreshing];
         }];
         
     }
@@ -281,12 +277,13 @@
 
                 }
                [self.sellDataAry removeAllObjects];
-                self.selfTableView.pullTableIsLoadingMore=NO;
-                self.selfTableView.pullTableIsRefreshing=NO;
+                [self.selfTableView headerEndRefreshing];
+                [self.selfTableView footerEndRefreshing];
             }
             [self.selfTableView reloadData];
         } failure:^(NSError *error) {
-            
+            [self.selfTableView headerEndRefreshing];
+            [self.selfTableView footerEndRefreshing];
         }];
     }
 }

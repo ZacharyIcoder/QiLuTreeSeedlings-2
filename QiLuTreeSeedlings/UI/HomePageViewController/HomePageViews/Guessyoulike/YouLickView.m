@@ -29,7 +29,7 @@
 //            [likeBtn setBackgroundColor:[UIColor grayColor]];
             [likeBtn.layer setBorderWidth:0.3];
             [likeBtn.layer setBorderColor:kLineColor.CGColor];
-            [likeBtn setTitleColor:kLineColor forState:UIControlStateNormal];
+            [likeBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             [likeBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
             [likeBtn setTitle:model.productName forState:UIControlStateNormal];
             [likeBtn addTarget:self action:@selector(likeBtnAction:) forControlEvents:UIControlEventTouchUpInside];

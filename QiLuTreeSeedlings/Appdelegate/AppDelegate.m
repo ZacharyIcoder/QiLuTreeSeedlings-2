@@ -22,7 +22,7 @@
 #import "WXApi.h"
 //支付宝
 #import <AlipaySDK/AlipaySDK.h>
-
+#import <AudioToolbox/AudioToolbox.h>
 //引导页
 #import "EAIntroView.h"
 #define kGtAppId           @"dxb5cYhXBW6yYLPsAfvtGA"
@@ -302,7 +302,10 @@
     
     // 处理APN
     //NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n", userInfo);
-    
+    SystemSoundID sound=1000;
+     AudioServicesPlaySystemSound(sound);
+     sound=kSystemSoundID_Vibrate;
+     AudioServicesPlaySystemSound(sound);
     completionHandler(UIBackgroundFetchResultNewData);
 }
 

@@ -23,4 +23,5 @@
 @property (nonatomic,weak)id<ScreeningViewDelegate> delegate;
 -(id)initWithFrame:(CGRect)frame andSearch:(NSString *)searchStr;
 -(void)showViewAction;
+-(void)setSearchStr:(NSString *)searchStr;
 @end

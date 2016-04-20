@@ -17,6 +17,7 @@
 #import "SellQiyeInfoTableViewCell.h"
 #import "SellSearchTableViewCell.h"
 #import "BigImageViewShowView.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIButton *collectionBtn;
@@ -40,6 +41,7 @@
                 SupplyDetialMode *model=[SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
                 self.model=model;
                   BigImageViewShowView *bigImageVShowV=[[BigImageViewShowView  alloc]initWithImageAry:model.images];
+                self.hotModel.title=model.title;
                 self.bigImageVShowV=bigImageVShowV;
                 [self.view addSubview:bigImageVShowV];
                 if(model.collect)
@@ -107,7 +109,10 @@
         return 330;
     }
     if (indexPath.section==1) {
-        return self.model.spec.count*30+10;
+        if (self.model.spec.count>0) {
+             return self.model.spec.count*30+40;
+        }
+       
     }
     if (indexPath.section==2) {
         return 130;
@@ -200,7 +205,7 @@
             return cell;
         }
         if (indexPath.section==1) {
-            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+10)];
+            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+40) andName:self.model.productName];
             cell.ary=self.model.spec;
              cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
@@ -271,6 +276,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];

@@ -45,6 +45,7 @@
                 }
                 textField.delegate=self;
                 textField.tag=40001;
+                [textField setFont:[UIFont systemFontOfSize:14]];
                 textField.clearButtonMode=UITextFieldViewModeWhileEditing;
                 [self addSubview:textField];
                 UIImageView *linView=[[UIImageView alloc]initWithFrame:CGRectMake(10, self.frame.size.height-0.5,self.frame.size.width-20, 0.5)];
@@ -86,7 +87,19 @@
         [nameLab setTextColor:titleLabColor];
         nameLab.text=model.name;
         if (model.unit.length!=0) {
-            nameLab.text=[NSString stringWithFormat:@"%@(%@)",model.name,model.unit];
+            NSString *namlabStr=[NSString stringWithFormat:@"%@(%@)",model.name,model.unit];
+            if (kWidth<=320) {
+                if (namlabStr.length>=8) {
+                    [nameLab setFont:[UIFont systemFontOfSize:12]];
+                }
+            }
+            nameLab.text=namlabStr;
+        }else{
+            if (kWidth<=320) {
+                if (model.name.length>=6) {
+                    [nameLab setFont:[UIFont systemFontOfSize:12]];
+                }
+            }
         }
         // NSLog(@"%@",model.unit);
         [self addSubview:nameLab];
@@ -169,7 +182,7 @@
             self.answerAry=[NSMutableArray arrayWithArray:[self.model.anwser componentsSeparatedByString:@","]];
         }
     for (int i=0; i<self.model.optionList.count; i++){
-        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(80, 10+40*i, 90, 30)];
+        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(80, 10+40*i, 90, 25)];
         [btn setTitle:self.model.optionList[i] forState:UIControlStateNormal];
         [btn setTitle:self.model.optionList[i] forState:UIControlStateSelected];
         for (int j=0; j<self.answerAry.count; j++) {
@@ -177,9 +190,9 @@
                 btn.selected=YES;
             }
         }
-        [btn setImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
-         btn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
+        [btn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+         //btn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
         [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [btn setTitleColor:NavColor forState:UIControlStateSelected];
@@ -215,19 +228,19 @@
         int k1=i%2;
         int k2=i/2;
     
-        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(80+k1*90, 10+40*k2, 90, 30)];
+        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(70+k1*95, 10+40*k2, 90, 28)];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
         [btn setTitle:self.model.optionList[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [btn setTitleColor:NavColor forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(Type2Option1BtnAction:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag=2000+i;
-        [btn setImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+        [btn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
         if ([self.model.anwser isEqualToString:self.model.optionList[i]]) {
             btn.selected=YES;
         }
-        btn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
+        //btn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
 
         [self addSubview:btn];
     }

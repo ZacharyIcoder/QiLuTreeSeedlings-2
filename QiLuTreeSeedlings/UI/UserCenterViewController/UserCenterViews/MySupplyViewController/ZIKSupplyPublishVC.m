@@ -68,38 +68,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self initUI];
 }
 
-//-(void)dealloc {
-//    NSLog(@"dealloc");
-//}
-//-(void)viewDidDisappear:(BOOL)animated {
-//    [super viewDidDisappear:YES];
-//
-//    [self.pickerImgView removeFromSuperview];
-//     self.pickerImgView = nil;
-//
-//}
-//-(void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:YES];
-//
-//    [self.pickerImgView removeFromSuperview];
-//    self.pickerImgView = nil;
-//
-//}
-//-(void)backBtnAction:(UIButton *)sender
-//{
-////       [self.pickerImgView removeFromSuperview];
-////        self.pickerImgView = nil;
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
 
 - (void)initData {
-//    self.imageUrlMarr          = [NSMutableArray array];
     self.productTypeDataMArray = [NSMutableArray array];
     self.cellAry               = [NSMutableArray array];
     self.supplyModel           = [[ZIKMySupplyCreateModel alloc] init];
-//    self.imageUrlsMarr         = [NSMutableArray array];
-//    self.imageCompressUrlsMarr = [NSMutableArray array];
+
 }
 
 - (void)initUI {

@@ -26,6 +26,7 @@
 #import "BuySearchTableViewCell.h"
 #import "SellSearchTableViewCell.h"
 #import "SellDetialViewController.h"
+#import "BigImageViewShowView.h"
 @interface HomePageTViewController ()<UITableViewDelegate,UITableViewDataSource,AdvertDelegate,CircleViewsDelegate,YouLickViewDelegate>
 @property (nonatomic,strong) UIButton *loginBtn;
 @property (nonatomic,strong) UITableView *tableView;
@@ -33,6 +34,7 @@
 @property (nonatomic,strong)NSMutableArray *supplyDataAry;//热门供应
 @property (nonatomic,strong)NSArray *BuyDataAry;//热门求购
 @property (nonatomic)NSInteger PageCount;
+@property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
 @end
 
 @implementation HomePageTViewController
@@ -76,7 +78,7 @@
     }else{
         [self getDataList];
     }
-
+    self.bigImageViewShowView =[[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
 
 }
 //获取数据
@@ -160,6 +162,7 @@
         AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 160.f/320.f*kWidth)];
         adView.delegate=self;
         [adView setAdInfo];
+        [adView adStart];
         return adView;
     }
     if (indexPath.section==1) {
@@ -326,7 +329,8 @@
 //广告页面点击
 -(void)advertPush:(NSInteger)index
 {
-    //NSLog(@"点击了广告页%ld",index);
+    NSLog(@"点击了广告页%ld",index);
+    [self.bigImageViewShowView showInKeyWindowWithIndex:index];
 }
 //圆形按钮
 -(void)circleViewsPush:(NSInteger)index

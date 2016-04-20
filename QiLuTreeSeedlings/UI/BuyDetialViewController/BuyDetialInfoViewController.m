@@ -17,6 +17,7 @@
 #import "BuySearchTableViewCell.h"
 #import "BuyDetialModel.h"
 #import "buyFabuViewController.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *navTitleLab;
@@ -89,10 +90,6 @@
     [super viewDidLoad];
   
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    UIView *messageView=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
-//    [messageView setBackgroundColor:[UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1]];
-//    UIImageView *messageView
-//    [self.view addSubview:messageView];
     if (self.type==1) {
         UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
         [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
@@ -147,8 +144,10 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
@@ -164,6 +163,7 @@
     }else
     {
         UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
+        [collectionBtn setEnlargeEdgeWithTop:0 right:5 bottom:0 left:15];
         self.collectionBtn = collectionBtn;
         [collectionBtn setImage:[UIImage imageNamed:@"collectionN"] forState:UIControlStateNormal];
         [collectionBtn setImage:[UIImage imageNamed:@"collectionT"] forState:UIControlStateSelected];
@@ -256,7 +256,7 @@
         return cell;
     }else if(indexPath.section==1)
     {
-        BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.specAry.count*30+10)];
+        BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.specAry.count*30+40) andName:self.model.productName];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.specAry) {
             cell.ary=self.specAry;
@@ -308,7 +308,7 @@
     }
     if (indexPath.section==1) {
         if (self.specAry) {
-            return self.specAry.count*30+10;
+            return self.specAry.count*30+40;
         }
     }if (indexPath.section==2) {
         return 140;

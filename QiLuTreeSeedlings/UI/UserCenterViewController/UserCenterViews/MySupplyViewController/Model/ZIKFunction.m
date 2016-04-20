@@ -224,7 +224,7 @@
         result = [NSString stringWithFormat:@"%ld小前",(long)temp];
     }
 
-    else if((temp = temp/24) <30){
+    else if((temp = temp/24)){
 
         if (temp/7 < 1) {
             result = [NSString stringWithFormat:@"%ld天前",(long)temp];
@@ -234,13 +234,13 @@
         }
     }
 
-    else if((temp = temp/30) <12){
-        result = [NSString stringWithFormat:@"%ld月前",(long)temp];
-    }
-    else{
-        temp = temp/12;
-        result = [NSString stringWithFormat:@"%ld年前",(long)temp];
-    }
+//    else if((temp = temp/30) <12){
+//        result = [NSString stringWithFormat:@"%ld月前",(long)temp];
+//    }
+//    else{
+//        temp = temp/12;
+//        result = [NSString stringWithFormat:@"%ld年前",(long)temp];
+//    }
 
     return  result;
 }

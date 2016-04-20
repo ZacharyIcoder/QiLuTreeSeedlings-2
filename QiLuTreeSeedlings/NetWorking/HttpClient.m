@@ -1103,7 +1103,6 @@
     if (brief) {
         [parameters setObject:brief forKey:@"brief"];
     }
-    //NSLog(@"%@",parameters);
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

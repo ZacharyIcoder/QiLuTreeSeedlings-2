@@ -9,11 +9,25 @@
 #import "BuyOtherInfoTableViewCell.h"
 #import "UIDefines.h"
 @implementation BuyOtherInfoTableViewCell
--(id)initWithFrame:(CGRect)frame
+-(id)initWithFrame:(CGRect)frame andName:(NSString *)name
 {
     self=[super initWithFrame:frame];
     if (self) {
-        
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 5, kWidth, 30)];
+        UILabel *keylab=[[UILabel alloc]initWithFrame:CGRectMake(20, 5, 80, 20)];
+        keylab.text=@"苗木名称";
+        [keylab setTextAlignment:NSTextAlignmentRight];
+        [keylab setFont:[UIFont systemFontOfSize:13]];
+        [keylab setTextColor:detialLabColor];
+        [view addSubview:keylab];
+        UILabel *valueLab=[[UILabel alloc]initWithFrame:CGRectMake(130, -5, 185/320.f*kWidth, 40)];
+        valueLab.numberOfLines=0;
+        valueLab.text=name;
+        [valueLab setFont:[UIFont systemFontOfSize:13]];
+        [valueLab setTextColor:[UIColor grayColor]];
+        [view addSubview:valueLab];
+        [self addSubview:view];
+
     }
     return self;
 }
@@ -22,7 +36,7 @@
     _ary=ary;
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
-        [self MackViewWithFrame:CGRectMake(0, i*30+5, kWidth, 30) andDic:dic];
+        [self MackViewWithFrame:CGRectMake(0, i*30+35, kWidth, 30) andDic:dic];
     }
 }
 -(void)MackViewWithFrame:(CGRect)frame andDic:(NSDictionary *)dic

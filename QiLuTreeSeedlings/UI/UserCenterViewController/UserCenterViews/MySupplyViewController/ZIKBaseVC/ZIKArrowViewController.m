@@ -7,6 +7,7 @@
 //
 
 #import "ZIKArrowViewController.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 #define titleFont [UIFont systemFontOfSize:21]
 @interface ZIKArrowViewController ()
 {
@@ -29,6 +30,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];

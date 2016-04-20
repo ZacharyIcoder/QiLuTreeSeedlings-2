@@ -14,7 +14,8 @@
 #import "TreeSpecificationsModel.h"
 #import "PickerLocation.h"
 #import "ToastView.h"
-@interface ScreeningView ()<UITextFieldDelegate,PickerLocationDelegate>
+#import "ZIKSideView.h"
+@interface ScreeningView ()<UITextFieldDelegate,PickerLocationDelegate,ZIKSelectViewUidDelegate>
 //@property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) UITextField *nameTextField;
 @property (nonatomic,strong)UIScrollView *backScrollView;
@@ -25,10 +26,23 @@
 @property (nonatomic,weak) UITextField *nowTextFlield;
 @property (nonatomic,strong)NSMutableArray *cellAry;
 @property (nonatomic,strong)UIButton *nameBtn;
+@property (nonatomic, strong) ZIKSideView      *sideView;
+@property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
+@property (nonatomic,strong) UIButton *quedingBtn;
 @end
 @implementation ScreeningView
 @synthesize gongyingBtn,pickLocation,cellAry;
-
+-(void)setSearchStr:(NSString *)searchStr
+{
+    if ([searchStr isEqualToString:self.nameTextField.text]) {
+        
+    }else
+    {
+        if (searchStr.length>0) {
+            [self nameBtnAction:_quedingBtn];
+        }
+    }
+}
 -(id)initWithFrame:(CGRect)frame andSearch:(NSString *)searchStr
 {
     self=[super initWithFrame:frame];
@@ -36,6 +50,7 @@
         
         self.searchType=1;
         cellAry =[NSMutableArray array];
+        self.productTypeDataMArray=[NSMutableArray array];
         [[NSNotificationCenter defaultCenter] addObserver:self
          
                                                  selector:@selector(hidingKey)
@@ -102,19 +117,19 @@
         
         [gongyingshangView addSubview:gongyingLab];
         
-        UIButton *nomegongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(60, 7,90, 30)];
+        UIButton *nomegongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(160, 7,90, 25)];
         [nomegongyingbtn setTitle:@"普通供应商" forState:UIControlStateNormal];
         nomegongyingbtn.tag=110;
         [nomegongyingbtn setTitle:@"普通供应商" forState:UIControlStateSelected];
           [nomegongyingbtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-    nomegongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
+    //nomegongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
         [nomegongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [nomegongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
-        [nomegongyingbtn setImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
-             [nomegongyingbtn setImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+        [nomegongyingbtn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
+             [nomegongyingbtn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
         [nomegongyingbtn addTarget:self action:@selector(gongyingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [gongyingshangView addSubview:nomegongyingbtn];
-        UIButton *goldgongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(160, 7, 90, 30)];
+        UIButton *goldgongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(60, 7, 90, 25)];
         [goldgongyingbtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
         [goldgongyingbtn setTitle:@"金牌供应商" forState:UIControlStateNormal];
         goldgongyingbtn.tag=111;
@@ -122,9 +137,9 @@
         [goldgongyingbtn addTarget:self action:@selector(gongyingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [goldgongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [goldgongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
-        [goldgongyingbtn setImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
-        [goldgongyingbtn setImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
-         goldgongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
+        [goldgongyingbtn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
+        [goldgongyingbtn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+         //goldgongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
         [gongyingshangView addSubview:goldgongyingbtn];
         [self.backScrollView addSubview:gongyingshangView];
         tempFrame.origin.y+=50;
@@ -132,6 +147,7 @@
         UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
         
         [areaLab setText:@"地区"];
+        [areaLab setTextColor:titleLabColor];
         [areaView addSubview:areaLab];
         UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(90, 7, 130/320.f*kWidth, 30)];
         self.areaBtn=areaBtn;
@@ -148,6 +164,7 @@
         UIButton *shaixuanBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.43, 0, kWidth*0.3, 38)];
         [shaixuanView addSubview:shaixuanBtn];
         [shaixuanBtn setBackgroundColor:NavColor];
+        self.quedingBtn=shaixuanBtn;
         [shaixuanBtn setTitle:@"筛选" forState:UIControlStateNormal];
         [shaixuanBtn addTarget:self action:@selector(screeningViewAction) forControlEvents:UIControlEventTouchUpInside];
         UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.07, 0, kWidth*0.3, 38)];
@@ -192,15 +209,23 @@
     if (location.code) {
         [namestr appendString:location.provinceName];
         self.province=location.code;
+    }else
+    {
+        self.province=nil;
     }
     
     if (location.selectedCity.code) {
         [namestr appendString:location.selectedCity.cityName];
         self.City=location.selectedCity.code;
+    }else
+    {
+        self.City=nil;
     }
     if (location.selectedCity.selectedTowns.code) {
         [namestr appendString:location.selectedCity.selectedTowns.TownName];
         self.county=location.selectedCity.selectedTowns.code;
+    }else{
+         self.county=nil;
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
@@ -252,6 +277,7 @@
             [ToastView showToast:[responseObject objectForKey:@"msg"]
                      withOriginY:66.0f
                    withSuperView:APPDELEGATE.window];
+            [self requestProductType];
         }else
         {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
@@ -338,11 +364,33 @@
             [screenTijiaoAry addObject:dic];
         }
     }
-    [self backBtn:nil];
+    CGRect frame=self.frame;
+    frame.origin.x=kWidth;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.frame=frame;
+    } completion:^(BOOL finished) {
+        
+    }];
     if (self.delegate) {
         if (!self.productName) {
             self.productName=self.nameTextField.text;
         }
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
+        if (![searchHistoryAry containsObject:self.nameTextField.text]) {
+            if (searchHistoryAry.count<5) {
+                [searchHistoryAry addObject:self.nameTextField.text];
+                [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
+                [userDefaults synchronize];
+            }else
+            {
+                [searchHistoryAry addObject:self.nameTextField.text];
+                [searchHistoryAry removeObjectAtIndex:0];
+                [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
+                [userDefaults synchronize];
+            }
+        }
+
         //NSLog(@"%@", self.productName);
         [self.delegate creeingActionWithAry:screenTijiaoAry WithProvince:self.province WihtCity:self.City  WithCounty:self.county WithGoldsupplier:self.goldsupplier WithProductUid:self.productUid withProductName:self.productName
          ];
@@ -365,6 +413,48 @@
     self.goldsupplier=nil;
     self.gongyingBtn.selected=NO;
     [self.areaBtn setTitle:@"地区" forState:UIControlStateNormal];
+}
+- (void)requestProductType {
+    [HTTPCLIENT getTypeInfoSuccess:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue] == 1 ) {
+            NSArray *typeListArray = [[responseObject objectForKey:@"result"] objectForKey:@"typeList"];
+            if (typeListArray.count == 0) {
+                [ToastView showTopToast:@"暂时没有产品信息!"];
+            }
+            else if (typeListArray.count > 0) {
+                self.productTypeDataMArray = (NSMutableArray *)typeListArray;
+                [self showSideView];
+            }
+        }
+        else if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+            
+        }
+    } failure:^(NSError *error) {
+        //NSLog(@"%@",error);
+    }];
+}
+
+- (void)showSideView {
+    //[self.nameTextField resignFirstResponder];
+    if (!self.sideView) {
+        self.sideView = [[ZIKSideView alloc] initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight)];
+    }
+    self.sideView.pleaseSelectLabel.text = @"请选择苗木";
+    self.sideView.selectView.uidDelegate = self;
+    //    self.selectView = self.sideView.selectView;
+    //    self.selectView.delegate = self;
+    self.sideView.dataArray = self.productTypeDataMArray;
+    self.sideView.backgroundColor = [UIColor clearColor];
+    [UIView animateWithDuration:.3 animations:^{
+        self.sideView.frame = CGRectMake(0, 0, kWidth, kHeight);
+    }];
+    [self addSubview:self.sideView];
+}
+
+- (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {
+    //NSLog(@"%@",selectTitle);
+    self.nameTextField.text = selectTitle;
+    [self.sideView removeSideViewAction];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

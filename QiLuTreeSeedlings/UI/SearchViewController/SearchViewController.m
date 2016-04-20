@@ -15,6 +15,7 @@
 #import "BuyDetialInfoViewController.h"
 #import "SellDetialViewController.h"
 #import "HttpClient.h"
+
 @interface SearchViewController ()<UITextFieldDelegate,SearchRecommendViewDelegate,SearchSuccessViewDelegatel,ScreeningViewDelegate>
 @property (nonatomic,weak) UIButton *chooseSBBtn;
 @property (nonatomic,copy) NSString *searchStr;
@@ -22,7 +23,8 @@
 @property (nonatomic,strong) SearchRecommendView *searchRecommendView;
 @property (nonatomic,strong)UITextField *searchMessageField;
 @property (nonatomic) NSInteger searchType;
-@property (nonatomic,strong) ScreeningView *screeningView;
+@property (nonatomic,weak) ScreeningView *screeningView;
+
 @end
 
 @implementation SearchViewController
@@ -102,6 +104,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     UIView *searchView=[self makeSearchNavView];
     [self.view addSubview:searchView];
     if(self.searchType==2)
@@ -163,7 +166,7 @@
     self.searchMessageField=searchMessageField;
     searchMessageField.placeholder=@"请输入苗木关键词";
     searchMessageField.delegate=self;
-    
+    [searchMessageField setTextColor:titleLabColor];
     ////////
     //searchMessageField.text=@"油松";
     
@@ -190,11 +193,17 @@
 
 -(void)screeingBtnAction
 {
-    ScreeningView *screeningV=[[ScreeningView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight) andSearch:self.searchMessageField.text];
+    if (self.screeningView) {
+        [self.screeningView setSearchStr:self.searchMessageField.text];
+    }else{
+      ScreeningView *screeningV=[[ScreeningView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight) andSearch:self.searchMessageField.text];
+        self.screeningView=screeningV;
+        screeningV.delegate=self;
+        [self.view addSubview:self.screeningView];
+    }
+    
 //    screeningV.
-    self.screeningView=screeningV;
-    screeningV.delegate=self;
-    [self.view addSubview:self.screeningView];
+    
     [self.screeningView showViewAction];
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -255,7 +264,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
     if (![searchHistoryAry containsObject:self.searchMessageField.text]) {
-        if (searchHistoryAry.count<10) {
+        if (searchHistoryAry.count<5) {
             [searchHistoryAry addObject:self.searchMessageField.text];
             [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
             [userDefaults synchronize];
@@ -336,7 +345,7 @@
         self.searchSuccessView=[[SearchSuccessView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
         [self.view addSubview:self.searchSuccessView];
     }
-
+    self.searchMessageField.text=[dic objectForKey:@"productName"];
     [self.searchSuccessView searchViewActionWith:[dic objectForKey:@"productName"] AndSearchType:self.searchType];
 }
 -(void)backBtnAction:(UIButton *)sender
@@ -347,6 +356,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

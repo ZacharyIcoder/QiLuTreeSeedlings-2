@@ -56,8 +56,9 @@
 - (void)MakeUI {
 //    CGFloat kWidth=[UIScreen mainScreen].bounds.size.width;
 //    CGFloat kheigh=[UIScreen mainScreen].bounds.size.height;
+    CGFloat Height =[UIScreen mainScreen].bounds.size.height;
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    self.BTabBar=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-kTABBARH, kWidth, kTABBARH)];
+    self.BTabBar=[[UIView alloc]initWithFrame:CGRectMake(0, Height-kTABBARH, kWidth, kTABBARH)];
     [self.view addSubview:self.BTabBar];
     [self.BTabBar setBackgroundColor:[UIColor whiteColor]];
     self.tabBar.hidden=YES;

@@ -181,7 +181,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
     if (![searchHistoryAry containsObject:searchStr]) {
-        if (searchHistoryAry.count<10) {
+        if (searchHistoryAry.count<5) {
             [searchHistoryAry addObject:searchStr];
             [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
             [userDefaults synchronize];

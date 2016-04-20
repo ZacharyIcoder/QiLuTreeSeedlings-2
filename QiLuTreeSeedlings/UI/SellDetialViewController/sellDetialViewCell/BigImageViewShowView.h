@@ -10,5 +10,7 @@
 
 @interface BigImageViewShowView : UIView
 -(id)initWithImageAry:(NSArray *)imageAry;
+-(id)initWithNomalImageAry:(NSArray *)imageAry;
 -(void)showWithIndex:(NSInteger)index;
+-(void)showInKeyWindowWithIndex:(NSInteger)index;
 @end

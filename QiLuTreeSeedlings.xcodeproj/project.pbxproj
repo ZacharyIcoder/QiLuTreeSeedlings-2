@@ -61,14 +61,6 @@
 		EA2727241C8A86DD000B0719 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2727231C8A86DD000B0719 /* libsqlite3.tbd */; };
 		EA2727271C8A8767000B0719 /* GetCityDao.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2727261C8A8767000B0719 /* GetCityDao.m */; };
 		EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A9EF1C8557D7004913FF /* SearchSuccessView.m */; };
-		EA29AA011C856159004913FF /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A9F51C856159004913FF /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EA29AA021C856159004913FF /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A9F71C856159004913FF /* LoadMoreTableFooterView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EA29AA031C856159004913FF /* MessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A9F91C856159004913FF /* MessageInterceptor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EA29AA041C856159004913FF /* PullTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A9FB1C856159004913FF /* PullTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EA29AA051C856159004913FF /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA29A9FD1C856159004913FF /* blackArrow@2x.png */; };
-		EA29AA061C856159004913FF /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA29A9FE1C856159004913FF /* blueArrow@2x.png */; };
-		EA29AA071C856159004913FF /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA29A9FF1C856159004913FF /* grayArrow@2x.png */; };
-		EA29AA081C856159004913FF /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA29AA001C856159004913FF /* whiteArrow@2x.png */; };
 		EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */; };
 		EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */; };
 		EA4F4D181CBF5F47006E4988 /* bannelSmall1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA4F4D141CBF5F47006E4988 /* bannelSmall1.jpg */; };
@@ -79,6 +71,13 @@
 		EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA510EB21C98033900C5D071 /* FaBuViewController.m */; };
 		EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */; };
 		EA52ACE31CB4BE7900CE2210 /* MyIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */; };
+		EA5444BB1CC72AAD00971A50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5444BA1CC72AAD00971A50 /* AudioToolbox.framework */; };
+		EA5444BE1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444BD1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m */; };
+		EA5444C01CC76AEE00971A50 /* qiugouxiangqingye.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5444BF1CC76AEE00971A50 /* qiugouxiangqingye.png */; };
+		EA5444C51CC770BD00971A50 /* bangde1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA5444C11CC770BD00971A50 /* bangde1.jpg */; };
+		EA5444C61CC770BD00971A50 /* bangde2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA5444C21CC770BD00971A50 /* bangde2.jpg */; };
+		EA5444C71CC770BD00971A50 /* bangde3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA5444C31CC770BD00971A50 /* bangde3.jpg */; };
+		EA5444C81CC770BD00971A50 /* bangde4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA5444C41CC770BD00971A50 /* bangde4.jpg */; };
 		EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */; };
 		EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC351C8D16F400660FC9 /* region@2x.png */; };
 		EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */; };
@@ -505,18 +504,6 @@
 		EA2727261C8A8767000B0719 /* GetCityDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCityDao.m; sourceTree = "<group>"; };
 		EA29A9EE1C8557D7004913FF /* SearchSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSuccessView.h; sourceTree = "<group>"; };
 		EA29A9EF1C8557D7004913FF /* SearchSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSuccessView.m; sourceTree = "<group>"; };
-		EA29A9F41C856159004913FF /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		EA29A9F51C856159004913FF /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		EA29A9F61C856159004913FF /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
-		EA29A9F71C856159004913FF /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
-		EA29A9F81C856159004913FF /* MessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInterceptor.h; sourceTree = "<group>"; };
-		EA29A9F91C856159004913FF /* MessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInterceptor.m; sourceTree = "<group>"; };
-		EA29A9FA1C856159004913FF /* PullTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullTableView.h; sourceTree = "<group>"; };
-		EA29A9FB1C856159004913FF /* PullTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullTableView.m; sourceTree = "<group>"; };
-		EA29A9FD1C856159004913FF /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
-		EA29A9FE1C856159004913FF /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
-		EA29A9FF1C856159004913FF /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
-		EA29AA001C856159004913FF /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		EA29AA091C857859004913FF /* SellSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellSearchTableViewCell.h; sourceTree = "<group>"; };
 		EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellSearchTableViewCell.m; sourceTree = "<group>"; };
 		EA2E28B61CAE613500186DA5 /* UserBigInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBigInfoView.h; sourceTree = "<group>"; };
@@ -533,6 +520,14 @@
 		EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FabutiaojiaCell.m; sourceTree = "<group>"; };
 		EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIntegralViewController.h; sourceTree = "<group>"; };
 		EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIntegralViewController.m; sourceTree = "<group>"; };
+		EA5444BA1CC72AAD00971A50 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EA5444BC1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ZIKEnlargeTouchArea.h"; sourceTree = "<group>"; };
+		EA5444BD1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ZIKEnlargeTouchArea.m"; sourceTree = "<group>"; };
+		EA5444BF1CC76AEE00971A50 /* qiugouxiangqingye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qiugouxiangqingye.png; sourceTree = "<group>"; };
+		EA5444C11CC770BD00971A50 /* bangde1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bangde1.jpg; sourceTree = "<group>"; };
+		EA5444C21CC770BD00971A50 /* bangde2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bangde2.jpg; sourceTree = "<group>"; };
+		EA5444C31CC770BD00971A50 /* bangde3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bangde3.jpg; sourceTree = "<group>"; };
+		EA5444C41CC770BD00971A50 /* bangde4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bangde4.jpg; sourceTree = "<group>"; };
 		EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LISTtreeNumber@2x.png"; sourceTree = "<group>"; };
 		EA5AAC351C8D16F400660FC9 /* region@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "region@2x.png"; sourceTree = "<group>"; };
 		EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listtime@2x.png"; sourceTree = "<group>"; };
@@ -1148,6 +1143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5444BB1CC72AAD00971A50 /* AudioToolbox.framework in Frameworks */,
 				FC50B1F91CAE45850022A24C /* Foundation.framework in Frameworks */,
 				FC50B1F71CAE456B0022A24C /* CoreText.framework in Frameworks */,
 				FC50B1F51CAE45420022A24C /* QuartzCore.framework in Frameworks */,
@@ -1443,6 +1439,11 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA5444C11CC770BD00971A50 /* bangde1.jpg */,
+				EA5444C21CC770BD00971A50 /* bangde2.jpg */,
+				EA5444C31CC770BD00971A50 /* bangde3.jpg */,
+				EA5444C41CC770BD00971A50 /* bangde4.jpg */,
+				EA5444BF1CC76AEE00971A50 /* qiugouxiangqingye.png */,
 				EA4F4D141CBF5F47006E4988 /* bannelSmall1.jpg */,
 				EA4F4D151CBF5F47006E4988 /* bannelSmall2.jpg */,
 				EA4F4D161CBF5F47006E4988 /* bannelSmall3.jpg */,
@@ -1581,44 +1582,10 @@
 		EA29A9F11C85614C004913FF /* UIVender */ = {
 			isa = PBXGroup;
 			children = (
-				EA29A9F21C856159004913FF /* EGOTableViewPullRefresh */,
+				EA5444BC1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.h */,
+				EA5444BD1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m */,
 			);
 			path = UIVender;
-			sourceTree = "<group>";
-		};
-		EA29A9F21C856159004913FF /* EGOTableViewPullRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				EA29A9F31C856159004913FF /* Classes */,
-				EA29A9FC1C856159004913FF /* Resources */,
-			);
-			path = EGOTableViewPullRefresh;
-			sourceTree = "<group>";
-		};
-		EA29A9F31C856159004913FF /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				EA29A9F41C856159004913FF /* EGORefreshTableHeaderView.h */,
-				EA29A9F51C856159004913FF /* EGORefreshTableHeaderView.m */,
-				EA29A9F61C856159004913FF /* LoadMoreTableFooterView.h */,
-				EA29A9F71C856159004913FF /* LoadMoreTableFooterView.m */,
-				EA29A9F81C856159004913FF /* MessageInterceptor.h */,
-				EA29A9F91C856159004913FF /* MessageInterceptor.m */,
-				EA29A9FA1C856159004913FF /* PullTableView.h */,
-				EA29A9FB1C856159004913FF /* PullTableView.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		EA29A9FC1C856159004913FF /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EA29A9FD1C856159004913FF /* blackArrow@2x.png */,
-				EA29A9FE1C856159004913FF /* blueArrow@2x.png */,
-				EA29A9FF1C856159004913FF /* grayArrow@2x.png */,
-				EA29AA001C856159004913FF /* whiteArrow@2x.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		EA4F4D1C1CBF5FDF006E4988 /* LinSHIziyuan */ = {
@@ -1765,6 +1732,7 @@
 		EA741A131C8FEA5600F54478 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA5444BA1CC72AAD00971A50 /* AudioToolbox.framework */,
 				FC50B1F81CAE45850022A24C /* Foundation.framework */,
 				FC50B1F61CAE456B0022A24C /* CoreText.framework */,
 				FC50B1F41CAE45420022A24C /* QuartzCore.framework */,
@@ -2889,12 +2857,7 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = L674B6W9DX;
-						SystemCapabilities = {
-							com.apple.Push = {
-								enabled = 1;
-							};
-						};
+						DevelopmentTeam = 84BBPKS2D6;
 					};
 					EA0B2BAB1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
@@ -2938,12 +2901,10 @@
 				EAF0510D1C92B3A000F435A9 /* tabbarBackImage1@2x.png in Resources */,
 				EAF050EA1C9286B800F435A9 /* myintegralImage@2x.png in Resources */,
 				EA1CF4071CACD11A00AF2D82 /* loading04@2x.png in Resources */,
-				EA29AA061C856159004913FF /* blueArrow@2x.png in Resources */,
 				EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */,
 				EAAFCFB11CBE248800EB894F /* 1miaomu1136.png in Resources */,
 				EAF050FB1C92A17400F435A9 /* mySellImageV@2x.png in Resources */,
 				EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */,
-				EA29AA081C856159004913FF /* whiteArrow@2x.png in Resources */,
 				FC50B1681CAE243F0022A24C /* UMSnsAccountViewController.xib in Resources */,
 				FCF353E11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib in Resources */,
 				EA1CF4171CACD4E300AF2D82 /* loading06@2x.png in Resources */,
@@ -2951,7 +2912,6 @@
 				FC50B1661CAE243F0022A24C /* UMShareEditViewControlleriPad.xib in Resources */,
 				EA03CCEC1C8FEFF80032BAD3 /* phoneImage@2x.png in Resources */,
 				EAAFCFB21CBE248800EB894F /* 2miaomu1136.png in Resources */,
-				EA29AA051C856159004913FF /* blackArrow@2x.png in Resources */,
 				FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */,
 				EA5AAC3E1C8D294700660FC9 /* NomerBuyMessageBtn@2x.png in Resources */,
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
@@ -2961,12 +2921,12 @@
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
 				EAF050E41C924FB300F435A9 /* userBigInfoBack@2x.png in Resources */,
 				EAF0510B1C92A87B00F435A9 /* loginoutimage@2x.png in Resources */,
-				EA29AA071C856159004913FF /* grayArrow@2x.png in Resources */,
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
 				FC50B1641CAE243F0022A24C /* UMSCommentInputControlleriPad.xib in Resources */,
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
 				EA2726FE1C8A7C06000B0719 /* areadb.sqlite in Resources */,
+				EA5444C61CC770BD00971A50 /* bangde2.jpg in Resources */,
 				FC5337A21CBDF2B6008BFB11 /* WHC_CameraVC.xib in Resources */,
 				EAF050E81C92833A00F435A9 /* mycollectionImage@2x.png in Resources */,
 				EA75147E1C9B891E003D63F1 /* treeNameSure2@2x.png in Resources */,
@@ -2993,6 +2953,7 @@
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
 				FCF353E31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
 				EA03CCEF1C90035B0032BAD3 /* phoneLiteImage@2x.png in Resources */,
+				EA5444C51CC770BD00971A50 /* bangde1.jpg in Resources */,
 				FC49AE4E1CA90E5C00214D4B /* 苗圃基地已选择框.png in Resources */,
 				EAF050F01C92939E00F435A9 /* userInfoNomer@2x.png in Resources */,
 				FC6FED6B1CACF833000E2CA5 /* 图标.png in Resources */,
@@ -3039,7 +3000,9 @@
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
 				FC7134231CB3465C0037D507 /* 已选.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
+				EA5444C81CC770BD00971A50 /* bangde4.jpg in Resources */,
 				FC6FED8C1CAD103F000E2CA5 /* 支付订单-充值金额背景.png in Resources */,
+				EA5444C01CC76AEE00971A50 /* qiugouxiangqingye.png in Resources */,
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
@@ -3089,6 +3052,7 @@
 				FC6FED681CACF833000E2CA5 /* 编辑修改.png in Resources */,
 				FCF353E51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
 				EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */,
+				EA5444C71CC770BD00971A50 /* bangde3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3186,7 +3150,6 @@
 				EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */,
 				FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */,
 				FC53379F1CBDF2B6008BFB11 /* WHC_Asset.m in Sources */,
-				EA29AA041C856159004913FF /* PullTableView.m in Sources */,
 				EA5DF94D1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m in Sources */,
 				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
@@ -3204,7 +3167,6 @@
 				EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */,
 				EA03405A1C891EFD00FBF148 /* TreeSpecificationsModel.m in Sources */,
 				FCF353EB1CA3B515001ABA0A /* ZIKMySupplyViewController.m in Sources */,
-				EA29AA011C856159004913FF /* EGORefreshTableHeaderView.m in Sources */,
 				EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */,
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
 				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,
@@ -3233,14 +3195,13 @@
 				FC5808861CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m in Sources */,
 				EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
-				EA29AA021C856159004913FF /* LoadMoreTableFooterView.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
 				EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
 				FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */,
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,
-				EA29AA031C856159004913FF /* MessageInterceptor.m in Sources */,
+				EA5444BE1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m in Sources */,
 				FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */,
 				EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */,
 				FC6FED771CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.m in Sources */,
@@ -3506,7 +3467,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 			};
 			name = Debug;
 		};
@@ -3552,7 +3513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 			};
 			name = Release;
 		};

@@ -20,7 +20,7 @@
     self=[super initWithFrame:frame];
     if (self) {
         UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(20, 15, 70, 70)];
-        [iamgeV setImage:[UIImage imageNamed:@"UserImageV"]];
+        [iamgeV setImage:[UIImage imageNamed:@"qiugouxiangqingye"]];
         [self addSubview:iamgeV];
         iamgeV.layer.masksToBounds=YES;
         iamgeV.layer.cornerRadius=35;

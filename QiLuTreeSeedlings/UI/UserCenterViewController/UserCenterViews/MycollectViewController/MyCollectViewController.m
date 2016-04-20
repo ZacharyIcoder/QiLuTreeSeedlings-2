@@ -8,7 +8,7 @@
 
 #import "MyCollectViewController.h"
 #import "UIDefines.h"
-#import "PullTableView.h"
+#import "MJRefresh.h"
 #import "HttpClient.h"
 #import "ToastView.h"
 #import "HotBuyModel.h"
@@ -19,13 +19,14 @@
 #import "BuyDetialInfoViewController.h"
 #import "SellDetialViewController.h"
 #import "SearchViewController.h"
-@interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate,UIScrollViewDelegate>
+#import "UIButton+ZIKEnlargeTouchArea.h"
+@interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 @property (nonatomic,strong)UIImageView *moveImageV;
 //@property (nonatomic,strong)UIButton *nowBtn;
 @property (nonatomic,strong)UIButton *gongyingBtn;
 @property (nonatomic,strong)UIButton *qiugouBtn;
-@property (nonatomic,strong)PullTableView *buyTableView;
-@property (nonatomic,strong)PullTableView *sellTableView;
+@property (nonatomic,strong)UITableView *buyTableView;
+@property (nonatomic,strong)UITableView *sellTableView;
 @property (nonatomic,strong)UIScrollView *backScrollView;
 @property (nonatomic,strong)NSMutableArray *buyDataAry;
 @property (nonatomic,strong)NSMutableArray *sellDataAry;
@@ -109,21 +110,40 @@
     backScrollView.delegate=self;
     [self.view addSubview:backScrollView];
     [backScrollView setContentSize:CGSizeMake(kWidth*2, 0)];
-    PullTableView *sellTableView=[[PullTableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, backScrollView.frame.size.height)];
+    __weak typeof(self) weakSelf=self;
+    UITableView *sellTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, backScrollView.frame.size.height)];
     sellTableView.tag=123;
     sellTableView.delegate=self;
     sellTableView.dataSource=self;
-    sellTableView.pullDelegate=self;
+    //sellTableView.pullDelegate=self;
+    [sellTableView addHeaderWithCallback:^{
+       weakSelf.sellPageCount=1;
+        [weakSelf.sellDataAry removeAllObjects];
+        [weakSelf getSellDataAryWithPage:[NSString stringWithFormat:@"%ld",(long)weakSelf.sellPageCount] andPageSize:@"10"];
+    }];
+    [sellTableView addFooterWithCallback:^{
+        weakSelf.sellPageCount++;
+        [weakSelf getSellDataAryWithPage:[NSString stringWithFormat:@"%ld",(long)weakSelf.sellPageCount] andPageSize:@"10"];
+    }];
     sellTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.sellTableView=sellTableView;
    // [sellTableView setBackgroundColor:[UIColor yellowColor]];
     [backScrollView addSubview:sellTableView];
     
-    PullTableView *buyTableView=[[PullTableView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, backScrollView.frame.size.height)];
+    UITableView *buyTableView=[[UITableView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, backScrollView.frame.size.height)];
     buyTableView.tag=456;
     buyTableView.delegate=self;
     buyTableView.dataSource=self;
-    buyTableView.pullDelegate=self;
+    //buyTableView.pullDelegate=self;
+    [buyTableView addHeaderWithCallback:^{
+        weakSelf.buyPageCount=1;
+        [weakSelf.buyDataAry removeAllObjects];
+        [weakSelf getbuyDataAryWtihPage:[NSString stringWithFormat:@"%ld",(long)weakSelf.buyPageCount] andPageSiz:@"10"];
+    }];
+    [buyTableView addFooterWithCallback:^{
+        weakSelf.buyPageCount++;
+        [weakSelf getbuyDataAryWtihPage:[NSString stringWithFormat:@"%ld",(long)weakSelf.buyPageCount] andPageSiz:@"10"];
+    }];
     buyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.buyTableView=buyTableView;
     //[buyTableView setBackgroundColor:[UIColor redColor]];
@@ -270,19 +290,7 @@
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
 }
--(void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
-{
-    if (pullTableView.tag==123) {
-        sellPageCount++;
-        [self getSellDataAryWithPage:[NSString stringWithFormat:@"%ld",(long)sellPageCount] andPageSize:@"10"];
-        return;
-    }
-    if (pullTableView.tag==456) {
-        buyPageCount++;
-        [self getbuyDataAryWtihPage:[NSString stringWithFormat:@"%ld",(long)buyPageCount] andPageSiz:@"10"];
-        return;
-    }
-}
+
 -(void)moreSellMessageActon
 {
     SearchViewController *searVC=[[SearchViewController alloc]initWithSearchType:1];
@@ -297,35 +305,8 @@
     [self.navigationController pushViewController:searVC animated:YES];
     return;
 }
--(void)LoadMorewith:(PullTableView *)pullTalbleView
-{
-    [pullTalbleView reloadData];
-    pullTalbleView.pullTableIsLoadingMore=NO;
-}
--(void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
-{
-    if (pullTableView.tag==123) {
-        sellPageCount=1;
-        [self.sellDataAry removeAllObjects];
-        [self getSellDataAryWithPage:[NSString stringWithFormat:@"%ld",(long)sellPageCount] andPageSize:@"10"];
-        //[self refreshwith:pullTableView];
-        return;
-    }
-    if (pullTableView.tag==456) {
-         buyPageCount=1;
-        [self.buyDataAry removeAllObjects];
-        [self getbuyDataAryWtihPage:[NSString stringWithFormat:@"%ld",(long)buyPageCount] andPageSiz:@"10"];
-        //[self refreshwith:pullTableView];
-        return;
-    }
-        //[self performSelector:@selector(refreshwith:) withObject:pullTableView afterDelay:0.1];
-}
--(void)refreshwith:(PullTableView *)pullTableView
-{
-    //[pullTableView reloadData];
-   pullTableView.pullLastRefreshDate = [NSDate date];
-   pullTableView.pullTableIsRefreshing=NO;
-}
+
+
 -(void)selectBtnAction:(UIButton *)sender
 {
     if (sender.selected==YES) {
@@ -387,6 +368,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
@@ -433,11 +415,12 @@
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
-        [self refreshwith:self.buyTableView];
-        [self LoadMorewith:self.buyTableView];
+        [self.buyTableView headerEndRefreshing];
+        [self.buyTableView footerEndRefreshing];
         //NSLog(@"求购收藏%@",responseObject);
     } failure:^(NSError *error) {
-        
+        [self.buyTableView headerEndRefreshing];
+        [self.buyTableView footerEndRefreshing];
     }];
 }
 -(void)getSellDataAryWithPage:(NSString *)page andPageSize:(NSString *)pageSize
@@ -466,10 +449,11 @@
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
-        [self refreshwith:self.sellTableView];
-        [self LoadMorewith:self.sellTableView];
+        [self.sellTableView headerEndRefreshing];
+        [self.sellTableView footerEndRefreshing];
     } failure:^(NSError *error) {
-        
+        [self.sellTableView headerEndRefreshing];
+        [self.sellTableView footerEndRefreshing];
     }];
 }
 -(void)creatSellLikeAry

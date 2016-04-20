@@ -15,6 +15,9 @@
     if (dic) {
         model.area=[dic objectForKey:@"area"];
         model.creatTime=[dic objectForKey:@"createTime"];
+        if (model.creatTime.length==0) {
+            model.creatTime=[dic objectForKey:@"time"];
+        }
         model.effective=[dic objectForKey:@"effective"];
         model.price=[dic objectForKey:@"price"];
         model.New=[[dic objectForKey:@"new"] integerValue];

@@ -14,6 +14,7 @@
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 #define kMaxLength 20
 @interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
@@ -143,7 +144,7 @@
     [ecttNameLab setFont:[UIFont systemFontOfSize:15]];
     UIButton *ecttiveBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 0, kWidth-200, 50)];
     [ecttiveView addSubview:ecttiveBtn];
-    [ecttiveBtn setTitle:@"不限" forState:UIControlStateNormal];
+    [ecttiveBtn setTitle:@"请选择" forState:UIControlStateNormal];
     [ecttiveBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     self.ectiveBtn=ecttiveBtn;
     [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -246,7 +247,7 @@
 {
     if (!self.ecttivePickerView) {
         self.ecttivePickerView=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        [self.ecttivePickerView resetPickerData:@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"永久"]];
+        [self.ecttivePickerView resetPickerData:@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"]];
         self.ecttivePickerView.delegate=self;
     }
     [self.ecttivePickerView showInView];
@@ -401,6 +402,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
@@ -522,10 +524,10 @@
     if (self.baseMessageDic) {
         self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"count"]];
         self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"price"]];
-        NSArray *ectiveAry = @[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"永久"];
+        NSArray *ectiveAry = @[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"];
         NSInteger ective=[[self.baseMessageDic objectForKey:@"effective"] integerValue];
         self.ecttiv=ective;
-        NSString *str=@"永久";
+        NSString *str=@"长期";
         if (self.ecttiv<=10) {
             str=ectiveAry[ective-1];
         }
@@ -586,9 +588,41 @@
 }
 -(void)selectNum:(NSInteger)select
 {
-    NSLog(@"%ld",select+1);
-    self.ecttiv=select+1;
-    //@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"永久"]
+    switch (select) {
+        case 0:
+            self.ecttiv=6;
+            break;
+        case 1:
+            self.ecttiv=7;
+            break;
+        case 2:
+            self.ecttiv=8;
+            break;
+        case 3:
+            self.ecttiv=9;
+            break;
+        case 4:
+            self.ecttiv=10;
+            break;
+        case 5:
+            self.ecttiv=2;
+            break;
+        case 6:
+            self.ecttiv=3;
+            break;
+        case 7:
+            self.ecttiv=4;
+            break;
+        case 8:
+            self.ecttiv=5;
+            break;
+        case 9:
+            self.ecttiv=10;
+            break;
+        default:
+            self.ecttiv=0;
+            break;
+    }
     
 }
 -(void)selectInfo:(NSString *)select
@@ -600,7 +634,7 @@
         if ([[responseObject objectForKey:@"success"] integerValue] == 1 ) {
             NSArray *typeListArray = [[responseObject objectForKey:@"result"] objectForKey:@"typeList"];
             if (typeListArray.count == 0) {
-                NSLog(@"暂时没有产品信息!!!");
+                [ToastView showTopToast:@"暂时没有产品信息!"];
             }
             else if (typeListArray.count > 0) {
                 self.productTypeDataMArray = (NSMutableArray *)typeListArray;

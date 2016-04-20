@@ -10,5 +10,5 @@
 
 @interface BuyOtherInfoTableViewCell : UITableViewCell
 @property (nonatomic,strong) NSArray *ary;
--(id)initWithFrame:(CGRect)frame;
+-(id)initWithFrame:(CGRect)frame andName:(NSString *)name;
 @end

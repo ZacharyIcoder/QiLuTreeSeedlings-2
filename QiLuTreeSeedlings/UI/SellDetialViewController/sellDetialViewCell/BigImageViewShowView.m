@@ -9,6 +9,7 @@
 #import "BigImageViewShowView.h"
 #import "UIDefines.h"
 #import "UIImageView+AFNetworking.h"
+#define kActionVTag 18888
 @interface BigImageViewShowView ()
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @end
@@ -51,6 +52,28 @@
     }
     return self;
 }
+-(id)initWithNomalImageAry:(NSArray *)imageAry
+{
+    self=[super init];
+    if (self) {
+        [self setFrame:[UIScreen mainScreen].bounds];
+        _backScrollView=[[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        [self addSubview:_backScrollView];
+        [_backScrollView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+        [_backScrollView setContentSize:CGSizeMake(kWidth*imageAry.count, 0)];
+        _backScrollView.pagingEnabled=YES;
+        for (int i=0; i<imageAry.count; i++) {
+            UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 0, kWidth-30,(kWidth-30)*1.77778)];
+            [imageV setImage:[UIImage imageNamed:imageAry[i]]];
+            imageV.center=CGPointMake(kWidth*i+kWidth/2, kHeight/2);
+            [_backScrollView addSubview:imageV];
+            
+        }
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeFromeKeyWind)];
+        [self addGestureRecognizer:tap];
+    }
+    return self;
+}
 -(void)hidingSelf
 {
     [UIView animateWithDuration:0.3 animations:^{
@@ -58,6 +81,25 @@
     } completion:^(BOOL finished) {
         self.hidden=YES;
     }];
+}
+-(void)removeFromeKeyWind
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha=0;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+}
+-(void)showInKeyWindowWithIndex:(NSInteger)index
+{
+    [_backScrollView setContentOffset:CGPointMake(kWidth*index, 0)];
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha=1;
+    } completion:^(BOOL finished) {
+        
+    }];
+
 }
 -(void)showWithIndex:(NSInteger)index
 {

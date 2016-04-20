@@ -23,7 +23,7 @@
         [self.contentView addSubview:iamgeV];
         UIImageView *iamgeVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 20, 33, 33)];
         [iamgeVV setImage:[UIImage imageNamed:@"editngChange"]];
-        [self.contentView addSubview:iamgeVV];
+        [self addSubview:iamgeVV];
         [iamgeV setImage:[UIImage imageNamed:@"nuseryBase"]];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(70, 20, kWidth-105, 30)];
         [titleLab setTextColor:titleLabColor];
