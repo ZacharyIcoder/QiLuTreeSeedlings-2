@@ -235,6 +235,9 @@
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
+    }else{
+        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
     }
 }
 -(void)gongyingBtnAction:(UIButton *)sender

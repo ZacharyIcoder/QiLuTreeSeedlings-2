@@ -302,9 +302,7 @@
         [self totalCount];
         return;
     }
-        //NSLog(@"didSelectRowAtIndexPath");
-        // 获取当前显示数据
-        //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
+
         // 添加到我们的删除数据源里面
         model.isSelect = YES;
         [_removeArray addObject:model];

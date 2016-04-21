@@ -140,14 +140,7 @@
      //NSLog(@"HistoryCellDeleteBtnAction :%ld",(long)sender.tag);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
-    if (searchHistoryAry.count==1) {
-        [self.histroyView removeFromSuperview];
-        [searchHistoryAry removeAllObjects];
-        [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-        [userDefaults synchronize];
-        return;
-    }
-    if (searchHistoryAry!=nil) {
+    if (searchHistoryAry.count!=0) {
         //NSLog(@"%lu",(unsigned long)searchHistoryAry.count);
         
         int xx=sender.tag%50;
@@ -170,28 +163,13 @@
     [searchHistoryAry removeAllObjects];
     [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
     [userDefaults synchronize];
-    [self.histroyView removeFromSuperview];
+    [self HistoryCellDeleteBtnAction:nil];
 }
 -(void)hotSaerchBtnAction:(UIButton *)sender
 {
     NSString *searchStr=[sender.titleLabel text];
     if (searchStr.length==0) {
         return;
-    }
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
-    if (![searchHistoryAry containsObject:searchStr]) {
-        if (searchHistoryAry.count<5) {
-            [searchHistoryAry addObject:searchStr];
-            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-            [userDefaults synchronize];
-        }else
-        {
-            [searchHistoryAry addObject:searchStr];
-            [searchHistoryAry removeObjectAtIndex:0];
-             [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-            [userDefaults synchronize];
-        }
     }
     if (self.delegate) {
         [self.delegate SearchRecommendViewSearchDIC:self.dataAry[sender.tag]];

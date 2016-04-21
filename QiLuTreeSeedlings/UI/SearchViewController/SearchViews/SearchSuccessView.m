@@ -220,6 +220,28 @@
 - (void)searchByScringList
 {
     // HttpClient *httpClient=[HttpClient sharedClient];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
+    if (![searchHistoryAry containsObject:self.searchStr]) {
+        if (searchHistoryAry.count<5) {
+            [searchHistoryAry addObject:self.searchStr];
+            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
+            [userDefaults synchronize];
+        }else
+        {
+            [searchHistoryAry addObject:self.searchStr];
+            [searchHistoryAry removeObjectAtIndex:0];
+            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
+            [userDefaults synchronize];
+        }
+    }else{
+        [searchHistoryAry removeObject:self.searchStr];
+        [searchHistoryAry addObject:self.searchStr];
+        [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
+        [userDefaults synchronize];
+        
+    }
+
     if (self.searchType==1) {
         [HTTPCLIENT sellSearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithProductUid:self.productUid WithProductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);

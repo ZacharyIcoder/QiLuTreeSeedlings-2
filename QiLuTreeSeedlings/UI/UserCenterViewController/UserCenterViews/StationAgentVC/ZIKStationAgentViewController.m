@@ -101,7 +101,7 @@
             self.page--;
             [self.stationTableView footerEndRefreshing];
             //没有更多数据了
-            [ToastView showToast:@"没有更多数据了" withOriginY:Width/2 withSuperView:self.view];
+            [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
             return;
         }
         else {

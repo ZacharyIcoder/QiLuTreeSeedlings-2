@@ -96,7 +96,7 @@
         return 330;
     }
     if (indexPath.section==1) {
-        return self.model.spec.count*30+10;
+        return self.model.spec.count*30+40;
     }
     if (indexPath.section==2) {
         if (self.nurseryDateArray.count==0) {
@@ -174,7 +174,7 @@
     [messageLab setTextColor:detialLabColor];
     [view addSubview:messageLab];
     if (section==1) {
-        messageLab.text=@"苗木要求";
+        messageLab.text=@"苗木信息";
     }else if (section==2){
         messageLab.text=@"其他信息";
     }else if (section==3){
@@ -192,7 +192,7 @@
             return cell;
         }
         if (indexPath.section==1) {
-            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+10)];
+            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+40) andName:self.model.productName];
             cell.ary=self.model.spec;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
