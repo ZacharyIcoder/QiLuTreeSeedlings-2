@@ -270,7 +270,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
-    return  model.spec.count*30+30+10;
+    return  model.spec.count*30+10;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -287,10 +287,10 @@
     //backView.backgroundColor = [UIColor whiteColor];
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
     //backView.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+30+10);
-    BuyOtherInfoTableViewCell *mycell = [[BuyOtherInfoTableViewCell alloc] init ];
-    mycell.frame = CGRectMake(0, -180, kWidth, model.spec.count*30+30+10);
+    BuyOtherInfoTableViewCell *mycell = [[BuyOtherInfoTableViewCell alloc] init];
+    mycell.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+10);
     mycell.backgroundColor = [UIColor whiteColor];
-    mycell.ary = model.spec;
+    mycell.dingzhiAry = model.spec;
     mycell.selectionStyle = UITableViewCellSelectionStyleNone;
     //[backView addSubview:mycell];
     //return backView;

@@ -10,5 +10,6 @@
 
 @interface BuyOtherInfoTableViewCell : UITableViewCell
 @property (nonatomic,strong) NSArray *ary;
+@property (nonatomic,strong)NSArray *dingzhiAry;
 -(id)initWithFrame:(CGRect)frame andName:(NSString *)name;
 @end

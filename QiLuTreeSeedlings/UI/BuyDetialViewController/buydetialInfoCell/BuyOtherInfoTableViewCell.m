@@ -39,6 +39,15 @@
         [self MackViewWithFrame:CGRectMake(0, i*30+35, kWidth, 30) andDic:dic];
     }
 }
+-(void)setDingzhiAry:(NSArray *)dingzhiAry
+{
+    _dingzhiAry=dingzhiAry;
+    for (int i=0; i<dingzhiAry.count; i++) {
+        NSDictionary *dic=dingzhiAry[i];
+        [self MackViewWithFrame:CGRectMake(0, i*30+5, kWidth, 30) andDic:dic];
+    }
+
+}
 -(void)MackViewWithFrame:(CGRect)frame andDic:(NSDictionary *)dic
 {
     
