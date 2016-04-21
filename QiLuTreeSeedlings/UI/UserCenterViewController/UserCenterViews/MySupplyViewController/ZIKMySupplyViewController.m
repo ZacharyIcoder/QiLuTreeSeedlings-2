@@ -100,7 +100,7 @@
     [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
-            [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
+
             [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([blockSelf.supplyInfoMArr containsObject:model]) {
                     [blockSelf.supplyInfoMArr removeObject:model];
@@ -117,6 +117,7 @@
                 [_removeArray removeAllObjects];
             }
             [self totalCount];
+            [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
         }
         else {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
@@ -419,42 +420,42 @@
 - (void)createEmptyUI {
     if (!emptyUI) {
         emptyUI  = [[UIView alloc] init];
+        emptyUI.frame = CGRectMake(0, 64, Width, Height/2);
+        emptyUI.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:emptyUI];
+
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.frame = CGRectMake(Width/2-50, 30, 100, 100);
+        imageView.image = [UIImage imageNamed:@"我的供应（空）"];
+        [emptyUI addSubview:imageView];
+
+        UILabel *label1 = [[UILabel alloc] init];
+        label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
+        label1.text = @"您还没有发布任何的供应信息";
+        label1.textAlignment = NSTextAlignmentCenter;
+        label1.textColor = detialLabColor;
+        [emptyUI addSubview:label1];
+
+        UILabel *label2 = [[UILabel alloc] init];
+        label2.frame = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
+        label2.text = @"点击按钮发布";
+        label2.textColor = detialLabColor;
+        label2.textAlignment = NSTextAlignmentCenter;
+        [emptyUI addSubview:label2];
+
+        UIButton *button = [[UIButton alloc] init];
+        button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
+        [button setTitleColor:detialLabColor forState:UIControlStateNormal];
+        button.layer.masksToBounds = YES;
+        button.layer.cornerRadius = 6.0f;
+        button.layer.borderWidth = 1;
+        button.layer.borderColor = [detialLabColor CGColor];
+        [button setTitle:@"发布供应" forState:UIControlStateNormal];
+        [emptyUI addSubview:button];
+        [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
 
     }
-    emptyUI.frame = CGRectMake(0, 64, Width, Height/2);
-    emptyUI.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:emptyUI];
-
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(Width/2-50, 30, 100, 100);
-    imageView.image = [UIImage imageNamed:@"我的供应（空）"];
-    [emptyUI addSubview:imageView];
-
-    UILabel *label1 = [[UILabel alloc] init];
-    label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
-    label1.text = @"您还没有发布任何的供应信息";
-    label1.textAlignment = NSTextAlignmentCenter;
-    label1.textColor = detialLabColor;
-    [emptyUI addSubview:label1];
-
-    UILabel *label2 = [[UILabel alloc] init];
-    label2.frame = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
-    label2.text = @"点击按钮发布";
-    label2.textColor = detialLabColor;
-    label2.textAlignment = NSTextAlignmentCenter;
-    [emptyUI addSubview:label2];
-
-    UIButton *button = [[UIButton alloc] init];
-    button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
-    [button setTitleColor:detialLabColor forState:UIControlStateNormal];
-    button.layer.masksToBounds = YES;
-    button.layer.cornerRadius = 6.0f;
-    button.layer.borderWidth = 1;
-    button.layer.borderColor = [detialLabColor CGColor];
-    [button setTitle:@"发布供应" forState:UIControlStateNormal];
-    [emptyUI addSubview:button];
-    [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-}
+ }
 
 - (void)btnClick {
     if (self.isCanPublish) {

@@ -364,6 +364,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 }
 
 - (void)showSideView {
+    [self.titleTextField resignFirstResponder];
+    [self.nameTextField resignFirstResponder];
+
      [[UIApplication sharedApplication] setStatusBarHidden:YES];
     if (!self.sideView) {
         self.sideView = [[ZIKSideView alloc] initWithFrame:CGRectMake(Width, 0, Width, Height)];
@@ -431,6 +434,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 -(void)openMenu
 {
+    [self.titleTextField resignFirstResponder];
+    [self.nameTextField resignFirstResponder];
+
     //在这里呼出下方菜单按钮项
     self.myActionSheet = [[UIActionSheet alloc]
                           initWithTitle:nil
@@ -705,10 +711,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 //    frame.size.height=kHeight-44-44;
 //    self.backScrollView.frame=frame;
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    //[self hidingKey];
-}
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+//    //[self hidingKey];
+//}
 
 
 -(NSData *)imageData:(UIImage *)myimage
@@ -775,5 +781,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     return UIImagePNGRepresentation(newImage);
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.titleTextField resignFirstResponder];
+    [self.nameTextField resignFirstResponder];
+}
 
 @end
