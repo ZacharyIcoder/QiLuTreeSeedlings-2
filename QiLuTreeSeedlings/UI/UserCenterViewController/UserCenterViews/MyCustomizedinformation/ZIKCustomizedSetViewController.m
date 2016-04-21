@@ -98,6 +98,7 @@
     hintLabel.font = [UIFont systemFontOfSize:14.0f];
     [priceView addSubview:hintLabel];
     priceLabel = [[UILabel alloc] init];
+    //priceLabel.backgroundColor = [UIColor yellowColor];
     priceLabel.frame = CGRectMake(Width-200, 0, Width-190, 44);
     priceLabel.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:priceLabel];
@@ -221,7 +222,7 @@
                 self.dataAry = [dic objectForKey:@"list"];
                 self.price = [dic objectForKey:@"price"];
                 priceView.hidden = NO;
-                priceLabel.text = [NSString stringWithFormat:@"¥%.1f/条",self.price.floatValue];
+                priceLabel.text = [NSString stringWithFormat:@"¥%.2f/条",self.price.floatValue];
                 priceLabel.textColor = yellowButtonColor;
                 self.productUid=[dic objectForKey:@"productUid"];
                 button.selected = YES;

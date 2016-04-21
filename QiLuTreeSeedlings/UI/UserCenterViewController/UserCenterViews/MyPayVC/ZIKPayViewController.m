@@ -37,7 +37,7 @@
     nameTextField.frame         = CGRectMake(100, 7, kWidth-30, 30);
     nameTextField.textAlignment = NSTextAlignmentLeft;
     nameTextField.placeholder   = @"请输入充值金额";
-    nameTextField.keyboardType = UIKeyboardTypeNumberPad;
+    nameTextField.keyboardType = UIKeyboardTypeDecimalPad;
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(textFieldChanged:)
 //                                                 name:UITextFieldTextDidChangeNotification
@@ -57,6 +57,10 @@
 - (void)btnClick {
     if ([ZIKFunction xfunc_check_strEmpty:nameTextField.text]) {
         [ToastView showTopToast:@"请输入充值金额"];
+        return;
+    }
+    if (nameTextField.text.floatValue>2000) {
+        [ToastView showToast:@"单次充值金额不能大于2000" withOriginY:250 withSuperView:self.view];
         return;
     }
     [self requestIsFirstRecharge];

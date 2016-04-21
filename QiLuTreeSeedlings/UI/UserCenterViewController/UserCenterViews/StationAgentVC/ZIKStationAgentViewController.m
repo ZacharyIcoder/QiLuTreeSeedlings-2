@@ -12,10 +12,19 @@
 #import "ZIKStationAgentModel.h"
 #import "YYModel.h"
 #import "MJRefresh.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
+#import "ZIKFunction.h"
+#import "HttpClient.h"
+#define titleFont [UIFont systemFontOfSize:21]
 @interface ZIKStationAgentViewController ()<PickerLocationDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     UILabel *areaLabel;
+    UILabel *titleLab;
 }
+/**
+ *  视图标题
+ */
+@property (nonatomic, strong) NSString *vcTitle;
 @property (nonatomic,copy   ) NSString       *areaCode;
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *stationInfoMArr;//站长信息数组
@@ -29,10 +38,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.vcTitle = @"站长通";
+    [self.view addSubview:[self makeNavView]];
     [self initData];
     [self initUI];
     [self requestData];
     //[self requestSellList:nil];
+
+
+}
+
+-(UIView *)makeNavView
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
+    [view setBackgroundColor:NavColor];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
+    [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
+    [view addSubview:backBtn];
+    [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(Width-45, 27, 30, 30)];
+    [rightBtn setImage:[UIImage imageNamed:@"screenBtnAction"] forState:UIControlStateNormal];
+    [rightBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
+    [view addSubview:rightBtn];
+    [rightBtn addTarget:self action:@selector(pickLocationAction) forControlEvents:UIControlEventTouchUpInside];
+
+
+    titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
+    [titleLab setTextColor:[UIColor whiteColor]];
+    [titleLab setTextAlignment:NSTextAlignmentCenter];
+    //[titleLab setText:self.vcTitle];
+    titleLab.text = self.vcTitle;
+    [titleLab setFont:titleFont];
+    [view addSubview:titleLab];
+    return view;
+}
+
+-(void)backBtnAction:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)requestData {
@@ -49,7 +93,7 @@
 
 }
 
-- (void)initUI {
+- (void)initUI {//
     UIView *areaView = [[UIView alloc] init];
     areaView.frame = CGRectMake(0, 64, Width, 44);
     [self.view addSubview:areaView];

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 guihuicaifu. All rights reserved.
 //
 
-#import "ZIKArrowViewController.h"
-
-@interface ZIKStationAgentViewController : ZIKArrowViewController
+//#import "ZIKArrowViewController.h"
+#import "ZIKBaseViewController.h"
+@interface ZIKStationAgentViewController : ZIKBaseViewController
 
 @end

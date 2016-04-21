@@ -1674,7 +1674,8 @@
 				EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */,
 				EA6B31BA1CABA5F70068CCB5 /* NuseryDetialViewController */,
 			);
-			path = MyNurseryListViewController;
+			name = MyNurseryListViewController;
+			path = ../MyNurseryListViewController;
 			sourceTree = "<group>";
 		};
 		EA6B31B31CABA5F70068CCB5 /* myNuseryCells */ = {
@@ -1961,7 +1962,6 @@
 				EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */,
 				FC6FED4F1CACEAE8000E2CA5 /* MyCustomizedinformation */,
 				FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */,
-				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC6149DC1CAA2E0600672241 /* UserInfoSetVC */,
 				FCF353791CA3B514001ABA0A /* MySupplyViewController */,
 				EA7056501C9F869900E9D253 /* CompanyInfoViewController */,
@@ -2110,6 +2110,7 @@
 		FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */ = {
 			isa = PBXGroup;
 			children = (
+				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC6FED811CAD100F000E2CA5 /* Resource */,
 				FC4B4F2A1CAB970100EBB2F8 /* Model */,
 				FC4B4F2B1CAB970100EBB2F8 /* View */,
@@ -2858,13 +2859,11 @@
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 84BBPKS2D6;
-
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
-
 					};
 					EA0B2BAB1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
