@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSArray            *specificationAttributes;
 @property (nonatomic, strong) ZIKCustomizedModel *model;
 @property (nonatomic, strong) NSDictionary       *baseMessageDic;
+//@property (nonatomic, strong) NSString *myprice;
 
 @end
 
@@ -52,6 +53,7 @@
     self = [super init];
     if (self) {
         self.model = model;
+
     }
     return self;
 }
@@ -89,6 +91,7 @@
     [nameView addSubview:nameLineView];
 
     priceView = [[UIView alloc] init];
+    priceView.backgroundColor = [UIColor whiteColor];
     priceView.frame = CGRectMake(0, CGRectGetMaxY(nameView.frame)+8, Width, 44);
     [self.backScrollView addSubview:priceView];
     UILabel *hintLabel = [[UILabel alloc] init];
@@ -102,7 +105,15 @@
     priceLabel.frame = CGRectMake(Width-200, 0, Width-190, 44);
     priceLabel.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:priceLabel];
-    priceView.hidden  = YES;
+    if (self.model) {
+        priceView.hidden = NO;
+        priceLabel.text = [NSString stringWithFormat:@"¥%.2f/条",self.model.price.floatValue];
+        priceLabel.textColor = yellowButtonColor;
+    }
+    else
+    {
+        priceView.hidden  = YES;
+    }
     UIImageView *linView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43, Width-20, 0.5)];
     [priceView addSubview:linView];
     [linView setBackgroundColor:kLineColor];
@@ -152,7 +163,7 @@
             //self.productName=[dic objectForKey:@"productName"];
            // self.baseMessageDic = [[responseObject objectForKey:@"result"] objectForKey:@"baseMsg"];
             NSArray *ary = [dic objectForKey:@"bean"];
-            self.dataAry=ary;
+            self.dataAry = ary;
             [self creatSCreeningCellsWithAnswerWithAry:ary];
         }else
         {
@@ -172,7 +183,7 @@
             [myview removeFromSuperview];
         }
     }];
-    CGFloat Y = 60+44+8+8;
+    CGFloat Y = 44+44+8+8;
     for (int i=0; i<self.dataAry.count; i++) {
         TreeSpecificationsModel *model=self.dataAry[i];
         FabutiaojiaCell *cell;
@@ -352,6 +363,10 @@
 
 #pragma  mark - 确认完成按钮点击事件
 - (void)nextBtnAction:(UIButton *)button {
+    if (!self.nameBtn.selected) {
+        [ToastView showToast:@"请确认苗木名称" withOriginY:250 withSuperView:self.view];
+        return;
+    }
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
     for (int i = 0; i < cellAry.count; i++) {
         TreeSpecificationsModel *model = cellAry[i];

@@ -14,7 +14,7 @@
 #import "BuyOtherInfoTableViewCell.h"
 #import "ZIKCustomizedTableViewCell.h"
 #import "ZIKBottomDeleteTableViewCell.h"
-@interface ZIKCustomizedInfoListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ZIKCustomizedInfoListViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     UIView *emptyUI;
     // 保存选中行数据
@@ -107,6 +107,7 @@
             [self.myCustomizedInfoTableView footerEndRefreshing];
             self.myCustomizedInfoTableView.hidden = YES;
             [self createEmptyUI];
+            emptyUI.hidden = NO;
             return ;
         }
         else if (array.count == 0 && self.page > 1) {
@@ -142,40 +143,10 @@
         [ToastView showToast:@"请选择要删除的选项" withOriginY:200 withSuperView:self.view];
         return;
     }
-    __weak typeof(_removeArray) removeArr = _removeArray;
-    __weak __typeof(self) blockSelf = self;
-
-    __block NSString *uidString = @"";
-    [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.customsetUid]];
-    }];
-    NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT deleteCustomSetInfo:uids Success:^(id responseObject) {
-        //NSLog(@"%@",responseObject);
-        if ([responseObject[@"success"] integerValue] == 1) {
-            [removeArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([blockSelf.customizedInfoMArr containsObject:model]) {
-                    [blockSelf.customizedInfoMArr removeObject:model];
-                }
-            }];
-            [blockSelf.myCustomizedInfoTableView reloadData];
-            //            [blockSelf.mySupplyTableView deleteRowsAtIndexPaths:blockSelf.mySupplyTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
-            if (blockSelf.customizedInfoMArr.count == 0) {
-                [self requestData];
-                bottomcell.hidden = YES;
-                self.myCustomizedInfoTableView.editing = NO;
-            }
-            if (_removeArray.count > 0) {
-                [_removeArray removeAllObjects];
-            }
-            [self totalCount];
-        }
-        else {
-
-        }
-    } failure:^(NSError *error) {
-
-    }];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定删除所选内容？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 300;
+    alert.delegate = self;
 
 }
 - (void)selectBtnClick {
@@ -396,27 +367,28 @@
         emptyUI.frame           = CGRectMake(0, 64, Width, Height/2);
         emptyUI.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:emptyUI];
+        UIImageView *imageView  = [[UIImageView alloc] init];
+        imageView.frame         = CGRectMake(Width/2-50, 30, 100, 100);
+        imageView.image         = [UIImage imageNamed:@"图片2"];
+        [emptyUI addSubview:imageView];
+
+        UILabel *label1         = [[UILabel alloc] init];
+        label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
+        label1.text             = @"您还没有定制任何信息~";
+        label1.textAlignment    = NSTextAlignmentCenter;
+        label1.textColor        = detialLabColor;
+        [emptyUI addSubview:label1];
+
+        UILabel *label2         = [[UILabel alloc] init];
+        label2.frame            = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
+        label2.text             = @"点击右上角开始添加吧";
+        label2.textColor        = detialLabColor;
+        label2.textAlignment    = NSTextAlignmentCenter;
+        [emptyUI addSubview:label2];
+
     }
 
-    UIImageView *imageView  = [[UIImageView alloc] init];
-    imageView.frame         = CGRectMake(Width/2-50, 30, 100, 100);
-    imageView.image         = [UIImage imageNamed:@"图片2"];
-    [emptyUI addSubview:imageView];
-
-    UILabel *label1         = [[UILabel alloc] init];
-    label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
-    label1.text             = @"您还没有定制任何信息~";
-    label1.textAlignment    = NSTextAlignmentCenter;
-    label1.textColor        = detialLabColor;
-    [emptyUI addSubview:label1];
-
-    UILabel *label2         = [[UILabel alloc] init];
-    label2.frame            = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
-    label2.text             = @"点击右上角开始添加吧";
-    label2.textColor        = detialLabColor;
-    label2.textAlignment    = NSTextAlignmentCenter;
-    [emptyUI addSubview:label2];
-}
+ }
 
 - (void)initData {
     self.page               = 1;
@@ -427,6 +399,62 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//-(void)backBtnAction:(UIButton *)sender
+//{
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要退出编辑？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+//    [alert show];
+//    alert.tag = 300;
+//    alert.delegate = self;
+//
+//    //[self.navigationController popViewControllerAnimated:YES];
+//}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //NSLog(@"%ld",(long)buttonIndex);
+    if(alertView.tag == 300)//是否退出编辑
+    {
+        if (buttonIndex == 1) {
+            __weak typeof(_removeArray) removeArr = _removeArray;
+            __weak __typeof(self) blockSelf = self;
+
+            __block NSString *uidString = @"";
+            [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.customsetUid]];
+            }];
+            NSString *uids = [uidString substringFromIndex:1];
+            [HTTPCLIENT deleteCustomSetInfo:uids Success:^(id responseObject) {
+                //NSLog(@"%@",responseObject);
+                if ([responseObject[@"success"] integerValue] == 1) {
+                    [ToastView showToast:@"删除成功" withOriginY:250 withSuperView:self.view];
+                    [removeArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if ([blockSelf.customizedInfoMArr containsObject:model]) {
+                            [blockSelf.customizedInfoMArr removeObject:model];
+                        }
+                    }];
+                    [blockSelf.myCustomizedInfoTableView reloadData];
+                    //            [blockSelf.mySupplyTableView deleteRowsAtIndexPaths:blockSelf.mySupplyTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+                    if (blockSelf.customizedInfoMArr.count == 0) {
+                        [self requestData];
+                        bottomcell.hidden = YES;
+                        self.myCustomizedInfoTableView.editing = NO;
+                    }
+                    if (_removeArray.count > 0) {
+                        [_removeArray removeAllObjects];
+                    }
+                    [self totalCount];
+                }
+                else {
+                    [ToastView showToast:@"删除失败" withOriginY:250 withSuperView:self.view];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+
+        }
+    }
 }
 
 

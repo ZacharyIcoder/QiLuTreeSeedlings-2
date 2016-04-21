@@ -145,7 +145,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [nameLineView setBackgroundColor:kLineColor];
     [nameView addSubview:nameLineView];
 
-
+ 
     self.nameBtn = nameBtn;
 
     UIButton *nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 44)];
