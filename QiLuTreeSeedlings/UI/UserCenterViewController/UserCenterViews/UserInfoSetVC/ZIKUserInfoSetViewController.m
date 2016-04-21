@@ -139,6 +139,7 @@
         cellPhoneLabel.textColor = titleLabColor;
         cellPhoneLabel.textAlignment = NSTextAlignmentRight;
         [cell addSubview:cellPhoneLabel];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone; //不显示最右边的箭头
 
     }

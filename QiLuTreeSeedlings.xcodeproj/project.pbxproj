@@ -2110,7 +2110,6 @@
 		FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */ = {
 			isa = PBXGroup;
 			children = (
-				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC6FED811CAD100F000E2CA5 /* Resource */,
 				FC4B4F2A1CAB970100EBB2F8 /* Model */,
 				FC4B4F2B1CAB970100EBB2F8 /* View */,
@@ -2493,6 +2492,7 @@
 		FC6FED4F1CACEAE8000E2CA5 /* MyCustomizedinformation */ = {
 			isa = PBXGroup;
 			children = (
+				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC6FED5E1CACF6D2000E2CA5 /* Resource */,
 				FC6FED5C1CACF2E5000E2CA5 /* Model */,
 				FC6FED5D1CACF2E5000E2CA5 /* View */,

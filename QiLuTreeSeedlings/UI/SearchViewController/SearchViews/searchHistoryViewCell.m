@@ -13,10 +13,10 @@
 {
     self=[super initWithFrame:frame];
     if (self) {
-        UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(5,7, 16, 16)];
+        UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(5,15, 16, 16)];
         [imageV setImage:[UIImage imageNamed:@"listtime"]];
         [self addSubview:imageV];
-        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(30, 7, 80, 20)];
+        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(30, 13, 80, 20)];
         [titleLab setTextColor:detialLabColor];
         titleLab.text=[dic objectForKey:@"title"];
         [titleLab setFont:[UIFont systemFontOfSize:13]];

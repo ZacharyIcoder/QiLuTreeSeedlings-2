@@ -59,6 +59,7 @@
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, frame.size.height-0.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self.contentView addSubview:imageVLine];
+        self.selectionStyle=UITableViewCellSelectionStyleBlue;
         
     }
     return self;
@@ -79,8 +80,8 @@
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];
     if (hotBuyModel.isSelect) {
+        self.selected = YES;
         self.isSelect = YES;
-        self.selected=YES;
     }
     
 }

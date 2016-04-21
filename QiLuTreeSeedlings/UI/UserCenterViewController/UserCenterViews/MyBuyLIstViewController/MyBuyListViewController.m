@@ -263,7 +263,7 @@
         if (!cell) {
             cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 60)];
            
-                cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
             
         }
         HotBuyModel *model=self.dataAry[indexPath.row];

@@ -60,6 +60,7 @@
     view.layer.borderWidth=0.5;
     UIButton *btn=[[UIButton alloc]initWithFrame:view.bounds];
     [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
+    [btn setTitleColor:detialLabColor forState:UIControlStateHighlighted];
     [view addSubview:btn];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];

@@ -16,7 +16,6 @@
 #import "ToastView.h"
 #import "ZIKSideView.h"
 @interface ScreeningView ()<UITextFieldDelegate,PickerLocationDelegate,ZIKSelectViewUidDelegate>
-//@property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) UITextField *nameTextField;
 @property (nonatomic,strong)UIScrollView *backScrollView;
 @property (nonatomic,strong)NSArray *dataAry;
@@ -367,6 +366,10 @@
 }
 -(void)screeningViewAction
 {
+    if (self.nameBtn.selected==NO) {
+        [ToastView showTopToast:@"请确认树种名称"];
+        return;
+    }
     __weak typeof(self) weakSelf=self;
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
     for (int i=0; i<weakSelf.cellAry.count; i++) {

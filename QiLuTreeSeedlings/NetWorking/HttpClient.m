@@ -65,14 +65,6 @@
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
     NSString *postURL = @"api/updatename";
-//    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
-//                              token,@"access_token",
-//                              accessID,@"access_id",
-//                              clientID,@"client_id",
-//                              clientSecret,@"client_secret",
-//                              str,@"device_id",
-//                              name,@"name",
-//                              nil];
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"] = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"] = APPDELEGATE.userModel.access_id;
