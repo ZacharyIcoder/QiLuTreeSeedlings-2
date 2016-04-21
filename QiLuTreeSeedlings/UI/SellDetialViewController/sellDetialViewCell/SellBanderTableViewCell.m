@@ -51,13 +51,14 @@
         lab.text=hotModel.area;
         [lab setTextColor:[UIColor whiteColor]];
         [view addSubview:lab];
-        UILabel *liulanLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 40, 20)];
+        UILabel *liulanLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-40, 3, 39, 14)];
         [liulanLab setFont:[UIFont systemFontOfSize:12]];
         [liulanLab setTextAlignment:NSTextAlignmentRight];
         [view addSubview:liulanLab];
         liulanLab.text=[NSString stringWithFormat:@"%@次",model.views];
+        [liulanLab sizeToFit];
         [liulanLab setTextColor:[UIColor whiteColor]];
-        UIImageView *viewsImageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-80, 3, 15, 14)];
+        UIImageView *viewsImageV=[[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMidX(liulanLab.frame)-30, 3, 15, 14)];
         [viewsImageV setImage:[UIImage imageNamed:@"viewsNum"]];
         [view addSubview:viewsImageV];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 215, kWidth-18*2, 20)];

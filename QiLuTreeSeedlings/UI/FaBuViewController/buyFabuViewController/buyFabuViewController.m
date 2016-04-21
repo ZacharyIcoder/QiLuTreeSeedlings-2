@@ -85,7 +85,7 @@
                                                object:titleTextField];
 
     self.titleTextField=titleTextField;
-    UIImageView *titleLineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-10, 0.5)];
+    UIImageView *titleLineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];
     [titleLineView setBackgroundColor:kLineColor];
     [titleView addSubview:titleLineView];
     [titleView addSubview:titleTextField];
@@ -98,13 +98,14 @@
     [self.backScrollView addSubview:nameView];
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15/320.f*kWidth, 0, kWidth*0.25, 44)];
     nameLab.text=@"苗木名称";
+    [nameLab setTextColor:[UIColor darkGrayColor]];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
     [nameLab setTextColor:titleLabColor];
     [nameView addSubview:nameLab];
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.30, 0, kWidth*0.6, 44)];
     nameTextField.placeholder=@"请输入苗木名称";
     nameTextField.textColor=NavColor;
-    [nameTextField setFont:[UIFont systemFontOfSize:15]];
+    [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.delegate=self;
   [nameTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     self.nameTextField=nameTextField;

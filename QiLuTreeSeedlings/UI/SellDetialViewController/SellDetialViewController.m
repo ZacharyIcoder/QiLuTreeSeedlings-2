@@ -66,6 +66,7 @@
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
     
@@ -78,7 +79,7 @@
     [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
     [self.view addSubview:messageBtn];
     UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, kHeight-50, kWidth/2, 50)];
-    [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+    [phoneBtn setTitle:@"联系供应商" forState:UIControlStateNormal];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
     [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
@@ -187,7 +188,7 @@
     [messageLab setTextColor:detialLabColor];
     [view addSubview:messageLab];
     if (section==1) {
-        messageLab.text=@"苗木要求";
+        messageLab.text=@"苗木信息";
     }else if (section==2){
         messageLab.text=@"其他信息";
     }else if (section==3){

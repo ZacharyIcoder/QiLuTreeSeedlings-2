@@ -12,5 +12,6 @@
 @property (nonatomic,strong)NSMutableArray *dataAry;
 @property (nonatomic,strong)HotBuyModel *hotBuyModel;
 @property (nonatomic) BOOL isSelect;
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithFrame:(CGRect)frame;
 +(NSString *)IDStr;
 @end

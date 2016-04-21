@@ -261,7 +261,7 @@
     {
         BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
         if (!cell) {
-            cell=[[BuySearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 60)];
+            cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 60)];
            
                 cell.selectionStyle=UITableViewCellSelectionStyleBlue;
             
@@ -363,7 +363,7 @@
         return 260;
     }else
     {
-    return 70;
+    return 60;
     }
 }
 -(void)backBtnAction:(UIButton *)sender

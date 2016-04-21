@@ -40,7 +40,8 @@
         NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                                   @"10",@"keywordCount",
                                   @"10",@"recommendCount",
-                                   @"5",@"supplyCount", nil];
+                                   @"5",@"supplyCount",
+                                  APPDELEGATE.userModel.access_id,@"access_id",nil];
     [self GET:postURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

@@ -47,6 +47,7 @@
     [self.view addSubview:navView];
     UITableView *pullTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
     [pullTableView setBackgroundColor:BGColor];
+    
     [self.view addSubview:pullTableView];
     pullTableView.delegate=self;
     pullTableView.dataSource=self;
@@ -201,7 +202,7 @@
         NuseryListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuseryListTableViewCell IdStr]];
         if (!cell) {
             cell =[[NuseryListTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 120)];
-            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
         NurseryModel *model=self.dataAry[indexPath.row];
         cell.model=model;

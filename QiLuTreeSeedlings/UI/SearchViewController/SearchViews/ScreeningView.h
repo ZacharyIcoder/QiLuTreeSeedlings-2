@@ -11,6 +11,8 @@
 
 @optional
 -(void)creeingActionWithAry:(NSArray *)ary WithProvince:(NSString *)province WihtCity:(NSString *)city WithCounty:(NSString *)county WithGoldsupplier:(NSString *)goldsupplier WithProductUid:(NSString *)productUid withProductName:(NSString *)productName;
+
+-(void)ScreeningbackBtnAction;
 @end
 @interface ScreeningView : UIView
 @property (nonatomic) NSInteger searchType;

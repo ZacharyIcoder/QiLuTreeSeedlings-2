@@ -18,10 +18,11 @@
 @end
 @implementation BuySearchTableViewCell
 
--(id)initWithFrame:(CGRect)frame
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithFrame:(CGRect)frame
 {
-    self=[super initWithFrame:frame];
+    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.frame=frame;
         [self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 10, kWidth-20, 13)];
         [self.titleLab setTextColor:titleLabColor];
@@ -58,7 +59,7 @@
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, frame.size.height-0.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self.contentView addSubview:imageVLine];
-
+        
     }
     return self;
 }
@@ -77,13 +78,11 @@
     
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];
-    
     if (hotBuyModel.isSelect) {
-        self.selected = YES;
         self.isSelect = YES;
-        //self.selectionStyle = UITableViewCellSelectionStyleBlue;
-        //self.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.selected=YES;
     }
+    
 }
 - (void)awakeFromNib {
     // Initialization code
@@ -91,8 +90,8 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+   
+    // Configure the view for the selected stat
 }
 
 @end

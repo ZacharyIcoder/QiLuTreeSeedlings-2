@@ -195,6 +195,9 @@
 {
     if (self.screeningView) {
         [self.screeningView setSearchStr:self.searchMessageField.text];
+        if (self.screeningView.superview==nil) {
+            [self.view addSubview:self.screeningView];
+        }
     }else{
       ScreeningView *screeningV=[[ScreeningView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight) andSearch:self.searchMessageField.text];
         self.screeningView=screeningV;
@@ -204,7 +207,12 @@
     
 //    screeningV.
     
+    
     [self.screeningView showViewAction];
+}
+-(void)ScreeningbackBtnAction
+{
+    self.screeningView=nil;
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -248,16 +256,12 @@
 -(void)searchBtnAction:(UIButton *)sender
 {
     if (self.searchMessageField.text.length==0) {
-        UIAlertController *alertV= [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入搜索的内容" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *sellAction=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.searchMessageField becomeFirstResponder];
-        }];
-        [alertV addAction:sellAction];
+        [ToastView showTopToast:@"请输入搜索内容"];
+        [self.searchMessageField becomeFirstResponder];
+
         //[alertV addAction:cancelAction];
         
-        [self presentViewController:alertV animated:YES completion:^{
-            
-        }];
+       
         
         return;
     }
@@ -315,6 +319,22 @@
     self.searchSuccessView.productUid=productUid;
     self.searchSuccessView.shaixuanAry=ary;
    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
+    if (![searchHistoryAry containsObject:productName]) {
+        if (searchHistoryAry.count<5) {
+            [searchHistoryAry addObject:productName];
+            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
+            [userDefaults synchronize];
+        }else
+        {
+            [searchHistoryAry addObject:productName];
+            [searchHistoryAry removeObjectAtIndex:0];
+            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
+            [userDefaults synchronize];
+        }
+    }
+
     [self.searchSuccessView searchViewActionWith:productName AndSearchType:self.searchType];
 }
 -(void)SearchRecommendViewSearch:(NSString *)searchStr

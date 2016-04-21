@@ -195,7 +195,7 @@
     
     if (tableView.tag==456) {
         if (self.buyDataAry.count!=0) {
-            return 70;
+            return 65;
         }else
         {
             if (indexPath.row==0) {
@@ -203,7 +203,7 @@
             }
             if (self.buyLikeAry.count!=0) {
                 if (indexPath.row!=0) {
-                    return 70;
+                    return 65;
                 }
             }
         }
@@ -256,7 +256,7 @@
         if (self.buyDataAry.count!=0) {
             BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
             if (!cell) {
-                cell=[[BuySearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 70)];
+                cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 65)];
                  cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
             HotBuyModel *model=self.buyDataAry[indexPath.row];
@@ -275,7 +275,7 @@
                 if (indexPath.row!=0) {
                     BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
                     if (!cell) {
-                        cell=[[BuySearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 70)];
+                        cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 65)];;
                          cell.selectionStyle=UITableViewCellSelectionStyleNone;
                     }
                     HotBuyModel *model=self.buyLikeAry[indexPath.row-1];
@@ -338,29 +338,32 @@
 //}
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    if (scrollView.tag==111) {
+        if (scrollView.contentOffset.x>=kWidth-5) {
+            if (self.gongyingBtn.selected==YES) {
+                self.gongyingBtn.selected=NO;
+                self.qiugouBtn.selected=YES;
+                CGRect frame=self.moveImageV.frame;
+                frame.origin.x=kWidth/2;
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.moveImageV.frame=frame;
+                }];
+            }
+        }
+        if (scrollView.contentOffset.x<=5) {
+            if (self.qiugouBtn.selected==YES) {
+                self.qiugouBtn.selected=NO;
+                self.gongyingBtn.selected=YES;
+                CGRect frame=self.moveImageV.frame;
+                frame.origin.x=0;
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.moveImageV.frame=frame;
+                }];
+            }
+        }
+
+    }
    
-    if (scrollView.contentOffset.x>=kWidth-5) {
-        if (self.gongyingBtn.selected==YES) {
-            self.gongyingBtn.selected=NO;
-            self.qiugouBtn.selected=YES;
-            CGRect frame=self.moveImageV.frame;
-            frame.origin.x=kWidth/2;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.moveImageV.frame=frame;
-            }];
-        }
-    }
-    if (scrollView.contentOffset.x<=5) {
-        if (self.qiugouBtn.selected==YES) {
-            self.qiugouBtn.selected=NO;
-            self.gongyingBtn.selected=YES;
-            CGRect frame=self.moveImageV.frame;
-            frame.origin.x=0;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.moveImageV.frame=frame;
-            }];
-        }
-    }
 }
 -(UIView *)makeNavView
 {

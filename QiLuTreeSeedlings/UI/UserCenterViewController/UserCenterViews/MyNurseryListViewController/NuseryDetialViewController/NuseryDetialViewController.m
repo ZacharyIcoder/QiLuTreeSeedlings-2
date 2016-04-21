@@ -62,6 +62,7 @@
     self.backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-64)];
     [self.backScrollView setBackgroundColor:BGColor];
     [self.view addSubview:self.backScrollView];
+    [self.view setBackgroundColor:BGColor];
     // Do any additional setup after loading the view.
     CGRect tempFrame=CGRectMake(0, 0, kWidth, 50);
     nuseryNameField = [self makeViewWtihName:@"苗圃基地" alert:@"请输入基地名称" unit:@"" withFrame:tempFrame];

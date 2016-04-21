@@ -45,7 +45,7 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(contentView.frame.size.width/2-40, 10+20, 80, 24)];
         titleLabel.text = @"选择苗木";
         //titleLabel.textColor = [UIColor darkGrayColor];
-        titleLabel.font = [UIFont systemFontOfSize:20.0f];
+        titleLabel.font = [UIFont systemFontOfSize:17.0f];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         [selectTitleView addSubview:titleLabel];
         [contentView addSubview:selectTitleView];
@@ -54,7 +54,7 @@
         self.pleaseSelectLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, contentView.frame.size.width-10, 24)];
         _pleaseSelectLabel.textAlignment = NSTextAlignmentLeft;
         _pleaseSelectLabel.textColor = [UIColor darkGrayColor];
-        _pleaseSelectLabel.font = [UIFont systemFontOfSize:17.0f];
+        _pleaseSelectLabel.font = [UIFont systemFontOfSize:16.0f];
         //_pleaseSelectLabel.text = @"请选择苗木";
         
         [pleaseSelectView addSubview:_pleaseSelectLabel];

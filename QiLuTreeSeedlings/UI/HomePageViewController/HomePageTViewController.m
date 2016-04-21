@@ -76,6 +76,7 @@
         self.BuyDataAry=[HotBuyModel creathotBuyModelAryByAry:[dic objectForKey:@"newBuyList"]];
         [tableView reloadData];
     }else{
+        
         [self getDataList];
     }
     self.bigImageViewShowView =[[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
@@ -84,6 +85,7 @@
 //获取数据
 -(void)getDataList
 {
+    [self.supplyDataAry removeAllObjects];
     [HTTPCLIENT getHomePageInfoSuccess:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
@@ -105,7 +107,7 @@
 //加载更多供应信息
 -(void)getMoreSuppleyMessage
 {
-    [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
+    [HTTPCLIENT SellListWithWithPageSize:@"5" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         NSDictionary *dic=[responseObject objectForKey:@"result"];
         NSArray *ary=[dic objectForKey:@"list"];
@@ -180,7 +182,7 @@
     if (indexPath.section==3) {
         BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
         if (!cell) {
-            cell=[[BuySearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 65)];
+            cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 65)];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
         HotBuyModel  *model=self.BuyDataAry[indexPath.row];
@@ -465,6 +467,7 @@
 -(void)login
 {
     self.loginBtn.hidden=YES;
+    [self getDataList];
     
 }
 - (void)didReceiveMemoryWarning {

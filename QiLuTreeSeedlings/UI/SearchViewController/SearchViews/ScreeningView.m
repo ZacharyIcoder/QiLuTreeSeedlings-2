@@ -38,9 +38,9 @@
         
     }else
     {
-        if (searchStr.length>0) {
+            self.nameTextField.text=searchStr;
             [self nameBtnAction:_quedingBtn];
-        }
+       
     }
 }
 -(id)initWithFrame:(CGRect)frame andSearch:(NSString *)searchStr
@@ -81,6 +81,7 @@
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
         nameLab.text=@"苗木名称";
         [nameLab setTextColor:titleLabColor];
+        [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameView addSubview:nameLab];
         UIImageView *lineNameL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
         [nameView addSubview:lineNameL];
@@ -88,6 +89,7 @@
         UITextField *nameField=[[UITextField alloc]initWithFrame:CGRectMake(80, 2, kWidth*0.8-75-80, 40)];
         self.nameTextField=nameField;
         nameField.tag=10001;
+        [nameField setFont:[UIFont systemFontOfSize:14]];
         nameField.delegate=self;
         nameField.placeholder=@"请输入苗木名称";
         [nameView addSubview:nameField];
@@ -101,6 +103,7 @@
         
         [quedingBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
         [quedingBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
+        [quedingBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
         self.nameBtn=quedingBtn;
         if (searchStr.length>0) {
             [self nameBtnAction:quedingBtn];
@@ -110,6 +113,7 @@
         UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
         
         gongyingLab.text=@"供应商";
+        [gongyingLab setFont:[UIFont systemFontOfSize:14]];
         [gongyingLab setTextColor:titleLabColor];
         UIImageView *lineGYL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
         [gongyingshangView addSubview:lineGYL];
@@ -147,6 +151,7 @@
         UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
         
         [areaLab setText:@"地区"];
+        [areaLab setFont:[UIFont systemFontOfSize:14]];
         [areaLab setTextColor:titleLabColor];
         [areaView addSubview:areaLab];
         UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(90, 7, 130/320.f*kWidth, 30)];
@@ -313,10 +318,14 @@
 -(void)backBtn:(UIButton *)sender
 {  CGRect frame=self.frame;
     frame.origin.x=kWidth;
+    __weak typeof(self) weakSelf=self;
     [UIView animateWithDuration:0.1 animations:^{
-    self.frame=frame;
+    weakSelf.frame=frame;
     } completion:^(BOOL finished) {
-        [self removeFromSuperview];
+        [weakSelf removeFromSuperview];
+        if (weakSelf.delegate) {
+            [weakSelf.delegate ScreeningbackBtnAction];
+        }
     }];
 }
 -(void)cellBeginEditing:(UITextField *)field
@@ -354,9 +363,10 @@
 }
 -(void)screeningViewAction
 {
+    __weak typeof(self) weakSelf=self;
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
-    for (int i=0; i<cellAry.count; i++) {
-        TreeSpecificationsModel *model=cellAry[i];
+    for (int i=0; i<weakSelf.cellAry.count; i++) {
+        TreeSpecificationsModel *model=weakSelf.cellAry[i];
         if (model.anwser.length>0) {
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
                 model.anwser,@"anwser"
@@ -367,32 +377,16 @@
     CGRect frame=self.frame;
     frame.origin.x=kWidth;
     [UIView animateWithDuration:0.1 animations:^{
-        self.frame=frame;
+        weakSelf.frame=frame;
     } completion:^(BOOL finished) {
         
     }];
-    if (self.delegate) {
-        if (!self.productName) {
-            self.productName=self.nameTextField.text;
+    if (weakSelf.delegate) {
+        if (!weakSelf.productName) {
+            weakSelf.productName=weakSelf.nameTextField.text;
         }
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
-        if (![searchHistoryAry containsObject:self.nameTextField.text]) {
-            if (searchHistoryAry.count<5) {
-                [searchHistoryAry addObject:self.nameTextField.text];
-                [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-                [userDefaults synchronize];
-            }else
-            {
-                [searchHistoryAry addObject:self.nameTextField.text];
-                [searchHistoryAry removeObjectAtIndex:0];
-                [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-                [userDefaults synchronize];
-            }
-        }
-
-        //NSLog(@"%@", self.productName);
-        [self.delegate creeingActionWithAry:screenTijiaoAry WithProvince:self.province WihtCity:self.City  WithCounty:self.county WithGoldsupplier:self.goldsupplier WithProductUid:self.productUid withProductName:self.productName
+        
+        [weakSelf.delegate creeingActionWithAry:screenTijiaoAry WithProvince:weakSelf.province WihtCity:weakSelf.City  WithCounty:weakSelf.county WithGoldsupplier:weakSelf.goldsupplier WithProductUid:weakSelf.productUid withProductName:weakSelf.productName
          ];
     }
     

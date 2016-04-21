@@ -70,7 +70,7 @@
     [self.BTabBar addSubview:tabMageV2];
 
     //
-    UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 3, 30, 30)];
+    UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 3, 28, 28)];
     PageViewBtn.tag=1;
     self.homePageBtn=PageViewBtn;
     UIButton *pageActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 0, 30, 50)];
@@ -83,7 +83,7 @@
     PageViewBtn.selected=YES;
     [self.BTabBar addSubview:PageViewBtn];
     UILabel *hompageLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 30, 30, 25)];
-    [hompageLab setFont:[UIFont systemFontOfSize:12]];
+    [hompageLab setFont:[UIFont systemFontOfSize:12.5]];
     [hompageLab setTextAlignment:NSTextAlignmentCenter];
     [hompageLab setTextColor:NavColor];
     [hompageLab setText:@"首页"];
@@ -91,7 +91,7 @@
     [self.BTabBar addSubview:hompageLab];
      [self.BTabBar addSubview:pageActionBtn];
     
-    UIButton *UserViewBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 3, 30, 30)];
+    UIButton *UserViewBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 3, 28, 28)];
     self.userInfoBtn=UserViewBtn;
     UIButton *userActionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 0, 30,50)];
     userActionBtn.tag=2;
@@ -103,7 +103,7 @@
     [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoNomer"] forState:UIControlStateNormal];
     [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoGreen"] forState:UIControlStateSelected];
     UILabel *userLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44-15, 30, 60, 25)];
-    [userLab setFont:[UIFont systemFontOfSize:12]];
+    [userLab setFont:[UIFont systemFontOfSize:12.5]];
     [userLab setTextAlignment:NSTextAlignmentCenter];
     [userLab setTextColor:[UIColor lightGrayColor]];
     [userLab setText:@"个人中心"];

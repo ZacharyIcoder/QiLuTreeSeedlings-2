@@ -359,7 +359,7 @@
     [messageLab setTextColor:detialLabColor];
     [view addSubview:messageLab];
     if (section==1) {
-        messageLab.text=@"苗木要求";
+        messageLab.text=@"苗木信息";
     }else if (section==2){
         messageLab.text=@"其他信息";
     }else if (section==3){

@@ -43,6 +43,7 @@
     [imageV setImage:[UIImage imageNamed:imamgeName]];
     [view addSubview:imageV];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(frame.size.width*0.5-10, 10, 80, 20)];
+    [titleLab setFont:[UIFont systemFontOfSize:15]];
     //[titleLab setBackgroundColor:[UIColor redColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     titleLab.text=title;
