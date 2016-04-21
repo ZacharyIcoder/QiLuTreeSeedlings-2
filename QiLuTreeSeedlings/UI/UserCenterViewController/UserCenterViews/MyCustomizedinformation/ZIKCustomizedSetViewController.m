@@ -172,7 +172,7 @@
             [myview removeFromSuperview];
         }
     }];
-    CGFloat Y = 44+8+8;
+    CGFloat Y = 60+44+8+8;
     for (int i=0; i<self.dataAry.count; i++) {
         TreeSpecificationsModel *model=self.dataAry[i];
         FabutiaojiaCell *cell;
