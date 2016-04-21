@@ -416,7 +416,10 @@
 - (void)isFirstRecharge:(NSString *)nilString
                 Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure;
-
-
+#pragma mark 我的收藏猜你喜欢供应列表
+-(void)myCollectionYouLikeSupplyWithPage:(NSString *)pageNum
+                            WithPageSize:(NSString *)pageSize
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
 
 @end

@@ -16,11 +16,17 @@
         hotSellModel.area=[dic objectForKey:@"area"];
         hotSellModel.createTime=[dic objectForKey:@"createTime"];
         if (hotSellModel.createTime.length==0) {
-            hotSellModel.createTime=[dic objectForKey:@"timec`"];
+            hotSellModel.createTime=[dic objectForKey:@"time"];
+            if (hotSellModel.createTime.length<=11) {
+                hotSellModel.createTime=[NSString stringWithFormat:@"%@ 00:00:00",hotSellModel.createTime];
+            }
         }
         hotSellModel.iamge=[dic objectForKey:@"image"];
         hotSellModel.title=[dic objectForKey:@"title"];
         hotSellModel.uid=[dic objectForKey:@"uid"];
+        if (hotSellModel.uid.length==0) {
+            hotSellModel.uid=[dic objectForKey:@"supplybuyUid"];
+        }
         hotSellModel.edit=[[dic objectForKey:@"edit"] integerValue];
         hotSellModel.price=[dic objectForKey:@"price"];
         hotSellModel.count=[dic objectForKey:@"count"];

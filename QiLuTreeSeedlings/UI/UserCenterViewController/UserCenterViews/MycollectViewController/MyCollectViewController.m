@@ -408,7 +408,7 @@
             }
             
             
-            if (self.buyDataAry.count==0) {
+            if (self.buyDataAry.count==0&&self.buyLikeAry.count==0) {
                 [self creatBuyLikeAry];
             }else
             {
@@ -441,7 +441,7 @@
             for (int i=0; i<aryaa.count ; i++) {
                 [self.sellDataAry addObject:aryaa[i]];
             }
-            if (self.sellDataAry.count==0) {
+            if (self.sellDataAry.count==0&&self.sellLikeAry.count==0) {
                 [self creatSellLikeAry];
             }
             else
