@@ -194,7 +194,6 @@
         NuserNullTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuserNullTableViewCell IdStr]];
         if (!cell) {
             cell =[[NuserNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 250)];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
         return cell;
     }else
@@ -202,7 +201,6 @@
         NuseryListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuseryListTableViewCell IdStr]];
         if (!cell) {
             cell =[[NuseryListTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 120)];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
         NurseryModel *model=self.dataAry[indexPath.row];
         cell.model=model;

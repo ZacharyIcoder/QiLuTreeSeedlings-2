@@ -10,5 +10,4 @@
 
 @interface NuserNullTableViewCell : UITableViewCell
 +(NSString *)IdStr;
-
 @end
