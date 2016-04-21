@@ -30,7 +30,7 @@
         self.addressLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 5, 200, 20)];
         [self.addressLab setFont:[UIFont systemFontOfSize:13]];
 //        [self.addressLab setTextAlignment:NSTextAlignmentRight];
-        [self.addressLab setTextColor:[UIColor grayColor]];
+        [self.addressLab setTextColor:titleLabColor];
 //        dizhiLab.text=@"地址";
         [self addSubview:self.addressLab];
         
@@ -44,7 +44,7 @@
         self.creatTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 35, 200, 20)];
         [self.creatTimeLab setFont:[UIFont systemFontOfSize:13]];
 //        [self.creatTimeLab setTextAlignment:NSTextAlignmentRight];
-        [self.creatTimeLab setTextColor:[UIColor grayColor]];
+        [self.creatTimeLab setTextColor:titleLabColor];
         //        dizhiLab.text=@"地址";
         [self addSubview:self.creatTimeLab];
         
@@ -58,7 +58,7 @@
         self.endTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 65, 200, 20)];
         [self.endTimeLab setFont:[UIFont systemFontOfSize:13]];
 //        [self.endTimeLab setTextAlignment:NSTextAlignmentRight];
-        [self.endTimeLab setTextColor:[UIColor grayColor]];
+        [self.endTimeLab setTextColor:titleLabColor];
         //        dizhiLab.text=@"地址";
         [self addSubview:self.endTimeLab];
         
@@ -71,7 +71,7 @@
         
         self.phoneLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 95, 200, 20)];
         [self.phoneLab setFont:[UIFont systemFontOfSize:13]];
-        [self.phoneLab setTextColor:[UIColor grayColor]];
+        [self.phoneLab setTextColor:titleLabColor];
         [self addSubview:self.phoneLab];
     }
     return self;

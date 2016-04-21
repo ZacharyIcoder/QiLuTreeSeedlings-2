@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UserInfoNomerTableViewCell : UITableViewCell
+@property (nonatomic,strong)UIView *lineImage;
 -(id)initWithFrame:(CGRect)frame andImageName:(NSString *)imageName andTitle:(NSString *)title;
 @end

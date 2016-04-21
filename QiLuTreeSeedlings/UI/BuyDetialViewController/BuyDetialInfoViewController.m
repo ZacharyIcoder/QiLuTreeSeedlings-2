@@ -88,7 +88,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+    [self.view setBackgroundColor:BGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     if (self.type==1) {
         UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
@@ -142,9 +142,9 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
-    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
+    [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
@@ -152,12 +152,13 @@
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"求购："];
-    [titleLab setFont:[UIFont systemFontOfSize:14]];
+    [titleLab setFont:[UIFont systemFontOfSize:21]];
     self.navTitleLab=titleLab;
     [view addSubview:titleLab];
     if (self.type==2) {
          UIButton *editingBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
         [editingBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [editingBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [editingBtn addTarget:self action:@selector(editingBtn:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:editingBtn];
     }else
@@ -291,7 +292,7 @@
     if (indexPath.section==4) {
         BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
         if (!cell) {
-            cell=[[BuySearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 60)];
+            cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr]  WithFrame:CGRectMake(0, 0, kWidth, 60)];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         HotBuyModel *model=self.recommendeAry[indexPath.row];
@@ -325,7 +326,7 @@
        
     }
     if (indexPath.section==4) {
-        return 70;
+        return 60;
     }
     return 10;
 }

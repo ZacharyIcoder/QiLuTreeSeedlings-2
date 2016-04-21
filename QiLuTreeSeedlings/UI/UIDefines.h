@@ -13,6 +13,7 @@
 #import "ToastView.h"
 #import "UserInfoModel.h"
 #import "ActionView.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 #define APPDELEGATE     ((AppDelegate *)[UIApplication sharedApplication].delegate)
 //#define ShowTopToast(text) {\
 //[ToastView showToast:text\

@@ -35,6 +35,7 @@
 @property (nonatomic,strong)NSArray *BuyDataAry;//热门求购
 @property (nonatomic)NSInteger PageCount;
 @property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
+@property (nonatomic,weak) UIView *NavView;
 @end
 
 @implementation HomePageTViewController
@@ -48,7 +49,7 @@
     _PageCount=1;
     self.navigationController.navigationBar.hidden=YES;
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
-    [self makeSelfNavigationView];
+     _NavView =[self makeSelfNavigationView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fabuBtnAction) name:@"fabuBtnAction" object:nil];
      [self.view addSubview:[self makeSelfNavigationView]];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-69-50) style:UITableViewStyleGrouped];
@@ -107,7 +108,7 @@
 //加载更多供应信息
 -(void)getMoreSuppleyMessage
 {
-    [HTTPCLIENT SellListWithWithPageSize:@"5" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
+    [HTTPCLIENT SellListWithWithPageSize:@"10" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         NSDictionary *dic=[responseObject objectForKey:@"result"];
         NSArray *ary=[dic objectForKey:@"list"];

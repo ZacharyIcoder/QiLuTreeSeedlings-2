@@ -101,7 +101,7 @@
     UIButton *clearHistoryBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-60, tempFrame.origin.y+20, 120, 25)];
     [clearHistoryBtn setTitle:@"删除搜索历史" forState:UIControlStateNormal];
     [clearHistoryBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-    [clearHistoryBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [clearHistoryBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
     [clearHistoryBtn addTarget:self action:@selector(clearHistoryBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:clearHistoryBtn];
     CGRect frame=view.frame;

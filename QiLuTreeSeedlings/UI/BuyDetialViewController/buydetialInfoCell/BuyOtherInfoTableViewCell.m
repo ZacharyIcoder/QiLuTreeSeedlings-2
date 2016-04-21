@@ -24,7 +24,7 @@
         valueLab.numberOfLines=0;
         valueLab.text=name;
         [valueLab setFont:[UIFont systemFontOfSize:13]];
-        [valueLab setTextColor:[UIColor grayColor]];
+        [valueLab setTextColor:titleLabColor];
         [view addSubview:valueLab];
         [self addSubview:view];
 
@@ -77,7 +77,7 @@
     
     valueLab.text=valueStr;
     [valueLab setFont:[UIFont systemFontOfSize:13]];
-    [valueLab setTextColor:[UIColor grayColor]];
+    [valueLab setTextColor:titleLabColor];
     [view addSubview:valueLab];
     [self addSubview:view];
 }

@@ -15,6 +15,9 @@
     if (dic) {
         hotSellModel.area=[dic objectForKey:@"area"];
         hotSellModel.createTime=[dic objectForKey:@"createTime"];
+        if (hotSellModel.createTime.length==0) {
+            hotSellModel.createTime=[dic objectForKey:@"timec`"];
+        }
         hotSellModel.iamge=[dic objectForKey:@"image"];
         hotSellModel.title=[dic objectForKey:@"title"];
         hotSellModel.uid=[dic objectForKey:@"uid"];

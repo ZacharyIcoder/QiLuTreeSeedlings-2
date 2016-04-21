@@ -73,8 +73,14 @@
         [self addSubview:userView];
         UIView *numView=[self viewWithTitle:[NSString stringWithFormat:@"%@棵",model.count] andX:kWidth/2-25 andColor:titleLabColor andImageName:@"LISTtreeNumber"];
         [self addSubview:numView];
-        
-        UIView *priceView=[self viewWithTitle:[NSString stringWithFormat:@"%@元/棵",model.price] andX:kWidth-(kWidth-150)/4.f-50 andColor:yellowButtonColor andImageName:@"price"];
+        NSString *priceStr;
+        if ([model.price isEqualToString:@"面议"]) {
+            priceStr=@"面议";
+        }else
+        {
+            priceStr=[NSString stringWithFormat:@"%@元/棵",model.price];
+        }
+        UIView *priceView=[self viewWithTitle:priceStr andX:kWidth-(kWidth-150)/4.f-50 andColor:yellowButtonColor andImageName:@"price"];
         [self addSubview:priceView];
     }
     return self;

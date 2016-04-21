@@ -32,7 +32,7 @@
         [self addSubview:namezLab];
         self.nameLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2+30, 17, 120, 20)];
         [self.nameLab setTextAlignment:NSTextAlignmentLeft];
-        [self.nameLab setTextColor:[UIColor grayColor]];
+        [self.nameLab setTextColor:titleLabColor];
         [self.nameLab setFont:[UIFont systemFontOfSize:13]];
         [self.nameLab setText:@"XXX"];
         [self addSubview:self.nameLab];
@@ -45,7 +45,7 @@
         [self addSubview:numebLab];
         self.numLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2+30, 40, 80, 20)];
         [self.numLab setTextAlignment:NSTextAlignmentLeft];
-        [self.numLab setTextColor:[UIColor grayColor]];
+        [self.numLab setTextColor:titleLabColor];
         [self.numLab setFont:[UIFont systemFontOfSize:13]];
         [self.numLab setText:@"0棵"];
         [self addSubview:self.numLab];
@@ -58,7 +58,7 @@
         
         self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2+30, 63, 80, 20)];
         [self.priceLab setTextAlignment:NSTextAlignmentLeft];
-        [self.priceLab setTextColor:[UIColor grayColor]];
+        [self.priceLab setTextColor:titleLabColor];
         [self.priceLab setFont:[UIFont systemFontOfSize:13]];
         [self.priceLab setText:@"面议"];
         [self addSubview:self.priceLab];

@@ -107,8 +107,8 @@
 {
     if (indexPath.section==0) {
         return 60;
-    }else
-        return 44;
+    }
+      return 44;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -193,6 +193,12 @@
         }
         if (indexPath.row==1) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myMiaoPu" andTitle:@"我的苗圃"];
+            if (APPDELEGATE.userModel.isworkstation) {
+                cell.lineImage.hidden=NO;
+            }else
+            {
+                cell.lineImage.hidden=YES;
+            }
             return cell;
         }
         if (indexPath.row==2) {

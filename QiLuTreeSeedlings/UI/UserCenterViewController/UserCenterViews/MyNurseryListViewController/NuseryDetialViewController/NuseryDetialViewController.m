@@ -208,16 +208,16 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
-    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 30, 30)];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:3];
+   [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:0 left:3];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"我的苗圃"];
-    [titleLab setFont:[UIFont systemFontOfSize:17]];
+    [titleLab setFont:[UIFont systemFontOfSize:21]];
     [view addSubview:titleLab];
 //    UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
 //    // self.collectionBtn = collectionBtn;
