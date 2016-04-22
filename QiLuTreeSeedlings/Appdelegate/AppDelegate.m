@@ -249,6 +249,7 @@
      */
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
        // NSLog(@"\n>>>[Launching RemoteNotification]:%@", userInfo);
     }
 }
@@ -294,6 +295,10 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     application.applicationIconBadgeNumber = 0; // 标签
     
+    SystemSoundID sound=1000;
+    AudioServicesPlaySystemSound(sound);
+    sound=kSystemSoundID_Vibrate;
+    AudioServicesPlaySystemSound(sound);
    // NSLog(@"\n>>>[Receive RemoteNotification]:%@\n\n", userInfo);
 }
 
@@ -302,10 +307,25 @@
     
     // 处理APN
     //NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n", userInfo);
-    SystemSoundID sound=1000;
-     AudioServicesPlaySystemSound(sound);
-     sound=kSystemSoundID_Vibrate;
-     AudioServicesPlaySystemSound(sound);
+    
+    if ([application applicationState]==UIApplicationStateActive) {
+        SystemSoundID sound=1000;
+        AudioServicesPlaySystemSound(sound);
+        sound=kSystemSoundID_Vibrate;
+        AudioServicesPlaySystemSound(sound);
+    }
+    if ([application applicationState]==UIApplicationStateInactive) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
+
+    }
+    
+    if ([application applicationState]==UIApplicationStateBackground) {
+        
+    }
+    
+    
+    
+    
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -389,7 +409,6 @@
     
     // Get the full path to our file.
     NSString *filePath = [documentPath stringByAppendingPathComponent:fileName];
-    NSLog(@"%@",filePath);
     // Get a file manager
     NSFileManager *fileManager = [NSFileManager defaultManager];
     // Does the database already exist? (If not, copy it from our bundle)
@@ -422,6 +441,7 @@
 //    [dao closeDataBase];
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
+   
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }

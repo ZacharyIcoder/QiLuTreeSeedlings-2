@@ -62,12 +62,12 @@
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 44)];
         [backView setBackgroundColor:BGColor];
         [self addSubview:backView];
-        UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
-        [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:10 left:10];
+        UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 15, 30, 30)];
+        [backBtn setEnlargeEdgeWithTop:15 right:25 bottom:10 left:10];
         [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
         [backBtn setImage:[UIImage imageNamed:@"backBtnBlack"] forState:UIControlStateNormal];
         [backView addSubview:backBtn];
-        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-30, 3, 60, 44)];
+        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-30, 8, 60, 44)];
         titleLab.text=@"筛选";
         [titleLab setTextColor:[UIColor grayColor]];
         titleLab.textAlignment=NSTextAlignmentCenter;

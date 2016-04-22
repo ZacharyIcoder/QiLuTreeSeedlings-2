@@ -30,6 +30,7 @@
 @property (nonatomic,weak) UITextField *nowTextField;
 @property (nonatomic,strong) UIButton *upDataBtn;
 @property (nonatomic,strong) UIButton *editingBtn;
+@property (nonatomic,strong) UILabel *warnLab;
 @end
 
 @implementation CompanyViewController
@@ -91,6 +92,15 @@
     tempFrame.origin.y+=44;
     briefField=[self mackViewWtihName:@"简介" alert:@"请输入简介内容" unit:@"" withFrame:tempFrame];
     briefField.delegate=self;
+    tempFrame.origin.y+=50;
+    
+    UILabel *warnLab=[[UILabel alloc]initWithFrame:CGRectMake(10,tempFrame.origin.y , kWidth-20, 35)];
+    [warnLab setFont:[UIFont systemFontOfSize:12]];
+    [warnLab setTextColor:titleLabColor];
+    warnLab.numberOfLines=2;
+    [warnLab setText:@"    如果您的企业信息填写有误，请点击有误项进行二次编辑。"];
+    [self.backScrollView addSubview:warnLab];
+    self.warnLab=warnLab;
     [self.backScrollView setContentSize:CGSizeMake(0, tempFrame.origin.y+tempFrame.size.height)];
     UITapGestureRecognizer *tapGest=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapScrollViewRgestFirst)];
     [self.backScrollView addGestureRecognizer:tapGest];
@@ -101,12 +111,15 @@
     self.upDataBtn = nextBtn;
     [nextBtn addTarget:self action:@selector(updaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextBtn];
+    // self.editingBtn.hidden=YES;
     if ([APPDELEGATE isNeedCompany]==NO) {
         [self beginEditing];
-        self.editingBtn.hidden=YES;
+        warnLab.hidden=YES;
     }
     else{
-        [self endEditing];
+         [self beginEditing];
+        warnLab.hidden=NO;
+        //[self endEditing];
         self.companyNameField.text=APPDELEGATE.companyModel.companyName;
         self.companyAddressField.text=APPDELEGATE.companyModel.companyAddress;
         self.phoneField.text=APPDELEGATE.companyModel.phone;
@@ -132,9 +145,6 @@
         self.AreaTown=APPDELEGATE.companyModel.companyAreaTown;
         [self.areaBtn setTitle:areaStr forState:UIControlStateNormal];
         self.zipcodeField.text=APPDELEGATE.companyModel.zipcode;
-        
-//        self.zipcodeField.enabled=NO;
-//        //self.upDataBtn.hidden=YES;
     }
 }
 -(void)beginEditing
@@ -202,9 +212,8 @@
       //  NSLog(@"%@",responseObject);
         if([[responseObject objectForKey:@"success"] integerValue])
         {
-            blockSelf.editingBtn.hidden=NO;
-            blockSelf.editingBtn.selected=NO;
-            [blockSelf endEditing];
+            self.warnLab.hidden=NO;
+            //[blockSelf endEditing];
             [APPDELEGATE reloadCompanyInfo];
         }
         else
@@ -280,7 +289,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-   [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:10 left:10];
+   [backBtn setEnlargeEdgeWithTop:15 right:25 bottom:10 left:10];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
@@ -289,13 +298,13 @@
     [titleLab setText:@"企业信息"];
     [titleLab setFont:[UIFont systemFontOfSize:21]];
     
-    UIButton *editingBtnz=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
-    [editingBtnz setTitle:@"编辑" forState:UIControlStateNormal];
-    [editingBtnz setTitle:@"取消" forState:UIControlStateSelected];
-    [editingBtnz addTarget:self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    editingBtn=editingBtnz;
-    [view addSubview:editingBtnz];
-    [view addSubview:titleLab];
+//    UIButton *editingBtnz=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
+//    [editingBtnz setTitle:@"编辑" forState:UIControlStateNormal];
+//    [editingBtnz setTitle:@"取消" forState:UIControlStateSelected];
+//    [editingBtnz addTarget:self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//    editingBtn=editingBtnz;
+//    [view addSubview:editingBtnz];
+//    [view addSubview:titleLab];
     return view;
 }
 -(void)editingBtnAction:(UIButton *)sender

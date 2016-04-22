@@ -1680,8 +1680,7 @@
 				EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */,
 				EA6B31BA1CABA5F70068CCB5 /* NuseryDetialViewController */,
 			);
-			name = MyNurseryListViewController;
-			path = ../MyNurseryListViewController;
+			path = MyNurseryListViewController;
 			sourceTree = "<group>";
 		};
 		EA6B31B31CABA5F70068CCB5 /* myNuseryCells */ = {
@@ -1963,6 +1962,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC5337A71CBDF85D008BFB11 /* StationAgentVC */,
 				EA5DF94F1CB6483300BE0E8C /* setViewController */,
 				EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */,
@@ -2498,7 +2498,6 @@
 		FC6FED4F1CACEAE8000E2CA5 /* MyCustomizedinformation */ = {
 			isa = PBXGroup;
 			children = (
-				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC6FED5E1CACF6D2000E2CA5 /* Resource */,
 				FC6FED5C1CACF2E5000E2CA5 /* Model */,
 				FC6FED5D1CACF2E5000E2CA5 /* View */,

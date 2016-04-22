@@ -53,7 +53,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 26, 28, 28)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:10 right:15 bottom:10 left:15];
+    [backBtn setEnlargeEdgeWithTop:15 right:15 bottom:10 left:15];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 

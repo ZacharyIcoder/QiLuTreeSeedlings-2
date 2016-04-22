@@ -16,6 +16,10 @@
 @property (nonatomic)NSInteger xianzhiNum;
 @end
 @implementation SreeningViewCell
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 -(id)initWithFrame:(CGRect)frame AndModel:(TreeSpecificationsModel *)model
 {
     self=[super initWithFrame:frame];
@@ -42,8 +46,25 @@
                 textField.placeholder=self.model.alert;
                 if(self.model.alert.length==0)
                 {
-                      textField.placeholder=@"请输入信息";
+                     // textField.placeholder=@"请输入信息";
                 }
+                if(self.model.dataType==1)
+                {
+                    textField.keyboardType=UIKeyboardTypeNumberPad;
+                }
+                if(self.model.dataType==2)
+                {
+                    textField.keyboardType=UIKeyboardTypeDecimalPad;
+                }
+                textField.clearButtonMode=UITextFieldViewModeWhileEditing;
+                if (model.textLength>0) {
+                    _xianzhiNum=model.textLength;
+                    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                             selector:@selector(textFieldChanged:)
+                                                                 name:UITextFieldTextDidChangeNotification
+                                                               object:textField];
+                }
+           
                 textField.delegate=self;
                 textField.tag=40001;
                 [textField setFont:[UIFont systemFontOfSize:14]];
@@ -108,14 +129,15 @@
             if (self.model.dataType==3) {
                 UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 0, 130/320.f*kWidth, 50)];
                 textField.placeholder=self.model.name;
-                if(self.model.dataType==1)
-                {
-                    textField.keyboardType=UIKeyboardTypeNumberPad;
+             
+                if (model.textLength>0) {
+                    _xianzhiNum=model.textLength;
+                    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                             selector:@selector(textFieldChanged:)
+                                                                 name:UITextFieldTextDidChangeNotification
+                                                               object:textField];
                 }
-                if(self.model.dataType==2)
-                {
-                    textField.keyboardType=UIKeyboardTypeDecimalPad;
-                }
+                
 
                 textField.delegate=self;
                 textField.tag=40001;
@@ -128,6 +150,7 @@
                 UIImageView *linView=[[UIImageView alloc]initWithFrame:CGRectMake(10, self.frame.size.height-0.5,self.frame.size.width-20, 0.5)];
                 [self addSubview:linView];
                 [linView setBackgroundColor:kLineColor];
+                
             }
             if(self.model.dataType==2||self.model.dataType==1){
                 [self creatType2DataType12];
@@ -286,15 +309,28 @@
     minTextfield.keyboardType=UIKeyboardTypeNumberPad;
     minTextfield.tag=10001;
     [minTextfield setFont:[UIFont systemFontOfSize:12]];
-    minTextfield.placeholder=@"请输入范围";
+    //minTextfield.placeholder=@"请输入范围";
     minTextfield.delegate=self;
     [self addSubview:minTextfield];
-  
+    if (self.model.textLength>0) {
+        _xianzhiNum=self.model.textLength;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(textFieldChanged:)
+                                                     name:UITextFieldTextDidChangeNotification
+                                                   object:minTextfield];
+    }
     UITextField *maxTextfield=[[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(zhiLab.frame)+10, 10, 60, 30)];
     maxTextfield.tag=10002;
+    if (self.model.textLength>0) {
+        _xianzhiNum=self.model.textLength;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(textFieldChanged:)
+                                                     name:UITextFieldTextDidChangeNotification
+                                                   object:maxTextfield];
+    }
     [maxTextfield setFont:[UIFont systemFontOfSize:12]];
     maxTextfield.delegate=self;
-    maxTextfield.placeholder=@"请输入范围";
+    //maxTextfield.placeholder=@"请输入范围";
     maxTextfield.keyboardType=UIKeyboardTypeNumberPad;
     [self addSubview:maxTextfield];
     UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-50, 10, 40, 30)];
@@ -304,6 +340,16 @@
     UIImageView *linView=[[UIImageView alloc]initWithFrame:CGRectMake(10, self.frame.size.height,self.frame.size.width-20, 0.5)];
      [self addSubview:linView];
     [linView setBackgroundColor:kLineColor];
+    if(self.model.dataType==1)
+    {
+        minTextfield.keyboardType=UIKeyboardTypeNumberPad;
+        maxTextfield.keyboardType=UIKeyboardTypeNumberPad;
+    }
+    if(self.model.dataType==2)
+    {
+        minTextfield.keyboardType=UIKeyboardTypeDecimalPad;
+        maxTextfield.keyboardType=UIKeyboardTypeDecimalPad;
+    }
     if (self.model.anwser.length>0) {
         self.answerAry=[NSMutableArray arrayWithArray:[self.model.anwser componentsSeparatedByString:@","]];
         if (self.answerAry.count==2) {
@@ -315,6 +361,42 @@
         }
     }
 }
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    
+    NSString *toBeString = textField.text;
+    //NSString *mylant = [UITextInputMode activeInputModes];
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > _xianzhiNum) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"最多%ld个字符!!!",(long)_xianzhiNum]];
+            
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:_xianzhiNum];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > _xianzhiNum) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+              [ToastView showTopToast:[NSString stringWithFormat:@"最多%ld个字符!!!",(long)_xianzhiNum]];
+            textField.text = [toBeString substringToIndex:_xianzhiNum];
+            return;
+        }
+    }
+}
+
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField.tag==10001) {
         [self.answerAry insertObject:textField.text atIndex:0];

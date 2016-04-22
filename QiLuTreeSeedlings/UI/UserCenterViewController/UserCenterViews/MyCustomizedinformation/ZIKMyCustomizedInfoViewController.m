@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"HidenTabBar" object:nil];
     // Do any additional setup after loading the view.
     [self configNav];
     [self initData];

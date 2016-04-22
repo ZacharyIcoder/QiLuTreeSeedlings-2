@@ -35,7 +35,10 @@
 @end
 
 @implementation ZIKSupplyPublishNextVC
-
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (id)initWithNurseryList:(NSArray *)nurseryAry WithbaseMsg:(NSDictionary *)baseDic
 {
     self = [super init];
@@ -169,6 +172,10 @@
                 self.countTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
                 self.countTextField.keyboardType=UIKeyboardTypeNumberPad;
                 self.countTextField.placeholder = @"请输入数量";
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:self.countTextField];
                 //self.countTextField.textColor = titleLabColor;
                 self.countTextField.font = [UIFont systemFontOfSize:15.0f];
                 [firstSectionCell addSubview:self.countTextField];
@@ -189,6 +196,10 @@
                     [firstSectionCell addSubview:label];
                 }
                self.priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:self.priceTextField];
                 self.priceTextField.placeholder = @"请输入价格";
                 if (self.baseMsgDic) {
                  
@@ -418,6 +429,42 @@
         //NSLog(@"%@",error);
     }];
 }
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    int kssss=10;
+    NSString *toBeString = textField.text;
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
+
 -(void)backRootView
 {
     [self.navigationController popToRootViewControllerAnimated:YES];

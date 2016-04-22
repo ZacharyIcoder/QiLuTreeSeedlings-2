@@ -15,7 +15,7 @@
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
-#define kMaxLength 20
+//#define kMaxLength 20
 @interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
@@ -55,6 +55,9 @@
     }
     return self;
 }
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.ecttiv=0;
@@ -78,6 +81,7 @@
     UITextField *titleTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.27, 0, kWidth*0.6, 44)];
     titleTextField.placeholder=@"请输入标题";
     [titleTextField setTextColor:detialLabColor];
+    titleTextField.tag=111;
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
@@ -126,9 +130,18 @@
      tempFrame=CGRectMake(0, 0, kWidth, 50);
     UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
     self.countTextField=countTextField;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:countTextField];
     countTextField.keyboardType=UIKeyboardTypeNumberPad;
     tempFrame.origin.y+=50;
     UITextField *priceTextField=[self mackViewWtihName:@"价格" alert:@"请输入单价" unit:@"元" withFrame:tempFrame];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:priceTextField];
     self.priceTextField=priceTextField;
     priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
     tempFrame.origin.y+=50;
@@ -668,7 +681,6 @@
 }
 
 - (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {
-    NSLog(@"%@",selectTitle);
     self.nameTextField.text = selectTitle;
     [self.sideView removeSideViewAction];
 }
@@ -683,7 +695,10 @@
 */
 - (void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
-
+    int kssss=10;
+    if (textField.tag==111) {
+        kssss=20;
+    }
     NSString *toBeString = textField.text;
     NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
     if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
@@ -692,11 +707,11 @@
         UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
         // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
         if (!position) {
-            if (toBeString.length > kMaxLength) {
+            if (toBeString.length > kssss) {
                // NSLog(@"最多%d个字符!!!",kMaxLength);
-                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] withOriginY:250 withSuperView:self.view];
+                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
                 //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
-                textField.text = [toBeString substringToIndex:kMaxLength];
+                textField.text = [toBeString substringToIndex:kssss];
                 return;
             }
         }
@@ -707,11 +722,11 @@
     }
     // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
     else{
-        if (toBeString.length > kMaxLength) {
+        if (toBeString.length > kssss) {
             //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
             //NSLog(@"最多%d个字符!!!",kMaxLength);
-            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] withOriginY:250 withSuperView:self.view];
-            textField.text = [toBeString substringToIndex:kMaxLength];
+            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
             return;
         }
     }

@@ -43,9 +43,13 @@
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
+-(void)pushMessageForDingzhiXinXi
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.supplyDataAry=[NSMutableArray array];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMessageForDingzhiXinXi) name:@"dingzhixinxituisong" object:nil];
     _PageCount=1;
     self.navigationController.navigationBar.hidden=YES;
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
@@ -60,8 +64,8 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak __typeof(self) blockSelf = self;
     [tableView addHeaderWithCallback:^{
-        [blockSelf.supplyDataAry removeAllObjects];
-        blockSelf.PageCount=1;
+        //[blockSelf.supplyDataAry removeAllObjects];
+        
         [blockSelf getDataList];
     }];
     [tableView addFooterWithCallback:^{
@@ -71,26 +75,27 @@
     //缓存
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *dic = [userDefaults objectForKey:@"homePageCache"];
+    self.supplyDataAry=[NSMutableArray array];
     if (dic) {
         self.productDataAry=[GusseYourLikeModel creatGusseLikeAryByAry:[dic objectForKey:@"productList"]];
         [self.supplyDataAry addObjectsFromArray:[HotSellModel hotSellAryByAry:[dic objectForKey:@"supplyList"]]];
         self.BuyDataAry=[HotBuyModel creathotBuyModelAryByAry:[dic objectForKey:@"newBuyList"]];
         [tableView reloadData];
-    }else{
-        
-        [self getDataList];
     }
+        [self getDataList];
+    
     self.bigImageViewShowView =[[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
 
 }
 //获取数据
 -(void)getDataList
 {
-    [self.supplyDataAry removeAllObjects];
     [HTTPCLIENT getHomePageInfoSuccess:^(id responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.productDataAry=[GusseYourLikeModel creatGusseLikeAryByAry:[dic objectForKey:@"productList"]];
+            self.PageCount=1;
+            [self.supplyDataAry removeAllObjects];
             [self.supplyDataAry addObjectsFromArray:[HotSellModel hotSellAryByAry:[dic objectForKey:@"supplyList"]]];
             self.BuyDataAry=[HotBuyModel creathotBuyModelAryByAry:[dic objectForKey:@"newBuyList"]];
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -332,7 +337,6 @@
 //广告页面点击
 -(void)advertPush:(NSInteger)index
 {
-    NSLog(@"点击了广告页%ld",index);
     [self.bigImageViewShowView showInKeyWindowWithIndex:index];
 }
 //圆形按钮

@@ -28,6 +28,7 @@
 #import "UserBigInfoView.h"
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
+#import "BaseTabBarController.h"
 #import "ZIKStationAgentViewController.h"//站长通
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
@@ -59,8 +60,21 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"showTabBar" object:nil];
 }
 
+-(void)pushMessageForDingzhiXinXi
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    self.tabBarController.selectedIndex=1;
+    BaseTabBarController *baseB=(BaseTabBarController *)self.tabBarController;
+    baseB.homePageBtn.selected=YES;
+    baseB.userInfoBtn.selected=NO;
+    [baseB.homePageLab setTextColor:NavColor];
+    [baseB.userLab setTextColor:[UIColor lightGrayColor]];
+    ZIKMyCustomizedInfoViewController *zikMyCustomInfoVC=[[ZIKMyCustomizedInfoViewController alloc]init];
+    [self.navigationController pushViewController:zikMyCustomInfoVC animated:YES];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMessageForDingzhiXinXi) name:@"dingzhixinxituisong" object:nil];
     // Do any additional setup after loading the view.
     UserBigInfoView *userbigInfoV=[[UserBigInfoView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 200)];
     userbigInfoV.userDelegate=self;

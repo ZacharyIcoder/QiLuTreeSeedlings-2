@@ -12,9 +12,12 @@
 @interface FabutiaojiaCell ()<UITextFieldDelegate,PickeShowDelegate>
 @property (nonatomic,weak) UIButton *nowBtn;
 @property (nonatomic,strong)PickerShowView *pickerView;
+@property (nonatomic) NSInteger xianzhiNum;
 @end
 @implementation FabutiaojiaCell
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 -(id)initWithFrame:(CGRect)frame AndModel:(TreeSpecificationsModel *)model andAnswer:(NSString *)answer
 {
     self=[super initWithFrame:frame];
@@ -40,7 +43,7 @@
                 textField.placeholder=self.model.name;
                 if(self.model.alert.length==0)
                 {
-                    textField.placeholder=@"请输入信息";
+                    //textField.placeholder=@"请输入信息";
                 }
                 if(self.model.dataType==1)
                 {
@@ -49,6 +52,13 @@
                 if(self.model.dataType==2)
                 {
                     textField.keyboardType=UIKeyboardTypeDecimalPad;
+                }
+                if (self.model.textLength>0) {
+                    _xianzhiNum=self.model.textLength;
+                    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                             selector:@selector(textFieldChanged:)
+                                                                 name:UITextFieldTextDidChangeNotification
+                                                               object:textField];
                 }
                 [textField setFont:[UIFont systemFontOfSize:15]];
                 textField.delegate=self;
@@ -187,6 +197,42 @@
     [self addSubview:linView];
     [linView setBackgroundColor:kLineColor];
 }
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    
+    NSString *toBeString = textField.text;
+    //NSString *mylant = [UITextInputMode activeInputModes];
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > _xianzhiNum) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"最多%ld个字符!!!",(long)_xianzhiNum]];
+                
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:_xianzhiNum];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > _xianzhiNum) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            [ToastView showTopToast:[NSString stringWithFormat:@"最多%ld个字符!!!",(long)_xianzhiNum]];
+            textField.text = [toBeString substringToIndex:_xianzhiNum];
+            return;
+        }
+    }
+}
+
 -(void)Type2Option1BtnAction:(UIButton *)sender
 {
     if (sender.selected) {
