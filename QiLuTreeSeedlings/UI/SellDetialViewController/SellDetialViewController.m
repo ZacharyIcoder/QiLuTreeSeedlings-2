@@ -18,7 +18,12 @@
 #import "SellSearchTableViewCell.h"
 #import "BigImageViewShowView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
-@interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate>
+
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMessageComposeViewController.h>
+
+
+@interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIButton *collectionBtn;
 @property (nonatomic,strong)SupplyDetialMode *model;
@@ -95,11 +100,84 @@
     NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
+#pragma mark -- 短信留言
 -(void)meaageAction
-{     NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"sms://%@",self.model.phone];
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+{
+//    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"sms://%@",self.model.phone];
+//    
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    [self showMessageView:[NSArray arrayWithObjects:self.model.phone, nil] title:@"苗木供应" body:self.model.title];
 }
+
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    switch (result) {
+        case MessageComposeResultSent:
+            //信息传送成功
+        {
+            [ToastView showToast:@"消息发送成功" withOriginY:250 withSuperView:self.view];
+        }
+
+            break;
+        case MessageComposeResultFailed:
+            //信息传送失败
+        {
+            [ToastView showToast:@"消息发送失败" withOriginY:250 withSuperView:self.view];
+        }
+
+            break;
+        case MessageComposeResultCancelled:
+            //信息被用户取消传送
+        {
+            [ToastView showToast:@"取消发送" withOriginY:250 withSuperView:self.view];
+        }
+
+            break;
+        default:
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:NULL];
+
+}
+
+-(void)showMessageView:(NSArray *)phones title:(NSString *)title body:(NSString *)body
+{
+    if( [MFMessageComposeViewController canSendText] )
+    {
+        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+        picker.messageComposeDelegate = self;
+
+        // You can specify one or more preconfigured recipients.  The user has
+        // the option to remove or add recipients from the message composer view
+        // controller.
+         picker.recipients = phones;
+
+        // You can specify the initial message text that will appear in the message
+        // composer view controller.
+        picker.body = body;
+
+        [self presentViewController:picker animated:YES completion:NULL];
+//        MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
+//        controller.recipients = phones;
+//        controller.navigationBar.tintColor = [UIColor redColor];
+//        controller.body = body;
+//        controller.messageComposeDelegate = self;
+//        [self presentViewController:controller animated:YES completion:nil];
+        [[[[picker viewControllers] lastObject] navigationItem] setTitle:title];//修改短信界面标题
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息"
+                                                        message:@"该设备不支持短信功能"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 5;

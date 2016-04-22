@@ -29,7 +29,7 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSideViewAction)];
         [backView addGestureRecognizer:tapGesture];
         
-        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(Width/4, 0, Width*3/4, Height)];
+        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(Width/4, 0, Width*0.8, Height)];
         contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:contentView];
         

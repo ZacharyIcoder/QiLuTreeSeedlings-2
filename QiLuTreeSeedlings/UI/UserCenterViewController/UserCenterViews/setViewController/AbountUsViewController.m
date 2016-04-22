@@ -43,7 +43,10 @@
     [guangwangLab setText:@"公司官网：http://www.qlmm.cn"];
     [guangwangLab setTextColor:titleLabColor];
     [self.view addSubview:guangwangLab];
-    
+
+//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//    NSAttributedString *string = [[NSAttributedString alloc] init];
+
     UILabel *rexianLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-100,  CGRectGetMaxY(guangwangLab.frame), 200, 20)];
     [rexianLab setTextAlignment:NSTextAlignmentCenter];
     [rexianLab setFont:[UIFont systemFontOfSize:14]];

@@ -160,6 +160,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         self.titleTextField.text = self.model.title;
         self.nameTextField.text  = self.model.productName;
         self.nameBtn.selected    = YES;
+        //__weak typeof(self) weakSelf = self;
         [HTTPCLIENT mySupplyUpdataWithUid:self.model.uid Success:^(id responseObject) {
             if ([[ responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *resultdic       = [responseObject objectForKey:@"result"];
@@ -186,12 +187,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                         }
                     }
                 };
-                self.pickerImgView.urlMArr = imagesUrlMAry;
+                weakSelf.pickerImgView.urlMArr = imagesUrlMAry;
                 //处理图片数组结束
 
-                self.nurseryAry            = [resultdic objectForKey:@"nurseryList"];
-                self.baseDic               = [resultdic objectForKey:@"baseMsg"];
-                [self creatSCreeningCellsWithAnswerWithAry:beanAry];
+                weakSelf.nurseryAry            = [resultdic objectForKey:@"nurseryList"];
+                weakSelf.baseDic               = [resultdic objectForKey:@"baseMsg"];
+                [weakSelf creatSCreeningCellsWithAnswerWithAry:beanAry];
             }else{
                 [ToastView showTopToast:[ responseObject objectForKey:@"msg"]];
             }
