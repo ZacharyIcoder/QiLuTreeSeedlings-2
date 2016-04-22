@@ -57,7 +57,7 @@
         
         CGRect pageFrame = CGRectMake(0, scrollFrame.size.height-20, self.frame.size.width, 20);
         UIPageControl *pageController = [[UIPageControl alloc] initWithFrame:pageFrame];
-        [pageController setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.2]];
+        [pageController setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.0 ]];
         [self addSubview:pageController];
         pageController.currentPageIndicatorTintColor = [UIColor colorWithRed:107/255.0f green:188/255.0f blue:85/255.0f alpha:1.0f];
         

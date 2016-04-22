@@ -9,8 +9,11 @@
 #import "SellBanderTableViewCell.h"
 #import "UIDefines.h"
 #import "UIImageView+AFNetworking.h"
-@interface SellBanderTableViewCell ()
-
+@interface SellBanderTableViewCell ()<UIScrollViewDelegate>
+@property (nonatomic,weak) UIButton *leftBtn;
+@property (nonatomic,weak) UIButton *rightBtn;
+@property (nonatomic) NSInteger countNum;
+@property (nonatomic,weak)UIScrollView *scrollView;
 @end
 @implementation SellBanderTableViewCell
 
@@ -19,13 +22,17 @@
     self=[super initWithFrame:frame];
     if ( self) {
         NSArray *imagAry=model.images;
+        _countNum=imagAry.count;
         UIScrollView *scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 210)];
+        scrollView.delegate=self;
+        self.scrollView=scrollView;
         [self addSubview:scrollView];
         [scrollView setContentSize:CGSizeMake(kWidth*imagAry.count,0)];
         scrollView.pagingEnabled=YES;
         for (int i=0; i<imagAry.count ; i++) {
             UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*i, 0, kWidth, 210)];
-            UIButton *BTN=[[UIButton alloc]initWithFrame:imageV.frame];
+            CGRect BTNFRAME=imageV.frame;
+            UIButton *BTN=[[UIButton alloc]initWithFrame:BTNFRAME];
             BTN.tag=i;
             
             [BTN addTarget:self action:@selector(BtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -82,8 +89,93 @@
         }
         UIView *priceView=[self viewWithTitle:priceStr andX:kWidth-(kWidth-150)/4.f-50 andColor:yellowButtonColor andImageName:@"price"];
         [self addSubview:priceView];
+        
+        UIButton *rightBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-55, 210/2-25, 50, 50)];
+        [rightBtn setImage:[UIImage imageNamed:@"rightBtnImage"] forState:UIControlStateNormal];
+        [rightBtn addTarget:self action:@selector(rightBtnAcrion:) forControlEvents:UIControlEventTouchUpInside];
+        self.rightBtn=rightBtn;
+        [self addSubview:rightBtn];
+        
+        UIButton *leftBtn=[[UIButton alloc]initWithFrame:CGRectMake(5, 210/2-25, 50, 50)];
+        [leftBtn setImage:[UIImage imageNamed:@"leftBtnImage"] forState:UIControlStateNormal];
+        [leftBtn addTarget:self action:@selector(leftBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        self.leftBtn=leftBtn;
+        [self addSubview:leftBtn];
+        if (_countNum<=1) {
+            scrollView.delegate=nil;
+            leftBtn.hidden=YES;
+            rightBtn.hidden=YES;
+        }else{
+            leftBtn.hidden=YES;
+        }
     }
     return self;
+}
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x==0) {
+        self.leftBtn.hidden=YES;
+        if (self.rightBtn.hidden==YES) {
+            self.rightBtn.hidden=NO;
+        }
+        return;
+    }else if (scrollView.contentOffset.x/kWidth==_countNum-1) {
+        self.rightBtn.hidden=YES;
+        if (self.leftBtn.hidden==YES) {
+            self.leftBtn.hidden=NO;
+        }
+        return;
+    }else
+    {
+        if (self.leftBtn.hidden==YES) {
+            self.leftBtn.hidden=NO;
+        }
+        if (self.rightBtn.hidden==YES) {
+            self.rightBtn.hidden=NO;
+        }
+    }
+
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x==0) {
+        self.leftBtn.hidden=YES;
+        if (self.rightBtn.hidden==YES) {
+            self.rightBtn.hidden=NO;
+        }
+        return;
+    }else if (scrollView.contentOffset.x/kWidth==_countNum-1) {
+        self.rightBtn.hidden=YES;
+        if (self.leftBtn.hidden==YES) {
+            self.leftBtn.hidden=NO;
+        }
+        return;
+    }else
+    {
+        if (self.leftBtn.hidden==YES) {
+            self.leftBtn.hidden=NO;
+        }
+        if (self.rightBtn.hidden==YES) {
+            self.rightBtn.hidden=NO;
+        }
+    }
+}
+-(void)leftBtnAction:(UIButton *)sender
+{
+    if (self.scrollView.contentOffset.x>0) {
+        CGFloat x=self.scrollView.contentOffset.x-kWidth;
+        [self.scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+        return;
+    }
+}
+-(void)rightBtnAcrion:(UIButton *)sender
+{
+    if (self.scrollView.contentOffset.x<(self.scrollView.contentSize.width-kWidth)) {
+        
+        CGFloat x=self.scrollView.contentOffset.x+kWidth;
+        [self.scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+        return;
+    }
 }
 -(UIView *)viewWithTitle:(NSString *)title andX:(CGFloat)x andColor:(UIColor *)color andImageName:(NSString *)imgeName
 {

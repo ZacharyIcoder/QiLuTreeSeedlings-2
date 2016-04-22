@@ -10,8 +10,9 @@
 #import "UIDefines.h"
 #import "UIImageView+AFNetworking.h"
 #define kActionVTag 18888
-@interface BigImageViewShowView ()
+@interface BigImageViewShowView ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
+@property (nonatomic,  strong) UIPageControl *pageController;
 @end
 
 @implementation BigImageViewShowView
@@ -21,10 +22,12 @@
     if (self) {
         [self setFrame:[UIScreen mainScreen].bounds];
         _backScrollView=[[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _backScrollView.delegate=self;
         [self addSubview:_backScrollView];
         [_backScrollView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
         [_backScrollView setContentSize:CGSizeMake(kWidth*imageAry.count, 0)];
         _backScrollView.pagingEnabled=YES;
+        _backScrollView.showsHorizontalScrollIndicator = NO;
         for (int i=0; i<imageAry.count; i++) {
             UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth,230)];
             imageV.center=CGPointMake(kWidth*i+kWidth/2, kHeight/2-20);
@@ -49,6 +52,16 @@
           self.hidden=YES;
         UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidingSelf)];
         [self addGestureRecognizer:tap];
+        CGRect pageFrame = CGRectMake(0, self.frame.size.height-20, self.frame.size.width, 20);
+        UIPageControl *pageController = [[UIPageControl alloc] initWithFrame:pageFrame];
+        [pageController setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
+        [self addSubview:pageController];
+        pageController.currentPageIndicatorTintColor = [UIColor colorWithRed:107/255.0f green:188/255.0f blue:85/255.0f alpha:1.0f];
+        
+        pageController.pageIndicatorTintColor = [UIColor whiteColor];
+        self.pageController = pageController;
+        [pageController setNumberOfPages:[imageAry count]];
+
     }
     return self;
 }
@@ -58,10 +71,12 @@
     if (self) {
         [self setFrame:[UIScreen mainScreen].bounds];
         _backScrollView=[[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _backScrollView.delegate=self;
         [self addSubview:_backScrollView];
-        [_backScrollView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+        [_backScrollView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.33]];
         [_backScrollView setContentSize:CGSizeMake(kWidth*imageAry.count, 0)];
         _backScrollView.pagingEnabled=YES;
+         _backScrollView.showsHorizontalScrollIndicator = NO;
         for (int i=0; i<imageAry.count; i++) {
             UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 0, kWidth-30,(kWidth-30)*1.77778)];
             [imageV setImage:[UIImage imageNamed:imageAry[i]]];
@@ -71,8 +86,32 @@
         }
         UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeFromeKeyWind)];
         [self addGestureRecognizer:tap];
+        
+        CGRect pageFrame = CGRectMake(0, self.frame.size.height-20, self.frame.size.width, 20);
+        UIPageControl *pageController = [[UIPageControl alloc] initWithFrame:pageFrame];
+        [pageController setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.33]];
+        [self addSubview:pageController];
+        pageController.currentPageIndicatorTintColor = [UIColor colorWithRed:107/255.0f green:188/255.0f blue:85/255.0f alpha:1.0f];
+        
+        pageController.pageIndicatorTintColor = [UIColor whiteColor];
+        self.pageController = pageController;
+        [pageController setNumberOfPages:[imageAry count]];
     }
     return self;
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+     CGFloat  viewWidth = [[UIScreen mainScreen] bounds].size.width;
+    NSInteger offset = scrollView.contentOffset.x/viewWidth;
+    self.pageController.currentPage = offset;
+//    if (scrollView.contentOffset.x >= (scrollView.contentSize.width-1.5*viewWidth)) {
+//        [scrollView setContentOffset:CGPointMake(viewWidth, 0)];
+//        self.pageController.currentPage =scrollView.contentOffset.x/viewWidth-1;
+//    }
+//    if (scrollView.contentOffset.x<=0.5*viewWidth) {
+//        [scrollView setContentOffset:CGPointMake(scrollView.contentSize.width-2*viewWidth, 0)];
+//        self.pageController.currentPage = scrollView.contentOffset.x/viewWidth-1;
+//    }
 }
 -(void)hidingSelf
 {

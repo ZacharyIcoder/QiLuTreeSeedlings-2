@@ -37,6 +37,8 @@
 		EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4D81C93A57E00A33BD3 /* MyCollectViewController.m */; };
 		EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */; };
 		EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */; };
+		EA17B5D01CC9D1CE0054223B /* leftBtnImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA17B5CF1CC9D1CE0054223B /* leftBtnImage@2x.png */; };
+		EA17B5D21CC9D23A0054223B /* rightBtnImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA17B5D11CC9D23A0054223B /* rightBtnImage@2x.png */; };
 		EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */; };
 		EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1CF3FE1CACD11A00AF2D82 /* ActionView.m */; };
 		EA1CF4041CACD11A00AF2D82 /* loading01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF3FF1CACD11A00AF2D82 /* loading01@2x.png */; };
@@ -467,6 +469,8 @@
 		EA16C4DB1C93B5EB00A33BD3 /* noOneCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noOneCollectCell.h; sourceTree = "<group>"; };
 		EA16C4DC1C93B5EB00A33BD3 /* noOneCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = noOneCollectCell.m; sourceTree = "<group>"; };
 		EA16C4DE1C93B73000A33BD3 /* myCollectEmpy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myCollectEmpy@2x.png"; sourceTree = "<group>"; };
+		EA17B5CF1CC9D1CE0054223B /* leftBtnImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftBtnImage@2x.png"; sourceTree = "<group>"; };
+		EA17B5D11CC9D23A0054223B /* rightBtnImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightBtnImage@2x.png"; sourceTree = "<group>"; };
 		EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myBuyNull@2x.png"; sourceTree = "<group>"; };
 		EA1CF3FD1CACD11A00AF2D82 /* ActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionView.h; sourceTree = "<group>"; };
 		EA1CF3FE1CACD11A00AF2D82 /* ActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionView.m; sourceTree = "<group>"; };
@@ -1439,6 +1443,8 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA17B5D11CC9D23A0054223B /* rightBtnImage@2x.png */,
+				EA17B5CF1CC9D1CE0054223B /* leftBtnImage@2x.png */,
 				EA5444C11CC770BD00971A50 /* bangde1.jpg */,
 				EA5444C21CC770BD00971A50 /* bangde2.jpg */,
 				EA5444C31CC770BD00971A50 /* bangde3.jpg */,
@@ -2949,9 +2955,11 @@
 				EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */,
 				FC21BC891CA51C930041E2C3 /* IQKeyboardManager.bundle in Resources */,
 				FCF353F11CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
+				EA17B5D01CC9D1CE0054223B /* leftBtnImage@2x.png in Resources */,
 				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
 				FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
+				EA17B5D21CC9D23A0054223B /* rightBtnImage@2x.png in Resources */,
 				FC50B1631CAE243F0022A24C /* UMSCommentInputController.xib in Resources */,
 				EAAFCFB91CBE267700EB894F /* 1miaomu1472.png in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,

@@ -13,6 +13,7 @@
 @interface SreeningViewCell()<PickeShowDelegate>
 @property (nonatomic,weak) UIButton *nowBtn;
 @property (nonatomic,strong)PickerShowView *pickerView;
+@property (nonatomic)NSInteger xianzhiNum;
 @end
 @implementation SreeningViewCell
 -(id)initWithFrame:(CGRect)frame AndModel:(TreeSpecificationsModel *)model

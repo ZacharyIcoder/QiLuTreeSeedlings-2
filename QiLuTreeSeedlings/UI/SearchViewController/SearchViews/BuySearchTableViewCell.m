@@ -95,13 +95,13 @@
         UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
         [priceLab setFont:[UIFont systemFontOfSize:12]];
         [priceLab setText:@"价格"];
-        [self.contentView addSubview:priceLab];
+        [self addSubview:priceLab];
         [priceLab setTextColor:detialLabColor];
         self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.9-25, 35, 65, 20)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];
         [self.priceLab setText:@"O元"];
         [self.priceLab setTextColor:yellowButtonColor];
-        [self.contentView addSubview:self.priceLab];
+        [self addSubview:self.priceLab];
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, frame.size.height-0.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self.contentView addSubview:imageVLine];
