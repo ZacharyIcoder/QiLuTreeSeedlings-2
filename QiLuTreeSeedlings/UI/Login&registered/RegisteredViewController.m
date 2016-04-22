@@ -41,7 +41,7 @@
     
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 27, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:0 left:3];
+    [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:10 left:10];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [navView addSubview:backBtn];
     [self.view addSubview:navView];
