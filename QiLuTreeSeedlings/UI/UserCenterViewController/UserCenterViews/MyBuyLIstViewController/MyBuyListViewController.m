@@ -41,6 +41,17 @@
     }
     return self;
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    PageCount = 1;
+    dataAry = [NSMutableArray array];
+    [self getDataList];
+//    self.pullTableView.editing = NO;
+//    bottomcell.hidden = YES;
+//    self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [APPDELEGATE requestBuyRestrict];
