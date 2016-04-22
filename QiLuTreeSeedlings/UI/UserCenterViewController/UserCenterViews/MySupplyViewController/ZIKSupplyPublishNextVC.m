@@ -16,6 +16,7 @@
 #import "BWTextView.h"
 #import "JSONKit.h"
 #import "ZIKMySupplyViewController.h"
+//@class ZIKMySupplyViewController;
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
 {
     UIButton *ecttiveBtn;
@@ -413,13 +414,14 @@
                 [ToastView showTopToast:@"发布成功"];
             }
             //[ToastView showTopToast:@"提交成功，即将返回"];
-            [self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
-//            for(UIViewController *controller in self.navigationController.viewControllers) {
-//                if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
-//                    ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
-//                    [self.navigationController popToViewController:owr animated:YES];
-//                }
-//            }
+            [self.pickerImgView removeALL];
+            //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
+            for(UIViewController *controller in self.navigationController.viewControllers) {
+                if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
+                    ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
+                    [self.navigationController popToViewController:owr animated:YES];
+                }
+            }
         }
         else {
             //NSLog(@"%@",responseObject[@"msg"]);

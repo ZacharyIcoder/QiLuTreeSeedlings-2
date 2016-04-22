@@ -20,7 +20,7 @@
 
 @protocol  WHC_ChoicePictureVCDelegate<NSObject>
 
-- (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr;
+- (void)WHCChoicePictureVCdidSelectedPhotoArr:(NSArray *)photoArr;
 
 @end
 

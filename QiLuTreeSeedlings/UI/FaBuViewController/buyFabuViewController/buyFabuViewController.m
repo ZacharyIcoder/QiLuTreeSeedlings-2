@@ -15,7 +15,7 @@
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
-//#define kMaxLength 20
+#import "MyBuyListViewController.h"
 @interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
@@ -371,7 +371,14 @@
         //        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"提交成功，即将返回"];
-            [self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
+            //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
+            for(UIViewController *controller in self.navigationController.viewControllers) {
+                if([controller isKindOfClass:[MyBuyListViewController class]]){
+                    MyBuyListViewController *owr = (MyBuyListViewController *)controller;
+                    [self.navigationController popToViewController:owr animated:YES];
+                }
+            }
+
         }else
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
