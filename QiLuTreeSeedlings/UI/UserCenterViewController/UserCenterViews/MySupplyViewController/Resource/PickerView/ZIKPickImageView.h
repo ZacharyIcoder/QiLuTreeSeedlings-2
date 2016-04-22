@@ -19,6 +19,7 @@ typedef void(^TakePhotoBlock) ();
 - (void)removeImage:(UIImage *)image;
 - (void)addImageURL:(NSDictionary *)dic;
 - (void)removeImageURl:(NSDictionary *)dic;
+- (void)removeALL;
 
 @property(nonatomic, copy) TakePhotoBlock takePhotoBlock;
 

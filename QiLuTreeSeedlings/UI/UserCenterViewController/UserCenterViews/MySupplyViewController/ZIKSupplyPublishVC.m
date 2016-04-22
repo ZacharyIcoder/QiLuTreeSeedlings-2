@@ -58,7 +58,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 }
 -(void)dealloc
 {
-    
+    NSLog(@"--------------------------------------------------------------------------------dealloc");
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -283,6 +283,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     }
     self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
     ZIKSupplyPublishNextVC *nextVC = [[ZIKSupplyPublishNextVC alloc] initWithNurseryList:self.nurseryAry WithbaseMsg:self.baseDic];
+    nextVC.pickerImgView = self.pickerImgView;
     nextVC.supplyModel = self.supplyModel;
     [self.navigationController pushViewController:nextVC animated:YES];
 }
@@ -510,56 +511,46 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 }
 
 #pragma mark - WHC_ChoicePictureVCDelegate
-- (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
+- (void)WHCChoicePictureVCdidSelectedPhotoArr:(NSArray *)photoArr{
 //    [photoArr enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
 //
 //    }];
     for (__weak UIImage *image in photoArr) {
         ShowActionV();
         HttpClient *httpClient  = [HttpClient sharedClient];
-        NSData* imageData = nil;
+      __block  NSData* imageData = nil;
 
-//            //判断图片是不是png格式的文件
-//            if (UIImagePNGRepresentation(image)) {
-//                //返回为png图像。
-//                imageData = UIImagePNGRepresentation(image);
-//            }else {
-//                //返回为JPEG图像。
-//                imageData = UIImageJPEGRepresentation(image, 0.5);
-//            }
-        //    //NSData *iconData =  UIImagePNGRepresentation(image);//UIImageJPEGRepresentation(image, 0.1);
-        ////    //[GTMBase64 stringByEncodingData:iconData];
-        ////    NSLog(@"%d",imageData.length);
-//            while  (imageData.length>=1024*1024) {
-//                CGSize newSize = {kWidth/1024,kHeight};
-//                imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
-//            }
-        //float scale = (float)    kWidth / image.size.width;
-        //imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
-        //imageData = [self imageCompressWithSimple:image scale:scale];
-        //NSLog(@"%ld",imageData.length);
-        //    }
         imageData  = [self  imageData:image];
         //NSLog(@"%ld",imageData.length);
         //imageData = [self imageWithImageSimple:image scaledToSize:<#(CGSize)#>]
 
-        NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+      __block  NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
         //NSLog(@"%ld",myStringImageFile.length);
+         __weak typeof(self) weakSelf = self;
         [httpClient upDataImageIOS:myStringImageFile Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);
-
+            myStringImageFile = nil;
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 //NSLog(@"%@",responseObject[@"success"]);
                 //NSLog(@"%@",responseObject[@"msg"]);
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-                    [self.pickerImgView addImage:[UIImage imageWithData:imageData] withUrl:responseObject[@"result"]];
-                    [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:self.view];
+                    NSLog(@"%ld",imageData.length);
+                    //[self saveImagedata:imageData WithName:@"imageData"];
+                    [weakSelf setPhotoToPath:imageData isName:@"imageData"];
+//                 UIImage *addImage =  [UIImage imageWithData:imageData];
+//                    NSData *mydata  = UIImagePNGRepresentation(addImage);
+//                     NSLog(@"%ld",mydata.length);
+
+
+                    [weakSelf.pickerImgView addImage:[weakSelf getPhotoFromName:@"imageData"] withUrl:responseObject[@"result"]];
+                    imageData = nil;
+                    [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
                     RemoveActionV();
                     
                 }
                 else {
                     //NSLog(@"图片上传失败");
-                    [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:self.view];
+                    [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:weakSelf.view];
                     [UIColor darkGrayColor];
                     RemoveActionV();
                 }
@@ -572,6 +563,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:self.view];
         }];
     }
+    //NSLog(@"3333");
  }
 
 //当选择一张图片后进入这里
@@ -649,6 +641,19 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     // and then we write it out
     [imageData writeToFile:fullPathToFile atomically:NO];
 }
+
+#pragma mark 保存图片data到document
+- (void)saveImagedata:(NSData *)tempImagedata WithName:(NSString *)imageName
+{
+    //NSData* imageData = UIImagePNGRepresentation(tempImage);
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    // Now we get the full path to the file
+    NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:imageName];
+    // and then we write it out
+    [tempImagedata writeToFile:fullPathToFile atomically:NO];
+}
+
 
 #pragma mark 从文档目录下获取Documents路径
 - (NSString *)documentFolderPath
@@ -786,4 +791,91 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.nameTextField resignFirstResponder];
 }
 
+//-(BOOL) setPhotoToPath:(UIImage *)image isName:(NSString *)name
+//{
+//    //此处首先指定了图片存取路径（默认写到应用程序沙盒 中）
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+//
+//    //并给文件起个文件名
+//    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
+//    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
+//    if (blHave) {
+//        NSLog(@"already have");
+//        //delete
+//        [self deleteFromName:name];
+//    }
+//    NSData *data = UIImagePNGRepresentation(image);
+//    BOOL result = [data writeToFile:uniquePath atomically:YES];
+//    if (result) {
+//        //NSLog(@"success");
+//        return YES;
+//    }else {
+//        //NSLog(@"no success");
+//        return NO;
+//    }
+//}
+
+-(BOOL) setPhotoToPath:(NSData *)imagedata isName:(NSString *)name
+{
+    //此处首先指定了图片存取路径（默认写到应用程序沙盒 中）
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+
+    //并给文件起个文件名
+    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
+    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
+    if (blHave) {
+        NSLog(@"already have");
+        //delete
+        [self deleteFromName:name];
+    }
+   // NSData *data = UIImagePNGRepresentation(image);
+    BOOL result = [imagedata writeToFile:uniquePath atomically:YES];
+    if (result) {
+        //NSLog(@"success");
+        return YES;
+    }else {
+        //NSLog(@"no success");
+        return NO;
+    }
+}
+
+- (UIImage *)getPhotoFromName:(NSString *)name
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    //NSFileManager* fileManager=[NSFileManager defaultManager];
+    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
+    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
+    if (!blHave) {
+        return nil;
+    }else
+    {
+        NSData *data = [NSData dataWithContentsOfFile:uniquePath];
+        UIImage *img = [[UIImage alloc] initWithData:data];
+        // NSLog(@" have");
+        return img;
+    }
+}
+
+-(BOOL)deleteFromName:(NSString *)name
+{
+    NSFileManager* fileManager=[NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    //文件名
+    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
+    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
+    if (!blHave) {
+        //NSLog(@"no  have");
+        return NO;
+    }else {
+        //NSLog(@" have");
+        BOOL blDele= [fileManager removeItemAtPath:uniquePath error:nil];
+        if (blDele) {
+            //NSLog(@"dele success");
+            return YES;
+        }else {
+            //NSLog(@"dele fail");
+            return NO;
+        }
+    }
+}
 @end

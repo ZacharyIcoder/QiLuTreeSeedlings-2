@@ -56,7 +56,8 @@
 
 - (void)addImage:(UIImage *)image withUrl:(NSDictionary *)urlDic
 {
-    
+
+
     [self.photos addObject:image];
     [self.urlMArr addObject:urlDic];
     
@@ -120,6 +121,22 @@
 
 -(void)removeImageURl:(NSDictionary *)dic {
     
+}
+
+- (void)removeALL
+{
+    if (self.photos.count>0) {
+        [self.photos removeAllObjects];
+    }
+    if (self.urlMArr.count > 0) {
+        [self.urlMArr removeAllObjects];
+    }
+    if (self.imageBtnArr.count > 0) {
+        [self.imageBtnArr removeAllObjects];
+    }
+    if (self.pickBtn) {
+        [self.pickBtn removeFromSuperview];
+    }
 }
 
 - (void)layoutSubviews
