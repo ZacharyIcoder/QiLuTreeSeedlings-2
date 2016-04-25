@@ -94,11 +94,7 @@
 {
     if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        [ToastView showTopToast:@"您没有求购发布权限"];
-        return;
-    }
-    if ([APPDELEGATE isNeedCompany]==NO) {
-        [ToastView showTopToast:@"请完善公司信息"];
+        [ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
         return;
     }
     ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
@@ -106,13 +102,9 @@
 }
 -(void)fabuBuyMessage
 {
-    if (APPDELEGATE.isCanPublishBuy==NO)
+    if (APPDELEGATE.isCanPublishBuy==NO&&[APPDELEGATE isNeedCompany]==NO)
     {
-        [ToastView showTopToast:@"您没有求购发布权限"];
-        return;
-    }
-    if ([APPDELEGATE isNeedCompany]==NO) {
-        [ToastView showTopToast:@"请完善公司信息"];
+        [ToastView showTopToast:@"您还没有求购发布权限,请先完善公司或苗圃信息"];
         return;
     }
         buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];

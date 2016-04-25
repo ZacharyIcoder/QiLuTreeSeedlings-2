@@ -33,6 +33,7 @@
     self.pageCount=1;
     [self.dataAry removeAllObjects];
     [self getDataList];
+    [APPDELEGATE  requestBuyRestrict];
 }
 -(void)dealloc
 {
@@ -194,6 +195,7 @@
         NuserNullTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuserNullTableViewCell IdStr]];
         if (!cell) {
             cell =[[NuserNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 250)];
+            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         }
         return cell;
     }else

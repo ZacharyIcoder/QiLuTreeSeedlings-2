@@ -199,8 +199,9 @@
 -(void)editingBtnAction:(UIButton *)sender
 {
     
-    if ([APPDELEGATE isCanPublishBuy]==NO) {
-        [ToastView showTopToast:@"暂无发布权限"];
+    if (APPDELEGATE.isCanPublishBuy==NO&&[APPDELEGATE isNeedCompany]==NO)
+    {
+        [ToastView showTopToast:@"您没有求购发布权限,请先完善公司或苗圃信息"];
         return;
     }
     if (self.pullTableView.editing) {
@@ -266,6 +267,7 @@
         if (indexPath.row==0) {
             MyBuyNullTableViewCell *cell=[[MyBuyNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 260)];
             [cell.fabuBtn addTarget:self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
             return cell;
         }
     }else

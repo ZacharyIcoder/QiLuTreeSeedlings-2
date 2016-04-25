@@ -250,7 +250,7 @@
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
-       // NSLog(@"\n>>>[Launching RemoteNotification]:%@", userInfo);
+        // NSLog(@"\n>>>[Launching RemoteNotification]:%@", userInfo);
     }
 }
 
@@ -293,22 +293,10 @@
 
 /** APP已经接收到“远程”通知(推送) - (App运行在后台/App运行在前台) */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    application.applicationIconBadgeNumber = 0; // 标签
-    
-    SystemSoundID sound=1000;
-    AudioServicesPlaySystemSound(sound);
-    sound=kSystemSoundID_Vibrate;
-    AudioServicesPlaySystemSound(sound);
-   // NSLog(@"\n>>>[Receive RemoteNotification]:%@\n\n", userInfo);
-}
-
-/** APP已经接收到“远程”通知(推送) - 透传推送消息  */
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-    
-    // 处理APN
-    //NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n", userInfo);
+    // 标签
     
     if ([application applicationState]==UIApplicationStateActive) {
+        application.applicationIconBadgeNumber = 0;
         SystemSoundID sound=1000;
         AudioServicesPlaySystemSound(sound);
         sound=kSystemSoundID_Vibrate;
@@ -316,19 +304,42 @@
     }
     if ([application applicationState]==UIApplicationStateInactive) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
-
+        
     }
     
     if ([application applicationState]==UIApplicationStateBackground) {
         
     }
-    
-    
-    
-    
-    completionHandler(UIBackgroundFetchResultNewData);
+   // NSLog(@"\n>>>[Receive RemoteNotification]:%@\n\n", userInfo);
 }
 
+/** APP已经接收到“远程”通知(推送) - 透传推送消息  */
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+    
+    // 处理APN
+    if ([application applicationState]==UIApplicationStateActive) {
+        SystemSoundID sound=1000;
+        AudioServicesPlaySystemSound(sound);
+        sound=kSystemSoundID_Vibrate;
+        AudioServicesPlaySystemSound(sound);
+    }
+    if ([application applicationState]==UIApplicationStateInactive) {
+        NSString *tuisongType=[[userInfo objectForKey:@"aps"] objectForKey:@"category"];
+        if ([tuisongType isEqualToString:@"push_buy"]) {
+           [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
+        }
+    }
+    
+    if ([application applicationState]==UIApplicationStateBackground) {
+        
+    }
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    /// Background Fetch 恢复SDK 运行
+    [GeTuiSdk resume];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
 #pragma mark - GeTuiSdkDelegate
 
 /** SDK启动成功返回cid */
@@ -370,24 +381,24 @@
 /** SDK收到sendMessage消息回调 */
 - (void)GeTuiSdkDidSendMessage:(NSString *)messageId result:(int)result {
     // [4-EXT]:发送上行消息结果反馈
-    NSString *msg = [NSString stringWithFormat:@"sendmessage=%@,result=%d", messageId, result];
-    NSLog(@"\n>>>[GexinSdk DidSendMessage]:%@\n\n", msg);
+    //NSString *msg = [NSString stringWithFormat:@"sendmessage=%@,result=%d", messageId, result];
+  //  NSLog(@"\n>>>[GexinSdk DidSendMessage]:%@\n\n", msg);
 }
 
 /** SDK运行状态通知 */
 - (void)GeTuiSDkDidNotifySdkState:(SdkStatus)aStatus {
     // [EXT]:通知SDK运行状态
-    NSLog(@"\n>>>[GexinSdk SdkState]:%u\n\n", aStatus);
+   // NSLog(@"\n>>>[GexinSdk SdkState]:%u\n\n", aStatus);
 }
 
 /** SDK设置推送模式回调 */
 - (void)GeTuiSdkDidSetPushMode:(BOOL)isModeOff error:(NSError *)error {
     if (error) {
-        NSLog(@"\n>>>[GexinSdk SetModeOff Error]:%@\n\n", [error localizedDescription]);
+      //  NSLog(@"\n>>>[GexinSdk SetModeOff Error]:%@\n\n", [error localizedDescription]);
         return;
     }
     
-    NSLog(@"\n>>>[GexinSdk SetModeOff]:%@\n\n", isModeOff ? @"开启" : @"关闭");
+    //NSLog(@"\n>>>[GexinSdk SetModeOff]:%@\n\n", isModeOff ? @"开启" : @"关闭");
 }
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {

@@ -41,7 +41,7 @@
 @property (nonatomic,copy)NSString *AreaCounty;
 @property (nonatomic,strong)UITextField *birefField;
 @property (nonatomic,strong)UIButton *ectiveBtn;
-@property (nonatomic, strong) ZIKSideView      *sideView;
+@property (nonatomic, strong) ZIKSideView     *sideView;
 @property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
 @end
 
@@ -62,7 +62,6 @@
     [super viewDidLoad];
     self.ecttiv=0;
     self.productTypeDataMArray = [NSMutableArray array];
-    // Do any additional setup after loading the view.
     self.cellAry=[NSMutableArray array];
     UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
@@ -353,12 +352,12 @@
         return;
     }
     if ([self isPureInt:countStr]==NO) {
-        [ToastView showTopToast:@"请检查输入的数量格式是否正确"];
+        [ToastView showTopToast:@"数量的格式输入有误"];
         return;
     }
     if (priceStr.length>0) {
         if ([self isPureFloat:priceStr]==NO) {
-            [ToastView showTopToast:@"请检查输入的价格格式是否正确"];
+            [ToastView showTopToast:@"上车价的格式输入有误"];
             return;
         }
     }
