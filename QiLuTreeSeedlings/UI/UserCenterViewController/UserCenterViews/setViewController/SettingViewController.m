@@ -19,17 +19,25 @@
     [super viewDidLoad];
     self.vcTitle=@"设置";
      UIButton *yijianBTN=[self creatViewWithTitle:@"意见反馈" andY:70];
-    [yijianBTN addTarget:self action:@selector(yijianfankuiBtn) forControlEvents:UIControlEventTouchUpInside];
+    [yijianBTN addTarget:self action:@selector(yijianfankuiBtn:) forControlEvents:UIControlEventTouchUpInside];
      UIButton *abuotUS = [self creatViewWithTitle:@"关于我们" andY:119.5];
-    [abuotUS addTarget:self action:@selector(abountUSBtn) forControlEvents:UIControlEventTouchUpInside];
+    [abuotUS addTarget:self action:@selector(abountUSBtn:) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
 }
--(void)yijianfankuiBtn
+-(void)yijianfankuiBtn:(UIButton *)button
 {
+    button.backgroundColor = [UIColor lightGrayColor];
+    double delayInSeconds = 0.05;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        button.backgroundColor = [UIColor whiteColor];
+    });
+
     UIAlertController *alertV= [UIAlertController alertControllerWithTitle:@"提示" message:@"感谢您的意见" preferredStyle:UIAlertControllerStyleAlert];
     [alertV addTextFieldWithConfigurationHandler:^(UITextField *textField){
         textField.placeholder = @"意见反馈";
     }];
+
     UIAlertAction *sellAction=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [ToastView showTopToast:@"感谢您的意见"];
     }];
@@ -41,12 +49,19 @@
     
     
     [self presentViewController:alertV animated:YES completion:^{
-        
+
     }];
 
 }
--(void)abountUSBtn
+-(void)abountUSBtn:(UIButton *)button
 {
+    button.backgroundColor = [UIColor lightGrayColor];
+    double delayInSeconds = 0.05;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        button.backgroundColor = [UIColor whiteColor];
+    });
+
     //NSLog(@"关于我们");
     AbountUsViewController *abountUnsVC=[[AbountUsViewController alloc]init];
     [self.navigationController pushViewController:abountUnsVC animated:YES];

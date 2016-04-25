@@ -275,6 +275,7 @@
            ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
            [cell configureCell:model];
     }
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     return cell;
 }
 

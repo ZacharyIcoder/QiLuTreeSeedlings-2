@@ -29,7 +29,7 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSideViewAction)];
         [backView addGestureRecognizer:tapGesture];
         
-        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(Width/4, 0, Width*0.8, Height)];
+        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(Width*0.2, 0, Width*0.8, Height)];
         contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:contentView];
         
@@ -44,6 +44,7 @@
 
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(contentView.frame.size.width/2-40, 10+20, 80, 24)];
         titleLabel.text = @"选择苗木";
+        titleLabel.textColor = titleLabColor;
         //titleLabel.textColor = [UIColor darkGrayColor];
         titleLabel.font = [UIFont systemFontOfSize:17.0f];
         titleLabel.textAlignment = NSTextAlignmentCenter;

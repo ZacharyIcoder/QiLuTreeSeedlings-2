@@ -129,7 +129,7 @@
 //    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"sms://%@",[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"]];
 //
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-    [self showMessageView:[NSArray arrayWithObjects:[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"], nil] title:@"苗木求购" body:[NSString stringWithFormat:@"%@",[[self.infoDic objectForKey:@"detail"] objectForKey:@"productName"]]];
+    [self showMessageView:[NSArray arrayWithObjects:[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"], nil] title:@"苗木求购" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的供应信息:%@很感兴趣",[[self.infoDic objectForKey:@"detail"] objectForKey:@"productName"]]];
 }
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result

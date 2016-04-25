@@ -59,23 +59,23 @@
                                                    object:nil];
 
         [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
-        UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 44)];
-        [backView setBackgroundColor:BGColor];
+        UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 64)];
+        [backView setBackgroundColor:kRGB(210, 210, 210, 1)];
         [self addSubview:backView];
-        UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, 15, 30, 30)];
+        UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 7+20, 30, 30)];
         [backBtn setEnlargeEdgeWithTop:15 right:25 bottom:10 left:10];
         [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [backBtn setImage:[UIImage imageNamed:@"backBtnBlack"] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
         [backView addSubview:backBtn];
-        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-30, 8, 60, 44)];
+        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(backView.frame.size.width/2-30, 10+20, 60, 24)];
         titleLab.text=@"筛选";
-        [titleLab setTextColor:[UIColor grayColor]];
+        [titleLab setTextColor:titleLabColor];
         titleLab.textAlignment=NSTextAlignmentCenter;
         [backView addSubview:titleLab];
-        self.backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0.2*kWidth, 44, 0.8*kWidth, kHeight-44-44)];
+        self.backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0.2*kWidth, 44+20, 0.8*kWidth, kHeight-44-44-20)];
         [self.backScrollView setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:self.backScrollView];
-        CGRect tempFrame=CGRectMake(0, 0, kWidth*0.8, 44);
+        CGRect tempFrame=CGRectMake(0, 5, kWidth*0.8, 44);
         UIView *nameView=[[UIView alloc]initWithFrame:tempFrame];
         [nameView setBackgroundColor:[UIColor whiteColor]];
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
@@ -266,6 +266,7 @@
 }
 -(void)nameBtnAction:(UIButton *)sender
 {
+    [self.nameTextField resignFirstResponder];
     if (sender.selected) {
         return;
     }
@@ -456,6 +457,32 @@
     //NSLog(@"%@",selectTitle);
     self.nameTextField.text = selectTitle;
     [self.sideView removeSideViewAction];
+    [self nameBtnAction:self.nameBtn];
+//    self.nameBtn.selected  = YES;
+//    [self clearOldCellAction];
+//    self.dataAry =nil;
+//    self.productName=self.nameTextField.text;
+//    [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:[NSString stringWithFormat:@"%ld",(long)self.searchType] Success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//
+//        if (![[responseObject objectForKey:@"success"] integerValue]) {
+//            [ToastView showToast:[responseObject objectForKey:@"msg"]
+//                     withOriginY:66.0f
+//                   withSuperView:APPDELEGATE.window];
+//            [self requestProductType];
+//        }else
+//        {
+//            NSDictionary *dic=[responseObject objectForKey:@"result"];
+//            self.dataAry=[dic objectForKey:@"list"];
+//            //sender.selected=YES;
+//            self.productUid=[dic objectForKey:@"productUid"];
+//            self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+//            [self creatScreeningCells];
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.
