@@ -168,6 +168,11 @@
     searchMessageField.placeholder=@"请输入苗木关键词";
     searchMessageField.delegate=self;
     [searchMessageField setTextColor:titleLabColor];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:self.searchMessageField];
+
     ////////
     //searchMessageField.text=@"油松";
     
@@ -191,7 +196,31 @@
     [view addSubview:screenBtn];
     return view;
 }
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    if ([textField.text isEqualToString:@""] || textField.text.length == 0) {
+        NSLog(@"刷新");
+        [HTTPCLIENT hotkeywordWithkeywordCount:@"10" Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                NSDictionary *Dic =[responseObject objectForKey:@"result"];
+                NSArray *ary=[Dic objectForKey:@"productList"];
+                if (!self.searchRecommendView) {
+                    SearchRecommendView *searchRView = [[SearchRecommendView
+                                                         alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) WithAry:ary];
+                    self.searchRecommendView=searchRView;
+                    searchRView.delegate=self;
+                    [self.view addSubview:searchRView];
+                }
 
+            }
+
+        } failure:^(NSError *error) {
+
+        }];
+
+        //(void)[self initWithSearchType:self.searchType];
+    }
+}
 -(void)screeingBtnAction
 {
     if (self.screeningView) {

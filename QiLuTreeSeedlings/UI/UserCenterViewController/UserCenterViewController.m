@@ -424,8 +424,9 @@
 - (void)umengShare {
 
     [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"569c3c37e0f55a8e3b001658"
-                                      shareText:@"齐鲁苗木网"
+                                         //appKey:@"569c3c37e0f55a8e3b001658"
+                                         appKey:@"56fde8aae0f55a1cd300047c"
+                                      shareText:@"定制精准信息，轻松买卖苗木，没有效果不花钱，下载注册即可赠送积分。"
                                      shareImage:[UIImage imageNamed:@"logV@2x.png"]
                                 shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
                                        delegate:self];
@@ -436,7 +437,7 @@
     //        }
     //    }];
     //当分享消息类型为图文时，点击分享内容会跳转到预设的链接，设置方法如下
-    NSString *urlString = @"http://www.qlmm.cn";
+    NSString *urlString = @"https://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8";
     [UMSocialData defaultData].extConfig.wechatSessionData.url = urlString;
 
     //如果是朋友圈，则替换平台参数名即可
@@ -446,7 +447,7 @@
     [UMSocialData defaultData].extConfig.qqData.url    = urlString;
     [UMSocialData defaultData].extConfig.qzoneData.url = urlString;
     //设置微信好友title方法为
-    NSString *titleString = @"齐鲁苗木网";
+    NSString *titleString = @"苗信通-苗木买卖神器";
     [UMSocialData defaultData].extConfig.wechatSessionData.title = titleString;
 
     //设置微信朋友圈title方法替换平台参数名即可

@@ -361,6 +361,7 @@
 		FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134341CB358720037D507 /* UIAlertView+Blocks.m */; };
 		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
 		FCD2E0971CC9EEFA000CFBA2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */; };
+		FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD8A67A1CCDED1600A307E2 /* 已选小标.png */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -1069,6 +1070,7 @@
 		FC7134391CB3ABED0037D507 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
 		FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
 		FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		FCD8A67A1CCDED1600A307E2 /* 已选小标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "已选小标.png"; path = "../../MySupplyViewController/已选小标.png"; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -2570,6 +2572,7 @@
 				FC6FED871CAD103F000E2CA5 /* 支付订单48x48.png */,
 				FC7134201CB3465C0037D507 /* 待选.png */,
 				FC7134211CB3465C0037D507 /* 已选.png */,
+				FCD8A67A1CCDED1600A307E2 /* 已选小标.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -3024,6 +3027,7 @@
 				FC6FED8C1CAD103F000E2CA5 /* 支付订单-充值金额背景.png in Resources */,
 				EA5444C01CC76AEE00971A50 /* qiugouxiangqingye.png in Resources */,
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
+				FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
 				FC6FED6C1CACF833000E2CA5 /* 图片1.png in Resources */,

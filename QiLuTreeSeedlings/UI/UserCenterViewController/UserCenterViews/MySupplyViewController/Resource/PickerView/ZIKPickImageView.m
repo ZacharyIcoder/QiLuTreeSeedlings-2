@@ -142,10 +142,10 @@
 - (void)layoutSubviews
 {
     
-    UIScrollView *scrollView = (UIScrollView *)self.superview;
+    //UIScrollView *scrollView = (UIScrollView *)self.superview;
     
     NSInteger row_nums = 3;
-    CGFloat marginX = 10;
+    CGFloat marginX = 16;
     CGFloat imageViewW = (ScreenWidth - (row_nums+1)*marginX)/row_nums;
     CGFloat imageViewH = imageViewW;
     
@@ -155,7 +155,7 @@
     for(NSInteger i = 0; i< self.imageBtnArr.count; i++)
     {
         imageViewX  = marginX + i%row_nums*(marginX + imageViewW);
-        imageViewY = marginX + i/row_nums*(marginX + imageViewH);
+        imageViewY = marginX + i/row_nums*(marginX + imageViewH)-5;
         
         ZIKPickerBtn *imageView = self.imageBtnArr[i];
         imageView.frame = CGRectMake(imageViewX, imageViewY, imageViewW, imageViewH);
@@ -166,10 +166,10 @@
     self.mj_height = CGRectGetMaxY(lastImageBtn.frame) + marginX;
     
     
-    if (CGRectGetMaxY(self.frame) + marginX > ScreenHeight) {
-        
-        scrollView.contentSize = CGSizeMake(ScreenWidth, CGRectGetMaxY(self.frame) + marginX + NavBarHeight);
-    }
+//    if (CGRectGetMaxY(self.frame) + marginX > ScreenHeight) {
+//        
+//        scrollView.contentSize = CGSizeMake(ScreenWidth, CGRectGetMaxY(self.frame) + marginX + NavBarHeight);
+//    }
 }
 
 

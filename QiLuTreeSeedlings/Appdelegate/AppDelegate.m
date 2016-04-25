@@ -45,7 +45,9 @@
     [self initData];
 
     /*******************友盟分享*******************/
-    [UMSocialData setAppKey:@"569c3c37e0f55a8e3b001658"];
+    //[UMSocialData setAppKey:@"569c3c37e0f55a8e3b001658"];
+    [UMSocialData setAppKey:@"56fde8aae0f55a1cd300047c"];
+
     //设置微信AppId、appSecret，分享url
     [UMSocialWechatHandler setWXAppId:@"wx81b3cb415126671c" appSecret:@"1b7fcde03f9b195e9bc66db37e62ff07" url:@"http://baidu.com"];
     //设置分享到QQ/Qzone的应用Id，和分享url 链接

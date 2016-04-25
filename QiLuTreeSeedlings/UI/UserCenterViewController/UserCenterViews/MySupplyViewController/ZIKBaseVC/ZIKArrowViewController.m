@@ -8,7 +8,7 @@
 
 #import "ZIKArrowViewController.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
-#define titleFont [UIFont systemFontOfSize:21]
+#define titleFont [UIFont systemFontOfSize:20]
 @interface ZIKArrowViewController ()
 {
     UILabel *titleLab;

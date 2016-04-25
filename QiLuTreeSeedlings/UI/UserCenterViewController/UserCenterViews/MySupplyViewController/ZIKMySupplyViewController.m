@@ -224,14 +224,7 @@
     if (self.supplyInfoMArr.count > 0) {
         [cell configureCell:self.supplyInfoMArr[indexPath.row]];
     }
-    //无色
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    UIColor *color = [[UIColor alloc]initWithRed:1.0 green:1.0 blue:1.0 alpha:1];//通过RGB来定义自己的颜色
-//    //[objc] view plain copy 在CODE上查看代码片派生到我的代码片
-//    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-//    cell.selectedBackgroundView.backgroundColor = color;
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-
     return cell;
 }
 
@@ -239,7 +232,7 @@
     ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
     ZIKMySupplyTableViewCell *cell = (ZIKMySupplyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
 //    NSLog(@"%d",cell.selected);
-//    NSLog(@"%d",model.isSelect);
+//    NSLog(@"%d",model.isSelect);z
     //cell.highlighted = NO;
         // 判断编辑状态,必须要写
         if (self.mySupplyTableView.editing)

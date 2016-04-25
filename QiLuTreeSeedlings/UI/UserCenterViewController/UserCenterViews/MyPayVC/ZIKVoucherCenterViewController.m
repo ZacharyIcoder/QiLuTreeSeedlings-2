@@ -102,14 +102,14 @@
     }
     cell.detailTextLabel.textColor = [UIColor darkGrayColor];
     UIImageView *selectImageView = [[UIImageView alloc] init];
-    selectImageView.frame = CGRectMake(Width-40, 17, 30, 30);
+    selectImageView.frame = CGRectMake(Width-40, 19, 22, 22);
     switch (indexPath.row) {
         case 0:
         {
             cell.imageView.image      = [UIImage imageNamed:@"微信支付"];
             cell.textLabel.text       = @"微信支付";
             cell.detailTextLabel.text = @"推荐安装微信5.0及以上版本的使用";
-            selectImageView.image = [UIImage imageNamed:@"已选"];
+            selectImageView.image = [UIImage imageNamed:@"已选小标"];
         }
             break;
         case 1: {
@@ -173,7 +173,7 @@
 
     UITableViewCell *Cell =[tableView cellForRowAtIndexPath:indexPath];
     UIImageView *checkImageView = (UIImageView *)[Cell viewWithTag:1000];
-    [checkImageView setImage:[UIImage imageNamed:@"已选"]];
+    [checkImageView setImage:[UIImage imageNamed:@"已选小标"]];
 
     self.lastIndexPath = indexPath;
     //UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];

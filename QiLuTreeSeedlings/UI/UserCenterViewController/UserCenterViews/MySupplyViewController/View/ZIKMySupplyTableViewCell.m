@@ -47,8 +47,8 @@
 //    else {
 //        UIColor *color = [[UIColor alloc]initWithRed:1.0 green:1.0 blue:1.0 alpha:1];//通过RGB来定义自己的颜色
 //        //[objc] view plain copy 在CODE上查看代码片派生到我的代码片
-//        self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
-//        self.backgroundView.backgroundColor = color;
+//        self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+//        self.selectedBackgroundView.backgroundColor = color;
 //    }
 
 }
