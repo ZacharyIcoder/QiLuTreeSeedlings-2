@@ -73,7 +73,7 @@
     UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 3, 28, 28)];
     PageViewBtn.tag=1;
     self.homePageBtn=PageViewBtn;
-    UIButton *pageActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 0, 30, 50)];
+    UIButton *pageActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6-30, 0, 90, 50)];
     pageActionBtn.tag=1;
    
     [pageActionBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
@@ -93,7 +93,7 @@
     
     UIButton *UserViewBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 3, 28, 28)];
     self.userInfoBtn=UserViewBtn;
-    UIButton *userActionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 0, 30,50)];
+    UIButton *userActionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-74, 0, 90,50)];
     userActionBtn.tag=2;
     
     [userActionBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];

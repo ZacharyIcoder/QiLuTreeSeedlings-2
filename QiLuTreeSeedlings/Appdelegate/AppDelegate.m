@@ -83,6 +83,7 @@
     
     // 处理远程通知启动APP
     [self receiveNotificationByLaunchingOptions:launchOptions];
+     application.applicationIconBadgeNumber = 0;
     return YES;
 }
 - (void)requestInitInfo {
@@ -294,9 +295,9 @@
 /** APP已经接收到“远程”通知(推送) - (App运行在后台/App运行在前台) */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // 标签
-    
+     application.applicationIconBadgeNumber = 0;
     if ([application applicationState]==UIApplicationStateActive) {
-        application.applicationIconBadgeNumber = 0;
+       
         SystemSoundID sound=1000;
         AudioServicesPlaySystemSound(sound);
         sound=kSystemSoundID_Vibrate;

@@ -420,9 +420,9 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
-    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 26, 30, 30)];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:15 right:30 bottom:10 left:10];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
@@ -688,6 +688,7 @@
 
 - (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {
     self.nameTextField.text = selectTitle;
+    [self nameBtnAction:self.nameBtn];
     [self.sideView removeSideViewAction];
 }
 /*
@@ -751,6 +752,7 @@
 -(void)backBtnAction:(UIButton *)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要退出编辑？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+    //[[UIView appearance]setTintColor:titleLabColor];
     [alert show];
     alert.tag = 300;
     alert.delegate = self;

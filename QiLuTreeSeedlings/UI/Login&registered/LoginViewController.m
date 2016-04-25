@@ -22,8 +22,8 @@
     self.navigationController.navigationBarHidden=YES;
     UIView *navView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 64)];
     [navView setBackgroundColor:NavColor];
-    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 27, 30, 30)];
-    [backBtn setEnlargeEdgeWithTop:15 right:25 bottom:10 left:10];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 27, 30, 30)];
+    [backBtn setEnlargeEdgeWithTop:15 right:30 bottom:10 left:10];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [navView addSubview:backBtn];
