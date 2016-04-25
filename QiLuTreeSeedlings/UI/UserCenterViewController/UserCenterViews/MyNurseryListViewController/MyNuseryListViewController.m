@@ -67,7 +67,6 @@
     UILongPressGestureRecognizer *longPressGr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(deleteCell)];
     longPressGr.minimumPressDuration=1.0;
     [pullTableView addGestureRecognizer:longPressGr];
-    
     bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
     bottomcell.frame = CGRectMake(0, kHeight-44, kWidth, 44);
     [self.view addSubview:bottomcell];
@@ -195,14 +194,15 @@
         NuserNullTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuserNullTableViewCell IdStr]];
         if (!cell) {
             cell =[[NuserNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 250)];
-            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-        }
+                    }
         return cell;
     }else
     {
         NuseryListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuseryListTableViewCell IdStr]];
         if (!cell) {
             cell =[[NuseryListTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 120)];
+            
+//CGRectMake(0, 0, kWidth, 120)
         }
         NurseryModel *model=self.dataAry[indexPath.row];
         cell.model=model;
@@ -252,6 +252,7 @@
         // 获取当前显示数据
         //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
         // 添加到我们的删除数据源里面
+        cell.selectedBackgroundView.frame=CGRectZero;
         model.isSelect = YES;
         [_removeArray addObject:model];
         [self totalCount];
@@ -269,14 +270,14 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:15 right:30 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"我的苗圃"];
-    [titleLab setFont:[UIFont systemFontOfSize:21]];
+    [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     [view addSubview:titleLab];
     UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
     [collectionBtn setImage:[UIImage imageNamed:@"myNuserAdd"] forState:UIControlStateNormal];

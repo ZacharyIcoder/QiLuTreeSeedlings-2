@@ -361,11 +361,6 @@
             return;
         }
     }
-   
-    if (self.AreaProvince.length==0) {
-        [ToastView showTopToast:@"请选择用苗城市"];
-        return;
-    }
     [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
         //        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
@@ -422,7 +417,7 @@
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:15 right:30 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
@@ -436,7 +431,7 @@
         [titleLab setText:@"求购发布"];
     }
     
-    [titleLab setFont:[UIFont systemFontOfSize:21]];
+    [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     [view addSubview:titleLab];
     return view;
 }

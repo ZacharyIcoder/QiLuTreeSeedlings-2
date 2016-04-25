@@ -32,10 +32,10 @@
         [titleLab setText:@"标题"];
         [titleLab setTextColor:titleLabColor];
         [self addSubview:titleLab];
-        UIImageView *dingweiImageV=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+93, 42, 15, 15)];
+        UIImageView *dingweiImageV=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+90, 42, 15, 15)];
         [dingweiImageV setImage:[UIImage imageNamed:@"region"]];
         [self addSubview:dingweiImageV];
-        cityLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+20+93, 40, 100, 20)];
+        cityLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+20+87, 40, 100, 20)];
         [cityLab setFont:[UIFont systemFontOfSize:14]];
         cityLab.text=@"山东 临沂";
         [cityLab setTextColor:detialLabColor];
@@ -48,10 +48,10 @@
         timeLab.text=@"今天";
          [timeLab setTextColor:detialLabColor];
         [self addSubview:timeLab];
-        UIImageView *numImage=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+93, 72, 15, 15)];
+        UIImageView *numImage=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+87, 72, 15, 15)];
         [numImage setImage:[UIImage imageNamed:@"LISTtreeNumber"]];
         [self addSubview:numImage];
-        numLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+20+93, 70, 88, 20)];
+        numLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+20+87, 70, 88, 20)];
         [numLab setFont:[UIFont systemFontOfSize:14]];
         numLab.text=@"599棵";
         [numLab setTextColor:detialLabColor];

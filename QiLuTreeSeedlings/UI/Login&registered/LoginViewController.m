@@ -23,7 +23,7 @@
     UIView *navView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 64)];
     [navView setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 27, 30, 30)];
-    [backBtn setEnlargeEdgeWithTop:15 right:30 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [navView addSubview:backBtn];
@@ -33,7 +33,7 @@
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setTextColor:[UIColor whiteColor]];
     [navView addSubview:titleLab];
-    [titleLab setFont:[UIFont systemFontOfSize:21]];
+    [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     UIButton *registeredBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 27, 40, 30)];
     [navView addSubview:registeredBtn];
     [registeredBtn setTitle:@"注册" forState:UIControlStateNormal];

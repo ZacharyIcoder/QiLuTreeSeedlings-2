@@ -223,12 +223,12 @@
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:10 right:60 bottom:10 left:10];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"求购："];
-    [titleLab setFont:[UIFont systemFontOfSize:21]];
+    [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     self.navTitleLab=titleLab;
     [view addSubview:titleLab];
     if (self.type==2) {

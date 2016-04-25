@@ -132,6 +132,7 @@
 -(void)showInKeyWindowWithIndex:(NSInteger)index
 {
     [_backScrollView setContentOffset:CGPointMake(kWidth*index, 0)];
+    self.pageController.currentPage=index;
     [[[UIApplication sharedApplication] keyWindow] addSubview:self];
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha=1;
@@ -144,6 +145,7 @@
 {
     [_backScrollView setContentOffset:CGPointMake(kWidth*index, 0)];
     self.hidden=NO;
+    self.pageController.currentPage=index;
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha=1;
     } completion:^(BOOL finished) {

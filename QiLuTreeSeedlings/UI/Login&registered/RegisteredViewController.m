@@ -34,14 +34,14 @@
     
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 20, 120, 44)];
     [titleLab setText:@"注册"];
-    [titleLab setFont:[UIFont systemFontOfSize:21]];
+    [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setTextColor:[UIColor whiteColor]];
     [navView addSubview:titleLab];
     
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 27, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:15 right:30 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [navView addSubview:backBtn];
     [self.view addSubview:navView];
@@ -219,6 +219,10 @@
     [phoneTextField setFont:[UIFont systemFontOfSize:16]];
     UIImageView *linimageV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
     [view addSubview:linimageV];
+    if([title isEqualToString:@"验证码"])
+    {
+        linimageV.hidden=YES;
+    }
     [linimageV setBackgroundColor:kLineColor];
     if (Y==3) {
         UIButton *getYanzhengBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-88, 12.5, 75, 30)];

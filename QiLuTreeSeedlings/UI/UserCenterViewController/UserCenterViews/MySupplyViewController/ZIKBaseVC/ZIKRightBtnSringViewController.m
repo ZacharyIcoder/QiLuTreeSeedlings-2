@@ -23,7 +23,7 @@
     backBtn=[[UIButton alloc]initWithFrame:CGRectMake(Width-50, 26, 40, 30)];
     //backBtn.backgroundColor = [UIColor redColor];
     //[backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:15 right:15 bottom:10 left:25];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:25];
     [backBtn setTitle:self.rightBarBtnTitleString forState:UIControlStateNormal];
     [backBtn setTintColor:[UIColor whiteColor]];
     [self.view addSubview:backBtn];
