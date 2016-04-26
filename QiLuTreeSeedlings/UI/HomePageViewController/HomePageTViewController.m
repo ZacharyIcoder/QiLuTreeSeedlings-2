@@ -43,13 +43,13 @@
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
--(void)pushMessageForDingzhiXinXi
+-(void)pushMessageForDingzhiXinXi:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMessageForDingzhiXinXi) name:@"dingzhixinxituisong" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMessageForDingzhiXinXi:) name:@"dingzhixinxituisong" object:nil];
     _PageCount=1;
     self.navigationController.navigationBar.hidden=YES;
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
