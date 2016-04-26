@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSDictionary       *baseMessageDic;
 //@property (nonatomic, strong) NSString *myprice;
 
+
 @end
 
 @implementation ZIKCustomizedSetViewController

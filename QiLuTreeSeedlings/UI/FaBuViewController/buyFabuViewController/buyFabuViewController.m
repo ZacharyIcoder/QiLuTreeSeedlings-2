@@ -41,7 +41,7 @@
 @property (nonatomic,copy)NSString *AreaCounty;
 @property (nonatomic,strong)UITextField *birefField;
 @property (nonatomic,strong)UIButton *ectiveBtn;
-@property (nonatomic, strong) ZIKSideView      *sideView;
+@property (nonatomic, strong) ZIKSideView     *sideView;
 @property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
 @end
 
@@ -62,7 +62,6 @@
     [super viewDidLoad];
     self.ecttiv=0;
     self.productTypeDataMArray = [NSMutableArray array];
-    // Do any additional setup after loading the view.
     self.cellAry=[NSMutableArray array];
     UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
@@ -353,19 +352,14 @@
         return;
     }
     if ([self isPureInt:countStr]==NO) {
-        [ToastView showTopToast:@"请检查输入的数量格式是否正确"];
+        [ToastView showTopToast:@"数量的格式输入有误"];
         return;
     }
     if (priceStr.length>0) {
         if ([self isPureFloat:priceStr]==NO) {
-            [ToastView showTopToast:@"请检查输入的价格格式是否正确"];
+            [ToastView showTopToast:@"上车价的格式输入有误"];
             return;
         }
-    }
-   
-    if (self.AreaProvince.length==0) {
-        [ToastView showTopToast:@"请选择用苗城市"];
-        return;
     }
     [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
         //        NSLog(@"%@",responseObject);
@@ -421,9 +415,9 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
-    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 26, 30, 30)];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:10 right:25 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
@@ -437,7 +431,7 @@
         [titleLab setText:@"求购发布"];
     }
     
-    [titleLab setFont:[UIFont systemFontOfSize:21]];
+    [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     [view addSubview:titleLab];
     return view;
 }
@@ -689,6 +683,7 @@
 
 - (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {
     self.nameTextField.text = selectTitle;
+    [self nameBtnAction:self.nameBtn];
     [self.sideView removeSideViewAction];
 }
 /*
@@ -752,6 +747,7 @@
 -(void)backBtnAction:(UIButton *)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要退出编辑？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+    //[[UIView appearance]setTintColor:titleLabColor];
     [alert show];
     alert.tag = 300;
     alert.delegate = self;

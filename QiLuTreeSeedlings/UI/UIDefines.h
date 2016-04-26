@@ -26,6 +26,7 @@
 //withOriginY:[[UIScreen mainScreen] bounds].size.height-100\
 //withSuperView:APPDELEGATE.window];\
 //}
+#define NavTitleSize  20
 #define SCALING         (APPDELEGATE.scaling)
 
 #define kHeight [UIScreen mainScreen].bounds.size.height

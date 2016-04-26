@@ -23,7 +23,7 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.frame=frame;
-        [self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
+        //[self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 10, kWidth-20, 13)];
         [self.titleLab setTextColor:titleLabColor];
         [self.titleLab setFont:[UIFont systemFontOfSize:15]];

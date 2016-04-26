@@ -301,12 +301,12 @@
         return;
     }
     if ([self isPureInt:self.countTextField.text]==NO) {
-        [ToastView showTopToast:@"请检查输入的数量格式是否正确"];
+        [ToastView showTopToast:@"数量的格式输入有误"];
         return;
     }
     if (self.priceTextField.text.length>0) {
         if ([self isPureFloat:self.priceTextField.text]==NO) {
-            [ToastView showTopToast:@"请检查输入的价格格式是否正确"];
+            [ToastView showTopToast:@"上车价的格式输入有误"];
             return;
         }
     }

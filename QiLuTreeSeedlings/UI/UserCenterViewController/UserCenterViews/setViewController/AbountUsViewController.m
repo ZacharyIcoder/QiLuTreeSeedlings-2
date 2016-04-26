@@ -40,19 +40,19 @@
     UILabel *guangwangLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-130,  CGRectGetMaxY(versionLab.frame)+8, 260, 20)];
     [guangwangLab setTextAlignment:NSTextAlignmentCenter];
     [guangwangLab setFont:[UIFont systemFontOfSize:14]];
-    //[guangwangLab setText:@"公司官网：http://www.qlmm.cn"];
+    [guangwangLab setText:@"公司官网：http://www.qlmm.cn"];
     [guangwangLab setTextColor:titleLabColor];
     [self.view addSubview:guangwangLab];
 
     //NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    //设置文字颜色以及字体、删除线
-    NSDictionary * dict = @{
-                            NSForegroundColorAttributeName:titleLabColor,
-                            NSUnderlineStyleAttributeName:@1,
-                            NSFontAttributeName:[UIFont systemFontOfSize:14],
-                            NSLinkAttributeName:@"http://www.qlmm.cn"};
-    NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"公司官网：http://www.qlmm.cn" attributes:dict];
-    guangwangLab.attributedText = string;
+//    //设置文字颜色以及字体、删除线
+//    NSDictionary * dict = @{
+//                            NSForegroundColorAttributeName:titleLabColor,
+//                            NSUnderlineStyleAttributeName:@1,
+//                            NSFontAttributeName:[UIFont systemFontOfSize:14],
+//                            NSLinkAttributeName:@"http://www.qlmm.cn"};
+//    NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"公司官网：http://www.qlmm.cn" attributes:dict];
+//    guangwangLab.attributedText = string;
 
 
     //- (instancetype)initWithString:(NSString *)str attributes:(nullable NSDictionary<NSString *, id> *)attrs;

@@ -73,16 +73,16 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
-    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(15, 26, 30, 30)];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
-    [backBtn setEnlargeEdgeWithTop:15 right:25 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"选择发布类型"];
-    [titleLab setFont:[UIFont systemFontOfSize:21]];
+    [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     [view addSubview:titleLab];
     return view;
 }
@@ -94,11 +94,7 @@
 {
     if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        [ToastView showTopToast:@"您没有求购发布权限"];
-        return;
-    }
-    if ([APPDELEGATE isNeedCompany]==NO) {
-        [ToastView showTopToast:@"请完善公司信息"];
+        [ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
         return;
     }
     ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
@@ -106,13 +102,9 @@
 }
 -(void)fabuBuyMessage
 {
-    if (APPDELEGATE.isCanPublishBuy==NO)
+    if (APPDELEGATE.isCanPublishBuy==NO&&[APPDELEGATE isNeedCompany]==NO)
     {
-        [ToastView showTopToast:@"您没有求购发布权限"];
-        return;
-    }
-    if ([APPDELEGATE isNeedCompany]==NO) {
-        [ToastView showTopToast:@"请完善公司信息"];
+        [ToastView showTopToast:@"您还没有求购发布权限,请先完善公司或苗圃信息"];
         return;
     }
         buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
