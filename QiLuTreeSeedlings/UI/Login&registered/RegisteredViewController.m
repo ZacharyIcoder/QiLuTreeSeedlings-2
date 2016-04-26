@@ -90,11 +90,16 @@
         [ToastView showTopToast:@"手机号格式不正确"];
         return;
     }
-    if (self.passWordTextField.text.length<6||self.passWordTextField.text.length>12) {
-        [ToastView showTopToast:@"密码不得小于6位或大于12位"];
+    if (self.passWordTextField.text.length<6||self.passWordTextField.text.length>20) {
+        [ToastView showTopToast:@"密码不得小于6位或大于20位"];
         return;
     }
-
+    if ([self bijiaoWeiCWithStr:self.passWordTextField.text]) {
+        
+    }else{
+        [ToastView showTopToast:@"密码只能包含数字，字母和下划线"];
+        return;
+    }
     if (!self.phoneTextField.text) {
         [ToastView showTopToast:@"手机号和密码不能为空"];
         return;
@@ -215,6 +220,7 @@
     [phoneLab setText:title];
     [view addSubview:phoneLab];
     UITextField *phoneTextField=[[UITextField alloc]initWithFrame:CGRectMake(120/320.f*kWidth, 10, 180, 30)];
+    phoneTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [view addSubview:phoneTextField];
     [phoneTextField setFont:[UIFont systemFontOfSize:16]];
     UIImageView *linimageV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
@@ -262,6 +268,16 @@
         
     }];
     [self setCode:@"60"];
+}
+-(BOOL)bijiaoWeiCWithStr:(NSString *)string
+{
+    // 1、准备正则式
+    NSString *regex = @"^[a-zA-Z_0-9]+$"; // 只能是字母，不区分大小写
+    // 2、拼接谓词
+    NSPredicate *predicateRe1 = [NSPredicate predicateWithFormat:@"self matches %@", regex];
+    // 3、匹配字符串
+    BOOL resualt = [predicateRe1 evaluateWithObject:string];
+    return resualt;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

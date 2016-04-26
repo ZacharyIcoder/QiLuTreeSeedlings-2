@@ -218,6 +218,9 @@
         return 100;
     }
     if (indexPath.section==2) {
+        if (self.productDataAry.count>0) {
+            return [YouLickView HightForCell:self.productDataAry];
+        }
         return 75;
     }
     if (indexPath.section==3) {
@@ -468,7 +471,6 @@
     }
     [[NSNotificationCenter defaultCenter]postNotificationName:@"showTabBar" object:nil];
 }
-
 -(void)login
 {
     self.loginBtn.hidden=YES;

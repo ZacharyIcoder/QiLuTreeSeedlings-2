@@ -37,7 +37,8 @@
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    [self.timeimage setBackgroundColor:[UIColor whiteColor]];
+    [self.dingweiimage setBackgroundColor:[UIColor whiteColor]];
     // Configure the view for the selected state
 }
 

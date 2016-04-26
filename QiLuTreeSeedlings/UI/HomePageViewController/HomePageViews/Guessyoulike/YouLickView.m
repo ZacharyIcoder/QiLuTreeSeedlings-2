@@ -63,6 +63,39 @@
     }
     
 }
++(CGFloat)HightForCell:(NSArray *)dataAry
+{
+    int tempX=10;
+    CGRect tempFrame=CGRectMake(10, 10, 0, 24);
+    for (int i=0; i<dataAry.count; i++) {
+        GusseYourLikeModel *model=dataAry[i];
+        UIFont *font=[UIFont systemFontOfSize:13];
+        NSDictionary *attribute = @{NSFontAttributeName: font};
+        
+        CGSize retSize = [model.productName boundingRectWithSize:CGSizeMake(0, 24)
+                                                options:
+                          NSStringDrawingTruncatesLastVisibleLine |
+                          NSStringDrawingUsesLineFragmentOrigin |
+                          NSStringDrawingUsesFontLeading
+                                             attributes:attribute
+                                                context:nil].size;
+        // NSLog(@"%f",strSize.width);
+        tempFrame.size.width=retSize.width+10.0;
+        tempFrame.origin.x=tempX;
+        
+        if (CGRectGetMaxX(tempFrame)>=kWidth-10) {
+            tempFrame.origin.x=tempX=10;
+            tempFrame.origin.y+=29;
+        }
+        tempX=CGRectGetMaxX(tempFrame)+5;
+        
+        
+    }
+   
+     CGFloat height=CGRectGetMaxY(tempFrame)+10;
+
+    return height;
+}
 - (CGSize)boundingRectWithSize:(CGSize)size whithLab:(UILabel *)lab
 {
     NSDictionary *attribute = @{NSFontAttributeName: lab.font};

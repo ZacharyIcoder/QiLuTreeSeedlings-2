@@ -10,4 +10,5 @@
 
 @interface HomePageTViewController : UIViewController
 @property (nonatomic,strong) NSArray *dataAry;
+
 @end

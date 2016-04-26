@@ -79,8 +79,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cityLab" destination="klx-XE-bWU" id="XOX-xq-f0F"/>
+                <outlet property="dingweiimage" destination="eRM-yy-7ka" id="NHJ-Pu-oKu"/>
                 <outlet property="priceLab" destination="3VN-FS-v9Q" id="R4d-GF-D0v"/>
                 <outlet property="timeLab" destination="DyM-CY-koK" id="8oX-ER-LkK"/>
+                <outlet property="timeimage" destination="yhx-Od-JLd" id="rG7-Xp-yyZ"/>
                 <outlet property="titleLab" destination="FwT-fV-wFG" id="IEt-Ny-bJn"/>
             </connections>
         </tableViewCell>

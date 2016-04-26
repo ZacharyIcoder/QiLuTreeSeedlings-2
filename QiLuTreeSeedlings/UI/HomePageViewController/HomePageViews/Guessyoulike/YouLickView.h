@@ -17,4 +17,5 @@
 @property (nonatomic,strong) NSArray *dataAry;
 @property (nonatomic,weak) id<YouLickViewDelegate> delegate;
 -(id)initWithFrame:(CGRect)frame WithAry:(NSArray *)dataAry;
++(CGFloat)HightForCell:(NSArray *)dataAry;
 @end
