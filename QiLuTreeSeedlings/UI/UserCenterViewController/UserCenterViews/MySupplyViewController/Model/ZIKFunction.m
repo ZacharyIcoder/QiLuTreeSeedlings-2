@@ -295,5 +295,20 @@
     }
     return data;
 }
++ (BOOL)xfunc_isPassword:(NSString*)password
+{
+    NSString *regex = @"^[a-zA-Z_0-9]+$";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+
+    return [pred evaluateWithObject:password];
+}
+//验证数字和小数点:^[0-9]+([.]{0}|[.]{1}[0-9]+)$
++ (BOOL)xfunc_isAmount:(NSString*)amount
+{
+    NSString *regex = @"^[0-9]+([.]{0}|[.]{1}[0-9]+)$";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+
+    return [pred evaluateWithObject:amount];
+}
 
 @end

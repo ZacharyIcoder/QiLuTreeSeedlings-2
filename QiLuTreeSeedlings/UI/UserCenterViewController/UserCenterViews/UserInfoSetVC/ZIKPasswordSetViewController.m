@@ -127,7 +127,7 @@
 
 -(void)sureButtonPress:(UIButton*)sender
 {
-    UITextField *textField = (UITextField *)[myTableView viewWithTag:11];
+    UITextField *textField  = (UITextField *)[myTableView viewWithTag:11];
     UITextField *textfield1 = (UITextField *)[myTableView viewWithTag:12];
     UITextField *textfield2 = (UITextField *)[myTableView viewWithTag:13];
 
@@ -137,10 +137,21 @@
         //[XtomFunction openIntervalHUD:@"密码不能为空" view:self.view];
         return;
     }
-    if ((textfield2.text.length< 6||textfield2.text.length > 12) ||(textfield1.text.length< 6||textfield1.text.length > 12))
+    if (textfield2.text.length == 0)
+    {
+        [ToastView showTopToast:@"两次新密码输入不一致"];
+        //[XtomFunction openIntervalHUD:@"密码不能为空" view:self.view];
+        return;
+    }
+
+    if ((textfield2.text.length< 6||textfield2.text.length > 20) ||(textfield1.text.length< 6||textfield1.text.length > 12))
     {
         //[XtomFunction openIntervalHUD:@"密码6至12位" view:self.view];
-        [ToastView showTopToast:@"密码6至12位"];
+        [ToastView showTopToast:@"密码6至20位"];
+        return;
+    }
+    if (![ZIKFunction xfunc_isPassword:textfield2.text]) {
+        [ToastView showTopToast:@"密码只能包含数字，字母和下划线"];
         return;
     }
     if(![textfield2.text isEqualToString:textfield1.text])

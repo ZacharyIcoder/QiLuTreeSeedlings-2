@@ -59,6 +59,14 @@
         [ToastView showTopToast:@"请输入充值金额"];
         return;
     }
+    if ([ZIKFunction xfunc_isAmount:nameTextField.text]) {
+        [ToastView showToast:@"充值金额非法,请重新输入" withOriginY:250 withSuperView:self.view];
+        return;
+    }
+    if (nameTextField.text.floatValue <= 0) {
+        [ToastView showToast:@"充值金额不能小于零" withOriginY:250 withSuperView:self.view];
+        return;
+    }
     if (nameTextField.text.floatValue>2000) {
         [ToastView showToast:@"单次充值金额不能大于2000" withOriginY:250 withSuperView:self.view];
         return;

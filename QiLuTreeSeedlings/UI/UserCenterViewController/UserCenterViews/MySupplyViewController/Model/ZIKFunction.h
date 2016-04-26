@@ -51,4 +51,13 @@
 + (void)zhiFuBao:(UIViewController *)controller name: (NSString*)name titile:(NSString*)title price:(NSString*)price orderId:(NSString*)orderId;
 + (NSString *)generateTradeNO;
 +(NSData *)imageData:(UIImage *)myimage;
+/**
+ *  正则判断密码
+ *
+ *  @param password app端 忘记密码，设置新密码时，密码长度没有做限制，会员端限制在6-20的字母、数字、下划线
+ *
+ *  @return return value description
+ */
++ (BOOL)xfunc_isPassword:(NSString*)password;
++ (BOOL)xfunc_isAmount:(NSString*)amount;
 @end
