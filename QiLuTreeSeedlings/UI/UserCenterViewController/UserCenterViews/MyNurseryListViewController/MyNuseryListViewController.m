@@ -11,11 +11,12 @@
 #import "HttpClient.h"
 #import "NurseryModel.h"
 #import "NuserNullTableViewCell.h"
-#import "NuseryListTableViewCell.h"
+//#import "NuseryListTableViewCell.h"
 #import "NuseryDetialViewController.h"
 #import "MJRefresh.h"
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
+#import "MyNuserListTableViewCell.h"
 @interface MyNuseryListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
@@ -198,14 +199,18 @@
         return cell;
     }else
     {
-        NuseryListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuseryListTableViewCell IdStr]];
-        if (!cell) {
-            cell =[[NuseryListTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 120)];
-            
-//CGRectMake(0, 0, kWidth, 120)
+//        NuseryListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuseryListTableViewCell IdStr]];
+//        if (!cell) {
+//            cell =[[NuseryListTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 120)];
+//            
+////CGRectMake(0, 0, kWidth, 120)
+//        }
+        MyNuserListTableViewCell *cell = [MyNuserListTableViewCell cellWithTableView:tableView];
+        if (self.dataAry.count > 0) {
+            NurseryModel *model = self.dataAry[indexPath.row];
+            cell.model = model;
         }
-        NurseryModel *model=self.dataAry[indexPath.row];
-        cell.model=model;
+        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         return cell;
     }
 
@@ -230,7 +235,7 @@
 {
     NurseryModel *model=self.dataAry[indexPath.row];
     
-    NuseryListTableViewCell *cell = (NuseryListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    MyNuserListTableViewCell *cell = (MyNuserListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     //    NSLog(@"%d",cell.selected);
     //    NSLog(@"%d",model.isSelect);
     

@@ -360,6 +360,8 @@
 		FC7134351CB358720037D507 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134321CB358720037D507 /* RIButtonItem.m */; };
 		FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134341CB358720037D507 /* UIAlertView+Blocks.m */; };
 		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
+		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
+		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
 		FCD2E0971CC9EEFA000CFBA2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */; };
 		FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD8A67A1CCDED1600A307E2 /* 已选小标.png */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
@@ -1069,6 +1071,9 @@
 		FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
 		FC7134391CB3ABED0037D507 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
 		FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
+		FCB8A4771CCF0F0C005925E1 /* MyNuserListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNuserListTableViewCell.h; sourceTree = "<group>"; };
+		FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuserListTableViewCell.m; sourceTree = "<group>"; };
+		FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNuserListTableViewCell.xib; sourceTree = "<group>"; };
 		FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FCD8A67A1CCDED1600A307E2 /* 已选小标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "已选小标.png"; path = "../../MySupplyViewController/已选小标.png"; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
@@ -1695,6 +1700,9 @@
 				EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */,
 				EA6B31B61CABA5F70068CCB5 /* NuseryListTableViewCell.h */,
 				EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */,
+				FCB8A4771CCF0F0C005925E1 /* MyNuserListTableViewCell.h */,
+				FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */,
+				FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */,
 			);
 			path = myNuseryCells;
 			sourceTree = "<group>";
@@ -3045,6 +3053,7 @@
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
+				FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
 				FC5337A61CBDF2B6008BFB11 /* WHC_PictureListVC.xib in Resources */,
 				EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */,
@@ -3216,6 +3225,7 @@
 				FC6FED7B1CAD0860000E2CA5 /* ZIKConsumeRecordModel.m in Sources */,
 				FC21BC7D1CA51C930041E2C3 /* IQUIScrollView+Additions.m in Sources */,
 				EAE32DDB1C7E97A600C4CEA2 /* AFURLResponseSerialization.m in Sources */,
+				FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */,
 				FC5808861CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m in Sources */,
 				EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
