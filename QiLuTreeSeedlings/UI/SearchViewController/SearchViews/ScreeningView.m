@@ -414,7 +414,7 @@
     self.county=nil;
     self.goldsupplier=nil;
     self.gongyingBtn.selected=NO;
-    [self.areaBtn setTitle:@"地区" forState:UIControlStateNormal];
+    [self.areaBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
 }
 - (void)requestProductType {
     [HTTPCLIENT getTypeInfoSuccess:^(id responseObject) {

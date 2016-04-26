@@ -237,14 +237,14 @@ const unsigned int kToastLabelHeight = 25;
      withOriginY:(CGFloat)originY
    withSuperView:(UIView *)superview
 {
-    ToastView *toastView = [[ToastView alloc] initWithText:text withOriginY:originY];
+    ToastView *toastView = [[ToastView alloc] initWithText:text withOriginY:kToastViewYOffset];
     [superview addSubview:toastView];
     [toastView showText];
     [toastView release];
 }
 +(void)showTopToast:(NSString *)text
 {
-    ToastView *toastView = [[ToastView alloc] initWithText:text withOriginY:kToastTopYOffset];
+    ToastView *toastView = [[ToastView alloc] initWithText:text withOriginY:kToastViewYOffset];
     [((AppDelegate *)[UIApplication sharedApplication].delegate).window addSubview:toastView];
     [toastView showText];
     [toastView release];
