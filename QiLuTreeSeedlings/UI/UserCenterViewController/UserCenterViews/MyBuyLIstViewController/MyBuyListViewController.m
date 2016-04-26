@@ -45,7 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     PageCount = 1;
-    dataAry = [NSMutableArray array];
+//    dataAry = [NSMutableArray array];
     [self getDataList];
 //    self.pullTableView.editing = NO;
 //    bottomcell.hidden = YES;
@@ -216,6 +216,9 @@
         [self.pullTableView headerEndRefreshing];
         [self.pullTableView footerEndRefreshing];
         if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if (PageCount==1) {
+                [self.dataAry removeAllObjects];
+            }
             NSArray *ary=[[responseObject objectForKey:@"result"] objectForKey:@"list"];
             NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:ary];
             HotBuyModel *model1 = [self.dataAry lastObject];

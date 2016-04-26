@@ -31,7 +31,7 @@
 {
     [super viewWillAppear:animated];
     self.pageCount=1;
-    [self.dataAry removeAllObjects];
+    
     [self getDataList];
     [APPDELEGATE  requestBuyRestrict];
 }
@@ -300,6 +300,9 @@
         [self.pullTableView headerEndRefreshing];
         [self.pullTableView footerEndRefreshing];
         if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if (self.pageCount==1) {
+                [self.dataAry removeAllObjects];
+            }
             NSArray *ary=[responseObject objectForKey:@"result"];
             NSArray *aryzz=[NurseryModel creatNursweryListByAry:ary];
             NurseryModel *model1 = [self.dataAry lastObject];
