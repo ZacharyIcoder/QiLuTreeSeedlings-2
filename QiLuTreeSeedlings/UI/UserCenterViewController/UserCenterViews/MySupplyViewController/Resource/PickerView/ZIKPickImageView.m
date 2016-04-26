@@ -35,7 +35,6 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        
         self.imageBtnArr = [[NSMutableArray alloc] initWithCapacity:2];
         self.photos = [[NSMutableArray alloc]  initWithCapacity:2];
         self.urlMArr = [[NSMutableArray alloc] initWithCapacity:2];
@@ -152,20 +151,21 @@
     CGFloat imageViewX = 0;
     CGFloat imageViewY = 0;
     
-    for(NSInteger i = 0; i< self.imageBtnArr.count; i++)
+    for(NSInteger i = 0; i < self.imageBtnArr.count; i++)
     {
         imageViewX  = marginX + i%row_nums*(marginX + imageViewW);
-        imageViewY = marginX + i/row_nums*(marginX + imageViewH)-5;
+        imageViewY = marginX + i/row_nums*(marginX + imageViewH);
         
         ZIKPickerBtn *imageView = self.imageBtnArr[i];
         imageView.frame = CGRectMake(imageViewX, imageViewY, imageViewW, imageViewH);
         
     }
     
-    UIButton *lastImageBtn= [self.imageBtnArr lastObject];
-    self.mj_height = CGRectGetMaxY(lastImageBtn.frame) + marginX;
-    
-    
+    UIButton *lastImageBtn = [self.imageBtnArr lastObject];
+    self.mj_height = 140;
+    NSLog(@"-----------------------------------------CGRectGetMaxY(lastImageBtn.frame):%f",CGRectGetMaxY(lastImageBtn.frame));
+//    
+//    
 //    if (CGRectGetMaxY(self.frame) + marginX > ScreenHeight) {
 //        
 //        scrollView.contentSize = CGSizeMake(ScreenWidth, CGRectGetMaxY(self.frame) + marginX + NavBarHeight);

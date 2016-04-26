@@ -59,7 +59,7 @@
         [ToastView showTopToast:@"请输入充值金额"];
         return;
     }
-    if ([ZIKFunction xfunc_isAmount:nameTextField.text]) {
+    if (![ZIKFunction xfunc_isAmount:nameTextField.text]) {
         [ToastView showToast:@"充值金额非法,请重新输入" withOriginY:250 withSuperView:self.view];
         return;
     }

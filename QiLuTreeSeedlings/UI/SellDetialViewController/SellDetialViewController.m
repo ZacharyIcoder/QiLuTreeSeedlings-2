@@ -106,7 +106,7 @@
 //    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"sms://%@",self.model.phone];
 //    
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-    [self showMessageView:[NSArray arrayWithObjects:self.model.phone, nil] title:@"苗木供应" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的供应信息:%@很感兴趣",self.model.title]];
+    [self showMessageView:[NSArray arrayWithObjects:self.model.phone, nil] title:@"苗木供应" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的供应信息:%@ 很感兴趣",self.model.title]];
 }
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result

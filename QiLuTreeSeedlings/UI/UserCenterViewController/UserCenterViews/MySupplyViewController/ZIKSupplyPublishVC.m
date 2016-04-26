@@ -58,7 +58,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 }
 -(void)dealloc
 {
-    NSLog(@"--------------------------------------------------------------------------------dealloc");
+    //NSLog(@"--------------------------------------------------------------------------------dealloc");
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,7 +77,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 }
 
 - (void)initUI {
-    self.backScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-64)];
+    self.backScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-64)];
     [self.view addSubview:self.backScrollView];
     [self.backScrollView setBackgroundColor:BGColor];
 
@@ -102,8 +102,8 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                                                  name:UITextFieldTextDidChangeNotification
                                                object:titleTextField];
     self.titleTextField = titleTextField;
-    UIView *titleLineView = [[UIView alloc]initWithFrame:CGRectMake(15, 43, kWidth-30, 1)];
-    [titleLineView setBackgroundColor:kLineColor];
+    UIView *titleLineView = [[UIView alloc]initWithFrame:CGRectMake(15, titleView.frame.size.height-1, kWidth-30, 1)];
+    [titleLineView setBackgroundColor:BGColor];
     [titleView addSubview:titleLineView];
     [titleView addSubview:titleTextField];
     titleTextField.delegate = self;
@@ -111,8 +111,8 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.backScrollView addSubview:titleView];
     tempFrame.origin.y += 44.5;
     
-    ZIKPickImageView* pickView = [[ZIKPickImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLineView.frame)+3, Width, 100)];
-   // pickView.backgroundColor = [UIColor yellowColor];
+    ZIKPickImageView *pickView = [[ZIKPickImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), Width, 126)];
+    //pickView.backgroundColor = [UIColor yellowColor];
     pickView.backgroundColor = [UIColor whiteColor];
 
     [self.backScrollView addSubview:pickView];
@@ -122,7 +122,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         [weakSelf openMenu];
     };
 
-    UIView *nameView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame)+25, kWidth, 54)];
+    UIView *nameView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame), kWidth, 54)];
     //[nameView setBackgroundColor:[UIColor redColor]];
     [nameView setBackgroundColor:[UIColor whiteColor]];
 
@@ -130,6 +130,8 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
     UIView *myveiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width, 10)];
     myveiw.backgroundColor = BGColor;
+    //myveiw.backgroundColor = [UIColor redColor];
+
     [nameView addSubview:myveiw];
 
     UILabel *nameLab = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, 80, 44)];
@@ -140,7 +142,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(100, nameLab.frame.origin.y, kWidth-100-60, nameLab.frame.size.height)];
     nameTextField.placeholder = @"请输入名称";
     nameTextField.textColor = NavColor;
-    nameTextField.delegate=self;
+    nameTextField.delegate = self;
     [nameTextField setFont:[UIFont systemFontOfSize:15]];
     self.nameTextField = nameTextField;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -154,9 +156,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [nameBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
-    UIImageView *nameLineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-10, 0.5)];
+    UIImageView *nameLineView = [[UIImageView alloc]initWithFrame:CGRectMake(10, nameView.frame.size.height-1, kWidth-10, 0.5)];
     [nameLineView setBackgroundColor:kLineColor];
-    [nameView addSubview:nameLineView];
+    //[nameView addSubview:nameLineView];
 
  
     self.nameBtn = nameBtn;
@@ -549,7 +551,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 //NSLog(@"%@",responseObject[@"success"]);
                 //NSLog(@"%@",responseObject[@"msg"]);
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-                    NSLog(@"%ld",imageData.length);
+                    //NSLog(@"%ld",imageData.length);
                     //[self saveImagedata:imageData WithName:@"imageData"];
                     [weakSelf setPhotoToPath:imageData isName:@"imageData"];
 //                 UIImage *addImage =  [UIImage imageWithData:imageData];

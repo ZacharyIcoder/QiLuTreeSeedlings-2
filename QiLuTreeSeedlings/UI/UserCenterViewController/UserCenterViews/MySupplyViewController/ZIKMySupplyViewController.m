@@ -445,7 +445,7 @@
         [emptyUI addSubview:label2];
 
         UIButton *button = [[UIButton alloc] init];
-        button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
+        button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 25);
         [button setTitleColor:detialLabColor forState:UIControlStateNormal];
         button.layer.masksToBounds = YES;
         button.layer.cornerRadius = 6.0f;
