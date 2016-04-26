@@ -60,7 +60,7 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"showTabBar" object:nil];
 }
 
--(void)pushMessageForDingzhiXinXi
+-(void)pushMessageForDingzhiXinXi:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
     self.tabBarController.selectedIndex=1;
@@ -70,11 +70,17 @@
     [baseB.homePageLab setTextColor:NavColor];
     [baseB.userLab setTextColor:[UIColor lightGrayColor]];
     ZIKMyCustomizedInfoViewController *zikMyCustomInfoVC=[[ZIKMyCustomizedInfoViewController alloc]init];
-    [self.navigationController pushViewController:zikMyCustomInfoVC animated:YES];
+    if ([notification.object isEqualToString:@"1"]) {
+       [self.navigationController pushViewController:zikMyCustomInfoVC animated:YES];
+    }else
+    {
+        
+    }
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMessageForDingzhiXinXi) name:@"dingzhixinxituisong" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMessageForDingzhiXinXi:) name:@"dingzhixinxituisong" object:nil];
     // Do any additional setup after loading the view.
     UserBigInfoView *userbigInfoV=[[UserBigInfoView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 200)];
     userbigInfoV.userDelegate=self;
