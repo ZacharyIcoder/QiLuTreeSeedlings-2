@@ -41,8 +41,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.sellDataAry removeAllObjects];
-    [self.buyDataAry removeAllObjects];
+//    [self.sellDataAry removeAllObjects];
+//    [self.buyDataAry removeAllObjects];
     sellPageCount=1;
     buyPageCount=1;
     [self getbuyDataAryWtihPage:[NSString stringWithFormat:@"%ld",(long)buyPageCount] andPageSiz:@"10"];
@@ -396,6 +396,9 @@
     [HTTPCLIENT collectBuyListWithToken:@"" WithAccessID:@"" WithClientID:@"" WithClientSecret:@"" WithDeviceID:@"" WithPage:page WithPageSize:pageSize Success:^(id responseObject) {
         if([[responseObject objectForKey:@"success"] integerValue])
         {
+            if (buyPageCount==1) {
+                [self.buyDataAry removeAllObjects];
+            }
             //NSLog(@"----%@",responseObject);
             NSArray *ary=[responseObject objectForKey:@"result"];
             if (ary.count==0&&buyPageCount>1) {
@@ -431,6 +434,9 @@
     [HTTPCLIENT collectSellListWithPage:page WithPageSize:pageSize Success:^(id responseObject) {
         if([[responseObject objectForKey:@"success"] integerValue])
         {
+            if (sellPageCount==1) {
+                [self.sellDataAry removeAllObjects];
+            }
             NSArray *ary=[responseObject objectForKey:@"result"];
             //NSArray *ary=[responseObject objectForKey:@"result"];
             if (ary.count==0&&sellPageCount>1) {
