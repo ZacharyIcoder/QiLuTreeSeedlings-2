@@ -19,6 +19,7 @@
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "MJRefresh.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
+#import "MybuyListTableViewCell.h"
 @interface MyBuyListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
@@ -274,10 +275,12 @@
             return cell;
         }
     }else
-    {
-        BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
+   {
+        MybuyListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[MybuyListTableViewCell IDStr]];
         if (!cell) {
-            cell=[[BuySearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 60)];
+         
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MybuyListTableViewCell" owner:self options:nil] lastObject];
+           
              cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         }
         HotBuyModel *model=self.dataAry[indexPath.row];

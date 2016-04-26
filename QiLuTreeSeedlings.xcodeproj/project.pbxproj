@@ -102,6 +102,8 @@
 		EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */; };
 		EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
+		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
+		EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
 		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
 		EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */; };
@@ -566,6 +568,9 @@
 		EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
+		EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MybuyListTableViewCell.h; sourceTree = "<group>"; };
+		EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MybuyListTableViewCell.m; sourceTree = "<group>"; };
+		EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MybuyListTableViewCell.xib; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
 		EA6B31B41CABA5F70068CCB5 /* NuserNullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuserNullTableViewCell.h; sourceTree = "<group>"; };
 		EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuserNullTableViewCell.m; sourceTree = "<group>"; };
@@ -1618,6 +1623,9 @@
 				EA4FF1BC1C9A8DB900441DC3 /* MyBuyListViewController.m */,
 				EA6B31C11CABCADC0068CCB5 /* MyBuyNullTableViewCell.h */,
 				EA6B31C21CABCADC0068CCB5 /* MyBuyNullTableViewCell.m */,
+				EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */,
+				EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */,
+				EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */,
 			);
 			path = MyBuyLIstViewController;
 			sourceTree = "<group>";
@@ -2926,6 +2934,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */,
 				EA7419F61C8FB5AA00F54478 /* selectBtnAction2@2x.png in Resources */,
 				EAF0510D1C92B3A000F435A9 /* tabbarBackImage1@2x.png in Resources */,
 				EAF050EA1C9286B800F435A9 /* myintegralImage@2x.png in Resources */,
@@ -3110,6 +3119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */,
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
 				FC5337C81CBE17B0008BFB11 /* HCSStarRatingView.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
