@@ -304,7 +304,7 @@
 //    [editingBtnz addTarget:self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 //    editingBtn=editingBtnz;
 //    [view addSubview:editingBtnz];
-//    [view addSubview:titleLab];
+    [view addSubview:titleLab];
     return view;
 }
 -(void)editingBtnAction:(UIButton *)sender

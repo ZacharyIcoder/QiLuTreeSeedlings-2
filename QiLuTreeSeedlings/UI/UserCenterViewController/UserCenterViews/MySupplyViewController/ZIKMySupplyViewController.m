@@ -21,6 +21,7 @@
     // 保存选中行数据
     NSMutableArray *_removeArray;
     ZIKBottomDeleteTableViewCell *bottomcell;
+    UILongPressGestureRecognizer *tapDeleteGR;
 }
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *supplyInfoMArr;//供应信息数组
@@ -71,8 +72,10 @@
     [self.view addSubview:self.mySupplyTableView];
     [ZIKFunction setExtraCellLineHidden:self.mySupplyTableView];
     //self.mySupplyTableView.backgroundColor = [UIColor yellowColor];
-    UILongPressGestureRecognizer *tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
+    tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
     [self.mySupplyTableView addGestureRecognizer:tapDeleteGR];
+    [self.mySupplyTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
+
 
 //底部结算
     bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
@@ -83,6 +86,27 @@
     [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"editing"]) {
+        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
+            [self.mySupplyTableView removeGestureRecognizer:tapDeleteGR];
+        }
+        else {
+            [self.mySupplyTableView addGestureRecognizer:tapDeleteGR];
+        }
+       // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)dealloc
+{
+    [self.mySupplyTableView removeObserver:self forKeyPath:@"editing"];
+}
+
 //删除按钮action
 - (void)deleteButtonClick {
     if (_removeArray.count  == 0) {
@@ -196,6 +220,7 @@
     [super setEditing:editing animated:animated];
 
     [self.mySupplyTableView setEditing:YES animated:animated];
+
 }
 
 
@@ -217,6 +242,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *kZIKMySupplyTableViewCellID = @"kZIKMySupplyTableViewCellID";
+    
     ZIKMySupplyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKMySupplyTableViewCellID];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKMySupplyTableViewCell" owner:self options:nil] lastObject];

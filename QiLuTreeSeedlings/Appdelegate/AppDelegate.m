@@ -49,7 +49,7 @@
     [UMSocialData setAppKey:@"56fde8aae0f55a1cd300047c"];
 
     //设置微信AppId、appSecret，分享url
-    [UMSocialWechatHandler setWXAppId:@"wx81b3cb415126671c" appSecret:@"1b7fcde03f9b195e9bc66db37e62ff07" url:@"http://baidu.com"];
+    [UMSocialWechatHandler setWXAppId:@"wx81b3cb415126671c" appSecret:@"1b7fcde03f9b195e9bc66db37e62ff07" url:@"http://www.qlmm.cn"];
     //设置分享到QQ/Qzone的应用Id，和分享url 链接
     [UMSocialQQHandler setQQWithAppId:@"1105228677" appKey:@"APPkey:zFz7sJCdNgUhRmJi" url:@"http://www.qlmm.cn"];//16位0x41E07385
     //向微信注册wx15fce880e520ad30
