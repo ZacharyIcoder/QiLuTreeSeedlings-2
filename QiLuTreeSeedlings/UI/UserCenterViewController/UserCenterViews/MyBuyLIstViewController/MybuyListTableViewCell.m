@@ -21,7 +21,7 @@
 }
 +(NSString *)IDStr
 {
-    return @"SellSearchTableViewCell2";
+    return @"MybuyListTableViewCell";
 }
 -(void)setHotBuyModel:(HotBuyModel *)hotBuyModel
 {
@@ -35,10 +35,23 @@
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];
     if (hotBuyModel.isSelect) {
+         self.isSelect = YES;
         self.selected = YES;
-        self.isSelect = YES;
+       
     }
     
+}
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    static NSString *ZIKMyNuserListTableViewCellID = @"MybuyListTableViewCell";
+    MybuyListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ZIKMyNuserListTableViewCellID];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"MybuyListTableViewCell" owner:self options:nil] lastObject];
+    }
+    return cell;
+}
+-(void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

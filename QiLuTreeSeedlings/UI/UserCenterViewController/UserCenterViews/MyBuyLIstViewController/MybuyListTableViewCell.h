@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
 @property (nonatomic,strong)HotBuyModel *hotBuyModel;
 @property (nonatomic) BOOL isSelect;
++ (instancetype)cellWithTableView:(UITableView *)tableView;
 +(NSString *)IDStr;
 @end
