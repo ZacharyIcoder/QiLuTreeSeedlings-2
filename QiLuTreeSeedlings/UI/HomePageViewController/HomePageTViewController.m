@@ -35,7 +35,9 @@
 @property (nonatomic,strong)NSArray *BuyDataAry;//热门求购
 @property (nonatomic)NSInteger PageCount;
 @property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
-@property (nonatomic,weak) UIView *NavView;
+@property (nonatomic,strong) UIView *NavView;
+@property (nonatomic,strong) UIButton *searchBtn;
+@property (nonatomic,strong) UIImageView *sreachiamgeV;
 @end
 
 @implementation HomePageTViewController
@@ -55,7 +57,7 @@
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"login" object:nil];
      _NavView =[self makeSelfNavigationView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fabuBtnAction) name:@"fabuBtnAction" object:nil];
-     [self.view addSubview:[self makeSelfNavigationView]];
+     [self.view addSubview:_NavView];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-69-50) style:UITableViewStyleGrouped];
     tableView.delegate=self;
     tableView.dataSource=self;
@@ -276,6 +278,7 @@
     [selfNavC addSubview:loginBtn];
     
     UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(52, 24, kWidth-100, 32)];
+    self.searchBtn=searchBtn;
     [searchBtn setBackgroundColor:[UIColor whiteColor]];
     searchBtn.layer.masksToBounds=YES;
     searchBtn.layer.cornerRadius=4;
@@ -284,8 +287,10 @@
     [searchLab setTextColor:[UIColor grayColor]];
     [searchBtn addSubview:searchLab];
     [searchLab setText:@"请输入苗木关键词"];
-    UIImageView *searchImageV=[[UIImageView alloc]initWithFrame:CGRectMake(searchBtn.frame.size.width-36, 4, 27, 27)];
+    UIImageView *searchImageV;
+    searchImageV=[[UIImageView alloc]initWithFrame:CGRectMake(searchBtn.frame.size.width-36, 4, 27, 27)];
     [searchImageV setImage:[UIImage imageNamed:@"searchBtnAction"]];
+    _sreachiamgeV=searchImageV;
     [searchBtn addSubview:searchImageV];
     [searchBtn addTarget:self action:@selector(searchBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [selfNavC addSubview:searchBtn];
@@ -463,18 +468,50 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"showTabBar" object:nil];
     if (APPDELEGATE.isNeedLogin) {
+        if (self.loginBtn.hidden==YES) {
+            return;
+        }
         self.loginBtn.hidden=YES;
+        if (kWidth<=320) {
+           CGRect frame =  _searchBtn.frame;
+            frame.origin.x=30;
+            frame.size.width=kWidth-60;
+            _searchBtn.frame=frame;
+            _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
+        }
     }else
     {
+        if (self.loginBtn.hidden==NO) {
+            return;
+        }
         self.loginBtn.hidden=NO;
+        if (kWidth<=320) {
+            CGRect frame =  _searchBtn.frame;
+            frame.origin.x=52;
+            frame.size.width=kWidth-100;
+            _searchBtn.frame=frame;
+             _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
+        }
     }
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"showTabBar" object:nil];
+    
 }
 -(void)login
 {
-    self.loginBtn.hidden=YES;
     [self getDataList];
+    if (self.loginBtn.hidden==YES) {
+        return;
+    }
+    self.loginBtn.hidden=YES;
+    if (kWidth<=320) {
+        CGRect frame =  _searchBtn.frame;
+        frame.origin.x=40;
+        frame.size.width=kWidth-80;
+        _searchBtn.frame=frame;
+        _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
+    }
+    
     
 }
 - (void)didReceiveMemoryWarning {
