@@ -301,7 +301,6 @@
         }
     }else
    {
-<<<<<<< HEAD
        MybuyListTableViewCell *cell = [MybuyListTableViewCell cellWithTableView:tableView];
        if (self.dataAry.count > 0) {
            HotBuyModel *model = self.dataAry[indexPath.row];
@@ -309,19 +308,7 @@
        }
        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
        return cell;
-=======
-        MybuyListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[MybuyListTableViewCell IDStr]];
-        if (!cell) {
-         
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"MybuyListTableViewCell" owner:self options:nil] lastObject];
-    
-             cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-        }
-        HotBuyModel *model=self.dataAry[indexPath.row];
-        cell.hotBuyModel=model;
-        
-        return cell;
->>>>>>> origin/master
+
     }
     UITableViewCell *cell=[[UITableViewCell alloc]init];
     return cell;

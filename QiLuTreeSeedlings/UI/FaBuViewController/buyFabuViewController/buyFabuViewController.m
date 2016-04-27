@@ -268,25 +268,25 @@
 -(UITextField *)mackViewWtihName:(NSString *)name alert:(NSString *)alert unit:(NSString *)unit withFrame:(CGRect)frame
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];
-    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, kWidth*0.3, 44)];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, kWidth*0.3, 50)];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
     nameLab.text=name;
     [nameLab setTextColor:titleLabColor];
     [view setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.6, 44)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.6, 40)];
     textField.placeholder=alert;
     textField.delegate=self;
     [textField setTextColor:detialLabColor];
     [textField setFont:[UIFont systemFontOfSize:15]];
     [view addSubview:textField];
-    UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+    UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 50)];
     [unitLab setFont:[UIFont systemFontOfSize:15]];
     [unitLab setTextAlignment:NSTextAlignmentRight];
     [unitLab setText:unit];
     [unitLab setTextColor:detialLabColor];
     [view addSubview:unitLab];
-    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];
+    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 49.5, kWidth-20, 0.5)];
     [lineView setBackgroundColor:kLineColor];
     [view addSubview:lineView];
     [self.otherInfoView addSubview:view];
