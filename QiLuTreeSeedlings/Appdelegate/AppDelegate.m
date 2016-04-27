@@ -441,10 +441,10 @@
                                               error:nil];
         
         if(!copySucceeded) {
-            NSLog(@"copyFromBundle - Unable to copy \"%@\" to document directory.", fileName);
+           // NSLog(@"copyFromBundle - Unable to copy \"%@\" to document directory.", fileName);
         }
         else {
-            NSLog(@"copyFromBundle - Succesfully copied \"%@\" to document directory.", fileName);
+           // NSLog(@"copyFromBundle - Succesfully copied \"%@\" to document directory.", fileName);
         }
     }
     else
@@ -474,7 +474,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    NSLog(@"- (void)applicationDidBecomeActive:(UIApplication *)application {");
+    //NSLog(@"- (void)applicationDidBecomeActive:(UIApplication *)application {");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -525,7 +525,7 @@
         error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+       // NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
     

@@ -7,11 +7,16 @@
 //
 
 #import "MybuyListTableViewCell.h"
-
+#import "UIDefines.h"
 @implementation MybuyListTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self.titleLab setTextColor:titleLabColor];
+    [self.timeLab setTextColor:detialLabColor];
+    [self.cityLab setTextColor:detialLabColor];
+    [self.priceLab setTextColor:yellowButtonColor];
+    
     // Initialization code
 }
 +(NSString *)IDStr

@@ -297,14 +297,14 @@
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     [titleLab setText:@"企业信息"];
     [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
-    
+        [view addSubview:titleLab];
 //    UIButton *editingBtnz=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
 //    [editingBtnz setTitle:@"编辑" forState:UIControlStateNormal];
 //    [editingBtnz setTitle:@"取消" forState:UIControlStateSelected];
 //    [editingBtnz addTarget:self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 //    editingBtn=editingBtnz;
 //    [view addSubview:editingBtnz];
-//    [view addSubview:titleLab];
+
     return view;
 }
 -(void)editingBtnAction:(UIButton *)sender
