@@ -443,7 +443,9 @@
     //        }
     //    }];
     //当分享消息类型为图文时，点击分享内容会跳转到预设的链接，设置方法如下
-    NSString *urlString = @"https://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8";
+    //NSString *urlString = @"https://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8";
+    NSString *urlString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];
+
     [UMSocialData defaultData].extConfig.wechatSessionData.url = urlString;
 
     //如果是朋友圈，则替换平台参数名即可
