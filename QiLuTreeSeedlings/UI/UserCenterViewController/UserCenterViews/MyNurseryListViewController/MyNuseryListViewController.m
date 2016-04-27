@@ -195,7 +195,8 @@
         NuserNullTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuserNullTableViewCell IdStr]];
         if (!cell) {
             cell =[[NuserNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 250)];
-                    }
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            }
         return cell;
     }else
     {
@@ -233,6 +234,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.dataAry.count<=0)
+    {
+        return;
+    }
     NurseryModel *model=self.dataAry[indexPath.row];
     
     MyNuserListTableViewCell *cell = (MyNuserListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
@@ -346,6 +351,10 @@
 // 反选方法
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.dataAry.count<=0)
+    {
+        return;
+    }
     // 判断编辑状态,必须要写
     if (self.pullTableView.editing)
     {

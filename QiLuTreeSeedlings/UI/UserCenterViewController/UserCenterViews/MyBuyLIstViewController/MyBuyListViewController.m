@@ -293,6 +293,11 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if(self.dataAry.count<=0)
+    {
+        return;
+    }
     HotBuyModel *model = self.dataAry[indexPath.row];
     BuySearchTableViewCell *cell = (BuySearchTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     //    NSLog(@"%d",cell.selected);
@@ -340,6 +345,10 @@
 // 反选方法
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.dataAry.count<=0)
+    {
+        return;
+    }
     // 判断编辑状态,必须要写
     if (self.pullTableView.editing)
     {
