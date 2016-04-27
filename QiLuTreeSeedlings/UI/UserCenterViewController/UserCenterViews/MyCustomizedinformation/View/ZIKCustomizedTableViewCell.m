@@ -18,7 +18,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    self.changeImageView.backgroundColor = [UIColor whiteColor];
     // Configure the view for the selected state
 }
 

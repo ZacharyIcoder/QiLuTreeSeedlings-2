@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (nonatomic, assign) BOOL isSelect;
+@property (weak, nonatomic) IBOutlet UIImageView *changeImageView;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 - (void)configureCell:(ZIKCustomizedModel *)model;
 

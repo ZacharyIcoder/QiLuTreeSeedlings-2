@@ -212,8 +212,9 @@
 }
 
 - (void)totalCount {
-    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
-    bottomcell.countLabel.text = countString;
+//    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
+//    bottomcell.countLabel.text = countString;
+    bottomcell.count = _removeArray.count;
     if (_removeArray.count == self.customizedInfoMArr.count) {
         bottomcell.isAllSelect = YES;
     }

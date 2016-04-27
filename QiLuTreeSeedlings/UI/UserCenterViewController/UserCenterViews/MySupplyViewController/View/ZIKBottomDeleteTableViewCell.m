@@ -57,10 +57,10 @@
     //局部设置
     FontAttribute *partFont = [FontAttribute new];
     partFont.font = [UIFont systemFontOfSize:17.0f];
-    partFont.effectRange = NSMakeRange(4, 3);
+    partFont.effectRange = NSMakeRange(4, priceString.length-1-4);
     ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
     darkColor.color = yellowButtonColor;
-    darkColor.effectRange = NSMakeRange(4, 3);
+    darkColor.effectRange = NSMakeRange(4, priceString.length-1-4);
 
     self.countLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
 
