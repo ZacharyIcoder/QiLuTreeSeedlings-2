@@ -49,9 +49,9 @@
     PageCount = 1;
 //    dataAry = [NSMutableArray array];
     [self getDataList];
-//    self.pullTableView.editing = NO;
-//    bottomcell.hidden = YES;
-//    self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+    self.pullTableView.editing = NO;
+    bottomcell.hidden = YES;
+    self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
 }
 
 - (void)viewDidLoad {
@@ -164,6 +164,7 @@
                 [self getDataList];
                 bottomcell.hidden = YES;
                 self.pullTableView.editing = NO;
+                self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
             }
              [_removeArray removeAllObjects];
             [self totalCount];
@@ -301,7 +302,6 @@
         }
     }else
    {
-<<<<<<< HEAD
        MybuyListTableViewCell *cell = [MybuyListTableViewCell cellWithTableView:tableView];
        if (self.dataAry.count > 0) {
            HotBuyModel *model = self.dataAry[indexPath.row];
@@ -309,19 +309,6 @@
        }
        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
        return cell;
-=======
-        MybuyListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[MybuyListTableViewCell IDStr]];
-        if (!cell) {
-         
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"MybuyListTableViewCell" owner:self options:nil] lastObject];
-    
-             cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-        }
-        HotBuyModel *model=self.dataAry[indexPath.row];
-        cell.hotBuyModel=model;
-        
-        return cell;
->>>>>>> origin/master
     }
     UITableViewCell *cell=[[UITableViewCell alloc]init];
     return cell;

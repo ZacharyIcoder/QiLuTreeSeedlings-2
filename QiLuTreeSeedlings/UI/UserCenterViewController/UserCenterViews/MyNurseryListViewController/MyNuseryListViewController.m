@@ -36,6 +36,10 @@
     
     [self getDataList];
     [APPDELEGATE  requestBuyRestrict];
+    self.pullTableView.editing = NO;
+    bottomcell.hidden = YES;
+    self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+
 }
 -(void)dealloc
 {
@@ -150,6 +154,7 @@
                 [self getDataList];
                 bottomcell.hidden = YES;
                 self.pullTableView.editing = NO;
+                self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
             }
              [_removeArray removeAllObjects];
             [self totalCount];

@@ -187,6 +187,10 @@
 //    [self.navigationController pushViewController:paySuccessVC animated:YES];
     
     if (self.lastIndexPath.row == 0) {
+        if(![WXApi isWXAppInstalled]) {
+            [ToastView showTopToast:@"您还未安装微信!"];
+            return;
+        }
         //NSLog(@"微信支付");
         [HTTPCLIENT weixinPayOrder:self.price Success:^(id responseObject) {
             //NSLog(@"%@",responseObject);
