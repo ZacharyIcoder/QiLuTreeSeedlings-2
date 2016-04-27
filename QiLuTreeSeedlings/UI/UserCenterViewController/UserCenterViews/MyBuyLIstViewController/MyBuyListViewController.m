@@ -24,6 +24,7 @@
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
     NSMutableArray *_removeArray;
+    UILongPressGestureRecognizer *tapDeleteGR;
 }
 @property (nonatomic) NSInteger PageCount;
 @property (nonatomic,strong) NSMutableArray *dataAry;
@@ -64,8 +65,10 @@
     [self.view addSubview:tableView];
     self.pullTableView=tableView;
      tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    UILongPressGestureRecognizer *tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
+    tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
     [tableView addGestureRecognizer:tapDeleteGR];
+    [self.pullTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
+
 //    tableView add
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.pullTableView addHeaderWithCallback:^{
@@ -89,6 +92,27 @@
     [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"editing"]) {
+        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
+            [self.pullTableView removeGestureRecognizer:tapDeleteGR];
+        }
+        else {
+            [self.pullTableView addGestureRecognizer:tapDeleteGR];
+        }
+        // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)dealloc
+{
+    [self.pullTableView removeObserver:self forKeyPath:@"editing"];
+}
+
 // 隐藏删除按钮
 - (void)deleteCell {
     if (!self.pullTableView.editing)
@@ -186,8 +210,9 @@
     [self.pullTableView reloadData];
 }
 - (void)totalCount {
-    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
-    bottomcell.countLabel.text = countString;
+//    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
+//    bottomcell.countLabel.text = countString;
+    bottomcell.count = _removeArray.count;
     bottomcell.isAllSelect = YES;
     [self.dataAry enumerateObjectsUsingBlock:^(HotBuyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
         if (myModel.effect==0&&myModel.isSelect == NO) {
@@ -276,6 +301,7 @@
         }
     }else
    {
+<<<<<<< HEAD
        MybuyListTableViewCell *cell = [MybuyListTableViewCell cellWithTableView:tableView];
        if (self.dataAry.count > 0) {
            HotBuyModel *model = self.dataAry[indexPath.row];
@@ -283,6 +309,19 @@
        }
        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
        return cell;
+=======
+        MybuyListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[MybuyListTableViewCell IDStr]];
+        if (!cell) {
+         
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MybuyListTableViewCell" owner:self options:nil] lastObject];
+    
+             cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+        }
+        HotBuyModel *model=self.dataAry[indexPath.row];
+        cell.hotBuyModel=model;
+        
+        return cell;
+>>>>>>> origin/master
     }
     UITableViewCell *cell=[[UITableViewCell alloc]init];
     return cell;

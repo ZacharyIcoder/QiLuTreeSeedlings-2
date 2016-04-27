@@ -21,6 +21,7 @@
     NSMutableArray *_removeArray;
     ZIKBottomDeleteTableViewCell *bottomcell;
 
+
 }
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
@@ -28,7 +29,9 @@
 @end
 
 @implementation ZIKCustomizedInfoListViewController
-
+{
+    UILongPressGestureRecognizer *tapDeleteGR;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -79,8 +82,10 @@
     [self.view addSubview:self.myCustomizedInfoTableView];
     [ZIKFunction setExtraCellLineHidden:self.myCustomizedInfoTableView];
 
-    UILongPressGestureRecognizer *tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
+    tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
     [self.myCustomizedInfoTableView addGestureRecognizer:tapDeleteGR];
+    [self.myCustomizedInfoTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
+
 
     //底部结算
     bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
@@ -89,8 +94,26 @@
     [bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
     bottomcell.hidden = YES;
     [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"editing"]) {
+        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
+            [self.myCustomizedInfoTableView removeGestureRecognizer:tapDeleteGR];
+        }
+        else {
+            [self.myCustomizedInfoTableView addGestureRecognizer:tapDeleteGR];
+        }
+        // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
 
+- (void)dealloc
+{
+    [self.myCustomizedInfoTableView removeObserver:self forKeyPath:@"editing"];
 }
 
 - (void)requestSellList:(NSString *)page {
@@ -212,8 +235,9 @@
 }
 
 - (void)totalCount {
-    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
-    bottomcell.countLabel.text = countString;
+//    NSString *countString = [NSString stringWithFormat:@"合计:%d条",(int)_removeArray.count];
+//    bottomcell.countLabel.text = countString;
+    bottomcell.count = _removeArray.count;
     if (_removeArray.count == self.customizedInfoMArr.count) {
         bottomcell.isAllSelect = YES;
     }

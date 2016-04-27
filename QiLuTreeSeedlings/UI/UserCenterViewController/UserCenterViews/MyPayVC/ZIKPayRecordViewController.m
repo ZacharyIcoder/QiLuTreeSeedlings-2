@@ -7,8 +7,10 @@
 //
 
 #import "ZIKPayRecordViewController.h"
-#import "ZIKPayRecordTableViewCell.h"
+//#import "ZIKPayRecordTableViewCell.h"
+#import "ZIKPayRecordCell.h"
 #import "ZIKConsumeRecordModel.h"
+#import "ZIKConsumeRecordFrame.h"
 #import "MJRefresh.h"
 #import "YYModel.h"
 @interface ZIKPayRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -17,6 +19,7 @@
 }
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
+@property (nonatomic, strong) NSMutableArray *customizedFrameMarr;
 @property (nonatomic, strong) UITableView    *myCustomizedInfoTableView;//我的定制信息列表
 
 @end
@@ -88,7 +91,9 @@
             }
             [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZIKConsumeRecordModel *model = [ZIKConsumeRecordModel yy_modelWithDictionary:dic];
-                [self.customizedInfoMArr addObject:model];
+                ZIKConsumeRecordFrame *frame = [[ZIKConsumeRecordFrame alloc] init];
+                frame.recordModel = model;
+                [self.customizedInfoMArr addObject:frame];
             }];
             [self.myCustomizedInfoTableView reloadData];
             [self.myCustomizedInfoTableView footerEndRefreshing];
@@ -100,7 +105,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64;
+    ZIKConsumeRecordFrame *frame = self.customizedInfoMArr[indexPath.row];
+    return frame.cellHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -116,11 +122,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKPayRecordTableViewCell *cell = [ZIKPayRecordTableViewCell cellWithTableView:tableView];
-    if (self.customizedInfoMArr.count > 0) {
-        [cell configureCell:self.customizedInfoMArr[indexPath.row]];
-    }
-   cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    ZIKPayRecordCell *cell = [ZIKPayRecordCell cellWithTableView:tableView];
+    cell.recordFrame = self.customizedInfoMArr[indexPath.row];
+//    if (self.customizedInfoMArr.count > 0) {
+//        [cell configureCell:self.customizedInfoMArr[indexPath.row]];
+//    }
+ //  cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -159,6 +166,7 @@
 - (void)initData {
     self.page = 1;
     self.customizedInfoMArr = [NSMutableArray array];
+    self.customizedFrameMarr = [NSMutableArray array];
 }
 
 

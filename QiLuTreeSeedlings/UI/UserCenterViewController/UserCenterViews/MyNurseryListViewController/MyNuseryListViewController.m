@@ -21,6 +21,7 @@
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
     NSMutableArray *_removeArray;
+    UILongPressGestureRecognizer *longPressGr;
 }
 @property (nonatomic,strong) UITableView *pullTableView;
 @property (nonatomic,strong) NSMutableArray *dataAry;
@@ -38,7 +39,7 @@
 }
 -(void)dealloc
 {
-    
+    [_pullTableView removeObserver:self forKeyPath:@"editing"];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,9 +66,11 @@
             [blockSelf getDataList];
     }];
     self.pullTableView=pullTableView;
-    UILongPressGestureRecognizer *longPressGr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(deleteCell)];
+    longPressGr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(deleteCell)];
     longPressGr.minimumPressDuration=1.0;
     [pullTableView addGestureRecognizer:longPressGr];
+    [pullTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
+
     bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
     bottomcell.frame = CGRectMake(0, kHeight-44, kWidth, 44);
     [self.view addSubview:bottomcell];
@@ -76,11 +79,32 @@
     [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
 }
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"editing"]) {
+        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
+            [_pullTableView removeGestureRecognizer:longPressGr];
+        }
+        else {
+            [_pullTableView addGestureRecognizer:longPressGr];
+        }
+        // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+//- (void)dealloc
+//{
+//    [_pullTableView removeObserver:self forKeyPath:@"editing"];
+//}
+//
 // 隐藏删除按钮
 - (void)deleteCell {
     if (!self.pullTableView.editing)
     {
         // barButtonItem.title = @"Remove";
+        
         self.pullTableView.editing = YES;
         bottomcell.hidden = NO;
         self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64-44);
