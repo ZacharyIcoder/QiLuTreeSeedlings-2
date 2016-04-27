@@ -196,16 +196,10 @@
         if (!cell) {
             cell =[[NuserNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 250)];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            }
+        }
         return cell;
     }else
     {
-//        NuseryListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuseryListTableViewCell IdStr]];
-//        if (!cell) {
-//            cell =[[NuseryListTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 120)];
-//            
-////CGRectMake(0, 0, kWidth, 120)
-//        }
         MyNuserListTableViewCell *cell = [MyNuserListTableViewCell cellWithTableView:tableView];
         if (self.dataAry.count > 0) {
             NurseryModel *model = self.dataAry[indexPath.row];
