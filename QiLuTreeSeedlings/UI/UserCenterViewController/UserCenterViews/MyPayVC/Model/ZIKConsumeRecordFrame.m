@@ -28,7 +28,7 @@
     //2.reson
     CGFloat contentLabelX = CGRectGetMaxX(_iconF)+8;
     CGFloat contentLabelY = _iconF.origin.y;
-    CGFloat contentLabelMaxW = cellW - _iconF.size.width -110;
+    CGFloat contentLabelMaxW = cellW - _iconF.size.width -100;
 
 
     CGSize contentLabelSize = CGSizeMake(contentLabelMaxW, CGFLOAT_MAX);

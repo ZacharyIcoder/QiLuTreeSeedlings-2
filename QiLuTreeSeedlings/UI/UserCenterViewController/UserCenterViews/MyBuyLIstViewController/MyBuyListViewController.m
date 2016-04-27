@@ -280,7 +280,7 @@
         if (!cell) {
          
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MybuyListTableViewCell" owner:self options:nil] lastObject];
-           
+    
              cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         }
         HotBuyModel *model=self.dataAry[indexPath.row];
