@@ -13,6 +13,7 @@
 #import "NurseryModel.h"
 #import "GetCityDao.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
+#import "NSString+Phone.h"
 @interface NuseryDetialViewController ()<PickerLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *nuseryNameField;
@@ -108,6 +109,16 @@
         [ToastView showTopToast:@"请输入联系方式"];
         return;
     }
+    if(phone.length!=11)
+    {
+        [ToastView showTopToast:@"手机号必须是11位"];
+        return;
+    }
+    if (![phone checkPhoneNumInput]) {
+        [ToastView showTopToast:@"手机号格式不正确"];
+        return;
+    }
+
     if (nuserAddress.length==0) {
         [ToastView showTopToast:@"请输入苗圃地址"];
         return;
