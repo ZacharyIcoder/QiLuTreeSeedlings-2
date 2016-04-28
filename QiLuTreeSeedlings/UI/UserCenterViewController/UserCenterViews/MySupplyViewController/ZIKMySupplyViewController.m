@@ -447,17 +447,17 @@
 - (void)createEmptyUI {
     if (!emptyUI) {
         emptyUI  = [[UIView alloc] init];
-        emptyUI.frame = CGRectMake(0, 64, Width, Height/2);
+        emptyUI.frame = CGRectMake(0, 64, Width, 260);
         emptyUI.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:emptyUI];
 
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.frame = CGRectMake(Width/2-50, 30, 100, 100);
+        imageView.frame = CGRectMake(Width/2-50, 25, 100, 100);
         imageView.image = [UIImage imageNamed:@"我的供应（空）"];
         [emptyUI addSubview:imageView];
 
         UILabel *label1 = [[UILabel alloc] init];
-        label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
+        label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+10, Width, 25);
         label1.text = @"您还没有发布任何的供应信息";
         label1.textAlignment = NSTextAlignmentCenter;
         label1.textColor = detialLabColor;
@@ -471,12 +471,14 @@
         [emptyUI addSubview:label2];
 
         UIButton *button = [[UIButton alloc] init];
-        button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 25);
+        button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
         [button setTitleColor:detialLabColor forState:UIControlStateNormal];
         button.layer.masksToBounds = YES;
-        button.layer.cornerRadius = 6.0f;
-        button.layer.borderWidth = 1;
-        button.layer.borderColor = [detialLabColor CGColor];
+        button.layer.cornerRadius = 4.0f;
+        button.layer.borderWidth = 0.5;
+        button.layer.borderColor = [kLineColor CGColor];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:14]];
+
         [button setTitle:@"发布供应" forState:UIControlStateNormal];
         [emptyUI addSubview:button];
         [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];

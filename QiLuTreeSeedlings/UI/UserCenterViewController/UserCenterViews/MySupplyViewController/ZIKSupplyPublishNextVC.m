@@ -202,6 +202,7 @@
                                                              name:UITextFieldTextDidChangeNotification
                                                            object:self.priceTextField];
                 self.priceTextField.placeholder = @"请输入价格";
+                self.priceTextField.font = [UIFont systemFontOfSize:15.0f];
                 if (self.baseMsgDic) {
                  
                     self.priceTextField.text = [NSString stringWithFormat:@"%@",[self.baseMsgDic objectForKey:@"price"]];

@@ -103,7 +103,7 @@
     [priceView addSubview:hintLabel];
     priceLabel = [[UILabel alloc] init];
     //priceLabel.backgroundColor = [UIColor yellowColor];
-    priceLabel.frame = CGRectMake(Width-200, 0, Width-190, 44);
+    priceLabel.frame = CGRectMake(Width-200, 0, 190, 44);
     priceLabel.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:priceLabel];
     if (self.model) {
@@ -324,6 +324,7 @@
     self.productUid = selectId;
     [self.sideView removeSideViewAction];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self nameBtnAction:self.nameBtn];
 }
 
 - (void)textFieldChanged:(NSNotification *)obj {

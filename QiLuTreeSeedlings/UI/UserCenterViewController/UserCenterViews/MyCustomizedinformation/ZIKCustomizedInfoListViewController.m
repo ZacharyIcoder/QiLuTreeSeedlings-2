@@ -389,16 +389,16 @@
 - (void)createEmptyUI {
     if (!emptyUI) {
         emptyUI                 = [[UIView alloc] init];
-        emptyUI.frame           = CGRectMake(0, 64, Width, Height/2);
+        emptyUI.frame           = CGRectMake(0, 64, Width, 260);
         emptyUI.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:emptyUI];
         UIImageView *imageView  = [[UIImageView alloc] init];
-        imageView.frame         = CGRectMake(Width/2-50, 30, 100, 100);
+        imageView.frame         = CGRectMake(Width/2-50, 25, 100, 100);
         imageView.image         = [UIImage imageNamed:@"图片2"];
         [emptyUI addSubview:imageView];
 
         UILabel *label1         = [[UILabel alloc] init];
-        label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
+        label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+10, Width, 25);
         label1.text             = @"您还没有定制任何信息~";
         label1.textAlignment    = NSTextAlignmentCenter;
         label1.textColor        = detialLabColor;
