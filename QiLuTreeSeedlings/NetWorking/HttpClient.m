@@ -21,7 +21,7 @@
 
 //        _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
         [_sharedClient.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        _sharedClient.requestSerializer.timeoutInterval = 30.f;
+        _sharedClient.requestSerializer.timeoutInterval = 20.f;
         [_sharedClient.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     });
     return _sharedClient;
