@@ -90,7 +90,7 @@
         SellSearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[SellSearchTableViewCell IDStr]];
         if (!cell) {
             cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         if (self.sellDataAry.count>=indexPath.row+1) {
             cell.hotSellModel=self.sellDataAry[indexPath.row];
@@ -102,7 +102,7 @@
         BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
         if (!cell) {
            cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 60)];;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+           // cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         if (self.buyDataAry.count>=indexPath.row+1) {
             cell.hotBuyModel=self.buyDataAry[indexPath.row];
@@ -311,6 +311,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.searchType==1&&self.delegate) {
          HotSellModel *model = self.sellDataAry[indexPath.row];
         [self.delegate SearchSuccessViewPushSellDetial:model];
@@ -321,8 +322,6 @@
         [self.delegate SearchSuccessViewPushBuyDetial:model.uid];
     }
 }
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 }
