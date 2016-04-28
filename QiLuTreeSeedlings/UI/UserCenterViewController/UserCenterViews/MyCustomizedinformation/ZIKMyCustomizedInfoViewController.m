@@ -150,7 +150,7 @@
 - (void)createEmptyUI {
     if (!emptyUI) {
     emptyUI                 = [[UIView alloc] init];
-    emptyUI.frame           = CGRectMake(0, 64, Width, Height/2);
+    emptyUI.frame           = CGRectMake(0, 64, Width, 260);
     emptyUI.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:emptyUI];
     }
