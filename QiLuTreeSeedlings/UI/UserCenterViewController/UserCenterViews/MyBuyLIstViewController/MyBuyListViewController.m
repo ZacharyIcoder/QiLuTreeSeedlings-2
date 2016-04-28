@@ -315,7 +315,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
+
     if(self.dataAry.count<=0)
     {
         return;
@@ -324,7 +325,15 @@
     BuySearchTableViewCell *cell = (BuySearchTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     //    NSLog(@"%d",cell.selected);
     //    NSLog(@"%d",model.isSelect);
-    
+    if (!self.pullTableView.editing) {
+        cell.backgroundColor = [UIColor lightGrayColor];
+        double delayInSeconds = 0.1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            cell.backgroundColor = [UIColor whiteColor];
+        });
+    }
+
     // 判断编辑状态,必须要写
     if (self.pullTableView.editing)
     {
