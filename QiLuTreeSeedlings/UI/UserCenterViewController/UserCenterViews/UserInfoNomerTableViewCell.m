@@ -30,7 +30,7 @@
         }
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         //self.detailTextLabel.text = @"mona";
-        self.selectionStyle=UITableViewCellSelectionStyleNone;
+        //self.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     return self;
 }

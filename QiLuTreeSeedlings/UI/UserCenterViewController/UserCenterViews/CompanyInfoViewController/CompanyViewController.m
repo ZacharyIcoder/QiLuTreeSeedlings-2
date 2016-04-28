@@ -212,9 +212,10 @@
       //  NSLog(@"%@",responseObject);
         if([[responseObject objectForKey:@"success"] integerValue])
         {
-            self.warnLab.hidden=NO;
+            blockSelf.warnLab.hidden=NO;
             //[blockSelf endEditing];
             [APPDELEGATE reloadCompanyInfo];
+            [ToastView showTopToast:@"企业信息保存成功"];
         }
         else
         {

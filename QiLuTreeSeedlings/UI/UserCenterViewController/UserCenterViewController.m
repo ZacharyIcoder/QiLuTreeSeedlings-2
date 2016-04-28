@@ -361,6 +361,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
             if (![APPDELEGATE isNeedLogin]) {
                 LoginViewController *loginViewController=[[LoginViewController alloc]init];
                 [ToastView showTopToast:@"请先登录"];

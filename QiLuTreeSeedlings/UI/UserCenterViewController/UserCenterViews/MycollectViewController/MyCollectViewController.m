@@ -220,7 +220,7 @@
             SellSearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[SellSearchTableViewCell IDStr]];
             if (!cell) {
                 cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
-                cell.selectionStyle=UITableViewCellSelectionStyleNone;
+               // cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
             HotSellModel *model=self.sellDataAry[indexPath.row];
             cell.hotSellModel=model;
@@ -241,7 +241,7 @@
                     SellSearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[SellSearchTableViewCell IDStr]];
                     if (!cell) {
                         cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
-                         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                       //  cell.selectionStyle=UITableViewCellSelectionStyleNone;
                     }
                     HotSellModel *model=self.sellLikeAry[indexPath.row-1];
                     cell.hotSellModel=model;
@@ -257,7 +257,7 @@
             BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
             if (!cell) {
                 cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 65)];
-                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+               //  cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
             HotBuyModel *model=self.buyDataAry[indexPath.row];
             cell.hotBuyModel=model;
@@ -276,7 +276,7 @@
                     BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
                     if (!cell) {
                         cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 65)];;
-                         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                     //    cell.selectionStyle=UITableViewCellSelectionStyleNone;
                     }
                     HotBuyModel *model=self.buyLikeAry[indexPath.row-1];
                     cell.hotBuyModel=model;
@@ -503,6 +503,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (tableView.tag==123) {
         if (self.sellDataAry.count==0)
         {

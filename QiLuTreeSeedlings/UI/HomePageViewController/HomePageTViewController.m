@@ -184,14 +184,14 @@
     if (indexPath.section==2) {
         YouLickView *youlikeView=[[YouLickView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 75) WithAry:self.productDataAry];
         youlikeView.delegate=self;
-        youlikeView.selectionStyle=UITableViewCellSelectionStyleNone;
+       youlikeView.selectionStyle=UITableViewCellSelectionStyleNone;
         return youlikeView;
     }
     if (indexPath.section==3) {
         BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
         if (!cell) {
             cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 65)];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            //cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
         HotBuyModel  *model=self.BuyDataAry[indexPath.row];
         cell.hotBuyModel=model;
@@ -202,7 +202,7 @@
         
         if (!cell) {
             cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+          //  cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
         HotSellModel *model=self.supplyDataAry[indexPath.row];
         cell.hotSellModel=model;
@@ -235,6 +235,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.section==3) {
         HotBuyModel *model=self.BuyDataAry[indexPath.row];
         BuyDetialInfoViewController *buydetialVC=[[BuyDetialInfoViewController alloc]
@@ -249,6 +250,7 @@
         [self hiddingSelfTabBar];
         [self.navigationController pushViewController:sellDetialViewC animated:YES];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
