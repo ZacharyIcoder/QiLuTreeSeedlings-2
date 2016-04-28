@@ -293,7 +293,7 @@
                         [self.buyDataAry addObjectsFromArray:aryzz];
                     }
 
-                }else{
+                }else {
                     [ToastView showTopToast:@"已无更多信息"];
                     self.PageCount--;
 
