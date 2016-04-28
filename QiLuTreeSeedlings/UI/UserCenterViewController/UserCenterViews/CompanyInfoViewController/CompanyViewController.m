@@ -13,6 +13,7 @@
 #import "GetCityDao.h"
 #import "PickerLocation.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
+#import "NSString+Phone.h"
 @interface CompanyViewController ()<PickerLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *companyNameField;
@@ -197,6 +198,10 @@
         [ToastView showTopToast:@"请输入联系电话"];
         return;
     }
+    if (![self.phoneField.text checkPhoneNumInput]) {
+        [ToastView showTopToast:@"电话格式不正确"];
+        return;
+    }
     if(self.zipcodeField.text.length==0)
     {
         [ToastView showTopToast:@"请输入邮编"];
@@ -353,6 +358,9 @@
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.4, 44)];
     [textField setFont:[UIFont systemFontOfSize:14]];
     textField.clearButtonMode=UITextFieldViewModeWhileEditing;
+    if ([name isEqualToString:@"电话"]) {
+        textField.keyboardType=UIKeyboardTypePhonePad;
+    }
     textField.placeholder=alert;
     [view addSubview:textField];
     [textField setTextColor:detialLabColor];

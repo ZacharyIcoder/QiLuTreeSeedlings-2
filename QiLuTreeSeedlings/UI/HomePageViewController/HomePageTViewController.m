@@ -51,6 +51,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:BGColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMessageForDingzhiXinXi:) name:@"dingzhixinxituisong" object:nil];
     _PageCount=1;
     self.navigationController.navigationBar.hidden=YES;
@@ -58,7 +59,7 @@
      _NavView =[self makeSelfNavigationView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fabuBtnAction) name:@"fabuBtnAction" object:nil];
      [self.view addSubview:_NavView];
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-69-50) style:UITableViewStyleGrouped];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-63.5-50) style:UITableViewStyleGrouped];
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
