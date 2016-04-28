@@ -94,6 +94,7 @@
         }
         twocell.textLabel.text = @"消费记录";
         twocell.textLabel.textColor = [UIColor darkGrayColor];
+        twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
         twocell.imageView.image = [UIImage imageNamed:@"消费记录40x40"];
 
         float sw=23/twocell.imageView.image.size.width;
