@@ -251,6 +251,15 @@
         [cell configureCell:self.supplyInfoMArr[indexPath.row]];
     }
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+
+//    UIColor* color=[[UIColor alloc]initWithRed:0.0 green:0.0 blue:0.0 alpha:1];//通过RGB来定义颜色
+//    2 cell.selectedBackgroundView=[[UIView alloc]initWithFrame:cell.frame]autorelease];
+//    3 cell.selectedBackgroundView.backgroundColor=[UIColor   ***]或color;
+//    4
+//    5 自定义选中后的背景图片
+//    6 cell.selectedBackgroundView=[[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"123.png"]]autorelease];
+//    7 设置UITableViewCell中的字体颜色时用
+//    8 cell.textLabel.highlightedTextColor=[UIColor **color];
     return cell;
 }
 
