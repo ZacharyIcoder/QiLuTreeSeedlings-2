@@ -263,6 +263,11 @@
 }
 -(void)collectionBtn:(UIButton *)sender
 {
+    if(![APPDELEGATE isNeedLogin])
+    {
+        [ToastView showTopToast:@"请先登录"];
+        return;
+    }
     if (sender.selected==NO) {
         [HTTPCLIENT collectBuyWithSupplyID:self.uid Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {

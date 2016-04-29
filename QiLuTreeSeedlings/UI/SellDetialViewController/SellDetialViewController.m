@@ -374,6 +374,11 @@
 }
 -(void)collectionBtn:(UIButton *)sender
 {
+    if(![APPDELEGATE isNeedLogin])
+    {
+        [ToastView showTopToast:@"请先登录"];
+        return;
+    }
         if (sender.selected==NO) {
             [HTTPCLIENT collectSupplyWithSupplyNuresyid:self.model.uid Success:^(id responseObject) {
                 
