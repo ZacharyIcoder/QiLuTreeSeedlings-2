@@ -86,11 +86,9 @@
 - (void)requestIsFirstRecharge {
     [HTTPCLIENT isFirstRecharge:nil Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 1) {
-            if ([responseObject[@"result"]  integerValue] == 1) {
-                if (nameTextField.text.floatValue<100) {
-                    [ToastView showTopToast:@"第一次充值金额不能低于100元"];
-                    return;
-                }
+            if ([responseObject[@"result"]  integerValue] == 1 && nameTextField.text.floatValue<100) {
+                [ToastView showTopToast:@"第一次充值金额不能低于100元"];
+                return;
             }
             else {
                 ZIKVoucherCenterViewController *voucherVC = [[ZIKVoucherCenterViewController alloc] init];
