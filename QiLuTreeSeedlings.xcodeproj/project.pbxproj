@@ -368,6 +368,7 @@
 		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
 		FCD2E0971CC9EEFA000CFBA2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */; };
 		FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD8A67A1CCDED1600A307E2 /* 已选小标.png */; };
+		FCE2C4CD1CD86D6400B9B0F9 /* ZIKMySupplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -1087,6 +1088,8 @@
 		FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNuserListTableViewCell.xib; sourceTree = "<group>"; };
 		FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FCD8A67A1CCDED1600A307E2 /* 已选小标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "已选小标.png"; path = "../../MySupplyViewController/已选小标.png"; sourceTree = "<group>"; };
+		FCE2C4CB1CD86D6400B9B0F9 /* ZIKMySupplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyVC.h; sourceTree = "<group>"; };
+		FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyVC.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -2625,6 +2628,8 @@
 				FCF353BE1CA3B515001ABA0A /* ZIKBaseVC */,
 				FCF353C51CA3B515001ABA0A /* ZIKMySupplyViewController.h */,
 				FCF353C61CA3B515001ABA0A /* ZIKMySupplyViewController.m */,
+				FCE2C4CB1CD86D6400B9B0F9 /* ZIKMySupplyVC.h */,
+				FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */,
 				FC6FED4C1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.h */,
 				FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */,
 				FC49AE301CA8BA5B00214D4B /* ZIKSupplyPublishVC.h */,
@@ -3261,6 +3266,7 @@
 				EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */,
 				FC6FED771CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.m in Sources */,
 				FCF353CF1CA3B515001ABA0A /* UIScrollView+MJRefresh.m in Sources */,
+				FCE2C4CD1CD86D6400B9B0F9 /* ZIKMySupplyVC.m in Sources */,
 				EA741A001C8FC69B00F54478 /* LoginView.m in Sources */,
 				FCF353D41CA3B515001ABA0A /* ZIKPickImageView.m in Sources */,
 				FC5808821CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m in Sources */,
@@ -3487,8 +3493,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3523,7 +3529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5b53d3f6-ec30-4b65-b953-84f0a64b308f";
 			};
 			name = Debug;
 		};
@@ -3533,8 +3539,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3569,7 +3575,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5b53d3f6-ec30-4b65-b953-84f0a64b308f";
 			};
 			name = Release;
 		};

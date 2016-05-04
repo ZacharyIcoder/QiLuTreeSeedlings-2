@@ -30,6 +30,7 @@
 #import "UMSocial.h"
 #import "BaseTabBarController.h"
 #import "ZIKStationAgentViewController.h"//站长通
+#import "ZIKMySupplyVC.h"//我的供应列表
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -398,8 +399,8 @@
         if (indexPath.row == 0) {
             //NSLog(@"我的供应");
             [self hiddingSelfTabBar];
-            ZIKMySupplyViewController *mySupplyVC = [[ZIKMySupplyViewController alloc] init];
-             //ZIKSupplyPublishVC  *mySupplyVC = [[ZIKSupplyPublishVC alloc] init];
+            //ZIKMySupplyViewController *mySupplyVC = [[ZIKMySupplyViewController alloc] init];
+            ZIKMySupplyVC *mySupplyVC = [[ZIKMySupplyVC alloc] init];
             [self.navigationController pushViewController:mySupplyVC animated:YES];
         }
         if (indexPath.row==1) {

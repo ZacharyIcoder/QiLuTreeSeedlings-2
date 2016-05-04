@@ -45,4 +45,21 @@
  *  是否选中
  */
 @property (nonatomic,assign) BOOL isSelect;
+
+/**
+ *  是否退回，true退回(废弃)
+ */
+@property (nonatomic,copy) NSString *tuihui;
+/**
+ *  "state":3，     状态  2审核通过， 3退回， 5过期
+ */
+@property (nonatomic,copy) NSString *state;
+/**
+ *  -退回理由
+ */
+@property (nonatomic,copy) NSString *reason;
+/**
+ *  true已刷新，flase 未刷新
+ */
+@property (nonatomic,copy) NSString *shuaxin;
 @end
