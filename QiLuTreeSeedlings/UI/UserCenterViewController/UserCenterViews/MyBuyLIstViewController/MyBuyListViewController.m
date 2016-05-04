@@ -185,7 +185,7 @@
             [_removeArray removeAllObjects];
         }
         [self.dataAry enumerateObjectsUsingBlock:^(HotBuyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            if(myModel.effect==0)
+            if(myModel.state==5)
             {
                 myModel.isSelect = YES;
                 [_removeArray addObject:myModel];
@@ -216,7 +216,7 @@
     bottomcell.count = _removeArray.count;
     bottomcell.isAllSelect = YES;
     [self.dataAry enumerateObjectsUsingBlock:^(HotBuyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (myModel.effect==0&&myModel.isSelect == NO) {
+        if (myModel.state==5&&myModel.isSelect == NO) {
             bottomcell.isAllSelect = NO;
         }
         
@@ -338,7 +338,7 @@
     if (self.pullTableView.editing)
     {
         
-        if (model.effect==1) {
+        if (model.state!=5) {
             [ToastView showTopToast:@"该条在有效期内"];
             [tableView deselectRowAtIndexPath:indexPath animated:NO];
             return;

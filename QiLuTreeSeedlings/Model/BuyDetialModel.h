@@ -26,7 +26,10 @@
 @property (nonatomic) NSInteger views;
 @property (nonatomic,strong) NSString *productName;
 //--0/1/2/3/4/5   已关闭，只能删除/过期,可编辑删除/未审核,可编辑删除/审核不通过,可编辑删除/审核通过，只能关闭/已删除
-
 @property (nonatomic) NSInteger state;
+@property (nonatomic) NSInteger buy;
+@property (nonatomic) NSInteger push;
+@property (nonatomic,strong) NSString *publishUid;
+@property (nonatomic) float buyPrice;
 +(BuyDetialModel *)creatBuyDetialModelByDic:(NSDictionary*)dic;
 @end

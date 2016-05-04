@@ -21,7 +21,7 @@
         model.effective=[dic objectForKey:@"effective"];
         model.price=[dic objectForKey:@"price"];
         model.New=[[dic objectForKey:@"new"] integerValue];
-         model.effect=[[dic objectForKey:@"effect"] integerValue];
+         model.state=[[dic objectForKey:@"state"] integerValue];
         model.title=[dic objectForKey:@"title"];
         model.count=[[dic objectForKey:@"count"] integerValue];
         model.uid=[dic objectForKey:@"uid"];

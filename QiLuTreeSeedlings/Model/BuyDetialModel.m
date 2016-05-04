@@ -28,9 +28,11 @@
     model.views=[[dic objectForKey:@"views"] integerValue];
     model.productName=[dic objectForKey:@"productName"];
    // --0/1/2/3/4/5   已关闭，只能删除/过期,可编辑删除/未审核,可编辑删除/审核不通过,可编辑删除/审核通过，只能关闭/已删除
-
     model.state=[[dic objectForKey:@"state"] integerValue];
-    
+    model.buy=[[dic objectForKey:@"buy"] integerValue];
+    model.push=[[dic objectForKey:@"push"]integerValue];
+    model.publishUid=[dic objectForKey:@"publishUid"];
+    model.buyPrice=[[dic objectForKey:@"buyPrice"] floatValue];
     return model;
 }
 @end

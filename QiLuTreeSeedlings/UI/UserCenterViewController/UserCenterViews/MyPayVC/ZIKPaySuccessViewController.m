@@ -8,6 +8,7 @@
 
 #import "ZIKPaySuccessViewController.h"
 #import "ZIKMyBalanceViewController.h"
+#import "BuyDetialInfoViewController.h"
 #define Recharge @"Is top-up for the first time"
 @interface ZIKPaySuccessViewController ()
 
@@ -31,7 +32,7 @@
 
 - (IBAction)finishButton:(id)sender {
     for(UIViewController *controller in self.navigationController.viewControllers) {
-        if([controller isKindOfClass:[ZIKMyBalanceViewController class]]){
+        if([controller isKindOfClass:[ZIKMyBalanceViewController class]]||[controller isKindOfClass:[BuyDetialInfoViewController class]]){
             ZIKMyBalanceViewController *owr = (ZIKMyBalanceViewController *)controller;
             [self.navigationController popToViewController:owr animated:YES];
         }

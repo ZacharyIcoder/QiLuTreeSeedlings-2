@@ -18,11 +18,11 @@
 #import "BuyDetialModel.h"
 #import "buyFabuViewController.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
-
+#import "BuyMessageAlertView.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMessageComposeViewController.h>
-
-
+#import "LoginViewController.h"
+#import "ZIKPayViewController.h"
 @interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *navTitleLab;
@@ -33,15 +33,68 @@
 @property (nonatomic,strong)NSString *uid;
 @property (nonatomic) NSInteger type;
 @property (nonatomic,strong)BuyDetialModel *model;
+@property (nonatomic) BOOL isPuy;
+@property (nonatomic,strong) UIView *messageView;
+@property (nonatomic,strong) UIView *BuyMessageView;
+@property (nonatomic,strong) UIImageView *biaoqianView;
+@property (nonatomic,weak)BuyMessageAlertView *buyAlertView;
 @end
 
 @implementation BuyDetialInfoViewController
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.type==2) {
+        return;
+    }
+    [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
+                        WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
+                            //NSLog(@"%@",responseObject);
+                            NSDictionary *dic=[responseObject objectForKey:@"result"];
+                            self.infoDic=dic;
+                            self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                            self.model.uid=self.uid;
+                            if (self.model.push||self.model.buy) {
+                                self.isPuy=YES;
+                                _biaoqianView.hidden=NO;
+                                if (self.model.push) {
+                                    [_biaoqianView setImage:[UIImage imageNamed:@"dibgzhibiaoqian"]];
+                                }
+                                if (self.model.buy) {
+                                    [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+                                }
+                            }else
+                            {
+                                self.isPuy=NO;
+                            }
+                            if (!self.isPuy) {
+                                if (_BuyMessageView==nil) {
+                                  _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                    [_messageView removeFromSuperview];
+                                    _messageView = nil;
+                                }
+                            }else{
+                                if (_messageView==nil) {
+                                    _messageView = [self lianxiMessageView];
+                                    [_BuyMessageView removeFromSuperview];
+                                    _BuyMessageView = nil;
+                                }
+                            }
+                            [self reloadMyView];
+                        } failure:^(NSError *error) {
+                            
+                        }];
+}
 -(id)initWithSaercherInfo:(NSString *)uid
 {
     self=[super init];
     if (self) {
+        self.isPuy=NO;
         self.uid=uid;
         self.type=1;
+        self.biaoqianView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 64, 50, 50)];
+       
+        _biaoqianView.hidden=YES;
       //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
          WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
@@ -50,16 +103,36 @@
             self.infoDic=dic;
              self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
              self.model.uid=uid;
+             if (self.model.push||self.model.buy) {
+                 self.isPuy=YES;
+                 _biaoqianView.hidden=NO;
+                 if (self.model.push) {
+                     [_biaoqianView setImage:[UIImage imageNamed:@"dibgzhibiaoqian"]];
+                 }
+                 if (self.model.buy) {
+                      [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+                 }
+             }else
+             {
+                 self.isPuy=NO;
+             }
+             if (!self.isPuy) {
+                 _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+             }else{
+                 _messageView = [self lianxiMessageView];
+             }
             [self reloadMyView];
         } failure:^(NSError *error) {
             
         }];
-        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, kWidth, kHeight-54) style:UITableViewStyleGrouped];
         self.tableView.delegate=self;
         self.tableView.dataSource=self;
         [self.view addSubview:self.tableView];
         UIView *navView =  [self makeNavView];
         [self.view addSubview:navView];
+        
+         [self.view addSubview:_biaoqianView];
     }
     return self;
 }
@@ -80,7 +153,7 @@
                             } failure:^(NSError *error) {
                                 
                             }];
-        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStyleGrouped];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, kWidth, kHeight-64) style:UITableViewStyleGrouped];
         self.tableView.delegate=self;
         self.tableView.dataSource=self;
         self.type=2;
@@ -95,28 +168,101 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:BGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    if (self.type==1) {
-        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
-        [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
-        [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
-        [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
-        [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
-        //[messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
-        [self.view addSubview:messageBtn];
-        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, kHeight-50, kWidth/2, 50)];
-        [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
-        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
-        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
-        [phoneBtn setBackgroundColor:NavColor];
-        [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
-        //[messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
-        [self.view addSubview:phoneBtn];
-    }
-    
+     // Do any additional setup after loading the view.
+}
 
-    // Do any additional setup after loading the view.
+
+-(UIView *)lianxiMessageView
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/2, 50)];
+    [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
+    [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+    [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
+    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+    [view addSubview:messageBtn];
+    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2,0, kWidth/2, 50)];
+    [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+    [phoneBtn setBackgroundColor:NavColor];
+    [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:phoneBtn];
+
+    [self.view addSubview:view];
+    return view;
+}
+-(UIView *)laobanViewWithPrice:(float)price
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/2, 50)];
+    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.1f",price] forState:UIControlStateNormal];
+    [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
+    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+    [view addSubview:messageBtn];
+    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2,0, kWidth/2, 50)];
+    [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+    [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+    [phoneBtn setBackgroundColor:yellowButtonColor];
+    [phoneBtn addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:phoneBtn];
+    
+    [self.view addSubview:view];
+    return view;
+}
+-(void)buyAction
+{
+    if (![APPDELEGATE isNeedLogin]) {
+        [ToastView showTopToast:@"请先登录"];
+        LoginViewController *loginViewC=[[LoginViewController alloc]init];
+        [self.navigationController pushViewController:loginViewC animated:YES];
+        return;
+    }
+    [HTTPCLIENT getAmountInfo:nil Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            float moneyNum =[[[responseObject objectForKey:@"result"] objectForKey:@"money"]floatValue];
+            if (moneyNum<self.model.buyPrice) {
+                [ToastView showTopToast:@"您的余额不足，请先充值"];
+                
+                ZIKPayViewController *zikPayVC=[[ZIKPayViewController alloc]init];
+                [self.navigationController pushViewController:zikPayVC animated:YES];
+                return ;
+            }
+            _buyAlertView =[BuyMessageAlertView addActionVieWithPrice:[NSString stringWithFormat:@"%.1f",self.model.buyPrice               ] AndMone:[NSString stringWithFormat:@"%.1f",moneyNum]];
+            [_buyAlertView.rightBtn addTarget:self action:@selector(buySureAction) forControlEvents:UIControlEventTouchUpInside];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)buySureAction
+{
+    [HTTPCLIENT payForBuyMessageWithBuyUid:self.model.uid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [ToastView showTopToast:@"购买成功"];
+            self.model.buy=1;
+            self.isPuy=YES;
+            if (_messageView==nil) {
+                _messageView = [self lianxiMessageView];
+                [_BuyMessageView removeFromSuperview];
+                _BuyMessageView = nil;
+            }
+
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    [BuyMessageAlertView removeActionView];
 }
 -(void)CallAction
 {
@@ -181,12 +327,6 @@
         picker.body = body;
 
         [self presentViewController:picker animated:YES completion:NULL];
-//        MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
-//        controller.recipients = phones;
-//        controller.navigationBar.tintColor = [UIColor redColor];
-//        controller.body = body;
-//        controller.messageComposeDelegate = self;
-//        [self presentViewController:controller animated:YES completion:nil];
         [[[[picker viewControllers] lastObject] navigationItem] setTitle:title];//修改短信界面标题
     }
     else
@@ -203,6 +343,7 @@
 
 -(void)reloadMyView
 {
+    
     NSString *titleStr=[[self.infoDic objectForKey:@"detail"] objectForKey:@"productName"];
     [self.navTitleLab setText:[NSString stringWithFormat:@"求购：%@",titleStr]];
     

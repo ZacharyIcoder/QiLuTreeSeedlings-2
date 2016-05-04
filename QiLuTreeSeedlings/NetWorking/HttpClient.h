@@ -421,5 +421,8 @@
                             WithPageSize:(NSString *)pageSize
                                  Success:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
-
+#pragma mark 求购联系方式购买
+-(void)payForBuyMessageWithBuyUid:(NSString *)uid
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
 @end
