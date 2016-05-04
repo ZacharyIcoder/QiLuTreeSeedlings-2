@@ -255,6 +255,8 @@
                 [_BuyMessageView removeFromSuperview];
                 _BuyMessageView = nil;
             }
+            _biaoqianView.hidden=NO;
+             [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
 
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
