@@ -100,6 +100,12 @@
         //self.selectionStyle = UITableViewCellSelectionStyleBlue;
         //self.accessoryType = UITableViewCellAccessoryCheckmark;
     }
+    if ([model.state isEqualToString:@"3"]) {
+        self.backImageView.hidden = NO;
+    }
+    else {
+        self.backImageView.hidden = YES;
+    }
     //self.isSelected  = model.
    // self.isSelected;
 //    if (model.edit.integerValue == 1) {

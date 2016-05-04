@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZIKSupplyModel.h"
 @interface ZIKMySupplyTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *backImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;

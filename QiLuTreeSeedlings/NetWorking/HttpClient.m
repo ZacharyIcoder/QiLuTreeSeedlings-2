@@ -1270,7 +1270,7 @@
 }
 
 #pragma mark ---------- 我的供应列表 -----------
-- (void)getMysupplyListWithToken:(NSString *)token withAccessId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviewId:(NSString *)deviceId withPage:(NSString *)page withPageSize:(NSString *)pageSize success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+- (void)getMysupplyListWithToken:(NSString *)token withAccessId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviewId:(NSString *)deviceId withState:(NSString *)state withPage:(NSString *)page withPageSize:(NSString *)pageSize success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
     NSString *postURL = @"api/supply/my";
@@ -1280,6 +1280,7 @@
                                 kclient_id,@"client_id",
                                 kclient_secret,@"client_secret",
                                 str,@"device_id",
+                                state,@"state",
                                 page,@"page",
                                 pageSize,@"pageSize",
                                 nil];
