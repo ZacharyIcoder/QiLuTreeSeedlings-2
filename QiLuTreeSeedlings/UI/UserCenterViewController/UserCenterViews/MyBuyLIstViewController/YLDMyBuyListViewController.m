@@ -25,7 +25,12 @@
 }
 -(void)creatScrollerViewBtn
 {
-    
+    UIScrollView *topScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 50)];
+    [topScrollView setBackgroundColor:[UIColor whiteColor]];
+    topScrollView.tag=111;
+    topScrollView.showsVerticalScrollIndicator=NO;
+    topScrollView.showsHorizontalScrollIndicator=NO;
+    [self.view addSubview:topScrollView];
 }
 - (void)configNav {
     self.vcTitle = @"我的求购";
