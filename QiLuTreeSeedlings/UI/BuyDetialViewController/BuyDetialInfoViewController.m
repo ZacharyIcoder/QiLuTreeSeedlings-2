@@ -34,10 +34,12 @@
 @property (nonatomic) NSInteger type;
 @property (nonatomic,strong)BuyDetialModel *model;
 @property (nonatomic) BOOL isPuy;
+@property (nonatomic) BOOL isShow;
 @property (nonatomic,strong) UIView *messageView;
 @property (nonatomic,strong) UIView *BuyMessageView;
 @property (nonatomic,strong) UIImageView *biaoqianView;
 @property (nonatomic,weak)BuyMessageAlertView *buyAlertView;
+@property (nonatomic,strong) NSMutableArray *miaomuzhiAry;
 @end
 
 @implementation BuyDetialInfoViewController
@@ -166,6 +168,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isShow=NO;
     [self.view setBackgroundColor:BGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
      // Do any additional setup after loading the view.
@@ -257,6 +260,7 @@
             }
             _biaoqianView.hidden=NO;
              [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+            [self.tableView reloadData];
 
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -353,6 +357,14 @@
         self.collectionBtn.selected=YES;
     }
     self.specAry=[[self.infoDic objectForKey:@"detail"]objectForKey:@"spec"];
+    _miaomuzhiAry=[NSMutableArray array];
+    for (int i=0; i<self.specAry.count; i++) {
+        NSDictionary *dic=self.specAry[i];
+        NSArray *aryyyyy=[dic objectForKey:@"value"];
+        if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
+            [_miaomuzhiAry addObject:dic];
+        }
+    }
     NSArray *rocomAry=[self.infoDic objectForKey:@"list"];
     self.recommendeAry = [HotBuyModel creathotBuyModelAryByAry:rocomAry];
      [self.tableView reloadData];
@@ -481,10 +493,18 @@
         return cell;
     }else if(indexPath.section==1)
     {
-        BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.specAry.count*30+40) andName:self.model.productName];
+        BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.specAry.count*30+40+40) andName:self.model.productName];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
+
+        cell.showBtn.selected=self.isShow;
         if (self.specAry) {
-            cell.ary=self.specAry;
+            if (_isShow) {
+                cell.ary=self.specAry;
+            }else{
+                cell.ary=self.miaomuzhiAry;
+            }
+            
         }
         return cell;
     }else if (indexPath.section==2)
@@ -492,7 +512,13 @@
         QIYeMessageTableViewCell *cell=[[QIYeMessageTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 140)];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.infoDic) {
-            cell.dic=[self.infoDic objectForKey:@"detail"];
+            NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
+            if(!_isPuy&&self.type==1)
+            {
+                [dic setValue:@"请付费查看" forKey:@"address"];
+                [dic setValue:@"请付费查看" forKey:@"phone"];
+            }
+            cell.dic=dic;
         }
         return cell;
     }else if(indexPath.section==3)
@@ -527,6 +553,14 @@
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
 }
+-(void)showOtherMessageAction:(UIButton *)sender
+{
+    
+    self.isShow=!self.isShow;
+    //一个section刷新
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
@@ -534,7 +568,12 @@
     }
     if (indexPath.section==1) {
         if (self.specAry) {
-            return self.specAry.count*30+40;
+            if (_isShow) {
+                return self.specAry.count*30+40+40;
+            }else{
+                return _miaomuzhiAry.count*30+40+40;
+            }
+            
         }
     }if (indexPath.section==2) {
         return 140;

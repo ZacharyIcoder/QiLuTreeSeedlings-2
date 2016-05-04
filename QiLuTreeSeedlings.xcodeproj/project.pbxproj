@@ -65,6 +65,9 @@
 		EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A9EF1C8557D7004913FF /* SearchSuccessView.m */; };
 		EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */; };
 		EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */; };
+		EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */; };
+		EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */; };
+		EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */; };
 		EA4EEA1B1CD8822800FEFD52 /* buybiaoqian.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4EEA191CD8822800FEFD52 /* buybiaoqian.png */; };
 		EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4EEA1A1CD8822800FEFD52 /* dibgzhibiaoqian.png */; };
 		EA4EEA201CD8891400FEFD52 /* BuyMessageAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4EEA1F1CD8891400FEFD52 /* BuyMessageAlertView.m */; };
@@ -523,6 +526,10 @@
 		EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellSearchTableViewCell.m; sourceTree = "<group>"; };
 		EA2E28B61CAE613500186DA5 /* UserBigInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBigInfoView.h; sourceTree = "<group>"; };
 		EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBigInfoView.m; sourceTree = "<group>"; };
+		EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rolock@2x.png"; sourceTree = "<group>"; };
+		EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounlock@2x.png"; sourceTree = "<group>"; };
+		EA4ADB021CD9DD5C0068C10F /* YLDMyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyBuyListViewController.h; sourceTree = "<group>"; };
+		EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMyBuyListViewController.m; sourceTree = "<group>"; };
 		EA4EEA191CD8822800FEFD52 /* buybiaoqian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buybiaoqian.png; sourceTree = "<group>"; };
 		EA4EEA1A1CD8822800FEFD52 /* dibgzhibiaoqian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dibgzhibiaoqian.png; sourceTree = "<group>"; };
 		EA4EEA1E1CD8891400FEFD52 /* BuyMessageAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyMessageAlertView.h; sourceTree = "<group>"; };
@@ -1471,6 +1478,8 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */,
+				EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */,
 				EA4EEA191CD8822800FEFD52 /* buybiaoqian.png */,
 				EA4EEA1A1CD8822800FEFD52 /* dibgzhibiaoqian.png */,
 				EA17B5D11CC9D23A0054223B /* rightBtnImage@2x.png */,
@@ -1650,6 +1659,8 @@
 				EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */,
 				EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */,
 				EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */,
+				EA4ADB021CD9DD5C0068C10F /* YLDMyBuyListViewController.h */,
+				EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */,
 			);
 			path = MyBuyLIstViewController;
 			sourceTree = "<group>";
@@ -2983,6 +2994,7 @@
 				EA5AAC3E1C8D294700660FC9 /* NomerBuyMessageBtn@2x.png in Resources */,
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
 				FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */,
+				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
 				EAAFCFB61CBE265100EB894F /* 2miaomu1334.png in Resources */,
 				FC5337C41CBE1710008BFB11 /* 站长通-电话图标.png in Resources */,
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
@@ -3061,6 +3073,7 @@
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
+				EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */,
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
 				FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
@@ -3209,6 +3222,7 @@
 				EA4EEA201CD8891400FEFD52 /* BuyMessageAlertView.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
 				FCF353D91CA3B515001ABA0A /* StringAttribute.m in Sources */,
+				EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
 				FC49AE431CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m in Sources */,
 				FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */,

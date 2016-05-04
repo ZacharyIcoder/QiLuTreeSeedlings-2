@@ -18,7 +18,7 @@
 #import "LoginViewController.h"
 #import "MyNuseryListViewController.h"
 #import "UINavController.h"
-#import "MyBuyListViewController.h"
+#import "YLDMyBuyListViewController.h"
 #import "FaBuViewController.h"
 #import "ZIKUserInfoSetViewController.h"
 #import "MyIntegralViewController.h"
@@ -405,7 +405,7 @@
         if (indexPath.row==1) {
             [self hiddingSelfTabBar];
             //我的求购
-            MyBuyListViewController *myBuyListVC=[[MyBuyListViewController alloc]init];
+            YLDMyBuyListViewController *myBuyListVC=[[YLDMyBuyListViewController alloc]init];
             [self.navigationController pushViewController:myBuyListVC animated:YES];
             return ;
         }

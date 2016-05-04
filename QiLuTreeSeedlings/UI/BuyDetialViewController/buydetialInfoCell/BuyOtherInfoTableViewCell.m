@@ -27,17 +27,30 @@
         [valueLab setTextColor:titleLabColor];
         [view addSubview:valueLab];
         [self addSubview:view];
-
+        UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 40, kWidth, 40)];
+        [showBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        [showBtn setTitleColor:NavColor forState:UIControlStateNormal];
+        [showBtn setTitleColor:NavColor forState:UIControlStateSelected];
+        self.showBtn=showBtn;
+        [self addSubview:showBtn];
+        [showBtn setTitle:@"展开隐藏" forState:UIControlStateNormal];
+        [showBtn setTitle:@"点击隐藏" forState:UIControlStateSelected];
+        [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
+        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
     }
     return self;
 }
 -(void)setAry:(NSArray *)ary
 {
     _ary=ary;
+    //self.youzhiAry=[NSMutableArray array];
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
         [self MackViewWithFrame:CGRectMake(0, i*30+35, kWidth, 30) andDic:dic];
     }
+    CGRect frame=self.showBtn.frame;
+    frame.origin.y=ary.count*30+35;
+    self.showBtn.frame=frame;
 }
 -(void)setDingzhiAry:(NSArray *)dingzhiAry
 {
