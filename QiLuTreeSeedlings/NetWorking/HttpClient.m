@@ -887,6 +887,7 @@
 }
 #pragma mark -我的求购列表
 -(void)myBuyInfoListWtihPage:(NSString *)page
+                   WithState:(NSString *)state
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure
 {
@@ -906,6 +907,7 @@
                               //ids,@"ids",
                               page,@"page",
                               @"15",@"pageSize",
+                              state,@"state",
                               nil];
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         

@@ -28,6 +28,7 @@ typedef enum {
 @property (nonatomic)NSInteger New;
 @property (nonatomic)NSInteger state;
 @property (nonatomic,strong) NSString *timeAger;
+@property (nonatomic,strong) NSString *checkReason;
 @property (nonatomic,assign) BOOL isSelect;
 +(HotBuyModel *)hotBuyModelCreatByDic:(NSDictionary *)dic;
 +(NSArray *)creathotBuyModelAryByAry:(NSArray *)ary;

@@ -26,6 +26,7 @@
         model.count=[[dic objectForKey:@"count"] integerValue];
         model.uid=[dic objectForKey:@"uid"];
         model.supplybuyUid=[dic objectForKey:@"supplybuyUid"];
+        model.checkReason=[dic objectForKey:@"checkReason"];
         NSDate *creatTimeDate=[ZIKFunction getDateFromString:model.creatTime];
         model.timeAger=[ZIKFunction compareCurrentTime:creatTimeDate];
     }
