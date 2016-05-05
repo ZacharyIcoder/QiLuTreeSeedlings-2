@@ -118,7 +118,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.backScrollView addSubview:pickView];
     self.pickerImgView = pickView;
     __weak typeof(self) weakSelf = self;
-    self.pickerImgView.takePhotoBlock = ^{
+     self.pickerImgView.takePhotoBlock = ^{
         [weakSelf openMenu];
     };
 

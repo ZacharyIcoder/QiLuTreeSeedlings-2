@@ -39,10 +39,14 @@
         self.photos = [[NSMutableArray alloc]  initWithCapacity:2];
         self.urlMArr = [[NSMutableArray alloc] initWithCapacity:2];
         self.pickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.pickBtn setImage:[UIImage imageNamed:@"添加图片"] forState:UIControlStateNormal];
+        [self.pickBtn setImage:[UIImage imageNamed:@"添加照片-人苗"] forState:UIControlStateNormal];
         [self.pickBtn addTarget:self action:@selector(pickImageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.pickBtn];
         [self.imageBtnArr addObject:self.pickBtn];
+        [self addImage:[UIImage imageNamed:@"添加照片-整片"]];
+        [self addImage:[UIImage imageNamed:@"添加照片-单株"]];
+
+        _btnNum = 0;
     }
     
     return self;
@@ -51,6 +55,28 @@
 - (void)addImageURL:(NSDictionary *)dic
 {
     [self.urlMArr addObject:dic];
+}
+
+- (void)addImage:(UIImage *)image {
+    [self.photos addObject:image];
+    ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
+    [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
+     imageBtn.deleteDelegate = self;
+
+    [self addSubview:imageBtn];
+    // NSInteger replacNum = btnNum + 1;
+    //
+    [self.imageBtnArr insertObject:imageBtn atIndex:self.imageBtnArr.count-1];
+
+    //最多允许添加9张图片
+
+    if (self.imageBtnArr.count == 4) {
+
+        self.pickBtn.hidden = YES;
+    }
+
+    [self setNeedsLayout];
+
 }
 
 - (void)addImage:(UIImage *)image withUrl:(NSDictionary *)urlDic
@@ -66,9 +92,11 @@
     imageBtn.deleteDelegate = self;
     
     [self addSubview:imageBtn];
-    
-    [self.imageBtnArr insertObject:imageBtn atIndex:self.imageBtnArr.count-1];
-    
+   // NSInteger replacNum = btnNum + 1;
+    [self.imageBtnArr replaceObjectAtIndex:_btnNum++ withObject:imageBtn];
+//
+//    [self.imageBtnArr insertObject:imageBtn atIndex:self.imageBtnArr.count-1];
+
     //最多允许添加9张图片
     
     if (self.imageBtnArr.count == 4) {
@@ -90,8 +118,9 @@
     imageBtn.deleteDelegate = self;
 
     [self addSubview:imageBtn];
-
-    [self.imageBtnArr insertObject:imageBtn atIndex:self.imageBtnArr.count-1];
+    NSInteger replacNum = _btnNum + 1;
+    [self.imageBtnArr replaceObjectAtIndex:replacNum withObject:imageBtn];
+    //[self.imageBtnArr insertObject:imageBtn atIndex:self.imageBtnArr.count-1];
 
     //最多允许添加9张图片
 
@@ -136,6 +165,7 @@
     if (self.pickBtn) {
         [self.pickBtn removeFromSuperview];
     }
+    _btnNum = 0;
 }
 
 - (void)layoutSubviews
@@ -196,6 +226,7 @@
     if (self.photos.count < 3) {
         self.pickBtn.hidden = NO;
     }
+    _btnNum--;
 }
 
 @end

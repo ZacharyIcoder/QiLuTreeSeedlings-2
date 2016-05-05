@@ -1,19 +1,19 @@
 //
-//  PickImageView.h
+//  ZIKAddImageUIView.h
+//  QiLuTreeSeedlings
 //
-//  Created by Apple on 15/10/9.
-//  Copyright (c) 2015年 ShanDongSanMi. All rights reserved.
+//  Created by kong on 16/5/4.
+//  Copyright © 2016年 guihuicaifu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 
 //点击添加按钮之后调用的block
 
 typedef void(^TakePhotoBlock) ();
 
-
-@interface ZIKPickImageView: UIView
-
+@interface ZIKAddImageUIView : UIView
 
 - (void)addImage:(UIImage *)image withUrl:(NSDictionary *)urlDic;
 - (void)removeImage:(UIImage *)image;
@@ -26,6 +26,6 @@ typedef void(^TakePhotoBlock) ();
 @property(nonatomic, strong) NSMutableArray *photos;
 
 @property(nonatomic, strong) NSMutableArray *urlMArr;
+
 @property (nonatomic, assign) NSInteger btnNum;
-//static NSInteger btnNum = 0;
 @end

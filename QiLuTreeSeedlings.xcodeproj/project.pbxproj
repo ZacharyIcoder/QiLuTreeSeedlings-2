@@ -239,6 +239,10 @@
 		FC28DB611CD9C271003D7C27 /* 注意.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB601CD9C271003D7C27 /* 注意.png */; };
 		FC28DB631CD9CC7D003D7C27 /* 标签-已退回.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */; };
 		FC28DB661CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC28DB651CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m */; };
+		FC28DB691CD9E4E1003D7C27 /* ZIKAddImageUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC28DB681CD9E4E1003D7C27 /* ZIKAddImageUIView.m */; };
+		FC28DB6D1CD9E8A4003D7C27 /* 添加照片-单株.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */; };
+		FC28DB6E1CD9E8A4003D7C27 /* 添加照片-人苗.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */; };
+		FC28DB6F1CD9E8A4003D7C27 /* 添加照片-整片.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */; };
 		FC49AE321CA8BA5B00214D4B /* ZIKSupplyPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE311CA8BA5B00214D4B /* ZIKSupplyPublishVC.m */; };
 		FC49AE351CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE341CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m */; };
 		FC49AE381CA8D36000214D4B /* ZIKUserIDetc.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE371CA8D36000214D4B /* ZIKUserIDetc.m */; };
@@ -799,6 +803,11 @@
 		FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-已退回.png"; sourceTree = "<group>"; };
 		FC28DB641CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCellBackButton.h; sourceTree = "<group>"; };
 		FC28DB651CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyCellBackButton.m; sourceTree = "<group>"; };
+		FC28DB671CD9E4E1003D7C27 /* ZIKAddImageUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZIKAddImageUIView.h; path = ../../View/ZIKAddImageUIView.h; sourceTree = "<group>"; };
+		FC28DB681CD9E4E1003D7C27 /* ZIKAddImageUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZIKAddImageUIView.m; path = ../../View/ZIKAddImageUIView.m; sourceTree = "<group>"; };
+		FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-单株.png"; sourceTree = "<group>"; };
+		FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-人苗.png"; sourceTree = "<group>"; };
+		FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-整片.png"; sourceTree = "<group>"; };
 		FC49AE301CA8BA5B00214D4B /* ZIKSupplyPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishVC.h; sourceTree = "<group>"; };
 		FC49AE311CA8BA5B00214D4B /* ZIKSupplyPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishVC.m; sourceTree = "<group>"; };
 		FC49AE331CA8D2FE00214D4B /* ZIKMySupplyCreateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCreateModel.h; sourceTree = "<group>"; };
@@ -2735,6 +2744,9 @@
 				FC49AE4C1CA90E5C00214D4B /* 苗圃基地已选择框.png */,
 				FC28DB601CD9C271003D7C27 /* 注意.png */,
 				FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */,
+				FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */,
+				FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */,
+				FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -2746,6 +2758,8 @@
 				FCF353941CA3B515001ABA0A /* ZIKPickerBtn.m */,
 				FCF353951CA3B515001ABA0A /* ZIKPickImageView.h */,
 				FCF353961CA3B515001ABA0A /* ZIKPickImageView.m */,
+				FC28DB671CD9E4E1003D7C27 /* ZIKAddImageUIView.h */,
+				FC28DB681CD9E4E1003D7C27 /* ZIKAddImageUIView.m */,
 			);
 			path = PickerView;
 			sourceTree = "<group>";
@@ -3011,6 +3025,7 @@
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
 				FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */,
 				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
+				FC28DB6E1CD9E8A4003D7C27 /* 添加照片-人苗.png in Resources */,
 				EAAFCFB61CBE265100EB894F /* 2miaomu1334.png in Resources */,
 				FC5337C41CBE1710008BFB11 /* 站长通-电话图标.png in Resources */,
 				FC28DB631CD9CC7D003D7C27 /* 标签-已退回.png in Resources */,
@@ -3024,6 +3039,7 @@
 				EA2726FE1C8A7C06000B0719 /* areadb.sqlite in Resources */,
 				EA5444C61CC770BD00971A50 /* bangde2.jpg in Resources */,
 				FC5337A21CBDF2B6008BFB11 /* WHC_CameraVC.xib in Resources */,
+				FC28DB6F1CD9E8A4003D7C27 /* 添加照片-整片.png in Resources */,
 				EAF050E81C92833A00F435A9 /* mycollectionImage@2x.png in Resources */,
 				EA75147E1C9B891E003D63F1 /* treeNameSure2@2x.png in Resources */,
 				FC49AE441CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
@@ -3081,6 +3097,7 @@
 				EAF050F21C9293C200F435A9 /* homePageGreen@2x.png in Resources */,
 				FC7134221CB3465C0037D507 /* 待选.png in Resources */,
 				FC6FED6E1CACF833000E2CA5 /* 未读红点.png in Resources */,
+				FC28DB6D1CD9E8A4003D7C27 /* 添加照片-单株.png in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
@@ -3182,6 +3199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */,
+				FC28DB691CD9E4E1003D7C27 /* ZIKAddImageUIView.m in Sources */,
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
 				FC5337C81CBE17B0008BFB11 /* HCSStarRatingView.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
@@ -3543,10 +3561,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3581,9 +3597,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 			};
 			name = Debug;
 		};
@@ -3593,10 +3607,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3631,9 +3643,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 			};
 			name = Release;
 		};

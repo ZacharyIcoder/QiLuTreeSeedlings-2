@@ -18,7 +18,7 @@
 #define NAV_HEIGHT 64
 #define MENUVIEW_HEIGHT 43
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
-
+#define CELL_FOOTERVIEW_HEIGH 8
 typedef NS_ENUM(NSInteger, SupplyState) {
     SupplyStateAll       = 0,//全部
     SupplyStateThrough   = 2,//已通过
@@ -87,9 +87,9 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     ZIKSupplyModel *model = self.supplyInfoMArr[section];
     if ([model.state isEqualToString:@"3"]) {
-        return 8+35;
+        return CELL_FOOTERVIEW_HEIGH+35;
     }
-    return 8;
+    return CELL_FOOTERVIEW_HEIGH;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -97,7 +97,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     ZIKSupplyModel *model = self.supplyInfoMArr[section];
     if ([model.state isEqualToString:@"3"]) {
         view = [[UIView alloc] init];
-        view.frame = CGRectMake(0, 0, Width, 35+8);
+        view.frame = CGRectMake(0, 0, Width, 35+CELL_FOOTERVIEW_HEIGH);
         ZIKMySupplyCellBackButton *button = [[ZIKMySupplyCellBackButton alloc] initWithFrame:CGRectMake(0, 0, Width, 35)];
         button.backgroundColor = [UIColor whiteColor];
         //[button setImageEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 5)];
@@ -298,9 +298,9 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         if (self.supplyInfoMArr.count > 0) {
             [self.supplyInfoMArr removeAllObjects];
         }
-        //[self.supplyTableView headerBeginRefreshing];
-        ShowActionV()
-        [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+        [self.supplyTableView headerBeginRefreshing];
+        //ShowActionV()
+        //[self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     }
 }
 
