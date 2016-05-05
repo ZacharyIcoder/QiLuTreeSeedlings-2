@@ -78,6 +78,7 @@
     
     //获取企业信息
     [self reloadCompanyInfo];
+    [self requestBuyRestrict];
     // 通过 appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
     

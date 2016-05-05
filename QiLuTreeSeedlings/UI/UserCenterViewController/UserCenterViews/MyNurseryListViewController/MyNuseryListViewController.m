@@ -155,6 +155,11 @@
                 bottomcell.hidden = YES;
                 self.pullTableView.editing = NO;
                 self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+                __weak typeof(self) weakSelf=self;
+                [self.pullTableView addHeaderWithCallback:^{
+                    weakSelf.pageCount=1;
+                    [weakSelf getDataList];
+                }];
             }
              [_removeArray removeAllObjects];
             [self totalCount];

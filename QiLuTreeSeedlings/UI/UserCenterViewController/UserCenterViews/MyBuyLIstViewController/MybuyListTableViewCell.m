@@ -16,11 +16,6 @@
     [self.timeLab setTextColor:detialLabColor];
     [self.cityLab setTextColor:detialLabColor];
     [self.priceLab setTextColor:yellowButtonColor];
-    UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(10, self.frame.size.height-0.5, kWidth-20, 0.5)];
-    [iamgeV setBackgroundColor:kLineColor];
-    [self.contentView addSubview:iamgeV];
-    
-    
     // Initialization code
 }
 +(NSString *)IDStr

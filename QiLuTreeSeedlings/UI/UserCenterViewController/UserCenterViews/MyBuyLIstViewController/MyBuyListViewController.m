@@ -52,6 +52,7 @@
     self.pullTableView.editing = NO;
     bottomcell.hidden = YES;
     self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+    
 }
 
 - (void)viewDidLoad {
@@ -72,7 +73,7 @@
 //    tableView add
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.pullTableView addHeaderWithCallback:^{
-        [weakSelf.dataAry removeAllObjects];
+        //[weakSelf.dataAry removeAllObjects];
         weakSelf.PageCount=1;
         [weakSelf getDataList];
     }];
@@ -239,7 +240,8 @@
 }
 -(void)getDataList
 {
-    [HTTPCLIENT myBuyInfoListWtihPage:[NSString stringWithFormat:@"%ld",(long)PageCount] Success:^(id responseObject) {
+    [HTTPCLIENT myBuyInfoListWtihPage:[NSString stringWithFormat:@"%ld",(long)PageCount]
+     WithState:@"" Success:^(id responseObject) {
         [self.pullTableView headerEndRefreshing];
         [self.pullTableView footerEndRefreshing];
         if ([[responseObject objectForKey:@"success"] integerValue]) {

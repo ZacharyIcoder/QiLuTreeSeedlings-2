@@ -111,7 +111,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }
     return view;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
     ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];

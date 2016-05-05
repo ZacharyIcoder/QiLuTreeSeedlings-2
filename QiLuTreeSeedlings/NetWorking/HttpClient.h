@@ -193,6 +193,7 @@
                                failure:(void (^)(NSError *error))failure;
 #pragma mark -我的求购列表
 -(void)myBuyInfoListWtihPage:(NSString *)page
+                   WithState:(NSString *)state
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;
 #pragma mark-个人积分
