@@ -15,8 +15,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.refreshButton setTitleColor:yellowButtonColor forState:UIControlStateNormal];
-    self.refreshButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
+    [self.refreshButton setBackgroundColor:yellowButtonColor];
+    //[self.refreshButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //self.refreshButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -47,19 +48,19 @@
     //局部设置
     FontAttribute *partFont = [FontAttribute new];
     partFont.font = [UIFont systemFontOfSize:17.0f];
-    partFont.effectRange = NSMakeRange(4, priceString.length-1-4-7);
+    partFont.effectRange = NSMakeRange(4, 2);
     ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
     darkColor.color = yellowButtonColor;
-    darkColor.effectRange = NSMakeRange(4, priceString.length-1-4-7);
+    darkColor.effectRange = NSMakeRange(4, 2);
 
     FontAttribute *tailFont = [FontAttribute new];
     tailFont.font = [UIFont systemFontOfSize:14.0f];
-    tailFont.effectRange = NSMakeRange(priceString.length-7,priceString.length);
+    tailFont.effectRange = NSMakeRange(priceString.length-7,7);
     ForegroundColorAttribute *yellowColor = [ForegroundColorAttribute new];
     yellowColor.color = yellowButtonColor;
-    yellowColor.effectRange = NSMakeRange(priceString.length-7,priceString.length);
+    yellowColor.effectRange = NSMakeRange(priceString.length-7,7);
 
-    self.countLable.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor,tailFont,yellowColor]];
+    self.countLable.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,tailFont,fullColor,darkColor,yellowColor]];
     
 }
 

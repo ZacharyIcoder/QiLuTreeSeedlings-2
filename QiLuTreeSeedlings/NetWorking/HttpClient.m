@@ -2071,7 +2071,7 @@
                          failure:(void (^)(NSError *error))failure{
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/member/purchaseHistory/delete";
+    NSString *postURL            = @"api/sdsupplybuy/refresh";
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;

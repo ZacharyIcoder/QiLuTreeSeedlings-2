@@ -30,7 +30,9 @@
                             <constraint firstAttribute="width" constant="90" id="IqQ-Yv-kFK"/>
                             <constraint firstAttribute="height" constant="30" id="uan-60-A76"/>
                         </constraints>
-                        <state key="normal" title="刷新"/>
+                        <state key="normal" title="刷新">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
