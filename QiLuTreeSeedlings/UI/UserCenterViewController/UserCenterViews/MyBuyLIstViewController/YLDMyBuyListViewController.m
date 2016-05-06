@@ -15,6 +15,7 @@
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "BuyDetialInfoViewController.h"
 #import "BuyMessageAlertView.h"
+#import "BuyDetialModel.h"
 @interface YLDMyBuyListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
@@ -349,6 +350,22 @@
     if (model.state!=3) {
         return;
     }
+    
+    [HTTPCLIENT buyDetailWithUid:model.uid WithAccessID:APPDELEGATE.userModel.access_id WithType:@"0" WithmemberCustomUid:@"" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            
+            BuyDetialModel *buyDetialModel=[BuyDetialModel  creatBuyDetialModelByDic:[[responseObject objectForKey:@"result"] objectForKey:@"detail"]];
+            buyDetialModel.uid=model.uid;
+            buyFabuViewController *buyFabuVC=[[buyFabuViewController alloc]initWithModel:buyDetialModel];
+            [self.navigationController pushViewController:buyFabuVC animated:YES];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
     [BuyMessageAlertView removeActionView];
     
 }
@@ -379,8 +396,9 @@
         UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(btnWith*i, 0, btnWith, 47)];
         [btn setTitle:ary[i] forState:UIControlStateNormal];
         [btn setTitle:ary[i] forState:UIControlStateSelected];
-        [btn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
         [btn setTitleColor:NavColor forState:UIControlStateSelected];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
         btn.tag=i;
         if (i==0) {
             btn.selected=YES;

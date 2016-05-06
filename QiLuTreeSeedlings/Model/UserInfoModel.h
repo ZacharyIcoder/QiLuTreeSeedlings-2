@@ -21,6 +21,7 @@
 @property (nonatomic,strong) NSString *workstationUId;
 @property (nonatomic,strong) NSString *sumscore;
 @property (nonatomic,strong) NSString *noReadCount;
+@property (nonatomic,strong) NSString *nrMessageCount;
 +(UserInfoModel *)userInfoCreatByDic:(NSDictionary *)dic;
 -(void)reloadInfoByDic:(NSDictionary *)dic;
 @end

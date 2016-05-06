@@ -18,6 +18,8 @@
     model.isworkstation=[[dic objectForKey:@"isworkstation"] integerValue];
     model.name=[dic objectForKey:@"name"];
     model.phone=[dic objectForKey:@"phone"];
+    model.noReadCount=[dic objectForKey:@"noReadCount"];
+    model.nrMessageCount=[dic objectForKey:@"nrMessageCount"];
     return model;
 }
 -(void)reloadInfoByDic:(NSDictionary *)dic
@@ -30,6 +32,7 @@
     self.phone=[dic objectForKey:@"phone"];
     self.sumscore=[dic objectForKey:@"sumscore"];
     self.noReadCount=[dic objectForKey:@"noReadCount"];
+    self.nrMessageCount=[dic objectForKey:@"nrMessageCount"];
     NSString *headUrl=[dic objectForKey:@"headUrl"];
     if (headUrl) {
         self.headUrl=headUrl;
