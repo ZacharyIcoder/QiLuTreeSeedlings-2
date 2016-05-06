@@ -15,10 +15,15 @@
 #import "MJRefresh.h"
 #import "ZIKMySupplyCellBackButton.h"
 #import "ZIKMySupplyDetailViewController.h"
+#import "ZIKBottomDeleteTableViewCell.h"
+#import "ZIKMySupplyBottomRefreshTableViewCell.h"//底部刷新view
+
 #define NAV_HEIGHT 64
 #define MENUVIEW_HEIGHT 43
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
 #define CELL_FOOTERVIEW_HEIGH 8
+#define SUPPLY_STATE_BUTTON_FONT [UIFont systemFontOfSize:14.0f]
+
 typedef NS_ENUM(NSInteger, SupplyState) {
     SupplyStateAll       = 0,//全部
     SupplyStateThrough   = 2,//已通过
@@ -38,6 +43,9 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 {
     UIView *lineView;
     UIButton *cuttentButton;
+    ZIKBottomDeleteTableViewCell *bottomcell;
+    UILongPressGestureRecognizer *tapDeleteGR;
+    ZIKMySupplyBottomRefreshTableViewCell *refreshCell;
 }
 
 - (void)viewDidLoad {
@@ -94,7 +102,10 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *view = nil;
-    ZIKSupplyModel *model = self.supplyInfoMArr[section];
+    ZIKSupplyModel *model = nil;
+    if (self.supplyInfoMArr.count > 0) {
+        model =   self.supplyInfoMArr[section];
+    }
     if ([model.state isEqualToString:@"3"]) {
         view = [[UIView alloc] init];
         view.frame = CGRectMake(0, 0, Width, 35+CELL_FOOTERVIEW_HEIGH);
@@ -174,7 +185,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     RemoveActionV();
     [self.supplyTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
-    [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withState:[NSString stringWithFormat:@"%ld",self.state] withPage:page withPageSize:@"15" success:^(id responseObject) {
+    [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withState:[NSString stringWithFormat:@"%ld",(long)self.state] withPage:page withPageSize:@"15" success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
             return ;
@@ -247,7 +258,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(actionMenu:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag = i;
-        btn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        btn.titleLabel.font = SUPPLY_STATE_BUTTON_FONT;
         [menuView addSubview:btn];
         padding += split;
         if (i == 0) {
@@ -269,13 +280,47 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     [self.view addSubview:self.supplyTableView];
     //[ZIKFunction setExtraCellLineHidden:self.supplyTableView];
     self.supplyTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    //添加长按手势
+    tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
+    [self.supplyTableView addGestureRecognizer:tapDeleteGR];
+    [self.supplyTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
 
 
+//    //底部刷新view
+//    refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
+//    refreshCell.frame = CGRectMake(0, Height-44, Width, 44);
+//    [self.view addSubview:refreshCell];
+//    [refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    refreshCell.hidden = YES;
+
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"editing"]) {
+        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
+            [self.supplyTableView removeGestureRecognizer:tapDeleteGR];
+        }
+        else {
+            [self.supplyTableView addGestureRecognizer:tapDeleteGR];
+        }
+        // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)tapGR {
+
+}
+
+#pragma mark - 底部刷新按钮点击事件
+- (void)refreshBtnClick {
 
 }
 
 - (void)actionMenu:(UIButton *)button {
-    if (cuttentButton != button) {
+    if (cuttentButton != button /*&& !self.supplyTableView.isDecelerating*/) {
         [button setTitleColor:NavColor forState:UIControlStateNormal];
         [cuttentButton setTitleColor:titleLabColor forState:UIControlStateNormal];
         cuttentButton = button;
