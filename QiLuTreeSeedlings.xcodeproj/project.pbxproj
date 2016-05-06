@@ -342,6 +342,8 @@
 		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
 		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
 		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
+		FC68F3841CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */; };
+		FC68F3851CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */; };
 		FC6FED4E1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */; };
 		FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED511CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m */; };
 		FC6FED551CACEDA7000E2CA5 /* ZIKCustomizedInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED541CACEDA7000E2CA5 /* ZIKCustomizedInfoListViewController.m */; };
@@ -1067,6 +1069,9 @@
 		FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPasswordSetViewController.m; sourceTree = "<group>"; };
 		FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetialModel.h; sourceTree = "<group>"; };
 		FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetialModel.m; sourceTree = "<group>"; };
+		FC68F3811CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyBottomRefreshTableViewCell.h; sourceTree = "<group>"; };
+		FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyBottomRefreshTableViewCell.m; sourceTree = "<group>"; };
+		FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyBottomRefreshTableViewCell.xib; sourceTree = "<group>"; };
 		FC6FED4C1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailViewController.h; sourceTree = "<group>"; };
 		FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailViewController.m; sourceTree = "<group>"; };
 		FC6FED501CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyCustomizedInfoViewController.h; sourceTree = "<group>"; };
@@ -2872,6 +2877,9 @@
 				FC58087F1CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.h */,
 				FC5808801CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m */,
 				FC5808811CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib */,
+				FC68F3811CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.h */,
+				FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */,
+				FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3150,6 +3158,7 @@
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
 				FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
+				FC68F3851CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
 				FC6FED6C1CACF833000E2CA5 /* 图片1.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
@@ -3277,6 +3286,7 @@
 				EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */,
 				EAE32DDD1C7E97A600C4CEA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EAEB63C21C9147D50001ABC9 /* UserInfoModel.m in Sources */,
+				FC68F3841CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */,
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
 				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,
@@ -3587,8 +3597,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3623,7 +3633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -3633,8 +3643,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3669,7 +3679,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
