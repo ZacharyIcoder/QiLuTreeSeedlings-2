@@ -444,4 +444,10 @@
                              Success:(void (^)(id responseObject))success
                              failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 消息列表 -----------
+-(void)messageListWithPage:(NSString *)page
+              WithPageSize:(NSString *)pageSize
+                 WithReads:(NSString *)reads
+                   Success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure;
 @end
