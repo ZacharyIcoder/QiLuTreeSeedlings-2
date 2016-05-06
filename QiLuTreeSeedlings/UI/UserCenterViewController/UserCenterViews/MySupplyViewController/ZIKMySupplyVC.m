@@ -18,12 +18,14 @@
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "ZIKMySupplyBottomRefreshTableViewCell.h"//底部刷新view
 
-#define NAV_HEIGHT 64
-#define MENUVIEW_HEIGHT 43
+#define NAV_HEIGHT 64 //navgationview 高度
+#define MENUVIEW_HEIGHT 43  //button 选择菜单高度
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
-#define CELL_FOOTERVIEW_HEIGH 8
+#define CELL_FOOTERVIEW_HEIGH 8 //cell分section footer
 #define REFRESH_CELL_HEIGH 50
 #define SUPPLY_STATE_BUTTON_FONT [UIFont systemFontOfSize:14.0f]
+
+//static NSInteger refreshNum = 0;
 
 typedef NS_ENUM(NSInteger, SupplyState) {
     SupplyStateAll       = 0,//全部
@@ -48,6 +50,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     UILongPressGestureRecognizer *tapDeleteGR;
     ZIKMySupplyBottomRefreshTableViewCell *refreshCell;
     NSMutableArray *refreshMarr;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self requestSupplyRestrict];
 }
 
 - (void)viewDidLoad {
@@ -124,7 +131,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
-    __block  ZIKMySupplyBottomRefreshTableViewCell *cell = (ZIKMySupplyBottomRefreshTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    __block  ZIKMySupplyBottomRefreshTableViewCell *cell = (ZIKMySupplyBottomRefreshTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     if (self.supplyTableView.editing && self.state == SupplyStateThrough) {//刷新编辑状态
         if (model.isCanRefresh && refreshMarr.count<5) {
             [refreshMarr addObject:model];
@@ -132,7 +139,9 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             return;
         }
         else if (refreshMarr.count >= 5) {
-            cell.selected = NO;
+//            cell.selected = NO;
+            //- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+            [self.supplyTableView deselectRowAtIndexPath:indexPath animated:YES];
             [ToastView showTopToast:@"一次最多刷新5条"];
             return;
         }
@@ -185,7 +194,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKSupplyModel *model = [self.supplyInfoMArr objectAtIndex:indexPath.section];
-    if (self.supplyTableView.editing && self.state == SupplyStateThrough) {
+    if (self.supplyTableView.editing && self.state == SupplyStateThrough) {//刷新编辑状态
         // 删除反选数据
         if ([refreshMarr containsObject:model])
         {
@@ -229,7 +238,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 }
 
 - (void)requestData {
-    [self requestSupplyRestrict];
     [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.supplyTableView addHeaderWithCallback:^{
@@ -370,7 +378,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     refreshCell.hidden = YES;
 
 }
-
+//代码手动选中与取消选中某行
+//
+//- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+//
+//- (void)deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 //{
 //    if ([keyPath isEqualToString:@"editing"]) {
@@ -403,6 +415,9 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         }
         //[self totalCount];
     }
+//    - ( void )scrollToRowAtIndexPath:( NSIndexPath *)indexPath atScrollPosition:( UITableViewScrollPosition )scrollPosition animated:( BOOL )animated;
+//    NSIndexPath *rowAtIndexPath = [NSIndexPath indexPathWithIndex:3];
+//    [self.supplyTableView scrollToRowAtIndexPath:rowAtIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 
 }
 
@@ -420,12 +435,23 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT supplybuyrRefreshWithUid:uids Success:^(id responseObject) {
+    [HTTPCLIENT sdsupplybuyrRefreshWithUid:uids Success:^(id responseObject) {
         CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showToast:@"刷新成功" withOriginY:200 withSuperView:self.view];
-            blockSelf.page = 0;
+            blockSelf.supplyTableView.editing = NO;
+            blockSelf.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);
+            refreshCell.hidden = YES;
+            blockSelf.page = 1;
             [blockSelf requestData];
+//            [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+//            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+//            [self.supplyTableView addHeaderWithCallback:^{
+//                weakSelf.page = 1;
+//                [weakSelf requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+//            }];
+
+
         }
         else {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:200 withSuperView:self.view];
@@ -440,6 +466,14 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 #pragma mark - 选择不同状态按钮事件
 - (void)actionMenu:(UIButton *)button {
+    if (self.supplyTableView.editing) {
+        self.supplyTableView.editing = NO;
+        refreshCell.hidden = YES;
+        self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);
+    }
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+
+
     if (cuttentButton != button && !self.supplyTableView.isDecelerating) {
         [button setTitleColor:NavColor forState:UIControlStateNormal];
         [cuttentButton setTitleColor:titleLabColor forState:UIControlStateNormal];
@@ -447,6 +481,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [UIView animateWithDuration:0.3 animations:^{
             lineView.frame = CGRectMake(button.frame.origin.x, lineView.frame.origin.y, lineView.frame.size.width, lineView.frame.size.height);
         }];
+        [self.supplyTableView addHeaderWithCallback:^{
+            weakSelf.page = 1;
+            [weakSelf requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+        }];
+
         if (button.tag == 0) {
             self.state = SupplyStateAll;
         }
@@ -527,11 +566,13 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 // 设置行是否可编辑
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
-    //    if (!model.isCanRefresh) {
-    //        return NO;
-    //    }
-    return YES;
+    if (self.supplyTableView.editing && self.state == SupplyStateThrough) {
+        ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
+        if (!model.isCanRefresh) {
+            return NO;
+        }
+    }
+     return YES;
 }
 // 删除数据风格
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath

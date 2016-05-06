@@ -74,12 +74,31 @@
                             <constraint firstAttribute="height" constant="60" id="xPX-cE-LSn"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treeNameSure2.png" translatesAutoresizingMaskIntoConstraints="NO" id="jwB-VZ-dcm">
+                        <rect key="frame" x="216" y="40" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="LfV-xu-96E"/>
+                            <constraint firstAttribute="width" constant="20" id="u2C-rl-fDw"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本次已刷新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzi-8E-Koi">
+                        <rect key="frame" x="237" y="40" width="75" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="0M2-Pd-HW1"/>
+                            <constraint firstAttribute="height" constant="20" id="Oc5-Yk-OBa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="YIL-gn-yPv" firstAttribute="leading" secondItem="dcw-lU-x5h" secondAttribute="trailing" constant="3" id="06a-gj-V3P"/>
                     <constraint firstItem="w8L-s0-EHN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="Aym-vT-m4D"/>
                     <constraint firstAttribute="trailingMargin" secondItem="w8L-s0-EHN" secondAttribute="trailing" constant="-8" id="E4n-nN-Fdq"/>
                     <constraint firstItem="jx0-zG-AEY" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="FyL-VC-z6S"/>
+                    <constraint firstItem="jwB-VZ-dcm" firstAttribute="centerY" secondItem="YIL-gn-yPv" secondAttribute="centerY" id="HZK-Ua-eoa"/>
+                    <constraint firstItem="rzi-8E-Koi" firstAttribute="leading" secondItem="jwB-VZ-dcm" secondAttribute="trailing" constant="1" id="JBD-gA-32S"/>
                     <constraint firstItem="b5m-yb-biD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="Kz3-oP-N2k"/>
                     <constraint firstItem="dcw-lU-x5h" firstAttribute="centerY" secondItem="b5m-yb-biD" secondAttribute="centerY" id="Mx4-NP-3WL"/>
                     <constraint firstItem="YIL-gn-yPv" firstAttribute="centerY" secondItem="dcw-lU-x5h" secondAttribute="centerY" id="P1Z-Xt-giR"/>
@@ -87,12 +106,14 @@
                     <constraint firstItem="eCH-de-Zy3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="a73-7R-a1N"/>
                     <constraint firstItem="jx0-zG-AEY" firstAttribute="leading" secondItem="b5m-yb-biD" secondAttribute="trailing" constant="9" id="eZY-Fb-Ngb"/>
                     <constraint firstItem="b5m-yb-biD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="i9v-E9-nL5"/>
+                    <constraint firstItem="rzi-8E-Koi" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="oEC-Vz-egL"/>
                     <constraint firstItem="kEO-dX-cSc" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="p49-E6-tij"/>
                     <constraint firstItem="kEO-dX-cSc" firstAttribute="leading" secondItem="jx0-zG-AEY" secondAttribute="trailing" constant="8" id="pAZ-Co-6gj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="YIL-gn-yPv" secondAttribute="trailing" constant="15" id="pYE-pn-fwk"/>
                     <constraint firstItem="kEO-dX-cSc" firstAttribute="width" secondItem="jx0-zG-AEY" secondAttribute="width" id="qFT-2i-cQD"/>
                     <constraint firstItem="eCH-de-Zy3" firstAttribute="leading" secondItem="b5m-yb-biD" secondAttribute="trailing" constant="9" id="qdG-Ei-ga2"/>
                     <constraint firstAttribute="trailingMargin" secondItem="kEO-dX-cSc" secondAttribute="trailing" id="u4Z-2D-Nep"/>
+                    <constraint firstItem="rzi-8E-Koi" firstAttribute="centerY" secondItem="YIL-gn-yPv" secondAttribute="centerY" id="wYR-Lg-vQv"/>
                     <constraint firstItem="dcw-lU-x5h" firstAttribute="leading" secondItem="b5m-yb-biD" secondAttribute="trailing" constant="9" id="wZY-7L-gHf"/>
                 </constraints>
             </tableViewCellContentView>
@@ -101,6 +122,8 @@
                 <outlet property="countLabel" destination="jx0-zG-AEY" id="Xnr-SR-SGB"/>
                 <outlet property="iconImageView" destination="b5m-yb-biD" id="Ezl-lf-Tgx"/>
                 <outlet property="priceLabel" destination="kEO-dX-cSc" id="ob2-3N-gFh"/>
+                <outlet property="refreshImageView" destination="jwB-VZ-dcm" id="srE-uz-1Yc"/>
+                <outlet property="refreshLabel" destination="rzi-8E-Koi" id="bj2-wf-Ope"/>
                 <outlet property="timeImageView" destination="dcw-lU-x5h" id="HBc-yW-KZG"/>
                 <outlet property="timeLabel" destination="YIL-gn-yPv" id="H3p-nH-vdd"/>
                 <outlet property="titleLabel" destination="eCH-de-Zy3" id="Uaa-6R-WOw"/>
@@ -110,6 +133,7 @@
     </objects>
     <resources>
         <image name="listtime" width="16" height="16"/>
+        <image name="treeNameSure2.png" width="20" height="20"/>
         <image name="标签-已退回.png" width="98" height="98"/>
     </resources>
 </document>

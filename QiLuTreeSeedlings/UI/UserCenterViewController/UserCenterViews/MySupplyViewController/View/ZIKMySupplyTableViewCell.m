@@ -20,6 +20,7 @@
     self.timeImageView.layer.cornerRadius = 6.0f;
     self.timeImageView.layer.masksToBounds = YES;
     self.timeImageView.backgroundColor = [UIColor whiteColor];
+    self.refreshLabel.textColor = NavColor;
 
     //self.timeImageView.highlightedImage = [UIImage imageNamed:@"compose_keyboardbutton_background"];
     //UITableViewCellStyle = UITableViewCellStyle
@@ -111,6 +112,14 @@
 //    if (model.edit.integerValue == 1) {
 //        self.selected = YES;
 //    }
+    if ([model.shuaxin isEqualToString:@"1"]) {
+        self.refreshLabel.hidden = NO;
+        self.refreshImageView.hidden = NO;
+    }
+    else {
+        self.refreshLabel.hidden = YES;
+        self.refreshImageView.hidden = YES;
+    }
 
 }
 @end
