@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     ZIKBottomDeleteTableViewCell *bottomcell;
     UILongPressGestureRecognizer *tapDeleteGR;
     ZIKMySupplyBottomRefreshTableViewCell *refreshCell;
+    NSMutableArray *refreshMarr;
 }
 
 - (void)viewDidLoad {
@@ -123,11 +124,52 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     return view;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.supplyTableView.editing && self.state == SupplyStateThrough) {
+        return;
+    }
     ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
     ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
     [self.navigationController pushViewController:detailVC animated:YES];
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
+//    __block  ZIKMySupplyTableViewCell *cell = (ZIKMySupplyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    if (!self.mySupplyTableView.editing) {
+//        cell.backgroundColor = [UIColor lightGrayColor];
+//        double delayInSeconds = 0.1;
+//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//            cell.backgroundColor = [UIColor whiteColor];
+//        });
+//    }
+//    // 判断编辑状态,必须要写
+//    if (self.mySupplyTableView.editing)
+//    {   if (model.isSelect == YES) {
+//        model.isSelect = NO;
+//        cell.isSelect = NO;
+//        cell.selected = NO;
+//        // 删除反选数据
+//        if ([_removeArray containsObject:model])
+//        {
+//            [_removeArray removeObject:model];
+//        }
+//        [self totalCount];
+//        return;
+//    }
+//        //NSLog(@"didSelectRowAtIndexPath");
+//        // 获取当前显示数据
+//        //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
+//        // 添加到我们的删除数据源里面
+//        model.isSelect = YES;
+//        [_removeArray addObject:model];
+//        [self totalCount];
+//        return;
+//    }
+//
+//    //ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
+//    ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
+//    [self.navigationController pushViewController:detailVC animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)btnClick:(ZIKMySupplyCellBackButton *)button {
@@ -150,7 +192,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic = [responseObject objectForKey:@"result"];
                 SupplyDetialMode *model = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
-                model.supplybuyName=APPDELEGATE.userModel.name;
+                model.supplybuyName = APPDELEGATE.userModel.name;
                 model.phone = APPDELEGATE.userModel.phone;
                 //        ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
                 ZIKSupplyPublishVC *spvc = [[ZIKSupplyPublishVC alloc] initWithModel:model];
@@ -182,7 +224,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma mark - 请求我的供应列表信息
 - (void)requestMySupplyList:(NSString *)page {
     //我的供应列表
-    RemoveActionV();
+   
     [self.supplyTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withState:[NSString stringWithFormat:@"%ld",(long)self.state] withPage:page withPageSize:@"15" success:^(id responseObject) {
@@ -231,6 +273,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 - (void)initData {
     self.page = 1;
     self.supplyInfoMArr = [NSMutableArray array];
+    refreshMarr = [[NSMutableArray alloc] init];
 }
 
 #pragma  mark - 初始化UI
@@ -276,7 +319,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     self.supplyTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuView.frame)+8, Width, Height-NAV_HEIGHT-MENUVIEW_HEIGHT-8) style:UITableViewStylePlain];
     self.supplyTableView.backgroundColor = [UIColor clearColor];
     self.supplyTableView.dataSource = self;
-    self.supplyTableView.delegate = self;
+    self.supplyTableView.delegate   = self;
     [self.view addSubview:self.supplyTableView];
     //[ZIKFunction setExtraCellLineHidden:self.supplyTableView];
     self.supplyTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -286,12 +329,16 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     //[self.supplyTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
 
 
-//    //底部刷新view
-//    refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
-//    refreshCell.frame = CGRectMake(0, Height-44, Width, 44);
-//    [self.view addSubview:refreshCell];
-//    [refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//    refreshCell.hidden = YES;
+    //底部刷新view
+    refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
+    refreshCell.frame = CGRectMake(0, Height-50, Width, 50);
+    [self.view addSubview:refreshCell];
+    [refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    refreshCell.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
+    refreshCell.layer.shadowOpacity = 0.2;////阴影透明度，默认0
+    refreshCell.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
+    refreshCell.layer.shadowRadius  = 3;//阴影半径，默认3
+    refreshCell.hidden = YES;
 
 }
 
@@ -311,6 +358,21 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 //}
 
 - (void)tapGR {
+    if (!self.supplyTableView.editing && self.state == SupplyStateThrough)
+    {
+        self.supplyTableView.editing = YES;
+        refreshCell.hidden = NO;
+        self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50-50);
+        [self.supplyTableView removeHeader];//编辑状态取消下拉刷新
+        bottomcell.isAllSelect = NO;
+        if (refreshMarr.count > 0) {
+            [refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                model.isSelect = NO;
+            }];
+            [refreshMarr removeAllObjects];
+        }
+        //[self totalCount];
+    }
 
 }
 
@@ -320,7 +382,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 }
 
 - (void)actionMenu:(UIButton *)button {
-    if (cuttentButton != button /*&& !self.supplyTableView.isDecelerating*/) {
+    if (cuttentButton != button && !self.supplyTableView.isDecelerating) {
         [button setTitleColor:NavColor forState:UIControlStateNormal];
         [cuttentButton setTitleColor:titleLabColor forState:UIControlStateNormal];
         cuttentButton = button;
@@ -341,6 +403,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         }
         if (self.supplyInfoMArr.count > 0) {
             [self.supplyInfoMArr removeAllObjects];
+            [self.supplyTableView reloadData];
         }
         [self.supplyTableView headerBeginRefreshing];
         //ShowActionV()
@@ -390,6 +453,29 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     } failure:^(NSError *error) {
 
     }];
+}
+
+#pragma mark - 可选方法实现
+// 设置删除按钮标题
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Delete";
+}
+
+// 设置行是否可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+// 删除数据风格
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //NSLog(@"commitEditingStyle");
 }
 
 @end

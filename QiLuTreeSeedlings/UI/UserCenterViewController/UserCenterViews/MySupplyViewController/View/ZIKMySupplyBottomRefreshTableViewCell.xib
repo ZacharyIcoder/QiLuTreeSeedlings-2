@@ -16,9 +16,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDh-Fr-O98">
-                        <rect key="frame" x="8" y="14" width="210" height="21"/>
+                        <rect key="frame" x="12" y="14" width="210" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="un9-iZ-3rZ"/>
+                            <constraint firstAttribute="height" constant="21" id="hqJ-el-oZd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -27,20 +27,18 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOu-rm-MZ2">
                         <rect key="frame" x="222" y="10" width="90" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="90" id="R6l-YW-uIg"/>
-                            <constraint firstAttribute="height" constant="30" id="cqr-2r-Uez"/>
+                            <constraint firstAttribute="width" constant="90" id="IqQ-Yv-kFK"/>
+                            <constraint firstAttribute="height" constant="30" id="uan-60-A76"/>
                         </constraints>
                         <state key="normal" title="刷新"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hOu-rm-MZ2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="0cl-1R-mhU"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hOu-rm-MZ2" secondAttribute="bottom" constant="1" id="69j-ti-ZbO"/>
-                    <constraint firstItem="hOu-rm-MZ2" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="6BV-HD-iw7"/>
-                    <constraint firstItem="cDh-Fr-O98" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="A0M-8r-UmQ"/>
-                    <constraint firstItem="cDh-Fr-O98" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="hFd-eF-Jgz"/>
-                    <constraint firstItem="hOu-rm-MZ2" firstAttribute="leading" secondItem="cDh-Fr-O98" secondAttribute="trailing" constant="4" id="jSV-Wz-OLq"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="cDh-Fr-O98" secondAttribute="bottom" constant="6" id="jip-aV-FYy"/>
+                    <constraint firstItem="hOu-rm-MZ2" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="1kt-Vv-Alb"/>
+                    <constraint firstItem="cDh-Fr-O98" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="9xc-5n-TT9"/>
+                    <constraint firstItem="hOu-rm-MZ2" firstAttribute="leading" secondItem="cDh-Fr-O98" secondAttribute="trailing" id="dpW-B3-27p"/>
+                    <constraint firstItem="hOu-rm-MZ2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="s4Z-2k-xv5"/>
+                    <constraint firstItem="cDh-Fr-O98" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="vqp-ge-m3r"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

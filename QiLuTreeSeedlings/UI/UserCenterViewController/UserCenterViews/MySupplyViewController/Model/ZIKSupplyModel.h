@@ -62,4 +62,8 @@
  *  true已刷新，flase 未刷新
  */
 @property (nonatomic,copy) NSString *shuaxin;
+/**
+ *  是否可刷新
+ */
+@property (nonatomic,assign) BOOL isCanRefresh;
 @end
