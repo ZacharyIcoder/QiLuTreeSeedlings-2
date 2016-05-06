@@ -420,9 +420,6 @@
             self.isCanPublish = NO;
             //NSLog(@"不可发布");
         }
-        else if (APPDELEGATE.isNeedCompany == NO) {
-            self.isCanPublish = NO;
-        }
         else {
             //NSLog(@"可发布");
             self.isCanPublish = YES;

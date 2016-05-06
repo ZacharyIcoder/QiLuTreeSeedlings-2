@@ -118,35 +118,41 @@
     [self.integralTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMyIntegralListWithPageNumber:page Success:^(id responseObject) {
-        NSDictionary *dic = [responseObject objectForKey:@"result"];
-        [self.zongjifenLab setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"sumscore"]]];
-        NSArray *array = [dic objectForKey:@"record"];
-        if (array.count == 0 && self.page == 1) {
-            [self.dataArray removeAllObjects];
-            [self.integralTableView footerEndRefreshing];
-            return ;
-        }
-        else if (array.count == 0 && self.page > 1) {
-            self.page--;
-            [self.integralTableView footerEndRefreshing];
-            //没有更多数据了
-            [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+        if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
             return;
         }
         else {
-            if (self.page == 1) {
+            NSDictionary *dic = [responseObject objectForKey:@"result"];
+            [self.zongjifenLab setText:[NSString stringWithFormat:@"%@",[dic objectForKey:@"sumscore"]]];
+            NSArray *array = [dic objectForKey:@"record"];
+            if (array.count == 0 && self.page == 1) {
                 [self.dataArray removeAllObjects];
+                [self.integralTableView footerEndRefreshing];
+                return ;
             }
-            [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-                ZIKIntegraModel *model = [ZIKIntegraModel yy_modelWithDictionary:dic];
-                [self.dataArray addObject:model];
-            }];
-            [self.integralTableView reloadData];
-            [self.integralTableView footerEndRefreshing];
+            else if (array.count == 0 && self.page > 1) {
+                self.page--;
+                [self.integralTableView footerEndRefreshing];
+                //没有更多数据了
+                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                return;
+            }
+            else {
+                if (self.page == 1) {
+                    [self.dataArray removeAllObjects];
+                }
+                [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                    ZIKIntegraModel *model = [ZIKIntegraModel yy_modelWithDictionary:dic];
+                    [self.dataArray addObject:model];
+                }];
+                [self.integralTableView reloadData];
+                [self.integralTableView footerEndRefreshing];
+            }
         }
-
+        
     } failure:^(NSError *error) {
-
+        
     }];
 }
 

@@ -31,6 +31,7 @@
 #import "BaseTabBarController.h"
 #import "ZIKStationAgentViewController.h"//站长通
 #import "ZIKMySupplyVC.h"//我的供应列表
+#import "ZIKPurchaseRecordsViewController.h"//购买记录
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -111,7 +112,7 @@
         return 1;
     }
     if (section==1) {
-        return 3;
+        return 4;
     }
     if(section==2)
     {
@@ -204,6 +205,10 @@
         }
         if (indexPath.row==2) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myReadMessage" andTitle:@"我的订制信息"];
+            return cell;
+        }
+        if (indexPath.row == 3) {
+            UserInfoNomerTableViewCell *cell = [[UserInfoNomerTableViewCell alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"个人中心-购买记录" andTitle:@"购买记录"];
             return cell;
         }
     }
@@ -414,6 +419,13 @@
             [self hiddingSelfTabBar];
             ZIKMyCustomizedInfoViewController *customInfoVC = [[ZIKMyCustomizedInfoViewController alloc] init];
             [self.navigationController pushViewController:customInfoVC animated:YES];
+            return;
+        }
+        if (indexPath.row == 3) {
+            [self hiddingSelfTabBar];
+            //购买记录
+            ZIKPurchaseRecordsViewController *prvc = [[ZIKPurchaseRecordsViewController alloc] init];
+            [self.navigationController pushViewController:prvc animated:YES];
             return;
         }
 
