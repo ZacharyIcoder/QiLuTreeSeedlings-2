@@ -40,13 +40,28 @@
 @property (nonatomic,strong) UIImageView *biaoqianView;
 @property (nonatomic,weak)BuyMessageAlertView *buyAlertView;
 @property (nonatomic,strong) NSMutableArray *miaomuzhiAry;
+@property (nonatomic,weak) UIImageView *guoqiIamgV;
+@property (nonatomic,weak) UIButton *editingBtn;
 @end
 
 @implementation BuyDetialInfoViewController
+-(void)dealloc{
+    
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     if (self.type==2) {
+        [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
+                            WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
+                                NSDictionary *dic=[responseObject objectForKey:@"result"];
+                                self.infoDic=dic;
+                                self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                                self.model.uid=self.uid;
+                                [self reloadMyView];
+                            } failure:^(NSError *error) {
+                                
+                            }];
         return;
     }
     [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
@@ -100,7 +115,6 @@
       //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
          WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
-            //NSLog(@"%@",responseObject);
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.infoDic=dic;
              self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
@@ -127,14 +141,16 @@
         } failure:^(NSError *error) {
             
         }];
-        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, kWidth, kHeight-54) style:UITableViewStyleGrouped];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
         self.tableView.delegate=self;
         self.tableView.dataSource=self;
         [self.view addSubview:self.tableView];
-        UIView *navView =  [self makeNavView];
-        [self.view addSubview:navView];
-        
          [self.view addSubview:_biaoqianView];
+        UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-68, 60, 60, 38.3)];
+        [self.tableView addSubview:guoqiIamgV];
+        [guoqiIamgV bringSubviewToFront:self.view];
+        self.guoqiIamgV=guoqiIamgV;
+
     }
     return self;
 }
@@ -143,10 +159,10 @@
     self=[super init];
     if (self) {
         self.uid=uid;
+        self.type=2;
         //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
-                                //NSLog(@"%@",responseObject);
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                                 self.infoDic=dic;
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
@@ -155,22 +171,24 @@
                             } failure:^(NSError *error) {
                                 
                             }];
-        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, kWidth, kHeight-64) style:UITableViewStyleGrouped];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStyleGrouped];
         self.tableView.delegate=self;
         self.tableView.dataSource=self;
-        self.type=2;
+        UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-68, 60, 60, 38.3)];
+        [self.tableView addSubview:guoqiIamgV];
+        self.guoqiIamgV=guoqiIamgV;
         [self.view addSubview:self.tableView];
-        UIView *navView =  [self makeNavView];
-        
-        [self.view addSubview:navView];
     }
     return self;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIView *navView =  [self makeNavView];
+    [self.view addSubview:navView];
     self.isShow=NO;
     [self.view setBackgroundColor:BGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
      // Do any additional setup after loading the view.
 }
 
@@ -350,6 +368,36 @@
 -(void)reloadMyView
 {
     
+    if (self.type==2) {
+        if (self.model.state==1||self.model.state==3) {
+            //1 已过期  可编辑 3 未通过  可编辑
+            [self.guoqiIamgV setImage:[UIImage imageNamed:@"guoqibiaoqian"]];
+            if (self.model.state==1) {
+                self.guoqiIamgV.hidden=NO;
+            }else{
+                self.guoqiIamgV.hidden=YES;
+
+            }
+            [self.editingBtn setTitle:@"编辑" forState:UIControlStateNormal];
+            [self.editingBtn addTarget:self action:@selector(editingBtn:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        if (self.model.state==0||self.model.state==4||self.model.state==2) {
+            //0  已关闭 可打开  5 审核通过 可关闭
+            [self.guoqiIamgV setImage:[UIImage imageNamed:@"guanbibiaoqian"]];
+            [self.editingBtn setTitle:@"关闭" forState:UIControlStateNormal];
+            [self.editingBtn setTitle:@"" forState:UIControlStateHighlighted];
+            [self.editingBtn setTitle:@"打开" forState:UIControlStateSelected];
+            [self.editingBtn addTarget:self action:@selector(openAndColseBtn:) forControlEvents:UIControlEventTouchUpInside];
+            if (self.model.state==0) {
+                self.editingBtn.selected=YES;
+                self.guoqiIamgV.hidden=NO;
+            }
+            if (self.model.state==2||self.model.state==4) {
+                self.editingBtn.selected=NO;
+                self.guoqiIamgV.hidden=YES;
+            }
+        }
+    }
     NSString *titleStr=[[self.infoDic objectForKey:@"detail"] objectForKey:@"productName"];
     [self.navTitleLab setText:[NSString stringWithFormat:@"求购：%@",titleStr]];
     
@@ -388,9 +436,8 @@
     [view addSubview:titleLab];
     if (self.type==2) {
          UIButton *editingBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
-        [editingBtn setTitle:@"编辑" forState:UIControlStateNormal];
         [editingBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        [editingBtn addTarget:self action:@selector(editingBtn:) forControlEvents:UIControlEventTouchUpInside];
+        self.editingBtn=editingBtn;
         [view addSubview:editingBtn];
     }else
     {
@@ -407,14 +454,48 @@
 }
 -(void)editingBtn:(UIButton *)sender
 {
-    if (self.model.state==0||self.model.state==1||self.model.state==5) {
+    if (self.model.state==1||self.model.state==3) {
+        self.model.uid=self.uid;
+        buyFabuViewController *buyFabuVC=[[buyFabuViewController alloc]initWithModel:self.model];
+        [self.navigationController pushViewController:buyFabuVC animated:YES];
+    }else{
         [ToastView showTopToast:@"该条求购不可编辑"];
         return;
     }
-    self.model.uid=self.uid;
-    buyFabuViewController *buyFabuVC=[[buyFabuViewController alloc]initWithModel:self.model];
     
-    [self.navigationController pushViewController:buyFabuVC animated:YES];
+}
+-(void)openAndColseBtn:(UIButton *)sender
+{
+    if (sender.selected==YES) {
+        [HTTPCLIENT openMyBuyMessageWithUids:self.model.uid Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                [ToastView showTopToast:@"打开成功"];
+                sender.selected=NO;
+                self.guoqiIamgV.hidden=YES;
+            }else{
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        return;
+    }
+    if(sender.selected==NO)
+    {
+        [HTTPCLIENT closeMyBuyMessageWithUids:self.model.uid Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                [ToastView showTopToast:@"关闭成功"];
+                sender.selected=YES;
+                self.guoqiIamgV.hidden=NO;
+            }else{
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
+
+        } failure:^(NSError *error) {
+            
+        }];
+    }
 }
 -(void)collectionBtn:(UIButton *)sender
 {
@@ -486,7 +567,7 @@
 {
     if (indexPath.section==0) {
         BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
-         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.infoDic) {
             cell.dic=[self.infoDic objectForKey:@"detail"];
         }
@@ -625,6 +706,12 @@
     [view addSubview:messageLab];
     if (section==1) {
         messageLab.text=@"苗木信息";
+        UILabel *rightLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-160, 0, 155, 30)];
+        [rightLab setFont:[UIFont systemFontOfSize:12]];
+        [rightLab setTextColor:titleLabColor];
+        [rightLab setTextAlignment:NSTextAlignmentRight];
+        [rightLab setText:@"供应信息可分享到微信、QQ"];
+        [view addSubview:rightLab];
     }else if (section==2){
         messageLab.text=@"其他信息";
     }else if (section==3){

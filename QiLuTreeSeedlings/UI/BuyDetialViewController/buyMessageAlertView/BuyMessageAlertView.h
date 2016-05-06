@@ -11,7 +11,8 @@
 typedef void(^ActionClickIndexBlock)(NSInteger index);
 @interface BuyMessageAlertView : UIView
 @property (nonatomic,weak)UIButton *leftBtn;
-@property (nonatomic,weak)UIButton *rightBtn;
+@property (nonatomic,strong)UIButton *rightBtn;
 +(BuyMessageAlertView *)addActionVieWithPrice:(NSString *)price AndMone:(NSString *)yue;
++(BuyMessageAlertView *)addActionVieWithReturnReason:(NSString *)reason;
 +(void)removeActionView;
 @end

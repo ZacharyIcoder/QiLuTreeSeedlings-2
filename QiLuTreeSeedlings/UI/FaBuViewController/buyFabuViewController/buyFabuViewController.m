@@ -16,6 +16,8 @@
 #import "ZIKSideView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "YLDMyBuyListViewController.h"
+#import "BuyDetialInfoViewController.h"
+#import "FaBuViewController.h"
 @interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
@@ -367,9 +369,8 @@
             [ToastView showTopToast:@"提交成功，即将返回"];
             //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
             for(UIViewController *controller in self.navigationController.viewControllers) {
-                if([controller isKindOfClass:[YLDMyBuyListViewController class]]){
-                    YLDMyBuyListViewController *owr = (YLDMyBuyListViewController *)controller;
-                    [self.navigationController popToViewController:owr animated:YES];
+                if([controller isKindOfClass:[BuyDetialInfoViewController class]]||[controller isKindOfClass:[YLDMyBuyListViewController class]]||[controller isKindOfClass:[FaBuViewController class]]){
+                    [self.navigationController popToViewController:controller animated:YES];
                 }
             }
 

@@ -418,4 +418,16 @@
 -(void)payForBuyMessageWithBuyUid:(NSString *)uid
                           Success:(void (^)(id responseObject))success
                           failure:(void (^)(NSError *error))failure;
+#pragma mark 我的求购信息关闭
+-(void)closeMyBuyMessageWithUids:(NSString *)uids
+                         Success:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure;
+#pragma mark 我的求购信息打开
+-(void)openMyBuyMessageWithUids:(NSString *)uids
+                         Success:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure;
+#pragma mark 我的求购退回原因
+-(void)MyBuyMessageReturnReasonWihtUid:(NSString *)Uid
+                                Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
 @end

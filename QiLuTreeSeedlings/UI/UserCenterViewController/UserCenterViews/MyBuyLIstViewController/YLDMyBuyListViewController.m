@@ -14,6 +14,7 @@
 #import "ZIKMySupplyCellBackButton.h"
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "BuyDetialInfoViewController.h"
+#import "BuyMessageAlertView.h"
 @interface YLDMyBuyListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
@@ -325,7 +326,31 @@
 }
 -(void)btnClick:(UIButton *)sender
 {
-    NSLog(@"%ld",sender.tag);
+    HotBuyModel *model=self.dataAry[sender.tag];
+    if (model.state!=3) {
+        return;
+    }
+    [HTTPCLIENT MyBuyMessageReturnReasonWihtUid:model.uid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+          BuyMessageAlertView *alertView = [BuyMessageAlertView addActionVieWithReturnReason:[[responseObject objectForKey:@"result"] objectForKey:@"reason"]];
+            alertView.rightBtn.tag=sender.tag;
+            [alertView.rightBtn addTarget:self action:@selector(tuihuibianjiAction:) forControlEvents:UIControlEventTouchUpInside];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)tuihuibianjiAction:(UIButton *)sender
+{
+    HotBuyModel *model=self.dataAry[sender.tag];
+    if (model.state!=3) {
+        return;
+    }
+    [BuyMessageAlertView removeActionView];
+    
 }
 -(void)creatScrollerViewBtn
 {
@@ -424,10 +449,8 @@
     {
         return;
     }
-    HotBuyModel *model = self.dataAry[indexPath.row];
+    HotBuyModel *model = self.dataAry[indexPath.section];
     MybuyListTableViewCell *cell = (MybuyListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    //    NSLog(@"%d",cell.selected);
-    //    NSLog(@"%d",model.isSelect);
     if (!self.tableView.editing) {
         cell.backgroundColor = [UIColor lightGrayColor];
         double delayInSeconds = 0.1;
@@ -469,7 +492,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (self.dataAry.count>0) {
-        HotBuyModel *model=self.dataAry[indexPath.row];
+        HotBuyModel *model=self.dataAry[indexPath.section];
         //NSLog(@"%@",model.uid);
         BuyDetialInfoViewController *buyDetialVC=[[BuyDetialInfoViewController alloc]initMyDetialWithSaercherInfo:model.uid];
         [self.navigationController pushViewController:buyDetialVC animated:YES];
@@ -488,7 +511,7 @@
     {
         //NSLog(@"didDeselectRowAtIndexPath");
         // 获取当前反选显示数据
-        HotBuyModel *tempModel = [self.dataAry objectAtIndex:indexPath.row];
+        HotBuyModel *tempModel = [self.dataAry objectAtIndex:indexPath.section];
         tempModel.isSelect = NO;
         // 删除反选数据
         if ([_removeArray containsObject:tempModel])
