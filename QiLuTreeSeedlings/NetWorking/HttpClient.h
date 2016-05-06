@@ -439,10 +439,15 @@
 - (void)purchaseHistoryDeleteWithUid:(NSString *)uid
                              Success:(void (^)(id responseObject))success
                              failure:(void (^)(NSError *error))failure;
-#pragma mark ---------- 刷新供应 -----------
-- (void)supplybuyrRefreshWithUid:(NSString *)uid
+#pragma mark ---------- 手动刷新供应 -----------
+- (void)sdsupplybuyrRefreshWithUid:(NSString *)uid
                              Success:(void (^)(id responseObject))success
                              failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 分享等单条非手动刷新供应 -----------
+- (void)supplybuyrRefreshWithUid:(NSString *)uid
+                           Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
+
 
 #pragma mark ---------- 消息列表 -----------
 -(void)messageListWithPage:(NSString *)page
