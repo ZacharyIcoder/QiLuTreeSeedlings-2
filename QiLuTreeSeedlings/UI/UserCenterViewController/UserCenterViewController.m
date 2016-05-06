@@ -128,7 +128,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 60;
+        return 80;
     }
       return 44;
 }
@@ -181,10 +181,11 @@
         UserBigInfoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[UserBigInfoTableViewCell IDstr]];
 
         if (!cell) {
-            cell=[[UserBigInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 60)];
+            cell=[[UserBigInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 80)];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell.collectBtn addTarget:self action:@selector(mycollectBtnAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.interBtn addTarget:self action:@selector(myJifenBtnAction) forControlEvents:UIControlEventTouchUpInside];
+            [cell.messageBtn addTarget:self action:@selector(myMessageBtnAciotn) forControlEvents:UIControlEventTouchUpInside];
 
         }
 
@@ -323,6 +324,11 @@
     MyCollectViewController *myCollectVC=[MyCollectViewController new];
     [self hiddingSelfTabBar];
     [self.navigationController pushViewController:myCollectVC animated:YES];
+}
+#pragma mark-我的消息
+-(void)myMessageBtnAciotn
+{
+    NSLog(@"我的消息");
 }
 #pragma mark-我的积分
 -(void)myJifenBtnAction
