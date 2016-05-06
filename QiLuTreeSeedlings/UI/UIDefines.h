@@ -59,4 +59,11 @@
 }
 
 #define RemoveActionV() [ActionView removeActionView]
+
+#ifdef DEBUG
+#define CLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define CLog(fmt, ...)
+#endif
+
 #endif

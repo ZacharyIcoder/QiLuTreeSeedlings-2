@@ -8,7 +8,6 @@
 
 #import "ZIKPayViewController.h"
 #import "ZIKVoucherCenterViewController.h"
-#define Recharge @"Is top-up for the first time"
 @interface ZIKPayViewController ()
 {
     UITextField *nameTextField;

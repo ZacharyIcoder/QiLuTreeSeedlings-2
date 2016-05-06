@@ -383,6 +383,8 @@
 		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
 		FCD2E0971CC9EEFA000CFBA2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */; };
 		FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD8A67A1CCDED1600A307E2 /* 已选小标.png */; };
+		FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */ = {isa = PBXBuildFile; fileRef = FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */; };
+		FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */; };
 		FCE2C4CD1CD86D6400B9B0F9 /* ZIKMySupplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
@@ -1122,6 +1124,9 @@
 		FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNuserListTableViewCell.xib; sourceTree = "<group>"; };
 		FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FCD8A67A1CCDED1600A307E2 /* 已选小标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "已选小标.png"; path = "../../MySupplyViewController/已选小标.png"; sourceTree = "<group>"; };
+		FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "个人中心-购买记录.png"; sourceTree = "<group>"; };
+		FCDE90901CDB09D60009D157 /* ZIKPurchaseRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPurchaseRecordsViewController.h; sourceTree = "<group>"; };
+		FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPurchaseRecordsViewController.m; sourceTree = "<group>"; };
 		FCE2C4CB1CD86D6400B9B0F9 /* ZIKMySupplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyVC.h; sourceTree = "<group>"; };
 		FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyVC.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
@@ -1587,6 +1592,7 @@
 				EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */,
 				EA5AAC351C8D16F400660FC9 /* region@2x.png */,
 				EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */,
+				FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */,
 				EA2726FD1C8A7C06000B0719 /* areadb.sqlite */,
 			);
 			path = Resource;
@@ -2045,6 +2051,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				FCDE908F1CDB09B60009D157 /* PurchaseRecords */,
 				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC5337A71CBDF85D008BFB11 /* StationAgentVC */,
 				EA5DF94F1CB6483300BE0E8C /* setViewController */,
@@ -2668,6 +2675,15 @@
 			path = "银联";
 			sourceTree = "<group>";
 		};
+		FCDE908F1CDB09B60009D157 /* PurchaseRecords */ = {
+			isa = PBXGroup;
+			children = (
+				FCDE90901CDB09D60009D157 /* ZIKPurchaseRecordsViewController.h */,
+				FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */,
+			);
+			path = PurchaseRecords;
+			sourceTree = "<group>";
+		};
 		FCF353791CA3B514001ABA0A /* MySupplyViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3064,6 +3080,7 @@
 				EA17B5D01CC9D1CE0054223B /* leftBtnImage@2x.png in Resources */,
 				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
 				FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */,
+				FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
 				EA17B5D21CC9D23A0054223B /* rightBtnImage@2x.png in Resources */,
 				FC50B1631CAE243F0022A24C /* UMSCommentInputController.xib in Resources */,
@@ -3365,6 +3382,7 @@
 				FCF353E61CA3B515001ABA0A /* NSObject+YYModel.m in Sources */,
 				FC49AE3F1CA8EF0E00214D4B /* ZIKSupplyPublishNextVC.m in Sources */,
 				EA0B2B951C59F5220018A7BD /* main.m in Sources */,
+				FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */,
 				EAEA07FC1C5B285C003A0D8A /* YouLickView.m in Sources */,
 				EA2727191C8A7D8E000B0719 /* FMDatabaseAdditions.m in Sources */,
 				FC21BC841CA51C930041E2C3 /* IQTextView.m in Sources */,
