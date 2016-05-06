@@ -283,7 +283,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     //添加长按手势
     tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
     [self.supplyTableView addGestureRecognizer:tapDeleteGR];
-    [self.supplyTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
+    //[self.supplyTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
 
 
 //    //底部刷新view
@@ -295,20 +295,20 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"editing"]) {
-        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
-            [self.supplyTableView removeGestureRecognizer:tapDeleteGR];
-        }
-        else {
-            [self.supplyTableView addGestureRecognizer:tapDeleteGR];
-        }
-        // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+//{
+//    if ([keyPath isEqualToString:@"editing"]) {
+//        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
+//            [self.supplyTableView removeGestureRecognizer:tapDeleteGR];
+//        }
+//        else {
+//            [self.supplyTableView addGestureRecognizer:tapDeleteGR];
+//        }
+//        // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
+//    } else {
+//        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+//    }
+//}
 
 - (void)tapGR {
 
@@ -382,9 +382,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         if ( [dic[@"count"] integerValue] == 0 ) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
             self.isCanPublish = NO;
             //NSLog(@"不可发布");
-        }
-        else if (APPDELEGATE.isNeedCompany == NO) {
-            self.isCanPublish = NO;
         }
         else {
             //NSLog(@"可发布");
