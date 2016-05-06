@@ -172,6 +172,7 @@
 		EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB7819F1C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m */; };
 		EAB781A31C8EBEA600807B44 /* QIYeMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB781A21C8EBEA600807B44 /* QIYeMessageTableViewCell.m */; };
 		EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB781A51C8EC4E200807B44 /* BuyDescriptionTableViewCell.m */; };
+		EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD217111CDC6F52006424FB /* MyMessageViewController.m */; };
 		EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE32DB41C7E97A600C4CEA2 /* AFHTTPSessionManager.m */; };
 		EAE32DD71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE32DB71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m */; };
 		EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE32DB91C7E97A600C4CEA2 /* AFSecurityPolicy.m */; };
@@ -693,6 +694,8 @@
 		EAB781A21C8EBEA600807B44 /* QIYeMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QIYeMessageTableViewCell.m; sourceTree = "<group>"; };
 		EAB781A41C8EC4E200807B44 /* BuyDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDescriptionTableViewCell.h; sourceTree = "<group>"; };
 		EAB781A51C8EC4E200807B44 /* BuyDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDescriptionTableViewCell.m; sourceTree = "<group>"; };
+		EAD217101CDC6F52006424FB /* MyMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessageViewController.h; sourceTree = "<group>"; };
+		EAD217111CDC6F52006424FB /* MyMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessageViewController.m; sourceTree = "<group>"; };
 		EAE32DB31C7E97A600C4CEA2 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		EAE32DB41C7E97A600C4CEA2 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		EAE32DB51C7E97A600C4CEA2 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -1948,6 +1951,15 @@
 			path = buydetialInfoCell;
 			sourceTree = "<group>";
 		};
+		EAD2170F1CDC6F1A006424FB /* MyMessageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAD217101CDC6F52006424FB /* MyMessageViewController.h */,
+				EAD217111CDC6F52006424FB /* MyMessageViewController.m */,
+			);
+			path = MyMessageViewController;
+			sourceTree = "<group>";
+		};
 		EAE32DAE1C7E97A600C4CEA2 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -2056,6 +2068,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				EAD2170F1CDC6F1A006424FB /* MyMessageViewController */,
 				FCDE908F1CDB09B60009D157 /* PurchaseRecords */,
 				EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */,
 				FC5337A71CBDF85D008BFB11 /* StationAgentVC */,
@@ -3263,6 +3276,7 @@
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
+				EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
 				EAE32DF11C7E9C3800C4CEA2 /* AFImageDownloader.m in Sources */,
 				FCF353D11CA3B515001ABA0A /* ZIKSupplyModel.m in Sources */,

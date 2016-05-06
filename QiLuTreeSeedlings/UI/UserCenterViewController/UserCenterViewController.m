@@ -32,6 +32,7 @@
 #import "ZIKStationAgentViewController.h"//站长通
 #import "ZIKMySupplyVC.h"//我的供应列表
 #import "ZIKPurchaseRecordsViewController.h"//购买记录
+#import "MyMessageViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -328,7 +329,10 @@
 #pragma mark-我的消息
 -(void)myMessageBtnAciotn
 {
-    NSLog(@"我的消息");
+    //NSLog(@"我的消息");
+    MyMessageViewController *myMessageVieController=[[MyMessageViewController alloc]init];
+    [self hiddingSelfTabBar];
+    [self.navigationController pushViewController:myMessageVieController animated:YES];
 }
 #pragma mark-我的积分
 -(void)myJifenBtnAction

@@ -450,4 +450,9 @@
                  WithReads:(NSString *)reads
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 单条消息设置已读 -----------
+-(void)myMessageReadingWithUid:(NSString *)uid
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
 @end
