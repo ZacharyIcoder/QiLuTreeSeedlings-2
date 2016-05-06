@@ -18,6 +18,7 @@
     [self.refreshButton setBackgroundColor:yellowButtonColor];
     //[self.refreshButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     //self.refreshButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
+    self.countLable.text = @"合计: 0 条";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

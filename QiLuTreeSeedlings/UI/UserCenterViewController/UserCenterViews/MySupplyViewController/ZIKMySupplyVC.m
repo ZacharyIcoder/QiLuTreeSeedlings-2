@@ -359,6 +359,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
     //底部刷新view
     refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
+    refreshCell.count = 0;
     refreshCell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
     [self.view addSubview:refreshCell];
     [refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -385,6 +386,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 //    }
 //}
 
+#pragma mark - 长按触发事件
 - (void)tapGR {
     if (!self.supplyTableView.editing && self.state == SupplyStateThrough)
     {
@@ -410,10 +412,33 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [ToastView showTopToast:@"请选择刷新项"];
         return;
     }
+   // __weak typeof(refreshMarr) refreshArr = refreshMarr;
+    __weak __typeof(self) blockSelf = self;
+
+    __block NSString *uidString = @"";
+    [refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+    }];
+    NSString *uids = [uidString substringFromIndex:1];
+    [HTTPCLIENT supplybuyrRefreshWithUid:uids Success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 1) {
+            [ToastView showToast:@"刷新成功" withOriginY:200 withSuperView:self.view];
+            blockSelf.page = 0;
+            [blockSelf requestData];
+        }
+        else {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:200 withSuperView:self.view];
+            return ;
+        }
+    } failure:^(NSError *error) {
+
+    }];
 
 
 }
 
+#pragma mark - 选择不同状态按钮事件
 - (void)actionMenu:(UIButton *)button {
     if (cuttentButton != button && !self.supplyTableView.isDecelerating) {
         [button setTitleColor:NavColor forState:UIControlStateNormal];
