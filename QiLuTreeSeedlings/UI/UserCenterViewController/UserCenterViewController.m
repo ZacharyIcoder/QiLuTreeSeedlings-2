@@ -329,7 +329,17 @@
 #pragma mark-我的消息
 -(void)myMessageBtnAciotn
 {
-    //NSLog(@"我的消息");
+    if (![APPDELEGATE isNeedLogin]) {
+        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        [ToastView showTopToast:@"请先登录"];
+        UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+        
+        [self presentViewController:navVC animated:YES completion:^{
+            
+        }];
+        return;
+    }
+
     MyMessageViewController *myMessageVieController=[[MyMessageViewController alloc]init];
     [self hiddingSelfTabBar];
     [self.navigationController pushViewController:myMessageVieController animated:YES];

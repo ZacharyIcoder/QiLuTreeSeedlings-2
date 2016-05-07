@@ -110,6 +110,12 @@
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
 		EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */; };
+		EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA696FAB1CDD7914001F037E /* YLDMyMessageTableViewCell.m */; };
+		EA696FAE1CDD7914001F037E /* YLDMyMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA696FAC1CDD7914001F037E /* YLDMyMessageTableViewCell.xib */; };
+		EA696FB01CDD7A6C001F037E /* MyMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA696FAF1CDD7A6C001F037E /* MyMessage@2x.png */; };
+		EA696FB31CDD7FE9001F037E /* YLDMyMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA696FB21CDD7FE9001F037E /* YLDMyMessageModel.m */; };
+		EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA696FB41CDD8F46001F037E /* messageRead@2x.png */; };
+		EA696FB71CDD8F46001F037E /* messageUnRead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA696FB51CDD8F46001F037E /* messageUnRead@2x.png */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
 		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
 		EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */; };
@@ -602,6 +608,14 @@
 		EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MybuyListTableViewCell.h; sourceTree = "<group>"; };
 		EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MybuyListTableViewCell.m; sourceTree = "<group>"; };
 		EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MybuyListTableViewCell.xib; sourceTree = "<group>"; };
+		EA696FAA1CDD7914001F037E /* YLDMyMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyMessageTableViewCell.h; sourceTree = "<group>"; };
+		EA696FAB1CDD7914001F037E /* YLDMyMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMyMessageTableViewCell.m; sourceTree = "<group>"; };
+		EA696FAC1CDD7914001F037E /* YLDMyMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMyMessageTableViewCell.xib; sourceTree = "<group>"; };
+		EA696FAF1CDD7A6C001F037E /* MyMessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyMessage@2x.png"; sourceTree = "<group>"; };
+		EA696FB11CDD7FE9001F037E /* YLDMyMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyMessageModel.h; sourceTree = "<group>"; };
+		EA696FB21CDD7FE9001F037E /* YLDMyMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMyMessageModel.m; sourceTree = "<group>"; };
+		EA696FB41CDD8F46001F037E /* messageRead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageRead@2x.png"; sourceTree = "<group>"; };
+		EA696FB51CDD8F46001F037E /* messageUnRead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageUnRead@2x.png"; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
 		EA6B31B41CABA5F70068CCB5 /* NuserNullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuserNullTableViewCell.h; sourceTree = "<group>"; };
 		EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuserNullTableViewCell.m; sourceTree = "<group>"; };
@@ -1514,6 +1528,9 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA696FB41CDD8F46001F037E /* messageRead@2x.png */,
+				EA696FB51CDD8F46001F037E /* messageUnRead@2x.png */,
+				EA696FAF1CDD7A6C001F037E /* MyMessage@2x.png */,
 				EAF788A11CDB333700C4A301 /* guanbibiaoqian.png */,
 				EAF7889F1CDB090500C4A301 /* guoqibiaoqian.png */,
 				EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */,
@@ -1954,10 +1971,23 @@
 		EAD2170F1CDC6F1A006424FB /* MyMessageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EAD217131CDC8B90006424FB /* YLDMyMessageCell */,
 				EAD217101CDC6F52006424FB /* MyMessageViewController.h */,
 				EAD217111CDC6F52006424FB /* MyMessageViewController.m */,
 			);
 			path = MyMessageViewController;
+			sourceTree = "<group>";
+		};
+		EAD217131CDC8B90006424FB /* YLDMyMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				EA696FAA1CDD7914001F037E /* YLDMyMessageTableViewCell.h */,
+				EA696FAB1CDD7914001F037E /* YLDMyMessageTableViewCell.m */,
+				EA696FAC1CDD7914001F037E /* YLDMyMessageTableViewCell.xib */,
+				EA696FB11CDD7FE9001F037E /* YLDMyMessageModel.h */,
+				EA696FB21CDD7FE9001F037E /* YLDMyMessageModel.m */,
+			);
+			path = YLDMyMessageCell;
 			sourceTree = "<group>";
 		};
 		EAE32DAE1C7E97A600C4CEA2 /* AFNetworking */ = {
@@ -3145,6 +3175,7 @@
 				FC28DB6D1CD9E8A4003D7C27 /* 添加照片-单株.png in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
+				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
 				FC28DB611CD9C271003D7C27 /* 注意.png in Resources */,
 				FC6FED691CACF833000E2CA5 /* 列表-时间.png in Resources */,
@@ -3153,6 +3184,7 @@
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
+				EA696FB71CDD8F46001F037E /* messageUnRead@2x.png in Resources */,
 				EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */,
 				EAF788A01CDB090500C4A301 /* guoqibiaoqian.png in Resources */,
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
@@ -3192,6 +3224,7 @@
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
 				FC5337A61CBDF2B6008BFB11 /* WHC_PictureListVC.xib in Resources */,
 				EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */,
+				EA696FAE1CDD7914001F037E /* YLDMyMessageTableViewCell.xib in Resources */,
 				FCF353D81CA3B515001ABA0A /* shangchuanzhaopian@3x.png in Resources */,
 				EAF050FD1C92A1A900F435A9 /* myBuyV@2x.png in Resources */,
 				EA5AAC411C8D2DF300660FC9 /* NomerMyCollectionBtn@2x.png in Resources */,
@@ -3214,6 +3247,7 @@
 				EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */,
 				EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */,
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
+				EA696FB01CDD7A6C001F037E /* MyMessage@2x.png in Resources */,
 				FC6FED8A1CAD103F000E2CA5 /* 银联支付.png in Resources */,
 				EAF051031C92A2E600F435A9 /* myMiaoPu@2x.png in Resources */,
 				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
@@ -3373,6 +3407,7 @@
 				EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
+				EA696FB31CDD7FE9001F037E /* YLDMyMessageModel.m in Sources */,
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
 				EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
@@ -3434,6 +3469,7 @@
 				FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */,
 				FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
+				EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */,
 				FCF353D31CA3B515001ABA0A /* ZIKPickerBtn.m in Sources */,
 				FC5337A51CBDF2B6008BFB11 /* WHC_PictureListVC.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,

@@ -26,15 +26,17 @@
         [self addSubview:shoucangView];
         self.collectBtn=(UIButton *)[shoucangView viewWithTag:1111];
        self.coloectLab=(UILabel *)[shoucangView viewWithTag:1112];
+        self.coloectLab.hidden=YES;
         UIView *integralView=[self viewWithLLLLLLLImageNmae:@"myintegralImage" andTitle:@"我的积分" andNum:@"0" andFrame:CGRectMake(kWidth/3*1, 0, kWidth/3, 80)];
         [self addSubview:integralView];
         self.interBtn=(UIButton *)[integralView viewWithTag:1111];
         self.integralLab=(UILabel *)[integralView viewWithTag:1112];
         self.integralLab.hidden=YES;
-        UIView *myMessageView=[self viewWithLLLLLLLImageNmae:@"mycollectionImage" andTitle:@"我的消息" andNum:@"0" andFrame:CGRectMake(kWidth/3*2, 0, kWidth/3, 80)];
+        UIView *myMessageView=[self viewWithLLLLLLLImageNmae:@"MyMessage" andTitle:@"我的消息" andNum:@"0" andFrame:CGRectMake(kWidth/3*2, 0, kWidth/3, 80)];
         [self addSubview:myMessageView];
         
         self.messageLab=(UILabel *)[myMessageView viewWithTag:1112];
+        self.messageLab.hidden=YES;
         self.messageBtn=(UIButton *)[myMessageView viewWithTag:1111];
     }
     return self;
@@ -73,6 +75,18 @@
 -(void)setModel:(UserInfoModel *)model
 {
     _model=model;
+    if ([model.count intValue]==0) {
+        self.coloectLab.hidden=YES;
+    }else
+    {
+        self.coloectLab.hidden=NO;
+    }
+    if ([model.nrMessageCount intValue]==0) {
+        self.messageLab.hidden=YES;
+    }else
+    {
+        self.messageLab.hidden=NO;
+    }
     self.coloectLab.text=[NSString stringWithFormat:@"%@",model.count];
     self.messageLab.text=[NSString stringWithFormat:@"%@",model.nrMessageCount];
     //self.integralLab.text=[NSString stringWithFormat:@"%@",model.sumscore];
