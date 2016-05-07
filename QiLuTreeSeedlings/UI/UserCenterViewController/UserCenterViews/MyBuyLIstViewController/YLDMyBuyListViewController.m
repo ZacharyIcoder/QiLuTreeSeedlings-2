@@ -34,13 +34,13 @@
 @implementation YLDMyBuyListViewController
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.tableView removeObserver:self forKeyPath:@"editing"];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     _pageCount = 1;
     //    dataAry = [NSMutableArray array];
-    [self getDataList];
+    [self.tableView headerBeginRefreshing];
     self.tableView.editing = NO;
     bottomcell.hidden = YES;
     self.tableView.frame = CGRectMake(0, 64+53, kWidth, kHeight-64-53);
@@ -51,7 +51,6 @@
     self.dataAry=[NSMutableArray array];
     _pageCount=1;
     _MessageState=0;
-    [self getDataList];
     [self configNav];
     [self creatScrollerViewBtn];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64+53, kWidth, kHeight-64-53) style:UITableViewStyleGrouped];
@@ -75,11 +74,11 @@
     [self.view addSubview:bottomcell];
     __weak typeof(self) weakSelf=self;
     [tableView addHeaderWithCallback:^{
-        _pageCount=1;
+        weakSelf.pageCount=1;
         [weakSelf getDataList];
     }];
     [tableView addFooterWithCallback:^{
-        _pageCount+=1;
+        weakSelf.pageCount+=1;
         [weakSelf getDataList];
     }];
     [tableView setBackgroundColor:BGColor];
