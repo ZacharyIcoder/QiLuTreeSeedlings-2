@@ -16,12 +16,12 @@
 #import "ZIKMySupplyCellBackButton.h"
 #import "ZIKMySupplyDetailViewController.h"
 #import "ZIKBottomDeleteTableViewCell.h"
-#import "ZIKMySupplyBottomRefreshTableViewCell.h"//底部刷新view
+#import "ZIKMySupplyBottomRefreshTableViewCell.h"//底部刷新view 在已通过并且可编辑状态下
 
 #define NAV_HEIGHT 64 //navgationview 高度
 #define MENUVIEW_HEIGHT 43  //button 选择菜单高度
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
-#define CELL_FOOTERVIEW_HEIGH 8 //cell分section footer
+#define CELL_FOOTERVIEW_HEIGH 8 //cell的section footer
 #define REFRESH_CELL_HEIGH 50
 #define SUPPLY_STATE_BUTTON_FONT [UIFont systemFontOfSize:14.0f]
 
@@ -44,14 +44,22 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 @implementation ZIKMySupplyVC
 {
-    UIView *lineView;
-    UIButton *cuttentButton;
-    ZIKBottomDeleteTableViewCell *bottomcell;
-    UILongPressGestureRecognizer *tapDeleteGR;
-    ZIKMySupplyBottomRefreshTableViewCell *refreshCell;
-    NSMutableArray *refreshMarr;
+    UIView *_lineView;//按钮下跟随滑动的lineview
+    UIButton *_cuttentButton;  //指向目前状态（四种状态下）的按钮
+    ZIKBottomDeleteTableViewCell *_bottomcell; //过期编辑状态下底部删除view
+    UILongPressGestureRecognizer *_tapDeleteGR;//长按手势
+    ZIKMySupplyBottomRefreshTableViewCell *_refreshCell;//已通过编辑状态下底部刷新view
+
+    //保存选中行数据(已通过状态下)
+    NSMutableArray *_refreshMarr;
+    NSArray *_throughSelectIndexArr;//已通过编辑状态下,选中的刷新index
+
+    // 保存选中行数据（过期状态下）
+    NSMutableArray *_removeArray;
+    NSArray *_deleteIndexArr;//过期编辑状态下,选中的删除index
 }
 
+#pragma 视图cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [self requestSupplyRestrict];
@@ -64,9 +72,45 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     [self initData];
     [self initUI];
     [self requestData];
-    _state = cuttentButton.tag;
 }
 
+#pragma mark - 返回箭头按钮点击事件
+-(void)backBtnAction:(UIButton *)sender
+{
+    if (self.supplyTableView.editing) {
+        self.supplyTableView.editing = NO;
+        if (self.state == SupplyStateThrough) {//如果是已通过编辑状态
+            if (_refreshMarr.count > 0) {
+                [_refreshMarr removeAllObjects]; //选中的刷新model清空
+            }
+            if (_throughSelectIndexArr.count > 0) {//选中的刷新数组清空
+                _throughSelectIndexArr = nil;
+            }
+            _refreshCell.hidden = YES;//隐藏底部刷新合计view
+            _refreshCell.count = 0;//底部刷新合计数为0
+        }
+        else if (self.state == SupplyStateNoThrough) {//如果是过期编辑状态
+            if (_removeArray.count > 0) {//选中的删除model清空
+                [_removeArray removeAllObjects];
+            }
+            if (_deleteIndexArr.count > 0) {//选中的删除cell 的 index清空
+                _deleteIndexArr = nil;
+            }
+            _bottomcell.hidden = YES;
+            _bottomcell.count = 0;
+        }
+        self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);//更改tableview 的frame
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        [self.supplyTableView addHeaderWithCallback:^{//添加刷新控件
+            [weakSelf requestMySupplyList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
+        }];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - tableviewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
 }
@@ -93,8 +137,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     if (self.supplyInfoMArr.count > 0) {
         [cell configureCell:self.supplyInfoMArr[indexPath.section]];
     }
-    //cell.UITableViewCellSeparatorStyle
-     //cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     return cell;
 }
 
@@ -129,81 +171,74 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     return view;
 }
 
+#pragma mark - tableviw选中cell事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
-//    __block  ZIKMySupplyBottomRefreshTableViewCell *cell = (ZIKMySupplyBottomRefreshTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    //    __block  ZIKMySupplyBottomRefreshTableViewCell *cell = (ZIKMySupplyBottomRefreshTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     if (self.supplyTableView.editing && self.state == SupplyStateThrough) {//刷新编辑状态
-        if (model.isCanRefresh && refreshMarr.count<5) {
-            [refreshMarr addObject:model];
-            refreshCell.count = refreshMarr.count;
+        if (!model.isCanRefresh) {//如果不可刷新
+            [ToastView showTopToast:@"该条信息本次不能刷新"];
+            [self.supplyTableView deselectRowAtIndexPath:indexPath animated:YES];
             return;
         }
-        else if (refreshMarr.count >= 5) {
-//            cell.selected = NO;
-            //- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+        if (model.isCanRefresh && _refreshMarr.count<5) {
+            [_refreshMarr addObject:model];
+            _refreshCell.count = _refreshMarr.count;
+            NSArray *selectedRows = [self.supplyTableView indexPathsForSelectedRows];
+            _throughSelectIndexArr = selectedRows;
+            return;
+        }
+        else if (_refreshMarr.count >= 5) {
             [self.supplyTableView deselectRowAtIndexPath:indexPath animated:YES];
             [ToastView showTopToast:@"一次最多刷新5条"];
             return;
         }
         return;
     }
-    //ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
+    else if (self.supplyTableView.editing && self.state == SupplyStateNoThrough) {//过期编辑状态
+        [_removeArray addObject:model];
+        _bottomcell.count = _removeArray.count;
+        NSArray *selectedRows = [self.supplyTableView indexPathsForSelectedRows];
+        _deleteIndexArr = selectedRows;
+
+        [self updateBottomDeleteCellView];
+        return;
+    }
     ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
     [self.navigationController pushViewController:detailVC animated:YES];
-
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
-//    __block  ZIKMySupplyTableViewCell *cell = (ZIKMySupplyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    if (!self.mySupplyTableView.editing) {
-//        cell.backgroundColor = [UIColor lightGrayColor];
-//        double delayInSeconds = 0.1;
-//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//            cell.backgroundColor = [UIColor whiteColor];
-//        });
-//    }
-//    // 判断编辑状态,必须要写
-//    if (self.mySupplyTableView.editing)
-//    {   if (model.isSelect == YES) {
-//        model.isSelect = NO;
-//        cell.isSelect = NO;
-//        cell.selected = NO;
-//        // 删除反选数据
-//        if ([_removeArray containsObject:model])
-//        {
-//            [_removeArray removeObject:model];
-//        }
-//        [self totalCount];
-//        return;
-//    }
-//        //NSLog(@"didSelectRowAtIndexPath");
-//        // 获取当前显示数据
-//        //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
-//        // 添加到我们的删除数据源里面
-//        model.isSelect = YES;
-//        [_removeArray addObject:model];
-//        [self totalCount];
-//        return;
-//    }
-//
-//    //ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.row];
-//    ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
-//    [self.navigationController pushViewController:detailVC animated:YES];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - 更改底部删除视图( 过期编辑状态下  是否全选)
+- (void)updateBottomDeleteCellView {
+    (_deleteIndexArr.count == self.supplyInfoMArr.count) ? (_bottomcell.isAllSelect = YES) : (_bottomcell.isAllSelect = NO);
+}
+
+#pragma mark - tableviw反选cell事件
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKSupplyModel *model = [self.supplyInfoMArr objectAtIndex:indexPath.section];
     if (self.supplyTableView.editing && self.state == SupplyStateThrough) {//刷新编辑状态
         // 删除反选数据
-        if ([refreshMarr containsObject:model])
+        if ([_refreshMarr containsObject:model])
         {
-            [refreshMarr removeObject:model];
+            [_refreshMarr removeObject:model];
         }
-        refreshCell.count = refreshMarr.count;
+        NSArray *selectedRows = [self.supplyTableView indexPathsForSelectedRows];
+        _throughSelectIndexArr = selectedRows;
+        _refreshCell.count = _refreshMarr.count;
+    }
+    else if (self.supplyTableView.editing && self.state == SupplyStateNoThrough) {//过期编辑状态
+        if ([_removeArray containsObject:model]) {//删除反选数据
+            [_removeArray removeObject:model];
+        }
+        NSArray *selectedRows = [self.supplyTableView indexPathsForSelectedRows];
+        _deleteIndexArr = selectedRows;
+        _bottomcell.count = _removeArray.count;
+        [self updateBottomDeleteCellView];
     }
 }
 
+#pragma mark - 退回原因按钮点击事件
 - (void)btnClick:(ZIKMySupplyCellBackButton *)button {
     ZIKSupplyModel *model = self.supplyInfoMArr[button.tag];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退回原因" message:model.reason delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即编辑", nil];
@@ -215,18 +250,16 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    //NSLog(@"%ld",(long)buttonIndex);
     if (buttonIndex == 1) {
         ShowActionV();
         ZIKSupplyModel *model = self.supplyInfoMArr[alertView.tag - 300];
         [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:model.uid Success:^(id responseObject) {
             RemoveActionV();
             if ([[responseObject objectForKey:@"success"] integerValue]) {
-                NSDictionary *dic = [responseObject objectForKey:@"result"];
-                SupplyDetialMode *model = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
-                model.supplybuyName = APPDELEGATE.userModel.name;
-                model.phone = APPDELEGATE.userModel.phone;
-                //        ZIKMySupplyDetailViewController *detailVC = [[ZIKMySupplyDetailViewController alloc] initMySupplyDetialWithUid:model];
+                NSDictionary *dic        = [responseObject objectForKey:@"result"];
+                SupplyDetialMode *model  = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
+                model.supplybuyName      = APPDELEGATE.userModel.name;
+                model.phone              = APPDELEGATE.userModel.phone;
                 ZIKSupplyPublishVC *spvc = [[ZIKSupplyPublishVC alloc] initWithModel:model];
                 [self.navigationController pushViewController:spvc animated:YES];
             }
@@ -237,6 +270,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }
 }
 
+#pragma mark - 请求数据
 - (void)requestData {
     [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
@@ -296,7 +330,25 @@ typedef NS_ENUM(NSInteger, SupplyState) {
                 [self.supplyInfoMArr addObject:model];
             }];
             [self.supplyTableView reloadData];
+            //已通过状态并且可编辑状态
+            if (self.supplyTableView.editing && self.state == SupplyStateThrough) {
+                if (_throughSelectIndexArr.count > 0) {
+                    [_throughSelectIndexArr enumerateObjectsUsingBlock:^(NSIndexPath *selectIndex, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [self.supplyTableView selectRowAtIndexPath:selectIndex animated:YES scrollPosition:UITableViewScrollPositionNone];
+                    }];
+                }
+            }
+            //已过期并且可编辑状态
+            else if (self.supplyTableView.editing && self.state == SupplyStateNoThrough) {
+                if (_deleteIndexArr.count > 0) {
+                    [_deleteIndexArr enumerateObjectsUsingBlock:^(NSIndexPath *selectDeleteIndex, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [self.supplyTableView selectRowAtIndexPath:selectDeleteIndex animated:YES scrollPosition:UITableViewScrollPositionNone];
+                    }];
+                }
+                [self updateBottomDeleteCellView];
+            }
             [self.supplyTableView footerEndRefreshing];
+            
         }
 
     } failure:^(NSError *error) {
@@ -307,9 +359,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 #pragma  mark - 初始化数据
 - (void)initData {
-    self.page = 1;
+    _state              = SupplyStateAll;//设置初始状态为全部
+    self.page           = 1;
     self.supplyInfoMArr = [NSMutableArray array];
-    refreshMarr = [[NSMutableArray alloc] init];
+    _refreshMarr        = [[NSMutableArray alloc] init];
+    _removeArray        = [[NSMutableArray alloc] init];
 }
 
 #pragma  mark - 初始化UI
@@ -341,15 +395,15 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [menuView addSubview:btn];
         padding += split;
         if (i == 0) {
-            cuttentButton = btn;
+            _cuttentButton = btn;
             [btn setTitleColor:NavColor forState:UIControlStateNormal];
         }
     }
     //线
-    lineView = [[UIView alloc] init];
-    lineView.frame = CGRectMake(0, MENUVIEW_HEIGHT-3, split, 3);
-    lineView.backgroundColor = NavColor;
-    [menuView addSubview:lineView];
+    _lineView = [[UIView alloc] init];
+    _lineView.frame = CGRectMake(0, MENUVIEW_HEIGHT-3, split, 3);
+    _lineView.backgroundColor = NavColor;
+    [menuView addSubview:_lineView];
 
     //tableview
     self.supplyTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(menuView.frame)+8, Width, Height-NAV_HEIGHT-MENUVIEW_HEIGHT-8) style:UITableViewStylePlain];
@@ -359,30 +413,41 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     [self.view addSubview:self.supplyTableView];
     //[ZIKFunction setExtraCellLineHidden:self.supplyTableView];
     self.supplyTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.supplyTableView.allowsMultipleSelectionDuringEditing = YES;
+
     //添加长按手势
-    tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
-    [self.supplyTableView addGestureRecognizer:tapDeleteGR];
+    _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
+    [self.supplyTableView addGestureRecognizer:_tapDeleteGR];
     //[self.supplyTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
 
 
-    //底部刷新view
-    refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
-    refreshCell.count = 0;
-    refreshCell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
-    [self.view addSubview:refreshCell];
-    [refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    refreshCell.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
-    refreshCell.layer.shadowOpacity = 0.2;////阴影透明度，默认0
-    refreshCell.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
-    refreshCell.layer.shadowRadius  = 3;//阴影半径，默认3
-    refreshCell.hidden = YES;
+    //底部刷新view（已通过状态下显示）
+    _refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
+    _refreshCell.count = 0;
+    _refreshCell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
+    [self.view addSubview:_refreshCell];
+    [_refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    _refreshCell.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
+    _refreshCell.layer.shadowOpacity = 0.2;////阴影透明度，默认0
+    _refreshCell.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
+    _refreshCell.layer.shadowRadius  = 3;//阴影半径，默认3
+    _refreshCell.hidden = YES;
 
+    //底部删除view（过期状态下显示）
+    _bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
+    _bottomcell.count = 0;
+    _bottomcell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
+    [self.view addSubview:_bottomcell];
+    [_bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    _bottomcell.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
+    _bottomcell.layer.shadowOpacity = 0.2;////阴影透明度，默认0
+    _bottomcell.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
+    _bottomcell.layer.shadowRadius  = 3;//阴影半径，默认3
+    _bottomcell.hidden = YES;
 }
-//代码手动选中与取消选中某行
-//
-//- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
-//
-//- (void)deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+
+
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 //{
 //    if ([keyPath isEqualToString:@"editing"]) {
@@ -403,27 +468,29 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     if (!self.supplyTableView.editing && self.state == SupplyStateThrough)
     {
         self.supplyTableView.editing = YES;
-        refreshCell.hidden = NO;
+        _refreshCell.hidden = NO;
         self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50-REFRESH_CELL_HEIGH);
         [self.supplyTableView removeHeader];//编辑状态取消下拉刷新
-        bottomcell.isAllSelect = NO;
-        if (refreshMarr.count > 0) {
-            [refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (_refreshMarr.count > 0) {
+            [_refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 model.isSelect = NO;
             }];
-            [refreshMarr removeAllObjects];
+            [_refreshMarr removeAllObjects];
         }
-        //[self totalCount];
+     }
+    else if (!self.supplyTableView.editing && self.state == SupplyStateNoThrough) {
+        [self.supplyTableView removeHeader];//编辑状态取消下拉刷新
+        self.supplyTableView.editing = YES;
+        _bottomcell.hidden = NO;
+        _bottomcell.isAllSelect = NO;
+        self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50-REFRESH_CELL_HEIGH);
     }
-//    - ( void )scrollToRowAtIndexPath:( NSIndexPath *)indexPath atScrollPosition:( UITableViewScrollPosition )scrollPosition animated:( BOOL )animated;
-//    NSIndexPath *rowAtIndexPath = [NSIndexPath indexPathWithIndex:3];
-//    [self.supplyTableView scrollToRowAtIndexPath:rowAtIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 
 }
 
 #pragma mark - 底部刷新按钮点击事件
 - (void)refreshBtnClick {
-    if (refreshMarr.count == 0) {
+    if (_refreshMarr.count == 0) {
         [ToastView showTopToast:@"请选择刷新项"];
         return;
     }
@@ -431,7 +498,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     __weak __typeof(self) blockSelf = self;
 
     __block NSString *uidString = @"";
-    [refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
@@ -441,7 +508,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             [ToastView showToast:@"刷新成功" withOriginY:200 withSuperView:self.view];
             blockSelf.supplyTableView.editing = NO;
             blockSelf.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);
-            refreshCell.hidden = YES;
+            _refreshCell.hidden = YES;
             blockSelf.page = 1;
             [blockSelf requestData];
 //            [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
@@ -460,26 +527,107 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     } failure:^(NSError *error) {
 
     }];
+}
 
+#pragma mark - 过期状态下——底部全选按钮点击事件
+- (void)selectBtnClick {
+    _bottomcell.isAllSelect ? (_bottomcell.isAllSelect = NO) : (_bottomcell.isAllSelect = YES);
+    if (_bottomcell.isAllSelect) {
+        if (_removeArray.count > 0) {
+            [_removeArray removeAllObjects];
+        }
+        [self.supplyInfoMArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+            [_removeArray addObject:myModel];
+        }];
+         NSMutableArray *tempMArr = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < self.supplyInfoMArr.count; i++) {
+            [self.supplyTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [tempMArr addObject:[NSIndexPath indexPathForRow:0 inSection:i]];
+        }
+        _deleteIndexArr = (NSArray *)tempMArr;
+     }
+    else if (_bottomcell.isAllSelect == NO) {
+//        [self.supplyInfoMArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+//            myModel.isSelect = NO;
+//        }];
+        if (_removeArray.count > 0) {
+            [_removeArray removeAllObjects];
+        }
+        _deleteIndexArr = nil;
+        for (NSInteger i = 0; i < self.supplyInfoMArr.count; i++) {
+            [self.supplyTableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES];
+        }
+    }
+    //[self updateBottomDeleteCellView];
+}
 
+#pragma mark - 过期状态下——底部删除按钮点击事件
+- (void)deleteButtonClick {
+    if (_removeArray.count  == 0) {
+        [ToastView showToast:@"请选择要删除的选项" withOriginY:200 withSuperView:self.view];
+        return;
+    }
+    __weak typeof(_removeArray) removeArr = _removeArray;
+    __weak __typeof(self) blockSelf = self;
+
+    __block NSString *uidString = @"";
+    [_removeArray enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+    }];
+    NSString *uids = [uidString substringFromIndex:1];
+    [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
+        //NSLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 1) {
+
+            [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([blockSelf.supplyInfoMArr containsObject:model]) {
+                    [blockSelf.supplyInfoMArr removeObject:model];
+                }
+            }];
+            [blockSelf.supplyTableView reloadData];
+            if (blockSelf.supplyInfoMArr.count == 0) {
+                _bottomcell.hidden = YES;
+                self.supplyTableView.editing = NO;
+                self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);
+                [self requestData];
+            }
+            if (_removeArray.count > 0) {
+                [_removeArray removeAllObjects];
+            }
+            if (_deleteIndexArr.count > 0) {
+                _deleteIndexArr = nil;
+            }
+            _bottomcell.count = 0;
+            [self updateBottomDeleteCellView];
+            [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
+        }
+        else {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
+        }
+    } failure:^(NSError *error) {
+        //[HTTPCLIENT]
+    }];
+
+    
 }
 
 #pragma mark - 选择不同状态按钮事件
 - (void)actionMenu:(UIButton *)button {
     if (self.supplyTableView.editing) {
         self.supplyTableView.editing = NO;
-        refreshCell.hidden = YES;
+        _refreshCell.hidden = YES;
+        _bottomcell.hidden = YES;
         self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);
     }
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
 
 
-    if (cuttentButton != button && !self.supplyTableView.isDecelerating) {
+    if (_cuttentButton != button && !self.supplyTableView.isDecelerating) {
         [button setTitleColor:NavColor forState:UIControlStateNormal];
-        [cuttentButton setTitleColor:titleLabColor forState:UIControlStateNormal];
-        cuttentButton = button;
+        [_cuttentButton setTitleColor:titleLabColor forState:UIControlStateNormal];
+        _cuttentButton = button;
         [UIView animateWithDuration:0.3 animations:^{
-            lineView.frame = CGRectMake(button.frame.origin.x, lineView.frame.origin.y, lineView.frame.size.width, lineView.frame.size.height);
+            _lineView.frame = CGRectMake(button.frame.origin.x, _lineView.frame.origin.y, _lineView.frame.size.width, _lineView.frame.size.height);
         }];
         [self.supplyTableView addHeaderWithCallback:^{
             weakSelf.page = 1;
@@ -491,23 +639,30 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         }
         else if (button.tag == 1) {
             self.state = SupplyStateThrough;
+            _refreshCell.count = 0;
+            if (_refreshMarr.count > 0) {
+                [_refreshMarr removeAllObjects];
+            }
         }
         else if (button.tag == 2) {
             self.state = SupplyStateOverdue;
         }
         else if (button.tag == 3) {
             self.state = SupplyStateNoThrough;
+            _bottomcell.count = 0;
+            if (_removeArray.count > 0) {
+                [_removeArray removeAllObjects];
+            }
         }
         if (self.supplyInfoMArr.count > 0) {
             [self.supplyInfoMArr removeAllObjects];
             [self.supplyTableView reloadData];
         }
         [self.supplyTableView headerBeginRefreshing];
-        //ShowActionV()
-        //[self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     }
 }
 
+#pragma mark - 低内存警告
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -519,17 +674,13 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     self.rightBarBtnTitleString = @"发布";
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-        //NSLog(@"发布");
         if (weakSelf.isCanPublish) {
             ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
             [weakSelf.navigationController pushViewController:spVC animated:YES];
-
         }
         else {
-            //NSLog(@"不可发布");
             [ToastView showToast:@"请您先完善苗圃信息" withOriginY:Width/3 withSuperView:weakSelf.view];
         }
-        
     };
 }
 
@@ -538,13 +689,15 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     HttpClient *httpClient=[HttpClient sharedClient];
     //供求发布限制
     [httpClient getSupplyRestrictWithToken:APPDELEGATE.userModel.access_token  withId:APPDELEGATE.userModel.access_id withClientId:nil withClientSecret:nil withDeviceId:nil withType:@"2" success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        }
         NSDictionary *dic = [responseObject objectForKey:@"result"];
         if ( [dic[@"count"] integerValue] == 0 ) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
             self.isCanPublish = NO;
-            //NSLog(@"不可发布");
-        }
+         }
         else {
-            //NSLog(@"可发布");
             self.isCanPublish = YES;
         }
     } failure:^(NSError *error) {
@@ -552,17 +705,15 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }];
 }
 
-- (void)requestRefresh:(NSString *)uidString {
-
-}
-
 #pragma mark - 可选方法实现
+#pragma mark - 设置删除按钮标题
 // 设置删除按钮标题
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return @"Delete";
 }
 
+#pragma mark - 设置行是否可编辑
 // 设置行是否可编辑
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -574,6 +725,8 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }
      return YES;
 }
+
+#pragma mark -  删除数据风格
 // 删除数据风格
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {

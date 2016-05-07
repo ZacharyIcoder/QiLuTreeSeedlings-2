@@ -75,16 +75,16 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treeNameSure2.png" translatesAutoresizingMaskIntoConstraints="NO" id="jwB-VZ-dcm">
-                        <rect key="frame" x="216" y="40" width="20" height="20"/>
+                        <rect key="frame" x="226" y="40" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="LfV-xu-96E"/>
                             <constraint firstAttribute="width" constant="20" id="u2C-rl-fDw"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本次已刷新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzi-8E-Koi">
-                        <rect key="frame" x="237" y="40" width="75" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本次已刷新" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzi-8E-Koi">
+                        <rect key="frame" x="247" y="40" width="65" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="75" id="0M2-Pd-HW1"/>
+                            <constraint firstAttribute="width" constant="65" id="0M2-Pd-HW1"/>
                             <constraint firstAttribute="height" constant="20" id="Oc5-Yk-OBa"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -110,7 +110,7 @@
                     <constraint firstItem="kEO-dX-cSc" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="p49-E6-tij"/>
                     <constraint firstItem="kEO-dX-cSc" firstAttribute="leading" secondItem="jx0-zG-AEY" secondAttribute="trailing" constant="8" id="pAZ-Co-6gj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="YIL-gn-yPv" secondAttribute="trailing" constant="15" id="pYE-pn-fwk"/>
-                    <constraint firstItem="kEO-dX-cSc" firstAttribute="width" secondItem="jx0-zG-AEY" secondAttribute="width" id="qFT-2i-cQD"/>
+                    <constraint firstItem="kEO-dX-cSc" firstAttribute="width" secondItem="jx0-zG-AEY" secondAttribute="width" priority="250" id="qFT-2i-cQD"/>
                     <constraint firstItem="eCH-de-Zy3" firstAttribute="leading" secondItem="b5m-yb-biD" secondAttribute="trailing" constant="9" id="qdG-Ei-ga2"/>
                     <constraint firstAttribute="trailingMargin" secondItem="kEO-dX-cSc" secondAttribute="trailing" id="u4Z-2D-Nep"/>
                     <constraint firstItem="rzi-8E-Koi" firstAttribute="centerY" secondItem="YIL-gn-yPv" secondAttribute="centerY" id="wYR-Lg-vQv"/>

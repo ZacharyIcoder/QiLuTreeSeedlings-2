@@ -19,7 +19,7 @@
     self.timeImageView.autoresizingMask = YES;
     self.timeImageView.layer.cornerRadius = 6.0f;
     self.timeImageView.layer.masksToBounds = YES;
-    self.timeImageView.backgroundColor = [UIColor whiteColor];
+//    self.timeImageView.backgroundColor = [UIColor whiteColor];
     self.refreshLabel.textColor = NavColor;
 
     //self.timeImageView.highlightedImage = [UIImage imageNamed:@"compose_keyboardbutton_background"];
@@ -28,30 +28,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.timeImageView.backgroundColor = [UIColor whiteColor];
-
-    // Configure the view for the selected state
-    //self.backgroundColor = [UIColor blueColor];
-    //self.selectionStyle = UITableViewCellSelectionStyleBlue;
-//    if (selected) {
-//        self.highlighted = YES;
-//    }
-//    else {
-//        self.highlighted = NO;
-//    }
-//    if ( selected) {
-//        UIColor *color = [[UIColor alloc]initWithRed:0.0 green:0.0 blue:0.0 alpha:1];//通过RGB来定义自己的颜色
-//        //[objc] view plain copy 在CODE上查看代码片派生到我的代码片
-//        self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
-//        self.backgroundView.backgroundColor = color;
-//    }
-//    else {
-//        UIColor *color = [[UIColor alloc]initWithRed:1.0 green:1.0 blue:1.0 alpha:1];//通过RGB来定义自己的颜色
-//        //[objc] view plain copy 在CODE上查看代码片派生到我的代码片
-//        self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
-//        self.selectedBackgroundView.backgroundColor = color;
-//    }
-
+//    self.timeImageView.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)configureCell:(ZIKSupplyModel *)model {
