@@ -102,7 +102,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);//更改tableview 的frame
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
         [self.supplyTableView addHeaderWithCallback:^{//添加刷新控件
-            [weakSelf requestMySupplyList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
+            [weakSelf requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
         }];
     }
     else {

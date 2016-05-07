@@ -19,6 +19,9 @@
 
 #import "WHC_PhotoListCell.h"
 #import "WHC_PictureListVC.h"
+
+#import "ZIKAddImageUIView.h"
+
 #define kMaxLength 20
 
 @interface ZIKSupplyPublishVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
@@ -26,6 +29,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 @property (nonatomic, strong) UITableView      *supplyInfoTableView;
 @property (nonatomic, weak  ) ZIKPickImageView *pickerImgView;
+@property (nonatomic, weak)   ZIKAddImageUIView  *addImageView;
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
 //@property (nonatomic, strong) NSMutableArray   *imageUrlMarr;
 @property (nonatomic, strong) UIButton         *sureButton;
@@ -48,6 +52,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 @end
 
 @implementation ZIKSupplyPublishVC
+{
+    UIView *nameView;
+}
 -(id)initWithModel:(SupplyDetialMode*)model
 {
     self = [super init];
@@ -111,18 +118,18 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.backScrollView addSubview:titleView];
     tempFrame.origin.y += 44.5;
     
-    ZIKPickImageView *pickView = [[ZIKPickImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), Width, 126)];
+    ZIKAddImageUIView *pickView = [[ZIKAddImageUIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), Width, (Width-60)/3 + 45)];
     //pickView.backgroundColor = [UIColor yellowColor];
     pickView.backgroundColor = [UIColor whiteColor];
 
     [self.backScrollView addSubview:pickView];
-    self.pickerImgView = pickView;
+    //self.pickerImgView = pickView;
     __weak typeof(self) weakSelf = self;
      self.pickerImgView.takePhotoBlock = ^{
         [weakSelf openMenu];
     };
 
-    UIView *nameView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame), kWidth, 54)];
+    nameView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame), kWidth, 54)];
     //[nameView setBackgroundColor:[UIColor redColor]];
     [nameView setBackgroundColor:[UIColor whiteColor]];
 
@@ -227,7 +234,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             [myview removeFromSuperview];
         }
     }];
-    CGFloat Y=230;
+    CGFloat Y = CGRectGetMaxY(nameView.frame);
     for (int i=0; i<self.dataAry.count; i++) {
         TreeSpecificationsModel *model=self.dataAry[i];
         FabutiaojiaCell *cell;
@@ -340,7 +347,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 {
     self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
     //    NSLog(@"%@",ary);
-    CGFloat Y = 220;
+    CGFloat Y = CGRectGetMaxY(nameView.frame) ;
 
     [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
