@@ -11,6 +11,7 @@
 #import "LoginView.h"
 #import "HttpClient.h"
 #import "RegisteredViewController.h"
+#import "ForgetPassWorldViewController.h"
 @interface LoginViewController ()<LoginViewDelegate>
 
 @end
@@ -34,9 +35,9 @@
     [titleLab setTextColor:[UIColor whiteColor]];
     [navView addSubview:titleLab];
     [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
-    UIButton *registeredBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 27, 40, 30)];
+    UIButton *registeredBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-90, 27, 80, 30)];
     [navView addSubview:registeredBtn];
-    [registeredBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [registeredBtn setTitle:@"找回密码" forState:UIControlStateNormal];
     [registeredBtn addTarget:self action:@selector(registeredBtnAction) forControlEvents:UIControlEventTouchUpInside];
     LoginView *loginView=[[LoginView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
     loginView.delegate=self;
@@ -46,7 +47,7 @@
 -(void)registeredBtnAction
 {
     //NSLog(@"注册");
-    RegisteredViewController *registVC=[[RegisteredViewController alloc]init];
+    ForgetPassWorldViewController *registVC=[[ForgetPassWorldViewController alloc]init];
     [self.navigationController pushViewController:registVC animated:YES];
 }
 -(void)reginSSSAction

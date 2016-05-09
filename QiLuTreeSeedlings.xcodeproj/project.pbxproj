@@ -150,6 +150,9 @@
 		EA7AE8EB1C96874400B43073 /* person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7AE8E91C96874400B43073 /* person@2x.png */; };
 		EA7AE8EC1C96874400B43073 /* price@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7AE8EA1C96874400B43073 /* price@2x.png */; };
 		EA7AE8EF1C96908B00B43073 /* SellQiyeInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8EE1C96908B00B43073 /* SellQiyeInfoTableViewCell.m */; };
+		EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB82D1CE01B140010EAE5 /* ForgetPassWorldViewController.m */; };
+		EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */; };
+		EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */; };
 		EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */; };
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
@@ -661,6 +664,12 @@
 		EA7AE8EA1C96874400B43073 /* price@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "price@2x.png"; sourceTree = "<group>"; };
 		EA7AE8ED1C96908B00B43073 /* SellQiyeInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellQiyeInfoTableViewCell.h; sourceTree = "<group>"; };
 		EA7AE8EE1C96908B00B43073 /* SellQiyeInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellQiyeInfoTableViewCell.m; sourceTree = "<group>"; };
+		EA7CB82C1CE01B140010EAE5 /* ForgetPassWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassWorldViewController.h; sourceTree = "<group>"; };
+		EA7CB82D1CE01B140010EAE5 /* ForgetPassWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassWorldViewController.m; sourceTree = "<group>"; };
+		EA7CB8301CE01BB20010EAE5 /* AuthcodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthcodeView.h; sourceTree = "<group>"; };
+		EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthcodeView.m; sourceTree = "<group>"; };
+		EA7CB8361CE02B960010EAE5 /* CheckIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIDViewController.h; sourceTree = "<group>"; };
+		EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIDViewController.m; sourceTree = "<group>"; };
 		EA88BE721C83E06E001E4E1F /* SearchRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendView.h; sourceTree = "<group>"; };
 		EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendView.m; sourceTree = "<group>"; };
 		EA88BE751C83F3AC001E4E1F /* searchHistoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchHistoryViewCell.h; sourceTree = "<group>"; };
@@ -1225,6 +1234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC50B1781CAE24AB0022A24C /* CoreGraphics.framework in Frameworks */,
 				FCD2E0971CC9EEFA000CFBA2 /* MessageUI.framework in Frameworks */,
 				EA5444BB1CC72AAD00971A50 /* AudioToolbox.framework in Frameworks */,
 				FC50B1F91CAE45850022A24C /* Foundation.framework in Frameworks */,
@@ -1235,7 +1245,6 @@
 				FC50B1EF1CAE44C70022A24C /* UIKit.framework in Frameworks */,
 				FC50B3421CAE4C4A0022A24C /* libcrypto.a in Frameworks */,
 				FC50B17A1CAE24D80022A24C /* libstdc++.tbd in Frameworks */,
-				FC50B1781CAE24AB0022A24C /* CoreGraphics.framework in Frameworks */,
 				FC50B1761CAE249A0022A24C /* libiconv.tbd in Frameworks */,
 				FC50B1741CAE247E0022A24C /* Security.framework in Frameworks */,
 				FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */,
@@ -1818,6 +1827,7 @@
 		EA7419F71C8FC4AA00F54478 /* Login&registered */ = {
 			isa = PBXGroup;
 			children = (
+				EA7CB82F1CE01B910010EAE5 /* AuthcodeView */,
 				EAEB63BA1C90FC1E0001ABC9 /* NSString */,
 				EA7419F81C8FC64800F54478 /* LoginViewController.h */,
 				EA7419F91C8FC64800F54478 /* LoginViewController.m */,
@@ -1825,6 +1835,10 @@
 				EA7419FC1C8FC65E00F54478 /* RegisteredViewController.m */,
 				EA7419FE1C8FC69B00F54478 /* LoginView.h */,
 				EA7419FF1C8FC69B00F54478 /* LoginView.m */,
+				EA7CB82C1CE01B140010EAE5 /* ForgetPassWorldViewController.h */,
+				EA7CB82D1CE01B140010EAE5 /* ForgetPassWorldViewController.m */,
+				EA7CB8361CE02B960010EAE5 /* CheckIDViewController.h */,
+				EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */,
 			);
 			path = "Login&registered";
 			sourceTree = "<group>";
@@ -1908,6 +1922,16 @@
 				EAAFCF6F1CBDD94300EB894F /* BigImageViewShowView.m */,
 			);
 			path = sellDetialViewCell;
+			sourceTree = "<group>";
+		};
+		EA7CB82F1CE01B910010EAE5 /* AuthcodeView */ = {
+			isa = PBXGroup;
+			children = (
+				EA7CB8301CE01BB20010EAE5 /* AuthcodeView.h */,
+				EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */,
+			);
+			name = AuthcodeView;
+			path = ../SellDetialViewController/AuthcodeView;
 			sourceTree = "<group>";
 		};
 		EA8CAA621C8963D500058A34 /* DataCache */ = {
@@ -3300,6 +3324,7 @@
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
+				EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */,
 				EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
 				EAE32DF11C7E9C3800C4CEA2 /* AFImageDownloader.m in Sources */,
@@ -3334,6 +3359,7 @@
 				FC49AE431CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m in Sources */,
 				FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */,
 				FC50B34C1CAE4C4A0022A24C /* RSADataVerifier.m in Sources */,
+				EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */,
 				FC50B3491CAE4C4A0022A24C /* NSDataEx.m in Sources */,
 				EA040FBF1C8826D900E43B5E /* ToastView.m in Sources */,
 				EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */,
@@ -3452,6 +3478,7 @@
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
 				EA5DF94C1CB6399A00BE0E8C /* ZIKIntegraModel.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
+				EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */,
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
 				FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */,

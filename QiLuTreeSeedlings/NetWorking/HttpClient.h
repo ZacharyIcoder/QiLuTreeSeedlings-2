@@ -460,4 +460,12 @@
 -(void)myMessageReadingWithUid:(NSString *)uid
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 批量消息删除 -----------
+-(void)myMessageDeleteWithUid:(NSString *)uids
+                     Success:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 验证手机号是否存在 -----------
+-(void)checkPhoneNum:(NSString *)phone
+             Success:(void (^)(id responseObject))success
+             failure:(void (^)(NSError *error))failure;
 @end

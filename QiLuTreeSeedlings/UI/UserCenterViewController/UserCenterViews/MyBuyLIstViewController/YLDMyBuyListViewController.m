@@ -167,6 +167,7 @@
         self.tableView.editing = NO;
         bottomcell.hidden = YES;
         self.tableView.frame = CGRectMake(0, 64+53, Width, Height-64-53);
+        [_removeArray removeAllObjects];
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
         [self.tableView addHeaderWithCallback:^{//添加刷新控件
             _pageCount=1;

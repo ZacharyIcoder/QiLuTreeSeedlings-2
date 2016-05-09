@@ -19,12 +19,12 @@
     UILongPressGestureRecognizer *tapDeleteGR;
   
 }
-@property (nonatomic,weak) UITableView *tableView;
+@property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic) NSInteger pageCount;
 @property (nonatomic,strong) NSMutableArray *dataAry;
 @property (nonatomic) NSInteger selectNum;
 @property (nonatomic,strong)UIView *oldView;
-@property (nonatomic,weak)NSArray *throughSelectIndexArr;
+@property (nonatomic,strong)NSArray *throughSelectIndexArr;
 @property (nonatomic,strong)  NSMutableArray *CanDelateAry;
 @end
 
@@ -38,6 +38,7 @@
     self.vcTitle=@"通知消息";
     self.dataAry=[NSMutableArray array];
     _removeArray=[NSMutableArray array];
+    self.CanDelateAry=[NSMutableArray array];
     _pageCount=1;
     _selectNum=-1;
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStyleGrouped];
@@ -100,36 +101,37 @@
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
         }
-        [self.CanDelateAry enumerateObjectsUsingBlock:^(YLDMyMessageModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            
+        for (int i=0; i<self.dataAry.count; i++) {
+            YLDMyMessageModel *myModel=self.dataAry[i];
             if(myModel.reads==1)
             {
-                [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:idx] animated:YES scrollPosition:UITableViewScrollPositionNone];
+                [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES scrollPosition:UITableViewScrollPositionNone];
                 [_removeArray addObject:myModel];
             }
-            
-        }];
-           
+
+        }
+        NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+        _throughSelectIndexArr = selectedRows;
      
     }
     else if (bottomcell.isAllSelect == NO) {
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
         }
+        _throughSelectIndexArr=nil;
+        for (int i=0; i<self.dataAry.count; i++) {
+             [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES];
+        }
         
     }
     [self totalCount];
-    [self.tableView reloadData];
 }
 - (void)totalCount {
     bottomcell.count = _removeArray.count;
-    bottomcell.isAllSelect = YES;
-    [self.CanDelateAry enumerateObjectsUsingBlock:^(YLDMyMessageModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (![_removeArray containsObject:myModel]) {
-            bottomcell.isAllSelect = NO;
-        }
-        
-    }];
+    bottomcell.isAllSelect =NO;
+    if (self.CanDelateAry.count==_removeArray.count) {
+        bottomcell.isAllSelect = YES;
+    }
 }
 //删除按钮action
 - (void)deleteButtonClick {
@@ -142,37 +144,42 @@
     __weak __typeof(self) blockSelf = self;
     
     __block NSString *uidString = @"";
-//    [_removeArray enumerateObjectsUsingBlock:^(HotBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-//        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
-//    }];
-//    NSString *uids = [uidString substringFromIndex:1];
-//    [HTTPCLIENT deleteMyBuyInfo:uids Success:^(id responseObject) {
-//        if ([responseObject[@"success"] integerValue] == 1) {
-//            [ToastView showTopToast:@"删除成功"];
-//            
-//            [removeArr enumerateObjectsUsingBlock:^(HotBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-//                if ([blockSelf.dataAry containsObject:model]) {
-//                    [blockSelf.dataAry removeObject:model];
-//                }
-//            }];
-//            [blockSelf.pullTableView reloadData];
-//            [blockSelf.pullTableView deleteRowsAtIndexPaths:blockSelf.pullTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
-//            if (blockSelf.dataAry.count == 0) {
-//                self.PageCount=1;
-//                [self getDataList];
-//                bottomcell.hidden = YES;
-//                self.pullTableView.editing = NO;
-//                self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
-//            }
-//            [_removeArray removeAllObjects];
-//            [self totalCount];
-//        }
-//        else {
-//            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-//        }
-//    } failure:^(NSError *error) {
-//        
-//    }];
+    [_removeArray enumerateObjectsUsingBlock:^(YLDMyMessageModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+    }];
+    NSString *uids = [uidString substringFromIndex:1];
+    [HTTPCLIENT myMessageDeleteWithUid:uids Success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 1) {
+            [ToastView showTopToast:@"删除成功"];
+            
+            [removeArr enumerateObjectsUsingBlock:^(YLDMyMessageModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([blockSelf.dataAry containsObject:model]) {
+                    [blockSelf.dataAry removeObject:model];
+                }
+            }];
+            [blockSelf.tableView reloadData];
+            [blockSelf.tableView deleteRowsAtIndexPaths:blockSelf.tableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (blockSelf.dataAry.count == 0) {
+                self.pageCount=1;
+                [self getDataList];
+                bottomcell.hidden = YES;
+                self.tableView.editing = NO;
+                self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+                __weak typeof(self) weakSelf=self;
+                [self.tableView addHeaderWithCallback:^{
+                    weakSelf.pageCount=1;
+                    [weakSelf getDataList];
+                }];
+            }
+            [_removeArray removeAllObjects];
+            [self totalCount];
+        }
+        else {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
     
 }
 
@@ -222,6 +229,22 @@
             {
                 [self.dataAry addObjectsFromArray:aryzz];
                 [self.tableView reloadData];
+                
+                if (self.tableView.editing==YES) {
+                    if (_throughSelectIndexArr.count > 0) {
+                        [_throughSelectIndexArr enumerateObjectsUsingBlock:^(NSIndexPath *selectIndex, NSUInteger idx, BOOL * _Nonnull stop) {
+                            [self.tableView selectRowAtIndexPath:selectIndex animated:YES scrollPosition:UITableViewScrollPositionNone];
+                        }];
+                    }
+                    [_CanDelateAry removeAllObjects];
+                    for (YLDMyMessageModel *model in self.dataAry) {
+                        if (model.reads==1) {
+                            [self.CanDelateAry addObject:model];
+                        }
+                    }
+                    [self totalCount];
+
+                }
                 
             }
             
@@ -313,6 +336,9 @@
     //非编辑状态下点选
      [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==_selectNum) {
+        _selectNum=-1;
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:indexPath.section];
+        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
         return;
     }
     YLDMyMessageModel *model=self.dataAry[indexPath.section];
@@ -341,6 +367,7 @@
     if ( self.tableView.editing==YES&&model.reads==1) {
         if ([_removeArray containsObject:model])
         {
+           // NSLog(@"........");
             [_removeArray removeObject:model];
         }
         NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
@@ -380,6 +407,26 @@
                                      attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
                                         context:nil];
     return rect.size.height;
+}
+-(void)backBtnAction:(UIButton *)sender
+{
+    if (self.tableView.editing) {
+        self.tableView.editing = NO;
+        bottomcell.hidden = YES;
+        self.tableView.frame = CGRectMake(0, 64, Width, Height-64);
+        [_CanDelateAry removeAllObjects];
+        [_removeArray removeAllObjects];
+        _throughSelectIndexArr=nil;
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        [self.tableView addHeaderWithCallback:^{//添加刷新控件
+            _pageCount=1;
+            [weakSelf getDataList];
+        }];
+        
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
