@@ -29,7 +29,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 @property (nonatomic, strong) UITableView      *supplyInfoTableView;
 @property (nonatomic, weak  ) ZIKPickImageView *pickerImgView;
-@property (nonatomic, weak)   ZIKAddImageUIView  *addImageView;
+@property (nonatomic, weak)   ZIKAddImageUIView *addImageView;
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
 //@property (nonatomic, strong) NSMutableArray   *imageUrlMarr;
 @property (nonatomic, strong) UIButton         *sureButton;
@@ -118,12 +118,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.backScrollView addSubview:titleView];
     tempFrame.origin.y += 44.5;
     
-    ZIKAddImageUIView *pickView = [[ZIKAddImageUIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), Width, (Width-60)/3 + 45)];
+    ZIKPickImageView *pickView = [[ZIKPickImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), Width, (Width-60)/3 + 45)];
     //pickView.backgroundColor = [UIColor yellowColor];
     pickView.backgroundColor = [UIColor whiteColor];
 
     [self.backScrollView addSubview:pickView];
-    //self.pickerImgView = pickView;
+    self.pickerImgView = pickView;
     __weak typeof(self) weakSelf = self;
      self.pickerImgView.takePhotoBlock = ^{
         [weakSelf openMenu];
@@ -523,15 +523,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     vc.delegate = self;
     vc.maxChoiceImageNumberumber = 3-self.pickerImgView.urlMArr.count;
     [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
-
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.navigationBar.barTintColor = NavColor;
-//
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    picker.delegate = self;
-//    //设置选择后的图片可被编辑
-//    //    picker.allowsEditing = YES;
-//    [self presentViewController:picker animated:YES completion:nil];
 }
 
 #pragma mark - WHC_ChoicePictureVCDelegate
@@ -643,15 +634,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     [ToastView showToast:@"图片占用内存过大,请选择较小的图片文件" withOriginY:250 withSuperView:self.view];
-}
-
-#pragma mark - 设置TableView空行分割线隐藏
-// 设置TableView空行分割线隐藏
-- (void)setExtraCellLineHidden: (UITableView *)tableView
-{
-    UIView *view = [UIView new];
-    view.backgroundColor = [UIColor clearColor];
-    [tableView setTableFooterView:view];
 }
 
 #pragma mark 保存图片到document
