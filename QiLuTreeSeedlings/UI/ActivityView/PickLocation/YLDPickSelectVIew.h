@@ -10,9 +10,7 @@
 #import "CityModel.h"
 @class YLDPickSelectVIew;
 @protocol YLDPickSelectVIewDelegate <NSObject>
-
 - (void)selectWithCtiyModel:(CityModel *)model andYLDPickSelectVIew:(YLDPickSelectVIew *)pickSelectVIew;
-
 @end
 @interface YLDPickSelectVIew : UIView
 -(id)initWithFrame:(CGRect)frame andCode:(NSString *)code andLeve:(NSString *)leve;

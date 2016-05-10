@@ -13,6 +13,7 @@
 @interface YLDPickSelectVIew ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,strong)NSArray *dataAry;
+@property (nonatomic,assign) NSInteger selectRow;
 @end
 
 @implementation YLDPickSelectVIew
@@ -20,6 +21,7 @@
 {
     self=[super initWithFrame:frame];
     if (self) {
+        _selectRow=-1;
         [self setBackgroundColor:[UIColor whiteColor]];
         UITableView  *tableView=[[UITableView alloc]initWithFrame:self.bounds];
         [self addSubview:tableView];
@@ -54,6 +56,12 @@
         cell=[CityTableViewCell CityTableViewCell];
     }
     CityModel *model=self.dataAry[indexPath.row];
+    if (indexPath.row==_selectRow) {
+        cell.pickImage.hidden=NO;
+    }else
+    {
+        cell.pickImage.hidden=YES;
+    }
     cell.model=model;
     return cell;
 }
@@ -63,7 +71,8 @@
     if (self.delegate) {
         [self.delegate selectWithCtiyModel:model andYLDPickSelectVIew:self];
     }
-    
+    _selectRow=indexPath.row;
+    [tableView reloadData];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

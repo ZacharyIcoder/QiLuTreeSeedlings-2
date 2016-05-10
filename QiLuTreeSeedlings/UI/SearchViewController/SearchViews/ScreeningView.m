@@ -16,12 +16,11 @@
 #import "YLDPickLocationView.h"
 #import "ToastView.h"
 #import "ZIKSideView.h"
-@interface ScreeningView ()<UITextFieldDelegate,ZIKSelectViewUidDelegate>
+@interface ScreeningView ()<UITextFieldDelegate,ZIKSelectViewUidDelegate,YLDPickLocationDelegate>
 @property (nonatomic,strong) UITextField *nameTextField;
 @property (nonatomic,strong)UIScrollView *backScrollView;
 @property (nonatomic,strong)NSArray *dataAry;
 @property (nonatomic,strong) UIButton *gongyingBtn;
-@property (nonatomic,strong) YLDPickLocationView *pickLocation;
 @property (nonatomic,strong) UIButton *areaBtn;
 @property (nonatomic,weak) UITextField *nowTextFlield;
 @property (nonatomic,strong)NSMutableArray *cellAry;
@@ -31,7 +30,7 @@
 @property (nonatomic,strong) UIButton *quedingBtn;
 @end
 @implementation ScreeningView
-@synthesize gongyingBtn,pickLocation,cellAry;
+@synthesize gongyingBtn,cellAry;
 -(void)setSearchStr:(NSString *)searchStr
 {
     if ([searchStr isEqualToString:self.nameTextField.text]) {
@@ -185,13 +184,13 @@
 -(void)areaBtnAction
 {
     CGRect tempFrame = [[UIScreen mainScreen] bounds];
-    if (!pickLocation) {
-        pickLocation = [[YLDPickLocationView alloc] initWithFrame:tempFrame];
+    
+      YLDPickLocationView * pickLocation = [[YLDPickLocationView alloc] initWithFrame:tempFrame];
         
-        //pickLocation.locationDelegate = self;
-    }
+        pickLocation.delegate = self;
+     [pickLocation showPickView];
     [self hidingKey];
-    [pickLocation showPickView];
+   
 }
 - (void)textFieldDidChange:(UITextField *)textField
 {
@@ -208,6 +207,39 @@
         model.anwser=nil;
     }
     [self performSelector:@selector(creatScreeningCells) withObject:nil afterDelay:0.3];
+}
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
+{
+        NSMutableString *namestr=[NSMutableString new];
+        if (sheng.code) {
+            [namestr appendString:sheng.cityName];
+            self.province=sheng.code;
+        }else
+        {
+            self.province=nil;
+        }
+    
+        if (shi.code) {
+            [namestr appendString:shi.cityName];
+            self.City=shi.code;
+        }else
+        {
+            self.City=nil;
+        }
+        if (xian.code) {
+            [namestr appendString:xian.cityName];
+            self.county=xian.code;
+        }else{
+             self.county=nil;
+        }
+        if (namestr.length>0) {
+            [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
+            [self.areaBtn.titleLabel sizeToFit];
+        }else{
+            [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+            [self.areaBtn.titleLabel sizeToFit];
+        }
+
 }
 //-(void)selectedLocationInfo:(Province *)location
 //{

@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CityModel.h"
+@protocol YLDPickLocationDelegate <NSObject>
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen;
+@end
 @interface YLDPickLocationView : UIView
+@property (nonatomic,weak) id <YLDPickLocationDelegate>delegate;
 -(id)initWithFrame:(CGRect)frame;
 -(void)showPickView;
 -(void)removePickView;
