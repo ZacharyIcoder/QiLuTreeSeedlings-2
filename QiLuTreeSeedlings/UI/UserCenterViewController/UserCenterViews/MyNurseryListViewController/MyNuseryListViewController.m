@@ -227,7 +227,8 @@
     if (self.dataAry.count==0) {
         ZIKEmptyTableViewCell *cell =  [[[NSBundle mainBundle] loadNibNamed:@"ZIKEmptyTableViewCell" owner:self options:nil] lastObject];
         cell.emptyImageNameStr = @"myNuserNull";
-        cell.empthSecondStr = @"您还没有添加任何苗圃信息";
+        cell.emptyFirstStr     = @"您还没有任何苗圃信息";
+        cell.empthSecondStr    = @"点击右上角添加苗圃信息吧";
         return cell;
     }else
     {

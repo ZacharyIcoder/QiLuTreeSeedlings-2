@@ -34,7 +34,7 @@
 }
 
 - (void)setEmptyFirstStr:(NSString *)emptyFirstStr {
-    _emptyImageNameStr = emptyFirstStr;
+    _emptyFirstStr = emptyFirstStr;
     self.firstLabel.text = _emptyFirstStr;
 }
 
