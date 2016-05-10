@@ -356,6 +356,8 @@
 		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
 		FC68F3841CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */; };
 		FC68F3851CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */; };
+		FC6C13391CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6C13371CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m */; };
+		FC6C133A1CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC6C13381CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib */; };
 		FC6FED4E1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */; };
 		FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED511CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m */; };
 		FC6FED551CACEDA7000E2CA5 /* ZIKCustomizedInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED541CACEDA7000E2CA5 /* ZIKCustomizedInfoListViewController.m */; };
@@ -1101,6 +1103,9 @@
 		FC68F3811CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyBottomRefreshTableViewCell.h; sourceTree = "<group>"; };
 		FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyBottomRefreshTableViewCell.m; sourceTree = "<group>"; };
 		FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyBottomRefreshTableViewCell.xib; sourceTree = "<group>"; };
+		FC6C13361CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailBottomShareTableViewCell.h; sourceTree = "<group>"; };
+		FC6C13371CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailBottomShareTableViewCell.m; sourceTree = "<group>"; };
+		FC6C13381CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyDetailBottomShareTableViewCell.xib; sourceTree = "<group>"; };
 		FC6FED4C1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailViewController.h; sourceTree = "<group>"; };
 		FC6FED4D1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailViewController.m; sourceTree = "<group>"; };
 		FC6FED501CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyCustomizedInfoViewController.h; sourceTree = "<group>"; };
@@ -2953,6 +2958,9 @@
 				FC68F3811CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.h */,
 				FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */,
 				FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */,
+				FC6C13361CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.h */,
+				FC6C13371CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m */,
+				FC6C13381CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3212,6 +3220,7 @@
 				FC6FED691CACF833000E2CA5 /* 列表-时间.png in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,
 				EA1CF4061CACD11A00AF2D82 /* loading03@2x.png in Resources */,
+				FC6C133A1CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
@@ -3315,6 +3324,7 @@
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
 				FC5337C81CBE17B0008BFB11 /* HCSStarRatingView.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
+				FC6C13391CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */,
 				FCF353E71CA3B515001ABA0A /* YYClassInfo.m in Sources */,
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,

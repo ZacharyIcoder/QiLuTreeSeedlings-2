@@ -272,7 +272,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 #pragma mark - 请求数据
 - (void)requestData {
-    [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+//    [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.supplyTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
@@ -282,6 +282,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         weakSelf.page++;
         [weakSelf requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
+    [self.supplyTableView headerBeginRefreshing];
 
 }
 
@@ -412,7 +413,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     self.supplyTableView.delegate   = self;
     [self.view addSubview:self.supplyTableView];
     //[ZIKFunction setExtraCellLineHidden:self.supplyTableView];
-    self.supplyTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.supplyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.supplyTableView.allowsMultipleSelectionDuringEditing = YES;
 
     //添加长按手势
