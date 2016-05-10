@@ -12,15 +12,16 @@
 #import "ToastView.h"
 #import "SreeningViewCell.h"
 #import "TreeSpecificationsModel.h"
-#import "PickerLocation.h"
+//#import "PickerLocation.h"
+#import "YLDPickLocationView.h"
 #import "ToastView.h"
 #import "ZIKSideView.h"
-@interface ScreeningView ()<UITextFieldDelegate,PickerLocationDelegate,ZIKSelectViewUidDelegate>
+@interface ScreeningView ()<UITextFieldDelegate,ZIKSelectViewUidDelegate>
 @property (nonatomic,strong) UITextField *nameTextField;
 @property (nonatomic,strong)UIScrollView *backScrollView;
 @property (nonatomic,strong)NSArray *dataAry;
 @property (nonatomic,strong) UIButton *gongyingBtn;
-@property (nonatomic,strong) PickerLocation *pickLocation;
+@property (nonatomic,strong) YLDPickLocationView *pickLocation;
 @property (nonatomic,strong) UIButton *areaBtn;
 @property (nonatomic,weak) UITextField *nowTextFlield;
 @property (nonatomic,strong)NSMutableArray *cellAry;
@@ -185,12 +186,12 @@
 {
     CGRect tempFrame = [[UIScreen mainScreen] bounds];
     if (!pickLocation) {
-        pickLocation = [[PickerLocation alloc] initWithFrame:tempFrame];
+        pickLocation = [[YLDPickLocationView alloc] initWithFrame:tempFrame];
         
-        pickLocation.locationDelegate = self;
+        //pickLocation.locationDelegate = self;
     }
     [self hidingKey];
-    [pickLocation showInView];
+    [pickLocation showPickView];
 }
 - (void)textFieldDidChange:(UITextField *)textField
 {
@@ -208,38 +209,38 @@
     }
     [self performSelector:@selector(creatScreeningCells) withObject:nil afterDelay:0.3];
 }
--(void)selectedLocationInfo:(Province *)location
-{
-    NSMutableString *namestr=[NSMutableString new];
-    if (location.code) {
-        [namestr appendString:location.provinceName];
-        self.province=location.code;
-    }else
-    {
-        self.province=nil;
-    }
-    
-    if (location.selectedCity.code) {
-        [namestr appendString:location.selectedCity.cityName];
-        self.City=location.selectedCity.code;
-    }else
-    {
-        self.City=nil;
-    }
-    if (location.selectedCity.selectedTowns.code) {
-        [namestr appendString:location.selectedCity.selectedTowns.TownName];
-        self.county=location.selectedCity.selectedTowns.code;
-    }else{
-         self.county=nil;
-    }
-    if (namestr.length>0) {
-        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
-    }else{
-        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
-    }
-}
+//-(void)selectedLocationInfo:(Province *)location
+//{
+//    NSMutableString *namestr=[NSMutableString new];
+//    if (location.code) {
+//        [namestr appendString:location.provinceName];
+//        self.province=location.code;
+//    }else
+//    {
+//        self.province=nil;
+//    }
+//    
+//    if (location.selectedCity.code) {
+//        [namestr appendString:location.selectedCity.cityName];
+//        self.City=location.selectedCity.code;
+//    }else
+//    {
+//        self.City=nil;
+//    }
+//    if (location.selectedCity.selectedTowns.code) {
+//        [namestr appendString:location.selectedCity.selectedTowns.TownName];
+//        self.county=location.selectedCity.selectedTowns.code;
+//    }else{
+//         self.county=nil;
+//    }
+//    if (namestr.length>0) {
+//        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
+//        [self.areaBtn.titleLabel sizeToFit];
+//    }else{
+//        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+//        [self.areaBtn.titleLabel sizeToFit];
+//    }
+//}
 -(void)gongyingBtnAction:(UIButton *)sender
 {
    

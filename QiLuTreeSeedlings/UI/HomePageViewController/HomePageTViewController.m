@@ -398,13 +398,16 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section==2) {
+        
         return [self makeTitleViewWithTitle:@"猜你喜欢" AndColor:[UIColor colorWithRed:253/255.f green:100/255.f blue:0 alpha:1] andY:0];
+        
+        
     }
     if (section==3) {
         UIView *xxview=[self makeTitleViewWithTitle:@"热门求购" AndColor:yellowButtonColor andY:0];
         UIButton *moreHotBuyBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
         [moreHotBuyBtn setTitle:@"更多" forState:UIControlStateNormal];
-        [moreHotBuyBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        [moreHotBuyBtn setTitleColor:kRedHintColor forState:UIControlStateNormal];
         UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
         [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
         [xxview addSubview:hotMoreRowImgV];
@@ -418,7 +421,7 @@
         UIView *zzzview=[self makeTitleViewWithTitle:@"热门供应" AndColor:NavColor andY:0];
         UIButton *moreHotSellBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
         [moreHotSellBtn setTitle:@"更多" forState:UIControlStateNormal];
-        [moreHotSellBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        [moreHotSellBtn setTitleColor:kRedHintColor forState:UIControlStateNormal];
         [moreHotSellBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [moreHotSellBtn addTarget:self action:@selector(moreBtnHotSellAction:) forControlEvents:UIControlEventTouchUpInside];
         [zzzview addSubview:moreHotSellBtn];
@@ -458,6 +461,22 @@
     [titleLab setTextColor:color];
     [titleLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:titleLab];
+    if ([title isEqualToString:@"猜你喜欢"]) {
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-160, 0, 150,36)];
+        [lab setFont:[UIFont systemFontOfSize:12]];
+        [lab setTextColor:titleLabColor];
+        lab.text=@"供应信息可分享到微信,QQ";
+         [lab setTextAlignment:NSTextAlignmentCenter];
+        [view addSubview:lab];
+    }
+    if ([title isEqualToString:@"热门求购"]) {
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 0, 120,36)];
+        [lab setFont:[UIFont systemFontOfSize:14]];
+        [lab setTextColor:titleLabColor];
+        [lab setTextAlignment:NSTextAlignmentCenter];
+        lab.text=@"下拉刷新";
+        [view addSubview:lab];
+    }
     return view;
     
 }

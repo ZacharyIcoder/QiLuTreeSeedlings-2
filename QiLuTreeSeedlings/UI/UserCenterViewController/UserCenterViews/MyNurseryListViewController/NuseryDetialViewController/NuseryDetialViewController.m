@@ -230,12 +230,6 @@
     [titleLab setText:@"我的苗圃"];
     [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     [view addSubview:titleLab];
-//    UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
-//    // self.collectionBtn = collectionBtn;
-//    [collectionBtn setImage:[UIImage imageNamed:@"myNuserAdd"] forState:UIControlStateNormal];
-//    [collectionBtn addTarget:self action:@selector(tianjiaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [view addSubview:collectionBtn];
-    
     return view;
 }
 -(void)backBtnAction:(UIButton *)sender

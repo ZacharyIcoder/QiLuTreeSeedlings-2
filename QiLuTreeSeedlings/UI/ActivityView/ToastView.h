@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define kToastTopYOffset         66.0f
-#define kToastViewYOffset        [[UIScreen mainScreen] bounds].size.height/2+50
+#define kToastViewYOffset        260
 #define kSizeScreenWidth         [[UIScreen mainScreen] bounds].size.width
 
 

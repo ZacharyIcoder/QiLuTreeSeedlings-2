@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@interface LiteTown : NSObject
 
+@property (nonatomic,  strong) NSString *LiteTownID;
+@property (nonatomic,  strong) NSString *LiteTownName;
+@property (nonatomic,  strong) NSString *code;
+@property (nonatomic,  strong) NSString *parent_code;
+@property (nonatomic,  strong) NSString *level;
+@end
 @interface Town : NSObject
 
 @property (nonatomic,  strong) NSString *TownID;

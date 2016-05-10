@@ -76,6 +76,12 @@
 		EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA4F4D161CBF5F47006E4988 /* bannelSmall3.jpg */; };
 		EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA4F4D171CBF5F47006E4988 /* bannelSmall4.jpg */; };
 		EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA510EB21C98033900C5D071 /* FaBuViewController.m */; };
+		EA5252E21CE171270004639C /* YLDPickLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E11CE171270004639C /* YLDPickLocationView.m */; };
+		EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E51CE172410004639C /* YLDPickSelectVIew.m */; };
+		EA5252EE1CE174990004639C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252ED1CE174990004639C /* CityModel.m */; };
+		EA5252F01CE179500004639C /* areaselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5252EF1CE179500004639C /* areaselected@2x.png */; };
+		EA5252F41CE179E40004639C /* CityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252F21CE179E40004639C /* CityTableViewCell.m */; };
+		EA5252F51CE179E40004639C /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5252F31CE179E40004639C /* CityTableViewCell.xib */; };
 		EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */; };
 		EA52ACE31CB4BE7900CE2210 /* MyIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */; };
 		EA5444BB1CC72AAD00971A50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5444BA1CC72AAD00971A50 /* AudioToolbox.framework */; };
@@ -153,6 +159,7 @@
 		EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB82D1CE01B140010EAE5 /* ForgetPassWorldViewController.m */; };
 		EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */; };
 		EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */; };
+		EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */; };
 		EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */; };
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
@@ -562,6 +569,16 @@
 		EA4F4D171CBF5F47006E4988 /* bannelSmall4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bannelSmall4.jpg; sourceTree = "<group>"; };
 		EA510EB11C98033900C5D071 /* FaBuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaBuViewController.h; sourceTree = "<group>"; };
 		EA510EB21C98033900C5D071 /* FaBuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaBuViewController.m; sourceTree = "<group>"; };
+		EA5252E01CE171270004639C /* YLDPickLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLDPickLocationView.h; path = ../YLDPickLocationView.h; sourceTree = "<group>"; };
+		EA5252E11CE171270004639C /* YLDPickLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLDPickLocationView.m; path = ../YLDPickLocationView.m; sourceTree = "<group>"; };
+		EA5252E41CE172410004639C /* YLDPickSelectVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDPickSelectVIew.h; sourceTree = "<group>"; };
+		EA5252E51CE172410004639C /* YLDPickSelectVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDPickSelectVIew.m; sourceTree = "<group>"; };
+		EA5252EC1CE174990004639C /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
+		EA5252ED1CE174990004639C /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
+		EA5252EF1CE179500004639C /* areaselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "areaselected@2x.png"; sourceTree = "<group>"; };
+		EA5252F11CE179E40004639C /* CityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewCell.h; sourceTree = "<group>"; };
+		EA5252F21CE179E40004639C /* CityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewCell.m; sourceTree = "<group>"; };
+		EA5252F31CE179E40004639C /* CityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		EA52ACDA1CB4958900CE2210 /* FabutiaojiaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FabutiaojiaCell.h; sourceTree = "<group>"; };
 		EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FabutiaojiaCell.m; sourceTree = "<group>"; };
 		EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIntegralViewController.h; sourceTree = "<group>"; };
@@ -670,6 +687,8 @@
 		EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthcodeView.m; sourceTree = "<group>"; };
 		EA7CB8361CE02B960010EAE5 /* CheckIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIDViewController.h; sourceTree = "<group>"; };
 		EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIDViewController.m; sourceTree = "<group>"; };
+		EA7F5F351CE05A0A00B2EEFF /* YLDNewPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDNewPassWordViewController.h; sourceTree = "<group>"; };
+		EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDNewPassWordViewController.m; sourceTree = "<group>"; };
 		EA88BE721C83E06E001E4E1F /* SearchRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendView.h; sourceTree = "<group>"; };
 		EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendView.m; sourceTree = "<group>"; };
 		EA88BE751C83F3AC001E4E1F /* searchHistoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchHistoryViewCell.h; sourceTree = "<group>"; };
@@ -1340,6 +1359,7 @@
 		EA040FBC1C8826D900E43B5E /* ActivityView */ = {
 			isa = PBXGroup;
 			children = (
+				EA5252E31CE171340004639C /* PickLocation */,
 				EA1CF3FC1CACD11A00AF2D82 /* actionview */,
 				EA040FBD1C8826D900E43B5E /* ToastView.h */,
 				EA040FBE1C8826D900E43B5E /* ToastView.m */,
@@ -1531,6 +1551,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA5252EF1CE179500004639C /* areaselected@2x.png */,
 				EA696FB41CDD8F46001F037E /* messageRead@2x.png */,
 				EA696FB51CDD8F46001F037E /* messageUnRead@2x.png */,
 				EA696FAF1CDD7A6C001F037E /* MyMessage@2x.png */,
@@ -1730,6 +1751,22 @@
 			path = FaBuViewController;
 			sourceTree = "<group>";
 		};
+		EA5252E31CE171340004639C /* PickLocation */ = {
+			isa = PBXGroup;
+			children = (
+				EA5252E01CE171270004639C /* YLDPickLocationView.h */,
+				EA5252E11CE171270004639C /* YLDPickLocationView.m */,
+				EA5252E41CE172410004639C /* YLDPickSelectVIew.h */,
+				EA5252E51CE172410004639C /* YLDPickSelectVIew.m */,
+				EA5252EC1CE174990004639C /* CityModel.h */,
+				EA5252ED1CE174990004639C /* CityModel.m */,
+				EA5252F11CE179E40004639C /* CityTableViewCell.h */,
+				EA5252F21CE179E40004639C /* CityTableViewCell.m */,
+				EA5252F31CE179E40004639C /* CityTableViewCell.xib */,
+			);
+			path = PickLocation;
+			sourceTree = "<group>";
+		};
 		EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1839,6 +1876,8 @@
 				EA7CB82D1CE01B140010EAE5 /* ForgetPassWorldViewController.m */,
 				EA7CB8361CE02B960010EAE5 /* CheckIDViewController.h */,
 				EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */,
+				EA7F5F351CE05A0A00B2EEFF /* YLDNewPassWordViewController.h */,
+				EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */,
 			);
 			path = "Login&registered";
 			sourceTree = "<group>";
@@ -3097,6 +3136,7 @@
 				EAF050EA1C9286B800F435A9 /* myintegralImage@2x.png in Resources */,
 				EA1CF4071CACD11A00AF2D82 /* loading04@2x.png in Resources */,
 				EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */,
+				EA5252F01CE179500004639C /* areaselected@2x.png in Resources */,
 				EAAFCFB11CBE248800EB894F /* 1miaomu1136.png in Resources */,
 				EAF050FB1C92A17400F435A9 /* mySellImageV@2x.png in Resources */,
 				EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */,
@@ -3160,6 +3200,7 @@
 				FC49AE4E1CA90E5C00214D4B /* 苗圃基地已选择框.png in Resources */,
 				EAF050F01C92939E00F435A9 /* userInfoNomer@2x.png in Resources */,
 				FC6FED6B1CACF833000E2CA5 /* 图标.png in Resources */,
+				EA5252F51CE179E40004639C /* CityTableViewCell.xib in Resources */,
 				EAAFCFAD1CBE23CD00EB894F /* 1miaomu960.png in Resources */,
 				EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */,
 				EA03CCF11C9003AC0032BAD3 /* passwordLiteImage@2x.png in Resources */,
@@ -3306,6 +3347,7 @@
 				EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */,
 				FC49AE4A1CA90CB000214D4B /* ZIKNurseryListSelectButton.m in Sources */,
 				FC5337A31CBDF2B6008BFB11 /* WHC_ChoicePictureVC.m in Sources */,
+				EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */,
 				EAE32DE21C7E97A600C4CEA2 /* UIProgressView+AFNetworking.m in Sources */,
 				FCF353CD1CA3B515001ABA0A /* MJRefreshHeaderView.m in Sources */,
 				EAAFCF701CBDD94300EB894F /* BigImageViewShowView.m in Sources */,
@@ -3340,6 +3382,7 @@
 				EAE32DDE1C7E97A600C4CEA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */,
 				EAB781A31C8EBEA600807B44 /* QIYeMessageTableViewCell.m in Sources */,
+				EA5252E21CE171270004639C /* YLDPickLocationView.m in Sources */,
 				EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */,
 				FC21BC871CA51C930041E2C3 /* IQToolbar.m in Sources */,
 				FC6FED4E1CACC697000E2CA5 /* ZIKMySupplyDetailViewController.m in Sources */,
@@ -3371,6 +3414,7 @@
 				EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */,
 				FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */,
 				EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */,
+				EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */,
 				FC28DB661CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m in Sources */,
 				FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */,
 				FC53379F1CBDF2B6008BFB11 /* WHC_Asset.m in Sources */,
@@ -3485,6 +3529,8 @@
 				FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */,
+				EA5252F41CE179E40004639C /* CityTableViewCell.m in Sources */,
+				EA5252EE1CE174990004639C /* CityModel.m in Sources */,
 				FCF353D31CA3B515001ABA0A /* ZIKPickerBtn.m in Sources */,
 				FC5337A51CBDF2B6008BFB11 /* WHC_PictureListVC.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,

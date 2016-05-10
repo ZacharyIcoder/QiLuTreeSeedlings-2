@@ -371,6 +371,8 @@
            self.logoutView.hidden=NO;
            [APPDELEGATE logoutAction];
             
+       }else{
+           [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
        }
    } failure:^(NSError *error) {
        

@@ -152,27 +152,21 @@
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showTopToast:@"删除成功"];
             
-            [removeArr enumerateObjectsUsingBlock:^(YLDMyMessageModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([blockSelf.dataAry containsObject:model]) {
-                    [blockSelf.dataAry removeObject:model];
-                }
-            }];
-            [blockSelf.tableView reloadData];
-            [blockSelf.tableView deleteRowsAtIndexPaths:blockSelf.tableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
-            if (blockSelf.dataAry.count == 0) {
-                self.pageCount=1;
-                [self getDataList];
-                bottomcell.hidden = YES;
-                self.tableView.editing = NO;
-                self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
-                __weak typeof(self) weakSelf=self;
-                [self.tableView addHeaderWithCallback:^{
-                    weakSelf.pageCount=1;
-                    [weakSelf getDataList];
-                }];
-            }
+            [_CanDelateAry removeAllObjects];
             [_removeArray removeAllObjects];
             [self totalCount];
+            _throughSelectIndexArr=nil;
+            bottomcell.hidden = YES;
+            self.tableView.editing = NO;
+            self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+            [self.tableView addHeaderWithCallback:^{//添加刷新控件
+                weakSelf.pageCount=1;
+                [weakSelf getDataList];
+            }];
+            [self.tableView headerBeginRefreshing];
+           
+            
         }
         else {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];

@@ -106,7 +106,7 @@
         
     }
     if (!self.passWordTextField.text) {
-        [ToastView showTopToast:@"密码不能为空"];
+        [ToastView   showTopToast:@"密码不能为空"];
         return;
     }
     if(![self.passWordTextField.text isEqualToString:self.rePassWordTextField.text])

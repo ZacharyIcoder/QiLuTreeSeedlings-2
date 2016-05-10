@@ -2183,12 +2183,14 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"ids"]             = uids;
-    
+    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
         failure(error);
         [HttpClient HTTPERRORMESSAGE:error];
     }];
@@ -2202,15 +2204,60 @@
     NSString *postURL            = @"api/member/checkPhone";
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"phone"]             = phone;
-    
+    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
         failure(error);
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
+}
+#pragma mark ---------- 忘记密码，验证手机验证码是否正确 -----------
+-(void)checkChongzhiPassWorldWihtPhone:(NSString *)phone
+                              WithCode:(NSString *)code
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure{
+    NSString *postURL            = @"api/member/checkVerificationCode";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"phone"]             = phone;
+    parmers[@"code"]             = code;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
+        failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+#pragma mark ---------- 设置新密码 -----------
+-(void)setNewPassWordWithPhone:(NSString *)phone
+                  WithPassWord:(NSString *)password
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure{
+    NSString *postURL            = @"api/member/resetPwd";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"phone"]             = phone;
+    parmers[@"password"]          = password;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
+        failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
 }
 @end

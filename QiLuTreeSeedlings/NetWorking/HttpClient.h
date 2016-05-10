@@ -468,4 +468,14 @@
 -(void)checkPhoneNum:(NSString *)phone
              Success:(void (^)(id responseObject))success
              failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 忘记密码，验证手机验证码是否正确 -----------
+-(void)checkChongzhiPassWorldWihtPhone:(NSString *)phone
+                              WithCode:(NSString *)code
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 设置新密码 -----------
+-(void)setNewPassWordWithPhone:(NSString *)phone
+                  WithPassWord:(NSString *)password
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
 @end

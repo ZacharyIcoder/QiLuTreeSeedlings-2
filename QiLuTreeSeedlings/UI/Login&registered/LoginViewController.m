@@ -58,9 +58,8 @@
 -(void)LoginbtnAction:(NSString *)phone andPassword:(NSString *)pasword
 {
     [HTTPCLIENT loginInWithPhone:phone andPassWord:pasword Success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
-           // NSLog(@"%@",responseObject);
+          [self loginSuccessAction];
             APPDELEGATE.userModel=[UserInfoModel userInfoCreatByDic:[responseObject objectForKey:@"result"]];
             NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
             NSString *token=APPDELEGATE.userModel.access_token;
@@ -69,7 +68,7 @@
             [defaults setObject:uid forKey:kACCESS_ID];
             [defaults synchronize];
             [APPDELEGATE  reloadUserInfoSuccess:^(id responseObject) {
-                [self loginSuccessAction];
+                
             } failure:^(NSError *error) {
                 
             }];
@@ -80,7 +79,7 @@
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+        //NSLog(@"%@",error);
     }];
 }
 -(void)loginSuccessAction
