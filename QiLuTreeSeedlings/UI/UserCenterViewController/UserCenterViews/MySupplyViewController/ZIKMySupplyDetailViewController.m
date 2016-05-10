@@ -14,16 +14,41 @@
 #import "HotSellModel.h"
 #import "ZIKSupplyPublishVC.h"
 #import "BigImageViewShowView.h"
-@interface ZIKMySupplyDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SellBanderDelegate>
-@property (nonatomic, strong) NSString                        *uid;
-@property (nonatomic, strong) SupplyDetialMode                *model;
-@property (nonatomic,strong ) UITableView                     *tableView;
-@property (nonatomic, strong) NSArray *nurseryDateArray;
-@property (nonatomic, strong) HotSellModel *hotSellModel;
-@property (nonatomic,strong)BigImageViewShowView *bigImageVShowV;
+
+//新增
+#import "ZIKMySupplyDetailBottomShareTableViewCell.h"//底部分享按钮视图
+//友盟
+#import "UMSocialControllerService.h"
+#import "UMSocial.h"
+
+#define BOTTOM_SHARE_CELL_HEIGHT 65
+//新增end
+@interface ZIKMySupplyDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SellBanderDelegate,UMSocialUIDelegate>
+
+@property (nonatomic, strong) NSString             *uid;
+@property (nonatomic, strong) SupplyDetialMode     *model;
+@property (nonatomic, strong) UITableView          *tableView;
+@property (nonatomic, strong) NSArray              *nurseryDateArray;
+@property (nonatomic, strong) HotSellModel         *hotSellModel;
+@property (nonatomic, strong) BigImageViewShowView *bigImageVShowV;
+
+//新增
+@property (nonatomic,strong ) NSMutableArray *miaomuzhiAry;
+@property (nonatomic        ) BOOL           isShow;
+@property (nonatomic,strong ) NSArray        *specAry;
+
+@property (nonatomic, strong) NSString       *shareText;
+@property (nonatomic, strong) NSString       *shareTitle;
+@property (nonatomic, strong) UIImage        *shareImage;
+@property (nonatomic, strong) NSString       *shareUrl;
+//新增end
+
 @end
 
 @implementation ZIKMySupplyDetailViewController
+{
+    ZIKMySupplyDetailBottomShareTableViewCell *shareCell;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,11 +80,24 @@
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic = [responseObject objectForKey:@"result"];
                 SupplyDetialMode *model = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
-                model.supplybuyName=APPDELEGATE.userModel.name;
-                model.phone=APPDELEGATE.userModel.phone;
+                model.supplybuyName = APPDELEGATE.userModel.name;
+                model.phone = APPDELEGATE.userModel.phone;
                 self.model = model;
-                BigImageViewShowView *bigImageVShowV=[[BigImageViewShowView  alloc]initWithImageAry:model.images];
-                self.bigImageVShowV=bigImageVShowV;
+                
+                /*新增*/
+                self.specAry = model.spec;
+                for (int i=0; i<model.spec.count; i++) {
+                    NSDictionary *dic = model.spec[i];
+                    NSArray *aryyyyy = [dic objectForKey:@"value"];
+                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
+                        [_miaomuzhiAry addObject:dic];
+                    }
+                }
+                /*新增end*/
+
+
+                BigImageViewShowView *bigImageVShowV = [[BigImageViewShowView  alloc]initWithImageAry:model.images];
+                self.bigImageVShowV = bigImageVShowV;
                 [self.view addSubview:bigImageVShowV];
                 self.nurseryDateArray = dic[@"nurseryNames"];
                 [self.tableView reloadData];
@@ -74,15 +112,21 @@
 }
 
 - (void)initData {
-
+    self.isShow = NO;
+    _miaomuzhiAry = [[NSMutableArray alloc] init];
 }
 
 - (void)initUI {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-BOTTOM_SHARE_CELL_HEIGHT) style:UITableViewStyleGrouped];
     self.tableView = tableView;
     tableView.delegate   = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    shareCell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKMySupplyDetailBottomShareTableViewCell" owner:self options:nil] lastObject];
+    shareCell.frame = CGRectMake(0, Height-BOTTOM_SHARE_CELL_HEIGHT, Width, BOTTOM_SHARE_CELL_HEIGHT);
+    [shareCell.shareBtn addTarget:self action:@selector(requestShareData) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:shareCell];
+
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -96,7 +140,18 @@
         return 330;
     }
     if (indexPath.section==1) {
-        return self.model.spec.count*30+40;
+        //return self.model.spec.count*30+40;//二期删除掉
+        //二期新增
+        if (self.specAry) {
+            if (_isShow) {
+                return self.specAry.count*30+40+40;
+            }else{
+                return _miaomuzhiAry.count*30+40+40;
+            }
+
+        }
+        //二期新增end
+
     }
     if (indexPath.section==2) {
         if (self.nurseryDateArray.count==0) {
@@ -109,7 +164,7 @@
         NSString *labelText=self.model.descriptions;
 
         if (labelText.length==0) {
-            labelText=@"暂无";
+            labelText = @"暂无";
         }
         return [self getHeightWithContent:labelText width:kWidth-40 font:13]+20;
     }
@@ -131,7 +186,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section==0) {
+    if (section == 0) {
         return 0.01;
     }
     if(section==4)
@@ -150,6 +205,9 @@
         UIView *view=[[UIView alloc]init];
         return view;
     }
+//    if (section == 1) {
+//        UILabel *hintLabel = [[UILabel alloc] init];
+//    }
     if (section==4) {
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 50)];
         [view setBackgroundColor:BGColor];
@@ -173,8 +231,17 @@
     [messageLab setFont:[UIFont systemFontOfSize:13]];
     [messageLab setTextColor:detialLabColor];
     [view addSubview:messageLab];
+
+    UILabel *hintLabel = [[UILabel alloc] init];
+    hintLabel.frame = CGRectMake(Width-180, 5, 170, 20);
+    hintLabel.textColor = detialLabColor;
+    hintLabel.font = [UIFont systemFontOfSize:12.0f];
+    hintLabel.textAlignment = NSTextAlignmentRight;
+    [view addSubview:hintLabel];
+
     if (section==1) {
         messageLab.text=@"苗木信息";
+        hintLabel.text = @"供应信息可分享到微信、QQ";
     }else if (section==2){
         messageLab.text=@"其他信息";
     }else if (section==3){
@@ -193,9 +260,21 @@
         }
         if (indexPath.section==1) {
             BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+40) andName:self.model.productName];
-            cell.ary=self.model.spec;
+//            cell.ary=self.model.spec;//二期删除
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            //二期新增
+            [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
+            cell.showBtn.selected = self.isShow;
+            if (self.specAry) {
+                if (_isShow) {
+                    cell.ary = self.specAry;
+                }else{
+                    cell.ary = self.miaomuzhiAry;
+                }
+            }
+            //二期新增end
             return cell;
+
         }
         if(indexPath.section==2)
         {
@@ -217,7 +296,7 @@
 
         NSString *labelText=self.model.descriptions;
         if (labelText.length==0) {
-            labelText=@"暂无";
+            labelText = @"暂无";
         }
         CGFloat height = [self getHeightWithContent:labelText width:kWidth-40 font:13];
         //NSLog(@"%f",height);
@@ -234,6 +313,7 @@
     UITableViewCell *cell = [UITableViewCell new];
     return cell;
 }
+
 //获取字符串的高度
 -(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
 
@@ -243,16 +323,133 @@
                                         context:nil];
     return rect.size.height;
 }
+
 -(void)showBigImageWtihIndex:(NSInteger)index
 {
     if (self.bigImageVShowV) {
         [self.bigImageVShowV showWithIndex:index];
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+//以下方法为二期新增
+-(void)showOtherMessageAction:(UIButton *)sender
+{
+    self.isShow = !self.isShow;
+    //一个section刷新
+    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:1];
+    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - 我的供应详情-分享供应
+- (void)requestShareData {
+    ShowActionV();
+    [HTTPCLIENT supplyShareWithUid:self.uid Success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+            return ;
+        }
+        NSDictionary *shareDic = responseObject[@"result"];
+        self.shareText   = shareDic[@"text"];
+        self.shareTitle  = shareDic[@"title"];
+        NSString *urlStr = shareDic[@"img"];
+        NSData * data    = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStr]];
+        self.shareImage  = [[UIImage alloc] initWithData:data];
+        self.shareUrl    = shareDic[@"url"];
+        RemoveActionV();
+        [self umengShare];
+
+    } failure:^(NSError *error) {
+        ;
+    }];
+}
+
+#pragma mark - 友盟分享
+- (void)umengShare {
+//    [self requestShareData];
+//    return;
+    [UMSocialSnsService presentSnsIconSheetView:self
+     //appKey:@"569c3c37e0f55a8e3b001658"
+                                         appKey:@"56fde8aae0f55a1cd300047c"
+                                      shareText:self.shareText
+                                     shareImage:self.shareImage
+                                shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
+                                       delegate:self];
+    //[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
+    //    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ] content:@"sharTestQQ分享文字" image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+    //        if (response.responseCode == UMSResponseCodeSuccess) {
+    //            NSLog(@"分享成功！");
+    //        }
+    //    }];
+    //当分享消息类型为图文时，点击分享内容会跳转到预设的链接，设置方法如下
+    //NSString *urlString = @"https://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8";
+    //NSString *urlString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];
+
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = self.shareUrl;
+
+    //如果是朋友圈，则替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = self.shareUrl;
+
+    [UMSocialData defaultData].extConfig.qqData.url    = self.shareUrl;
+    [UMSocialData defaultData].extConfig.qzoneData.url = self.shareUrl;
+    //设置微信好友title方法为
+    //NSString *titleString = @"苗信通-苗木买卖神器";
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = self.shareTitle;
+
+    //设置微信朋友圈title方法替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = self.shareTitle;
+
+    //QQ设置title方法为
+
+    [UMSocialData defaultData].extConfig.qqData.title = self.shareTitle;
+
+    //Qzone设置title方法将平台参数名替换即可
+
+    [UMSocialData defaultData].extConfig.qzoneData.title = self.shareTitle;
+
+}
+
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    //NSLog(@"didClose is %d",fromViewControllerType);
+}
+
+//下面得到分享完成的回调
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        ShowActionV();
+        [HTTPCLIENT supplyShareWithUid:self.uid Success:^(id responseObject) {
+            RemoveActionV();
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"本条信息已刷新"];
+
+        } failure:^(NSError *error) {
+            ;
+        }];
+    }
+    else {
+        CLog(@"%@",response);
+    }
+}
+
+-(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
+{
+    NSLog(@"finish share with response is %@",response);
+}
 
 @end

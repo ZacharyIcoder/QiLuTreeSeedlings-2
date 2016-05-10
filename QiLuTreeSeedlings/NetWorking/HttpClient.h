@@ -468,6 +468,7 @@
 -(void)checkPhoneNum:(NSString *)phone
              Success:(void (^)(id responseObject))success
              failure:(void (^)(NSError *error))failure;
+
 #pragma mark ---------- 忘记密码，验证手机验证码是否正确 -----------
 -(void)checkChongzhiPassWorldWihtPhone:(NSString *)phone
                               WithCode:(NSString *)code
@@ -478,4 +479,11 @@
                   WithPassWord:(NSString *)password
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 我的供应详情-分享供应 -----------
+-(void)supplyShareWithUid:(NSString *)uids
+                  Success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure;
+
+
 @end

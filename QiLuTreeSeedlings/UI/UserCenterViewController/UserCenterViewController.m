@@ -199,7 +199,15 @@
     if (indexPath.section==1) {
         if (indexPath.row==0) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"mySellImageV" andTitle:@"我的供应"];
+            UILabel *shareLabel = [[UILabel alloc] init];
+            shareLabel.frame = CGRectMake(Width-35-180, 12, 180, 20);
+            shareLabel.text = @"供应信息可分享到微信、QQ";
+            shareLabel.font = [UIFont systemFontOfSize:12.0f];
+            shareLabel.textColor = detialLabColor;
+            shareLabel.textAlignment = NSTextAlignmentRight;
+            [cell addSubview:shareLabel];
             return cell;
+
         }
         if (indexPath.row==1) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myBuyV" andTitle:@"我的求购"];
