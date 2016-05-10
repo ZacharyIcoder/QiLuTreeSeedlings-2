@@ -140,8 +140,6 @@
         [ToastView showTopToast:@"您未选择删除数据"];
         return;
     }
-    __weak typeof(_removeArray) removeArr = _removeArray;
-    __weak __typeof(self) blockSelf = self;
     
     __block NSString *uidString = @"";
     [_removeArray enumerateObjectsUsingBlock:^(YLDMyMessageModel *model, NSUInteger idx, BOOL * _Nonnull stop) {

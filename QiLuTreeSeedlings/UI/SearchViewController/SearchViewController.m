@@ -146,7 +146,7 @@
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     //[view setBackgroundColor:[UIColor greenColor]];
-    UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(50, 25, kWidth-100, 44-10)];
+    UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(60, 25, kWidth-120, 44-10)];
     [backView setBackgroundColor:[UIColor whiteColor]];
     backView.layer.masksToBounds=YES;
     backView.layer.cornerRadius=3;
@@ -165,7 +165,7 @@
     [backView addSubview:lineV];
      UITextField * searchMessageField=[[UITextField alloc]initWithFrame:CGRectMake(65, 0, backView.frame.size.width-120, 34)];
     self.searchMessageField=searchMessageField;
-    searchMessageField.placeholder=@"请输入苗木关键词";
+    searchMessageField.placeholder=@"请输入树种名称";
     searchMessageField.delegate=self;
     [searchMessageField setTextColor:titleLabColor];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -190,8 +190,14 @@
     [backView addSubview:searchBtn];
     
     
-    UIButton *screenBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-45, 25, 40, 34)];
+    UIButton *screenBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-25, 30, 20, 20)];
+    [screenBtn setEnlargeEdgeWithTop:15 right:10 bottom:10 left:30];
     [screenBtn setImage:[UIImage imageNamed:@"screenBtnAction"] forState:UIControlStateNormal];
+    UILabel *labee=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-53, 30, 30, 20)];
+    [labee setFont:[UIFont systemFontOfSize:14]];
+    [labee setTextColor:[UIColor whiteColor]];
+    labee.text=@"筛选";
+    [view addSubview:labee];
     [screenBtn addTarget:self action:@selector(screeingBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:screenBtn];
     return view;
@@ -199,7 +205,6 @@
 - (void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
     if ([textField.text isEqualToString:@""] || textField.text.length == 0) {
-        NSLog(@"刷新");
         [HTTPCLIENT hotkeywordWithkeywordCount:@"10" Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *Dic =[responseObject objectForKey:@"result"];

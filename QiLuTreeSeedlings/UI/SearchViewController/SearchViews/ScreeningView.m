@@ -185,7 +185,7 @@
 {
     CGRect tempFrame = [[UIScreen mainScreen] bounds];
     
-      YLDPickLocationView * pickLocation = [[YLDPickLocationView alloc] initWithFrame:tempFrame];
+      YLDPickLocationView * pickLocation = [[YLDPickLocationView alloc] initWithFrame:tempFrame CityLeve:CityLeveXian];
         
         pickLocation.delegate = self;
      [pickLocation showPickView];

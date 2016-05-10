@@ -25,13 +25,14 @@
 @property (nonatomic,strong) CityModel *shi;
 @property (nonatomic,strong) CityModel *xian;
 @property (nonatomic,strong) CityModel *zhen;
+@property (nonatomic,assign) NSInteger cityLeve;
 @end
 @implementation YLDPickLocationView
--(id)initWithFrame:(CGRect)frame
+-(id)initWithFrame:(CGRect)frame CityLeve:(CityLeve)leve
 {
     self=[super initWithFrame:frame];
     if (self) {
-        
+        self.cityLeve=leve;
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 64)];
         [backView setBackgroundColor:kRGB(210, 210, 210, 1)];
         [self addSubview:backView];
@@ -111,6 +112,9 @@
         _shi=nil;
         _xian=nil;
         _zhen=nil;
+        if (self.cityLeve==CityLeveSheng) {
+            return;
+        }
         YLDPickSelectVIew *yldpickLV=[[YLDPickSelectVIew alloc]initWithFrame:CGRectMake(kWidth, 104, kWidth*0.8, kHeight-104) andCode:model.code andLeve:model.level];
       
         _shiV=yldpickLV;
@@ -131,6 +135,9 @@
         _shi=model;
         _xian=nil;
         _zhen=nil;
+        if (self.cityLeve==CityLeveShi) {
+            return;
+        }
         YLDPickSelectVIew *yldpickLV=[[YLDPickSelectVIew alloc]initWithFrame:CGRectMake(kWidth, 104, kWidth*0.8, kHeight-104) andCode:model.code andLeve:model.level];
         _xianV=yldpickLV;
         yldpickLV.tag=113;
@@ -148,6 +155,9 @@
         _zhenL.text=nil;
         _xian=model;
         _zhen=nil;
+        if (self.cityLeve==CityLeveXian) {
+            return;
+        }
         YLDPickSelectVIew *yldpickLV=[[YLDPickSelectVIew alloc]initWithFrame:CGRectMake(kWidth, 104, kWidth*0.8, kHeight-104) andCode:model.code andLeve:model.level];
         _zhenV=yldpickLV;
         yldpickLV.tag=114;
@@ -217,11 +227,29 @@
 }
 -(void)showPickView
 {
-        [[[UIApplication sharedApplication] keyWindow] addSubview:self];
+    CGRect frame=self.frame;
+    frame.origin.x=kWidth;
+    self.frame=frame;
+    [UIView animateWithDuration:0.22 animations:^{
+        CGRect frame=self.frame;
+        frame.origin.x=0;
+        self.frame=frame;
+    } completion:^(BOOL finished) {
+        
+    }];
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self];
 }
 -(void)removePickView
 {
-    [self removeFromSuperview];
+
+    [UIView animateWithDuration:0.22 animations:^{
+        CGRect frame=self.frame;
+        frame.origin.x=kWidth;
+        self.frame=frame;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+   
 }
 /*
 // Only override drawRect: if you perform custom drawing.
