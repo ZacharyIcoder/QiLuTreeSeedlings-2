@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ZIKSupplyBottomSelectButton.h"
 #import "UIDefines.h"
+
+#define BOTTOM_DELETE_CELL_HEIGHT 50
 @interface ZIKBottomDeleteTableViewCell : UITableViewCell
 /**
  *  选中按钮

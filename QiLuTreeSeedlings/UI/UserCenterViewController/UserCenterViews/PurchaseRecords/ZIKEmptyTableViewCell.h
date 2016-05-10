@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define EMPTY_CELL_HEIGHT 260
 @interface ZIKEmptyTableViewCell : UITableViewCell
-
+@property (nonatomic, copy) NSString *emptyImageNameStr;
+@property (nonatomic, copy) NSString *emptyFirstStr;
+@property (nonatomic, copy) NSString *empthSecondStr;
 @end

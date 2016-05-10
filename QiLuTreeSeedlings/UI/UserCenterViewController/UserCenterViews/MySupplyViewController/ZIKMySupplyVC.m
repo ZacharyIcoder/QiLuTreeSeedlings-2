@@ -441,28 +441,8 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     [self.view addSubview:_bottomcell];
     [_bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    _bottomcell.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
-    _bottomcell.layer.shadowOpacity = 0.2;////阴影透明度，默认0
-    _bottomcell.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
-    _bottomcell.layer.shadowRadius  = 3;//阴影半径，默认3
     _bottomcell.hidden = YES;
 }
-
-
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-//{
-//    if ([keyPath isEqualToString:@"editing"]) {
-//        if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
-//            [self.supplyTableView removeGestureRecognizer:tapDeleteGR];
-//        }
-//        else {
-//            [self.supplyTableView addGestureRecognizer:tapDeleteGR];
-//        }
-//        // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
-//    } else {
-//        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-//    }
-//}
 
 #pragma mark - 长按触发事件
 - (void)tapGR {
@@ -548,9 +528,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         _deleteIndexArr = (NSArray *)tempMArr;
      }
     else if (_bottomcell.isAllSelect == NO) {
-//        [self.supplyInfoMArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-//            myModel.isSelect = NO;
-//        }];
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
         }
@@ -559,7 +536,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             [self.supplyTableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES];
         }
     }
-    //[self updateBottomDeleteCellView];
 }
 
 #pragma mark - 过期状态下——底部删除按钮点击事件

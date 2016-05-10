@@ -122,7 +122,6 @@
 		EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA696FB41CDD8F46001F037E /* messageRead@2x.png */; };
 		EA696FB71CDD8F46001F037E /* messageUnRead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA696FB51CDD8F46001F037E /* messageUnRead@2x.png */; };
 		EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */; };
-		EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */; };
 		EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */; };
 		EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */; };
 		EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */; };
@@ -637,8 +636,6 @@
 		EA696FB41CDD8F46001F037E /* messageRead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageRead@2x.png"; sourceTree = "<group>"; };
 		EA696FB51CDD8F46001F037E /* messageUnRead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageUnRead@2x.png"; sourceTree = "<group>"; };
 		EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreRow@2x.png"; sourceTree = "<group>"; };
-		EA6B31B41CABA5F70068CCB5 /* NuserNullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuserNullTableViewCell.h; sourceTree = "<group>"; };
-		EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuserNullTableViewCell.m; sourceTree = "<group>"; };
 		EA6B31B61CABA5F70068CCB5 /* NuseryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryListTableViewCell.h; sourceTree = "<group>"; };
 		EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryListTableViewCell.m; sourceTree = "<group>"; };
 		EA6B31B81CABA5F70068CCB5 /* MyNuseryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNuseryListViewController.h; sourceTree = "<group>"; };
@@ -1842,8 +1839,6 @@
 		EA6B31B31CABA5F70068CCB5 /* myNuseryCells */ = {
 			isa = PBXGroup;
 			children = (
-				EA6B31B41CABA5F70068CCB5 /* NuserNullTableViewCell.h */,
-				EA6B31B51CABA5F70068CCB5 /* NuserNullTableViewCell.m */,
 				EA6B31B61CABA5F70068CCB5 /* NuseryListTableViewCell.h */,
 				EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */,
 				FCB8A4771CCF0F0C005925E1 /* MyNuserListTableViewCell.h */,
@@ -3568,7 +3563,6 @@
 				EA2727181C8A7D8E000B0719 /* FMDatabase.m in Sources */,
 				FCF353F51CA3CEA7001ABA0A /* ZIKGreenButton.m in Sources */,
 				FC50B3441CAE4C4A0022A24C /* Order.m in Sources */,
-				EA6B31BD1CABA5F70068CCB5 /* NuserNullTableViewCell.m in Sources */,
 				EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */,
 				FC7134301CB358140037D507 /* ZIKFunction.m in Sources */,
 				FCF353E41CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m in Sources */,

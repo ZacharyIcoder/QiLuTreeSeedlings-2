@@ -10,25 +10,27 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "NurseryModel.h"
-#import "NuserNullTableViewCell.h"
 //#import "NuseryListTableViewCell.h"
 #import "NuseryDetialViewController.h"
 #import "MJRefresh.h"
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "MyNuserListTableViewCell.h"
+#import "ZIKEmptyTableViewCell.h"
 @interface MyNuseryListViewController ()<UITableViewDelegate,UITableViewDataSource>
-{
-    ZIKBottomDeleteTableViewCell *bottomcell;
-    NSMutableArray *_removeArray;
-    UILongPressGestureRecognizer *longPressGr;
-}
 @property (nonatomic,strong) UITableView *pullTableView;
 @property (nonatomic,strong) NSMutableArray *dataAry;
 @property (nonatomic)NSInteger pageCount;
 @end
 
 @implementation MyNuseryListViewController
+{
+    ZIKBottomDeleteTableViewCell *_bottomcell;
+    NSMutableArray *_removeArray;
+    UILongPressGestureRecognizer *_longPressGr;
+    NSArray *_deleteIndexArr;//选中的删除index
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -37,14 +39,16 @@
     [self getDataList];
     [APPDELEGATE  requestBuyRestrict];
     self.pullTableView.editing = NO;
-    bottomcell.hidden = YES;
+    _bottomcell.hidden = YES;
     self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
 
 }
+
 -(void)dealloc
 {
     [_pullTableView removeObserver:self forKeyPath:@"editing"];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataAry=[NSMutableArray array];
@@ -70,27 +74,27 @@
             [blockSelf getDataList];
     }];
     self.pullTableView=pullTableView;
-    longPressGr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(deleteCell)];
-    longPressGr.minimumPressDuration=1.0;
-    [pullTableView addGestureRecognizer:longPressGr];
+    _longPressGr=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(deleteCell)];
+    _longPressGr.minimumPressDuration=1.0;
+    [pullTableView addGestureRecognizer:_longPressGr];
     [pullTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
 
-    bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
-    bottomcell.frame = CGRectMake(0, kHeight-44, kWidth, 44);
-    [self.view addSubview:bottomcell];
-    [bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    bottomcell.hidden = YES;
-    [bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    _bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
+    _bottomcell.frame = CGRectMake(0, kHeight-BOTTOM_DELETE_CELL_HEIGHT, kWidth, BOTTOM_DELETE_CELL_HEIGHT);
+    [self.view addSubview:_bottomcell];
+    [_bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    _bottomcell.hidden = YES;
+    [_bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"editing"]) {
         if ([[change valueForKey:NSKeyValueChangeNewKey] integerValue] == 1) {
-            [_pullTableView removeGestureRecognizer:longPressGr];
+            [_pullTableView removeGestureRecognizer:_longPressGr];
         }
         else {
-            [_pullTableView addGestureRecognizer:longPressGr];
+            [_pullTableView addGestureRecognizer:_longPressGr];
         }
         // NSLog(@"Height is changed! new=%@", [change valueForKey:NSKeyValueChangeNewKey]);
     } else {
@@ -110,10 +114,10 @@
         // barButtonItem.title = @"Remove";
         
         self.pullTableView.editing = YES;
-        bottomcell.hidden = NO;
-        self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64-44);
+        _bottomcell.hidden = NO;
+        self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64-BOTTOM_DELETE_CELL_HEIGHT);
         [self.pullTableView removeHeader];//编辑状态取消下拉刷新
-        bottomcell.isAllSelect = NO;
+        _bottomcell.isAllSelect = NO;
         if (_removeArray.count > 0) {
             [_removeArray enumerateObjectsUsingBlock:^(NurseryModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 model.isSelect = NO;
@@ -149,10 +153,10 @@
             }];
             [blockSelf.pullTableView reloadData];
             [blockSelf.pullTableView deleteRowsAtIndexPaths:blockSelf.pullTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
-            if (blockSelf.dataAry.count == 0) {
-                self.pageCount=1;
-                [self getDataList];
-                bottomcell.hidden = YES;
+//            if (blockSelf.dataAry.count == 0) {
+//                self.pageCount=1;
+//                [self getDataList];
+                _bottomcell.hidden = YES;
                 self.pullTableView.editing = NO;
                 self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
                 __weak typeof(self) weakSelf=self;
@@ -160,8 +164,10 @@
                     weakSelf.pageCount=1;
                     [weakSelf getDataList];
                 }];
+            //}
+            if (_removeArray.count > 0) {
+                [_removeArray removeAllObjects];
             }
-             [_removeArray removeAllObjects];
             [self totalCount];
            
         }
@@ -175,24 +181,17 @@
 }
 //全选按钮
 - (void)selectBtnClick {
-    bottomcell.isAllSelect ? (bottomcell.isAllSelect = NO) : (bottomcell.isAllSelect = YES);
-    if (bottomcell.isAllSelect) {
+    _bottomcell.isAllSelect = !_bottomcell.isAllSelect;
+    if (_bottomcell.isAllSelect) {
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
         }
         [self.dataAry enumerateObjectsUsingBlock:^(NurseryModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-                myModel.isSelect = YES;
                 [_removeArray addObject:myModel];
-            
-            
         }];
-      
-        //[self.mySupplyTableView deselectRowAtIndexPath:[self.mySupplyTableView indexPathForSelectedRow] animated:YES];
+
     }
-    else if (bottomcell.isAllSelect == NO) {
-        [self.dataAry enumerateObjectsUsingBlock:^(NurseryModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            myModel.isSelect = NO;
-        }];
+    else if (_bottomcell.isAllSelect == NO) {
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
         }
@@ -202,12 +201,12 @@
     [self.pullTableView reloadData];
 }
 - (void)totalCount {
-    bottomcell.count = _removeArray.count;
+    _bottomcell.count = _removeArray.count;
     if (_removeArray.count == self.dataAry.count) {
-        bottomcell.isAllSelect = YES;
+        _bottomcell.isAllSelect = YES;
     }
     else {
-        bottomcell.isAllSelect = NO;
+        _bottomcell.isAllSelect = NO;
     }
 
 }
@@ -226,11 +225,9 @@
 {
    
     if (self.dataAry.count==0) {
-        NuserNullTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NuserNullTableViewCell IdStr]];
-        if (!cell) {
-            cell =[[NuserNullTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 250)];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        }
+        ZIKEmptyTableViewCell *cell =  [[[NSBundle mainBundle] loadNibNamed:@"ZIKEmptyTableViewCell" owner:self options:nil] lastObject];
+        cell.emptyImageNameStr = @"myNuserNull";
+        cell.empthSecondStr = @"您还没有添加任何苗圃信息";
         return cell;
     }else
     {
@@ -239,7 +236,6 @@
             NurseryModel *model = self.dataAry[indexPath.row];
             cell.model = model;
         }
-        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
         return cell;
     }
 
@@ -247,7 +243,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.dataAry.count==0) {
-        return 250;
+        return EMPTY_CELL_HEIGHT;
     }else
     {
         return 120;
@@ -267,48 +263,21 @@
         return;
     }
     NurseryModel *model=self.dataAry[indexPath.row];
-    
-    MyNuserListTableViewCell *cell = (MyNuserListTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    //    NSLog(@"%d",cell.selected);
-    //    NSLog(@"%d",model.isSelect);
-    if (!self.pullTableView.editing) {
-        cell.backgroundColor = [UIColor lightGrayColor];
-        double delayInSeconds = 0.1;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            cell.backgroundColor = [UIColor whiteColor];
-        });
-    }
-
 
     // 判断编辑状态,必须要写
     if (self.pullTableView.editing)
-    {   if (model.isSelect == YES) {
-        model.isSelect = NO;
-        cell.isSelect = NO;
-        cell.selected = NO;
-        // 删除反选数据
-        if ([_removeArray containsObject:model])
-        {
-            [_removeArray removeObject:model];
-        }
-        [self totalCount];
-        return;
-    }
-        //NSLog(@"didSelectRowAtIndexPath");
-        // 获取当前显示数据
-        //ZIKSupplyModel *tempModel = [self.supplyInfoMArr objectAtIndex:indexPath.row];
-        // 添加到我们的删除数据源里面
-        cell.selectedBackgroundView.frame=CGRectZero;
-        model.isSelect = YES;
+    {
         [_removeArray addObject:model];
+        NSArray *selectedRows = [self.pullTableView indexPathsForSelectedRows];
+        _deleteIndexArr = selectedRows;
         [self totalCount];
         return;
     }
     
 
-    NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]initWuid:model.nrseryId];
+    NuseryDetialViewController *nuseryDetialVC = [[NuseryDetialViewController alloc]initWuid:model.nrseryId];
     [self.navigationController pushViewController:nuseryDetialVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(UIView *)makeNavView
@@ -371,6 +340,16 @@
             }else
             {
                 [self.dataAry addObjectsFromArray:aryzz];
+                 if (self.pullTableView.editing) {
+                    if (_deleteIndexArr.count > 0) {
+                        [_deleteIndexArr enumerateObjectsUsingBlock:^(NSIndexPath *selectDeleteIndex, NSUInteger idx, BOOL * _Nonnull stop) {
+                            [self.pullTableView selectRowAtIndexPath:selectDeleteIndex animated:YES scrollPosition:UITableViewScrollPositionNone];
+                        }];
+                    }
+                    [self totalCount];
+                     return ;
+                }
+
                 [self.pullTableView reloadData];
                
             }
@@ -388,25 +367,20 @@
 // 反选方法
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(self.dataAry.count<=0)
-    {
-        return;
-    }
     // 判断编辑状态,必须要写
     if (self.pullTableView.editing)
     {
-        //NSLog(@"didDeselectRowAtIndexPath");
         // 获取当前反选显示数据
         NurseryModel *tempModel = [self.dataAry objectAtIndex:indexPath.row];
-        tempModel.isSelect = NO;
         // 删除反选数据
         if ([_removeArray containsObject:tempModel])
         {
             [_removeArray removeObject:tempModel];
         }
+        NSArray *selectedRows = [self.pullTableView indexPathsForSelectedRows];
+        _deleteIndexArr = selectedRows;
         [self totalCount];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 #pragma mark - 可选方法实现
 // 设置删除按钮标题
@@ -425,7 +399,7 @@
 {
     if (self.pullTableView.editing) {
         self.pullTableView.editing = NO;
-        bottomcell.hidden = YES;
+        _bottomcell.hidden = YES;
         self.pullTableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
         [self.pullTableView addHeaderWithCallback:^{//添加刷新控件
@@ -439,18 +413,10 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

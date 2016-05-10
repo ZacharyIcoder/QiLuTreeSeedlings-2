@@ -13,18 +13,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.UIIV1.backgroundColor = [UIColor whiteColor];
-    self.UIIV2.backgroundColor = [UIColor whiteColor];
     self.addressLab.textColor = detialLabColor;
     self.chargelPersonLab.textColor = detialLabColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.UIIV1.backgroundColor = [UIColor whiteColor];
-    self.UIIV2.backgroundColor = [UIColor whiteColor];
-
-
     // Configure the view for the selected state
 }
 
