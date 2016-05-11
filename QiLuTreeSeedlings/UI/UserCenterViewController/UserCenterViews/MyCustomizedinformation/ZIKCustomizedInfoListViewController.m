@@ -14,23 +14,31 @@
 #import "BuyOtherInfoTableViewCell.h"
 #import "ZIKCustomizedTableViewCell.h"
 #import "ZIKBottomDeleteTableViewCell.h"
+
+#import "ZIKHintTableViewCell.h"
 @interface ZIKCustomizedInfoListViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+{
+}
+
+@property (nonatomic, assign) NSInteger      page;//页数从1开始
+@property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
+@property (nonatomic, strong) UITableView    *myCustomizedInfoTableView;//我的定制信息列表
+
+@property (nonatomic        ) BOOL           isShow;
+@property (nonatomic,strong ) NSArray        *specAry;
+@property (nonatomic,strong ) NSMutableArray *miaomuzhiAry;
+
+@end
+
+@implementation ZIKCustomizedInfoListViewController
 {
     UIView *emptyUI;
     // 保存选中行数据
     NSMutableArray *_removeArray;
     ZIKBottomDeleteTableViewCell *bottomcell;
 
-
-}
-@property (nonatomic, assign) NSInteger      page;//页数从1开始
-@property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
-@property (nonatomic, strong) UITableView    *myCustomizedInfoTableView;//我的定制信息列表
-@end
-
-@implementation ZIKCustomizedInfoListViewController
-{
     UILongPressGestureRecognizer *tapDeleteGR;
+    NSArray *_deleteIndexArr;//选中的删除index
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -76,7 +84,12 @@
 }
 
 - (void)initUI {
-    self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64) style:UITableViewStyleGrouped];
+    
+    ZIKHintTableViewCell *hintCell =  [[[NSBundle mainBundle] loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
+    hintCell.frame = CGRectMake(0, 64, Width, HINT_VIEW_HEIGHT);
+    [self.view addSubview:hintCell];
+
+    self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(hintCell.frame), Width, Height-64-HINT_VIEW_HEIGHT) style:UITableViewStyleGrouped];
     self.myCustomizedInfoTableView.delegate   = self;
     self.myCustomizedInfoTableView.dataSource = self;
     [self.view addSubview:self.myCustomizedInfoTableView];
@@ -89,7 +102,7 @@
 
     //底部结算
     bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
-    bottomcell.frame = CGRectMake(0, Height-44, Width, 44);
+    bottomcell.frame = CGRectMake(0, Height-BOTTOM_DELETE_CELL_HEIGHT, Width, BOTTOM_DELETE_CELL_HEIGHT);
     [self.view addSubview:bottomcell];
     [bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
     bottomcell.hidden = YES;
@@ -150,7 +163,23 @@
             }
             [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZIKCustomizedModel *model = [ZIKCustomizedModel yy_modelWithDictionary:dic];
+
+
+                /*新增*/
+                model.isShow = NO;
+                NSMutableArray *tempMarr = [[NSMutableArray alloc] init];
+                model.specArray = model.spec;
+                for (int i=0; i<model.spec.count; i++) {
+                    NSDictionary *dic = model.spec[i];
+                    NSArray *aryyyyy = [dic objectForKey:@"value"];
+                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
+                        [tempMarr addObject:dic];
+                    }
+                }
+                model.haveSpecArray = tempMarr;
+                /*新增end*/
                 [self.customizedInfoMArr addObject:model];
+
             }];
             [self.myCustomizedInfoTableView reloadData];
             [self.myCustomizedInfoTableView footerEndRefreshing];
@@ -173,7 +202,7 @@
 
 }
 - (void)selectBtnClick {
-    bottomcell.isAllSelect ? (bottomcell.isAllSelect = NO) : (bottomcell.isAllSelect = YES);
+    bottomcell.isAllSelect = !bottomcell.isAllSelect;
     if (bottomcell.isAllSelect) {
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
@@ -202,7 +231,7 @@
     if (self.myCustomizedInfoTableView.editing) {
         self.myCustomizedInfoTableView.editing = NO;
         bottomcell.hidden = YES;
-        self.myCustomizedInfoTableView.frame = CGRectMake(0, 64, Width, Height-64);
+        self.myCustomizedInfoTableView.frame = CGRectMake(0, 64+HINT_VIEW_HEIGHT, Width, Height-64-HINT_VIEW_HEIGHT);
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
         [self.myCustomizedInfoTableView addHeaderWithCallback:^{//添加刷新控件
             [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
@@ -220,7 +249,7 @@
         // barButtonItem.title = @"Remove";
         self.myCustomizedInfoTableView.editing = YES;
         bottomcell.hidden = NO;
-        self.myCustomizedInfoTableView.frame = CGRectMake(0, 64, Width, Height-64-44);
+        self.myCustomizedInfoTableView.frame = CGRectMake(0, 64+HINT_VIEW_HEIGHT, Width, Height-64-HINT_VIEW_HEIGHT-BOTTOM_DELETE_CELL_HEIGHT);
         [self.myCustomizedInfoTableView removeHeader];//编辑状态取消下拉刷新
         bottomcell.isAllSelect = NO;
         if (_removeArray.count > 0) {
@@ -265,7 +294,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
-    return  model.spec.count*30+10;
+    if (model.isShow) {
+        return  model.specArray.count*30+10+40;
+    }
+    return model.haveSpecArray.count*30+10+40;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -283,15 +315,48 @@
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
     //backView.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+30+10);
     BuyOtherInfoTableViewCell *mycell = [[BuyOtherInfoTableViewCell alloc] init];
-    mycell.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+10);
+    if (model.isShow) {
+        mycell.frame = CGRectMake(0, 0, kWidth, model.specArray.count*30+10+40);
+    }
+    else {
+        mycell.frame = CGRectMake(0, 0, kWidth, model.haveSpecArray.count*30+10+40);
+    }
     mycell.backgroundColor = [UIColor whiteColor];
-    mycell.dingzhiAry = model.spec;
+    //mycell.dingzhiAry = model.spec;
     mycell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //二期新增
+    mycell.showBtn.tag = section;
+    [mycell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
+    mycell.showBtn.selected = model.isShow;
+    //if (model.haveSpecArray) {
+        if (model.isShow) {
+            mycell.dingzhiAry = model.specArray;
+        }else{
+            mycell.dingzhiAry = model.haveSpecArray;
+        }
+    //}
+    //二期新增end
+
     //[backView addSubview:mycell];
     //return backView;
+    UIView *backView = [[UIView alloc] init];
+    backView.backgroundColor = [UIColor whiteColor];
+    backView.frame = mycell.frame;
+    [backView addSubview:mycell];
 
-    return mycell;
+    return backView;
 }
+
+-(void)showOtherMessageAction:(UIButton *)sender
+{
+    ZIKCustomizedModel *model = self.customizedInfoMArr[sender.tag];
+
+    model.isShow = !model.isShow;
+    //一个section刷新
+    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:sender.tag];
+    [self.myCustomizedInfoTableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKCustomizedTableViewCell *cell = [ZIKCustomizedTableViewCell cellWithTableView:tableView];
@@ -429,6 +494,9 @@
     self.page               = 1;
     self.customizedInfoMArr = [NSMutableArray array];
     _removeArray = [NSMutableArray array];
+
+    self.specAry = [NSMutableArray array];
+    self.miaomuzhiAry = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {

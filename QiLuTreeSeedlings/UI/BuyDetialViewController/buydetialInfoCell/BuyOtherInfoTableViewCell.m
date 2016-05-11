@@ -9,6 +9,22 @@
 #import "BuyOtherInfoTableViewCell.h"
 #import "UIDefines.h"
 @implementation BuyOtherInfoTableViewCell
+-(instancetype)init {
+    self = [super init];
+    if(self) {
+        UIButton *showBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 40, kWidth, 40)];
+        [showBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        [showBtn setTitleColor:NavColor forState:UIControlStateNormal];
+        [showBtn setTitleColor:NavColor forState:UIControlStateSelected];
+        [self addSubview:showBtn];
+        self.showBtn=showBtn;
+        [showBtn setTitle:@"展开隐藏" forState:UIControlStateNormal];
+        [showBtn setTitle:@"点击隐藏" forState:UIControlStateSelected];
+        [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
+        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
+    }
+    return self;
+}
 -(id)initWithFrame:(CGRect)frame andName:(NSString *)name
 {
     self=[super initWithFrame:frame];
@@ -52,6 +68,7 @@
     frame.origin.y=ary.count*30+35;
     self.showBtn.frame=frame;
 }
+
 -(void)setDingzhiAry:(NSArray *)dingzhiAry
 {
     _dingzhiAry=dingzhiAry;
@@ -59,6 +76,12 @@
         NSDictionary *dic=dingzhiAry[i];
         [self MackViewWithFrame:CGRectMake(0, i*30+5, kWidth, 30) andDic:dic];
     }
+
+
+
+    CGRect frame=self.showBtn.frame;
+    frame.origin.y=_dingzhiAry.count*30;
+    self.showBtn.frame=frame;
 
 }
 -(void)MackViewWithFrame:(CGRect)frame andDic:(NSDictionary *)dic
