@@ -204,16 +204,6 @@
         [ToastView showTopToast:@"电话格式不正确"];
         return;
     }
-//    if(self.zipcodeField.text.length==0)
-//    {
-//        [ToastView showTopToast:@"请输入邮编"];
-//        return;
-//    }
-//    if(self.briefField.text.length==0)
-//    {
-//        [ToastView showTopToast:@"请填写公司简介"];
-//        return;
-//    }
     __weak __typeof(self) blockSelf = self;
     [HTTPCLIENT saveCompanyInfoWithUid:APPDELEGATE.companyModel.uid     WithCompanyName:companyNameField.text WithCompanyAddress:companyAddressField.text WithcompanyAreaProvince:AreaProvince WithcompanyAreaCity:AreaCity WithcompanyAreaCounty:AreaCounty WithcompanyAreaTown:AreaTown WithlegalPerson:legalPersonField.text Withphone:phoneField.text Withzipcode:zipcodeField.text Withbrief:briefField.text Success:^(id responseObject) {
       //  NSLog(@"%@",responseObject);

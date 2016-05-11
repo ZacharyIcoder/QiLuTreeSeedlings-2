@@ -10,7 +10,7 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "PickerShowView.h"
-#import "PickerLocation.h"
+#import "YLDPickLocationView.h"
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
@@ -18,7 +18,7 @@
 #import "YLDMyBuyListViewController.h"
 #import "BuyDetialInfoViewController.h"
 #import "FaBuViewController.h"
-@interface buyFabuViewController ()<PickeShowDelegate,PickerLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
+@interface buyFabuViewController ()<PickeShowDelegate,YLDPickLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
 @property (nonatomic,strong)UIButton *nameBtn;
@@ -35,7 +35,6 @@
 @property (nonatomic,strong)UITextField *countTextField;
 @property (nonatomic,strong)UITextField *priceTextField;
 @property (nonatomic,strong)PickerShowView *ecttivePickerView;
-@property (nonatomic,strong)PickerLocation *areaPickerView;
 @property (nonatomic)NSInteger ecttiv;
 @property (nonatomic,strong)UIButton *areaBtn;
 @property (nonatomic,copy)NSString *AreaProvince;
@@ -217,34 +216,33 @@
 }
 -(void)areBtnAction:(UIButton *)sender
 {
-    if (!self.areaPickerView) {
-        self.areaPickerView=[[PickerLocation alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        self.areaPickerView.locationDelegate=self;
-    }
-    [self.areaPickerView showInView];
+    YLDPickLocationView *areaPickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveXian];
+        areaPickerView.delegate=self;
+    
+    [areaPickerView showPickView];
 }
-- (void)selectedLocationInfo:(Province *)location
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
 {
     NSMutableString *namestr=[NSMutableString new];
-    if (location.code) {
-        [namestr appendString:location.provinceName];
-        self.AreaProvince=location.code;
+    if (sheng.code) {
+        [namestr appendString:sheng.cityName];
+        self.AreaProvince=sheng.code;
     }else
     {
         self.AreaProvince=nil;
     }
     
-    if (location.selectedCity.code) {
-        [namestr appendString:location.selectedCity.cityName];
-        self.AreaCity=location.selectedCity.code;
+    if (shi.code) {
+        [namestr appendString:shi.cityName];
+        self.AreaCity=shi.code;
     }else
     {
         self.AreaCity=nil;
         
     }
-    if (location.selectedCity.selectedTowns.code) {
-        [namestr appendString:location.selectedCity.selectedTowns.TownName];
-        self.AreaCounty=location.selectedCity.selectedTowns.code;
+    if (xian.code) {
+        [namestr appendString:xian.cityName];
+        self.AreaCounty=xian.code;
     }else
     {
         self.AreaCounty=nil;
@@ -253,10 +251,11 @@
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
     }else{
-        [self.areaBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
         
     }
+
 }
 -(void)ecttiveBtnAction
 {
