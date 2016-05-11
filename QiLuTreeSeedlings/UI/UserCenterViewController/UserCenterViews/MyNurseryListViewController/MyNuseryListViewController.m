@@ -189,16 +189,25 @@
         [self.dataAry enumerateObjectsUsingBlock:^(NurseryModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
                 [_removeArray addObject:myModel];
         }];
+        NSMutableArray *tempMArr = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < self.dataAry.count; i++) {
+            [self.pullTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [tempMArr addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+        _deleteIndexArr = (NSArray *)tempMArr;
 
     }
     else if (_bottomcell.isAllSelect == NO) {
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
         }
-        
+        _deleteIndexArr = nil;
+        for (NSInteger i = 0; i < self.dataAry.count; i++) {
+            [self.pullTableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:YES];
+        }
     }
     [self totalCount];
-    [self.pullTableView reloadData];
+    //[self.pullTableView reloadData];
 }
 - (void)totalCount {
     _bottomcell.count = _removeArray.count;

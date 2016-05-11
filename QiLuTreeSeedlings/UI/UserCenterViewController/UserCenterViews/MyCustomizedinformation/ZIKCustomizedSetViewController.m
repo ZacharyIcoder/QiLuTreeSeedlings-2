@@ -223,6 +223,7 @@
         return;
     }
     else {
+        [self.nameTextField resignFirstResponder];
         [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"2" Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
@@ -369,6 +370,7 @@
         [ToastView showToast:@"请确认苗木名称" withOriginY:250 withSuperView:self.view];
         return;
     }
+
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
     for (int i = 0; i < cellAry.count; i++) {
         TreeSpecificationsModel *model = cellAry[i];

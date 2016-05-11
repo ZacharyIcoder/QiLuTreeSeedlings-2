@@ -39,7 +39,7 @@
     }
     else if (model.taskType.integerValue == 2) {//减积分
         self.iconImageView.image = [UIImage imageNamed:@"我的积分-兑换"];
-        self.priceLabel.text = [NSString stringWithFormat:@"-%@",model.score];
+        self.priceLabel.text = [NSString stringWithFormat:@"%@",model.score];
         self.priceLabel.textColor  = NavColor;
     }
     self.timeLable.text = model.createTime;
