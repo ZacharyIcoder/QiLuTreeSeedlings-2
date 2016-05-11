@@ -11,10 +11,10 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "GetCityDao.h"
-#import "PickerLocation.h"
+#import "YLDPickLocationView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "NSString+Phone.h"
-@interface CompanyViewController ()<PickerLocationDelegate,UITextFieldDelegate>
+@interface CompanyViewController ()<YLDPickLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *companyNameField;
 @property (nonatomic,strong) UITextField *companyAddressField;
@@ -26,7 +26,7 @@
 @property (nonatomic,strong) UITextField *phoneField;
 @property (nonatomic,strong) UITextField *zipcodeField;
 @property (nonatomic,strong) UITextField *briefField;
-@property (nonatomic,strong) PickerLocation *pickCityView;
+//@property (nonatomic,strong) YLDPickLocationView *pickCityView;
 @property (nonatomic,strong) UIButton *areaBtn;
 @property (nonatomic,weak) UITextField *nowTextField;
 @property (nonatomic,strong) UIButton *upDataBtn;
@@ -35,7 +35,7 @@
 @end
 
 @implementation CompanyViewController
-@synthesize backScrollView,companyNameField,companyAddressField,AreaCity,AreaCounty,AreaProvince,AreaTown,legalPersonField,phoneField,zipcodeField,briefField,pickCityView,upDataBtn,editingBtn;
+@synthesize backScrollView,companyNameField,companyAddressField,AreaCity,AreaCounty,AreaProvince,AreaTown,legalPersonField,phoneField,zipcodeField,briefField,upDataBtn,editingBtn;
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -43,8 +43,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    pickCityView=[[PickerLocation alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    pickCityView.locationDelegate=self;
     self.backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 44, kWidth, kHeight-64-44)];
     [self.backScrollView setBackgroundColor:BGColor];
     [self.view setBackgroundColor:BGColor];
@@ -61,6 +59,10 @@
     companyAddressField.delegate=self;
     tempFrame.origin.y+=44;
     UIView *cityView=[[UIView alloc]initWithFrame:tempFrame];
+    UILabel *labzz=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-40, 0,10 , 44)];
+    [labzz setTextColor:yellowButtonColor];
+    [labzz setText:@"*"];
+    [cityView addSubview:labzz];
     UILabel *cityNameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, kWidth*0.3, 44)];
     [cityView addSubview:cityNameLab];
     cityNameLab.text=@"地区";
@@ -95,9 +97,9 @@
     briefField.delegate=self;
     tempFrame.origin.y+=50;
     
-    UILabel *warnLab=[[UILabel alloc]initWithFrame:CGRectMake(10,tempFrame.origin.y , kWidth-20, 35)];
+    UILabel *warnLab=[[UILabel alloc]initWithFrame:CGRectMake(10,tempFrame.origin.y+30, kWidth-20, 35)];
     [warnLab setFont:[UIFont systemFontOfSize:12]];
-    [warnLab setTextColor:titleLabColor];
+    [warnLab setTextColor:kRedHintColor];
     warnLab.numberOfLines=2;
     [warnLab setText:@"    如果您的企业信息填写有误，请点击有误项进行二次编辑。"];
     [self.backScrollView addSubview:warnLab];
@@ -202,16 +204,16 @@
         [ToastView showTopToast:@"电话格式不正确"];
         return;
     }
-    if(self.zipcodeField.text.length==0)
-    {
-        [ToastView showTopToast:@"请输入邮编"];
-        return;
-    }
-    if(self.briefField.text.length==0)
-    {
-        [ToastView showTopToast:@"请填写公司简介"];
-        return;
-    }
+//    if(self.zipcodeField.text.length==0)
+//    {
+//        [ToastView showTopToast:@"请输入邮编"];
+//        return;
+//    }
+//    if(self.briefField.text.length==0)
+//    {
+//        [ToastView showTopToast:@"请填写公司简介"];
+//        return;
+//    }
     __weak __typeof(self) blockSelf = self;
     [HTTPCLIENT saveCompanyInfoWithUid:APPDELEGATE.companyModel.uid     WithCompanyName:companyNameField.text WithCompanyAddress:companyAddressField.text WithcompanyAreaProvince:AreaProvince WithcompanyAreaCity:AreaCity WithcompanyAreaCounty:AreaCounty WithcompanyAreaTown:AreaTown WithlegalPerson:legalPersonField.text Withphone:phoneField.text Withzipcode:zipcodeField.text Withbrief:briefField.text Success:^(id responseObject) {
       //  NSLog(@"%@",responseObject);
@@ -242,7 +244,9 @@
 }
 -(void)cityBtnAction:(UIButton *)sender
 {
-    [pickCityView showInView];
+    YLDPickLocationView *pickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveXian];
+    pickerView.delegate=self;
+    [pickerView showPickView];
     if (self.nowTextField) {
         [self.nowTextField resignFirstResponder];
     }
@@ -253,41 +257,41 @@
     
 }
 
-
-- (void)selectedLocationInfo:(Province *)location
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
 {
-    NSMutableString *namestr=[NSMutableString new];
-    if (location.code) {
-        [namestr appendString:location.provinceName];
-        self.AreaProvince=location.code;
-    }else
-    {
-        self.AreaProvince=nil;
-    }
+        NSMutableString *namestr=[NSMutableString new];
+        if (sheng.code) {
+            [namestr appendString:sheng.cityName];
+            self.AreaProvince=sheng.code;
+        }else
+        {
+            self.AreaProvince=nil;
+        }
     
-    if (location.selectedCity.code) {
-        [namestr appendString:location.selectedCity.cityName];
-        self.AreaCity=location.selectedCity.code;
-    }else
-    {
-        self.AreaCity=nil;
-        
-    }
-    if (location.selectedCity.selectedTowns.code) {
-        [namestr appendString:location.selectedCity.selectedTowns.TownName];
-        self.AreaCounty=location.selectedCity.selectedTowns.code;
-    }else
-    {
-        self.AreaCounty=nil;
-    }
-    if (namestr.length>0) {
-        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
-    }else{
-        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
-        
-    }
+        if (shi.code) {
+            [namestr appendString:shi.cityName];
+            self.AreaCity=shi.code;
+        }else
+        {
+            self.AreaCity=nil;
+    
+        }
+        if (xian.code) {
+            [namestr appendString:xian.cityName];
+            self.AreaCounty=xian.code;
+        }else
+        {
+            self.AreaCounty=nil;
+        }
+        if (namestr.length>0) {
+            [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
+            [self.areaBtn.titleLabel sizeToFit];
+        }else{
+            [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+            [self.areaBtn.titleLabel sizeToFit];
+            
+        }
+
 }
 -(UIView *)makeNavView
 {
@@ -304,13 +308,6 @@
     [titleLab setText:@"企业信息"];
     [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
         [view addSubview:titleLab];
-//    UIButton *editingBtnz=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 26, 50, 30)];
-//    [editingBtnz setTitle:@"编辑" forState:UIControlStateNormal];
-//    [editingBtnz setTitle:@"取消" forState:UIControlStateSelected];
-//    [editingBtnz addTarget:self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-//    editingBtn=editingBtnz;
-//    [view addSubview:editingBtnz];
-
     return view;
 }
 -(void)editingBtnAction:(UIButton *)sender
@@ -336,15 +333,6 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.nowTextField resignFirstResponder];
-//    if (backScrollView.frame.size.height==kHeight-64-44) {
-//        return;
-//    }else
-//    {
-//        CGRect frame=backScrollView.frame;
-//        frame.size.height=kHeight-64-44;
-//        backScrollView.frame=frame;
-//    }
-
 }
 -(UITextField *)mackViewWtihName:(NSString *)name alert:(NSString *)alert unit:(NSString *)unit withFrame:(CGRect)frame
 {
@@ -360,6 +348,12 @@
     textField.clearButtonMode=UITextFieldViewModeWhileEditing;
     if ([name isEqualToString:@"电话"]) {
         textField.keyboardType=UIKeyboardTypePhonePad;
+    }
+    if ([name isEqualToString:@"企业名称"]||[name isEqualToString:@"企业地址"]||[name isEqualToString:@"地区"]||[name isEqualToString:@"法人代表"]||[name isEqualToString:@"电话"]) {
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-40, 0,10 , frame.size.height)];
+        [lab setTextColor:yellowButtonColor];
+        [lab setText:@"*"];
+        [view addSubview:lab];
     }
     textField.placeholder=alert;
     [view addSubview:textField];
