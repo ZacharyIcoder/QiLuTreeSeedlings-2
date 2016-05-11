@@ -9,12 +9,12 @@
 #import "NuseryDetialViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
-#import "PickerLocation.h"
+#import "YLDPickLocationView.h"
 #import "NurseryModel.h"
 #import "GetCityDao.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "NSString+Phone.h"
-@interface NuseryDetialViewController ()<PickerLocationDelegate,UITextFieldDelegate>
+@interface NuseryDetialViewController ()<YLDPickLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *nuseryNameField;
 @property (nonatomic,strong) UITextField *nuseryAddressField;
@@ -23,12 +23,12 @@
 @property (nonatomic,strong) UITextField *bierfTextField;
 @property (nonatomic,strong) UIButton *areaBtn;
 @property (nonatomic,strong) NurseryModel *model;
-@property (nonatomic,strong) PickerLocation *pickerLocation;
 @property (nonatomic,weak) UITextField * nowTextField;
 @property (nonatomic,weak) UIButton *upDataBtn;
 @property (nonatomic,copy) NSString *AreaProvince;
 @property (nonatomic,copy) NSString *AreaCity;
 @property (nonatomic,copy) NSString *AreaCounty;
+@property (nonatomic,copy) NSString *AreaTown;
 @end
 
 @implementation NuseryDetialViewController
@@ -127,8 +127,8 @@
         [ToastView showTopToast:@"请输入苗圃简介"];
         return;
     }
-    if (self.AreaProvince.length==0) {
-        [ToastView showTopToast:@"请选择苗圃所在地"];
+    if (self.AreaTown.length==0) {
+        [ToastView showTopToast:@"苗圃地址需精确到镇"];
         return;
     }
     [HTTPCLIENT saveNuresryWithUid:model.uid WithNurseryName:nuserName WithnurseryAreaProvince:self.AreaProvince WithnurseryAreaCity:self.AreaCity WithnurseryAreaCounty:self.AreaCounty WithnurseryAreaTown:@"" WithnurseryAddress:nuserAddress WithchargelPerson:changePerson WithPhone:phone Withbrief:birefStr Success:^(id responseObject) {
@@ -171,40 +171,48 @@
 }
 -(void)pickLocationAction
 {
-    if (!self.pickerLocation) {
-        self.pickerLocation=[[PickerLocation alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        self.pickerLocation.locationDelegate=self;
-    }
+   
+         YLDPickLocationView *pickerLocation=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveZhen];
+        pickerLocation.delegate=self;
+    
     if (self.nowTextField) {
         [self.nowTextField resignFirstResponder];
     }
-    [self.pickerLocation showInView];
+    [pickerLocation showPickView];
 }
--(void)selectedLocationInfo:(Province *)location
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
 {
     NSMutableString *namestr=[NSMutableString new];
-    if (location.code) {
-        [namestr appendString:location.provinceName];
-        self.AreaProvince=location.code;
+    if (sheng.code) {
+        [namestr appendString:sheng.cityName];
+        self.AreaProvince=sheng.code;
     }else
     {
         self.AreaProvince=nil;
     }
     
-    if (location.selectedCity.code) {
-        [namestr appendString:location.selectedCity.cityName];
-        self.AreaCity=location.selectedCity.code;
+    if (shi.code) {
+        [namestr appendString:shi.cityName];
+        self.AreaCity=shi.code;
     }else
     {
         self.AreaCity=nil;
         
     }
-    if (location.selectedCity.selectedTowns.code) {
-        [namestr appendString:location.selectedCity.selectedTowns.TownName];
-        self.AreaCounty=location.selectedCity.selectedTowns.code;
+    if (xian.code) {
+        [namestr appendString:xian.cityName];
+        self.AreaCounty=xian.code;
     }else
     {
         self.AreaCounty=nil;
+    }
+    
+    if (zhen.code) {
+        [namestr appendString:zhen.cityName];
+        self.AreaTown=zhen.code;
+    }else
+    {
+        self.AreaTown=nil;
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
@@ -214,6 +222,8 @@
         [self.areaBtn.titleLabel sizeToFit];
         
     }
+    
+
 }
 -(UIView *)makeNavView
 {
