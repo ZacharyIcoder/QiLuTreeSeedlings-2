@@ -11,7 +11,8 @@
 
 @interface ZIKPickerBtn ()
 
-@property(nonatomic, weak) UIButton *deleteBtn;
+@property(nonatomic, strong) UIButton *deleteBtn;
+
 
 
 @end
@@ -32,8 +33,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    
 }
 
 - (void)drawRect:(CGRect)rect
@@ -41,8 +40,7 @@
     [super drawRect:rect];
     
     self.highlighted = NO;
-    
-    
+
     NSInteger deleteBtnW = self.mj_width/3;
     NSInteger deleteBtnH = deleteBtnW;
     
@@ -51,10 +49,14 @@
     [deleteBtn setImage:[UIImage imageNamed:@"shanchutupian"] forState:UIControlStateNormal];
     deleteBtn.frame = CGRectMake(self.mj_width-deleteBtnW, 0, deleteBtnW, deleteBtnH);
     [deleteBtn addTarget:self action:@selector(deleteBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
+    self.deleteBtn = deleteBtn;
+    self.deleteBtn.hidden = _isHiddenDeleteBtn;
     [self addSubview:deleteBtn];
 }
 
+-(void)setIsHiddenDeleteBtn:(BOOL)isHiddenDeleteBtn {
+    _isHiddenDeleteBtn = isHiddenDeleteBtn;
+ }
 
 - (void)deleteBtnClicked:(UIButton *)button
 {

@@ -9,7 +9,6 @@
 #import "ZIKSupplyPublishVC.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
-#import "ZIKPickImageView.h"
 #import "ZIKSideView.h"
 #import "ZIKSelectView.h"
 #import "FabutiaojiaCell.h"
@@ -19,17 +18,17 @@
 
 #import "WHC_PhotoListCell.h"
 #import "WHC_PictureListVC.h"
+#import "ZIKAddImageView.h"
 
-#import "ZIKAddImageUIView.h"
-
+#import "BigImageViewShowView.h"
+#import "ZIKPickerBtn.h"
 #define kMaxLength 20
 
 @interface ZIKSupplyPublishVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
 UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictureVCDelegate>
 
 @property (nonatomic, strong) UITableView      *supplyInfoTableView;
-@property (nonatomic, weak  ) ZIKPickImageView *pickerImgView;
-@property (nonatomic, weak)   ZIKAddImageUIView *addImageView;
+@property (nonatomic, strong) ZIKAddImageView *addImageView;
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
 //@property (nonatomic, strong) NSMutableArray   *imageUrlMarr;
 @property (nonatomic, strong) UIButton         *sureButton;
@@ -53,7 +52,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 @implementation ZIKSupplyPublishVC
 {
-    UIView *nameView;
+    UIView *_nameView;
+    NSArray *_urlArr;
+
 }
 -(id)initWithModel:(SupplyDetialMode*)model
 {
@@ -73,6 +74,13 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     self.vcTitle = @"供应发布";
     [self initData];
     [self initUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if (_urlArr.count > 0) {
+        self.addImageView.saveHaveImageMarr  = (NSMutableArray *)_urlArr;
+    }
 }
 
 
@@ -118,34 +126,34 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.backScrollView addSubview:titleView];
     tempFrame.origin.y += 44.5;
     
-    ZIKPickImageView *pickView = [[ZIKPickImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), Width, (Width-60)/3 + 45)];
-    //pickView.backgroundColor = [UIColor yellowColor];
+    ZIKAddImageView *pickView = [[ZIKAddImageView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), Width, (Width-60)/3 + 45)];
     pickView.backgroundColor = [UIColor whiteColor];
 
     [self.backScrollView addSubview:pickView];
-    self.pickerImgView = pickView;
+    self.addImageView = pickView;
     __weak typeof(self) weakSelf = self;
-     self.pickerImgView.takePhotoBlock = ^{
+    self.addImageView.lookPhotoBlock = ^(){//展示照片
+        BigImageViewShowView *showView = [[BigImageViewShowView alloc] initWithImageAry:weakSelf.addImageView.imageArr];
+        [weakSelf.view addSubview:showView];
+        [showView showWithIndex:0];
+        };
+     self.addImageView.takePhotoBlock = ^{//添加照片
         [weakSelf openMenu];
     };
 
-    nameView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame), kWidth, 54)];
-    //[nameView setBackgroundColor:[UIColor redColor]];
-    [nameView setBackgroundColor:[UIColor whiteColor]];
+    _nameView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(pickView.frame), kWidth, 54)];
+    [_nameView setBackgroundColor:[UIColor whiteColor]];
 
-    [self.backScrollView addSubview:nameView];
+    [self.backScrollView addSubview:_nameView];
 
     UIView *myveiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Width, 10)];
     myveiw.backgroundColor = BGColor;
-    //myveiw.backgroundColor = [UIColor redColor];
-
-    [nameView addSubview:myveiw];
+    [_nameView addSubview:myveiw];
 
     UILabel *nameLab = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, 80, 44)];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
     nameLab.text = @"苗木名称";
-    //nameLab.textColor = titleLabColor;
-    [nameView addSubview:nameLab];
+    [_nameView addSubview:nameLab];
     UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(100, nameLab.frame.origin.y, kWidth-100-60, nameLab.frame.size.height)];
     nameTextField.placeholder = @"请输入名称";
     nameTextField.textColor = NavColor;
@@ -156,14 +164,14 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                                              selector:@selector(nameChange)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:nameTextField];
-    [nameView addSubview:nameTextField];
+    [_nameView addSubview:nameTextField];
 
     UIButton *nameBtn = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-70, 9+10, 50, 25)];
-    [nameView addSubview:nameBtn];
+    [_nameView addSubview:nameBtn];
     [nameBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
-    UIImageView *nameLineView = [[UIImageView alloc]initWithFrame:CGRectMake(10, nameView.frame.size.height-1, kWidth-10, 0.5)];
+    UIImageView *nameLineView = [[UIImageView alloc]initWithFrame:CGRectMake(10, _nameView.frame.size.height-1, kWidth-10, 0.5)];
     [nameLineView setBackgroundColor:kLineColor];
     //[nameView addSubview:nameLineView];
 
@@ -209,7 +217,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                         }
                     }
                 };
-                weakSelf.pickerImgView.urlMArr = imagesUrlMAry;
+                weakSelf.addImageView.urlMArr = imagesUrlMAry;
                 //处理图片数组结束
 
                 weakSelf.nurseryAry            = [resultdic objectForKey:@"nurseryList"];
@@ -234,7 +242,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             [myview removeFromSuperview];
         }
     }];
-    CGFloat Y = CGRectGetMaxY(nameView.frame);
+    CGFloat Y = CGRectGetMaxY(_nameView.frame);
     for (int i=0; i<self.dataAry.count; i++) {
         TreeSpecificationsModel *model=self.dataAry[i];
         FabutiaojiaCell *cell;
@@ -276,7 +284,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         [ToastView showTopToast:@"请先确定苗木名称"];
         return;
     }
-    if (self.pickerImgView.urlMArr.count<3) {
+    if (self.addImageView.urlMArr.count<3) {
         [ToastView showTopToast:@"请添加三张苗木图片"];
         return;
     }
@@ -285,11 +293,11 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
     __block NSString *urlSring      = @"";
     __block NSString *compressSring = @"";
-    [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.addImageView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
         urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
         compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
     }];
-    if (self.pickerImgView.urlMArr.count != 0) {
+    if (self.addImageView.urlMArr.count != 0) {
         self.supplyModel.imageUrls         = [urlSring substringFromIndex:1];
         self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
     }
@@ -305,8 +313,17 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         }
     }
     self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
+    _urlArr = self.addImageView.urlMArr;
+    if (self.addImageView.haveImageMArr.count > 0) {
+        [self.addImageView.haveImageMArr enumerateObjectsUsingBlock:^(ZIKPickerBtn *btn, NSUInteger idx, BOOL * _Nonnull stop) {
+            [btn removeFromSuperview];
+        }];
+        [self.addImageView.haveImageMArr removeAllObjects];
+    }
+
+
     ZIKSupplyPublishNextVC *nextVC = [[ZIKSupplyPublishNextVC alloc] initWithNurseryList:self.nurseryAry WithbaseMsg:self.baseDic];
-    nextVC.pickerImgView = self.pickerImgView;
+    nextVC.pickerImgView = self.addImageView;
     nextVC.supplyModel = self.supplyModel;
     [self.navigationController pushViewController:nextVC animated:YES];
 }
@@ -347,7 +364,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 {
     self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
     //    NSLog(@"%@",ary);
-    CGFloat Y = CGRectGetMaxY(nameView.frame) ;
+    CGFloat Y = CGRectGetMaxY(_nameView.frame) ;
 
     [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
@@ -521,7 +538,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 {
     WHC_PictureListVC  * vc = [WHC_PictureListVC new];
     vc.delegate = self;
-    vc.maxChoiceImageNumberumber = 3-self.pickerImgView.urlMArr.count;
+    vc.maxChoiceImageNumberumber = 3-self.addImageView.urlMArr.count;
     [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
 }
 
@@ -557,7 +574,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 //                     NSLog(@"%ld",mydata.length);
 
 
-                    [weakSelf.pickerImgView addImage:[weakSelf getPhotoFromName:@"imageData"] withUrl:responseObject[@"result"]];
+                    [weakSelf.addImageView addImage:[weakSelf getPhotoFromName:@"imageData"] withUrl:responseObject[@"result"]];
                     imageData = nil;
                     [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
                     RemoveActionV();
@@ -605,7 +622,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
 
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-                    [self.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+                    [self.addImageView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
                     [ToastView showToast:@"图片上传成功" withOriginY:200 withSuperView:self.view];
                 }
                 else {

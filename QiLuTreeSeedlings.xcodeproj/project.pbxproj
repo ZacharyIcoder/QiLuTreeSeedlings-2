@@ -256,14 +256,12 @@
 		FC28DB611CD9C271003D7C27 /* 注意.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB601CD9C271003D7C27 /* 注意.png */; };
 		FC28DB631CD9CC7D003D7C27 /* 标签-已退回.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */; };
 		FC28DB661CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC28DB651CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m */; };
-		FC28DB691CD9E4E1003D7C27 /* ZIKAddImageUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC28DB681CD9E4E1003D7C27 /* ZIKAddImageUIView.m */; };
 		FC28DB6D1CD9E8A4003D7C27 /* 添加照片-单株.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */; };
 		FC28DB6E1CD9E8A4003D7C27 /* 添加照片-人苗.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */; };
 		FC28DB6F1CD9E8A4003D7C27 /* 添加照片-整片.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */; };
 		FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */; };
 		FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */; };
 		FC31B2901CE088290024E147 /* ZIKPickerBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B28D1CE088290024E147 /* ZIKPickerBtn.m */; };
-		FC31B2911CE088290024E147 /* ZIKPickImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B28F1CE088290024E147 /* ZIKPickImageView.m */; };
 		FC49AE321CA8BA5B00214D4B /* ZIKSupplyPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE311CA8BA5B00214D4B /* ZIKSupplyPublishVC.m */; };
 		FC49AE351CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE341CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m */; };
 		FC49AE381CA8D36000214D4B /* ZIKUserIDetc.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE371CA8D36000214D4B /* ZIKUserIDetc.m */; };
@@ -410,6 +408,7 @@
 		FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */ = {isa = PBXBuildFile; fileRef = FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */; };
 		FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */; };
 		FCE2C4CD1CD86D6400B9B0F9 /* ZIKMySupplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */; };
+		FCE2D1C51CE46C0A0002B069 /* ZIKAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -854,8 +853,6 @@
 		FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-已退回.png"; sourceTree = "<group>"; };
 		FC28DB641CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCellBackButton.h; sourceTree = "<group>"; };
 		FC28DB651CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyCellBackButton.m; sourceTree = "<group>"; };
-		FC28DB671CD9E4E1003D7C27 /* ZIKAddImageUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZIKAddImageUIView.h; path = ../../View/ZIKAddImageUIView.h; sourceTree = "<group>"; };
-		FC28DB681CD9E4E1003D7C27 /* ZIKAddImageUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZIKAddImageUIView.m; path = ../../View/ZIKAddImageUIView.m; sourceTree = "<group>"; };
 		FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-单株.png"; sourceTree = "<group>"; };
 		FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-人苗.png"; sourceTree = "<group>"; };
 		FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-整片.png"; sourceTree = "<group>"; };
@@ -864,8 +861,6 @@
 		FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKEmptyTableViewCell.xib; sourceTree = "<group>"; };
 		FC31B28C1CE088290024E147 /* ZIKPickerBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickerBtn.h; sourceTree = "<group>"; };
 		FC31B28D1CE088290024E147 /* ZIKPickerBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickerBtn.m; sourceTree = "<group>"; };
-		FC31B28E1CE088290024E147 /* ZIKPickImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickImageView.h; sourceTree = "<group>"; };
-		FC31B28F1CE088290024E147 /* ZIKPickImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickImageView.m; sourceTree = "<group>"; };
 		FC49AE301CA8BA5B00214D4B /* ZIKSupplyPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishVC.h; sourceTree = "<group>"; };
 		FC49AE311CA8BA5B00214D4B /* ZIKSupplyPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishVC.m; sourceTree = "<group>"; };
 		FC49AE331CA8D2FE00214D4B /* ZIKMySupplyCreateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCreateModel.h; sourceTree = "<group>"; };
@@ -1188,6 +1183,8 @@
 		FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPurchaseRecordsViewController.m; sourceTree = "<group>"; };
 		FCE2C4CB1CD86D6400B9B0F9 /* ZIKMySupplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyVC.h; sourceTree = "<group>"; };
 		FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyVC.m; sourceTree = "<group>"; };
+		FCE2D1C31CE46C0A0002B069 /* ZIKAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddImageView.h; sourceTree = "<group>"; };
+		FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddImageView.m; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -2900,10 +2897,8 @@
 			children = (
 				FC31B28C1CE088290024E147 /* ZIKPickerBtn.h */,
 				FC31B28D1CE088290024E147 /* ZIKPickerBtn.m */,
-				FC31B28E1CE088290024E147 /* ZIKPickImageView.h */,
-				FC31B28F1CE088290024E147 /* ZIKPickImageView.m */,
-				FC28DB671CD9E4E1003D7C27 /* ZIKAddImageUIView.h */,
-				FC28DB681CD9E4E1003D7C27 /* ZIKAddImageUIView.m */,
+				FCE2D1C31CE46C0A0002B069 /* ZIKAddImageView.h */,
+				FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */,
 			);
 			path = PickerView;
 			sourceTree = "<group>";
@@ -3364,7 +3359,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */,
-				FC28DB691CD9E4E1003D7C27 /* ZIKAddImageUIView.m in Sources */,
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
 				FC5337C81CBE17B0008BFB11 /* HCSStarRatingView.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
@@ -3424,7 +3418,7 @@
 				FC68F3841CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */,
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
-				FC31B2911CE088290024E147 /* ZIKPickImageView.m in Sources */,
+				FCE2D1C51CE46C0A0002B069 /* ZIKAddImageView.m in Sources */,
 				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,
 				EA4EEA201CD8891400FEFD52 /* BuyMessageAlertView.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,

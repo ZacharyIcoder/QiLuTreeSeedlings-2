@@ -21,4 +21,7 @@
 
 @property(nonatomic, assign) id<ZIKPickerBtnDeleteDelegate> deleteDelegate;
 @property(nonatomic, strong) NSDictionary *urlDic;
+@property(nonatomic, assign) BOOL isHiddenDeleteBtn;
+
+@property (nonatomic, strong) UIImage *image;
 @end

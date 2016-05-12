@@ -8,9 +8,9 @@
 
 #import "ZIKArrowViewController.h"
 #import "ZIKMySupplyCreateModel.h"
-#import "ZIKPickImageView.h"
+#import "ZIKAddImageView.h"
 @interface ZIKSupplyPublishNextVC : ZIKArrowViewController
 @property (nonatomic, strong) ZIKMySupplyCreateModel *supplyModel;
-@property (nonatomic, weak  ) ZIKPickImageView *pickerImgView;
+@property (nonatomic, weak  ) ZIKAddImageView *pickerImgView;
 -(id)initWithNurseryList:(NSArray *)nurseryAry WithbaseMsg:(NSDictionary *)baseDic;
 @end

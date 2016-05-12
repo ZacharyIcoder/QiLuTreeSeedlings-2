@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZIKPickImageView.h"
+
 @interface ZIKSupplyPublishPickImageViewTableViewCell : UITableViewCell
 
 //@property (weak, nonatomic) IBOutlet ZIKPickImageView *pickImageView;
