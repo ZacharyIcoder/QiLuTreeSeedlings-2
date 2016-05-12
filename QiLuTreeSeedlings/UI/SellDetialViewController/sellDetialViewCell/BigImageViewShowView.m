@@ -104,14 +104,6 @@
      CGFloat  viewWidth = [[UIScreen mainScreen] bounds].size.width;
     NSInteger offset = scrollView.contentOffset.x/viewWidth;
     self.pageController.currentPage = offset;
-//    if (scrollView.contentOffset.x >= (scrollView.contentSize.width-1.5*viewWidth)) {
-//        [scrollView setContentOffset:CGPointMake(viewWidth, 0)];
-//        self.pageController.currentPage =scrollView.contentOffset.x/viewWidth-1;
-//    }
-//    if (scrollView.contentOffset.x<=0.5*viewWidth) {
-//        [scrollView setContentOffset:CGPointMake(scrollView.contentSize.width-2*viewWidth, 0)];
-//        self.pageController.currentPage = scrollView.contentOffset.x/viewWidth-1;
-//    }
 }
 -(void)hidingSelf
 {

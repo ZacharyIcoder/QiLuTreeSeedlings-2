@@ -15,6 +15,6 @@ typedef void(^ActionClickIndexBlock)(NSInteger index);
 +(BuyMessageAlertView *)addActionVieWithPrice:(NSString *)price AndMone:(NSString *)yue;
 +(BuyMessageAlertView *)addActionVieWithReturnReason:(NSString *)reason;
 +(BuyMessageAlertView *)addActionViewshuxin;
-
++(BuyMessageAlertView *)addActionViewMiaoPuWanShan;
 +(void)removeActionView;
 @end

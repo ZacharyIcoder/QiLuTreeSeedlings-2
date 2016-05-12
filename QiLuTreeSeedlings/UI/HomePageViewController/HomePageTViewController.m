@@ -67,8 +67,6 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak __typeof(self) blockSelf = self;
     [tableView addHeaderWithCallback:^{
-        //[blockSelf.supplyDataAry removeAllObjects];
-        
         [blockSelf getDataList];
     }];
     [tableView addFooterWithCallback:^{

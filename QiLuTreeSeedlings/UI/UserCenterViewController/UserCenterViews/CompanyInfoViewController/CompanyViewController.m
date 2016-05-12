@@ -204,9 +204,11 @@
         [ToastView showTopToast:@"电话格式不正确"];
         return;
     }
+    ShowActionV();
     __weak __typeof(self) blockSelf = self;
     [HTTPCLIENT saveCompanyInfoWithUid:APPDELEGATE.companyModel.uid     WithCompanyName:companyNameField.text WithCompanyAddress:companyAddressField.text WithcompanyAreaProvince:AreaProvince WithcompanyAreaCity:AreaCity WithcompanyAreaCounty:AreaCounty WithcompanyAreaTown:AreaTown WithlegalPerson:legalPersonField.text Withphone:phoneField.text Withzipcode:zipcodeField.text Withbrief:briefField.text Success:^(id responseObject) {
       //  NSLog(@"%@",responseObject);
+        RemoveActionV();
         if([[responseObject objectForKey:@"success"] integerValue])
         {
             blockSelf.warnLab.hidden=NO;
@@ -221,7 +223,7 @@
         }
     } failure:^(NSError *error) {
        // NSLog(@"%@",error.userInfo);
-        
+        RemoveActionV();
     }];
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField
@@ -333,7 +335,7 @@
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.4, 44)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.53, 44)];
     [textField setFont:[UIFont systemFontOfSize:14]];
     textField.clearButtonMode=UITextFieldViewModeWhileEditing;
     if ([name isEqualToString:@"电话"]) {

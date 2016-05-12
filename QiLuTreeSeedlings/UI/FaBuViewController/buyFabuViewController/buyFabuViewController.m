@@ -18,6 +18,7 @@
 #import "YLDMyBuyListViewController.h"
 #import "BuyDetialInfoViewController.h"
 #import "FaBuViewController.h"
+
 @interface buyFabuViewController ()<PickeShowDelegate,YLDPickLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
@@ -362,8 +363,10 @@
             return;
         }
     }
+    ShowActionV();
     [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
         //        NSLog(@"%@",responseObject);
+        RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"提交成功，即将返回"];
             //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
@@ -378,7 +381,7 @@
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
-        
+       RemoveActionV(); 
     }];
 }
 //1. 整形判断

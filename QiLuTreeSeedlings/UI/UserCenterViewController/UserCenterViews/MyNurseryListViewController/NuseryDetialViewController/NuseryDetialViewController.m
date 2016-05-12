@@ -14,6 +14,7 @@
 #import "GetCityDao.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "NSString+Phone.h"
+#import "ZIKHintTableViewCell.h"
 @interface NuseryDetialViewController ()<YLDPickLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *nuseryNameField;
@@ -80,7 +81,16 @@
     phoneTextField = [self makeViewWtihName:@"电话" alert:@"请输入电话" unit:@"" withFrame:tempFrame];
     tempFrame.origin.y+=50;
     bierfTextField=[self makeViewWtihName:@"简介" alert:@"请填写简介" unit:@"" withFrame:tempFrame];
+    tempFrame.origin.y+=55;
+    tempFrame.size.height=30;
+    ZIKHintTableViewCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    cell.hintStr=@"注：输入框后有＊的为必填项";
+    cell.frame=tempFrame;
+    [self.backScrollView addSubview:cell];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame))];
+    
     
     UIButton *nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-64, kWidth-80, 44)];
     [nextBtn setBackgroundColor:NavColor];
@@ -123,15 +133,13 @@
         [ToastView showTopToast:@"请输入苗圃地址"];
         return;
     }
-    if (birefStr.length==0) {
-        [ToastView showTopToast:@"请输入苗圃简介"];
-        return;
-    }
     if (self.AreaTown.length==0) {
         [ToastView showTopToast:@"苗圃地址需精确到镇"];
         return;
     }
+    ShowActionV();
     [HTTPCLIENT saveNuresryWithUid:model.uid WithNurseryName:nuserName WithnurseryAreaProvince:self.AreaProvince WithnurseryAreaCity:self.AreaCity WithnurseryAreaCounty:self.AreaCounty WithnurseryAreaTown:@"" WithnurseryAddress:nuserAddress WithchargelPerson:changePerson WithPhone:phone Withbrief:birefStr Success:^(id responseObject) {
+        RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"添加成功，即将返回"];
             [self performSelector:@selector(backBtnAction:) withObject:nil afterDelay:0.3];
@@ -140,7 +148,7 @@
              [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
-        
+        RemoveActionV();
     }];
 }
 -(void)setMessage
@@ -171,10 +179,8 @@
 }
 -(void)pickLocationAction
 {
-   
-         YLDPickLocationView *pickerLocation=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveZhen];
+   YLDPickLocationView *pickerLocation=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveZhen];
         pickerLocation.delegate=self;
-    
     if (self.nowTextField) {
         [self.nowTextField resignFirstResponder];
     }
@@ -256,7 +262,7 @@
     [view setBackgroundColor:[UIColor whiteColor]];
     [nameLab setTextColor:titleLabColor];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.4, 44)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.53, 44)];
     [textField setFont:[UIFont systemFontOfSize:14]];
     textField.clearButtonMode=UITextFieldViewModeWhileEditing;
     textField.placeholder=alert;
@@ -268,6 +274,13 @@
     [view addSubview:lineView];
     [self.backScrollView addSubview:view];
     [view setBackgroundColor:[UIColor whiteColor]];
+    if ([name isEqualToString:@"苗圃基地"]||[name isEqualToString:@"详细地址"]||[name isEqualToString:@"地区"]||[name isEqualToString:@"负责人"]||[name isEqualToString:@"电话"]) {
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-40, 0,10 , frame.size.height)];
+        [lab setTextColor:yellowButtonColor];
+        [lab setText:@"*"];
+        [view addSubview:lab];
+    }
+
     return textField;
 }
 
@@ -289,7 +302,15 @@
     [lineView setBackgroundColor:kLineColor];
     [view addSubview:lineView];
     [self.backScrollView addSubview:view];
-    [view setBackgroundColor:[UIColor whiteColor]];
+    if([name isEqualToString:@"地区"])
+    {
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-40, 0,10 , frame.size.height)];
+        [lab setTextColor:yellowButtonColor];
+        [lab setText:@"*"];
+        [view addSubview:lab];
+        [view setBackgroundColor:[UIColor whiteColor]];
+    }
+  
     return Btn;
 }
 

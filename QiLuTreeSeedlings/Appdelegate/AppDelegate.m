@@ -157,7 +157,9 @@
 - (void)requestBuyRestrict {
     HttpClient *httpClient=[HttpClient sharedClient];
     //供求发布限制
+    ShowActionV();
     [httpClient getSupplyRestrictWithToken:APPDELEGATE.userModel.access_token  withId:APPDELEGATE.userModel.access_id withClientId:nil withClientSecret:nil withDeviceId:nil withType:@"1" success:^(id responseObject) {
+        RemoveActionV();
         NSDictionary *dic=[responseObject objectForKey:@"result"];
         if ( [dic[@"count"] integerValue] == 0) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
             self.isCanPublishBuy = NO;
@@ -168,7 +170,7 @@
             self.isCanPublishBuy = YES;
         }
     } failure:^(NSError *error) {
-        
+        RemoveActionV();
     }];
 }
 -(void)reloadUserInfoSuccess:(void (^)(id responseObject))success
@@ -203,6 +205,8 @@
     [userDefaults removeObjectForKey:kACCESS_TOKEN];
     [userDefaults synchronize];
     self.userModel=[[UserInfoModel alloc]init];
+    self.companyModel=[[BusinessMesageModel alloc]init];
+    self.isCanPublishBuy=NO;
     BaseTabBarController *baseB=(BaseTabBarController *)self.window.rootViewController;
     baseB.homePageBtn.selected=YES;
     baseB.userInfoBtn.selected=NO;

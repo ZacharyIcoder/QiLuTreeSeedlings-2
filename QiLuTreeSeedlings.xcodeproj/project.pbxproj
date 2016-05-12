@@ -186,6 +186,7 @@
 		EAB781A31C8EBEA600807B44 /* QIYeMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB781A21C8EBEA600807B44 /* QIYeMessageTableViewCell.m */; };
 		EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB781A51C8EC4E200807B44 /* BuyDescriptionTableViewCell.m */; };
 		EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD217111CDC6F52006424FB /* MyMessageViewController.m */; };
+		EAE085F01CE3199D00D0A45A /* wanshanmiaopo.png in Resources */ = {isa = PBXBuildFile; fileRef = EAE085EF1CE3199D00D0A45A /* wanshanmiaopo.png */; };
 		EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE32DB41C7E97A600C4CEA2 /* AFHTTPSessionManager.m */; };
 		EAE32DD71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE32DB71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m */; };
 		EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE32DB91C7E97A600C4CEA2 /* AFSecurityPolicy.m */; };
@@ -734,6 +735,7 @@
 		EAB781A51C8EC4E200807B44 /* BuyDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDescriptionTableViewCell.m; sourceTree = "<group>"; };
 		EAD217101CDC6F52006424FB /* MyMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessageViewController.h; sourceTree = "<group>"; };
 		EAD217111CDC6F52006424FB /* MyMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessageViewController.m; sourceTree = "<group>"; };
+		EAE085EF1CE3199D00D0A45A /* wanshanmiaopo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wanshanmiaopo.png; sourceTree = "<group>"; };
 		EAE32DB31C7E97A600C4CEA2 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		EAE32DB41C7E97A600C4CEA2 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		EAE32DB51C7E97A600C4CEA2 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -1560,6 +1562,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EAE085EF1CE3199D00D0A45A /* wanshanmiaopo.png */,
 				EA5252EF1CE179500004639C /* areaselected@2x.png */,
 				EA696FB41CDD8F46001F037E /* messageRead@2x.png */,
 				EA696FB51CDD8F46001F037E /* messageUnRead@2x.png */,
@@ -3153,6 +3156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */,
+				EAE085F01CE3199D00D0A45A /* wanshanmiaopo.png in Resources */,
 				EA7419F61C8FB5AA00F54478 /* selectBtnAction2@2x.png in Resources */,
 				EAF0510D1C92B3A000F435A9 /* tabbarBackImage1@2x.png in Resources */,
 				EAF050EA1C9286B800F435A9 /* myintegralImage@2x.png in Resources */,

@@ -11,16 +11,39 @@
 #import "buyFabuViewController.h"
 #import "ZIKSupplyPublishVC.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
+#import "BuyMessageAlertView.h"
+#import "NuseryDetialViewController.h"
+#import "HttpClient.h"
 @interface FaBuViewController ()
 
 @end
 
 @implementation FaBuViewController
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    HttpClient *httpClient=[HttpClient sharedClient];
+    //供求发布限制
+    ShowActionV();
+    [httpClient getSupplyRestrictWithToken:APPDELEGATE.userModel.access_token  withId:APPDELEGATE.userModel.access_id withClientId:nil withClientSecret:nil withDeviceId:nil withType:@"1" success:^(id responseObject) {
+        RemoveActionV();
+        NSDictionary *dic=[responseObject objectForKey:@"result"];
+        if ( [dic[@"count"] integerValue] == 0) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
+            APPDELEGATE.isCanPublishBuy = NO;
+            BuyMessageAlertView *buyMessageAlertV=[BuyMessageAlertView addActionViewMiaoPuWanShan];
+            [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction) forControlEvents:UIControlEventTouchUpInside];
+            return;
+        }
+        else {
+            APPDELEGATE.isCanPublishBuy = YES;
+        }
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [APPDELEGATE requestBuyRestrict];
      UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
     [self.view setBackgroundColor:BGColor];
@@ -94,7 +117,9 @@
 {
     if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        [ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
+        //[ToastView showTopToast:@"您还没有求购发布权限,请先完善苗圃信息"];
+        BuyMessageAlertView *buyMessageAlertV=[BuyMessageAlertView addActionViewMiaoPuWanShan];
+        [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction) forControlEvents:UIControlEventTouchUpInside];
         return;
     }
     ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
@@ -102,15 +127,24 @@
 }
 -(void)fabuBuyMessage
 {
-    if (APPDELEGATE.isCanPublishBuy==NO&&[APPDELEGATE isNeedCompany]==NO)
+   
+    if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        [ToastView showTopToast:@"您还没有求购发布权限,请先完善公司或苗圃信息"];
+        //[ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
+        BuyMessageAlertView *buyMessageAlertV=[BuyMessageAlertView addActionViewMiaoPuWanShan];
+        [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction) forControlEvents:UIControlEventTouchUpInside];
         return;
     }
         buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
         [self.navigationController pushViewController:fabuVC animated:YES];
 }
-    
+-(void)miaopudetialAction
+{
+   
+    NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]init];
+    [self.navigationController pushViewController:nuseryDetialVC animated:YES];
+     [BuyMessageAlertView removeActionView];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
