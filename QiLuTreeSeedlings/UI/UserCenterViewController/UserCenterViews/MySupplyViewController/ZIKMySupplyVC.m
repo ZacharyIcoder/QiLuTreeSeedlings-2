@@ -21,6 +21,7 @@
 
 #import "ZIKSupplyPublishVC.h"//发布供应
 #import "ZIKMySupplyDetailViewController.h"//供应详情
+#import "NuseryDetialViewController.h"//新增苗圃信息
 
 
 #define NAV_HEIGHT 64 //navgationview 高度
@@ -643,7 +644,9 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             [weakSelf.navigationController pushViewController:spVC animated:YES];
         }
         else {
-            [ToastView showToast:@"请您先完善苗圃信息" withOriginY:Width/3 withSuperView:weakSelf.view];
+            NuseryDetialViewController *ndvc = [[NuseryDetialViewController alloc] init];
+            [weakSelf.navigationController pushViewController:ndvc animated:YES];
+            [ToastView showTopToast:@"您没有求购发布权限,请先完善苗圃信息"];
         }
     };
 }
