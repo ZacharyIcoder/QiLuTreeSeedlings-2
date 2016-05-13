@@ -28,6 +28,7 @@
 @end
 @implementation ZIKAddImageView
 {
+    //UIImageView *_hintImageView;
     UIView *_hintView;
     UILabel *_hintLabel;
     CGRect _selfFrame;
@@ -68,6 +69,7 @@
 
         self.emptyMArr = [NSArray arrayWithObjects:oneBtn,twoBtn,threeBtn, nil];
 
+
         _hintView  = [[UIView alloc] init];
         _hintLabel = [[UILabel alloc] init];
         _hintLabel.text = @"注 : 为了避免照片上传后变形,请尽量横拍";
@@ -75,6 +77,12 @@
         _hintLabel.textColor = yellowButtonColor;
         [_hintView addSubview:_hintLabel];
         [self addSubview:_hintView];
+
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.frame = CGRectMake(40, 5, 20, 20);
+        imageView.image = [UIImage imageNamed:@"注意"];
+        [_hintView addSubview:imageView];
+
 
         _hintView.frame  = CGRectMake(0, frame.size.height-30, frame.size.width, 30);
         _hintLabel.frame = CGRectMake(60, 0, _hintView.frame.size.width-80, 30);

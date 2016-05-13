@@ -14,7 +14,6 @@
 #import "UserInfoNomerTableViewCell.h"
 #import "HttpClient.h"
 #import "MyCollectViewController.h"
-#import "ZIKMySupplyViewController.h"
 #import "LoginViewController.h"
 #import "MyNuseryListViewController.h"
 #import "UINavController.h"

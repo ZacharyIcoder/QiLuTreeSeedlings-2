@@ -7,55 +7,55 @@
 //
 
 #import "ZIKSupplyPublishVC.h"
+
 #import "UIDefines.h"
 #import "HttpClient.h"
-#import "ZIKSideView.h"
-#import "ZIKSelectView.h"
-#import "FabutiaojiaCell.h"
+
 #import "ZIKMySupplyCreateModel.h"
-#import "JSONKit.h"
-#import "ZIKSupplyPublishNextVC.h"
 
 #import "WHC_PhotoListCell.h"
 #import "WHC_PictureListVC.h"
 #import "ZIKAddImageView.h"
-
-#import "BigImageViewShowView.h"
 #import "ZIKPickerBtn.h"
+#import "BigImageViewShowView.h"
+#import "ZIKSideView.h"
+#import "ZIKSelectView.h"
+#import "ZIKHintTableViewCell.h"
+#import "FabutiaojiaCell.h"
+
+#import "ZIKSupplyPublishNextVC.h"
+
 #define kMaxLength 20
 
 @interface ZIKSupplyPublishVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
 UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictureVCDelegate>
 
-@property (nonatomic, strong) UITableView      *supplyInfoTableView;
-@property (nonatomic, strong) ZIKAddImageView *addImageView;
-@property (nonatomic, strong) UIActionSheet    *myActionSheet;
-//@property (nonatomic, strong) NSMutableArray   *imageUrlMarr;
-@property (nonatomic, strong) UIButton         *sureButton;
-@property (nonatomic, strong) UITextField      *nameTextField;
-@property (nonatomic, strong) ZIKSideView      *sideView;
-@property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
-@property (nonatomic, strong) NSArray          *dataAry;
-@property (nonatomic, strong) NSMutableArray   *cellAry;
-//@property (nonatomic, strong) UIView           *backScrollView;
-@property (nonatomic,strong ) UIScrollView     *backScrollView;
-@property (nonatomic,strong ) UITextField      *titleTextField;
-@property (nonatomic,strong ) UIButton         *nameBtn;
-@property (nonatomic,strong ) UITextField      *nowTextField;
-@property (nonatomic,strong)  ZIKMySupplyCreateModel *supplyModel;
-//@property (nonatomic, strong) NSMutableArray *imageUrlsMarr;
-//@property (nonatomic, strong) NSMutableArray *imageCompressUrlsMarr;
-@property (nonatomic,strong) SupplyDetialMode *model;
-@property (nonatomic,strong) NSArray *nurseryAry;
-@property (nonatomic,strong) NSDictionary *baseDic;
+@property (nonatomic, strong) UITableView            *supplyInfoTableView;
+@property (nonatomic, strong) ZIKAddImageView        *addImageView;
+@property (nonatomic, strong) UIActionSheet          *myActionSheet;
+@property (nonatomic, strong) UIButton               *sureButton;
+@property (nonatomic, strong) UITextField            *nameTextField;
+@property (nonatomic, strong) ZIKSideView            *sideView;
+@property (nonatomic, strong) NSMutableArray         *productTypeDataMArray;
+@property (nonatomic, strong) NSArray                *dataAry;
+@property (nonatomic, strong) NSMutableArray         *cellAry;
+@property (nonatomic, strong) UIScrollView           *backScrollView;
+@property (nonatomic, strong) UITextField            *titleTextField;
+@property (nonatomic, strong) UIButton               *nameBtn;
+@property (nonatomic, strong) UITextField            *nowTextField;
+@property (nonatomic, strong) ZIKMySupplyCreateModel *supplyModel;
+@property (nonatomic, strong) SupplyDetialMode       *model;
+@property (nonatomic, strong) NSArray                *nurseryAry;
+@property (nonatomic, strong) NSDictionary           *baseDic;
 @end
 
 @implementation ZIKSupplyPublishVC
 {
     UIView *_nameView;
     NSArray *_urlArr;
-
+    ZIKHintTableViewCell *_hintView;
 }
+
 -(id)initWithModel:(SupplyDetialMode*)model
 {
     self = [super init];
@@ -64,10 +64,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     }
     return self;
 }
--(void)dealloc
-{
-    //NSLog(@"--------------------------------------------------------------------------------dealloc");
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -83,12 +80,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     }
 }
 
-
 - (void)initData {
     self.productTypeDataMArray = [NSMutableArray array];
     self.cellAry               = [NSMutableArray array];
     self.supplyModel           = [[ZIKMySupplyCreateModel alloc] init];
-
 }
 
 - (void)initUI {
@@ -107,7 +102,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [titleView addSubview:titleLab];
     [titleView setBackgroundColor:[UIColor whiteColor]];
     titleLab.text = @"标题";
-    //titleLab.textColor  = titleLabColor;
     UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kWidth-70, 44)];
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
     titleTextField.placeholder  = @"请输入标题(限制在20字以内)";
@@ -173,12 +167,18 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
     UIImageView *nameLineView = [[UIImageView alloc]initWithFrame:CGRectMake(10, _nameView.frame.size.height-1, kWidth-10, 0.5)];
     [nameLineView setBackgroundColor:kLineColor];
-    //[nameView addSubview:nameLineView];
 
- 
     self.nameBtn = nameBtn;
 
-    UIButton *nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 44)];
+    ZIKHintTableViewCell *hintView = [[[NSBundle mainBundle] loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
+    hintView.frame = CGRectMake(0, CGRectGetMaxY(_nameView.frame)-5, Width, HINT_VIEW_HEIGHT);
+    hintView.hintStr = @"输入的越详细,匹配度越高";
+    hintView.hidden = YES;
+    hintView.contentView.backgroundColor = BGColor;
+    [self.backScrollView addSubview:hintView];
+    _hintView = hintView;
+
+    UIButton *nextBtn = [[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 44)];
     [self.view addSubview:nextBtn];
     [nextBtn setBackgroundColor:NavColor];
     [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
@@ -242,25 +242,26 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             [myview removeFromSuperview];
         }
     }];
-    CGFloat Y = CGRectGetMaxY(_nameView.frame);
-    for (int i=0; i<self.dataAry.count; i++) {
-        TreeSpecificationsModel *model=self.dataAry[i];
+    _hintView.hidden = NO;
+    CGFloat Y = CGRectGetMaxY(_hintView.frame);
+    for (int i = 0; i < self.dataAry.count; i++) {
+        TreeSpecificationsModel *model = self.dataAry[i];
         FabutiaojiaCell *cell;
-        NSMutableString *answerStr=[NSMutableString string];
-        for (int j=0; j<specAry.count; j++) {
-            NSDictionary *specDic=specAry[j];
+        NSMutableString *answerStr = [NSMutableString string];
+        for (int j = 0; j < specAry.count; j++) {
+            NSDictionary *specDic = specAry[j];
             
             if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
-                answerStr=[specDic objectForKey:@"value"];
+                answerStr = [specDic objectForKey:@"value"];
             }
         }
         if ([answerStr isEqualToString:@"不限"]) {
             answerStr = [NSMutableString string];
         }
         
-        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
+        cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
         [_cellAry addObject:cell.model];
-        Y=CGRectGetMaxY(cell.frame);
+        Y = CGRectGetMaxY(cell.frame);
         // cell.delegate=self;
         [cell setBackgroundColor:[UIColor whiteColor]];
         [self.backScrollView addSubview:cell];
@@ -364,7 +365,8 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 {
     self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
     //    NSLog(@"%@",ary);
-    CGFloat Y = CGRectGetMaxY(_nameView.frame) ;
+    _hintView.hidden = NO;
+    CGFloat Y = CGRectGetMaxY(_hintView.frame) ;
 
     [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
@@ -814,29 +816,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.nameTextField resignFirstResponder];
 }
 
-//-(BOOL) setPhotoToPath:(UIImage *)image isName:(NSString *)name
-//{
-//    //此处首先指定了图片存取路径（默认写到应用程序沙盒 中）
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-//
-//    //并给文件起个文件名
-//    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
-//    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
-//    if (blHave) {
-//        NSLog(@"already have");
-//        //delete
-//        [self deleteFromName:name];
-//    }
-//    NSData *data = UIImagePNGRepresentation(image);
-//    BOOL result = [data writeToFile:uniquePath atomically:YES];
-//    if (result) {
-//        //NSLog(@"success");
-//        return YES;
-//    }else {
-//        //NSLog(@"no success");
-//        return NO;
-//    }
-//}
 
 -(BOOL) setPhotoToPath:(NSData *)imagedata isName:(NSString *)name
 {

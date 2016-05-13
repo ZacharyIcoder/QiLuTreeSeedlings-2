@@ -54,6 +54,7 @@
             <connections>
                 <outlet property="hintLabel" destination="gzc-Xa-RVy" id="RcY-zd-Ext"/>
             </connections>
+            <point key="canvasLocation" x="208" y="392"/>
         </tableViewCell>
     </objects>
     <resources>

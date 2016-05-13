@@ -7,25 +7,27 @@
 //
 
 #import "ZIKMySupplyVC.h"
-#import "ZIKSupplyPublishVC.h"
+
 #import "HttpClient.h"
-#import "YYModel.h"
-#import "ZIKSupplyModel.h"
-#import "ZIKMySupplyTableViewCell.h"
-#import "MJRefresh.h"
-#import "ZIKMySupplyCellBackButton.h"
-#import "ZIKMySupplyDetailViewController.h"
-#import "ZIKBottomDeleteTableViewCell.h"
+#import "YYModel.h"//类型转换
+#import "MJRefresh.h"//MJ刷新
+
+#import "ZIKSupplyModel.h"//供应model
+
+#import "ZIKMySupplyCellBackButton.h"//已退回状态，查看退回原因button
+#import "ZIKMySupplyTableViewCell.h"//供应cell
+#import "ZIKBottomDeleteTableViewCell.h"//底部删除view,在已过期状态并且可编辑状态下
 #import "ZIKMySupplyBottomRefreshTableViewCell.h"//底部刷新view 在已通过并且可编辑状态下
+
+#import "ZIKSupplyPublishVC.h"//发布供应
+#import "ZIKMySupplyDetailViewController.h"//供应详情
+
 
 #define NAV_HEIGHT 64 //navgationview 高度
 #define MENUVIEW_HEIGHT 43  //button 选择菜单高度
-#define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
 #define CELL_FOOTERVIEW_HEIGH 8 //cell的section footer
-#define REFRESH_CELL_HEIGH 50
-#define SUPPLY_STATE_BUTTON_FONT [UIFont systemFontOfSize:14.0f]
-
-//static NSInteger refreshNum = 0;
+#define REFRESH_CELL_HEIGH 50 //底部刷新view视图高度
+#define SUPPLY_STATE_BUTTON_FONT [UIFont systemFontOfSize:14.0f] //供应状态按钮字体大小
 
 typedef NS_ENUM(NSInteger, SupplyState) {
     SupplyStateAll       = 0,//全部
@@ -35,11 +37,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 };
 
 @interface ZIKMySupplyVC ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
-@property (nonatomic, assign) NSInteger      page;//页数从1开始
-@property (nonatomic, strong) NSMutableArray *supplyInfoMArr;//供应信息数组
-@property (nonatomic, assign) BOOL           isCanPublish;//是否能够发布
-@property (nonatomic, assign) SupplyState    state;
-@property (nonatomic, strong) UITableView    *supplyTableView;
+@property (nonatomic, assign) NSInteger      page;            //页数从1开始
+@property (nonatomic, strong) NSMutableArray *supplyInfoMArr; //供应信息数组
+@property (nonatomic, assign) BOOL           isCanPublish;    //是否能够发布
+@property (nonatomic, assign) SupplyState    state;           //供应状态
+@property (nonatomic, strong) UITableView    *supplyTableView;//供应列表
 @end
 
 @implementation ZIKMySupplyVC
@@ -159,14 +161,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         view.frame = CGRectMake(0, 0, Width, 35+CELL_FOOTERVIEW_HEIGH);
         ZIKMySupplyCellBackButton *button = [[ZIKMySupplyCellBackButton alloc] initWithFrame:CGRectMake(0, 0, Width, 35)];
         button.backgroundColor = [UIColor whiteColor];
-        //[button setImageEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 5)];
         [button setImage:[UIImage imageNamed:@"注意"] forState:UIControlStateNormal];
         [button setTitle:@"查看退回原因" forState:UIControlStateNormal];
-
         [view addSubview:button];
         button.tag = section;
         [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-
     }
     return view;
 }
@@ -174,7 +173,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma mark - tableviw选中cell事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKSupplyModel *model = self.supplyInfoMArr[indexPath.section];
-    //    __block  ZIKMySupplyBottomRefreshTableViewCell *cell = (ZIKMySupplyBottomRefreshTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     if (self.supplyTableView.editing && self.state == SupplyStateThrough) {//刷新编辑状态
         if (!model.isCanRefresh) {//如果不可刷新
             [ToastView showTopToast:@"该条信息本次不能刷新"];
@@ -272,7 +270,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 #pragma mark - 请求数据
 - (void)requestData {
-//    [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.supplyTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
@@ -289,7 +286,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma mark - 请求我的供应列表信息
 - (void)requestMySupplyList:(NSString *)page {
     //我的供应列表
-   
     [self.supplyTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withState:[NSString stringWithFormat:@"%ld",(long)self.state] withPage:page withPageSize:@"15" success:^(id responseObject) {
@@ -298,7 +294,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             return ;
         }
         NSDictionary *dic = [responseObject objectForKey:@"result"];
-        //NSLog(@"%@",[responseObject objectForKey:@"msg"]);
         NSArray *array = dic[@"list"];
         if (array.count == 0 && self.page == 1) {
         [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
@@ -382,7 +377,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
     //button
     NSArray *titles = @[@"全部",@"已通过",@"已退回",@"已过期"];
-    //NSArray *titlesArr = @[@[@"全部",@"已通过",@"已退回",@"已过期"],@[]];
     CGFloat padding = 0.0f;
     CGFloat split = Width / titles.count;
     for (NSInteger i = 0; i < titles.count; i++) {
@@ -419,7 +413,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     //添加长按手势
     _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
     [self.supplyTableView addGestureRecognizer:_tapDeleteGR];
-    //[self.supplyTableView addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:NULL];
 
 
     //底部刷新view（已通过状态下显示）
@@ -475,7 +468,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [ToastView showTopToast:@"请选择刷新项"];
         return;
     }
-   // __weak typeof(refreshMarr) refreshArr = refreshMarr;
     __weak __typeof(self) blockSelf = self;
 
     __block NSString *uidString = @"";
@@ -492,14 +484,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             _refreshCell.hidden = YES;
             blockSelf.page = 1;
             [blockSelf requestData];
-//            [self requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)self.page]];
-//            __weak typeof(self) weakSelf = self;//解决循环引用的问题
-//            [self.supplyTableView addHeaderWithCallback:^{
-//                weakSelf.page = 1;
-//                [weakSelf requestMySupplyList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
-//            }];
-
-
         }
         else {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:200 withSuperView:self.view];
@@ -553,7 +537,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }];
     NSString *uids = [uidString substringFromIndex:1];
     [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
-        //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
 
             [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -582,7 +565,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
         }
     } failure:^(NSError *error) {
-        //[HTTPCLIENT]
+        
     }];
 
     

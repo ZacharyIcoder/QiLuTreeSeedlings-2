@@ -3,7 +3,7 @@
 //  QiLuTreeSeedlings
 //
 //  Created by kong on 16/3/28.
-//  Copyright © 2016年 guihuicaifu. All rights reserved.
+//  Copyright © 2016年 zhongyi. All rights reserved.
 //
 
 #import "ZIKSupplyPublishNextVC.h"
@@ -13,7 +13,7 @@
 #import "ZIKIteratorNode.h"
 #import "ZIKNurseryListSelectButton.h"
 #import "BWTextView.h"
-#import "JSONKit.h"
+//#import "JSONKit.h"
 #import "ZIKMySupplyVC.h"
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
 {
@@ -342,7 +342,6 @@
         self.supplyModel.price = self.priceTextField.text;
     }
     self.supplyModel.effectiveTime = [NSString stringWithFormat:@"%ld",(long)self.ecttiv];
-    //self.supplyModel.murseryUid = [self.nurseryUidMArray JSONString];
     __block NSString *nurseryUidString = @"";
     [self.nurseryUidMArray enumerateObjectsUsingBlock:^(NSString *uid, NSUInteger idx, BOOL * _Nonnull stop) {
         nurseryUidString = [nurseryUidString stringByAppendingString:[NSString stringWithFormat:@",%@",uid]];
