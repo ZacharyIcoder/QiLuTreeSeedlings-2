@@ -542,8 +542,6 @@
             
         }];
     }
-
-   // NSLog(@"collectionBtnAction");
 }
 -(void)backBtnAction:(UIButton *)sender
 {
@@ -569,7 +567,12 @@
         BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
                  cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.infoDic) {
-            cell.dic=[self.infoDic objectForKey:@"detail"];
+            NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
+            if(!_isPuy&&self.type==1)
+            {
+                [dic setValue:@"请付费查看" forKey:@"supplybuyName"];
+            }
+            cell.dic=dic;
         }
         return cell;
     }else if(indexPath.section==1)

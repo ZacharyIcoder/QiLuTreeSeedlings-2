@@ -25,12 +25,10 @@
         self.lineImage=lineImage;
         [lineImage setBackgroundColor:kLineColor];
         [self addSubview:lineImage];
-        if ([title isEqualToString:@"我的订制信息"]||[title isEqualToString:@"我的余额"]||[title isEqualToString:@"我的分享"]||[title isEqualToString:@"站长通"]) {
+        if ([title isEqualToString:@"购买记录"]||[title isEqualToString:@"我的余额"]||[title isEqualToString:@"我的分享"]||[title isEqualToString:@"站长通"]) {
             lineImage.hidden=YES;
         }
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        //self.detailTextLabel.text = @"mona";
-        //self.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     return self;
 }
