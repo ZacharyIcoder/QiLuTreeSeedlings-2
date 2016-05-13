@@ -67,6 +67,7 @@
     [self.view setBackgroundColor:BGColor];
     // Do any additional setup after loading the view.
     CGRect tempFrame=CGRectMake(0, 0, kWidth, 50);
+   
     nuseryNameField = [self makeViewWtihName:@"苗圃基地" alert:@"请输入基地名称" unit:@"" withFrame:tempFrame];
     tempFrame.origin.y+=50;
     
@@ -243,7 +244,14 @@
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
-    [titleLab setText:@"我的苗圃"];
+     NSString *nameStr=@"新增苗圃信息";
+    if (model.uid) {
+        nameStr=@"修改苗圃信息";
+    }else
+    {
+        nameStr=@"新增苗圃信息";
+    }
+    [titleLab setText:nameStr];
     [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     [view addSubview:titleLab];
     return view;
