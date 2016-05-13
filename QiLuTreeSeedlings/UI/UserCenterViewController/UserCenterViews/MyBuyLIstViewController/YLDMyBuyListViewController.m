@@ -126,7 +126,9 @@
         uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
+    ShowActionV();
     [HTTPCLIENT deleteMyBuyInfo:uids Success:^(id responseObject) {
+        RemoveActionV();
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showTopToast:@"删除成功"];
             
@@ -137,7 +139,7 @@
             }];
             [blockSelf.tableView reloadData];
             [blockSelf.tableView deleteRowsAtIndexPaths:blockSelf.tableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
-            if (blockSelf.dataAry.count == 0) {
+            
                 self.pageCount=1;
                 [self getDataList];
                 bottomcell.hidden = YES;
@@ -148,8 +150,6 @@
                     weakSelf.pageCount=1;
                     [weakSelf getDataList];
                 }];
-
-            }
             [_removeArray removeAllObjects];
             [self totalCount];
         }
@@ -157,7 +157,7 @@
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
-        
+        RemoveActionV();
     }];
     
 }

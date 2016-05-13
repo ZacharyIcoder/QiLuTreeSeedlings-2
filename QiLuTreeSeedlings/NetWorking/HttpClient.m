@@ -446,11 +446,14 @@
                             uid,@"uid",
                             access_id,@"access_id",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
         failure(error);
         [HttpClient HTTPERRORMESSAGE:error];
     }];
@@ -502,11 +505,14 @@
                               uid,@"uid",
                               access_id,@"access_id",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        RemoveActionV();
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        RemoveActionV();
         failure(error);
         [HttpClient HTTPERRORMESSAGE:error];
     }];
@@ -607,6 +613,7 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"%@",[responseObject objectForKey:@"msg"]);
+        RemoveActionV();
         success(responseObject);
         RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -1587,8 +1594,6 @@
     parmers[@"total_fee"]        = price;
     parmers[@"memberUid"]        = APPDELEGATE.userModel.access_id;
     parmers[@"spbill_create_ip"] = kclient_id;
-//    parmers[@"client_secret"]    = kclient_secret;
-//    parmers[@"device_id"]        = str;
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1608,11 +1613,6 @@
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"txnAmt"]        = price;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-//    [self GET:postURL parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//
-//    }];
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1632,11 +1632,6 @@
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"txnAmt"]        = price;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    //    [self GET:postURL parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    //
-    //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    //
-    //    }];
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
