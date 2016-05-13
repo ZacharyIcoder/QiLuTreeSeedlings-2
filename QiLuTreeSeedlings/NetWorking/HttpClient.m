@@ -602,13 +602,16 @@
                              name,@"name",
                              type,@"type",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"%@",[responseObject objectForKey:@"msg"]);
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
@@ -1362,13 +1365,16 @@
 //                              @"10",@"keywordCount",
 //                              @"10",@"recommendCount",
 //                              @"5",@"supplyCount", nil];
+    ShowActionV();
     [self GET:postURL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
@@ -1441,13 +1447,15 @@
         parmers[field]  = [dic objectForKey:@"anwser"];
         //[parmers setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
     }
-
+    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
@@ -1684,12 +1692,15 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"uid"]       = uid;
+    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 

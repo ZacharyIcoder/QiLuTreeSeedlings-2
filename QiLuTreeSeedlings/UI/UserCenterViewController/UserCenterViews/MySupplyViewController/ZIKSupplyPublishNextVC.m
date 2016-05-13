@@ -7,7 +7,6 @@
 //
 
 #import "ZIKSupplyPublishNextVC.h"
-//#import "ZIKSupplyPUblishNextFirstTableViewCell.h"
 #import "PickerShowView.h"
 #import "HttpClient.h"
 #import "ZIKNurseryListView.h"
@@ -15,8 +14,7 @@
 #import "ZIKNurseryListSelectButton.h"
 #import "BWTextView.h"
 #import "JSONKit.h"
-#import "ZIKMySupplyViewController.h"
-//@class ZIKMySupplyViewController;
+#import "ZIKMySupplyVC.h"
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
 {
     UIButton *ecttiveBtn;
@@ -418,8 +416,8 @@
             [self.pickerImgView removeALL];
             //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
             for(UIViewController *controller in self.navigationController.viewControllers) {
-                if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
-                    ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
+                if([controller isKindOfClass:[ZIKMySupplyVC class]]){
+                    ZIKMySupplyVC *owr = (ZIKMySupplyVC *)controller;
                     [self.navigationController popToViewController:owr animated:YES];
                 }
             }
