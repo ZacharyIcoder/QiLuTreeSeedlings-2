@@ -64,6 +64,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma 视图cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    [self requestData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
     [self requestSupplyRestrict];
 }
 
@@ -73,7 +78,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     [self configNav];
     [self initData];
     [self initUI];
-    [self requestData];
 }
 
 #pragma mark - 返回箭头按钮点击事件
