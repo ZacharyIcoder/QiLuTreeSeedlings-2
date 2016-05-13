@@ -16,6 +16,7 @@
 #import "BuyDetialInfoViewController.h"
 #import "BuyMessageAlertView.h"
 #import "BuyDetialModel.h"
+#import "NuseryDetialViewController.h"
 @interface YLDMyBuyListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
@@ -450,9 +451,12 @@
     self.rightBarBtnTitleString = @"发布";
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-        if (APPDELEGATE.isCanPublishBuy==NO&&[APPDELEGATE isNeedCompany]==NO)
+        if (APPDELEGATE.isCanPublishBuy==NO)
         {
-            [ToastView showTopToast:@"您没有求购发布权限,请先完善公司或苗圃信息"];
+            [ToastView showTopToast:@"您没有求购发布权限,请先完善苗圃信息"];
+            NuseryDetialViewController *nuseVC=[[NuseryDetialViewController alloc]init];
+            [weakSelf.navigationController pushViewController:nuseVC animated:YES];
+            
             return;
         }
         buyFabuViewController *buyFaBuVC=[[buyFabuViewController alloc]init];

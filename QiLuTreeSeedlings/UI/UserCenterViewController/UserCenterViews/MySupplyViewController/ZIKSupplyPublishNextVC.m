@@ -15,6 +15,7 @@
 #import "BWTextView.h"
 //#import "JSONKit.h"
 #import "ZIKMySupplyVC.h"
+#import "FaBuViewController.h"
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
 {
     UIButton *ecttiveBtn;
@@ -415,9 +416,9 @@
             [self.pickerImgView removeALL];
             //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
             for(UIViewController *controller in self.navigationController.viewControllers) {
-                if([controller isKindOfClass:[ZIKMySupplyVC class]]){
-                    ZIKMySupplyVC *owr = (ZIKMySupplyVC *)controller;
-                    [self.navigationController popToViewController:owr animated:YES];
+                if([controller isKindOfClass:[ZIKMySupplyVC class]]||[controller isKindOfClass:[FaBuViewController class]]){
+                    //ZIKMySupplyVC *owr = (ZIKMySupplyVC *)controller;
+                    [self.navigationController popToViewController:controller animated:YES];
                 }
             }
         }
