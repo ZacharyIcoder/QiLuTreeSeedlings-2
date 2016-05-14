@@ -16,19 +16,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享后返回应用即可刷新供应信息排名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cE-Yh-J6K">
-                        <rect key="frame" x="20" y="5" width="280" height="21"/>
+                        <rect key="frame" x="20" y="3" width="280" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="0zB-vc-eA4"/>
+                            <constraint firstAttribute="height" constant="20" id="Oep-Rk-0iQ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RP0-rP-uuK">
-                        <rect key="frame" x="20" y="29" width="280" height="30"/>
+                        <rect key="frame" x="20" y="24" width="280" height="36"/>
                         <color key="backgroundColor" red="0.39929390380000002" green="0.40173203299999999" blue="0.39827146250000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="xB3-3l-rih"/>
+                            <constraint firstAttribute="height" constant="36" id="w7z-qg-FJI"/>
                         </constraints>
                         <state key="normal" title="立即分享">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,14 +36,14 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="RP0-rP-uuK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9Hv-EK-297"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="RP0-rP-uuK" secondAttribute="bottom" constant="-3" id="HiT-xf-tBp"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="RP0-rP-uuK" secondAttribute="trailing" constant="12" id="T43-du-Lff"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="3cE-Yh-J6K" secondAttribute="trailing" constant="12" id="VcX-IT-LhJ"/>
-                    <constraint firstItem="RP0-rP-uuK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="YZA-1j-PjD"/>
-                    <constraint firstItem="3cE-Yh-J6K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="ay5-RI-UmV"/>
-                    <constraint firstItem="3cE-Yh-J6K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="qQW-E9-auP"/>
-                    <constraint firstItem="3cE-Yh-J6K" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="vfx-kc-2Sc"/>
+                    <constraint firstItem="RP0-rP-uuK" firstAttribute="top" secondItem="3cE-Yh-J6K" secondAttribute="bottom" constant="1" id="Mol-Az-GOc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3cE-Yh-J6K" secondAttribute="trailing" constant="12" id="N4Y-V4-FS9"/>
+                    <constraint firstItem="RP0-rP-uuK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="RSf-G8-oMV"/>
+                    <constraint firstItem="3cE-Yh-J6K" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aUb-oX-seM"/>
+                    <constraint firstItem="3cE-Yh-J6K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="qg8-Wv-z7U"/>
+                    <constraint firstItem="3cE-Yh-J6K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="rjq-Cz-NA3"/>
+                    <constraint firstItem="RP0-rP-uuK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="s4m-kx-NIF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RP0-rP-uuK" secondAttribute="trailing" constant="12" id="xNT-9r-BWX"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

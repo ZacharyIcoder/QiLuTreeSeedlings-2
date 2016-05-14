@@ -45,19 +45,17 @@
 }
 
 - (void)requestData {
-    ShowActionV();
-    [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+//    [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.myCustomizedInfoTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
-        ShowActionV();
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.myCustomizedInfoTableView addFooterWithCallback:^{
         weakSelf.page++;
-        ShowActionV();
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
+    [self.myCustomizedInfoTableView headerBeginRefreshing];
 }
 
 - (void)initUI {
@@ -70,7 +68,6 @@
 
 - (void)requestSellList:(NSString *)page {
     //我的供应列表
-    RemoveActionV();
     [self.myCustomizedInfoTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient getMyCustomizedListInfoWithPageNumber:page pageSize:@"15" Success:^(id responseObject) {

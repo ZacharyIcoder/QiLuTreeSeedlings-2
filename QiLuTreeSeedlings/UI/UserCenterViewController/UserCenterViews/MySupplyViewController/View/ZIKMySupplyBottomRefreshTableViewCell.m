@@ -19,6 +19,10 @@
     //[self.refreshButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     //self.refreshButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
     self.countLable.text = @"合计: 0 条";
+    self.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
+    self.layer.shadowOpacity = 0.2;////阴影透明度，默认0
+    self.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
+    self.layer.shadowRadius  = 3;//阴影半径，默认3
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
