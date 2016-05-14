@@ -438,10 +438,6 @@
     [view addSubview:titleLab];
     return view;
 }
-//-(void)backBtnAction:(UIButton *)sender
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
 - (void)getTreeSHUXINGWithBtn:(UIButton *)sender
 {
     ;

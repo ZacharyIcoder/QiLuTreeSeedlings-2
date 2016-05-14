@@ -25,4 +25,5 @@
  *  --true:已读；false：未读
  */
 @property (nonatomic, copy) NSString *reads;
+@property (nonatomic, copy) NSString *memberCustomUid;
 @end

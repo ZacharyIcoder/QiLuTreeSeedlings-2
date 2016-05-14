@@ -169,7 +169,10 @@
         UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"xxxxxx"];
         if (!cell) {
             cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"xxxxxx"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
+         NSDictionary *dic=self.custominzedZuAryy[indexPath.section-1];
+        cell.textLabel.text=[dic objectForKey:@"name"];
         return cell;
     }
  
@@ -177,9 +180,16 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
-//    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithSaercherInfo:model.uid];
-//    [self.navigationController pushViewController:viewC animated:YES];
+    
+    if (indexPath.section==0) {
+       ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
+        BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithDingzhiModel:model];
+       [self.navigationController pushViewController:viewC animated:YES];
+    }else{
+        NSDictionary *dic=self.custominzedZuAryy[indexPath.section-1];
+       // NSLog(@"%@",dic);
+    }
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -119,7 +119,7 @@
     [bottowView addSubview:leftBtn];
     [leftBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     
-    [leftBtn addTarget:self action:@selector(removeActionView) forControlEvents:UIControlEventTouchUpInside];
+   [leftBtn addTarget:self action:@selector(removeActionView) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *rightBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, BotHeight-50, kWidth/2, 50)];
     [rightBtn setTitle:@"立即编辑" forState:UIControlStateNormal];
@@ -242,9 +242,9 @@
             UIView *actionBView = (UIView *)object;
             if(actionBView.tag == kActionVTag)
             {
-                UIImageView *imageView=(UIImageView *)[actionBView viewWithTag:1];
-                imageView.animationRepeatCount=1;
-                [imageView stopAnimating];
+//                UIImageView *imageView=(UIImageView *)[actionBView viewWithTag:1];
+//                imageView.animationRepeatCount=1;
+//                [imageView stopAnimating];
                 [UIView animateWithDuration:0.3 animations:^{
                     actionBView.alpha = 0;
                     

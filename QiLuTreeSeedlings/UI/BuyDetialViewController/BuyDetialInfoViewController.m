@@ -42,12 +42,15 @@
 @property (nonatomic,strong) NSMutableArray *miaomuzhiAry;
 @property (nonatomic,weak) UIImageView *guoqiIamgV;
 @property (nonatomic,weak) UIButton *editingBtn;
+@property (nonatomic)NSInteger push_;
+@property (nonatomic,copy) NSString *memberCustomUid;
 @end
 
 @implementation BuyDetialInfoViewController
 -(void)dealloc{
     
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -65,7 +68,7 @@
         return;
     }
     [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
-                        WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
+                        WithType:[NSString stringWithFormat:@"%ld",_push_] WithmemberCustomUid:@""                             Success:^(id responseObject) {
                             //NSLog(@"%@",responseObject);
                             NSDictionary *dic=[responseObject objectForKey:@"result"];
                             self.infoDic=dic;
@@ -82,21 +85,27 @@
                                 }
                             }else
                             {
+                                
                                 self.isPuy=NO;
                             }
                             if (!self.isPuy) {
                                 
-                                if ([[dic objectForKey:@"supplybuyUid"] isEqualToString:APPDELEGATE.userModel.access_id]) {
-                                    
+                                
+                                if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
+                                    [_BuyMessageView removeFromSuperview];
+                                    _BuyMessageView =nil;
                                 }else
                                 {
+                                   // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                     if (_BuyMessageView==nil) {
                                         _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
                                         [_messageView removeFromSuperview];
                                         _messageView = nil;
-
+                                        
+                                    }
                                 }
-                            }
+                              
+                            
                             }else{
                                 if (_messageView==nil) {
                                     _messageView = [self lianxiMessageView];
@@ -108,6 +117,69 @@
                         } failure:^(NSError *error) {
                             
                         }];
+}
+-(id)initWithDingzhiModel:(ZIKCustomizedInfoListModel *)model
+{
+    self=[super init];
+    if (self) {
+        self.isPuy=NO;
+        self.uid=model.uid;
+        self.type=1;
+        _push_=1;
+        self.memberCustomUid=model.memberCustomUid;
+        [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
+                            WithType:@"1" WithmemberCustomUid:self.memberCustomUid                             Success:^(id responseObject) {
+                                //NSLog(@"%@",responseObject);
+                                NSDictionary *dic=[responseObject objectForKey:@"result"];
+                                self.infoDic=dic;
+                                self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                                self.model.uid=self.uid;
+                                if (self.model.push||self.model.buy) {
+                                    self.isPuy=YES;
+                                    _biaoqianView.hidden=NO;
+                                    if (self.model.push) {
+                                        [_biaoqianView setImage:[UIImage imageNamed:@"dibgzhibiaoqian"]];
+                                    }
+                                    if (self.model.buy) {
+                                        [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+                                    }
+                                }else
+                                {
+                                    
+                                    self.isPuy=NO;
+                                }
+                                if (!self.isPuy) {
+                                    
+                                    
+                                    if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
+                                        [_BuyMessageView removeFromSuperview];
+                                        _BuyMessageView =nil;
+                                    }else
+                                    {
+                                        // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
+                                        if (_BuyMessageView==nil) {
+                                            _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                            [_messageView removeFromSuperview];
+                                            _messageView = nil;
+                                            
+                                        }
+                                    }
+                                    
+                                    
+                                }else{
+                                    if (_messageView==nil) {
+                                        _messageView = [self lianxiMessageView];
+                                        [_BuyMessageView removeFromSuperview];
+                                        _BuyMessageView = nil;
+                                    }
+                                }
+                                [self reloadMyView];
+                            } failure:^(NSError *error) {
+                                
+                            }];
+
+    }
+    return self;
 }
 -(id)initWithSaercherInfo:(NSString *)uid
 {
@@ -137,10 +209,24 @@
                  }
              }else
              {
+                 
                  self.isPuy=NO;
              }
              if (!self.isPuy) {
-                 _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                 if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
+                     self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64);
+                     [_BuyMessageView removeFromSuperview];
+                     _BuyMessageView =nil;
+                 }else
+                 {
+                     if (_BuyMessageView==nil) {
+                         _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                         [_messageView removeFromSuperview];
+                         _messageView = nil;
+                         
+                     }
+                 }
+
              }else{
                  _messageView = [self lianxiMessageView];
              }
@@ -609,7 +695,7 @@
             NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
             if(!_isPuy&&self.type==1)
             {
-                if ([[dic objectForKey:@"supplybuyUid"] isEqualToString:APPDELEGATE.userModel.access_id]) {
+                if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
                     
                 }else
                 {
@@ -644,7 +730,7 @@
             NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
             if(!_isPuy&&self.type==1)
             {
-                if ([[dic objectForKey:@"supplybuyUid"] isEqualToString:APPDELEGATE.userModel.access_id]) {
+                if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
                     
                 }else
                 {

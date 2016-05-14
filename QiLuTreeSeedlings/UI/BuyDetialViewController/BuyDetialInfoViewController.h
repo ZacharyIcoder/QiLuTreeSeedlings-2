@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ZIKCustomizedInfoListModel.h"
 @interface BuyDetialInfoViewController : UIViewController
 -(id)initWithSaercherInfo:(NSString *)uid;
+-(id)initWithDingzhiModel:(ZIKCustomizedInfoListModel *)model;
 -(id)initMyDetialWithSaercherInfo:(NSString *)uid;
 @end
