@@ -410,6 +410,7 @@
 		FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */; };
 		FCE2C4CD1CD86D6400B9B0F9 /* ZIKMySupplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */; };
 		FCE2D1C51CE46C0A0002B069 /* ZIKAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */; };
+		FCE458C01CE6D6AA00CBF802 /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE458BF1CE6D6AA00CBF802 /* UMMobClick.framework */; };
 		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
 		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
 		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
@@ -1186,6 +1187,7 @@
 		FCE2C4CC1CD86D6400B9B0F9 /* ZIKMySupplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyVC.m; sourceTree = "<group>"; };
 		FCE2D1C31CE46C0A0002B069 /* ZIKAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddImageView.h; sourceTree = "<group>"; };
 		FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddImageView.m; sourceTree = "<group>"; };
+		FCE458BF1CE6D6AA00CBF802 /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
 		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -1274,6 +1276,7 @@
 				FC50B1761CAE249A0022A24C /* libiconv.tbd in Frameworks */,
 				FC50B1741CAE247E0022A24C /* Security.framework in Frameworks */,
 				FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */,
+				FCE458C01CE6D6AA00CBF802 /* UMMobClick.framework in Frameworks */,
 				EA741A121C8FEA5200F54478 /* CoreBluetooth.framework in Frameworks */,
 				FC50B1721CAE24400022A24C /* libWeChatSDK.a in Frameworks */,
 				FC50B3431CAE4C4A0022A24C /* libssl.a in Frameworks */,
@@ -2364,6 +2367,7 @@
 		FC50B1271CAE23E60022A24C /* 友盟 */ = {
 			isa = PBXGroup;
 			children = (
+				FCE458BE1CE6D60700CBF802 /* 友盟统计 */,
 				FC50B1281CAE242A0022A24C /* 友盟社会化分享 */,
 			);
 			path = "友盟";
@@ -2794,6 +2798,14 @@
 				FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */,
 			);
 			path = PurchaseRecords;
+			sourceTree = "<group>";
+		};
+		FCE458BE1CE6D60700CBF802 /* 友盟统计 */ = {
+			isa = PBXGroup;
+			children = (
+				FCE458BF1CE6D6AA00CBF802 /* UMMobClick.framework */,
+			);
+			path = "友盟统计";
 			sourceTree = "<group>";
 		};
 		FCF353791CA3B514001ABA0A /* MySupplyViewController */ = {
@@ -3732,6 +3744,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(SRCROOT)/../",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟统计",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3778,6 +3791,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(SRCROOT)/../",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟统计",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
