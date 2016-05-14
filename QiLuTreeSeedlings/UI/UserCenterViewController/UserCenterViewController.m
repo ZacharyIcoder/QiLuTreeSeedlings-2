@@ -7,7 +7,6 @@
 //
 
 #import "UserCenterViewController.h"
-//#import "ViewController.h"
 #import "CompanyViewController.h"
 #import "UserBigInfoTableViewCell.h"
 #import "UIDefines.h"

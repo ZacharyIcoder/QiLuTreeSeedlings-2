@@ -266,25 +266,65 @@
 }
 -(void)buySureAction
 {
+    ShowActionV();
     [HTTPCLIENT payForBuyMessageWithBuyUid:self.model.uid Success:^(id responseObject) {
+        RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"购买成功"];
-            self.model.buy=1;
-            self.isPuy=YES;
-            if (_messageView==nil) {
-                _messageView = [self lianxiMessageView];
-                [_BuyMessageView removeFromSuperview];
-                _BuyMessageView = nil;
-            }
-            _biaoqianView.hidden=NO;
-             [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
-            [self.tableView reloadData];
+//            self.model.buy=1;
+//            self.isPuy=YES;
+//            if (_messageView==nil) {
+//                _messageView = [self lianxiMessageView];
+//                [_BuyMessageView removeFromSuperview];
+//                _BuyMessageView = nil;
+//            }
+             //[_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+            ShowActionV();
+    [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
+                                WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
+                                    //NSLog(@"%@",responseObject);
+                                    RemoveActionV();
+                                    NSDictionary *dic=[responseObject objectForKey:@"result"];
+                                    self.infoDic=dic;
+                                    self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                                    self.model.uid=self.uid;
+                                    if (self.model.push||self.model.buy) {
+                                        self.isPuy=YES;
+                                        _biaoqianView.hidden=NO;
+                                        if (self.model.push) {
+                                            [_biaoqianView setImage:[UIImage imageNamed:@"dibgzhibiaoqian"]];
+                                        }
+                                        if (self.model.buy) {
+                                            [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+                                        }
+                                    }else
+                                    {
+                                        self.isPuy=NO;
+                                    }
+                                    if (!self.isPuy) {
+                                        if (_BuyMessageView==nil) {
+                                            _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                            [_messageView removeFromSuperview];
+                                            _messageView = nil;
+                                        }
+                                    }else{
+                                        if (_messageView==nil) {
+                                            _messageView = [self lianxiMessageView];
+                                            [_BuyMessageView removeFromSuperview];
+                                            _BuyMessageView = nil;
+                                        }
+                                    }
+                                    [self reloadMyView];
+                                } failure:^(NSError *error) {
+                                    RemoveActionV();
+                                }];
+
 
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
-        
+        RemoveActionV();
     }];
     [BuyMessageAlertView removeActionView];
 }
