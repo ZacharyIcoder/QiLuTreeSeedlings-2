@@ -490,5 +490,22 @@
                             PageNumber:(NSString *)pageNumber
                                Success:(void (^)(id responseObject))success
                                failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 按产品ID查询订制信息 -----------
+- (void)recordByProductWithProductUid:(NSString *)productUid
+                            pageSize:(NSString *)pageSize
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 批量删除订制信息（按条） -----------
+- (void)deleterecordWithIds:(NSString *)ids
+                    Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 批量删除订制信息（按树种） -----------
+- (void)deleteprorecordWithIds:(NSString *)ids
+                    Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
+
+
 
 @end
