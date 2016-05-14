@@ -196,6 +196,7 @@
        // NSLog(@"%@",dic);
         ZIKHaveReadInfoViewController *hrVC = [[ZIKHaveReadInfoViewController alloc] init];
         hrVC.uidStr = dic[@"uid"];
+        hrVC.name   = dic[@"name"];
         [self.navigationController pushViewController:hrVC animated:YES];
 
     }

@@ -13,7 +13,6 @@
 #import "BuyDetialInfoViewController.h"
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "ZIKEmptyTableViewCell.h"
-#define BOTTOM_CELL_HEIGH 50
 
 @interface ZIKPurchaseRecordsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -98,14 +97,10 @@
     //底部删除view
     _bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
     _bottomcell.count = 0;
-    _bottomcell.frame = CGRectMake(0, Height-BOTTOM_CELL_HEIGH, Width, BOTTOM_CELL_HEIGH);
+    _bottomcell.frame = CGRectMake(0, Height-BOTTOM_DELETE_CELL_HEIGHT, Width, BOTTOM_DELETE_CELL_HEIGHT);
     [self.view addSubview:_bottomcell];
     [_bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    _bottomcell.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
-    _bottomcell.layer.shadowOpacity = 0.2;////阴影透明度，默认0
-    _bottomcell.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
-    _bottomcell.layer.shadowRadius  = 3;//阴影半径，默认3
     _bottomcell.hidden = YES;
 
 }
@@ -116,7 +111,7 @@
         self.recordsVC.editing = YES;
         _bottomcell.hidden = NO;
         _bottomcell.isAllSelect = NO;
-        self.recordsVC.frame = CGRectMake(0, self.recordsVC.frame.origin.y, Width, Height-64-BOTTOM_CELL_HEIGH);
+        self.recordsVC.frame = CGRectMake(0, self.recordsVC.frame.origin.y, Width, Height-64-BOTTOM_DELETE_CELL_HEIGHT);
     }
 }
 

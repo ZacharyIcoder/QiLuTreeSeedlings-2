@@ -10,4 +10,5 @@
 
 @interface ZIKHaveReadInfoViewController : ZIKArrowViewController
 @property (nonatomic, copy) NSString *uidStr;
+@property (nonatomic, copy) NSString *name;
 @end
