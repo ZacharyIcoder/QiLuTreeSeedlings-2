@@ -25,7 +25,7 @@
     if (self) {
       [self setAccessibilityIdentifier:@"SellSearchTableViewCell1"];
         imageV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 15, 80, frame.size.height-30)];
-        [imageV setBackgroundColor:[UIColor redColor]];
+        [imageV setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:imageV];
         titleLab=[[UILabel alloc]initWithFrame:CGRectMake(100, 15, frame.size.width-100, 20)];
         [titleLab setFont:[UIFont systemFontOfSize:15]];

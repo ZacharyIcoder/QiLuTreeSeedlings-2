@@ -257,11 +257,13 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
-        ShowActionV();
         ZIKSupplyModel *model = self.supplyInfoMArr[alertView.tag - 300];
         [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:model.uid Success:^(id responseObject) {
-            RemoveActionV();
-            if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+                [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+                return ;
+            }
+            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                 NSDictionary *dic        = [responseObject objectForKey:@"result"];
                 SupplyDetialMode *model  = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
                 model.supplybuyName      = APPDELEGATE.userModel.name;
@@ -517,7 +519,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }];
     NSString *uids = [uidString substringFromIndex:1];
     [HTTPCLIENT sdsupplybuyrRefreshWithUid:uids Success:^(id responseObject) {
-        CLog(@"%@",responseObject);
+        //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showToast:@"刷新成功" withOriginY:200 withSuperView:self.view];
             blockSelf.supplyTableView.editing = NO;
