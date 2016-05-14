@@ -485,5 +485,10 @@
                   Success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 我的订制信息 -----------
+-(void)customizationUnReadWithPageSize:(NSString *)pageSize
+                            PageNumber:(NSString *)pageNumber
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure;
 
 @end

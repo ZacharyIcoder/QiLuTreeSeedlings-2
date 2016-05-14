@@ -125,6 +125,8 @@
 		EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */; };
 		EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */; };
 		EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */; };
+		EA6D36C31CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D36C11CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m */; };
+		EA6D36C41CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6D36C21CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib */; };
 		EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7056521C9F86F500E9D253 /* CompanyViewController.m */; };
 		EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */; };
 		EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419ED1C8FB21600F54478 /* searchBtnAction@2x.png */; };
@@ -641,6 +643,9 @@
 		EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuseryListViewController.m; sourceTree = "<group>"; };
 		EA6B31BB1CABA5F70068CCB5 /* NuseryDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryDetialViewController.h; sourceTree = "<group>"; };
 		EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryDetialViewController.m; sourceTree = "<group>"; };
+		EA6D36C01CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDCustomUnReadTableViewCell.h; sourceTree = "<group>"; };
+		EA6D36C11CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDCustomUnReadTableViewCell.m; sourceTree = "<group>"; };
+		EA6D36C21CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDCustomUnReadTableViewCell.xib; sourceTree = "<group>"; };
 		EA7056511C9F86F500E9D253 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
 		EA7056521C9F86F500E9D253 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
 		EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delectLiteBtn@2x.png"; sourceTree = "<group>"; };
@@ -2728,6 +2733,9 @@
 				FC6C133B1CE1BC40003E0FF9 /* ZIKHintTableViewCell.h */,
 				FC6C133C1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m */,
 				FC6C133D1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib */,
+				EA6D36C01CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.h */,
+				EA6D36C11CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m */,
+				EA6D36C21CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3266,6 +3274,7 @@
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				FC68F3851CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
+				EA6D36C41CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib in Resources */,
 				FC6FED6C1CACF833000E2CA5 /* 图片1.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
 				EAAFCFB51CBE265100EB894F /* 1miaomu1334.png in Resources */,
@@ -3478,6 +3487,7 @@
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
 				FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */,
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,
+				EA6D36C31CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m in Sources */,
 				EA5444BE1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m in Sources */,
 				FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */,
 				EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */,

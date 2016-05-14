@@ -13,12 +13,14 @@
 #import "ZIKCustomizedInfoListModel.h"
 #import "ZIKCustomizedInfoListTableViewCell.h"
 #import "BuyDetialInfoViewController.h"
+#import "YLDCustomUnReadTableViewCell.h"
 @interface ZIKMyCustomizedInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
 }
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
+@property (nonatomic,strong) NSMutableArray *custominzedZuAryy;
 @property (nonatomic, strong) UITableView    *myCustomizedInfoTableView;//我的定制信息列表
 @end
 
@@ -61,7 +63,7 @@
 }
 
 - (void)initUI {
-    self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64) style:UITableViewStylePlain];
+    self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Width, Height-64) style:UITableViewStyleGrouped];
     self.myCustomizedInfoTableView.delegate   = self;
     self.myCustomizedInfoTableView.dataSource = self;
     [self.view addSubview:self.myCustomizedInfoTableView];
@@ -69,15 +71,17 @@
 }
 
 - (void)requestSellList:(NSString *)page {
-    //我的供应列表
+
     RemoveActionV();
     [self.myCustomizedInfoTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
-    [httpClient getMyCustomizedListInfoWithPageNumber:page pageSize:@"15" Success:^(id responseObject) {
+    [httpClient customizationUnReadWithPageSize:@"15" PageNumber:page Success:^(id responseObject) {
         NSDictionary *dic = [responseObject objectForKey:@"result"];
         NSArray *array = dic[@"recordList"];
-        if (array.count == 0 && self.page == 1) {
+        NSArray *array2=dic[@"typeList"];
+        if (array.count == 0 && self.page == 1&&array2.count==0) {
             [self.customizedInfoMArr removeAllObjects];
+            [self.custominzedZuAryy removeAllObjects];
             [self.myCustomizedInfoTableView footerEndRefreshing];
             self.myCustomizedInfoTableView.hidden = YES;
             [self createEmptyUI];
@@ -97,11 +101,13 @@
             emptyUI.hidden = YES;
             if (self.page == 1) {
                 [self.customizedInfoMArr removeAllObjects];
+                [self.custominzedZuAryy removeAllObjects];
             }
             [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZIKCustomizedInfoListModel *model = [ZIKCustomizedInfoListModel yy_modelWithDictionary:dic];
                 [self.customizedInfoMArr addObject:model];
             }];
+            [self.custominzedZuAryy addObjectsFromArray:array2];
             [self.myCustomizedInfoTableView reloadData];
             [self.myCustomizedInfoTableView footerEndRefreshing];
         }
@@ -112,38 +118,69 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64;
+    if (indexPath.section==0) {
+        if (self.customizedInfoMArr.count>0) {
+            return 64;
+        }else
+        {
+            return 0.001;
+        }
+    }
+    return 44;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0f;
+    if (section==0) {
+        return 0.01f;
+    }else
+    {
+       return 8;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.customizedInfoMArr.count;
+    if (section==0) {
+        return self.customizedInfoMArr.count;
+    }else
+    {
+        return 1;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;//self.supplyInfoMArr.count;
+  
+    return 1+self.custominzedZuAryy.count;
+  
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *kZIKCustomizedInfoListTableViewCellID = @"kZIKCustomizedInfoListTableViewCellID";
-    ZIKCustomizedInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKCustomizedInfoListTableViewCellID];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKCustomizedInfoListTableViewCell" owner:self options:nil] lastObject];
+    if (indexPath.section==0) {
+        static NSString *kZIKCustomizedInfoListTableViewCellID = @"YLDCustomUnReadTableViewCell";
+        YLDCustomUnReadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKCustomizedInfoListTableViewCellID];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"YLDCustomUnReadTableViewCell" owner:self options:nil] lastObject];
+        }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (self.customizedInfoMArr.count > 0) {
+            cell.model = self.customizedInfoMArr[indexPath.row];
+        }
+          return cell;
+    }else{
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"xxxxxx"];
+        if (!cell) {
+            cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"xxxxxx"];
+        }
+        return cell;
     }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    if (self.customizedInfoMArr.count > 0) {
-        [cell configureCell:self.customizedInfoMArr[indexPath.row]];
-    }
-    return cell;
+ 
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
-    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithSaercherInfo:model.uid];
-    [self.navigationController pushViewController:viewC animated:YES];
+//    ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
+//    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithSaercherInfo:model.uid];
+//    [self.navigationController pushViewController:viewC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -178,6 +215,7 @@
 - (void)initData {
     self.page               = 1;
     self.customizedInfoMArr = [NSMutableArray array];
+    self.custominzedZuAryy  = [NSMutableArray array];
 }
 
 

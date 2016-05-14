@@ -85,11 +85,18 @@
                                 self.isPuy=NO;
                             }
                             if (!self.isPuy) {
-                                if (_BuyMessageView==nil) {
-                                  _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
-                                    [_messageView removeFromSuperview];
-                                    _messageView = nil;
+                                
+                                if ([[dic objectForKey:@"supplybuyUid"] isEqualToString:APPDELEGATE.userModel.access_id]) {
+                                    
+                                }else
+                                {
+                                    if (_BuyMessageView==nil) {
+                                        _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                        [_messageView removeFromSuperview];
+                                        _messageView = nil;
+
                                 }
+                            }
                             }else{
                                 if (_messageView==nil) {
                                     _messageView = [self lianxiMessageView];
@@ -271,14 +278,6 @@
         RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"购买成功"];
-//            self.model.buy=1;
-//            self.isPuy=YES;
-//            if (_messageView==nil) {
-//                _messageView = [self lianxiMessageView];
-//                [_BuyMessageView removeFromSuperview];
-//                _BuyMessageView = nil;
-//            }
-             //[_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
             ShowActionV();
     [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
                                 WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
@@ -610,7 +609,13 @@
             NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
             if(!_isPuy&&self.type==1)
             {
-                [dic setValue:@"请付费查看" forKey:@"supplybuyName"];
+                if ([[dic objectForKey:@"supplybuyUid"] isEqualToString:APPDELEGATE.userModel.access_id]) {
+                    
+                }else
+                {
+                    [dic setValue:@"请付费查看" forKey:@"supplybuyName"];
+                }
+                
             }
             cell.dic=dic;
         }
@@ -639,8 +644,14 @@
             NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
             if(!_isPuy&&self.type==1)
             {
-                [dic setValue:@"请付费查看" forKey:@"address"];
-                [dic setValue:@"请付费查看" forKey:@"phone"];
+                if ([[dic objectForKey:@"supplybuyUid"] isEqualToString:APPDELEGATE.userModel.access_id]) {
+                    
+                }else
+                {
+                    [dic setValue:@"请付费查看" forKey:@"address"];
+                    [dic setValue:@"请付费查看" forKey:@"phone"];
+                }
+                
             }
             cell.dic=dic;
         }
