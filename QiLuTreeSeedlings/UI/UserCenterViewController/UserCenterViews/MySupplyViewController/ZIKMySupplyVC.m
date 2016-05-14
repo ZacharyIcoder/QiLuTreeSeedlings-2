@@ -43,10 +43,13 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 @property (nonatomic, assign) BOOL           isCanPublish;    //是否能够发布
 @property (nonatomic, assign) SupplyState    state;           //供应状态
 @property (nonatomic, strong) UITableView    *supplyTableView;//供应列表
+@property (nonatomic, strong) UIView         *menuView;       //状态按钮视图
 @end
 
 @implementation ZIKMySupplyVC
 {
+
+    UIView *emptyUI;
     UIView *_lineView;//按钮下跟随滑动的lineview
     UIButton *_cuttentButton;  //指向目前状态（四种状态下）的按钮
     ZIKBottomDeleteTableViewCell *_bottomcell; //过期编辑状态下底部删除view
@@ -254,11 +257,13 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
-        ShowActionV();
         ZIKSupplyModel *model = self.supplyInfoMArr[alertView.tag - 300];
         [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:model.uid Success:^(id responseObject) {
-            RemoveActionV();
-            if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+                [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+                return ;
+            }
+            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                 NSDictionary *dic        = [responseObject objectForKey:@"result"];
                 SupplyDetialMode *model  = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
                 model.supplybuyName      = APPDELEGATE.userModel.name;
@@ -302,6 +307,17 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         NSArray *array = dic[@"list"];
         if (array.count == 0 && self.page == 1) {
         [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+            if (self.state == SupplyStateAll) {
+                self.menuView.hidden = YES;
+                self.supplyTableView.hidden = YES;
+                [self createEmptyUI];
+                emptyUI.hidden = NO;
+            }
+//            else {
+//                emptyUI.hidden = YES;
+//                self.menuView.hidden = NO;
+//                self.supplyTableView.hidden = NO;
+//            }
             if (self.supplyInfoMArr.count > 0) {
                 [self.supplyInfoMArr removeAllObjects];
             }
@@ -310,6 +326,10 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             return ;
         }
         else if (array.count == 0 && self.page > 1) {
+            emptyUI.hidden = YES;
+            self.menuView.hidden = NO;
+            self.supplyTableView.hidden = NO;
+
             self.page--;
             [self.supplyTableView footerEndRefreshing];
             //没有更多数据了
@@ -317,6 +337,10 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             return;
         }
         else {
+            emptyUI.hidden = YES;
+            self.menuView.hidden = NO;
+            self.supplyTableView.hidden = NO;
+
             if (self.page == 1) {
                 [self.supplyInfoMArr removeAllObjects];
             }
@@ -377,6 +401,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     menuView.layer.shadowOffset  = CGSizeMake(0, 3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
     menuView.layer.shadowRadius  = 3;//阴影半径，默认3
     [self.view addSubview:menuView];
+    self.menuView  = menuView;
     menuView.contentMode = UIViewContentModeScaleToFill;
 
 
@@ -426,10 +451,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     _refreshCell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
     [self.view addSubview:_refreshCell];
     [_refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    _refreshCell.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
-    _refreshCell.layer.shadowOpacity = 0.2;////阴影透明度，默认0
-    _refreshCell.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
-    _refreshCell.layer.shadowRadius  = 3;//阴影半径，默认3
     _refreshCell.hidden = YES;
 
     //底部删除view（过期状态下显示）
@@ -446,15 +467,32 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 - (void)tapGR {
     if (!self.supplyTableView.editing && self.state == SupplyStateThrough)
     {
-        self.supplyTableView.editing = YES;
-        _refreshCell.hidden = NO;
-        self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50-REFRESH_CELL_HEIGH);
-        [self.supplyTableView removeHeader];//编辑状态取消下拉刷新
-        if (_refreshMarr.count > 0) {
+         if (_refreshMarr.count > 0) {
             [_refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
                 model.isSelect = NO;
             }];
             [_refreshMarr removeAllObjects];
+        }
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+
+        if (self.supplyInfoMArr.count > 0) {
+            [self.supplyInfoMArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([myModel.shuaxin isEqualToString:@"0"]) {
+
+                    weakSelf.supplyTableView.editing = YES;
+                    _refreshCell.hidden = NO;
+                    weakSelf.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50-REFRESH_CELL_HEIGH);
+
+                    [weakSelf.supplyTableView removeHeader];//编辑状态取消下拉刷新
+                    *stop = YES;
+                }
+                else if ((idx == self.supplyInfoMArr.count -1) && [myModel.shuaxin isEqualToString:@"1"]) {
+                    [ToastView showTopToast:@"暂时没有可以刷新的应用"];
+//                    weakSelf.supplyTableView.editing = NO;
+//                    _refreshCell.hidden = YES;
+//                    weakSelf.supplyTableView.frame = CGRectMake(0, weakSelf.supplyTableView.frame.origin.y, Width, Height-64-50);
+                }
+            }];
         }
      }
     else if (!self.supplyTableView.editing && self.state == SupplyStateNoThrough) {
@@ -481,7 +519,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }];
     NSString *uids = [uidString substringFromIndex:1];
     [HTTPCLIENT sdsupplybuyrRefreshWithUid:uids Success:^(id responseObject) {
-        CLog(@"%@",responseObject);
+        //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showToast:@"刷新成功" withOriginY:200 withSuperView:self.view];
             blockSelf.supplyTableView.editing = NO;
@@ -494,6 +532,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:200 withSuperView:self.view];
             return ;
         }
+        _refreshCell.count = 0;
+        if (_refreshMarr.count > 0) {
+            [_refreshMarr removeAllObjects];
+        }
+
     } failure:^(NSError *error) {
 
     }];
@@ -705,4 +748,58 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     //NSLog(@"commitEditingStyle");
 }
 
+
+- (void)createEmptyUI {
+    if (!emptyUI) {
+        emptyUI  = [[UIView alloc] init];
+        emptyUI.frame = CGRectMake(0, 64, Width, 260);
+        emptyUI.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:emptyUI];
+
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.frame = CGRectMake(Width/2-50, 25, 100, 100);
+        imageView.image = [UIImage imageNamed:@"我的供应（空）"];
+        [emptyUI addSubview:imageView];
+
+        UILabel *label1 = [[UILabel alloc] init];
+        label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+10, Width, 25);
+        label1.text = @"您还没有发布任何的供应信息";
+        label1.textAlignment = NSTextAlignmentCenter;
+        label1.textColor = detialLabColor;
+        [emptyUI addSubview:label1];
+
+        UILabel *label2 = [[UILabel alloc] init];
+        label2.frame = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
+        label2.text = @"点击按钮发布";
+        label2.textColor = detialLabColor;
+        label2.textAlignment = NSTextAlignmentCenter;
+        [emptyUI addSubview:label2];
+
+        UIButton *button = [[UIButton alloc] init];
+        button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
+        [button setTitleColor:detialLabColor forState:UIControlStateNormal];
+        button.layer.masksToBounds = YES;
+        button.layer.cornerRadius = 4.0f;
+        button.layer.borderWidth = 0.5;
+        button.layer.borderColor = [kLineColor CGColor];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:14]];
+
+        [button setTitle:@"发布供应" forState:UIControlStateNormal];
+        [emptyUI addSubview:button];
+        [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+}
+
+- (void)btnClick {
+    if (self.isCanPublish) {
+        ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
+        [self.navigationController pushViewController:spVC animated:YES];
+    }
+    else {
+        NuseryDetialViewController *ndvc = [[NuseryDetialViewController alloc] init];
+        [self.navigationController pushViewController:ndvc animated:YES];
+        [ToastView showTopToast:@"您没有求购发布权限,请先完善苗圃信息"];
+    }
+}
 @end

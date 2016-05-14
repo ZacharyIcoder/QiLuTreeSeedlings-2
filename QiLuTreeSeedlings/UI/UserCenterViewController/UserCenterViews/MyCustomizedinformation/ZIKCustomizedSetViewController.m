@@ -12,6 +12,7 @@
 #import "FabutiaojiaCell.h"
 #define kMaxLength 20
 #import "HttpClient.h"
+#import "StringAttributeHelper.h"
 @interface ZIKCustomizedSetViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate>
 {
     UIView *priceView;
@@ -30,8 +31,6 @@
 @property (nonatomic, strong) NSArray            *specificationAttributes;
 @property (nonatomic, strong) ZIKCustomizedModel *model;
 @property (nonatomic, strong) NSDictionary       *baseMessageDic;
-//@property (nonatomic, strong) NSString *myprice;
-
 
 @end
 
@@ -54,7 +53,6 @@
     self = [super init];
     if (self) {
         self.model = model;
-
     }
     return self;
 }
@@ -87,35 +85,50 @@
     [nameBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
-    UIImageView *nameLineView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-10, 0.5)];
-    [nameLineView setBackgroundColor:kLineColor];
-    [nameView addSubview:nameLineView];
 
     priceView = [[UIView alloc] init];
     priceView.backgroundColor = [UIColor whiteColor];
     priceView.frame = CGRectMake(0, CGRectGetMaxY(nameView.frame)+8, Width, 44);
     [self.backScrollView addSubview:priceView];
+
+    UIImageView *imageV = [[UIImageView alloc] init];
+    imageV.frame = CGRectMake(15, 12, 20, 20);
+    imageV.image = [UIImage imageNamed:@"注意"];
+    [priceView addSubview:imageV];
     UILabel *hintLabel = [[UILabel alloc] init];
-    hintLabel.frame = CGRectMake(15, 10, 160, 24);
-    hintLabel.text = @"规格越准确,求购越精准!";
-    hintLabel.textColor = [UIColor darkGrayColor];
+    hintLabel.frame = CGRectMake(15+20+2, 10, 160, 24);
+    hintLabel.text = @"输入的越详细,匹配度越高";
+    hintLabel.textColor = yellowButtonColor;
     hintLabel.font = [UIFont systemFontOfSize:14.0f];
     [priceView addSubview:hintLabel];
     priceLabel = [[UILabel alloc] init];
-    //priceLabel.backgroundColor = [UIColor yellowColor];
     priceLabel.frame = CGRectMake(Width-200, 0, 190, 44);
     priceLabel.textAlignment = NSTextAlignmentRight;
     [priceView addSubview:priceLabel];
-    if (self.model) {
+     if (self.model) {
         priceView.hidden = NO;
-        priceLabel.text = [NSString stringWithFormat:@"¥%.2f/条",self.model.price.floatValue];
-        priceLabel.textColor = yellowButtonColor;
+        NSString *priceStr = [NSString stringWithFormat:@"价格 ¥%.2f/条",self.model.price.floatValue];
+         // NSMutableString *
+         FontAttribute *fullFont = [FontAttribute new];
+         fullFont.font = [UIFont systemFontOfSize:15.0f];
+         fullFont.effectRange  = NSMakeRange(0, priceStr.length);
+         ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
+         fullColor.color = yellowButtonColor;
+         fullColor.effectRange = NSMakeRange(0,priceStr.length);
+         //局部设置
+         FontAttribute *partFont = [FontAttribute new];
+         partFont.font = [UIFont systemFontOfSize:15.0f];
+         partFont.effectRange = NSMakeRange(0, 2);
+         ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
+         darkColor.color = titleLabColor;
+         darkColor.effectRange = NSMakeRange(0, 2);
+         priceLabel.attributedText = [priceStr mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
     }
     else
     {
         priceView.hidden  = YES;
     }
-    UIImageView *linView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43, Width-20, 0.5)];
+    UIImageView *linView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 43, Width-20, 0.5)];
     [priceView addSubview:linView];
     [linView setBackgroundColor:kLineColor];
 
@@ -128,29 +141,11 @@
     [nextBtn setTitle:@"确认完成" forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    UITapGestureRecognizer *tapgest=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidingKey)];
-//    [self.backScrollView addGestureRecognizer:tapgest];
+
     if (self.model) {
         self.nameTextField.text=self.model.productName;
         self.nameBtn.selected=YES;
         [self getEditingMessage];
-//        [HTTPCLIENT mySupplyUpdataWithUid:self.model.uid Success:^(id responseObject) {
-//            if ([[ responseObject objectForKey:@"success"] integerValue]) {
-//                NSDictionary *resultdic=[responseObject objectForKey:@"result"];
-//                NSDictionary *ProductSpecDIc=[resultdic objectForKey:@"ProductSpec"];
-//                NSArray *beanAry=[ProductSpecDIc objectForKey:@"bean"];
-//                NSArray *iamgesAry=[resultdic objectForKey:@"images"];
-//                NSArray *imagesCompressAry=[resultdic objectForKey:@"imagesCompress"];
-//                self.nurseryAry=[resultdic objectForKey:@"nurseryList"];
-//                self.baseDic=[resultdic objectForKey:@"baseMsg"];
-                //[self creatSCreeningCellsWithAnswerWithAry:beanAry];
-//            }else{
-//                [ToastView showTopToast:[ responseObject objectForKey:@"msg"]];
-//            }
-//
-//        } failure:^(NSError *error) {
-//
-//        }];
     }
 
 }
@@ -161,8 +156,6 @@
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic = [[responseObject objectForKey:@"result"] objectForKey:@"ProductSpec"];
             self.productUid = [dic objectForKey:@"productUid"];
-            //self.productName=[dic objectForKey:@"productName"];
-           // self.baseMessageDic = [[responseObject objectForKey:@"result"] objectForKey:@"baseMsg"];
             NSArray *ary = [dic objectForKey:@"bean"];
             self.dataAry = ary;
             [self creatSCreeningCellsWithAnswerWithAry:ary];
@@ -235,9 +228,25 @@
                 self.dataAry = [dic objectForKey:@"list"];
                 self.price = [dic objectForKey:@"price"];
                 priceView.hidden = NO;
-                priceLabel.text = [NSString stringWithFormat:@"¥%.2f/条",self.price.floatValue];
-                priceLabel.textColor = yellowButtonColor;
-                self.productUid=[dic objectForKey:@"productUid"];
+//                priceLabel.text = [NSString stringWithFormat:@"¥%.2f/条",self.price.floatValue];
+                NSString *priceStr = [NSString stringWithFormat:@"价格 ¥%.2f/条",self.price.floatValue];
+                // NSMutableString *
+                FontAttribute *fullFont = [FontAttribute new];
+                fullFont.font = [UIFont systemFontOfSize:15.0f];
+                fullFont.effectRange  = NSMakeRange(0, priceStr.length);
+                ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
+                fullColor.color = yellowButtonColor;
+                fullColor.effectRange = NSMakeRange(0,priceStr.length);
+                //局部设置
+                FontAttribute *partFont = [FontAttribute new];
+                partFont.font = [UIFont systemFontOfSize:15.0f];
+                partFont.effectRange = NSMakeRange(0, 2);
+                ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
+                darkColor.color = titleLabColor;
+                darkColor.effectRange = NSMakeRange(0, 2);
+                priceLabel.attributedText = [priceStr mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
+
+                self.productUid = [dic objectForKey:@"productUid"];
                 button.selected = YES;
                 [self creatScreeningCells];
             }
@@ -263,13 +272,13 @@
 
     for (int i=0; i < self.dataAry.count; i++) {
         FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 44) AndModel:self.dataAry[i] andAnswer:nil];
-        //cell.backgroundColor = [UIColor whiteColor];
+        cell.backgroundColor = [UIColor whiteColor];
         [cellAry addObject:cell.model];
         Y = CGRectGetMaxY(cell.frame);
         [self.backScrollView addSubview:cell];
     }
     [self.backScrollView setContentSize:CGSizeMake(0, Y)];
-    self.backScrollView.backgroundColor = [UIColor whiteColor];
+    //self.backScrollView.backgroundColor = [UIColor whiteColor];
 }
 
 
@@ -392,12 +401,6 @@
            [ToastView showTopToast:@"发布成功"];
            }
            [self.navigationController popViewControllerAnimated:YES];
-//           for(UIViewController *controller in self.navigationController.viewControllers) {
-//               if([controller isKindOfClass:[ZIKMySupplyViewController class]]){
-//                   ZIKMySupplyViewController *owr = (ZIKMySupplyViewController *)controller;
-//                   [self.navigationController popToViewController:owr animated:YES];
-//               }
-//           }
        }
        else {
            //NSLog(@"%@",responseObject[@"msg"]);

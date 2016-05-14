@@ -75,20 +75,13 @@
     if (model.isSelect) {
         self.selected = YES;
         self.isSelect = YES;
-        //self.selectionStyle = UITableViewCellSelectionStyleBlue;
-        //self.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
+     }
     if ([model.state isEqualToString:@"3"]) {
         self.backImageView.hidden = NO;
     }
     else {
         self.backImageView.hidden = YES;
     }
-    //self.isSelected  = model.
-   // self.isSelected;
-//    if (model.edit.integerValue == 1) {
-//        self.selected = YES;
-//    }
     if ([model.shuaxin isEqualToString:@"1"]) {
         self.refreshLabel.hidden = NO;
         self.refreshImageView.hidden = NO;
