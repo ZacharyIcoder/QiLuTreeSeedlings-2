@@ -14,6 +14,7 @@
 #import "ZIKCustomizedInfoListTableViewCell.h"
 #import "BuyDetialInfoViewController.h"
 #import "YLDCustomUnReadTableViewCell.h"
+#import "ZIKHaveReadInfoViewController.h"
 @interface ZIKMyCustomizedInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *emptyUI;
@@ -188,6 +189,10 @@
     }else{
         NSDictionary *dic=self.custominzedZuAryy[indexPath.section-1];
        // NSLog(@"%@",dic);
+        ZIKHaveReadInfoViewController *hrVC = [[ZIKHaveReadInfoViewController alloc] init];
+        hrVC.uidStr = dic[@"uid"];
+        [self.navigationController pushViewController:hrVC animated:YES];
+
     }
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
