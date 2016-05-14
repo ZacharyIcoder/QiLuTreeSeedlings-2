@@ -68,7 +68,7 @@
         return;
     }
     [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
-                        WithType:[NSString stringWithFormat:@"%ld",_push_] WithmemberCustomUid:@""                             Success:^(id responseObject) {
+                        WithType:[NSString stringWithFormat:@"%ld",_push_] WithmemberCustomUid:_memberCustomUid                             Success:^(id responseObject) {
                             //NSLog(@"%@",responseObject);
                             NSDictionary *dic=[responseObject objectForKey:@"result"];
                             self.infoDic=dic;
@@ -179,6 +179,16 @@
                             }];
 
     }
+    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
+    self.tableView.delegate=self;
+    self.tableView.dataSource=self;
+    [self.view addSubview:self.tableView];
+    [self.view addSubview:_biaoqianView];
+    UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-68, 60, 60, 38.3)];
+    [self.tableView addSubview:guoqiIamgV];
+    [guoqiIamgV bringSubviewToFront:self.view];
+    self.guoqiIamgV=guoqiIamgV;
+
     return self;
 }
 -(id)initWithSaercherInfo:(NSString *)uid

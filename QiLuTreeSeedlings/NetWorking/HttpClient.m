@@ -445,6 +445,8 @@
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                             uid,@"uid",
                             access_id,@"access_id",
+                            type,@"type",
+                            memberCustomUid,@"memberCustomUid",
                               nil];
     ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {

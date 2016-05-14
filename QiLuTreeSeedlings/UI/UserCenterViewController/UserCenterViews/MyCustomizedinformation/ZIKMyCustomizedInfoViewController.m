@@ -183,7 +183,7 @@
     
     if (indexPath.section==0) {
        ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
-        BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithDingzhiModel:model];
+        BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc]initWithDingzhiModel:model];
        [self.navigationController pushViewController:viewC animated:YES];
     }else{
         NSDictionary *dic=self.custominzedZuAryy[indexPath.section-1];
