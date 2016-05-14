@@ -395,7 +395,7 @@
 //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.row];
+    ZIKCustomizedModel *model = self.customizedInfoMArr[indexPath.section];
 //    ZIKCustomizedTableViewCell *cell = (ZIKCustomizedTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     if (self.myCustomizedInfoTableView.editing)
     {
