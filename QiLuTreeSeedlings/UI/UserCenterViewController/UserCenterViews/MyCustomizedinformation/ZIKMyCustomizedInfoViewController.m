@@ -26,7 +26,11 @@
 @end
 
 @implementation ZIKMyCustomizedInfoViewController
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self requestData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"HidenTabBar" object:nil];
@@ -34,7 +38,6 @@
     [self configNav];
     [self initData];
     [self initUI];
-    [self requestData];
 }
 
 - (void)configNav {
@@ -74,8 +77,10 @@
     RemoveActionV();
 
     [self.myCustomizedInfoTableView headerEndRefreshing];
+    ShowActionV();
     HttpClient *httpClient = [HttpClient sharedClient];
     [httpClient customizationUnReadWithPageSize:@"15" PageNumber:page Success:^(id responseObject) {
+         RemoveActionV();
         NSDictionary *dic = [responseObject objectForKey:@"result"];
         NSArray *array = dic[@"recordList"];
         NSArray *array2=dic[@"typeList"];
@@ -113,7 +118,7 @@
         }
 
     } failure:^(NSError *error) {
-
+          RemoveActionV();
     }];
 }
 

@@ -467,8 +467,6 @@
 {
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
-//    self.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    self.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     if (!str) {
         str=@"用户未授权";
     }

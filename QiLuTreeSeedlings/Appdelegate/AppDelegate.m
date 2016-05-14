@@ -141,6 +141,9 @@
 }
 -(void)reloadCompanyInfo
 {
+    if ([self isNeedLogin]==NO) {
+        return;
+    }
    
     [HTTPCLIENT getCompanyInfoSuccess:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
@@ -186,15 +189,17 @@
 -(void)reloadUserInfoSuccess:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure
 {
+    if (!self.userModel.access_token) {
+        return;
+    }
     [HTTPCLIENT getUserInfoByToken:self.userModel.access_token byAccessId:self.userModel.access_id Success:^(id responseObject) {
         RemoveActionV();
         if (![[responseObject objectForKey:@"success"] integerValue]) {
             //NSLog(@"%@",responseObject);
-            
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
             if ([[responseObject objectForKey:@"error_code"] integerValue]==401) {
                 [self logoutAction];
             }
-            //NSLog(@"---%@",[responseObject objectForKey:@"msg"]);
         }else
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:nil];
@@ -214,15 +219,9 @@
     [userDefaults removeObjectForKey:kACCESS_ID];
     [userDefaults removeObjectForKey:kACCESS_TOKEN];
     [userDefaults synchronize];
-    self.userModel=[[UserInfoModel alloc]init];
-    self.companyModel=[[BusinessMesageModel alloc]init];
+    self.userModel=nil;
+    self.companyModel=nil;
     self.isCanPublishBuy=NO;
-    BaseTabBarController *baseB=(BaseTabBarController *)self.window.rootViewController;
-    baseB.homePageBtn.selected=YES;
-    baseB.userInfoBtn.selected=NO;
-    [baseB.homePageLab setTextColor:NavColor];
-    [baseB.userLab setTextColor:[UIColor lightGrayColor]];
-    baseB.selectedIndex=0;
 }
 #pragma mark - 用户通知(推送) _自定义方法
 

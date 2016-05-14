@@ -376,6 +376,8 @@
           
            self.logoutView.hidden=NO;
            [APPDELEGATE logoutAction];
+           self.userBigInfoV.model=APPDELEGATE.userModel;
+           [self.tableView reloadData];
             
        }else{
            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
