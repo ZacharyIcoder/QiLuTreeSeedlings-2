@@ -313,11 +313,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
                 [self createEmptyUI];
                 emptyUI.hidden = NO;
             }
-//            else {
-//                emptyUI.hidden = YES;
-//                self.menuView.hidden = NO;
-//                self.supplyTableView.hidden = NO;
-//            }
             if (self.supplyInfoMArr.count > 0) {
                 [self.supplyInfoMArr removeAllObjects];
             }
@@ -488,9 +483,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
                 }
                 else if ((idx == self.supplyInfoMArr.count -1) && [myModel.shuaxin isEqualToString:@"1"]) {
                     [ToastView showTopToast:@"暂时没有可以刷新的应用"];
-//                    weakSelf.supplyTableView.editing = NO;
-//                    _refreshCell.hidden = YES;
-//                    weakSelf.supplyTableView.frame = CGRectMake(0, weakSelf.supplyTableView.frame.origin.y, Width, Height-64-50);
                 }
             }];
         }
@@ -519,7 +511,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }];
     NSString *uids = [uidString substringFromIndex:1];
     [HTTPCLIENT sdsupplybuyrRefreshWithUid:uids Success:^(id responseObject) {
-        //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showToast:@"刷新成功" withOriginY:200 withSuperView:self.view];
             blockSelf.supplyTableView.editing = NO;

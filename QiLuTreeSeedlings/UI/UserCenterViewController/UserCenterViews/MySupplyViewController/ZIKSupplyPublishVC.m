@@ -75,8 +75,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    if (_urlArr.count > 0) {
-        self.addImageView.saveHaveImageMarr  = (NSMutableArray *)_urlArr;
+    if (_urlArr.count > 0 ) {
+        if (!self.addImageView.saveHaveImageMarr) {
+            self.addImageView.saveHaveImageMarr  = (NSMutableArray *)_urlArr;
+        }
     }
 }
 
@@ -546,38 +548,25 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 #pragma mark - WHC_ChoicePictureVCDelegate
 - (void)WHCChoicePictureVCdidSelectedPhotoArr:(NSArray *)photoArr{
-//    [photoArr enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
-//
-//    }];
     for (__weak UIImage *image in photoArr) {
         ShowActionV();
         HttpClient *httpClient  = [HttpClient sharedClient];
       __block  NSData* imageData = nil;
 
         imageData  = [self  imageData:image];
-        //NSLog(@"%ld",imageData.length);
-        //imageData = [self imageWithImageSimple:image scaledToSize:<#(CGSize)#>]
 
       __block  NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
-        //NSLog(@"%ld",myStringImageFile.length);
          __weak typeof(self) weakSelf = self;
         [httpClient upDataImageIOS:myStringImageFile Success:^(id responseObject) {
-            // NSLog(@"%@",responseObject);
             myStringImageFile = nil;
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                //NSLog(@"%@",responseObject[@"success"]);
-                //NSLog(@"%@",responseObject[@"msg"]);
-                if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-                    //NSLog(@"%ld",imageData.length);
-                    //[self saveImagedata:imageData WithName:@"imageData"];
-                    [weakSelf setPhotoToPath:imageData isName:@"imageData"];
-//                 UIImage *addImage =  [UIImage imageWithData:imageData];
-//                    NSData *mydata  = UIImagePNGRepresentation(addImage);
-//                     NSLog(@"%ld",mydata.length);
+                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
 
-
-                    [weakSelf.addImageView addImage:[weakSelf getPhotoFromName:@"imageData"] withUrl:responseObject[@"result"]];
-                    imageData = nil;
+//                    [weakSelf setPhotoToPath:imageData isName:@"imageData"];
+//
+//                    [weakSelf.addImageView addImage:[weakSelf getPhotoFromName:@"imageData"] withUrl:responseObject[@"result"]];
+//                    imageData = nil;
+                    [weakSelf.addImageView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
                     [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
                     RemoveActionV();
                     
@@ -648,37 +637,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [ToastView showToast:@"图片占用内存过大,请选择较小的图片文件" withOriginY:250 withSuperView:self.view];
 }
-
-#pragma mark 保存图片到document
-- (void)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
-{
-    NSData* imageData = UIImagePNGRepresentation(tempImage);
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex:0];
-    // Now we get the full path to the file
-    NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:imageName];
-    // and then we write it out
-    [imageData writeToFile:fullPathToFile atomically:NO];
-}
-
-#pragma mark 保存图片data到document
-- (void)saveImagedata:(NSData *)tempImagedata WithName:(NSString *)imageName
-{
-    //NSData* imageData = UIImagePNGRepresentation(tempImage);
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex:0];
-    // Now we get the full path to the file
-    NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:imageName];
-    // and then we write it out
-    [tempImagedata writeToFile:fullPathToFile atomically:NO];
-}
-
 
 #pragma mark 从文档目录下获取Documents路径
 - (NSString *)documentFolderPath
@@ -692,8 +654,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [alert show];
     alert.tag = 300;
     alert.delegate = self;
-
-    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -711,24 +671,21 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 {
     self.nowTextField=field;
 }
+
 -(void)cellEndEditing
 {
     if (self.backScrollView.frame.size.height==kHeight-44-44) {
         return;
     }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-44-44;
-//    self.backScrollView.frame=frame;
 }
+
 -(void)cellKeyHight:(CGFloat)hight
 {
     if (self.backScrollView.frame.size.height==kHeight-hight-44-44) {
         return;
     }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-hight-44-44;
-//    self.backScrollView.frame=frame;
 }
+
 -(void)hidingKey
 {
     if (self.nowTextField) {
@@ -737,15 +694,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     if (self.backScrollView.frame.size.height==kHeight-44-44) {
         return;
     }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-44-44;
-//    self.backScrollView.frame=frame;
 }
-//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-//{
-//    //[self hidingKey];
-//}
-
 
 -(NSData *)imageData:(UIImage *)myimage
 {
@@ -764,120 +713,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     }
     return data;
 }
-//-(NSData *)imageData:(UIImage *)myimage
-//{
-//    NSData *data = UIImageJPEGRepresentation(myimage, 1.0);
-//    while (data.length>1024*1024) {
-//        data = UIImageJPEGRepresentation(myimage, 0.2);
-//    }
-//    return data;
-//}
-//
-//#pragma mark 从文档目录下获取Documents路径
-//- (NSString *)documentFolderPath
-//{
-//    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-//}
-
--(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
-{
-    // Create a graphics image context
-    UIGraphicsBeginImageContext(newSize);
-    // new size
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    // Get the new image from the context
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-
-    // End the context
-    UIGraphicsEndImageContext();
-    // Return the new image.
-
-    return UIImagePNGRepresentation(newImage);
-}
-
-//等比缩放
-//通过缩放系数
-- (NSData *)imageCompressWithSimple:(UIImage*)image scale:(float)scale
-{
-    CGSize size = image.size;
-    CGFloat width = size.width;
-    CGFloat height = size.height;
-    CGFloat scaledWidth = width * scale;
-    CGFloat scaledHeight = height * scale;
-    UIGraphicsBeginImageContext(size); // this will crop
-    [image drawInRect:CGRectMake(0,0,scaledWidth,scaledHeight)];
-    UIImage* newImage= UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return UIImagePNGRepresentation(newImage);
-}
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.titleTextField resignFirstResponder];
     [self.nameTextField resignFirstResponder];
-}
-
-
--(BOOL) setPhotoToPath:(NSData *)imagedata isName:(NSString *)name
-{
-    //此处首先指定了图片存取路径（默认写到应用程序沙盒 中）
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-
-    //并给文件起个文件名
-    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
-    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
-    if (blHave) {
-        NSLog(@"already have");
-        //delete
-        [self deleteFromName:name];
-    }
-   // NSData *data = UIImagePNGRepresentation(image);
-    BOOL result = [imagedata writeToFile:uniquePath atomically:YES];
-    if (result) {
-        //NSLog(@"success");
-        return YES;
-    }else {
-        //NSLog(@"no success");
-        return NO;
-    }
-}
-
-- (UIImage *)getPhotoFromName:(NSString *)name
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    //NSFileManager* fileManager=[NSFileManager defaultManager];
-    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
-    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
-    if (!blHave) {
-        return nil;
-    }else
-    {
-        NSData *data = [NSData dataWithContentsOfFile:uniquePath];
-        UIImage *img = [[UIImage alloc] initWithData:data];
-        // NSLog(@" have");
-        return img;
-    }
-}
-
--(BOOL)deleteFromName:(NSString *)name
-{
-    NSFileManager* fileManager=[NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    //文件名
-    NSString *uniquePath=[[paths objectAtIndex:0] stringByAppendingPathComponent:name];
-    BOOL blHave=[[NSFileManager defaultManager] fileExistsAtPath:uniquePath];
-    if (!blHave) {
-        //NSLog(@"no  have");
-        return NO;
-    }else {
-        //NSLog(@" have");
-        BOOL blDele= [fileManager removeItemAtPath:uniquePath error:nil];
-        if (blDele) {
-            //NSLog(@"dele success");
-            return YES;
-        }else {
-            //NSLog(@"dele fail");
-            return NO;
-        }
-    }
 }
 @end

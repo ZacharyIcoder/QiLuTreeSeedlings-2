@@ -232,6 +232,7 @@
     [self addImageWithURLArr:_saveHaveImageMarr];
 
 }
+
 - (void)addImageWithURLArr:(NSArray *)urlArr {
     [urlArr enumerateObjectsUsingBlock:^(NSDictionary *urlDic, NSUInteger idx, BOOL * _Nonnull stop) {
             ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
@@ -243,7 +244,6 @@
             [imageBtn addTarget:self action:@selector(imageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:imageBtn];
             [self.haveImageMArr addObject:imageBtn];
-
     }];
 
 }
