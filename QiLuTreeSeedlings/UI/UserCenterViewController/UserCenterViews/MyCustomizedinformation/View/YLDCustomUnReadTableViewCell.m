@@ -21,6 +21,9 @@
     _model=model;
     self.nameLab.text=model.title;
     self.timeLab.text=_model.sendTime;
+    if ([model.reads isEqualToString:@"1"]) {
+        self.redDD.hidden = YES;
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

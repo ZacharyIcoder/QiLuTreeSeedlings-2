@@ -81,6 +81,7 @@
 - (void)initData {
     self.page         = 1;
     self.readDataMArr = [[NSMutableArray alloc] init];
+    _removeArray = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - 初始化UI
@@ -162,7 +163,7 @@
         uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT purchaseHistoryDeleteWithUid:uids Success:^(id responseObject) {
+    [HTTPCLIENT deleterecordWithIds:uids Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
 
@@ -238,12 +239,6 @@
             }
             [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZIKCustomizedInfoListModel *model = [ZIKCustomizedInfoListModel yy_modelWithDictionary:dic];
-//                if (self.state == SupplyStateThrough && [model.shuaxin isEqualToString:@"1"]) {
-//                    model.isCanRefresh = NO;
-//                }
-//                else {
-//                    model.isCanRefresh = YES;
-//                }
                 [self.readDataMArr addObject:model];
             }];
 
@@ -272,9 +267,6 @@
     return 64.0f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    if (self.readDataMArr.count == 0) {
-//        return 1;
-//    }
     return self.readDataMArr.count;
 }
 

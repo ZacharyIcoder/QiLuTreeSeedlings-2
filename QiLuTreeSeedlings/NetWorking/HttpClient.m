@@ -2364,8 +2364,8 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
 #warning pageNumber pageSize
-    parmers[@"pagenumber"]       = @"15";
-    parmers[@"pagesize"]         = pageSize;
+    parmers[@"pageNumber"]       = pageSize;
+    parmers[@"pageSize"]         = @"15";
     parmers[@"productUid"]       = productUid;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
