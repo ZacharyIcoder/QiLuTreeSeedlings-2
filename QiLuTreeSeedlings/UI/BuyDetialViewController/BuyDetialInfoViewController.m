@@ -565,7 +565,7 @@
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
-    [titleLab setText:@"求购："];
+    [titleLab setText:@"求购详情"];
     [titleLab setFont:[UIFont systemFontOfSize:NavTitleSize]];
     self.navTitleLab=titleLab;
     [view addSubview:titleLab];

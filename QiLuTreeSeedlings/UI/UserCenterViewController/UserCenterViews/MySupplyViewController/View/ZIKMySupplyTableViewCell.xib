@@ -67,11 +67,11 @@
                             <constraint firstAttribute="height" constant="80" id="cmp-hF-Ffc"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="标签-已退回.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8L-s0-EHN">
-                        <rect key="frame" x="260" y="0.0" width="60" height="60"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w8L-s0-EHN">
+                        <rect key="frame" x="265" y="0.0" width="55" height="55"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="4vG-xG-FXW"/>
-                            <constraint firstAttribute="height" constant="60" id="xPX-cE-LSn"/>
+                            <constraint firstAttribute="width" constant="55" id="4vG-xG-FXW"/>
+                            <constraint firstAttribute="height" constant="55" id="xPX-cE-LSn"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treeNameSure2.png" translatesAutoresizingMaskIntoConstraints="NO" id="jwB-VZ-dcm">
@@ -134,6 +134,5 @@
     <resources>
         <image name="listtime" width="16" height="16"/>
         <image name="treeNameSure2.png" width="20" height="20"/>
-        <image name="标签-已退回.png" width="98" height="98"/>
     </resources>
 </document>

@@ -7,7 +7,7 @@
 //
 
 #import "ZIKStationAgentViewController.h"
-#import "PickerLocation.h"
+#import "YLDPickLocationView.h"
 #import "ZIKStationAgentTableViewCell.h"
 #import "ZIKStationAgentModel.h"
 #import "YYModel.h"
@@ -16,7 +16,7 @@
 #import "ZIKFunction.h"
 #import "HttpClient.h"
 #define titleFont [UIFont systemFontOfSize:21]
-@interface ZIKStationAgentViewController ()<PickerLocationDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ZIKStationAgentViewController ()<YLDPickLocationDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     UILabel *areaLabel;
     UILabel *titleLab;
@@ -29,7 +29,7 @@
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *stationInfoMArr;//站长信息数组
 @property (nonatomic, strong) UITableView    *stationTableView;//站长TV
-@property (nonatomic,strong ) PickerLocation *pickerLocation;
+//@property (nonatomic,strong ) PickerLocation *pickerLocation;
 @end
 
 @implementation ZIKStationAgentViewController
@@ -213,41 +213,41 @@
 
 -(void)pickLocationAction
 {
-    if (!self.pickerLocation) {
-        self.pickerLocation = [[PickerLocation alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.pickerLocation.locationDelegate = self;
-    }
-    [self.pickerLocation showInView];
+    YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveZhen];
+    pickLocationV.delegate=self;
+    [pickLocationV showPickView];
+    
 }
-
--(void)selectedLocationInfo:(Province *)location
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
 {
-    NSMutableString *namestr=[NSMutableString new];
-    if (location.code) {
-        [namestr appendString:location.provinceName];
-        self.areaCode=location.code;
+        NSMutableString *namestr=[NSMutableString new];
+        if (sheng.code) {
+            [namestr appendString:sheng.cityName];
+            self.areaCode=sheng.code;
+        }
+        else {
+            self.areaCode = nil;
+            areaLabel.text = @"全国";
+        }
+    
+        if (shi.code) {
+            [namestr appendString:shi.cityName];
+            self.areaCode=shi.code;
+        }
+        if (xian.code) {
+            [namestr appendString:xian.cityName];
+            self.areaCode=xian.code;
+        }
+    if (zhen.code) {
+        [namestr appendString:zhen.cityName];
+        self.areaCode=zhen.code;
     }
-    else {
-        self.areaCode = nil;
-        areaLabel.text = @"全国";
-    }
-
-    if (location.selectedCity.code) {
-        [namestr appendString:location.selectedCity.cityName];
-        self.areaCode=location.selectedCity.code;
-    }
-    if (location.selectedCity.selectedTowns.code) {
-        [namestr appendString:location.selectedCity.selectedTowns.TownName];
-        self.areaCode=location.selectedCity.selectedTowns.code;
-    }
-    if (namestr.length>0) {
-        areaLabel.text = namestr;
-    }
-
-    [self.stationTableView headerBeginRefreshing];
-
+        if (namestr.length>0) {
+            areaLabel.text = namestr;
+        }
+    
+        [self.stationTableView headerBeginRefreshing];
 }
-
 - (void)initData {
     self.page = 1;
     self.stationInfoMArr = [NSMutableArray array];

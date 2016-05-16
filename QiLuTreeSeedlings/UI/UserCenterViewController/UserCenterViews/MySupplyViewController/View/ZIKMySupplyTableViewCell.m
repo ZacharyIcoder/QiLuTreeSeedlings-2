@@ -77,11 +77,15 @@
         self.isSelect = YES;
      }
     if ([model.state isEqualToString:@"3"]) {
-        self.backImageView.hidden = NO;
+        [self.backImageView setImage:[UIImage imageNamed:@"标签-已退回.png"]];
     }
-    else {
-        self.backImageView.hidden = YES;
+    if ([model.state isEqualToString:@"2"]) {
+        [self.backImageView setImage:[UIImage imageNamed:@"yitongguo"]];
     }
+    if ([model.state isEqualToString:@"5"]) {
+        [self.backImageView setImage:[UIImage imageNamed:@"yiguoqi"]];
+    }
+    //2审核通过， 3退回， 5过期
     if ([model.shuaxin isEqualToString:@"1"]) {
         self.refreshLabel.hidden = NO;
         self.refreshImageView.hidden = NO;
