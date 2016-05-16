@@ -47,6 +47,12 @@
         return;
     }
     else {
+        if([nameTextField.text rangeOfString:@" "].location !=NSNotFound)//_roaldSearchText
+        {
+            [ToastView showTopToast:@"姓名不能包含空格!!!"];
+            return;
+        }
+        
         [HTTPCLIENT changeUserInfoWithToken:nil WithAccessID:nil WithClientID:nil WithClientSecret:nil WithDeviceID:nil withName:nameTextField.text
         Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {

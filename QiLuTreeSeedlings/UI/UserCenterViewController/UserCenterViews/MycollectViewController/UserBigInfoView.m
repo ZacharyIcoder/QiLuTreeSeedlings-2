@@ -28,7 +28,7 @@
         [setingBtn setImage:[UIImage imageNamed:@"settingBtnImage"] forState:UIControlStateNormal];
         [self addSubview:setingBtn];
         self.setingBtn=setingBtn;
-        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 20, 120, 30)];
+        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-70, 20, 140, 30)];
         [titleLab setTextColor:[UIColor whiteColor]];
         [titleLab setTextAlignment:NSTextAlignmentCenter];
         self.titleLab=titleLab;
