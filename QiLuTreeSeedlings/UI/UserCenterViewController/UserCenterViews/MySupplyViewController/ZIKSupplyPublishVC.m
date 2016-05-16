@@ -79,7 +79,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         if (!self.addImageView.saveHaveImageMarr) {
             self.addImageView.saveHaveImageMarr  = (NSMutableArray *)_urlArr;
         }
-    }
+     }
 }
 
 - (void)initData {
@@ -326,7 +326,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 
     ZIKSupplyPublishNextVC *nextVC = [[ZIKSupplyPublishNextVC alloc] initWithNurseryList:self.nurseryAry WithbaseMsg:self.baseDic];
-    nextVC.pickerImgView = self.addImageView;
+    //nextVC.pickerImgView = self.addImageView;
     nextVC.supplyModel = self.supplyModel;
     [self.navigationController pushViewController:nextVC animated:YES];
 }

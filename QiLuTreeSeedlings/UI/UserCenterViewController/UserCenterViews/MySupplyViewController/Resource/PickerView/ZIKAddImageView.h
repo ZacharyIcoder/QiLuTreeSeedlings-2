@@ -24,7 +24,7 @@ typedef void (^LookPhotoBlock) ();
 - (void)removeImage:(UIImage *)image;
 
 - (void)removeImageURl:(NSDictionary *)dic;
-- (void)removeALL;
+//- (void)removeALL;
 /**
  *  添加图片block
  */

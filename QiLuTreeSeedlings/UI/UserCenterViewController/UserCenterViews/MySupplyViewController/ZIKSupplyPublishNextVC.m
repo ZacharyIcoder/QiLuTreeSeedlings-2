@@ -413,7 +413,6 @@
                 [ToastView showTopToast:@"发布成功"];
             }
             //[ToastView showTopToast:@"提交成功，即将返回"];
-            [self.pickerImgView removeALL];
             //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
             for(UIViewController *controller in self.navigationController.viewControllers) {
                 if([controller isKindOfClass:[ZIKMySupplyVC class]]||[controller isKindOfClass:[FaBuViewController class]]){

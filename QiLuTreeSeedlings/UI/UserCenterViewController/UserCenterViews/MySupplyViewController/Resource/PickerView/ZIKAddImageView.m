@@ -132,8 +132,12 @@
 
 
     ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
-    [imageBtn setImage:image forState:UIControlStateNormal];
+    //image.size = CGSizeMake(200, 200);
+
+
     imageBtn.image = image;
+    //UIImage *myimage = [self OriginImage:image scaleToSize:CGSizeMake(200, 200)];
+    [imageBtn setImage:image forState:UIControlStateNormal];
     imageBtn.urlDic = urlDic;
     imageBtn.deleteDelegate = self;
     imageBtn.isHiddenDeleteBtn = NO;
@@ -145,13 +149,26 @@
     [self setNeedsLayout];
 }
 
+//-(UIImage*) OriginImage:(UIImage *)image scaleToSize:(CGSize)size
+//{
+//    UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
+//
+//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+//
+//    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+//
+//    UIGraphicsEndImageContext();
+//
+//    return scaledImage;   //返回的就是已经改变的图片
+//}
+
 -(void)setUrlMArr:(NSMutableArray *)urlMArr {
     _urlMArr = urlMArr;
     for (NSDictionary *dic in urlMArr) {
         [self addImageUrl:[UIImage
                            imageWithData:[NSData
                                           dataWithContentsOfURL:[NSURL
-                                                                 URLWithString:dic[@"compressurl"]]]] withUrl:dic];
+                                                                 URLWithString:dic[@"url"]]]] withUrl:dic];
     }
 }
 

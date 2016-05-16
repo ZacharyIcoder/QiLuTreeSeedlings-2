@@ -430,7 +430,7 @@
         //得到分享到的微博平台名
         //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
         ShowActionV();
-        [HTTPCLIENT supplyShareWithUid:self.uid Success:^(id responseObject) {
+        [HTTPCLIENT supplybuyrRefreshWithUid:self.uid Success:^(id responseObject) {
             RemoveActionV();
             if ([responseObject[@"success"] integerValue] == 0) {
                 [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
@@ -439,7 +439,7 @@
             [ToastView showTopToast:@"本条信息已刷新"];
 
         } failure:^(NSError *error) {
-            ;
+            RemoveActionV();
         }];
     }
     else {
