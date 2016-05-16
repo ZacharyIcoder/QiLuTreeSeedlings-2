@@ -92,7 +92,7 @@
     self.readVC.delegate   = self;
     [self.view addSubview:self.readVC];
     [ZIKFunction setExtraCellLineHidden:self.readVC];
-    self.readVC.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.readVC.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.readVC.allowsMultipleSelectionDuringEditing = YES;
 
     //添加长按手势
@@ -160,7 +160,7 @@
 
     __block NSString *uidString = @"";
     [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedInfoListModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.mesUid]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
     [HTTPCLIENT deleterecordWithIds:uids Success:^(id responseObject) {
@@ -189,6 +189,8 @@
             _bottomcell.hidden = YES;
             //[self updateBottomDeleteCellView];
             [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
+            _bottomcell.hidden = YES;
+            self.readVC.editing = NO;
             self.readVC.frame = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);//更改tableview 的frame
             __weak typeof(self) weakSelf = self;//解决循环引用的问题
             [self.readVC addHeaderWithCallback:^{//添加刷新控件

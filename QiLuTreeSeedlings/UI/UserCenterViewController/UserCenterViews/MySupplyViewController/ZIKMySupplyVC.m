@@ -18,10 +18,12 @@
 #import "ZIKMySupplyTableViewCell.h"//供应cell
 #import "ZIKBottomDeleteTableViewCell.h"//底部删除view,在已过期状态并且可编辑状态下
 #import "ZIKMySupplyBottomRefreshTableViewCell.h"//底部刷新view 在已通过并且可编辑状态下
+#import "BuyMessageAlertView.h"//提示界面
 
 #import "ZIKSupplyPublishVC.h"//发布供应
 #import "ZIKMySupplyDetailViewController.h"//供应详情
 #import "NuseryDetialViewController.h"//新增苗圃信息
+
 
 
 #define NAV_HEIGHT 64 //navgationview 高度
@@ -37,7 +39,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     SupplyStateNoThrough = 5 //过期
 };
 
-@interface ZIKMySupplyVC ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@interface ZIKMySupplyVC ()<UITableViewDelegate,UITableViewDataSource/*,UIAlertViewDelegate*/>
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
 @property (nonatomic, strong) NSMutableArray *supplyInfoMArr; //供应信息数组
 @property (nonatomic, assign) BOOL           isCanPublish;    //是否能够发布
@@ -247,36 +249,42 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma mark - 退回原因按钮点击事件
 - (void)btnClick:(ZIKMySupplyCellBackButton *)button {
     ZIKSupplyModel *model = self.supplyInfoMArr[button.tag];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退回原因" message:model.reason delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即编辑", nil];
-    [alert show];
-    alert.tag = 300 + button.tag;
-    alert.delegate = self;
+
+    BuyMessageAlertView *buyMessageAlertV=[BuyMessageAlertView addActionVieWithReturnReason:model.reason];
+    buyMessageAlertV.rightBtn.tag = button.tag;
+    [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction:) forControlEvents:UIControlEventTouchUpInside];
+
+//    ZIKSupplyModel *model = self.supplyInfoMArr[button.tag];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退回原因" message:model.reason delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即编辑", nil];
+//    [alert show];
+//    alert.tag = 300 + button.tag;
+//    alert.delegate = self;
 
 }
 
-#pragma mark - UIAlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        ZIKSupplyModel *model = self.supplyInfoMArr[alertView.tag - 300];
-        [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:model.uid Success:^(id responseObject) {
-            if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
-                [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
-                return ;
-            }
-            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-                NSDictionary *dic        = [responseObject objectForKey:@"result"];
-                SupplyDetialMode *model  = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
-                model.supplybuyName      = APPDELEGATE.userModel.name;
-                model.phone              = APPDELEGATE.userModel.phone;
-                ZIKSupplyPublishVC *spvc = [[ZIKSupplyPublishVC alloc] initWithModel:model];
-                [self.navigationController pushViewController:spvc animated:YES];
-            }
+- (void)miaopudetialAction:(UIButton *)btn {
+    ZIKSupplyModel *model = self.supplyInfoMArr[btn.tag];
+    [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:model.uid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+            return ;
+        }
+        if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+            NSDictionary *dic        = [responseObject objectForKey:@"result"];
+            SupplyDetialMode *model  = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
+            model.supplybuyName      = APPDELEGATE.userModel.name;
+            model.phone              = APPDELEGATE.userModel.phone;
+            ZIKSupplyPublishVC *spvc = [[ZIKSupplyPublishVC alloc] initWithModel:model];
+            [self.navigationController pushViewController:spvc animated:YES];
+        }
 
-        } failure:^(NSError *error) {
-            ;
-        }];
-    }
+    } failure:^(NSError *error) {
+        ;
+    }];
+
+    [BuyMessageAlertView removeActionView];
 }
+
 
 #pragma mark - 请求数据
 - (void)requestData {
@@ -793,4 +801,29 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [ToastView showTopToast:@"您没有求购发布权限,请先完善苗圃信息"];
     }
 }
+
+//#pragma mark - UIAlertViewDelegate
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (buttonIndex == 1) {
+//        ZIKSupplyModel *model = self.supplyInfoMArr[alertView.tag - 300];
+//        [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:model.uid Success:^(id responseObject) {
+//            if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+//                [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+//                return ;
+//            }
+//            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+//                NSDictionary *dic        = [responseObject objectForKey:@"result"];
+//                SupplyDetialMode *model  = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
+//                model.supplybuyName      = APPDELEGATE.userModel.name;
+//                model.phone              = APPDELEGATE.userModel.phone;
+//                ZIKSupplyPublishVC *spvc = [[ZIKSupplyPublishVC alloc] initWithModel:model];
+//                [self.navigationController pushViewController:spvc animated:YES];
+//            }
+//
+//        } failure:^(NSError *error) {
+//            ;
+//        }];
+//    }
+//}
+
 @end
