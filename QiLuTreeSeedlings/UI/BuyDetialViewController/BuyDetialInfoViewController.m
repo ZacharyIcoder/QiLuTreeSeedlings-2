@@ -533,8 +533,8 @@
             }
         }
     }
-    NSString *titleStr=[[self.infoDic objectForKey:@"detail"] objectForKey:@"productName"];
-    [self.navTitleLab setText:[NSString stringWithFormat:@"求购：%@",titleStr]];
+    NSString *titleStr=[[self.infoDic objectForKey:@"detail"] objectForKey:@"title"];
+    [self.navTitleLab setText:titleStr];
     
     if ([[[self.infoDic objectForKey:@"detail"] objectForKey:@"collect"] integerValue]) {
         self.collectionBtn.selected=YES;

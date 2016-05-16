@@ -60,10 +60,18 @@
                         <color key="textColor" red="0.26589087041884818" green="0.26589087041884818" blue="0.26589087041884818" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jyg-uI-huu">
+                        <rect key="frame" x="285" y="0.0" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="PdU-Fh-un6"/>
+                            <constraint firstAttribute="height" constant="35" id="gEz-4y-dKM"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="3VN-FS-v9Q" secondAttribute="bottom" constant="-4" id="1qk-wm-UhM"/>
                     <constraint firstItem="FwT-fV-wFG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="4P2-2Y-yY9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Jyg-uI-huu" secondAttribute="trailing" constant="-8" id="4nP-N0-rsB"/>
                     <constraint firstItem="3VN-FS-v9Q" firstAttribute="top" secondItem="FwT-fV-wFG" secondAttribute="bottom" constant="6" id="4sH-bw-4U8"/>
                     <constraint firstItem="FwT-fV-wFG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Llv-rj-AIJ"/>
                     <constraint firstItem="DyM-CY-koK" firstAttribute="top" secondItem="FwT-fV-wFG" secondAttribute="bottom" constant="11" id="Nvd-IM-45z"/>
@@ -77,12 +85,14 @@
                     <constraint firstAttribute="bottomMargin" secondItem="8a3-ab-z3A" secondAttribute="bottom" constant="-2" id="iKn-GD-ssB"/>
                     <constraint firstItem="yhx-Od-JLd" firstAttribute="top" secondItem="FwT-fV-wFG" secondAttribute="bottom" constant="9" id="oI2-u5-ZGw"/>
                     <constraint firstItem="8a3-ab-z3A" firstAttribute="top" secondItem="FwT-fV-wFG" secondAttribute="bottom" constant="11" id="vdI-jV-mCn"/>
+                    <constraint firstItem="Jyg-uI-huu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="z9X-4M-xGV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cityLab" destination="klx-XE-bWU" id="XOX-xq-f0F"/>
                 <outlet property="dingweiimage" destination="eRM-yy-7ka" id="NHJ-Pu-oKu"/>
                 <outlet property="priceLab" destination="3VN-FS-v9Q" id="R4d-GF-D0v"/>
+                <outlet property="stateImage" destination="Jyg-uI-huu" id="IGm-u4-0my"/>
                 <outlet property="timeLab" destination="DyM-CY-koK" id="8oX-ER-LkK"/>
                 <outlet property="timeimage" destination="yhx-Od-JLd" id="rG7-Xp-yyZ"/>
                 <outlet property="titleLab" destination="FwT-fV-wFG" id="IEt-Ny-bJn"/>

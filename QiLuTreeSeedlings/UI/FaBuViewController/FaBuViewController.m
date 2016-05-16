@@ -117,9 +117,9 @@
 {
     if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        //[ToastView showTopToast:@"您还没有求购发布权限,请先完善苗圃信息"];
-        BuyMessageAlertView *buyMessageAlertV=[BuyMessageAlertView addActionViewMiaoPuWanShan];
-        [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction) forControlEvents:UIControlEventTouchUpInside];
+        [ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
+        NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]init];
+        [self.navigationController pushViewController:nuseryDetialVC animated:YES];
         return;
     }
     ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
@@ -130,9 +130,9 @@
    
     if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        //[ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
-        BuyMessageAlertView *buyMessageAlertV=[BuyMessageAlertView addActionViewMiaoPuWanShan];
-        [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction) forControlEvents:UIControlEventTouchUpInside];
+        [ToastView showTopToast:@"您还没有求购发布权限,请先完善苗圃信息"];
+        NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]init];
+        [self.navigationController pushViewController:nuseryDetialVC animated:YES];
         return;
     }
         buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];

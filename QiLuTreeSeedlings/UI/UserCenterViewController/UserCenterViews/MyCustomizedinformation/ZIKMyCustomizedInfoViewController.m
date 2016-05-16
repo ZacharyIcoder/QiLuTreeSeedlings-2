@@ -29,7 +29,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self requestData];
+    [self.myCustomizedInfoTableView headerBeginRefreshing];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +38,7 @@
     [self configNav];
     [self initData];
     [self initUI];
+    [self requestData];
 }
 
 - (void)configNav {

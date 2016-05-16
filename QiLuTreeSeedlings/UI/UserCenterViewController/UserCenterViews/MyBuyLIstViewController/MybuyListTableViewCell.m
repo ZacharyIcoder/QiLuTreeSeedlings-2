@@ -29,8 +29,21 @@
     self.cityLab.text=hotBuyModel.area;
     
     self.timeLab.text=hotBuyModel.timeAger;
-    
-    
+    if (hotBuyModel.state==BuyStateUnAudit) {
+        [self.stateImage setImage:[UIImage imageNamed:@"shenhezhong"]];
+    }
+    if (hotBuyModel.state==BuyStatePastAudit) {
+        [self.stateImage setImage:[UIImage imageNamed:@"yitongguo"]];
+    }
+    if (hotBuyModel.state==BuyStateUnPassAudit) {
+        [self.stateImage setImage:[UIImage imageNamed:@"weitonguo"]];
+    }
+    if (hotBuyModel.state==BuyStateColose) {
+        [self.stateImage setImage:[UIImage imageNamed:@"yiguanbi"]];
+    }
+    if (hotBuyModel.state==BuyStateOverdue) {
+        [self.stateImage setImage:[UIImage imageNamed:@"yiguoqi"]];
+    }
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];
     if (hotBuyModel.isSelect) {

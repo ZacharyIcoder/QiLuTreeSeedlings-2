@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *timeimage;
 @property (weak, nonatomic) IBOutlet UIImageView *dingweiimage;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UIImageView *stateImage;
 @property (weak, nonatomic) IBOutlet UILabel *cityLab;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
