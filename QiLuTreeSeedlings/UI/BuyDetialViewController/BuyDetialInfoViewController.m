@@ -502,7 +502,16 @@
 
 -(void)reloadMyView
 {
-    
+    if (self.type==1) {
+        if (self.model.state==1) {
+            [self.guoqiIamgV setImage:[UIImage imageNamed:@"guoqibiaoqian"]];
+            if (self.model.state==1) {
+                self.guoqiIamgV.hidden=NO;
+            }else{
+                self.guoqiIamgV.hidden=YES;
+            }
+        }
+    }
     if (self.type==2) {
         if (self.model.state==1||self.model.state==3) {
             //1 已过期  可编辑 3 未通过  可编辑
@@ -511,7 +520,6 @@
                 self.guoqiIamgV.hidden=NO;
             }else{
                 self.guoqiIamgV.hidden=YES;
-
             }
             [self.editingBtn setTitle:@"编辑" forState:UIControlStateNormal];
             [self.editingBtn addTarget:self action:@selector(editingBtn:) forControlEvents:UIControlEventTouchUpInside];

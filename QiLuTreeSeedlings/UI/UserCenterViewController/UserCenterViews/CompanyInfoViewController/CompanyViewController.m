@@ -14,6 +14,7 @@
 #import "YLDPickLocationView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "NSString+Phone.h"
+#import "ZIKHintTableViewCell.h"
 @interface CompanyViewController ()<YLDPickLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *companyNameField;
@@ -42,7 +43,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //[APPDELEGATE reloadCompanyInfo];
     self.backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 44, kWidth, kHeight-64-44)];
     [self.backScrollView setBackgroundColor:BGColor];
     [self.view setBackgroundColor:BGColor];
@@ -96,8 +97,13 @@
     briefField=[self mackViewWtihName:@"简介" alert:@"请输入简介内容" unit:@"" withFrame:tempFrame];
     briefField.delegate=self;
     tempFrame.origin.y+=50;
-    
-    UILabel *warnLab=[[UILabel alloc]initWithFrame:CGRectMake(10,tempFrame.origin.y+30, kWidth-20, 35)];
+    ZIKHintTableViewCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    cell.hintStr=@"注：输入框后有＊的为必填项";
+    cell.frame=tempFrame;
+    [self.backScrollView addSubview:cell];
+    UILabel *warnLab=[[UILabel alloc]initWithFrame:CGRectMake(10,tempFrame.origin.y+36, kWidth-20, 35)];
     [warnLab setFont:[UIFont systemFontOfSize:12]];
     [warnLab setTextColor:kRedHintColor];
     warnLab.numberOfLines=2;
