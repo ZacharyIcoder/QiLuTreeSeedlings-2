@@ -54,6 +54,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     UIView *_nameView;
     NSArray *_urlArr;
     ZIKHintTableViewCell *_hintView;
+    BOOL isPicture;
 }
 
 -(id)initWithModel:(SupplyDetialMode*)model
@@ -76,9 +77,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     if (_urlArr.count > 0 ) {
-        if (!self.addImageView.saveHaveImageMarr) {
+        if (!isPicture) {
             self.addImageView.saveHaveImageMarr  = (NSMutableArray *)_urlArr;
         }
+        isPicture = NO;
      }
 }
 
@@ -329,6 +331,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     //nextVC.pickerImgView = self.addImageView;
     nextVC.supplyModel = self.supplyModel;
     [self.navigationController pushViewController:nextVC animated:YES];
+    self.addImageView.saveHaveImageMarr = nil;
 }
 
 - (void)nameBtnAction:(UIButton *)button {
@@ -516,7 +519,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     }else {
 
     }
-
+    //isPicture = YES;
 }
 
 //开始拍照
@@ -531,6 +534,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         //        picker.allowsEditing = YES;
         picker.sourceType = sourceType;
         [self presentViewController:picker animated:YES completion:nil];
+        isPicture  = YES;
     }else
     {
         //NSLog(@"模拟其中无法打开照相机,请在真机中使用");
@@ -544,6 +548,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     vc.delegate = self;
     vc.maxChoiceImageNumberumber = 3-self.addImageView.urlMArr.count;
     [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
+    isPicture  = YES;
 }
 
 #pragma mark - WHC_ChoicePictureVCDelegate
