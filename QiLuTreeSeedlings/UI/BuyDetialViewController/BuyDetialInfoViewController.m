@@ -184,7 +184,7 @@
     self.tableView.dataSource=self;
     [self.view addSubview:self.tableView];
     [self.view addSubview:_biaoqianView];
-    UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-68, 60, 60, 38.3)];
+    UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-80, 50, 74, 48.3)];
     [self.tableView addSubview:guoqiIamgV];
     [guoqiIamgV bringSubviewToFront:self.view];
     self.guoqiIamgV=guoqiIamgV;
@@ -249,7 +249,7 @@
         self.tableView.dataSource=self;
         [self.view addSubview:self.tableView];
          [self.view addSubview:_biaoqianView];
-        UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-68, 60, 60, 38.3)];
+        UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-80, 50, 73, 48.3)];
         [self.tableView addSubview:guoqiIamgV];
         [guoqiIamgV bringSubviewToFront:self.view];
         self.guoqiIamgV=guoqiIamgV;
