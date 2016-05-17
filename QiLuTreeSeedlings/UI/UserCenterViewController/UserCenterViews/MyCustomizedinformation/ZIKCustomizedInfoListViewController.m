@@ -43,11 +43,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     [self configNav];
-    //[self initData];
     [self initUI];
-    //[self requestData];
-    //NSLog(@"%@",  [NSString stringWithUTF8String:object_getClassName(self)]);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -221,22 +219,31 @@
             [_removeArray removeAllObjects];
         }
         [self.customizedInfoMArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            myModel.isSelect = YES;
             [_removeArray addObject:myModel];
         }];
+        NSMutableArray *tempMArr = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < self.customizedInfoMArr.count; i++) {
+            [self.myCustomizedInfoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [tempMArr addObject:[NSIndexPath indexPathForRow:0 inSection:i]];
+        }
+        //_bottomcell.count = _removeArray.count;
+        _deleteIndexArr = (NSArray *)tempMArr;
+
 
     }
     else if (_bottomcell.isAllSelect == NO) {
-        [self.customizedInfoMArr enumerateObjectsUsingBlock:^(ZIKCustomizedModel *myModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            myModel.isSelect = NO;
-        }];
         if (_removeArray.count > 0) {
             [_removeArray removeAllObjects];
+        }
+        //_bottomcell.count = 0;
+        _deleteIndexArr = nil;
+        for (NSInteger i = 0; i < self.customizedInfoMArr.count; i++) {
+            [self.myCustomizedInfoTableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES];
         }
 
     }
     [self totalCount];
-    [self.myCustomizedInfoTableView reloadData];
+    //[self.myCustomizedInfoTableView reloadData];
 }
 
 -(void)backBtnAction:(UIButton *)sender
@@ -418,7 +425,7 @@
     if (self.myCustomizedInfoTableView.editing)
     {
         // 获取当前反选显示数据
-        ZIKCustomizedModel *tempModel = [self.customizedInfoMArr objectAtIndex:indexPath.row];
+        ZIKCustomizedModel *tempModel = [self.customizedInfoMArr objectAtIndex:indexPath.section];
         if ([_removeArray containsObject:tempModel]) {//删除反选数据
             [_removeArray removeObject:tempModel];
         }
