@@ -255,7 +255,7 @@
     }
     else {
         HotBuyModel *model = self.recordMarr[indexPath.row];
-        BuyDetialInfoViewController *buyDetialVC=[[BuyDetialInfoViewController alloc]initMyDetialWithSaercherInfo:model.supplybuyUid];
+        BuyDetialInfoViewController *buyDetialVC=[[BuyDetialInfoViewController alloc]initWithSaercherInfo:model.supplybuyUid];
         [self.navigationController pushViewController:buyDetialVC animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

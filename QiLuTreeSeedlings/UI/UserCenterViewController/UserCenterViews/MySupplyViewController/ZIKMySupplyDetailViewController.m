@@ -83,7 +83,16 @@
                 model.supplybuyName = APPDELEGATE.userModel.name;
                 model.phone = APPDELEGATE.userModel.phone;
                 self.model = model;
-                
+                if (model.state==1||model.state==3) {
+                    shareCell.hidden=YES;
+                    CGRect frame=self.tableView.frame;
+                    frame.size.height+=54;
+                    self.tableView.frame=frame;
+                    
+                }else
+                {
+                    shareCell.hidden=NO;
+                }
                 /*新增*/
                 self.specAry = model.spec;
                 for (int i=0; i<model.spec.count; i++) {

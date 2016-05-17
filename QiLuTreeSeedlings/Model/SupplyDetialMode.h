@@ -26,6 +26,7 @@
 @property (nonatomic,strong)NSString *title;
 @property (nonatomic,strong)NSString *uid;
 @property (nonatomic,strong)NSString *views;
+@property (nonatomic)       NSInteger state;
 @property (nonatomic,strong)NSString *productName;
 +(SupplyDetialMode *)creatSupplyDetialModelByDic:(NSDictionary *)dic;
 @end

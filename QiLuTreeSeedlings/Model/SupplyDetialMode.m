@@ -29,6 +29,7 @@
     model.title=[dic objectForKey:@"title"];
     model.uid=[dic objectForKey:@"uid"];
     model.views=[dic objectForKey:@"views"];
+    model.state=[[dic objectForKey:@"state"] integerValue];
     model.productName=[dic objectForKey:@"productName"];
     return model;
 }
