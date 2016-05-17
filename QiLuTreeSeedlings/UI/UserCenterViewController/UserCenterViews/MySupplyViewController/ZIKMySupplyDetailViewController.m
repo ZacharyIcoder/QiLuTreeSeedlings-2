@@ -63,8 +63,7 @@
     self.rightBarBtnTitleString = @"编辑";
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-//        NSLog(@"编辑");
-        ZIKSupplyPublishVC *zikSupplyPVC=[[ZIKSupplyPublishVC alloc] initWithModel:weakSelf.model];
+        ZIKSupplyPublishVC *zikSupplyPVC = [[ZIKSupplyPublishVC alloc] initWithModel:weakSelf.model];
         [weakSelf.navigationController pushViewController:zikSupplyPVC animated:YES];
     };
 }

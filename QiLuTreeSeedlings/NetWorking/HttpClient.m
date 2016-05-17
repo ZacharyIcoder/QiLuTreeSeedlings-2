@@ -1323,12 +1323,15 @@
                                 @"gongyingtupian.png",@"fileName",
                                 nil];
     //NSLog(@"%@",parameters);
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
     

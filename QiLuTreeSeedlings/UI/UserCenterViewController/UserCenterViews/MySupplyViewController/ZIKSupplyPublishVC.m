@@ -77,7 +77,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     if (_urlArr.count > 0 ) {
-        if (!isPicture) {
+        if (!isPicture || self.addImageView.saveHaveImageMarr==nil) {
             self.addImageView.saveHaveImageMarr  = (NSMutableArray *)_urlArr;
         }
         isPicture = NO;
@@ -88,6 +88,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     self.productTypeDataMArray = [NSMutableArray array];
     self.cellAry               = [NSMutableArray array];
     self.supplyModel           = [[ZIKMySupplyCreateModel alloc] init];
+    isPicture = NO;
 }
 
 - (void)initUI {
@@ -225,6 +226,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 //处理图片数组结束
 
                 weakSelf.nurseryAry            = [resultdic objectForKey:@"nurseryList"];
+                if (weakSelf.nurseryAry.count == 0) {
+                    [ToastView showTopToast:@"请先完善苗圃信息"];
+                }
                 weakSelf.baseDic               = [resultdic objectForKey:@"baseMsg"];
                 [weakSelf creatSCreeningCellsWithAnswerWithAry:beanAry];
             }else{
@@ -554,7 +558,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 #pragma mark - WHC_ChoicePictureVCDelegate
 - (void)WHCChoicePictureVCdidSelectedPhotoArr:(NSArray *)photoArr{
     for (__weak UIImage *image in photoArr) {
-        ShowActionV();
+
         HttpClient *httpClient  = [HttpClient sharedClient];
       __block  NSData* imageData = nil;
 
@@ -566,32 +570,22 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             myStringImageFile = nil;
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                  if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-
-//                    [weakSelf setPhotoToPath:imageData isName:@"imageData"];
-//
-//                    [weakSelf.addImageView addImage:[weakSelf getPhotoFromName:@"imageData"] withUrl:responseObject[@"result"]];
-//                    imageData = nil;
                     [weakSelf.addImageView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
                     [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
-                    RemoveActionV();
-                    
                 }
                 else {
                     //NSLog(@"图片上传失败");
                     [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:weakSelf.view];
                     [UIColor darkGrayColor];
-                    RemoveActionV();
                 }
 
                 //self.pickerImgView.photos
             }
         } failure:^(NSError *error) {
 
-            RemoveActionV();
             [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:self.view];
         }];
     }
-    //NSLog(@"3333");
  }
 
 //当选择一张图片后进入这里
@@ -604,7 +598,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     {
         //先把图片转成NSData
       __weak  UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        ShowActionV();
         HttpClient *httpClient  = [HttpClient sharedClient];
         NSData* imageData = nil;
         imageData  = [self imageData:image];
@@ -614,7 +607,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         //NSLog(@"%ld",myStringImageFile.length);
 
         [httpClient upDataImageIOS:myStringImageFile Success:^(id responseObject) {
-             RemoveActionV();
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
 
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
@@ -647,11 +639,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark 从文档目录下获取Documents路径
-- (NSString *)documentFolderPath
-{
-    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-}
 
 -(void)backBtnAction:(UIButton *)sender
 {

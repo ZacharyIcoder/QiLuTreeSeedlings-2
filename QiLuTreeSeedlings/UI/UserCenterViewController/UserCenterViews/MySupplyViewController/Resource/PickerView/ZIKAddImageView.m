@@ -149,37 +149,17 @@
     [self setNeedsLayout];
 }
 
-//-(UIImage*) OriginImage:(UIImage *)image scaleToSize:(CGSize)size
-//{
-//    UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
-//
-//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-//
-//    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-//
-//    UIGraphicsEndImageContext();
-//
-//    return scaledImage;   //返回的就是已经改变的图片
-//}
-
 -(void)setUrlMArr:(NSMutableArray *)urlMArr {
     _urlMArr = urlMArr;
-    for (NSDictionary *dic in urlMArr) {
-        [self addImageUrl:[UIImage
-                           imageWithData:[NSData
-                                          dataWithContentsOfURL:[NSURL
-                                                                 URLWithString:dic[@"url"]]]] withUrl:dic];
-    }
+//    for (NSDictionary *dic in urlMArr) {
+//        [self addImageUrl:[UIImage
+//                           imageWithData:[NSData
+//                                          dataWithContentsOfURL:[NSURL
+//                                                                 URLWithString:dic[@"url"]]]] withUrl:dic];
+//    }
+    [self addImageWithURLArr:_urlMArr];
 }
 
-- (void)removeImage:(UIImage *)image
-{
-
-}
-
--(void)removeImageURl:(NSDictionary *)dic {
-
-}
 
 - (void)removeALL
 {

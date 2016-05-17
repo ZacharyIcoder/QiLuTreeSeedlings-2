@@ -21,10 +21,7 @@ typedef void (^LookPhotoBlock) ();
 @interface ZIKAddImageView : UIView
 
 - (void)addImage:(UIImage *)image withUrl:(NSDictionary *)urlDic;
-- (void)removeImage:(UIImage *)image;
 
-- (void)removeImageURl:(NSDictionary *)dic;
-//- (void)removeALL;
 /**
  *  添加图片block
  */
