@@ -26,7 +26,7 @@
         dizhiLab.text=@"苗圃基地";
         [self addSubview:dizhiLab];
         
-        self.addressLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 0, kWidth-140, 40)];
+        self.addressLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 0, kWidth-140, 30)];
         [self.addressLab setFont:[UIFont systemFontOfSize:13]];
     
         self.addressLab.numberOfLines=0;
