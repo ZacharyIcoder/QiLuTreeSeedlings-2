@@ -50,13 +50,17 @@
     self.timeLabel.text  = time;
 
     NSString *priceString = nil;
-    if (model.price.floatValue >= 10000) {
-        priceString = [NSString stringWithFormat:@"上车价 ¥%.1f万",model.price.floatValue/10000];
-    }
-    else {
-        priceString = [NSString stringWithFormat:@"上车价 ¥%.1f",model.price.floatValue];
-    }
-   
+    priceString = [NSString stringWithFormat:@"上车价 ¥%@",model.price];
+//    if (model.price) {
+//        <#statements#>
+//    }
+//    if (model.price.floatValue >= 10000) {
+//        priceString = [NSString stringWithFormat:@"上车价 ¥%.1f万",model.price.floatValue/10000];
+//    }
+//    else {
+//        priceString = [NSString stringWithFormat:@"上车价 ¥%.1f",model.price.floatValue];
+//    }
+
     FontAttribute *fullFont = [FontAttribute new];
     fullFont.font = [UIFont systemFontOfSize:19.0f];
     fullFont.effectRange  = NSMakeRange(0, priceString.length);
