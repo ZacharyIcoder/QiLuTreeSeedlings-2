@@ -19,7 +19,9 @@
 //@property (nonatomic,strong)UILabel *numLab;
 @end
 @implementation BuySearchTableViewCell
-
+{
+    UIImageView * timeImag;
+}
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithFrame:(CGRect)frame
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -40,10 +42,10 @@
         [self.cityLab setText:@"临沂"];
         [self.cityLab setTextColor:detialLabColor];
         [self.contentView addSubview:self.cityLab];
-        UIImageView * timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*0.5-45,38, 15, 15)];
+         timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*0.5-45,38, 15, 15)];
          [timeImag setImage:[UIImage imageNamed:@"listtime"]];
         [self.contentView addSubview:timeImag];
-        self.timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.5-20, 40, 55, 12)];
+        self.timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.5-15, 38, 70, 12)];
          [self.timeLab setTextColor:detialLabColor];
         [self.timeLab setFont:[UIFont systemFontOfSize:12]];
         [self.timeLab setText:@"N天前"];
@@ -87,19 +89,15 @@
         [self.cityLab setText:@"临沂"];
         [self.cityLab setTextColor:detialLabColor];
         [self.contentView addSubview:self.cityLab];
-        UIImageView * timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*0.5-45,38, 15, 15)];
+        timeImag=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth*0.5-45,38, 15, 15)];
         [timeImag setImage:[UIImage imageNamed:@"listtime"]];
         [self.contentView addSubview:timeImag];
-        self.timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.5-20, 40, 55, 12)];
+        self.timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.5-15, 38, 70, 12)];
         [self.timeLab setTextColor:detialLabColor];
         [self.timeLab setFont:[UIFont systemFontOfSize:12]];
         [self.timeLab setText:@"N天前"];
         [self.contentView addSubview:self.timeLab];
-//        UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
-//        [priceLab setFont:[UIFont systemFontOfSize:12]];
-//        [priceLab setText:@"价格"];
-//        [self addSubview:priceLab];
-//        [priceLab setTextColor:detialLabColor];
+
         self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-170-kSCREEN_EDGE_DISTANCE, 35, 170, 20)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];
         [self.priceLab setText:@"O元"];
@@ -126,8 +124,13 @@
     self.cityLab.text=hotBuyModel.area;
    
         self.timeLab.text=hotBuyModel.timeAger;
-   
-    
+    [_timeLab setNumberOfLines:1];
+    _timeLab.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
+    CGSize size = [hotBuyModel.timeAger boundingRectWithSize:CGSizeMake(70, 20) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    [_timeLab setFrame:CGRectMake(_timeLab.frame.origin.x, _timeLab.frame.origin.y, size.width, size.height)];
+    [timeImag setFrame:CGRectMake(_timeLab.frame.origin.x-17, timeImag.frame.origin.y, timeImag.frame.size.width, timeImag.frame.size.height)];
+
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
 //    self.priceLab.text=[priceAry firstObject];
     NSString *priceString = [NSString stringWithFormat:@"价格 ¥%@", [priceAry firstObject]];
