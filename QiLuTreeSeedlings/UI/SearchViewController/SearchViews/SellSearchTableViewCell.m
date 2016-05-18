@@ -21,6 +21,9 @@
 @property (nonatomic,strong)UILabel *numLab;
 @end
 @implementation SellSearchTableViewCell
+{
+    UIImageView *timeImagV;
+}
 @synthesize imageV,titleLab,cityLab,timeLab,numLab,priceLab;
 -(id)initWithFrame:(CGRect)frame
 {
@@ -43,13 +46,13 @@
         cityLab.text=@"山东 临沂";
         [cityLab setTextColor:detialLabColor];
         [self addSubview:cityLab];
-         timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-42-kSCREEN_EDGE_DISTANCE, 40, 42, 20)];
+         timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-70-kSCREEN_EDGE_DISTANCE, 40, 70, 20)];
         [timeLab setFont:[UIFont systemFontOfSize:14]];
         timeLab.text=@"今天";
         timeLab.textAlignment = NSTextAlignmentRight;
          [timeLab setTextColor:detialLabColor];
         [self addSubview:timeLab];
-        UIImageView *timeImagV=[[UIImageView alloc]initWithFrame:CGRectMake(timeLab.frame.origin.x-15, 43, 13, 13)];
+        timeImagV=[[UIImageView alloc]initWithFrame:CGRectMake(timeLab.frame.origin.x-15, 40, 15, 15)];
         [timeImagV setImage:[UIImage imageNamed:@"listtime"]];
         [self addSubview:timeImagV];
 
@@ -111,6 +114,16 @@
     self.numLab.text=[NSString stringWithFormat:@"%@ 棵",hotSellModel.count];
     self.cityLab.text=hotSellModel.area;
     self.timeLab.text=  hotSellModel.timeAger;
+//    self.timeLab.text=  @"24小时前";
+
+    [timeLab setNumberOfLines:1];
+    timeLab.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
+    CGSize size = [hotSellModel.timeAger boundingRectWithSize:CGSizeMake(70, 20) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    [timeLab setFrame:CGRectMake(kWidth-kSCREEN_EDGE_DISTANCE-size.width, timeLab.frame.origin.y, size.width, size.height)];
+    [timeImagV setFrame:CGRectMake(timeLab.frame.origin.x-17, timeImagV.frame.origin.y, timeImagV.frame.size.width, timeImagV.frame.size.height)];
+
+
 }
 - (void)awakeFromNib {
     // Initialization code
