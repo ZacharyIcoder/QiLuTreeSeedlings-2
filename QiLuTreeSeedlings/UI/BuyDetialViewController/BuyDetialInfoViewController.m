@@ -300,6 +300,7 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
     UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/2, 50)];
+    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
     [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
     [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);

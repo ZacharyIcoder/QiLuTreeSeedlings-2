@@ -52,7 +52,7 @@
         [youxiaoTimeLab setFont:[UIFont systemFontOfSize:13]];
         [youxiaoTimeLab setTextAlignment:NSTextAlignmentRight];
         [youxiaoTimeLab setTextColor:detialLabColor];
-        youxiaoTimeLab.text=@"有效日期";
+        youxiaoTimeLab.text=@"有效期至";
         [self addSubview:youxiaoTimeLab];
         
         self.endTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 65, 200, 20)];

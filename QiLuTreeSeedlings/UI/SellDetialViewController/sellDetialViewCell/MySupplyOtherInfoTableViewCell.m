@@ -40,18 +40,14 @@
         
         self.creatTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 35, 200, 20)];
         [self.creatTimeLab setFont:[UIFont systemFontOfSize:13]];
-        //        [self.creatTimeLab setTextAlignment:NSTextAlignmentRight];
         [self.creatTimeLab setTextColor:titleLabColor];
-        //        dizhiLab.text=@"地址";
         [self addSubview:self.creatTimeLab];
         
         
         
         self.endTimeLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 65, 200, 20)];
         [self.endTimeLab setFont:[UIFont systemFontOfSize:13]];
-        //        [self.endTimeLab setTextAlignment:NSTextAlignmentRight];
         [self.endTimeLab setTextColor:titleLabColor];
-        //        dizhiLab.text=@"地址";
         [self addSubview:self.endTimeLab];
         
         self.phoneLab=[[UILabel alloc]initWithFrame:CGRectMake(130, 95, 200, 20)];
@@ -68,8 +64,6 @@
 -(void)setModel:(SupplyDetialMode *)model
 {
     _model=model;
-    //self.addressLab.text=model.address;
-    
     self.creatTimeLab.text=model.createTime;
     self.endTimeLab.text=model.endTime;
     self.phoneLab.text=model.phone;
@@ -90,7 +84,6 @@
         [self.addressView addSubview:lab];
         
     }
-   
     CGRect tempFrame=self.addressView.frame;
     tempFrame.size.height=nuseryAry.count*30;
     if (tempFrame.size.height<30) {

@@ -52,7 +52,7 @@
         if (hotModel.area.length==0) {
             dingweiImageV.hidden=YES;
         }
-        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, 80, 20)];
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, 90, 20)];
         [lab setFont:[UIFont systemFontOfSize:12]];
         [lab setTextColor:titleLabColor];
         lab.text=hotModel.area;
