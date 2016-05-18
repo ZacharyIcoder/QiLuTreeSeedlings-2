@@ -9,6 +9,9 @@
 #import "SellSearchTableViewCell.h"
 #import "UIDefines.h"
 #import "UIImageView+AFNetworking.h"
+#import "StringAttributeHelper.h"
+#define kSCREEN_EDGE_DISTANCE 15 //距离屏幕边缘距离
+
 @interface SellSearchTableViewCell()
 @property (nonatomic,strong)UIImageView *imageV;
 @property (nonatomic,strong)UILabel *priceLab;
@@ -40,14 +43,16 @@
         cityLab.text=@"山东 临沂";
         [cityLab setTextColor:detialLabColor];
         [self addSubview:cityLab];
-        UIImageView *timeImagV=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.60+87, 43, 13, 13)];
-        [timeImagV setImage:[UIImage imageNamed:@"listtime"]];
-        [self addSubview:timeImagV];
-        timeLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.60+20/320.f*kWidth+85, 40, 70, 20)];
+         timeLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-42-kSCREEN_EDGE_DISTANCE, 40, 42, 20)];
         [timeLab setFont:[UIFont systemFontOfSize:14]];
         timeLab.text=@"今天";
+        timeLab.textAlignment = NSTextAlignmentRight;
          [timeLab setTextColor:detialLabColor];
         [self addSubview:timeLab];
+        UIImageView *timeImagV=[[UIImageView alloc]initWithFrame:CGRectMake(timeLab.frame.origin.x-15, 43, 13, 13)];
+        [timeImagV setImage:[UIImage imageNamed:@"listtime"]];
+        [self addSubview:timeImagV];
+
         UIImageView *numImage=[[UIImageView alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+87, 72, 15, 15)];
         [numImage setImage:[UIImage imageNamed:@"LISTtreeNumber"]];
         [self addSubview:numImage];
@@ -56,14 +61,15 @@
         numLab.text=@"599棵";
         [numLab setTextColor:detialLabColor];
         [self addSubview:numLab];
-        UILabel *shangcheLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65-10+77, 70, 50, 20)];
-        [shangcheLab setFont:[UIFont systemFontOfSize:14]];
-        shangcheLab.text=@"上车价";
-         [shangcheLab setTextColor:titleLabColor];
-        [self addSubview:shangcheLab];
-        priceLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65+80+30/320.f*kWidth, 68, 50, 20)];
+//        UILabel *shangcheLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65-10+77, 70, 50, 20)];
+//        [shangcheLab setFont:[UIFont systemFontOfSize:14]];
+//        shangcheLab.text=@"上车价";
+//         [shangcheLab setTextColor:titleLabColor];
+//        [self addSubview:shangcheLab];
+        priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2, 68, kWidth/2-kSCREEN_EDGE_DISTANCE, 20)];
         [priceLab setFont:[UIFont systemFontOfSize:18]];
 //        priceLab.text=@"50";
+        priceLab.textAlignment = NSTextAlignmentRight;
         [priceLab setTextColor:yellowButtonColor];
         [self addSubview:priceLab];
         
@@ -83,7 +89,24 @@
     _hotSellModel=hotSellModel;
     [self.imageV setImageWithURL:[NSURL URLWithString:hotSellModel.iamge] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
     NSArray *priceAry=[hotSellModel.price componentsSeparatedByString:@"."];
-    self.priceLab.text=[priceAry firstObject];
+//    self.priceLab.text=[priceAry firstObject];
+    NSString *priceString = [NSString stringWithFormat:@"上车价 ¥%@", [priceAry firstObject]];
+    FontAttribute *fullFont = [FontAttribute new];
+    fullFont.font = [UIFont systemFontOfSize:18.0f];
+    fullFont.effectRange  = NSMakeRange(0, priceString.length);
+    ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
+    fullColor.color = yellowButtonColor;
+    fullColor.effectRange = NSMakeRange(0,priceString.length);
+    //局部设置
+    FontAttribute *partFont = [FontAttribute new];
+    partFont.font = [UIFont systemFontOfSize:14.0f];
+    partFont.effectRange = NSMakeRange(0, 5);
+    ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
+    darkColor.color = detialLabColor;
+    darkColor.effectRange = NSMakeRange(0, 4);
+
+    self.priceLab.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
+
     self.titleLab.text=hotSellModel.title;
     self.numLab.text=[NSString stringWithFormat:@"%@ 棵",hotSellModel.count];
     self.cityLab.text=hotSellModel.area;

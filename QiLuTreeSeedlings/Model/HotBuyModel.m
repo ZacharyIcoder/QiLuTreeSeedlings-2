@@ -18,6 +18,7 @@
         if (model.creatTime.length==0) {
             model.creatTime=[dic objectForKey:@"time"];
         }
+        model.creatTime = [model.creatTime substringToIndex:19];
         model.effective=[dic objectForKey:@"effective"];
         model.price=[dic objectForKey:@"price"];
         model.New=[[dic objectForKey:@"new"] integerValue];

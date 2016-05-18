@@ -279,7 +279,7 @@
 }
 
 - (void)requestPurchaseRecordsList:(NSString *)page {
-    //我的供应列表
+
     [self.recordsVC headerEndRefreshing];
 
     [HTTPCLIENT purchaseHistoryWithPage:page Success:^(id responseObject) {

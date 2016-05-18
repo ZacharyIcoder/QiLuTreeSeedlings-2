@@ -8,6 +8,8 @@
 
 #import "BuySearchTableViewCell.h"
 #import "UIDefines.h"
+#import "StringAttributeHelper.h"
+#define kSCREEN_EDGE_DISTANCE 15 //距离屏幕边缘距离
 @interface BuySearchTableViewCell()
 //@property (nonatomic,strong)UIImageView *imageV;
 @property (nonatomic,strong)UILabel *priceLab;
@@ -46,16 +48,17 @@
         [self.timeLab setFont:[UIFont systemFontOfSize:12]];
         [self.timeLab setText:@"N天前"];
         [self.contentView addSubview:self.timeLab];
-        UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
-        [priceLab setFont:[UIFont systemFontOfSize:12]];
-        [priceLab setText:@"价格"];
-        [self.contentView addSubview:priceLab];
-         [priceLab setTextColor:detialLabColor];
-        self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.9-25, 35, 65, 20)];
+//        UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
+//        [priceLab setFont:[UIFont systemFontOfSize:12]];
+//        [priceLab setText:@"价格"];
+//        [self.contentView addSubview:priceLab];
+//         [priceLab setTextColor:detialLabColor];
+        self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-170-kSCREEN_EDGE_DISTANCE, 35, 170, 20)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];
         [self.priceLab setText:@"O元"];
         [self.priceLab setTextColor:yellowButtonColor];
         [self.contentView addSubview:self.priceLab];
+        self.priceLab.textAlignment = NSTextAlignmentRight;
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, frame.size.height-0.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self.contentView addSubview:imageVLine];
@@ -92,16 +95,18 @@
         [self.timeLab setFont:[UIFont systemFontOfSize:12]];
         [self.timeLab setText:@"N天前"];
         [self.contentView addSubview:self.timeLab];
-        UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
-        [priceLab setFont:[UIFont systemFontOfSize:12]];
-        [priceLab setText:@"价格"];
-        [self addSubview:priceLab];
-        [priceLab setTextColor:detialLabColor];
-        self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.9-25, 35, 65, 20)];
+//        UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
+//        [priceLab setFont:[UIFont systemFontOfSize:12]];
+//        [priceLab setText:@"价格"];
+//        [self addSubview:priceLab];
+//        [priceLab setTextColor:detialLabColor];
+        self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-170-kSCREEN_EDGE_DISTANCE, 35, 170, 20)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];
         [self.priceLab setText:@"O元"];
         [self.priceLab setTextColor:yellowButtonColor];
         [self addSubview:self.priceLab];
+        self.priceLab.textAlignment = NSTextAlignmentRight;
+
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, frame.size.height-0.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self.contentView addSubview:imageVLine];
@@ -124,7 +129,24 @@
    
     
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
-    self.priceLab.text=[priceAry firstObject];
+//    self.priceLab.text=[priceAry firstObject];
+    NSString *priceString = [NSString stringWithFormat:@"价格 ¥%@", [priceAry firstObject]];
+    FontAttribute *fullFont = [FontAttribute new];
+    fullFont.font = [UIFont systemFontOfSize:18.0f];
+    fullFont.effectRange  = NSMakeRange(0, priceString.length);
+    ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
+    fullColor.color = yellowButtonColor;
+    fullColor.effectRange = NSMakeRange(0,priceString.length);
+    //局部设置
+    FontAttribute *partFont = [FontAttribute new];
+    partFont.font = [UIFont systemFontOfSize:14.0f];
+    partFont.effectRange = NSMakeRange(0, 4);
+    ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
+    darkColor.color = detialLabColor;
+    darkColor.effectRange = NSMakeRange(0, 3);
+
+    self.priceLab.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
+
     if (hotBuyModel.isSelect) {
         self.selected = YES;
         self.isSelect = YES;
