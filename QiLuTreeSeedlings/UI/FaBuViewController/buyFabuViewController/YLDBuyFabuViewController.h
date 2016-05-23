@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface YLDBuyFabuViewController : UIViewController
-
+-(id)initWithUid:(NSString *)uid Withtitle:(NSString *)title WithName:(NSString *)name WithproductUid:(NSString *)productUid WithGuigeAry:(NSArray *)guigeAry;
 @end

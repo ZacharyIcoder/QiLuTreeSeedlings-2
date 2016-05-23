@@ -8,8 +8,9 @@
 
 #import "YLDBuyFabuViewController.h"
 #import "UIDefines.h"
+#import "HttpClient.h"
 #import "PickerShowView.h"
-@interface YLDBuyFabuViewController ()<PickeShowDelegate>
+@interface YLDBuyFabuViewController ()<PickeShowDelegate,UITextFieldDelegate>
 @property (nonatomic,strong)UITextField *birefField;
 @property (nonatomic,strong)UIButton *ectiveBtn;
 @property (nonatomic)NSInteger ecttiv;
@@ -18,14 +19,30 @@
 @property (nonatomic,strong)UITextField *priceTextField;
 @property (nonatomic,strong)PickerShowView *ecttivePickerView;
 @property (nonatomic,strong)UIView *otherInfoView;
+@property (nonatomic,strong) NSString *uid;
+@property (nonatomic,strong)NSString *titleStr;
+@property (nonatomic,strong)NSString *name;
+@property (nonatomic,strong)NSString *productUid;
+@property (nonatomic,strong)NSArray *guigeAry;
 @end
 
 @implementation YLDBuyFabuViewController
-
+-(id)initWithUid:(NSString *)uid Withtitle:(NSString *)title WithName:(NSString *)name WithproductUid:(NSString *)productUid WithGuigeAry:(NSArray *)guigeAry
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+        self.titleStr=title;
+        self.name=name;
+        self.productUid=productUid;
+        self.guigeAry=guigeAry;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
         UIView *otherView=[[UIView alloc]initWithFrame:CGRectMake(0, 15, kWidth, 250)];
-        //self.otherInfoView=otherView;
+        self.otherInfoView=otherView;
     
         CGRect  tempFrame=CGRectMake(0, 0, kWidth, 50);
         UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
@@ -90,8 +107,21 @@
         
         
         [self.view addSubview:otherView];
+    UIButton *tijiaoBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-70, kWidth-80, 50)];
+    
+    [tijiaoBtn setBackgroundColor:NavColor];
+    [tijiaoBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [tijiaoBtn addTarget:self action:@selector(tijiaoBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:tijiaoBtn];
         //[self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(otherView.frame))];
     // Do any additional setup after loading the view.
+}
+-(void)tijiaoBtnAction:(UIButton *)sender
+{
+//    []
+}
+-(void)areBtnAction:(UIButton *)sender
+{
 }
 -(void)ecttiveBtnAction
 {
@@ -176,6 +206,44 @@
             break;
     }
     
+}
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    int kssss=10;
+    if (textField.tag==111) {
+        kssss=20;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
 }
 
 /*

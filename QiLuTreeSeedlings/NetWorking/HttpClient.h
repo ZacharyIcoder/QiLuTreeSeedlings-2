@@ -209,9 +209,7 @@
                    WithPrice:(NSString *)price
            WithEffectiveTime:(NSString *)effectiveTime
                   WithRemark:(NSString *)remark
-            WithUsedProvince:(NSString *)usedProvince
-                WithUsedCity:(NSString *)city
-              WithUsedCounty:(NSString *)usedCounty
+                WithusedArea:(NSString *)usedArea
                      WithAry:(NSArray  *)ary
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;

@@ -940,12 +940,10 @@
                    WithPrice:(NSString *)price
            WithEffectiveTime:(NSString *)effectiveTime
                   WithRemark:(NSString *)remark
-            WithUsedProvince:(NSString *)usedProvince
-                WithUsedCity:(NSString *)city
-              WithUsedCounty:(NSString *)usedCounty
+                WithusedArea:(NSString *)usedArea
                      WithAry:(NSArray  *)ary
                      Success:(void (^)(id responseObject))success
-                     failure:(void (^)(NSError *error))failure
+                     failure:(void (^)(NSError *error))failure;
 {
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
@@ -987,15 +985,10 @@
     if (remark) {
         [parameters setObject:remark forKey:@"remark"];
     }
-    if (usedProvince) {
-        [parameters setObject:usedProvince forKey:@"usedProvince"];
+    if (usedArea) {
+        [parameters setObject:usedArea forKey:@"usedArea"];
     }
-    if (city) {
-        [parameters setObject:city forKey:@"usedCity"];
-    }
-    if (usedCounty) {
-        [parameters setObject:usedCounty forKey:@"usedCounty"];
-    }
+ 
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
         [parameters setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
