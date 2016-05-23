@@ -23,7 +23,12 @@
 #import <MessageUI/MFMessageComposeViewController.h>
 #import "LoginViewController.h"
 #import "ZIKPayViewController.h"
-@interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate>
+
+//友盟
+#import "UMSocialControllerService.h"
+#import "UMSocial.h"
+
+@interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *navTitleLab;
 @property (nonatomic,strong)UIButton *collectionBtn;
@@ -44,6 +49,12 @@
 @property (nonatomic,weak) UIButton *editingBtn;
 @property (nonatomic)NSInteger push_;
 @property (nonatomic,copy) NSString *memberCustomUid;
+
+@property (nonatomic, strong) NSString *state;//用于求购中 1:热门求购（热门求购中除去已定制和已购买的）；2：我的求购；3：已定制；4：已购买
+@property (nonatomic, strong) NSString       *shareText; //分享文字
+@property (nonatomic, strong) NSString       *shareTitle;//分享标题
+@property (nonatomic, strong) UIImage        *shareImage;//分享图片
+@property (nonatomic, strong) NSString       *shareUrl;  //分享url
 @end
 
 @implementation BuyDetialInfoViewController
@@ -97,7 +108,7 @@
                                 {
                                    // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                     if (_BuyMessageView==nil) {
-                                        _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                        _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                                         [_messageView removeFromSuperview];
                                         _messageView = nil;
                                         
@@ -229,7 +240,7 @@
                  }else
                  {
                      if (_BuyMessageView==nil) {
-                         _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                         _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                          [_messageView removeFromSuperview];
                          _messageView = nil;
                          
@@ -237,7 +248,7 @@
                  }
 
              }else{
-                 _messageView = [self lianxiMessageView];
+                 _messageView = [self lianxiMessageShareView];
              }
             [self reloadMyView];
         } failure:^(NSError *error) {
@@ -319,6 +330,42 @@
     [self.view addSubview:view];
     return view;
 }
+
+-(UIView *)lianxiMessageShareView
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*2/5, 50)];
+    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
+    [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
+    [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+    [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
+    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+    [view addSubview:messageBtn];
+    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
+    [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+    [phoneBtn setBackgroundColor:NavColor];
+    [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:phoneBtn];
+
+    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
+    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+    [shareBtn setImage:[UIImage imageNamed:@"myShareImage"] forState:UIControlStateNormal];
+    [shareBtn setBackgroundColor:yellowButtonColor];
+    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:shareBtn];
+
+
+    [self.view addSubview:view];
+    return view;
+}
+
 -(UIView *)laobanViewWithPrice:(float)price
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
@@ -340,6 +387,37 @@
     [self.view addSubview:view];
     return view;
 }
+-(UIView *)laobanShareViewWithPrice:(float)price
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*2/5, 50)];
+    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.1f",price] forState:UIControlStateNormal];
+    [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
+    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+    [view addSubview:messageBtn];
+    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
+    [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+    [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+    [phoneBtn setBackgroundColor:yellowButtonColor];
+    [phoneBtn addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:phoneBtn];
+
+    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
+    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+    [shareBtn setImage:[UIImage imageNamed:@"myShareImage"] forState:UIControlStateNormal];
+    [shareBtn setBackgroundColor:NavColor];
+    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:shareBtn];
+
+    [self.view addSubview:view];
+    return view;
+}
+
 -(void)buyAction
 {
     if (![APPDELEGATE isNeedLogin]) {
@@ -398,13 +476,13 @@
                                     }
                                     if (!self.isPuy) {
                                         if (_BuyMessageView==nil) {
-                                            _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                                             [_messageView removeFromSuperview];
                                             _messageView = nil;
                                         }
                                     }else{
                                         if (_messageView==nil) {
-                                            _messageView = [self lianxiMessageView];
+                                            _messageView = [self lianxiMessageShareView];
                                             [_BuyMessageView removeFromSuperview];
                                             _BuyMessageView = nil;
                                         }
@@ -913,4 +991,102 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)shareBtnClick {
+    [self requestShareData];
+}
+#pragma mark - 求购分享
+- (void)requestShareData {
+    ShowActionV();
+    [HTTPCLIENT buyShareWithUid:self.uid state:@"" Success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+            return ;
+        }
+        NSDictionary *shareDic = responseObject[@"result"];
+        self.shareText   = shareDic[@"text"];
+        self.shareTitle  = shareDic[@"title"];
+        NSString *urlStr = shareDic[@"img"];
+        NSData * data    = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStr]];
+        self.shareImage  = [[UIImage alloc] initWithData:data];
+        self.shareUrl    = shareDic[@"url"];
+        RemoveActionV();
+        [self umengShare];
+
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+}
+
+#pragma mark - 友盟分享
+- (void)umengShare {
+    //    [self requestShareData];
+    //    return;
+    [UMSocialSnsService presentSnsIconSheetView:self
+     //appKey:@"569c3c37e0f55a8e3b001658"
+                                         appKey:@"56fde8aae0f55a1cd300047c"
+                                      shareText:self.shareText
+                                     shareImage:self.shareImage
+                                shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
+                                       delegate:self];
+    //[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
+    //    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ] content:@"sharTestQQ分享文字" image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+    //        if (response.responseCode == UMSResponseCodeSuccess) {
+    //            NSLog(@"分享成功！");
+    //        }
+    //    }];
+    //当分享消息类型为图文时，点击分享内容会跳转到预设的链接，设置方法如下
+    //NSString *urlString = @"https://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8";
+    //NSString *urlString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];
+
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = self.shareUrl;
+
+    //如果是朋友圈，则替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = self.shareUrl;
+
+    [UMSocialData defaultData].extConfig.qqData.url    = self.shareUrl;
+    [UMSocialData defaultData].extConfig.qzoneData.url = self.shareUrl;
+    //设置微信好友title方法为
+    //NSString *titleString = @"苗信通-苗木买卖神器";
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = self.shareTitle;
+
+    //设置微信朋友圈title方法替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = self.shareTitle;
+
+    //QQ设置title方法为
+
+    [UMSocialData defaultData].extConfig.qqData.title = self.shareTitle;
+
+    //Qzone设置title方法将平台参数名替换即可
+
+    [UMSocialData defaultData].extConfig.qzoneData.title = self.shareTitle;
+
+}
+
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    //NSLog(@"didClose is %d",fromViewControllerType);
+}
+
+//下面得到分享完成的回调
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+
+    }
+    else {
+        CLog(@"%@",response);
+    }
+}
+
+-(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
+{
+    NSLog(@"finish share with response is %@",response);
+}
+
 @end

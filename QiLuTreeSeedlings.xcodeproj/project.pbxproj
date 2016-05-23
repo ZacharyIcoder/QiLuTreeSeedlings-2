@@ -65,6 +65,7 @@
 		EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A9EF1C8557D7004913FF /* SearchSuccessView.m */; };
 		EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */; };
 		EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */; };
+		EA3BA97A1CF2CC3B00097F8D /* YLDBuyFabuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3BA9791CF2CC3B00097F8D /* YLDBuyFabuViewController.m */; };
 		EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */; };
 		EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */; };
 		EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */; };
@@ -76,6 +77,7 @@
 		EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA4F4D161CBF5F47006E4988 /* bannelSmall3.jpg */; };
 		EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA4F4D171CBF5F47006E4988 /* bannelSmall4.jpg */; };
 		EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA510EB21C98033900C5D071 /* FaBuViewController.m */; };
+		EA518C621CEDAAF30092BA40 /* GuiGeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA518C611CEDAAF30092BA40 /* GuiGeModel.m */; };
 		EA5252E21CE171270004639C /* YLDPickLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E11CE171270004639C /* YLDPickLocationView.m */; };
 		EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E51CE172410004639C /* YLDPickSelectVIew.m */; };
 		EA5252EE1CE174990004639C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252ED1CE174990004639C /* CityModel.m */; };
@@ -170,6 +172,8 @@
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
 		EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA671C89669800058A34 /* NSString+MD5.m */; };
+		EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */; };
+		EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */; };
 		EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */; };
 		EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA51C744D21007F207D /* HotBuyView.m */; };
 		EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA81C746A7B007F207D /* HotBuyViewCell.m */; };
@@ -569,6 +573,8 @@
 		EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellSearchTableViewCell.m; sourceTree = "<group>"; };
 		EA2E28B61CAE613500186DA5 /* UserBigInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBigInfoView.h; sourceTree = "<group>"; };
 		EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBigInfoView.m; sourceTree = "<group>"; };
+		EA3BA9781CF2CC3B00097F8D /* YLDBuyFabuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBuyFabuViewController.h; sourceTree = "<group>"; };
+		EA3BA9791CF2CC3B00097F8D /* YLDBuyFabuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBuyFabuViewController.m; sourceTree = "<group>"; };
 		EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rolock@2x.png"; sourceTree = "<group>"; };
 		EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounlock@2x.png"; sourceTree = "<group>"; };
 		EA4ADB021CD9DD5C0068C10F /* YLDMyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyBuyListViewController.h; sourceTree = "<group>"; };
@@ -583,6 +589,8 @@
 		EA4F4D171CBF5F47006E4988 /* bannelSmall4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bannelSmall4.jpg; sourceTree = "<group>"; };
 		EA510EB11C98033900C5D071 /* FaBuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaBuViewController.h; sourceTree = "<group>"; };
 		EA510EB21C98033900C5D071 /* FaBuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaBuViewController.m; sourceTree = "<group>"; };
+		EA518C601CEDAAF30092BA40 /* GuiGeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeModel.h; sourceTree = "<group>"; };
+		EA518C611CEDAAF30092BA40 /* GuiGeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeModel.m; sourceTree = "<group>"; };
 		EA5252E01CE171270004639C /* YLDPickLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLDPickLocationView.h; path = ../YLDPickLocationView.h; sourceTree = "<group>"; };
 		EA5252E11CE171270004639C /* YLDPickLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLDPickLocationView.m; path = ../YLDPickLocationView.m; sourceTree = "<group>"; };
 		EA5252E41CE172410004639C /* YLDPickSelectVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDPickSelectVIew.h; sourceTree = "<group>"; };
@@ -717,6 +725,10 @@
 		EA8CAA641C8963D500058A34 /* DataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
 		EA8CAA661C89669800058A34 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		EA8CAA671C89669800058A34 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		EA9EFCC11CEEA2E000A71F2D /* GuiGeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeView.h; sourceTree = "<group>"; };
+		EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeView.m; sourceTree = "<group>"; };
+		EA9EFCC41CEEE48C00A71F2D /* GuiGeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeCell.h; sourceTree = "<group>"; };
+		EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeCell.m; sourceTree = "<group>"; };
 		EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editngChange@2x.png"; sourceTree = "<group>"; };
 		EAA81BA41C744D21007F207D /* HotBuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotBuyView.h; sourceTree = "<group>"; };
 		EAA81BA51C744D21007F207D /* HotBuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyView.m; sourceTree = "<group>"; };
@@ -1472,6 +1484,7 @@
 		EA0B2BCD1C59F6930018A7BD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EA518C5F1CEDAAD80092BA40 /* GUiGEView */,
 				EA510EB01C98031D00C5D071 /* FaBuViewController */,
 				EA7AE8DC1C96536B00B43073 /* SellDetialViewController */,
 				EA7419F71C8FC4AA00F54478 /* Login&registered */,
@@ -1788,6 +1801,19 @@
 			path = FaBuViewController;
 			sourceTree = "<group>";
 		};
+		EA518C5F1CEDAAD80092BA40 /* GUiGEView */ = {
+			isa = PBXGroup;
+			children = (
+				EA518C601CEDAAF30092BA40 /* GuiGeModel.h */,
+				EA518C611CEDAAF30092BA40 /* GuiGeModel.m */,
+				EA9EFCC11CEEA2E000A71F2D /* GuiGeView.h */,
+				EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */,
+				EA9EFCC41CEEE48C00A71F2D /* GuiGeCell.h */,
+				EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */,
+			);
+			path = GUiGEView;
+			sourceTree = "<group>";
+		};
 		EA5252E31CE171340004639C /* PickLocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1960,6 +1986,8 @@
 				EA7514871C9BA68C003D63F1 /* buyFabuCell */,
 				EA7514841C9BA41F003D63F1 /* buyFabuViewController.h */,
 				EA7514851C9BA41F003D63F1 /* buyFabuViewController.m */,
+				EA3BA9781CF2CC3B00097F8D /* YLDBuyFabuViewController.h */,
+				EA3BA9791CF2CC3B00097F8D /* YLDBuyFabuViewController.m */,
 			);
 			path = buyFabuViewController;
 			sourceTree = "<group>";
@@ -3407,6 +3435,7 @@
 				FC6C13391CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */,
 				FCF353E71CA3B515001ABA0A /* YYClassInfo.m in Sources */,
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
+				EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
 				EAE32DF41C7E9D5000C4CEA2 /* HttpClient.m in Sources */,
 				FC21BC831CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -3483,6 +3512,7 @@
 				EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */,
 				FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */,
 				EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */,
+				EA518C621CEDAAF30092BA40 /* GuiGeModel.m in Sources */,
 				FCE458C31CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m in Sources */,
 				EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */,
 				FC28DB661CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m in Sources */,
@@ -3533,6 +3563,7 @@
 				FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */,
 				FC5808861CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m in Sources */,
 				EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */,
+				EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
 				EA696FB31CDD7FE9001F037E /* YLDMyMessageModel.m in Sources */,
@@ -3573,6 +3604,7 @@
 				FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */,
 				EAEA07FC1C5B285C003A0D8A /* YouLickView.m in Sources */,
 				EA2727191C8A7D8E000B0719 /* FMDatabaseAdditions.m in Sources */,
+				EA3BA97A1CF2CC3B00097F8D /* YLDBuyFabuViewController.m in Sources */,
 				FC21BC841CA51C930041E2C3 /* IQTextView.m in Sources */,
 				FC6FED551CACEDA7000E2CA5 /* ZIKCustomizedInfoListViewController.m in Sources */,
 				EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */,

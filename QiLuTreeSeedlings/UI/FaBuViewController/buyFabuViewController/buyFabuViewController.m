@@ -9,7 +9,7 @@
 #import "buyFabuViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
-#import "PickerShowView.h"
+
 #import "YLDPickLocationView.h"
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
@@ -18,8 +18,9 @@
 #import "YLDMyBuyListViewController.h"
 #import "BuyDetialInfoViewController.h"
 #import "FaBuViewController.h"
-
-@interface buyFabuViewController ()<PickeShowDelegate,YLDPickLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate>
+#import "GuiGeModel.h"
+#import "GuiGeView.h"
+@interface buyFabuViewController ()<YLDPickLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate,GuiGeViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
 @property (nonatomic,strong)UIButton *nameBtn;
@@ -33,18 +34,14 @@
 @property (nonatomic,strong)NSDictionary *baseMessageDic;
 @property (nonatomic) BOOL isCanPublish;
 @property (nonatomic,strong) UIView *otherInfoView;
-@property (nonatomic,strong)UITextField *countTextField;
-@property (nonatomic,strong)UITextField *priceTextField;
-@property (nonatomic,strong)PickerShowView *ecttivePickerView;
-@property (nonatomic)NSInteger ecttiv;
-@property (nonatomic,strong)UIButton *areaBtn;
 @property (nonatomic,copy)NSString *AreaProvince;
 @property (nonatomic,copy)NSString *AreaCity;
 @property (nonatomic,copy)NSString *AreaCounty;
-@property (nonatomic,strong)UITextField *birefField;
-@property (nonatomic,strong)UIButton *ectiveBtn;
+
 @property (nonatomic, strong) ZIKSideView     *sideView;
 @property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
+@property (nonatomic, strong) NSMutableArray *guige1Ary;
+@property (nonatomic,strong)GuiGeView *guigeView;
 @end
 
 @implementation buyFabuViewController
@@ -62,8 +59,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.ecttiv=0;
+    //self.ecttiv=0;
     self.productTypeDataMArray = [NSMutableArray array];
+    self.guige1Ary=[NSMutableArray array];
     self.cellAry=[NSMutableArray array];
     UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
@@ -125,77 +123,11 @@
     [nameLineView setBackgroundColor:kLineColor];
     [nameView addSubview:nameLineView];
     self.nameBtn=nameBtn;
-    UIView *otherView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(nameView.frame)+5, kWidth, 250)];
-    self.otherInfoView=otherView;
-    [self.backScrollView addSubview:otherView];
-     tempFrame=CGRectMake(0, 0, kWidth, 50);
-    UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
-    self.countTextField=countTextField;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldChanged:)
-                                                 name:UITextFieldTextDidChangeNotification
-                                               object:countTextField];
-    countTextField.keyboardType=UIKeyboardTypeNumberPad;
-    tempFrame.origin.y+=50;
-    UITextField *priceTextField=[self mackViewWtihName:@"价格" alert:@"请输入单价" unit:@"元" withFrame:tempFrame];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldChanged:)
-                                                 name:UITextFieldTextDidChangeNotification
-                                               object:priceTextField];
-    self.priceTextField=priceTextField;
-    priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
-    tempFrame.origin.y+=50;
-    UIView *ecttiveView=[[UIView alloc]initWithFrame:tempFrame];
-    [ecttiveView setBackgroundColor:[UIColor whiteColor]];
-    UILabel *ecttNameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
-    [ecttiveView addSubview:ecttNameLab];
-    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
-    [lineImagV setBackgroundColor:kLineColor];
-    [ecttiveView addSubview:lineImagV];
-    [self.otherInfoView addSubview:ecttiveView];
-    [ecttNameLab setText:@"有效期"];
-    [ecttNameLab setTextColor:titleLabColor];
-    [ecttNameLab setFont:[UIFont systemFontOfSize:15]];
-    UIButton *ecttiveBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 0, kWidth-200, 50)];
-    [ecttiveView addSubview:ecttiveBtn];
-    [ecttiveBtn setTitle:@"请选择" forState:UIControlStateNormal];
-    [ecttiveBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    self.ectiveBtn=ecttiveBtn;
-    [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [ecttiveBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    tempFrame.origin.y+=50;
-    UIView *areaView=[[UIView alloc]initWithFrame:tempFrame];
-    [areaView setBackgroundColor:[UIColor whiteColor]];
-    UIImageView *lineImagV2=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
-    [lineImagV2 setBackgroundColor:kLineColor];
-    [areaView addSubview:lineImagV2];
-    UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
-    areaLab.text=@"用苗地";
-    [areaLab setTextColor:titleLabColor];
-    [areaLab setFont:[UIFont systemFontOfSize:15]];
-    [areaView addSubview:areaLab];
-    UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 0, kWidth-150, 50)];
-    [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
-    [areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    [areaView addSubview:areaBtn];
-    self.areaBtn=areaBtn;
-    [areaBtn addTarget:self action:@selector(areBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.otherInfoView addSubview:areaView];
-    tempFrame.origin.y+=50;
-    
-    UITextField *birefField=[self mackViewWtihName:@"备注" alert:@"请输入备注信息" unit:@"" withFrame:tempFrame];
-    self.birefField=birefField;
-    birefField.tag=1111;
-    
-    
-    [self.backScrollView addSubview:otherView];
-    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(otherView.frame))];
+
     UIButton *nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 44)];
     [self.view addSubview:nextBtn];
     [nextBtn setBackgroundColor:NavColor];
-    [nextBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
@@ -215,6 +147,10 @@
         }
     }
 }
+-(void)reloadViewWithFrame:(CGRect)frame
+{
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(frame))];
+}
 -(void)areBtnAction:(UIButton *)sender
 {
     YLDPickLocationView *areaPickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveXian];
@@ -222,79 +158,42 @@
     
     [areaPickerView showPickView];
 }
--(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
-{
-    NSMutableString *namestr=[NSMutableString new];
-    if (sheng.code) {
-        [namestr appendString:sheng.cityName];
-        self.AreaProvince=sheng.code;
-    }else
-    {
-        self.AreaProvince=nil;
-    }
-    
-    if (shi.code) {
-        [namestr appendString:shi.cityName];
-        self.AreaCity=shi.code;
-    }else
-    {
-        self.AreaCity=nil;
-        
-    }
-    if (xian.code) {
-        [namestr appendString:xian.cityName];
-        self.AreaCounty=xian.code;
-    }else
-    {
-        self.AreaCounty=nil;
-    }
-    if (namestr.length>0) {
-        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
-    }else{
-        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
-        
-    }
-
-}
--(void)ecttiveBtnAction
-{
-    if (!self.ecttivePickerView) {
-        self.ecttivePickerView=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        [self.ecttivePickerView resetPickerData:@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"]];
-        self.ecttivePickerView.delegate=self;
-    }
-    [self.ecttivePickerView showInView];
-}
--(UITextField *)mackViewWtihName:(NSString *)name alert:(NSString *)alert unit:(NSString *)unit withFrame:(CGRect)frame
-{
-    UIView *view=[[UIView alloc]initWithFrame:frame];
-    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, kWidth*0.3, 50)];
-    [nameLab setFont:[UIFont systemFontOfSize:15]];
-    nameLab.text=name;
-    [nameLab setTextColor:titleLabColor];
-    [view setBackgroundColor:[UIColor whiteColor]];
-    [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.6, 40)];
-    textField.placeholder=alert;
-    textField.delegate=self;
-    [textField setTextColor:detialLabColor];
-    [textField setFont:[UIFont systemFontOfSize:15]];
-    [view addSubview:textField];
-    UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 50)];
-    [unitLab setFont:[UIFont systemFontOfSize:15]];
-    [unitLab setTextAlignment:NSTextAlignmentRight];
-    [unitLab setText:unit];
-    [unitLab setTextColor:detialLabColor];
-    [view addSubview:unitLab];
-    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 49.5, kWidth-20, 0.5)];
-    [lineView setBackgroundColor:kLineColor];
-    [view addSubview:lineView];
-    [self.otherInfoView addSubview:view];
-    return textField;
-}
-
+//-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
+//{
+//    NSMutableString *namestr=[NSMutableString new];
+//    if (sheng.code) {
+//        [namestr appendString:sheng.cityName];
+//        self.AreaProvince=sheng.code;
+//    }else
+//    {
+//        self.AreaProvince=nil;
+//    }
+//    
+//    if (shi.code) {
+//        [namestr appendString:shi.cityName];
+//        self.AreaCity=shi.code;
+//    }else
+//    {
+//        self.AreaCity=nil;
+//        
+//    }
+//    if (xian.code) {
+//        [namestr appendString:xian.cityName];
+//        self.AreaCounty=xian.code;
+//    }else
+//    {
+//        self.AreaCounty=nil;
+//    }
+//    if (namestr.length>0) {
+//        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
+//        [self.areaBtn.titleLabel sizeToFit];
+//    }else{
+//        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+//        [self.areaBtn.titleLabel sizeToFit];
+//        
+//    }
+//
+//}
 -(void)editingMyBuy
 {
     self.titleTextField.text=self.model.title;
@@ -322,67 +221,75 @@
         [ToastView showTopToast:@"该苗木不存在"];
         return;
     }
-    if (!self.productName) {
-        [ToastView showTopToast:@"苗木名称不正确"];
-        return;
-    }
-    if (self.ecttiv==0) {
-        [ToastView showTopToast:@"请选择有效期"];
-        return;
-    }
+//    if (!self.productName) {
+//        [ToastView showTopToast:@"苗木名称不正确"];
+//        return;
+//    }
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
-    for (int i=0; i<cellAry.count; i++) {
-        TreeSpecificationsModel *model=cellAry[i];
-        if (model.anwser.length>0) {
-            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-                               model.anwser,@"anwser"
-                               , nil];
-            [screenTijiaoAry addObject:dic];
+    
+    BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
+    if (canrun) {
+        for (int i=0; i<screenTijiaoAry.count; i++) {
+            NSDictionary *dic=screenTijiaoAry[i];
+            NSLog(@"%@---%@",dic[@"field"],dic[@"value"]);
         }
+    }else{
+        //NSLog(@"222");
     }
     
-    if(screenTijiaoAry.count==0)
-    {
-        [ToastView showTopToast:@"请填入至少一种规格"];
-        return;
-    }
-    NSString *countStr=self.countTextField.text;
-    NSString *priceStr=self.priceTextField.text;
-    NSString *birefStr=self.birefField.text;
-    if (countStr.length==0) {
-        [ToastView showTopToast:@"请填写求购数量"];
-        return;
-    }
-    if ([self isPureInt:countStr]==NO) {
-        [ToastView showTopToast:@"数量的格式输入有误"];
-        return;
-    }
-    if (priceStr.length>0) {
-        if ([self isPureFloat:priceStr]==NO) {
-            [ToastView showTopToast:@"上车价的格式输入有误"];
-            return;
-        }
-    }
-    ShowActionV();
-    [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
-        //        NSLog(@"%@",responseObject);
-        RemoveActionV();
-        if ([[responseObject objectForKey:@"success"] integerValue]) {
-            [ToastView showTopToast:@"提交成功，即将返回"];
-            //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
-            for(UIViewController *controller in self.navigationController.viewControllers) {
-                if([controller isKindOfClass:[BuyDetialInfoViewController class]]||[controller isKindOfClass:[YLDMyBuyListViewController class]]||[controller isKindOfClass:[FaBuViewController class]]){
-                    [self.navigationController popToViewController:controller animated:YES];
-                }
-            }
-
-        }else
-        {
-            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-        }
-    } failure:^(NSError *error) {
-       RemoveActionV(); 
-    }];
+    return;
+//    for (int i=0; i<cellAry.count; i++) {
+//        TreeSpecificationsModel *model=cellAry[i];
+//        if (model.anwser.length>0) {
+//            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
+//                               model.anwser,@"anwser"
+//                               , nil];
+//            [screenTijiaoAry addObject:dic];
+//        }
+//    }
+//    
+//    if(screenTijiaoAry.count==0)
+//    {
+//        [ToastView showTopToast:@"请填入至少一种规格"];
+//        return;
+//    }
+//    NSString *countStr=self.countTextField.text;
+//    NSString *priceStr=self.priceTextField.text;
+//    NSString *birefStr=self.birefField.text;
+//    if (countStr.length==0) {
+//        [ToastView showTopToast:@"请填写求购数量"];
+//        return;
+//    }
+//    if ([self isPureInt:countStr]==NO) {
+//        [ToastView showTopToast:@"数量的格式输入有误"];
+//        return;
+//    }
+//    if (priceStr.length>0) {
+//        if ([self isPureFloat:priceStr]==NO) {
+//            [ToastView showTopToast:@"上车价的格式输入有误"];
+//            return;
+//        }
+//    }
+//    ShowActionV();
+//    [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
+//        //        NSLog(@"%@",responseObject);
+//        RemoveActionV();
+//        if ([[responseObject objectForKey:@"success"] integerValue]) {
+//            [ToastView showTopToast:@"提交成功，即将返回"];
+//            //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
+//            for(UIViewController *controller in self.navigationController.viewControllers) {
+//                if([controller isKindOfClass:[BuyDetialInfoViewController class]]||[controller isKindOfClass:[YLDMyBuyListViewController class]]||[controller isKindOfClass:[FaBuViewController class]]){
+//                    [self.navigationController popToViewController:controller animated:YES];
+//                }
+//            }
+//
+//        }else
+//        {
+//            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+//        }
+//    } failure:^(NSError *error) {
+//       RemoveActionV(); 
+//    }];
 }
 //1. 整形判断
 
@@ -440,9 +347,12 @@
 }
 - (void)getTreeSHUXINGWithBtn:(UIButton *)sender
 {
-    ;
-    [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"2" Success:^(id responseObject) {
-        
+    [self.guige1Ary removeAllObjects];
+    if (self.guigeView) {
+        [self.guigeView removeFromSuperview];
+        self.guigeView=nil;
+    }
+    [HTTPCLIENT huoqumiaomuGuiGeWithTreeName:self.nameTextField.text andType:@"1" andMain:@"0" Success:^(id responseObject) {
         if (![[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showToast:[responseObject objectForKey:@"msg"]
                      withOriginY:66.0f
@@ -450,15 +360,39 @@
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
                 [self requestProductType];
             }
-        }else
-        {
-            NSDictionary *dic=[responseObject objectForKey:@"result"];
-            self.dataAry=[dic objectForKey:@"list"];
+        }else{
             sender.selected=YES;
+            NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.productUid=[dic objectForKey:@"productUid"];
-            
-            [self creatScreeningCells];
+            NSArray *guigeAry=[dic objectForKey:@"list"];
+           // NSMutableArray *selectAry=[NSMutableArray array];
+            for (int i=0; i<guigeAry.count; i++) {
+                NSDictionary *dic=guigeAry[i];
+                if ([[dic objectForKey:@"level"] integerValue]==0) {
+                    GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+                    [self.guige1Ary addObject:guigeModel];
+                }
+                if ([[dic objectForKey:@"level"] integerValue]==1) {
+                      GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+                    //[selectAry addObject:guigeModel];
+                    for (int j=0; j<self.guige1Ary.count; j++) {
+                        GuiGeModel *guigeModel1=self.guige1Ary[j];
+                        for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+                            Propers *proper=guigeModel1.propertyLists[k];
+                            if (proper.relation == guigeModel.uid) {
+                                proper.guanlianModel=guigeModel;
+                            }
+                        }
+                    }
+                }
+            }
+            GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, 88, kWidth, 0)];
+            [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
+            guigeView.delegate=self;
+            self.guigeView=guigeView;
+            [self.backScrollView addSubview:guigeView];
         }
+
     } failure:^(NSError *error) {
         
     }];
@@ -535,25 +469,25 @@
     otherframe.origin.y=Y+5;
     self.otherInfoView.frame=otherframe;
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherInfoView.frame)+5)];
-    if (self.baseMessageDic) {
-        self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"count"]];
-        self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"price"]];
-        NSArray *ectiveAry = @[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"];
-        NSInteger ective=[[self.baseMessageDic objectForKey:@"effective"] integerValue];
-        self.ecttiv=ective;
-        NSString *str=@"长期";
-        if (self.ecttiv<=10) {
-            str=ectiveAry[ective-1];
-        }
-        [self.ectiveBtn setTitle:str forState:UIControlStateNormal];
-        NSString *addressStr=[self.baseMessageDic objectForKey:@"address"];
-      addressStr =  [addressStr stringByReplacingOccurrencesOfString:@"null" withString:@""];
-        [self.areaBtn setTitle:addressStr forState:UIControlStateNormal];
-        self.birefField.text=[self.baseMessageDic objectForKey:@"remark"];
-        self.AreaProvince=[self.baseMessageDic objectForKey:@"province"];
-        self.AreaCity=[self.baseMessageDic objectForKey:@"city"];
-        self.AreaCounty=[self.baseMessageDic objectForKey:@"county"];
-    }
+//    if (self.baseMessageDic) {
+//        self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"count"]];
+//        self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"price"]];
+//        NSArray *ectiveAry = @[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"];
+//        NSInteger ective=[[self.baseMessageDic objectForKey:@"effective"] integerValue];
+//        self.ecttiv=ective;
+//        NSString *str=@"长期";
+//        if (self.ecttiv<=10) {
+//            str=ectiveAry[ective-1];
+//        }
+//        [self.ectiveBtn setTitle:str forState:UIControlStateNormal];
+//        NSString *addressStr=[self.baseMessageDic objectForKey:@"address"];
+//      addressStr =  [addressStr stringByReplacingOccurrencesOfString:@"null" withString:@""];
+//        [self.areaBtn setTitle:addressStr forState:UIControlStateNormal];
+//        self.birefField.text=[self.baseMessageDic objectForKey:@"remark"];
+//        self.AreaProvince=[self.baseMessageDic objectForKey:@"province"];
+//        self.AreaCity=[self.baseMessageDic objectForKey:@"city"];
+//        self.AreaCounty=[self.baseMessageDic objectForKey:@"county"];
+//    }
 
 }
 -(void)creatScreeningCells
@@ -599,49 +533,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
--(void)selectNum:(NSInteger)select
-{
-    switch (select) {
-        case 0:
-            self.ecttiv=6;
-            break;
-        case 1:
-            self.ecttiv=7;
-            break;
-        case 2:
-            self.ecttiv=8;
-            break;
-        case 3:
-            self.ecttiv=9;
-            break;
-        case 4:
-            self.ecttiv=10;
-            break;
-        case 5:
-            self.ecttiv=2;
-            break;
-        case 6:
-            self.ecttiv=3;
-            break;
-        case 7:
-            self.ecttiv=4;
-            break;
-        case 8:
-            self.ecttiv=5;
-            break;
-        case 9:
-            self.ecttiv=10;
-            break;
-        default:
-            self.ecttiv=0;
-            break;
-    }
-    
-}
--(void)selectInfo:(NSString *)select
-{
-    [self.ectiveBtn setTitle:select forState:UIControlStateNormal];
 }
 - (void)requestProductType {
     [HTTPCLIENT getTypeInfoSuccess:^(id responseObject) {

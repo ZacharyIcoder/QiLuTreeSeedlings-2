@@ -506,6 +506,37 @@
                     Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 按树名获取苗木规格属性 -----------
+-(void)huoqumiaomuGuiGeWithTreeName:(NSString *)name
+                            andType:(NSString *)type andMain:(NSString *)main
+                            Success:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 求购分享 -----------
+/**
+ *  求购分享
+ *
+ *  @param uid     求购UID
+ *  @param state   用于求购中 1:热门求购（热门求购中除去已定制和已购买的）；2：我的求购；3：已定制；4：已购买
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)buyShareWithUid:(NSString *)uid
+                  state:(NSString *)state
+                Success:(void (^)(id responseObject))success
+                failure:(void (^)(NSError *error))failure;
 
 
+#pragma mark ---------- 按树名获取苗木规格属性 -----------
+-(void)huoqumiaomuGuiGeWithTreeName:(NSString *)name
+                            andType:(NSString *)type andMain:(NSString *)main
+                            Success:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure;
+
+
+
+#pragma mark ---------- 根据关联规格ID获取下一级 -----------
+-(void)huoquxiayijiguigeWtithrelation:(NSString *)relation
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure;
 @end

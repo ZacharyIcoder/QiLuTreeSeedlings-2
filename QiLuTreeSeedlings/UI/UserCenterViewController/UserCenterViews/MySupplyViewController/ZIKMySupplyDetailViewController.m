@@ -372,7 +372,7 @@
         [self umengShare];
 
     } failure:^(NSError *error) {
-        ;
+        RemoveActionV();
     }];
 }
 

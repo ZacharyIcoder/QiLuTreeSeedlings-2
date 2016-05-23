@@ -500,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/BuyDetialViewController/BuyDetialInfoViewController.m"
-            timestampString = "483002082.497352"
+            timestampString = "485678272.456341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-initWithDingzhiModel:"
             landmarkType = "5">
          </BreakpointContent>

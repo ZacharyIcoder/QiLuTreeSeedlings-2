@@ -2440,4 +2440,84 @@
     }];
 
 }
+
+
+
+#pragma mark ---------- 求购分享 -----------
+- (void)buyShareWithUid:(NSString *)uid
+                  state:(NSString *)state
+                Success:(void (^)(id responseObject))success
+                failure:(void (^)(NSError *error))failure {
+
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/buy/share";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"state"]            = state;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+
+#pragma mark ---------- 按树名获取苗木规格属性 -----------
+-(void)huoqumiaomuGuiGeWithTreeName:(NSString *)name
+                            andType:(NSString *)type andMain:(NSString *)main
+                            Success:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure{
+  
+    NSString *postURL            = @"apisupplybuy/getProductSpec";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"name"]     = name;
+    parmers[@"type"]        = type;
+    parmers[@"main"]        = main;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+#pragma mark ---------- 根据关联规格ID获取下一级 -----------
+-(void)huoquxiayijiguigeWtithrelation:(NSString *)relation
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"apinextspec";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"relation"]     = relation;
+
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
 @end
