@@ -506,6 +506,15 @@
                     Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 按树名获取苗木规格属性 -----------
+-(void)huoqumiaomuGuiGeWithTreeName:(NSString *)name
+                            andType:(NSString *)type andMain:(NSString *)main
+                            Success:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure;
 
 
+#pragma mark ---------- 根据关联规格ID获取下一级 -----------
+-(void)huoquxiayijiguigeWtithrelation:(NSString *)relation
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure;
 @end

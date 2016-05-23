@@ -105,7 +105,7 @@
     [youxiaoTimeLab setFont:[UIFont systemFontOfSize:13]];
     [youxiaoTimeLab setTextAlignment:NSTextAlignmentRight];
     [youxiaoTimeLab setTextColor:detialLabColor];
-    youxiaoTimeLab.text=@"有效日期";
+    youxiaoTimeLab.text=@"有效期至";
     [self addSubview:youxiaoTimeLab];
     self.endTimeLab.frame=tempFrame;
     tempFrame.origin.y+=30;
@@ -120,7 +120,6 @@
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
