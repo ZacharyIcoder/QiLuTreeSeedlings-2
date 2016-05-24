@@ -8,21 +8,23 @@
 
 #import "BuyOtherInfoTableViewCell.h"
 #import "UIDefines.h"
+#import "BuyDetialModel.h"
 @implementation BuyOtherInfoTableViewCell
 -(instancetype)init {
     self = [super init];
     if(self) {
-        UIButton *showBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 40, kWidth, 40)];
-        [showBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-        [showBtn setTitleColor:NavColor forState:UIControlStateNormal];
-        [showBtn setTitleColor:NavColor forState:UIControlStateSelected];
-        [self addSubview:showBtn];
-        self.showBtn=showBtn;
-        [showBtn setTitle:@"展开隐藏" forState:UIControlStateNormal];
-        [showBtn setTitle:@"点击隐藏" forState:UIControlStateSelected];
-        [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
-        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
+//        UIButton *showBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 40, kWidth, 40)];
+//        [showBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+//        [showBtn setTitleColor:NavColor forState:UIControlStateNormal];
+//        [showBtn setTitleColor:NavColor forState:UIControlStateSelected];
+//        [self addSubview:showBtn];
+//        self.showBtn=showBtn;
+//        [showBtn setTitle:@"展开隐藏" forState:UIControlStateNormal];
+//        [showBtn setTitle:@"点击隐藏" forState:UIControlStateSelected];
+//        [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
+//        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
     }
+    
     return self;
 }
 -(id)initWithFrame:(CGRect)frame andName:(NSString *)name
@@ -43,16 +45,16 @@
         [valueLab setTextColor:titleLabColor];
         [view addSubview:valueLab];
         [self addSubview:view];
-        UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 40, kWidth, 40)];
-        [showBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-        [showBtn setTitleColor:NavColor forState:UIControlStateNormal];
-        [showBtn setTitleColor:NavColor forState:UIControlStateSelected];
-        self.showBtn=showBtn;
-        [self addSubview:showBtn];
-        [showBtn setTitle:@"展开隐藏" forState:UIControlStateNormal];
-        [showBtn setTitle:@"点击隐藏" forState:UIControlStateSelected];
-        [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
-        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
+//        UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 40, kWidth, 40)];
+//        [showBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+//        [showBtn setTitleColor:NavColor forState:UIControlStateNormal];
+//        [showBtn setTitleColor:NavColor forState:UIControlStateSelected];
+//        self.showBtn=showBtn;
+//        [self addSubview:showBtn];
+//        [showBtn setTitle:@"展开隐藏" forState:UIControlStateNormal];
+//        [showBtn setTitle:@"点击隐藏" forState:UIControlStateSelected];
+//        [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
+//        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
     }
     return self;
 }
@@ -64,9 +66,9 @@
         NSDictionary *dic=ary[i];
         [self MackViewWithFrame:CGRectMake(0, i*30+35, kWidth, 30) andDic:dic];
     }
-    CGRect frame=self.showBtn.frame;
-    frame.origin.y=ary.count*30+35;
-    self.showBtn.frame=frame;
+//    CGRect frame=self.showBtn.frame;
+//    frame.origin.y=ary.count*30+35;
+//    self.showBtn.frame=frame;
 }
 
 -(void)setDingzhiAry:(NSArray *)dingzhiAry
@@ -99,7 +101,7 @@
     [view addSubview:keylab];
     UILabel *valueLab=[[UILabel alloc]initWithFrame:CGRectMake(130, -5, 185/320.f*kWidth, 40)];
     valueLab.numberOfLines=0;
-    NSArray *valueAry=[dic objectForKey:@"value"];
+    NSArray *valueAry=[dic objectForKey:@"values"];
     NSMutableString *valueStr;
     if (valueAry.count==1) {
         valueStr=[NSMutableString stringWithFormat:@"%@",valueAry[0]];

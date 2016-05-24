@@ -13,6 +13,7 @@
 @property (nonatomic,strong) NSString *type;
 @property (nonatomic,strong) NSString *unit;
 @property (nonatomic,strong) NSArray *value;
++(spec *)creatspecModelByDic:(NSDictionary*)dic;
 @end
 @interface BuyDetialModel : NSObject
 @property (nonatomic,strong) NSString *uid;
@@ -25,7 +26,7 @@
 @property (nonatomic,strong) NSString *endTime;
 @property (nonatomic,strong) NSString *phone;
 @property (nonatomic,strong) NSString *price;
-@property (nonatomic,strong) NSArray *spec;
+@property (nonatomic,strong) NSMutableArray *spec;
 @property (nonatomic,strong) NSString *supplybuyName;
 @property (nonatomic,strong) NSString *supplybuyUid;
 @property (nonatomic,strong) NSString *title;

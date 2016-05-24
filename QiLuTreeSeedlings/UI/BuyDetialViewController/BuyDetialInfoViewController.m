@@ -804,17 +804,17 @@
         return cell;
     }else if(indexPath.section==1)
     {
-        BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.specAry.count*30+40+40) andName:self.model.productName];
+        BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.specAry.count*30+40) andName:self.model.productName];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
-
-        cell.showBtn.selected=self.isShow;
+//        [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
+//
+//        cell.showBtn.selected=self.isShow;
         if (self.specAry) {
-            if (_isShow) {
+//            if (_isShow) {
                 cell.ary=self.specAry;
-            }else{
-                cell.ary=self.miaomuzhiAry;
-            }
+//            }else{
+//                cell.ary=self.miaomuzhiAry;
+//            }
             
         }
         return cell;
@@ -870,14 +870,14 @@
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
 }
--(void)showOtherMessageAction:(UIButton *)sender
-{
-    
-    self.isShow=!self.isShow;
-    //一个section刷新
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
-    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+//-(void)showOtherMessageAction:(UIButton *)sender
+//{
+//    
+//    self.isShow=!self.isShow;
+//    //一个section刷新
+//    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+//    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
@@ -885,11 +885,11 @@
     }
     if (indexPath.section==1) {
         if (self.specAry) {
-            if (_isShow) {
-                return self.specAry.count*30+40+40;
-            }else{
-                return _miaomuzhiAry.count*30+40+40;
-            }
+//            if (_isShow) {
+                return self.specAry.count*30+40;
+//            }else{
+//                return _miaomuzhiAry.count*30+40;
+//            }
             
         }
     }if (indexPath.section==2) {

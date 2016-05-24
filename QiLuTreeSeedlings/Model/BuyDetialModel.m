@@ -7,11 +7,23 @@
 //
 
 #import "BuyDetialModel.h"
-
+@implementation spec
++(spec *)creatspecModelByDic:(NSDictionary*)dic
+{
+    spec *specs=[[spec alloc]init];
+    specs.main=[[dic objectForKey:@"main"] integerValue];
+    specs.type=[dic objectForKey:@"type"];
+    specs.name=[dic objectForKey:@"name"];
+    specs.unit=[dic objectForKey:@"unit"];
+    specs.value=[dic objectForKey:@"values"];
+    return specs;
+}
+@end
 @implementation BuyDetialModel
 +(BuyDetialModel *)creatBuyDetialModelByDic:(NSDictionary*)dic
 {
     BuyDetialModel *model=[BuyDetialModel new];
+    model.spec=[NSMutableArray array];
     model.address=[dic objectForKey:@"address"];
     model.collect=[[dic objectForKey:@"collect"] integerValue];
     model.collectUid=[dic objectForKey:@"collectUid"];
@@ -21,7 +33,12 @@
     model.endTime=[dic objectForKey:@"endTime"];
     model.phone=[dic objectForKey:@"phone"];
     model.price=[dic objectForKey:@"price"];
-    model.spec=[dic objectForKey:@"spec"];
+     NSArray *specAry=[dic objectForKey:@"spec"];
+    for (int i=0; i<specAry.count; i++) {
+        NSDictionary *dic=specAry[i];
+        spec *specs=[spec creatspecModelByDic:dic];
+        [model.spec addObject:specs];
+    }
     model.supplybuyName=[dic objectForKey:@"supplybuyName"];
     model.supplybuyUid=[dic objectForKey:@"supplybuyUid"];
     model.title=[dic objectForKey:@"title"];
