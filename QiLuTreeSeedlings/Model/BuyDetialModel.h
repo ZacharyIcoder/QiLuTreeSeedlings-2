@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@interface spec : NSObject
+@property (nonatomic) NSInteger main;
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *type;
+@property (nonatomic,strong) NSString *unit;
+@property (nonatomic,strong) NSArray *value;
+@end
 @interface BuyDetialModel : NSObject
 @property (nonatomic,strong) NSString *uid;
 @property (nonatomic,strong) NSString *address;

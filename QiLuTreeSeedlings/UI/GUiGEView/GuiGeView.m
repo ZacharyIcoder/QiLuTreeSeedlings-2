@@ -147,10 +147,14 @@
         }//复选判断
         if ([cell.model.type isEqualToString:@"单选结合"]) {
             if (cell.answerAry.count>0) {
-                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                dic[@"field"]=cell.model.keyStr1;
-                dic[@"value"]=[cell.answerAry firstObject];
-                [answerAryz addObject:dic];
+                NSString *answers1=[cell.answerAry firstObject];
+                if (answers1.length>0) {
+                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                    dic[@"field"]=cell.model.keyStr1;
+                    dic[@"value"]=[cell.answerAry firstObject];
+                    [answerAryz addObject:dic];
+                }
+             
             }
             
             if (cell.model.selectProper) {
@@ -160,11 +164,15 @@
                     {
                           GuiGeCell *soncell=(GuiGeCell*)cell.erjiView;
                         if (soncell.answerAry.count>0) {
-                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                            dic[@"field"]=cell.model.selectProper.guanlianModel.keyStr1;
-                            dic[@"value"]=[soncell.answerAry firstObject];
-                            
-                            [answerAryz addObject:dic];
+                           NSString *answers1=[soncell.answerAry firstObject];
+                            if (answers1.length>0) {
+                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                                dic[@"field"]=cell.model.selectProper.guanlianModel.keyStr1;
+                                dic[@"value"]=[soncell.answerAry firstObject];
+                                
+                                [answerAryz addObject:dic];
+                            }
+                           
                         }
                       
                     }else{

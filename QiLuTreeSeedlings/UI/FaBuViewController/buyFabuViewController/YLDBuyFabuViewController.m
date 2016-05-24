@@ -8,8 +8,13 @@
 
 #import "YLDBuyFabuViewController.h"
 #import "UIDefines.h"
+#import "HttpClient.h"
 #import "PickerShowView.h"
-@interface YLDBuyFabuViewController ()<PickeShowDelegate>
+#import "ZIKCityListViewController.h"
+#import "GetCityDao.h"
+#import "CityModel.h"
+#import "ZIKCityModel.h"
+@interface YLDBuyFabuViewController ()<PickeShowDelegate,UITextFieldDelegate,ZIKCityListViewControllerDelegate>
 @property (nonatomic,strong)UITextField *birefField;
 @property (nonatomic,strong)UIButton *ectiveBtn;
 @property (nonatomic)NSInteger ecttiv;
@@ -18,14 +23,34 @@
 @property (nonatomic,strong)UITextField *priceTextField;
 @property (nonatomic,strong)PickerShowView *ecttivePickerView;
 @property (nonatomic,strong)UIView *otherInfoView;
+@property (nonatomic,strong) NSString *uid;
+@property (nonatomic,strong)NSString *titleStr;
+@property (nonatomic,strong)NSString *name;
+@property (nonatomic,strong)NSString *productUid;
+@property (nonatomic,strong)NSArray *guigeAry;
+@property (nonatomic, strong) NSMutableArray *citys;
+@property (nonatomic, strong) NSString       *citysStr;//地址的code string “，，”
+@property (nonatomic) SelectStyle selectStyle;
 @end
 
 @implementation YLDBuyFabuViewController
-
+-(id)initWithUid:(NSString *)uid Withtitle:(NSString *)title WithName:(NSString *)name WithproductUid:(NSString *)productUid WithGuigeAry:(NSArray *)guigeAry
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+        self.titleStr=title;
+        self.name=name;
+        self.productUid=productUid;
+        self.guigeAry=guigeAry;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-        UIView *otherView=[[UIView alloc]initWithFrame:CGRectMake(0, 15, kWidth, 250)];
-        //self.otherInfoView=otherView;
+    self.vcTitle = @"求购发布";
+        UIView *otherView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 250)];
+        self.otherInfoView=otherView;
     
         CGRect  tempFrame=CGRectMake(0, 0, kWidth, 50);
         UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
@@ -90,8 +115,52 @@
         
         
         [self.view addSubview:otherView];
+    UIButton *tijiaoBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-70, kWidth-80, 50)];
+    
+    [tijiaoBtn setBackgroundColor:NavColor];
+    [tijiaoBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [tijiaoBtn addTarget:self action:@selector(tijiaoBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:tijiaoBtn];
         //[self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(otherView.frame))];
     // Do any additional setup after loading the view.
+}
+-(void)tijiaoBtnAction:(UIButton *)sender
+{
+    
+        if (self.countTextField.text.length==0) {
+            [ToastView showTopToast:@"请填写求购数量"];
+            return;
+        }
+        if ([self isPureInt:self.countTextField.text]==NO) {
+            [ToastView showTopToast:@"数量的格式输入有误"];
+            return;
+        }
+        if (self.priceTextField.text.length>0) {
+            if ([self isPureFloat:self.priceTextField.text]==NO) {
+                [ToastView showTopToast:@"上车价的格式输入有误"];
+                return;
+            }
+        }
+    [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.name WithProductUid:self.productUid WithCount:self.countTextField.text WithPrice:self.priceTextField.text WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:self.birefField.text WithusedArea:self.citysStr WithAry:self.guigeAry Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [ToastView showTopToast:@"发布成功"];
+    UIViewController *controller = self.navigationController.viewControllers[self.navigationController.viewControllers.count-3];
+            [self.navigationController popToViewController:controller animated:YES];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)areBtnAction:(UIButton *)sender
+{
+    ZIKCityListViewController *cityVC = [[ZIKCityListViewController alloc] init];
+    cityVC.selectStyle = SelectStyleMultiSelect;
+    self.selectStyle = SelectStyleMultiSelect;
+    cityVC.delegate = self;
+    [self.navigationController pushViewController:cityVC animated:YES];
+    cityVC.citys = self.citys;
 }
 -(void)ecttiveBtnAction
 {
@@ -177,7 +246,130 @@
     }
     
 }
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    int kssss=10;
+    if (textField.tag==111) {
+        kssss=20;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
+#pragma mark - 确定返回后，传回地址执行协议
+- (void)selectCitysInfo:(NSString *)citysStr {
+    _citysStr = citysStr;
+    GetCityDao *citydao = [GetCityDao new];
+    [citydao openDataBase];
+    __block NSString *str = @"";
+    NSArray *cityArray = [_citysStr componentsSeparatedByString:@","];
+    [cityArray enumerateObjectsUsingBlock:^(NSString *cityCode, NSUInteger idx, BOOL * _Nonnull stop) {
+        str = [str stringByAppendingString:[NSString stringWithFormat:@"%@,",[citydao getCityNameByCityUid:cityCode]]];
+    }];
+    [citydao closeDataBase];
+    
+    [self.areaBtn setTitle:str forState:UIControlStateNormal];
+}
+- (NSArray *)citys {
+    //if (_citys == nil) {
+    _citys = [[NSMutableArray alloc] init];
+    GetCityDao *dao = [[GetCityDao alloc] init];
+    [dao openDataBase];
+    NSArray *allProvince = [dao getCityByLeve:@"1"];
+    [allProvince enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+        ZIKCityModel *cityModel = [ZIKCityModel initCityModelWithDic:dic];
+        //             cityModel.province.citys = [dao getCityByLeve:@"2" andParent_code:cityModel.province.code];
+        NSMutableArray *cityMArr = [dao getCityByLeve:@"2" andParent_code:cityModel.province.code];
+        
+        
+        NSMutableDictionary *dicionary = [NSMutableDictionary dictionary];
+        [dicionary setObject:cityModel.province.provinceID forKey:@"id"];
+        [dicionary setObject:cityModel.province.code forKey:@"code"];
+        [dicionary setObject:cityModel.province.parent_code forKey:@"parent_code"];
+        [dicionary setObject:@"全省" forKey:@"name"];
+        [dicionary setObject:cityModel.province.level forKey:@"level"];
+        [cityMArr insertObject:dicionary atIndex:0];
+        cityModel.province.citys = cityMArr;
+        
+        [_citys addObject:cityModel];
+        
+    }];
+    //self.dataAry = [CityModel creatCityAryByAry:allTown];
+    [dao closeDataBase];
+    if (![[self.areaBtn currentTitle] isEqualToString:@"请选择用苗地"]) {
+        NSArray *cityArray = [_citysStr componentsSeparatedByString:@","];
+        __block NSInteger numcount = 0;
+        [_citys enumerateObjectsUsingBlock:^(ZIKCityModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+            [model.province.citys enumerateObjectsUsingBlock:^(NSMutableDictionary *cityDic, NSUInteger idx, BOOL * _Nonnull stop) {
+                [cityArray enumerateObjectsUsingBlock:^(NSString *cityCode, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([cityDic[@"code"] isEqualToString:cityCode]) {
+                        cityDic[@"select"] = @"1";
+                        if (++numcount == cityArray.count) {
+                            *stop = YES;
+                        }
+                    }
+                }];
+            }];
+        }];
+    }
+    
+    //}
+    return _citys;
+}
+//1. 整形判断
 
+- (BOOL)isPureInt:(NSString *)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    int val;
+    
+    return [scan scanInt:&val] && [scan isAtEnd];
+    
+}
+
+
+
+
+//2.浮点形判断：
+
+- (BOOL)isPureFloat:(NSString *)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    float val;
+    
+    return [scan scanFloat:&val] && [scan isAtEnd];
+    
+}
 /*
 #pragma mark - Navigation
 

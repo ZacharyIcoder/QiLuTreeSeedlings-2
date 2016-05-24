@@ -9,8 +9,6 @@
 #import "buyFabuViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
-
-#import "YLDPickLocationView.h"
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
 #import "ZIKSideView.h"
@@ -20,7 +18,8 @@
 #import "FaBuViewController.h"
 #import "GuiGeModel.h"
 #import "GuiGeView.h"
-@interface buyFabuViewController ()<YLDPickLocationDelegate,UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate,GuiGeViewDelegate>
+#import "YLDBuyFabuViewController.h"
+@interface buyFabuViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate,GuiGeViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
 @property (nonatomic,strong)UIButton *nameBtn;
@@ -33,11 +32,6 @@
 @property (nonatomic,strong)BuyDetialModel *model;
 @property (nonatomic,strong)NSDictionary *baseMessageDic;
 @property (nonatomic) BOOL isCanPublish;
-@property (nonatomic,strong) UIView *otherInfoView;
-@property (nonatomic,copy)NSString *AreaProvince;
-@property (nonatomic,copy)NSString *AreaCity;
-@property (nonatomic,copy)NSString *AreaCounty;
-
 @property (nonatomic, strong) ZIKSideView     *sideView;
 @property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
 @property (nonatomic, strong) NSMutableArray *guige1Ary;
@@ -82,10 +76,6 @@
     [titleTextField setTextColor:detialLabColor];
     titleTextField.tag=111;
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldChanged:)
-                                                 name:UITextFieldTextDidChangeNotification
-                                               object:titleTextField];
 
     self.titleTextField=titleTextField;
     UIImageView *titleLineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43.5, kWidth-20, 0.5)];
@@ -107,6 +97,8 @@
     [nameView addSubview:nameLab];
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.30, 0, kWidth*0.6, 44)];
     nameTextField.placeholder=@"请输入苗木名称";
+    nameTextField.text=@"换换";
+    
     nameTextField.textColor=NavColor;
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.delegate=self;
@@ -151,49 +143,7 @@
 {
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(frame))];
 }
--(void)areBtnAction:(UIButton *)sender
-{
-    YLDPickLocationView *areaPickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveXian];
-        areaPickerView.delegate=self;
-    
-    [areaPickerView showPickView];
-}
-//-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
-//{
-//    NSMutableString *namestr=[NSMutableString new];
-//    if (sheng.code) {
-//        [namestr appendString:sheng.cityName];
-//        self.AreaProvince=sheng.code;
-//    }else
-//    {
-//        self.AreaProvince=nil;
-//    }
-//    
-//    if (shi.code) {
-//        [namestr appendString:shi.cityName];
-//        self.AreaCity=shi.code;
-//    }else
-//    {
-//        self.AreaCity=nil;
-//        
-//    }
-//    if (xian.code) {
-//        [namestr appendString:xian.cityName];
-//        self.AreaCounty=xian.code;
-//    }else
-//    {
-//        self.AreaCounty=nil;
-//    }
-//    if (namestr.length>0) {
-//        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-//        [self.areaBtn.titleLabel sizeToFit];
-//    }else{
-//        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
-//        [self.areaBtn.titleLabel sizeToFit];
-//        
-//    }
-//
-//}
+
 -(void)editingMyBuy
 {
     self.titleTextField.text=self.model.title;
@@ -229,15 +179,15 @@
     
     BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
     if (canrun) {
-        for (int i=0; i<screenTijiaoAry.count; i++) {
-            NSDictionary *dic=screenTijiaoAry[i];
-            NSLog(@"%@---%@",dic[@"field"],dic[@"value"]);
-        }
+//        for (int i=0; i<screenTijiaoAry.count; i++) {
+//            NSDictionary *dic=screenTijiaoAry[i];
+//            NSLog(@"%@---%@",dic[@"field"],dic[@"value"]);
+//        }
     }else{
-        //NSLog(@"222");
+        return;
     }
-    
-    return;
+    YLDBuyFabuViewController *yldBuyFabuViewController=[[YLDBuyFabuViewController alloc]initWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.nameTextField.text WithproductUid:self.productUid WithGuigeAry:screenTijiaoAry];
+    [self.navigationController pushViewController:yldBuyFabuViewController animated:YES];
 //    for (int i=0; i<cellAry.count; i++) {
 //        TreeSpecificationsModel *model=cellAry[i];
 //        if (model.anwser.length>0) {
@@ -408,7 +358,7 @@
                 self.baseMessageDic=[[responseObject objectForKey:@"result"] objectForKey:@"baseMsg"];
                 NSArray *ary=[dic objectForKey:@"bean"];
                 self.dataAry=ary;
-                [self creatSCreeningCellsWithAnswerWithAry:ary];
+               // [self creatSCreeningCellsWithAnswerWithAry:ary];
             }else
             {
                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -433,86 +383,86 @@
     self.productName=self.nameTextField.text;
     [self getTreeSHUXINGWithBtn:sender];
 }
--(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
-{
-    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
-   
-    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
-            [myview removeFromSuperview];
-        }
-    }];
-    CGFloat Y=88;
-    for (int i=0; i<self.dataAry.count; i++) {
-        TreeSpecificationsModel *model=self.dataAry[i];
-        FabutiaojiaCell *cell;
-        NSMutableString *answerStr=[NSMutableString string];
-        for (int j=0; j<specAry.count; j++) {
-            NSDictionary *specDic=specAry[j];
-            
-            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
-                answerStr=[specDic objectForKey:@"value"];
-            }
-        }
-        if ([answerStr isEqualToString:@"不限"]) {
-            answerStr = [NSMutableString string];
-        }
-    
-        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
-        [cellAry addObject:cell.model];
-        Y=CGRectGetMaxY(cell.frame);
-        // cell.delegate=self;
-        [cell setBackgroundColor:[UIColor whiteColor]];
-        [self.backScrollView addSubview:cell];
-    }
-    CGRect otherframe= self.otherInfoView.frame;
-    otherframe.origin.y=Y+5;
-    self.otherInfoView.frame=otherframe;
-    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherInfoView.frame)+5)];
-//    if (self.baseMessageDic) {
-//        self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"count"]];
-//        self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"price"]];
-//        NSArray *ectiveAry = @[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"];
-//        NSInteger ective=[[self.baseMessageDic objectForKey:@"effective"] integerValue];
-//        self.ecttiv=ective;
-//        NSString *str=@"长期";
-//        if (self.ecttiv<=10) {
-//            str=ectiveAry[ective-1];
+//-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
+//{
+//    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+//   
+//    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
+//            [myview removeFromSuperview];
 //        }
-//        [self.ectiveBtn setTitle:str forState:UIControlStateNormal];
-//        NSString *addressStr=[self.baseMessageDic objectForKey:@"address"];
-//      addressStr =  [addressStr stringByReplacingOccurrencesOfString:@"null" withString:@""];
-//        [self.areaBtn setTitle:addressStr forState:UIControlStateNormal];
-//        self.birefField.text=[self.baseMessageDic objectForKey:@"remark"];
-//        self.AreaProvince=[self.baseMessageDic objectForKey:@"province"];
-//        self.AreaCity=[self.baseMessageDic objectForKey:@"city"];
-//        self.AreaCounty=[self.baseMessageDic objectForKey:@"county"];
+//    }];
+//    CGFloat Y=88;
+//    for (int i=0; i<self.dataAry.count; i++) {
+//        TreeSpecificationsModel *model=self.dataAry[i];
+//        FabutiaojiaCell *cell;
+//        NSMutableString *answerStr=[NSMutableString string];
+//        for (int j=0; j<specAry.count; j++) {
+//            NSDictionary *specDic=specAry[j];
+//            
+//            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
+//                answerStr=[specDic objectForKey:@"value"];
+//            }
+//        }
+//        if ([answerStr isEqualToString:@"不限"]) {
+//            answerStr = [NSMutableString string];
+//        }
+//    
+//        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
+//        [cellAry addObject:cell.model];
+//        Y=CGRectGetMaxY(cell.frame);
+//        // cell.delegate=self;
+//        [cell setBackgroundColor:[UIColor whiteColor]];
+//        [self.backScrollView addSubview:cell];
 //    }
-
-}
--(void)creatScreeningCells
-{
-    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
-    //    NSLog(@"%@",ary);
-    CGFloat Y=88;
-    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
-            [myview removeFromSuperview];
-        }
-    }];
-    for (int i=0; i<self.dataAry.count; i++) {
-        FabutiaojiaCell *cell;
-        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i] andAnswer:nil];
-        [cellAry addObject:cell.model];
-        Y=CGRectGetMaxY(cell.frame);
-        [cell setBackgroundColor:[UIColor whiteColor]];
-        [self.backScrollView addSubview:cell];
-    }
-    CGRect otherframe= self.otherInfoView.frame;
-    otherframe.origin.y=Y+5;
-    self.otherInfoView.frame=otherframe;
-    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherInfoView.frame)+5)];
-}
+////    CGRect otherframe= self.otherInfoView.frame;
+////    otherframe.origin.y=Y+5;
+////    self.otherInfoView.frame=otherframe;
+////    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherInfoView.frame)+5)];
+////    if (self.baseMessageDic) {
+////        self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"count"]];
+////        self.priceTextField.text=[NSString stringWithFormat:@"%@",[self.baseMessageDic objectForKey:@"price"]];
+////        NSArray *ectiveAry = @[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"];
+////        NSInteger ective=[[self.baseMessageDic objectForKey:@"effective"] integerValue];
+////        self.ecttiv=ective;
+////        NSString *str=@"长期";
+////        if (self.ecttiv<=10) {
+////            str=ectiveAry[ective-1];
+////        }
+////        [self.ectiveBtn setTitle:str forState:UIControlStateNormal];
+////        NSString *addressStr=[self.baseMessageDic objectForKey:@"address"];
+////      addressStr =  [addressStr stringByReplacingOccurrencesOfString:@"null" withString:@""];
+////        [self.areaBtn setTitle:addressStr forState:UIControlStateNormal];
+////        self.birefField.text=[self.baseMessageDic objectForKey:@"remark"];
+////        self.AreaProvince=[self.baseMessageDic objectForKey:@"province"];
+////        self.AreaCity=[self.baseMessageDic objectForKey:@"city"];
+////        self.AreaCounty=[self.baseMessageDic objectForKey:@"county"];
+////    }
+//
+//}
+//-(void)creatScreeningCells
+//{
+//    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+//    //    NSLog(@"%@",ary);
+//    CGFloat Y=88;
+//    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
+//            [myview removeFromSuperview];
+//        }
+//    }];
+//    for (int i=0; i<self.dataAry.count; i++) {
+//        FabutiaojiaCell *cell;
+//        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:self.dataAry[i] andAnswer:nil];
+//        [cellAry addObject:cell.model];
+//        Y=CGRectGetMaxY(cell.frame);
+//        [cell setBackgroundColor:[UIColor whiteColor]];
+//        [self.backScrollView addSubview:cell];
+//    }
+////    CGRect otherframe= self.otherInfoView.frame;
+////    otherframe.origin.y=Y+5;
+////    self.otherInfoView.frame=otherframe;
+////    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(self.otherInfoView.frame)+5)];
+//}
 -(void)cellBeginEditing:(UITextField *)field
 {
     self.nowTextField=field;
@@ -585,44 +535,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (void)textFieldChanged:(NSNotification *)obj {
-    UITextField *textField = (UITextField *)obj.object;
-    int kssss=10;
-    if (textField.tag==111) {
-        kssss=20;
-    }
-    NSString *toBeString = textField.text;
-    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
-    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
-        UITextRange *selectedRange = [textField markedTextRange];
-        //获取高亮部分
-        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
-        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
-        if (!position) {
-            if (toBeString.length > kssss) {
-               // NSLog(@"最多%d个字符!!!",kMaxLength);
-                [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
-                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
-                textField.text = [toBeString substringToIndex:kssss];
-                return;
-            }
-        }
-        // 有高亮选择的字符串，则暂不对文字进行统计和限制
-        else{
-
-        }
-    }
-    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
-    else{
-        if (toBeString.length > kssss) {
-            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
-            //NSLog(@"最多%d个字符!!!",kMaxLength);
-            [ToastView showToast:[NSString stringWithFormat:@"最多%d个字符",kssss] withOriginY:250 withSuperView:self.view];
-            textField.text = [toBeString substringToIndex:kssss];
-            return;
-        }
-    }
-}
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
