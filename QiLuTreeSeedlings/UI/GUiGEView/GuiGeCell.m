@@ -50,6 +50,7 @@
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
+                minTextField.textAlignment = NSTextAlignmentRight;
                 [self addSubview:minTextField];
                 UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(boundsW/2-7.5, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
@@ -128,10 +129,6 @@
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:@"请选择" forState:UIControlStateNormal];
-//            if(self.model.anwser.length>0)
-//            {
-//                [pickBtn setTitle:self.model.anwser forState:UIControlStateNormal];
-//            }
             [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
@@ -148,6 +145,251 @@
         
         
         UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, kWidth-30, 0.5)];
+        [lineView setBackgroundColor:kLineColor];
+        [self addSubview:lineView];
+    }
+    return self;
+}
+-(id)initWithFrame:(CGRect)frame andValueModel:(GuiGeModel *)model{
+    self=[super initWithFrame:frame];
+    if (self) {
+        [self setBackgroundColor:[UIColor whiteColor]];
+        self.answerAry=[NSMutableArray array];
+        self.answerAry2=[NSMutableArray array];
+        CGFloat  boundsW=kWidth;
+        self.model=model;
+        self.answerAry=[NSMutableArray array];
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 60, 44)];
+        [nameLab setFont:[UIFont systemFontOfSize:15]];
+        [nameLab setTextColor:titleLabColor];
+        [self addSubview:nameLab];
+        [nameLab setText:model.name];
+        if ([model.type isEqualToString:@"文本"]) {
+            Propers *propers=[model.propertyLists firstObject];
+            if (propers.unit) {
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                [unitLab setFont:[UIFont systemFontOfSize:15]];
+                [unitLab setTextColor:titleLabColor];
+                [self addSubview:unitLab];
+                unitLab.text=propers.unit;
+            }
+            if (propers.range) {
+                self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@",self.model.uid];
+                self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@",self.model.uid];
+                [self.answerAry addObjectsFromArray:@[@"",@""]];
+                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2-80/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                self.minTextField=minTextField;
+                minTextField.tag=111;
+                minTextField.delegate=self;
+                 minTextField.textAlignment = NSTextAlignmentRight;
+                [self addSubview:minTextField];
+                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(boundsW/2-7.5, 22, 15, 0.5)];
+                [lineV1 setBackgroundColor:[UIColor blackColor]];
+                [self addSubview:lineV1];
+                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2+10/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                maxTextField.delegate=self;
+                maxTextField.tag=112;
+                [self addSubview:maxTextField];
+                self.maxTextField=maxTextField;
+                if (model.values.count>0) {
+                    self.answerAry =[NSMutableArray arrayWithArray:model.values];
+                    minTextField.text=[model.values firstObject];
+                    maxTextField.text=[model.values lastObject];
+                }
+                if (propers.number) {
+                    if ([propers.numberType isEqualToString:@"float"]) {
+                        minTextField.keyboardType=UIKeyboardTypeDecimalPad;
+                        maxTextField.keyboardType=UIKeyboardTypeDecimalPad;
+                    }
+                    if ([propers.numberType isEqualToString:@"int"]){
+                        minTextField.keyboardType=UIKeyboardTypeNumberPad;
+                        maxTextField.keyboardType=UIKeyboardTypeNumberPad;
+                    }
+                }
+            }else
+            {
+                [self.answerAry addObjectsFromArray:@[@""]];
+                self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
+                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
+                oneTextField.tag=113;
+                oneTextField.placeholder=model.alert;
+                oneTextField.delegate=self;
+                self.oneTextField=oneTextField;
+                [self addSubview:oneTextField];
+                if (model.values.count>0) {
+                    self.answerAry =[NSMutableArray arrayWithArray:model.values];
+                    oneTextField.text=[model.values firstObject];
+                   
+                }
+                if ([propers.numberType isEqualToString:@"float"]) {
+                    self.model.keyStr2=[NSString stringWithFormat:@"spec_number_%@",self.model.uid];
+                    oneTextField.keyboardType=UIKeyboardTypeDecimalPad;
+                }
+                if ([propers.numberType isEqualToString:@"int"]) {
+                    self.model.keyStr2=[NSString stringWithFormat:@"spec_number_%@",self.model.uid];
+                    oneTextField.keyboardType=UIKeyboardTypeNumberPad;
+                }
+            }
+        }//文本编辑结束
+        
+        if ([model.type isEqualToString:@"复选"]) {
+            //
+            self.model.keyStr1=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
+            Propers *propers=[model.propertyLists firstObject];
+            NSArray *valueAry=[propers.value componentsSeparatedByString:@"，"];
+            for (int i=0; i<valueAry.count; i++) {
+                UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(95, 10+40*i, 90, 28)];
+                NSString *nameStr=valueAry[i];
+                [btn setTitle:nameStr forState:UIControlStateNormal];
+                [btn setTitle:nameStr forState:UIControlStateSelected];
+                [btn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
+                [btn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+                //btn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
+                [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+                [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+                [btn setTitleColor:NavColor forState:UIControlStateSelected];
+                [btn addTarget:self action:@selector(fuxuanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+                btn.tag=3000+i;
+                [self addSubview:btn];
+                for (int j=0; j<model.values.count; j++) {
+                    NSString *namestr2=model.values[j];
+                    if ([namestr2 isEqualToString:nameStr]) {
+                        btn.selected=YES;
+                        [self.answerAry addObject:nameStr];
+                    }
+                }
+                
+            }
+            CGRect frame=self.frame;
+            frame.size.height=20+40*valueAry.count;
+            self.frame=frame;
+        }//复选结束
+        
+        if([model.type isEqualToString:@"单选结合"])
+        {
+            [self.answerAry addObjectsFromArray:@[@""]];
+            self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
+            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(80, 10, 130/320.f*kWidth, 30)];
+            [self addSubview:pickBtn];
+            [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+            [pickBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+            self.nowBtn=pickBtn;
+            [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+            if (self.model.values.count>0) {
+                self.answerAry =[NSMutableArray arrayWithObject:[self.model.values firstObject]];
+                [pickBtn setTitle:[self.model.values firstObject] forState:UIControlStateNormal];
+                for (int i=0; i<model.propertyLists.count; i++) {
+                    Propers *propers=model.propertyLists[i];
+                    if ([[self.model.values firstObject] isEqualToString:propers.value]) {
+                        self.model.selectProper=propers;
+                        break;
+                    }
+                    //[dataxxAry addObject:propers.value];
+                }
+                if (self.model.selectProper.operation) {
+                    //self.model.selectProper=procprs;
+                    CGRect frame=self.frame;
+                    frame.size.height=88;
+                    self.frame=frame;
+                    if(self.erjiView)
+                    {
+                        [self.erjiView removeFromSuperview];
+                        self.erjiView=nil;
+                    }
+                    if (self.model.selectProper.relation.length>0) {
+                        //            self.model.sonModel=procprs.guanlianModel;
+                        
+                        GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 44, kWidth, 44) andValueModel:self.model.selectProper.guanlianModel];
+                        self.erjiView=cell;
+                        [self addSubview:cell];
+                        
+                    }else{
+                        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 44, kWidth, 44)];
+                        [self addSubview:view];
+                        self.erjiView=view;
+                        if (self.model.selectProper.unit) {
+                            UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                            [unitLab setFont:[UIFont systemFontOfSize:15]];
+                            [unitLab setTextColor:titleLabColor];
+                            [view addSubview:unitLab];
+                            unitLab.text=self.model.selectProper.unit;
+                        }
+                        if (self.model.selectProper.range) {
+                            [self.answerAry2 addObjectsFromArray:@[@"",@""]];
+                            UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-80/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                            minTextField.textAlignment = NSTextAlignmentRight;
+                            self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
+                            self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
+                            self.minTextField=minTextField;
+                            minTextField.tag=121;
+                            minTextField.textAlignment = NSTextAlignmentRight;
+                            minTextField.delegate=self;
+                            [view  addSubview:minTextField];
+                            UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(kWidth/2-7.5, 22, 15, 0.5)];
+                            [lineV1 setBackgroundColor:[UIColor blackColor]];
+                            [view addSubview:lineV1];
+                            UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2+10/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                            maxTextField.delegate=self;
+                            maxTextField.tag=122;
+                            [view addSubview:maxTextField];
+                            self.maxTextField=maxTextField;
+                            if (self.model.values.count==3) {
+                                self.answerAry2=[NSMutableArray arrayWithObjects:self.model.values[1],self.model.values[2], nil];
+                                minTextField.text=self.model.values[1];
+                                maxTextField.text=self.model.values[2];
+                            }
+                            if (self.model.selectProper.number) {
+                                if ([self.model.selectProper.numberType isEqualToString:@"float"]) {
+                                    minTextField.keyboardType=UIKeyboardTypeDecimalPad;
+                                    maxTextField.keyboardType=UIKeyboardTypeDecimalPad;
+                                }
+                                if ([self.model.selectProper.numberType isEqualToString:@"int"]){
+                                    minTextField.keyboardType=UIKeyboardTypeNumberPad;
+                                    maxTextField.keyboardType=UIKeyboardTypeNumberPad;
+                                }
+                            }
+                        }else
+                        {
+                            [self.answerAry2 addObjectsFromArray:@[@""]];
+                            self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@_%@",[self.answerAry firstObject],self.model.uid];
+                            UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*kWidth, 0, 180/320.f*kWidth, 44)];
+                            oneTextField.tag=123;
+                            oneTextField.delegate=self;
+                            self.oneTextField=oneTextField;
+                            [view addSubview:oneTextField];
+                            if ([self.model.selectProper.numberType isEqualToString:@"float"]) {
+                                self.model.keyStr2=[NSString stringWithFormat:@"spec_number_%@_%@",[self.answerAry firstObject],self.model.uid];
+                                oneTextField.keyboardType=UIKeyboardTypeDecimalPad;
+                            }
+                            if (self.model.values.count==2) {
+                                self.answerAry2=[NSMutableArray arrayWithObjects:self.model.values[1],self.model.values[2], nil];
+                                oneTextField.text=self.model.values[1];
+                                
+                            }
+                            if ([self.model.selectProper.numberType isEqualToString:@"int"]){
+                                self.model.keyStr2=[NSString stringWithFormat:@"spec_number_%@_%@",[self.answerAry firstObject],self.model.uid];
+                                oneTextField.keyboardType=UIKeyboardTypeNumberPad;
+                            }
+                        }
+                        
+                    }
+                }
+
+            }
+
+            PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, kHeight-216, kWidth,216+44)];
+            self.pickerView=pickerView;
+            pickerView.delegate=self;
+            NSMutableArray *dataxxAry=[NSMutableArray array];
+            for (int i=0; i<model.propertyLists.count; i++) {
+                Propers *propers=model.propertyLists[i];
+                [dataxxAry addObject:propers.value];
+            }
+            [pickerView resetPickerData:dataxxAry];
+        }//单选结合结束
+        
+            UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, kWidth-30, 0.5)];
         [lineView setBackgroundColor:kLineColor];
         [self addSubview:lineView];
     }
@@ -261,6 +503,7 @@
                 self.minTextField=minTextField;
                 minTextField.tag=121;
                 minTextField.delegate=self;
+                minTextField.textAlignment = NSTextAlignmentRight;
                 [view  addSubview:minTextField];
                 UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(kWidth/2-7.5, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];

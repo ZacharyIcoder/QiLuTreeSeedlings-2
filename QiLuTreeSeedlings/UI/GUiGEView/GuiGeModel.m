@@ -37,6 +37,7 @@
     model.type=[dic objectForKey:@"type"];
     model.uid=[dic objectForKey:@"uid"];
     NSArray *propertyAry=[dic objectForKey:@"propertyLists"];
+    model.values=[dic objectForKey:@"values"];
     model.propertyLists=[NSMutableArray array];
     model.answerAry=[NSMutableArray array];
     for (int i =0; i<propertyAry.count; i++) {

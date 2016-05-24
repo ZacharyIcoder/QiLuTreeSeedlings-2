@@ -17,5 +17,6 @@
 @property (nonatomic,weak)id<GuiGeViewDelegate> delegate;
 @property (nonatomic,strong) UIButton *showBtn;
 -(id)initWithAry:(NSArray *)modelAry andFrame:(CGRect)frame;
+-(id)initWithValueAry:(NSArray *)modelAry andFrame:(CGRect)frame;
 -(BOOL)getAnswerAry:(NSMutableArray *)answerAryz;
 @end

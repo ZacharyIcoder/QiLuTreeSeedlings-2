@@ -179,67 +179,16 @@
     
     BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
     if (canrun) {
-//        for (int i=0; i<screenTijiaoAry.count; i++) {
-//            NSDictionary *dic=screenTijiaoAry[i];
-//            NSLog(@"%@---%@",dic[@"field"],dic[@"value"]);
-//        }
+        for (int i=0; i<screenTijiaoAry.count; i++) {
+            NSDictionary *dic=screenTijiaoAry[i];
+            NSLog(@"%@---%@",dic[@"field"],dic[@"value"]);
+        }
     }else{
         return;
     }
     YLDBuyFabuViewController *yldBuyFabuViewController=[[YLDBuyFabuViewController alloc]initWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.nameTextField.text WithproductUid:self.productUid WithGuigeAry:screenTijiaoAry];
     [self.navigationController pushViewController:yldBuyFabuViewController animated:YES];
-//    for (int i=0; i<cellAry.count; i++) {
-//        TreeSpecificationsModel *model=cellAry[i];
-//        if (model.anwser.length>0) {
-//            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-//                               model.anwser,@"anwser"
-//                               , nil];
-//            [screenTijiaoAry addObject:dic];
-//        }
-//    }
-//    
-//    if(screenTijiaoAry.count==0)
-//    {
-//        [ToastView showTopToast:@"请填入至少一种规格"];
-//        return;
-//    }
-//    NSString *countStr=self.countTextField.text;
-//    NSString *priceStr=self.priceTextField.text;
-//    NSString *birefStr=self.birefField.text;
-//    if (countStr.length==0) {
-//        [ToastView showTopToast:@"请填写求购数量"];
-//        return;
-//    }
-//    if ([self isPureInt:countStr]==NO) {
-//        [ToastView showTopToast:@"数量的格式输入有误"];
-//        return;
-//    }
-//    if (priceStr.length>0) {
-//        if ([self isPureFloat:priceStr]==NO) {
-//            [ToastView showTopToast:@"上车价的格式输入有误"];
-//            return;
-//        }
-//    }
-//    ShowActionV();
-//    [HTTPCLIENT fabuBuyMessageWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.productName WithProductUid:self.productUid WithCount:countStr WithPrice:priceStr WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:birefStr WithUsedProvince:self.AreaProvince WithUsedCity:self.AreaCity WithUsedCounty:self.AreaCounty WithAry:screenTijiaoAry Success:^(id responseObject) {
-//        //        NSLog(@"%@",responseObject);
-//        RemoveActionV();
-//        if ([[responseObject objectForKey:@"success"] integerValue]) {
-//            [ToastView showTopToast:@"提交成功，即将返回"];
-//            //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
-//            for(UIViewController *controller in self.navigationController.viewControllers) {
-//                if([controller isKindOfClass:[BuyDetialInfoViewController class]]||[controller isKindOfClass:[YLDMyBuyListViewController class]]||[controller isKindOfClass:[FaBuViewController class]]){
-//                    [self.navigationController popToViewController:controller animated:YES];
-//                }
-//            }
-//
-//        }else
-//        {
-//            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-//        }
-//    } failure:^(NSError *error) {
-//       RemoveActionV(); 
-//    }];
+
 }
 //1. 整形判断
 
@@ -350,15 +299,22 @@
 -(void)getEditingMessage
 {
     
+    [self.guige1Ary removeAllObjects];
+    if (self.guigeView) {
+        [self.guigeView removeFromSuperview];
+        self.guigeView=nil;
+    }
         [HTTPCLIENT myBuyEditingWithUid:self.model.uid Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
+                NSLog(@"%@",responseObject);
                 NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"ProductSpec"];
                 self.productUid=[dic objectForKey:@"productUid"];
                 self.productName=[dic objectForKey:@"productName"];
                 self.baseMessageDic=[[responseObject objectForKey:@"result"] objectForKey:@"baseMsg"];
                 NSArray *ary=[dic objectForKey:@"bean"];
-                self.dataAry=ary;
-               // [self creatSCreeningCellsWithAnswerWithAry:ary];
+                //self.dataAry=ary;
+                [self creatSCreeningCellsWithAnswerWithAry:ary];
+               
             }else
             {
                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -367,6 +323,34 @@
             
         }];
    
+}
+-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)guigeAry
+{
+    for (int i=0; i<guigeAry.count; i++) {
+        NSDictionary *dic=guigeAry[i];
+        if ([[dic objectForKey:@"level"] integerValue]==0) {
+            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+            [self.guige1Ary addObject:guigeModel];
+        }
+        if ([[dic objectForKey:@"level"] integerValue]==1) {
+            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+            //[selectAry addObject:guigeModel];
+            for (int j=0; j<self.guige1Ary.count; j++) {
+                GuiGeModel *guigeModel1=self.guige1Ary[j];
+                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+                    Propers *proper=guigeModel1.propertyLists[k];
+                    if (proper.relation == guigeModel.uid) {
+                        proper.guanlianModel=guigeModel;
+                    }
+                }
+            }
+        }
+    }
+    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, 88, kWidth, 0)];
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
+    guigeView.delegate=self;
+    self.guigeView=guigeView;
+    [self.backScrollView addSubview:guigeView];
 
 }
 -(void)nameBtnAction:(UIButton *)sender

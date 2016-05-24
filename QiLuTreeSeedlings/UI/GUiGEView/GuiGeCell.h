@@ -18,4 +18,5 @@
 @property (nonatomic,strong)GuiGeModel *model;
 @property (nonatomic,weak)id <GuiGeCellDelegate>delegate;
 -(id)initWithFrame:(CGRect)frame andModel:(GuiGeModel *)model;
+-(id)initWithFrame:(CGRect)frame andValueModel:(GuiGeModel *)model;
 @end
