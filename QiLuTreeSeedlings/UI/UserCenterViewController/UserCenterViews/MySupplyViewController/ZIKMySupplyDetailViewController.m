@@ -33,9 +33,9 @@
 @property (nonatomic, strong) BigImageViewShowView *bigImageVShowV;
 
 //新增
-@property (nonatomic,strong ) NSMutableArray *miaomuzhiAry;
-@property (nonatomic        ) BOOL           isShow;
-@property (nonatomic,strong ) NSArray        *specAry;
+//@property (nonatomic,strong ) NSMutableArray *miaomuzhiAry;
+//@property (nonatomic        ) BOOL           isShow;
+//@property (nonatomic,strong ) NSArray        *specAry;
 
 @property (nonatomic, strong) NSString       *shareText;
 @property (nonatomic, strong) NSString       *shareTitle;
@@ -92,16 +92,16 @@
                 {
                     shareCell.hidden=NO;
                 }
-                /*新增*/
-                self.specAry = model.spec;
-                for (int i=0; i<model.spec.count; i++) {
-                    NSDictionary *dic = model.spec[i];
-                    NSArray *aryyyyy = [dic objectForKey:@"value"];
-                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
-                        [_miaomuzhiAry addObject:dic];
-                    }
-                }
-                /*新增end*/
+//                /*新增*/
+//                self.specAry = model.spec;
+//                for (int i=0; i<model.spec.count; i++) {
+//                    NSDictionary *dic = model.spec[i];
+//                    NSArray *aryyyyy = [dic objectForKey:@"value"];
+//                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
+//                        [_miaomuzhiAry addObject:dic];
+//                    }
+//                }
+//                /*新增end*/
 
 
                 BigImageViewShowView *bigImageVShowV = [[BigImageViewShowView  alloc]initWithImageAry:model.images];
@@ -120,8 +120,8 @@
 }
 
 - (void)initData {
-    self.isShow = NO;
-    _miaomuzhiAry = [[NSMutableArray alloc] init];
+//    self.isShow = NO;
+//    _miaomuzhiAry = [[NSMutableArray alloc] init];
 }
 
 - (void)initUI {
@@ -148,16 +148,16 @@
         return 330;
     }
     if (indexPath.section==1) {
-        //return self.model.spec.count*30+40;//二期删除掉
+        return self.model.spec.count*30+40;//二期删除掉
         //二期新增
-        if (self.specAry) {
-            if (_isShow) {
-                return self.specAry.count*30+40+40;
-            }else{
-                return _miaomuzhiAry.count*30+40+40;
-            }
-
-        }
+//        if (self.specAry) {
+//            if (_isShow) {
+//                return self.specAry.count*30+40+40;
+//            }else{
+//                return _miaomuzhiAry.count*30+40+40;
+//            }
+//
+//        }
         //二期新增end
 
     }
@@ -268,19 +268,19 @@
         }
         if (indexPath.section==1) {
             BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+40) andName:self.model.productName];
-//            cell.ary=self.model.spec;//二期删除
+            cell.ary=self.model.spec;//二期删除
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            //二期新增
-            [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
-            cell.showBtn.selected = self.isShow;
-            if (self.specAry) {
-                if (_isShow) {
-                    cell.ary = self.specAry;
-                }else{
-                    cell.ary = self.miaomuzhiAry;
-                }
-            }
-            //二期新增end
+//            //二期新增
+//            [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
+//            cell.showBtn.selected = self.isShow;
+//            if (self.specAry) {
+//                if (_isShow) {
+//                    cell.ary = self.specAry;
+//                }else{
+//                    cell.ary = self.miaomuzhiAry;
+//                }
+//            }
+//            //二期新增end
             return cell;
 
         }
@@ -344,14 +344,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-//以下方法为二期新增
--(void)showOtherMessageAction:(UIButton *)sender
-{
-    self.isShow = !self.isShow;
-    //一个section刷新
-    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:1];
-    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+////以下方法为二期新增
+//-(void)showOtherMessageAction:(UIButton *)sender
+//{
+//    self.isShow = !self.isShow;
+//    //一个section刷新
+//    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:1];
+//    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//}
 
 #pragma mark - 我的供应详情-分享供应
 - (void)requestShareData {

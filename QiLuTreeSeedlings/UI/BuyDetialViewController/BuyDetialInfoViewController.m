@@ -370,7 +370,7 @@
     [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
     [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
-    [shareBtn setImage:[UIImage imageNamed:@"myShareImage"] forState:UIControlStateNormal];
+    [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
     [shareBtn setBackgroundColor:yellowButtonColor];
     [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:shareBtn];
@@ -423,7 +423,7 @@
     [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
     [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
-    [shareBtn setImage:[UIImage imageNamed:@"myShareImage"] forState:UIControlStateNormal];
+    [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
     [shareBtn setBackgroundColor:NavColor];
     [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:shareBtn];

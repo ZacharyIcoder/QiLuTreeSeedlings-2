@@ -409,6 +409,7 @@
 		FC7134351CB358720037D507 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134321CB358720037D507 /* RIButtonItem.m */; };
 		FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134341CB358720037D507 /* UIAlertView+Blocks.m */; };
 		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
+		FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7D66D71CF4277500DF4FEC /* 分享.png */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
@@ -1208,6 +1209,7 @@
 		FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
 		FC7134391CB3ABED0037D507 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
 		FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
+		FC7D66D71CF4277500DF4FEC /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
 		FCA7E0611CD050B6002111FF /* ZIKPayRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordCell.h; sourceTree = "<group>"; };
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
@@ -1623,6 +1625,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FC7D66D71CF4277500DF4FEC /* 分享.png */,
 				EA6D36CB1CE713BC00CE025C /* yiguanbi.png */,
 				EA6D36CD1CE713E600CE025C /* yiguoqi.png */,
 				EA6D36C91CE713A500CE025C /* weitonguo.png */,
@@ -3314,6 +3317,7 @@
 				FC6C133F1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib in Resources */,
 				EA4F4D181CBF5F47006E4988 /* bannelSmall1.jpg in Resources */,
 				FC50B16D1CAE243F0022A24C /* WeiboSDK.bundle in Resources */,
+				FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */,
 				EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */,
 				FCCFA7161CF2E12400CC1313 /* carat.png in Resources */,
 				FCF353DF1CA3B515001ABA0A /* 添加图片.png in Resources */,
