@@ -50,7 +50,7 @@
 @property (nonatomic)NSInteger push_;
 @property (nonatomic,copy) NSString *memberCustomUid;
 
-@property (nonatomic, strong) NSString *state;//用于求购中 1:热门求购（热门求购中除去已定制和已购买的）；2：我的求购；3：已定制；4：已购买
+//@property (nonatomic, strong) NSString *state;//用于求购中 1:热门求购（热门求购中除去已定制和已购买的）；2：我的求购；3：已定制；4：已购买
 @property (nonatomic, strong) NSString       *shareText; //分享文字
 @property (nonatomic, strong) NSString       *shareTitle;//分享标题
 @property (nonatomic, strong) UIImage        *shareImage;//分享图片
@@ -286,6 +286,15 @@
                                 self.infoDic=dic;
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
                                 self.model.uid=uid;
+                                if (self.model.state==4) {
+                                    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
+                                    [shareBtn setBackgroundColor:NavColor];
+                                    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                                    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+                                    [self.view addSubview:shareBtn];
+                                    
+                                }
+
                                 [self reloadMyView];
                             } failure:^(NSError *error) {
                                 
@@ -297,15 +306,7 @@
         [self.tableView addSubview:guoqiIamgV];
         self.guoqiIamgV=guoqiIamgV;
         [self.view addSubview:self.tableView];
-        if (self.model.state==4) {
-            UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
-            [shareBtn setBackgroundColor:NavColor];
-            [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
-            [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
-            [self.view addSubview:shareBtn];
-            
         }
-    }
     return self;
 }
 - (void)viewDidLoad {
@@ -1008,7 +1009,7 @@
 
 - (void)shareBtnClick {
 //    self.type 1 热门求购  2我的求购
-//    self.isPuy YES 已定制或已付款  NO 未付款且为定制
+//    self.isPuy YES 已定制或已付款  NO 未付款且未定制
 //    self.model.state  4 已通过
     [self requestShareData];
 }
