@@ -97,7 +97,7 @@
     [nameView addSubview:nameLab];
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.30, 0, kWidth*0.6, 44)];
     nameTextField.placeholder=@"请输入苗木名称";
-    nameTextField.text=@"换换";
+    //nameTextField.text=@"换换";
     
     nameTextField.textColor=NavColor;
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
@@ -186,8 +186,16 @@
     }else{
         return;
     }
-    YLDBuyFabuViewController *yldBuyFabuViewController=[[YLDBuyFabuViewController alloc]initWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.nameTextField.text WithproductUid:self.productUid WithGuigeAry:screenTijiaoAry];
-    [self.navigationController pushViewController:yldBuyFabuViewController animated:YES];
+    
+    if (self.baseMessageDic) {
+        YLDBuyFabuViewController *yldBuyFabuViewController=[[YLDBuyFabuViewController alloc]initWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.nameTextField.text WithproductUid:self.productUid WithGuigeAry:screenTijiaoAry andBaseDic:self.baseMessageDic];
+        [self.navigationController pushViewController:yldBuyFabuViewController animated:YES];
+    }else
+    {
+        YLDBuyFabuViewController *yldBuyFabuViewController=[[YLDBuyFabuViewController alloc]initWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.nameTextField.text WithproductUid:self.productUid WithGuigeAry:screenTijiaoAry];
+        [self.navigationController pushViewController:yldBuyFabuViewController animated:YES];
+    }
+   
 
 }
 //1. 整形判断
@@ -306,7 +314,7 @@
     }
         [HTTPCLIENT myBuyEditingWithUid:self.model.uid Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
-                NSLog(@"%@",responseObject);
+                //NSLog(@"%@",responseObject);
                 NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"ProductSpec"];
                 self.productUid=[dic objectForKey:@"productUid"];
                 self.productName=[dic objectForKey:@"productName"];

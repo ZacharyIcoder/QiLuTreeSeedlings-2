@@ -31,9 +31,23 @@
 @property (nonatomic, strong) NSMutableArray *citys;
 @property (nonatomic, strong) NSString       *citysStr;//地址的code string “，，”
 @property (nonatomic) SelectStyle selectStyle;
+@property (nonatomic,strong) NSDictionary *baseDic;
 @end
 
 @implementation YLDBuyFabuViewController
+-(id)initWithUid:(NSString *)uid Withtitle:(NSString *)title WithName:(NSString *)name WithproductUid:(NSString *)productUid WithGuigeAry:(NSArray *)guigeAry andBaseDic:(NSDictionary *)dic
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+        self.titleStr=title;
+        self.name=name;
+        self.productUid=productUid;
+        self.guigeAry=guigeAry;
+        self.baseDic=dic;
+    }
+    return self;
+}
 -(id)initWithUid:(NSString *)uid Withtitle:(NSString *)title WithName:(NSString *)name WithproductUid:(NSString *)productUid WithGuigeAry:(NSArray *)guigeAry
 {
     self=[super init];
@@ -48,6 +62,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.ecttiv=0;
     self.vcTitle = @"求购发布";
         UIView *otherView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 250)];
         self.otherInfoView=otherView;
@@ -113,7 +128,74 @@
         self.birefField=birefField;
         birefField.tag=1111;
         
+    if (self.baseDic) {
+        self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseDic objectForKey:@"count"]];
+        self.ecttiv=[[self.baseDic objectForKey:@"effective"] integerValue];
+        NSString *priceStr=[self.baseDic objectForKey:@"price"];
+        if ([priceStr isEqualToString:@"面议"]) {
+            
+        }else{
+            self.priceTextField.text=priceStr;
+        }
         
+         NSString *remark=[self.baseDic objectForKey:@"remark"];
+        if (remark.length>0) {
+            self.birefField.text=remark;
+        }
+        self.citysStr=[self.baseDic objectForKey:@"usedArea"];
+        NSArray *cityCodeAry=[self.citysStr componentsSeparatedByString:@","];
+        NSMutableString *citysNameStr=[NSMutableString string];
+        GetCityDao *citydao=[GetCityDao new];
+        [citydao openDataBase];
+        for (int i=0; i<cityCodeAry.count; i++) {
+            NSString *str1=[citydao getCityNameByCityUid:cityCodeAry[i]];
+            if (i==0) {
+                [citysNameStr appendString:str1];
+            }else{
+                [citysNameStr appendFormat:@",%@",str1];
+            }
+        }
+        [self.areaBtn setTitle:citysNameStr forState:UIControlStateNormal];
+        [citydao closeDataBase];
+        self.ecttiv=[[self.baseDic objectForKey:@"effective"] integerValue];
+        NSString *effectiveStr;
+        switch (self.ecttiv) {
+            case 1:
+                effectiveStr=@"长期";
+                break;
+            case 2:
+                effectiveStr=@"一月";
+                break;
+            case 3:
+                effectiveStr=@"三月";
+                break;
+            case 4:
+                effectiveStr=@"半年";
+                break;
+            case 5:
+                effectiveStr=@"一年";
+                break;
+            case 6:
+                effectiveStr=@"一天";
+                break;
+            case 7:
+                effectiveStr=@"三天";
+                break;
+            case 8:
+                effectiveStr=@"五天";
+                break;
+            case 9:
+                effectiveStr=@"一周";
+                break;
+            case 10:
+                effectiveStr=@"半个月";
+                break;
+            default:
+                effectiveStr=@"请选择";
+                break;
+        }
+        [self.ectiveBtn setTitle:effectiveStr forState:UIControlStateNormal];
+    }
         [self.view addSubview:otherView];
     UIButton *tijiaoBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-70, kWidth-80, 50)];
     
@@ -135,13 +217,19 @@
             [ToastView showTopToast:@"数量的格式输入有误"];
             return;
         }
+    if (self.ecttiv<=0) {
+        [ToastView showTopToast:@"请选择有效期"];
+        return;
+    }
         if (self.priceTextField.text.length>0) {
             if ([self isPureFloat:self.priceTextField.text]==NO) {
                 [ToastView showTopToast:@"上车价的格式输入有误"];
                 return;
             }
         }
+    ShowActionV();
     [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.name WithProductUid:self.productUid WithCount:self.countTextField.text WithPrice:self.priceTextField.text WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:self.birefField.text WithusedArea:self.citysStr WithAry:self.guigeAry Success:^(id responseObject) {
+        RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"发布成功"];
     UIViewController *controller = self.navigationController.viewControllers[self.navigationController.viewControllers.count-3];
@@ -150,7 +238,7 @@
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
-        
+        RemoveActionV();
     }];
 }
 -(void)areBtnAction:(UIButton *)sender

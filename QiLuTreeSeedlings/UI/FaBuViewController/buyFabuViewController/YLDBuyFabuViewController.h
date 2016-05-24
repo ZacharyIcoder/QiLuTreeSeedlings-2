@@ -10,4 +10,5 @@
 #import "ZIKArrowViewController.h"
 @interface YLDBuyFabuViewController : ZIKArrowViewController
 -(id)initWithUid:(NSString *)uid Withtitle:(NSString *)title WithName:(NSString *)name WithproductUid:(NSString *)productUid WithGuigeAry:(NSArray *)guigeAry;
+-(id)initWithUid:(NSString *)uid Withtitle:(NSString *)title WithName:(NSString *)name WithproductUid:(NSString *)productUid WithGuigeAry:(NSArray *)guigeAry andBaseDic:(NSDictionary *)dic;
 @end
