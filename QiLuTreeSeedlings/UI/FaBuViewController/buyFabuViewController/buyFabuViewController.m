@@ -18,6 +18,7 @@
 #import "FaBuViewController.h"
 #import "GuiGeModel.h"
 #import "GuiGeView.h"
+#import "YLDBuyFabuViewController.h"
 @interface buyFabuViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate,GuiGeViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
@@ -96,6 +97,8 @@
     [nameView addSubview:nameLab];
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.30, 0, kWidth*0.6, 44)];
     nameTextField.placeholder=@"请输入苗木名称";
+    nameTextField.text=@"换换";
+    
     nameTextField.textColor=NavColor;
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.delegate=self;
@@ -140,42 +143,7 @@
 {
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(frame))];
 }
-//-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
-//{
-//    NSMutableString *namestr=[NSMutableString new];
-//    if (sheng.code) {
-//        [namestr appendString:sheng.cityName];
-//        self.AreaProvince=sheng.code;
-//    }else
-//    {
-//        self.AreaProvince=nil;
-//    }
-//    
-//    if (shi.code) {
-//        [namestr appendString:shi.cityName];
-//        self.AreaCity=shi.code;
-//    }else
-//    {
-//        self.AreaCity=nil;
-//        
-//    }
-//    if (xian.code) {
-//        [namestr appendString:xian.cityName];
-//        self.AreaCounty=xian.code;
-//    }else
-//    {
-//        self.AreaCounty=nil;
-//    }
-//    if (namestr.length>0) {
-//        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-//        [self.areaBtn.titleLabel sizeToFit];
-//    }else{
-//        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
-//        [self.areaBtn.titleLabel sizeToFit];
-//        
-//    }
-//
-//}
+
 -(void)editingMyBuy
 {
     self.titleTextField.text=self.model.title;
@@ -211,15 +179,15 @@
     
     BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
     if (canrun) {
-        for (int i=0; i<screenTijiaoAry.count; i++) {
-            NSDictionary *dic=screenTijiaoAry[i];
-            NSLog(@"%@---%@",dic[@"field"],dic[@"value"]);
-        }
+//        for (int i=0; i<screenTijiaoAry.count; i++) {
+//            NSDictionary *dic=screenTijiaoAry[i];
+//            NSLog(@"%@---%@",dic[@"field"],dic[@"value"]);
+//        }
     }else{
-        //NSLog(@"222");
+        return;
     }
-    
-    return;
+    YLDBuyFabuViewController *yldBuyFabuViewController=[[YLDBuyFabuViewController alloc]initWithUid:self.model.uid Withtitle:self.titleTextField.text WithName:self.nameTextField.text WithproductUid:self.productUid WithGuigeAry:screenTijiaoAry];
+    [self.navigationController pushViewController:yldBuyFabuViewController animated:YES];
 //    for (int i=0; i<cellAry.count; i++) {
 //        TreeSpecificationsModel *model=cellAry[i];
 //        if (model.anwser.length>0) {
