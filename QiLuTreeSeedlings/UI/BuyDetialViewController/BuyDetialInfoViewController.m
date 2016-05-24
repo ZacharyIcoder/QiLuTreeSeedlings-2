@@ -234,9 +234,15 @@
              }
              if (!self.isPuy) {
                  if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
-                     self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64);
+                     self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64-70);
                      [_BuyMessageView removeFromSuperview];
+                     
                      _BuyMessageView =nil;
+                     UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
+                     [shareBtn setBackgroundColor:NavColor];
+                     [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                     [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+                     [self.view addSubview:shareBtn];
                  }else
                  {
                      if (_BuyMessageView==nil) {
@@ -284,13 +290,21 @@
                             } failure:^(NSError *error) {
                                 
                             }];
-        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStyleGrouped];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-70) style:UITableViewStyleGrouped];
         self.tableView.delegate=self;
         self.tableView.dataSource=self;
         UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-68, 60, 60, 38.3)];
         [self.tableView addSubview:guoqiIamgV];
         self.guoqiIamgV=guoqiIamgV;
         [self.view addSubview:self.tableView];
+        if (self.model.state==4) {
+            UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
+            [shareBtn setBackgroundColor:NavColor];
+            [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+            [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+            [self.view addSubview:shareBtn];
+            
+        }
     }
     return self;
 }
@@ -603,7 +617,7 @@
             [self.editingBtn addTarget:self action:@selector(editingBtn:) forControlEvents:UIControlEventTouchUpInside];
         }
         if (self.model.state==0||self.model.state==4||self.model.state==2) {
-            //0  已关闭 可打开  5 审核通过 可关闭
+            //0  已关闭 可打开  4 审核通过 可关闭
             [self.guoqiIamgV setImage:[UIImage imageNamed:@"guanbibiaoqian"]];
             [self.editingBtn setTitle:@"关闭" forState:UIControlStateNormal];
             [self.editingBtn setTitle:@"" forState:UIControlStateHighlighted];
@@ -993,6 +1007,9 @@
 }
 
 - (void)shareBtnClick {
+//    self.type 1 热门求购  2我的求购
+//    self.isPuy YES 已定制或已付款  NO 未付款且为定制
+//    self.model.state  4 已通过
     [self requestShareData];
 }
 #pragma mark - 求购分享
