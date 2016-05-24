@@ -2304,6 +2304,7 @@
 
 #pragma mark ---------- 我的供应详情-分享供应 -----------
 -(void)supplyShareWithUid:(NSString *)uid
+               nurseryUid:(NSString *)nurseryUid
                   Success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
@@ -2316,6 +2317,7 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"uid"]              = uid;
+    parmers[@"nurseryUid"]       = nurseryUid;
 
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 

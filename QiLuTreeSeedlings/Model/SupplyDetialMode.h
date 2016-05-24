@@ -28,5 +28,11 @@
 @property (nonatomic,strong)NSString *views;
 @property (nonatomic)       NSInteger state;
 @property (nonatomic,strong)NSString *productName;
+
+/**
+ *  苗圃Uid
+ */
+@property (nonatomic, copy) NSString *nurseryUid;//苗圃Uid
+//@property (nonatomic, copy) NSString *state;
 +(SupplyDetialMode *)creatSupplyDetialModelByDic:(NSDictionary *)dic;
 @end

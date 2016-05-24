@@ -481,7 +481,8 @@
                        failure:(void (^)(NSError *error))failure;
 
 #pragma mark ---------- 我的供应详情-分享供应 -----------
--(void)supplyShareWithUid:(NSString *)uids
+-(void)supplyShareWithUid:(NSString *)uid
+               nurseryUid:(NSString *)nurseryUid
                   Success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure;
 

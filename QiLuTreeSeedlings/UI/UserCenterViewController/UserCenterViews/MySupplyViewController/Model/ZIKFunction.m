@@ -13,6 +13,12 @@
 #import "UIAlertView+Blocks.h"
 #import "WXApi.h"
 #import "HttpDefines.h"
+/*********支付宝相关*********/
+#define kwshZhiFuBaoZhangHao @"2088121068006558"
+#define kzhifubaoSeller @"2549113992@qq.com"
+#define kzhifubaoMiYao @"MIICXAIBAAKBgQDfGYkTCYlYF7+8nWlDYFP8vg7FQ6e6GfWQzVx/6zuQGKCStUaUF2XDz3BwzcBcpSHRnAOdyancDpv8/0TsfxdTFQCmVHbMUso6urUzkAXpOT8X0PcDPOBDPIeCefNNNeuEh9e6JcQNbKEGFRc27QwUEBSgSEE6ivD1iFpCiO9jSQIDAQABAoGBANI8P/3emLyY9KgLNiy1069ycnzV+nLXD5+6xhYNV/28F2Toym+3dMCG9JB4c3NacXoTKR1B8n1ajwhkjVDHmvN/LUc5WUW9p66khub0auu7JsHxALlE8AqmrV93VSCm8ijsKzUzKeO5vzJqJpfLGli/CSgFHMZuqbhi+rN84hxhAkEA+JkqF9VE8ZssBmYbNvLJ4FvzF6Jt8zOBqvvkCidp07KQ8JcD3uCKvbCEvwjRHMa5/0lRihkKnJTer4Gci+7lZQJBAOW+BOKi6KfWUuRnUmZ7F4/s5ZGImrxqynpOpoiVFI3LJ1i50jbPHuJ+aWeHPTmTRi3vd06F66/IcNQTJMikKhUCQBT7+M2iNvud+Y1guRNeUyQZHt/z2gwZYOyp7onc4dX40Ls+RBlgItX4PHxTpjMjozelXLinfHnTJyjxa+Fz/PECQDSJlr5pOMEg7wXSZvKOlZ3RM9JrJc+OsEz17XlwdinS2mWc4OitxsdO1zXYpHSlLDhW+baYQ4SIVtz4n8HOYN0CQAcsC5oLfqqVVio5DxpE3ZW0WmGpYAD/17CgHgdpUj09rX6efosuZ6INupV5ARsworkO9qGz+vN+VULIpN+WoZc="
+/*********end支付宝相关end*********/
+
 @implementation ZIKFunction
 
 

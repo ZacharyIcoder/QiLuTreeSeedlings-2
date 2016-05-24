@@ -356,7 +356,7 @@
 #pragma mark - 我的供应详情-分享供应
 - (void)requestShareData {
     ShowActionV();
-    [HTTPCLIENT supplyShareWithUid:self.uid Success:^(id responseObject) {
+    [HTTPCLIENT supplyShareWithUid:self.uid nurseryUid:@"" Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
             return ;

@@ -55,14 +55,24 @@
                 self.bigImageVShowV=bigImageVShowV;
                 [self.view addSubview:bigImageVShowV];
                 /*新增*/
-                self.specAry = model.spec;
-                for (int i=0; i<model.spec.count; i++) {
-                    NSDictionary *dic = model.spec[i];
-                    NSArray *aryyyyy = [dic objectForKey:@"value"];
-                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
-                        [_miaomuzhiAry addObject:dic];
-                    }
-                }
+//                self.specAry = model.spec;
+//                for (int i=0; i<model.spec.count; i++) {
+//                    NSDictionary *dic = model.spec[i];
+//                    NSArray *aryyyyy = [dic objectForKey:@"value"];
+//                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
+//                        [_miaomuzhiAry addObject:dic];
+//                    }
+//                }
+
+                                self.specAry = model.spec;
+                                for (int i=0; i<model.spec.count; i++) {
+                                    NSDictionary *dic = model.spec[i];
+                                    NSArray *aryyyyy = [dic objectForKey:@"value"];
+                                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
+                                        [_miaomuzhiAry addObject:dic];
+                                    }
+                                }
+
                 /*新增end*/
 
                 if(model.collect)
@@ -316,20 +326,21 @@
             return cell;
         }
         if (indexPath.section==1) {
-            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+40) andName:self.model.productName];
+            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30) andName:self.model.productName];
             //cell.ary=self.model.spec;
              cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            //二期新增
-            [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
-            cell.showBtn.selected = self.isShow;
-            if (self.specAry) {
-                if (_isShow) {
-                    cell.ary = self.specAry;
-                }else{
-                    cell.ary = self.miaomuzhiAry;
-                }
-            }
-            //二期新增end
+
+//            //二期新增
+//            [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
+//            cell.showBtn.selected = self.isShow;
+//            if (self.specAry) {
+//                if (_isShow) {
+//                    cell.ary = self.specAry;
+//                }else{
+//                    cell.ary = self.miaomuzhiAry;
+//                }
+//            }
+//            //二期新增end
 
             return cell;
         }
