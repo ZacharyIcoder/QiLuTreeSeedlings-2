@@ -14,6 +14,7 @@
 @property (nonatomic) CGFloat yincanggao;
 @property (nonatomic) CGFloat wanzhenggao;
 @property (nonatomic,strong) UIView *hidingView;
+@property (nonatomic)        BOOL  isValue;
 @end
 @implementation GuiGeView
 -(id)initWithAry:(NSArray *)modelAry andFrame:(CGRect)frame
@@ -59,6 +60,7 @@
     if (self) {
          self.clipsToBounds=YES;
         self.MainSure=YES;
+        self.isValue=NO;
         [self setBackgroundColor:BGColor];
         self.cellAry=[NSMutableArray array];
         CGFloat Y=0;
@@ -68,6 +70,10 @@
             Y+=cell.frame.size.height;
             if (model.main) {
                 self.yincanggao=Y;
+            }else{
+                if (model.values.count>0) {
+                    self.isValue=YES;
+                }
             }
             cell.delegate=self;
             [self.cellAry addObject:cell];
@@ -77,7 +83,6 @@
         frame.size.height=self.yincanggao+44;
         self.frame=frame;
         self.wanzhenggao=Y;
-        
         UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, self.frame.size.height-44, frame.size.width, 44)];
         self.showBtn=showBtn;
         [showBtn setTitle:@"更多规格" forState:UIControlStateNormal];
@@ -86,7 +91,10 @@
         [showBtn setBackgroundColor:BGColor];
         [showBtn setTitle:@"隐藏规格" forState:UIControlStateSelected];
         [showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:showBtn];
+       [self addSubview:showBtn];
+        if (self.isValue) {
+            [self showBtnAction:showBtn];
+        }
     }
     return self;
 }
