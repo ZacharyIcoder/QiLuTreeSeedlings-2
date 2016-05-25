@@ -416,9 +416,8 @@
     
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
-        [parameters setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
+        [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
     }
-  // NSLog(@"%@",parameters);
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -575,7 +574,7 @@
     
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
-        [parameters setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
+        [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
     }
     
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {

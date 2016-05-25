@@ -234,7 +234,7 @@
             [self.view addSubview:self.screeningView];
         }
     }else{
-      ScreeningView *screeningV=[[ScreeningView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight) andSearch:self.searchMessageField.text];
+      ScreeningView *screeningV=[[ScreeningView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight) andSearch:self.searchMessageField.text andSerachType:self.searchType];
         self.screeningView=screeningV;
         screeningV.delegate=self;
         [self.view addSubview:self.screeningView];
@@ -269,11 +269,24 @@
     UIAlertController *alertV= [UIAlertController alertControllerWithTitle:@"提示" message:@"请选择搜索类型" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *sellAction=[UIAlertAction actionWithTitle:@"供应" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.chooseSBBtn setTitle:@"供应" forState:UIControlStateNormal];
-        self.searchType=1;
+        if (self.searchType!=1) {
+            self.searchType=1;
+            if (self.screeningView) {
+                [self.screeningView removeFromSuperview];
+                self.screeningView=nil;
+            }
+        }
+        
     }];
     UIAlertAction *buyAction=[UIAlertAction actionWithTitle:@"求购" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.chooseSBBtn setTitle:@"求购" forState:UIControlStateNormal];
-        self.searchType=2;
+        if (self.searchType!=2) {
+            self.searchType=2;
+            if (self.screeningView) {
+                [self.screeningView removeFromSuperview];
+                self.screeningView=nil;
+            }
+        }
     }];
     UIAlertAction *cancelAction=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
@@ -353,22 +366,6 @@
     self.searchSuccessView.goldsupplier=goldsupplier;
     self.searchSuccessView.productUid=productUid;
     self.searchSuccessView.shaixuanAry=ary;
-   
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
-//    if (![searchHistoryAry containsObject:productName]) {
-//        if (searchHistoryAry.count<5) {
-//            [searchHistoryAry addObject:productName];
-//            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-//            [userDefaults synchronize];
-//        }else
-//        {
-//            [searchHistoryAry addObject:productName];
-//            [searchHistoryAry removeObjectAtIndex:0];
-//            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-//            [userDefaults synchronize];
-//        }
-//    }
 
     [self.searchSuccessView searchViewActionWith:productName AndSearchType:self.searchType];
 }

@@ -23,7 +23,7 @@
 @property (nonatomic,strong)NSString *productUid;
 @property (nonatomic,strong)NSString *productName;
 @property (nonatomic,weak)id<ScreeningViewDelegate> delegate;
--(id)initWithFrame:(CGRect)frame andSearch:(NSString *)searchStr;
+-(id)initWithFrame:(CGRect)frame andSearch:(NSString *)searchStr andSerachType:(NSInteger )searchType;
 -(void)showViewAction;
 -(void)setSearchStr:(NSString *)searchStr;
 @end

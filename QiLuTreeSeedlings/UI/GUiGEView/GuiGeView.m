@@ -21,6 +21,7 @@
     self=[super initWithFrame:frame];
     if (self) {
         self.clipsToBounds=YES;
+        self.MainSure=YES;
         [self setBackgroundColor:BGColor];
         self.cellAry=[NSMutableArray array];
         CGFloat Y=0;
@@ -56,6 +57,7 @@
     self=[super initWithFrame:frame];
     if (self) {
          self.clipsToBounds=YES;
+        self.MainSure=YES;
         [self setBackgroundColor:BGColor];
         self.cellAry=[NSMutableArray array];
         CGFloat Y=0;
@@ -110,23 +112,28 @@
 -(BOOL)getAnswerAry:(NSMutableArray *)answerAryz
 {
     [answerAryz removeAllObjects];
+   
     for (int i=0; i<_cellAry.count; i++) {
         GuiGeCell *cell=_cellAry[i];
-        if (cell.model.main==1) {
-            if (cell.answerAry.count>0) {
-                NSString *answer1=[cell.answerAry firstObject];
-                if (answer1.length==0) {
+        
+        if (self.MainSure) {
+            if (cell.model.main==1) {
+                if (cell.answerAry.count>0) {
+                    NSString *answer1=[cell.answerAry firstObject];
+                    if (answer1.length==0) {
+                        [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
+                        [answerAryz removeAllObjects];
+                        return NO;
+                    }
+                }else{
                     [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
                     [answerAryz removeAllObjects];
                     return NO;
                 }
-            }else{
-                [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
-                [answerAryz removeAllObjects];
-                return NO;
-            }
-           
-        }//判断主要规格是否都已填写
+                
+            }//判断主要规格是否都已填写
+        }
+     
        
         if ([cell.model.type isEqualToString:@"文本"]) {
 

@@ -16,6 +16,7 @@
 //@property (nonatomic,strong) NSMutableArray *
 @property (nonatomic,weak)id<GuiGeViewDelegate> delegate;
 @property (nonatomic,strong) UIButton *showBtn;
+@property (nonatomic) BOOL  MainSure;//YES 限制主要规格 NO不限制住要规格
 -(id)initWithAry:(NSArray *)modelAry andFrame:(CGRect)frame;
 -(id)initWithValueAry:(NSArray *)modelAry andFrame:(CGRect)frame;
 -(BOOL)getAnswerAry:(NSMutableArray *)answerAryz;

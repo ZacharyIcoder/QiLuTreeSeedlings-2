@@ -25,10 +25,10 @@
         [self setBackgroundColor:[UIColor whiteColor]];
         self.answerAry=[NSMutableArray array];
         self.answerAry2=[NSMutableArray array];
-        CGFloat  boundsW=kWidth;
+        //CGFloat  boundsW=kWidth;
         self.model=model;
         self.answerAry=[NSMutableArray array];
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 60, 44)];
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 44)];
         [nameLab setFont:[UIFont systemFontOfSize:15]];
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
@@ -36,7 +36,7 @@
         if ([model.type isEqualToString:@"文本"]) {
             Propers *propers=[model.propertyLists firstObject];
             if (propers.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
                 [unitLab setFont:[UIFont systemFontOfSize:15]];
                 [unitLab setTextColor:titleLabColor];
                 [self addSubview:unitLab];
@@ -46,16 +46,16 @@
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@",self.model.uid];
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@",self.model.uid];
                 [self.answerAry addObjectsFromArray:@[@"",@""]];
-                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2-80/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-80/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
                 [self addSubview:minTextField];
-                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(boundsW/2-7.5, 22, 15, 0.5)];
+                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-7.5, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [self addSubview:lineV1];
-                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2+10/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
                 [self addSubview:maxTextField];
@@ -74,7 +74,7 @@
             {
                 [self.answerAry addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
-                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
+                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*self.frame.size.width, 0, 200/320.f*self.frame.size.width, 44)];
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
@@ -97,7 +97,7 @@
             Propers *propers=[model.propertyLists firstObject];
             NSArray *valueAry=[propers.value componentsSeparatedByString:@"，"];
             for (int i=0; i<valueAry.count; i++) {
-                UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(95, 10+40*i, 90, 28)];
+                UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(115, 10+40*i, 90, 28)];
                 [btn setTitle:valueAry[i] forState:UIControlStateNormal];
                 [btn setTitle:valueAry[i] forState:UIControlStateSelected];
 //                for (int j=0; j<self.answerAry.count; j++) {
@@ -125,7 +125,7 @@
         {
             [self.answerAry addObjectsFromArray:@[@""]];
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
-            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(80, 10, 130/320.f*kWidth, 30)];
+            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 10, 130/320.f*self.frame.size.width, 30)];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:@"请选择" forState:UIControlStateNormal];
@@ -144,7 +144,7 @@
         }//单选结合结束
         
         
-        UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, kWidth-30, 0.5)];
+        UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
         [lineView setBackgroundColor:kLineColor];
         [self addSubview:lineView];
     }
@@ -156,10 +156,10 @@
         [self setBackgroundColor:[UIColor whiteColor]];
         self.answerAry=[NSMutableArray array];
         self.answerAry2=[NSMutableArray array];
-        CGFloat  boundsW=kWidth;
+        CGFloat  boundsW=self.frame.size.width;
         self.model=model;
         self.answerAry=[NSMutableArray array];
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 60, 44)];
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 44)];
         [nameLab setFont:[UIFont systemFontOfSize:15]];
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
@@ -210,7 +210,7 @@
             {
                 [self.answerAry addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
-                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
+                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
@@ -238,7 +238,7 @@
             Propers *propers=[model.propertyLists firstObject];
             NSArray *valueAry=[propers.value componentsSeparatedByString:@"，"];
             for (int i=0; i<valueAry.count; i++) {
-                UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(95, 10+40*i, 90, 28)];
+                UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(115, 10+40*i, 90, 28)];
                 NSString *nameStr=valueAry[i];
                 [btn setTitle:nameStr forState:UIControlStateNormal];
                 [btn setTitle:nameStr forState:UIControlStateSelected];
@@ -269,7 +269,7 @@
         {
             [self.answerAry addObjectsFromArray:@[@""]];
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
-            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(80, 10, 130/320.f*kWidth, 30)];
+            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 10, 130/320.f*kWidth, 30)];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:@"请选择" forState:UIControlStateNormal];
@@ -353,7 +353,7 @@
                         {
                             [self.answerAry2 addObjectsFromArray:@[@""]];
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@_%@",[self.answerAry firstObject],self.model.uid];
-                            UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*kWidth, 0, 180/320.f*kWidth, 44)];
+                            UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
                             oneTextField.tag=123;
                             oneTextField.delegate=self;
                             self.oneTextField=oneTextField;
@@ -389,7 +389,7 @@
             [pickerView resetPickerData:dataxxAry];
         }//单选结合结束
         
-            UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, kWidth-30, 0.5)];
+            UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
         [lineView setBackgroundColor:kLineColor];
         [self addSubview:lineView];
     }
@@ -480,16 +480,16 @@
         if (procprs.relation.length>0) {
 //            self.model.sonModel=procprs.guanlianModel;
            
-         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 44, kWidth, 44) andModel:procprs.guanlianModel];
+         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 44, self.frame.size.width, 44) andModel:procprs.guanlianModel];
              self.erjiView=cell;
             [self addSubview:cell];
           
         }else{
-            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 44, kWidth, 44)];
+            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 44, self.frame.size.width, 44)];
             [self addSubview:view];
             self.erjiView=view;
             if (procprs.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
                 [unitLab setFont:[UIFont systemFontOfSize:15]];
                 [unitLab setTextColor:titleLabColor];
                 [view addSubview:unitLab];
@@ -497,7 +497,7 @@
             }
             if (procprs.range) {
                 [self.answerAry2 addObjectsFromArray:@[@"",@""]];
-                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-80/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-80/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.minTextField=minTextField;
@@ -508,7 +508,7 @@
                 UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(kWidth/2-7.5, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [view addSubview:lineV1];
-                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2+10/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
                 maxTextField.delegate=self;
                 maxTextField.tag=122;
                 [view addSubview:maxTextField];
@@ -527,7 +527,7 @@
             {
                 [self.answerAry2 addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@_%@",[self.answerAry firstObject],self.model.uid];
-                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*kWidth, 0, 180/320.f*kWidth, 44)];
+                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
                 oneTextField.tag=123;
                 oneTextField.delegate=self;
                 self.oneTextField=oneTextField;

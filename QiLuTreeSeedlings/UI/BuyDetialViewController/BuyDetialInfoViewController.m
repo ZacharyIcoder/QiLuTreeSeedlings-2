@@ -279,7 +279,6 @@
     if (self) {
         self.uid=uid;
         self.type=2;
-        //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
@@ -316,8 +315,6 @@
     self.isShow=NO;
     [self.view setBackgroundColor:BGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-     // Do any additional setup after loading the view.
 }
 
 

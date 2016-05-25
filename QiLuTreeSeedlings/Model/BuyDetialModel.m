@@ -50,7 +50,6 @@
     model.push=[[dic objectForKey:@"push"]integerValue];
     model.publishUid=[dic objectForKey:@"publishUid"];
     model.buyPrice=[[dic objectForKey:@"buyPrice"] floatValue];
-    NSLog(@"%@",dic);
     return model;
 }
 @end

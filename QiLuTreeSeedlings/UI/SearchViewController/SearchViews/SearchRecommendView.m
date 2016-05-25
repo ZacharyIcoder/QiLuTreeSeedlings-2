@@ -17,7 +17,7 @@
         self.dataAry=ary;
         self.backScrollView=[[UIScrollView alloc]initWithFrame:self.bounds];
         [self addSubview:self.backScrollView];
-    
+        [self setBackgroundColor:[UIColor whiteColor]];
         UIView *topView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 0)];
         UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 20)];
         [titleLab setText:@"热门搜索"];
