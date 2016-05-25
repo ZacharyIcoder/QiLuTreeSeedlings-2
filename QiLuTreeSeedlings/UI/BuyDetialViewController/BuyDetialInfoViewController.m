@@ -58,6 +58,7 @@
 @end
 
 @implementation BuyDetialInfoViewController
+
 -(void)dealloc{
     
 }
@@ -168,7 +169,7 @@
                                     {
                                         // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                         if (_BuyMessageView==nil) {
-                                            _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                                             [_messageView removeFromSuperview];
                                             _messageView = nil;
                                             
@@ -178,7 +179,7 @@
                                     
                                 }else{
                                     if (_messageView==nil) {
-                                        _messageView = [self lianxiMessageView];
+                                        _messageView = [self lianxiMessageShareView];
                                         [_BuyMessageView removeFromSuperview];
                                         _BuyMessageView = nil;
                                     }
@@ -1013,7 +1014,20 @@
 #pragma mark - 求购分享
 - (void)requestShareData {
     ShowActionV();
-    [HTTPCLIENT buyShareWithUid:self.uid state:@"" Success:^(id responseObject) {
+    NSString *state = nil;
+    if (self.type == 1 && self.model.push != 1 && self.model.buy != 1 ) {//:热门求购（热门求购中除去已定制和已购买的）
+        state = @"1";
+    }
+    else if (self.type == 2) {//我的求购
+        state = @"2";
+    }
+    else if (self.model.push == 1) {//已定制
+        state = @"3";
+    }
+    else if (self.model.buy == 2) {//已购买
+        state  = @"4";
+    }
+    [HTTPCLIENT buyShareWithUid:self.uid state:state Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
             return ;
