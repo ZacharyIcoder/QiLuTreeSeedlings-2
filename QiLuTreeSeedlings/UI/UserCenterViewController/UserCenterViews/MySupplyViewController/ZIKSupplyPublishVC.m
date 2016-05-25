@@ -25,10 +25,13 @@
 
 #import "ZIKSupplyPublishNextVC.h"
 
+//规格更改
+#import "GuiGeModel.h"
+#import "GuiGeView.h"
 #define kMaxLength 20
 
 @interface ZIKSupplyPublishVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,
-UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictureVCDelegate>
+UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictureVCDelegate,GuiGeViewDelegate>
 
 @property (nonatomic, strong) UITableView            *supplyInfoTableView;
 @property (nonatomic, strong) ZIKAddImageView        *addImageView;
@@ -47,6 +50,13 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 @property (nonatomic, strong) SupplyDetialMode       *model;
 @property (nonatomic, strong) NSArray                *nurseryAry;
 @property (nonatomic, strong) NSDictionary           *baseDic;
+
+//规格更改新增
+@property (nonatomic,strong)NSString *productUid;
+@property (nonatomic, strong) NSMutableArray *guige1Ary;
+@property (nonatomic,strong)GuiGeView *guigeView;
+
+
 @end
 
 @implementation ZIKSupplyPublishVC
@@ -89,6 +99,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     self.cellAry               = [NSMutableArray array];
     self.supplyModel           = [[ZIKMySupplyCreateModel alloc] init];
     isPicture = NO;
+//规格新增
+    self.guige1Ary=[NSMutableArray array];
+
 }
 
 - (void)initUI {
@@ -285,6 +298,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 #pragma mark - 下一步按钮点击事件
 -(void)nextBtnAction:(UIButton *)sender
 {
+
     if (self.titleTextField.text.length == 0 || self.titleTextField.text == nil) {
         [ToastView showTopToast:@"请输入标题"];
         return;
@@ -310,17 +324,28 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         self.supplyModel.imageUrls         = [urlSring substringFromIndex:1];
         self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
     }
+    NSMutableArray *screenTijiaoAry=[NSMutableArray array];
 
-    NSMutableArray *screenTijiaoAry = [NSMutableArray array];
-    for (int i = 0; i < _cellAry.count; i++) {
-        TreeSpecificationsModel *model = _cellAry[i];
-        if (model.anwser.length>0) {
-            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-                                 model.anwser,@"anwser"
-                                 , nil];
-            [screenTijiaoAry addObject:dic];
+    BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
+    if (canrun) {
+        for (int i=0; i<screenTijiaoAry.count; i++) {
+            NSDictionary *dic=screenTijiaoAry[i];
+            CLog(@"%@---%@",dic[@"field"],dic[@"value"]);
         }
+    }else{
+        return;
     }
+
+//    NSMutableArray *screenTijiaoAry = [NSMutableArray array];
+//    for (int i = 0; i < _cellAry.count; i++) {
+//        TreeSpecificationsModel *model = _cellAry[i];
+//        if (model.anwser.length>0) {
+//            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
+//                                 model.anwser,@"anwser"
+//                                 , nil];
+//            [screenTijiaoAry addObject:dic];
+//        }
+//    }
     self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
     _urlArr = self.addImageView.urlMArr;
     if (self.addImageView.haveImageMArr.count > 0) {
@@ -351,6 +376,62 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         return;
     }
     else {
+<<<<<<< HEAD
+//        [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"1" Success:^(id responseObject) {
+//           // NSLog(@"%@",responseObject);
+//            if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
+//                [ToastView showTopToast:@"该苗木不存在"];
+//                [self requestProductType];
+//            }
+//            else {
+//                NSDictionary *dic = [responseObject objectForKey:@"result"];
+//                self.dataAry = [dic objectForKey:@"list"];
+//                button.selected = YES;
+//                [self creatScreeningCells];
+//            }
+        [HTTPCLIENT huoqumiaomuGuiGeWithTreeName:self.nameTextField.text andType:@"1" andMain:@"0" Success:^(id responseObject) {
+            if (![[responseObject objectForKey:@"success"] integerValue]) {
+                [ToastView showToast:[responseObject objectForKey:@"msg"]
+                         withOriginY:66.0f
+                       withSuperView:APPDELEGATE.window];
+                if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
+                    [self requestProductType];
+                }
+            }else{
+                button.selected=YES;
+                NSDictionary *dic=[responseObject objectForKey:@"result"];
+                self.productUid=[dic objectForKey:@"productUid"];
+                NSArray *guigeAry=[dic objectForKey:@"list"];
+                // NSMutableArray *selectAry=[NSMutableArray array];
+                for (int i=0; i<guigeAry.count; i++) {
+                    NSDictionary *dic=guigeAry[i];
+                    if ([[dic objectForKey:@"level"] integerValue]==0) {
+                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+                        [self.guige1Ary addObject:guigeModel];
+                    }
+                    if ([[dic objectForKey:@"level"] integerValue]==1) {
+                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+                        //[selectAry addObject:guigeModel];
+                        for (int j=0; j<self.guige1Ary.count; j++) {
+                            GuiGeModel *guigeModel1=self.guige1Ary[j];
+                            for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+                                Propers *proper=guigeModel1.propertyLists[k];
+                                if (proper.relation == guigeModel.uid) {
+                                    proper.guanlianModel=guigeModel;
+                                }
+                            }
+                        }
+                    }
+                }
+                _hintView.hidden = NO;
+                CGFloat Y = CGRectGetMaxY(_hintView.frame) ;
+
+                GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
+                [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
+                guigeView.delegate=self;
+                self.guigeView=guigeView;
+                [self.backScrollView addSubview:guigeView];
+=======
         [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"1" Success:^(id responseObject) {
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
                 [ToastView showTopToast:@"该苗木不存在"];
@@ -361,7 +442,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 self.dataAry = [dic objectForKey:@"list"];
                 button.selected = YES;
                 [self creatScreeningCells];
+>>>>>>> origin/master
             }
+
         } failure:^(NSError *error) {
             //NSLog(@"%@",error);
         }];
@@ -709,4 +792,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [self.titleTextField resignFirstResponder];
     [self.nameTextField resignFirstResponder];
 }
+
+-(void)reloadViewWithFrame:(CGRect)frame
+{
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(frame))];
+}
+
 @end
