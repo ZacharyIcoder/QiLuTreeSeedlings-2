@@ -352,7 +352,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     }
     else {
         [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"1" Success:^(id responseObject) {
-           // NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
                 [ToastView showTopToast:@"该苗木不存在"];
                 [self requestProductType];

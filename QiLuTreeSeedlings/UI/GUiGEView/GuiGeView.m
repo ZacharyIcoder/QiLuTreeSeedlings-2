@@ -43,6 +43,7 @@
         UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, self.frame.size.height-44, frame.size.width, 44)];
         self.showBtn=showBtn;
         [showBtn setTitle:@"更多规格" forState:UIControlStateNormal];
+        [showBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [showBtn setTitleColor:NavColor  forState:UIControlStateNormal];
         [showBtn setTitleColor:NavColor  forState:UIControlStateSelected];
         [showBtn setBackgroundColor:BGColor];
@@ -131,6 +132,11 @@
                     return NO;
                 }
                 
+            }else
+            {
+                if (self.showBtn.selected==NO) {//隐藏的规格不提交到服务器
+                    break;
+                }
             }//判断主要规格是否都已填写
         }
      
