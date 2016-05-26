@@ -36,7 +36,7 @@
         if ([model.type isEqualToString:@"文本"]) {
             Propers *propers=[model.propertyLists firstObject];
             if (propers.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 60, 44)];
                 [unitLab setFont:[UIFont systemFontOfSize:15]];
                 [unitLab setTextColor:titleLabColor];
                 [self addSubview:unitLab];
@@ -100,14 +100,8 @@
                 UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(115, 10+40*i, 90, 28)];
                 [btn setTitle:valueAry[i] forState:UIControlStateNormal];
                 [btn setTitle:valueAry[i] forState:UIControlStateSelected];
-//                for (int j=0; j<self.answerAry.count; j++) {
-//                    if ([self.answerAry[j] isEqualToString:self.model.optionList[i]]) {
-//                        btn.selected=YES;
-//                    }
-//                }
                 [btn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
                 [btn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
-                //btn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
                 [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
                 [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
                 [btn setTitleColor:NavColor forState:UIControlStateSelected];
@@ -167,7 +161,7 @@
         if ([model.type isEqualToString:@"文本"]) {
             Propers *propers=[model.propertyLists firstObject];
             if (propers.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 60, 44)];
                 [unitLab setFont:[UIFont systemFontOfSize:15]];
                 [unitLab setTextColor:titleLabColor];
                 [self addSubview:unitLab];
@@ -309,7 +303,7 @@
                         [self addSubview:view];
                         self.erjiView=view;
                         if (self.model.selectProper.unit) {
-                            UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                            UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 60, 44)];
                             [unitLab setFont:[UIFont systemFontOfSize:15]];
                             [unitLab setTextColor:titleLabColor];
                             [view addSubview:unitLab];
@@ -489,7 +483,7 @@
             [self addSubview:view];
             self.erjiView=view;
             if (procprs.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 60, 44)];
                 [unitLab setFont:[UIFont systemFontOfSize:15]];
                 [unitLab setTextColor:titleLabColor];
                 [view addSubview:unitLab];

@@ -103,6 +103,7 @@
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.delegate=self;
   [nameTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    nameTextField.text=@"柳树";
     self.nameTextField=nameTextField;
     [nameView addSubview:nameTextField];
     UIButton *nameBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];
@@ -171,10 +172,6 @@
         [ToastView showTopToast:@"该苗木不存在"];
         return;
     }
-//    if (!self.productName) {
-//        [ToastView showTopToast:@"苗木名称不正确"];
-//        return;
-//    }
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
     
     BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];

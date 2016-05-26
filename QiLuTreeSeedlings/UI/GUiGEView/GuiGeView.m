@@ -29,18 +29,19 @@
         for (int i=0; i<modelAry.count; i++) {
             GuiGeModel *model=modelAry[i];
             GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, Y, frame.size.width, 44) andModel:model];
-            Y+=cell.frame.size.height;
+           
             if (model.main) {
-                self.yincanggao=Y;
+            Y+=cell.frame.size.height;
+            }else{
+                cell.hidden=YES;
             }
             cell.delegate=self;
             [self.cellAry addObject:cell];
             [self addSubview:cell];
         }
         CGRect frame=self.frame;
-        frame.size.height=self.yincanggao+44;
+        frame.size.height=Y+44;
         self.frame=frame;
-        self.wanzhenggao=Y;
         UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, self.frame.size.height-44, frame.size.width, 44)];
         self.showBtn=showBtn;
         [showBtn setTitle:@"更多规格" forState:UIControlStateNormal];
@@ -67,10 +68,11 @@
         for (int i=0; i<modelAry.count; i++) {
             GuiGeModel *model=modelAry[i];
             GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, Y, frame.size.width, 44) andValueModel:model];
-            Y+=cell.frame.size.height;
+           
             if (model.main) {
-                self.yincanggao=Y;
+                Y+=cell.frame.size.height;
             }else{
+                cell.hidden=YES;
                 if (model.values.count>0) {
                     self.isValue=YES;
                 }
@@ -80,9 +82,8 @@
             [self addSubview:cell];
         }
         CGRect frame=self.frame;
-        frame.size.height=self.yincanggao+44;
+        frame.size.height=Y+44;
         self.frame=frame;
-        self.wanzhenggao=Y;
         UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, self.frame.size.height-44, frame.size.width, 44)];
         self.showBtn=showBtn;
         [showBtn setTitle:@"更多规格" forState:UIControlStateNormal];
@@ -102,14 +103,34 @@
 {
     if (self.showBtn.selected==NO) {
         CGRect frame=self.frame;
-        frame.size.height=self.wanzhenggao+44;
-        //NSLog(@"%lf",frame.size.height);
+        CGFloat Y=0;
+        for (int i=0; i<_cellAry.count; i++) {
+            GuiGeCell *cell=_cellAry[i];
+            cell.hidden=NO;
+            CGRect frame2=cell.frame;
+            frame2.origin.y=Y;
+            cell.frame=frame2;
+            Y+=cell.frame.size.height;
+        }
+        frame.size.height=Y+44;
         self.frame=frame;
     }else
     {
         CGRect frame=self.frame;
-        frame.size.height=self.yincanggao+44;
-        //NSLog(@"%lf",frame.size.height);
+        CGFloat Y=0;
+        for (int i=0; i<_cellAry.count; i++) {
+            GuiGeCell *cell=_cellAry[i];
+            CGRect frame2=cell.frame;
+            frame2.origin.y=Y;
+            cell.frame=frame2;
+            if (cell.model.main) {
+                Y+=cell.frame.size.height;
+             cell.hidden=NO;
+            }else{
+               cell.hidden=YES;
+            }
+        }
+        frame.size.height=Y+44;
         self.frame=frame;
     }
     if (self.delegate) {
@@ -138,12 +159,6 @@
                     [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
                     [answerAryz removeAllObjects];
                     return NO;
-                }
-                
-            }else
-            {
-                if (self.showBtn.selected==NO) {//隐藏的规格不提交到服务器
-                    break;
                 }
             }//判断主要规格是否都已填写
         }
@@ -266,29 +281,25 @@
 -(void)reloadView
 {
     CGFloat Y=0;
+     CGRect frame=self.frame;
     for (int i=0; i<self.cellAry.count; i++) {
         
         GuiGeCell *cell=self.cellAry[i];
         CGRect framex=cell.frame;
         framex.origin.y=Y;
         cell.frame=framex;
-        Y+=framex.size.height;
-        if (cell.model.main) {
-            self.yincanggao=Y;
+        if (self.showBtn.selected==NO) {
+            if (cell.model.main) {
+                Y+=cell.frame.size.height;
+            }
+        }else
+        {
+            Y+=cell.frame.size.height;
         }
         
      }
-  self.wanzhenggao=Y;
-    if (self.showBtn.selected==NO) {
-        CGRect frame=self.frame;
-        frame.size.height=self.yincanggao+44;
-        self.frame=frame;
-    }else
-    {
-        CGRect frame=self.frame;
-        frame.size.height=self.wanzhenggao+44;
-        self.frame=frame;
-    }
+    frame.size.height=Y+44;
+     self.frame=frame;
      [self reloadBtnaVVV];
     if (self.delegate) {
         [self.delegate reloadViewWithFrame:self.frame];
