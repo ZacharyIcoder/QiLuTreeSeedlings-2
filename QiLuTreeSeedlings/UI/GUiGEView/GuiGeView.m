@@ -167,28 +167,31 @@
                         if (cell.model.selectProper.relation.length>0)
                         {
                             GuiGeCell *soncell=(GuiGeCell*)cell.erjiView;
-                            if (soncell.answerAry.count==0) {
+                            
                                 NSString *answers1=[soncell.answerAry firstObject];
                                 if (answers1.length==0) {
                                     [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",soncell.model.name]];
                                     [answerAryz removeAllObjects];
+                                    return NO;
                                 }
                                 
-                            }
+                            
                             
                         }else{
-                            if (cell.answerAry2.count==0) {
+                            
                                 NSString *answers1=[cell.answerAry2 firstObject];
                                 NSString *answers2=[cell.answerAry2 lastObject];
                                 if (answers1.length==0) {
                                     [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
                                     [answerAryz removeAllObjects];
+                                     return NO;
                                 }
                                 if (answers2.length==0) {
                                     [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
                                     [answerAryz removeAllObjects];
+                                     return NO;
                                 }
-                            }
+                            
                         }
                     }
                 }
