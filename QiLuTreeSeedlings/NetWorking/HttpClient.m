@@ -1443,12 +1443,17 @@
     parmers[@"imageUrls"]         = imageUrls;
     parmers[@"imageCompressUrls"] = imageCompressUrls;
     NSArray *array = etcAttributes[0];
-    for (int i=0; i < array.count; i++) {
-        NSDictionary *dic = array[i];
-        NSString *field =  dic[@"field"];
-        parmers[field]  = [dic objectForKey:@"anwser"];
-        //[parmers setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
+//    for (int i=0; i < array.count; i++) {
+//        NSDictionary *dic = array[i];
+//        NSString *field =  dic[@"field"];
+//        parmers[field]  = [dic objectForKey:@"anwser"];
+//        //[parmers setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
+//    }
+    for (int i=0; i<array.count; i++) {
+        NSDictionary *dic=array[i];
+        [parmers setObject:[NSString stringWithFormat:@"%@",[dic objectForKey:@"value"]] forKey:[dic objectForKey:@"field"]];
     }
+
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
