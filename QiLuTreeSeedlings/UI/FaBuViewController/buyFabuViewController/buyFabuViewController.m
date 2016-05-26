@@ -103,7 +103,7 @@
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.delegate=self;
   [nameTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    nameTextField.text=@"柳树";
+    //nameTextField.text=@"柳树";
     self.nameTextField=nameTextField;
     [nameView addSubview:nameTextField];
     UIButton *nameBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];

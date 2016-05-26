@@ -17,6 +17,39 @@
 @property (nonatomic)        BOOL  isValue;
 @end
 @implementation GuiGeView
+-(id)initWithAry:(NSArray *)modelAry andFrame:(CGRect)frame andMainSure:(BOOL)MainSure
+{
+    self =[self initWithAry:modelAry andFrame:frame];
+    if (self) {
+        self.MainSure=MainSure;
+        self.clipsToBounds=YES;
+
+        [self setBackgroundColor:BGColor];
+        self.cellAry=[NSMutableArray array];
+        CGFloat Y=0;
+        for (int i=0; i<modelAry.count; i++) {
+            GuiGeModel *model=modelAry[i];
+            GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, Y, frame.size.width, 44) andModel:model];
+            if (self.MainSure) {
+                if (model.main) {
+                    Y+=cell.frame.size.height;
+                }else{
+                    cell.hidden=YES;
+                }
+            }else{
+               Y+=cell.frame.size.height; 
+            }
+            
+            cell.delegate=self;
+            [self.cellAry addObject:cell];
+            [self addSubview:cell];
+        }
+        CGRect frame=self.frame;
+        frame.size.height=Y;
+        self.frame=frame;
+    }
+    return self;
+}
 -(id)initWithAry:(NSArray *)modelAry andFrame:(CGRect)frame
 {
     self=[super initWithFrame:frame];
@@ -29,7 +62,6 @@
         for (int i=0; i<modelAry.count; i++) {
             GuiGeModel *model=modelAry[i];
             GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, Y, frame.size.width, 44) andModel:model];
-           
             if (model.main) {
             Y+=cell.frame.size.height;
             }else{

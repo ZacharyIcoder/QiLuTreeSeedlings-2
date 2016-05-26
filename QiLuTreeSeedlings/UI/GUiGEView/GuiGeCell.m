@@ -28,7 +28,7 @@
         //CGFloat  boundsW=kWidth;
         self.model=model;
         self.answerAry=[NSMutableArray array];
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 44)];
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, 80, 44)];
         [nameLab setFont:[UIFont systemFontOfSize:15]];
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
@@ -47,6 +47,7 @@
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@",self.model.uid];
                 [self.answerAry addObjectsFromArray:@[@"",@""]];
                 UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-80/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                 [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
                 self.minTextField=minTextField;
                 minTextField.tag=111;
@@ -57,6 +58,7 @@
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [self addSubview:lineV1];
                 UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                [maxTextField setFont:[UIFont systemFontOfSize:14]];
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
@@ -77,6 +79,7 @@
                 [self.answerAry addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
                 UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*self.frame.size.width, 0, 200/320.f*self.frame.size.width, 44)];
+                [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
@@ -174,6 +177,7 @@
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@",self.model.uid];
                 [self.answerAry addObjectsFromArray:@[@"",@""]];
                 UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2-80/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                 [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
                 self.minTextField=minTextField;
                 minTextField.tag=111;
@@ -184,6 +188,7 @@
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [self addSubview:lineV1];
                 UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2+10/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                 [maxTextField setFont:[UIFont systemFontOfSize:14]];
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
@@ -209,6 +214,7 @@
                 [self.answerAry addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
                 UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
+                [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
@@ -316,6 +322,7 @@
                         if (self.model.selectProper.range) {
                             [self.answerAry2 addObjectsFromArray:@[@"",@""]];
                             UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-80/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                             [minTextField setFont:[UIFont systemFontOfSize:14]];
                              minTextField.placeholder=@"最小值";
                             minTextField.textAlignment = NSTextAlignmentRight;
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -329,6 +336,7 @@
                             [lineV1 setBackgroundColor:[UIColor blackColor]];
                             [view addSubview:lineV1];
                             UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2+10/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                            [maxTextField setFont:[UIFont systemFontOfSize:14]];
                             maxTextField.placeholder=@"最大值";
                             maxTextField.delegate=self;
                             maxTextField.tag=122;
@@ -354,6 +362,7 @@
                             [self.answerAry2 addObjectsFromArray:@[@""]];
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@_%@",[self.answerAry firstObject],self.model.uid];
                             UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
+                            [oneTextField setFont:[UIFont systemFontOfSize:14]];
                             oneTextField.tag=123;
                             oneTextField.delegate=self;
                             self.oneTextField=oneTextField;
@@ -498,6 +507,7 @@
             if (procprs.range) {
                 [self.answerAry2 addObjectsFromArray:@[@"",@""]];
                 UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-80/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                 [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -506,10 +516,11 @@
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
                 [view  addSubview:minTextField];
-                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(kWidth/2-7.5, 22, 15, 0.5)];
+                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-7.5, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [view addSubview:lineV1];
                 UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                [maxTextField setFont:[UIFont systemFontOfSize:14]];
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=122;
@@ -530,6 +541,7 @@
                 [self.answerAry2 addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@_%@",[self.answerAry firstObject],self.model.uid];
                 UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
+                [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=123;
                 oneTextField.delegate=self;
                 self.oneTextField=oneTextField;

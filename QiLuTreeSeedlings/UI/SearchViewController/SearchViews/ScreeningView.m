@@ -305,7 +305,6 @@
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.productUid=[dic objectForKey:@"productUid"];
             NSArray *guigeAry=[dic objectForKey:@"list"];
-            // NSMutableArray *selectAry=[NSMutableArray array];
             for (int i=0; i<guigeAry.count; i++) {
                 NSDictionary *dic=guigeAry[i];
                 if ([[dic objectForKey:@"level"] integerValue]==0) {
@@ -314,7 +313,6 @@
                 }
                 if ([[dic objectForKey:@"level"] integerValue]==1) {
                     GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-                    //[selectAry addObject:guigeModel];
                     for (int j=0; j<self.guige1Ary.count; j++) {
                         GuiGeModel *guigeModel1=self.guige1Ary[j];
                         for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
@@ -330,10 +328,9 @@
             if (self.searchType==1) {
                 YSS=138;
             }
-            GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, YSS, kWidth*0.8, 0)];
+            GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, YSS, kWidth*0.8, 0) andMainSure:NO];
             [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
             guigeView.delegate=self;
-            guigeView.MainSure=NO;
             self.guigeView=guigeView;
             [self.backScrollView addSubview:guigeView];
         }
@@ -368,12 +365,6 @@
 -(void)cellBeginEditing:(UITextField *)field
 {
     self.nowTextFlield=field;
-//    if (self.backScrollView.frame.size.height==kHeight-345) {
-//        return;
-//    }
-//    CGRect frame=self.backScrollView.frame;
-//    frame.size.height=kHeight-345;
-//    self.backScrollView.frame=frame;
 }
 
 -(void)hidingKey

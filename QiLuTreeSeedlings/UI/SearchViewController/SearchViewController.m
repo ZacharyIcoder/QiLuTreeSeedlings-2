@@ -118,7 +118,7 @@
     if (self.searchStr.length>0) {
        _searchMessageField.text=self.searchStr;
     }
-    
+     _searchMessageField.text=@"柳树";
     //[self.view bringSubviewToFront:screeningV];
 
 }
