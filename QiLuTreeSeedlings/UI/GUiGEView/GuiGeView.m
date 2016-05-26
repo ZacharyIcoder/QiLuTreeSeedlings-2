@@ -160,7 +160,40 @@
                     [answerAryz removeAllObjects];
                     return NO;
                 }
+              
+                if (cell.model.selectProper) {
+                    if(cell.model.selectProper.operation)
+                    {
+                        if (cell.model.selectProper.relation.length>0)
+                        {
+                            GuiGeCell *soncell=(GuiGeCell*)cell.erjiView;
+                            if (soncell.answerAry.count==0) {
+                                NSString *answers1=[soncell.answerAry firstObject];
+                                if (answers1.length==0) {
+                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",soncell.model.name]];
+                                    [answerAryz removeAllObjects];
+                                }
+                                
+                            }
+                            
+                        }else{
+                            if (cell.answerAry2.count==0) {
+                                NSString *answers1=[cell.answerAry2 firstObject];
+                                NSString *answers2=[cell.answerAry2 lastObject];
+                                if (answers1.length==0) {
+                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
+                                    [answerAryz removeAllObjects];
+                                }
+                                if (answers2.length==0) {
+                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
+                                    [answerAryz removeAllObjects];
+                                }
+                            }
+                        }
+                    }
+                }
             }//判断主要规格是否都已填写
+            
         }
      
        
@@ -272,9 +305,9 @@
                     }
                 }
             }
-        }//单选结合判断
+        }
         
-    }
+    }//单选结合判断
     return YES;
 }
 

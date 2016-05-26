@@ -376,19 +376,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         return;
     }
     else {
-<<<<<<< HEAD
-//        [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"1" Success:^(id responseObject) {
-//           // NSLog(@"%@",responseObject);
-//            if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
-//                [ToastView showTopToast:@"该苗木不存在"];
-//                [self requestProductType];
-//            }
-//            else {
-//                NSDictionary *dic = [responseObject objectForKey:@"result"];
-//                self.dataAry = [dic objectForKey:@"list"];
-//                button.selected = YES;
-//                [self creatScreeningCells];
-//            }
+
         [HTTPCLIENT huoqumiaomuGuiGeWithTreeName:self.nameTextField.text andType:@"1" andMain:@"0" Success:^(id responseObject) {
             if (![[responseObject objectForKey:@"success"] integerValue]) {
                 [ToastView showToast:[responseObject objectForKey:@"msg"]
@@ -431,18 +419,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 guigeView.delegate=self;
                 self.guigeView=guigeView;
                 [self.backScrollView addSubview:guigeView];
-=======
-        [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"1" Success:^(id responseObject) {
-            if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
-                [ToastView showTopToast:@"该苗木不存在"];
-                [self requestProductType];
-            }
-            else {
-                NSDictionary *dic = [responseObject objectForKey:@"result"];
-                self.dataAry = [dic objectForKey:@"list"];
-                button.selected = YES;
-                [self creatScreeningCells];
->>>>>>> origin/master
             }
 
         } failure:^(NSError *error) {
