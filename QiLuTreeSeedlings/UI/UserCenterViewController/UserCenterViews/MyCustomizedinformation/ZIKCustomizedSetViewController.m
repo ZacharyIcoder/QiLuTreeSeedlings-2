@@ -13,7 +13,10 @@
 #define kMaxLength 20
 #import "HttpClient.h"
 #import "StringAttributeHelper.h"
-@interface ZIKCustomizedSetViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate>
+
+#import "GuiGeView.h"
+#import "YLDPickLocationView.h"
+@interface ZIKCustomizedSetViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate,GuiGeViewDelegate,YLDPickLocationDelegate>
 {
     UIView *priceView;
     UILabel *priceLabel;
@@ -32,6 +35,17 @@
 @property (nonatomic, strong) ZIKCustomizedModel *model;
 @property (nonatomic, strong) NSDictionary       *baseMessageDic;
 
+
+@property (nonatomic, strong) NSMutableArray *guige1Ary;
+@property (nonatomic,strong)GuiGeView *guigeView;
+@property (nonatomic,strong) UIButton *areaBtn;
+@property (nonatomic,copy) NSString *AreaProvince;
+@property (nonatomic,copy) NSString *AreaCity;
+@property (nonatomic,copy) NSString *AreaTown;
+@property (nonatomic,copy) NSString *AreaCounty;
+
+
+
 @end
 
 @implementation ZIKCustomizedSetViewController
@@ -46,6 +60,7 @@
         self.vcTitle = @"定制设置";
     }
     self.cellAry = [NSMutableArray array];
+    self.guige1Ary = [NSMutableArray array];
     [self initUI];
 }
 
@@ -62,7 +77,7 @@
     [self.view addSubview:self.backScrollView];
     [self.backScrollView setBackgroundColor:BGColor];
 
-    UIView *nameView = [[UIView alloc]initWithFrame:CGRectMake(0, 8, kWidth, 44)];
+    UIView *nameView = [[UIView alloc]initWithFrame:CGRectMake(0, 8, kWidth, 44*2)];
     [nameView setBackgroundColor:[UIColor whiteColor]];
     [self.backScrollView addSubview:nameView];
 
@@ -72,6 +87,7 @@
     UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(100, 0, kWidth-100-60, 44)];
     nameTextField.placeholder  = @"请输入苗木名称";
     nameTextField.textColor    = NavColor;
+    nameTextField.font = [UIFont systemFontOfSize:16.0f];
     nameTextField.delegate     = self;
     self.nameTextField         = nameTextField;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -79,6 +95,27 @@
                                                  name:UITextFieldTextDidChangeNotification
                                                object:nameTextField];
     [nameView addSubview:nameTextField];
+
+    UILabel *addressLab = [[UILabel alloc] initWithFrame:CGRectMake(15, 44, 80, 44)];
+    addressLab.text = @"供货地";
+    [nameView addSubview:addressLab];
+
+    UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 44, kWidth*0.6, 44)];
+    [cityBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
+
+//    cityBtn.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    cityBtn. contentHorizontalAlignment =UIControlContentHorizontalAlignmentLeft;
+
+//    cityBtn.backgroundColor = [UIColor grayColor];
+    [cityBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    [cityBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [cityBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
+    [nameView addSubview:cityBtn];
+    [cityBtn addTarget:self action:@selector(cityBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.areaBtn=cityBtn;
+
+    
+
 
     UIButton *nameBtn = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];
     [nameView addSubview:nameBtn];
@@ -150,6 +187,18 @@
 
 }
 
+
+
+- (void)cityBtnAction:(UIButton *)button {
+    YLDPickLocationView *pickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveXian];
+    pickerView.delegate=self;
+    [pickerView showPickView];
+    if (self.nameTextField) {
+        [self.nameTextField resignFirstResponder];
+    }
+
+}
+
 -(void)getEditingMessage
 {
     [HTTPCLIENT getMyCustomsetEditingWithUid:self.model.customsetUid Success:^(id responseObject) {
@@ -168,41 +217,75 @@
     }];
 }
 
--(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
+-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)guigeAry
 {
-    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
-
-    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
-            [myview removeFromSuperview];
+    for (int i=0; i<guigeAry.count; i++) {
+        NSDictionary *dic=guigeAry[i];
+        if ([[dic objectForKey:@"level"] integerValue]==0) {
+            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+            [self.guige1Ary addObject:guigeModel];
         }
-    }];
-    CGFloat Y = 44+44+8+8;
-    for (int i=0; i<self.dataAry.count; i++) {
-        TreeSpecificationsModel *model=self.dataAry[i];
-        FabutiaojiaCell *cell;
-        NSMutableString *answerStr=[NSMutableString string];
-        for (int j=0; j<specAry.count; j++) {
-            NSDictionary *specDic=specAry[j];
-
-            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
-                answerStr=[specDic objectForKey:@"value"];
+        if ([[dic objectForKey:@"level"] integerValue]==1) {
+            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+            //[selectAry addObject:guigeModel];
+            for (int j=0; j<self.guige1Ary.count; j++) {
+                GuiGeModel *guigeModel1=self.guige1Ary[j];
+                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+                    Propers *proper=guigeModel1.propertyLists[k];
+                    if (proper.relation == guigeModel.uid) {
+                        proper.guanlianModel=guigeModel;
+                    }
+                }
             }
         }
-        if ([answerStr isEqualToString:@"不限"]) {
-            answerStr = [NSMutableString string];
-        }
-
-        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
-        [cellAry addObject:cell.model];
-        Y=CGRectGetMaxY(cell.frame);
-        // cell.delegate=self;
-        [cell setBackgroundColor:[UIColor whiteColor]];
-        [self.backScrollView addSubview:cell];
-        [self.backScrollView setContentSize:CGSizeMake(0, Y)];
     }
+//    _hintView.hidden = NO;
+//    CGFloat Y = CGRectGetMaxY(_hintView.frame) ;
 
+
+    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, 44+44+8+8+44, kWidth, 0)];
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
+    guigeView.delegate=self;
+    self.guigeView=guigeView;
+    [self.backScrollView addSubview:guigeView];
+    
 }
+
+//-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
+//{
+//    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+//
+//    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
+//            [myview removeFromSuperview];
+//        }
+//    }];
+//    CGFloat Y = 44+44+8+8;
+//    for (int i=0; i<self.dataAry.count; i++) {
+//        TreeSpecificationsModel *model=self.dataAry[i];
+//        FabutiaojiaCell *cell;
+//        NSMutableString *answerStr=[NSMutableString string];
+//        for (int j=0; j<specAry.count; j++) {
+//            NSDictionary *specDic=specAry[j];
+//
+//            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
+//                answerStr=[specDic objectForKey:@"value"];
+//            }
+//        }
+//        if ([answerStr isEqualToString:@"不限"]) {
+//            answerStr = [NSMutableString string];
+//        }
+//
+//        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
+//        [cellAry addObject:cell.model];
+//        Y=CGRectGetMaxY(cell.frame);
+//        // cell.delegate=self;
+//        [cell setBackgroundColor:[UIColor whiteColor]];
+//        [self.backScrollView addSubview:cell];
+//        [self.backScrollView setContentSize:CGSizeMake(0, Y)];
+//    }
+//
+//}
 
 - (void)nameChange {
     self.nameBtn.selected = NO;
@@ -248,6 +331,29 @@
 
                 self.productUid = [dic objectForKey:@"productUid"];
                 button.selected = YES;
+                NSArray *guigeAry=[dic objectForKey:@"list"];
+                // NSMutableArray *selectAry=[NSMutableArray array];
+                for (int i=0; i<guigeAry.count; i++) {
+                    NSDictionary *dic=guigeAry[i];
+                    if ([[dic objectForKey:@"level"] integerValue]==0) {
+                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+                        [self.guige1Ary addObject:guigeModel];
+                    }
+                    if ([[dic objectForKey:@"level"] integerValue]==1) {
+                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+                        //[selectAry addObject:guigeModel];
+                        for (int j=0; j<self.guige1Ary.count; j++) {
+                            GuiGeModel *guigeModel1=self.guige1Ary[j];
+                            for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+                                Propers *proper=guigeModel1.propertyLists[k];
+                                if (proper.relation == guigeModel.uid) {
+                                    proper.guanlianModel=guigeModel;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 [self creatScreeningCells];
             }
         } failure:^(NSError *error) {
@@ -260,25 +366,60 @@
 
 -(void)creatScreeningCells
 {
-    self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
-    //    NSLog(@"%@",ary);
-    CGFloat Y = 44+8+44+8;
+//    self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
+//    //    NSLog(@"%@",ary);
+    CGFloat Y = 44+8+44+8+44;
+//
+//    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
+//            [myview removeFromSuperview];
+//        }
+//    }];
+//
+//    for (int i=0; i < self.dataAry.count; i++) {
+//        FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 44) AndModel:self.dataAry[i] andAnswer:nil];
+//        cell.backgroundColor = [UIColor whiteColor];
+//        [cellAry addObject:cell.model];
+//        Y = CGRectGetMaxY(cell.frame);
+//        [self.backScrollView addSubview:cell];
+//    }
+//    [self.backScrollView setContentSize:CGSizeMake(0, Y)];
+//    //self.backScrollView.backgroundColor = [UIColor whiteColor];
+//
+//    button.selected=YES;
+//    NSDictionary *dic=[responseObject objectForKey:@"result"];
+//    self.productUid=[dic objectForKey:@"productUid"];
+//    NSArray *guigeAry=[dic objectForKey:@"list"];
+//    // NSMutableArray *selectAry=[NSMutableArray array];
+//    for (int i=0; i<guigeAry.count; i++) {
+//        NSDictionary *dic=guigeAry[i];
+//        if ([[dic objectForKey:@"level"] integerValue]==0) {
+//            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+//            [self.guige1Ary addObject:guigeModel];
+//        }
+//        if ([[dic objectForKey:@"level"] integerValue]==1) {
+//            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+//            //[selectAry addObject:guigeModel];
+//            for (int j=0; j<self.guige1Ary.count; j++) {
+//                GuiGeModel *guigeModel1=self.guige1Ary[j];
+//                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+//                    Propers *proper=guigeModel1.propertyLists[k];
+//                    if (proper.relation == guigeModel.uid) {
+//                        proper.guanlianModel=guigeModel;
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    _hintView.hidden = NO;
+//    CGFloat Y = CGRectGetMaxY(_hintView.frame) ;
 
-    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
-            [myview removeFromSuperview];
-        }
-    }];
+    GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
+    guigeView.delegate=self;
+    self.guigeView=guigeView;
+    [self.backScrollView addSubview:guigeView];
 
-    for (int i=0; i < self.dataAry.count; i++) {
-        FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 44) AndModel:self.dataAry[i] andAnswer:nil];
-        cell.backgroundColor = [UIColor whiteColor];
-        [cellAry addObject:cell.model];
-        Y = CGRectGetMaxY(cell.frame);
-        [self.backScrollView addSubview:cell];
-    }
-    [self.backScrollView setContentSize:CGSizeMake(0, Y)];
-    //self.backScrollView.backgroundColor = [UIColor whiteColor];
 }
 
 
@@ -417,5 +558,47 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)reloadViewWithFrame:(CGRect)frame
+{
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(frame))];
+}
+
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
+{
+    NSMutableString *namestr=[NSMutableString new];
+    if (sheng.code) {
+        [namestr appendString:sheng.cityName];
+        self.AreaProvince=sheng.code;
+    }else
+    {
+        self.AreaProvince=nil;
+    }
+
+    if (shi.code) {
+        [namestr appendString:shi.cityName];
+        self.AreaCity=shi.code;
+    }else
+    {
+        self.AreaCity=nil;
+
+    }
+//    if (xian.code) {
+//        [namestr appendString:xian.cityName];
+//        self.AreaCounty=xian.code;
+//    }else
+//    {
+//        self.AreaCounty=nil;
+//    }
+    if (namestr.length>0) {
+        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+    }else{
+        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+
+    }
+
+}
+
 
 @end
