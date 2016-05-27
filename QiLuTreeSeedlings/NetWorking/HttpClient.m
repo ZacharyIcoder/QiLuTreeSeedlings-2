@@ -1712,6 +1712,8 @@
 #pragma mark ---------- 我的订制设置保存 -----------
 - (void)saveMyCustomizedInfo:(NSString *)uid
                   productUid:(NSString *)productUid
+                usedProvince:(NSString *)usedProvince
+                    usedCity:(NSString *)usedCity
  withSpecificationAttributes:(NSArray *)etcAttributes
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure {
@@ -1726,12 +1728,19 @@
     parmers[@"device_id"]         = str;
     parmers[@"uid"]               = uid;
     parmers[@"productUid"]        = productUid;
+    parmers[@"usedProvince"]      = usedProvince;
+    parmers[@"usedCity"]          = usedCity;
     NSArray *array = etcAttributes[0];
-    for (int i=0; i < array.count; i++) {
-        NSDictionary *dic = array[i];
-        NSString *field =  dic[@"field"];
-        parmers[field]  = [dic objectForKey:@"anwser"];
+//    for (int i=0; i < array.count; i++) {
+//        NSDictionary *dic = array[i];
+//        NSString *field =  dic[@"field"];
+//        parmers[field]  = [dic objectForKey:@"anwser"];
+//    }
+    for (int i=0; i<array.count; i++) {
+        NSDictionary *dic=array[i];
+        [parmers setObject:[NSString stringWithFormat:@"%@",[dic objectForKey:@"value"]] forKey:[dic objectForKey:@"field"]];
     }
+
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 

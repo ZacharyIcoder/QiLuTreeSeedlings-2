@@ -44,6 +44,8 @@
 @property (nonatomic,copy) NSString *AreaTown;
 @property (nonatomic,copy) NSString *AreaCounty;
 
+@property (nonatomic, copy) NSString *areaName;
+
 
 
 @end
@@ -123,6 +125,12 @@
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure"] forState:UIControlStateNormal];
     [nameBtn setImage:[UIImage imageNamed:@"treeNameSure2"] forState:UIControlStateSelected];
 
+    UIButton *arrowBtn = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-70, 9+44, 50, 25)];
+    [nameView addSubview:arrowBtn];
+    [arrowBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [arrowBtn setImage:[UIImage imageNamed:@"carat"] forState:UIControlStateNormal];
+
+
     priceView = [[UIView alloc] init];
     priceView.backgroundColor = [UIColor whiteColor];
     priceView.frame = CGRectMake(0, CGRectGetMaxY(nameView.frame)+8, Width, 44);
@@ -190,7 +198,7 @@
 
 
 - (void)cityBtnAction:(UIButton *)button {
-    YLDPickLocationView *pickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveXian];
+    YLDPickLocationView *pickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
     pickerView.delegate=self;
     [pickerView showPickView];
     if (self.nameTextField) {
@@ -207,6 +215,12 @@
             self.productUid = [dic objectForKey:@"productUid"];
             NSArray *ary = [dic objectForKey:@"bean"];
             self.dataAry = ary;
+            self.AreaProvince = [dic objectForKey:@"usedProvince"];
+            self.AreaCity = [dic objectForKey:@"usedCity"];
+            self.areaName  = [dic objectForKey:@"areaName"];
+            if (![ZIKFunction xfunc_check_strEmpty:self.areaName]) {
+                [self.areaBtn setTitle:self.areaName forState:UIControlStateNormal];
+            }
             [self creatSCreeningCellsWithAnswerWithAry:ary];
         }else
         {
@@ -532,26 +546,35 @@
         }
     }
     self.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
-
-   [HTTPCLIENT saveMyCustomizedInfo:self.model.customsetUid productUid:self.productUid withSpecificationAttributes:self.specificationAttributes Success:^(id responseObject) {
-       if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-           if (self.model) {
-               [ToastView showTopToast:@"修改成功"];
-           }
-           else {
-           [ToastView showTopToast:@"发布成功"];
-           }
-           [self.navigationController popViewControllerAnimated:YES];
-       }
-       else {
-           //NSLog(@"%@",responseObject[@"msg"]);
-           [ToastView showTopToast:responseObject[@"msg"]];
-       }
-
-
-   } failure:^(NSError *error) {
-
-   }];
+    if ([ZIKFunction xfunc_check_strEmpty:self.AreaProvince]) {
+        [ToastView showTopToast:@"请选择供货地"];
+        return;
+    }
+    [HTTPCLIENT saveMyCustomizedInfo:self.model.customsetUid
+                          productUid:self.productUid
+                        usedProvince:self.AreaProvince
+                            usedCity:self.AreaCity
+         withSpecificationAttributes:self.specificationAttributes
+                             Success:^(id responseObject) {
+             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+                 if (self.model) {
+                     [ToastView showTopToast:@"修改成功"];
+                 }
+                 else {
+                     [ToastView showTopToast:@"发布成功"];
+                 }
+                 [self.navigationController popViewControllerAnimated:YES];
+             }
+             else {
+                 //NSLog(@"%@",responseObject[@"msg"]);
+                 [ToastView showTopToast:responseObject[@"msg"]];
+             }
+             
+             
+         } failure:^(NSError *error) {
+             
+         }
+     ];
 }
 
 - (void)didReceiveMemoryWarning {

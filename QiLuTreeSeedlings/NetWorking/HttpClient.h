@@ -375,6 +375,8 @@
 #pragma mark ---------- 我的订制设置保存 -----------
 - (void)saveMyCustomizedInfo:(NSString *)uid
                   productUid:(NSString *)productUid
+                usedProvince:(NSString *)usedProvince
+                    usedCity:(NSString *)usedCity
  withSpecificationAttributes:(NSArray *)etcAttributes
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;

@@ -24,9 +24,9 @@
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
 @property (nonatomic, strong) UITableView    *myCustomizedInfoTableView;//我的定制信息列表
 
-@property (nonatomic        ) BOOL           isShow;
-@property (nonatomic,strong ) NSArray        *specAry;
-@property (nonatomic,strong ) NSMutableArray *miaomuzhiAry;
+//@property (nonatomic        ) BOOL           isShow;
+//@property (nonatomic,strong ) NSArray        *specAry;
+//@property (nonatomic,strong ) NSMutableArray *miaomuzhiAry;
 
 @end
 
@@ -73,7 +73,7 @@
 }
 
 - (void)requestData {
-    [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+//    [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.myCustomizedInfoTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
@@ -83,6 +83,7 @@
         weakSelf.page++;
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
+    [self.myCustomizedInfoTableView headerBeginRefreshing];
 }
 
 - (void)initUI {
@@ -166,19 +167,19 @@
                 ZIKCustomizedModel *model = [ZIKCustomizedModel yy_modelWithDictionary:dic];
 
 
-                /*新增*/
-                model.isShow = NO;
-                NSMutableArray *tempMarr = [[NSMutableArray alloc] init];
-                model.specArray = model.spec;
-                for (int i=0; i<model.spec.count; i++) {
-                    NSDictionary *dic = model.spec[i];
-                    NSArray *aryyyyy = [dic objectForKey:@"value"];
-                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
-                        [tempMarr addObject:dic];
-                    }
-                }
-                model.haveSpecArray = tempMarr;
-                /*新增end*/
+//                /*新增*/
+//                model.isShow = NO;
+//                NSMutableArray *tempMarr = [[NSMutableArray alloc] init];
+//                model.specArray = model.spec;
+//                for (int i=0; i<model.spec.count; i++) {
+//                    NSDictionary *dic = model.spec[i];
+//                    NSArray *aryyyyy = [dic objectForKey:@"value"];
+//                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
+//                        [tempMarr addObject:dic];
+//                    }
+//                }
+//                model.haveSpecArray = tempMarr;
+//                /*新增end*/
                 [self.customizedInfoMArr addObject:model];
 
             }];
@@ -312,10 +313,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
-    if (model.isShow) {
-        return  model.specArray.count*30+40;
-    }
-    return model.haveSpecArray.count*30+40;
+   // if (model.isShow) {
+        return  model.specArray.count*30+20;
+//    }
+//    return model.haveSpecArray.count*30+40;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -333,27 +334,27 @@
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
     //backView.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+30+10);
     BuyOtherInfoTableViewCell *mycell = [[BuyOtherInfoTableViewCell alloc] init];
-    if (model.isShow) {
-        mycell.frame = CGRectMake(0, 0, kWidth, model.specArray.count*30+40);
-    }
-    else {
-        mycell.frame = CGRectMake(0, 0, kWidth, model.haveSpecArray.count*30+40);
-    }
+//    if (model.isShow) {
+        mycell.frame = CGRectMake(0, 0, kWidth, model.specArray.count*30+20);
+//    }
+//    else {
+//        mycell.frame = CGRectMake(0, 0, kWidth, model.haveSpecArray.count*30+40);
+//    }
     mycell.backgroundColor = [UIColor whiteColor];
-    //mycell.dingzhiAry = model.spec;
+    mycell.dingzhiAry = model.spec;
     mycell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //二期新增
-    mycell.showBtn.tag = section;
-    [mycell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
-    mycell.showBtn.selected = model.isShow;
-    //if (model.haveSpecArray) {
-        if (model.isShow) {
-            mycell.dingzhiAry = model.specArray;
-        }else{
-            mycell.dingzhiAry = model.haveSpecArray;
-        }
-    //}
-    //二期新增end
+//    //二期新增
+//    mycell.showBtn.tag = section;
+//    [mycell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
+//    mycell.showBtn.selected = model.isShow;
+//    //if (model.haveSpecArray) {
+//        if (model.isShow) {
+//            mycell.dingzhiAry = model.specArray;
+//        }else{
+//            mycell.dingzhiAry = model.haveSpecArray;
+//        }
+//    //}
+//    //二期新增end
 
     //[backView addSubview:mycell];
     //return backView;
@@ -494,8 +495,8 @@
     self.customizedInfoMArr = [NSMutableArray array];
     _removeArray            = [NSMutableArray array];
 
-    self.specAry            = [NSMutableArray array];
-    self.miaomuzhiAry       = [NSMutableArray array];
+//    self.specAry            = [NSMutableArray array];
+//    self.miaomuzhiAry       = [NSMutableArray array];
  }
 
 - (void)didReceiveMemoryWarning {
