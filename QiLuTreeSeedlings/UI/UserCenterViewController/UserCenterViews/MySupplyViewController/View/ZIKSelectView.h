@@ -25,6 +25,7 @@
 @property (nonatomic, strong) id<ZIKSelectViewDelegate> delegate;
 @property (nonatomic, strong) id<ZIKSelectViewUidDelegate> uidDelegate;
 @property (nonatomic, assign) BOOL                  isshow;
+@property (nonatomic, copy)   NSString *type;
 
 - (id)initWithFrame:(CGRect)frame dataArray:(NSArray *)array;
 @end

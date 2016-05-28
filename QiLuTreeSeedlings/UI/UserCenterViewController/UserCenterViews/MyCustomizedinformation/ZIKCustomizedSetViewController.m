@@ -317,7 +317,7 @@
     else {
         [self.nameTextField resignFirstResponder];
         [HTTPCLIENT getMmAttributeWith:self.nameTextField.text WithType:@"2" Success:^(id responseObject) {
-            // NSLog(@"%@",responseObject);
+             NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"该苗木不存在"]) {
                 [ToastView showTopToast:@"该苗木不存在"];
                 [self requestProductType];
@@ -467,6 +467,7 @@
     if (!self.sideView) {
         self.sideView = [[ZIKSideView alloc] initWithFrame:CGRectMake(Width, 0, Width, Height)];
     }
+    self.sideView.selectView.type = @"2";
     self.sideView.pleaseSelectLabel.text = @"请选择苗木";
     self.sideView.selectView.uidDelegate = self;
     //    self.selectView = self.sideView.selectView;
@@ -572,6 +573,9 @@
 //    self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
 
     self.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
+    if (self.specificationAttributes.count == 0) {
+        [ToastView showTopToast:@"苗木属性为空"];
+    }
     if ([ZIKFunction xfunc_check_strEmpty:self.AreaProvince]) {
         [ToastView showTopToast:@"请选择供货地"];
         return;

@@ -10,6 +10,7 @@
 #import "ZIKSelectView.h"
 #import "ZIKSelectProductCategoryTableViewCell.h"
 #import "HttpClient.h"
+static NSString *mytype = nil;
 @interface ZIKSelectView ()
 
 @end
@@ -30,10 +31,16 @@
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         self.myTableView.delegate = self;
         self.myTableView.dataSource = self;
+        mytype = @"1";
         //self.myTableView.backgroundColor = [UIColor yellowColor];
         [self addSubview:self.myTableView];
     }
     return self;
+}
+
+-(void)setType:(NSString *)type {
+    _type = type;
+    mytype = type;
 }
 
 #pragma mark - UITabelViewDelegate
@@ -83,8 +90,7 @@
             if ([self.delegate respondsToSelector:@selector(didSelector:title:)]) {
             [self.delegate didSelector:cel.typeUid title:cel.textLabel.text];
         }
-
-        [HTTPCLIENT getProductWithTypeUid:cel.typeUid type:@"1" Success:^(id responseObject) {          
+         [HTTPCLIENT getProductWithTypeUid:cel.typeUid type:mytype Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue] == 1 ) {
                 NSArray *productArray = [responseObject[@"result"] objectForKey:@"productList"];
                 if (productArray.count == 0) {

@@ -515,6 +515,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     if (!self.sideView) {
         self.sideView = [[ZIKSideView alloc] initWithFrame:CGRectMake(Width, 0, Width, Height)];
     }
+    self.sideView.selectView.type = @"1";
     self.sideView.pleaseSelectLabel.text = @"请选择苗木";
     self.sideView.selectView.uidDelegate = self;
     //    self.selectView = self.sideView.selectView;
