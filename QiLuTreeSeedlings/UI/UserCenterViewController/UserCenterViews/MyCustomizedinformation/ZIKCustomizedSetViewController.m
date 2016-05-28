@@ -537,16 +537,40 @@
         return;
     }
 
+//    NSMutableArray *screenTijiaoAry=[NSMutableArray array];
+//    for (int i = 0; i < cellAry.count; i++) {
+//        TreeSpecificationsModel *model = cellAry[i];
+//        if (model.anwser.length>0) {
+//            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
+//                                 model.anwser,@"anwser"
+//                                 , nil];
+//            [screenTijiaoAry addObject:dic];
+//        }
+//    }
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
-    for (int i = 0; i < cellAry.count; i++) {
-        TreeSpecificationsModel *model = cellAry[i];
-        if (model.anwser.length>0) {
-            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-                                 model.anwser,@"anwser"
-                                 , nil];
-            [screenTijiaoAry addObject:dic];
+
+    BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
+    if (canrun) {
+        for (int i=0; i<screenTijiaoAry.count; i++) {
+            NSDictionary *dic=screenTijiaoAry[i];
+            CLog(@"%@---%@",dic[@"field"],dic[@"value"]);
         }
+    }else{
+        return;
     }
+
+    //    NSMutableArray *screenTijiaoAry = [NSMutableArray array];
+    //    for (int i = 0; i < _cellAry.count; i++) {
+    //        TreeSpecificationsModel *model = _cellAry[i];
+    //        if (model.anwser.length>0) {
+    //            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
+    //                                 model.anwser,@"anwser"
+    //                                 , nil];
+    //            [screenTijiaoAry addObject:dic];
+    //        }
+    //    }
+//    self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
+
     self.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
     if ([ZIKFunction xfunc_check_strEmpty:self.AreaProvince]) {
         [ToastView showTopToast:@"请选择供货地"];
