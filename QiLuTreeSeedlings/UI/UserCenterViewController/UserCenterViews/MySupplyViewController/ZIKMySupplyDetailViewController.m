@@ -33,10 +33,6 @@
 @property (nonatomic, strong) BigImageViewShowView *bigImageVShowV;
 
 //新增
-//@property (nonatomic,strong ) NSMutableArray *miaomuzhiAry;
-//@property (nonatomic        ) BOOL           isShow;
-//@property (nonatomic,strong ) NSArray        *specAry;
-
 @property (nonatomic, strong) NSString       *shareText;
 @property (nonatomic, strong) NSString       *shareTitle;
 @property (nonatomic, strong) UIImage        *shareImage;
@@ -54,7 +50,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configNav];
-    [self initData];
     [self initUI];
 }
 
@@ -76,7 +71,12 @@
         self.hotSellModel.area=ZIKSupplyModel.area;
         self.hotSellModel.title=ZIKSupplyModel.title;
         [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:ZIKSupplyModel.uid Success:^(id responseObject) {
-            if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+                [ToastView showTopToast:responseObject[@"msg"]];
+                return ;
+            }
+
+            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                 NSDictionary *dic = [responseObject objectForKey:@"result"];
                 SupplyDetialMode *model = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
                 model.supplybuyName = APPDELEGATE.userModel.name;
@@ -92,17 +92,6 @@
                 {
                     shareCell.hidden=NO;
                 }
-//                /*新增*/
-//                self.specAry = model.spec;
-//                for (int i=0; i<model.spec.count; i++) {
-//                    NSDictionary *dic = model.spec[i];
-//                    NSArray *aryyyyy = [dic objectForKey:@"value"];
-//                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
-//                        [_miaomuzhiAry addObject:dic];
-//                    }
-//                }
-//                /*新增end*/
-
 
                 BigImageViewShowView *bigImageVShowV = [[BigImageViewShowView  alloc]initWithImageAry:model.images];
                 self.bigImageVShowV = bigImageVShowV;
@@ -117,11 +106,6 @@
     }
     return self;
     
-}
-
-- (void)initData {
-//    self.isShow = NO;
-//    _miaomuzhiAry = [[NSMutableArray alloc] init];
 }
 
 - (void)initUI {
@@ -148,18 +132,7 @@
         return 330;
     }
     if (indexPath.section==1) {
-        return self.model.spec.count*30+40;//二期删除掉
-        //二期新增
-//        if (self.specAry) {
-//            if (_isShow) {
-//                return self.specAry.count*30+40+40;
-//            }else{
-//                return _miaomuzhiAry.count*30+40+40;
-//            }
-//
-//        }
-        //二期新增end
-
+        return self.model.spec.count*30+40;
     }
     if (indexPath.section==2) {
         if (self.nurseryDateArray.count==0) {
@@ -213,9 +186,6 @@
         UIView *view=[[UIView alloc]init];
         return view;
     }
-//    if (section == 1) {
-//        UILabel *hintLabel = [[UILabel alloc] init];
-//    }
     if (section==4) {
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 50)];
         [view setBackgroundColor:BGColor];
@@ -268,19 +238,8 @@
         }
         if (indexPath.section==1) {
             BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+40) andName:self.model.productName];
-            cell.ary=self.model.spec;//二期删除
+            cell.ary=self.model.spec;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
-//            //二期新增
-//            [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
-//            cell.showBtn.selected = self.isShow;
-//            if (self.specAry) {
-//                if (_isShow) {
-//                    cell.ary = self.specAry;
-//                }else{
-//                    cell.ary = self.miaomuzhiAry;
-//                }
-//            }
-//            //二期新增end
             return cell;
 
         }
@@ -344,15 +303,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-////以下方法为二期新增
-//-(void)showOtherMessageAction:(UIButton *)sender
-//{
-//    self.isShow = !self.isShow;
-//    //一个section刷新
-//    NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:1];
-//    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-//}
-
 #pragma mark - 我的供应详情-分享供应
 - (void)requestShareData {
     ShowActionV();
@@ -387,15 +337,6 @@
                                      shareImage:self.shareImage
                                 shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
                                        delegate:self];
-    //[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
-    //    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ] content:@"sharTestQQ分享文字" image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
-    //        if (response.responseCode == UMSResponseCodeSuccess) {
-    //            NSLog(@"分享成功！");
-    //        }
-    //    }];
-    //当分享消息类型为图文时，点击分享内容会跳转到预设的链接，设置方法如下
-    //NSString *urlString = @"https://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8";
-    //NSString *urlString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];
 
     [UMSocialData defaultData].extConfig.wechatSessionData.url = self.shareUrl;
 
