@@ -44,7 +44,7 @@
             [self.cellAry addObject:cell];
             [self addSubview:cell];
         }
-        CGRect frame=self.frame;
+        CGRect frame=self.frame; 
         frame.size.height=Y;
         self.frame=frame;
     }

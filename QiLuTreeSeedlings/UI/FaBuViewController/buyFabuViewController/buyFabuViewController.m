@@ -290,7 +290,7 @@
                     }
                 }
             }
-            GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, 88, kWidth, 0)];
+            GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, 89, kWidth, 0)];
             [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
             guigeView.delegate=self;
             self.guigeView=guigeView;
@@ -351,7 +351,7 @@
             }
         }
     }
-    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, 88, kWidth, 0)];
+    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, 89, kWidth, 0)];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
     guigeView.delegate=self;
     self.guigeView=guigeView;

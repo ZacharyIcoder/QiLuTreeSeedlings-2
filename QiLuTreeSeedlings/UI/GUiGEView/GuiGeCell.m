@@ -18,6 +18,9 @@
 @property (nonatomic,weak)UIButton *nowBtn;
 @end
 @implementation GuiGeCell
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 -(id)initWithFrame:(CGRect)frame andModel:(GuiGeModel *)model
 {
     self=[super initWithFrame:frame];
@@ -28,16 +31,18 @@
         //CGFloat  boundsW=kWidth;
         self.model=model;
         self.answerAry=[NSMutableArray array];
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, 80, 44)];
-        [nameLab setFont:[UIFont systemFontOfSize:15]];
+        
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, 90, 44)];
+        [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
         [nameLab setText:model.name];
         if ([model.type isEqualToString:@"文本"]) {
             Propers *propers=[model.propertyLists firstObject];
             if (propers.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 60, 44)];
-                [unitLab setFont:[UIFont systemFontOfSize:15]];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
+                [unitLab setFont:[UIFont systemFontOfSize:14]];
+                [unitLab setTextAlignment:NSTextAlignmentCenter];
                 [unitLab setTextColor:titleLabColor];
                 [self addSubview:unitLab];
                 unitLab.text=propers.unit;
@@ -46,23 +51,31 @@
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@",self.model.uid];
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@",self.model.uid];
                 [self.answerAry addObjectsFromArray:@[@"",@""]];
-                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-80/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-70/320.f*self.frame.size.width+10, 0, 60/320.f*self.frame.size.width, 44)];
                  [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:minTextField];
                 [self addSubview:minTextField];
-                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-7.5, 22, 15, 0.5)];
+                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-7.5+10, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [self addSubview:lineV1];
-                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width+10, 0, 60/320.f*self.frame.size.width, 44)];
                 [maxTextField setFont:[UIFont systemFontOfSize:14]];
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
                 [self addSubview:maxTextField];
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:maxTextField];
                 self.maxTextField=maxTextField;
                 if (propers.number) {
                     if ([propers.numberType isEqualToString:@"float"]) {
@@ -78,11 +91,15 @@
             {
                 [self.answerAry addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
-                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*self.frame.size.width, 0, 200/320.f*self.frame.size.width, 44)];
+                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(110/320.f*self.frame.size.width, 0, 200/320.f*self.frame.size.width, 44)];
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:oneTextField];
                 self.oneTextField=oneTextField;
                 [self addSubview:oneTextField];
                 if ([propers.numberType isEqualToString:@"float"]) {
@@ -124,10 +141,11 @@
         {
             [self.answerAry addObjectsFromArray:@[@""]];
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
-            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 10, 130/320.f*self.frame.size.width, 30)];
+            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 7, 150/320.f*self.frame.size.width, 30)];
+            [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [pickBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
             [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
@@ -140,6 +158,10 @@
                 [dataxxAry addObject:propers.value];
             }
             [pickerView resetPickerData:dataxxAry];
+            if (model.main) {
+                [pickerView.delegate selectNum:0];
+               [pickerView.delegate selectInfo:[dataxxAry firstObject]];
+            }
         }//单选结合结束
         
         
@@ -159,15 +181,16 @@
         self.model=model;
         self.answerAry=[NSMutableArray array];
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 44)];
-        [nameLab setFont:[UIFont systemFontOfSize:15]];
+        [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
         [nameLab setText:model.name];
         if ([model.type isEqualToString:@"文本"]) {
             Propers *propers=[model.propertyLists firstObject];
             if (propers.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 60, 44)];
-                [unitLab setFont:[UIFont systemFontOfSize:15]];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                [unitLab setTextAlignment:NSTextAlignmentCenter];
+                [unitLab setFont:[UIFont systemFontOfSize:14]];
                 [unitLab setTextColor:titleLabColor];
                 [self addSubview:unitLab];
                 unitLab.text=propers.unit;
@@ -176,22 +199,30 @@
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@",self.model.uid];
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@",self.model.uid];
                 [self.answerAry addObjectsFromArray:@[@"",@""]];
-                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2-80/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2-70/320.f*boundsW+10, 0, 60/320.f*boundsW, 44)];
                  [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
                  minTextField.textAlignment = NSTextAlignmentRight;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:minTextField];
                 [self addSubview:minTextField];
-                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(boundsW/2-7.5, 22, 15, 0.5)];
+                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(boundsW/2-7.5+10, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [self addSubview:lineV1];
-                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2+10/320.f*boundsW, 0, 70/320.f*boundsW, 44)];
+                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(boundsW/2+10/320.f*boundsW+10, 0, 60/320.f*boundsW, 44)];
                  [maxTextField setFont:[UIFont systemFontOfSize:14]];
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:maxTextField];
                 [self addSubview:maxTextField];
                 self.maxTextField=maxTextField;
                 if (model.values.count>0) {
@@ -213,12 +244,16 @@
             {
                 [self.answerAry addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@",self.model.uid];
-                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
+                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(110/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
                 self.oneTextField=oneTextField;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:oneTextField];
                 [self addSubview:oneTextField];
                 if (model.values.count>0) {
                     self.answerAry =[NSMutableArray arrayWithArray:model.values];
@@ -273,13 +308,13 @@
         {
             [self.answerAry addObjectsFromArray:@[@""]];
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
-            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 10, 130/320.f*kWidth, 30)];
+            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 7, 150/320.f*kWidth, 30)];
+            [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [pickBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
             [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
-            [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             if (self.model.values.count>0) {
                 self.answerAry =[NSMutableArray arrayWithObject:[self.model.values firstObject]];
                 [pickBtn setTitle:[self.model.values firstObject] forState:UIControlStateNormal];
@@ -302,7 +337,6 @@
                         self.erjiView=nil;
                     }
                     if (self.model.selectProper.relation.length>0) {
-                        //            self.model.sonModel=procprs.guanlianModel;
                         
                         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 44, kWidth, 44) andValueModel:self.model.selectProper.guanlianModel];
                         self.erjiView=cell;
@@ -313,15 +347,16 @@
                         [self addSubview:view];
                         self.erjiView=view;
                         if (self.model.selectProper.unit) {
-                            UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 60, 44)];
-                            [unitLab setFont:[UIFont systemFontOfSize:15]];
+                            UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
+                            [unitLab setTextAlignment:NSTextAlignmentCenter];
+                            [unitLab setFont:[UIFont systemFontOfSize:14]];
                             [unitLab setTextColor:titleLabColor];
                             [view addSubview:unitLab];
                             unitLab.text=self.model.selectProper.unit;
                         }
                         if (self.model.selectProper.range) {
                             [self.answerAry2 addObjectsFromArray:@[@"",@""]];
-                            UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-80/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                            UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-70/320.f*kWidth+10, 0, 60/320.f*kWidth, 44)];
                              [minTextField setFont:[UIFont systemFontOfSize:14]];
                              minTextField.placeholder=@"最小值";
                             minTextField.textAlignment = NSTextAlignmentRight;
@@ -331,15 +366,23 @@
                             minTextField.tag=121;
                             minTextField.textAlignment = NSTextAlignmentRight;
                             minTextField.delegate=self;
+                            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                                     selector:@selector(textFieldChanged:)
+                                                                         name:UITextFieldTextDidChangeNotification
+                                                                       object:minTextField];
                             [view  addSubview:minTextField];
-                            UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(kWidth/2-7.5, 22, 15, 0.5)];
+                            UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(kWidth/2-7.5+10, 22, 15, 0.5)];
                             [lineV1 setBackgroundColor:[UIColor blackColor]];
                             [view addSubview:lineV1];
-                            UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2+10/320.f*kWidth, 0, 70/320.f*kWidth, 44)];
+                            UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2+10/320.f*kWidth+10, 0, 60/320.f*kWidth, 44)];
                             [maxTextField setFont:[UIFont systemFontOfSize:14]];
                             maxTextField.placeholder=@"最大值";
                             maxTextField.delegate=self;
                             maxTextField.tag=122;
+                            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                                     selector:@selector(textFieldChanged:)
+                                                                         name:UITextFieldTextDidChangeNotification
+                                                                       object:maxTextField];
                             [view addSubview:maxTextField];
                             self.maxTextField=maxTextField;
                             if (self.model.values.count==3) {
@@ -361,12 +404,16 @@
                         {
                             [self.answerAry2 addObjectsFromArray:@[@""]];
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@_%@",[self.answerAry firstObject],self.model.uid];
-                            UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(95/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
+                            UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(110/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
                             [oneTextField setFont:[UIFont systemFontOfSize:14]];
                             oneTextField.tag=123;
                             oneTextField.delegate=self;
                             self.oneTextField=oneTextField;
                             [view addSubview:oneTextField];
+                            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                                     selector:@selector(textFieldChanged:)
+                                                                         name:UITextFieldTextDidChangeNotification
+                                                                       object:oneTextField];
                             if ([self.model.selectProper.numberType isEqualToString:@"float"]) {
                                 self.model.keyStr2=[NSString stringWithFormat:@"spec_number_%@_%@",[self.answerAry firstObject],self.model.uid];
                                 oneTextField.keyboardType=UIKeyboardTypeDecimalPad;
@@ -477,10 +524,7 @@
     self.model.sonModel=nil;
     self.model.selectProper=nil;
     if (procprs.operation) {
-         self.model.selectProper=procprs;
-        CGRect frame=self.frame;
-        frame.size.height=88;
-        self.frame=frame;
+
         if(self.erjiView)
         {
             [self.erjiView removeFromSuperview];
@@ -489,24 +533,25 @@
         if (procprs.relation.length>0) {
 //            self.model.sonModel=procprs.guanlianModel;
            
-         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 44, self.frame.size.width, 44) andModel:procprs.guanlianModel];
+         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 45, self.frame.size.width, 44) andModel:procprs.guanlianModel];
              self.erjiView=cell;
             [self addSubview:cell];
           
         }else{
-            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 44, self.frame.size.width, 44)];
+            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 45, self.frame.size.width, 44)];
             [self addSubview:view];
             self.erjiView=view;
             if (procprs.unit) {
-                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 60, 44)];
-                [unitLab setFont:[UIFont systemFontOfSize:15]];
+                UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
+                [unitLab setTextAlignment:NSTextAlignmentCenter];
+                [unitLab setFont:[UIFont systemFontOfSize:14]];
                 [unitLab setTextColor:titleLabColor];
                 [view addSubview:unitLab];
                 unitLab.text=procprs.unit;
             }
             if (procprs.range) {
                 [self.answerAry2 addObjectsFromArray:@[@"",@""]];
-                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-80/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-70/320.f*self.frame.size.width+10, 0, 60/320.f*self.frame.size.width, 44)];
                  [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -515,15 +560,24 @@
                 minTextField.tag=121;
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:minTextField];
+
                 [view  addSubview:minTextField];
-                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-7.5, 22, 15, 0.5)];
+                UIView *lineV1=[[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-7.5+10, 22, 15, 0.5)];
                 [lineV1 setBackgroundColor:[UIColor blackColor]];
                 [view addSubview:lineV1];
-                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width, 0, 70/320.f*self.frame.size.width, 44)];
+                UITextField *maxTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2+10/320.f*self.frame.size.width+10, 0, 60/320.f*self.frame.size.width, 44)];
                 [maxTextField setFont:[UIFont systemFontOfSize:14]];
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=122;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:maxTextField];
                 [view addSubview:maxTextField];
                 self.maxTextField=maxTextField;
                 if (procprs.number) {
@@ -540,11 +594,15 @@
             {
                 [self.answerAry2 addObjectsFromArray:@[@""]];
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_like_%@_%@",[self.answerAry firstObject],self.model.uid];
-                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(80/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
+                UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(90/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=123;
                 oneTextField.delegate=self;
                 self.oneTextField=oneTextField;
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(textFieldChanged:)
+                                                             name:UITextFieldTextDidChangeNotification
+                                                           object:oneTextField];
                 [view addSubview:oneTextField];
                 if ([procprs.numberType isEqualToString:@"float"]) {
                     self.model.keyStr2=[NSString stringWithFormat:@"spec_number_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -557,6 +615,11 @@
             }
 
       }
+        
+        self.model.selectProper=procprs;
+        CGRect frame=self.frame;
+        frame.size.height=CGRectGetMaxY(self.erjiView.frame);
+        self.frame=frame;
     }else
     {
         if(self.erjiView)
@@ -579,6 +642,47 @@
      [self.answerAry replaceObjectAtIndex:0 withObject:select];
     self.model.answer=select;
     [self.nowBtn setTitle:select forState:UIControlStateNormal];
+}
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    int kssss;
+    if (textField.keyboardType==UIKeyboardTypeDecimalPad||textField.keyboardType==UIKeyboardTypeNumberPad) {
+        kssss=8;
+    }else{
+        kssss=10;
+    }
+    
+    NSString *toBeString = textField.text;
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                 [ToastView showTopToast:[NSString stringWithFormat:@"最多%d个字符",kssss]];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showTopToast:[NSString stringWithFormat:@"最多%d个字符",kssss]];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.
