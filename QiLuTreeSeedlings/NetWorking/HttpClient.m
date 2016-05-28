@@ -2377,7 +2377,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
-#warning pageNumber pageSize
+//#warning pageNumber pageSize
     parmers[@"pageNumber"]       = pageSize;
     parmers[@"pageSize"]         = @"15";
     parmers[@"productUid"]       = productUid;

@@ -8,29 +8,37 @@
 
 #import "ZIKMySupplyVC.h"
 
+/*****工具******/
 #import "HttpClient.h"
 #import "YYModel.h"//类型转换
 #import "MJRefresh.h"//MJ刷新
+/*****工具******/
 
+/*****Model******/
 #import "ZIKSupplyModel.h"//供应model
+/*****Model******/
 
+/*****View******/
 #import "ZIKMySupplyCellBackButton.h"//已退回状态，查看退回原因button
 #import "ZIKMySupplyTableViewCell.h"//供应cell
 #import "ZIKBottomDeleteTableViewCell.h"//底部删除view,在已过期状态并且可编辑状态下
 #import "ZIKMySupplyBottomRefreshTableViewCell.h"//底部刷新view 在已通过并且可编辑状态下
 #import "BuyMessageAlertView.h"//提示界面
+/*****View******/
 
+/*****Controller******/
 #import "ZIKSupplyPublishVC.h"//发布供应
 #import "ZIKMySupplyDetailViewController.h"//供应详情
 #import "NuseryDetialViewController.h"//新增苗圃信息
+/*****Controller******/
 
-
-
+/*****宏定义******/
 #define NAV_HEIGHT 64 //navgationview 高度
 #define MENUVIEW_HEIGHT 43  //button 选择菜单高度
 #define CELL_FOOTERVIEW_HEIGH 8 //cell的section footer
 #define REFRESH_CELL_HEIGH 50 //底部刷新view视图高度
 #define SUPPLY_STATE_BUTTON_FONT [UIFont systemFontOfSize:14.0f] //供应状态按钮字体大小
+/*****宏定义******/
 
 typedef NS_ENUM(NSInteger, SupplyState) {
     SupplyStateAll       = 0,//全部
@@ -51,19 +59,18 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 @implementation ZIKMySupplyVC
 {
 
-    UIView *emptyUI;
+    @private
+    UIView *_emptyUI;
     UIView *_lineView;//按钮下跟随滑动的lineview
     UIButton *_cuttentButton;  //指向目前状态（四种状态下）的按钮
     ZIKBottomDeleteTableViewCell *_bottomcell; //过期编辑状态下底部删除view
     UILongPressGestureRecognizer *_tapDeleteGR;//长按手势
     ZIKMySupplyBottomRefreshTableViewCell *_refreshCell;//已通过编辑状态下底部刷新view
 
-    //保存选中行数据(已通过状态下)
-    NSMutableArray *_refreshMarr;
+    NSMutableArray *_refreshMarr;   //保存选中行数据(已通过状态下)
     NSArray *_throughSelectIndexArr;//已通过编辑状态下,选中的刷新index
 
-    // 保存选中行数据（过期状态下）
-    NSMutableArray *_removeArray;
+    NSMutableArray *_removeArray;    // 保存选中行数据（过期状态下）
     NSArray *_deleteIndexArr;//过期编辑状态下,选中的删除index
 }
 
@@ -254,12 +261,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     buyMessageAlertV.rightBtn.tag = button.tag;
     [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction:) forControlEvents:UIControlEventTouchUpInside];
 
-//    ZIKSupplyModel *model = self.supplyInfoMArr[button.tag];
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退回原因" message:model.reason delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即编辑", nil];
-//    [alert show];
-//    alert.tag = 300 + button.tag;
-//    alert.delegate = self;
-
 }
 
 - (void)miaopudetialAction:(UIButton *)btn {
@@ -319,7 +320,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
                 self.menuView.hidden = YES;
                 self.supplyTableView.hidden = YES;
                 [self createEmptyUI];
-                emptyUI.hidden = NO;
+                _emptyUI.hidden = NO;
             }
             if (self.supplyInfoMArr.count > 0) {
                 [self.supplyInfoMArr removeAllObjects];
@@ -329,7 +330,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             return ;
         }
         else if (array.count == 0 && self.page > 1) {
-            emptyUI.hidden = YES;
+            _emptyUI.hidden = YES;
             self.menuView.hidden = NO;
             self.supplyTableView.hidden = NO;
 
@@ -340,7 +341,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
             return;
         }
         else {
-            emptyUI.hidden = YES;
+            _emptyUI.hidden = YES;
             self.menuView.hidden = NO;
             self.supplyTableView.hidden = NO;
 
@@ -749,30 +750,30 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 
 - (void)createEmptyUI {
-    if (!emptyUI) {
-        emptyUI  = [[UIView alloc] init];
-        emptyUI.frame = CGRectMake(0, 64, Width, 260);
-        emptyUI.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:emptyUI];
+    if (!_emptyUI) {
+        _emptyUI  = [[UIView alloc] init];
+        _emptyUI.frame = CGRectMake(0, 64, Width, 260);
+        _emptyUI.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_emptyUI];
 
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.frame = CGRectMake(Width/2-50, 25, 100, 100);
         imageView.image = [UIImage imageNamed:@"我的供应（空）"];
-        [emptyUI addSubview:imageView];
+        [_emptyUI addSubview:imageView];
 
         UILabel *label1 = [[UILabel alloc] init];
         label1.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame)+10, Width, 25);
         label1.text = @"您还没有发布任何的供应信息";
         label1.textAlignment = NSTextAlignmentCenter;
         label1.textColor = detialLabColor;
-        [emptyUI addSubview:label1];
+        [_emptyUI addSubview:label1];
 
         UILabel *label2 = [[UILabel alloc] init];
         label2.frame = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
         label2.text = @"点击按钮发布";
         label2.textColor = detialLabColor;
         label2.textAlignment = NSTextAlignmentCenter;
-        [emptyUI addSubview:label2];
+        [_emptyUI addSubview:label2];
 
         UIButton *button = [[UIButton alloc] init];
         button.frame = CGRectMake(Width/2-40, CGRectGetMaxY(label2.frame)+10, 80, 30);
@@ -784,7 +785,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [button.titleLabel setFont:[UIFont systemFontOfSize:14]];
 
         [button setTitle:@"发布供应" forState:UIControlStateNormal];
-        [emptyUI addSubview:button];
+        [_emptyUI addSubview:button];
         [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
         
     }

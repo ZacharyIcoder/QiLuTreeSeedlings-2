@@ -56,7 +56,7 @@
 
     // NSMutableDictionary *infor = [[XtomManager sharedManager] myinitInfor];
     //NSString * updateURL = [infor objectForKey:@"mall_server_ip"];
-#warning 注释
+//#warning 注释
     NSString * updateURL = AFBaseURLString;
     // NSString * updateURL = RequestURL;
     updateURL = [updateURL stringByAppendingString:@"apimember/pay/alipay/notify"];

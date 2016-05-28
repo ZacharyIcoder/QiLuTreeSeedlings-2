@@ -86,6 +86,7 @@
     self.showBtn.frame=frame;
 
 }
+
 -(void)MackViewWithFrame:(CGRect)frame andDic:(NSDictionary *)dic
 {
     
@@ -128,6 +129,7 @@
     [view addSubview:valueLab];
     [self addSubview:view];
 }
+
 - (void)awakeFromNib {
     // Initialization code
 }

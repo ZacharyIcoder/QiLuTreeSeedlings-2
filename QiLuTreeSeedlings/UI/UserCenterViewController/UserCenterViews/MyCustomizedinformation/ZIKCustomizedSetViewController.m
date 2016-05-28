@@ -10,20 +10,22 @@
 #import "ZIKSideView.h"
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
-#define kMaxLength 20
+
 #import "HttpClient.h"
 #import "StringAttributeHelper.h"
 
 #import "GuiGeView.h"
 #import "YLDPickLocationView.h"
+
+#define kMaxLength 20//文本最大输入长度
 @interface ZIKCustomizedSetViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate,GuiGeViewDelegate,YLDPickLocationDelegate>
 {
     UIView *priceView;
     UILabel *priceLabel;
 }
-@property (nonatomic,strong ) UIScrollView       *backScrollView;
+@property (nonatomic, strong) UIScrollView       *backScrollView;
 @property (nonatomic, strong) UITextField        *nameTextField;
-@property (nonatomic,strong ) UIButton           *nameBtn;
+@property (nonatomic, strong) UIButton           *nameBtn;
 @property (nonatomic, strong) NSArray            *dataAry;
 @property (nonatomic, strong) NSMutableArray     *productTypeDataMArray;
 @property (nonatomic, strong) ZIKSideView        *sideView;
@@ -37,14 +39,14 @@
 
 
 @property (nonatomic, strong) NSMutableArray *guige1Ary;
-@property (nonatomic,strong)GuiGeView *guigeView;
-@property (nonatomic,strong) UIButton *areaBtn;
-@property (nonatomic,copy) NSString *AreaProvince;
-@property (nonatomic,copy) NSString *AreaCity;
-@property (nonatomic,copy) NSString *AreaTown;
-@property (nonatomic,copy) NSString *AreaCounty;
+@property (nonatomic, strong) GuiGeView      *guigeView;
+@property (nonatomic, strong) UIButton       *areaBtn;
+@property (nonatomic, copy  ) NSString       *AreaProvince;
+@property (nonatomic, copy  ) NSString       *AreaCity;
+@property (nonatomic, copy  ) NSString       *AreaTown;
+@property (nonatomic, copy  ) NSString       *AreaCounty;
 
-@property (nonatomic, copy) NSString *areaName;
+@property (nonatomic, copy  ) NSString       *areaName;
 
 
 
@@ -605,13 +607,6 @@
         self.AreaCity=nil;
 
     }
-//    if (xian.code) {
-//        [namestr appendString:xian.cityName];
-//        self.AreaCounty=xian.code;
-//    }else
-//    {
-//        self.AreaCounty=nil;
-//    }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
