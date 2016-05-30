@@ -313,7 +313,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
     BuyOtherInfoTableViewCell *mycell = [[BuyOtherInfoTableViewCell alloc] init];
-    mycell.frame = CGRectMake(0, 0, kWidth, model.specArray.count*30+20);
+    mycell.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+20);
     mycell.backgroundColor = [UIColor whiteColor];
     mycell.dingzhiAry = model.spec;
     mycell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -330,7 +330,7 @@
 {
     if (self.customizedInfoMArr.count > 0) {
         ZIKCustomizedModel *model = self.customizedInfoMArr[sender.tag];
-        model.isShow = !model.isShow;
+//        model.isShow = !model.isShow;
         //一个section刷新
         NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:sender.tag];
         [self.myCustomizedInfoTableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];

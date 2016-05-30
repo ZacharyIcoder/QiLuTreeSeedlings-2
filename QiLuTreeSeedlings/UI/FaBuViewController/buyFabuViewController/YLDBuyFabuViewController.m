@@ -383,7 +383,10 @@
         str = [str stringByAppendingString:[NSString stringWithFormat:@"%@,",[citydao getCityNameByCityUid:cityCode]]];
     }];
     [citydao closeDataBase];
-    
+    if ([str containsString:@","] && ![str isEqualToString:@""]) {
+        str =  [str substringToIndex:str.length-1];
+    }
+
     [self.areaBtn setTitle:str forState:UIControlStateNormal];
 }
 - (NSArray *)citys {

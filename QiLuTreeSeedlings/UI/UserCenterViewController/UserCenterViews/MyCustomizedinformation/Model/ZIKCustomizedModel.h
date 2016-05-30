@@ -16,7 +16,7 @@
 @property (nonatomic, copy  ) NSArray  *spec;
 @property (nonatomic, assign) BOOL     isSelect;
 //新增
-@property (nonatomic, assign) BOOL     isShow;
-@property (nonatomic, strong) NSArray  *haveSpecArray;
-@property (nonatomic, strong) NSArray  *specArray;
+//@property (nonatomic, assign) BOOL     isShow;
+//@property (nonatomic, strong) NSArray  *haveSpecArray;
+//@property (nonatomic, strong) NSArray  *specArray;
 @end

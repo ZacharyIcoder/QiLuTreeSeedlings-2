@@ -355,6 +355,14 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     if (button.selected) {
         return;
     }
+
+    [self.guige1Ary removeAllObjects];
+
+    if (self.guigeView) {
+        [self.guigeView removeFromSuperview];
+        self.guigeView = nil;
+    }
+
     //NSLog(@"%@",self.nameTextField.text);
     if (self.nameTextField.text == nil || self.nameTextField.text.length == 0) {
         [ToastView showToast:@"请输入苗木名称"
