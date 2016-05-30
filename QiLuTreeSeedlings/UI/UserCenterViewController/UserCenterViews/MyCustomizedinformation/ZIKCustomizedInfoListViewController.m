@@ -329,7 +329,7 @@
 -(void)showOtherMessageAction:(UIButton *)sender
 {
     if (self.customizedInfoMArr.count > 0) {
-        ZIKCustomizedModel *model = self.customizedInfoMArr[sender.tag];
+//        ZIKCustomizedModel *model = self.customizedInfoMArr[sender.tag];
 //        model.isShow = !model.isShow;
         //一个section刷新
         NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:sender.tag];
@@ -477,12 +477,12 @@
                             [blockSelf.customizedInfoMArr removeObject:model];
                         }
                     }];
-                    [blockSelf.myCustomizedInfoTableView reloadData];
-                     if (blockSelf.customizedInfoMArr.count == 0) {
+//                    [blockSelf.myCustomizedInfoTableView reloadData];
+//                     if (blockSelf.customizedInfoMArr.count == 0) {
                         [self requestData];
                         _bottomcell.hidden = YES;
                         self.myCustomizedInfoTableView.editing = NO;
-                    }
+                    //}
                     if (_removeArray.count > 0) {
                         [_removeArray removeAllObjects];
                     }
