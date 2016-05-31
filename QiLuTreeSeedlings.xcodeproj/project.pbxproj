@@ -415,6 +415,7 @@
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
 		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
+		FCCEA46E1CFD33C7005D21F5 /* 已删除-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA46D1CFD33C7005D21F5 /* 已删除-2.png */; };
 		FCCFA7101CF2E12400CC1313 /* ZIKSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCFA7001CF2E12400CC1313 /* ZIKSelectViewController.m */; };
 		FCCFA7111CF2E12400CC1313 /* ZIKSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCFA7011CF2E12400CC1313 /* ZIKSelectViewController.xib */; };
 		FCCFA7121CF2E12400CC1313 /* ZIKCityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCFA7031CF2E12400CC1313 /* ZIKCityListViewController.m */; };
@@ -1219,6 +1220,7 @@
 		FCB8A4771CCF0F0C005925E1 /* MyNuserListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNuserListTableViewCell.h; sourceTree = "<group>"; };
 		FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuserListTableViewCell.m; sourceTree = "<group>"; };
 		FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNuserListTableViewCell.xib; sourceTree = "<group>"; };
+		FCCEA46D1CFD33C7005D21F5 /* 已删除-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已删除-2.png"; sourceTree = "<group>"; };
 		FCCFA6FF1CF2E12400CC1313 /* ZIKSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSelectViewController.h; sourceTree = "<group>"; };
 		FCCFA7001CF2E12400CC1313 /* ZIKSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSelectViewController.m; sourceTree = "<group>"; };
 		FCCFA7011CF2E12400CC1313 /* ZIKSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSelectViewController.xib; sourceTree = "<group>"; };
@@ -1663,6 +1665,7 @@
 				EAAFCFB41CBE265100EB894F /* 2miaomu1334.png */,
 				EA12E26C1CBB6BEA009D8A8A /* registeredSuccess@2x.png */,
 				EA12E26A1CBB458B009D8A8A /* logV@2x.png */,
+				FCCEA46D1CFD33C7005D21F5 /* 已删除-2.png */,
 				EA1CF3FA1CACC87A00AF2D82 /* myBuyNull@2x.png */,
 				EA6B31A51CAB99340068CCB5 /* moreRow@2x.png */,
 				EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */,
@@ -3460,6 +3463,7 @@
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
 				EA696FB01CDD7A6C001F037E /* MyMessage@2x.png in Resources */,
 				FC6FED8A1CAD103F000E2CA5 /* 银联支付.png in Resources */,
+				FCCEA46E1CFD33C7005D21F5 /* 已删除-2.png in Resources */,
 				EAF051031C92A2E600F435A9 /* myMiaoPu@2x.png in Resources */,
 				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
 				FC6FED681CACF833000E2CA5 /* 编辑修改.png in Resources */,

@@ -252,6 +252,9 @@
 }
 
 - (void)deleteCell {
+    if (self.customizedInfoMArr.count == 0) {
+        return;
+    }
     if (!self.myCustomizedInfoTableView.editing)
     {
         self.myCustomizedInfoTableView.editing = YES;
@@ -482,6 +485,8 @@
                         [self requestData];
                         _bottomcell.hidden = YES;
                         self.myCustomizedInfoTableView.editing = NO;
+                    self.myCustomizedInfoTableView.frame = CGRectMake(0, 64+HINT_VIEW_HEIGHT, Width, Height-64-HINT_VIEW_HEIGHT);
+
                     //}
                     if (_removeArray.count > 0) {
                         [_removeArray removeAllObjects];

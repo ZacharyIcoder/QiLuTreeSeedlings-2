@@ -187,16 +187,16 @@
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
     if (self.model) {
-        self.nameTextField.text=self.model.productName;
-        self.nameBtn.selected=YES;
+        self.nameTextField.text = self.model.productName;
+        self.nameBtn.selected = YES;
         [self getEditingMessage];
     }
 
 }
 
 - (void)cityBtnAction:(UIButton *)button {
-    YLDPickLocationView *pickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
-    pickerView.delegate=self;
+    YLDPickLocationView *pickerView = [[YLDPickLocationView alloc ]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
+    pickerView.delegate = self;
     [pickerView showPickView];
     if (self.nameTextField) {
         [self.nameTextField resignFirstResponder];
@@ -209,12 +209,12 @@
     [HTTPCLIENT getMyCustomsetEditingWithUid:self.model.customsetUid Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic = [[responseObject objectForKey:@"result"] objectForKey:@"ProductSpec"];
-            self.productUid = [dic objectForKey:@"productUid"];
-            NSArray *ary = [dic objectForKey:@"bean"];
-            self.dataAry = ary;
+            self.productUid   = [dic objectForKey:@"productUid"];
+            NSArray *ary      = [dic objectForKey:@"bean"];
+            self.dataAry      = ary;
             self.AreaProvince = [dic objectForKey:@"usedProvince"];
-            self.AreaCity = [dic objectForKey:@"usedCity"];
-            self.areaName  = [dic objectForKey:@"areaName"];
+            self.AreaCity     = [dic objectForKey:@"usedCity"];
+            self.areaName     = [dic objectForKey:@"areaName"];
             if (![ZIKFunction xfunc_check_strEmpty:self.areaName]) {
                 [self.areaBtn setTitle:self.areaName forState:UIControlStateNormal];
             }
@@ -250,7 +250,7 @@
                 for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
                     Propers *proper=guigeModel1.propertyLists[k];
                     if (proper.relation == guigeModel.uid) {
-                        proper.guanlianModel=guigeModel;
+                        proper.guanlianModel = guigeModel;
                     }
                 }
             }
@@ -354,10 +354,10 @@
 {
     CGFloat Y = 44+8+44+8+44;
 
-    GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
+    GuiGeView *guigeView = [[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
-    guigeView.delegate=self;
-    self.guigeView=guigeView;
+    guigeView.delegate = self;
+    self.guigeView = guigeView;
     guigeView.showBtn.hidden = YES;
     [self.backScrollView addSubview:guigeView];
 
