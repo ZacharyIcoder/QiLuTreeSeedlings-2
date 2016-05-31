@@ -85,7 +85,6 @@
 		EA5252F41CE179E40004639C /* CityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252F21CE179E40004639C /* CityTableViewCell.m */; };
 		EA5252F51CE179E40004639C /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5252F31CE179E40004639C /* CityTableViewCell.xib */; };
 		EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */; };
-		EA52ACE31CB4BE7900CE2210 /* MyIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */; };
 		EA5444BB1CC72AAD00971A50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5444BA1CC72AAD00971A50 /* AudioToolbox.framework */; };
 		EA5444BE1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444BD1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m */; };
 		EA5444C01CC76AEE00971A50 /* qiugouxiangqingye.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5444BF1CC76AEE00971A50 /* qiugouxiangqingye.png */; };
@@ -107,12 +106,6 @@
 		EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5AAC4E1C8D4A0100660FC9 /* BuyDetialInfoViewController.m */; };
 		EA5B26EB1C7D6E7100863F9D /* HotSellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26EA1C7D6E7100863F9D /* HotSellView.m */; };
 		EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */; };
-		EA5DF9421CB5F70F00BE0E8C /* IntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */; };
-		EA5DF9451CB6399300BE0E8C /* 我的积分-兑换.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF9431CB6399300BE0E8C /* 我的积分-兑换.png */; };
-		EA5DF9461CB6399300BE0E8C /* 我的积分-积分增加.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF9441CB6399300BE0E8C /* 我的积分-积分增加.png */; };
-		EA5DF94C1CB6399A00BE0E8C /* ZIKIntegraModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */; };
-		EA5DF94D1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */; };
-		EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */; };
 		EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
@@ -416,6 +409,20 @@
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
 		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
 		FCCEA46E1CFD33C7005D21F5 /* 已删除-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA46D1CFD33C7005D21F5 /* 已删除-2.png */; };
+		FCCEA4901CFD5FC2005D21F5 /* MyIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCEA4801CFD5FC2005D21F5 /* MyIntegralViewController.m */; };
+		FCCEA4911CFD5FC2005D21F5 /* 我的积分-兑换.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA4821CFD5FC2005D21F5 /* 我的积分-兑换.png */; };
+		FCCEA4921CFD5FC2005D21F5 /* 我的积分-积分增加.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA4831CFD5FC2005D21F5 /* 我的积分-积分增加.png */; };
+		FCCEA4931CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA4841CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png */; };
+		FCCEA4941CFD5FC2005D21F5 /* 积分兑换-背景框.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA4851CFD5FC2005D21F5 /* 积分兑换-背景框.png */; };
+		FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA4861CFD5FC2005D21F5 /* 积分兑换banner.png */; };
+		FCCEA4961CFD5FC2005D21F5 /* ZIKIntegraModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCEA4891CFD5FC2005D21F5 /* ZIKIntegraModel.m */; };
+		FCCEA4971CFD5FC2005D21F5 /* IntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCEA48C1CFD5FC2005D21F5 /* IntegraTableViewCell.m */; };
+		FCCEA4981CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCEA48E1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.m */; };
+		FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA48F1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib */; };
+		FCCEA49D1CFD5FE1005D21F5 /* ZIKExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCEA49B1CFD5FE1005D21F5 /* ZIKExchangeViewController.m */; };
+		FCCEA49E1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA49C1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib */; };
+		FCCEA4A21CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCEA4A01CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.m */; };
+		FCCEA4A31CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA4A11CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.xib */; };
 		FCCFA7101CF2E12400CC1313 /* ZIKSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCFA7001CF2E12400CC1313 /* ZIKSelectViewController.m */; };
 		FCCFA7111CF2E12400CC1313 /* ZIKSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCFA7011CF2E12400CC1313 /* ZIKSelectViewController.xib */; };
 		FCCFA7121CF2E12400CC1313 /* ZIKCityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCFA7031CF2E12400CC1313 /* ZIKCityListViewController.m */; };
@@ -616,8 +623,6 @@
 		EA5252F31CE179E40004639C /* CityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		EA52ACDA1CB4958900CE2210 /* FabutiaojiaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FabutiaojiaCell.h; sourceTree = "<group>"; };
 		EA52ACDB1CB4958900CE2210 /* FabutiaojiaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FabutiaojiaCell.m; sourceTree = "<group>"; };
-		EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIntegralViewController.h; sourceTree = "<group>"; };
-		EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIntegralViewController.m; sourceTree = "<group>"; };
 		EA5444BA1CC72AAD00971A50 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EA5444BC1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ZIKEnlargeTouchArea.h"; sourceTree = "<group>"; };
 		EA5444BD1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ZIKEnlargeTouchArea.m"; sourceTree = "<group>"; };
@@ -643,15 +648,6 @@
 		EA5B26EA1C7D6E7100863F9D /* HotSellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellView.m; sourceTree = "<group>"; };
 		EA5B26EC1C7D6E8E00863F9D /* HotSellViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSellViewCell.h; sourceTree = "<group>"; };
 		EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellViewCell.m; sourceTree = "<group>"; };
-		EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegraTableViewCell.h; sourceTree = "<group>"; };
-		EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegraTableViewCell.m; sourceTree = "<group>"; };
-		EA5DF9431CB6399300BE0E8C /* 我的积分-兑换.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的积分-兑换.png"; sourceTree = "<group>"; };
-		EA5DF9441CB6399300BE0E8C /* 我的积分-积分增加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的积分-积分增加.png"; sourceTree = "<group>"; };
-		EA5DF9471CB6399A00BE0E8C /* ZIKIntegraModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraModel.h; sourceTree = "<group>"; };
-		EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraModel.m; sourceTree = "<group>"; };
-		EA5DF9491CB6399A00BE0E8C /* ZIKIntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraTableViewCell.h; sourceTree = "<group>"; };
-		EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraTableViewCell.m; sourceTree = "<group>"; };
-		EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKIntegraTableViewCell.xib; sourceTree = "<group>"; };
 		EA5DF9531CB64FDF00BE0E8C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
@@ -1221,6 +1217,26 @@
 		FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuserListTableViewCell.m; sourceTree = "<group>"; };
 		FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNuserListTableViewCell.xib; sourceTree = "<group>"; };
 		FCCEA46D1CFD33C7005D21F5 /* 已删除-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已删除-2.png"; sourceTree = "<group>"; };
+		FCCEA47F1CFD5FC2005D21F5 /* MyIntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIntegralViewController.h; sourceTree = "<group>"; };
+		FCCEA4801CFD5FC2005D21F5 /* MyIntegralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIntegralViewController.m; sourceTree = "<group>"; };
+		FCCEA4821CFD5FC2005D21F5 /* 我的积分-兑换.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的积分-兑换.png"; sourceTree = "<group>"; };
+		FCCEA4831CFD5FC2005D21F5 /* 我的积分-积分增加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的积分-积分增加.png"; sourceTree = "<group>"; };
+		FCCEA4841CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "积分兑换-背景框(点击后).png"; sourceTree = "<group>"; };
+		FCCEA4851CFD5FC2005D21F5 /* 积分兑换-背景框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "积分兑换-背景框.png"; sourceTree = "<group>"; };
+		FCCEA4861CFD5FC2005D21F5 /* 积分兑换banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "积分兑换banner.png"; sourceTree = "<group>"; };
+		FCCEA4881CFD5FC2005D21F5 /* ZIKIntegraModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraModel.h; sourceTree = "<group>"; };
+		FCCEA4891CFD5FC2005D21F5 /* ZIKIntegraModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraModel.m; sourceTree = "<group>"; };
+		FCCEA48B1CFD5FC2005D21F5 /* IntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegraTableViewCell.h; sourceTree = "<group>"; };
+		FCCEA48C1CFD5FC2005D21F5 /* IntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegraTableViewCell.m; sourceTree = "<group>"; };
+		FCCEA48D1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegraTableViewCell.h; sourceTree = "<group>"; };
+		FCCEA48E1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegraTableViewCell.m; sourceTree = "<group>"; };
+		FCCEA48F1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKIntegraTableViewCell.xib; sourceTree = "<group>"; };
+		FCCEA49A1CFD5FE1005D21F5 /* ZIKExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKExchangeViewController.h; sourceTree = "<group>"; };
+		FCCEA49B1CFD5FE1005D21F5 /* ZIKExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKExchangeViewController.m; sourceTree = "<group>"; };
+		FCCEA49C1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKExchangeViewController.xib; sourceTree = "<group>"; };
+		FCCEA49F1CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIntegralCollectionViewCell.h; sourceTree = "<group>"; };
+		FCCEA4A01CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIntegralCollectionViewCell.m; sourceTree = "<group>"; };
+		FCCEA4A11CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKIntegralCollectionViewCell.xib; sourceTree = "<group>"; };
 		FCCFA6FF1CF2E12400CC1313 /* ZIKSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSelectViewController.h; sourceTree = "<group>"; };
 		FCCFA7001CF2E12400CC1313 /* ZIKSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSelectViewController.m; sourceTree = "<group>"; };
 		FCCFA7011CF2E12400CC1313 /* ZIKSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSelectViewController.xib; sourceTree = "<group>"; };
@@ -1867,17 +1883,10 @@
 		EA52ACDD1CB4BE0700CE2210 /* MyIntegralViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EA5DF9471CB6399A00BE0E8C /* ZIKIntegraModel.h */,
-				EA5DF9481CB6399A00BE0E8C /* ZIKIntegraModel.m */,
-				EA5DF9491CB6399A00BE0E8C /* ZIKIntegraTableViewCell.h */,
-				EA5DF94A1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m */,
-				EA5DF94B1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib */,
-				EA5DF9431CB6399300BE0E8C /* 我的积分-兑换.png */,
-				EA5DF9441CB6399300BE0E8C /* 我的积分-积分增加.png */,
-				EA52ACE11CB4BE7900CE2210 /* MyIntegralViewController.h */,
-				EA52ACE21CB4BE7900CE2210 /* MyIntegralViewController.m */,
-				EA5DF9401CB5F70F00BE0E8C /* IntegraTableViewCell.h */,
-				EA5DF9411CB5F70F00BE0E8C /* IntegraTableViewCell.m */,
+				FCCEA4811CFD5FC2005D21F5 /* Images */,
+				FCCEA47E1CFD5FC2005D21F5 /* Controller */,
+				FCCEA4871CFD5FC2005D21F5 /* Model */,
+				FCCEA48A1CFD5FC2005D21F5 /* View */,
 			);
 			path = MyIntegralViewController;
 			sourceTree = "<group>";
@@ -2884,6 +2893,54 @@
 			path = "银联";
 			sourceTree = "<group>";
 		};
+		FCCEA47E1CFD5FC2005D21F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FCCEA47F1CFD5FC2005D21F5 /* MyIntegralViewController.h */,
+				FCCEA4801CFD5FC2005D21F5 /* MyIntegralViewController.m */,
+				FCCEA49A1CFD5FE1005D21F5 /* ZIKExchangeViewController.h */,
+				FCCEA49B1CFD5FE1005D21F5 /* ZIKExchangeViewController.m */,
+				FCCEA49C1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FCCEA4811CFD5FC2005D21F5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FCCEA4821CFD5FC2005D21F5 /* 我的积分-兑换.png */,
+				FCCEA4831CFD5FC2005D21F5 /* 我的积分-积分增加.png */,
+				FCCEA4841CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png */,
+				FCCEA4851CFD5FC2005D21F5 /* 积分兑换-背景框.png */,
+				FCCEA4861CFD5FC2005D21F5 /* 积分兑换banner.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		FCCEA4871CFD5FC2005D21F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCCEA4881CFD5FC2005D21F5 /* ZIKIntegraModel.h */,
+				FCCEA4891CFD5FC2005D21F5 /* ZIKIntegraModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FCCEA48A1CFD5FC2005D21F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCCEA48B1CFD5FC2005D21F5 /* IntegraTableViewCell.h */,
+				FCCEA48C1CFD5FC2005D21F5 /* IntegraTableViewCell.m */,
+				FCCEA48D1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.h */,
+				FCCEA48E1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.m */,
+				FCCEA48F1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib */,
+				FCCEA49F1CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.h */,
+				FCCEA4A01CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.m */,
+				FCCEA4A11CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FCCFA6FE1CF2E11300CC1313 /* AddressSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -3344,6 +3401,7 @@
 				FCCFA7141CF2E12400CC1313 /* ZIKCitySectionHeaderView.xib in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
+				FCCEA4911CFD5FC2005D21F5 /* 我的积分-兑换.png in Resources */,
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
 				FCF353E31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
 				EA03CCEF1C90035B0032BAD3 /* phoneLiteImage@2x.png in Resources */,
@@ -3361,6 +3419,7 @@
 				EAF051011C92A2B700F435A9 /* mycompany@2x.png in Resources */,
 				EAB7819D1C8EA55600807B44 /* UserImage@2x.png in Resources */,
 				FC50B1601CAE243F0022A24C /* UMSocialLocalizable.strings in Resources */,
+				FCCEA4921CFD5FC2005D21F5 /* 我的积分-积分增加.png in Resources */,
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
 				FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */,
@@ -3369,6 +3428,7 @@
 				FCCFA7111CF2E12400CC1313 /* ZIKSelectViewController.xib in Resources */,
 				FC6FED8D1CAD103F000E2CA5 /* 支付订单48x48.png in Resources */,
 				FC49AE4D1CA90E5C00214D4B /* 苗圃基地选择框.png in Resources */,
+				FCCEA4A31CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.xib in Resources */,
 				EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */,
 				EA4EEA1B1CD8822800FEFD52 /* buybiaoqian.png in Resources */,
 				EA1CF4041CACD11A00AF2D82 /* loading01@2x.png in Resources */,
@@ -3383,6 +3443,7 @@
 				FC28DB6D1CD9E8A4003D7C27 /* 添加照片-单株.png in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
+				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
 				FC28DB611CD9C271003D7C27 /* 注意.png in Resources */,
@@ -3397,6 +3458,7 @@
 				EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */,
 				EAF788A01CDB090500C4A301 /* guoqibiaoqian.png in Resources */,
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
+				FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */,
 				FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
 				FC50B1651CAE243F0022A24C /* UMShareEditViewController.xib in Resources */,
@@ -3409,6 +3471,7 @@
 				EA5444C81CC770BD00971A50 /* bangde4.jpg in Resources */,
 				FC6FED8C1CAD103F000E2CA5 /* 支付订单-充值金额背景.png in Resources */,
 				EA5444C01CC76AEE00971A50 /* qiugouxiangqingye.png in Resources */,
+				FCCEA4931CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png in Resources */,
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
 				FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
@@ -3419,7 +3482,6 @@
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
 				EAAFCFB51CBE265100EB894F /* 1miaomu1334.png in Resources */,
 				EA75147D1C9B891E003D63F1 /* treeNameSure@2x.png in Resources */,
-				EA5DF9451CB6399300BE0E8C /* 我的积分-兑换.png in Resources */,
 				FC50B1701CAE243F0022A24C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				FC5337A41CBDF2B6008BFB11 /* WHC_ChoicePictureVC.xib in Resources */,
 				FC6FED801CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.xib in Resources */,
@@ -3427,7 +3489,6 @@
 				FC6FED781CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.xib in Resources */,
 				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
-				EA5DF9461CB6399300BE0E8C /* 我的积分-积分增加.png in Resources */,
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
 				EA6D36CE1CE713E600CE025C /* yiguoqi.png in Resources */,
@@ -3441,6 +3502,7 @@
 				EAF050FD1C92A1A900F435A9 /* myBuyV@2x.png in Resources */,
 				EA5AAC411C8D2DF300660FC9 /* NomerMyCollectionBtn@2x.png in Resources */,
 				EA6D36CA1CE713A500CE025C /* weitonguo.png in Resources */,
+				FCCEA49E1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib in Resources */,
 				EA5AAC3A1C8D1BFB00660FC9 /* fabuBTN@2x.png in Resources */,
 				EA4F4D191CBF5F47006E4988 /* bannelSmall2.jpg in Resources */,
 				FC5337CC1CBE18FC008BFB11 /* 站长通-星级2.png in Resources */,
@@ -3468,7 +3530,7 @@
 				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
 				FC6FED681CACF833000E2CA5 /* 编辑修改.png in Resources */,
 				FCF353E51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
-				EA5DF94E1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.xib in Resources */,
+				FCCEA4941CFD5FC2005D21F5 /* 积分兑换-背景框.png in Resources */,
 				EA5444C71CC770BD00971A50 /* bangde3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3538,7 +3600,6 @@
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
-				EA5DF9421CB5F70F00BE0E8C /* IntegraTableViewCell.m in Sources */,
 				FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */,
 				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,
 				FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */,
@@ -3551,6 +3612,7 @@
 				FC21BC871CA51C930041E2C3 /* IQToolbar.m in Sources */,
 				FC6C133E1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m in Sources */,
 				EAE32DE41C7E97A600C4CEA2 /* UIWebView+AFNetworking.m in Sources */,
+				FCCEA4901CFD5FC2005D21F5 /* MyIntegralViewController.m in Sources */,
 				EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */,
 				EAE32DDD1C7E97A600C4CEA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EAEB63C21C9147D50001ABC9 /* UserInfoModel.m in Sources */,
@@ -3558,6 +3620,7 @@
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
 				FCE2D1C51CE46C0A0002B069 /* ZIKAddImageView.m in Sources */,
+				FCCEA4971CFD5FC2005D21F5 /* IntegraTableViewCell.m in Sources */,
 				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,
 				EA4EEA201CD8891400FEFD52 /* BuyMessageAlertView.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
@@ -3581,16 +3644,16 @@
 				EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */,
 				FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */,
 				EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */,
+				FCCEA4961CFD5FC2005D21F5 /* ZIKIntegraModel.m in Sources */,
 				EA518C621CEDAAF30092BA40 /* GuiGeModel.m in Sources */,
 				FCE458C31CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m in Sources */,
 				EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */,
 				FC28DB661CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m in Sources */,
+				FCCEA4981CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.m in Sources */,
 				FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */,
 				FC53379F1CBDF2B6008BFB11 /* WHC_Asset.m in Sources */,
-				EA5DF94D1CB6399A00BE0E8C /* ZIKIntegraTableViewCell.m in Sources */,
 				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
-				EA52ACE31CB4BE7900CE2210 /* MyIntegralViewController.m in Sources */,
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
 				FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */,
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,
@@ -3671,6 +3734,7 @@
 				FCF353FE1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m in Sources */,
 				EA8CAA651C8963D500058A34 /* DataCache.m in Sources */,
 				FCF353E61CA3B515001ABA0A /* NSObject+YYModel.m in Sources */,
+				FCCEA49D1CFD5FE1005D21F5 /* ZIKExchangeViewController.m in Sources */,
 				EA0B2B951C59F5220018A7BD /* main.m in Sources */,
 				FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */,
 				EAEA07FC1C5B285C003A0D8A /* YouLickView.m in Sources */,
@@ -3692,7 +3756,6 @@
 				FCF353CE1CA3B515001ABA0A /* UIScrollView+MJExtension.m in Sources */,
 				EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */,
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
-				EA5DF94C1CB6399A00BE0E8C /* ZIKIntegraModel.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */,
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,
@@ -3710,6 +3773,7 @@
 				FC50B3441CAE4C4A0022A24C /* Order.m in Sources */,
 				EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */,
 				FC7134301CB358140037D507 /* ZIKFunction.m in Sources */,
+				FCCEA4A21CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.m in Sources */,
 				FCF353E41CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m in Sources */,
 				FCCFA71A1CF2E12400CC1313 /* ZIKSectionInfo.m in Sources */,
 				FCF353E91CA3B515001ABA0A /* ZIKBaseViewController.m in Sources */,

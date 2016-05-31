@@ -11,6 +11,7 @@
 #import "YYModel.h"
 #import "ZIKIntegraModel.h"
 #import "ZIKIntegraTableViewCell.h"
+#import "ZIKExchangeViewController.h"//积分兑换
 @interface MyIntegralViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong ) UILabel        *zongjifenLab;
 @property (nonatomic,strong ) UITableView    *integralTableView;
@@ -27,6 +28,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.vcTitle = @"我的积分";
+    self.rightBarBtnTitleString = @"兑换";
+    __weak typeof(self) weakSelf = self;
+    self.rightBarBtnBlock = ^{
+        ZIKExchangeViewController *exchangeVC = [[ZIKExchangeViewController alloc] initWithNibName:@"ZIKExchangeViewController" bundle:nil];
+        [weakSelf.navigationController pushViewController:exchangeVC animated:YES];
+    };
     [self initData];
     [self initUI];
     [self requestData];
