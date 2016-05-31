@@ -272,6 +272,10 @@
 
 -(void)fabuBtnAction
 {
+  
+    if (self.tabBarController.selectedIndex==0) {
+        return;
+    }
     if([APPDELEGATE isNeedLogin]==NO)
     {
         [self hiddingSelfTabBar];
@@ -281,10 +285,6 @@
         
         return;
     }
-    if (self.tabBarController.selectedIndex==0) {
-        return;
-    }
-    
     [self hiddingSelfTabBar];
     FaBuViewController *fbVC=[[FaBuViewController alloc]init];
     [self.navigationController pushViewController:fbVC animated:YES];

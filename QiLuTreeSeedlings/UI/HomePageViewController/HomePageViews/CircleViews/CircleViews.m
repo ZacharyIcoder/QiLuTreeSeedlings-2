@@ -51,6 +51,25 @@
     [nameLab setTextColor:[UIColor darkGrayColor]];
     [nameLab setFont:[UIFont systemFontOfSize:13]];
     [circleView addSubview:nameLab];
+    if ([nameStr isEqualToString:@"信息定制"]) {
+        UILabel *numLab=[[UILabel alloc]initWithFrame:CGRectMake(CWith*0.5+10, 16, 14, 14)];
+        [numLab setBackgroundColor:[UIColor redColor]];
+        numLab.layer.masksToBounds=YES;
+        numLab.layer.cornerRadius=7;
+        [numLab setTextAlignment:NSTextAlignmentCenter];
+        [numLab setTextColor:[UIColor whiteColor]];
+        [numLab setFont:[UIFont systemFontOfSize:9]];
+        [circleView addSubview:numLab];
+        if ([APPDELEGATE.userModel.noReadCount integerValue]>0) {
+           numLab.hidden=NO;
+            numLab.text=[NSString stringWithFormat:@"%@",APPDELEGATE.userModel.noReadCount];
+        }else{
+             numLab.hidden=YES;
+        }
+        
+    }
+   
+
     return circleView;
 }
 

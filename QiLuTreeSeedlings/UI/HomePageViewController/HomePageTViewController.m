@@ -310,6 +310,10 @@
 //发布按钮
 -(void)fabuBtnAction
 {
+  
+    if (self.tabBarController.selectedIndex==1) {
+        return;
+    }
     if([APPDELEGATE isNeedLogin]==NO)
     {
         [self hiddingSelfTabBar];
@@ -317,10 +321,6 @@
         [self.navigationController pushViewController:loginViewController animated:YES];
         
         [ToastView showTopToast:@"请先登录"];
-        return;
-    }
-    
-    if (self.tabBarController.selectedIndex==1) {
         return;
     }
     [self hiddingSelfTabBar];

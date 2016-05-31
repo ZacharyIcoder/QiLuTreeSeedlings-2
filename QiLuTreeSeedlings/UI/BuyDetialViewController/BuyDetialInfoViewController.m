@@ -103,7 +103,7 @@
                                 
                                 
                                 if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
-                                    [_BuyMessageView removeFromSuperview];
+                                     [_BuyMessageView removeFromSuperview];
                                     _BuyMessageView =nil;
                                 }else
                                 {

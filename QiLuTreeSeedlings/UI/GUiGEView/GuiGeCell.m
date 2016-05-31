@@ -531,8 +531,6 @@
             self.erjiView=nil;
         }
         if (procprs.relation.length>0) {
-//            self.model.sonModel=procprs.guanlianModel;
-           
          GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 45, self.frame.size.width, 44) andModel:procprs.guanlianModel];
              self.erjiView=cell;
             [self addSubview:cell];
