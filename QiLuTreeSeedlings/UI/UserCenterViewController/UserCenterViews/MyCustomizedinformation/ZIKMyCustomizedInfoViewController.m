@@ -18,7 +18,6 @@
 #import "ZIKBottomDeleteTableViewCell.h"
 @interface ZIKMyCustomizedInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    UIView *emptyUI;
 }
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
@@ -28,6 +27,7 @@
 
 @implementation ZIKMyCustomizedInfoViewController
 {
+    UIView *_emptyUI;
     ZIKBottomDeleteTableViewCell *_bottomcell;
     NSMutableArray *_removeArray;
     UILongPressGestureRecognizer *_longPressGr;
@@ -237,7 +237,7 @@
         }
         else if (array.count == 0 && self.page > 1) {
             self.myCustomizedInfoTableView.hidden = NO;
-            emptyUI.hidden = YES;
+            _emptyUI.hidden = YES;
             self.page--;
             [self.myCustomizedInfoTableView footerEndRefreshing];
             //没有更多数据了
@@ -246,7 +246,7 @@
         }
         else {
             self.myCustomizedInfoTableView.hidden = NO;
-            emptyUI.hidden = YES;
+            _emptyUI.hidden = YES;
             if (self.page == 1) {
                 [self.customizedInfoMArr removeAllObjects];
             }
@@ -411,31 +411,32 @@
 }
 
 - (void)createEmptyUI {
-    if (!emptyUI) {
-    emptyUI                 = [[UIView alloc] init];
-    emptyUI.frame           = CGRectMake(0, 64, Width, 260);
-    emptyUI.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:emptyUI];
+    if (!_emptyUI) {
+        _emptyUI                 = [[UIView alloc] init];
+        _emptyUI.frame           = CGRectMake(0, 64, Width, 260);
+        _emptyUI.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_emptyUI];
+        UIImageView *imageView  = [[UIImageView alloc] init];
+        imageView.frame         = CGRectMake(Width/2-50, 30, 100, 100);
+        imageView.image         = [UIImage imageNamed:@"图片1"];
+        [_emptyUI addSubview:imageView];
+
+        UILabel *label1         = [[UILabel alloc] init];
+        label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
+        label1.text             = @"空空如也~~";
+        label1.textAlignment    = NSTextAlignmentCenter;
+        label1.textColor        = detialLabColor;
+        [_emptyUI addSubview:label1];
+
+        UILabel *label2         = [[UILabel alloc] init];
+        label2.frame            = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
+        label2.text             = @"还没有收到任何定制信息";
+        label2.textColor        = detialLabColor;
+        label2.textAlignment    = NSTextAlignmentCenter;
+        [_emptyUI addSubview:label2];
+        
     }
-
-    UIImageView *imageView  = [[UIImageView alloc] init];
-    imageView.frame         = CGRectMake(Width/2-50, 30, 100, 100);
-    imageView.image         = [UIImage imageNamed:@"图片1"];
-    [emptyUI addSubview:imageView];
-
-    UILabel *label1         = [[UILabel alloc] init];
-    label1.frame            = CGRectMake(0, CGRectGetMaxY(imageView.frame)+20, Width, 25);
-    label1.text             = @"空空如也~~";
-    label1.textAlignment    = NSTextAlignmentCenter;
-    label1.textColor        = detialLabColor;
-    [emptyUI addSubview:label1];
-
-    UILabel *label2         = [[UILabel alloc] init];
-    label2.frame            = CGRectMake(0, CGRectGetMaxY(label1.frame), Width, label1.frame.size.height);
-    label2.text             = @"还没有收到任何定制信息";
-    label2.textColor        = detialLabColor;
-    label2.textAlignment    = NSTextAlignmentCenter;
-    [emptyUI addSubview:label2];
+    
 }
 
 - (void)initData {

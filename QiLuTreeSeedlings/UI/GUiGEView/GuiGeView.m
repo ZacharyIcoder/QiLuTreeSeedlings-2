@@ -131,6 +131,7 @@
     }
     return self;
 }
+
 -(void)showBtnAction:(UIButton *)sender
 {
     if (self.showBtn.selected==NO) {

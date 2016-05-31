@@ -106,6 +106,9 @@
 }
 
 - (void)tapGR {
+    if (self.recordMarr.count == 0) {
+        return;
+    }
     if (!self.recordsVC.editing) {
         [self.recordsVC removeHeader];//编辑状态取消下拉刷新
         self.recordsVC.editing = YES;

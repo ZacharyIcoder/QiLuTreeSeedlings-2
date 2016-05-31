@@ -10,6 +10,7 @@
 #import "ZIKSelectView.h"
 #import "ZIKSelectProductCategoryTableViewCell.h"
 #import "HttpClient.h"
+#import "UIDefines.h"
 static NSString *mytype = nil;
 @interface ZIKSelectView ()
 
@@ -94,7 +95,9 @@ static NSString *mytype = nil;
             if ([[responseObject objectForKey:@"success"] integerValue] == 1 ) {
                 NSArray *productArray = [responseObject[@"result"] objectForKey:@"productList"];
                 if (productArray.count == 0) {
-                    NSLog(@"暂时没有产品信息!!!");
+//                    NSLog(@"暂时没有产品信息!!!");
+                    [ToastView showTopToast:@"暂时没有产品信息"];
+
                 }
                 else if (productArray.count > 0) {
                     self.dataArray = productArray;

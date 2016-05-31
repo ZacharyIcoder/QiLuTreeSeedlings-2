@@ -109,6 +109,9 @@
 //
 // 隐藏删除按钮
 - (void)deleteCell {
+    if(self.dataAry.count == 0) {
+        return;
+    }
     if (!self.pullTableView.editing)
     {
         // barButtonItem.title = @"Remove";

@@ -469,6 +469,9 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 #pragma mark - 长按触发事件
 - (void)tapGR {
+    if (self.supplyInfoMArr.count == 0) {
+        return;
+    }
     if (!self.supplyTableView.editing && self.state == SupplyStateThrough)
     {
          if (_refreshMarr.count > 0) {

@@ -73,6 +73,9 @@
 }
 // 显示删除按钮
 - (void)deleteCell {
+    if (self.dataAry.count == 0) {
+        return;
+    }
     if (!self.tableView.editing)
     {
         self.CanDelateAry=[NSMutableArray array];
@@ -128,7 +131,7 @@
 }
 - (void)totalCount {
     bottomcell.count = _removeArray.count;
-    bottomcell.isAllSelect =NO;
+    bottomcell.isAllSelect = NO;
     if (self.CanDelateAry.count==_removeArray.count) {
         bottomcell.isAllSelect = YES;
     }

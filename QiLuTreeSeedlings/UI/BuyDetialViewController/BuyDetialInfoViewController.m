@@ -55,6 +55,8 @@
 @property (nonatomic, strong) NSString       *shareTitle;//分享标题
 @property (nonatomic, strong) UIImage        *shareImage;//分享图片
 @property (nonatomic, strong) NSString       *shareUrl;  //分享url
+
+@property (nonatomic, assign) BOOL isFromDingzhi;
 @end
 
 @implementation BuyDetialInfoViewController
@@ -76,6 +78,9 @@
                             } failure:^(NSError *error) {
                                 
                             }];
+        return;
+    }
+    if (self.isFromDingzhi) {
         return;
     }
     [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
@@ -109,17 +114,28 @@
                                 {
                                    // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                     if (_BuyMessageView==nil) {
-                                        _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                                        if (self.model.state == 4) {
+                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                                        }
+                                        else {
+                                            _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+                                        }
                                         [_messageView removeFromSuperview];
                                         _messageView = nil;
-                                        
+
                                     }
                                 }
-                              
+
                             
                             }else{
                                 if (_messageView==nil) {
-                                    _messageView = [self lianxiMessageView];
+                                    if (self.model.state == 4) {
+                                        _messageView = [self lianxiMessageShareView];
+
+                                    }
+                                    else {
+                                        _messageView = [self lianxiMessageView];
+                                    }
                                     [_BuyMessageView removeFromSuperview];
                                     _BuyMessageView = nil;
                                 }
@@ -138,6 +154,9 @@
         self.type=1;
         _push_=1;
         self.memberCustomUid=model.memberCustomUid;
+        self.isFromDingzhi = YES;
+        self.biaoqianView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 64, 50, 50)];
+        _biaoqianView.hidden = YES;
         [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"1" WithmemberCustomUid:self.memberCustomUid                             Success:^(id responseObject) {
                                 //NSLog(@"%@",responseObject);
@@ -169,7 +188,12 @@
                                     {
                                         // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                         if (_BuyMessageView==nil) {
-                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                                            if (self.model.state == 4) {
+                                                _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                                            }
+                                            else {
+                                                _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+                                            }
                                             [_messageView removeFromSuperview];
                                             _messageView = nil;
                                             
@@ -179,7 +203,13 @@
                                     
                                 }else{
                                     if (_messageView==nil) {
-                                        _messageView = [self lianxiMessageShareView];
+                                        if (self.model.state == 4) {
+                                            _messageView = [self lianxiMessageShareView];
+
+                                        }
+                                        else {
+                                            _messageView = [self lianxiMessageView];
+                                        }
                                         [_BuyMessageView removeFromSuperview];
                                         _BuyMessageView = nil;
                                     }
@@ -210,7 +240,7 @@
         self.uid=uid;
         self.type=1;
         self.biaoqianView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 64, 50, 50)];
-       
+        self.isFromDingzhi = NO;//不是从定制列表进入的
         _biaoqianView.hidden=YES;
       //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
@@ -280,6 +310,8 @@
     if (self) {
         self.uid=uid;
         self.type=2;
+        self.isFromDingzhi = NO;//不是从定制列表进入的
+
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
@@ -314,6 +346,7 @@
     UIView *navView =  [self makeNavView];
     [self.view addSubview:navView];
     self.isShow=NO;
+    self.isFromDingzhi = NO;//不是从定制列表进入的
     [self.view setBackgroundColor:BGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
@@ -602,6 +635,14 @@
                 self.guoqiIamgV.hidden=YES;
             }
         }
+        if (self.model.state == 5) {//已删除
+            [self.guoqiIamgV setImage:[UIImage imageNamed:@"已删除-2"]];
+            _BuyMessageView.hidden = YES;
+            _messageView.hidden = YES;
+            _biaoqianView.hidden = YES;
+            self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64);
+        }
+
     }
     if (self.type==2) {
         if (self.model.state==1||self.model.state==3) {

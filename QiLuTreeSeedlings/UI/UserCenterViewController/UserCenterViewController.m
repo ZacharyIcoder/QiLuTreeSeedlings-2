@@ -214,6 +214,15 @@
         }
         if (indexPath.row==2) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myReadMessage" andTitle:@"我的订制信息"];
+            UILabel *priceLabel = [[UILabel alloc] init];
+            priceLabel.frame = CGRectMake(Width-35-180, 12, 180, 20);
+            if (APPDELEGATE.userModel.noReadCount) {
+                priceLabel.text = [NSString stringWithFormat:@"未读:%ld",(long)APPDELEGATE.userModel.noReadCount.integerValue];
+            }
+            priceLabel.font = [UIFont systemFontOfSize:12.0f];
+            priceLabel.textColor = yellowButtonColor;
+            priceLabel.textAlignment = NSTextAlignmentRight;
+            [cell addSubview:priceLabel];
             return cell;
         }
         if (indexPath.row == 3) {

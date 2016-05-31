@@ -118,9 +118,6 @@
     [cityBtn addTarget:self action:@selector(cityBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     self.areaBtn=cityBtn;
 
-    
-
-
     UIButton *nameBtn = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-70, 9, 50, 25)];
     [nameView addSubview:nameBtn];
     [nameBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -129,7 +126,7 @@
 
     UIButton *arrowBtn = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-70, 9+44, 50, 25)];
     [nameView addSubview:arrowBtn];
-    [arrowBtn addTarget:self action:@selector(nameBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [arrowBtn addTarget:self action:@selector(cityBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [arrowBtn setImage:[UIImage imageNamed:@"carat"] forState:UIControlStateNormal];
 
 
@@ -177,7 +174,7 @@
     }
     UIImageView *linView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 43, Width-20, 0.5)];
     [priceView addSubview:linView];
-    [linView setBackgroundColor:kLineColor];
+    [linView setBackgroundColor:BGColor];
 
 
     self.nameBtn = nameBtn;
@@ -190,18 +187,16 @@
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
     if (self.model) {
-        self.nameTextField.text=self.model.productName;
-        self.nameBtn.selected=YES;
+        self.nameTextField.text = self.model.productName;
+        self.nameBtn.selected = YES;
         [self getEditingMessage];
     }
 
 }
 
-
-
 - (void)cityBtnAction:(UIButton *)button {
-    YLDPickLocationView *pickerView=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
-    pickerView.delegate=self;
+    YLDPickLocationView *pickerView = [[YLDPickLocationView alloc ]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
+    pickerView.delegate = self;
     [pickerView showPickView];
     if (self.nameTextField) {
         [self.nameTextField resignFirstResponder];
@@ -214,12 +209,12 @@
     [HTTPCLIENT getMyCustomsetEditingWithUid:self.model.customsetUid Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic = [[responseObject objectForKey:@"result"] objectForKey:@"ProductSpec"];
-            self.productUid = [dic objectForKey:@"productUid"];
-            NSArray *ary = [dic objectForKey:@"bean"];
-            self.dataAry = ary;
+            self.productUid   = [dic objectForKey:@"productUid"];
+            NSArray *ary      = [dic objectForKey:@"bean"];
+            self.dataAry      = ary;
             self.AreaProvince = [dic objectForKey:@"usedProvince"];
-            self.AreaCity = [dic objectForKey:@"usedCity"];
-            self.areaName  = [dic objectForKey:@"areaName"];
+            self.AreaCity     = [dic objectForKey:@"usedCity"];
+            self.areaName     = [dic objectForKey:@"areaName"];
             if (![ZIKFunction xfunc_check_strEmpty:self.areaName]) {
                 [self.areaBtn setTitle:self.areaName forState:UIControlStateNormal];
             }
@@ -235,6 +230,12 @@
 
 -(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)guigeAry
 {
+    [self.guige1Ary removeAllObjects];
+    if (self.guigeView) {
+        [self.guigeView removeFromSuperview];
+        self.guigeView=nil;
+    }
+
     for (int i=0; i<guigeAry.count; i++) {
         NSDictionary *dic=guigeAry[i];
         if ([[dic objectForKey:@"level"] integerValue]==0) {
@@ -249,59 +250,21 @@
                 for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
                     Propers *proper=guigeModel1.propertyLists[k];
                     if (proper.relation == guigeModel.uid) {
-                        proper.guanlianModel=guigeModel;
+                        proper.guanlianModel = guigeModel;
                     }
                 }
             }
         }
     }
-//    _hintView.hidden = NO;
-//    CGFloat Y = CGRectGetMaxY(_hintView.frame) ;
 
-
-    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, 44+44+8+8+44, kWidth, 0)];
+    GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, 44+44+8+8+44, kWidth, 0)];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
-    guigeView.delegate=self;
-    self.guigeView=guigeView;
+    guigeView.delegate = self;
+    guigeView.showBtn.hidden = YES;
+    self.guigeView = guigeView;
     [self.backScrollView addSubview:guigeView];
     
 }
-
-//-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
-//{
-//    self.dataAry=[TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
-//
-//    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
-//            [myview removeFromSuperview];
-//        }
-//    }];
-//    CGFloat Y = 44+44+8+8;
-//    for (int i=0; i<self.dataAry.count; i++) {
-//        TreeSpecificationsModel *model=self.dataAry[i];
-//        FabutiaojiaCell *cell;
-//        NSMutableString *answerStr=[NSMutableString string];
-//        for (int j=0; j<specAry.count; j++) {
-//            NSDictionary *specDic=specAry[j];
-//
-//            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
-//                answerStr=[specDic objectForKey:@"value"];
-//            }
-//        }
-//        if ([answerStr isEqualToString:@"不限"]) {
-//            answerStr = [NSMutableString string];
-//        }
-//
-//        cell=[[FabutiaojiaCell alloc]initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
-//        [cellAry addObject:cell.model];
-//        Y=CGRectGetMaxY(cell.frame);
-//        // cell.delegate=self;
-//        [cell setBackgroundColor:[UIColor whiteColor]];
-//        [self.backScrollView addSubview:cell];
-//        [self.backScrollView setContentSize:CGSizeMake(0, Y)];
-//    }
-//
-//}
 
 - (void)nameChange {
     self.nameBtn.selected = NO;
@@ -310,6 +273,13 @@
 #pragma mark - 确定按钮点击事件
 -(void)nameBtnAction:(UIButton *)button
 {
+    [self.guige1Ary removeAllObjects];
+
+    if (self.guigeView) {
+        [self.guigeView removeFromSuperview];
+        self.guigeView = nil;
+    }
+
     if ([ZIKFunction xfunc_check_strEmpty:self.nameTextField.text]) {
         [ToastView showTopToast:@"请先输入苗木名称"];
         return;
@@ -382,58 +352,13 @@
 
 -(void)creatScreeningCells
 {
-//    self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:self.dataAry];
-//    //    NSLog(@"%@",ary);
     CGFloat Y = 44+8+44+8+44;
-//
-//    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
-//            [myview removeFromSuperview];
-//        }
-//    }];
-//
-//    for (int i=0; i < self.dataAry.count; i++) {
-//        FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 44) AndModel:self.dataAry[i] andAnswer:nil];
-//        cell.backgroundColor = [UIColor whiteColor];
-//        [cellAry addObject:cell.model];
-//        Y = CGRectGetMaxY(cell.frame);
-//        [self.backScrollView addSubview:cell];
-//    }
-//    [self.backScrollView setContentSize:CGSizeMake(0, Y)];
-//    //self.backScrollView.backgroundColor = [UIColor whiteColor];
-//
-//    button.selected=YES;
-//    NSDictionary *dic=[responseObject objectForKey:@"result"];
-//    self.productUid=[dic objectForKey:@"productUid"];
-//    NSArray *guigeAry=[dic objectForKey:@"list"];
-//    // NSMutableArray *selectAry=[NSMutableArray array];
-//    for (int i=0; i<guigeAry.count; i++) {
-//        NSDictionary *dic=guigeAry[i];
-//        if ([[dic objectForKey:@"level"] integerValue]==0) {
-//            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-//            [self.guige1Ary addObject:guigeModel];
-//        }
-//        if ([[dic objectForKey:@"level"] integerValue]==1) {
-//            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-//            //[selectAry addObject:guigeModel];
-//            for (int j=0; j<self.guige1Ary.count; j++) {
-//                GuiGeModel *guigeModel1=self.guige1Ary[j];
-//                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
-//                    Propers *proper=guigeModel1.propertyLists[k];
-//                    if (proper.relation == guigeModel.uid) {
-//                        proper.guanlianModel=guigeModel;
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    _hintView.hidden = NO;
-//    CGFloat Y = CGRectGetMaxY(_hintView.frame) ;
 
-    GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
+    GuiGeView *guigeView = [[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
-    guigeView.delegate=self;
-    self.guigeView=guigeView;
+    guigeView.delegate = self;
+    self.guigeView = guigeView;
+    guigeView.showBtn.hidden = YES;
     [self.backScrollView addSubview:guigeView];
 
 }
@@ -453,7 +378,7 @@
             }
         }
         else if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
-
+             [ToastView showTopToast:responseObject[@"msg"]];
         }
     } failure:^(NSError *error) {
         //NSLog(@"%@",error);
@@ -538,16 +463,6 @@
         return;
     }
 
-//    NSMutableArray *screenTijiaoAry=[NSMutableArray array];
-//    for (int i = 0; i < cellAry.count; i++) {
-//        TreeSpecificationsModel *model = cellAry[i];
-//        if (model.anwser.length>0) {
-//            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-//                                 model.anwser,@"anwser"
-//                                 , nil];
-//            [screenTijiaoAry addObject:dic];
-//        }
-//    }
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
 
     BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
@@ -560,21 +475,11 @@
         return;
     }
 
-    //    NSMutableArray *screenTijiaoAry = [NSMutableArray array];
-    //    for (int i = 0; i < _cellAry.count; i++) {
-    //        TreeSpecificationsModel *model = _cellAry[i];
-    //        if (model.anwser.length>0) {
-    //            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-    //                                 model.anwser,@"anwser"
-    //                                 , nil];
-    //            [screenTijiaoAry addObject:dic];
-    //        }
-    //    }
-//    self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
 
     self.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
-    if (self.specificationAttributes.count == 0) {
+    if (screenTijiaoAry.count == 0) {
         [ToastView showTopToast:@"苗木属性为空"];
+        return;
     }
     if ([ZIKFunction xfunc_check_strEmpty:self.AreaProvince]) {
         [ToastView showTopToast:@"请选择供货地"];

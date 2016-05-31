@@ -288,43 +288,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 }
 
-//-(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)specAry
-//{
-//    self.dataAry = [TreeSpecificationsModel creatTreeSpecificationsModelAryByAry:specAry];
-//    
-//    [self.backScrollView.subviews enumerateObjectsUsingBlock:^(UIView *myview, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if ([myview isKindOfClass:[FabutiaojiaCell class]]) {
-//            [myview removeFromSuperview];
-//        }
-//    }];
-//    _hintView.hidden = NO;
-//    CGFloat Y = CGRectGetMaxY(_hintView.frame);
-//    for (int i = 0; i < self.dataAry.count; i++) {
-//        TreeSpecificationsModel *model = self.dataAry[i];
-//        FabutiaojiaCell *cell;
-//        NSMutableString *answerStr = [NSMutableString string];
-//        for (int j = 0; j < specAry.count; j++) {
-//            NSDictionary *specDic = specAry[j];
-//            
-//            if ([[specDic objectForKey:@"name"] isEqualToString:model.name]) {
-//                answerStr = [specDic objectForKey:@"value"];
-//            }
-//        }
-//        if ([answerStr isEqualToString:@"不限"]) {
-//            answerStr = [NSMutableString string];
-//        }
-//        
-//        cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 50) AndModel:model andAnswer:answerStr];
-//        [_cellAry addObject:cell.model];
-//        Y = CGRectGetMaxY(cell.frame);
-//        // cell.delegate=self;
-//        [cell setBackgroundColor:[UIColor whiteColor]];
-//        [self.backScrollView addSubview:cell];
-//    }
-//    [self.backScrollView setContentSize:CGSizeMake(0, Y)];
-//    self.backScrollView.backgroundColor = [UIColor whiteColor];
-//
-//}
 - (void)nameChange {
     self.nameBtn.selected = NO;
 }
@@ -370,16 +333,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         return;
     }
 
-//    NSMutableArray *screenTijiaoAry = [NSMutableArray array];
-//    for (int i = 0; i < _cellAry.count; i++) {
-//        TreeSpecificationsModel *model = _cellAry[i];
-//        if (model.anwser.length>0) {
-//            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:model.field,@"field",
-//                                 model.anwser,@"anwser"
-//                                 , nil];
-//            [screenTijiaoAry addObject:dic];
-//        }
-//    }
     self.supplyModel.specificationAttributes = [NSArray arrayWithObject:screenTijiaoAry];
     _urlArr = self.addImageView.urlMArr;
     if (self.addImageView.haveImageMArr.count > 0) {
@@ -402,6 +355,14 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     if (button.selected) {
         return;
     }
+
+    [self.guige1Ary removeAllObjects];
+
+    if (self.guigeView) {
+        [self.guigeView removeFromSuperview];
+        self.guigeView = nil;
+    }
+
     //NSLog(@"%@",self.nameTextField.text);
     if (self.nameTextField.text == nil || self.nameTextField.text.length == 0) {
         [ToastView showToast:@"请输入苗木名称"
