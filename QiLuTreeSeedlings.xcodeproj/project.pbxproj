@@ -135,6 +135,8 @@
 		EA6D36CC1CE713BC00CE025C /* yiguanbi.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6D36CB1CE713BC00CE025C /* yiguanbi.png */; };
 		EA6D36CE1CE713E600CE025C /* yiguoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6D36CD1CE713E600CE025C /* yiguoqi.png */; };
 		EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7056521C9F86F500E9D253 /* CompanyViewController.m */; };
+		EA72662E1CFD5FBC005612E6 /* KeFuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA72662D1CFD5FBC005612E6 /* KeFuViewController.m */; };
+		EA7266301CFD6268005612E6 /* kefuxitong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA72662F1CFD6268005612E6 /* kefuxitong@2x.png */; };
 		EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */; };
 		EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419ED1C8FB21600F54478 /* searchBtnAction@2x.png */; };
 		EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419EF1C8FB38600F54478 /* screenBtnAction@2x.png */; };
@@ -683,6 +685,9 @@
 		EA6D36CD1CE713E600CE025C /* yiguoqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yiguoqi.png; sourceTree = "<group>"; };
 		EA7056511C9F86F500E9D253 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
 		EA7056521C9F86F500E9D253 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
+		EA72662C1CFD5FBC005612E6 /* KeFuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeFuViewController.h; sourceTree = "<group>"; };
+		EA72662D1CFD5FBC005612E6 /* KeFuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeFuViewController.m; sourceTree = "<group>"; };
+		EA72662F1CFD6268005612E6 /* kefuxitong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kefuxitong@2x.png"; sourceTree = "<group>"; };
 		EA7419EB1C8FB0AE00F54478 /* delectLiteBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delectLiteBtn@2x.png"; sourceTree = "<group>"; };
 		EA7419ED1C8FB21600F54478 /* searchBtnAction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBtnAction@2x.png"; sourceTree = "<group>"; };
 		EA7419EF1C8FB38600F54478 /* screenBtnAction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenBtnAction@2x.png"; sourceTree = "<group>"; };
@@ -1625,6 +1630,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA72662F1CFD6268005612E6 /* kefuxitong@2x.png */,
 				FC7D66D71CF4277500DF4FEC /* 分享.png */,
 				EA6D36CB1CE713BC00CE025C /* yiguanbi.png */,
 				EA6D36CD1CE713E600CE025C /* yiguoqi.png */,
@@ -1953,6 +1959,15 @@
 			path = CompanyInfoViewController;
 			sourceTree = "<group>";
 		};
+		EA72662B1CFD5F79005612E6 /* KeFuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA72662C1CFD5FBC005612E6 /* KeFuViewController.h */,
+				EA72662D1CFD5FBC005612E6 /* KeFuViewController.m */,
+			);
+			path = KeFuViewController;
+			sourceTree = "<group>";
+		};
 		EA7419F71C8FC4AA00F54478 /* Login&registered */ = {
 			isa = PBXGroup;
 			children = (
@@ -2245,6 +2260,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				EA72662B1CFD5F79005612E6 /* KeFuViewController */,
 				FCCFA6FE1CF2E11300CC1313 /* AddressSelect */,
 				EAD2170F1CDC6F1A006424FB /* MyMessageViewController */,
 				FCDE908F1CDB09B60009D157 /* PurchaseRecords */,
@@ -3341,6 +3357,7 @@
 				FCCFA7141CF2E12400CC1313 /* ZIKCitySectionHeaderView.xib in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
+				EA7266301CFD6268005612E6 /* kefuxitong@2x.png in Resources */,
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
 				FCF353E31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
 				EA03CCEF1C90035B0032BAD3 /* phoneLiteImage@2x.png in Resources */,
@@ -3679,6 +3696,7 @@
 				FCF353F01CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m in Sources */,
 				EA5B26EB1C7D6E7100863F9D /* HotSellView.m in Sources */,
 				EA7AE8E61C9663A500B43073 /* SupplyDetialMode.m in Sources */,
+				EA72662E1CFD5FBC005612E6 /* KeFuViewController.m in Sources */,
 				EAE32DE01C7E97A600C4CEA2 /* UIButton+AFNetworking.m in Sources */,
 				FC49AE351CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m in Sources */,
 				FCF353E01CA3B515001ABA0A /* ZIKMySupplyTableViewCell.m in Sources */,

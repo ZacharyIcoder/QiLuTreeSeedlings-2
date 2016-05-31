@@ -2527,4 +2527,28 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark ---------- 客服系统 -----------
+-(void)kefuXiTongWithPage:(NSString *)pageSize
+           WithPageNumber:(NSString *)pageNum
+               WithIsLoad:(NSString *)isLoad
+                  Success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/kefu";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"pageSize"]     = pageSize;
+    parmers[@"pageNumber"]     = pageNum;
+     parmers[@"isLoad"]     = isLoad;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
 @end

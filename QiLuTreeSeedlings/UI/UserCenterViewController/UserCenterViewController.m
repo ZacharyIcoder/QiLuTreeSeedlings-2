@@ -31,6 +31,7 @@
 #import "ZIKMySupplyVC.h"//我的供应列表
 #import "ZIKPurchaseRecordsViewController.h"//购买记录
 #import "MyMessageViewController.h"
+#import "KeFuViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -103,11 +104,11 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 6;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0||section==3||section==4) {
+    if (section==0||section==3||section==4||section==5) {
         return 1;
     }
     if (section==1) {
@@ -140,7 +141,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section==4) {
+    if (section==5) {
         return 70;
     }
     return 0.01;
@@ -148,7 +149,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view;
-    if (section==4) {
+    if (section==5) {
         
         view=[[UIView alloc]init];
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(40, 10, kWidth-80, 44)];
@@ -264,7 +265,12 @@
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myShareImage" andTitle:@"我的分享"];
             return cell;
         }
-        
+    }
+    if (indexPath.section==5) {
+        if (indexPath.row==0) {
+            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"kefuxitong" andTitle:@"客服系统"];
+            return cell;
+        }
     }
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
@@ -469,6 +475,16 @@
     }
     else if (indexPath.section == 4) {
         [self umengShare];
+    }
+    if (indexPath.section==5) {
+        if (indexPath.row==0) {
+            KeFuViewController *kefuViewC=[[KeFuViewController alloc]init];
+            
+            [self hiddingSelfTabBar];
+            [self.navigationController pushViewController:kefuViewC animated:YES];
+
+            return;
+        }
     }
 }
 

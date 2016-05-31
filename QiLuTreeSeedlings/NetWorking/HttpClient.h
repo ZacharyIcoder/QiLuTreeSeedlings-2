@@ -542,4 +542,10 @@
 -(void)huoquxiayijiguigeWtithrelation:(NSString *)relation
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 客服系统 -----------
+-(void)kefuXiTongWithPage:(NSString *)pageSize
+           WithPageNumber:(NSString *)pageNum
+               WithIsLoad:(NSString *)isLoad
+                  Success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure;
 @end
