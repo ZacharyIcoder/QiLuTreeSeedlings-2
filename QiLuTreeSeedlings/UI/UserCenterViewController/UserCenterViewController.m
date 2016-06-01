@@ -104,7 +104,7 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 5;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -414,6 +414,17 @@
 {
     
       [tableView deselectRowAtIndexPath:indexPath animated:YES];
+      if (indexPath.section==5) {
+          if (indexPath.row==0) {
+            KeFuViewController *kefuViewC=[[KeFuViewController alloc]init];
+            
+            [self hiddingSelfTabBar];
+            [self.navigationController pushViewController:kefuViewC animated:YES];
+            
+            return;
+          }
+      }
+
             if (![APPDELEGATE isNeedLogin]) {
                 LoginViewController *loginViewController=[[LoginViewController alloc]init];
                 [ToastView showTopToast:@"请先登录"];
@@ -484,16 +495,6 @@
     }
     else if (indexPath.section == 4) {
         [self umengShare];
-    }
-    if (indexPath.section==5) {
-        if (indexPath.row==0) {
-            KeFuViewController *kefuViewC=[[KeFuViewController alloc]init];
-            
-            [self hiddingSelfTabBar];
-            [self.navigationController pushViewController:kefuViewC animated:YES];
-
-            return;
-        }
     }
 }
 

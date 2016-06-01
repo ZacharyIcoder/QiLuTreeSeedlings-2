@@ -163,6 +163,11 @@
 		EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */; };
 		EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */; };
 		EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */; };
+		EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D851CFE6C3900D56AFB /* kefutouxiang@2x.png */; };
+		EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D871CFE792A00D56AFB /* kefuphone@2x.png */; };
+		EA833D8A1CFE81B600D56AFB /* kefuweixin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D891CFE81B600D56AFB /* kefuweixin@2x.png */; };
+		EA833D8C1CFE81E300D56AFB /* callkefuBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D8B1CFE81E300D56AFB /* callkefuBtn@2x.png */; };
+		EA833D8E1CFE848500D56AFB /* shiyongbangzhu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D8D1CFE848500D56AFB /* shiyongbangzhu@2x.png */; };
 		EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */; };
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
@@ -731,6 +736,11 @@
 		EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIDViewController.m; sourceTree = "<group>"; };
 		EA7F5F351CE05A0A00B2EEFF /* YLDNewPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDNewPassWordViewController.h; sourceTree = "<group>"; };
 		EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDNewPassWordViewController.m; sourceTree = "<group>"; };
+		EA833D851CFE6C3900D56AFB /* kefutouxiang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kefutouxiang@2x.png"; sourceTree = "<group>"; };
+		EA833D871CFE792A00D56AFB /* kefuphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kefuphone@2x.png"; sourceTree = "<group>"; };
+		EA833D891CFE81B600D56AFB /* kefuweixin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kefuweixin@2x.png"; sourceTree = "<group>"; };
+		EA833D8B1CFE81E300D56AFB /* callkefuBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "callkefuBtn@2x.png"; sourceTree = "<group>"; };
+		EA833D8D1CFE848500D56AFB /* shiyongbangzhu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shiyongbangzhu@2x.png"; sourceTree = "<group>"; };
 		EA88BE721C83E06E001E4E1F /* SearchRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendView.h; sourceTree = "<group>"; };
 		EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendView.m; sourceTree = "<group>"; };
 		EA88BE751C83F3AC001E4E1F /* searchHistoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchHistoryViewCell.h; sourceTree = "<group>"; };
@@ -1648,10 +1658,15 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA833D891CFE81B600D56AFB /* kefuweixin@2x.png */,
+				EA833D871CFE792A00D56AFB /* kefuphone@2x.png */,
+				EA833D851CFE6C3900D56AFB /* kefutouxiang@2x.png */,
 				EA72662F1CFD6268005612E6 /* kefuxitong@2x.png */,
 				FC7D66D71CF4277500DF4FEC /* 分享.png */,
+				EA833D8D1CFE848500D56AFB /* shiyongbangzhu@2x.png */,
 				EA6D36CB1CE713BC00CE025C /* yiguanbi.png */,
 				EA6D36CD1CE713E600CE025C /* yiguoqi.png */,
+				EA833D8B1CFE81E300D56AFB /* callkefuBtn@2x.png */,
 				EA6D36C91CE713A500CE025C /* weitonguo.png */,
 				EA6D36C71CE7138600CE025C /* yitongguo.png */,
 				EA6D36C51CE7136900CE025C /* shenhezhong.png */,
@@ -3369,6 +3384,7 @@
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
 				FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */,
 				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
+				EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */,
 				FC28DB6E1CD9E8A4003D7C27 /* 添加照片-人苗.png in Resources */,
 				EA6D36C81CE7138600CE025C /* yitongguo.png in Resources */,
 				EAAFCFB61CBE265100EB894F /* 2miaomu1334.png in Resources */,
@@ -3382,6 +3398,7 @@
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
 				FC50B1641CAE243F0022A24C /* UMSCommentInputControlleriPad.xib in Resources */,
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
+				EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */,
 				EA2726FE1C8A7C06000B0719 /* areadb.sqlite in Resources */,
 				EA5444C61CC770BD00971A50 /* bangde2.jpg in Resources */,
 				FC5337A21CBDF2B6008BFB11 /* WHC_CameraVC.xib in Resources */,
@@ -3417,11 +3434,9 @@
 				FCCFA7141CF2E12400CC1313 /* ZIKCitySectionHeaderView.xib in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
-
+				EA833D8C1CFE81E300D56AFB /* callkefuBtn@2x.png in Resources */,
 				EA7266301CFD6268005612E6 /* kefuxitong@2x.png in Resources */,
-
 				FCCEA4911CFD5FC2005D21F5 /* 我的积分-兑换.png in Resources */,
-
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
 				FCF353E31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
 				EA03CCEF1C90035B0032BAD3 /* phoneLiteImage@2x.png in Resources */,
@@ -3438,6 +3453,7 @@
 				EAB7819A1C8E970F00807B44 /* collectionN@2x.png in Resources */,
 				EAF051011C92A2B700F435A9 /* mycompany@2x.png in Resources */,
 				EAB7819D1C8EA55600807B44 /* UserImage@2x.png in Resources */,
+				EA833D8A1CFE81B600D56AFB /* kefuweixin@2x.png in Resources */,
 				FC50B1601CAE243F0022A24C /* UMSocialLocalizable.strings in Resources */,
 				FCCEA4921CFD5FC2005D21F5 /* 我的积分-积分增加.png in Resources */,
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
@@ -3487,6 +3503,7 @@
 				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
 				FC7134231CB3465C0037D507 /* 已选.png in Resources */,
+				EA833D8E1CFE848500D56AFB /* shiyongbangzhu@2x.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
 				EA5444C81CC770BD00971A50 /* bangde4.jpg in Resources */,
 				FC6FED8C1CAD103F000E2CA5 /* 支付订单-充值金额背景.png in Resources */,

@@ -63,26 +63,6 @@
                 self.hotModel.title=model.title;
                 self.bigImageVShowV=bigImageVShowV;
                 [self.view addSubview:bigImageVShowV];
-                /*新增*/
-//                self.specAry = model.spec;
-//                for (int i=0; i<model.spec.count; i++) {
-//                    NSDictionary *dic = model.spec[i];
-//                    NSArray *aryyyyy = [dic objectForKey:@"value"];
-//                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
-//                        [_miaomuzhiAry addObject:dic];
-//                    }
-//                }
-
-                //self.specAry = model.spec;
-//                                for (int i=0; i<model.spec.count; i++) {
-//                                    NSDictionary *dic = model.spec[i];
-//                                    NSArray *aryyyyy = [dic objectForKey:@"value"];
-//                                    if (![[aryyyyy firstObject] isEqualToString:@"不限"]) {
-//                                        [_miaomuzhiAry addObject:dic];
-//                                    }
-//                                }
-
-                /*新增end*/
 
                 if(model.collect)
                 {
@@ -117,6 +97,7 @@
     UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*2/5, 50)];
     [messageBtn setBackgroundColor:[UIColor whiteColor]];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+    [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
     [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
@@ -124,6 +105,7 @@
     [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
     [self.view addSubview:messageBtn];
     UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2/5, kHeight-50, kWidth*2/5, 50)];
+    [phoneBtn   .titleLabel setFont:[UIFont systemFontOfSize:15]];
     [phoneBtn setTitle:@"联系供应商" forState:UIControlStateNormal];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
@@ -153,9 +135,6 @@
 #pragma mark -- 短信留言
 -(void)meaageAction
 {
-//    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"sms://%@",self.model.phone];
-//    
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     [self showMessageView:[NSArray arrayWithObjects:self.model.phone, nil] title:@"苗木供应" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的供应信息:%@ 很感兴趣",self.model.title]];
 }
 
@@ -350,18 +329,6 @@
             cell.ary=self.model.spec;
              cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.showBtn.hidden = YES;
-
-//            //二期新增
-//            [cell.showBtn addTarget:self action:@selector(showOtherMessageAction:) forControlEvents:UIControlEventTouchUpInside];
-//            cell.showBtn.selected = self.isShow;
-//            if (self.specAry) {
-//                if (_isShow) {
-//                    cell.ary = self.specAry;
-//                }else{
-//                    cell.ary = self.miaomuzhiAry;
-//                }
-//            }
-//            //二期新增end
 
             return cell;
         }
