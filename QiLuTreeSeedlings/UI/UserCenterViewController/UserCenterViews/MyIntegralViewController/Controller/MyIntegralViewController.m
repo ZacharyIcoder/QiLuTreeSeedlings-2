@@ -28,12 +28,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.vcTitle = @"我的积分";
-//    self.rightBarBtnTitleString = @"兑换";
-//    __weak typeof(self) weakSelf = self;
-//    self.rightBarBtnBlock = ^{
-//        ZIKExchangeViewController *exchangeVC = [[ZIKExchangeViewController alloc] initWithNibName:@"ZIKExchangeViewController" bundle:nil];
-//        [weakSelf.navigationController pushViewController:exchangeVC animated:YES];
-//    };
+    self.rightBarBtnTitleString = @"兑换";
+    __weak typeof(self) weakSelf = self;
+    self.rightBarBtnBlock = ^{
+        ZIKExchangeViewController *exchangeVC = [[ZIKExchangeViewController alloc] initWithNibName:@"ZIKExchangeViewController" bundle:nil];
+        [weakSelf.navigationController pushViewController:exchangeVC animated:YES];
+    };
     [self initData];
     [self initUI];
 //    [self requestData];
