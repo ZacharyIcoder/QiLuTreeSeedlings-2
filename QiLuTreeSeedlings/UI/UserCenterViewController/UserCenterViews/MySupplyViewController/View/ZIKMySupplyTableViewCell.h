@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZIKSupplyModel.h"
+
+@class ZIKSupplyModel;
 @interface ZIKMySupplyTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *backImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;

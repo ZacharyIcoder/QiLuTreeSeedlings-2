@@ -28,14 +28,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.vcTitle = @"我的积分";
-    self.rightBarBtnTitleString = @"兑换";
-    __weak typeof(self) weakSelf = self;
-    self.rightBarBtnBlock = ^{
-        ZIKExchangeViewController *exchangeVC = [[ZIKExchangeViewController alloc] initWithNibName:@"ZIKExchangeViewController" bundle:nil];
-        [weakSelf.navigationController pushViewController:exchangeVC animated:YES];
-    };
+//    self.rightBarBtnTitleString = @"兑换";
+//    __weak typeof(self) weakSelf = self;
+//    self.rightBarBtnBlock = ^{
+//        ZIKExchangeViewController *exchangeVC = [[ZIKExchangeViewController alloc] initWithNibName:@"ZIKExchangeViewController" bundle:nil];
+//        [weakSelf.navigationController pushViewController:exchangeVC animated:YES];
+//    };
     [self initData];
     [self initUI];
+//    [self requestData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self requestData];
 }
 
@@ -71,7 +76,8 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,18 +85,22 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20.0f;
+    return 15.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKIntegraTableViewCell *cell = [ZIKIntegraTableViewCell cellWithTableView:tableView];
     if (self.dataArray.count > 0) {
-        [cell configureCell:self.dataArray[indexPath.row]];
+        [cell configureCell:self.dataArray[indexPath.section]];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -104,7 +114,7 @@
 
 - (void)requestData {
 
-    [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+//    [self requestSellList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.integralTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
@@ -116,6 +126,7 @@
 
         [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
+    [self.integralTableView headerBeginRefreshing];
 }
 
 - (void)requestSellList:(NSString *)page {

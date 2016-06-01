@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZIKIntegraExchangeModel;
 @interface ZIKIntegralCollectionViewCell : UICollectionViewCell
 /**
  *  cell背景图
@@ -22,4 +22,5 @@
  */
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 
+- (void)configureCell:(ZIKIntegraExchangeModel *)model;
 @end

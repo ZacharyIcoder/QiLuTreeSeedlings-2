@@ -11,6 +11,7 @@
 #import "StringAttributeHelper.h"
 #import "UIDefines.h"
 #import "ZIKFunction.h"
+#import "ZIKSupplyModel.h"
 @implementation ZIKMySupplyTableViewCell
 
 - (void)awakeFromNib {
