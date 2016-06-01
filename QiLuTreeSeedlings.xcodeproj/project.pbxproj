@@ -170,6 +170,7 @@
 		EA833D8E1CFE848500D56AFB /* shiyongbangzhu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D8D1CFE848500D56AFB /* shiyongbangzhu@2x.png */; };
 		EA833D911CFEBEAC00D56AFB /* zhanzhongtongshouye.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D8F1CFEBEAC00D56AFB /* zhanzhongtongshouye.png */; };
 		EA833D921CFEBEAC00D56AFB /* gongchenggongsishouye.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D901CFEBEAC00D56AFB /* gongchenggongsishouye.png */; };
+		EA833D951CFEC13300D56AFB /* YLDGongChengGongSiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA833D941CFEC13300D56AFB /* YLDGongChengGongSiViewController.m */; };
 		EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */; };
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
@@ -745,6 +746,8 @@
 		EA833D8D1CFE848500D56AFB /* shiyongbangzhu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shiyongbangzhu@2x.png"; sourceTree = "<group>"; };
 		EA833D8F1CFEBEAC00D56AFB /* zhanzhongtongshouye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhanzhongtongshouye.png; sourceTree = "<group>"; };
 		EA833D901CFEBEAC00D56AFB /* gongchenggongsishouye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gongchenggongsishouye.png; sourceTree = "<group>"; };
+		EA833D931CFEC13300D56AFB /* YLDGongChengGongSiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGongChengGongSiViewController.h; sourceTree = "<group>"; };
+		EA833D941CFEC13300D56AFB /* YLDGongChengGongSiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGongChengGongSiViewController.m; sourceTree = "<group>"; };
 		EA88BE721C83E06E001E4E1F /* SearchRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendView.h; sourceTree = "<group>"; };
 		EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendView.m; sourceTree = "<group>"; };
 		EA88BE751C83F3AC001E4E1F /* searchHistoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchHistoryViewCell.h; sourceTree = "<group>"; };
@@ -1584,6 +1587,8 @@
 			children = (
 				EA0B2BD41C59F6ED0018A7BD /* BaseTabBarController.h */,
 				EA0B2BD51C59F6ED0018A7BD /* BaseTabBarController.m */,
+				EA833D931CFEC13300D56AFB /* YLDGongChengGongSiViewController.h */,
+				EA833D941CFEC13300D56AFB /* YLDGongChengGongSiViewController.m */,
 			);
 			path = BaseTabBarViewController;
 			sourceTree = "<group>";
@@ -3633,6 +3638,7 @@
 				FC2856E81CF6DEA9005235FC /* ZIKMySupplyVC.m in Sources */,
 				FC21BC801CA51C930041E2C3 /* IQUIViewController+Additions.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
+				EA833D951CFEC13300D56AFB /* YLDGongChengGongSiViewController.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,

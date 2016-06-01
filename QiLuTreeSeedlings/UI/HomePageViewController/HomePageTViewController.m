@@ -392,6 +392,20 @@
             [ToastView showTopToast:@"请先登录"];
         }
     }
+//    if(index==4){
+//        if([APPDELEGATE isNeedLogin])
+//        {
+//            [self hiddingSelfTabBar];
+//            UITabBarController *tab=[[UITabBarController alloc]init];
+//            //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
+//            [self.navigationController pushViewController:tab animated:YES];
+//            return;
+//            
+//        }else
+//        {
+//            [ToastView showTopToast:@"请先登录"];
+//        }
+//    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
