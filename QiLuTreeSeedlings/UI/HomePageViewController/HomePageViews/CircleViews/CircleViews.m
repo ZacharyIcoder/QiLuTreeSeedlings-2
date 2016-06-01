@@ -19,8 +19,8 @@
     
     self=[super initWithFrame:frame];
     if (self) {
-        dataAry =@[@"供应信息",@"求购信息",@"我的收藏",@"信息定制"];
-        NSArray *imageAry=@[@"NomerSellMessageBtn",@"NomerBuyMessageBtn",@"NomerMyCollectionBtn",@"NomerCustomBtn"];
+        dataAry =@[@"供应信息",@"求购信息",@"我的收藏",@"信息定制",@"站长通",@"工程公司"];
+        NSArray *imageAry=@[@"NomerSellMessageBtn",@"NomerBuyMessageBtn",@"NomerMyCollectionBtn",@"NomerCustomBtn",@"zhanzhongtongshouye",@"gongchenggongsishouye"];
         [self setBackgroundColor:[UIColor whiteColor]];
         for (int i=0; i<dataAry.count; i++) {
             
@@ -35,7 +35,9 @@
 -(UIView *)makeCircleViewWtihName:(NSString *)nameStr WithImagName:(NSString *)imagName WithNum:(int)i
 {
     int CWith=kWidth/4;
-    UIView *circleView=[[UIView alloc]initWithFrame:CGRectMake(i*CWith, 0, CWith, 100)];
+    int k=i/4;
+    int z=i%4;
+    UIView *circleView=[[UIView alloc]initWithFrame:CGRectMake(z*CWith, k*100, CWith, 100)];
     UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(circleView.frame.size.width/2-43/2,100/2-31, 43, 43)];
     [imageV setImage:[UIImage imageNamed:imagName]];
     imageV.layer.masksToBounds=YES;
