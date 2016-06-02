@@ -10,6 +10,8 @@
 #import "GuiGeModel.h"
 @protocol GuiGeCellDelegate <NSObject>
 -(void)reloadView;
+-(void)actionTextField:(UITextField *)textField;
+-(void)dianxuanAction;
 @end
 @interface GuiGeCell : UIView
 @property (nonatomic,strong) NSMutableArray *answerAry;

@@ -27,6 +27,11 @@
 #import "SellSearchTableViewCell.h"
 #import "SellDetialViewController.h"
 #import "BigImageViewShowView.h"
+
+#import "ZIKStationTabBarViewController.h"
+
+#import "YLDGongChengGongSiViewController.h"
+
 @interface HomePageTViewController ()<UITableViewDelegate,UITableViewDataSource,AdvertDelegate,CircleViewsDelegate,YouLickViewDelegate>
 @property (nonatomic,strong) UIButton *loginBtn;
 @property (nonatomic,strong) UITableView *tableView;
@@ -392,20 +397,34 @@
             [ToastView showTopToast:@"请先登录"];
         }
     }
-//    if(index==4){
-//        if([APPDELEGATE isNeedLogin])
-//        {
-//            [self hiddingSelfTabBar];
-//            UITabBarController *tab=[[UITabBarController alloc]init];
-//            //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
-//            [self.navigationController pushViewController:tab animated:YES];
-//            return;
-//            
-//        }else
-//        {
-//            [ToastView showTopToast:@"请先登录"];
-//        }
-//    }
+
+    if(index==4){
+        if([APPDELEGATE isNeedLogin])
+        {
+            [self hiddingSelfTabBar];
+            ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
+            //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
+            [self.navigationController pushViewController:stationtab animated:YES];
+            return;
+        }else
+        {
+            [ToastView showTopToast:@"请先登录"];
+        }
+    }
+
+    if(index==5){
+        if([APPDELEGATE isNeedLogin])
+        {
+            [self hiddingSelfTabBar];
+            YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
+            [self.navigationController pushViewController:tab animated:YES];
+            return;
+            
+        }else
+        {
+            [ToastView showTopToast:@"请先登录"];
+        }
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

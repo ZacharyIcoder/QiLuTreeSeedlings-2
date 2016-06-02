@@ -66,11 +66,7 @@
         NSDictionary *dic=ary[i];
         [self MackViewWithFrame:CGRectMake(0, i*30+35, kWidth, 30) andDic:dic];
     }
-//    CGRect frame=self.showBtn.frame;
-//    frame.origin.y=ary.count*30+35;
-//    self.showBtn.frame=frame;
 }
-
 -(void)setDingzhiAry:(NSArray *)dingzhiAry
 {
     _dingzhiAry=dingzhiAry;
@@ -114,9 +110,22 @@
     {
         
         if (valueAry.count>1) {
+            NSString *type=[dic objectForKey:@"type"];
             valueStr=[NSMutableString stringWithFormat:@"%@",valueAry[0]];
             for (int k=1; k<valueAry.count; k++) {
-                [valueStr appendFormat:@"~%@",valueAry[k]];
+                if ([type isEqualToString:@"复选"]) {
+                    [valueStr appendFormat:@",%@",valueAry[k]];
+                }
+                if ([type isEqualToString:@"单选结合"]) {
+                    if (k==2) {
+                        [valueStr appendFormat:@"-%@",valueAry[k]];
+                    }
+                    if (k==1) {
+                        [valueStr appendFormat:@" %@",valueAry[k]];
+                    }
+                    
+                }
+                
             }
 //            valueStr appendFormat:@" %@",
         }

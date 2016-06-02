@@ -379,6 +379,8 @@
     
 }
 - (void)ecttiveBtnAction {
+    [self.countTextField resignFirstResponder];
+    [self.priceTextField resignFirstResponder];
     if (!self.ecttivePickerView) {
         self.ecttivePickerView = [[PickerShowView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         [self.ecttivePickerView resetPickerData:@[@"长期",@"一个月",@"三个月",@"半年",@"一年"]];

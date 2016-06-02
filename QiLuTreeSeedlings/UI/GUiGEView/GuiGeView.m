@@ -15,6 +15,7 @@
 @property (nonatomic) CGFloat wanzhenggao;
 @property (nonatomic,strong) UIView *hidingView;
 @property (nonatomic)        BOOL  isValue;
+@property (nonatomic,weak) UITextField *nowTextField;
 @end
 @implementation GuiGeView
 -(id)initWithAry:(NSArray *)modelAry andFrame:(CGRect)frame andMainSure:(BOOL)MainSure
@@ -105,9 +106,6 @@
                 Y+=cell.frame.size.height;
             }else{
                 cell.hidden=YES;
-                if (model.values.count>0) {
-                    self.isValue=YES;
-                }
             }
             cell.delegate=self;
             [self.cellAry addObject:cell];
@@ -125,9 +123,6 @@
         [showBtn setTitle:@"隐藏规格" forState:UIControlStateSelected];
         [showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
        [self addSubview:showBtn];
-        if (self.isValue) {
-            [self showBtnAction:showBtn];
-        }
     }
     return self;
 }
@@ -171,6 +166,13 @@
     }
       [self reloadBtnaVVV];
     sender.selected=!sender.selected;
+}
+-(void)actionTextField:(UITextField *)textField
+{
+    self.nowTextField=textField;
+}
+-(void)dianxuanAction{
+    [self.nowTextField resignFirstResponder];
 }
 -(BOOL)getAnswerAry:(NSMutableArray *)answerAryz
 {

@@ -56,6 +56,7 @@
                 minTextField.placeholder=@"最小值";
                 self.minTextField=minTextField;
                 minTextField.tag=111;
+                minTextField.clearsOnBeginEditing=YES;
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -71,6 +72,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
+                maxTextField.clearsOnBeginEditing=YES;
                 [self addSubview:maxTextField];
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -205,6 +207,7 @@
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
+                minTextField.clearsOnBeginEditing=YES;
                  minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -219,6 +222,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
+                maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
                                                              name:UITextFieldTextDidChangeNotification
@@ -359,6 +363,7 @@
                             UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-70/320.f*kWidth+10, 0, 60/320.f*kWidth, 44)];
                              [minTextField setFont:[UIFont systemFontOfSize:14]];
                              minTextField.placeholder=@"最小值";
+                            minTextField.clearsOnBeginEditing=YES;
                             minTextField.textAlignment = NSTextAlignmentRight;
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
                             self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -379,6 +384,7 @@
                             maxTextField.placeholder=@"最大值";
                             maxTextField.delegate=self;
                             maxTextField.tag=122;
+                            maxTextField.clearsOnBeginEditing=YES;
                             [[NSNotificationCenter defaultCenter] addObserver:self
                                                                      selector:@selector(textFieldChanged:)
                                                                          name:UITextFieldTextDidChangeNotification
@@ -451,6 +457,12 @@
     }
     return self;
 }
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (self.delegate) {
+        [self.delegate actionTextField:textField];
+    }
+}
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     if (textField.tag==111) {
@@ -502,6 +514,9 @@
 }
 -(void)pickBtnAction:(UIButton *)sender
 {
+    if (self.delegate) {
+        [self.delegate dianxuanAction];
+    }
     [self.pickerView showInView];
 }
 -(void)fuxuanBtnAction:(UIButton *)sender
@@ -556,6 +571,7 @@
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.minTextField=minTextField;
                 minTextField.tag=121;
+                minTextField.clearsOnBeginEditing=YES;
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -572,6 +588,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=122;
+                maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
                                                              name:UITextFieldTextDidChangeNotification
@@ -636,8 +653,8 @@
 }
 -(void)selectInfo:(NSString *)select
 {
-//    [self.answerAry insertObject:select atIndex:0];
-     [self.answerAry replaceObjectAtIndex:0 withObject:select];
+//    [self.answerAry insertObject:select atIndex:0]
+
     self.model.answer=select;
     [self.nowBtn setTitle:select forState:UIControlStateNormal];
 }

@@ -15,5 +15,6 @@
 /**
  *  视图标题
  */
+@property (nonatomic,weak)UIButton *backBtn;
 @property (nonatomic, strong) NSString *vcTitle;
 @end
