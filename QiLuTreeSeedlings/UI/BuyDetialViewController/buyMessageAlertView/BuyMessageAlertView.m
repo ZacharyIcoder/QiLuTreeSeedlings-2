@@ -75,6 +75,62 @@
     return actionBV;
 }
 
++(BuyMessageAlertView *)addActionViewWithTitle:(NSString *)title andDetail:(NSString *)detail {
+    BuyMessageAlertView *actionBV=[[BuyMessageAlertView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    actionBV.tag=kActionVTag;
+    [actionBV setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+    UIView *bottowView=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight, kWidth, BotHeight)];
+    [bottowView setBackgroundColor:[UIColor whiteColor]];
+    UILabel *lable=[[UILabel alloc]initWithFrame:CGRectMake(15, 15, kWidth-30, 60)];
+    lable.numberOfLines=0;
+    lable.text = title;
+    lable.textAlignment = NSTextAlignmentCenter;
+    [lable setTextColor:detialLabColor];
+    [lable setFont:[UIFont systemFontOfSize:14]];
+    [bottowView addSubview:lable];
+    UILabel *labss=[[UILabel alloc]initWithFrame:CGRectMake(20, 80, kWidth-40, 20)];
+    [labss setTextAlignment:NSTextAlignmentCenter];
+    [labss setTextColor:detialLabColor];
+    [labss setFont:[UIFont systemFontOfSize:14]];
+    labss.text = detail;
+    [bottowView addSubview:labss];
+
+    UIImageView *imageV1=[[UIImageView alloc]initWithFrame:CGRectMake(0, BotHeight-50, kWidth, 0.5)];
+    [imageV1 setBackgroundColor:kLineColor];
+    [bottowView addSubview:imageV1];
+    UIImageView *imageV2=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth/2, BotHeight-45, 0.5, 40)];
+    [imageV2 setBackgroundColor:kLineColor];
+    [bottowView addSubview:imageV2];
+
+    [actionBV addSubview:bottowView];
+
+    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeActionView)];
+    [actionBV addGestureRecognizer:tapGesture];
+
+    UIButton *leftBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, BotHeight-50, kWidth/2, 50)];
+    [leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+    actionBV.leftBtn=leftBtn;
+    [bottowView addSubview:leftBtn];
+    [leftBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+
+    [leftBtn addTarget:self action:@selector(removeActionView) forControlEvents:UIControlEventTouchUpInside];
+
+    UIButton *rightBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, BotHeight-50, kWidth/2, 50)];
+    [rightBtn setTitle:@"确定" forState:UIControlStateNormal];
+    actionBV.rightBtn=rightBtn;
+    [bottowView addSubview:rightBtn];
+    [rightBtn setTitleColor:NavColor forState:UIControlStateNormal];
+    [[[UIApplication sharedApplication] keyWindow] addSubview:actionBV];
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame=bottowView.frame;
+        frame.origin.y=kHeight -BotHeight;
+        bottowView.frame=frame;
+    }];
+
+    return actionBV;
+
+}
+
 +(BuyMessageAlertView *)addActionVieWithReturnReason:(NSString *)reason
 {
     BuyMessageAlertView *actionBV=[[BuyMessageAlertView alloc]initWithFrame:[UIScreen mainScreen].bounds];

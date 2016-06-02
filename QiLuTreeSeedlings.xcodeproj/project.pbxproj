@@ -433,8 +433,6 @@
 		FCC5C3001CFE728F004669ED /* ZIKExchangeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC5C2FF1CFE728F004669ED /* ZIKExchangeSuccessView.m */; };
 		FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC5C3011CFE729D004669ED /* ZIKExchangeSuccessView.xib */; };
 		FCC5C3041CFE73BE004669ED /* 积分兑换-兑换成功.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC5C3031CFE73BE004669ED /* 积分兑换-兑换成功.png */; };
-		FCC5C3081CFEAB22004669ED /* JXActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC5C3061CFEAB22004669ED /* JXActionView.m */; };
-		FCC5C3091CFEAB22004669ED /* JXActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC5C3071CFEAB22004669ED /* JXActionView.xib */; };
 		FCCEA46E1CFD33C7005D21F5 /* 已删除-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA46D1CFD33C7005D21F5 /* 已删除-2.png */; };
 		FCCEA4901CFD5FC2005D21F5 /* MyIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCEA4801CFD5FC2005D21F5 /* MyIntegralViewController.m */; };
 		FCCEA4911CFD5FC2005D21F5 /* 我的积分-兑换.png in Resources */ = {isa = PBXBuildFile; fileRef = FCCEA4821CFD5FC2005D21F5 /* 我的积分-兑换.png */; };
@@ -1278,9 +1276,6 @@
 		FCC5C2FF1CFE728F004669ED /* ZIKExchangeSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKExchangeSuccessView.m; sourceTree = "<group>"; };
 		FCC5C3011CFE729D004669ED /* ZIKExchangeSuccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKExchangeSuccessView.xib; sourceTree = "<group>"; };
 		FCC5C3031CFE73BE004669ED /* 积分兑换-兑换成功.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "积分兑换-兑换成功.png"; sourceTree = "<group>"; };
-		FCC5C3051CFEAB22004669ED /* JXActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXActionView.h; sourceTree = "<group>"; };
-		FCC5C3061CFEAB22004669ED /* JXActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXActionView.m; sourceTree = "<group>"; };
-		FCC5C3071CFEAB22004669ED /* JXActionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JXActionView.xib; sourceTree = "<group>"; };
 		FCCEA46D1CFD33C7005D21F5 /* 已删除-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已删除-2.png"; sourceTree = "<group>"; };
 		FCCEA47F1CFD5FC2005D21F5 /* MyIntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIntegralViewController.h; sourceTree = "<group>"; };
 		FCCEA4801CFD5FC2005D21F5 /* MyIntegralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIntegralViewController.m; sourceTree = "<group>"; };
@@ -3085,9 +3080,6 @@
 		FCCEA48A1CFD5FC2005D21F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FCC5C3051CFEAB22004669ED /* JXActionView.h */,
-				FCC5C3061CFEAB22004669ED /* JXActionView.m */,
-				FCC5C3071CFEAB22004669ED /* JXActionView.xib */,
 				FCCEA48B1CFD5FC2005D21F5 /* IntegraTableViewCell.h */,
 				FCCEA48C1CFD5FC2005D21F5 /* IntegraTableViewCell.m */,
 				FCCEA48D1CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.h */,
@@ -3594,8 +3586,10 @@
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
 				FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
+
 				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
 				FCC5C3091CFEAB22004669ED /* JXActionView.xib in Resources */,
+
 				FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
 				FC5337CB1CBE18FC008BFB11 /* 站长通-星级1.png in Resources */,
@@ -3804,7 +3798,6 @@
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
 				FCE2D1C51CE46C0A0002B069 /* ZIKAddImageView.m in Sources */,
-				FCC5C3081CFEAB22004669ED /* JXActionView.m in Sources */,
 				FCC5C3001CFE728F004669ED /* ZIKExchangeSuccessView.m in Sources */,
 				FCCEA4971CFD5FC2005D21F5 /* IntegraTableViewCell.m in Sources */,
 				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,

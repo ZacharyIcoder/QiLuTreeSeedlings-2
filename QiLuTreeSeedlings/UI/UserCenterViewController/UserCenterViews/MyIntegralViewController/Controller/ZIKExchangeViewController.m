@@ -11,21 +11,25 @@
 #import "YYModel.h"//类型转换
 /*****工具******/
 
+#import "BuyMessageAlertView.h"//提示界面
+
 #import "ZIKIntegraExchangeModel.h"
 #import "ZIKIntegralCollectionViewCell.h"
 #import "ZIKExchangeSuccessView.h"
-#import "JXActionView.h"
 
 NSString *kCellID = @"cellID";
 
 @interface ZIKExchangeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *integralCollectionView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
-@property (nonatomic, weak) JXActionView *actionView;
+@property (nonatomic, strong) ZIKExchangeSuccessView *successView;
 @end
 
 @implementation ZIKExchangeViewController
-
+{
+    @private
+    BOOL _isCharge;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -36,12 +40,17 @@ NSString *kCellID = @"cellID";
     _integralCollectionView.dataSource = self;
     [self requestData];
 }
-
 - (void)requestData {
     [HTTPCLIENT integraRuleSuccess:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 1) {
             //CLog(@"%@",responseObject);
             NSDictionary *resultDic = responseObject[@"result"];
+            if ([resultDic[@"ischarge"] integerValue] == 1) {
+                _isCharge  = YES;
+            }
+            else {
+                _isCharge = NO;
+            }
             NSArray *arr = resultDic[@"list"];
             [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZIKIntegraExchangeModel *model = [ZIKIntegraExchangeModel yy_modelWithDictionary:dic];
@@ -84,24 +93,22 @@ NSString *kCellID = @"cellID";
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    ZIKIntegraExchangeModel *model = self.dataArr[indexPath.row];
-//    [self requestExchange:model.integral money:model.money];
-    self.actionView = [[[NSBundle mainBundle] loadNibNamed:@"JXActionView" owner:self options:nil] lastObject];
-    self.actionView.titleLb.text = @"确定交卷吗？";
-    [self.actionView.leftBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [self.actionView.rightBtn setTitle:@"确定" forState:UIControlStateNormal];
-    self.actionView.frame = CGRectMake(0, kHeight, kWidth, self.actionView.frame.size.height);
-    __weak typeof(self) weakSelf = self;
-    [self.actionView addClickBlock:^(NSInteger index) {
-        if(index==0){
-            //[weakSelf actionClick:nil];
-        }
-        else{
-            // [weakSelf actionClick:nil];
-            //[weakSelf alertBack:nil];
-        }
-    }];
+    if (_isCharge) {
+        BuyMessageAlertView *buyMessageAlertV = [BuyMessageAlertView addActionViewWithTitle:@"确认要兑换吗?" andDetail:@"兑换后,积分减少,账户余额增加"];
+        buyMessageAlertV.rightBtn.tag = indexPath.row;
+        [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else {
+        [ToastView showTopToast:@"未充值过的用户不能参与积分兑换功能，请先充值"];
+        return;
+    }
 
+}
+
+- (void)miaopudetialAction:(UIButton *)btn {
+    ZIKIntegraExchangeModel *model = self.dataArr[btn.tag];
+    [self requestExchange:model.integral money:model.money];
+    [BuyMessageAlertView removeActionView];
 }
 
 //返回这个UICollectionView是否可以被选择
@@ -118,11 +125,12 @@ NSString *kCellID = @"cellID";
 - (void)requestExchange:(NSString *)integral money:(NSString *)money {
     [HTTPCLIENT integralrecordexchangeWithIntegral:integral withMoney:money Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 1) {
-//            ZIKExchangeSuccessView *view = [ZIKExchangeSuccessView successView];
-//            view.frame = CGRectMake(0, 64, kWidth, 160);
-//            [self.view addSubview:view];
-//            [_integralCollectionView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
-
+            ZIKExchangeSuccessView *view = [ZIKExchangeSuccessView successView];
+            view.frame = CGRectMake(0, 64, kWidth, 160);
+            [self.view addSubview:view];
+            self.successView = view;
+            [_integralCollectionView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(back:) userInfo:nil repeats:YES];
          }
         else {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
@@ -132,4 +140,19 @@ NSString *kCellID = @"cellID";
     }];
 }
 
+-(void)back:(NSTimer *)sender {
+    int listSecond = [self.successView.timeLabel.text intValue];
+    if(1 == listSecond)
+    {
+        [sender invalidate];
+        [self.successView removeFromSuperview];
+        [self.navigationController popViewControllerAnimated:YES];
+     }
+    else
+    {
+        listSecond --;
+          self.successView.timeLabel.text    = [NSString stringWithFormat:@"%d",listSecond];
+    }
+
+}
 @end

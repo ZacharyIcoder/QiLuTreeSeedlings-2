@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZIKExchangeSuccessView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 +(instancetype)successView;
 @end

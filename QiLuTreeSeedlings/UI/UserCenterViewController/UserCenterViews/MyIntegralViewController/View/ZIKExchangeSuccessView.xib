@@ -32,7 +32,7 @@
                     <rect key="frame" x="33" y="79" width="254" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="3dQ-Xk-K2M"/>
-                        <constraint firstAttribute="width" constant="254" id="Czb-oF-AFM"/>
+                        <constraint firstAttribute="width" priority="750" constant="254" id="Czb-oF-AFM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,7 +86,10 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="242" y="86"/>
+            <connections>
+                <outlet property="timeLabel" destination="Nag-HY-zqv" id="gnt-To-tsE"/>
+            </connections>
+            <point key="canvasLocation" x="233" y="-63"/>
         </view>
     </objects>
     <resources>
