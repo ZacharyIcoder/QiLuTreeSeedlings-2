@@ -26,7 +26,10 @@ NSString *kCellID = @"cellID";
 @end
 
 @implementation ZIKExchangeViewController
-
+{
+    @private
+    BOOL _isCharge;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -42,6 +45,12 @@ NSString *kCellID = @"cellID";
         if ([responseObject[@"success"] integerValue] == 1) {
             //CLog(@"%@",responseObject);
             NSDictionary *resultDic = responseObject[@"result"];
+            if ([resultDic[@"ischarge"] integerValue] == 1) {
+                _isCharge  = YES;
+            }
+            else {
+                _isCharge = NO;
+            }
             NSArray *arr = resultDic[@"list"];
             [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                 ZIKIntegraExchangeModel *model = [ZIKIntegraExchangeModel yy_modelWithDictionary:dic];
@@ -84,18 +93,21 @@ NSString *kCellID = @"cellID";
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    ZIKIntegraExchangeModel *model = self.dataArr[indexPath.row];
-//    [self requestExchange:model.integral money:model.money];
-    BuyMessageAlertView *buyMessageAlertV = [BuyMessageAlertView addActionViewWithTitle:@"awefjiwe" andDetail:@"fjewifiw"];
-    buyMessageAlertV.rightBtn.tag = indexPath.row;
-    [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction:) forControlEvents:UIControlEventTouchUpInside];
+    if (_isCharge) {
+        BuyMessageAlertView *buyMessageAlertV = [BuyMessageAlertView addActionViewWithTitle:@"确认要兑换吗?" andDetail:@"兑换后,积分减少,账户余额增加"];
+        buyMessageAlertV.rightBtn.tag = indexPath.row;
+        [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else {
+        [ToastView showTopToast:@"未充值过的用户不能参与积分兑换功能，请先充值"];
+        return;
+    }
 
 }
 
 - (void)miaopudetialAction:(UIButton *)btn {
     ZIKIntegraExchangeModel *model = self.dataArr[btn.tag];
     [self requestExchange:model.integral money:model.money];
-
     [BuyMessageAlertView removeActionView];
 }
 
