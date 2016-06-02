@@ -465,6 +465,16 @@
 }
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    if (textField.keyboardType==UIKeyboardTypeDecimalPad)
+    {
+        CGFloat sss=[textField.text floatValue];
+        if (sss>0) {
+             textField.text=[NSString stringWithFormat:@"%.2lf",sss];
+        }else{
+            textField.text=@"";
+        }
+       
+    }
     if (textField.tag==111) {
         //[self.answerAry insertObject:textField.text atIndex:0];
         [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
@@ -479,6 +489,7 @@
                 [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
             }
         }
+
     }
     if (textField.tag==112) {
 //        [self.answerAry insertObject:textField.text atIndex:1];
@@ -512,7 +523,7 @@
         if (textField.text.length==0) {
             if (self.maxTextField.text.length>0) {
                 textField.text=self.maxTextField.text;
-                [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
+                [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
             }
         }
 
@@ -530,7 +541,7 @@
         if (textField.text.length==0) {
             if (self.minTextField.text.length>0) {
                 textField.text=self.minTextField.text;
-                [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+                [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
             }
         }
 
@@ -539,6 +550,39 @@
 //        [self.answerAry2 insertObject:textField.text atIndex:0];
          [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
     }
+    if (textField.tag!=113&&textField.tag!=123) {
+        if (textField.keyboardType==UIKeyboardTypeDecimalPad||textField.keyboardType==UIKeyboardTypeNumberPad)
+        {
+            CGFloat minNum=[self.minTextField.text floatValue];
+             CGFloat maxNum=[self.maxTextField.text floatValue];
+            if (minNum>maxNum) {
+                [ToastView showTopToast:@"最小值不得大于最大值"];
+                if (textField.tag==111||textField.tag==121) {
+                    textField.text=self.maxTextField.text;
+                    if (textField.tag==111) {
+                       [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
+                    }
+                    if (textField.tag==121) {
+                        [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
+                    }
+                    
+                }
+                if (textField.tag==112||textField.tag==122) {
+                    textField.text=self.minTextField.text;
+                    if (textField.tag==112) {
+                        [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+                    }
+                    if (textField.tag==122) {
+                        [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
+                    }
+
+                }
+                
+            }
+        }
+    }
+    
+   
     return YES;
 }
 -(void)pickBtnAction:(UIButton *)sender
@@ -688,14 +732,48 @@
 }
 - (void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
+    NSString *toBeString = textField.text;
     int kssss;
-    if (textField.keyboardType==UIKeyboardTypeDecimalPad||textField.keyboardType==UIKeyboardTypeNumberPad) {
+    if (textField.keyboardType==UIKeyboardTypeNumberPad) {
         kssss=8;
     }else{
         kssss=10;
     }
+    if (textField.keyboardType==UIKeyboardTypeDecimalPad) {
+        kssss=11;
+        NSArray *valueAryy=[textField.text componentsSeparatedByString:@"."];
+        if (valueAryy.count==1) {
+            NSString *zhengshuStr=[valueAryy firstObject];
+            if (zhengshuStr.length>8) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"整数部分不得超过8位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+        }
+        if (valueAryy.count==2) {
+            // NSLog(@"%@",[valueAryy firstObject]);
+            NSString *zhengshuStr=[valueAryy firstObject];
+            if (zhengshuStr.length>8) {
+                 [ToastView showTopToast:[NSString stringWithFormat:@"整数部分不得超过8位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+            NSString *xiaoshuStr=valueAryy[1];
+            if (xiaoshuStr.length>2) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"小数精确到两位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+            
+        }
+        if (valueAryy.count>2) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"请不要输入多个小数点"]];
+            textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+            return;
+        }
+        
+    }
     
-    NSString *toBeString = textField.text;
     NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
     if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
         UITextRange *selectedRange = [textField markedTextRange];
