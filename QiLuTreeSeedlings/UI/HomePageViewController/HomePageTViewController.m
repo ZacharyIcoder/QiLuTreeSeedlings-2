@@ -28,9 +28,11 @@
 #import "SellDetialViewController.h"
 #import "BigImageViewShowView.h"
 
+
 #import "ZIKStationTabBarViewController.h"
 
 #import "YLDGongChengGongSiViewController.h"
+
 
 @interface HomePageTViewController ()<UITableViewDelegate,UITableViewDataSource,AdvertDelegate,CircleViewsDelegate,YouLickViewDelegate>
 @property (nonatomic,strong) UIButton *loginBtn;
@@ -398,6 +400,7 @@
         }
     }
 
+
     if(index==4){
         if([APPDELEGATE isNeedLogin])
         {
@@ -411,6 +414,7 @@
             [ToastView showTopToast:@"请先登录"];
         }
     }
+
 
     if(index==5){
         if([APPDELEGATE isNeedLogin])
