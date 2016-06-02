@@ -11,7 +11,7 @@
 #import "ZIKCityTableViewCell.h"
 #import "ZIKCitySectionHeaderView.h"
 #import "ZIKSectionInfo.h"
-
+#import "StringAttributeHelper.h"
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @interface ZIKCityListViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -42,12 +42,46 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
     return YES;
 }
+-(void)backBtnAction:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(UIView *)makeNavView
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
+    [view setBackgroundColor:NavColor];
+    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
+    [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
+    [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
+    [view addSubview:backBtn];
+    self.backBtn=backBtn;
+    [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+   UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-160,26, 320, 30)];
+    [titleLab setTextColor:[UIColor whiteColor]];
+    [titleLab setTextAlignment:NSTextAlignmentCenter];
+    //[titleLab setText:self.vcTitle];
+    //titleLab.text = self.vcTitle;
+    NSString *str = @"选择地区（最多可选5项）";
+    FontAttribute *fullFont = [FontAttribute new];
+    fullFont.font = [UIFont systemFontOfSize:14.0f];
+    fullFont.effectRange  = NSMakeRange(0, str.length);
+    //局部设置
+    FontAttribute *partFont = [FontAttribute new];
+    partFont.font = [UIFont systemFontOfSize:20.0f];
+    partFont.effectRange = NSMakeRange(0, 4);
+    titleLab.attributedText = [str mutableAttributedStringWithStringAttributes:@[fullFont,partFont]];
+
+    [view addSubview:titleLab];
+    return view;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.vcTitle = @"选择地区（5）";
+//    self.vcTitle = @"选择地区（最多可选5项）";
+
     self.rightBarBtnTitleString = @"确定";
        _selectMArr = [[NSMutableArray alloc] initWithCapacity:5];
     _isCanSelect = YES;

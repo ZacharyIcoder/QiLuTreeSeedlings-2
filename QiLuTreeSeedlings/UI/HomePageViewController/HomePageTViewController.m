@@ -197,10 +197,11 @@
         BuySearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[BuySearchTableViewCell IDStr]];
         if (!cell) {
             cell=[[BuySearchTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BuySearchTableViewCell IDStr] WithFrame:CGRectMake(0, 0, kWidth, 65)];
-            //cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            //cell=UITableViewCellSelectionStyleNone;
         }
         HotBuyModel  *model=self.BuyDataAry[indexPath.row];
         cell.hotBuyModel=model;
+        //tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return cell;
     }
     if (indexPath.section==4) {
