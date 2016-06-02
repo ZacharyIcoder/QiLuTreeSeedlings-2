@@ -8,11 +8,19 @@
 
 #import "YLDGongChengGongSiViewController.h"
 #import "UIDefines.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
+#import "YLDZhanZhangGongYingViewController.h"
+#import "WoDeDingDanViewController.h"
+#import "GongChengZhongXinViewController.h"
+#import "YLDBaoJiaGuanLiViewController.h"
+#import "UINavController.h"
 #define kTABBARH 50
 
 @interface YLDGongChengGongSiViewController ()
-@property UIView *BTabBar;
+@property (nonatomic,strong)UIView *BTabBar;
 @property BOOL TabBarHiden;
+@property (nonatomic,strong)NSMutableArray *labAry;
+@property (nonatomic,strong)UIButton *nowBtn;
 @end
 
 @implementation YLDGongChengGongSiViewController
@@ -22,19 +30,40 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.labAry=[NSMutableArray array];
     self.TabBarHiden=NO;
-    //[self MakeUI];
-    //添加隐藏和显示自定义标签栏的通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenTabBar) name:@"HidenTabBar" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:@"showTabBar" object:nil];
-
+    [self MakeUI];
+    
+    YLDZhanZhangGongYingViewController *zzgyVC=[[YLDZhanZhangGongYingViewController alloc]init];
+    UINavController *ZZNav=[[UINavController alloc]initWithRootViewController:zzgyVC];
+     ZZNav.navigationBar.hidden=YES;
+    WoDeDingDanViewController *wdDDVC=[[WoDeDingDanViewController alloc]init];
+    UINavController *WDDDNav=[[UINavController alloc]initWithRootViewController:wdDDVC];
+    WDDDNav.navigationBar.hidden=YES;
+    YLDBaoJiaGuanLiViewController *baojiaGuanLiVC=[[YLDBaoJiaGuanLiViewController alloc]init];
+     UINavController *bjGLNav=[[UINavController alloc]initWithRootViewController:baojiaGuanLiVC];
+    bjGLNav.navigationBar.hidden=YES;
+    GongChengZhongXinViewController *gcZXViewController=[[GongChengZhongXinViewController alloc]init];
+    UINavController *gczxLNav=[[UINavController alloc]initWithRootViewController:gcZXViewController];
+    gczxLNav.navigationBar.hidden=YES;
+    self.viewControllers=@[ZZNav,WDDDNav,bjGLNav,gczxLNav];
+//    UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(20, 10, 60, 30)];
+//    [btn setTitle:@"苗信通" forState:UIControlStateNormal];
+//    [self.view addSubview:btn];
+//    [btn addTarget:self action:@selector(fanhuimiaoxintong) forControlEvents:UIControlEventTouchUpInside];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenTabBar) name:@"HidenTabBarGongCheng" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:@"showTabBarGongCheng" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fanhuimiaoxintong) name:@"BackMiaoXinTong" object:nil];
     // Do any additional setup after loading the view.
+}
+
+-(void)fanhuimiaoxintong
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //构建标签栏
 - (void)MakeUI {
-    //    CGFloat kWidth=[UIScreen mainScreen].bounds.size.width;
-    //    CGFloat kheigh=[UIScreen mainScreen].bounds.size.height;
-    CGFloat Height =[UIScreen mainScreen].bounds.size.height;
+    //CGFloat [Height =[UIScreen mainScreen].bounds.size.height;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.BTabBar=[[UIView alloc]initWithFrame:CGRectMake(0, Height-kTABBARH, kWidth, kTABBARH)];
     [self.view addSubview:self.BTabBar];
@@ -48,47 +77,92 @@
     [self.BTabBar addSubview:tabMageV2];
     
     //
-    UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 3, 28, 28)];
+    UIButton *PageViewBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6, 3, 28, 28)];
     PageViewBtn.tag=1;
+    self.nowBtn=PageViewBtn;
+    [PageViewBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
     //self.homePageBtn=PageViewBtn;
-    UIButton *pageActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*3)/6-30, 0, 90, 50)];
-    pageActionBtn.tag=1;
+//    UIButton *pageActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6, 0, 30, 50)];
+//    pageActionBtn.tag=1;
     
-    [pageActionBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
+    [PageViewBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
     
     [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
     [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
     PageViewBtn.selected=YES;
     [self.BTabBar addSubview:PageViewBtn];
-    UILabel *hompageLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*3)/6, 30, 30, 25)];
-    [hompageLab setFont:[UIFont systemFontOfSize:12.5]];
+    UILabel *hompageLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*5)/6-10, 30, 50, 25)];
+    [hompageLab setFont:[UIFont systemFontOfSize:11]];
     [hompageLab setTextAlignment:NSTextAlignmentCenter];
     [hompageLab setTextColor:NavColor];
-    [hompageLab setText:@"首页"];
+    [hompageLab setText:@"站长供应"];
+    [self.labAry addObject:hompageLab];
     //self.homePageLab=hompageLab;
     [self.BTabBar addSubview:hompageLab];
-    [self.BTabBar addSubview:pageActionBtn];
+    //[self.BTabBar addSubview:pageActionBtn];
     
-    UIButton *UserViewBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44, 3, 28, 28)];
-    //self.userInfoBtn=UserViewBtn;
-    UIButton *userActionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-74, 0, 90,50)];
-    userActionBtn.tag=2;
+    UIButton *wodedingdanBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*2+34, 3, 28, 28)];
+    wodedingdanBtn.tag=2;
+    [wodedingdanBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
+    [wodedingdanBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
+[wodedingdanBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
+    [self.BTabBar addSubview:wodedingdanBtn];
+//    UIButton *wodedingdanBtnActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*2+34, 0, 30, 50)];
+//    wodedingdanBtnActionBtn.tag=2;
     
-    [userActionBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
-    UserViewBtn.tag=2;
-    // [UserViewBtn setBackgroundColor:[UIColor redColor]];
-    [self.BTabBar addSubview:UserViewBtn];
-    [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoNomer"] forState:UIControlStateNormal];
-    [UserViewBtn setBackgroundImage:[UIImage imageNamed:@"userInfoGreen"] forState:UIControlStateSelected];
-    UILabel *userLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-(kWidth-34*3)/6-44-15, 30, 60, 25)];
-    [userLab setFont:[UIFont systemFontOfSize:12.5]];
-    [userLab setTextAlignment:NSTextAlignmentCenter];
-    [userLab setTextColor:[UIColor lightGrayColor]];
-    [userLab setText:@"个人中心"];
-    //self.userLab=userLab;
-    [self.BTabBar addSubview:userLab];
-    [self.BTabBar addSubview:userActionBtn];
+    [wodedingdanBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
+        //[self.BTabBar addSubview:wodedingdanBtnActionBtn];
     
+    UILabel *wodedingdanLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*2+34-10, 30, 50, 25)];
+    [wodedingdanLab setFont:[UIFont systemFontOfSize:11]];
+    [wodedingdanLab setTextAlignment:NSTextAlignmentCenter];
+    [wodedingdanLab setTextColor:detialLabColor];
+    [wodedingdanLab setText:@"我得订单"];
+    [self.labAry addObject:wodedingdanLab];
+    //self.homePageLab=hompageLab;
+    [self.BTabBar addSubview:wodedingdanLab];
+
+    
+    
+    UIButton *baojiaguanliBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*4+34*3, 3, 28, 28)];
+    baojiaguanliBtn.tag=3;
+    [baojiaguanliBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
+    [baojiaguanliBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
+    [baojiaguanliBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
+ 
+    [self.BTabBar addSubview:baojiaguanliBtn];
+//    UIButton *baojiaguanliActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*4+34*3, 0, 30, 50)];
+//    baojiaguanliActionBtn.tag=3;
+    
+    [baojiaguanliBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.BTabBar addSubview:baojiaguanliActionBtn];
+    
+    UILabel *baojiaguanliLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*4+34*3-10, 30, 50, 25)];
+    [baojiaguanliLab setFont:[UIFont systemFontOfSize:11]];
+    [baojiaguanliLab setTextAlignment:NSTextAlignmentCenter];
+    [baojiaguanliLab setTextColor:detialLabColor];
+    [baojiaguanliLab setText:@"报价管理"];
+    //self.homePageLab=hompageLab;
+    [self.BTabBar addSubview:baojiaguanliLab];
+    [self.labAry addObject:baojiaguanliLab];
+    
+    UIButton *gongchengzhongxinBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*5+34*4, 3, 28, 28)];
+    gongchengzhongxinBtn.tag=4;
+    [gongchengzhongxinBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
+    [gongchengzhongxinBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
+    [gongchengzhongxinBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
+    
+    [self.BTabBar addSubview:gongchengzhongxinBtn];
+
+    
+    [gongchengzhongxinBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
+    UILabel *gongchengzhongxinLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*5+34*4-10, 30, 50, 25)];
+    [gongchengzhongxinLab setFont:[UIFont systemFontOfSize:11]];
+    [gongchengzhongxinLab setTextAlignment:NSTextAlignmentCenter];
+    [gongchengzhongxinLab setTextColor:detialLabColor];
+    [gongchengzhongxinLab setText:@"工程中心"];
+    [self.BTabBar addSubview:gongchengzhongxinLab];
+    [self.labAry addObject:gongchengzhongxinLab];
     UIButton *fabuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-25, -5, 50, 50)];
     [fabuBtn setImage:[UIImage imageNamed:@"fabuBTN"] forState:UIControlStateNormal];
     [fabuBtn addTarget:self action:@selector(FaBuButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -102,7 +176,23 @@
 //标签栏的用户和首页的按钮点击
 -(void)ButtonSelect:(UIButton *)sender
 {
-    
+    if (sender==self.nowBtn) {
+        return;
+    }
+    self.selectedIndex=sender.tag-1;
+    self.nowBtn.selected=NO;
+    sender.selected=YES;
+    for (int i=0; i<self.labAry.count; i++) {
+        if (i==sender.tag-1) {
+            UILabel *lab=self.labAry[i];
+            [lab setTextColor:NavColor];
+        }else{
+            UILabel *lab=self.labAry[i];
+            [lab setTextColor:detialLabColor];
+
+        }
+    }
+    self.nowBtn=sender;
 }
 
 - (void)didReceiveMemoryWarning {

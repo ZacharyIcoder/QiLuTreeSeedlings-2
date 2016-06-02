@@ -107,6 +107,18 @@
 		EA5B26EB1C7D6E7100863F9D /* HotSellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26EA1C7D6E7100863F9D /* HotSellView.m */; };
 		EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */; };
 		EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */; };
+		EA5E6E3B1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E391CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m */; };
+		EA5E6E3C1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E3A1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.xib */; };
+		EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E3E1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m */; };
+		EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E3F1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib */; };
+		EA5E6E451CFFCA40003D357C /* GongChengZhongXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E431CFFCA40003D357C /* GongChengZhongXinViewController.m */; };
+		EA5E6E461CFFCA40003D357C /* GongChengZhongXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E441CFFCA40003D357C /* GongChengZhongXinViewController.xib */; };
+		EA5E6E4A1CFFCA57003D357C /* WoDeDingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E481CFFCA57003D357C /* WoDeDingDanViewController.m */; };
+		EA5E6E4B1CFFCA57003D357C /* WoDeDingDanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E491CFFCA57003D357C /* WoDeDingDanViewController.xib */; };
+		EA5E6E4F1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E4D1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m */; };
+		EA5E6E501CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E4E1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib */; };
+		EA5E6E541CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E521CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m */; };
+		EA5E6E551CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
 		EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */; };
@@ -666,6 +678,24 @@
 		EA5B26ED1C7D6E8E00863F9D /* HotSellViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSellViewCell.m; sourceTree = "<group>"; };
 		EA5DF9531CB64FDF00BE0E8C /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		EA5E6E381CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaGuanLiViewController.h; sourceTree = "<group>"; };
+		EA5E6E391CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBaoJiaGuanLiViewController.m; sourceTree = "<group>"; };
+		EA5E6E3A1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDBaoJiaGuanLiViewController.xib; sourceTree = "<group>"; };
+		EA5E6E3D1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDFaBuGongChengDingDanViewController.h; sourceTree = "<group>"; };
+		EA5E6E3E1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDFaBuGongChengDingDanViewController.m; sourceTree = "<group>"; };
+		EA5E6E3F1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDFaBuGongChengDingDanViewController.xib; sourceTree = "<group>"; };
+		EA5E6E421CFFCA40003D357C /* GongChengZhongXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GongChengZhongXinViewController.h; sourceTree = "<group>"; };
+		EA5E6E431CFFCA40003D357C /* GongChengZhongXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GongChengZhongXinViewController.m; sourceTree = "<group>"; };
+		EA5E6E441CFFCA40003D357C /* GongChengZhongXinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GongChengZhongXinViewController.xib; sourceTree = "<group>"; };
+		EA5E6E471CFFCA57003D357C /* WoDeDingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WoDeDingDanViewController.h; sourceTree = "<group>"; };
+		EA5E6E481CFFCA57003D357C /* WoDeDingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WoDeDingDanViewController.m; sourceTree = "<group>"; };
+		EA5E6E491CFFCA57003D357C /* WoDeDingDanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WoDeDingDanViewController.xib; sourceTree = "<group>"; };
+		EA5E6E4C1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDZhanZhangGongYingViewController.h; sourceTree = "<group>"; };
+		EA5E6E4D1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDZhanZhangGongYingViewController.m; sourceTree = "<group>"; };
+		EA5E6E4E1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDZhanZhangGongYingViewController.xib; sourceTree = "<group>"; };
+		EA5E6E511CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDTuiJianGongZuoZhanCell.h; sourceTree = "<group>"; };
+		EA5E6E521CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDTuiJianGongZuoZhanCell.m; sourceTree = "<group>"; };
+		EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDTuiJianGongZuoZhanCell.xib; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MybuyListTableViewCell.h; sourceTree = "<group>"; };
@@ -1569,6 +1599,7 @@
 		EA0B2BCD1C59F6930018A7BD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EA5E6E321CFFC9A5003D357C /* GongChengGongSiVVVVV */,
 				EA518C5F1CEDAAD80092BA40 /* GUiGEView */,
 				EA510EB01C98031D00C5D071 /* FaBuViewController */,
 				EA7AE8DC1C96536B00B43073 /* SellDetialViewController */,
@@ -1969,6 +2000,71 @@
 				EA12E2681CBB416B009D8A8A /* AbountUsViewController.m */,
 			);
 			path = setViewController;
+			sourceTree = "<group>";
+		};
+		EA5E6E321CFFC9A5003D357C /* GongChengGongSiVVVVV */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E6E331CFFC9A5003D357C /* BaoJiaGuanLiViewController */,
+				EA5E6E341CFFC9A5003D357C /* FaBuViewController */,
+				EA5E6E351CFFC9A5003D357C /* GongChnegZhongXinViewController */,
+				EA5E6E361CFFC9A5003D357C /* WoDeDingDanViewController */,
+				EA5E6E371CFFC9A5003D357C /* ZhanZhangGongYingViewController */,
+			);
+			path = GongChengGongSiVVVVV;
+			sourceTree = "<group>";
+		};
+		EA5E6E331CFFC9A5003D357C /* BaoJiaGuanLiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E6E381CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.h */,
+				EA5E6E391CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m */,
+				EA5E6E3A1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.xib */,
+			);
+			path = BaoJiaGuanLiViewController;
+			sourceTree = "<group>";
+		};
+		EA5E6E341CFFC9A5003D357C /* FaBuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E6E3D1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.h */,
+				EA5E6E3E1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m */,
+				EA5E6E3F1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib */,
+			);
+			path = FaBuViewController;
+			sourceTree = "<group>";
+		};
+		EA5E6E351CFFC9A5003D357C /* GongChnegZhongXinViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E6E421CFFCA40003D357C /* GongChengZhongXinViewController.h */,
+				EA5E6E431CFFCA40003D357C /* GongChengZhongXinViewController.m */,
+				EA5E6E441CFFCA40003D357C /* GongChengZhongXinViewController.xib */,
+			);
+			path = GongChnegZhongXinViewController;
+			sourceTree = "<group>";
+		};
+		EA5E6E361CFFC9A5003D357C /* WoDeDingDanViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E6E471CFFCA57003D357C /* WoDeDingDanViewController.h */,
+				EA5E6E481CFFCA57003D357C /* WoDeDingDanViewController.m */,
+				EA5E6E491CFFCA57003D357C /* WoDeDingDanViewController.xib */,
+			);
+			path = WoDeDingDanViewController;
+			sourceTree = "<group>";
+		};
+		EA5E6E371CFFC9A5003D357C /* ZhanZhangGongYingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5E6E4C1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.h */,
+				EA5E6E4D1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m */,
+				EA5E6E4E1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib */,
+				EA5E6E511CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.h */,
+				EA5E6E521CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m */,
+				EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */,
+			);
+			path = ZhanZhangGongYingViewController;
 			sourceTree = "<group>";
 		};
 		EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */ = {
@@ -3404,6 +3500,7 @@
 				EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */,
 				EA5252F01CE179500004639C /* areaselected@2x.png in Resources */,
 				EAAFCFB11CBE248800EB894F /* 1miaomu1136.png in Resources */,
+				EA5E6E4B1CFFCA57003D357C /* WoDeDingDanViewController.xib in Resources */,
 				EAF050FB1C92A17400F435A9 /* mySellImageV@2x.png in Resources */,
 				EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */,
 				FC50B1681CAE243F0022A24C /* UMSnsAccountViewController.xib in Resources */,
@@ -3467,6 +3564,7 @@
 				EA833D921CFEBEAC00D56AFB /* gongchenggongsishouye.png in Resources */,
 				EAAFCFB91CBE267700EB894F /* 1miaomu1472.png in Resources */,
 				EA833D911CFEBEAC00D56AFB /* zhanzhongtongshouye.png in Resources */,
+				EA5E6E551CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib in Resources */,
 				FCCFA7181CF2E12400CC1313 /* ZIKCityTableViewCell.xib in Resources */,
 				FCCFA7141CF2E12400CC1313 /* ZIKCitySectionHeaderView.xib in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
@@ -3496,6 +3594,7 @@
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
 				FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
+				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
 				FCC5C3091CFEAB22004669ED /* JXActionView.xib in Resources */,
 				FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
@@ -3570,6 +3669,7 @@
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
 				EA6D36CE1CE713E600CE025C /* yiguoqi.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
+				EA5E6E461CFFCA40003D357C /* GongChengZhongXinViewController.xib in Resources */,
 				FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
 				FC5337A61CBDF2B6008BFB11 /* WHC_PictureListVC.xib in Resources */,
@@ -3583,6 +3683,7 @@
 				EA5AAC3A1C8D1BFB00660FC9 /* fabuBTN@2x.png in Resources */,
 				EA4F4D191CBF5F47006E4988 /* bannelSmall2.jpg in Resources */,
 				FC5337CC1CBE18FC008BFB11 /* 站长通-星级2.png in Resources */,
+				EA5E6E3C1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.xib in Resources */,
 				EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */,
 				FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */,
 				FC50B1671CAE243F0022A24C /* UMSLoginViewController.xib in Resources */,
@@ -3597,6 +3698,7 @@
 				EA0B2B9E1C59F5220018A7BD /* Main.storyboard in Resources */,
 				FCF353D51CA3B515001ABA0A /* shanchutupian@2x.png in Resources */,
 				FCF353D61CA3B515001ABA0A /* shanchutupian@3x.png in Resources */,
+				EA5E6E501CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib in Resources */,
 				EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */,
 				EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */,
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
@@ -3642,6 +3744,8 @@
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
 				EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
+				EA5E6E3B1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m in Sources */,
+				EA5E6E451CFFCA40003D357C /* GongChengZhongXinViewController.m in Sources */,
 				EAE32DF41C7E9D5000C4CEA2 /* HttpClient.m in Sources */,
 				FC21BC831CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */,
@@ -3652,8 +3756,10 @@
 				FCF353CD1CA3B515001ABA0A /* MJRefreshHeaderView.m in Sources */,
 				EAAFCF701CBDD94300EB894F /* BigImageViewShowView.m in Sources */,
 				FC21BC821CA51C930041E2C3 /* IQKeyboardManager.m in Sources */,
+				EA5E6E541CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m in Sources */,
 				FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */,
 				FC50B34B1CAE4C4A0022A24C /* RSADataSigner.m in Sources */,
+				EA5E6E4A1CFFCA57003D357C /* WoDeDingDanViewController.m in Sources */,
 				EAE32DE11C7E97A600C4CEA2 /* UIImageView+AFNetworking.m in Sources */,
 				FC21BC881CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				FC2856E91CF6DEA9005235FC /* ZIKMySupplyDetailViewController.m in Sources */,
@@ -3737,6 +3843,8 @@
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
 				FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */,
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,
+				EA5E6E4F1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m in Sources */,
+				EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */,
 				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCCFA7191CF2E12400CC1313 /* ZIKCityModel.m in Sources */,
 				FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */,

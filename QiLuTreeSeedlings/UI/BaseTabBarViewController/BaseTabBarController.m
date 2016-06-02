@@ -31,10 +31,15 @@
     self.TabBarHiden=NO;
     [self MakeUI];
     //添加隐藏和显示自定义标签栏的通知
+    //添加隐藏和显示自定义标签栏的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenTabBar) name:@"HidenTabBar" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:@"showTabBar" object:nil];
 //    UIButton
     // Do any additional setup after loading the view.
+}
+-(void)fanhuimiaoxintong
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //隐藏标签栏
 -(void)hidenTabBar
@@ -135,16 +140,7 @@
         self.userInfoBtn.selected=NO;
     }else
     {
-//        if (![APPDELEGATE isNeedLogin]) {
-//            LoginViewController *loginViewController=[[LoginViewController alloc]init];
-//            
-//            UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
-//            
-//            [self presentViewController:navVC animated:YES completion:^{
-//                
-//            }];
-//            return;
-       // }
+
         [self.userLab setTextColor:NavColor];
         [self.homePageLab setTextColor:[UIColor lightGrayColor]];
         self.selectedIndex=1;

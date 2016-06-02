@@ -141,7 +141,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section==5) {
+    if (section==4) {
         return 70;
     }
     return 0.01;
@@ -149,7 +149,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view;
-    if (section==5) {
+    if (section==4) {
         
         view=[[UIView alloc]init];
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(40, 10, kWidth-80, 44)];

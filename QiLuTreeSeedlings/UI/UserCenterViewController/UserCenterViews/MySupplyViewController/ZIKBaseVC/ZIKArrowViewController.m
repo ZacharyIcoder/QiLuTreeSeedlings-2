@@ -32,6 +32,7 @@
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
     [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [view addSubview:backBtn];
+    self.backBtn=backBtn;
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
