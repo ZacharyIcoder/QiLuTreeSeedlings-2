@@ -31,7 +31,7 @@
 -(NSMutableArray *)getCityByLeve:(NSString *)str andParent_code:(NSString *)parent_code
 {
     NSMutableArray *ary=[NSMutableArray array];
-    NSString *sql = [NSString stringWithFormat:@"select * from area where level = %@ and parent_code like %@%",str,parent_code];
+    NSString *sql = [NSString stringWithFormat:@"select * from area where parent_code = %@",parent_code];
     
     FMResultSet *frs = [self executeQuery:sql];
     while(frs.next)

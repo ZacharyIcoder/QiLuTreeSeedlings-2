@@ -68,7 +68,55 @@
         self.otherInfoView=otherView;
     
         CGRect  tempFrame=CGRectMake(0, 0, kWidth, 50);
-        UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
+    UIView *areaView=[[UIView alloc]initWithFrame:tempFrame];
+    [areaView setBackgroundColor:[UIColor whiteColor]];
+    UIImageView *lineImagV2=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
+    [lineImagV2 setBackgroundColor:kLineColor];
+    [areaView addSubview:lineImagV2];
+    UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
+    areaLab.text=@"苗源地";
+    [areaLab setTextColor:titleLabColor];
+    [areaLab setFont:[UIFont systemFontOfSize:15]];
+    [areaView addSubview:areaLab];
+    UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 0, kWidth-150, 50)];
+    [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [areaBtn setTitle:@"请选择苗源地" forState:UIControlStateNormal];
+    [areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    [areaView addSubview:areaBtn];
+    self.areaBtn=areaBtn;
+    [areaBtn addTarget:self action:@selector(areBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [otherView addSubview:areaView];
+    tempFrame.origin.y+=50;
+    UITextField *priceTextField=[self mackViewWtihName:@"价格" alert:@"请输入价格" unit:@"元" withFrame:tempFrame];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:priceTextField];
+    self.priceTextField=priceTextField;
+    priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
+    tempFrame.origin.y+=50;
+
+    UIView *ecttiveView=[[UIView alloc]initWithFrame:tempFrame];
+    [ecttiveView setBackgroundColor:[UIColor whiteColor]];
+    UILabel *ecttNameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
+    [ecttiveView addSubview:ecttNameLab];
+    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
+    [lineImagV setBackgroundColor:kLineColor];
+    [ecttiveView addSubview:lineImagV];
+    [otherView addSubview:ecttiveView];
+    [ecttNameLab setText:@"有效期"];
+    [ecttNameLab setTextColor:titleLabColor];
+    [ecttNameLab setFont:[UIFont systemFontOfSize:15]];
+    UIButton *ecttiveBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 0, kWidth-200, 50)];
+    [ecttiveView addSubview:ecttiveBtn];
+    [ecttiveBtn setTitle:@"请选择有效期" forState:UIControlStateNormal];
+    [ecttiveBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    self.ectiveBtn=ecttiveBtn;
+    [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [ecttiveBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    tempFrame.origin.y+=50;
+
+    UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
         self.countTextField=countTextField;
     
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -77,54 +125,8 @@
                                                    object:countTextField];
         countTextField.keyboardType=UIKeyboardTypeNumberPad;
         tempFrame.origin.y+=50;
-        UITextField *priceTextField=[self mackViewWtihName:@"价格" alert:@"请输入单价" unit:@"元" withFrame:tempFrame];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(textFieldChanged:)
-                                                     name:UITextFieldTextDidChangeNotification
-                                                   object:priceTextField];
-        self.priceTextField=priceTextField;
-        priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
-        tempFrame.origin.y+=50;
-        UIView *ecttiveView=[[UIView alloc]initWithFrame:tempFrame];
-        [ecttiveView setBackgroundColor:[UIColor whiteColor]];
-        UILabel *ecttNameLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
-        [ecttiveView addSubview:ecttNameLab];
-        UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
-        [lineImagV setBackgroundColor:kLineColor];
-        [ecttiveView addSubview:lineImagV];
-        [otherView addSubview:ecttiveView];
-        [ecttNameLab setText:@"有效期"];
-        [ecttNameLab setTextColor:titleLabColor];
-        [ecttNameLab setFont:[UIFont systemFontOfSize:15]];
-        UIButton *ecttiveBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 0, kWidth-200, 50)];
-        [ecttiveView addSubview:ecttiveBtn];
-        [ecttiveBtn setTitle:@"请选择" forState:UIControlStateNormal];
-        [ecttiveBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        self.ectiveBtn=ecttiveBtn;
-        [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        [ecttiveBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        tempFrame.origin.y+=50;
-        UIView *areaView=[[UIView alloc]initWithFrame:tempFrame];
-        [areaView setBackgroundColor:[UIColor whiteColor]];
-        UIImageView *lineImagV2=[[UIImageView alloc]initWithFrame:CGRectMake(15, 49.5, kWidth-30, 0.5)];
-        [lineImagV2 setBackgroundColor:kLineColor];
-        [areaView addSubview:lineImagV2];
-        UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
-        areaLab.text=@"用苗地";
-        [areaLab setTextColor:titleLabColor];
-        [areaLab setFont:[UIFont systemFontOfSize:15]];
-        [areaView addSubview:areaLab];
-        UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 0, kWidth-150, 50)];
-        [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        [areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
-        [areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        [areaView addSubview:areaBtn];
-        self.areaBtn=areaBtn;
-        [areaBtn addTarget:self action:@selector(areBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        [otherView addSubview:areaView];
-        tempFrame.origin.y+=50;
     
-        UITextField *birefField=[self mackViewWtihName:@"备注" alert:@"请输入备注信息" unit:@"" withFrame:tempFrame];
+        UITextField *birefField=[self mackViewWtihName:@"备注" alert:@"请输入备注信息.." unit:@"" withFrame:tempFrame];
         self.birefField=birefField;
         birefField.tag=1111;
         
@@ -221,12 +223,16 @@
         [ToastView showTopToast:@"请选择有效期"];
         return;
     }
-        if (self.priceTextField.text.length>0) {
+    if (self.priceTextField.text.length>0) {
             if ([self isPureFloat:self.priceTextField.text]==NO) {
                 [ToastView showTopToast:@"上车价的格式输入有误"];
                 return;
             }
         }
+    if (self.citysStr.length<=0) {
+        [ToastView showTopToast:@"请选择用苗地"];
+        return;
+    }
     ShowActionV();
     [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.name WithProductUid:self.productUid WithCount:self.countTextField.text WithPrice:self.priceTextField.text WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:self.birefField.text WithusedArea:self.citysStr WithAry:self.guigeAry Success:^(id responseObject) {
         RemoveActionV();
@@ -252,6 +258,9 @@
 }
 -(void)ecttiveBtnAction
 {
+    [self.countTextField resignFirstResponder];
+    [self.priceTextField resignFirstResponder];
+    [self.birefField resignFirstResponder];
     if (!self.ecttivePickerView) {
         self.ecttivePickerView=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
         [self.ecttivePickerView resetPickerData:@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"]];
@@ -268,7 +277,7 @@
     [nameLab setTextColor:titleLabColor];
     [view setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.6, 40)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.6, 50)];
     textField.placeholder=alert;
     textField.delegate=self;
     [textField setTextColor:detialLabColor];
