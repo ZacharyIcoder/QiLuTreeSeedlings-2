@@ -9,7 +9,7 @@
 #import "BuySearchTableViewCell.h"
 #import "UIDefines.h"
 #import "StringAttributeHelper.h"
-#define kSCREEN_EDGE_DISTANCE 15 //距离屏幕边缘距离
+#define kSCREEN_EDGE_DISTANCE 20 //距离屏幕边缘距离
 @interface BuySearchTableViewCell()
 //@property (nonatomic,strong)UIImageView *imageV;
 @property (nonatomic,strong)UILabel *priceLab;
@@ -50,11 +50,6 @@
         [self.timeLab setFont:[UIFont systemFontOfSize:12]];
         [self.timeLab setText:@"N天前"];
         [self.contentView addSubview:self.timeLab];
-//        UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth*0.8-25, 40, 30, 12)];
-//        [priceLab setFont:[UIFont systemFontOfSize:12]];
-//        [priceLab setText:@"价格"];
-//        [self.contentView addSubview:priceLab];
-//         [priceLab setTextColor:detialLabColor];
         self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-170-kSCREEN_EDGE_DISTANCE, 35, 170, 20)];
         [self.priceLab setFont:[UIFont systemFontOfSize:18]];
         [self.priceLab setText:@"O元"];

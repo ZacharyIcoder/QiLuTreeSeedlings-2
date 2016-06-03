@@ -182,6 +182,30 @@
         GuiGeCell *cell=_cellAry[i];
         
         if (self.MainSure) {
+            if (cell.model.main!=1){
+                if (cell.model.selectProper)
+                {
+                    if(cell.model.selectProper.operation)
+                    {
+                        if (cell.model.selectProper.relation.length<=0)
+                        {
+                            NSString *answers1=[cell.answerAry2 firstObject];
+                            NSString *answers2=[cell.answerAry2 lastObject];
+                            if (answers1.length==0) {
+                                [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
+                                [answerAryz removeAllObjects];
+                                return NO;
+                            }
+                            if (answers2.length==0) {
+                                [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
+                                [answerAryz removeAllObjects];
+                                return NO;
+                            }
+
+                        }
+                    }
+                }
+            }
             if (cell.model.main==1) {
                 if (cell.answerAry.count>0) {
                     NSString *answer1=[cell.answerAry firstObject];
@@ -249,12 +273,27 @@
                         dic[@"field"]=cell.model.keyStr2;
                         dic[@"value"]=answer1;
                         [answerAryz addObject:dic];
+                    }else{
+                        if (answer2.length>0) {
+                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                            dic[@"field"]=cell.model.keyStr2;
+                            dic[@"value"]=answer2;
+                            [answerAryz addObject:dic];
+                        }
+ 
                     }
                     if (answer2.length>0) {
                         NSMutableDictionary *dic=[NSMutableDictionary dictionary];
                         dic[@"field"]=cell.model.keyStr3;
                         dic[@"value"]=answer2;
                         [answerAryz addObject:dic];
+                    }else{
+                        if (answer1.length>0) {
+                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                            dic[@"field"]=cell.model.keyStr3;
+                            dic[@"value"]=answer1;
+                            [answerAryz addObject:dic];
+                        }
                     }
 
                 }
@@ -331,11 +370,26 @@
                                 dic[@"value"]=answers1;
                                 
                                 [answerAryz addObject:dic];
+                            }else{
+                                if (answers2.length>0) {
+                                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                                    dic[@"field"]=cell.model.keyStr2;
+                                    dic[@"value"]=answers2;
+                                    [answerAryz addObject:dic];
+                                }
+                                
                             }
+
                             if (answers2.length>0) {
                                 NSMutableDictionary *dic=[NSMutableDictionary dictionary];
                                 dic[@"field"]=cell.model.keyStr3;
                                 dic[@"value"]=answers2;
+                                
+                                [answerAryz addObject:dic];
+                            }else if (answers1.length>0) {
+                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                                dic[@"field"]=cell.model.keyStr3;
+                                dic[@"value"]=answers1;
                                 
                                 [answerAryz addObject:dic];
                             }
@@ -346,6 +400,7 @@
         }
         
     }//单选结合判断
+    NSLog(@"%@",answerAryz);
     return YES;
 }
 

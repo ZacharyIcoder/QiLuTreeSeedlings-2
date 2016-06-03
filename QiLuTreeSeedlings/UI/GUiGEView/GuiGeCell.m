@@ -56,7 +56,7 @@
                 minTextField.placeholder=@"最小值";
                 self.minTextField=minTextField;
                 minTextField.tag=111;
-                minTextField.clearsOnBeginEditing=YES;
+//                minTextField.clearsOnBeginEditing=YES;
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -72,7 +72,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
-                maxTextField.clearsOnBeginEditing=YES;
+               // maxTextField.clearsOnBeginEditing=YES;
                 [self addSubview:maxTextField];
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -207,7 +207,7 @@
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
-                minTextField.clearsOnBeginEditing=YES;
+                //minTextField.clearsOnBeginEditing=YES;
                  minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -222,7 +222,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
-                maxTextField.clearsOnBeginEditing=YES;
+                //maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
                                                              name:UITextFieldTextDidChangeNotification
@@ -363,7 +363,7 @@
                             UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-70/320.f*kWidth+10, 0, 60/320.f*kWidth, 44)];
                              [minTextField setFont:[UIFont systemFontOfSize:14]];
                              minTextField.placeholder=@"最小值";
-                            minTextField.clearsOnBeginEditing=YES;
+                           // minTextField.clearsOnBeginEditing=YES;
                             minTextField.textAlignment = NSTextAlignmentRight;
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
                             self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -384,7 +384,7 @@
                             maxTextField.placeholder=@"最大值";
                             maxTextField.delegate=self;
                             maxTextField.tag=122;
-                            maxTextField.clearsOnBeginEditing=YES;
+                            //maxTextField.clearsOnBeginEditing=YES;
                             [[NSNotificationCenter defaultCenter] addObserver:self
                                                                      selector:@selector(textFieldChanged:)
                                                                          name:UITextFieldTextDidChangeNotification
@@ -467,45 +467,49 @@
 {
     if (textField.keyboardType==UIKeyboardTypeDecimalPad)
     {
-        CGFloat sss=[textField.text floatValue];
-        if (sss>0) {
-             textField.text=[NSString stringWithFormat:@"%.2lf",sss];
-        }else{
-            textField.text=@"";
+        if (textField.text.length>0) {
+            CGFloat sss=[textField.text floatValue];
+            if (sss>0) {
+                textField.text=[NSString stringWithFormat:@"%.2lf",sss];
+            }else{
+                textField.text=[NSString stringWithFormat:@"%.2lf",sss];
+                
+            }
         }
+       
        
     }
     if (textField.tag==111) {
         //[self.answerAry insertObject:textField.text atIndex:0];
         [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
-        if (self.maxTextField.text.length==0) {
-            self.maxTextField.text=textField.text;
-             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-//            [self.answerAry insertObject:textField.text atIndex:1];
-        }
-        if (textField.text.length==0) {
-            if (self.maxTextField.text.length>0) {
-                textField.text=self.maxTextField.text;
-                [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
-            }
-        }
+//        if (self.maxTextField.text.length==0) {
+//            //self.maxTextField.text=textField.text;
+//             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+////            [self.answerAry insertObject:textField.text atIndex:1];
+//        }
+//        if (textField.text.length==0) {
+//            if (self.maxTextField.text.length>0) {
+//               // textField.text=self.maxTextField.text;
+//                [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
+//            }
+//        }
 
     }
     if (textField.tag==112) {
 //        [self.answerAry insertObject:textField.text atIndex:1];
         [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-        if (self.minTextField.text.length==0) {
-            self.minTextField.text=textField.text;
-             [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
-           //[self.answerAry insertObject:textField.text atIndex:0];
-            return YES;
-        }
-        if (textField.text.length==0) {
-            if (self.minTextField.text.length>0) {
-                textField.text=self.minTextField.text;
-                [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-            }
-        }
+//        if (self.minTextField.text.length==0) {
+//            //self.minTextField.text=textField.text;
+//             [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
+//           //[self.answerAry insertObject:textField.text atIndex:0];
+//            return YES;
+//        }
+//        if (textField.text.length==0) {
+//            if (self.minTextField.text.length>0) {
+//               // textField.text=self.minTextField.text;
+//                [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+//            }
+//        }
     }
     if (textField.tag==113) {
 //       [self.answerAry insertObject:textField.text atIndex:0];
@@ -513,37 +517,37 @@
     }
     if (textField.tag==121) {
          [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
-        UITextField *maxTextField=[self.erjiView viewWithTag:122];
-        if (maxTextField.text.length==0) {
-            maxTextField.text=textField.text;
-//            [self.answerAry2 insertObject:textField.text atIndex:1];
-            [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
-            return YES;
-        }
-        if (textField.text.length==0) {
-            if (self.maxTextField.text.length>0) {
-                textField.text=self.maxTextField.text;
-                [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
-            }
-        }
-
+        //UITextField *maxTextField=[self.erjiView viewWithTag:122];
+//        if (maxTextField.text.length==0) {
+//            maxTextField.text=textField.text;
+////            [self.answerAry2 insertObject:textField.text atIndex:1];
+//            [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
+//            return YES;
+//        }
+//        if (textField.text.length==0) {
+//            if (self.maxTextField.text.length>0) {
+//                textField.text=self.maxTextField.text;
+//                [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
+//            }
+//        }
+//
     }
     if (textField.tag==122) {
 //        [self.answerAry2 insertObject:textField.text atIndex:1];
          [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
-        UITextField *minTextField=[self.erjiView viewWithTag:121];
-        if (minTextField.text.length==0) {
-           minTextField.text=textField.text;
-//            [self.answerAry2 insertObject:textField.text atIndex:0];
-             [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
-            return YES;
-        }
-        if (textField.text.length==0) {
-            if (self.minTextField.text.length>0) {
-                textField.text=self.minTextField.text;
-                [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
-            }
-        }
+//        UITextField *minTextField=[self.erjiView viewWithTag:121];
+//        if (minTextField.text.length==0) {
+//           minTextField.text=textField.text;
+////            [self.answerAry2 insertObject:textField.text atIndex:0];
+//             [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
+//            return YES;
+//        }
+//        if (textField.text.length==0) {
+//            if (self.minTextField.text.length>0) {
+//                textField.text=self.minTextField.text;
+//                [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
+//            }
+//        }
 
     }
     if (textField.tag==123) {
@@ -553,30 +557,34 @@
     if (textField.tag!=113&&textField.tag!=123) {
         if (textField.keyboardType==UIKeyboardTypeDecimalPad||textField.keyboardType==UIKeyboardTypeNumberPad)
         {
-            CGFloat minNum=[self.minTextField.text floatValue];
-             CGFloat maxNum=[self.maxTextField.text floatValue];
-            if (minNum>maxNum) {
-                [ToastView showTopToast:@"最小值不得大于最大值"];
-                if (textField.tag==111||textField.tag==121) {
-                    textField.text=self.maxTextField.text;
-                    if (textField.tag==111) {
-                       [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
+            if (self.maxTextField.text.length>0) {
+                CGFloat minNum=[self.minTextField.text floatValue];
+                CGFloat maxNum=[self.maxTextField.text floatValue];
+                if (minNum>maxNum) {
+                    [ToastView showTopToast:@"最小值不得大于最大值"];
+                    if (textField.tag==111||textField.tag==121) {
+                        textField.text=self.maxTextField.text;
+                        if (textField.tag==111) {
+                            [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
+                        }
+                        if (textField.tag==121) {
+                            [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
+                        }
+                        
                     }
-                    if (textField.tag==121) {
-                        [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
-                    }
-                    
-                }
-                if (textField.tag==112||textField.tag==122) {
-                    textField.text=self.minTextField.text;
-                    if (textField.tag==112) {
-                        [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-                    }
-                    if (textField.tag==122) {
-                        [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
+                    if (textField.tag==112||textField.tag==122) {
+                        textField.text=self.minTextField.text;
+                        if (textField.tag==112) {
+                            [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+                        }
+                        if (textField.tag==122) {
+                            [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
+                        }
+                        
                     }
 
-                }
+            }
+           
                 
             }
         }
@@ -644,7 +652,7 @@
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.minTextField=minTextField;
                 minTextField.tag=121;
-                minTextField.clearsOnBeginEditing=YES;
+                //minTextField.clearsOnBeginEditing=YES;
                 minTextField.delegate=self;
                 minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -661,7 +669,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=122;
-                maxTextField.clearsOnBeginEditing=YES;
+               // maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
                                                              name:UITextFieldTextDidChangeNotification
