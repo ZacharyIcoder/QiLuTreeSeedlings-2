@@ -269,6 +269,7 @@
         //NSLog(@"%f",height);
         UITableViewCell *cell=[[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, kWidth, height+20)];
         UILabel *cellLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, kWidth-40, height)];
+        cellLab.textColor = titleLabColor;
         [cellLab setFont:[UIFont systemFontOfSize:13]];
         cellLab.numberOfLines=0;
         [cell addSubview:cellLab];

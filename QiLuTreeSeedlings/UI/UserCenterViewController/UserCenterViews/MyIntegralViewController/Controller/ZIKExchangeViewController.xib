@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="IntegralCollectionView" destination="3ue-aZ-LG6" id="ZVw-nA-oCp"/>
                 <outlet property="integralCollectionView" destination="3ue-aZ-LG6" id="Ioi-HD-TKY"/>
+                <outlet property="integralFlowLayout" destination="ffR-em-dfU" id="YDC-Mq-2IN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,7 +47,7 @@
                 <constraint firstItem="BpI-qj-Sw5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="vag-1x-xDD"/>
                 <constraint firstAttribute="bottom" secondItem="3ue-aZ-LG6" secondAttribute="bottom" id="ylb-PP-uQb"/>
             </constraints>
-            <point key="canvasLocation" x="589" y="259"/>
+            <point key="canvasLocation" x="339" y="255"/>
         </view>
     </objects>
     <resources>

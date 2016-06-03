@@ -21,6 +21,7 @@ NSString *kCellID = @"cellID";
 
 @interface ZIKExchangeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *integralCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *integralFlowLayout;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) ZIKExchangeSuccessView *successView;
 @end
@@ -36,8 +37,11 @@ NSString *kCellID = @"cellID";
     self.view.backgroundColor = [UIColor whiteColor];
     self.vcTitle = @"积分兑换";
     self.dataArr = [NSMutableArray arrayWithCapacity:10];
-    _integralCollectionView.delegate = self;
+    _integralCollectionView.delegate   = self;
     _integralCollectionView.dataSource = self;
+    if (kWidth == 320) {
+        _integralFlowLayout.itemSize = CGSizeMake(80, 86);
+    }
     [self requestData];
 }
 - (void)requestData {

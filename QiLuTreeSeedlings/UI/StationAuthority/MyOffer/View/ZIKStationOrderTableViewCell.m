@@ -21,4 +21,18 @@
     // Configure the view for the selected state
 }
 
+
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    static NSString *kZIKStationOrderTableViewCellID = @"kZIKStationOrderTableViewCellID";
+    ZIKStationOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKStationOrderTableViewCellID];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKStationOrderTableViewCell" owner:self options:nil] lastObject];
+    }
+    return cell;
+}
+
+- (void)configureCell:(id)model {
+}
+
+
 @end

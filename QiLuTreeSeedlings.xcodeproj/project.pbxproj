@@ -433,6 +433,14 @@
 		FC9630081CFFDF4100078F29 /* ZIKWorkstationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9630071CFFDF4100078F29 /* ZIKWorkstationViewController.m */; };
 		FC96300C1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC96300A1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.m */; };
 		FC96300D1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC96300B1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib */; };
+		FC9630171D00252D00078F29 /* 底部菜单-工程订单off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC96300F1D00252D00078F29 /* 底部菜单-工程订单off.png */; };
+		FC9630181D00252D00078F29 /* 底部菜单-工程订单on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9630101D00252D00078F29 /* 底部菜单-工程订单on.png */; };
+		FC9630191D00252D00078F29 /* 底部菜单-工作站off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9630111D00252D00078F29 /* 底部菜单-工作站off.png */; };
+		FC96301A1D00252D00078F29 /* 底部菜单-工作站on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9630121D00252D00078F29 /* 底部菜单-工作站on.png */; };
+		FC96301B1D00252D00078F29 /* 底部菜单-我的报价off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9630131D00252D00078F29 /* 底部菜单-我的报价off.png */; };
+		FC96301C1D00252D00078F29 /* 底部菜单-我的报价on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9630141D00252D00078F29 /* 底部菜单-我的报价on.png */; };
+		FC96301D1D00252D00078F29 /* 底部菜单-站长中心off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9630151D00252D00078F29 /* 底部菜单-站长中心off.png */; };
+		FC96301E1D00252D00078F29 /* 底部菜单-站长中心on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9630161D00252D00078F29 /* 底部菜单-站长中心on.png */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
@@ -1282,9 +1290,17 @@
 		FC9630041CFFDF3300078F29 /* ZIKOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKOrderViewController.m; sourceTree = "<group>"; };
 		FC9630061CFFDF4100078F29 /* ZIKWorkstationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationViewController.h; sourceTree = "<group>"; };
 		FC9630071CFFDF4100078F29 /* ZIKWorkstationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationViewController.m; sourceTree = "<group>"; };
-		FC9630091CFFE2E200078F29 /* ZIKStationOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderTableViewCell.h; sourceTree = "<group>"; };
-		FC96300A1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderTableViewCell.m; sourceTree = "<group>"; };
-		FC96300B1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationOrderTableViewCell.xib; sourceTree = "<group>"; };
+		FC9630091CFFE2E200078F29 /* ZIKStationOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZIKStationOrderTableViewCell.h; path = ../../MyOffer/View/ZIKStationOrderTableViewCell.h; sourceTree = "<group>"; };
+		FC96300A1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZIKStationOrderTableViewCell.m; path = ../../MyOffer/View/ZIKStationOrderTableViewCell.m; sourceTree = "<group>"; };
+		FC96300B1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZIKStationOrderTableViewCell.xib; path = ../../MyOffer/View/ZIKStationOrderTableViewCell.xib; sourceTree = "<group>"; };
+		FC96300F1D00252D00078F29 /* 底部菜单-工程订单off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工程订单off.png"; sourceTree = "<group>"; };
+		FC9630101D00252D00078F29 /* 底部菜单-工程订单on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工程订单on.png"; sourceTree = "<group>"; };
+		FC9630111D00252D00078F29 /* 底部菜单-工作站off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站off.png"; sourceTree = "<group>"; };
+		FC9630121D00252D00078F29 /* 底部菜单-工作站on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站on.png"; sourceTree = "<group>"; };
+		FC9630131D00252D00078F29 /* 底部菜单-我的报价off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-我的报价off.png"; sourceTree = "<group>"; };
+		FC9630141D00252D00078F29 /* 底部菜单-我的报价on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-我的报价on.png"; sourceTree = "<group>"; };
+		FC9630151D00252D00078F29 /* 底部菜单-站长中心off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-站长中心off.png"; sourceTree = "<group>"; };
+		FC9630161D00252D00078F29 /* 底部菜单-站长中心on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-站长中心on.png"; sourceTree = "<group>"; };
 		FCA7E0611CD050B6002111FF /* ZIKPayRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordCell.h; sourceTree = "<group>"; };
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
@@ -1614,13 +1630,8 @@
 		EA0B2BCD1C59F6930018A7BD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-
-
 				FC962FE81CFFCB2300078F29 /* StationAuthority */,
-
 				EA5E6E321CFFC9A5003D357C /* GongChengGongSiVVVVV */,
-
-
 				EA518C5F1CEDAAD80092BA40 /* GUiGEView */,
 				EA510EB01C98031D00C5D071 /* FaBuViewController */,
 				EA7AE8DC1C96536B00B43073 /* SellDetialViewController */,
@@ -3070,6 +3081,7 @@
 		FC962FE81CFFCB2300078F29 /* StationAuthority */ = {
 			isa = PBXGroup;
 			children = (
+				FC96300E1D00251F00078F29 /* Images */,
 				FC962FF91CFFCB4A00078F29 /* StationTabbar */,
 				FC962FE91CFFCB2300078F29 /* MyOffer */,
 				FC962FED1CFFCB2300078F29 /* StationCenter */,
@@ -3108,9 +3120,6 @@
 		FC962FEC1CFFCB2300078F29 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FC9630091CFFE2E200078F29 /* ZIKStationOrderTableViewCell.h */,
-				FC96300A1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.m */,
-				FC96300B1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3177,6 +3186,9 @@
 		FC962FF41CFFCB2300078F29 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC9630091CFFE2E200078F29 /* ZIKStationOrderTableViewCell.h */,
+				FC96300A1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.m */,
+				FC96300B1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3221,6 +3233,21 @@
 				FC962FFB1CFFCB9800078F29 /* ZIKStationTabBarViewController.m */,
 			);
 			path = StationTabbar;
+			sourceTree = "<group>";
+		};
+		FC96300E1D00251F00078F29 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FC96300F1D00252D00078F29 /* 底部菜单-工程订单off.png */,
+				FC9630101D00252D00078F29 /* 底部菜单-工程订单on.png */,
+				FC9630111D00252D00078F29 /* 底部菜单-工作站off.png */,
+				FC9630121D00252D00078F29 /* 底部菜单-工作站on.png */,
+				FC9630131D00252D00078F29 /* 底部菜单-我的报价off.png */,
+				FC9630141D00252D00078F29 /* 底部菜单-我的报价on.png */,
+				FC9630151D00252D00078F29 /* 底部菜单-站长中心off.png */,
+				FC9630161D00252D00078F29 /* 底部菜单-站长中心on.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		FCCEA47E1CFD5FC2005D21F5 /* Controller */ = {
@@ -3617,7 +3644,7 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = L674B6W9DX;
+						DevelopmentTeam = HP8U3K66H6;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3674,6 +3701,7 @@
 				EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */,
 				EA5252F01CE179500004639C /* areaselected@2x.png in Resources */,
 				EAAFCFB11CBE248800EB894F /* 1miaomu1136.png in Resources */,
+				FC96301C1D00252D00078F29 /* 底部菜单-我的报价on.png in Resources */,
 				EA5E6E4B1CFFCA57003D357C /* WoDeDingDanViewController.xib in Resources */,
 				EAF050FB1C92A17400F435A9 /* mySellImageV@2x.png in Resources */,
 				EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */,
@@ -3716,6 +3744,7 @@
 				FC6C133F1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib in Resources */,
 				EA4F4D181CBF5F47006E4988 /* bannelSmall1.jpg in Resources */,
 				FC50B16D1CAE243F0022A24C /* WeiboSDK.bundle in Resources */,
+				FC96301A1D00252D00078F29 /* 底部菜单-工作站on.png in Resources */,
 				FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */,
 				EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */,
 				FCCFA7161CF2E12400CC1313 /* carat.png in Resources */,
@@ -3768,10 +3797,7 @@
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
 				FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
-
 				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
-				FCC5C3091CFEAB22004669ED /* JXActionView.xib in Resources */,
-
 				FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
 				FC5337CB1CBE18FC008BFB11 /* 站长通-星级1.png in Resources */,
@@ -3795,12 +3821,14 @@
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
+				FC9630191D00252D00078F29 /* 底部菜单-工作站off.png in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
 				FC28DB611CD9C271003D7C27 /* 注意.png in Resources */,
 				FC6FED691CACF833000E2CA5 /* 列表-时间.png in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,
 				EA1CF4061CACD11A00AF2D82 /* loading03@2x.png in Resources */,
+				FC9630181D00252D00078F29 /* 底部菜单-工程订单on.png in Resources */,
 				FC6C133A1CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
@@ -3810,10 +3838,13 @@
 				EAF788A01CDB090500C4A301 /* guoqibiaoqian.png in Resources */,
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
 				FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */,
+				FC96301E1D00252D00078F29 /* 底部菜单-站长中心on.png in Resources */,
 				FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
 				FC50B1651CAE243F0022A24C /* UMShareEditViewController.xib in Resources */,
+				FC9630171D00252D00078F29 /* 底部菜单-工程订单off.png in Resources */,
 				FC50B16A1CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle in Resources */,
+				FC96301B1D00252D00078F29 /* 底部菜单-我的报价off.png in Resources */,
 				FC4B4F301CAB9F4F00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib in Resources */,
 				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
@@ -3838,6 +3869,7 @@
 				FC5337A41CBDF2B6008BFB11 /* WHC_ChoicePictureVC.xib in Resources */,
 				FC6FED801CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.xib in Resources */,
 				EA6D36CC1CE713BC00CE025C /* yiguanbi.png in Resources */,
+				FC96301D1D00252D00078F29 /* 底部菜单-站长中心off.png in Resources */,
 				FC6FED781CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.xib in Resources */,
 				FC96300D1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib in Resources */,
 				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
@@ -4351,7 +4383,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -4398,7 +4430,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

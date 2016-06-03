@@ -120,6 +120,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     [titleView addSubview:titleLab];
     [titleView setBackgroundColor:[UIColor whiteColor]];
     titleLab.text = @"标题";
+    titleLab.textColor = titleLabColor;
     UITextField *titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(70, 0, kWidth-70, 44)];
     [titleTextField setFont:[UIFont systemFontOfSize:15]];
     titleTextField.placeholder  = @"请输入标题(限制在20字以内)";
@@ -165,6 +166,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     UILabel *nameLab = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, 80, 44)];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
     nameLab.text = @"苗木名称";
+    nameLab.textColor = titleLabColor;
     [_nameView addSubview:nameLab];
     UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(100, nameLab.frame.origin.y, kWidth-100-60, nameLab.frame.size.height)];
     nameTextField.placeholder = @"请输入名称";

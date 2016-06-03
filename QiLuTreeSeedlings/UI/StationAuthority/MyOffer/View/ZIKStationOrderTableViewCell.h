@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZIKStationOrderTableViewCell : UITableViewCell
-
++ (instancetype)cellWithTableView:(UITableView *)tableView;
+- (void)configureCell:(id)model;
 @end

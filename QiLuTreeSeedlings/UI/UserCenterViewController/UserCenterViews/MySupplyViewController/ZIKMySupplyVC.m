@@ -82,7 +82,10 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
-    [self requestSupplyRestrict];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        [self requestSupplyRestrict];
+    });
 }
 
 - (void)viewDidLoad {
@@ -176,7 +179,10 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     if ([model.state isEqualToString:@"3"]) {
         view = [[UIView alloc] init];
         view.frame = CGRectMake(0, 0, Width, 35+CELL_FOOTERVIEW_HEIGH);
-        ZIKMySupplyCellBackButton *button = [[ZIKMySupplyCellBackButton alloc] initWithFrame:CGRectMake(0, 0, Width, 35)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 0, kWidth-30, 0.5)];
+        lineView.backgroundColor = BGColor;
+        [view addSubview:lineView];
+        ZIKMySupplyCellBackButton *button = [[ZIKMySupplyCellBackButton alloc] initWithFrame:CGRectMake(0, 0.5, Width, 35)];
         button.backgroundColor = [UIColor whiteColor];
         [button setImage:[UIImage imageNamed:@"注意"] forState:UIControlStateNormal];
         [button setTitle:@"查看退回原因" forState:UIControlStateNormal];
@@ -806,28 +812,5 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     }
 }
 
-//#pragma mark - UIAlertViewDelegate
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    if (buttonIndex == 1) {
-//        ZIKSupplyModel *model = self.supplyInfoMArr[alertView.tag - 300];
-//        [HTTPCLIENT getMySupplyDetailInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:model.uid Success:^(id responseObject) {
-//            if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
-//                [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
-//                return ;
-//            }
-//            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-//                NSDictionary *dic        = [responseObject objectForKey:@"result"];
-//                SupplyDetialMode *model  = [SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
-//                model.supplybuyName      = APPDELEGATE.userModel.name;
-//                model.phone              = APPDELEGATE.userModel.phone;
-//                ZIKSupplyPublishVC *spvc = [[ZIKSupplyPublishVC alloc] initWithModel:model];
-//                [self.navigationController pushViewController:spvc animated:YES];
-//            }
-//
-//        } failure:^(NSError *error) {
-//            ;
-//        }];
-//    }
-//}
 
 @end

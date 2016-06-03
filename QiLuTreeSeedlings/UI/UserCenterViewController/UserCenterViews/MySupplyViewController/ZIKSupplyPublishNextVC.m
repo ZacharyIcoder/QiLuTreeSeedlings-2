@@ -13,14 +13,13 @@
 #import "ZIKIteratorNode.h"
 #import "ZIKNurseryListSelectButton.h"
 #import "BWTextView.h"
-//#import "JSONKit.h"
 #import "ZIKMySupplyVC.h"
 #import "FaBuViewController.h"
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
 {
-    UIButton *ecttiveBtn;
+    UIButton           *ecttiveBtn;
     ZIKNurseryListView *listView;
-    BWTextView *productDetailTextView;
+    BWTextView         *productDetailTextView;
 }
 @property (nonatomic, strong) UITableView    *supplyInfoTableView;
 @property (nonatomic, strong) NSArray        *titleMarray;
@@ -30,15 +29,17 @@
 @property (nonatomic, assign) NSInteger      ecttiv;
 @property (nonatomic, strong) NSArray        *nurseryArray;
 @property (nonatomic, strong) NSMutableArray *nurseryUidMArray;
-@property (nonatomic, strong) NSDictionary *baseMsgDic;
-@property (nonatomic, strong) NSArray *oldnurseryArray;
+@property (nonatomic, strong) NSDictionary   *baseMsgDic;
+@property (nonatomic, strong) NSArray        *oldnurseryArray;
 @end
 
 @implementation ZIKSupplyPublishNextVC
+
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 - (id)initWithNurseryList:(NSArray *)nurseryAry WithbaseMsg:(NSDictionary *)baseDic
 {
     self = [super init];
@@ -53,12 +54,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.vcTitle = @"供应发布";
-  
-    
 
     [self initData];
     [self initUI];
-    if (self.oldnurseryArray.count>0) {
+    if (self.oldnurseryArray.count > 0) {
         [self.supplyInfoTableView reloadData];
     }else
     {
@@ -149,18 +148,19 @@
             UITableViewCell *firstSectionCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifyName];
             if (firstSectionCell == nil) {
                 firstSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName];
-                firstSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
-                firstSectionCell.textLabel.font   = [UIFont systemFontOfSize:15.0f];
+                firstSectionCell.textLabel.text      = self.titleMarray[indexPath.section][indexPath.row];
+                firstSectionCell.textLabel.font      = [UIFont systemFontOfSize:15.0f];
+                firstSectionCell.textLabel.textColor = titleLabColor;
 
             }
             if (indexPath.row == 0) {
                 if (!_countTextField) {
                     self.countTextField = [[UITextField alloc] init];
-                    UILabel *label = [[UILabel alloc] init];
-                    label.frame = CGRectMake(kWidth-50, 5, 40, 30);
-                    label.text = @"棵";
-                    //label.textColor = titleLabColor;
-                    label.font = [UIFont systemFontOfSize:15.0f];
+                    UILabel *label      = [[UILabel alloc] init];
+                    label.frame         = CGRectMake(kWidth-50, 5, 40, 30);
+                    label.text          = @"棵";
+                    label.textColor     = titleLabColor;
+                    label.font          = [UIFont systemFontOfSize:15.0f];
                     label.textAlignment = NSTextAlignmentRight;
                     [firstSectionCell addSubview:label];
 
@@ -169,9 +169,10 @@
                     self.countTextField.text=[NSString stringWithFormat:@"%@",[self.baseMsgDic objectForKey:@"count"]];
                 }
 
-                self.countTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
-                self.countTextField.keyboardType=UIKeyboardTypeNumberPad;
-                self.countTextField.placeholder = @"请输入数量";
+                self.countTextField.frame        = CGRectMake(100, 5, kWidth-100-60, 34);
+                self.countTextField.keyboardType = UIKeyboardTypeNumberPad;
+                self.countTextField.placeholder  = @"请输入数量";
+                self.countTextField.textColor    = titleLabColor;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
                                                              name:UITextFieldTextDidChangeNotification
@@ -184,15 +185,16 @@
             }
             if (indexPath.row == 1)  {
                 if (!_priceTextField) {
-                    self.priceTextField = [[UITextField alloc] init];
-                    self.priceTextField.frame = CGRectMake(100, 5, kWidth-100-60, 34);
+                    self.priceTextField           = [[UITextField alloc] init];
+                    self.priceTextField.frame     = CGRectMake(100, 5, kWidth-100-60, 34);
                     self.priceTextField.textColor = titleLabColor;
                     [firstSectionCell addSubview:self.priceTextField];
-                    UILabel *label = [[UILabel alloc] init];
-                    label.frame = CGRectMake(kWidth-50, 5, 40, 30);
-                    label.text = @"元";
-                    label.font = [UIFont systemFontOfSize:15.0f];
-                    label.textAlignment = NSTextAlignmentRight;
+                    UILabel *label                = [[UILabel alloc] init];
+                    label.frame                   = CGRectMake(kWidth-50, 5, 40, 30);
+                    label.text                    = @"元";
+                    label.textColor               = titleLabColor;
+                    label.font                    = [UIFont systemFontOfSize:15.0f];
+                    label.textAlignment           = NSTextAlignmentRight;
                     [firstSectionCell addSubview:label];
                 }
                self.priceTextField.keyboardType=UIKeyboardTypeDecimalPad;
@@ -218,13 +220,13 @@
                 ecttiveBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
                 ecttiveBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f];
                 [ecttiveBtn setTitle:@"请选择有效期" forState:UIControlStateNormal];
-                [ecttiveBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+                [ecttiveBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
                 [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
                 if (self.baseMsgDic) {
                     self.ecttiv=[[self.baseMsgDic objectForKey:@"effective"] integerValue];
                     NSArray *effectiveAry = @[@"长期",@"一个月",@"三个月",@"半年",@"一年"];
-                    if (effectiveAry.count>=self.ecttiv) {
-                          NSString *effectiveStr=effectiveAry[self.ecttiv-1];
+                    if (effectiveAry.count >= self.ecttiv) {
+                          NSString *effectiveStr = effectiveAry[self.ecttiv - 1];
                         [ecttiveBtn setTitle:effectiveStr forState:UIControlStateNormal];
                     }
                   
@@ -241,6 +243,7 @@
                 secondSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName2];
                 secondSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
                 secondSectionCell.textLabel.font = [UIFont systemFontOfSize:15.0f];
+                secondSectionCell.textLabel.textColor = titleLabColor;
                 if (!listView) {
                     listView = [[ZIKNurseryListView alloc] init];
                 }
@@ -336,12 +339,8 @@
         return;
     }
     self.supplyModel.count = self.countTextField.text;
-    if (self.priceTextField.text.length == 0 || self.priceTextField.text == nil) {
-        //self.supplyModel.price = @"面议";
-    }
-    else {
-        self.supplyModel.price = self.priceTextField.text;
-    }
+    self.supplyModel.price = self.priceTextField.text;
+
     self.supplyModel.effectiveTime = [NSString stringWithFormat:@"%ld",(long)self.ecttiv];
     __block NSString *nurseryUidString = @"";
     [self.nurseryUidMArray enumerateObjectsUsingBlock:^(NSString *uid, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -381,6 +380,7 @@
 - (void)ecttiveBtnAction {
     [self.countTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
+    [productDetailTextView resignFirstResponder];
     if (!self.ecttivePickerView) {
         self.ecttivePickerView = [[PickerShowView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         [self.ecttivePickerView resetPickerData:@[@"长期",@"一个月",@"三个月",@"半年",@"一年"]];

@@ -7,15 +7,21 @@
 //
 
 #import "ZIKMyOfferViewController.h"
+
 @interface ZIKMyOfferViewController ()
-@property (nonatomic, strong) UITableView *orderTV;
 @end
 
 @implementation ZIKMyOfferViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initUI];
 }
+
+- (void)initUI {
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

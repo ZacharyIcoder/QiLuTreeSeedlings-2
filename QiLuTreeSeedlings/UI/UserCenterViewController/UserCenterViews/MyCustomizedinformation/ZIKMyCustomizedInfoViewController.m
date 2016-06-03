@@ -17,8 +17,6 @@
 #import "ZIKHaveReadInfoViewController.h"
 #import "ZIKBottomDeleteTableViewCell.h"
 @interface ZIKMyCustomizedInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
-{
-}
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
 @property (nonatomic,strong) NSMutableArray  *custominzedZuAryy;
@@ -331,6 +329,7 @@
         }
          NSDictionary *dic=self.custominzedZuAryy[indexPath.section-1];
         cell.textLabel.text=[dic objectForKey:@"name"];
+        cell.textLabel.textColor = titleLabColor;
         return cell;
     }
  

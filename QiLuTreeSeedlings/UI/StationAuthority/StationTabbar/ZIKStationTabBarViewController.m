@@ -33,8 +33,8 @@
     orderVC.vcTitle = @"工程订单";
     orderVC.tabBarItem.title = @"工程订单";
     orderVC.navigationController.navigationBar.hidden = YES;
-    orderVC.tabBarItem.image = [[UIImage imageNamed:@"homePageGreen@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"homePageGreen@2x"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    orderVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程订单off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工程订单on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
     //工作站
@@ -45,8 +45,8 @@
     workVC.vcTitle = @"工作站";
     workVC.tabBarItem.title = @"工作站";
     workVC.navigationController.navigationBar.hidden = YES;
-    workVC.tabBarItem.image = [[UIImage imageNamed:@"homePageGreen@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    workVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"homePageGreen@2x"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    workVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工作站off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    workVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工作站on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     //我的报价
     ZIKMyOfferViewController *offerVC = [[ZIKMyOfferViewController alloc] init];
@@ -56,8 +56,8 @@
     offerVC.vcTitle = @"我的报价";
     offerVC.tabBarItem.title = @"我的报价";
     offerVC.navigationController.navigationBar.hidden = YES;
-    offerVC.tabBarItem.image = [[UIImage imageNamed:@"homePageGreen@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"homePageGreen@2x"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    offerVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-我的报价off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-我的报价on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     //站长中心
     ZIKStationCenterViewController *stationVC = [[ZIKStationCenterViewController alloc] init];
@@ -68,8 +68,9 @@
     stationVC.tabBarItem.title = @"站长中心";
     stationVC.navigationController.navigationBar.hidden = YES;
 
-    stationVC.tabBarItem.image = [[UIImage imageNamed:@"homePageGreen@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"homePageGreen@2x"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-站长中心off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-站长中心on"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
 
     NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:orderNav,workNav,offerNav,stationNav,nil];
     self.viewControllers = list;
@@ -77,11 +78,13 @@
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        normalColor,           NSForegroundColorAttributeName,
+                                                       [UIFont fontWithName:@"Helvetica" size:11.0], NSFontAttributeName,
                                                        nil] forState:UIControlStateNormal];
     // UIColor *titleHighlightedColor = [UIColor colorWithRed:43/255.0 green:41/255.0 blue:56/255.0 alpha:1];
     UIColor *titleHighlightedColor = NavColor;
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        titleHighlightedColor, NSForegroundColorAttributeName,
+                                                       [UIFont fontWithName:@"Helvetica" size:11.0], NSFontAttributeName,
                                                        nil] forState:UIControlStateSelected];
 }
 
@@ -89,6 +92,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKBackHome" object:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

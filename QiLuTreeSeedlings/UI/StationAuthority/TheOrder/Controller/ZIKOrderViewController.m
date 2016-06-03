@@ -7,16 +7,37 @@
 //
 
 #import "ZIKOrderViewController.h"
-
-@interface ZIKOrderViewController ()
-
+#import "ZIKStationOrderTableViewCell.h"
+@interface ZIKOrderViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic, weak) UITableView *orderTV;
 @end
 
 @implementation ZIKOrderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initUI];
+}
+
+- (void)initUI {
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-44) style:UITableViewStylePlain];
+    tableView.delegate   = self;
+    tableView.dataSource = self;
+    [self.view addSubview:tableView];
+    self.orderTV = tableView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 180;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -16,20 +16,15 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.timeImageView.tintColor = [UIColor whiteColor];
-    self.timeImageView.autoresizingMask = YES;
-    self.timeImageView.layer.cornerRadius = 6.0f;
+    self.timeImageView.tintColor           = [UIColor whiteColor];
+    self.timeImageView.autoresizingMask    = YES;
+    self.timeImageView.layer.cornerRadius  = 6.0f;
     self.timeImageView.layer.masksToBounds = YES;
-//    self.timeImageView.backgroundColor = [UIColor whiteColor];
-    self.refreshLabel.textColor = NavColor;
-
-    //self.timeImageView.highlightedImage = [UIImage imageNamed:@"compose_keyboardbutton_background"];
-    //UITableViewCellStyle = UITableViewCellStyle
+    self.refreshLabel.textColor            = NavColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-//    self.timeImageView.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)configureCell:(ZIKSupplyModel *)model {
@@ -52,15 +47,6 @@
 
     NSString *priceString = nil;
     priceString = [NSString stringWithFormat:@"上车价 ¥%@",model.price];
-//    if (model.price) {
-//        <#statements#>
-//    }
-//    if (model.price.floatValue >= 10000) {
-//        priceString = [NSString stringWithFormat:@"上车价 ¥%.1f万",model.price.floatValue/10000];
-//    }
-//    else {
-//        priceString = [NSString stringWithFormat:@"上车价 ¥%.1f",model.price.floatValue];
-//    }
 
     FontAttribute *fullFont = [FontAttribute new];
     fullFont.font = [UIFont systemFontOfSize:19.0f];
