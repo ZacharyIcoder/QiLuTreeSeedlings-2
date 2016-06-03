@@ -19,7 +19,7 @@
 @interface ZIKMyCustomizedInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
-@property (nonatomic,strong) NSMutableArray  *custominzedZuAryy;
+@property (nonatomic ,strong) NSMutableArray *custominzedZuAryy;
 @property (nonatomic, strong) UITableView    *myCustomizedInfoTableView;//我的定制信息列表
 @end
 

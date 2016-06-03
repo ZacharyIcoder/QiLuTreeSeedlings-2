@@ -258,21 +258,21 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 -(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)guigeAry
 {
-    for (int i=0; i<guigeAry.count; i++) {
-        NSDictionary *dic=guigeAry[i];
+    for (int i = 0; i < guigeAry.count; i++) {
+        NSDictionary *dic = guigeAry[i];
         if ([[dic objectForKey:@"level"] integerValue]==0) {
-            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+            GuiGeModel *guigeModel = [GuiGeModel creatGuiGeModelWithDic:dic];
             [self.guige1Ary addObject:guigeModel];
         }
-        if ([[dic objectForKey:@"level"] integerValue]==1) {
-            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+        if ([[dic objectForKey:@"level"] integerValue] == 1) {
+            GuiGeModel *guigeModel = [GuiGeModel creatGuiGeModelWithDic:dic];
             //[selectAry addObject:guigeModel];
-            for (int j=0; j<self.guige1Ary.count; j++) {
-                GuiGeModel *guigeModel1=self.guige1Ary[j];
-                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
-                    Propers *proper=guigeModel1.propertyLists[k];
+            for (int j = 0; j < self.guige1Ary.count; j++) {
+                GuiGeModel *guigeModel1 = self.guige1Ary[j];
+                for (int k = 0 ; k < guigeModel1.propertyLists.count; k++) {
+                    Propers *proper = guigeModel1.propertyLists[k];
                     if (proper.relation == guigeModel.uid) {
-                        proper.guanlianModel=guigeModel;
+                        proper.guanlianModel = guigeModel;
                     }
                 }
             }
@@ -282,10 +282,13 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     CGFloat Y = CGRectGetMaxY(_hintView.frame) ;
 
 
-    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
+    GuiGeView *guigeView = [[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, Y, kWidth, 0)];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
-    guigeView.delegate=self;
-    self.guigeView=guigeView;
+    guigeView.delegate = self;
+    self.guigeView = guigeView;
+    if (self.guige1Ary.count == 0) {
+        guigeView.showBtn.hidden = YES;
+    }
     [self.backScrollView addSubview:guigeView];
 
 }
@@ -415,6 +418,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
                 guigeView.delegate=self;
                 self.guigeView=guigeView;
+                if (self.guige1Ary.count == 0) {
+                    guigeView.showBtn.hidden = YES;
+                }
                 [self.backScrollView addSubview:guigeView];
             }
 

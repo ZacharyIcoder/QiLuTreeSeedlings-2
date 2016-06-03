@@ -87,11 +87,13 @@
 
     UILabel *nameLab           = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 80, 44)];
     nameLab.text               = @"苗木名称";
+    nameLab.textColor = titleLabColor;
+    nameLab.font = [UIFont systemFontOfSize:15.0f];
     [nameView addSubview:nameLab];
     UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(100, 0, kWidth-100-60, 44)];
     nameTextField.placeholder  = @"请输入苗木名称";
     nameTextField.textColor    = NavColor;
-    nameTextField.font = [UIFont systemFontOfSize:16.0f];
+    nameTextField.font = [UIFont systemFontOfSize:15.0f];
     nameTextField.delegate     = self;
     self.nameTextField         = nameTextField;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -102,6 +104,8 @@
 
     UILabel *addressLab = [[UILabel alloc] initWithFrame:CGRectMake(15, 44, 80, 44)];
     addressLab.text = @"供货地";
+    addressLab.font = [UIFont systemFontOfSize:15.0f];
+    addressLab.textColor = titleLabColor;
     [nameView addSubview:addressLab];
 
     UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 44, kWidth*0.6, 44)];
@@ -112,7 +116,7 @@
 
 //    cityBtn.backgroundColor = [UIColor grayColor];
     [cityBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    [cityBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [cityBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [cityBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
     [nameView addSubview:cityBtn];
     [cityBtn addTarget:self action:@selector(cityBtnAction:) forControlEvents:UIControlEventTouchUpInside];

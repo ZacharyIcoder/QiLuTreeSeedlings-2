@@ -96,6 +96,7 @@
     
     ZIKHintTableViewCell *hintCell =  [[[NSBundle mainBundle] loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
     hintCell.frame = CGRectMake(0, 64, Width, HINT_VIEW_HEIGHT);
+//    hintCell.backgroundColor = BGColor;
     [self.view addSubview:hintCell];
 
     self.myCustomizedInfoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(hintCell.frame), Width, Height-64-HINT_VIEW_HEIGHT) style:UITableViewStyleGrouped];
@@ -314,6 +315,9 @@
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (self.customizedInfoMArr.count == 0) {
+        return nil;
+    }
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
     BuyOtherInfoTableViewCell *mycell = [[BuyOtherInfoTableViewCell alloc] init];
     mycell.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+30);
