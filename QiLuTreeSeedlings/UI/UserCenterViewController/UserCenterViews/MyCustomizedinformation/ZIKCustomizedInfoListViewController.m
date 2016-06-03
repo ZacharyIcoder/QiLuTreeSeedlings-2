@@ -316,7 +316,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
     BuyOtherInfoTableViewCell *mycell = [[BuyOtherInfoTableViewCell alloc] init];
-    mycell.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+20);
+    mycell.frame = CGRectMake(0, 0, kWidth, model.spec.count*30+30);
     mycell.backgroundColor = [UIColor whiteColor];
     mycell.dingzhiAry = model.spec;
     mycell.selectionStyle = UITableViewCellSelectionStyleNone;

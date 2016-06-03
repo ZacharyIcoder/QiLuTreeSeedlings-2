@@ -359,17 +359,30 @@
         CGRect framex=cell.frame;
         framex.origin.y=Y;
         cell.frame=framex;
-        if (self.showBtn.selected==NO) {
-            if (cell.model.main) {
+        if (self.MainSure) {
+            if (self.showBtn.selected==NO) {
+                if (cell.model.main) {
+                    Y+=cell.frame.size.height;
+                }
+            }else
+            {
                 Y+=cell.frame.size.height;
             }
-        }else
-        {
+ 
+        }else{
             Y+=cell.frame.size.height;
         }
         
+    }
+
+     if (self.MainSure)
+     {
+         frame.size.height=Y+44;
+     }else
+     {
+         frame.size.height=Y;
      }
-    frame.size.height=Y+44;
+    
      self.frame=frame;
      [self reloadBtnaVVV];
     if (self.delegate) {

@@ -106,7 +106,7 @@
     [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     self.nowBtn=pickBtn;
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, kHeight-216, kWidth,216+44)];
+    PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, 0, kWidth,kHeight)];
     self.pickerView=pickerView;
     pickerView.delegate=self;
     [pickerView resetPickerData:self.model.optionList];

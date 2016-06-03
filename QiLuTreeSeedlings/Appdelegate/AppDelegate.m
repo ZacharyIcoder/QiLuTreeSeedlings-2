@@ -293,7 +293,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:myToken forKey:kdeviceToken];
     [userDefaults synchronize];
-   // NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", myToken);
+    NSLog(@"\n>>>[DeviceToken Success]:%@\n\n", myToken);
 }
 
 /** 远程通知注册失败委托 */
@@ -303,7 +303,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:@"用户未授权" forKey:@"deviceToken"];
     [userDefaults synchronize];
-    NSLog(@"\n>>>[DeviceToken Error]:%@\n\n", error.description);
+    //NSLog(@"\n>>>[DeviceToken Error]:%@\n\n", error.description);
 }
 
 #pragma mark - APP运行中接收到通知(推送)处理

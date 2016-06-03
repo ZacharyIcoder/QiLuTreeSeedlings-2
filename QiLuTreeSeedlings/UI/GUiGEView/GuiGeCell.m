@@ -151,7 +151,7 @@
             [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-            PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, kHeight-216, kWidth,216+44)];
+            PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, 0, kWidth,kHeight)];
             self.pickerView=pickerView;
             pickerView.delegate=self;
             NSMutableArray *dataxxAry=[NSMutableArray array];
@@ -312,7 +312,7 @@
         {
             [self.answerAry addObjectsFromArray:@[@""]];
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
-            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 7, 150/320.f*kWidth, 30)];
+            UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 7, 160/320.f*kWidth, 30)];
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -440,7 +440,7 @@
 
             }
 
-            PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, kHeight-216, kWidth,216+44)];
+            PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, 0, kWidth,kHeight)];
             self.pickerView=pickerView;
             pickerView.delegate=self;
             NSMutableArray *dataxxAry=[NSMutableArray array];

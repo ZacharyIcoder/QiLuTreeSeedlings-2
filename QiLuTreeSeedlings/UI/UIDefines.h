@@ -36,9 +36,9 @@
 
 #pragma mark - 颜色设置
 #define NavColor        [UIColor colorWithRed:107/255.0f green:188/255.0f blue:85/255.0f alpha:1.0f]
-#define BGColor         [UIColor colorWithRed:242/255.0f green:242/255.0f blue:242/255.0f alpha:1.0f] 
+#define BGColor         [UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f]
 //#define BGColor         [UIColor whiteColor]
-#define kLineColor       [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:1.0]
+#define kLineColor       [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0]
 #define yellowButtonColor kRGB(255, 152, 31, 1)
 #define titleLabColor kRGB(102, 102, 102, 1)
 #define detialLabColor kRGB(153, 153, 153, 1)

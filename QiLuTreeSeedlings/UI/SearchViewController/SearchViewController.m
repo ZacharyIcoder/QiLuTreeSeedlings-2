@@ -163,7 +163,7 @@
     UIImageView *lineV=[[UIImageView alloc]initWithFrame:CGRectMake(60, 3, 0.5, 28)];
     [lineV setBackgroundColor:kLineColor];
     [backView addSubview:lineV];
-     UITextField * searchMessageField=[[UITextField alloc]initWithFrame:CGRectMake(65, 0, backView.frame.size.width-120, 34)];
+     UITextField * searchMessageField=[[UITextField alloc]initWithFrame:CGRectMake(65, 0, backView.frame.size.width-100, 34)];
     self.searchMessageField=searchMessageField;
     searchMessageField.placeholder=@"请输入树种名称";
     searchMessageField.delegate=self;

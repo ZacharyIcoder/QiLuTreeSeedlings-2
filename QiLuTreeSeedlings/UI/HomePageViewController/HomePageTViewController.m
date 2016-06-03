@@ -295,7 +295,7 @@
     [searchLab setFont:[UIFont systemFontOfSize:15]];
     [searchLab setTextColor:[UIColor grayColor]];
     [searchBtn addSubview:searchLab];
-    [searchLab setText:@"请输入苗木关键词"];
+    [searchLab setText:@"请输入苗木名称"];
     UIImageView *searchImageV;
     searchImageV=[[UIImageView alloc]initWithFrame:CGRectMake(searchBtn.frame.size.width-36, 4, 27, 27)];
     [searchImageV setImage:[UIImage imageNamed:@"searchBtnAction"]];

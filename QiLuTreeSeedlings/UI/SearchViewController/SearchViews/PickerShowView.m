@@ -50,6 +50,8 @@
                                            frame.size.height-216,
                                            frame.size.width,
                                            216);
+        UITapGestureRecognizer *tapGestureR=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pickerCancel:)];
+        [self addGestureRecognizer:tapGestureR];
         
     }
     return self;

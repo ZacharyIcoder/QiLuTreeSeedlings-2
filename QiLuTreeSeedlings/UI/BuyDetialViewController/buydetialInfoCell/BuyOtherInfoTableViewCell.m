@@ -41,7 +41,7 @@
         UILabel *valueLab=[[UILabel alloc]initWithFrame:CGRectMake(130, -5, 185/320.f*kWidth, 40)];
         valueLab.numberOfLines=0;
         valueLab.text=name;
-        [valueLab setFont:[UIFont systemFontOfSize:13]];
+        [valueLab setFont:[UIFont systemFontOfSize:14]];
         [valueLab setTextColor:titleLabColor];
         [view addSubview:valueLab];
         [self addSubview:view];
@@ -102,10 +102,7 @@
     NSMutableString *valueStr;
     if (valueAry.count==1) {
         valueStr=[NSMutableString stringWithFormat:@"%@",valueAry[0]];
-        NSString *unit=[dic objectForKey:@"unit"];
-        if (unit.length>0) {
-            [valueStr appendString:unit];
-        }
+        
     }else
     {
         
@@ -116,9 +113,18 @@
                 if ([type isEqualToString:@"复选"]) {
                     [valueStr appendFormat:@",%@",valueAry[k]];
                 }
+                if ([type isEqualToString:@"文本"]) {
+                    if (k==1) {
+                        [valueStr appendFormat:@" - %@",valueAry[k]];
+                    }
+                    if (k==0) {
+                        [valueStr appendFormat:@" %@",valueAry[k]];
+                    }
+
+                }
                 if ([type isEqualToString:@"单选结合"]) {
                     if (k==2) {
-                        [valueStr appendFormat:@"-%@",valueAry[k]];
+                        [valueStr appendFormat:@" - %@",valueAry[k]];
                     }
                     if (k==1) {
                         [valueStr appendFormat:@" %@",valueAry[k]];
@@ -131,9 +137,12 @@
         }
         
     }
-    
+    NSString *unit=[dic objectForKey:@"unit"];
+    if (unit.length>0) {
+        [valueStr appendFormat:@" %@",unit];
+    }
     valueLab.text=valueStr;
-    [valueLab setFont:[UIFont systemFontOfSize:13]];
+    [valueLab setFont:[UIFont systemFontOfSize:14]];
     [valueLab setTextColor:titleLabColor];
     [view addSubview:valueLab];
     [self addSubview:view];

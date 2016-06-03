@@ -230,7 +230,7 @@
             }
         }
     if (self.citysStr.length<=0) {
-        [ToastView showTopToast:@"请选择用苗地"];
+        [ToastView showTopToast:@"请选择苗源地"];
         return;
     }
     ShowActionV();
@@ -424,7 +424,7 @@
     }];
     //self.dataAry = [CityModel creatCityAryByAry:allTown];
     [dao closeDataBase];
-    if (![[self.areaBtn currentTitle] isEqualToString:@"请选择用苗地"]) {
+    if (![[self.areaBtn currentTitle] isEqualToString:@"请选择苗源地"]) {
         NSArray *cityArray = [_citysStr componentsSeparatedByString:@","];
         __block NSInteger numcount = 0;
         [_citys enumerateObjectsUsingBlock:^(ZIKCityModel *model, NSUInteger idx, BOOL * _Nonnull stop) {

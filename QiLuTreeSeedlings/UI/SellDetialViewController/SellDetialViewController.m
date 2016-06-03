@@ -58,6 +58,10 @@
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                 SupplyDetialMode *model=[SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
+                if (model.uid.length<=0) {
+                    [ToastView showTopToast:@"请刷新列表后重新进入该供应"];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
                 self.model=model;
                   BigImageViewShowView *bigImageVShowV=[[BigImageViewShowView  alloc]initWithImageAry:model.images];
                 self.hotModel.title=model.title;
@@ -71,6 +75,8 @@
                 self.guseLikeAry=[HotSellModel hotSellAryByAry:[dic objectForKey:@"list"]];
               
                 [self.tableView reloadData];
+            }else{
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
             }
         } failure:^(NSError *error) {
             
@@ -218,7 +224,7 @@
     }
     if (indexPath.section==1) {
         if (self.model.spec.count>0) {
-             return self.model.spec.count*30;
+             return self.model.spec.count*30+35;
         }
         else return 44;
 //        //二期新增
@@ -325,7 +331,7 @@
             return cell;
         }
         if (indexPath.section==1) {
-            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30) andName:self.model.productName];
+            BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.model.spec.count*30+35) andName:self.model.productName];
             cell.ary=self.model.spec;
              cell.selectionStyle=UITableViewCellSelectionStyleNone;
             cell.showBtn.hidden = YES;
