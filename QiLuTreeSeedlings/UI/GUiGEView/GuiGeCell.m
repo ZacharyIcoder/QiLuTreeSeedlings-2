@@ -144,6 +144,7 @@
             [self.answerAry addObjectsFromArray:@[@""]];
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
             UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 7, 150/320.f*self.frame.size.width, 30)];
+            pickBtn.center=CGPointMake(self.frame.size.width/2+10, self.frame.size.height/2);
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -313,6 +314,7 @@
             [self.answerAry addObjectsFromArray:@[@""]];
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
             UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 7, 160/320.f*kWidth, 30)];
+            pickBtn.center=CGPointMake(self.frame.size.width/2+10, self.frame.size.height/2);
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];

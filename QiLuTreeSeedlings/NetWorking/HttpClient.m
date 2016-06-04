@@ -1734,11 +1734,6 @@
     parmers[@"usedProvince"]      = usedProvince;
     parmers[@"usedCity"]          = usedCity;
     NSArray *array = etcAttributes[0];
-//    for (int i=0; i < array.count; i++) {
-//        NSDictionary *dic = array[i];
-//        NSString *field =  dic[@"field"];
-//        parmers[field]  = [dic objectForKey:@"anwser"];
-//    }
     for (int i=0; i<array.count; i++) {
         NSDictionary *dic=array[i];
         [parmers setObject:[NSString stringWithFormat:@"%@",[dic objectForKey:@"value"]] forKey:[dic objectForKey:@"field"]];
