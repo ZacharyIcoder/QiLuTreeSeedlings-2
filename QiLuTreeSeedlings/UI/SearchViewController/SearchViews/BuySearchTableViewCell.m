@@ -11,12 +11,10 @@
 #import "StringAttributeHelper.h"
 #define kSCREEN_EDGE_DISTANCE 20 //距离屏幕边缘距离
 @interface BuySearchTableViewCell()
-//@property (nonatomic,strong)UIImageView *imageV;
 @property (nonatomic,strong)UILabel *priceLab;
 @property (nonatomic,strong)UILabel *titleLab;
 @property (nonatomic,strong)UILabel *cityLab;
 @property (nonatomic,strong)UILabel *timeLab;
-//@property (nonatomic,strong)UILabel *numLab;
 @end
 @implementation BuySearchTableViewCell
 {
@@ -36,7 +34,7 @@
         UIImageView *dingweiImage=[[UIImageView alloc]initWithFrame:CGRectMake(20, 38, 15, 15)];
         [dingweiImage setImage:[UIImage imageNamed:@"region"]];
         [self.contentView addSubview:dingweiImage];
-        self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(38, 40, 60, 12)];
+        self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(38, 40,90, 12)];
         
         [self.cityLab setFont:[UIFont systemFontOfSize:12]];
         [self.cityLab setText:@"临沂"];
@@ -78,7 +76,7 @@
         UIImageView *dingweiImage=[[UIImageView alloc]initWithFrame:CGRectMake(20, 38, 15, 15)];
         [dingweiImage setImage:[UIImage imageNamed:@"region"]];
         [self.contentView addSubview:dingweiImage];
-        self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(38, 40, 60, 12)];
+        self.cityLab=[[UILabel alloc]initWithFrame:CGRectMake(38, 40, 90, 12)];
         
         [self.cityLab setFont:[UIFont systemFontOfSize:12]];
         [self.cityLab setText:@"临沂"];

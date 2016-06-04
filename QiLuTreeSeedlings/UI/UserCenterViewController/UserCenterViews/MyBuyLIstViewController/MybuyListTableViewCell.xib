@@ -42,10 +42,10 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VN-FS-v9Q">
-                        <rect key="frame" x="201" y="48" width="100" height="23"/>
+                        <rect key="frame" x="260" y="48" width="41" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="UMh-Mj-CFq"/>
-                            <constraint firstAttribute="width" constant="100" id="jag-12-aoJ"/>
+                            <constraint firstAttribute="width" constant="41" id="jag-12-aoJ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,12 +73,24 @@
                         <color key="textColor" red="0.4313849803664922" green="0.4313849803664922" blue="0.4313849803664922" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bZ-Tw-JSP">
+                        <rect key="frame" x="210" y="50" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="SZx-Cd-72J"/>
+                            <constraint firstAttribute="height" constant="21" id="bP3-T0-63L"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.43147021812080538" green="0.42997588087248312" blue="0.43238779362416108" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yhx-Od-JLd" firstAttribute="leading" secondItem="eRM-yy-7ka" secondAttribute="trailing" constant="101" id="L4r-gQ-8I6"/>
                     <constraint firstAttribute="bottomMargin" secondItem="eRM-yy-7ka" secondAttribute="bottom" constant="1" id="MBz-Rk-XV3"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yhx-Od-JLd" secondAttribute="bottom" constant="1" id="N2b-11-Z2E"/>
+                    <constraint firstItem="3VN-FS-v9Q" firstAttribute="leading" secondItem="2bZ-Tw-JSP" secondAttribute="trailing" constant="8" id="NQm-X8-JcV"/>
                     <constraint firstAttribute="bottomMargin" secondItem="3VN-FS-v9Q" secondAttribute="bottom" constant="-5" id="SaT-Fv-dyw"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="2bZ-Tw-JSP" secondAttribute="bottom" constant="-5" id="TFd-DN-9rB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Jyg-uI-huu" secondAttribute="trailing" constant="-8" id="WNo-3M-S3i"/>
                     <constraint firstItem="yhx-Od-JLd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="124" id="Zpu-SM-P2y"/>
                     <constraint firstItem="eRM-yy-7ka" firstAttribute="leading" secondItem="FwT-fV-wFG" secondAttribute="leading" id="eN9-gu-TtT"/>

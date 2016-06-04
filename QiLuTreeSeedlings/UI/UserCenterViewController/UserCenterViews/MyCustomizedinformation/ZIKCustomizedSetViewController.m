@@ -41,8 +41,8 @@
 @property (nonatomic, strong) NSMutableArray *guige1Ary;
 @property (nonatomic, strong) GuiGeView      *guigeView;
 @property (nonatomic, strong) UIButton       *areaBtn;
-@property (nonatomic, copy  ) NSString       *AreaProvince;
-@property (nonatomic, copy  ) NSString       *AreaCity;
+@property (nonatomic, strong  ) NSString       *AreaProvince;
+@property (nonatomic, strong  ) NSString       *AreaCity;
 @property (nonatomic, copy  ) NSString       *AreaTown;
 @property (nonatomic, copy  ) NSString       *AreaCounty;
 
@@ -217,6 +217,7 @@
             NSArray *ary      = [dic objectForKey:@"bean"];
             self.dataAry      = ary;
             self.AreaProvince = [NSString stringWithFormat:@"%@",[dic objectForKey:@"usedProvince"]];
+            NSLog(@"%@",[dic objectForKey:@"usedProvince"]);
             self.AreaCity     = [NSString stringWithFormat:@"%@",[dic objectForKey:@"usedCity"]];
             self.areaName     = [dic objectForKey:@"areaName"];
             if (![ZIKFunction xfunc_check_strEmpty:self.areaName]) {

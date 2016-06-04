@@ -9,6 +9,7 @@
 #import "GuiGeCell.h"
 #import "UIDefines.h"
 #import "PickerShowView.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface GuiGeCell ()<UITextFieldDelegate,PickeShowDelegate>
 
 @property (nonatomic,strong)UITextField *oneTextField;
@@ -32,7 +33,7 @@
         self.model=model;
         self.answerAry=[NSMutableArray array];
         
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, 90, 44)];
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, 44)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
@@ -145,13 +146,19 @@
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
             UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 7, 150/320.f*self.frame.size.width, 30)];
             pickBtn.center=CGPointMake(self.frame.size.width/2+10, self.frame.size.height/2);
-            [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+            [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
+            //[pickBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
             [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+            
+            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42, 12, 15, 15)];
+            [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
+            
+            [self addSubview:imageVVV];
             PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, 0, kWidth,kHeight)];
             self.pickerView=pickerView;
             pickerView.delegate=self;
@@ -315,12 +322,17 @@
             self.model.keyStr1=[NSString stringWithFormat:@"spec_select_%@",self.model.uid];
             UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 7, 160/320.f*kWidth, 30)];
             pickBtn.center=CGPointMake(self.frame.size.width/2+10, self.frame.size.height/2);
-            [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+            [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
+            [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
             [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
+            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42.5, 6, 15, 15)];
+            [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
+            
+            [self addSubview:imageVVV];
             if (self.model.values.count>0) {
                 self.answerAry =[NSMutableArray arrayWithObject:[self.model.values firstObject]];
                 [pickBtn setTitle:[self.model.values firstObject] forState:UIControlStateNormal];
@@ -634,7 +646,7 @@
             [self addSubview:cell];
           
         }else{
-            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 45, self.frame.size.width, 44)];
+            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 44, self.frame.size.width, 43.5)];
             [self addSubview:view];
             self.erjiView=view;
             if (procprs.unit) {

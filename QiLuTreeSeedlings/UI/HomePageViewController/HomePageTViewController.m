@@ -562,8 +562,8 @@
     self.loginBtn.hidden=YES;
     if (kWidth<=320) {
         CGRect frame =  _searchBtn.frame;
-        frame.origin.x=40;
-        frame.size.width=kWidth-80;
+        frame.origin.x=20;
+        frame.size.width=kWidth-40;
         _searchBtn.frame=frame;
         _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
     }

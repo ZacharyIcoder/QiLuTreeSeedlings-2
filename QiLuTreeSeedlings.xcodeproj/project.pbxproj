@@ -158,6 +158,8 @@
 		EA741A0E1C8FEA3B00F54478 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA741A0D1C8FEA3B00F54478 /* AVFoundation.framework */; };
 		EA741A101C8FEA4700F54478 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA741A0F1C8FEA4700F54478 /* CoreLocation.framework */; };
 		EA741A121C8FEA5200F54478 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA741A111C8FEA5200F54478 /* CoreBluetooth.framework */; };
+		EA7491671D026FA40043BDAC /* xialakuang.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7491661D026FA40043BDAC /* xialakuang.png */; };
+		EA7491691D0275910043BDAC /* xiala2.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7491681D0275910043BDAC /* xiala2.png */; };
 		EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7514791C9B889A003D63F1 /* backBtnBlack@2x.png */; };
 		EA75147D1C9B891E003D63F1 /* treeNameSure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA75147B1C9B891E003D63F1 /* treeNameSure@2x.png */; };
 		EA75147E1C9B891E003D63F1 /* treeNameSure2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA75147C1C9B891E003D63F1 /* treeNameSure2@2x.png */; };
@@ -762,6 +764,8 @@
 		EA741A0D1C8FEA3B00F54478 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA741A0F1C8FEA4700F54478 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EA741A111C8FEA5200F54478 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		EA7491661D026FA40043BDAC /* xialakuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xialakuang.png; sourceTree = "<group>"; };
+		EA7491681D0275910043BDAC /* xiala2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiala2.png; sourceTree = "<group>"; };
 		EA7514791C9B889A003D63F1 /* backBtnBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backBtnBlack@2x.png"; sourceTree = "<group>"; };
 		EA75147B1C9B891E003D63F1 /* treeNameSure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "treeNameSure@2x.png"; sourceTree = "<group>"; };
 		EA75147C1C9B891E003D63F1 /* treeNameSure2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "treeNameSure2@2x.png"; sourceTree = "<group>"; };
@@ -1745,6 +1749,8 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA7491681D0275910043BDAC /* xiala2.png */,
+				EA7491661D026FA40043BDAC /* xialakuang.png */,
 				EA833D8F1CFEBEAC00D56AFB /* zhanzhongtongshouye.png */,
 				EA833D901CFEBEAC00D56AFB /* gongchenggongsishouye.png */,
 				EA833D891CFE81B600D56AFB /* kefuweixin@2x.png */,
@@ -3644,7 +3650,7 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = HP8U3K66H6;
+						DevelopmentTeam = L674B6W9DX;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3730,6 +3736,7 @@
 				EAF0510B1C92A87B00F435A9 /* loginoutimage@2x.png in Resources */,
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
+				EA7491691D0275910043BDAC /* xiala2.png in Resources */,
 				FC50B1641CAE243F0022A24C /* UMSCommentInputControlleriPad.xib in Resources */,
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
 				EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */,
@@ -3832,6 +3839,7 @@
 				FC6C133A1CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
 				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
+				EA7491671D026FA40043BDAC /* xialakuang.png in Resources */,
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
 				EA696FB71CDD8F46001F037E /* messageUnRead@2x.png in Resources */,
 				EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */,
@@ -4383,7 +4391,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 			};
@@ -4430,7 +4438,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 			};
