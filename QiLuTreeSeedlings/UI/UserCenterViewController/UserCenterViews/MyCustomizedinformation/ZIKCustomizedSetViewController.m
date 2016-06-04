@@ -216,8 +216,8 @@
             self.productUid   = [dic objectForKey:@"productUid"];
             NSArray *ary      = [dic objectForKey:@"bean"];
             self.dataAry      = ary;
-            self.AreaProvince = [dic objectForKey:@"usedProvince"];
-            self.AreaCity     = [dic objectForKey:@"usedCity"];
+            self.AreaProvince = [NSString stringWithFormat:@"%@",[dic objectForKey:@"usedProvince"]];
+            self.AreaCity     = [NSString stringWithFormat:@"%@",[dic objectForKey:@"usedCity"]];
             self.areaName     = [dic objectForKey:@"areaName"];
             if (![ZIKFunction xfunc_check_strEmpty:self.areaName]) {
                 [self.areaBtn setTitle:self.areaName forState:UIControlStateNormal];
