@@ -311,12 +311,22 @@
                     GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
                     [self.guige1Ary addObject:guigeModel];
                 }
+            }
+            
+            for (int i=0; i<guigeAry.count; i++) {
+                NSDictionary *dic=guigeAry[i];
                 if ([[dic objectForKey:@"level"] integerValue]==1) {
                     GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+                    
+                    
                     for (int j=0; j<self.guige1Ary.count; j++) {
                         GuiGeModel *guigeModel1=self.guige1Ary[j];
                         for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+                            
                             Propers *proper=guigeModel1.propertyLists[k];
+                            //                            if ([guigeModel1.name isEqualToString:@"根部要求测"]) {
+                            //                                NSLog(@"%@",proper.relation);
+                            //                            }
                             if ([proper.relation isEqualToString:guigeModel.uid]) {
                                 proper.guanlianModel=guigeModel;
                             }
@@ -324,6 +334,7 @@
                     }
                 }
             }
+
             CGFloat YSS=88;
             if (self.searchType==1) {
                 YSS=138;
