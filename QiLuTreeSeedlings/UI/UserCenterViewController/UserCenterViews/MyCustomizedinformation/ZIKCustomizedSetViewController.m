@@ -521,6 +521,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)reloadViewWithFrame:(CGRect)frame
 {
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(frame))];

@@ -122,9 +122,10 @@
     CGSize size = [hotSellModel.timeAger boundingRectWithSize:CGSizeMake(70, 20) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
     [timeLab setFrame:CGRectMake(kWidth-kSCREEN_EDGE_DISTANCE-size.width, timeLab.frame.origin.y, size.width, size.height)];
     [timeImagV setFrame:CGRectMake(timeLab.frame.origin.x-17, timeImagV.frame.origin.y, timeImagV.frame.size.width, timeImagV.frame.size.height)];
-
-
+    cityLab.frame = CGRectMake(cityLab.frame.origin.x, 40, timeImagV.frame.origin.x-cityLab.frame.origin.x, 20);
+    //cityLab.backgroundColor = [UIColor yellowColor];
 }
+
 - (void)awakeFromNib {
     // Initialization code
 }

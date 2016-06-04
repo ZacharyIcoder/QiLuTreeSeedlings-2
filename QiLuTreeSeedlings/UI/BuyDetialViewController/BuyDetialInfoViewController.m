@@ -970,7 +970,12 @@
             
         }
     }if (indexPath.section==2) {
-        return 140;
+        //return 140;
+        NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
+        NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
+        CGSize size = [dic[@"address"] boundingRectWithSize:CGSizeMake(kWidth-130-15, CGFLOAT_MAX) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+        return size.height+110;
+
     }
     if(indexPath.section==3)
     {
