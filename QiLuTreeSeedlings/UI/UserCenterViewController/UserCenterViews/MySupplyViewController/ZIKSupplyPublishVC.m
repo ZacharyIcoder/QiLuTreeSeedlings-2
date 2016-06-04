@@ -258,21 +258,48 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
 -(void)creatSCreeningCellsWithAnswerWithAry:(NSArray *)guigeAry
 {
-    for (int i = 0; i < guigeAry.count; i++) {
-        NSDictionary *dic = guigeAry[i];
+//    for (int i = 0; i < guigeAry.count; i++) {
+//        NSDictionary *dic = guigeAry[i];
+//        if ([[dic objectForKey:@"level"] integerValue]==0) {
+//            GuiGeModel *guigeModel = [GuiGeModel creatGuiGeModelWithDic:dic];
+//            [self.guige1Ary addObject:guigeModel];
+//        }
+//        if ([[dic objectForKey:@"level"] integerValue] == 1) {
+//            GuiGeModel *guigeModel = [GuiGeModel creatGuiGeModelWithDic:dic];
+//            //[selectAry addObject:guigeModel];
+//            for (int j = 0; j < self.guige1Ary.count; j++) {
+//                GuiGeModel *guigeModel1 = self.guige1Ary[j];
+//                for (int k = 0 ; k < guigeModel1.propertyLists.count; k++) {
+//                    Propers *proper = guigeModel1.propertyLists[k];
+//                    if ([proper.relation isEqualToString:guigeModel.uid]) {
+//                        proper.guanlianModel = guigeModel;
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+    for (int i=0; i<guigeAry.count; i++) {
+        NSDictionary *dic=guigeAry[i];
         if ([[dic objectForKey:@"level"] integerValue]==0) {
-            GuiGeModel *guigeModel = [GuiGeModel creatGuiGeModelWithDic:dic];
+            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
             [self.guige1Ary addObject:guigeModel];
         }
-        if ([[dic objectForKey:@"level"] integerValue] == 1) {
-            GuiGeModel *guigeModel = [GuiGeModel creatGuiGeModelWithDic:dic];
-            //[selectAry addObject:guigeModel];
-            for (int j = 0; j < self.guige1Ary.count; j++) {
-                GuiGeModel *guigeModel1 = self.guige1Ary[j];
-                for (int k = 0 ; k < guigeModel1.propertyLists.count; k++) {
-                    Propers *proper = guigeModel1.propertyLists[k];
+    }
+
+    for (int i=0; i<guigeAry.count; i++) {
+        NSDictionary *dic=guigeAry[i];
+        if ([[dic objectForKey:@"level"] integerValue]==1) {
+            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+
+
+            for (int j=0; j<self.guige1Ary.count; j++) {
+                GuiGeModel *guigeModel1=self.guige1Ary[j];
+                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+
+                    Propers *proper=guigeModel1.propertyLists[k];
                     if ([proper.relation isEqualToString:guigeModel.uid]) {
-                        proper.guanlianModel = guigeModel;
+                        proper.guanlianModel=guigeModel;
                     }
                 }
             }
@@ -391,20 +418,46 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 self.productUid=[dic objectForKey:@"productUid"];
                 NSArray *guigeAry=[dic objectForKey:@"list"];
                 // NSMutableArray *selectAry=[NSMutableArray array];
+//                for (int i=0; i<guigeAry.count; i++) {
+//                    NSDictionary *dic=guigeAry[i];
+//                    if ([[dic objectForKey:@"level"] integerValue]==0) {
+//                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+//                        [self.guige1Ary addObject:guigeModel];
+//                    }
+//                    if ([[dic objectForKey:@"level"] integerValue]==1) {
+//                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+//                        //[selectAry addObject:guigeModel];
+//                        for (int j=0; j<self.guige1Ary.count; j++) {
+//                            GuiGeModel *guigeModel1=self.guige1Ary[j];
+//                            for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+//                                Propers *proper=guigeModel1.propertyLists[k];
+//                                if ([proper.relation isEqualToString:guigeModel.uid]) {
+//                                    proper.guanlianModel=guigeModel;
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
                 for (int i=0; i<guigeAry.count; i++) {
                     NSDictionary *dic=guigeAry[i];
                     if ([[dic objectForKey:@"level"] integerValue]==0) {
                         GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
                         [self.guige1Ary addObject:guigeModel];
                     }
+                }
+
+                for (int i=0; i<guigeAry.count; i++) {
+                    NSDictionary *dic=guigeAry[i];
                     if ([[dic objectForKey:@"level"] integerValue]==1) {
                         GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-                        //[selectAry addObject:guigeModel];
+
+
                         for (int j=0; j<self.guige1Ary.count; j++) {
                             GuiGeModel *guigeModel1=self.guige1Ary[j];
                             for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+
                                 Propers *proper=guigeModel1.propertyLists[k];
-                                if ([proper.relation isEqualToString:guigeModel.uid]) {
+                                  if ([proper.relation isEqualToString:guigeModel.uid]) {
                                     proper.guanlianModel=guigeModel;
                                 }
                             }
