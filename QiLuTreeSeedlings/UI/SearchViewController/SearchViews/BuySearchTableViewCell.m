@@ -124,6 +124,7 @@
     [_timeLab setFrame:CGRectMake(_timeLab.frame.origin.x, _timeLab.frame.origin.y, size.width, size.height)];
     [timeImag setFrame:CGRectMake(_timeLab.frame.origin.x-17, timeImag.frame.origin.y, timeImag.frame.size.width, timeImag.frame.size.height)];
     [_cityLab setFrame:CGRectMake(_cityLab.frame.origin.x, _cityLab.frame.origin.y, timeImag.frame.origin.x-_cityLab.frame.origin.x, _cityLab.frame.size.height)];
+    //_cityLab.backgroundColor = [UIColor yellowColor];
 
     NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
 //    self.priceLab.text=[priceAry firstObject];

@@ -271,7 +271,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 GuiGeModel *guigeModel1 = self.guige1Ary[j];
                 for (int k = 0 ; k < guigeModel1.propertyLists.count; k++) {
                     Propers *proper = guigeModel1.propertyLists[k];
-                    if (proper.relation == guigeModel.uid) {
+                    if ([proper.relation isEqualToString:guigeModel.uid]) {
                         proper.guanlianModel = guigeModel;
                     }
                 }
@@ -404,7 +404,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                             GuiGeModel *guigeModel1=self.guige1Ary[j];
                             for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
                                 Propers *proper=guigeModel1.propertyLists[k];
-                                if (proper.relation == guigeModel.uid) {
+                                if ([proper.relation isEqualToString:guigeModel.uid]) {
                                     proper.guanlianModel=guigeModel;
                                 }
                             }
