@@ -174,6 +174,141 @@
 -(void)dianxuanAction{
     [self.nowTextField resignFirstResponder];
 }
+- (void)HuoQuGuiGeDaAn:(NSMutableArray *)answerAryz cell:(GuiGeCell *)cell
+{
+    if ([cell.model.type isEqualToString:@"文本"]) {
+        
+        Propers *propers=[cell.model.propertyLists firstObject];
+        if (propers.range)
+        {
+            if (cell.answerAry.count>0)
+            {
+                NSString *answer1=[cell.answerAry firstObject];
+                NSString *answer2=[cell.answerAry lastObject];
+                if (answer1.length>0) {
+                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                    dic[@"field"]=cell.model.keyStr2;
+                    dic[@"value"]=answer1;
+                    [answerAryz addObject:dic];
+                }else{
+                    if (answer2.length>0) {
+                        NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                        dic[@"field"]=cell.model.keyStr2;
+                        dic[@"value"]=answer2;
+                        [answerAryz addObject:dic];
+                    }
+                    
+                }
+                if (answer2.length>0) {
+                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                    dic[@"field"]=cell.model.keyStr3;
+                    dic[@"value"]=answer2;
+                    [answerAryz addObject:dic];
+                }else{
+                    if (answer1.length>0) {
+                        NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                        dic[@"field"]=cell.model.keyStr3;
+                        dic[@"value"]=answer1;
+                        [answerAryz addObject:dic];
+                    }
+                }
+                
+            }
+            
+        }else{
+            if (cell.answerAry.count>0) {
+                NSString *answer1=[cell.answerAry firstObject];
+                if (answer1.length>0) {
+                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                    dic[@"field"]=cell.model.keyStr2;
+                    dic[@"value"]=answer1;
+                    [answerAryz addObject:dic];
+                }
+            }
+            
+        }
+        
+    }//文本判断
+    
+    if([cell.model.type isEqualToString:@"复选"])
+    {
+        if (cell.answerAry.count>0) {
+            
+            NSMutableString *anserStr=[NSMutableString new];
+            if (cell.answerAry.count>=1) {
+                [anserStr appendFormat:@"%@",cell.answerAry[0]];
+            }
+            for (int i=1; i<cell.answerAry.count; i++) {
+                [anserStr appendFormat:@",%@",cell.answerAry[i]];
+            }
+            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+            dic[@"field"]=cell.model.keyStr1;
+            dic[@"value"]=anserStr;
+            [answerAryz addObject:dic];
+        }
+    }//复选判断
+    if ([cell.model.type isEqualToString:@"单选结合"]) {
+        if (cell.answerAry.count>0) {
+            NSString *answers1=[cell.answerAry firstObject];
+            if (answers1.length>0) {
+                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                dic[@"field"]=cell.model.keyStr1;
+                dic[@"value"]=[cell.answerAry firstObject];
+                [answerAryz addObject:dic];
+            }
+            
+        }
+        
+        if (cell.model.selectProper) {
+            if(cell.model.selectProper.operation)
+            {
+                if (cell.model.selectProper.relation.length>0)
+                {
+                    GuiGeCell *soncell=(GuiGeCell*)cell.erjiView;
+                    if (soncell.answerAry.count>0) {
+                        [self HuoQuGuiGeDaAn:answerAryz cell:soncell];
+                    }
+                    
+                }else{
+                    if (cell.answerAry2.count>0) {
+                        NSString *answers1=[cell.answerAry2 firstObject];
+                        NSString *answers2=[cell.answerAry2 lastObject];
+                        if (answers1.length>0) {
+                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                            dic[@"field"]=cell.model.keyStr2;
+                            dic[@"value"]=answers1;
+                            
+                            [answerAryz addObject:dic];
+                        }else{
+                            if (answers2.length>0) {
+                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                                dic[@"field"]=cell.model.keyStr2;
+                                dic[@"value"]=answers2;
+                                [answerAryz addObject:dic];
+                            }
+                            
+                        }
+                        
+                        if (answers2.length>0) {
+                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                            dic[@"field"]=cell.model.keyStr3;
+                            dic[@"value"]=answers2;
+                            
+                            [answerAryz addObject:dic];
+                        }else if (answers1.length>0) {
+                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                            dic[@"field"]=cell.model.keyStr3;
+                            dic[@"value"]=answers1;
+                            
+                            [answerAryz addObject:dic];
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 -(BOOL)getAnswerAry:(NSMutableArray *)answerAryz
 {
     [answerAryz removeAllObjects];
@@ -196,11 +331,6 @@
                                 [answerAryz removeAllObjects];
                                 return NO;
                             }
-//                            if () {
-//                                [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
-//                                [answerAryz removeAllObjects];
-//                                return NO;
-//                            }
 
                         }
                     }
@@ -257,150 +387,10 @@
             }//判断主要规格是否都已填写
             
         }
-     
-       
-        if ([cell.model.type isEqualToString:@"文本"]) {
-
-            Propers *propers=[cell.model.propertyLists firstObject];
-            if (propers.range)
-            {
-                if (cell.answerAry.count>0)
-                {
-                    NSString *answer1=[cell.answerAry firstObject];
-                    NSString *answer2=[cell.answerAry lastObject];
-                    if (answer1.length>0) {
-                        NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                        dic[@"field"]=cell.model.keyStr2;
-                        dic[@"value"]=answer1;
-                        [answerAryz addObject:dic];
-                    }else{
-                        if (answer2.length>0) {
-                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                            dic[@"field"]=cell.model.keyStr2;
-                            dic[@"value"]=answer2;
-                            [answerAryz addObject:dic];
-                        }
- 
-                    }
-                    if (answer2.length>0) {
-                        NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                        dic[@"field"]=cell.model.keyStr3;
-                        dic[@"value"]=answer2;
-                        [answerAryz addObject:dic];
-                    }else{
-                        if (answer1.length>0) {
-                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                            dic[@"field"]=cell.model.keyStr3;
-                            dic[@"value"]=answer1;
-                            [answerAryz addObject:dic];
-                        }
-                    }
-
-                }
-                
-            }else{
-                if (cell.answerAry.count>0) {
-                    NSString *answer1=[cell.answerAry firstObject];
-                    if (answer1.length>0) {
-                         NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                        dic[@"field"]=cell.model.keyStr2;
-                        dic[@"value"]=answer1;
-                        [answerAryz addObject:dic];
-                    }
-                }
-                
-            }
-            
-        }//文本判断
-        
-        if([cell.model.type isEqualToString:@"复选"])
-        {
-            if (cell.answerAry.count>0) {
-               
-                NSMutableString *anserStr=[NSMutableString new];
-                if (cell.answerAry.count>=1) {
-                    [anserStr appendFormat:@"%@",cell.answerAry[0]];
-                }
-                for (int i=1; i<cell.answerAry.count; i++) {
-                    [anserStr appendFormat:@",%@",cell.answerAry[i]];
-                }
-                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                dic[@"field"]=cell.model.keyStr1;
-                dic[@"value"]=anserStr;
-                [answerAryz addObject:dic];
-            }
-        }//复选判断
-        if ([cell.model.type isEqualToString:@"单选结合"]) {
-            if (cell.answerAry.count>0) {
-                NSString *answers1=[cell.answerAry firstObject];
-                if (answers1.length>0) {
-                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                    dic[@"field"]=cell.model.keyStr1;
-                    dic[@"value"]=[cell.answerAry firstObject];
-                    [answerAryz addObject:dic];
-                }
-             
-            }
-            
-            if (cell.model.selectProper) {
-                if(cell.model.selectProper.operation)
-                {
-                    if (cell.model.selectProper.relation.length>0)
-                    {
-                          GuiGeCell *soncell=(GuiGeCell*)cell.erjiView;
-                        if (soncell.answerAry.count>0) {
-                           NSString *answers1=[soncell.answerAry firstObject];
-                            if (answers1.length>0) {
-                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                                dic[@"field"]=cell.model.selectProper.guanlianModel.keyStr1;
-                                dic[@"value"]=[soncell.answerAry firstObject];
-                                
-                                [answerAryz addObject:dic];
-                            }
-                           
-                        }
-                      
-                    }else{
-                        if (cell.answerAry2.count>0) {
-                            NSString *answers1=[cell.answerAry2 firstObject];
-                            NSString *answers2=[cell.answerAry2 lastObject];
-                            if (answers1.length>0) {
-                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                                dic[@"field"]=cell.model.keyStr2;
-                                dic[@"value"]=answers1;
-                                
-                                [answerAryz addObject:dic];
-                            }else{
-                                if (answers2.length>0) {
-                                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                                    dic[@"field"]=cell.model.keyStr2;
-                                    dic[@"value"]=answers2;
-                                    [answerAryz addObject:dic];
-                                }
-                                
-                            }
-
-                            if (answers2.length>0) {
-                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                                dic[@"field"]=cell.model.keyStr3;
-                                dic[@"value"]=answers2;
-                                
-                                [answerAryz addObject:dic];
-                            }else if (answers1.length>0) {
-                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                                dic[@"field"]=cell.model.keyStr3;
-                                dic[@"value"]=answers1;
-                                
-                                [answerAryz addObject:dic];
-                            }
-                        }
-                    }
-                }
-            }
-        }
+      [self HuoQuGuiGeDaAn:answerAryz cell:cell];
         
     }//单选结合判断
-    NSLog(@"%@",answerAryz);
+    
     return YES;
 }
 

@@ -535,38 +535,9 @@
     }
     if (textField.tag==121) {
          [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
-        //UITextField *maxTextField=[self.erjiView viewWithTag:122];
-//        if (maxTextField.text.length==0) {
-//            maxTextField.text=textField.text;
-////            [self.answerAry2 insertObject:textField.text atIndex:1];
-//            [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
-//            return YES;
-//        }
-//        if (textField.text.length==0) {
-//            if (self.maxTextField.text.length>0) {
-//                textField.text=self.maxTextField.text;
-//                [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
-//            }
-//        }
-//
     }
     if (textField.tag==122) {
-//        [self.answerAry2 insertObject:textField.text atIndex:1];
          [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
-//        UITextField *minTextField=[self.erjiView viewWithTag:121];
-//        if (minTextField.text.length==0) {
-//           minTextField.text=textField.text;
-////            [self.answerAry2 insertObject:textField.text atIndex:0];
-//             [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
-//            return YES;
-//        }
-//        if (textField.text.length==0) {
-//            if (self.minTextField.text.length>0) {
-//                textField.text=self.minTextField.text;
-//                [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
-//            }
-//        }
-
     }
     if (textField.tag==123) {
 //        [self.answerAry2 insertObject:textField.text atIndex:0];
