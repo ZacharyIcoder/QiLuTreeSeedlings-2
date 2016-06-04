@@ -155,7 +155,7 @@
             self.nowBtn=pickBtn;
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             
-            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42, 12, 15, 15)];
+            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42, 15, 15, 15)];
             [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
             
             [self addSubview:imageVVV];
@@ -329,7 +329,7 @@
             [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
             [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
-            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42.5, 6, 15, 15)];
+            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42.5, 15, 15, 15)];
             [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
             
             [self addSubview:imageVVV];
@@ -361,8 +361,12 @@
                         [self addSubview:cell];
                         
                     }else{
-                        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 44, kWidth, 44)];
+                        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 43, kWidth, 43.5)];
+                        [view setBackgroundColor:[UIColor whiteColor]];
                         [self addSubview:view];
+                        UIImageView *linevvvv=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43, self.frame.size.width-20, 0.5)];
+                        [linevvvv setBackgroundColor:kLineColor];
+                        [view addSubview:linevvvv];
                         self.erjiView=view;
                         if (self.model.selectProper.unit) {
                             UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
@@ -646,8 +650,12 @@
             [self addSubview:cell];
           
         }else{
-            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 44, self.frame.size.width, 43.5)];
+            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 43, self.frame.size.width, 43.5)];
             [self addSubview:view];
+            [view setBackgroundColor:[UIColor whiteColor]];
+            UIImageView *linevvvv=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43, self.frame.size.width-20, 0.5)];
+            [linevvvv setBackgroundColor:kLineColor];
+            [view addSubview:linevvvv];
             self.erjiView=view;
             if (procprs.unit) {
                 UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
