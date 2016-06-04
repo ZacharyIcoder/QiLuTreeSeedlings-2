@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/UI/GUiGEView/GuiGeView.m"
-            timestampString = "486717008.666675"
+            filePath = "QiLuTreeSeedlings/UI/GUiGEView/GuiGeCell.m"
+            timestampString = "486718384.26506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "-HuoQuGuiGeDaAn:cell:"
+            startingLineNumber = "806"
+            endingLineNumber = "806"
+            landmarkName = "-textFieldChanged:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

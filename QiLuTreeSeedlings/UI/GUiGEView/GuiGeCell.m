@@ -38,6 +38,9 @@
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
         [nameLab setText:model.name];
+        if (model.name.length>=6&&self.frame.size.width<320) {
+            [nameLab setFont:[UIFont systemFontOfSize:13]];
+        }
         if ([model.type isEqualToString:@"文本"]) {
             Propers *propers=[model.propertyLists firstObject];
             if (propers.unit) {
@@ -190,7 +193,7 @@
         CGFloat  boundsW=self.frame.size.width;
         self.model=model;
         self.answerAry=[NSMutableArray array];
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 44)];
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, 44)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameLab setTextColor:titleLabColor];
         [self addSubview:nameLab];
@@ -784,7 +787,7 @@
         if (!position) {
             if (toBeString.length > kssss) {
                 // NSLog(@"最多%d个字符!!!",kMaxLength);
-                 [ToastView showTopToast:[NSString stringWithFormat:@"最多%d个字符",kssss]];
+                 [ToastView showTopToast:[NSString stringWithFormat:@"最多为%d位",kssss]];
                 //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
                 textField.text = [toBeString substringToIndex:kssss];
                 return;
