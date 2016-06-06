@@ -29,15 +29,17 @@
         for (NSInteger i = 0; i < ary.count; i++) {
             ZIKNurseryListSelectButton *button = [[ZIKNurseryListSelectButton alloc] init];
             NSDictionary *dic = ary[i];
-            button.frame      = CGRectMake(10, 10+i*40, 100, 20);
+            button.frame      = CGRectMake(10, 10+i*40, self.frame.size.width-20, 20);
             button.tag        = i;
             [button setImage:[UIImage imageNamed:@"苗圃基地选择框"] forState:UIControlStateNormal];
             [button setImage:[UIImage imageNamed:@"苗圃基地已选择框"] forState:UIControlStateSelected];
             [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+//            button.backgroundColor = [UIColor yellowColor];
             if ([dic[@"checked"] integerValue] == 1) {
                 button.selected = YES;
             }
             [button setTitle:dic[@"name"] forState:UIControlStateNormal];
+//            button.titleLabel.textAlignment = NSTextAlignmentLeft;
             [self addSubview:button];
             [self.list addItem:button];
 //            if (ary.count>0) {
@@ -50,12 +52,14 @@
     for (NSInteger i = 0; i < dataArray.count; i++) {
         ZIKNurseryListSelectButton *button = [[ZIKNurseryListSelectButton alloc] init];
         NSDictionary *dic = dataArray[i];
-        button.frame      = CGRectMake(10, 10+i*40, 100, 20);
+        button.frame      = CGRectMake(10, 10+i*40, self.frame.size.width-20, 20);
         button.tag        = i;
+//        button.backgroundColor = [UIColor yellowColor];
         [button setImage:[UIImage imageNamed:@"苗圃基地选择框"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"苗圃基地已选择框"] forState:UIControlStateSelected];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:dic[@"nurseryName"] forState:UIControlStateNormal];
+//        button.titleLabel.textAlignment = NSTextAlignmentLeft;
         [self addSubview:button];
         [self.list addItem:button];
         

@@ -24,9 +24,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VN-FS-v9Q">
-                        <rect key="frame" x="221" y="45" width="80" height="23"/>
+                        <rect key="frame" x="181" y="45" width="120" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="OWl-Nw-j0i"/>
+                            <constraint firstAttribute="width" constant="120" id="OWl-Nw-j0i"/>
                             <constraint firstAttribute="height" constant="23" id="hga-IS-3P8"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>

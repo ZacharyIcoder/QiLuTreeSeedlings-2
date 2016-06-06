@@ -29,7 +29,7 @@
 }
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
-    return CGRectMake(self.mj_width/3, 0, self.mj_width*2/3, self.mj_height);
+    return CGRectMake(self.mj_height+8, 0, self.mj_width - self.mj_height - 8, self.mj_height);
 }
 
 

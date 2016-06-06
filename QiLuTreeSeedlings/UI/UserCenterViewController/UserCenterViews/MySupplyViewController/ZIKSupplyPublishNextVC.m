@@ -252,10 +252,10 @@
 
                 
                 if (self.oldnurseryArray.count>0) {
-                    listView.frame = CGRectMake(100, 0, kWidth-200, self.oldnurseryArray.count*40);
+                    listView.frame = CGRectMake(100, 0, kWidth-100, self.oldnurseryArray.count*40);
                 }else
                 {
-                  listView.frame = CGRectMake(100, 0, kWidth-200, self.nurseryArray.count*40);
+                  listView.frame = CGRectMake(100, 0, kWidth-100, self.nurseryArray.count*40);
                 }
                 
                 if (self.oldnurseryArray.count>0) {

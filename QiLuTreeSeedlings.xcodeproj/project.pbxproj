@@ -428,6 +428,7 @@
 		FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134341CB358720037D507 /* UIAlertView+Blocks.m */; };
 		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
 		FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7D66D71CF4277500DF4FEC /* 分享.png */; };
+		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
 		FC962FFC1CFFCB9800078F29 /* ZIKStationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC962FFB1CFFCB9800078F29 /* ZIKStationTabBarViewController.m */; };
 		FC962FFF1CFFCD2E00078F29 /* ZIKMyOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC962FFE1CFFCD2E00078F29 /* ZIKMyOfferViewController.m */; };
 		FC9630021CFFCD4200078F29 /* ZIKStationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9630011CFFCD4200078F29 /* ZIKStationCenterViewController.m */; };
@@ -1284,6 +1285,7 @@
 		FC7134391CB3ABED0037D507 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
 		FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
 		FC7D66D71CF4277500DF4FEC /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
+		FC7ED2401D054FD70010A8E5 /* downImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downImage.png; sourceTree = "<group>"; };
 		FC962FFA1CFFCB9800078F29 /* ZIKStationTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationTabBarViewController.h; sourceTree = "<group>"; };
 		FC962FFB1CFFCB9800078F29 /* ZIKStationTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationTabBarViewController.m; sourceTree = "<group>"; };
 		FC962FFD1CFFCD2E00078F29 /* ZIKMyOfferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyOfferViewController.h; sourceTree = "<group>"; };
@@ -1749,6 +1751,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FC7ED2401D054FD70010A8E5 /* downImage.png */,
 				EA7491681D0275910043BDAC /* xiala2.png */,
 				EA7491661D026FA40043BDAC /* xialakuang.png */,
 				EA833D8F1CFEBEAC00D56AFB /* zhanzhongtongshouye.png */,
@@ -3902,6 +3905,7 @@
 				FC5337CC1CBE18FC008BFB11 /* 站长通-星级2.png in Resources */,
 				EA5E6E3C1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.xib in Resources */,
 				EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */,
+				FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */,
 				FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */,
 				FC50B1671CAE243F0022A24C /* UMSLoginViewController.xib in Resources */,
 				EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */,
