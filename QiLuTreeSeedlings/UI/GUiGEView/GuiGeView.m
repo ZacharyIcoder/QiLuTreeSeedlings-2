@@ -16,6 +16,7 @@
 @property (nonatomic,strong) UIView *hidingView;
 @property (nonatomic)        BOOL  isValue;
 @property (nonatomic,weak) UITextField *nowTextField;
+@property (nonatomic) BOOL hasUnZhuYao;
 @end
 @implementation GuiGeView
 -(id)initWithAry:(NSArray *)modelAry andFrame:(CGRect)frame andMainSure:(BOOL)MainSure
@@ -57,6 +58,7 @@
     if (self) {
         self.clipsToBounds=YES;
         self.MainSure=YES;
+        self.hasUnZhuYao=NO;
         [self setBackgroundColor:BGColor];
         self.cellAry=[NSMutableArray array];
         CGFloat Y=0;
@@ -67,6 +69,7 @@
             Y+=cell.frame.size.height;
             }else{
                 cell.hidden=YES;
+                self.hasUnZhuYao=YES;
             }
             cell.delegate=self;
             [self.cellAry addObject:cell];
@@ -85,6 +88,11 @@
         [showBtn setTitle:@"隐藏规格" forState:UIControlStateSelected];
         [showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:showBtn];
+        if (self.hasUnZhuYao) {
+            showBtn.hidden=NO;
+        }else{
+            showBtn.hidden=YES;
+        }
     }
     return self;
 }
@@ -95,6 +103,7 @@
          self.clipsToBounds=YES;
         self.MainSure=YES;
         self.isValue=NO;
+        self.hasUnZhuYao=NO;
         [self setBackgroundColor:BGColor];
         self.cellAry=[NSMutableArray array];
         CGFloat Y=0;
@@ -106,6 +115,7 @@
                 Y+=cell.frame.size.height;
             }else{
                 cell.hidden=YES;
+                self.hasUnZhuYao=YES;
             }
             cell.delegate=self;
             [self.cellAry addObject:cell];
@@ -123,6 +133,11 @@
         [showBtn setTitle:@"隐藏规格" forState:UIControlStateSelected];
         [showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
        [self addSubview:showBtn];
+        if (self.hasUnZhuYao) {
+            showBtn.hidden=NO;
+        }else{
+            showBtn.hidden=YES;
+        }
     }
     return self;
 }

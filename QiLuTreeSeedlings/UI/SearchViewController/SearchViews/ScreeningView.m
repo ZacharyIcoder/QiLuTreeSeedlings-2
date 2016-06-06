@@ -80,7 +80,7 @@
         CGRect tempFrame=CGRectMake(0, 5, kWidth*0.8, 44);
         UIView *nameView=[[UIView alloc]initWithFrame:tempFrame];
         [nameView setBackgroundColor:[UIColor whiteColor]];
-        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
+        UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, 70, 40)];
         nameLab.text=@"苗木名称";
         [nameLab setTextColor:titleLabColor];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
@@ -113,7 +113,7 @@
         tempFrame.origin.y+=50;
         if (searchType==1) {
             UIView *gongyingshangView=[[UIView alloc]initWithFrame:tempFrame];
-            UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
+            UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, 70, 40)];
             
             gongyingLab.text=@"供应商";
             [gongyingLab setFont:[UIFont systemFontOfSize:14]];
@@ -153,7 +153,7 @@
    
         }
         UIView *areaView=[[UIView alloc]initWithFrame:tempFrame];
-        UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 2, 70, 40)];
+        UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, 70, 40)];
         
         [areaLab setText:@"地区"];
         [areaLab setFont:[UIFont systemFontOfSize:14]];
@@ -166,8 +166,15 @@
         [areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [areaBtn addTarget: self action:@selector(areaBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [areaView addSubview:areaBtn];
+        UIImageView *moreImageVV=[[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-40, areaView.frame.size.height/2-6, 12, 12)];
+        [moreImageVV setImage:[UIImage imageNamed:@"moreRow"]];
+        [areaView addSubview:moreImageVV];
+        UIImageView *areaimageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
+        [areaimageV setBackgroundColor:kLineColor];
+        [areaView addSubview:areaimageV];
         [self.backScrollView addSubview:areaView];
         
+        //NSLog(@"%lf",CGRectGetMaxY(areaView.frame));
         UIView *shaixuanView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, CGRectGetMaxY(self.backScrollView.frame), kWidth*0.8, 50)];
         [shaixuanView setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:shaixuanView];
@@ -335,9 +342,9 @@
                 }
             }
 
-            CGFloat YSS=88;
+            CGFloat YSS=100;
             if (self.searchType==1) {
-                YSS=138;
+                YSS=150;
             }
             GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, YSS, kWidth*0.8, 0) andMainSure:NO];
             [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];

@@ -57,6 +57,7 @@
                 [self.answerAry addObjectsFromArray:@[@"",@""]];
                 UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-70/320.f*self.frame.size.width+10, 0, 60/320.f*self.frame.size.width, 44)];
                  [minTextField setFont:[UIFont systemFontOfSize:14]];
+                minTextField.textColor=DarkTitleColor;
                 minTextField.placeholder=@"最小值";
                 self.minTextField=minTextField;
                 minTextField.tag=111;
@@ -76,6 +77,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
+                maxTextField.textColor=DarkTitleColor;
                // maxTextField.clearsOnBeginEditing=YES;
                 [self addSubview:maxTextField];
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -100,6 +102,7 @@
                 UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(110/320.f*self.frame.size.width, 0, 200/320.f*self.frame.size.width, 44)];
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=113;
+                oneTextField.textColor=DarkTitleColor;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -154,11 +157,11 @@
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
-            [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+            [pickBtn setTitleColor:DarkTitleColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             
-            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42, 15, 15, 15)];
+            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-42, 15, 15, 15)];
             [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
             
             [self addSubview:imageVVV];
@@ -218,6 +221,7 @@
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
+                minTextField.textColor=DarkTitleColor;
                 //minTextField.clearsOnBeginEditing=YES;
                  minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -233,6 +237,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
+                maxTextField.textColor=DarkTitleColor;
                 //maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -264,6 +269,7 @@
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
+                oneTextField.textColor=DarkTitleColor;
                 self.oneTextField=oneTextField;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -330,9 +336,9 @@
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
-            [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+            [pickBtn setTitleColor:DarkTitleColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
-            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-42.5, 15, 15, 15)];
+            UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-42.5, 15, 15, 15)];
             [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
             
             [self addSubview:imageVVV];
@@ -384,6 +390,7 @@
                             UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-70/320.f*kWidth+10, 0, 60/320.f*kWidth, 44)];
                              [minTextField setFont:[UIFont systemFontOfSize:14]];
                              minTextField.placeholder=@"最小值";
+                            minTextField.textColor=DarkTitleColor;
                            // minTextField.clearsOnBeginEditing=YES;
                             minTextField.textAlignment = NSTextAlignmentRight;
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -405,6 +412,7 @@
                             maxTextField.placeholder=@"最大值";
                             maxTextField.delegate=self;
                             maxTextField.tag=122;
+                            maxTextField.textColor=DarkTitleColor;
                             //maxTextField.clearsOnBeginEditing=YES;
                             [[NSNotificationCenter defaultCenter] addObserver:self
                                                                      selector:@selector(textFieldChanged:)
@@ -434,6 +442,7 @@
                             UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(110/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
                             [oneTextField setFont:[UIFont systemFontOfSize:14]];
                             oneTextField.tag=123;
+                            oneTextField.textColor=DarkTitleColor;
                             oneTextField.delegate=self;
                             self.oneTextField=oneTextField;
                             [view addSubview:oneTextField];
@@ -644,6 +653,7 @@
                 UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-70/320.f*self.frame.size.width+10, 0, 60/320.f*self.frame.size.width, 44)];
                  [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
+                minTextField.textColor=DarkTitleColor;
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.minTextField=minTextField;
@@ -665,6 +675,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=122;
+                maxTextField.textColor=DarkTitleColor;
                // maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -690,6 +701,8 @@
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=123;
                 oneTextField.delegate=self;
+                oneTextField.placeholder=self.model.alert;
+                oneTextField.textColor=DarkTitleColor;
                 self.oneTextField=oneTextField;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
