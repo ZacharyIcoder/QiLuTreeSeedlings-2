@@ -166,7 +166,7 @@
         [areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [areaBtn addTarget: self action:@selector(areaBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [areaView addSubview:areaBtn];
-        UIImageView *moreImageVV=[[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-40, areaView.frame.size.height/2-6, 12, 12)];
+        UIImageView *moreImageVV=[[UIImageView alloc]initWithFrame:CGRectMake(areaView.frame.size.width-40, areaView.frame.size.height/2-6, 12, 12)];
         [moreImageVV setImage:[UIImage imageNamed:@"moreRow"]];
         [areaView addSubview:moreImageVV];
         UIImageView *areaimageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];

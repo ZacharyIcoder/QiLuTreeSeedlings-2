@@ -35,7 +35,7 @@
         
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, 44)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
-        [nameLab setTextColor:titleLabColor];
+        [nameLab setTextColor:DarkTitleColor];
         [self addSubview:nameLab];
         [nameLab setText:model.name];
         if (model.name.length>=6&&self.frame.size.width<320) {
@@ -47,7 +47,7 @@
                 UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
                 [unitLab setFont:[UIFont systemFontOfSize:14]];
                 [unitLab setTextAlignment:NSTextAlignmentCenter];
-                [unitLab setTextColor:titleLabColor];
+                [unitLab setTextColor:DarkTitleColor];
                 [self addSubview:unitLab];
                 unitLab.text=propers.unit;
             }
@@ -157,7 +157,7 @@
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
-            [pickBtn setTitleColor:DarkTitleColor forState:UIControlStateNormal];
+            [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
             [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
             
@@ -173,10 +173,14 @@
                 Propers *propers=model.propertyLists[i];
                 [dataxxAry addObject:propers.value];
             }
+            if (!model.main) {
+                [dataxxAry addObject:[NSString stringWithFormat:@"请选择%@",self.model.name]];
+            }
             [pickerView resetPickerData:dataxxAry];
             if (model.main) {
-                [pickerView.delegate selectNum:0];
-               [pickerView.delegate selectInfo:[dataxxAry firstObject]];
+                [pickerView.delegate selectNum:0 andselectInfo:[dataxxAry firstObject]];
+            }else{
+                [pickerView.pickerView selectRow:dataxxAry.count-1  inComponent:0 animated:NO];
             }
         }//单选结合结束
         
@@ -198,7 +202,7 @@
         self.answerAry=[NSMutableArray array];
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, 44)];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
-        [nameLab setTextColor:titleLabColor];
+        [nameLab setTextColor:DarkTitleColor];
         [self addSubview:nameLab];
         [nameLab setText:model.name];
         if ([model.type isEqualToString:@"文本"]) {
@@ -207,7 +211,7 @@
                 UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
                 [unitLab setTextAlignment:NSTextAlignmentCenter];
                 [unitLab setFont:[UIFont systemFontOfSize:14]];
-                [unitLab setTextColor:titleLabColor];
+                [unitLab setTextColor:DarkTitleColor];
                 [self addSubview:unitLab];
                 unitLab.text=propers.unit;
             }
@@ -221,7 +225,7 @@
                 self.minTextField=minTextField;
                 minTextField.tag=111;
                 minTextField.delegate=self;
-                minTextField.textColor=DarkTitleColor;
+                minTextField.textColor=MoreDarkTitleColor;
                 //minTextField.clearsOnBeginEditing=YES;
                  minTextField.textAlignment = NSTextAlignmentRight;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -237,7 +241,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=112;
-                maxTextField.textColor=DarkTitleColor;
+                maxTextField.textColor=MoreDarkTitleColor;
                 //maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -269,7 +273,7 @@
                 oneTextField.tag=113;
                 oneTextField.placeholder=model.alert;
                 oneTextField.delegate=self;
-                oneTextField.textColor=DarkTitleColor;
+                oneTextField.textColor=MoreDarkTitleColor;
                 self.oneTextField=oneTextField;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -336,7 +340,7 @@
             [self addSubview:pickBtn];
             [pickBtn addTarget:self action:@selector(pickBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [pickBtn setTitle:[NSString stringWithFormat:@"请选择%@",self.model.name] forState:UIControlStateNormal];
-            [pickBtn setTitleColor:DarkTitleColor forState:UIControlStateNormal];
+            [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
             self.nowBtn=pickBtn;
             UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-42.5, 15, 15, 15)];
             [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
@@ -381,7 +385,7 @@
                             UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-60, 0, 50, 44)];
                             [unitLab setTextAlignment:NSTextAlignmentCenter];
                             [unitLab setFont:[UIFont systemFontOfSize:14]];
-                            [unitLab setTextColor:titleLabColor];
+                            [unitLab setTextColor:DarkTitleColor];
                             [view addSubview:unitLab];
                             unitLab.text=self.model.selectProper.unit;
                         }
@@ -390,7 +394,7 @@
                             UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-70/320.f*kWidth+10, 0, 60/320.f*kWidth, 44)];
                              [minTextField setFont:[UIFont systemFontOfSize:14]];
                              minTextField.placeholder=@"最小值";
-                            minTextField.textColor=DarkTitleColor;
+                            minTextField.textColor=MoreDarkTitleColor;
                            // minTextField.clearsOnBeginEditing=YES;
                             minTextField.textAlignment = NSTextAlignmentRight;
                             self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
@@ -412,7 +416,7 @@
                             maxTextField.placeholder=@"最大值";
                             maxTextField.delegate=self;
                             maxTextField.tag=122;
-                            maxTextField.textColor=DarkTitleColor;
+                            maxTextField.textColor=MoreDarkTitleColor;
                             //maxTextField.clearsOnBeginEditing=YES;
                             [[NSNotificationCenter defaultCenter] addObserver:self
                                                                      selector:@selector(textFieldChanged:)
@@ -442,7 +446,7 @@
                             UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(110/320.f*self.frame.size.width, 0, 180/320.f*self.frame.size.width, 44)];
                             [oneTextField setFont:[UIFont systemFontOfSize:14]];
                             oneTextField.tag=123;
-                            oneTextField.textColor=DarkTitleColor;
+                            oneTextField.textColor=MoreDarkTitleColor;
                             oneTextField.delegate=self;
                             self.oneTextField=oneTextField;
                             [view addSubview:oneTextField];
@@ -478,6 +482,7 @@
                 Propers *propers=model.propertyLists[i];
                 [dataxxAry addObject:propers.value];
             }
+            
             [pickerView resetPickerData:dataxxAry];
         }//单选结合结束
         
@@ -612,14 +617,36 @@
     }
     
 }
--(void)selectNum:(NSInteger)select
+-(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr
 {
-    Propers *procprs=self.model.propertyLists[select];
+    
     [self.answerAry2 removeAllObjects];
     self.model.keyStr2=@"";
     self.model.keyStr3=@"";
     self.model.sonModel=nil;
     self.model.selectProper=nil;
+    if (select>=self.model.propertyLists.count) {
+        [self.answerAry replaceObjectAtIndex:0 withObject:@""];
+        self.model.answer=@"";
+        [self.nowBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.nowBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        CGRect frame=self.frame;
+        frame.size.height=44;
+        self.frame=frame;
+        [self.erjiView removeFromSuperview];
+        self.erjiView=nil;
+        if (self.delegate) {
+            [self.delegate reloadView];
+        }
+        return;
+    }else{
+        //[self.answerAry insertObject:selectStr atIndex:0];
+        [self.answerAry replaceObjectAtIndex:0 withObject:selectStr];
+        self.model.answer=selectStr;
+        [self.nowBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.nowBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
+    }
+    Propers *procprs=self.model.propertyLists[select];
     if (procprs.operation) {
 
         if(self.erjiView)
@@ -644,7 +671,7 @@
                 UILabel *unitLab=[[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width-60, 0, 50, 44)];
                 [unitLab setTextAlignment:NSTextAlignmentCenter];
                 [unitLab setFont:[UIFont systemFontOfSize:14]];
-                [unitLab setTextColor:titleLabColor];
+                [unitLab setTextColor:DarkTitleColor];
                 [view addSubview:unitLab];
                 unitLab.text=procprs.unit;
             }
@@ -653,7 +680,7 @@
                 UITextField *minTextField=[[UITextField alloc]initWithFrame:CGRectMake(self.frame.size.width/2-70/320.f*self.frame.size.width+10, 0, 60/320.f*self.frame.size.width, 44)];
                  [minTextField setFont:[UIFont systemFontOfSize:14]];
                 minTextField.placeholder=@"最小值";
-                minTextField.textColor=DarkTitleColor;
+                minTextField.textColor=MoreDarkTitleColor;
                 self.model.keyStr2=[NSString stringWithFormat:@"spec_min_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.model.keyStr3=[NSString stringWithFormat:@"spec_max_%@_%@",[self.answerAry firstObject],self.model.uid];
                 self.minTextField=minTextField;
@@ -675,7 +702,7 @@
                 maxTextField.placeholder=@"最大值";
                 maxTextField.delegate=self;
                 maxTextField.tag=122;
-                maxTextField.textColor=DarkTitleColor;
+                maxTextField.textColor=MoreDarkTitleColor;
                // maxTextField.clearsOnBeginEditing=YES;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -702,7 +729,7 @@
                 oneTextField.tag=123;
                 oneTextField.delegate=self;
                 oneTextField.placeholder=self.model.alert;
-                oneTextField.textColor=DarkTitleColor;
+                oneTextField.textColor=MoreDarkTitleColor;
                 self.oneTextField=oneTextField;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -740,12 +767,6 @@
     if (self.delegate) {
         [self.delegate reloadView];
     }
-}
--(void)selectInfo:(NSString *)select
-{
-    [self.answerAry insertObject:select atIndex:0];
-    self.model.answer=select;
-    [self.nowBtn setTitle:select forState:UIControlStateNormal];
 }
 - (void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;

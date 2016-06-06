@@ -9,19 +9,11 @@
 #import "PickerShowView.h"
 #import "UIDefines.h"
 @interface PickerShowView () <UIPickerViewDataSource, UIPickerViewDelegate>
-
-@property (nonatomic,  strong) UIPickerView *pickerView;
 @property (nonatomic,  strong) NSArray *datasArray;
-
-
 @end
-
-
 @implementation PickerShowView
-
 @synthesize pickerView = _pickerView;
 @synthesize datasArray = _datasArray;
-
 - (void)dealloc
 {
     self.pickerView = nil;
@@ -86,7 +78,9 @@
         [self.delegate selectInfo:selected];
         [self.delegate selectNum:selectNum];
     }
-    
+    if ([self.delegate respondsToSelector:@selector(selectNum:andselectInfo:)]) {
+        [self.delegate selectNum:selectNum andselectInfo:selected];
+    }
     [UIView animateWithDuration:0.3f
                      animations:^{
                          [self setAlpha:0];

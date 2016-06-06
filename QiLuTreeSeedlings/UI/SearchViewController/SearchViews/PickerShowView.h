@@ -11,12 +11,13 @@
 @protocol PickeShowDelegate <NSObject>
 
 @optional
-- (void)selectInfo:(NSString *)select;
+-(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr;
 - (void)selectNum:(NSInteger)select;
+- (void)selectInfo:(NSString *)select;
 @end
 
 @interface PickerShowView : UIView 
-
+@property (nonatomic,  strong) UIPickerView *pickerView;
 @property (nonatomic) id<PickeShowDelegate> delegate;
 
 
