@@ -95,7 +95,6 @@ static NSString *mytype = nil;
             if ([[responseObject objectForKey:@"success"] integerValue] == 1 ) {
                 NSArray *productArray = [responseObject[@"result"] objectForKey:@"productList"];
                 if (productArray.count == 0) {
-//                    NSLog(@"暂时没有产品信息!!!");
                     [ToastView showTopToast:@"暂时没有产品信息"];
 
                 }
@@ -104,7 +103,7 @@ static NSString *mytype = nil;
                 }
             }
             else if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
-                
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             }
 
         } failure:^(NSError *error) {

@@ -126,9 +126,9 @@
     [_cityLab setFrame:CGRectMake(_cityLab.frame.origin.x, _cityLab.frame.origin.y, timeImag.frame.origin.x-_cityLab.frame.origin.x, _cityLab.frame.size.height)];
     //_cityLab.backgroundColor = [UIColor yellowColor];
 
-    NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
+   // NSArray *priceAry=[hotBuyModel.price componentsSeparatedByString:@"."];
 //    self.priceLab.text=[priceAry firstObject];
-    NSString *priceString = [NSString stringWithFormat:@"价格 ¥%@", [priceAry firstObject]];
+    NSString *priceString = [NSString stringWithFormat:@"价格 ¥%@", hotBuyModel.price];
     FontAttribute *fullFont = [FontAttribute new];
     fullFont.font = [UIFont systemFontOfSize:18.0f];
     fullFont.effectRange  = NSMakeRange(0, priceString.length);

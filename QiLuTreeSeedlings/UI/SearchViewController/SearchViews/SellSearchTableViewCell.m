@@ -91,9 +91,9 @@
 {
     _hotSellModel=hotSellModel;
     [self.imageV setImageWithURL:[NSURL URLWithString:hotSellModel.iamge] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-    NSArray *priceAry=[hotSellModel.price componentsSeparatedByString:@"."];
+    //NSArray *priceAry=[hotSellModel.price componentsSeparatedByString:@"."];
 //    self.priceLab.text=[priceAry firstObject];
-    NSString *priceString = [NSString stringWithFormat:@"上车价 ¥%@", [priceAry firstObject]];
+    NSString *priceString = [NSString stringWithFormat:@"上车价 ¥%@", hotSellModel.price];
     FontAttribute *fullFont = [FontAttribute new];
     fullFont.font = [UIFont systemFontOfSize:18.0f];
     fullFont.effectRange  = NSMakeRange(0, priceString.length);

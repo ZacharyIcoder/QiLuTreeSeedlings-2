@@ -217,7 +217,7 @@
             NSArray *ary      = [dic objectForKey:@"bean"];
             self.dataAry      = ary;
             self.AreaProvince = [NSString stringWithFormat:@"%@",[dic objectForKey:@"usedProvince"]];
-            NSLog(@"%@",[dic objectForKey:@"usedProvince"]);
+           // NSLog(@"%@",[dic objectForKey:@"usedProvince"]);
             self.AreaCity     = [NSString stringWithFormat:@"%@",[dic objectForKey:@"usedCity"]];
             self.areaName     = [dic objectForKey:@"areaName"];
             if (![ZIKFunction xfunc_check_strEmpty:self.areaName]) {

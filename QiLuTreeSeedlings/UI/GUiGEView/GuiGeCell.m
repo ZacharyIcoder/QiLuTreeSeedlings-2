@@ -446,7 +446,7 @@
                                 oneTextField.keyboardType=UIKeyboardTypeDecimalPad;
                             }
                             if (self.model.values.count==2) {
-                                self.answerAry2=[NSMutableArray arrayWithObjects:self.model.values[1],self.model.values[2], nil];
+                                self.answerAry2=[NSMutableArray arrayWithObjects:self.model.values[1], nil];
                                 oneTextField.text=self.model.values[1];
                                 
                             }
