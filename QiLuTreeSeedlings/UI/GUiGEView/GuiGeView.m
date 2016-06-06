@@ -303,19 +303,22 @@
                             }
                             
                         }
-                        
-                        if (answers2.length>0) {
-                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                            dic[@"field"]=cell.model.keyStr3;
-                            dic[@"value"]=answers2;
-                            
-                            [answerAryz addObject:dic];
-                        }else if (answers1.length>0) {
-                            NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                            dic[@"field"]=cell.model.keyStr3;
-                            dic[@"value"]=answers1;
-                            
-                            [answerAryz addObject:dic];
+                        if(cell.model.selectProper.range)
+                        {
+                            if (answers2.length>0) {
+                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                                dic[@"field"]=cell.model.keyStr3;
+                                dic[@"value"]=answers2;
+                                
+                                [answerAryz addObject:dic];
+                            }else if (answers1.length>0) {
+                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                                dic[@"field"]=cell.model.keyStr3;
+                                dic[@"value"]=answers1;
+                                
+                                [answerAryz addObject:dic];
+                            }
+
                         }
                     }
                 }
