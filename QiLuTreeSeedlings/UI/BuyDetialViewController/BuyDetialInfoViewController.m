@@ -60,7 +60,9 @@
 @end
 
 @implementation BuyDetialInfoViewController
-
+{
+    UIButton *shareBtn;
+}
 -(void)dealloc{
     
 }
@@ -288,7 +290,7 @@
                      [_BuyMessageView removeFromSuperview];
                      
                      _BuyMessageView =nil;
-                     UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
+                     shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
                      [shareBtn setBackgroundColor:NavColor];
                      [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
                      [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
@@ -652,6 +654,9 @@
 
 -(void)reloadMyView
 {
+    if (_BuyMessageView == nil && _messageView == nil && shareBtn == nil) {
+        self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64);
+    }
     if (self.type==1) {
         if (self.model.state==1) {
             [self.guoqiIamgV setImage:[UIImage imageNamed:@"guoqibiaoqian"]];
