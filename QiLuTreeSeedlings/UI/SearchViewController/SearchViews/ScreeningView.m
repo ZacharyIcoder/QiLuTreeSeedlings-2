@@ -82,7 +82,7 @@
         [nameView setBackgroundColor:[UIColor whiteColor]];
         UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, 70, 40)];
         nameLab.text=@"苗木名称";
-        [nameLab setTextColor:titleLabColor];
+        [nameLab setTextColor:DarkTitleColor];
         [nameLab setFont:[UIFont systemFontOfSize:14]];
         [nameView addSubview:nameLab];
         UIImageView *lineNameL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
@@ -117,7 +117,7 @@
             
             gongyingLab.text=@"供应商";
             [gongyingLab setFont:[UIFont systemFontOfSize:14]];
-            [gongyingLab setTextColor:titleLabColor];
+            [gongyingLab setTextColor:DarkTitleColor];
             UIImageView *lineGYL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
             [gongyingshangView addSubview:lineGYL];
             [lineGYL setBackgroundColor:kLineColor];
@@ -157,7 +157,7 @@
         
         [areaLab setText:@"地区"];
         [areaLab setFont:[UIFont systemFontOfSize:14]];
-        [areaLab setTextColor:titleLabColor];
+        [areaLab setTextColor:DarkTitleColor];
         [areaView addSubview:areaLab];
         UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(90, 7, 130/320.f*kWidth, 30)];
         self.areaBtn=areaBtn;

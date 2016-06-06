@@ -295,11 +295,15 @@
                             
                             [answerAryz addObject:dic];
                         }else{
-                            if (answers2.length>0) {
-                                NSMutableDictionary *dic=[NSMutableDictionary dictionary];
-                                dic[@"field"]=cell.model.keyStr2;
-                                dic[@"value"]=answers2;
-                                [answerAryz addObject:dic];
+                            if(cell.model.selectProper.range)
+                            {
+                                if (answers2.length>0) {
+                                    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+                                    dic[@"field"]=cell.model.keyStr2;
+                                    dic[@"value"]=answers2;
+                                    [answerAryz addObject:dic];
+                                }
+
                             }
                             
                         }

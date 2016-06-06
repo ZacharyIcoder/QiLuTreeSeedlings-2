@@ -482,8 +482,16 @@
                 Propers *propers=model.propertyLists[i];
                 [dataxxAry addObject:propers.value];
             }
-            
+            if (!model.main) {
+                [dataxxAry addObject:[NSString stringWithFormat:@"请选择%@",self.model.name]];
+            }
             [pickerView resetPickerData:dataxxAry];
+            if (model.main) {
+                [pickerView.delegate selectNum:0 andselectInfo:[dataxxAry firstObject]];
+            }else{
+                [pickerView.pickerView selectRow:dataxxAry.count-1  inComponent:0 animated:NO];
+            }
+
         }//单选结合结束
         
             UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
@@ -533,18 +541,6 @@
     if (textField.tag==112) {
 //        [self.answerAry insertObject:textField.text atIndex:1];
         [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-//        if (self.minTextField.text.length==0) {
-//            //self.minTextField.text=textField.text;
-//             [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
-//           //[self.answerAry insertObject:textField.text atIndex:0];
-//            return YES;
-//        }
-//        if (textField.text.length==0) {
-//            if (self.minTextField.text.length>0) {
-//               // textField.text=self.minTextField.text;
-//                [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-//            }
-//        }
     }
     if (textField.tag==113) {
 //       [self.answerAry insertObject:textField.text atIndex:0];
@@ -588,10 +584,8 @@
                         }
                         
                     }
-
-            }
-           
-                
+              }
+     
             }
         }
     }
