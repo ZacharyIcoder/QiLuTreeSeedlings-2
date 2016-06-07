@@ -215,7 +215,6 @@
                 if (!ecttiveBtn) {
                 ecttiveBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, 0, kWidth-200, 40)];
                     [firstSectionCell addSubview:ecttiveBtn];
-
                 }
                 ecttiveBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
                 ecttiveBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f];

@@ -103,6 +103,7 @@
     self.myCustomizedInfoTableView.delegate   = self;
     self.myCustomizedInfoTableView.dataSource = self;
     [self.view addSubview:self.myCustomizedInfoTableView];
+    self.myCustomizedInfoTableView.backgroundColor = BGColor;
     [ZIKFunction setExtraCellLineHidden:self.myCustomizedInfoTableView];
 
     _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell)];
@@ -300,6 +301,7 @@
     return 7.0f;
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     ZIKCustomizedModel *model = self.customizedInfoMArr[section];
         return  model.spec.count*30+20;
@@ -313,6 +315,12 @@
     return self.customizedInfoMArr.count;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headView  = [[UIView alloc] init];
+    headView.frame = CGRectMake(0, 0, kWidth, 7);
+    headView.backgroundColor = BGColor;
+    return headView;
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (self.customizedInfoMArr.count == 0) {
