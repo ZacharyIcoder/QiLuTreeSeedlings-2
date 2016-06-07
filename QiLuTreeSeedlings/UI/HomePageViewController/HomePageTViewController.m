@@ -543,13 +543,13 @@
             return;
         }
         self.loginBtn.hidden=NO;
-        if (kWidth<=320) {
+       
             CGRect frame =  _searchBtn.frame;
             frame.origin.x=52;
             frame.size.width=kWidth-100;
             _searchBtn.frame=frame;
              _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
-        }
+        
     }
     
 }

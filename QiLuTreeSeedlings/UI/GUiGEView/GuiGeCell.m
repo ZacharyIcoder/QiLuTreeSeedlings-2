@@ -28,7 +28,6 @@
     self=[super initWithFrame:frame];
     if (self) {
         [self setBackgroundColor:[UIColor whiteColor]];
-        self.answerAry=[NSMutableArray array];
         self.answerAry2=[NSMutableArray array];
         //CGFloat  boundsW=kWidth;
         self.model=model;
@@ -146,7 +145,11 @@
             frame.size.height=20+40*valueAry.count;
             self.frame=frame;
         }//复选结束
-        
+        CGFloat yyyysss=self.frame.size.height-0.5;
+        UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, yyyysss, self.frame.size.width-30, 0.5)];
+        self.imageVV=lineView;
+        [lineView setBackgroundColor:kLineColor];
+        [self addSubview:lineView];
         if([model.type isEqualToString:@"单选结合"])
         {
             [self.answerAry addObjectsFromArray:@[@""]];
@@ -185,11 +188,7 @@
             }
         }//单选结合结束
         
-        
-        UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
-        self.imageVV=lineView;
-        [lineView setBackgroundColor:kLineColor];
-        [self addSubview:lineView];
+       
     }
     return self;
 }
@@ -643,7 +642,6 @@
         }
         return;
     }else{
-        //[self.answerAry insertObject:selectStr atIndex:0];
         [self.answerAry replaceObjectAtIndex:0 withObject:selectStr];
         self.model.answer=selectStr;
         [self.nowBtn setTitle:selectStr forState:UIControlStateNormal];
@@ -658,13 +656,13 @@
             self.erjiView=nil;
         }
         if (procprs.relation.length>0) {
-         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 45, self.frame.size.width, 44) andModel:procprs.guanlianModel];
+         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 46, self.frame.size.width, 44) andModel:procprs.guanlianModel];
             cell.delegate=self;
              self.erjiView=cell;
             [self addSubview:cell];
           
         }else{
-            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 43, self.frame.size.width, 43.5)];
+            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 45, self.frame.size.width, 43.5)];
             [self addSubview:view];
             [view setBackgroundColor:[UIColor whiteColor]];
             UIImageView *linevvvv=[[UIImageView alloc]initWithFrame:CGRectMake(10, 43, self.frame.size.width-20, 0.5)];
@@ -778,12 +776,11 @@
         CGRect frame=self.frame;
         frame.size.height=CGRectGetMaxY(self.erjiView.frame);
         self.frame=frame;
-        self.imageVV.frame=CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5);
     }else{
         CGRect frame=self.frame;
         frame.size.height=44;
         self.frame=frame;
-        self.imageVV.frame=CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5);
+
     }
 
 
