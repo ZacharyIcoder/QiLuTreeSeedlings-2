@@ -72,11 +72,11 @@
     if (self.type==2) {
         [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
-//                                if (![[responseObject objectForKey:@"success"] integerValue]) {
-//                                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-//                                [self.navigationController popViewControllerAnimated:YES];
-//                                    return ;
-//                                }
+                                if (![[responseObject objectForKey:@"success"] integerValue]) {
+                                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                                [self.navigationController popViewControllerAnimated:YES];
+                                    return ;
+                                }
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                                 self.infoDic=dic;
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
@@ -94,10 +94,10 @@
     [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
                         WithType:[NSString stringWithFormat:@"%ld",_push_] WithmemberCustomUid:_memberCustomUid                             Success:^(id responseObject) {
                             //NSLog(@"%@",responseObject);
-//                            if (![[responseObject objectForKey:@"success"] integerValue]) {
-//                                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-//                               [self.navigationController popViewControllerAnimated:YES];
-//                            }
+                            if (![[responseObject objectForKey:@"success"] integerValue]) {
+                                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                               [self.navigationController popViewControllerAnimated:YES];
+                            }
                             NSDictionary *dic=[responseObject objectForKey:@"result"];
                             self.infoDic=dic;
                             self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
@@ -261,11 +261,10 @@
       //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
          WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
-//             if (![[responseObject objectForKey:@"success"] integerValue]) {
-//                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-//                 [self.navigationController popViewControllerAnimated:YES];
-//                 
-//             }
+             if (![[responseObject objectForKey:@"success"] integerValue]) {
+                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                 [self.navigationController popViewControllerAnimated:YES];
+             }
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.infoDic=dic;
              self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
@@ -351,11 +350,11 @@
 
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
-//                                if (![[responseObject objectForKey:@"success"] integerValue]) {
-//                                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-//                                    [self.navigationController popViewControllerAnimated:YES];
-//                                    
-//                                }
+                                if (![[responseObject objectForKey:@"success"] integerValue]) {
+                                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                    
+                                }
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                                 self.infoDic=dic;
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
