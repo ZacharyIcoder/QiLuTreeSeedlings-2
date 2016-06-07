@@ -131,7 +131,7 @@
     UIButton *arrowBtn = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-70, 9+44, 50, 25)];
     [nameView addSubview:arrowBtn];
     [arrowBtn addTarget:self action:@selector(cityBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [arrowBtn setImage:[UIImage imageNamed:@"carat"] forState:UIControlStateNormal];
+    [arrowBtn setImage:[UIImage imageNamed:@"moreRow"] forState:UIControlStateNormal];
 
 
     priceView = [[UIView alloc] init];
