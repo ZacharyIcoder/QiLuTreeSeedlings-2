@@ -34,7 +34,7 @@
 -(void)setIsAllSelect:(BOOL)isAllSelect {
     _isAllSelect = isAllSelect;
     if (isAllSelect) {
-        [self.seleteImageButton setImage:[UIImage imageNamed:@"充值成功76x76-2"] forState:UIControlStateNormal];
+        [self.seleteImageButton setImage:[UIImage imageNamed:@"check49"] forState:UIControlStateNormal];
 //        UIColor *color = [[UIColor alloc]initWithRed:0.0 green:0.0 blue:0.0 alpha:1];//通过RGB来定义自己的颜色
 //        //[objc] view plain copy 在CODE上查看代码片派生到我的代码片
 //        self.backgroundView = [[UIView alloc] initWithFrame:self.frame];

@@ -61,7 +61,7 @@
 
 @implementation BuyDetialInfoViewController
 {
-    UIButton *shareBtn;
+    UIButton *myshareBtn;
 }
 -(void)dealloc{
     
@@ -290,15 +290,22 @@
                      [_BuyMessageView removeFromSuperview];
                      
                      _BuyMessageView =nil;
-                     shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
-                     [shareBtn setBackgroundColor:NavColor];
-                     [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
-                     [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
-                     [self.view addSubview:shareBtn];
+                     myshareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
+                     [myshareBtn setBackgroundColor:NavColor];
+                     [myshareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                     [myshareBtn setTitle:@"分享" forState:UIControlStateNormal];
+                     [self.view addSubview:myshareBtn];
                  }else
                  {
                      if (_BuyMessageView==nil) {
-                         _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                         //_BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                         if (self.model.state == 4) {
+                             _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                         }
+                         else {
+                             _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+                         }
+
                          [_messageView removeFromSuperview];
                          _messageView = nil;
                          
@@ -306,11 +313,20 @@
                  }
 
              }else{
-                 _messageView = [self lianxiMessageShareView];
+                 //_messageView = [self lianxiMessageShareView];
+                 if (self.model.state == 4) {
+                     _messageView = [self lianxiMessageShareView];
+
+                 }
+                 else {
+                     _messageView = [self lianxiMessageView];
+                 }
+
              }
-            [self reloadMyView];
+
+             [self reloadMyView];
         } failure:^(NSError *error) {
-            
+
         }];
         self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
         self.tableView.delegate=self;
@@ -345,15 +361,16 @@
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
                                 self.model.uid=uid;
                                 if (self.model.state==4) {
-                                    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
-                                    [shareBtn setBackgroundColor:NavColor];
-                                    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
-                                    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
-                                    [self.view addSubview:shareBtn];
+                                    myshareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
+                                    [myshareBtn setBackgroundColor:NavColor];
+                                    [myshareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                                    [myshareBtn setTitle:@"分享" forState:UIControlStateNormal];
+                                    [self.view addSubview:myshareBtn];
                                     
                                 }
 
                                 [self reloadMyView];
+                                self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64-70);
                             } failure:^(NSError *error) {
                                 
                             }];
@@ -654,7 +671,7 @@
 
 -(void)reloadMyView
 {
-    if (_BuyMessageView == nil && _messageView == nil && shareBtn == nil) {
+    if (_BuyMessageView == nil && _messageView == nil && myshareBtn == nil) {
         self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64);
     }
     if (self.type==1) {
