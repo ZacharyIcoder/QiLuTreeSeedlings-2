@@ -486,11 +486,14 @@
                 [dataxxAry addObject:[NSString stringWithFormat:@"请选择%@",self.model.name]];
             }
             [pickerView resetPickerData:dataxxAry];
-            if (model.main) {
-                [pickerView.delegate selectNum:0 andselectInfo:[dataxxAry firstObject]];
-            }else{
-                [pickerView.pickerView selectRow:dataxxAry.count-1  inComponent:0 animated:NO];
+            if (self.model.values.count<=0) {
+                            if (model.main) {
+                                [pickerView.delegate selectNum:0 andselectInfo:[dataxxAry firstObject]];
+                            }else{
+                                [pickerView.pickerView selectRow:dataxxAry.count-1  inComponent:0 animated:NO];
+                            }
             }
+
 
         }//单选结合结束
         
@@ -722,7 +725,7 @@
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=123;
                 oneTextField.delegate=self;
-                oneTextField.placeholder=self.model.alert;
+                //oneTextField.placeholder=self.model.alert;
                 oneTextField.textColor=MoreDarkTitleColor;
                 self.oneTextField=oneTextField;
                 [[NSNotificationCenter defaultCenter] addObserver:self
