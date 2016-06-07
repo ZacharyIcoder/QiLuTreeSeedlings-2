@@ -392,16 +392,16 @@
                             
                                 NSString *answers1=[cell.answerAry2 firstObject];
                                 NSString *answers2=[cell.answerAry2 lastObject];
-                                if (answers1.length==0) {
+                                if (answers1.length==0&&answers2.length==0) {
                                     [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
                                     [answerAryz removeAllObjects];
                                      return NO;
                                 }
-                                if (answers2.length==0) {
-                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
-                                    [answerAryz removeAllObjects];
-                                     return NO;
-                                }
+//                                if (answers2.length==0) {
+//                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
+//                                    [answerAryz removeAllObjects];
+//                                     return NO;
+//                                }
                             
                         }
                     }

@@ -10,13 +10,14 @@
 #import "UIDefines.h"
 #import "PickerShowView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
-@interface GuiGeCell ()<UITextFieldDelegate,PickeShowDelegate>
+@interface GuiGeCell ()<UITextFieldDelegate,PickeShowDelegate,GuiGeCellDelegate>
 
 @property (nonatomic,strong)UITextField *oneTextField;
 @property (nonatomic,strong)UITextField *minTextField;
 @property (nonatomic,strong)UITextField *maxTextField;
 @property (nonatomic,strong)PickerShowView *pickerView;
 @property (nonatomic,weak)UIButton *nowBtn;
+@property (nonatomic,weak)UIView *imageVV;
 @end
 @implementation GuiGeCell
 -(void)dealloc{
@@ -103,7 +104,7 @@
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=113;
                 oneTextField.textColor=DarkTitleColor;
-                oneTextField.placeholder=model.alert;
+                oneTextField.placeholder=[NSString stringWithFormat:@"请输入%@",model.name];
                 oneTextField.delegate=self;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
@@ -186,6 +187,7 @@
         
         
         UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
+        self.imageVV=lineView;
         [lineView setBackgroundColor:kLineColor];
         [self addSubview:lineView];
     }
@@ -271,7 +273,7 @@
                 UITextField *oneTextField=[[UITextField alloc]initWithFrame:CGRectMake(110/320.f*boundsW, 0, 180/320.f*boundsW, 44)];
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=113;
-                oneTextField.placeholder=model.alert;
+                oneTextField.placeholder=[NSString stringWithFormat:@"请输入%@",model.name];
                 oneTextField.delegate=self;
                 oneTextField.textColor=MoreDarkTitleColor;
                 self.oneTextField=oneTextField;
@@ -349,6 +351,7 @@
             if (self.model.values.count>0) {
                 self.answerAry =[NSMutableArray arrayWithObject:[self.model.values firstObject]];
                 [pickBtn setTitle:[self.model.values firstObject] forState:UIControlStateNormal];
+                [pickBtn setTitle:MoreDarkTitleColor forState:UIControlStateNormal];
                 for (int i=0; i<model.propertyLists.count; i++) {
                     Propers *propers=model.propertyLists[i];
                     if ([[self.model.values firstObject] isEqualToString:propers.value]) {
@@ -370,6 +373,7 @@
                     if (self.model.selectProper.relation.length>0) {
                         
                         GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 44, kWidth, 44) andValueModel:self.model.selectProper.guanlianModel];
+                        cell.delegate=self;
                         self.erjiView=cell;
                         [self addSubview:cell];
                         
@@ -449,6 +453,7 @@
                             oneTextField.textColor=MoreDarkTitleColor;
                             oneTextField.delegate=self;
                             self.oneTextField=oneTextField;
+                            oneTextField.placeholder=[NSString stringWithFormat:@"请输入%@",model.name];
                             [view addSubview:oneTextField];
                             [[NSNotificationCenter defaultCenter] addObserver:self
                                                                      selector:@selector(textFieldChanged:)
@@ -498,6 +503,7 @@
         }//单选结合结束
         
             UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
+        self.imageVV=lineView;
         [lineView setBackgroundColor:kLineColor];
         [self addSubview:lineView];
     }
@@ -653,6 +659,7 @@
         }
         if (procprs.relation.length>0) {
          GuiGeCell *cell=[[GuiGeCell alloc]initWithFrame:CGRectMake(0, 45, self.frame.size.width, 44) andModel:procprs.guanlianModel];
+            cell.delegate=self;
              self.erjiView=cell;
             [self addSubview:cell];
           
@@ -725,7 +732,7 @@
                 [oneTextField setFont:[UIFont systemFontOfSize:14]];
                 oneTextField.tag=123;
                 oneTextField.delegate=self;
-                //oneTextField.placeholder=self.model.alert;
+                oneTextField.placeholder=[NSString stringWithFormat:@"请输入%@",[self.answerAry firstObject]];
                 oneTextField.textColor=MoreDarkTitleColor;
                 self.oneTextField=oneTextField;
                 [[NSNotificationCenter defaultCenter] addObserver:self
@@ -764,6 +771,30 @@
     if (self.delegate) {
         [self.delegate reloadView];
     }
+}
+-(void)reloadView
+{
+    if (self.erjiView) {
+        CGRect frame=self.frame;
+        frame.size.height=CGRectGetMaxY(self.erjiView.frame);
+        self.frame=frame;
+        self.imageVV.frame=CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5);
+    }else{
+        CGRect frame=self.frame;
+        frame.size.height=44;
+        self.frame=frame;
+        self.imageVV.frame=CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5);
+    }
+
+
+}
+-(void)dianxuanAction
+{
+    
+}
+-(void)actionTextField:(UITextField *)textField
+{
+    
 }
 - (void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;

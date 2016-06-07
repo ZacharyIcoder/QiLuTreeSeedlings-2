@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GuiGeModel.h"
 @protocol GuiGeCellDelegate <NSObject>
+@optional
 -(void)reloadView;
 -(void)actionTextField:(UITextField *)textField;
 -(void)dianxuanAction;
