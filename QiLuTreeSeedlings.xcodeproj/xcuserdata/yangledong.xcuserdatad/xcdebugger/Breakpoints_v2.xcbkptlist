@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/FaBuViewController/buyFabuViewController/buyFabuViewController.m"
-            timestampString = "486970235.043001"
+            timestampString = "486971224.312921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "-creatSCreeningCellsWithAnswerWithAry:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiLuTreeSeedlings/NetWorking/HttpClient.m"
+            timestampString = "486973292.274249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2500"
+            endingLineNumber = "2500"
+            landmarkName = "-huoqumiaomuGuiGeWithTreeName:andType:andMain:Success:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

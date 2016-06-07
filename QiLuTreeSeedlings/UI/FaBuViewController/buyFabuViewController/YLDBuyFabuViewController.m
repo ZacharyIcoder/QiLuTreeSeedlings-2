@@ -14,6 +14,7 @@
 #import "GetCityDao.h"
 #import "CityModel.h"
 #import "ZIKCityModel.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface YLDBuyFabuViewController ()<PickeShowDelegate,UITextFieldDelegate,ZIKCityListViewControllerDelegate>
 @property (nonatomic,strong)UITextField *birefField;
 @property (nonatomic,strong)UIButton *ectiveBtn;
@@ -85,6 +86,10 @@
     [areaView addSubview:areaBtn];
     self.areaBtn=areaBtn;
     [areaBtn addTarget:self action:@selector(areBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [areaBtn setEnlargeEdgeWithTop:0 right:100 bottom:0 left:10];
+    UIImageView  *moreAreaImageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-25, 21, 12, 12)];
+    [moreAreaImageV setImage:[UIImage imageNamed:@"moreRow"]];
+    [areaView addSubview:moreAreaImageV];
     [otherView addSubview:areaView];
     tempFrame.origin.y+=50;
     UITextField *priceTextField=[self mackViewWtihName:@"价格" alert:@"请输入价格" unit:@"元" withFrame:tempFrame];

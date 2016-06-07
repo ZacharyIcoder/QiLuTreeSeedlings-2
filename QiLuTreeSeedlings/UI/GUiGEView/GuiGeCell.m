@@ -351,7 +351,7 @@
             if (self.model.values.count>0) {
                 self.answerAry =[NSMutableArray arrayWithObject:[self.model.values firstObject]];
                 [pickBtn setTitle:[self.model.values firstObject] forState:UIControlStateNormal];
-                [pickBtn setTitle:MoreDarkTitleColor forState:UIControlStateNormal];
+                [pickBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
                 for (int i=0; i<model.propertyLists.count; i++) {
                     Propers *propers=model.propertyLists[i];
                     if ([[self.model.values firstObject] isEqualToString:propers.value]) {
