@@ -127,7 +127,14 @@
                                    // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                     if (_BuyMessageView==nil) {
                                         if (self.model.state == 4) {
-                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                                            if (APPDELEGATE.isNeedLogin) {
+                                                _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+
+                                            } else {
+                                                _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+
+                                            }
+//                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                                         }
                                         else {
                                             _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
@@ -141,7 +148,7 @@
                             
                             }else{
                                 if (_messageView==nil) {
-                                    if (self.model.state == 4) {
+                                    if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
                                         _messageView = [self lianxiMessageShareView];
 
                                     }
@@ -204,7 +211,7 @@
                                     {
                                         // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                         if (_BuyMessageView==nil) {
-                                            if (self.model.state == 4) {
+                                            if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
                                                 _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                                             }
                                             else {
@@ -219,7 +226,7 @@
                                     
                                 }else{
                                     if (_messageView==nil) {
-                                        if (self.model.state == 4) {
+                                        if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
                                             _messageView = [self lianxiMessageShareView];
 
                                         }
@@ -298,7 +305,7 @@
                  {
                      if (_BuyMessageView==nil) {
                          //_BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
-                         if (self.model.state == 4) {
+                         if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
                              _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                          }
                          else {
@@ -313,7 +320,7 @@
 
              }else{
                  //_messageView = [self lianxiMessageShareView];
-                 if (self.model.state == 4) {
+                 if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
                      _messageView = [self lianxiMessageShareView];
 
                  }
@@ -568,13 +575,26 @@
                                     }
                                     if (!self.isPuy) {
                                         if (_BuyMessageView==nil) {
-                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                                            if (APPDELEGATE.isNeedLogin) {
+                                                _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+
+                                            } else {
+                                                _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+
+                                            }
                                             [_messageView removeFromSuperview];
                                             _messageView = nil;
                                         }
                                     }else{
                                         if (_messageView==nil) {
-                                            _messageView = [self lianxiMessageShareView];
+                                            if (APPDELEGATE.isNeedLogin) {
+                                                _messageView = [self lianxiMessageShareView];
+
+                                            } else {
+                                                _messageView = [self lianxiMessageView];
+
+                                            }
+//                                            _messageView = [self lianxiMessageShareView];
                                             [_BuyMessageView removeFromSuperview];
                                             _BuyMessageView = nil;
                                         }

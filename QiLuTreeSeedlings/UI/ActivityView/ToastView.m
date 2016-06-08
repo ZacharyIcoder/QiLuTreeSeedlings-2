@@ -244,7 +244,13 @@ const unsigned int kToastLabelHeight = 25;
 }
 +(void)showTopToast:(NSString *)text
 {
-    ToastView *toastView = [[ToastView alloc] initWithText:text withOriginY:kToastViewYOffset];
+    ToastView *toastView = nil;
+    if ([text isEqualToString:@"您已退出登录"]) {
+        toastView = [[ToastView alloc] initWithText:text withOriginY:kToastViewYOffset-50];
+
+    } else {
+        toastView = [[ToastView alloc] initWithText:text withOriginY:kToastViewYOffset];
+    }
     [((AppDelegate *)[UIApplication sharedApplication].delegate).window addSubview:toastView];
     [toastView showText];
     [toastView release];
