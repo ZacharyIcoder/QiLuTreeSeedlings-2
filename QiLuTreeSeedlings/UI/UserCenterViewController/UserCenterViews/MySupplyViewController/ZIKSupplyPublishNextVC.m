@@ -150,7 +150,7 @@
                 firstSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName];
                 firstSectionCell.textLabel.text      = self.titleMarray[indexPath.section][indexPath.row];
                 firstSectionCell.textLabel.font      = [UIFont systemFontOfSize:15.0f];
-                firstSectionCell.textLabel.textColor = titleLabColor;
+                firstSectionCell.textLabel.textColor = DarkTitleColor;
 
             }
             if (indexPath.row == 0) {
@@ -159,7 +159,7 @@
                     UILabel *label      = [[UILabel alloc] init];
                     label.frame         = CGRectMake(kWidth-50, 5, 40, 30);
                     label.text          = @"棵";
-                    label.textColor     = titleLabColor;
+                    label.textColor     = DarkTitleColor;
                     label.font          = [UIFont systemFontOfSize:15.0f];
                     label.textAlignment = NSTextAlignmentRight;
                     [firstSectionCell addSubview:label];
@@ -172,7 +172,7 @@
                 self.countTextField.frame        = CGRectMake(100, 5, kWidth-100-60, 34);
                 self.countTextField.keyboardType = UIKeyboardTypeNumberPad;
                 self.countTextField.placeholder  = @"请输入数量";
-                self.countTextField.textColor    = titleLabColor;
+                self.countTextField.textColor    = MoreDarkTitleColor;
                 [[NSNotificationCenter defaultCenter] addObserver:self
                                                          selector:@selector(textFieldChanged:)
                                                              name:UITextFieldTextDidChangeNotification
@@ -187,12 +187,12 @@
                 if (!_priceTextField) {
                     self.priceTextField           = [[UITextField alloc] init];
                     self.priceTextField.frame     = CGRectMake(100, 5, kWidth-100-60, 34);
-                    self.priceTextField.textColor = titleLabColor;
+                    self.priceTextField.textColor = MoreDarkTitleColor;
                     [firstSectionCell addSubview:self.priceTextField];
                     UILabel *label                = [[UILabel alloc] init];
                     label.frame                   = CGRectMake(kWidth-50, 5, 40, 30);
                     label.text                    = @"元";
-                    label.textColor               = titleLabColor;
+                    label.textColor               = DarkTitleColor;
                     label.font                    = [UIFont systemFontOfSize:15.0f];
                     label.textAlignment           = NSTextAlignmentRight;
                     [firstSectionCell addSubview:label];
@@ -242,7 +242,7 @@
                 secondSectionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifyName2];
                 secondSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
                 secondSectionCell.textLabel.font = [UIFont systemFontOfSize:15.0f];
-                secondSectionCell.textLabel.textColor = titleLabColor;
+                secondSectionCell.textLabel.textColor = DarkTitleColor;
                 if (!listView) {
                     listView = [[ZIKNurseryListView alloc] init];
                 }

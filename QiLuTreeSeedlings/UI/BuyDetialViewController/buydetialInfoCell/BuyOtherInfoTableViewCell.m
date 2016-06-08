@@ -123,13 +123,16 @@
 
                 }
                 if ([type isEqualToString:@"单选结合"]) {
-                    if (k==2) {
-                        [valueStr appendFormat:@" - %@",valueAry[k]];
-                    }
                     if (k==1) {
                         [valueStr appendFormat:@" %@",valueAry[k]];
                     }
-                    
+                    if (k==2) {
+                        if (![valueAry[1] isEqualToString:valueAry[2]]) {
+                            [valueStr appendFormat:@" - %@",valueAry[k]];
+                        }
+
+                    }
+
                 }
                 
             }
