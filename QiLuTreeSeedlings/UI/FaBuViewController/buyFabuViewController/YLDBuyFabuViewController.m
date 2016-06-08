@@ -265,7 +265,7 @@
 {
     [self.countTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
-    [self.birefField resignFirstResponder];
+    [self.birefField     resignFirstResponder];
     if (!self.ecttivePickerView) {
         self.ecttivePickerView=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
         [self.ecttivePickerView resetPickerData:@[@"一天",@"三天",@"五天",@"一周",@"半个月",@"一个月",@"三个月",@"半年",@"一年",@"长期"]];

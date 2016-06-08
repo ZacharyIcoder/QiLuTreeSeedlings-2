@@ -115,7 +115,10 @@
                 }
                 if ([type isEqualToString:@"文本"]) {
                     if (k==1) {
-                        [valueStr appendFormat:@" - %@",valueAry[k]];
+                        if (![valueAry[1] isEqualToString:valueAry[0]]) {
+                            [valueStr appendFormat:@" - %@",valueAry[k]];
+                        }
+//                        [valueStr appendFormat:@" - %@",valueAry[k]];
                     }
                     if (k==0) {
                         [valueStr appendFormat:@" %@",valueAry[k]];

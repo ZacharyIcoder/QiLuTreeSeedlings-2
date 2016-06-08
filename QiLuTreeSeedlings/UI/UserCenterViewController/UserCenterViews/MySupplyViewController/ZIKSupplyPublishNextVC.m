@@ -16,11 +16,6 @@
 #import "ZIKMySupplyVC.h"
 #import "FaBuViewController.h"
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
-{
-    UIButton           *ecttiveBtn;
-    ZIKNurseryListView *listView;
-    BWTextView         *productDetailTextView;
-}
 @property (nonatomic, strong) UITableView    *supplyInfoTableView;
 @property (nonatomic, strong) NSArray        *titleMarray;
 @property (nonatomic, strong) UITextField    *countTextField;
@@ -34,6 +29,12 @@
 @end
 
 @implementation ZIKSupplyPublishNextVC
+{
+    @private
+    UIButton           *_ecttiveBtn;
+    ZIKNurseryListView *_listView;
+    BWTextView         *_productDetailTextView;
+}
 
 -(void)dealloc
 {
@@ -66,7 +67,7 @@
 }
 
 - (void)requestMyNurseryList {
-    [HTTPCLIENT getNurseryListWithPage:@"1" WithPageSize:@"15" Success:^(id responseObject) {
+    [HTTPCLIENT getNurseryListWithPage:@"1" WithPageSize:@"150" Success:^(id responseObject) {
         NSArray *array = responseObject[@"result"];
         self.nurseryArray = array;
         [self.supplyInfoTableView reloadData];
@@ -212,21 +213,21 @@
 
             }
             if (indexPath.row == 2) {
-                if (!ecttiveBtn) {
-                ecttiveBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, 0, kWidth-200, 40)];
-                    [firstSectionCell addSubview:ecttiveBtn];
+                if (!_ecttiveBtn) {
+                _ecttiveBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, 0, kWidth-200, 40)];
+                    [firstSectionCell addSubview:_ecttiveBtn];
                 }
-                ecttiveBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
-                ecttiveBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f];
-                [ecttiveBtn setTitle:@"请选择有效期" forState:UIControlStateNormal];
-                [ecttiveBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
-                [ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
+                _ecttiveBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+                _ecttiveBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f];
+                [_ecttiveBtn setTitle:@"请选择有效期" forState:UIControlStateNormal];
+                [_ecttiveBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
+                [_ecttiveBtn addTarget:self action:@selector(ecttiveBtnAction) forControlEvents:UIControlEventTouchUpInside];
                 if (self.baseMsgDic) {
                     self.ecttiv=[[self.baseMsgDic objectForKey:@"effective"] integerValue];
                     NSArray *effectiveAry = @[@"长期",@"一个月",@"三个月",@"半年",@"一年"];
                     if (effectiveAry.count >= self.ecttiv) {
                           NSString *effectiveStr = effectiveAry[self.ecttiv - 1];
-                        [ecttiveBtn setTitle:effectiveStr forState:UIControlStateNormal];
+                        [_ecttiveBtn setTitle:effectiveStr forState:UIControlStateNormal];
                     }
                   
                 }
@@ -243,38 +244,38 @@
                 secondSectionCell.textLabel.text = self.titleMarray[indexPath.section][indexPath.row];
                 secondSectionCell.textLabel.font = [UIFont systemFontOfSize:15.0f];
                 secondSectionCell.textLabel.textColor = DarkTitleColor;
-                if (!listView) {
-                    listView = [[ZIKNurseryListView alloc] init];
+                if (!_listView) {
+                    _listView = [[ZIKNurseryListView alloc] init];
                 }
             }
             if (indexPath.row == 0) {
 
                 
                 if (self.oldnurseryArray.count>0) {
-                    listView.frame = CGRectMake(100, 0, kWidth-100, self.oldnurseryArray.count*40);
+                    _listView.frame = CGRectMake(100, 0, kWidth-100, self.oldnurseryArray.count*40);
                 }else
                 {
-                  listView.frame = CGRectMake(100, 0, kWidth-100, self.nurseryArray.count*40);
+                  _listView.frame = CGRectMake(100, 0, kWidth-100, self.nurseryArray.count*40);
                 }
                 
                 if (self.oldnurseryArray.count>0) {
-                    [listView configerView:self.nurseryArray withSelectAry:self.oldnurseryArray];
+                    [_listView configerView:self.nurseryArray withSelectAry:self.oldnurseryArray];
                 }
                 else {
-                    [listView configerView:self.nurseryArray withSelectAry:nil];
+                    [_listView configerView:self.nurseryArray withSelectAry:nil];
                 }
-                [secondSectionCell addSubview:listView];
+                [secondSectionCell addSubview:_listView];
             }
             if (indexPath.row == 1) {
-                productDetailTextView  = [[BWTextView alloc] init];
-                productDetailTextView.font = [UIFont systemFontOfSize:15.0f];
-                productDetailTextView.placeholder = @"请输入产品描述...";
+                _productDetailTextView  = [[BWTextView alloc] init];
+                _productDetailTextView.font = [UIFont systemFontOfSize:15.0f];
+                _productDetailTextView.placeholder = @"请输入产品描述...";
                 if (self.baseMsgDic) {
-                    productDetailTextView.text=[self.baseMsgDic objectForKey:@"remark"];
+                    _productDetailTextView.text=[self.baseMsgDic objectForKey:@"remark"];
                 }
-                productDetailTextView.textColor = titleLabColor;
-                productDetailTextView.frame = CGRectMake(100, 5, kWidth-100-30, 90);
-                [secondSectionCell addSubview:productDetailTextView];
+                _productDetailTextView.textColor = titleLabColor;
+                _productDetailTextView.frame = CGRectMake(100, 5, kWidth-100-30, 90);
+                [secondSectionCell addSubview:_productDetailTextView];
                // productDetailTextView.pl
             }
             cell = secondSectionCell;
@@ -314,8 +315,8 @@
     }
     [self.nurseryUidMArray removeAllObjects];
     ZIKIteratorNode *node = nil;
-    [listView resetIterator];
-    while (node = [listView nextObject]) {
+    [_listView resetIterator];
+    while (node = [_listView nextObject]) {
         ZIKNurseryListSelectButton *button = node.item;
         if (button.selected) {
             //NSLog(@"%@",button.titleLabel.text);
@@ -347,7 +348,7 @@
     }];
     self.supplyModel.murseryUid = [nurseryUidString substringFromIndex:1];
     //NSLog(@"%@",self.supplyModel);
-    self.supplyModel.remark = productDetailTextView.text;
+    self.supplyModel.remark = _productDetailTextView.text;
     [self requestSaveSupplyInfo];
 }
 //1. 整形判断
@@ -379,7 +380,7 @@
 - (void)ecttiveBtnAction {
     [self.countTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
-    [productDetailTextView resignFirstResponder];
+    [_productDetailTextView resignFirstResponder];
     if (!self.ecttivePickerView) {
         self.ecttivePickerView = [[PickerShowView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         [self.ecttivePickerView resetPickerData:@[@"长期",@"一个月",@"三个月",@"半年",@"一年"]];
@@ -395,8 +396,11 @@
 }
 
 - (void)selectInfo:(NSString *)select {
-    ecttiveBtn.titleLabel.text = nil;
-    [ecttiveBtn setTitle:select forState:UIControlStateNormal];
+    _ecttiveBtn.titleLabel.text = nil;
+    if ([[_ecttiveBtn currentTitle] isEqualToString:select]) {
+        return;
+    }
+    [_ecttiveBtn setTitle:select forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
