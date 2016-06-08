@@ -112,7 +112,12 @@
                 return self.oldnurseryArray.count * 40;
             }else
             {
-               return self.nurseryArray.count * 40; 
+                if (self.nurseryArray.count > 0) {
+                    return self.nurseryArray.count * 40;
+                }
+                else {
+                    return 44;
+                }
             }
             
         }
@@ -250,12 +255,16 @@
             }
             if (indexPath.row == 0) {
 
-                
                 if (self.oldnurseryArray.count>0) {
                     _listView.frame = CGRectMake(100, 0, kWidth-100, self.oldnurseryArray.count*40);
                 }else
                 {
-                  _listView.frame = CGRectMake(100, 0, kWidth-100, self.nurseryArray.count*40);
+                    if (self.nurseryArray.count>0) {
+                        _listView.frame = CGRectMake(100, 0, kWidth-100, self.nurseryArray.count*40);
+                    }
+                    else {
+                        _listView.frame = CGRectMake(100, 0, kWidth-100, 44);
+                    }
                 }
                 
                 if (self.oldnurseryArray.count>0) {
@@ -396,7 +405,7 @@
 }
 
 - (void)selectInfo:(NSString *)select {
-    _ecttiveBtn.titleLabel.text = nil;
+    //_ecttiveBtn.titleLabel.text = nil;
     if ([[_ecttiveBtn currentTitle] isEqualToString:select]) {
         return;
     }
