@@ -365,11 +365,13 @@
                                     [myshareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
                                     [myshareBtn setTitle:@"分享" forState:UIControlStateNormal];
                                     [self.view addSubview:myshareBtn];
-                                    
+                                    self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64-70);
+                                }
+                                else {
+                                    self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64);
                                 }
 
                                 [self reloadMyView];
-                                self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64-70);
                             } failure:^(NSError *error) {
                                 
                             }];

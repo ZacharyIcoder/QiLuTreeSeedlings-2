@@ -103,7 +103,7 @@ NSString *kCellID = @"cellID";
         [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     else {
-        [ToastView showTopToast:@"未充值过的用户不能参与积分兑换功能，请先充值"];
+        [ToastView showTopToast:@"未充值用户，请先充值"];
         return;
     }
 
