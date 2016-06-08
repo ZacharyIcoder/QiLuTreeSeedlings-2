@@ -7,7 +7,7 @@
 //
 
 #import "BuyMessageAlertView.h"
-#define kLineColor       [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:1.0]
+//#define kLineColor       [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:1.0]
 #define yellowButtonColor kRGB(255, 152, 31, 1)
 #define titleLabColor kRGB(102, 102, 102, 1)
 #define detialLabColor kRGB(153, 153, 153, 1)

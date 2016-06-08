@@ -265,7 +265,7 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
  */
 + (void)hiddenNotInstallPlatforms:(NSArray *)hiddenPlatforms;
 
-+ (UMSocialConfig *)shareInstance;
+//+ (UMSocialConfig *)shareInstance;
 
 /** deprecated API, Use ''[UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];''
 
