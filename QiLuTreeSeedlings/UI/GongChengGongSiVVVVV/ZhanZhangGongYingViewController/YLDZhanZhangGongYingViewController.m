@@ -19,6 +19,7 @@
     [self.backBtn setTitle:@"苗信通" forState:UIControlStateNormal];
     [self.backBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     self.backBtn.frame=CGRectMake(13, 26, 60, 30);
+    [self.navBackView setBackgroundColor:NavYellowColor];
     self.vcTitle=@"站长供应";
     
 

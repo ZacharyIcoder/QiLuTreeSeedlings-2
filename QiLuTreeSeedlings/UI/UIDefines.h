@@ -40,6 +40,7 @@
 //#define BGColor         [UIColor whiteColor]
 #define kLineColor       [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0]
 #define yellowButtonColor kRGB(255, 152, 31, 1)
+#define NavYellowColor    kRGB(253, 151, 51, 1)
 #define titleLabColor kRGB(102, 102, 102, 1)
 #define detialLabColor kRGB(153, 153, 153, 1)
 #define kRedHintColor kRGB(237, 136, 116, 1)
