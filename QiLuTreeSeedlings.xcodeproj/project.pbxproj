@@ -318,14 +318,6 @@
 		FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F391CABAB6400EBB2F8 /* ZIKPayRecordViewController.m */; };
 		FC50B1601CAE243F0022A24C /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC50B12A1CAE243F0022A24C /* UMSocialLocalizable.strings */; };
 		FC50B1611CAE243F0022A24C /* libUMSocial_Sdk_5.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1381CAE243F0022A24C /* libUMSocial_Sdk_5.0.1.a */; };
-		FC50B1621CAE243F0022A24C /* UMSCommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B13A1CAE243F0022A24C /* UMSCommentDetailController.xib */; };
-		FC50B1631CAE243F0022A24C /* UMSCommentInputController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B13B1CAE243F0022A24C /* UMSCommentInputController.xib */; };
-		FC50B1641CAE243F0022A24C /* UMSCommentInputControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B13C1CAE243F0022A24C /* UMSCommentInputControlleriPad.xib */; };
-		FC50B1651CAE243F0022A24C /* UMShareEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B13D1CAE243F0022A24C /* UMShareEditViewController.xib */; };
-		FC50B1661CAE243F0022A24C /* UMShareEditViewControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B13E1CAE243F0022A24C /* UMShareEditViewControlleriPad.xib */; };
-		FC50B1671CAE243F0022A24C /* UMSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B13F1CAE243F0022A24C /* UMSLoginViewController.xib */; };
-		FC50B1681CAE243F0022A24C /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B1401CAE243F0022A24C /* UMSnsAccountViewController.xib */; };
-		FC50B1691CAE243F0022A24C /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC50B1411CAE243F0022A24C /* UMSShareListController.xib */; };
 		FC50B16A1CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC50B1421CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle */; };
 		FC50B16B1CAE243F0022A24C /* libSocialSinaSSO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1461CAE243F0022A24C /* libSocialSinaSSO.a */; };
 		FC50B16C1CAE243F0022A24C /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1471CAE243F0022A24C /* libWeiboSDK.a */; };
@@ -1036,14 +1028,6 @@
 		FC50B1361CAE243F0022A24C /* UMSocialSnsPlatformManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSnsPlatformManager.h; sourceTree = "<group>"; };
 		FC50B1371CAE243F0022A24C /* UMSocialSnsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSnsService.h; sourceTree = "<group>"; };
 		FC50B1381CAE243F0022A24C /* libUMSocial_Sdk_5.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocial_Sdk_5.0.1.a; sourceTree = "<group>"; };
-		FC50B13A1CAE243F0022A24C /* UMSCommentDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSCommentDetailController.xib; sourceTree = "<group>"; };
-		FC50B13B1CAE243F0022A24C /* UMSCommentInputController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSCommentInputController.xib; sourceTree = "<group>"; };
-		FC50B13C1CAE243F0022A24C /* UMSCommentInputControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSCommentInputControlleriPad.xib; sourceTree = "<group>"; };
-		FC50B13D1CAE243F0022A24C /* UMShareEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMShareEditViewController.xib; sourceTree = "<group>"; };
-		FC50B13E1CAE243F0022A24C /* UMShareEditViewControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMShareEditViewControlleriPad.xib; sourceTree = "<group>"; };
-		FC50B13F1CAE243F0022A24C /* UMSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSLoginViewController.xib; sourceTree = "<group>"; };
-		FC50B1401CAE243F0022A24C /* UMSnsAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSnsAccountViewController.xib; sourceTree = "<group>"; };
-		FC50B1411CAE243F0022A24C /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		FC50B1421CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		FC50B1431CAE243F0022A24C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
 		FC50B1461CAE243F0022A24C /* libSocialSinaSSO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSinaSSO.a; sourceTree = "<group>"; };
@@ -2711,14 +2695,6 @@
 		FC50B1391CAE243F0022A24C /* SocialSDKXib */ = {
 			isa = PBXGroup;
 			children = (
-				FC50B13A1CAE243F0022A24C /* UMSCommentDetailController.xib */,
-				FC50B13B1CAE243F0022A24C /* UMSCommentInputController.xib */,
-				FC50B13C1CAE243F0022A24C /* UMSCommentInputControlleriPad.xib */,
-				FC50B13D1CAE243F0022A24C /* UMShareEditViewController.xib */,
-				FC50B13E1CAE243F0022A24C /* UMShareEditViewControlleriPad.xib */,
-				FC50B13F1CAE243F0022A24C /* UMSLoginViewController.xib */,
-				FC50B1401CAE243F0022A24C /* UMSnsAccountViewController.xib */,
-				FC50B1411CAE243F0022A24C /* UMSShareListController.xib */,
 			);
 			path = SocialSDKXib;
 			sourceTree = "<group>";
@@ -3720,12 +3696,10 @@
 				EA5E6E4B1CFFCA57003D357C /* WoDeDingDanViewController.xib in Resources */,
 				EAF050FB1C92A17400F435A9 /* mySellImageV@2x.png in Resources */,
 				EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */,
-				FC50B1681CAE243F0022A24C /* UMSnsAccountViewController.xib in Resources */,
 				FCE458CB1CE7048600CBF802 /* ZIKHaveReadTableViewCell.xib in Resources */,
 				FCF353E11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib in Resources */,
 				EA1CF4171CACD4E300AF2D82 /* loading06@2x.png in Resources */,
 				EAF0510F1C92B3E100F435A9 /* tabbarBackImage2@2x.png in Resources */,
-				FC50B1661CAE243F0022A24C /* UMShareEditViewControlleriPad.xib in Resources */,
 				EA03CCEC1C8FEFF80032BAD3 /* phoneImage@2x.png in Resources */,
 				EAAFCFB21CBE248800EB894F /* 2miaomu1136.png in Resources */,
 				FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */,
@@ -3746,7 +3720,6 @@
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
 				EA7491691D0275910043BDAC /* xiala2.png in Resources */,
-				FC50B1641CAE243F0022A24C /* UMSCommentInputControlleriPad.xib in Resources */,
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
 				EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */,
 				EA2726FE1C8A7C06000B0719 /* areadb.sqlite in Resources */,
@@ -3767,7 +3740,6 @@
 				FCF353DF1CA3B515001ABA0A /* 添加图片.png in Resources */,
 				EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */,
 				FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */,
-				FC50B1621CAE243F0022A24C /* UMSCommentDetailController.xib in Resources */,
 				EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */,
 				EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */,
 				FCCFA7151CF2E12400CC1313 /* carat-open.png in Resources */,
@@ -3779,7 +3751,6 @@
 				FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
 				EA17B5D21CC9D23A0054223B /* rightBtnImage@2x.png in Resources */,
-				FC50B1631CAE243F0022A24C /* UMSCommentInputController.xib in Resources */,
 				EA833D921CFEBEAC00D56AFB /* gongchenggongsishouye.png in Resources */,
 				EAAFCFB91CBE267700EB894F /* 1miaomu1472.png in Resources */,
 				EA833D911CFEBEAC00D56AFB /* zhanzhongtongshouye.png in Resources */,
@@ -3858,7 +3829,6 @@
 				FC96301E1D00252D00078F29 /* 底部菜单-站长中心on.png in Resources */,
 				FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
-				FC50B1651CAE243F0022A24C /* UMShareEditViewController.xib in Resources */,
 				FC9630171D00252D00078F29 /* 底部菜单-工程订单off.png in Resources */,
 				FC50B16A1CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle in Resources */,
 				FC96301B1D00252D00078F29 /* 底部菜单-我的报价off.png in Resources */,
@@ -3913,14 +3883,12 @@
 				EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */,
 				FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */,
 				FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */,
-				FC50B1671CAE243F0022A24C /* UMSLoginViewController.xib in Resources */,
 				EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */,
 				EA7AE8EC1C96874400B43073 /* price@2x.png in Resources */,
 				EA7AE8EB1C96874400B43073 /* person@2x.png in Resources */,
 				FC6FED6A1CACF833000E2CA5 /* 确定完成.png in Resources */,
 				EA6D36C61CE7136900CE025C /* shenhezhong.png in Resources */,
 				EAF051091C92A35D00F435A9 /* myShareImage@2x.png in Resources */,
-				FC50B1691CAE243F0022A24C /* UMSShareListController.xib in Resources */,
 				EA5AAC481C8D317000660FC9 /* BackBtn@2x.png in Resources */,
 				EA0B2B9E1C59F5220018A7BD /* Main.storyboard in Resources */,
 				FCF353D51CA3B515001ABA0A /* shanchutupian@2x.png in Resources */,
