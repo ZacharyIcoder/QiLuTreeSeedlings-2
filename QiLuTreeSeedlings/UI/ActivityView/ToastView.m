@@ -13,7 +13,7 @@
 
 @implementation ToastView
 
-const unsigned int kToastFontSize = 12;
+const unsigned int kToastFontSize = 14;
 const unsigned int kToastLabelWidth = 150;
 const unsigned int kToastLabelHeight = 25;
 
