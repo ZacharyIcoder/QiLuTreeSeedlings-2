@@ -17,4 +17,5 @@
  */
 @property (nonatomic,weak)UIButton *backBtn;
 @property (nonatomic, strong) NSString *vcTitle;
+@property (nonatomic,strong) UIView *navBackView;
 @end

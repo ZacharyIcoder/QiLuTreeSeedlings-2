@@ -540,11 +540,11 @@
     if (textField.tag==111) {
         //[self.answerAry insertObject:textField.text atIndex:0];
         [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
-//        if (self.maxTextField.text.length==0) {
-//            //self.maxTextField.text=textField.text;
+        if (self.maxTextField.text.length==0) {
+            self.maxTextField.text=textField.text;
 //             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
 ////            [self.answerAry insertObject:textField.text atIndex:1];
-//        }
+        }
 //        if (textField.text.length==0) {
 //            if (self.maxTextField.text.length>0) {
 //               // textField.text=self.maxTextField.text;
@@ -556,6 +556,11 @@
     if (textField.tag==112) {
 //        [self.answerAry insertObject:textField.text atIndex:1];
         [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+        if (self.minTextField.text.length==0) {
+            self.minTextField.text=textField.text;
+            //             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+            ////            [self.answerAry insertObject:textField.text atIndex:1];
+        }
     }
     if (textField.tag==113) {
 //       [self.answerAry insertObject:textField.text atIndex:0];
@@ -563,9 +568,19 @@
     }
     if (textField.tag==121) {
          [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
+        if (self.maxTextField.text.length==0) {
+            self.maxTextField.text=textField.text;
+            //             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+            ////            [self.answerAry insertObject:textField.text atIndex:1];
+        }
     }
     if (textField.tag==122) {
          [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
+        if (self.minTextField.text.length==0) {
+            self.minTextField.text=textField.text;
+            //             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+            ////            [self.answerAry insertObject:textField.text atIndex:1];
+        }
     }
     if (textField.tag==123) {
 //        [self.answerAry2 insertObject:textField.text atIndex:0];

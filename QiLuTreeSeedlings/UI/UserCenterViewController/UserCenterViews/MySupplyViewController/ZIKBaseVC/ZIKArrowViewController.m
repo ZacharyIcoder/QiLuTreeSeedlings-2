@@ -21,7 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //[self initNav];
-    [self.view addSubview:[self makeNavView]];
+    self.navBackView =[self makeNavView];
+    [self.view addSubview:self.navBackView];
     
 }
 -(UIView *)makeNavView

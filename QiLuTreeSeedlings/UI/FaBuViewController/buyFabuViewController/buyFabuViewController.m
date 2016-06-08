@@ -19,6 +19,7 @@
 #import "GuiGeModel.h"
 #import "GuiGeView.h"
 #import "YLDBuyFabuViewController.h"
+#import "ZIKHintTableViewCell.h"
 @interface buyFabuViewController ()<UITextFieldDelegate,ZIKSelectViewUidDelegate,UIAlertViewDelegate,GuiGeViewDelegate>
 @property (nonatomic,strong)UITextField *titleTextField;
 @property (nonatomic,strong)UITextField *nameTextField;
@@ -36,6 +37,7 @@
 @property (nonatomic, strong) NSMutableArray   *productTypeDataMArray;
 @property (nonatomic, strong) NSMutableArray *guige1Ary;
 @property (nonatomic,strong)GuiGeView *guigeView;
+@property (nonatomic,strong)ZIKHintTableViewCell *hintView;
 @end
 
 @implementation buyFabuViewController
@@ -65,7 +67,7 @@
     [self.backScrollView setBackgroundColor:BGColor];
     CGRect tempFrame=CGRectMake(0,0, kWidth, 44);
     UIView *titleView=[[UIView alloc]initWithFrame:tempFrame];
-    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, kWidth*0.25, 44)];
+    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, kWidth*0.25, 44)];
     [titleLab setTextColor:titleLabColor];
     [titleLab setFont:[UIFont systemFontOfSize:15]];
     [titleView addSubview:titleLab];
@@ -89,7 +91,7 @@
     UIView *nameView=[[UIView alloc]initWithFrame:tempFrame];
     [nameView setBackgroundColor:[UIColor whiteColor]];
     [self.backScrollView addSubview:nameView];
-    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(15/320.f*kWidth, 0, kWidth*0.25, 44)];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, kWidth*0.25, 44)];
     nameLab.text=@"苗木名称";
     [nameLab setTextColor:[UIColor darkGrayColor]];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
@@ -116,7 +118,13 @@
     [nameLineView setBackgroundColor:kLineColor];
     [nameView addSubview:nameLineView];
     self.nameBtn=nameBtn;
-
+    ZIKHintTableViewCell *hintView = [[[NSBundle mainBundle] loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
+    hintView.frame = CGRectMake(0, CGRectGetMaxY(nameView.frame)+5, Width, HINT_VIEW_HEIGHT);
+    hintView.hintStr = @"输入的越详细,匹配度越高";
+    hintView.hidden = YES;
+    hintView.contentView.backgroundColor = BGColor;
+    [self.backScrollView addSubview:hintView];
+    _hintView = hintView;
     UIButton *nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 44)];
     [self.view addSubview:nextBtn];
     [nextBtn setBackgroundColor:NavColor];
@@ -297,7 +305,8 @@
 
            // [self sortListWithAry:guigeAry WithSortAry:self.guige1Ary WithLeve:1]; 多级规格递归排序
             
-            GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, 89, kWidth, 0)];
+            self.hintView.hidden=NO;
+            GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0,CGRectGetMaxY(self.hintView.frame), kWidth, 0)];
             [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
             guigeView.delegate=self;
             self.guigeView=guigeView;
@@ -388,7 +397,8 @@
             }
         }
     }
-    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, 89, kWidth, 0)];
+    self.hintView.hidden=NO;
+    GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, CGRectGetMaxY(self.hintView.frame), kWidth, 0)];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
     guigeView.delegate=self;
     self.guigeView=guigeView;

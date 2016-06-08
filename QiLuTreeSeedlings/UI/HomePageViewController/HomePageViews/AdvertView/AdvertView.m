@@ -44,7 +44,7 @@
     if (self) {
         //[self setBackgroundColor:[UIColor greenColor]];
         
-        CGRect scrollFrame = CGRectMake(0  , 0, frame.size.width, frame.size.height);
+        CGRect scrollFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
         scrollView.delegate = self;
         [scrollView setBackgroundColor:[UIColor whiteColor]];

@@ -21,14 +21,11 @@
     self.backBtn.frame=CGRectMake(13, 26, 60, 30);
     self.vcTitle=@"站长供应";
     
-            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-            adView.delegate=self;
-            [adView setAdInfo];
-            [adView adStart];
-            [self.view addSubview:adView];
+
+//            [self.view addSubview:adView];
 
     
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64+160.f/320.f*kWidth, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
@@ -44,7 +41,7 @@
 //        return 160.f/320.f*kWidth;
 //    }
     if (indexPath.section==0) {
-        return 70;
+        return 160.f/320.f*kWidth;
     }
     if (indexPath.section==1) {
         return 70;
@@ -59,7 +56,17 @@
     return 5;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
+    if(indexPath.section==0)
+    {
+        if (indexPath.row==0) {
+            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+            adView.delegate=self;
+            [adView setAdInfo];
+            [adView adStart];
+            return adView;
+        }
+    }
     UITableViewCell *cell=[[UITableViewCell alloc]init];
     return cell;
 }
