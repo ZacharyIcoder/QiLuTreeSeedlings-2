@@ -330,6 +330,10 @@
             self.frame=frame;
         }//复选结束
         
+        UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
+        self.imageVV=lineView;
+        [lineView setBackgroundColor:kLineColor];
+        [self addSubview:lineView];
         if([model.type isEqualToString:@"单选结合"])
         {
             [self.answerAry addObjectsFromArray:@[@""]];
@@ -361,9 +365,6 @@
                 }
                 if (self.model.selectProper.operation) {
                     //self.model.selectProper=procprs;
-                    CGRect frame=self.frame;
-                    frame.size.height=88;
-                    self.frame=frame;
                     if(self.erjiView)
                     {
                         [self.erjiView removeFromSuperview];
@@ -477,6 +478,16 @@
                 }
 
             }
+            if(self.erjiView)
+            {
+                CGRect frame=self.frame;
+                frame.size.height=CGRectGetMaxY(self.erjiView.frame);
+                self.frame=frame;
+            }else{
+                CGRect frame=self.frame;
+                frame.size.height=44;
+                self.frame=frame;
+            }
 
             PickerShowView *pickerView=[[PickerShowView alloc]initWithFrame:CGRectMake(0, 0, kWidth,kHeight)];
             self.pickerView=pickerView;
@@ -500,11 +511,7 @@
 
 
         }//单选结合结束
-        
-            UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(15, self.frame.size.height-0.5, self.frame.size.width-30, 0.5)];
-        self.imageVV=lineView;
-        [lineView setBackgroundColor:kLineColor];
-        [self addSubview:lineView];
+
     }
     return self;
 }

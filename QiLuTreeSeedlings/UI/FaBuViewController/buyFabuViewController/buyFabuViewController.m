@@ -278,25 +278,25 @@
                 }
             }
             
-            for (int i=0; i<guigeAry.count; i++) {
-                 NSDictionary *dic=guigeAry[i];
-             if ([[dic objectForKey:@"level"] integerValue]==1) {
-                    GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+//            for (int i=0; i<guigeAry.count; i++) {
+//                 NSDictionary *dic=guigeAry[i];
+//             if ([[dic objectForKey:@"level"] integerValue]==1) {
+//                    GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+//
+//                      for (int j=0; j<self.guige1Ary.count; j++) {
+//                        GuiGeModel *guigeModel1=self.guige1Ary[j];
+//                        for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+//                        
+//                            Propers *proper=guigeModel1.propertyLists[k];
+//                            if ([proper.relation isEqualToString:guigeModel.uid]) {
+//                                proper.guanlianModel=guigeModel;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
 
-                      for (int j=0; j<self.guige1Ary.count; j++) {
-                        GuiGeModel *guigeModel1=self.guige1Ary[j];
-                        for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
-                        
-                            Propers *proper=guigeModel1.propertyLists[k];
-                            if ([proper.relation isEqualToString:guigeModel.uid]) {
-                                proper.guanlianModel=guigeModel;
-                            }
-                        }
-                    }
-                }
-            }
-
-            //[self sortListWithAry:guigeAry WithSortAry:self.guige1Ary WithLeve:1];
+            [self sortListWithAry:guigeAry WithSortAry:self.guige1Ary WithLeve:1];
             
             GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, 89, kWidth, 0)];
             [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
@@ -370,25 +370,25 @@
             [self.guige1Ary addObject:guigeModel];
         }
     }
-    
-    for (int i=0; i<guigeAry.count; i++) {
-        NSDictionary *dic=guigeAry[i];
-        if ([[dic objectForKey:@"level"] integerValue]==1) {
-            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-            
-            
-            for (int j=0; j<self.guige1Ary.count; j++) {
-                GuiGeModel *guigeModel1=self.guige1Ary[j];
-                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
-                    
-                    Propers *proper=guigeModel1.propertyLists[k];
-                    if ([proper.relation isEqualToString:guigeModel.uid]) {
-                        proper.guanlianModel=guigeModel;
-                    }
-                }
-            }
-        }
-    }
+    [self sortListWithAry:guigeAry WithSortAry:self.guige1Ary WithLeve:1];
+//    for (int i=0; i<guigeAry.count; i++) {
+//        NSDictionary *dic=guigeAry[i];
+//        if ([[dic objectForKey:@"level"] integerValue]==1) {
+//            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
+//            
+//            
+//            for (int j=0; j<self.guige1Ary.count; j++) {
+//                GuiGeModel *guigeModel1=self.guige1Ary[j];
+//                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
+//                    
+//                    Propers *proper=guigeModel1.propertyLists[k];
+//                    if ([proper.relation isEqualToString:guigeModel.uid]) {
+//                        proper.guanlianModel=guigeModel;
+//                    }
+//                }
+//            }
+//        }
+//    }
     GuiGeView *guigeView=[[GuiGeView alloc]initWithValueAry:self.guige1Ary andFrame:CGRectMake(0, 89, kWidth, 0)];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
     guigeView.delegate=self;
