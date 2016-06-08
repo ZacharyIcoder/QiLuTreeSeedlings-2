@@ -353,7 +353,7 @@
                                 [answerAryz removeAllObjects];
                                 return NO;
                             }
-
+                            
                         }
                     }
                 }
@@ -371,7 +371,8 @@
                     [answerAryz removeAllObjects];
                     return NO;
                 }
-              
+                
+                
                 if (cell.model.selectProper) {
                     if(cell.model.selectProper.operation)
                     {
@@ -379,33 +380,28 @@
                         {
                             GuiGeCell *soncell=(GuiGeCell*)cell.erjiView;
                             
-                                NSString *answers1=[soncell.answerAry firstObject];
-                                if (answers1.length==0) {
-                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",soncell.model.name]];
-                                    [answerAryz removeAllObjects];
-                                    return NO;
-                                }
-                                
+                            NSString *answers1=[soncell.answerAry firstObject];
+                            if (answers1.length==0) {
+                                [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",soncell.model.name]];
+                                [answerAryz removeAllObjects];
+                                return NO;
+                            }
+                            
                             
                             
                         }else{
                             
-                                NSString *answers1=[cell.answerAry2 firstObject];
-                                NSString *answers2=[cell.answerAry2 lastObject];
-                                if (answers1.length==0&&answers2.length==0) {
-                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
-                                    [answerAryz removeAllObjects];
-                                     return NO;
-                                }
-//                                if (answers2.length==0) {
-//                                    [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
-//                                    [answerAryz removeAllObjects];
-//                                     return NO;
-//                                }
-                            
+                            NSString *answers1=[cell.answerAry2 firstObject];
+                            NSString *answers2=[cell.answerAry2 lastObject];
+                            if (answers1.length==0&&answers2.length==0) {
+                                [ToastView showTopToast:[NSString stringWithFormat:@"请完善%@信息",cell.model.name]];
+                                [answerAryz removeAllObjects];
+                                return NO;
+                            }
                         }
                     }
                 }
+
             }//判断主要规格是否都已填写
             
         }
