@@ -685,6 +685,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
             myStringImageFile = nil;
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                  if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+                     if (weakSelf.addImageView.haveImageMArr.count == 3) {
+                         return ;
+                     }
                     [weakSelf.addImageView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
                     [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
                 }

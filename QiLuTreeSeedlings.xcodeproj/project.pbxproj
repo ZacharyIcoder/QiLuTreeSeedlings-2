@@ -268,46 +268,8 @@
 		EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5411C867D7D008B99D2 /* HotSellModel.m */; };
 		EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5441C867FF9008B99D2 /* HotBuyModel.m */; };
 		EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5471C868DD1008B99D2 /* GusseYourLikeModel.m */; };
-		FC07A2B41D066DC000E3E7EA /* check49.png in Resources */ = {isa = PBXBuildFile; fileRef = FC07A2B21D066DC000E3E7EA /* check49.png */; };
-		FC07A2B51D066DC000E3E7EA /* duihao.png in Resources */ = {isa = PBXBuildFile; fileRef = FC07A2B31D066DC000E3E7EA /* duihao.png */; };
-		FC21BC7C1CA51C930041E2C3 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC5B1CA51C930041E2C3 /* IQNSArray+Sort.m */; };
-		FC21BC7D1CA51C930041E2C3 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC5D1CA51C930041E2C3 /* IQUIScrollView+Additions.m */; };
-		FC21BC7E1CA51C930041E2C3 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC5F1CA51C930041E2C3 /* IQUITextFieldView+Additions.m */; };
-		FC21BC7F1CA51C930041E2C3 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC611CA51C930041E2C3 /* IQUIView+Hierarchy.m */; };
-		FC21BC801CA51C930041E2C3 /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC631CA51C930041E2C3 /* IQUIViewController+Additions.m */; };
-		FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC651CA51C930041E2C3 /* IQUIWindow+Hierarchy.m */; };
-		FC21BC821CA51C930041E2C3 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC6A1CA51C930041E2C3 /* IQKeyboardManager.m */; };
-		FC21BC831CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC6C1CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m */; };
-		FC21BC841CA51C930041E2C3 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC6F1CA51C930041E2C3 /* IQTextView.m */; };
-		FC21BC851CA51C930041E2C3 /* IQBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC721CA51C930041E2C3 /* IQBarButtonItem.m */; };
-		FC21BC861CA51C930041E2C3 /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC741CA51C930041E2C3 /* IQTitleBarButtonItem.m */; };
-		FC21BC871CA51C930041E2C3 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC761CA51C930041E2C3 /* IQToolbar.m */; };
-		FC21BC881CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FC21BC781CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m */; };
-		FC21BC891CA51C930041E2C3 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC21BC7B1CA51C930041E2C3 /* IQKeyboardManager.bundle */; };
-		FC2856E81CF6DEA9005235FC /* ZIKMySupplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2856E11CF6DEA9005235FC /* ZIKMySupplyVC.m */; };
-		FC2856E91CF6DEA9005235FC /* ZIKMySupplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2856E31CF6DEA9005235FC /* ZIKMySupplyDetailViewController.m */; };
-		FC2856EA1CF6DEA9005235FC /* ZIKSupplyPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2856E51CF6DEA9005235FC /* ZIKSupplyPublishVC.m */; };
-		FC2856EB1CF6DEA9005235FC /* ZIKSupplyPublishNextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2856E71CF6DEA9005235FC /* ZIKSupplyPublishNextVC.m */; };
-		FC28DB611CD9C271003D7C27 /* 注意.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB601CD9C271003D7C27 /* 注意.png */; };
-		FC28DB631CD9CC7D003D7C27 /* 标签-已退回.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */; };
-		FC28DB661CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC28DB651CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m */; };
-		FC28DB6D1CD9E8A4003D7C27 /* 添加照片-单株.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */; };
-		FC28DB6E1CD9E8A4003D7C27 /* 添加照片-人苗.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */; };
-		FC28DB6F1CD9E8A4003D7C27 /* 添加照片-整片.png in Resources */ = {isa = PBXBuildFile; fileRef = FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */; };
 		FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */; };
 		FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */; };
-		FC31B2901CE088290024E147 /* ZIKPickerBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B28D1CE088290024E147 /* ZIKPickerBtn.m */; };
-		FC49AE351CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE341CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m */; };
-		FC49AE381CA8D36000214D4B /* ZIKUserIDetc.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE371CA8D36000214D4B /* ZIKUserIDetc.m */; };
-		FC49AE431CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE411CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m */; };
-		FC49AE441CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC49AE421CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.xib */; };
-		FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE461CA90C4300214D4B /* ZIKNurseryListView.m */; };
-		FC49AE4A1CA90CB000214D4B /* ZIKNurseryListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE491CA90CB000214D4B /* ZIKNurseryListSelectButton.m */; };
-		FC49AE4D1CA90E5C00214D4B /* 苗圃基地选择框.png in Resources */ = {isa = PBXBuildFile; fileRef = FC49AE4B1CA90E5C00214D4B /* 苗圃基地选择框.png */; };
-		FC49AE4E1CA90E5C00214D4B /* 苗圃基地已选择框.png in Resources */ = {isa = PBXBuildFile; fileRef = FC49AE4C1CA90E5C00214D4B /* 苗圃基地已选择框.png */; };
-		FC49AE551CA9190700214D4B /* ZIKIteratorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE511CA9190700214D4B /* ZIKIteratorNode.m */; };
-		FC49AE561CA9190700214D4B /* ZIKLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE541CA9190700214D4B /* ZIKLinkedList.m */; };
-		FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC49AE581CA91E7B00214D4B /* BWTextView.m */; };
 		FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */; };
 		FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F241CAB7C8900EBB2F8 /* NSString+Helper.m */; };
 		FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F281CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m */; };
@@ -353,14 +315,6 @@
 		FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC50B34E1CAE56320022A24C /* ZIKVoucherCenterViewController.m */; };
 		FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */ = {isa = PBXBuildFile; fileRef = FC50B3501CAE60D20022A24C /* 微信支付.png */; };
 		FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */; };
-		FC53379F1CBDF2B6008BFB11 /* WHC_Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337931CBDF2B6008BFB11 /* WHC_Asset.m */; };
-		FC5337A01CBDF2B6008BFB11 /* WHC_PhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337951CBDF2B6008BFB11 /* WHC_PhotoListCell.m */; };
-		FC5337A11CBDF2B6008BFB11 /* WHC_CameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337971CBDF2B6008BFB11 /* WHC_CameraVC.m */; };
-		FC5337A21CBDF2B6008BFB11 /* WHC_CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5337981CBDF2B6008BFB11 /* WHC_CameraVC.xib */; };
-		FC5337A31CBDF2B6008BFB11 /* WHC_ChoicePictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC53379A1CBDF2B6008BFB11 /* WHC_ChoicePictureVC.m */; };
-		FC5337A41CBDF2B6008BFB11 /* WHC_ChoicePictureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC53379B1CBDF2B6008BFB11 /* WHC_ChoicePictureVC.xib */; };
-		FC5337A51CBDF2B6008BFB11 /* WHC_PictureListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC53379D1CBDF2B6008BFB11 /* WHC_PictureListVC.m */; };
-		FC5337A61CBDF2B6008BFB11 /* WHC_PictureListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC53379E1CBDF2B6008BFB11 /* WHC_PictureListVC.xib */; };
 		FC5337AA1CBDF885008BFB11 /* ZIKStationAgentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337A91CBDF885008BFB11 /* ZIKStationAgentViewController.m */; };
 		FC5337C11CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337BF1CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m */; };
 		FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5337C01CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib */; };
@@ -372,9 +326,102 @@
 		FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC55FB911CB5018A008D9CAD /* ZIKCustomizedModel.m */; };
 		FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC55FB941CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m */; };
 		FC55FB971CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC55FB951CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib */; };
-		FC5808821CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5808801CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m */; };
-		FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5808811CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib */; };
-		FC5808861CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5808851CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m */; };
+		FC5612431D0C092F00E5743B /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611831D0C092F00E5743B /* IQNSArray+Sort.m */; };
+		FC5612441D0C092F00E5743B /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611851D0C092F00E5743B /* IQUIScrollView+Additions.m */; };
+		FC5612451D0C092F00E5743B /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611871D0C092F00E5743B /* IQUITextFieldView+Additions.m */; };
+		FC5612461D0C092F00E5743B /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611891D0C092F00E5743B /* IQUIView+Hierarchy.m */; };
+		FC5612471D0C092F00E5743B /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56118B1D0C092F00E5743B /* IQUIViewController+Additions.m */; };
+		FC5612481D0C092F00E5743B /* IQUIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56118D1D0C092F00E5743B /* IQUIWindow+Hierarchy.m */; };
+		FC5612491D0C092F00E5743B /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611921D0C092F00E5743B /* IQKeyboardManager.m */; };
+		FC56124A1D0C092F00E5743B /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611941D0C092F00E5743B /* IQKeyboardReturnKeyHandler.m */; };
+		FC56124B1D0C092F00E5743B /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611971D0C092F00E5743B /* IQTextView.m */; };
+		FC56124C1D0C092F00E5743B /* IQBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56119A1D0C092F00E5743B /* IQBarButtonItem.m */; };
+		FC56124D1D0C092F00E5743B /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56119C1D0C092F00E5743B /* IQTitleBarButtonItem.m */; };
+		FC56124E1D0C092F00E5743B /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56119E1D0C092F00E5743B /* IQToolbar.m */; };
+		FC56124F1D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611A01D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.m */; };
+		FC5612501D0C092F00E5743B /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC5611A31D0C092F00E5743B /* IQKeyboardManager.bundle */; };
+		FC5612511D0C092F00E5743B /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC5611A51D0C092F00E5743B /* MJRefresh.bundle */; };
+		FC5612521D0C092F00E5743B /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611A81D0C092F00E5743B /* MJRefreshBaseView.m */; };
+		FC5612531D0C092F00E5743B /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611AA1D0C092F00E5743B /* MJRefreshConst.m */; };
+		FC5612541D0C092F00E5743B /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611AC1D0C092F00E5743B /* MJRefreshFooterView.m */; };
+		FC5612551D0C092F00E5743B /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611AE1D0C092F00E5743B /* MJRefreshHeaderView.m */; };
+		FC5612561D0C092F00E5743B /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611B01D0C092F00E5743B /* UIScrollView+MJExtension.m */; };
+		FC5612571D0C092F00E5743B /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611B21D0C092F00E5743B /* UIScrollView+MJRefresh.m */; };
+		FC5612581D0C092F00E5743B /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611B41D0C092F00E5743B /* UIView+MJExtension.m */; };
+		FC5612591D0C092F00E5743B /* ZIKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611B71D0C092F00E5743B /* ZIKFunction.m */; };
+		FC56125A1D0C092F00E5743B /* ZIKMySupplyCreateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611B91D0C092F00E5743B /* ZIKMySupplyCreateModel.m */; };
+		FC56125B1D0C092F00E5743B /* ZIKSupplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611BB1D0C092F00E5743B /* ZIKSupplyModel.m */; };
+		FC56125C1D0C092F00E5743B /* ZIKUserIDetc.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611BD1D0C092F00E5743B /* ZIKUserIDetc.m */; };
+		FC56125D1D0C092F00E5743B /* BWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611C01D0C092F00E5743B /* BWTextView.m */; };
+		FC56125E1D0C092F00E5743B /* ZIKAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611C31D0C092F00E5743B /* ZIKAddImageView.m */; };
+		FC56125F1D0C092F00E5743B /* ZIKPickerBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611C51D0C092F00E5743B /* ZIKPickerBtn.m */; };
+		FC5612601D0C092F00E5743B /* shanchutupian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611C61D0C092F00E5743B /* shanchutupian@2x.png */; };
+		FC5612611D0C092F00E5743B /* shanchutupian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611C71D0C092F00E5743B /* shanchutupian@3x.png */; };
+		FC5612621D0C092F00E5743B /* shangchuanzhaopian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611C81D0C092F00E5743B /* shangchuanzhaopian@2x.png */; };
+		FC5612631D0C092F00E5743B /* shangchuanzhaopian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611C91D0C092F00E5743B /* shangchuanzhaopian@3x.png */; };
+		FC5612641D0C092F00E5743B /* WHC_Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611CE1D0C092F00E5743B /* WHC_Asset.m */; };
+		FC5612651D0C092F00E5743B /* WHC_PhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611D01D0C092F00E5743B /* WHC_PhotoListCell.m */; };
+		FC5612661D0C092F00E5743B /* WHC_CameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611D21D0C092F00E5743B /* WHC_CameraVC.m */; };
+		FC5612671D0C092F00E5743B /* WHC_CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5611D31D0C092F00E5743B /* WHC_CameraVC.xib */; };
+		FC5612681D0C092F00E5743B /* WHC_ChoicePictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611D51D0C092F00E5743B /* WHC_ChoicePictureVC.m */; };
+		FC5612691D0C092F00E5743B /* WHC_ChoicePictureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5611D61D0C092F00E5743B /* WHC_ChoicePictureVC.xib */; };
+		FC56126A1D0C092F00E5743B /* WHC_PictureListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611D81D0C092F00E5743B /* WHC_PictureListVC.m */; };
+		FC56126B1D0C092F00E5743B /* WHC_PictureListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5611D91D0C092F00E5743B /* WHC_PictureListVC.xib */; };
+		FC56126C1D0C092F00E5743B /* StringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611DE1D0C092F00E5743B /* StringAttribute.m */; };
+		FC56126D1D0C092F00E5743B /* FontAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611E21D0C092F00E5743B /* FontAttribute.m */; };
+		FC56126E1D0C092F00E5743B /* ForegroundColorAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611E41D0C092F00E5743B /* ForegroundColorAttribute.m */; };
+		FC56126F1D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611E71D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.m */; };
+		FC5612701D0C092F00E5743B /* NSString+StringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611E91D0C092F00E5743B /* NSString+StringAttribute.m */; };
+		FC5612711D0C092F00E5743B /* 我的供应（空）.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611EB1D0C092F00E5743B /* 我的供应（空）.png */; };
+		FC5612721D0C092F00E5743B /* 标签-已退回.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611EC1D0C092F00E5743B /* 标签-已退回.png */; };
+		FC5612731D0C092F00E5743B /* 注意.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611ED1D0C092F00E5743B /* 注意.png */; };
+		FC5612741D0C092F00E5743B /* 添加图片.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611EE1D0C092F00E5743B /* 添加图片.png */; };
+		FC5612751D0C092F00E5743B /* 添加照片-人苗.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611EF1D0C092F00E5743B /* 添加照片-人苗.png */; };
+		FC5612761D0C092F00E5743B /* 添加照片-单株.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611F01D0C092F00E5743B /* 添加照片-单株.png */; };
+		FC5612771D0C092F00E5743B /* 添加照片-整片.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611F11D0C092F00E5743B /* 添加照片-整片.png */; };
+		FC5612781D0C092F00E5743B /* 苗圃基地已选择框.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611F21D0C092F00E5743B /* 苗圃基地已选择框.png */; };
+		FC5612791D0C092F00E5743B /* 苗圃基地选择框.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611F31D0C092F00E5743B /* 苗圃基地选择框.png */; };
+		FC56127A1D0C092F00E5743B /* ZIKIteratorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611F61D0C092F00E5743B /* ZIKIteratorNode.m */; };
+		FC56127B1D0C092F00E5743B /* ZIKLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611F91D0C092F00E5743B /* ZIKLinkedList.m */; };
+		FC56127C1D0C092F00E5743B /* check49.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611FB1D0C092F00E5743B /* check49.png */; };
+		FC56127D1D0C092F00E5743B /* duihao.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5611FC1D0C092F00E5743B /* duihao.png */; };
+		FC56127E1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5611FE1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.m */; };
+		FC56127F1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5611FF1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib */; };
+		FC5612801D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612011D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m */; };
+		FC5612811D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5612021D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib */; };
+		FC5612821D0C092F00E5743B /* ZIKMySupplyCellBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612041D0C092F00E5743B /* ZIKMySupplyCellBackButton.m */; };
+		FC5612831D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612061D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.m */; };
+		FC5612841D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5612071D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib */; };
+		FC5612851D0C092F00E5743B /* ZIKMySupplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612091D0C092F00E5743B /* ZIKMySupplyTableViewCell.m */; };
+		FC5612861D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC56120A1D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib */; };
+		FC5612871D0C092F00E5743B /* ZIKNurseryListSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56120C1D0C092F00E5743B /* ZIKNurseryListSelectButton.m */; };
+		FC5612881D0C092F00E5743B /* ZIKNurseryListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56120E1D0C092F00E5743B /* ZIKNurseryListView.m */; };
+		FC5612891D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612101D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m */; };
+		FC56128A1D0C092F00E5743B /* ZIKSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612121D0C092F00E5743B /* ZIKSelectView.m */; };
+		FC56128B1D0C092F00E5743B /* ZIKSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612141D0C092F00E5743B /* ZIKSideView.m */; };
+		FC56128C1D0C092F00E5743B /* ZIKSupplyBottomSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612161D0C092F00E5743B /* ZIKSupplyBottomSelectButton.m */; };
+		FC56128D1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612181D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.m */; };
+		FC56128E1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5612191D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib */; };
+		FC56128F1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56121B1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.m */; };
+		FC5612901D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC56121C1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib */; };
+		FC5612911D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56121E1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.m */; };
+		FC5612921D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC56121F1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.xib */; };
+		FC5612931D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612211D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.m */; };
+		FC5612941D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5612221D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.xib */; };
+		FC5612951D0C092F00E5743B /* ZIKPickerBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612251D0C092F00E5743B /* ZIKPickerBtn.m */; };
+		FC5612961D0C092F00E5743B /* ZIKPickImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612271D0C092F00E5743B /* ZIKPickImageView.m */; };
+		FC5612971D0C092F00E5743B /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56122A1D0C092F00E5743B /* NSObject+YYModel.m */; };
+		FC5612981D0C092F00E5743B /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56122C1D0C092F00E5743B /* YYClassInfo.m */; };
+		FC5612991D0C092F00E5743B /* ZIKGreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612311D0C092F00E5743B /* ZIKGreenButton.m */; };
+		FC56129A1D0C092F00E5743B /* ZIKArrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612331D0C092F00E5743B /* ZIKArrowViewController.m */; };
+		FC56129B1D0C092F00E5743B /* ZIKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612351D0C092F00E5743B /* ZIKBaseViewController.m */; };
+		FC56129C1D0C092F00E5743B /* ZIKNavConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612371D0C092F00E5743B /* ZIKNavConfigViewController.m */; };
+		FC56129D1D0C092F00E5743B /* ZIKRightBtnSringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612391D0C092F00E5743B /* ZIKRightBtnSringViewController.m */; };
+		FC56129E1D0C092F00E5743B /* ZIKMySupplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56123B1D0C092F00E5743B /* ZIKMySupplyDetailViewController.m */; };
+		FC56129F1D0C092F00E5743B /* ZIKMySupplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56123D1D0C092F00E5743B /* ZIKMySupplyVC.m */; };
+		FC5612A01D0C092F00E5743B /* ZIKSupplyPublishNextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56123F1D0C092F00E5743B /* ZIKSupplyPublishNextVC.m */; };
+		FC5612A11D0C092F00E5743B /* ZIKSupplyPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612411D0C092F00E5743B /* ZIKSupplyPublishVC.m */; };
+		FC5612A21D0C092F00E5743B /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5612421D0C092F00E5743B /* 已选小标.png */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
 		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
@@ -383,10 +430,6 @@
 		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
 		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
 		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
-		FC68F3841CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */; };
-		FC68F3851CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */; };
-		FC6C13391CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6C13371CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m */; };
-		FC6C133A1CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC6C13381CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib */; };
 		FC6C133E1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6C133C1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m */; };
 		FC6C133F1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC6C133D1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib */; };
 		FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED511CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m */; };
@@ -418,7 +461,6 @@
 		FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC71342A1CB351500037D507 /* ZIKPaySuccessViewController.m */; };
 		FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC71342B1CB351500037D507 /* ZIKPaySuccessViewController.xib */; };
 		FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC71342E1CB352730037D507 /* 充值成功76x76-2.png */; };
-		FC7134301CB358140037D507 /* ZIKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A031CAA58C200672241 /* ZIKFunction.m */; };
 		FC7134351CB358720037D507 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134321CB358720037D507 /* RIButtonItem.m */; };
 		FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134341CB358720037D507 /* UIAlertView+Blocks.m */; };
 		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
@@ -477,49 +519,11 @@
 		FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD8A67A1CCDED1600A307E2 /* 已选小标.png */; };
 		FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */ = {isa = PBXBuildFile; fileRef = FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */; };
 		FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */; };
-		FCE2D1C51CE46C0A0002B069 /* ZIKAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */; };
 		FCE458C01CE6D6AA00CBF802 /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE458BF1CE6D6AA00CBF802 /* UMMobClick.framework */; };
 		FCE458C31CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE458C21CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m */; };
 		FCE458C61CE7036600CBF802 /* ZIKHaveReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE458C51CE7036600CBF802 /* ZIKHaveReadModel.m */; };
 		FCE458CA1CE7048600CBF802 /* ZIKHaveReadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE458C81CE7048600CBF802 /* ZIKHaveReadTableViewCell.m */; };
 		FCE458CB1CE7048600CBF802 /* ZIKHaveReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE458C91CE7048600CBF802 /* ZIKHaveReadTableViewCell.xib */; };
-		FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */; };
-		FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */; };
-		FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353801CA3B514001ABA0A /* MJRefreshConst.m */; };
-		FCF353CC1CA3B515001ABA0A /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353821CA3B514001ABA0A /* MJRefreshFooterView.m */; };
-		FCF353CD1CA3B515001ABA0A /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353841CA3B514001ABA0A /* MJRefreshHeaderView.m */; };
-		FCF353CE1CA3B515001ABA0A /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353861CA3B514001ABA0A /* UIScrollView+MJExtension.m */; };
-		FCF353CF1CA3B515001ABA0A /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353881CA3B514001ABA0A /* UIScrollView+MJRefresh.m */; };
-		FCF353D01CA3B515001ABA0A /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3538A1CA3B515001ABA0A /* UIView+MJExtension.m */; };
-		FCF353D11CA3B515001ABA0A /* ZIKSupplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3538D1CA3B515001ABA0A /* ZIKSupplyModel.m */; };
-		FCF353D51CA3B515001ABA0A /* shanchutupian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF353971CA3B515001ABA0A /* shanchutupian@2x.png */; };
-		FCF353D61CA3B515001ABA0A /* shanchutupian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF353981CA3B515001ABA0A /* shanchutupian@3x.png */; };
-		FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF353991CA3B515001ABA0A /* shangchuanzhaopian@2x.png */; };
-		FCF353D81CA3B515001ABA0A /* shangchuanzhaopian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF3539A1CA3B515001ABA0A /* shangchuanzhaopian@3x.png */; };
-		FCF353D91CA3B515001ABA0A /* StringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3539F1CA3B515001ABA0A /* StringAttribute.m */; };
-		FCF353DA1CA3B515001ABA0A /* FontAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353A31CA3B515001ABA0A /* FontAttribute.m */; };
-		FCF353DB1CA3B515001ABA0A /* ForegroundColorAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353A51CA3B515001ABA0A /* ForegroundColorAttribute.m */; };
-		FCF353DC1CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353A81CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.m */; };
-		FCF353DD1CA3B515001ABA0A /* NSString+StringAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353AA1CA3B515001ABA0A /* NSString+StringAttribute.m */; };
-		FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF353AC1CA3B515001ABA0A /* 我的供应（空）.png */; };
-		FCF353DF1CA3B515001ABA0A /* 添加图片.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF353AD1CA3B515001ABA0A /* 添加图片.png */; };
-		FCF353E01CA3B515001ABA0A /* ZIKMySupplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353B01CA3B515001ABA0A /* ZIKMySupplyTableViewCell.m */; };
-		FCF353E11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF353B11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib */; };
-		FCF353E21CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353B31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m */; };
-		FCF353E31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF353B41CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib */; };
-		FCF353E41CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353B61CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m */; };
-		FCF353E51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF353B71CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib */; };
-		FCF353E61CA3B515001ABA0A /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353BA1CA3B515001ABA0A /* NSObject+YYModel.m */; };
-		FCF353E71CA3B515001ABA0A /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353BC1CA3B515001ABA0A /* YYClassInfo.m */; };
-		FCF353E81CA3B515001ABA0A /* ZIKArrowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353C01CA3B515001ABA0A /* ZIKArrowViewController.m */; };
-		FCF353E91CA3B515001ABA0A /* ZIKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353C21CA3B515001ABA0A /* ZIKBaseViewController.m */; };
-		FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353C41CA3B515001ABA0A /* ZIKRightBtnSringViewController.m */; };
-		FCF353F01CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353EE1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m */; };
-		FCF353F11CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF353EF1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib */; };
-		FCF353F51CA3CEA7001ABA0A /* ZIKGreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353F41CA3CEA7001ABA0A /* ZIKGreenButton.m */; };
-		FCF353F81CA3D4D1001ABA0A /* ZIKSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353F71CA3D4D1001ABA0A /* ZIKSideView.m */; };
-		FCF353FB1CA3E032001ABA0A /* ZIKSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353FA1CA3E032001ABA0A /* ZIKSelectView.m */; };
-		FCF353FE1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF353FD1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -930,78 +934,9 @@
 		EAF8A5441C867FF9008B99D2 /* HotBuyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyModel.m; sourceTree = "<group>"; };
 		EAF8A5461C868DD1008B99D2 /* GusseYourLikeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GusseYourLikeModel.h; sourceTree = "<group>"; };
 		EAF8A5471C868DD1008B99D2 /* GusseYourLikeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GusseYourLikeModel.m; sourceTree = "<group>"; };
-		FC07A2B21D066DC000E3E7EA /* check49.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check49.png; sourceTree = "<group>"; };
-		FC07A2B31D066DC000E3E7EA /* duihao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duihao.png; sourceTree = "<group>"; };
-		FC21BC5A1CA51C930041E2C3 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
-		FC21BC5B1CA51C930041E2C3 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
-		FC21BC5C1CA51C930041E2C3 /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
-		FC21BC5D1CA51C930041E2C3 /* IQUIScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIScrollView+Additions.m"; sourceTree = "<group>"; };
-		FC21BC5E1CA51C930041E2C3 /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
-		FC21BC5F1CA51C930041E2C3 /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
-		FC21BC601CA51C930041E2C3 /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
-		FC21BC611CA51C930041E2C3 /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
-		FC21BC621CA51C930041E2C3 /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
-		FC21BC631CA51C930041E2C3 /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIViewController+Additions.m"; sourceTree = "<group>"; };
-		FC21BC641CA51C930041E2C3 /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
-		FC21BC651CA51C930041E2C3 /* IQUIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIWindow+Hierarchy.m"; sourceTree = "<group>"; };
-		FC21BC671CA51C930041E2C3 /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
-		FC21BC681CA51C930041E2C3 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
-		FC21BC691CA51C930041E2C3 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
-		FC21BC6A1CA51C930041E2C3 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
-		FC21BC6B1CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
-		FC21BC6C1CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
-		FC21BC6E1CA51C930041E2C3 /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
-		FC21BC6F1CA51C930041E2C3 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
-		FC21BC711CA51C930041E2C3 /* IQBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
-		FC21BC721CA51C930041E2C3 /* IQBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQBarButtonItem.m; sourceTree = "<group>"; };
-		FC21BC731CA51C930041E2C3 /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
-		FC21BC741CA51C930041E2C3 /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
-		FC21BC751CA51C930041E2C3 /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
-		FC21BC761CA51C930041E2C3 /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
-		FC21BC771CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
-		FC21BC781CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
-		FC21BC791CA51C930041E2C3 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
-		FC21BC7B1CA51C930041E2C3 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		FC2856E01CF6DEA9005235FC /* ZIKMySupplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyVC.h; sourceTree = "<group>"; };
-		FC2856E11CF6DEA9005235FC /* ZIKMySupplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyVC.m; sourceTree = "<group>"; };
-		FC2856E21CF6DEA9005235FC /* ZIKMySupplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailViewController.h; sourceTree = "<group>"; };
-		FC2856E31CF6DEA9005235FC /* ZIKMySupplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailViewController.m; sourceTree = "<group>"; };
-		FC2856E41CF6DEA9005235FC /* ZIKSupplyPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishVC.h; sourceTree = "<group>"; };
-		FC2856E51CF6DEA9005235FC /* ZIKSupplyPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishVC.m; sourceTree = "<group>"; };
-		FC2856E61CF6DEA9005235FC /* ZIKSupplyPublishNextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishNextVC.h; sourceTree = "<group>"; };
-		FC2856E71CF6DEA9005235FC /* ZIKSupplyPublishNextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishNextVC.m; sourceTree = "<group>"; };
-		FC28DB601CD9C271003D7C27 /* 注意.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注意.png"; sourceTree = "<group>"; };
-		FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-已退回.png"; sourceTree = "<group>"; };
-		FC28DB641CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCellBackButton.h; sourceTree = "<group>"; };
-		FC28DB651CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyCellBackButton.m; sourceTree = "<group>"; };
-		FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-单株.png"; sourceTree = "<group>"; };
-		FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-人苗.png"; sourceTree = "<group>"; };
-		FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-整片.png"; sourceTree = "<group>"; };
 		FC31B2871CE07CCE0024E147 /* ZIKEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKEmptyTableViewCell.h; sourceTree = "<group>"; };
 		FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKEmptyTableViewCell.m; sourceTree = "<group>"; };
 		FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKEmptyTableViewCell.xib; sourceTree = "<group>"; };
-		FC31B28C1CE088290024E147 /* ZIKPickerBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickerBtn.h; sourceTree = "<group>"; };
-		FC31B28D1CE088290024E147 /* ZIKPickerBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickerBtn.m; sourceTree = "<group>"; };
-		FC49AE331CA8D2FE00214D4B /* ZIKMySupplyCreateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCreateModel.h; sourceTree = "<group>"; };
-		FC49AE341CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyCreateModel.m; sourceTree = "<group>"; };
-		FC49AE361CA8D36000214D4B /* ZIKUserIDetc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserIDetc.h; sourceTree = "<group>"; };
-		FC49AE371CA8D36000214D4B /* ZIKUserIDetc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserIDetc.m; sourceTree = "<group>"; };
-		FC49AE401CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPUblishNextFirstTableViewCell.h; sourceTree = "<group>"; };
-		FC49AE411CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPUblishNextFirstTableViewCell.m; sourceTree = "<group>"; };
-		FC49AE421CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPUblishNextFirstTableViewCell.xib; sourceTree = "<group>"; };
-		FC49AE451CA90C4300214D4B /* ZIKNurseryListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKNurseryListView.h; sourceTree = "<group>"; };
-		FC49AE461CA90C4300214D4B /* ZIKNurseryListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKNurseryListView.m; sourceTree = "<group>"; };
-		FC49AE481CA90CB000214D4B /* ZIKNurseryListSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKNurseryListSelectButton.h; sourceTree = "<group>"; };
-		FC49AE491CA90CB000214D4B /* ZIKNurseryListSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKNurseryListSelectButton.m; sourceTree = "<group>"; };
-		FC49AE4B1CA90E5C00214D4B /* 苗圃基地选择框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苗圃基地选择框.png"; sourceTree = "<group>"; };
-		FC49AE4C1CA90E5C00214D4B /* 苗圃基地已选择框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苗圃基地已选择框.png"; sourceTree = "<group>"; };
-		FC49AE501CA9190700214D4B /* ZIKIteratorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIteratorNode.h; sourceTree = "<group>"; };
-		FC49AE511CA9190700214D4B /* ZIKIteratorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIteratorNode.m; sourceTree = "<group>"; };
-		FC49AE521CA9190700214D4B /* ZIKIteratorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIteratorProtocol.h; sourceTree = "<group>"; };
-		FC49AE531CA9190700214D4B /* ZIKLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKLinkedList.h; sourceTree = "<group>"; };
-		FC49AE541CA9190700214D4B /* ZIKLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKLinkedList.m; sourceTree = "<group>"; };
-		FC49AE571CA91E7B00214D4B /* BWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTextView.h; sourceTree = "<group>"; };
-		FC49AE581CA91E7B00214D4B /* BWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTextView.m; sourceTree = "<group>"; };
 		FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyQRCodeViewController.h; sourceTree = "<group>"; };
 		FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyQRCodeViewController.m; sourceTree = "<group>"; };
 		FC4B4F231CAB7C8900EBB2F8 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
@@ -1167,19 +1102,6 @@
 		FC50B34E1CAE56320022A24C /* ZIKVoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKVoucherCenterViewController.m; sourceTree = "<group>"; };
 		FC50B3501CAE60D20022A24C /* 微信支付.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "微信支付.png"; sourceTree = "<group>"; };
 		FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
-		FC5337921CBDF2B6008BFB11 /* WHC_Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_Asset.h; sourceTree = "<group>"; };
-		FC5337931CBDF2B6008BFB11 /* WHC_Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_Asset.m; sourceTree = "<group>"; };
-		FC5337941CBDF2B6008BFB11 /* WHC_PhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_PhotoListCell.h; sourceTree = "<group>"; };
-		FC5337951CBDF2B6008BFB11 /* WHC_PhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_PhotoListCell.m; sourceTree = "<group>"; };
-		FC5337961CBDF2B6008BFB11 /* WHC_CameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_CameraVC.h; sourceTree = "<group>"; };
-		FC5337971CBDF2B6008BFB11 /* WHC_CameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_CameraVC.m; sourceTree = "<group>"; };
-		FC5337981CBDF2B6008BFB11 /* WHC_CameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_CameraVC.xib; sourceTree = "<group>"; };
-		FC5337991CBDF2B6008BFB11 /* WHC_ChoicePictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_ChoicePictureVC.h; sourceTree = "<group>"; };
-		FC53379A1CBDF2B6008BFB11 /* WHC_ChoicePictureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_ChoicePictureVC.m; sourceTree = "<group>"; };
-		FC53379B1CBDF2B6008BFB11 /* WHC_ChoicePictureVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_ChoicePictureVC.xib; sourceTree = "<group>"; };
-		FC53379C1CBDF2B6008BFB11 /* WHC_PictureListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_PictureListVC.h; sourceTree = "<group>"; };
-		FC53379D1CBDF2B6008BFB11 /* WHC_PictureListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_PictureListVC.m; sourceTree = "<group>"; };
-		FC53379E1CBDF2B6008BFB11 /* WHC_PictureListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_PictureListVC.xib; sourceTree = "<group>"; };
 		FC5337A81CBDF885008BFB11 /* ZIKStationAgentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationAgentViewController.h; sourceTree = "<group>"; };
 		FC5337A91CBDF885008BFB11 /* ZIKStationAgentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationAgentViewController.m; sourceTree = "<group>"; };
 		FC5337BE1CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationAgentTableViewCell.h; sourceTree = "<group>"; };
@@ -1197,11 +1119,177 @@
 		FC55FB931CB503BC008D9CAD /* ZIKCustomizedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKCustomizedTableViewCell.h; sourceTree = "<group>"; };
 		FC55FB941CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKCustomizedTableViewCell.m; sourceTree = "<group>"; };
 		FC55FB951CB503BC008D9CAD /* ZIKCustomizedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKCustomizedTableViewCell.xib; sourceTree = "<group>"; };
-		FC58087F1CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKBottomDeleteTableViewCell.h; sourceTree = "<group>"; };
-		FC5808801CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKBottomDeleteTableViewCell.m; sourceTree = "<group>"; };
-		FC5808811CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKBottomDeleteTableViewCell.xib; sourceTree = "<group>"; };
-		FC5808841CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyBottomSelectButton.h; sourceTree = "<group>"; };
-		FC5808851CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyBottomSelectButton.m; sourceTree = "<group>"; };
+		FC5611821D0C092F00E5743B /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		FC5611831D0C092F00E5743B /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
+		FC5611841D0C092F00E5743B /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
+		FC5611851D0C092F00E5743B /* IQUIScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIScrollView+Additions.m"; sourceTree = "<group>"; };
+		FC5611861D0C092F00E5743B /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		FC5611871D0C092F00E5743B /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
+		FC5611881D0C092F00E5743B /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		FC5611891D0C092F00E5743B /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
+		FC56118A1D0C092F00E5743B /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		FC56118B1D0C092F00E5743B /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIViewController+Additions.m"; sourceTree = "<group>"; };
+		FC56118C1D0C092F00E5743B /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		FC56118D1D0C092F00E5743B /* IQUIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		FC56118F1D0C092F00E5743B /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		FC5611901D0C092F00E5743B /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		FC5611911D0C092F00E5743B /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		FC5611921D0C092F00E5743B /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		FC5611931D0C092F00E5743B /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		FC5611941D0C092F00E5743B /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
+		FC5611961D0C092F00E5743B /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		FC5611971D0C092F00E5743B /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		FC5611991D0C092F00E5743B /* IQBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		FC56119A1D0C092F00E5743B /* IQBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQBarButtonItem.m; sourceTree = "<group>"; };
+		FC56119B1D0C092F00E5743B /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		FC56119C1D0C092F00E5743B /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		FC56119D1D0C092F00E5743B /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		FC56119E1D0C092F00E5743B /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		FC56119F1D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		FC5611A01D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		FC5611A11D0C092F00E5743B /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		FC5611A31D0C092F00E5743B /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		FC5611A51D0C092F00E5743B /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		FC5611A61D0C092F00E5743B /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		FC5611A71D0C092F00E5743B /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		FC5611A81D0C092F00E5743B /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		FC5611A91D0C092F00E5743B /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		FC5611AA1D0C092F00E5743B /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		FC5611AB1D0C092F00E5743B /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		FC5611AC1D0C092F00E5743B /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		FC5611AD1D0C092F00E5743B /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		FC5611AE1D0C092F00E5743B /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		FC5611AF1D0C092F00E5743B /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		FC5611B01D0C092F00E5743B /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		FC5611B11D0C092F00E5743B /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		FC5611B21D0C092F00E5743B /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		FC5611B31D0C092F00E5743B /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		FC5611B41D0C092F00E5743B /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		FC5611B61D0C092F00E5743B /* ZIKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKFunction.h; sourceTree = "<group>"; };
+		FC5611B71D0C092F00E5743B /* ZIKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKFunction.m; sourceTree = "<group>"; };
+		FC5611B81D0C092F00E5743B /* ZIKMySupplyCreateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCreateModel.h; sourceTree = "<group>"; };
+		FC5611B91D0C092F00E5743B /* ZIKMySupplyCreateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyCreateModel.m; sourceTree = "<group>"; };
+		FC5611BA1D0C092F00E5743B /* ZIKSupplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyModel.h; sourceTree = "<group>"; };
+		FC5611BB1D0C092F00E5743B /* ZIKSupplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyModel.m; sourceTree = "<group>"; };
+		FC5611BC1D0C092F00E5743B /* ZIKUserIDetc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserIDetc.h; sourceTree = "<group>"; };
+		FC5611BD1D0C092F00E5743B /* ZIKUserIDetc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserIDetc.m; sourceTree = "<group>"; };
+		FC5611BF1D0C092F00E5743B /* BWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTextView.h; sourceTree = "<group>"; };
+		FC5611C01D0C092F00E5743B /* BWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTextView.m; sourceTree = "<group>"; };
+		FC5611C21D0C092F00E5743B /* ZIKAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddImageView.h; sourceTree = "<group>"; };
+		FC5611C31D0C092F00E5743B /* ZIKAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddImageView.m; sourceTree = "<group>"; };
+		FC5611C41D0C092F00E5743B /* ZIKPickerBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickerBtn.h; sourceTree = "<group>"; };
+		FC5611C51D0C092F00E5743B /* ZIKPickerBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickerBtn.m; sourceTree = "<group>"; };
+		FC5611C61D0C092F00E5743B /* shanchutupian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shanchutupian@2x.png"; sourceTree = "<group>"; };
+		FC5611C71D0C092F00E5743B /* shanchutupian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shanchutupian@3x.png"; sourceTree = "<group>"; };
+		FC5611C81D0C092F00E5743B /* shangchuanzhaopian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shangchuanzhaopian@2x.png"; sourceTree = "<group>"; };
+		FC5611C91D0C092F00E5743B /* shangchuanzhaopian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shangchuanzhaopian@3x.png"; sourceTree = "<group>"; };
+		FC5611CD1D0C092F00E5743B /* WHC_Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_Asset.h; sourceTree = "<group>"; };
+		FC5611CE1D0C092F00E5743B /* WHC_Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_Asset.m; sourceTree = "<group>"; };
+		FC5611CF1D0C092F00E5743B /* WHC_PhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_PhotoListCell.h; sourceTree = "<group>"; };
+		FC5611D01D0C092F00E5743B /* WHC_PhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_PhotoListCell.m; sourceTree = "<group>"; };
+		FC5611D11D0C092F00E5743B /* WHC_CameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_CameraVC.h; sourceTree = "<group>"; };
+		FC5611D21D0C092F00E5743B /* WHC_CameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_CameraVC.m; sourceTree = "<group>"; };
+		FC5611D31D0C092F00E5743B /* WHC_CameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_CameraVC.xib; sourceTree = "<group>"; };
+		FC5611D41D0C092F00E5743B /* WHC_ChoicePictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_ChoicePictureVC.h; sourceTree = "<group>"; };
+		FC5611D51D0C092F00E5743B /* WHC_ChoicePictureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_ChoicePictureVC.m; sourceTree = "<group>"; };
+		FC5611D61D0C092F00E5743B /* WHC_ChoicePictureVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_ChoicePictureVC.xib; sourceTree = "<group>"; };
+		FC5611D71D0C092F00E5743B /* WHC_PictureListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_PictureListVC.h; sourceTree = "<group>"; };
+		FC5611D81D0C092F00E5743B /* WHC_PictureListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_PictureListVC.m; sourceTree = "<group>"; };
+		FC5611D91D0C092F00E5743B /* WHC_PictureListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_PictureListVC.xib; sourceTree = "<group>"; };
+		FC5611DD1D0C092F00E5743B /* StringAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAttribute.h; sourceTree = "<group>"; };
+		FC5611DE1D0C092F00E5743B /* StringAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAttribute.m; sourceTree = "<group>"; };
+		FC5611DF1D0C092F00E5743B /* StringAttributeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAttributeProtocol.h; sourceTree = "<group>"; };
+		FC5611E11D0C092F00E5743B /* FontAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAttribute.h; sourceTree = "<group>"; };
+		FC5611E21D0C092F00E5743B /* FontAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAttribute.m; sourceTree = "<group>"; };
+		FC5611E31D0C092F00E5743B /* ForegroundColorAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForegroundColorAttribute.h; sourceTree = "<group>"; };
+		FC5611E41D0C092F00E5743B /* ForegroundColorAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForegroundColorAttribute.m; sourceTree = "<group>"; };
+		FC5611E61D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+StringAttribute.h"; sourceTree = "<group>"; };
+		FC5611E71D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+StringAttribute.m"; sourceTree = "<group>"; };
+		FC5611E81D0C092F00E5743B /* NSString+StringAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringAttribute.h"; sourceTree = "<group>"; };
+		FC5611E91D0C092F00E5743B /* NSString+StringAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringAttribute.m"; sourceTree = "<group>"; };
+		FC5611EA1D0C092F00E5743B /* StringAttributeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAttributeHelper.h; sourceTree = "<group>"; };
+		FC5611EB1D0C092F00E5743B /* 我的供应（空）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的供应（空）.png"; sourceTree = "<group>"; };
+		FC5611EC1D0C092F00E5743B /* 标签-已退回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-已退回.png"; sourceTree = "<group>"; };
+		FC5611ED1D0C092F00E5743B /* 注意.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注意.png"; sourceTree = "<group>"; };
+		FC5611EE1D0C092F00E5743B /* 添加图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加图片.png"; sourceTree = "<group>"; };
+		FC5611EF1D0C092F00E5743B /* 添加照片-人苗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-人苗.png"; sourceTree = "<group>"; };
+		FC5611F01D0C092F00E5743B /* 添加照片-单株.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-单株.png"; sourceTree = "<group>"; };
+		FC5611F11D0C092F00E5743B /* 添加照片-整片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加照片-整片.png"; sourceTree = "<group>"; };
+		FC5611F21D0C092F00E5743B /* 苗圃基地已选择框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苗圃基地已选择框.png"; sourceTree = "<group>"; };
+		FC5611F31D0C092F00E5743B /* 苗圃基地选择框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苗圃基地选择框.png"; sourceTree = "<group>"; };
+		FC5611F51D0C092F00E5743B /* ZIKIteratorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIteratorNode.h; sourceTree = "<group>"; };
+		FC5611F61D0C092F00E5743B /* ZIKIteratorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKIteratorNode.m; sourceTree = "<group>"; };
+		FC5611F71D0C092F00E5743B /* ZIKIteratorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKIteratorProtocol.h; sourceTree = "<group>"; };
+		FC5611F81D0C092F00E5743B /* ZIKLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKLinkedList.h; sourceTree = "<group>"; };
+		FC5611F91D0C092F00E5743B /* ZIKLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKLinkedList.m; sourceTree = "<group>"; };
+		FC5611FB1D0C092F00E5743B /* check49.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check49.png; sourceTree = "<group>"; };
+		FC5611FC1D0C092F00E5743B /* duihao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duihao.png; sourceTree = "<group>"; };
+		FC5611FD1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKBottomDeleteTableViewCell.h; sourceTree = "<group>"; };
+		FC5611FE1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKBottomDeleteTableViewCell.m; sourceTree = "<group>"; };
+		FC5611FF1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKBottomDeleteTableViewCell.xib; sourceTree = "<group>"; };
+		FC5612001D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyBottomRefreshTableViewCell.h; sourceTree = "<group>"; };
+		FC5612011D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyBottomRefreshTableViewCell.m; sourceTree = "<group>"; };
+		FC5612021D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyBottomRefreshTableViewCell.xib; sourceTree = "<group>"; };
+		FC5612031D0C092F00E5743B /* ZIKMySupplyCellBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyCellBackButton.h; sourceTree = "<group>"; };
+		FC5612041D0C092F00E5743B /* ZIKMySupplyCellBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyCellBackButton.m; sourceTree = "<group>"; };
+		FC5612051D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailBottomShareTableViewCell.h; sourceTree = "<group>"; };
+		FC5612061D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailBottomShareTableViewCell.m; sourceTree = "<group>"; };
+		FC5612071D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyDetailBottomShareTableViewCell.xib; sourceTree = "<group>"; };
+		FC5612081D0C092F00E5743B /* ZIKMySupplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyTableViewCell.h; sourceTree = "<group>"; };
+		FC5612091D0C092F00E5743B /* ZIKMySupplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyTableViewCell.m; sourceTree = "<group>"; };
+		FC56120A1D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyTableViewCell.xib; sourceTree = "<group>"; };
+		FC56120B1D0C092F00E5743B /* ZIKNurseryListSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKNurseryListSelectButton.h; sourceTree = "<group>"; };
+		FC56120C1D0C092F00E5743B /* ZIKNurseryListSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKNurseryListSelectButton.m; sourceTree = "<group>"; };
+		FC56120D1D0C092F00E5743B /* ZIKNurseryListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKNurseryListView.h; sourceTree = "<group>"; };
+		FC56120E1D0C092F00E5743B /* ZIKNurseryListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKNurseryListView.m; sourceTree = "<group>"; };
+		FC56120F1D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSelectProductCategoryTableViewCell.h; sourceTree = "<group>"; };
+		FC5612101D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSelectProductCategoryTableViewCell.m; sourceTree = "<group>"; };
+		FC5612111D0C092F00E5743B /* ZIKSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSelectView.h; sourceTree = "<group>"; };
+		FC5612121D0C092F00E5743B /* ZIKSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSelectView.m; sourceTree = "<group>"; };
+		FC5612131D0C092F00E5743B /* ZIKSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSideView.h; sourceTree = "<group>"; };
+		FC5612141D0C092F00E5743B /* ZIKSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSideView.m; sourceTree = "<group>"; };
+		FC5612151D0C092F00E5743B /* ZIKSupplyBottomSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyBottomSelectButton.h; sourceTree = "<group>"; };
+		FC5612161D0C092F00E5743B /* ZIKSupplyBottomSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyBottomSelectButton.m; sourceTree = "<group>"; };
+		FC5612171D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishNameTableViewCell.h; sourceTree = "<group>"; };
+		FC5612181D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishNameTableViewCell.m; sourceTree = "<group>"; };
+		FC5612191D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPublishNameTableViewCell.xib; sourceTree = "<group>"; };
+		FC56121A1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPUblishNextFirstTableViewCell.h; sourceTree = "<group>"; };
+		FC56121B1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPUblishNextFirstTableViewCell.m; sourceTree = "<group>"; };
+		FC56121C1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPUblishNextFirstTableViewCell.xib; sourceTree = "<group>"; };
+		FC56121D1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishPickImageViewTableViewCell.h; sourceTree = "<group>"; };
+		FC56121E1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishPickImageViewTableViewCell.m; sourceTree = "<group>"; };
+		FC56121F1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPublishPickImageViewTableViewCell.xib; sourceTree = "<group>"; };
+		FC5612201D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishSingleTableViewCell.h; sourceTree = "<group>"; };
+		FC5612211D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishSingleTableViewCell.m; sourceTree = "<group>"; };
+		FC5612221D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPublishSingleTableViewCell.xib; sourceTree = "<group>"; };
+		FC5612241D0C092F00E5743B /* ZIKPickerBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickerBtn.h; sourceTree = "<group>"; };
+		FC5612251D0C092F00E5743B /* ZIKPickerBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickerBtn.m; sourceTree = "<group>"; };
+		FC5612261D0C092F00E5743B /* ZIKPickImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickImageView.h; sourceTree = "<group>"; };
+		FC5612271D0C092F00E5743B /* ZIKPickImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickImageView.m; sourceTree = "<group>"; };
+		FC5612291D0C092F00E5743B /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		FC56122A1D0C092F00E5743B /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		FC56122B1D0C092F00E5743B /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		FC56122C1D0C092F00E5743B /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		FC56122D1D0C092F00E5743B /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
+		FC5612301D0C092F00E5743B /* ZIKGreenButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKGreenButton.h; sourceTree = "<group>"; };
+		FC5612311D0C092F00E5743B /* ZIKGreenButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKGreenButton.m; sourceTree = "<group>"; };
+		FC5612321D0C092F00E5743B /* ZIKArrowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKArrowViewController.h; sourceTree = "<group>"; };
+		FC5612331D0C092F00E5743B /* ZIKArrowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKArrowViewController.m; sourceTree = "<group>"; };
+		FC5612341D0C092F00E5743B /* ZIKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKBaseViewController.h; sourceTree = "<group>"; };
+		FC5612351D0C092F00E5743B /* ZIKBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKBaseViewController.m; sourceTree = "<group>"; };
+		FC5612361D0C092F00E5743B /* ZIKNavConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKNavConfigViewController.h; sourceTree = "<group>"; };
+		FC5612371D0C092F00E5743B /* ZIKNavConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKNavConfigViewController.m; sourceTree = "<group>"; };
+		FC5612381D0C092F00E5743B /* ZIKRightBtnSringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKRightBtnSringViewController.h; sourceTree = "<group>"; };
+		FC5612391D0C092F00E5743B /* ZIKRightBtnSringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKRightBtnSringViewController.m; sourceTree = "<group>"; };
+		FC56123A1D0C092F00E5743B /* ZIKMySupplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailViewController.h; sourceTree = "<group>"; };
+		FC56123B1D0C092F00E5743B /* ZIKMySupplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailViewController.m; sourceTree = "<group>"; };
+		FC56123C1D0C092F00E5743B /* ZIKMySupplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyVC.h; sourceTree = "<group>"; };
+		FC56123D1D0C092F00E5743B /* ZIKMySupplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyVC.m; sourceTree = "<group>"; };
+		FC56123E1D0C092F00E5743B /* ZIKSupplyPublishNextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishNextVC.h; sourceTree = "<group>"; };
+		FC56123F1D0C092F00E5743B /* ZIKSupplyPublishNextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishNextVC.m; sourceTree = "<group>"; };
+		FC5612401D0C092F00E5743B /* ZIKSupplyPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishVC.h; sourceTree = "<group>"; };
+		FC5612411D0C092F00E5743B /* ZIKSupplyPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishVC.m; sourceTree = "<group>"; };
+		FC5612421D0C092F00E5743B /* 已选小标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已选小标.png"; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -1213,20 +1301,12 @@
 		FC6149FB1CAA57B600672241 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
 		FC6149FC1CAA57B600672241 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
 		FC6149FD1CAA57B600672241 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
-		FC614A021CAA58C200672241 /* ZIKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKFunction.h; sourceTree = "<group>"; };
-		FC614A031CAA58C200672241 /* ZIKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKFunction.m; sourceTree = "<group>"; };
 		FC614A051CAA5BBC00672241 /* ZIKUserNameSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserNameSetViewController.h; sourceTree = "<group>"; };
 		FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserNameSetViewController.m; sourceTree = "<group>"; };
 		FC614A081CAA65C700672241 /* ZIKPasswordSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPasswordSetViewController.h; sourceTree = "<group>"; };
 		FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPasswordSetViewController.m; sourceTree = "<group>"; };
 		FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetialModel.h; sourceTree = "<group>"; };
 		FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetialModel.m; sourceTree = "<group>"; };
-		FC68F3811CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyBottomRefreshTableViewCell.h; sourceTree = "<group>"; };
-		FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyBottomRefreshTableViewCell.m; sourceTree = "<group>"; };
-		FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyBottomRefreshTableViewCell.xib; sourceTree = "<group>"; };
-		FC6C13361CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyDetailBottomShareTableViewCell.h; sourceTree = "<group>"; };
-		FC6C13371CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyDetailBottomShareTableViewCell.m; sourceTree = "<group>"; };
-		FC6C13381CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyDetailBottomShareTableViewCell.xib; sourceTree = "<group>"; };
 		FC6C133B1CE1BC40003E0FF9 /* ZIKHintTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHintTableViewCell.h; sourceTree = "<group>"; };
 		FC6C133C1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHintTableViewCell.m; sourceTree = "<group>"; };
 		FC6C133D1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHintTableViewCell.xib; sourceTree = "<group>"; };
@@ -1353,8 +1433,6 @@
 		FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "个人中心-购买记录.png"; sourceTree = "<group>"; };
 		FCDE90901CDB09D60009D157 /* ZIKPurchaseRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPurchaseRecordsViewController.h; sourceTree = "<group>"; };
 		FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPurchaseRecordsViewController.m; sourceTree = "<group>"; };
-		FCE2D1C31CE46C0A0002B069 /* ZIKAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddImageView.h; sourceTree = "<group>"; };
-		FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddImageView.m; sourceTree = "<group>"; };
 		FCE458BF1CE6D6AA00CBF802 /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
 		FCE458C11CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHaveReadInfoViewController.h; sourceTree = "<group>"; };
 		FCE458C21CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHaveReadInfoViewController.m; sourceTree = "<group>"; };
@@ -1363,73 +1441,6 @@
 		FCE458C71CE7048600CBF802 /* ZIKHaveReadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHaveReadTableViewCell.h; sourceTree = "<group>"; };
 		FCE458C81CE7048600CBF802 /* ZIKHaveReadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHaveReadTableViewCell.m; sourceTree = "<group>"; };
 		FCE458C91CE7048600CBF802 /* ZIKHaveReadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHaveReadTableViewCell.xib; sourceTree = "<group>"; };
-		FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
-		FCF3537C1CA3B514001ABA0A /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
-		FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
-		FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
-		FCF3537F1CA3B514001ABA0A /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
-		FCF353801CA3B514001ABA0A /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
-		FCF353811CA3B514001ABA0A /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
-		FCF353821CA3B514001ABA0A /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
-		FCF353831CA3B514001ABA0A /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
-		FCF353841CA3B514001ABA0A /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
-		FCF353851CA3B514001ABA0A /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
-		FCF353861CA3B514001ABA0A /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
-		FCF353871CA3B514001ABA0A /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
-		FCF353881CA3B514001ABA0A /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
-		FCF353891CA3B514001ABA0A /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
-		FCF3538A1CA3B515001ABA0A /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		FCF3538C1CA3B515001ABA0A /* ZIKSupplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyModel.h; sourceTree = "<group>"; };
-		FCF3538D1CA3B515001ABA0A /* ZIKSupplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyModel.m; sourceTree = "<group>"; };
-		FCF353971CA3B515001ABA0A /* shanchutupian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shanchutupian@2x.png"; sourceTree = "<group>"; };
-		FCF353981CA3B515001ABA0A /* shanchutupian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shanchutupian@3x.png"; sourceTree = "<group>"; };
-		FCF353991CA3B515001ABA0A /* shangchuanzhaopian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shangchuanzhaopian@2x.png"; sourceTree = "<group>"; };
-		FCF3539A1CA3B515001ABA0A /* shangchuanzhaopian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shangchuanzhaopian@3x.png"; sourceTree = "<group>"; };
-		FCF3539E1CA3B515001ABA0A /* StringAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAttribute.h; sourceTree = "<group>"; };
-		FCF3539F1CA3B515001ABA0A /* StringAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringAttribute.m; sourceTree = "<group>"; };
-		FCF353A01CA3B515001ABA0A /* StringAttributeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAttributeProtocol.h; sourceTree = "<group>"; };
-		FCF353A21CA3B515001ABA0A /* FontAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAttribute.h; sourceTree = "<group>"; };
-		FCF353A31CA3B515001ABA0A /* FontAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAttribute.m; sourceTree = "<group>"; };
-		FCF353A41CA3B515001ABA0A /* ForegroundColorAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForegroundColorAttribute.h; sourceTree = "<group>"; };
-		FCF353A51CA3B515001ABA0A /* ForegroundColorAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForegroundColorAttribute.m; sourceTree = "<group>"; };
-		FCF353A71CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+StringAttribute.h"; sourceTree = "<group>"; };
-		FCF353A81CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+StringAttribute.m"; sourceTree = "<group>"; };
-		FCF353A91CA3B515001ABA0A /* NSString+StringAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringAttribute.h"; sourceTree = "<group>"; };
-		FCF353AA1CA3B515001ABA0A /* NSString+StringAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringAttribute.m"; sourceTree = "<group>"; };
-		FCF353AB1CA3B515001ABA0A /* StringAttributeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringAttributeHelper.h; sourceTree = "<group>"; };
-		FCF353AC1CA3B515001ABA0A /* 我的供应（空）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的供应（空）.png"; sourceTree = "<group>"; };
-		FCF353AD1CA3B515001ABA0A /* 添加图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加图片.png"; sourceTree = "<group>"; };
-		FCF353AF1CA3B515001ABA0A /* ZIKMySupplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMySupplyTableViewCell.h; sourceTree = "<group>"; };
-		FCF353B01CA3B515001ABA0A /* ZIKMySupplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMySupplyTableViewCell.m; sourceTree = "<group>"; };
-		FCF353B11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMySupplyTableViewCell.xib; sourceTree = "<group>"; };
-		FCF353B21CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishPickImageViewTableViewCell.h; sourceTree = "<group>"; };
-		FCF353B31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishPickImageViewTableViewCell.m; sourceTree = "<group>"; };
-		FCF353B41CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPublishPickImageViewTableViewCell.xib; sourceTree = "<group>"; };
-		FCF353B51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishSingleTableViewCell.h; sourceTree = "<group>"; };
-		FCF353B61CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishSingleTableViewCell.m; sourceTree = "<group>"; };
-		FCF353B71CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPublishSingleTableViewCell.xib; sourceTree = "<group>"; };
-		FCF353B91CA3B515001ABA0A /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
-		FCF353BA1CA3B515001ABA0A /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
-		FCF353BB1CA3B515001ABA0A /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
-		FCF353BC1CA3B515001ABA0A /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
-		FCF353BD1CA3B515001ABA0A /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
-		FCF353BF1CA3B515001ABA0A /* ZIKArrowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKArrowViewController.h; sourceTree = "<group>"; };
-		FCF353C01CA3B515001ABA0A /* ZIKArrowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKArrowViewController.m; sourceTree = "<group>"; };
-		FCF353C11CA3B515001ABA0A /* ZIKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKBaseViewController.h; sourceTree = "<group>"; };
-		FCF353C21CA3B515001ABA0A /* ZIKBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKBaseViewController.m; sourceTree = "<group>"; };
-		FCF353C31CA3B515001ABA0A /* ZIKRightBtnSringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKRightBtnSringViewController.h; sourceTree = "<group>"; };
-		FCF353C41CA3B515001ABA0A /* ZIKRightBtnSringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKRightBtnSringViewController.m; sourceTree = "<group>"; };
-		FCF353ED1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishNameTableViewCell.h; sourceTree = "<group>"; };
-		FCF353EE1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishNameTableViewCell.m; sourceTree = "<group>"; };
-		FCF353EF1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSupplyPublishNameTableViewCell.xib; sourceTree = "<group>"; };
-		FCF353F31CA3CEA7001ABA0A /* ZIKGreenButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKGreenButton.h; sourceTree = "<group>"; };
-		FCF353F41CA3CEA7001ABA0A /* ZIKGreenButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKGreenButton.m; sourceTree = "<group>"; };
-		FCF353F61CA3D4D1001ABA0A /* ZIKSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSideView.h; sourceTree = "<group>"; };
-		FCF353F71CA3D4D1001ABA0A /* ZIKSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSideView.m; sourceTree = "<group>"; };
-		FCF353F91CA3E032001ABA0A /* ZIKSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSelectView.h; sourceTree = "<group>"; };
-		FCF353FA1CA3E032001ABA0A /* ZIKSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSelectView.m; sourceTree = "<group>"; };
-		FCF353FC1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSelectProductCategoryTableViewCell.h; sourceTree = "<group>"; };
-		FCF353FD1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSelectProductCategoryTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2441,6 +2452,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				FC56117F1D0C092F00E5743B /* MySupplyViewController */,
 				EA72662B1CFD5F79005612E6 /* KeFuViewController */,
 				FCCFA6FE1CF2E11300CC1313 /* AddressSelect */,
 				EAD2170F1CDC6F1A006424FB /* MyMessageViewController */,
@@ -2452,7 +2464,6 @@
 				FC6FED4F1CACEAE8000E2CA5 /* MyCustomizedinformation */,
 				FC4B4F261CAB95CC00EBB2F8 /* MyPayVC */,
 				FC6149DC1CAA2E0600672241 /* UserInfoSetVC */,
-				FCF353791CA3B514001ABA0A /* MySupplyViewController */,
 				EA7056501C9F869900E9D253 /* CompanyInfoViewController */,
 				EA4FF1BA1C9A8D9800441DC3 /* MyBuyLIstViewController */,
 				EA16C4D61C93A29C00A33BD3 /* MycollectViewController */,
@@ -2487,102 +2498,6 @@
 				EA1120CD1CA62BE300857E48 /* NurseryModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		FC21BC581CA51C930041E2C3 /* IQKeyBoardManager */ = {
-			isa = PBXGroup;
-			children = (
-				FC21BC591CA51C930041E2C3 /* Categories */,
-				FC21BC661CA51C930041E2C3 /* Constants */,
-				FC21BC691CA51C930041E2C3 /* IQKeyboardManager.h */,
-				FC21BC6A1CA51C930041E2C3 /* IQKeyboardManager.m */,
-				FC21BC6B1CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.h */,
-				FC21BC6C1CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m */,
-				FC21BC6D1CA51C930041E2C3 /* IQTextView */,
-				FC21BC701CA51C930041E2C3 /* IQToolbar */,
-				FC21BC791CA51C930041E2C3 /* KeyboardManager.h */,
-				FC21BC7A1CA51C930041E2C3 /* Resources */,
-			);
-			path = IQKeyBoardManager;
-			sourceTree = "<group>";
-		};
-		FC21BC591CA51C930041E2C3 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				FC21BC5A1CA51C930041E2C3 /* IQNSArray+Sort.h */,
-				FC21BC5B1CA51C930041E2C3 /* IQNSArray+Sort.m */,
-				FC21BC5C1CA51C930041E2C3 /* IQUIScrollView+Additions.h */,
-				FC21BC5D1CA51C930041E2C3 /* IQUIScrollView+Additions.m */,
-				FC21BC5E1CA51C930041E2C3 /* IQUITextFieldView+Additions.h */,
-				FC21BC5F1CA51C930041E2C3 /* IQUITextFieldView+Additions.m */,
-				FC21BC601CA51C930041E2C3 /* IQUIView+Hierarchy.h */,
-				FC21BC611CA51C930041E2C3 /* IQUIView+Hierarchy.m */,
-				FC21BC621CA51C930041E2C3 /* IQUIViewController+Additions.h */,
-				FC21BC631CA51C930041E2C3 /* IQUIViewController+Additions.m */,
-				FC21BC641CA51C930041E2C3 /* IQUIWindow+Hierarchy.h */,
-				FC21BC651CA51C930041E2C3 /* IQUIWindow+Hierarchy.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		FC21BC661CA51C930041E2C3 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				FC21BC671CA51C930041E2C3 /* IQKeyboardManagerConstants.h */,
-				FC21BC681CA51C930041E2C3 /* IQKeyboardManagerConstantsInternal.h */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
-		FC21BC6D1CA51C930041E2C3 /* IQTextView */ = {
-			isa = PBXGroup;
-			children = (
-				FC21BC6E1CA51C930041E2C3 /* IQTextView.h */,
-				FC21BC6F1CA51C930041E2C3 /* IQTextView.m */,
-			);
-			path = IQTextView;
-			sourceTree = "<group>";
-		};
-		FC21BC701CA51C930041E2C3 /* IQToolbar */ = {
-			isa = PBXGroup;
-			children = (
-				FC21BC711CA51C930041E2C3 /* IQBarButtonItem.h */,
-				FC21BC721CA51C930041E2C3 /* IQBarButtonItem.m */,
-				FC21BC731CA51C930041E2C3 /* IQTitleBarButtonItem.h */,
-				FC21BC741CA51C930041E2C3 /* IQTitleBarButtonItem.m */,
-				FC21BC751CA51C930041E2C3 /* IQToolbar.h */,
-				FC21BC761CA51C930041E2C3 /* IQToolbar.m */,
-				FC21BC771CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.h */,
-				FC21BC781CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m */,
-			);
-			path = IQToolbar;
-			sourceTree = "<group>";
-		};
-		FC21BC7A1CA51C930041E2C3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FC21BC7B1CA51C930041E2C3 /* IQKeyboardManager.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		FC31B27D1CE056BA0024E147 /* 图片上传view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "图片上传view";
-			sourceTree = "<group>";
-		};
-		FC49AE4F1CA9190700214D4B /* 迭代器模式 */ = {
-			isa = PBXGroup;
-			children = (
-				FC49AE501CA9190700214D4B /* ZIKIteratorNode.h */,
-				FC49AE511CA9190700214D4B /* ZIKIteratorNode.m */,
-				FC49AE521CA9190700214D4B /* ZIKIteratorProtocol.h */,
-				FC49AE531CA9190700214D4B /* ZIKLinkedList.h */,
-				FC49AE541CA9190700214D4B /* ZIKLinkedList.m */,
-			);
-			path = "迭代器模式";
 			sourceTree = "<group>";
 		};
 		FC4B4F221CAB7C8900EBB2F8 /* 生成二维码 */ = {
@@ -2878,42 +2793,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		FC53378F1CBDF279008BFB11 /* 多选图片 */ = {
-			isa = PBXGroup;
-			children = (
-				FC5337901CBDF2B6008BFB11 /* WHCLib */,
-			);
-			path = "多选图片";
-			sourceTree = "<group>";
-		};
-		FC5337901CBDF2B6008BFB11 /* WHCLib */ = {
-			isa = PBXGroup;
-			children = (
-				FC5337911CBDF2B6008BFB11 /* cell */,
-				FC5337961CBDF2B6008BFB11 /* WHC_CameraVC.h */,
-				FC5337971CBDF2B6008BFB11 /* WHC_CameraVC.m */,
-				FC5337981CBDF2B6008BFB11 /* WHC_CameraVC.xib */,
-				FC5337991CBDF2B6008BFB11 /* WHC_ChoicePictureVC.h */,
-				FC53379A1CBDF2B6008BFB11 /* WHC_ChoicePictureVC.m */,
-				FC53379B1CBDF2B6008BFB11 /* WHC_ChoicePictureVC.xib */,
-				FC53379C1CBDF2B6008BFB11 /* WHC_PictureListVC.h */,
-				FC53379D1CBDF2B6008BFB11 /* WHC_PictureListVC.m */,
-				FC53379E1CBDF2B6008BFB11 /* WHC_PictureListVC.xib */,
-			);
-			path = WHCLib;
-			sourceTree = "<group>";
-		};
-		FC5337911CBDF2B6008BFB11 /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				FC5337921CBDF2B6008BFB11 /* WHC_Asset.h */,
-				FC5337931CBDF2B6008BFB11 /* WHC_Asset.m */,
-				FC5337941CBDF2B6008BFB11 /* WHC_PhotoListCell.h */,
-				FC5337951CBDF2B6008BFB11 /* WHC_PhotoListCell.m */,
-			);
-			path = cell;
-			sourceTree = "<group>";
-		};
 		FC5337A71CBDF85D008BFB11 /* StationAgentVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2938,6 +2817,376 @@
 				FC5337C71CBE17B0008BFB11 /* HCSStarRatingView.m */,
 			);
 			path = StarRatingView;
+			sourceTree = "<group>";
+		};
+		FC56117F1D0C092F00E5743B /* MySupplyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611801D0C092F00E5743B /* IQKeyBoardManager */,
+				FC5611A41D0C092F00E5743B /* MJRefresh */,
+				FC5611B51D0C092F00E5743B /* Model */,
+				FC5611BE1D0C092F00E5743B /* Resource */,
+				FC5611FA1D0C092F00E5743B /* View */,
+				FC5612281D0C092F00E5743B /* YYModel */,
+				FC56122E1D0C092F00E5743B /* ZIKBaseVC */,
+				FC56123A1D0C092F00E5743B /* ZIKMySupplyDetailViewController.h */,
+				FC56123B1D0C092F00E5743B /* ZIKMySupplyDetailViewController.m */,
+				FC56123C1D0C092F00E5743B /* ZIKMySupplyVC.h */,
+				FC56123D1D0C092F00E5743B /* ZIKMySupplyVC.m */,
+				FC56123E1D0C092F00E5743B /* ZIKSupplyPublishNextVC.h */,
+				FC56123F1D0C092F00E5743B /* ZIKSupplyPublishNextVC.m */,
+				FC5612401D0C092F00E5743B /* ZIKSupplyPublishVC.h */,
+				FC5612411D0C092F00E5743B /* ZIKSupplyPublishVC.m */,
+				FC5612421D0C092F00E5743B /* 已选小标.png */,
+			);
+			path = MySupplyViewController;
+			sourceTree = "<group>";
+		};
+		FC5611801D0C092F00E5743B /* IQKeyBoardManager */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611811D0C092F00E5743B /* Categories */,
+				FC56118E1D0C092F00E5743B /* Constants */,
+				FC5611911D0C092F00E5743B /* IQKeyboardManager.h */,
+				FC5611921D0C092F00E5743B /* IQKeyboardManager.m */,
+				FC5611931D0C092F00E5743B /* IQKeyboardReturnKeyHandler.h */,
+				FC5611941D0C092F00E5743B /* IQKeyboardReturnKeyHandler.m */,
+				FC5611951D0C092F00E5743B /* IQTextView */,
+				FC5611981D0C092F00E5743B /* IQToolbar */,
+				FC5611A11D0C092F00E5743B /* KeyboardManager.h */,
+				FC5611A21D0C092F00E5743B /* Resources */,
+			);
+			path = IQKeyBoardManager;
+			sourceTree = "<group>";
+		};
+		FC5611811D0C092F00E5743B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611821D0C092F00E5743B /* IQNSArray+Sort.h */,
+				FC5611831D0C092F00E5743B /* IQNSArray+Sort.m */,
+				FC5611841D0C092F00E5743B /* IQUIScrollView+Additions.h */,
+				FC5611851D0C092F00E5743B /* IQUIScrollView+Additions.m */,
+				FC5611861D0C092F00E5743B /* IQUITextFieldView+Additions.h */,
+				FC5611871D0C092F00E5743B /* IQUITextFieldView+Additions.m */,
+				FC5611881D0C092F00E5743B /* IQUIView+Hierarchy.h */,
+				FC5611891D0C092F00E5743B /* IQUIView+Hierarchy.m */,
+				FC56118A1D0C092F00E5743B /* IQUIViewController+Additions.h */,
+				FC56118B1D0C092F00E5743B /* IQUIViewController+Additions.m */,
+				FC56118C1D0C092F00E5743B /* IQUIWindow+Hierarchy.h */,
+				FC56118D1D0C092F00E5743B /* IQUIWindow+Hierarchy.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FC56118E1D0C092F00E5743B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FC56118F1D0C092F00E5743B /* IQKeyboardManagerConstants.h */,
+				FC5611901D0C092F00E5743B /* IQKeyboardManagerConstantsInternal.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		FC5611951D0C092F00E5743B /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611961D0C092F00E5743B /* IQTextView.h */,
+				FC5611971D0C092F00E5743B /* IQTextView.m */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		FC5611981D0C092F00E5743B /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611991D0C092F00E5743B /* IQBarButtonItem.h */,
+				FC56119A1D0C092F00E5743B /* IQBarButtonItem.m */,
+				FC56119B1D0C092F00E5743B /* IQTitleBarButtonItem.h */,
+				FC56119C1D0C092F00E5743B /* IQTitleBarButtonItem.m */,
+				FC56119D1D0C092F00E5743B /* IQToolbar.h */,
+				FC56119E1D0C092F00E5743B /* IQToolbar.m */,
+				FC56119F1D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.h */,
+				FC5611A01D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.m */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		FC5611A21D0C092F00E5743B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611A31D0C092F00E5743B /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FC5611A41D0C092F00E5743B /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611A51D0C092F00E5743B /* MJRefresh.bundle */,
+				FC5611A61D0C092F00E5743B /* MJRefresh.h */,
+				FC5611A71D0C092F00E5743B /* MJRefreshBaseView.h */,
+				FC5611A81D0C092F00E5743B /* MJRefreshBaseView.m */,
+				FC5611A91D0C092F00E5743B /* MJRefreshConst.h */,
+				FC5611AA1D0C092F00E5743B /* MJRefreshConst.m */,
+				FC5611AB1D0C092F00E5743B /* MJRefreshFooterView.h */,
+				FC5611AC1D0C092F00E5743B /* MJRefreshFooterView.m */,
+				FC5611AD1D0C092F00E5743B /* MJRefreshHeaderView.h */,
+				FC5611AE1D0C092F00E5743B /* MJRefreshHeaderView.m */,
+				FC5611AF1D0C092F00E5743B /* UIScrollView+MJExtension.h */,
+				FC5611B01D0C092F00E5743B /* UIScrollView+MJExtension.m */,
+				FC5611B11D0C092F00E5743B /* UIScrollView+MJRefresh.h */,
+				FC5611B21D0C092F00E5743B /* UIScrollView+MJRefresh.m */,
+				FC5611B31D0C092F00E5743B /* UIView+MJExtension.h */,
+				FC5611B41D0C092F00E5743B /* UIView+MJExtension.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		FC5611B51D0C092F00E5743B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611B61D0C092F00E5743B /* ZIKFunction.h */,
+				FC5611B71D0C092F00E5743B /* ZIKFunction.m */,
+				FC5611B81D0C092F00E5743B /* ZIKMySupplyCreateModel.h */,
+				FC5611B91D0C092F00E5743B /* ZIKMySupplyCreateModel.m */,
+				FC5611BA1D0C092F00E5743B /* ZIKSupplyModel.h */,
+				FC5611BB1D0C092F00E5743B /* ZIKSupplyModel.m */,
+				FC5611BC1D0C092F00E5743B /* ZIKUserIDetc.h */,
+				FC5611BD1D0C092F00E5743B /* ZIKUserIDetc.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC5611BE1D0C092F00E5743B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611BF1D0C092F00E5743B /* BWTextView.h */,
+				FC5611C01D0C092F00E5743B /* BWTextView.m */,
+				FC5611C11D0C092F00E5743B /* PickerView */,
+				FC5611C61D0C092F00E5743B /* shanchutupian@2x.png */,
+				FC5611C71D0C092F00E5743B /* shanchutupian@3x.png */,
+				FC5611C81D0C092F00E5743B /* shangchuanzhaopian@2x.png */,
+				FC5611C91D0C092F00E5743B /* shangchuanzhaopian@3x.png */,
+				FC5611CA1D0C092F00E5743B /* 多选图片 */,
+				FC5611DA1D0C092F00E5743B /* 富文本 */,
+				FC5611EB1D0C092F00E5743B /* 我的供应（空）.png */,
+				FC5611EC1D0C092F00E5743B /* 标签-已退回.png */,
+				FC5611ED1D0C092F00E5743B /* 注意.png */,
+				FC5611EE1D0C092F00E5743B /* 添加图片.png */,
+				FC5611EF1D0C092F00E5743B /* 添加照片-人苗.png */,
+				FC5611F01D0C092F00E5743B /* 添加照片-单株.png */,
+				FC5611F11D0C092F00E5743B /* 添加照片-整片.png */,
+				FC5611F21D0C092F00E5743B /* 苗圃基地已选择框.png */,
+				FC5611F31D0C092F00E5743B /* 苗圃基地选择框.png */,
+				FC5611F41D0C092F00E5743B /* 迭代器模式 */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		FC5611C11D0C092F00E5743B /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611C21D0C092F00E5743B /* ZIKAddImageView.h */,
+				FC5611C31D0C092F00E5743B /* ZIKAddImageView.m */,
+				FC5611C41D0C092F00E5743B /* ZIKPickerBtn.h */,
+				FC5611C51D0C092F00E5743B /* ZIKPickerBtn.m */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
+		FC5611CA1D0C092F00E5743B /* 多选图片 */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611CB1D0C092F00E5743B /* WHCLib */,
+			);
+			path = "多选图片";
+			sourceTree = "<group>";
+		};
+		FC5611CB1D0C092F00E5743B /* WHCLib */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611CC1D0C092F00E5743B /* cell */,
+				FC5611D11D0C092F00E5743B /* WHC_CameraVC.h */,
+				FC5611D21D0C092F00E5743B /* WHC_CameraVC.m */,
+				FC5611D31D0C092F00E5743B /* WHC_CameraVC.xib */,
+				FC5611D41D0C092F00E5743B /* WHC_ChoicePictureVC.h */,
+				FC5611D51D0C092F00E5743B /* WHC_ChoicePictureVC.m */,
+				FC5611D61D0C092F00E5743B /* WHC_ChoicePictureVC.xib */,
+				FC5611D71D0C092F00E5743B /* WHC_PictureListVC.h */,
+				FC5611D81D0C092F00E5743B /* WHC_PictureListVC.m */,
+				FC5611D91D0C092F00E5743B /* WHC_PictureListVC.xib */,
+			);
+			path = WHCLib;
+			sourceTree = "<group>";
+		};
+		FC5611CC1D0C092F00E5743B /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611CD1D0C092F00E5743B /* WHC_Asset.h */,
+				FC5611CE1D0C092F00E5743B /* WHC_Asset.m */,
+				FC5611CF1D0C092F00E5743B /* WHC_PhotoListCell.h */,
+				FC5611D01D0C092F00E5743B /* WHC_PhotoListCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		FC5611DA1D0C092F00E5743B /* 富文本 */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611DB1D0C092F00E5743B /* StringAttribute */,
+			);
+			path = "富文本";
+			sourceTree = "<group>";
+		};
+		FC5611DB1D0C092F00E5743B /* StringAttribute */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611DC1D0C092F00E5743B /* AbstractAttribute */,
+				FC5611E01D0C092F00E5743B /* ConcreteAttribute */,
+				FC5611E51D0C092F00E5743B /* StringAttribute+Category */,
+				FC5611EA1D0C092F00E5743B /* StringAttributeHelper.h */,
+			);
+			path = StringAttribute;
+			sourceTree = "<group>";
+		};
+		FC5611DC1D0C092F00E5743B /* AbstractAttribute */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611DD1D0C092F00E5743B /* StringAttribute.h */,
+				FC5611DE1D0C092F00E5743B /* StringAttribute.m */,
+				FC5611DF1D0C092F00E5743B /* StringAttributeProtocol.h */,
+			);
+			path = AbstractAttribute;
+			sourceTree = "<group>";
+		};
+		FC5611E01D0C092F00E5743B /* ConcreteAttribute */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611E11D0C092F00E5743B /* FontAttribute.h */,
+				FC5611E21D0C092F00E5743B /* FontAttribute.m */,
+				FC5611E31D0C092F00E5743B /* ForegroundColorAttribute.h */,
+				FC5611E41D0C092F00E5743B /* ForegroundColorAttribute.m */,
+			);
+			path = ConcreteAttribute;
+			sourceTree = "<group>";
+		};
+		FC5611E51D0C092F00E5743B /* StringAttribute+Category */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611E61D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.h */,
+				FC5611E71D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.m */,
+				FC5611E81D0C092F00E5743B /* NSString+StringAttribute.h */,
+				FC5611E91D0C092F00E5743B /* NSString+StringAttribute.m */,
+			);
+			path = "StringAttribute+Category";
+			sourceTree = "<group>";
+		};
+		FC5611F41D0C092F00E5743B /* 迭代器模式 */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611F51D0C092F00E5743B /* ZIKIteratorNode.h */,
+				FC5611F61D0C092F00E5743B /* ZIKIteratorNode.m */,
+				FC5611F71D0C092F00E5743B /* ZIKIteratorProtocol.h */,
+				FC5611F81D0C092F00E5743B /* ZIKLinkedList.h */,
+				FC5611F91D0C092F00E5743B /* ZIKLinkedList.m */,
+			);
+			path = "迭代器模式";
+			sourceTree = "<group>";
+		};
+		FC5611FA1D0C092F00E5743B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC5611FB1D0C092F00E5743B /* check49.png */,
+				FC5611FC1D0C092F00E5743B /* duihao.png */,
+				FC5611FD1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.h */,
+				FC5611FE1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.m */,
+				FC5611FF1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib */,
+				FC5612001D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.h */,
+				FC5612011D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m */,
+				FC5612021D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib */,
+				FC5612031D0C092F00E5743B /* ZIKMySupplyCellBackButton.h */,
+				FC5612041D0C092F00E5743B /* ZIKMySupplyCellBackButton.m */,
+				FC5612051D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.h */,
+				FC5612061D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.m */,
+				FC5612071D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib */,
+				FC5612081D0C092F00E5743B /* ZIKMySupplyTableViewCell.h */,
+				FC5612091D0C092F00E5743B /* ZIKMySupplyTableViewCell.m */,
+				FC56120A1D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib */,
+				FC56120B1D0C092F00E5743B /* ZIKNurseryListSelectButton.h */,
+				FC56120C1D0C092F00E5743B /* ZIKNurseryListSelectButton.m */,
+				FC56120D1D0C092F00E5743B /* ZIKNurseryListView.h */,
+				FC56120E1D0C092F00E5743B /* ZIKNurseryListView.m */,
+				FC56120F1D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.h */,
+				FC5612101D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m */,
+				FC5612111D0C092F00E5743B /* ZIKSelectView.h */,
+				FC5612121D0C092F00E5743B /* ZIKSelectView.m */,
+				FC5612131D0C092F00E5743B /* ZIKSideView.h */,
+				FC5612141D0C092F00E5743B /* ZIKSideView.m */,
+				FC5612151D0C092F00E5743B /* ZIKSupplyBottomSelectButton.h */,
+				FC5612161D0C092F00E5743B /* ZIKSupplyBottomSelectButton.m */,
+				FC5612171D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.h */,
+				FC5612181D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.m */,
+				FC5612191D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib */,
+				FC56121A1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.h */,
+				FC56121B1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.m */,
+				FC56121C1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib */,
+				FC56121D1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.h */,
+				FC56121E1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.m */,
+				FC56121F1D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.xib */,
+				FC5612201D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.h */,
+				FC5612211D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.m */,
+				FC5612221D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.xib */,
+				FC5612231D0C092F00E5743B /* 图片上传view */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FC5612231D0C092F00E5743B /* 图片上传view */ = {
+			isa = PBXGroup;
+			children = (
+				FC5612241D0C092F00E5743B /* ZIKPickerBtn.h */,
+				FC5612251D0C092F00E5743B /* ZIKPickerBtn.m */,
+				FC5612261D0C092F00E5743B /* ZIKPickImageView.h */,
+				FC5612271D0C092F00E5743B /* ZIKPickImageView.m */,
+			);
+			path = "图片上传view";
+			sourceTree = "<group>";
+		};
+		FC5612281D0C092F00E5743B /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				FC5612291D0C092F00E5743B /* NSObject+YYModel.h */,
+				FC56122A1D0C092F00E5743B /* NSObject+YYModel.m */,
+				FC56122B1D0C092F00E5743B /* YYClassInfo.h */,
+				FC56122C1D0C092F00E5743B /* YYClassInfo.m */,
+				FC56122D1D0C092F00E5743B /* YYModel.h */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
+		FC56122E1D0C092F00E5743B /* ZIKBaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				FC56122F1D0C092F00E5743B /* CustomControl */,
+				FC5612321D0C092F00E5743B /* ZIKArrowViewController.h */,
+				FC5612331D0C092F00E5743B /* ZIKArrowViewController.m */,
+				FC5612341D0C092F00E5743B /* ZIKBaseViewController.h */,
+				FC5612351D0C092F00E5743B /* ZIKBaseViewController.m */,
+				FC5612361D0C092F00E5743B /* ZIKNavConfigViewController.h */,
+				FC5612371D0C092F00E5743B /* ZIKNavConfigViewController.m */,
+				FC5612381D0C092F00E5743B /* ZIKRightBtnSringViewController.h */,
+				FC5612391D0C092F00E5743B /* ZIKRightBtnSringViewController.m */,
+			);
+			path = ZIKBaseVC;
+			sourceTree = "<group>";
+		};
+		FC56122F1D0C092F00E5743B /* CustomControl */ = {
+			isa = PBXGroup;
+			children = (
+				FC5612301D0C092F00E5743B /* ZIKGreenButton.h */,
+				FC5612311D0C092F00E5743B /* ZIKGreenButton.m */,
+			);
+			path = CustomControl;
 			sourceTree = "<group>";
 		};
 		FC6149DC1CAA2E0600672241 /* UserInfoSetVC */ = {
@@ -3340,237 +3589,6 @@
 			path = "友盟统计";
 			sourceTree = "<group>";
 		};
-		FCF353791CA3B514001ABA0A /* MySupplyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				FC2856E01CF6DEA9005235FC /* ZIKMySupplyVC.h */,
-				FC2856E11CF6DEA9005235FC /* ZIKMySupplyVC.m */,
-				FC2856E21CF6DEA9005235FC /* ZIKMySupplyDetailViewController.h */,
-				FC2856E31CF6DEA9005235FC /* ZIKMySupplyDetailViewController.m */,
-				FC2856E41CF6DEA9005235FC /* ZIKSupplyPublishVC.h */,
-				FC2856E51CF6DEA9005235FC /* ZIKSupplyPublishVC.m */,
-				FC2856E61CF6DEA9005235FC /* ZIKSupplyPublishNextVC.h */,
-				FC2856E71CF6DEA9005235FC /* ZIKSupplyPublishNextVC.m */,
-				FC21BC581CA51C930041E2C3 /* IQKeyBoardManager */,
-				FCF3537A1CA3B514001ABA0A /* MJRefresh */,
-				FCF3538B1CA3B515001ABA0A /* Model */,
-				FCF3538E1CA3B515001ABA0A /* Resource */,
-				FCF353AE1CA3B515001ABA0A /* View */,
-				FCF353B81CA3B515001ABA0A /* YYModel */,
-				FCF353BE1CA3B515001ABA0A /* ZIKBaseVC */,
-			);
-			path = MySupplyViewController;
-			sourceTree = "<group>";
-		};
-		FCF3537A1CA3B514001ABA0A /* MJRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				FCF3537B1CA3B514001ABA0A /* MJRefresh.bundle */,
-				FCF3537C1CA3B514001ABA0A /* MJRefresh.h */,
-				FCF3537D1CA3B514001ABA0A /* MJRefreshBaseView.h */,
-				FCF3537E1CA3B514001ABA0A /* MJRefreshBaseView.m */,
-				FCF3537F1CA3B514001ABA0A /* MJRefreshConst.h */,
-				FCF353801CA3B514001ABA0A /* MJRefreshConst.m */,
-				FCF353811CA3B514001ABA0A /* MJRefreshFooterView.h */,
-				FCF353821CA3B514001ABA0A /* MJRefreshFooterView.m */,
-				FCF353831CA3B514001ABA0A /* MJRefreshHeaderView.h */,
-				FCF353841CA3B514001ABA0A /* MJRefreshHeaderView.m */,
-				FCF353851CA3B514001ABA0A /* UIScrollView+MJExtension.h */,
-				FCF353861CA3B514001ABA0A /* UIScrollView+MJExtension.m */,
-				FCF353871CA3B514001ABA0A /* UIScrollView+MJRefresh.h */,
-				FCF353881CA3B514001ABA0A /* UIScrollView+MJRefresh.m */,
-				FCF353891CA3B514001ABA0A /* UIView+MJExtension.h */,
-				FCF3538A1CA3B515001ABA0A /* UIView+MJExtension.m */,
-			);
-			path = MJRefresh;
-			sourceTree = "<group>";
-		};
-		FCF3538B1CA3B515001ABA0A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				FCF3538C1CA3B515001ABA0A /* ZIKSupplyModel.h */,
-				FCF3538D1CA3B515001ABA0A /* ZIKSupplyModel.m */,
-				FC49AE331CA8D2FE00214D4B /* ZIKMySupplyCreateModel.h */,
-				FC49AE341CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m */,
-				FC49AE361CA8D36000214D4B /* ZIKUserIDetc.h */,
-				FC49AE371CA8D36000214D4B /* ZIKUserIDetc.m */,
-				FC614A021CAA58C200672241 /* ZIKFunction.h */,
-				FC614A031CAA58C200672241 /* ZIKFunction.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		FCF3538E1CA3B515001ABA0A /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				FC53378F1CBDF279008BFB11 /* 多选图片 */,
-				FC49AE571CA91E7B00214D4B /* BWTextView.h */,
-				FC49AE581CA91E7B00214D4B /* BWTextView.m */,
-				FC49AE4F1CA9190700214D4B /* 迭代器模式 */,
-				FCF353921CA3B515001ABA0A /* PickerView */,
-				FCF353971CA3B515001ABA0A /* shanchutupian@2x.png */,
-				FCF353981CA3B515001ABA0A /* shanchutupian@3x.png */,
-				FCF353991CA3B515001ABA0A /* shangchuanzhaopian@2x.png */,
-				FCF3539A1CA3B515001ABA0A /* shangchuanzhaopian@3x.png */,
-				FCF3539B1CA3B515001ABA0A /* 富文本 */,
-				FCF353AC1CA3B515001ABA0A /* 我的供应（空）.png */,
-				FCF353AD1CA3B515001ABA0A /* 添加图片.png */,
-				FC49AE4B1CA90E5C00214D4B /* 苗圃基地选择框.png */,
-				FC49AE4C1CA90E5C00214D4B /* 苗圃基地已选择框.png */,
-				FC28DB601CD9C271003D7C27 /* 注意.png */,
-				FC28DB621CD9CC7D003D7C27 /* 标签-已退回.png */,
-				FC28DB6A1CD9E8A4003D7C27 /* 添加照片-单株.png */,
-				FC28DB6B1CD9E8A4003D7C27 /* 添加照片-人苗.png */,
-				FC28DB6C1CD9E8A4003D7C27 /* 添加照片-整片.png */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		FCF353921CA3B515001ABA0A /* PickerView */ = {
-			isa = PBXGroup;
-			children = (
-				FC31B28C1CE088290024E147 /* ZIKPickerBtn.h */,
-				FC31B28D1CE088290024E147 /* ZIKPickerBtn.m */,
-				FCE2D1C31CE46C0A0002B069 /* ZIKAddImageView.h */,
-				FCE2D1C41CE46C0A0002B069 /* ZIKAddImageView.m */,
-			);
-			path = PickerView;
-			sourceTree = "<group>";
-		};
-		FCF3539B1CA3B515001ABA0A /* 富文本 */ = {
-			isa = PBXGroup;
-			children = (
-				FCF3539C1CA3B515001ABA0A /* StringAttribute */,
-			);
-			path = "富文本";
-			sourceTree = "<group>";
-		};
-		FCF3539C1CA3B515001ABA0A /* StringAttribute */ = {
-			isa = PBXGroup;
-			children = (
-				FCF3539D1CA3B515001ABA0A /* AbstractAttribute */,
-				FCF353A11CA3B515001ABA0A /* ConcreteAttribute */,
-				FCF353A61CA3B515001ABA0A /* StringAttribute+Category */,
-				FCF353AB1CA3B515001ABA0A /* StringAttributeHelper.h */,
-			);
-			path = StringAttribute;
-			sourceTree = "<group>";
-		};
-		FCF3539D1CA3B515001ABA0A /* AbstractAttribute */ = {
-			isa = PBXGroup;
-			children = (
-				FCF3539E1CA3B515001ABA0A /* StringAttribute.h */,
-				FCF3539F1CA3B515001ABA0A /* StringAttribute.m */,
-				FCF353A01CA3B515001ABA0A /* StringAttributeProtocol.h */,
-			);
-			path = AbstractAttribute;
-			sourceTree = "<group>";
-		};
-		FCF353A11CA3B515001ABA0A /* ConcreteAttribute */ = {
-			isa = PBXGroup;
-			children = (
-				FCF353A21CA3B515001ABA0A /* FontAttribute.h */,
-				FCF353A31CA3B515001ABA0A /* FontAttribute.m */,
-				FCF353A41CA3B515001ABA0A /* ForegroundColorAttribute.h */,
-				FCF353A51CA3B515001ABA0A /* ForegroundColorAttribute.m */,
-			);
-			path = ConcreteAttribute;
-			sourceTree = "<group>";
-		};
-		FCF353A61CA3B515001ABA0A /* StringAttribute+Category */ = {
-			isa = PBXGroup;
-			children = (
-				FCF353A71CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.h */,
-				FCF353A81CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.m */,
-				FCF353A91CA3B515001ABA0A /* NSString+StringAttribute.h */,
-				FCF353AA1CA3B515001ABA0A /* NSString+StringAttribute.m */,
-			);
-			path = "StringAttribute+Category";
-			sourceTree = "<group>";
-		};
-		FCF353AE1CA3B515001ABA0A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FC31B27D1CE056BA0024E147 /* 图片上传view */,
-				FCF353AF1CA3B515001ABA0A /* ZIKMySupplyTableViewCell.h */,
-				FCF353B01CA3B515001ABA0A /* ZIKMySupplyTableViewCell.m */,
-				FCF353B11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib */,
-				FCF353B21CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.h */,
-				FCF353B31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m */,
-				FCF353B41CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib */,
-				FCF353B51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.h */,
-				FCF353B61CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m */,
-				FCF353B71CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib */,
-				FCF353ED1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.h */,
-				FCF353EE1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m */,
-				FCF353EF1CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib */,
-				FCF353F61CA3D4D1001ABA0A /* ZIKSideView.h */,
-				FCF353F71CA3D4D1001ABA0A /* ZIKSideView.m */,
-				FCF353F91CA3E032001ABA0A /* ZIKSelectView.h */,
-				FCF353FA1CA3E032001ABA0A /* ZIKSelectView.m */,
-				FCF353FC1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.h */,
-				FCF353FD1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m */,
-				FC49AE401CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.h */,
-				FC49AE411CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m */,
-				FC49AE421CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.xib */,
-				FC49AE451CA90C4300214D4B /* ZIKNurseryListView.h */,
-				FC49AE461CA90C4300214D4B /* ZIKNurseryListView.m */,
-				FC49AE481CA90CB000214D4B /* ZIKNurseryListSelectButton.h */,
-				FC49AE491CA90CB000214D4B /* ZIKNurseryListSelectButton.m */,
-				FC5808841CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.h */,
-				FC5808851CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m */,
-				FC28DB641CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.h */,
-				FC28DB651CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m */,
-				FC58087F1CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.h */,
-				FC5808801CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m */,
-				FC5808811CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib */,
-				FC07A2B21D066DC000E3E7EA /* check49.png */,
-				FC07A2B31D066DC000E3E7EA /* duihao.png */,
-				FC68F3811CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.h */,
-				FC68F3821CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m */,
-				FC68F3831CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib */,
-				FC6C13361CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.h */,
-				FC6C13371CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m */,
-				FC6C13381CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FCF353B81CA3B515001ABA0A /* YYModel */ = {
-			isa = PBXGroup;
-			children = (
-				FCF353B91CA3B515001ABA0A /* NSObject+YYModel.h */,
-				FCF353BA1CA3B515001ABA0A /* NSObject+YYModel.m */,
-				FCF353BB1CA3B515001ABA0A /* YYClassInfo.h */,
-				FCF353BC1CA3B515001ABA0A /* YYClassInfo.m */,
-				FCF353BD1CA3B515001ABA0A /* YYModel.h */,
-			);
-			path = YYModel;
-			sourceTree = "<group>";
-		};
-		FCF353BE1CA3B515001ABA0A /* ZIKBaseVC */ = {
-			isa = PBXGroup;
-			children = (
-				FCF353F21CA3CE5A001ABA0A /* CustomControl */,
-				FCF353BF1CA3B515001ABA0A /* ZIKArrowViewController.h */,
-				FCF353C01CA3B515001ABA0A /* ZIKArrowViewController.m */,
-				FCF353C11CA3B515001ABA0A /* ZIKBaseViewController.h */,
-				FCF353C21CA3B515001ABA0A /* ZIKBaseViewController.m */,
-				FCF353C31CA3B515001ABA0A /* ZIKRightBtnSringViewController.h */,
-				FCF353C41CA3B515001ABA0A /* ZIKRightBtnSringViewController.m */,
-			);
-			path = ZIKBaseVC;
-			sourceTree = "<group>";
-		};
-		FCF353F21CA3CE5A001ABA0A /* CustomControl */ = {
-			isa = PBXGroup;
-			children = (
-				FCF353F31CA3CEA7001ABA0A /* ZIKGreenButton.h */,
-				FCF353F41CA3CEA7001ABA0A /* ZIKGreenButton.m */,
-			);
-			path = CustomControl;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3691,6 +3709,7 @@
 				EA7419F61C8FB5AA00F54478 /* selectBtnAction2@2x.png in Resources */,
 				EAF0510D1C92B3A000F435A9 /* tabbarBackImage1@2x.png in Resources */,
 				EAF050EA1C9286B800F435A9 /* myintegralImage@2x.png in Resources */,
+				FC5612781D0C092F00E5743B /* 苗圃基地已选择框.png in Resources */,
 				EA1CF4071CACD11A00AF2D82 /* loading04@2x.png in Resources */,
 				EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */,
 				EA5252F01CE179500004639C /* areaselected@2x.png in Resources */,
@@ -3699,40 +3718,46 @@
 				EA5E6E4B1CFFCA57003D357C /* WoDeDingDanViewController.xib in Resources */,
 				EAF050FB1C92A17400F435A9 /* mySellImageV@2x.png in Resources */,
 				EA7419EE1C8FB21600F54478 /* searchBtnAction@2x.png in Resources */,
+				FC5612711D0C092F00E5743B /* 我的供应（空）.png in Resources */,
 				FCE458CB1CE7048600CBF802 /* ZIKHaveReadTableViewCell.xib in Resources */,
-				FCF353E11CA3B515001ABA0A /* ZIKMySupplyTableViewCell.xib in Resources */,
 				EA1CF4171CACD4E300AF2D82 /* loading06@2x.png in Resources */,
 				EAF0510F1C92B3E100F435A9 /* tabbarBackImage2@2x.png in Resources */,
 				EA03CCEC1C8FEFF80032BAD3 /* phoneImage@2x.png in Resources */,
 				EAAFCFB21CBE248800EB894F /* 2miaomu1136.png in Resources */,
+				FC5612761D0C092F00E5743B /* 添加照片-单株.png in Resources */,
 				FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */,
+				FC5612921D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
 				EA5AAC3E1C8D294700660FC9 /* NomerBuyMessageBtn@2x.png in Resources */,
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
-				FC5808831CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.xib in Resources */,
 				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
+				FC56127D1D0C092F00E5743B /* duihao.png in Resources */,
+				FC5612A21D0C092F00E5743B /* 已选小标.png in Resources */,
 				EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */,
-				FC28DB6E1CD9E8A4003D7C27 /* 添加照片-人苗.png in Resources */,
 				EA6D36C81CE7138600CE025C /* yitongguo.png in Resources */,
 				EAAFCFB61CBE265100EB894F /* 2miaomu1334.png in Resources */,
 				FC5337C41CBE1710008BFB11 /* 站长通-电话图标.png in Resources */,
-				FC28DB631CD9CC7D003D7C27 /* 标签-已退回.png in Resources */,
+				FC56127C1D0C092F00E5743B /* check49.png in Resources */,
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
 				FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */,
+				FC56127F1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib in Resources */,
 				EAF050E41C924FB300F435A9 /* userBigInfoBack@2x.png in Resources */,
+				FC5612731D0C092F00E5743B /* 注意.png in Resources */,
 				EAF0510B1C92A87B00F435A9 /* loginoutimage@2x.png in Resources */,
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
+				FC5612861D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib in Resources */,
 				EA7491691D0275910043BDAC /* xiala2.png in Resources */,
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
+				FC5612501D0C092F00E5743B /* IQKeyboardManager.bundle in Resources */,
+				FC5612741D0C092F00E5743B /* 添加图片.png in Resources */,
 				EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */,
 				EA2726FE1C8A7C06000B0719 /* areadb.sqlite in Resources */,
+				FC5612691D0C092F00E5743B /* WHC_ChoicePictureVC.xib in Resources */,
 				EA5444C61CC770BD00971A50 /* bangde2.jpg in Resources */,
-				FC5337A21CBDF2B6008BFB11 /* WHC_CameraVC.xib in Resources */,
-				FC28DB6F1CD9E8A4003D7C27 /* 添加照片-整片.png in Resources */,
 				EAF050E81C92833A00F435A9 /* mycollectionImage@2x.png in Resources */,
 				EA75147E1C9B891E003D63F1 /* treeNameSure2@2x.png in Resources */,
-				FC49AE441CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
 				EA12E26B1CBB458B009D8A8A /* logV@2x.png in Resources */,
+				FC5612621D0C092F00E5743B /* shangchuanzhaopian@2x.png in Resources */,
 				FC6C133F1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib in Resources */,
 				EA4F4D181CBF5F47006E4988 /* bannelSmall1.jpg in Resources */,
 				FC50B16D1CAE243F0022A24C /* WeiboSDK.bundle in Resources */,
@@ -3740,14 +3765,11 @@
 				FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */,
 				EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */,
 				FCCFA7161CF2E12400CC1313 /* carat.png in Resources */,
-				FCF353DF1CA3B515001ABA0A /* 添加图片.png in Resources */,
 				EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */,
 				FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */,
 				EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */,
 				EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */,
 				FCCFA7151CF2E12400CC1313 /* carat-open.png in Resources */,
-				FC21BC891CA51C930041E2C3 /* IQKeyboardManager.bundle in Resources */,
-				FCF353F11CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
 				EA17B5D01CC9D1CE0054223B /* leftBtnImage@2x.png in Resources */,
 				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
 				FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */,
@@ -3759,18 +3781,18 @@
 				EA833D911CFEBEAC00D56AFB /* zhanzhongtongshouye.png in Resources */,
 				EA5E6E551CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib in Resources */,
 				FCCFA7181CF2E12400CC1313 /* ZIKCityTableViewCell.xib in Resources */,
+				FC5612631D0C092F00E5743B /* shangchuanzhaopian@3x.png in Resources */,
 				FCCFA7141CF2E12400CC1313 /* ZIKCitySectionHeaderView.xib in Resources */,
+				FC5612721D0C092F00E5743B /* 标签-已退回.png in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
 				EA833D8C1CFE81E300D56AFB /* callkefuBtn@2x.png in Resources */,
 				EA7266301CFD6268005612E6 /* kefuxitong@2x.png in Resources */,
 				FCCEA4911CFD5FC2005D21F5 /* 我的积分-兑换.png in Resources */,
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
-				FCF353E31CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
 				EA03CCEF1C90035B0032BAD3 /* phoneLiteImage@2x.png in Resources */,
 				EAF788A21CDB333700C4A301 /* guanbibiaoqian.png in Resources */,
 				EA5444C51CC770BD00971A50 /* bangde1.jpg in Resources */,
-				FC49AE4E1CA90E5C00214D4B /* 苗圃基地已选择框.png in Resources */,
 				EAF050F01C92939E00F435A9 /* userInfoNomer@2x.png in Resources */,
 				FC6FED6B1CACF833000E2CA5 /* 图标.png in Resources */,
 				EA5252F51CE179E40004639C /* CityTableViewCell.xib in Resources */,
@@ -3788,39 +3810,36 @@
 				FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
 				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
-				FCF353C91CA3B515001ABA0A /* MJRefresh.bundle in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
 				FC5337CB1CBE18FC008BFB11 /* 站长通-星级1.png in Resources */,
 				FCCFA7111CF2E12400CC1313 /* ZIKSelectViewController.xib in Resources */,
 				FCC5C3041CFE73BE004669ED /* 积分兑换-兑换成功.png in Resources */,
 				FC6FED8D1CAD103F000E2CA5 /* 支付订单48x48.png in Resources */,
-				FC49AE4D1CA90E5C00214D4B /* 苗圃基地选择框.png in Resources */,
 				FCCEA4A31CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.xib in Resources */,
 				EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */,
 				EA4EEA1B1CD8822800FEFD52 /* buybiaoqian.png in Resources */,
 				EA1CF4041CACD11A00AF2D82 /* loading01@2x.png in Resources */,
 				EA1CF4191CACD4E300AF2D82 /* loading08@2x.png in Resources */,
 				EAF050EC1C928E3300F435A9 /* homePageNomer@2x.png in Resources */,
+				FC5612751D0C092F00E5743B /* 添加照片-人苗.png in Resources */,
 				EAF051051C92A31000F435A9 /* zhanzhangtong@2x.png in Resources */,
 				EA5AAC421C8D2DF300660FC9 /* NomerSellMessageBtn@2x.png in Resources */,
 				EA0B2BA61C59F5220018A7BD /* LaunchScreen.storyboard in Resources */,
 				EAF050F21C9293C200F435A9 /* homePageGreen@2x.png in Resources */,
 				FC7134221CB3465C0037D507 /* 待选.png in Resources */,
 				FC6FED6E1CACF833000E2CA5 /* 未读红点.png in Resources */,
-				FC28DB6D1CD9E8A4003D7C27 /* 添加照片-单株.png in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
+				FC56128E1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
 				FC9630191D00252D00078F29 /* 底部菜单-工作站off.png in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
-				FC28DB611CD9C271003D7C27 /* 注意.png in Resources */,
 				FC6FED691CACF833000E2CA5 /* 列表-时间.png in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,
 				EA1CF4061CACD11A00AF2D82 /* loading03@2x.png in Resources */,
 				FC9630181D00252D00078F29 /* 底部菜单-工程订单on.png in Resources */,
-				FC6C133A1CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
-				FCF353DE1CA3B515001ABA0A /* 我的供应（空）.png in Resources */,
+				FC5612511D0C092F00E5743B /* MJRefresh.bundle in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
 				EA7491671D026FA40043BDAC /* xialakuang.png in Resources */,
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
@@ -3830,16 +3849,18 @@
 				EAF051071C92A33A00F435A9 /* myPalyInfo@2x.png in Resources */,
 				FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */,
 				FC96301E1D00252D00078F29 /* 底部菜单-站长中心on.png in Resources */,
-				FCF353D71CA3B515001ABA0A /* shangchuanzhaopian@2x.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
 				FC9630171D00252D00078F29 /* 底部菜单-工程订单off.png in Resources */,
+				FC5612841D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
 				FC50B16A1CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle in Resources */,
 				FC96301B1D00252D00078F29 /* 底部菜单-我的报价off.png in Resources */,
 				FC4B4F301CAB9F4F00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib in Resources */,
 				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
+				FC5612901D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
 				FC7134231CB3465C0037D507 /* 已选.png in Resources */,
 				EA833D8E1CFE848500D56AFB /* shiyongbangzhu@2x.png in Resources */,
+				FC5612611D0C092F00E5743B /* shanchutupian@3x.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
 				EA5444C81CC770BD00971A50 /* bangde4.jpg in Resources */,
 				FC6FED8C1CAD103F000E2CA5 /* 支付订单-充值金额背景.png in Resources */,
@@ -3848,15 +3869,14 @@
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
 				FCD8A67B1CCDED1600A307E2 /* 已选小标.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
-				FC68F3851CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
 				EA6D36C41CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib in Resources */,
 				FC6FED6C1CACF833000E2CA5 /* 图片1.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
 				EAAFCFB51CBE265100EB894F /* 1miaomu1334.png in Resources */,
 				EA75147D1C9B891E003D63F1 /* treeNameSure@2x.png in Resources */,
+				FC5612791D0C092F00E5743B /* 苗圃基地选择框.png in Resources */,
 				FC50B1701CAE243F0022A24C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				FC5337A41CBDF2B6008BFB11 /* WHC_ChoicePictureVC.xib in Resources */,
 				FC6FED801CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.xib in Resources */,
 				EA6D36CC1CE713BC00CE025C /* yiguanbi.png in Resources */,
 				FC96301D1D00252D00078F29 /* 底部菜单-站长中心off.png in Resources */,
@@ -3864,6 +3884,7 @@
 				FC96300D1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib in Resources */,
 				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
 				EA56C3BF1D08025D00750BC3 /* dingdandinahua@2x.png in Resources */,
+				FC56126B1D0C092F00E5743B /* WHC_PictureListVC.xib in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
@@ -3872,11 +3893,10 @@
 				EA5E6E461CFFCA40003D357C /* GongChengZhongXinViewController.xib in Resources */,
 				FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
-				FC5337A61CBDF2B6008BFB11 /* WHC_PictureListVC.xib in Resources */,
 				EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */,
 				EA696FAE1CDD7914001F037E /* YLDMyMessageTableViewCell.xib in Resources */,
-				FCF353D81CA3B515001ABA0A /* shangchuanzhaopian@3x.png in Resources */,
 				EAF050FD1C92A1A900F435A9 /* myBuyV@2x.png in Resources */,
+				FC5612811D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */,
 				EA5AAC411C8D2DF300660FC9 /* NomerMyCollectionBtn@2x.png in Resources */,
 				EA6D36CA1CE713A500CE025C /* weitonguo.png in Resources */,
 				FCCEA49E1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib in Resources */,
@@ -3888,6 +3908,7 @@
 				FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */,
 				FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */,
 				EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */,
+				FC5612941D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
 				EA7AE8EC1C96874400B43073 /* price@2x.png in Resources */,
 				EA7AE8EB1C96874400B43073 /* person@2x.png in Resources */,
 				FC6FED6A1CACF833000E2CA5 /* 确定完成.png in Resources */,
@@ -3895,21 +3916,19 @@
 				EAF051091C92A35D00F435A9 /* myShareImage@2x.png in Resources */,
 				EA5AAC481C8D317000660FC9 /* BackBtn@2x.png in Resources */,
 				EA0B2B9E1C59F5220018A7BD /* Main.storyboard in Resources */,
-				FCF353D51CA3B515001ABA0A /* shanchutupian@2x.png in Resources */,
-				FC07A2B41D066DC000E3E7EA /* check49.png in Resources */,
-				FCF353D61CA3B515001ABA0A /* shanchutupian@3x.png in Resources */,
+				FC5612601D0C092F00E5743B /* shanchutupian@2x.png in Resources */,
 				EA5E6E501CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib in Resources */,
-				FC07A2B51D066DC000E3E7EA /* duihao.png in Resources */,
 				EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */,
 				EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */,
+				FC5612771D0C092F00E5743B /* 添加照片-整片.png in Resources */,
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
+				FC5612671D0C092F00E5743B /* WHC_CameraVC.xib in Resources */,
 				EA696FB01CDD7A6C001F037E /* MyMessage@2x.png in Resources */,
 				FC6FED8A1CAD103F000E2CA5 /* 银联支付.png in Resources */,
 				FCCEA46E1CFD33C7005D21F5 /* 已删除-2.png in Resources */,
 				EAF051031C92A2E600F435A9 /* myMiaoPu@2x.png in Resources */,
 				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
 				FC6FED681CACF833000E2CA5 /* 编辑修改.png in Resources */,
-				FCF353E51CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
 				FCCEA4941CFD5FC2005D21F5 /* 积分兑换-背景框.png in Resources */,
 				EA5444C71CC770BD00971A50 /* bangde3.jpg in Resources */,
 			);
@@ -3936,93 +3955,96 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5612881D0C092F00E5743B /* ZIKNurseryListView.m in Sources */,
 				EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */,
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
 				FC5337C81CBE17B0008BFB11 /* HCSStarRatingView.m in Sources */,
+				FC56126E1D0C092F00E5743B /* ForegroundColorAttribute.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
-				FC6C13391CE1797F003E0FF9 /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */,
-				FCF353E71CA3B515001ABA0A /* YYClassInfo.m in Sources */,
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
+				FC5612961D0C092F00E5743B /* ZIKPickImageView.m in Sources */,
 				EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
 				EA5E6E3B1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m in Sources */,
 				EA5E6E451CFFCA40003D357C /* GongChengZhongXinViewController.m in Sources */,
+				FC56127A1D0C092F00E5743B /* ZIKIteratorNode.m in Sources */,
 				EAE32DF41C7E9D5000C4CEA2 /* HttpClient.m in Sources */,
-				FC21BC831CA51C930041E2C3 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */,
-				FC49AE4A1CA90CB000214D4B /* ZIKNurseryListSelectButton.m in Sources */,
-				FC5337A31CBDF2B6008BFB11 /* WHC_ChoicePictureVC.m in Sources */,
 				EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */,
 				EAE32DE21C7E97A600C4CEA2 /* UIProgressView+AFNetworking.m in Sources */,
-				FCF353CD1CA3B515001ABA0A /* MJRefreshHeaderView.m in Sources */,
+				FC56127B1D0C092F00E5743B /* ZIKLinkedList.m in Sources */,
 				EAAFCF701CBDD94300EB894F /* BigImageViewShowView.m in Sources */,
-				FC21BC821CA51C930041E2C3 /* IQKeyboardManager.m in Sources */,
 				EA5E6E541CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m in Sources */,
 				FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */,
 				FC50B34B1CAE4C4A0022A24C /* RSADataSigner.m in Sources */,
 				EA5E6E4A1CFFCA57003D357C /* WoDeDingDanViewController.m in Sources */,
 				EAE32DE11C7E97A600C4CEA2 /* UIImageView+AFNetworking.m in Sources */,
-				FC21BC881CA51C930041E2C3 /* IQUIView+IQKeyboardToolbar.m in Sources */,
-				FC2856E91CF6DEA9005235FC /* ZIKMySupplyDetailViewController.m in Sources */,
+				FC56125C1D0C092F00E5743B /* ZIKUserIDetc.m in Sources */,
 				EAEA07F81C5B0B0F003A0D8A /* CircleViews.m in Sources */,
-				FCF353CC1CA3B515001ABA0A /* MJRefreshFooterView.m in Sources */,
+				FC56129F1D0C092F00E5743B /* ZIKMySupplyVC.m in Sources */,
 				EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */,
-				FCF353CB1CA3B515001ABA0A /* MJRefreshConst.m in Sources */,
 				FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */,
-				FC2856E81CF6DEA9005235FC /* ZIKMySupplyVC.m in Sources */,
-				FC21BC801CA51C930041E2C3 /* IQUIViewController+Additions.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EA833D951CFEC13300D56AFB /* YLDGongChengGongSiViewController.m in Sources */,
+				FC5612931D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC96300C1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
 				EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */,
 				EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */,
+				FC5612451D0C092F00E5743B /* IQUITextFieldView+Additions.m in Sources */,
 				FCCFA7101CF2E12400CC1313 /* ZIKSelectViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
 				EAE32DF11C7E9C3800C4CEA2 /* AFImageDownloader.m in Sources */,
-				FCF353D11CA3B515001ABA0A /* ZIKSupplyModel.m in Sources */,
+				FC56129A1D0C092F00E5743B /* ZIKArrowViewController.m in Sources */,
 				EA040FB61C8809B000E43B5E /* ScreeningView.m in Sources */,
+				FC56124E1D0C092F00E5743B /* IQToolbar.m in Sources */,
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
 				FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */,
 				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,
 				FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */,
+				FC5612871D0C092F00E5743B /* ZIKNurseryListSelectButton.m in Sources */,
+				FC5612911D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */,
 				EA03405D1C8927CB00FBF148 /* SreeningViewCell.m in Sources */,
 				EAE32DDE1C7E97A600C4CEA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */,
 				EAB781A31C8EBEA600807B44 /* QIYeMessageTableViewCell.m in Sources */,
+				FC56124A1D0C092F00E5743B /* IQKeyboardReturnKeyHandler.m in Sources */,
+				FC5612441D0C092F00E5743B /* IQUIScrollView+Additions.m in Sources */,
 				EA5252E21CE171270004639C /* YLDPickLocationView.m in Sources */,
+				FC5612681D0C092F00E5743B /* WHC_ChoicePictureVC.m in Sources */,
 				EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */,
-				FC21BC871CA51C930041E2C3 /* IQToolbar.m in Sources */,
 				FC6C133E1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m in Sources */,
 				EAE32DE41C7E97A600C4CEA2 /* UIWebView+AFNetworking.m in Sources */,
 				FCCEA4901CFD5FC2005D21F5 /* MyIntegralViewController.m in Sources */,
 				EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */,
+				FC5612581D0C092F00E5743B /* UIView+MJExtension.m in Sources */,
 				EAE32DDD1C7E97A600C4CEA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				FC5612891D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m in Sources */,
 				EAEB63C21C9147D50001ABC9 /* UserInfoModel.m in Sources */,
-				FC68F3841CDC37D600CA890B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */,
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
-				FCE2D1C51CE46C0A0002B069 /* ZIKAddImageView.m in Sources */,
 				FCC5C3001CFE728F004669ED /* ZIKExchangeSuccessView.m in Sources */,
+				FC5612991D0C092F00E5743B /* ZIKGreenButton.m in Sources */,
 				FCCEA4971CFD5FC2005D21F5 /* IntegraTableViewCell.m in Sources */,
 				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,
+				FC5612571D0C092F00E5743B /* UIScrollView+MJRefresh.m in Sources */,
 				EA4EEA201CD8891400FEFD52 /* BuyMessageAlertView.m in Sources */,
+				FC56125A1D0C092F00E5743B /* ZIKMySupplyCreateModel.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
-				FCF353D91CA3B515001ABA0A /* StringAttribute.m in Sources */,
 				EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
-				FC49AE431CA8F73A00214D4B /* ZIKSupplyPUblishNextFirstTableViewCell.m in Sources */,
+				FC5612801D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */,
 				FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */,
 				FC50B34C1CAE4C4A0022A24C /* RSADataVerifier.m in Sources */,
-				FC2856EB1CF6DEA9005235FC /* ZIKSupplyPublishNextVC.m in Sources */,
 				EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */,
 				FC50B3491CAE4C4A0022A24C /* NSDataEx.m in Sources */,
 				EA040FBF1C8826D900E43B5E /* ToastView.m in Sources */,
 				EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */,
 				EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */,
+				FC5612651D0C092F00E5743B /* WHC_PhotoListCell.m in Sources */,
 				FC9630051CFFDF3300078F29 /* ZIKOrderViewController.m in Sources */,
 				EAE32DD71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m in Sources */,
 				FCE458C61CE7036600CBF802 /* ZIKHaveReadModel.m in Sources */,
@@ -4030,18 +4052,18 @@
 				EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */,
 				EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */,
 				EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */,
-				FC49AE471CA90C4300214D4B /* ZIKNurseryListView.m in Sources */,
 				EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */,
 				FCCEA4961CFD5FC2005D21F5 /* ZIKIntegraModel.m in Sources */,
+				FC5612521D0C092F00E5743B /* MJRefreshBaseView.m in Sources */,
 				EA518C621CEDAAF30092BA40 /* GuiGeModel.m in Sources */,
 				FC9630081CFFDF4100078F29 /* ZIKWorkstationViewController.m in Sources */,
 				FCE458C31CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m in Sources */,
+				FC56127E1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.m in Sources */,
 				EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */,
-				FC28DB661CD9CD15003D7C27 /* ZIKMySupplyCellBackButton.m in Sources */,
 				FCCEA4981CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.m in Sources */,
 				FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */,
-				FC53379F1CBDF2B6008BFB11 /* WHC_Asset.m in Sources */,
-				FC21BC811CA51C930041E2C3 /* IQUIWindow+Hierarchy.m in Sources */,
+				FC5612851D0C092F00E5743B /* ZIKMySupplyTableViewCell.m in Sources */,
+				FC56125E1D0C092F00E5743B /* ZIKAddImageView.m in Sources */,
 				EA27271C1C8A7D8E000B0719 /* FMResultSet.m in Sources */,
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
 				FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */,
@@ -4050,144 +4072,144 @@
 				EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */,
 				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCCFA7191CF2E12400CC1313 /* ZIKCityModel.m in Sources */,
-				FCF353EA1CA3B515001ABA0A /* ZIKRightBtnSringViewController.m in Sources */,
 				FC9630021CFFCD4200078F29 /* ZIKStationCenterViewController.m in Sources */,
-				FCF353DB1CA3B515001ABA0A /* ForegroundColorAttribute.m in Sources */,
 				FCCFA7131CF2E12400CC1313 /* ZIKCitySectionHeaderView.m in Sources */,
 				EAE881F61C87C399001EFF14 /* BuySearchTableViewCell.m in Sources */,
+				FC56128B1D0C092F00E5743B /* ZIKSideView.m in Sources */,
+				FC5612461D0C092F00E5743B /* IQUIView+Hierarchy.m in Sources */,
+				FC56126F1D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.m in Sources */,
+				FC5612561D0C092F00E5743B /* UIScrollView+MJExtension.m in Sources */,
+				FC56124B1D0C092F00E5743B /* IQTextView.m in Sources */,
 				FC4B4F2F1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.m in Sources */,
 				EA0079191C80155E00FA66B1 /* SearchViewController.m in Sources */,
-				FC5337A01CBDF2B6008BFB11 /* WHC_PhotoListCell.m in Sources */,
 				EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */,
 				EA03405A1C891EFD00FBF148 /* TreeSpecificationsModel.m in Sources */,
 				EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */,
+				FC56125D1D0C092F00E5743B /* BWTextView.m in Sources */,
+				FC56128C1D0C092F00E5743B /* ZIKSupplyBottomSelectButton.m in Sources */,
+				FC5612591D0C092F00E5743B /* ZIKFunction.m in Sources */,
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
 				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,
 				FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */,
-				FC21BC7E1CA51C930041E2C3 /* IQUITextFieldView+Additions.m in Sources */,
 				FC50B3451CAE4C4A0022A24C /* base64.m in Sources */,
 				EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */,
-				FCF353DA1CA3B515001ABA0A /* FontAttribute.m in Sources */,
-				FCF353DD1CA3B515001ABA0A /* NSString+StringAttribute.m in Sources */,
+				FC5612471D0C092F00E5743B /* IQUIViewController+Additions.m in Sources */,
 				EA7AE8EF1C96908B00B43073 /* SellQiyeInfoTableViewCell.m in Sources */,
-				FC31B2901CE088290024E147 /* ZIKPickerBtn.m in Sources */,
 				EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */,
 				EA7514861C9BA41F003D63F1 /* buyFabuViewController.m in Sources */,
 				EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */,
-				FC49AE551CA9190700214D4B /* ZIKIteratorNode.m in Sources */,
-				FC49AE561CA9190700214D4B /* ZIKLinkedList.m in Sources */,
 				EAF050F71C92965B00F435A9 /* UserInfoNomerTableViewCell.m in Sources */,
-				FCF353CA1CA3B515001ABA0A /* MJRefreshBaseView.m in Sources */,
 				EA1120CE1CA62BE300857E48 /* NurseryModel.m in Sources */,
-				FCF353FB1CA3E032001ABA0A /* ZIKSelectView.m in Sources */,
 				EAED648F1CACF335000A228B /* MySupplyOtherInfoTableViewCell.m in Sources */,
-				FC21BC7C1CA51C930041E2C3 /* IQNSArray+Sort.m in Sources */,
 				FC6FED7B1CAD0860000E2CA5 /* ZIKConsumeRecordModel.m in Sources */,
-				FC21BC7D1CA51C930041E2C3 /* IQUIScrollView+Additions.m in Sources */,
 				EAE32DDB1C7E97A600C4CEA2 /* AFURLResponseSerialization.m in Sources */,
 				FCE458CA1CE7048600CBF802 /* ZIKHaveReadTableViewCell.m in Sources */,
 				FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */,
-				FC5808861CBB4A5E0087BF08 /* ZIKSupplyBottomSelectButton.m in Sources */,
+				FC5612431D0C092F00E5743B /* IQNSArray+Sort.m in Sources */,
 				FCCFA7171CF2E12400CC1313 /* ZIKCityTableViewCell.m in Sources */,
 				EA0B2BE41C5A07050018A7BD /* UserCenterViewController.m in Sources */,
 				EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */,
+				FC5612A11D0C092F00E5743B /* ZIKSupplyPublishVC.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
+				FC56126C1D0C092F00E5743B /* StringAttribute.m in Sources */,
+				FC5612661D0C092F00E5743B /* WHC_CameraVC.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
 				EA696FB31CDD7FE9001F037E /* YLDMyMessageModel.m in Sources */,
 				FCCEA4A61CFD7484005D21F5 /* ZIKIntegraExchangeModel.m in Sources */,
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
 				EA5DF9551CB64FDF00BE0E8C /* SettingViewController.m in Sources */,
+				FC56124F1D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
 				FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */,
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,
 				EA6D36C31CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m in Sources */,
+				FC5612481D0C092F00E5743B /* IQUIWindow+Hierarchy.m in Sources */,
+				FC5612981D0C092F00E5743B /* YYClassInfo.m in Sources */,
 				EA5444BE1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m in Sources */,
+				FC5612831D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */,
 				FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */,
+				FC5612531D0C092F00E5743B /* MJRefreshConst.m in Sources */,
+				FC5612A01D0C092F00E5743B /* ZIKSupplyPublishNextVC.m in Sources */,
 				EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */,
 				FC6FED771CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.m in Sources */,
-				FCF353CF1CA3B515001ABA0A /* UIScrollView+MJRefresh.m in Sources */,
 				FCCFA7121CF2E12400CC1313 /* ZIKCityListViewController.m in Sources */,
+				FC56126A1D0C092F00E5743B /* WHC_PictureListVC.m in Sources */,
 				EA741A001C8FC69B00F54478 /* LoginView.m in Sources */,
-				FC5808821CBB3F5D0087BF08 /* ZIKBottomDeleteTableViewCell.m in Sources */,
-				FCF353E21CA3B515001ABA0A /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */,
-				FC21BC851CA51C930041E2C3 /* IQBarButtonItem.m in Sources */,
 				FC6FED7F1CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.m in Sources */,
+				FC5612551D0C092F00E5743B /* MJRefreshHeaderView.m in Sources */,
 				EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */,
+				FC5612971D0C092F00E5743B /* NSObject+YYModel.m in Sources */,
+				FC5612701D0C092F00E5743B /* NSString+StringAttribute.m in Sources */,
+				FC56128F1D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.m in Sources */,
 				EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */,
 				EA2727271C8A8767000B0719 /* GetCityDao.m in Sources */,
 				FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */,
-				FC49AE591CA91E7B00214D4B /* BWTextView.m in Sources */,
+				FC5612951D0C092F00E5743B /* ZIKPickerBtn.m in Sources */,
 				EAAFCFA91CBE20E200EB894F /* EAIntroPage.m in Sources */,
 				FC6FED5B1CACEEA2000E2CA5 /* ZIKCustomizedSetViewController.m in Sources */,
-				FCF353D01CA3B515001ABA0A /* UIView+MJExtension.m in Sources */,
+				FC56125F1D0C092F00E5743B /* ZIKPickerBtn.m in Sources */,
 				EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */,
+				FC56129E1D0C092F00E5743B /* ZIKMySupplyDetailViewController.m in Sources */,
 				EAEB63BD1C90FC1E0001ABC9 /* NSString+Phone.m in Sources */,
 				FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */,
 				EA12E2691CBB416B009D8A8A /* AbountUsViewController.m in Sources */,
-				FCF353FE1CA3E19F001ABA0A /* ZIKSelectProductCategoryTableViewCell.m in Sources */,
 				EA8CAA651C8963D500058A34 /* DataCache.m in Sources */,
-				FCF353E61CA3B515001ABA0A /* NSObject+YYModel.m in Sources */,
+				FC5612541D0C092F00E5743B /* MJRefreshFooterView.m in Sources */,
 				FCCEA49D1CFD5FE1005D21F5 /* ZIKExchangeViewController.m in Sources */,
 				EA0B2B951C59F5220018A7BD /* main.m in Sources */,
 				FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */,
+				FC5612821D0C092F00E5743B /* ZIKMySupplyCellBackButton.m in Sources */,
 				EAEA07FC1C5B285C003A0D8A /* YouLickView.m in Sources */,
 				EA2727191C8A7D8E000B0719 /* FMDatabaseAdditions.m in Sources */,
 				EA3BA97A1CF2CC3B00097F8D /* YLDBuyFabuViewController.m in Sources */,
-				FC21BC841CA51C930041E2C3 /* IQTextView.m in Sources */,
 				FC6FED551CACEDA7000E2CA5 /* ZIKCustomizedInfoListViewController.m in Sources */,
 				EA5B26EE1C7D6E8E00863F9D /* HotSellViewCell.m in Sources */,
-				FCF353DC1CA3B515001ABA0A /* NSMutableAttributedString+StringAttribute.m in Sources */,
-				FCF353F01CA3CACA001ABA0A /* ZIKSupplyPublishNameTableViewCell.m in Sources */,
 				EA5B26EB1C7D6E7100863F9D /* HotSellView.m in Sources */,
 				EA7AE8E61C9663A500B43073 /* SupplyDetialMode.m in Sources */,
 				EA72662E1CFD5FBC005612E6 /* KeFuViewController.m in Sources */,
 				EAE32DE01C7E97A600C4CEA2 /* UIButton+AFNetworking.m in Sources */,
-				FC49AE351CA8D2FE00214D4B /* ZIKMySupplyCreateModel.m in Sources */,
-				FCF353E01CA3B515001ABA0A /* ZIKMySupplyTableViewCell.m in Sources */,
-				FC21BC7F1CA51C930041E2C3 /* IQUIView+Hierarchy.m in Sources */,
-				FC49AE381CA8D36000214D4B /* ZIKUserIDetc.m in Sources */,
-				FC21BC861CA51C930041E2C3 /* IQTitleBarButtonItem.m in Sources */,
-				FCF353CE1CA3B515001ABA0A /* UIScrollView+MJExtension.m in Sources */,
+				FC56124D1D0C092F00E5743B /* IQTitleBarButtonItem.m in Sources */,
 				EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */,
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */,
+				FC56128A1D0C092F00E5743B /* ZIKSelectView.m in Sources */,
+				FC5612641D0C092F00E5743B /* WHC_Asset.m in Sources */,
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
 				FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */,
 				FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */,
+				FC56129B1D0C092F00E5743B /* ZIKBaseViewController.m in Sources */,
+				FC56124C1D0C092F00E5743B /* IQBarButtonItem.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */,
 				EA5252F41CE179E40004639C /* CityTableViewCell.m in Sources */,
 				EA5252EE1CE174990004639C /* CityModel.m in Sources */,
-				FC5337A51CBDF2B6008BFB11 /* WHC_PictureListVC.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,
+				FC56129C1D0C092F00E5743B /* ZIKNavConfigViewController.m in Sources */,
+				FC5612491D0C092F00E5743B /* IQKeyboardManager.m in Sources */,
 				FC962FFF1CFFCD2E00078F29 /* ZIKMyOfferViewController.m in Sources */,
 				EA2727181C8A7D8E000B0719 /* FMDatabase.m in Sources */,
-				FCF353F51CA3CEA7001ABA0A /* ZIKGreenButton.m in Sources */,
 				FC50B3441CAE4C4A0022A24C /* Order.m in Sources */,
+				FC56125B1D0C092F00E5743B /* ZIKSupplyModel.m in Sources */,
 				EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */,
-				FC7134301CB358140037D507 /* ZIKFunction.m in Sources */,
 				FCCEA4A21CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.m in Sources */,
-				FCF353E41CA3B515001ABA0A /* ZIKSupplyPublishSingleTableViewCell.m in Sources */,
 				FCCFA71A1CF2E12400CC1313 /* ZIKSectionInfo.m in Sources */,
-				FCF353E91CA3B515001ABA0A /* ZIKBaseViewController.m in Sources */,
 				EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */,
 				FC50B3481CAE4C4A0022A24C /* MD5DataSigner.m in Sources */,
 				FC50B3461CAE4C4A0022A24C /* DataSigner.m in Sources */,
+				FC56128D1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.m in Sources */,
 				FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */,
 				EAAFCFBD1CBE3C0D00EB894F /* HomePageTViewController.m in Sources */,
 				FC962FFC1CFFCB9800078F29 /* ZIKStationTabBarViewController.m in Sources */,
 				FC5337C11CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m in Sources */,
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
-				FC2856EA1CF6DEA9005235FC /* ZIKSupplyPublishVC.m in Sources */,
+				FC56129D1D0C092F00E5743B /* ZIKRightBtnSringViewController.m in Sources */,
 				FC5337AA1CBDF885008BFB11 /* ZIKStationAgentViewController.m in Sources */,
+				FC56126D1D0C092F00E5743B /* FontAttribute.m in Sources */,
 				EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */,
-				FC5337A11CBDF2B6008BFB11 /* WHC_CameraVC.m in Sources */,
-				FCF353E81CA3B515001ABA0A /* ZIKArrowViewController.m in Sources */,
 				FC614A011CAA57B600672241 /* UIImage+FixOrientation.m in Sources */,
-				FCF353F81CA3D4D1001ABA0A /* ZIKSideView.m in Sources */,
 				FC5337CF1CBE205F008BFB11 /* ZIKStationAgentModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

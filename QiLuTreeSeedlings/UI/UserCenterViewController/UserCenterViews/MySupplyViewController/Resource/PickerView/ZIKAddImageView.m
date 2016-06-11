@@ -110,6 +110,10 @@
 
 - (void)addImage:(UIImage *)image withUrl:(NSDictionary *)urlDic
 {
+    if (self.haveImageMArr.count == 3) {
+        return;
+    }
+
     ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
     [imageBtn setImage:image forState:UIControlStateNormal];
     imageBtn.image = image;
@@ -118,7 +122,7 @@
     imageBtn.isHiddenDeleteBtn = NO;
     [imageBtn addTarget:self action:@selector(imageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:imageBtn];
-    [self.haveImageMArr addObject:imageBtn];
+     [self.haveImageMArr addObject:imageBtn];
 
     /***********************************/
 
@@ -130,6 +134,9 @@
 - (void)addImageUrl:(UIImage *)image withUrl:(NSDictionary *)urlDic
 {
 
+    if (self.haveImageMArr.count == 3) {
+        return;
+    }
 
     ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
     //image.size = CGSizeMake(200, 200);
@@ -181,7 +188,7 @@
     else  {
         self.btnMarr = [NSMutableArray arrayWithArray:self.emptyMArr];
         [self.haveImageMArr enumerateObjectsUsingBlock:^(ZIKPickerBtn *btn, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (!btn.isHiddenDeleteBtn) {
+            if (!btn.isHiddenDeleteBtn && idx<=2) {
                 [self.btnMarr replaceObjectAtIndex:idx withObject:btn];
             }
         }];
@@ -231,6 +238,9 @@
 }
 
 - (void)addImageWithURLArr:(NSArray *)urlArr {
+    if (self.haveImageMArr.count == 3) {
+        return;
+    }
     [urlArr enumerateObjectsUsingBlock:^(NSDictionary *urlDic, NSUInteger idx, BOOL * _Nonnull stop) {
             ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
             [imageBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:urlDic[@"url"]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];

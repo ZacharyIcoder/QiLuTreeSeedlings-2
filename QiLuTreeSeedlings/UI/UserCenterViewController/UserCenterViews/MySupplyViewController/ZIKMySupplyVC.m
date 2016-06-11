@@ -471,7 +471,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     [_bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
     _bottomcell.hidden = YES;
-    
+
 }
 
 #pragma mark - 长按触发事件
