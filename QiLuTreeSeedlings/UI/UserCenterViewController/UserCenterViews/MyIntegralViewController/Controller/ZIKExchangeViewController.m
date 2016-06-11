@@ -82,8 +82,8 @@ NSString *kCellID = @"cellID";
     UINib *nib = [UINib nibWithNibName:@"ZIKIntegralCollectionViewCell"
                                 bundle: [NSBundle mainBundle]];
     [cv registerNib:nib forCellWithReuseIdentifier:kCellID];
-    ZIKIntegralCollectionViewCell *cell = [[ZIKIntegralCollectionViewCell alloc] init];
-    cell = [cv dequeueReusableCellWithReuseIdentifier:kCellID
+    //ZIKIntegralCollectionViewCell *cell = [[ZIKIntegralCollectionViewCell alloc] init];
+    ZIKIntegralCollectionViewCell * cell = [cv dequeueReusableCellWithReuseIdentifier:kCellID
                                          forIndexPath:indexPath];
     if (self.dataArr.count > 0) {
         ZIKIntegraExchangeModel *model = self.dataArr[indexPath.row];
