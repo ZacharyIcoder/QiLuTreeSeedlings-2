@@ -244,7 +244,7 @@
         self.myCustomizedInfoTableView.frame = CGRectMake(0, 64+HINT_VIEW_HEIGHT, Width, Height-64-HINT_VIEW_HEIGHT);
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
         [self.myCustomizedInfoTableView addHeaderWithCallback:^{//添加刷新控件
-            [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",weakSelf.page]];
+            [weakSelf requestSellList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
         }];
 
     }

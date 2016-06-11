@@ -195,7 +195,7 @@
 
 -(void)getDataList
 {
-    [HTTPCLIENT messageListWithPage:[NSString stringWithFormat:@"%ld",_pageCount] WithPageSize:@"15" WithReads:@"" Success:^(id responseObject) {
+    [HTTPCLIENT messageListWithPage:[NSString stringWithFormat:@"%ld",(long)_pageCount] WithPageSize:@"15" WithReads:@"" Success:^(id responseObject) {
         [self.tableView headerEndRefreshing];
         [self.tableView footerEndRefreshing];
         if ([[responseObject objectForKey:@"success"] integerValue]) {

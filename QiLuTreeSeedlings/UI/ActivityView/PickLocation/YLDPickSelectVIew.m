@@ -37,7 +37,7 @@
         {
             NSInteger k=[leve integerValue];
             k=k+1;
-           allTown = [dao getCityByLeve:[NSString stringWithFormat:@"%ld",k] andParent_code:code];
+           allTown = [dao getCityByLeve:[NSString stringWithFormat:@"%ld",(long)k] andParent_code:code];
         }
         self.dataAry=[CityModel creatCityAryByAry:allTown];
         [dao closeDataBase];

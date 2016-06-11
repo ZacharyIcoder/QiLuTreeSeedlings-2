@@ -357,10 +357,10 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
     BOOL canrun = [self.guigeView  getAnswerAry:screenTijiaoAry];
     if (canrun) {
-        for (int i=0; i<screenTijiaoAry.count; i++) {
-            NSDictionary *dic=screenTijiaoAry[i];
-            CLog(@"%@---%@",dic[@"field"],dic[@"value"]);
-        }
+//        for (int i=0; i<screenTijiaoAry.count; i++) {
+//            NSDictionary *dic=screenTijiaoAry[i];
+//            CLog(@"%@---%@",dic[@"field"],dic[@"value"]);
+//        }
     }else{
         return;
     }

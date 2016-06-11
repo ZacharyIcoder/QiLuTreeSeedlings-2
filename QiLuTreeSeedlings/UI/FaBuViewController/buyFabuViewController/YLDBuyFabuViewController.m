@@ -239,7 +239,7 @@
         return;
     }
     ShowActionV();
-    [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.name WithProductUid:self.productUid WithCount:self.countTextField.text WithPrice:self.priceTextField.text WithEffectiveTime:[NSString stringWithFormat:@"%ld",self.ecttiv] WithRemark:self.birefField.text WithusedArea:self.citysStr WithAry:self.guigeAry Success:^(id responseObject) {
+    [HTTPCLIENT fabuBuyMessageWithUid:self.uid Withtitle:self.titleStr WithName:self.name WithProductUid:self.productUid WithCount:self.countTextField.text WithPrice:self.priceTextField.text WithEffectiveTime:[NSString stringWithFormat:@"%ld",(long)self.ecttiv] WithRemark:self.birefField.text WithusedArea:self.citysStr WithAry:self.guigeAry Success:^(id responseObject) {
         RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"发布成功"];
