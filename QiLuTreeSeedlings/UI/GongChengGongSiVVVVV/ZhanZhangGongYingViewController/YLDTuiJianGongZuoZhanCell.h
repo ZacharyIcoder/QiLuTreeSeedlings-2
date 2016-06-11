@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface YLDTuiJianGongZuoZhanCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *LogImag;
+@property (weak, nonatomic) IBOutlet UILabel *ZhanZhangNameLab;
+@property (weak, nonatomic) IBOutlet UILabel *ZzNumbLab;
+@property (weak, nonatomic) IBOutlet UILabel *addressLab;
+@property (weak, nonatomic) IBOutlet UILabel *manNameLab;
+@property (weak, nonatomic) IBOutlet UIButton *callBtn;
 
 @end

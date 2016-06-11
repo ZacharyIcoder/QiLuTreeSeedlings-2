@@ -92,6 +92,7 @@
 		EA5444C61CC770BD00971A50 /* bangde2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA5444C21CC770BD00971A50 /* bangde2.jpg */; };
 		EA5444C71CC770BD00971A50 /* bangde3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA5444C31CC770BD00971A50 /* bangde3.jpg */; };
 		EA5444C81CC770BD00971A50 /* bangde4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA5444C41CC770BD00971A50 /* bangde4.jpg */; };
+		EA56C3BF1D08025D00750BC3 /* dingdandinahua@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA56C3BE1D08025D00750BC3 /* dingdandinahua@2x.png */; };
 		EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */; };
 		EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC351C8D16F400660FC9 /* region@2x.png */; };
 		EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */; };
@@ -669,6 +670,7 @@
 		EA5444C21CC770BD00971A50 /* bangde2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bangde2.jpg; sourceTree = "<group>"; };
 		EA5444C31CC770BD00971A50 /* bangde3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bangde3.jpg; sourceTree = "<group>"; };
 		EA5444C41CC770BD00971A50 /* bangde4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bangde4.jpg; sourceTree = "<group>"; };
+		EA56C3BE1D08025D00750BC3 /* dingdandinahua@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dingdandinahua@2x.png"; sourceTree = "<group>"; };
 		EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LISTtreeNumber@2x.png"; sourceTree = "<group>"; };
 		EA5AAC351C8D16F400660FC9 /* region@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "region@2x.png"; sourceTree = "<group>"; };
 		EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listtime@2x.png"; sourceTree = "<group>"; };
@@ -1739,6 +1741,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA56C3BE1D08025D00750BC3 /* dingdandinahua@2x.png */,
 				FC7ED2401D054FD70010A8E5 /* downImage.png */,
 				EA7491681D0275910043BDAC /* xiala2.png */,
 				EA7491661D026FA40043BDAC /* xialakuang.png */,
@@ -3860,6 +3863,7 @@
 				FC6FED781CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.xib in Resources */,
 				FC96300D1CFFE2E200078F29 /* ZIKStationOrderTableViewCell.xib in Resources */,
 				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
+				EA56C3BF1D08025D00750BC3 /* dingdandinahua@2x.png in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
