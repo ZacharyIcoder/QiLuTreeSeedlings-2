@@ -82,9 +82,10 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);//并行队列（并发执行）（发布限制信息不需要立即获取）
     dispatch_async(queue, ^{
-        [self requestSupplyRestrict];//请求发布限制信息
+        [weakSelf requestSupplyRestrict];//请求发布限制信息
     });
 }
 
@@ -453,27 +454,25 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
     [self.supplyTableView addGestureRecognizer:_tapDeleteGR];
 
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        //底部刷新view（已通过状态下显示）
-        _refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
-        _refreshCell.count = 0;
-        _refreshCell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
-        [self.view addSubview:_refreshCell];
-        [_refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        _refreshCell.hidden = YES;
 
-        //底部删除view（过期状态下显示）
-        _bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
-        _bottomcell.count = 0;
-        _bottomcell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
-        [self.view addSubview:_bottomcell];
-        [_bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [_bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        _bottomcell.hidden = YES;
-    });
+    //底部刷新view（已通过状态下显示）
+    _refreshCell = [ZIKMySupplyBottomRefreshTableViewCell cellWithTableView:nil];
+    _refreshCell.count = 0;
+    _refreshCell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
+    [self.view addSubview:_refreshCell];
+    [_refreshCell.refreshButton addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    _refreshCell.hidden = YES;
 
-  }
+    //底部删除view（过期状态下显示）
+    _bottomcell = [ZIKBottomDeleteTableViewCell cellWithTableView:nil];
+    _bottomcell.count = 0;
+    _bottomcell.frame = CGRectMake(0, Height-REFRESH_CELL_HEIGH, Width, REFRESH_CELL_HEIGH);
+    [self.view addSubview:_bottomcell];
+    [_bottomcell.seleteImageButton addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomcell.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    _bottomcell.hidden = YES;
+    
+}
 
 #pragma mark - 长按触发事件
 - (void)tapGR {
