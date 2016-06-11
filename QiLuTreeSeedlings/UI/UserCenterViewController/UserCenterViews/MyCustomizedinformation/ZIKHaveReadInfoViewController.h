@@ -9,6 +9,14 @@
 #import "ZIKArrowViewController.h"
 
 @interface ZIKHaveReadInfoViewController : ZIKArrowViewController
+
+/**
+ *  产品uid
+ */
 @property (nonatomic, copy) NSString *uidStr;
+/**
+ *  定制名称
+ */
 @property (nonatomic, copy) NSString *name;
+
 @end

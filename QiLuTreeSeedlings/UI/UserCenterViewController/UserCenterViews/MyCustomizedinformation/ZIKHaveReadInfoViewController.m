@@ -10,16 +10,22 @@
 
 #import "MJRefresh.h"
 #import "YYModel.h"
+
 #import "ZIKHaveReadTableViewCell.h"
 #import "YLDCustomUnReadTableViewCell.h"
 #import "ZIKBottomDeleteTableViewCell.h"//底部删除view,可编辑状态下
+
 //#import "ZIKHaveReadModel.h"
 #import "ZIKCustomizedInfoListModel.h"
+
 #import "BuyDetialInfoViewController.h"
+
 @interface ZIKHaveReadInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property (nonatomic, strong) UITableView    *readVC;      //已读信息列表
 @property (nonatomic, strong) NSMutableArray *readDataMArr;//已读信息数据Marr
 @property (nonatomic, assign) NSInteger      page;         //页数从1开始
+
 @end
 
 @implementation ZIKHaveReadInfoViewController
@@ -81,7 +87,7 @@
 - (void)initData {
     self.page         = 1;
     self.readDataMArr = [[NSMutableArray alloc] init];
-    _removeArray = [[NSMutableArray alloc] init];
+    _removeArray      = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - 初始化UI
@@ -113,10 +119,10 @@
 - (void)tapGR {
     if (!self.readVC.editing) {
         [self.readVC removeHeader];//编辑状态取消下拉刷新
-        self.readVC.editing = YES;
-        _bottomcell.hidden = NO;
+        self.readVC.editing     = YES;
+        _bottomcell.hidden      = NO;
         _bottomcell.isAllSelect = NO;
-        self.readVC.frame = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64-BOTTOM_DELETE_CELL_HEIGHT);
+        self.readVC.frame       = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64-BOTTOM_DELETE_CELL_HEIGHT);
     }
 }
 
@@ -174,9 +180,9 @@
             }];
             [blockSelf.readVC reloadData];
             if (blockSelf.readDataMArr.count == 0) {
-                _bottomcell.hidden = YES;
+                _bottomcell.hidden  = YES;
                 self.readVC.editing = NO;
-                self.readVC.frame = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);
+                self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);
                 [self requestData];
             }
             if (_removeArray.count > 0) {
@@ -185,13 +191,13 @@
             if (_deleteIndexArr.count > 0) {
                 _deleteIndexArr = nil;
             }
-            _bottomcell.count = 0;
+            _bottomcell.count  = 0;
             _bottomcell.hidden = YES;
             //[self updateBottomDeleteCellView];
             [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
-            _bottomcell.hidden = YES;
+            _bottomcell.hidden  = YES;
             self.readVC.editing = NO;
-            self.readVC.frame = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);//更改tableview 的frame
+            self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);//更改tableview 的frame
             __weak typeof(self) weakSelf = self;//解决循环引用的问题
             [self.readVC addHeaderWithCallback:^{//添加刷新控件
                 [weakSelf requestHaveReadList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
@@ -265,9 +271,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.01f;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 64.0f;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.readDataMArr.count;
 }
@@ -301,7 +309,7 @@
     }
     else {
         ZIKCustomizedInfoListModel *model = self.readDataMArr[indexPath.row];
-        BuyDetialInfoViewController *buyDetialVC=[[BuyDetialInfoViewController alloc]initWithDingzhiModel:model];
+        BuyDetialInfoViewController *buyDetialVC = [[BuyDetialInfoViewController alloc] initWithDingzhiModel:model];
         [self.navigationController pushViewController:buyDetialVC animated:YES];
 //        ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
 //        BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc]initWithDingzhiModel:model];
@@ -323,10 +331,11 @@
         [_removeArray removeObject:model];
     }
     NSArray *selectedRows = [self.readVC indexPathsForSelectedRows];
-    _deleteIndexArr = selectedRows;
+    _deleteIndexArr   = selectedRows;
     _bottomcell.count = _removeArray.count;
     [self updateBottomDeleteCellView];
 }
+
 #pragma mark - 可选实现的协议方法
 // 删除时的提示文字
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath

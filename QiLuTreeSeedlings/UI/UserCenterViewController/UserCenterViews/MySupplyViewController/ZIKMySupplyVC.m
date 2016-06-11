@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 {
 
     @private
-    UIView *_emptyUI;
+    UIView *_emptyUI;//没有发布供应信息时显示的空白view
     UIView *_lineView;//按钮下跟随滑动的lineview
     UIButton *_cuttentButton;  //指向目前状态（四种状态下）的按钮
     ZIKBottomDeleteTableViewCell *_bottomcell; //过期编辑状态下底部删除view
@@ -74,26 +74,26 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     NSArray *_deleteIndexArr;//过期编辑状态下,选中的删除index
 }
 
-#pragma 视图cycle
+#pragma mark - 视图cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    [self requestData];
+    [self requestData];//请求我的供应列表信息
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);//并行队列（并发执行）（发布限制信息不需要立即获取）
     dispatch_async(queue, ^{
-        [self requestSupplyRestrict];
+        [self requestSupplyRestrict];//请求发布限制信息
     });
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self configNav];
-    [self initData];
-    [self initUI];
+    [self configNav];//配置navigation标题按钮等
+    [self initData];//初始化数据
+    [self initUI];//初始化界面
 }
 
 #pragma mark - 返回箭头按钮点击事件
@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
                 _throughSelectIndexArr = nil;
             }
             _refreshCell.hidden = YES;//隐藏底部刷新合计view
-            _refreshCell.count = 0;//底部刷新合计数为0
+            _refreshCell.count  = 0;//底部刷新合计数为0
         }
         else if (self.state == SupplyStateNoThrough) {//如果是过期编辑状态
             if (_removeArray.count > 0) {//选中的删除model清空
@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
                 _deleteIndexArr = nil;
             }
             _bottomcell.hidden = YES;
-            _bottomcell.count = 0;
+            _bottomcell.count  = 0;
         }
         self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);//更改tableview 的frame
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
@@ -358,8 +358,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
                 ZIKSupplyModel *model = [ZIKSupplyModel yy_modelWithDictionary:dic];
                 if (self.state == SupplyStateThrough && [model.shuaxin isEqualToString:@"1"]) {
                     model.isCanRefresh = NO;
-                }
-                else {
+                } else {
                     model.isCanRefresh = YES;
                 }
                 [self.supplyInfoMArr addObject:model];
@@ -395,7 +394,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma  mark - 初始化数据
 - (void)initData {
     _state              = SupplyStateAll;//设置初始状态为全部
-    self.page           = 1;
+    self.page           = 1;//页面page从1开始
     self.supplyInfoMArr = [NSMutableArray array];
     _refreshMarr        = [[NSMutableArray alloc] init];
     _removeArray        = [[NSMutableArray alloc] init];
@@ -804,11 +803,11 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 }
 
 - (void)btnClick {
-    if (self.isCanPublish) {
+    if (self.isCanPublish) {//可以发布，进入发布界面
         ZIKSupplyPublishVC *spVC = [[ZIKSupplyPublishVC alloc] init];
         [self.navigationController pushViewController:spVC animated:YES];
     }
-    else {
+    else {//不可发布，进入苗圃信息界面完善
         NuseryDetialViewController *ndvc = [[NuseryDetialViewController alloc] init];
         [self.navigationController pushViewController:ndvc animated:YES];
         [ToastView showTopToast:@"您没有求购发布权限,请先完善苗圃信息"];

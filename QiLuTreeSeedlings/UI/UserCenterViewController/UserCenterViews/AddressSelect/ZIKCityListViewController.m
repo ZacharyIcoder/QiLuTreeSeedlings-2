@@ -49,27 +49,27 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 -(UIView *)makeNavView
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
-    UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(17, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
     [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
     [view addSubview:backBtn];
-    self.backBtn=backBtn;
+    self.backBtn = backBtn;
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-   UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-160,26, 320, 30)];
+    UILabel *titleLab = [[UILabel alloc] initWithFrame:CGRectMake(kWidth/2-160,26, 320, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     //[titleLab setText:self.vcTitle];
     //titleLab.text = self.vcTitle;
-    NSString *str = @"选择地区（最多可选5项）";
+    NSString *str           = @"选择地区（最多可选5项）";
     FontAttribute *fullFont = [FontAttribute new];
-    fullFont.font = [UIFont systemFontOfSize:14.0f];
-    fullFont.effectRange  = NSMakeRange(0, str.length);
+    fullFont.font           = [UIFont systemFontOfSize:14.0f];
+    fullFont.effectRange    = NSMakeRange(0, str.length);
     //局部设置
     FontAttribute *partFont = [FontAttribute new];
-    partFont.font = [UIFont systemFontOfSize:20.0f];
-    partFont.effectRange = NSMakeRange(0, 4);
+    partFont.font           = [UIFont systemFontOfSize:20.0f];
+    partFont.effectRange    = NSMakeRange(0, 4);
     titleLab.attributedText = [str mutableAttributedStringWithStringAttributes:@[fullFont,partFont]];
 
     [view addSubview:titleLab];
@@ -82,21 +82,21 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 //    self.vcTitle = @"选择地区（最多可选5项）";
 
-    self.rightBarBtnTitleString = @"确定";
-       _selectMArr = [[NSMutableArray alloc] initWithCapacity:5];
-    _isCanSelect = YES;
-    UITableView *cityTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStylePlain];
-    cityTV.delegate = self;
-    cityTV.dataSource = self;
+    self.rightBarBtnTitleString               = @"确定";
+    _selectMArr                               = [[NSMutableArray alloc] initWithCapacity:5];
+    _isCanSelect                              = YES;
+    UITableView *cityTV                       = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStylePlain];
+    cityTV.delegate                           = self;
+    cityTV.dataSource                         = self;
     [self.view addSubview:cityTV];
-    self.cityTableView = cityTV;
+    self.cityTableView                        = cityTV;
    // CLog(@"%@",self.citys);
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     [self.cityTableView addGestureRecognizer:pinchRecognizer];
 
-    self.cityTableView.sectionHeaderHeight = HEADER_HEIGHT;
-    self.uniformRowHeight = DEFAULT_ROW_HEIGHT;
-    self.openSectionIndex = NSNotFound;
+    self.cityTableView.sectionHeaderHeight    = HEADER_HEIGHT;
+    self.uniformRowHeight                     = DEFAULT_ROW_HEIGHT;
+    self.openSectionIndex                     = NSNotFound;
 
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"ZIKCitySectionHeaderView" bundle:nil];
     [self.cityTableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
@@ -144,7 +144,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
             ZIKSectionInfo *sectionInfo = [[ZIKSectionInfo alloc] init];
             sectionInfo.cityModel = city;
-            sectionInfo.open = NO;
+            sectionInfo.open      = NO;
 
             NSNumber *defaultRowHeight = @(DEFAULT_ROW_HEIGHT);
             NSInteger countOfQuotations = [[[sectionInfo.cityModel province] citys] count];
@@ -188,7 +188,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    ZIKSectionInfo *sectionInfo = (self.sectionInfoArray)[section];
+    ZIKSectionInfo *sectionInfo   = (self.sectionInfoArray)[section];
     NSInteger numStoriesInSection = [[[sectionInfo.cityModel province] citys] count];
 
     return sectionInfo.open ? numStoriesInSection : 0;
@@ -211,11 +211,11 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
     ZIKCitySectionHeaderView *sectionHeaderView = [self.cityTableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
-    ZIKSectionInfo *sectionInfo = (self.sectionInfoArray)[section];
-    sectionInfo.headerView = sectionHeaderView;
+    ZIKSectionInfo *sectionInfo       = (self.sectionInfoArray)[section];
+    sectionInfo.headerView            = sectionHeaderView;
     sectionHeaderView.titleLable.text = sectionInfo.cityModel.province.provinceName;
-    sectionHeaderView.section = section;
-    sectionHeaderView.delegate = self;
+    sectionHeaderView.section         = section;
+    sectionHeaderView.delegate        = self;
 
     return sectionHeaderView;
 //    ZIKCitySectionHeaderView *sectionHeaderView = [self.cityTableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
