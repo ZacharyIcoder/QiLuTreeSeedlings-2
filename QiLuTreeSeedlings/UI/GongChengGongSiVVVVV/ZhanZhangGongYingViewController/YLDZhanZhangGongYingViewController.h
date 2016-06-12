@@ -7,7 +7,7 @@
 //
 
 
-#import "ZIKArrowViewController.h"
-@interface YLDZhanZhangGongYingViewController : ZIKArrowViewController
+#import "YLDBaseViewController.h"
+@interface YLDZhanZhangGongYingViewController : YLDBaseViewController
 
 @end
