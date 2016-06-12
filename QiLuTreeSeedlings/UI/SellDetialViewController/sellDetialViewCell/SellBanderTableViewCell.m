@@ -76,7 +76,13 @@
         UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(titleLab.frame)+5, kWidth-40, 0.5)];
         [lineView setBackgroundColor:kLineColor];
         [self addSubview:lineView];
-        UIView *userView=[self viewWithTitle:model.supplybuyName andX:(kWidth-150)/4.f andColor:titleLabColor andImageName:@"person"];
+        UIView *userView = nil;
+        if (model.memberName) {
+            userView=[self viewWithTitle:model.memberName andX:(kWidth-150)/4.f andColor:titleLabColor andImageName:@"person"];
+        } else {
+            userView=[self viewWithTitle:model.supplybuyName andX:(kWidth-150)/4.f andColor:titleLabColor andImageName:@"person"];
+        }
+//        UIView *userView=[self viewWithTitle:model.supplybuyName andX:(kWidth-150)/4.f andColor:titleLabColor andImageName:@"person"];
         [self addSubview:userView];
         UIView *numView=[self viewWithTitle:[NSString stringWithFormat:@"%@棵",model.count] andX:kWidth/2-25 andColor:titleLabColor andImageName:@"LISTtreeNumber"];
         [self addSubview:numView];

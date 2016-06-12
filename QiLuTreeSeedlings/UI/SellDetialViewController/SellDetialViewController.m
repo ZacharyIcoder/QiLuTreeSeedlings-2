@@ -161,13 +161,13 @@
 }
 -(void)CallAction
 {
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.memberPhone];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 #pragma mark -- 短信留言
 -(void)meaageAction
 {
-    [self showMessageView:[NSArray arrayWithObjects:self.model.phone, nil] title:@"苗木供应" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的供应信息:%@ 很感兴趣",self.model.title]];
+    [self showMessageView:[NSArray arrayWithObjects:self.model.memberPhone, nil] title:@"苗木供应" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的供应信息:%@ 很感兴趣",self.model.title]];
 }
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result

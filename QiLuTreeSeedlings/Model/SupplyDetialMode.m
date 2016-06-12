@@ -32,6 +32,8 @@
     model.state=[[dic objectForKey:@"state"] integerValue];
     model.productName=[dic objectForKey:@"productName"];
     model.nurseryUid = dic[@"nurseryUid"];
+    model.memberPhone = dic[@"memberPhone"];
+    model.memberName = dic[@"memberName"];
     return model;
 }
 @end

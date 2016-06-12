@@ -84,7 +84,11 @@
     
     self.creatTimeLab.text=model.createTime;
     self.endTimeLab.text=model.endTime;
-    self.phoneLab.text=model.phone;
+    if (model.memberPhone) {
+        self.phoneLab.text = model.memberPhone;
+    } else {
+        self.phoneLab.text=model.phone;
+    }
 }
 
 - (void)awakeFromNib {

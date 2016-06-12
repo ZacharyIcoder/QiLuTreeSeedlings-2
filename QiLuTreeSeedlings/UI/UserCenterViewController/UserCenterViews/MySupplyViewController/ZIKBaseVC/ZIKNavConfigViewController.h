@@ -17,6 +17,15 @@ typedef void(^LeftBarBtnClickedBlock)();
  */
 @property (nonatomic, copy) NSString *leftBarBtnImgString;
 /**
+ *  左侧按钮名称
+ */
+@property (nonatomic, copy) NSString *leftBarBtnTitleString;
+/**
+ *  左侧按钮block
+ */
+@property (nonatomic, copy) LeftBarBtnClickedBlock leftBarBtnBlock;
+
+/**
  *  右侧按钮图像名称
  */
 @property (nonatomic, copy) NSString *rightBarBtnImgString;

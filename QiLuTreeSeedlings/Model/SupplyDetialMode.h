@@ -29,6 +29,8 @@
 @property (nonatomic)       NSInteger state;
 @property (nonatomic,strong)NSString *productName;
 
+@property (nonatomic, copy) NSString *memberPhone;
+@property (nonatomic, copy) NSString *memberName;
 /**
  *  苗圃Uid
  */
