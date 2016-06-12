@@ -78,13 +78,13 @@
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        normalColor,           NSForegroundColorAttributeName,
-                                                       [UIFont fontWithName:@"Helvetica" size:11.0], NSFontAttributeName,
+                                                       [UIFont fontWithName:@"Helvetica" size:12.0], NSFontAttributeName,
                                                        nil] forState:UIControlStateNormal];
     // UIColor *titleHighlightedColor = [UIColor colorWithRed:43/255.0 green:41/255.0 blue:56/255.0 alpha:1];
     UIColor *titleHighlightedColor = NavColor;
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        titleHighlightedColor, NSForegroundColorAttributeName,
-                                                       [UIFont fontWithName:@"Helvetica" size:11.0], NSFontAttributeName,
+                                                       [UIFont fontWithName:@"Helvetica" size:12.0], NSFontAttributeName,
                                                        nil] forState:UIControlStateSelected];
 }
 
