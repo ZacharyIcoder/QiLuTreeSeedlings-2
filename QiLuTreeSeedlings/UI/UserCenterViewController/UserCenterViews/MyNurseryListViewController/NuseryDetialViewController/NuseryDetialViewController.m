@@ -30,6 +30,7 @@
 @property (nonatomic,copy) NSString *AreaCity;
 @property (nonatomic,copy) NSString *AreaCounty;
 @property (nonatomic,copy) NSString *AreaTown;
+@property (nonatomic,strong) CityModel *xiancityModel;
 @end
 
 @implementation NuseryDetialViewController
@@ -134,8 +135,13 @@
         [ToastView showTopToast:@"请输入苗圃地址"];
         return;
     }
+    if (self.xiancityModel) {
+        if ([self.xiancityModel.level integerValue]==CityLeveZhen) {
+            self.AreaTown=self.xiancityModel.code;
+        }
+    }
     if (self.AreaTown.length==0) {
-        [ToastView showTopToast:@"苗圃地址需精确到镇"];
+      [ToastView showTopToast:@"苗圃地址需精确到镇"];
         return;
     }
     ShowActionV();
@@ -175,6 +181,10 @@
     if (str3) {
         [areaStr appendFormat:@"%@",str3];
     }
+    NSString *str4=[citydao getCityNameByCityUid:model.nurseryAreaTown];
+    if (str4) {
+        [areaStr appendFormat:@"%@",str4];
+    }
     [citydao closeDataBase];
     [self.areaBtn setTitle:areaStr forState:UIControlStateNormal];
 }
@@ -209,8 +219,10 @@
     if (xian.code) {
         [namestr appendString:xian.cityName];
         self.AreaCounty=xian.code;
+        self.xiancityModel=xian;
     }else
     {
+        self.xiancityModel=nil;
         self.AreaCounty=nil;
     }
     

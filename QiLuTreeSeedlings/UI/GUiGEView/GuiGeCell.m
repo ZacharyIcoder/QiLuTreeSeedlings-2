@@ -542,7 +542,7 @@
         [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
         if (self.maxTextField.text.length==0) {
             self.maxTextField.text=textField.text;
-//             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+            [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
 ////            [self.answerAry insertObject:textField.text atIndex:1];
         }
 //        if (textField.text.length==0) {
@@ -558,28 +558,25 @@
         [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
         if (self.minTextField.text.length==0) {
             self.minTextField.text=textField.text;
-            //             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
+            [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
             ////            [self.answerAry insertObject:textField.text atIndex:1];
         }
     }
     if (textField.tag==113) {
-//       [self.answerAry insertObject:textField.text atIndex:0];
         [self.answerAry replaceObjectAtIndex:0 withObject:textField.text];
     }
     if (textField.tag==121) {
          [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
         if (self.maxTextField.text.length==0) {
             self.maxTextField.text=textField.text;
-            //             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-            ////            [self.answerAry insertObject:textField.text atIndex:1];
+            [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
         }
     }
     if (textField.tag==122) {
          [self.answerAry2 replaceObjectAtIndex:1 withObject:textField.text];
         if (self.minTextField.text.length==0) {
             self.minTextField.text=textField.text;
-            //             [self.answerAry replaceObjectAtIndex:1 withObject:textField.text];
-            ////            [self.answerAry insertObject:textField.text atIndex:1];
+          [self.answerAry2 replaceObjectAtIndex:0 withObject:textField.text];
         }
     }
     if (textField.tag==123) {
