@@ -43,6 +43,7 @@
     [super viewDidLoad];
     [self initData];
     [self initUI];
+    [self requestData];
 }
 
 - (void)initData {
@@ -82,15 +83,14 @@
 - (void)requestMyOrderList:(NSString *)page {
     //我的供应列表
     [self.orderTV headerEndRefreshing];
-//    [HTTPCLIENT projectGetMyOrderListWithStatus:nil keywords:nil pageNumber:nil pageSize:nil Success:^(id responseObject) {
-//        if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
-//            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
-//            return ;
-//        }
-//    } failure:^(NSError *error) {
-//        
-//    }];
-}
+    [HTTPCLIENT stationGetOrderSearchWithOrderBy:@"orderDate" orderSort:@"desc" status:@"0" orderTypeUid:nil area:nil pageNumber:@"1" pageSize:@"15" Success:^(id responseObject) {
+        CLog(@"result:%@",responseObject);
+        ;
+    } failure:^(NSError *error) {
+        CLog(@"%@",error);
+    }];
+
+};
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {

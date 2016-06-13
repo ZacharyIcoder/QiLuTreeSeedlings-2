@@ -602,7 +602,9 @@ failure:(void (^)(NSError *error))failure;
                                 pageSize:(NSString *)pageSize
                                  Success:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
-
+#pragma mark ---------- 获取订单类型 -----------
+- (void)stationGetOrderTypeSuccess:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
 /******************* end--站长助手API--end *******************/
 
 

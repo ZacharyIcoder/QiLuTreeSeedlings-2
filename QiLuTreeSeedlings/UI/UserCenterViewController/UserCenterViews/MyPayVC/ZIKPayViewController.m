@@ -66,10 +66,10 @@
         [ToastView showToast:@"充值金额不能小于零" withOriginY:250 withSuperView:self.view];
         return;
     }
-    if (nameTextField.text.floatValue>2000) {
-        [ToastView showToast:@"单次充值金额不能大于2000" withOriginY:250 withSuperView:self.view];
-        return;
-    }
+//    if (nameTextField.text.floatValue>2000) {
+//        [ToastView showToast:@"单次充值金额不能大于2000" withOriginY:250 withSuperView:self.view];
+//        return;
+//    }
     [self requestIsFirstRecharge];
 //    if (![[NSUserDefaults standardUserDefaults] objectForKey:Recharge] && nameTextField.text.integerValue<100)/*[[NSUserDefaults standardUserDefaults] setValue:@"yes" forKey:BB_XCONST_ISAUTO_LOGIN])#define Recharge @"Is top-up for the first time"*/
 //    {

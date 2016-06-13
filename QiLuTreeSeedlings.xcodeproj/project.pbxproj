@@ -299,8 +299,6 @@
 		FC23D52D1D0CEE1400611E34 /* 底部菜单-站长中心off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC23D5071D0CEE1400611E34 /* 底部菜单-站长中心off.png */; };
 		FC23D52E1D0CEE1400611E34 /* 底部菜单-站长中心on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC23D5081D0CEE1400611E34 /* 底部菜单-站长中心on.png */; };
 		FC23D52F1D0CEE1400611E34 /* ZIKMyOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D50C1D0CEE1400611E34 /* ZIKMyOfferViewController.m */; };
-		FC23D5301D0CEE1400611E34 /* ZIKStationOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D5101D0CEE1400611E34 /* ZIKStationOrderTableViewCell.m */; };
-		FC23D5311D0CEE1400611E34 /* ZIKStationOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC23D5111D0CEE1400611E34 /* ZIKStationOrderTableViewCell.xib */; };
 		FC23D5321D0CEE1400611E34 /* ZIKStationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D5151D0CEE1400611E34 /* ZIKStationCenterViewController.m */; };
 		FC23D5331D0CEE1400611E34 /* ZIKStationTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D51A1D0CEE1400611E34 /* ZIKStationTabBarViewController.m */; };
 		FC23D5341D0CEE1400611E34 /* ZIKOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D51E1D0CEE1400611E34 /* ZIKOrderViewController.m */; };
@@ -317,6 +315,8 @@
 		FC4A51891D0E63650060587B /* ico_排序正序.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4A51841D0E63650060587B /* ico_排序正序.png */; };
 		FC4A518D1D0E79270060587B /* ZIKOrderSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4A518B1D0E79270060587B /* ZIKOrderSecondTableViewCell.m */; };
 		FC4A518E1D0E79270060587B /* ZIKOrderSecondTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4A518C1D0E79270060587B /* ZIKOrderSecondTableViewCell.xib */; };
+		FC4A51951D0E962A0060587B /* ZIKStationOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4A51931D0E962A0060587B /* ZIKStationOrderTableViewCell.xib */; };
+		FC4A51961D0E962A0060587B /* ZIKStationOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4A51941D0E962A0060587B /* ZIKStationOrderTableViewCell.m */; };
 		FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */; };
 		FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F241CAB7C8900EBB2F8 /* NSString+Helper.m */; };
 		FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F281CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m */; };
@@ -1000,9 +1000,6 @@
 		FC23D5081D0CEE1400611E34 /* 底部菜单-站长中心on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-站长中心on.png"; sourceTree = "<group>"; };
 		FC23D50B1D0CEE1400611E34 /* ZIKMyOfferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyOfferViewController.h; sourceTree = "<group>"; };
 		FC23D50C1D0CEE1400611E34 /* ZIKMyOfferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyOfferViewController.m; sourceTree = "<group>"; };
-		FC23D50F1D0CEE1400611E34 /* ZIKStationOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderTableViewCell.h; sourceTree = "<group>"; };
-		FC23D5101D0CEE1400611E34 /* ZIKStationOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderTableViewCell.m; sourceTree = "<group>"; };
-		FC23D5111D0CEE1400611E34 /* ZIKStationOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationOrderTableViewCell.xib; sourceTree = "<group>"; };
 		FC23D5141D0CEE1400611E34 /* ZIKStationCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationCenterViewController.h; sourceTree = "<group>"; };
 		FC23D5151D0CEE1400611E34 /* ZIKStationCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationCenterViewController.m; sourceTree = "<group>"; };
 		FC23D5191D0CEE1400611E34 /* ZIKStationTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationTabBarViewController.h; sourceTree = "<group>"; };
@@ -1026,6 +1023,9 @@
 		FC4A518A1D0E79270060587B /* ZIKOrderSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKOrderSecondTableViewCell.h; sourceTree = "<group>"; };
 		FC4A518B1D0E79270060587B /* ZIKOrderSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKOrderSecondTableViewCell.m; sourceTree = "<group>"; };
 		FC4A518C1D0E79270060587B /* ZIKOrderSecondTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKOrderSecondTableViewCell.xib; sourceTree = "<group>"; };
+		FC4A51921D0E962A0060587B /* ZIKStationOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderTableViewCell.h; sourceTree = "<group>"; };
+		FC4A51931D0E962A0060587B /* ZIKStationOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationOrderTableViewCell.xib; sourceTree = "<group>"; };
+		FC4A51941D0E962A0060587B /* ZIKStationOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderTableViewCell.m; sourceTree = "<group>"; };
 		FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyQRCodeViewController.h; sourceTree = "<group>"; };
 		FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyQRCodeViewController.m; sourceTree = "<group>"; };
 		FC4B4F231CAB7C8900EBB2F8 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
@@ -1814,16 +1814,11 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
-
-
 				FC4A51801D0E63650060587B /* 工程订单_筛选.png */,
 				FC4A51811D0E63650060587B /* 工程订单_筛选on.png */,
 				FC4A51821D0E63650060587B /* ico_排序倒序.png */,
 				FC4A51831D0E63650060587B /* ico_排序默认.png */,
 				FC4A51841D0E63650060587B /* ico_排序正序.png */,
-
-
 				EA4E64731D0E866000A7D731 /* kefuxitongdadianhua.png */,
 				EA4E64711D0E863C00A7D731 /* kefuxitongfaduanxin.png */,
 				EA4E646F1D0E848900A7D731 /* kefuxitongyonghutouxiang.png */,
@@ -2666,9 +2661,6 @@
 		FC23D50E1D0CEE1400611E34 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FC23D50F1D0CEE1400611E34 /* ZIKStationOrderTableViewCell.h */,
-				FC23D5101D0CEE1400611E34 /* ZIKStationOrderTableViewCell.m */,
-				FC23D5111D0CEE1400611E34 /* ZIKStationOrderTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2750,6 +2742,9 @@
 				FC4A518A1D0E79270060587B /* ZIKOrderSecondTableViewCell.h */,
 				FC4A518B1D0E79270060587B /* ZIKOrderSecondTableViewCell.m */,
 				FC4A518C1D0E79270060587B /* ZIKOrderSecondTableViewCell.xib */,
+				FC4A51921D0E962A0060587B /* ZIKStationOrderTableViewCell.h */,
+				FC4A51931D0E962A0060587B /* ZIKStationOrderTableViewCell.xib */,
+				FC4A51941D0E962A0060587B /* ZIKStationOrderTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3883,7 +3878,6 @@
 				FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */,
 				EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */,
 				EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */,
-				FC23D5311D0CEE1400611E34 /* ZIKStationOrderTableViewCell.xib in Resources */,
 				FCCFA7151CF2E12400CC1313 /* carat-open.png in Resources */,
 				EA17B5D01CC9D1CE0054223B /* leftBtnImage@2x.png in Resources */,
 				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
@@ -3944,6 +3938,7 @@
 				EA4EEA1B1CD8822800FEFD52 /* buybiaoqian.png in Resources */,
 				EA1CF4041CACD11A00AF2D82 /* loading01@2x.png in Resources */,
 				EA1CF4191CACD4E300AF2D82 /* loading08@2x.png in Resources */,
+				FC4A51951D0E962A0060587B /* ZIKStationOrderTableViewCell.xib in Resources */,
 				EAF050EC1C928E3300F435A9 /* homePageNomer@2x.png in Resources */,
 				FC5612751D0C092F00E5743B /* 添加照片-人苗.png in Resources */,
 				EAF051051C92A31000F435A9 /* zhanzhangtong@2x.png in Resources */,
@@ -4204,6 +4199,7 @@
 				FCCFA7191CF2E12400CC1313 /* ZIKCityModel.m in Sources */,
 				FCCFA7131CF2E12400CC1313 /* ZIKCitySectionHeaderView.m in Sources */,
 				EAE881F61C87C399001EFF14 /* BuySearchTableViewCell.m in Sources */,
+				FC4A51961D0E962A0060587B /* ZIKStationOrderTableViewCell.m in Sources */,
 				FC56128B1D0C092F00E5743B /* ZIKSideView.m in Sources */,
 				FC5612461D0C092F00E5743B /* IQUIView+Hierarchy.m in Sources */,
 				FC56126F1D0C092F00E5743B /* NSMutableAttributedString+StringAttribute.m in Sources */,
@@ -4244,7 +4240,6 @@
 				FC5612A11D0C092F00E5743B /* ZIKSupplyPublishVC.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
 				FC56126C1D0C092F00E5743B /* StringAttribute.m in Sources */,
-				FC23D5301D0CEE1400611E34 /* ZIKStationOrderTableViewCell.m in Sources */,
 				FC5612661D0C092F00E5743B /* WHC_CameraVC.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
 				EA696FB31CDD7FE9001F037E /* YLDMyMessageModel.m in Sources */,
