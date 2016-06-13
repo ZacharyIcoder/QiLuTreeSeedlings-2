@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol YLDKeFuTableViewCellDelegate <NSObject>
+- (void)senderMessageWithDic:(NSDictionary *)dic;
+@end
 @interface YLDKeFuTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *moneLab;
@@ -15,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *messageBtn;
 @property (weak, nonatomic) IBOutlet UIButton *phoneBtn;
 @property (nonatomic,strong)NSDictionary *messageDic;
+@property (nonatomic,weak) id<YLDKeFuTableViewCellDelegate>delegate;
 +(YLDKeFuTableViewCell *)yldKeFuTableViewCell;
 @end

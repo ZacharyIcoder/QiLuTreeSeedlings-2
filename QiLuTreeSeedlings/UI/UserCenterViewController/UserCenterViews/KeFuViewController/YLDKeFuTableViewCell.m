@@ -7,10 +7,9 @@
 //
 
 #import "YLDKeFuTableViewCell.h"
-#import <MessageUI/MessageUI.h>
-#import <MessageUI/MFMessageComposeViewController.h>
+
 #import "UIDefines.h"
-@interface YLDKeFuTableViewCell()<MFMessageComposeViewControllerDelegate>
+@interface YLDKeFuTableViewCell()
 @end
 @implementation YLDKeFuTableViewCell
 +(YLDKeFuTableViewCell *)yldKeFuTableViewCell
@@ -20,78 +19,35 @@
 }
 -(void)CallAction
 {
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@""];
-    //NSLog(@"str======%@",[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"]);
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",[self.messageDic objectForKey:@"phone"]];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+}
+-(void)setMessageDic:(NSDictionary *)messageDic
+{
+    _messageDic=messageDic;
+    NSString *nameStr=[messageDic objectForKey:@"name"];
+    NSString *ssssStr=[NSString stringWithFormat:@"%@ %@",nameStr,[messageDic objectForKey:@"phone"]];
+    NSMutableAttributedString *namestr = [[NSMutableAttributedString alloc] initWithString:ssssStr];
+    
+    [namestr addAttribute:NSForegroundColorAttributeName value:DarkTitleColor range:NSMakeRange(0,nameStr.length)]; //设置字体颜色
+    
+    [namestr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:17.0] range:NSMakeRange(0,nameStr.length)]; //设置字体字号和字体类别
+    self.nameLab.attributedText=namestr;
+    self.moneLab.text=[NSString stringWithFormat:@"%@元",[messageDic objectForKey:@"allAmount"]];
+    self.timeLab.text=[NSString stringWithFormat:@"注册时间：%@",[messageDic objectForKey:@"createTime"]];
+    
+    [self.phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 -(void)meaageAction
 {
-    //    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"sms://%@",[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"]];
-    //
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-    //[self showMessageView:[NSArray arrayWithObjects:[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"], nil] title:@"苗木求购" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的求购信息:%@ 很感兴趣",[[self.infoDic objectForKey:@"detail"] objectForKey:@"productName"]]];
+    
+    if (self.delegate) {
+        [self.delegate senderMessageWithDic:self.messageDic];
+    }
 }
 
--(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
-{
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    switch (result) {
-        case MessageComposeResultSent:
-            //信息传送成功
-        {
-            //[ToastView showToast:@"消息发送成功" withOriginY:250 withSuperView:self.view];
-        }
-            
-            break;
-        case MessageComposeResultFailed:
-            //信息传送失败
-        {
-            //[ToastView showToast:@"消息发送失败" withOriginY:250 withSuperView:self.view];
-        }
-            
-            break;
-        case MessageComposeResultCancelled:
-            //信息被用户取消传送
-        {
-            //[ToastView showToast:@"取消发送" withOriginY:250 withSuperView:self.view];
-        }
-            
-            break;
-        default:
-            break;
-    }
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-    
-}
--(void)showMessageView:(NSArray *)phones title:(NSString *)title body:(NSString *)body
-{
-    if( [MFMessageComposeViewController canSendText] )
-    {
-        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
-        picker.messageComposeDelegate = self;
-        
-        // You can specify one or more preconfigured recipients.  The user has
-        // the option to remove or add recipients from the message composer view
-        // controller.
-        picker.recipients = phones;
-        
-        // You can specify the initial message text that will appear in the message
-        // composer view controller.
-        picker.body = body;
-        
-       // [self presentViewController:picker animated:YES completion:NULL];
-        [[[[picker viewControllers] lastObject] navigationItem] setTitle:title];//修改短信界面标题
-    }
-    else
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息"
-                                                        message:@"该设备不支持短信功能"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-    }
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

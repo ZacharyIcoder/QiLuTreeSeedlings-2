@@ -10,31 +10,39 @@
 #import "YLDUserHelpViewController.h"
 #import "YLDKeFuTableViewCell.h"
 #import "UIDefines.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMessageComposeViewController.h>
 #import "HttpClient.h"
-@interface KeFuViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "MJRefresh.h"
+#define PageSize @"15"
+@interface KeFuViewController ()<UITableViewDelegate,UITableViewDataSource,YLDKeFuTableViewCellDelegate,MFMessageComposeViewControllerDelegate>
 @property (nonatomic,strong)UILabel *nameLab;
 @property (nonatomic,copy) NSString *phoneStr;
-@property (nonatomic,strong) NSArray *dataAry;
+@property (nonatomic,strong) NSMutableArray *dataAry;
+@property (nonatomic,weak) UITableView *tableView;
+@property (nonatomic)NSInteger pageNum;
 @end
 
 @implementation KeFuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"客服系统";
-    UIView *topview=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth,130-64)];
+    self.dataAry=[NSMutableArray array];
+    self.pageNum=1;
+    UIView *topview=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth,110-64)];
     [topview setBackgroundColor:NavColor];
     [self.view addSubview:topview];
     UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth/2-30, topview.frame.size.height-30, 60,60)];
     [iamgeV setImage:[UIImage imageNamed:@"kefutouxiang"]];
     [topview addSubview:iamgeV];
-    UILabel* ZZZlAB=[[UILabel alloc]initWithFrame:CGRectMake(0, 130+35, kWidth, 30)];
+    UILabel* ZZZlAB=[[UILabel alloc]initWithFrame:CGRectMake(0, 110+35, kWidth, 30)];
     [ZZZlAB setFont:[UIFont systemFontOfSize:15]];
     [ZZZlAB setTextAlignment:NSTextAlignmentCenter];
     [ZZZlAB setTextColor:titleLabColor];
     [self.view addSubview:ZZZlAB];
     self.nameLab=ZZZlAB;
     
-    [HTTPCLIENT kefuXiTongWithPage:@"15" WithPageNumber:@"1" WithIsLoad:@"0" Success:^(id responseObject) {
+    [HTTPCLIENT kefuXiTongWithPage:PageSize WithPageNumber:@"1" WithIsLoad:@"0" Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             NSInteger type=[[dic objectForKey:@"type"] integerValue];
@@ -60,8 +68,9 @@
                 
                 [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:25.0] range:NSMakeRange(10+allStr.length, unchongzhiStr.length)];
                 self.nameLab.attributedText = str;
-                self.dataAry=[dic3 objectForKey:@"infoList"];
+                [self.dataAry addObjectsFromArray:[dic3 objectForKey:@"infoList"]];
                  [self kefupersonViewWithDic:dic3];
+                [self.tableView reloadData];
             
             }
         }else{
@@ -72,9 +81,71 @@
     }];
 }
 -(void)kefupersonViewWithDic:(NSDictionary *)normalDic{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 195, kWidth, kHeight-195)];
-    
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 175, kWidth, kHeight-175)];
+    self.tableView=tableView;
+    tableView.delegate=self;
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    tableView.dataSource=self;
+    __weak typeof(self) weakSelf=self;
+    [tableView addHeaderWithCallback:^{
+        weakSelf.pageNum=1;
+        [weakSelf getDataList];
+    }];
+    [tableView addFooterWithCallback:^{
+        weakSelf.pageNum+=1;
+        [weakSelf getDataList];
+    }];
     [self.view addSubview:tableView];
+}
+-(void)getDataList
+{
+    [HTTPCLIENT kefuXiTongWithPage:PageSize WithPageNumber:[NSString stringWithFormat:@"%ld",self.pageNum] WithIsLoad:@"1" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            
+            NSDictionary *dic=[responseObject objectForKey:@"result"];
+            NSDictionary *infoDic=[dic objectForKey:@"kehu"];
+            NSArray *dddAry=[infoDic objectForKey:@"infoList"];
+            if (dddAry.count>0) {
+                
+                if (self.pageNum==1) {
+                    [self.dataAry removeAllObjects];
+                    [self.dataAry addObjectsFromArray:dddAry];
+                    [self.tableView reloadData];
+                }else{
+                    NSDictionary *oldDic=[self.dataAry lastObject];
+                    NSDictionary *newDic=[dddAry lastObject];
+                    NSString *oldStr=[oldDic objectForKey:@"uid"];
+                    NSString *newStr=[newDic objectForKey:@"uid"];
+                    if ([newStr isEqualToString:oldStr]) {
+                       [ToastView showTopToast:@"已无更多信息"];
+                        self.pageNum-=1;
+                        if (self.pageNum<=1) {
+                            self.pageNum=1;
+                        }
+                    }else{
+                      [self.dataAry addObjectsFromArray:dddAry];
+                        [self.tableView reloadData];
+                    }
+                }
+            }else{
+                [ToastView showTopToast:@"已无更多信息"];
+                self.pageNum-=1;
+                if (self.pageNum<=1) {
+                    self.pageNum=1;
+                }
+            }
+          
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
+    } failure:^(NSError *error) {
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
+    }];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataAry.count;
@@ -88,6 +159,8 @@
     YLDKeFuTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDKeFuTableViewCell"];
     if (!cell) {
         cell=[YLDKeFuTableViewCell yldKeFuTableViewCell];
+        cell.delegate=self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.messageDic=self.dataAry[indexPath.row];
     return cell;
@@ -161,6 +234,75 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)senderMessageWithDic:(NSDictionary *)dic
+{
+    NSString *messageStr=[dic  objectForKey:@"message"];
+
+    
+    [self showMessageView:[NSArray arrayWithObjects:[dic  objectForKey:@"phone"], nil] title:@"客服短信" body:messageStr];
+}
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+   // [self dismissViewControllerAnimated:YES completion:nil];
+    switch (result) {
+        case MessageComposeResultSent:
+            //信息传送成功
+        {
+            [ToastView showTopToast:@"消息发送成功"];
+        }
+            
+            break;
+        case MessageComposeResultFailed:
+            //信息传送失败
+        {
+            //[ToastView showToast:@"消息发送失败" withOriginY:250 withSuperView:self.view];
+            [ToastView showTopToast:@"消息发送失败"];
+        }
+            
+            break;
+        case MessageComposeResultCancelled:
+            //信息被用户取消传送
+        {
+            //[ToastView showToast:@"取消发送" withOriginY:250 withSuperView:self.view];
+            [ToastView showTopToast:@"取消发送"];
+        }
+            
+            break;
+        default:
+            break;
+    }
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+-(void)showMessageView:(NSArray *)phones title:(NSString *)title body:(NSString *)body
+{
+    if( [MFMessageComposeViewController canSendText] )
+    {
+        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+        picker.messageComposeDelegate = self;
+        
+        // You can specify one or more preconfigured recipients.  The user has
+        // the option to remove or add recipients from the message composer view
+        // controller.
+        picker.recipients = phones;
+        
+        // You can specify the initial message text that will appear in the message
+        // composer view controller.
+        picker.body = body;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+        [[[[picker viewControllers] lastObject] navigationItem] setTitle:title];//修改短信界面标题
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息"
+                                                        message:@"该设备不支持短信功能"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 /*
