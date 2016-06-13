@@ -51,8 +51,8 @@
 //    [btn setTitle:@"苗信通" forState:UIControlStateNormal];
 //    [self.view addSubview:btn];
 //    [btn addTarget:self action:@selector(fanhuimiaoxintong) forControlEvents:UIControlEventTouchUpInside];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenTabBar) name:@"HidenTabBarGongCheng" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:@"showTabBarGongCheng" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenTabBar) name:@"HidenTabBarGongCheng" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:@"showTabBarGongCheng" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fanhuimiaoxintong) name:@"YLDBackMiaoXinTong" object:nil];
     // Do any additional setup after loading the view.
 }

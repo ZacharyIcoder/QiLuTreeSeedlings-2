@@ -316,5 +316,15 @@
 
     return [pred evaluateWithObject:amount];
 }
+#pragma mark - 获取字符串的CGRect
+//获取字符串的CGRect
++(CGRect)getCGRectWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
+
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
+                                        context:nil];
+    return rect;
+}
 
 @end

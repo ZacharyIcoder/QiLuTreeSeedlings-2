@@ -38,4 +38,8 @@ typedef void(^LeftBarBtnClickedBlock)();
  */
 @property (nonatomic, copy) RightBarBtnClickedBlock rightBarBtnBlock;
 
+/**
+ *  nav标题
+ */
+@property (nonatomic, copy) NSString *vcTitle;
 @end
