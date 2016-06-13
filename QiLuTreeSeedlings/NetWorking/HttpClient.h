@@ -551,6 +551,27 @@
                                    Success:(void (^)(id responseObject))success
                                    failure:(void (^)(NSError *error))failure;
 
+/*******************站长助手API*******************/
 
+#pragma mark ---------- 我的订单列表 -----------
+/**
+ *  我的订单列表
+ *
+ *  @param status     订单状态 1：报价中；0：已结束
+ *  @param keywords   检索词
+ *  @param pageNumber 当前页码， 默认1
+ *  @param pageSize   每页显示数，默认15
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)stationGetMyOrderListWithStatus:(NSString *)status
+                         keywords:(NSString *)keywords
+                       pageNumber:(NSString *)pageNumber
+                         pageSize:(NSString *)pageSize
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
+
+
+/*******************站长助手API  end*******************/
 
 @end

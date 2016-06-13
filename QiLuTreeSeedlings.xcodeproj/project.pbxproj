@@ -285,6 +285,8 @@
 		FC23D5341D0CEE1400611E34 /* ZIKOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D51E1D0CEE1400611E34 /* ZIKOrderViewController.m */; };
 		FC23D5351D0CEE1400611E34 /* ZIKWorkstationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D5241D0CEE1400611E34 /* ZIKWorkstationViewController.m */; };
 		FC23D5371D0D03F600611E34 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FC23D5361D0D03F600611E34 /* 已选小标.png */; };
+		FC23D53B1D0D4F2300611E34 /* ZIKHelpfulHintsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC23D5391D0D4F2300611E34 /* ZIKHelpfulHintsViewController.m */; };
+		FC23D53C1D0D4F2300611E34 /* ZIKHelpfulHintsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC23D53A1D0D4F2300611E34 /* ZIKHelpfulHintsViewController.xib */; };
 		FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */; };
 		FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */; };
 		FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */; };
@@ -956,6 +958,9 @@
 		FC23D5231D0CEE1400611E34 /* ZIKWorkstationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationViewController.h; sourceTree = "<group>"; };
 		FC23D5241D0CEE1400611E34 /* ZIKWorkstationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationViewController.m; sourceTree = "<group>"; };
 		FC23D5361D0D03F600611E34 /* 已选小标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已选小标.png"; sourceTree = "<group>"; };
+		FC23D5381D0D4F2300611E34 /* ZIKHelpfulHintsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHelpfulHintsViewController.h; sourceTree = "<group>"; };
+		FC23D5391D0D4F2300611E34 /* ZIKHelpfulHintsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHelpfulHintsViewController.m; sourceTree = "<group>"; };
+		FC23D53A1D0D4F2300611E34 /* ZIKHelpfulHintsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHelpfulHintsViewController.xib; sourceTree = "<group>"; };
 		FC31B2871CE07CCE0024E147 /* ZIKEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKEmptyTableViewCell.h; sourceTree = "<group>"; };
 		FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKEmptyTableViewCell.m; sourceTree = "<group>"; };
 		FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKEmptyTableViewCell.xib; sourceTree = "<group>"; };
@@ -2619,6 +2624,9 @@
 			children = (
 				FC23D51D1D0CEE1400611E34 /* ZIKOrderViewController.h */,
 				FC23D51E1D0CEE1400611E34 /* ZIKOrderViewController.m */,
+				FC23D5381D0D4F2300611E34 /* ZIKHelpfulHintsViewController.h */,
+				FC23D5391D0D4F2300611E34 /* ZIKHelpfulHintsViewController.m */,
+				FC23D53A1D0D4F2300611E34 /* ZIKHelpfulHintsViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3725,6 +3733,7 @@
 				EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */,
 				EA6D36C81CE7138600CE025C /* yitongguo.png in Resources */,
 				EAAFCFB61CBE265100EB894F /* 2miaomu1334.png in Resources */,
+				FC23D53C1D0D4F2300611E34 /* ZIKHelpfulHintsViewController.xib in Resources */,
 				FC5337C41CBE1710008BFB11 /* 站长通-电话图标.png in Resources */,
 				FC56127C1D0C092F00E5743B /* check49.png in Resources */,
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
@@ -4007,6 +4016,7 @@
 				FC5612681D0C092F00E5743B /* WHC_ChoicePictureVC.m in Sources */,
 				EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */,
 				FC6C133E1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m in Sources */,
+				FC23D53B1D0D4F2300611E34 /* ZIKHelpfulHintsViewController.m in Sources */,
 				EAE32DE41C7E97A600C4CEA2 /* UIWebView+AFNetworking.m in Sources */,
 				FCCEA4901CFD5FC2005D21F5 /* MyIntegralViewController.m in Sources */,
 				EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */,

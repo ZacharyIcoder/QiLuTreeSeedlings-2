@@ -60,4 +60,15 @@
  */
 + (BOOL)xfunc_isPassword:(NSString*)password;
 + (BOOL)xfunc_isAmount:(NSString*)amount;
+
+/**
+ *  根据内容和宽度以及字号获取字符串CGRect
+ *
+ *  @param content 字符串内容
+ *  @param width   宽度
+ *  @param font    字符串字体大小
+ *
+ *  @return 字符串CGRect
+ */
++(CGRect)getCGRectWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font;
 @end

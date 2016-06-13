@@ -41,7 +41,7 @@
          self.haveImageMArr = [[NSMutableArray alloc] init];
         self.btnMarr = [[NSMutableArray alloc] init];
         ZIKPickerBtn *oneBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
-        [oneBtn setImage:ONE_IMAGE forState:UIControlStateNormal];
+        [oneBtn setBackgroundImage:ONE_IMAGE forState:UIControlStateNormal];
         oneBtn.image = ONE_IMAGE;
         [oneBtn addTarget:self action:@selector(imageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:oneBtn];
@@ -50,7 +50,7 @@
         self.oneBtn = oneBtn;
 
         ZIKPickerBtn *twoBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
-        [twoBtn setImage:TWO_IMAGE forState:UIControlStateNormal];
+        [twoBtn setBackgroundImage:TWO_IMAGE forState:UIControlStateNormal];
         twoBtn.image = TWO_IMAGE;
         [twoBtn addTarget:self action:@selector(imageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:twoBtn];
@@ -59,7 +59,7 @@
         self.twoBtn = twoBtn;
 
         ZIKPickerBtn *threeBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
-        [threeBtn setImage:THREE_IMAGE forState:UIControlStateNormal];
+        [threeBtn setBackgroundImage:THREE_IMAGE forState:UIControlStateNormal];
         threeBtn.image = THREE_IMAGE;
         [threeBtn addTarget:self action:@selector(imageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:threeBtn];
@@ -115,7 +115,7 @@
     }
 
     ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
-    [imageBtn setImage:image forState:UIControlStateNormal];
+    [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
     imageBtn.image = image;
     imageBtn.urlDic = urlDic;
     imageBtn.deleteDelegate = self;
@@ -144,7 +144,7 @@
 
     imageBtn.image = image;
     //UIImage *myimage = [self OriginImage:image scaleToSize:CGSizeMake(200, 200)];
-    [imageBtn setImage:image forState:UIControlStateNormal];
+    [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
     imageBtn.urlDic = urlDic;
     imageBtn.deleteDelegate = self;
     imageBtn.isHiddenDeleteBtn = NO;
@@ -243,8 +243,8 @@
     }
     [urlArr enumerateObjectsUsingBlock:^(NSDictionary *urlDic, NSUInteger idx, BOOL * _Nonnull stop) {
             ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
-            [imageBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:urlDic[@"url"]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-            imageBtn.image = imageBtn.currentImage;
+            [imageBtn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:urlDic[@"url"]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+            imageBtn.image = imageBtn.currentBackgroundImage;
             imageBtn.urlDic = urlDic;
             imageBtn.deleteDelegate = self;
             imageBtn.isHiddenDeleteBtn = NO;

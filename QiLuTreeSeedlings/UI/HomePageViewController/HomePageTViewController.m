@@ -29,9 +29,12 @@
 #import "BigImageViewShowView.h"
 
 
-#import "ZIKStationTabBarViewController.h"
 
 #import "YLDGongChengGongSiViewController.h"
+/********站长助手*********/
+#import "ZIKStationTabBarViewController.h"//站长助手Tabbar
+#import "ZIKHelpfulHintsViewController.h"//不是站长提示界面
+/********站长助手 end*********/
 
 
 @interface HomePageTViewController ()<UITableViewDelegate,UITableViewDataSource,AdvertDelegate,CircleViewsDelegate,YouLickViewDelegate>
@@ -406,9 +409,15 @@
         if([APPDELEGATE isNeedLogin])
         {
             [self hiddingSelfTabBar];
-            ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
-            //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
-            [self.navigationController pushViewController:stationtab animated:YES];
+            if (APPDELEGATE.userModel.isworkstation) {
+                  ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
+                //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
+                [self.navigationController pushViewController:stationtab animated:YES];
+
+            } else {
+                ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
+                [self.navigationController pushViewController:helpfulVC animated:YES];
+            }
             return;
         }else
         {
