@@ -105,7 +105,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1815"
             endingLineNumber = "1815"
-            landmarkName = "-deleteMyBuyInfo:Success:failure:"
+            landmarkName = "-deleteMySupplyInfo:Success:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

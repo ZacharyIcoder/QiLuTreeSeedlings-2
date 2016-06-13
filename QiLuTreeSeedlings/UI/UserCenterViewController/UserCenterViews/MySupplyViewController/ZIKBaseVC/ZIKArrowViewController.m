@@ -35,7 +35,7 @@
     [view addSubview:backBtn];
     self.backBtn=backBtn;
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
+    titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-100,26, 200, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
     //[titleLab setText:self.vcTitle];

@@ -7,11 +7,14 @@
 //
 
 #import "KeFuViewController.h"
+#import "YLDUserHelpViewController.h"
+#import "YLDKeFuTableViewCell.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
-@interface KeFuViewController ()
+@interface KeFuViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UILabel *nameLab;
 @property (nonatomic,copy) NSString *phoneStr;
+@property (nonatomic,strong) NSArray *dataAry;
 @end
 
 @implementation KeFuViewController
@@ -25,12 +28,13 @@
     [iamgeV setImage:[UIImage imageNamed:@"kefutouxiang"]];
     [topview addSubview:iamgeV];
     UILabel* ZZZlAB=[[UILabel alloc]initWithFrame:CGRectMake(0, 130+35, kWidth, 30)];
-    [ZZZlAB setFont:[UIFont systemFontOfSize:14]];
+    [ZZZlAB setFont:[UIFont systemFontOfSize:15]];
     [ZZZlAB setTextAlignment:NSTextAlignmentCenter];
+    [ZZZlAB setTextColor:titleLabColor];
     [self.view addSubview:ZZZlAB];
     self.nameLab=ZZZlAB;
     
-    [HTTPCLIENT kefuXiTongWithPage:@"1" WithPageNumber:@"15" WithIsLoad:@"0" Success:^(id responseObject) {
+    [HTTPCLIENT kefuXiTongWithPage:@"15" WithPageNumber:@"1" WithIsLoad:@"0" Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             NSInteger type=[[dic objectForKey:@"type"] integerValue];
@@ -39,12 +43,54 @@
                 self.nameLab.text=[dic2 objectForKey:@"name"];
                 [self normalViewWithDic:dic2];
             }
+            if (type==1) {
+               NSDictionary *dic3=[dic objectForKey:@"kehu"];
+                NSInteger allNum=[[dic3 objectForKey:@"allKehu"] integerValue];
+                NSInteger unchongzhiNum=[[dic3 objectForKey:@"rechargeKehu"] integerValue];
+                NSString *allStr=[NSString stringWithFormat:@"%ld",allNum];
+                NSString *unchongzhiStr=[NSString stringWithFormat:@"%ld",unchongzhiNum];
+                NSString *ssssStr=[NSString stringWithFormat:@"当前服务会员%@人，尚有%@人未进行充值",allStr,unchongzhiStr];
+                NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:ssssStr];
+                
+                [str addAttribute:NSForegroundColorAttributeName value:NavColor range:NSMakeRange(6,allStr.length)]; //设置字体颜色
+                
+                [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:25.0] range:NSMakeRange(6,allStr.length)]; //设置字体字号和字体类别
+                
+                [str addAttribute:NSForegroundColorAttributeName value:NavYellowColor range:NSMakeRange(10+allStr.length, unchongzhiStr.length)]; //设置字体颜色
+                
+                [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:25.0] range:NSMakeRange(10+allStr.length, unchongzhiStr.length)];
+                self.nameLab.attributedText = str;
+                self.dataAry=[dic3 objectForKey:@"infoList"];
+                 [self kefupersonViewWithDic:dic3];
+            
+            }
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
         
     }];
+}
+-(void)kefupersonViewWithDic:(NSDictionary *)normalDic{
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 195, kWidth, kHeight-195)];
+    
+    [self.view addSubview:tableView];
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataAry.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 85;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    YLDKeFuTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDKeFuTableViewCell"];
+    if (!cell) {
+        cell=[YLDKeFuTableViewCell yldKeFuTableViewCell];
+    }
+    cell.messageDic=self.dataAry[indexPath.row];
+    return cell;
 }
 -(UIView *)normalViewWithDic:(NSDictionary *)normalDic
 {
@@ -103,7 +149,8 @@
 }
 -(void)bangzhuBtnAciotn:(UIButton *)sender
 {
-    
+    YLDUserHelpViewController *lydUserHelpVC=[[YLDUserHelpViewController alloc]init];
+    [self.navigationController pushViewController:lydUserHelpVC animated:YES];
 }
 -(void)phoneBtnAction:(UIButton *)sender
 {

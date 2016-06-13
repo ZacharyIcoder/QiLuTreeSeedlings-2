@@ -833,12 +833,15 @@
                               kclient_secret,@"client_secret",
                               nuresyid,@"supplynuresyid",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
@@ -863,12 +866,15 @@
                               kclient_secret,@"client_secret",
                               supply_id,@"supply_id",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
@@ -2541,7 +2547,14 @@
                   failure:(void (^)(NSError *error))failure
 {
     NSString *postURL            = @"api/kefu";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
     parmers[@"pageSize"]     = pageSize;
     parmers[@"pageNumber"]     = pageNum;
      parmers[@"isLoad"]     = isLoad;
@@ -2615,8 +2628,31 @@
     }];
 
 }
+#pragma mark ---------- 使用帮助 -----------
+-(void)userHelpSuccess:(void (^)(id responseObject))success
+               failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"memhelp/lists";
+    ShowActionV();
+    [self POST:postURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
 
-/*******************站长助手API*******************/
+
+
+}
+
+
+#pragma mark ---------- 工程助手API -----------
+/*******************工程助手API*******************/
 
 #pragma mark ---------- 我的订单列表 -----------
 /**
@@ -2629,7 +2665,7 @@
  *  @param success    success description
  *  @param failure    failure description
  */
-- (void)stationGetMyOrderListWithStatus:(NSString *)status
+- (void)projectGetMyOrderListWithStatus:(NSString *)status
                          keywords:(NSString *)keywords
                        pageNumber:(NSString *)pageNumber
                          pageSize:(NSString *)pageSize
@@ -2664,7 +2700,66 @@
 }
 
 
-/*******************站长助手API  end*******************/
+/******************* end 工程助手API  end*******************/
 
+
+
+#pragma mark ---------- 站长助手API -----------
+/*******************站长助手API*******************/
+#pragma mark ---------- 检索工程订单 -----------
+/**
+ *  检索工程订单
+ *
+ *  @param orderBy      排序，发布时间：orderDate,截止日期：endDate,默认orderDate
+ *  @param orderSort    排序，升序：asc,降序：desc,默认desc
+ *  @param status       0:已结束，1：报价中，2：已报价
+ *  @param orderTypeUid 订单类型ID
+ *  @param area         用苗地，Json格式， [{"provinceCode":"11", "cityCode":"110101"},{"provinceCode":"11", "cityCode":"110102"}]
+ *  @param pageNumber   当前页码， 默认1
+ *  @param pageSize     每页显示数，默认15
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)stationGetOrderSearchWithOrderBy:(NSString *)orderBy
+                               orderSort:(NSString *)orderSort
+                                  status:(NSString *)status
+                            orderTypeUid:(NSString *)orderTypeUid
+                                    area:(NSString *)area
+                              pageNumber:(NSString *)pageNumber
+                                pageSize:(NSString *)pageSize
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/order/search";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"orderBy"]          = orderBy;
+    parmers[@"orderSort"]        = orderSort;
+    parmers[@"status"]           = status;
+    parmers[@"orderTypeUid"]     = orderTypeUid;
+    parmers[@"area"]             = area;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+
+}
+/******************* end 站长助手API  end*******************/
 
 @end
