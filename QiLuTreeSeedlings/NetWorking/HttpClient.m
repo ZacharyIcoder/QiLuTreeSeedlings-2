@@ -833,12 +833,15 @@
                               kclient_secret,@"client_secret",
                               nuresyid,@"supplynuresyid",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
@@ -863,12 +866,15 @@
                               kclient_secret,@"client_secret",
                               supply_id,@"supply_id",
                               nil];
+    ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
@@ -2541,7 +2547,14 @@
                   failure:(void (^)(NSError *error))failure
 {
     NSString *postURL            = @"api/kefu";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
     parmers[@"pageSize"]     = pageSize;
     parmers[@"pageNumber"]     = pageNum;
      parmers[@"isLoad"]     = isLoad;
@@ -2615,6 +2628,24 @@
     }];
 
 }
+#pragma mark ---------- 使用帮助 -----------
+-(void)userHelpSuccess:(void (^)(id responseObject))success
+               failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"memhelp/lists";
+    ShowActionV();
+    [self POST:postURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
 
+}
 
 @end

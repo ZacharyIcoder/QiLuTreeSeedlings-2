@@ -552,5 +552,7 @@
                                    failure:(void (^)(NSError *error))failure;
 
 
-
+#pragma mark ---------- 使用帮助 -----------
+-(void)userHelpSuccess:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;
 @end

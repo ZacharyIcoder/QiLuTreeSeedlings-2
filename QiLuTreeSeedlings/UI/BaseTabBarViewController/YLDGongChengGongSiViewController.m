@@ -87,14 +87,14 @@
     
     [PageViewBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
     
-    [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
-    [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
+    [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"zhanzhanggongyingoff"] forState:UIControlStateNormal];
+    [PageViewBtn setBackgroundImage:[UIImage imageNamed:@"zhanzhanggongyingOn"] forState:UIControlStateSelected];
     PageViewBtn.selected=YES;
     [self.BTabBar addSubview:PageViewBtn];
     UILabel *hompageLab=[[UILabel alloc]initWithFrame:CGRectMake((kWidth-34*5)/6-10, 30, 50, 25)];
     [hompageLab setFont:[UIFont systemFontOfSize:11]];
     [hompageLab setTextAlignment:NSTextAlignmentCenter];
-    [hompageLab setTextColor:NavColor];
+    [hompageLab setTextColor:yellowButtonColor];
     [hompageLab setText:@"站长供应"];
     [self.labAry addObject:hompageLab];
     //self.homePageLab=hompageLab;
@@ -103,8 +103,8 @@
     
     UIButton *wodedingdanBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*2+34, 3, 28, 28)];
     wodedingdanBtn.tag=2;
-    [wodedingdanBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
-    [wodedingdanBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
+    [wodedingdanBtn setBackgroundImage:[UIImage imageNamed:@"wodedingdanoff"] forState:UIControlStateNormal];
+    [wodedingdanBtn setBackgroundImage:[UIImage imageNamed:@"wodedingdanon"] forState:UIControlStateSelected];
 [wodedingdanBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
     [self.BTabBar addSubview:wodedingdanBtn];
 //    UIButton *wodedingdanBtnActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*2+34, 0, 30, 50)];
@@ -127,8 +127,8 @@
     UIButton *baojiaguanliBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*4+34*3, 3, 28, 28)];
     baojiaguanliBtn.tag=3;
     [baojiaguanliBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
-    [baojiaguanliBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
-    [baojiaguanliBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
+    [baojiaguanliBtn setBackgroundImage:[UIImage imageNamed:@"baojiaguanliOff"] forState:UIControlStateNormal];
+    [baojiaguanliBtn setBackgroundImage:[UIImage imageNamed:@"baojiaguanliOn"] forState:UIControlStateSelected];
  
     [self.BTabBar addSubview:baojiaguanliBtn];
 //    UIButton *baojiaguanliActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*4+34*3, 0, 30, 50)];
@@ -149,8 +149,8 @@
     UIButton *gongchengzhongxinBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6*5+34*4, 3, 28, 28)];
     gongchengzhongxinBtn.tag=4;
     [gongchengzhongxinBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
-    [gongchengzhongxinBtn setBackgroundImage:[UIImage imageNamed:@"homePageNomer"] forState:UIControlStateNormal];
-    [gongchengzhongxinBtn setBackgroundImage:[UIImage imageNamed:@"homePageGreen"] forState:UIControlStateSelected];
+    [gongchengzhongxinBtn setBackgroundImage:[UIImage imageNamed:@"gongchengzhongxinoff"] forState:UIControlStateNormal];
+    [gongchengzhongxinBtn setBackgroundImage:[UIImage imageNamed:@"gongchengzhongxinOn"] forState:UIControlStateSelected];
     
     [self.BTabBar addSubview:gongchengzhongxinBtn];
 
@@ -164,7 +164,7 @@
     [self.BTabBar addSubview:gongchengzhongxinLab];
     [self.labAry addObject:gongchengzhongxinLab];
     UIButton *fabuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-25, -5, 50, 50)];
-    [fabuBtn setImage:[UIImage imageNamed:@"fabuBTN"] forState:UIControlStateNormal];
+    [fabuBtn setImage:[UIImage imageNamed:@"huangsefabu"] forState:UIControlStateNormal];
     [fabuBtn addTarget:self action:@selector(FaBuButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.BTabBar addSubview:fabuBtn];
     
@@ -185,7 +185,7 @@
     for (int i=0; i<self.labAry.count; i++) {
         if (i==sender.tag-1) {
             UILabel *lab=self.labAry[i];
-            [lab setTextColor:NavColor];
+            [lab setTextColor:yellowButtonColor];
         }else{
             UILabel *lab=self.labAry[i];
             [lab setTextColor:detialLabColor];

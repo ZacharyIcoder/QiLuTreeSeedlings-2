@@ -6,7 +6,7 @@
 //  Copyright © 2016年 中亿科技. All rights reserved.
 //
 
-#import "ZIKArrowViewController.h"
-@interface WoDeDingDanViewController : ZIKArrowViewController
+#import "YLDBaseViewController.h"
+@interface WoDeDingDanViewController : YLDBaseViewController
 
 @end

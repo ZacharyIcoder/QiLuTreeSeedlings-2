@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="YLDTuiJianGongZuoZhanCell">
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="YLDTuiJianGongZuoZhanCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="YLDTuiJianGongZuoZhanCell" id="KGk-i7-Jjw" customClass="YLDTuiJianGongZuoZhanCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -29,7 +29,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kMI-CQ-rrP">
-                        <rect key="frame" x="0.0" y="57" width="320" height="1"/>
+                        <rect key="frame" x="10" y="57" width="300" height="1"/>
+                        <color key="backgroundColor" red="0.86579802852348997" green="0.86472315436241609" blue="0.86946833053691275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="EGe-60-UY7"/>
                         </constraints>
@@ -47,7 +48,7 @@
                         <color key="textColor" red="0.60483955536912748" green="0.60415792785234901" blue="0.6050755033557047" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xec-rf-GK1">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touxianglianxiren.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xec-rf-GK1">
                         <rect key="frame" x="203" y="79" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="RPp-4I-r0I"/>
@@ -90,7 +91,7 @@
                     <constraint firstItem="Xec-rf-GK1" firstAttribute="leading" secondItem="Rui-s6-vvm" secondAttribute="trailing" constant="23" id="Gc0-JV-Rdt"/>
                     <constraint firstItem="kMI-CQ-rrP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="J5s-4Q-T4W"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Rui-s6-vvm" secondAttribute="bottom" constant="11" id="JmA-E8-wCW"/>
-                    <constraint firstItem="kMI-CQ-rrP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Lor-Eg-kDv"/>
+                    <constraint firstItem="kMI-CQ-rrP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="Lor-Eg-kDv"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Xec-rf-GK1" secondAttribute="bottom" constant="12" id="ML3-XA-rVN"/>
                     <constraint firstItem="jW9-e0-dYK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="S4Q-sc-cHg"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nnh-sz-6Sz" secondAttribute="bottom" constant="14" id="U1u-x0-uv5"/>
@@ -98,7 +99,7 @@
                     <constraint firstItem="Rui-s6-vvm" firstAttribute="leading" secondItem="nnh-sz-6Sz" secondAttribute="trailing" constant="8" id="WQa-nm-0Nw"/>
                     <constraint firstItem="nbI-om-Aj6" firstAttribute="leading" secondItem="DzH-la-uKU" secondAttribute="trailing" constant="8" id="WZp-WT-nMk"/>
                     <constraint firstItem="jW9-e0-dYK" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="aFH-g8-93X"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="kMI-CQ-rrP" secondAttribute="trailing" constant="-8" id="dbx-Xd-Nc5"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="kMI-CQ-rrP" secondAttribute="trailing" constant="2" id="dbx-Xd-Nc5"/>
                     <constraint firstItem="nbI-om-Aj6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="fQS-w0-FJj"/>
                     <constraint firstItem="JUg-fc-ZOK" firstAttribute="leading" secondItem="Xec-rf-GK1" secondAttribute="trailing" constant="8" id="kcT-46-gDV"/>
                     <constraint firstItem="DzH-la-uKU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="meZ-lY-5Uf"/>
@@ -122,5 +123,6 @@
     <resources>
         <image name="dingdandinahua.png" width="12" height="12"/>
         <image name="region.png" width="15" height="15"/>
+        <image name="touxianglianxiren.png" width="31" height="31"/>
     </resources>
 </document>

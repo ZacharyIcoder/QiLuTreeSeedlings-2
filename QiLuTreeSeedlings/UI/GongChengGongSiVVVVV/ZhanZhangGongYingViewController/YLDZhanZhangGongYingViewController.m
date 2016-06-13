@@ -9,6 +9,8 @@
 #import "YLDZhanZhangGongYingViewController.h"
 #import "AdvertView.h"
 #import "UIDefines.h"
+#import "YLDTuiJianGongZuoZhanCell.h"
+#import "SellSearchTableViewCell.h"
 @interface YLDZhanZhangGongYingViewController ()<AdvertDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -31,17 +33,14 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section==0) {
-//        return 160.f/320.f*kWidth;
-//    }
     if (indexPath.section==0) {
         return 160.f/320.f*kWidth;
     }
     if (indexPath.section==1) {
-        return 70;
+        return 115;
     }
     if (indexPath.section==2) {
-        return 110;
+        return 100;
     }
     return 0;
 }
@@ -74,6 +73,22 @@
             [adView adStart];
             return adView;
         }
+    }
+    if (indexPath.section==1) {
+        YLDTuiJianGongZuoZhanCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDTuiJianGongZuoZhanCell"];
+        if(!cell)
+        {
+            cell=[[[NSBundle mainBundle] loadNibNamed:@"YLDTuiJianGongZuoZhanCell" owner:self options:nil] lastObject];
+        }
+        return cell;
+    }
+    if (indexPath.section==2) {
+        SellSearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"SellSearchTableViewCell1"];
+        if(!cell)
+        {
+            cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
+        }
+        return cell;
     }
     UITableViewCell *cell=[[UITableViewCell alloc]init];
     return cell;

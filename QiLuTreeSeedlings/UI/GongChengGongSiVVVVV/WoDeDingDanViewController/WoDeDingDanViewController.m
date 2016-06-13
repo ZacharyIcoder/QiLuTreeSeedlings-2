@@ -7,18 +7,25 @@
 //
 
 #import "WoDeDingDanViewController.h"
-
+#import "UIDefines.h"
+#import "MJRefresh.h"
 @interface WoDeDingDanViewController ()
-
+@property (nonatomic,strong) UITableView *tableView;
 @end
 
 @implementation WoDeDingDanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.vcTitle=@"我的订单";
     // Do any additional setup after loading the view from its nib.
 }
-
+-(void)MakeCCCvIEW
+{
+    UIView *ssssVieWWW=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 50)];
+    [self.view addSubview:ssssVieWWW];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
