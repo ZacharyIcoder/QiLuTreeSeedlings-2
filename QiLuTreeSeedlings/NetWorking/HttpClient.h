@@ -557,10 +557,6 @@
 -(void)userHelpSuccess:(void (^)(id responseObject))success
 failure:(void (^)(NSError *error))failure;
 
-#pragma mark ---------- 使用帮助 -----------
--(void)userHelpSuccess:(void (^)(id responseObject))success
-failure:(void (^)(NSError *error))failure;
-
 #pragma mark ---------- 我的订单列表 -----------
 /**
  *  我的订单列表
@@ -610,5 +606,4 @@ failure:(void (^)(NSError *error))failure;
 /******************* end--站长助手API--end *******************/
 
 
->>>>>>> origin/master
 @end

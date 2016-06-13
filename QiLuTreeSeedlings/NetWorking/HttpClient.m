@@ -2645,12 +2645,6 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> c24de5626c4d57e960d7dfc900e6a1aa0f3649cc
 }
 
 
