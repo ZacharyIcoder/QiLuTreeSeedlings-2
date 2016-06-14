@@ -128,7 +128,7 @@
 //    if (self.customizedInfoMArr.count > 0) {
 //        [cell configureCell:self.customizedInfoMArr[indexPath.row]];
 //    }
- //  cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  // cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

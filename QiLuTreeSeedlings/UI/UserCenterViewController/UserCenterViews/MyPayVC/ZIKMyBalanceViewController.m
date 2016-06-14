@@ -55,6 +55,7 @@
     myTalbeView.dataSource = self;
     [self.view addSubview:myTalbeView];
     myTalbeView.scrollEnabled = NO; //设置tableview 不能滚动
+    myTalbeView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [ZIKFunction setExtraCellLineHidden:myTalbeView];
 }
 
@@ -107,6 +108,7 @@
 
         cell = twocell;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
