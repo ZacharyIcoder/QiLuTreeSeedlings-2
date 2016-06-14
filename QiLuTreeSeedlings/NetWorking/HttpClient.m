@@ -2769,7 +2769,7 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     ShowActionV();
-    [self POST:postURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
@@ -2796,7 +2796,7 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     ShowActionV();
-    [self POST:postURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
@@ -2848,7 +2848,7 @@
     parmers[@"description"]      =description;
     parmers[@"itemjson"]         =itemjson;
     ShowActionV();
-    [self POST:postURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
@@ -2861,5 +2861,37 @@
 
 }
 /******************* end 站长助手API  end*******************/
+-(void)jiaoyanfanhuideshuju:(NSString *)postStr Parmers:(NSDictionary *)parmers
+{
+    // 1.根据网址初始化OC字符串对象
+    NSString *urlStr = [NSString stringWithFormat:@"%@",AFBaseURLString];
+    // 2.创建NSURL对象
+    NSURL *url = [NSURL URLWithString:urlStr];
+    // 3.创建请求
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    // 4.创建参数字符串对象
+    NSMutableString *parmStr;
+    NSArray *keyArrays = [parmers allKeys];
+    for (int i=0; i<keyArrays.count; i++) {
+        NSString *keyStr=keyArrays[i];
+        NSString *valueStr=parmers[keyStr];
+        NSString *tempStr=[NSString stringWithFormat:@"%@=%@",keyStr,valueStr];
+        [parmStr appendString:tempStr];
+    }
+    
+    // 5.将字符串转为NSData对象
+    NSData *pramData = [parmStr dataUsingEncoding:NSUTF8StringEncoding];
+    // 6.设置请求体
+    [request setHTTPBody:pramData];
+    // 7.设置请求方式
+    [request setHTTPMethod:@"POST"];
+    
+    // 创建同步链接
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *str1 = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    
+    
+    NSLog(@"%@",str1);
+}
 
 @end

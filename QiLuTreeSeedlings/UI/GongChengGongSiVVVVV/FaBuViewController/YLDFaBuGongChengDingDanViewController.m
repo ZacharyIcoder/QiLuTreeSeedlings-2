@@ -12,6 +12,8 @@
 @interface YLDFaBuGongChengDingDanViewController ()
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
+@property (nonatomic,strong) NSArray *piceAry;
+@property (nonatomic,strong) NSArray *qualityAry;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
@@ -22,7 +24,21 @@
     if (self) {
         [HTTPCLIENT huiquZhiliangYaoQiuBaoDingSuccess:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]==1) {
-                
+                NSDictionary *result=[responseObject objectForKey:@"result"];
+                NSArray *bigDataAry=[result objectForKey:@"lxBeanList"];
+                for (int i=0; i<bigDataAry.count; i++) {
+                    NSDictionary *ddddis=bigDataAry[i];
+                    NSString *lxName=ddddis[@"lxName"];
+                    if ([lxName isEqualToString:@"订单类型"]) {
+                        self.typeAry=ddddis[@"zidianList"];
+                    }
+                    if ([lxName isEqualToString:@"报价要求"]) {
+                         self.piceAry=ddddis[@"zidianList"];
+                    }
+                    if ([lxName isEqualToString:@"质量要求"]) {
+                        self.qualityAry=ddddis[@"zidianList"];
+                    }
+                }
             }else
             {
               [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
