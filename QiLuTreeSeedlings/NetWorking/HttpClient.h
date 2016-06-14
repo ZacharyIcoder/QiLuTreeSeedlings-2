@@ -607,5 +607,20 @@ failure:(void (^)(NSError *error))failure;
                            failure:(void (^)(NSError *error))failure;
 /******************* end--站长助手API--end *******************/
 
-
+#pragma mark ---------- 发布工程订单 -----------
+-(void)fabuGongChengDingDanWithorderName:(NSString *)orderName
+                        WithorderTypeUid:(NSString *)orderTypeUid
+                        WithusedProvince:(NSString *)usedProvince
+                            WithusedCity:(NSString *)usedCity
+                             WithendDate:(NSString *)endDate
+                        WithchargePerson:(NSString *)chargePerson
+                               Withphone:(NSString *)phone
+                  WithqualityRequirement:(NSString *)qualityRequirement
+                   WithquotationRequires:(NSString *)quotationRequires
+                                 Withdbh:(NSString *)dbh
+                      WithgroundDiameter:(NSString *)groundDiameter
+                         Withdescription:(NSString *)description
+                                    With:(NSString *)itemjson
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
 @end

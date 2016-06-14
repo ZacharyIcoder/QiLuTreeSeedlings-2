@@ -2781,7 +2781,58 @@
     }];
 
 }
+#pragma mark ---------- 发布工程订单 -----------
+-(void)fabuGongChengDingDanWithorderName:(NSString *)orderName
+                        WithorderTypeUid:(NSString *)orderTypeUid
+                        WithusedProvince:(NSString *)usedProvince
+                            WithusedCity:(NSString *)usedCity
+                             WithendDate:(NSString *)endDate
+                        WithchargePerson:(NSString *)chargePerson
+                               Withphone:(NSString *)phone
+                  WithqualityRequirement:(NSString *)qualityRequirement
+                   WithquotationRequires:(NSString *)quotationRequires
+                                 Withdbh:(NSString *)dbh
+                      WithgroundDiameter:(NSString *)groundDiameter
+                         Withdescription:(NSString *)description
+                                    With:(NSString *)itemjson
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/order/create";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"orderName"]        =orderName;
+    parmers[@"orderTypeUid"]     =orderTypeUid;
+    parmers[@"usedProvince"]     =usedProvince;
+    parmers[@"usedCity"]         =usedCity;
+    parmers[@"endDate"]          =endDate;
+    parmers[@"chargePerson"]     =chargePerson;
+    parmers[@"phone"]            =phone;
+    parmers[@"qualityRequirement"]=qualityRequirement;
+    parmers[@"quotationRequires"]=quotationRequires;
+    parmers[@"dbh"]              =dbh;
+    parmers[@"groundDiameter"]   =groundDiameter;
+    parmers[@"description"]      =description;
+    parmers[@"itemjson"]         =itemjson;
+    ShowActionV();
+    [self POST:postURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
 
+}
 /******************* end 站长助手API  end*******************/
 
 @end
