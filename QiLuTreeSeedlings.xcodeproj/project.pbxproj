@@ -2748,8 +2748,8 @@
 				FC4A518B1D0E79270060587B /* ZIKOrderSecondTableViewCell.m */,
 				FC4A518C1D0E79270060587B /* ZIKOrderSecondTableViewCell.xib */,
 				FC4A51921D0E962A0060587B /* ZIKStationOrderTableViewCell.h */,
-				FC4A51941D0E962A0060587B /* ZIKStationOrderTableViewCell.m */,
 				FC4A51931D0E962A0060587B /* ZIKStationOrderTableViewCell.xib */,
+				FC4A51941D0E962A0060587B /* ZIKStationOrderTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3765,7 +3765,7 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = L674B6W9DX;
+						DevelopmentTeam = HP8U3K66H6;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -4500,8 +4500,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -4536,9 +4535,9 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkdz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -4548,8 +4547,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -4584,9 +4583,9 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkdz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
