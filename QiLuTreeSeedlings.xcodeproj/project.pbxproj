@@ -142,6 +142,7 @@
 		EA5E6E501CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E4E1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib */; };
 		EA5E6E541CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E521CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m */; };
 		EA5E6E551CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */; };
+		EA5F6D8C1D0F9AC600E78404 /* NomarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5F6D8B1D0F9AC600E78404 /* NomarBaseViewController.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
 		EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */; };
@@ -768,6 +769,8 @@
 		EA5E6E511CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDTuiJianGongZuoZhanCell.h; sourceTree = "<group>"; };
 		EA5E6E521CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDTuiJianGongZuoZhanCell.m; sourceTree = "<group>"; };
 		EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDTuiJianGongZuoZhanCell.xib; sourceTree = "<group>"; };
+		EA5F6D8A1D0F9AC600E78404 /* NomarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NomarBaseViewController.h; sourceTree = "<group>"; };
+		EA5F6D8B1D0F9AC600E78404 /* NomarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NomarBaseViewController.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MybuyListTableViewCell.h; sourceTree = "<group>"; };
@@ -2167,6 +2170,8 @@
 				EA5E6E3D1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.h */,
 				EA5E6E3E1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m */,
 				EA5E6E3F1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib */,
+				EA5F6D8A1D0F9AC600E78404 /* NomarBaseViewController.h */,
+				EA5F6D8B1D0F9AC600E78404 /* NomarBaseViewController.m */,
 			);
 			path = FaBuViewController;
 			sourceTree = "<group>";
@@ -4339,6 +4344,7 @@
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
 				FC56129D1D0C092F00E5743B /* ZIKRightBtnSringViewController.m in Sources */,
 				FC5337AA1CBDF885008BFB11 /* ZIKStationAgentViewController.m in Sources */,
+				EA5F6D8C1D0F9AC600E78404 /* NomarBaseViewController.m in Sources */,
 				FC56126D1D0C092F00E5743B /* FontAttribute.m in Sources */,
 				EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */,
 				FC614A011CAA57B600672241 /* UIImage+FixOrientation.m in Sources */,

@@ -54,9 +54,20 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenTabBar) name:@"HidenTabBarGongCheng" object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:@"showTabBarGongCheng" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fanhuimiaoxintong) name:@"YLDBackMiaoXinTong" object:nil];
+    //添加隐藏和显示自定义标签栏的通知
+    //添加隐藏和显示自定义标签栏的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidenTabBar) name:@"YLDGongchengHidenTabBar" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:@"YLDGongchengshowTabBar" object:nil];
     // Do any additional setup after loading the view.
 }
-
+-(void)hidenTabBar
+{
+    self.BTabBar.hidden=YES;
+}
+-(void)showTabBar
+{
+    self.BTabBar.hidden=NO;
+}
 -(void)fanhuimiaoxintong
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -81,9 +92,6 @@
     PageViewBtn.tag=1;
     self.nowBtn=PageViewBtn;
     [PageViewBtn setEnlargeEdgeWithTop:10 right:5 bottom:20 left:10];
-    //self.homePageBtn=PageViewBtn;
-//    UIButton *pageActionBtn=[[UIButton alloc]initWithFrame:CGRectMake((kWidth-34*5)/6, 0, 30, 50)];
-//    pageActionBtn.tag=1;
     
     [PageViewBtn addTarget:self action:@selector(ButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -171,7 +179,7 @@
 }
 -(void)FaBuButtonAction:(UIButton *)sender
 {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YLDGONGChengFabuAction" object:nil];
 }
 //标签栏的用户和首页的按钮点击
 -(void)ButtonSelect:(UIButton *)sender

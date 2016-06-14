@@ -81,10 +81,10 @@
     }];
 }
 -(void)kefupersonViewWithDic:(NSDictionary *)normalDic{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 175, kWidth, kHeight-175)];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 185, kWidth, kHeight-175)];
     self.tableView=tableView;
     tableView.delegate=self;
-    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    //[tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     tableView.dataSource=self;
     __weak typeof(self) weakSelf=self;
     [tableView addHeaderWithCallback:^{
@@ -207,12 +207,12 @@
     
     [normalView addSubview:view2];
     
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-55, 130, 110, 25)];
+    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-60, 130, 120, 35)];
     [phoneBtn setImage:[UIImage imageNamed:@"callkefuBtn"] forState:UIControlStateNormal];
     [phoneBtn addTarget:self action:@selector(phoneBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [phoneBtn addTarget:self action:@selector(phoneBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [normalView addSubview:phoneBtn];
-    UIButton *bangzhuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-55, 165, 110, 25)];
+    UIButton *bangzhuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-60, 170, 120, 35)];
     [bangzhuBtn addTarget:self action:@selector(bangzhuBtnAciotn:) forControlEvents:UIControlEventTouchUpInside];
     [bangzhuBtn setImage:[UIImage imageNamed:@"shiyongbangzhu"] forState:UIControlStateNormal];
     [normalView addSubview:bangzhuBtn];

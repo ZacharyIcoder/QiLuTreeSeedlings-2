@@ -81,11 +81,13 @@
         UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, self.frame.size.height-44, frame.size.width, 44)];
         self.showBtn=showBtn;
         [showBtn setTitle:@"更多规格" forState:UIControlStateNormal];
+        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
         [showBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [showBtn setTitleColor:NavColor  forState:UIControlStateNormal];
         [showBtn setTitleColor:NavColor  forState:UIControlStateSelected];
         [showBtn setBackgroundColor:BGColor];
         [showBtn setTitle:@"隐藏规格" forState:UIControlStateSelected];
+         [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
         [showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:showBtn];
         if (self.hasUnZhuYao) {
@@ -127,10 +129,12 @@
         UIButton *showBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, self.frame.size.height-44, frame.size.width, 44)];
         self.showBtn=showBtn;
         [showBtn setTitle:@"更多规格" forState:UIControlStateNormal];
+        [showBtn setImage:[UIImage imageNamed:@"rounlock"] forState:UIControlStateNormal];
         [showBtn setTitleColor:NavColor  forState:UIControlStateNormal];
         [showBtn setTitleColor:NavColor  forState:UIControlStateSelected];
         [showBtn setBackgroundColor:BGColor];
         [showBtn setTitle:@"隐藏规格" forState:UIControlStateSelected];
+        [showBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
         [showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
        [self addSubview:showBtn];
         if (self.hasUnZhuYao) {

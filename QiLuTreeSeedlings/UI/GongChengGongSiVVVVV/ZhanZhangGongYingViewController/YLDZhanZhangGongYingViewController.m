@@ -7,6 +7,7 @@
 //
 
 #import "YLDZhanZhangGongYingViewController.h"
+#import "YLDFaBuGongChengDingDanViewController.h"
 #import "AdvertView.h"
 #import "UIDefines.h"
 #import "YLDTuiJianGongZuoZhanCell.h"
@@ -16,7 +17,14 @@
 @end
 
 @implementation YLDZhanZhangGongYingViewController
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]  removeObserver:self];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+      [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.backBtn.frame=CGRectMake(13, 26, 60, 30);
@@ -25,6 +33,7 @@
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];
     // Do any additional setup after loading the view from its nib.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -142,6 +151,15 @@
 //    }
     return view;
     
+}
+-(void)fabubtnAction
+{
+    if(self.tabBarController.selectedIndex==0)
+    {
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+        YLDFaBuGongChengDingDanViewController *fabuVC=[[YLDFaBuGongChengDingDanViewController alloc]init];
+        [self.navigationController pushViewController:fabuVC animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
