@@ -549,7 +549,8 @@
 #pragma mark - 热门供应分享
 - (void)requestShareData {
     ShowActionV();
-    [HTTPCLIENT supplyShareWithUid:self.hotModel.uid nurseryUid:self.model.nurseryUid Success:^(id responseObject) {
+    //CLog(@"hotuid:%@,  hotsupplyuid:%@  ,selfmodelsupplyuid:%@",self.hotModel.uid,self.hotModel.supplybuyUid,self.model.supplybuyUid)
+    [HTTPCLIENT supplyShareWithUid:self.model.supplybuyUid nurseryUid:self.model.nurseryUid Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:kWidth/2 withSuperView:self.view];
             return ;

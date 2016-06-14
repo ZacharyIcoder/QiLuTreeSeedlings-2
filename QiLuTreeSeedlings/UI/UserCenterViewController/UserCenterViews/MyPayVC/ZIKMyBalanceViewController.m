@@ -50,10 +50,11 @@
 }
 
 - (void)initUI {
-    myTalbeView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStylePlain];
+    myTalbeView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, 220+44+64) style:UITableViewStylePlain];
     myTalbeView.delegate = self;
     myTalbeView.dataSource = self;
     [self.view addSubview:myTalbeView];
+    myTalbeView.scrollEnabled = NO; //设置tableview 不能滚动
     [ZIKFunction setExtraCellLineHidden:myTalbeView];
 }
 
@@ -93,7 +94,7 @@
             twocell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellTwoId];
         }
         twocell.textLabel.text = @"消费记录";
-        twocell.textLabel.textColor = [UIColor darkGrayColor];
+        twocell.textLabel.textColor = DarkTitleColor;
         twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
         twocell.imageView.image = [UIImage imageNamed:@"消费记录40x40"];
 
@@ -102,6 +103,8 @@
         twocell.imageView.transform=CGAffineTransformMakeScale(sw,sh);
 
         twocell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+        twocell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         cell = twocell;
     }
     return cell;

@@ -98,6 +98,10 @@ NSString *kCellID = @"cellID";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_isCharge) {
+        if (self.sumScore == 0) {
+            [ToastView showTopToast:@"很抱歉,您的积分不足"];
+            return;
+        }
         BuyMessageAlertView *buyMessageAlertV = [BuyMessageAlertView addActionViewWithTitle:@"确认要兑换吗?" andDetail:@"兑换后,积分减少,账户余额增加"];
         buyMessageAlertV.rightBtn.tag = indexPath.row;
         [buyMessageAlertV.rightBtn addTarget:self action:@selector(miaopudetialAction:) forControlEvents:UIControlEventTouchUpInside];

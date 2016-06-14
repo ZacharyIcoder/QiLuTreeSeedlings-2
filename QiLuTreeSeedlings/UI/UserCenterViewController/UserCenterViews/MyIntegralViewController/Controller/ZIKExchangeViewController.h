@@ -9,5 +9,5 @@
 #import "ZIKArrowViewController.h"
 
 @interface ZIKExchangeViewController : ZIKArrowViewController
-
+@property (nonatomic, assign) NSInteger sumScore;
 @end

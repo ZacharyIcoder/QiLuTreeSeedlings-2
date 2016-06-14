@@ -32,6 +32,7 @@
     __weak typeof(self) weakSelf = self;
     self.rightBarBtnBlock = ^{
         ZIKExchangeViewController *exchangeVC = [[ZIKExchangeViewController alloc] initWithNibName:@"ZIKExchangeViewController" bundle:nil];
+        exchangeVC.sumScore = weakSelf.zongjifenLab.text.integerValue;
         [weakSelf.navigationController pushViewController:exchangeVC animated:YES];
     };
     [self initData];

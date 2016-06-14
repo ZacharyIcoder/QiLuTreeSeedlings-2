@@ -18,7 +18,7 @@
 }
 
 - (void)configureCell:(ZIKIntegraExchangeModel *)model {
-    self.integralLabel.text  = model.integral;
+    self.integralLabel.text  = [NSString stringWithFormat:@"所需积分%@分",model.integral];
     NSString *priceString = nil;
     priceString = [NSString stringWithFormat:@"¥%@",model.money];
     FontAttribute *fullFont = [FontAttribute new];

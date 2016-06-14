@@ -54,6 +54,7 @@
 }
 
 - (void)btnClick {
+    [nameTextField resignFirstResponder];
     if ([ZIKFunction xfunc_check_strEmpty:nameTextField.text]) {
         [ToastView showTopToast:@"请输入充值金额"];
         return;

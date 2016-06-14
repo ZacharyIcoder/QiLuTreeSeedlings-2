@@ -86,12 +86,12 @@
     lable.text = title;
     lable.textAlignment = NSTextAlignmentCenter;
     [lable setTextColor:detialLabColor];
-    [lable setFont:[UIFont systemFontOfSize:14]];
+    [lable setFont:[UIFont systemFontOfSize:16]];
     [bottowView addSubview:lable];
     UILabel *labss=[[UILabel alloc]initWithFrame:CGRectMake(20, 80, kWidth-40, 20)];
     [labss setTextAlignment:NSTextAlignmentCenter];
     [labss setTextColor:detialLabColor];
-    [labss setFont:[UIFont systemFontOfSize:14]];
+    [labss setFont:[UIFont systemFontOfSize:16]];
     labss.text = detail;
     [bottowView addSubview:labss];
 

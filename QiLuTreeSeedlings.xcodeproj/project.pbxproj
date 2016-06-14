@@ -2748,8 +2748,8 @@
 				FC4A518B1D0E79270060587B /* ZIKOrderSecondTableViewCell.m */,
 				FC4A518C1D0E79270060587B /* ZIKOrderSecondTableViewCell.xib */,
 				FC4A51921D0E962A0060587B /* ZIKStationOrderTableViewCell.h */,
-				FC4A51931D0E962A0060587B /* ZIKStationOrderTableViewCell.xib */,
 				FC4A51941D0E962A0060587B /* ZIKStationOrderTableViewCell.m */,
+				FC4A51931D0E962A0060587B /* ZIKStationOrderTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
