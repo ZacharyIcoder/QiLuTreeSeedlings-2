@@ -9,7 +9,8 @@
 #import "YLDFaBuGongChengDingDanViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
-@interface YLDFaBuGongChengDingDanViewController ()
+#import "PickerShowView.h"
+@interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
 @property (nonatomic,strong) NSArray *piceAry;
@@ -63,7 +64,16 @@
 }
 -(void)pickTypeBtnAcion:(UIButton *)sender
 {
-    
+    NSMutableArray *newAry=[NSMutableArray array];
+    for (int i=0; i<self.typeAry.count; i++) {
+        NSDictionary *dic=self.typeAry[i];
+        NSString *name=dic[@"name"];
+        [newAry addObject:name];
+    }
+    PickerShowView *pickerSV=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    pickerSV.delegate=self;
+    [pickerSV resetPickerData:newAry];
+    [pickerSV showInView];
 }
 -(UIButton *)danxuanViewWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame
 {
