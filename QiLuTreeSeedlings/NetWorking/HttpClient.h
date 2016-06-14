@@ -606,7 +606,9 @@ failure:(void (^)(NSError *error))failure;
 - (void)stationGetOrderTypeSuccess:(void (^)(id responseObject))success
                            failure:(void (^)(NSError *error))failure;
 /******************* end--站长助手API--end *******************/
-
+#pragma mark ---------- 获取质量要求、报价要求、订单类型 -----------
+-(void)huiquZhiliangYaoQiuBaoDingSuccess:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 发布工程订单 -----------
 -(void)fabuGongChengDingDanWithorderName:(NSString *)orderName
                         WithorderTypeUid:(NSString *)orderTypeUid

@@ -8,12 +8,32 @@
 
 #import "YLDFaBuGongChengDingDanViewController.h"
 #import "UIDefines.h"
+#import "HttpClient.h"
 @interface YLDFaBuGongChengDingDanViewController ()
 @property (nonatomic,strong) UIScrollView *backScrollView;
+@property (nonatomic,strong) NSArray *typeAry;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
+@synthesize typeAry;
+-(id)init
+{
+    self=[super init];
+    if (self) {
+        [HTTPCLIENT huiquZhiliangYaoQiuBaoDingSuccess:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]==1) {
+                
+            }else
+            {
+              [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
 
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle = @"订单发布";

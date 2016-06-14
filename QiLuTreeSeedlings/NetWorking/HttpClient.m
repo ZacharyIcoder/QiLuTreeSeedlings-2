@@ -2781,6 +2781,33 @@
     }];
 
 }
+#pragma mark ---------- 获取质量要求、报价要求、订单类型 -----------
+-(void)huiquZhiliangYaoQiuBaoDingSuccess:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure
+
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/order/zidian";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    ShowActionV();
+    [self POST:postURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
 #pragma mark ---------- 发布工程订单 -----------
 -(void)fabuGongChengDingDanWithorderName:(NSString *)orderName
                         WithorderTypeUid:(NSString *)orderTypeUid
