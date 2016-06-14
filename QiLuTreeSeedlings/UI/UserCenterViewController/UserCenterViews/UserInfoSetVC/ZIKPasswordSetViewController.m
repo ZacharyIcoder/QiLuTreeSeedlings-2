@@ -130,7 +130,9 @@
     UITextField *textField  = (UITextField *)[myTableView viewWithTag:11];
     UITextField *textfield1 = (UITextField *)[myTableView viewWithTag:12];
     UITextField *textfield2 = (UITextField *)[myTableView viewWithTag:13];
-
+    [textField resignFirstResponder];
+    [textfield1 resignFirstResponder];
+    [textfield2 resignFirstResponder];
     if (textfield1.text.length == 0)
     {
         [ToastView showTopToast:@"密码不能为空"];

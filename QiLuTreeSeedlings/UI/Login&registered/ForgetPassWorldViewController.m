@@ -74,7 +74,8 @@
 }
 -(void)nextBtnAction
 {
-    
+    [self.phoneTextField resignFirstResponder];
+    [self.yanzhengTextField resignFirstResponder];
     if (!self.phoneTextField.text) {
         [ToastView showTopToast:@"手机号不能为空"];
         return;

@@ -81,6 +81,10 @@
 }
 -(void)sureBtnAction
 {
+    [self.phoneTextField resignFirstResponder];
+    [self.passWordTextField resignFirstResponder];
+    [self.rePassWordTextField resignFirstResponder];
+    [self.codeTextField resignFirstResponder];
     if(self.phoneTextField.text.length!=11)
     {
         [ToastView showTopToast:@"手机号必须是11位"];

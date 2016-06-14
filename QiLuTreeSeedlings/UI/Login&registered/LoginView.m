@@ -93,7 +93,8 @@
 }
 -(void)loginBtnAction
 {
-    
+    [self.paswdTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
     if (!self.phoneTextField.text) {
         [ToastView showTopToast:@"手机号不能为空"];
         return;

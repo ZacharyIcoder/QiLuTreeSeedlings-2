@@ -407,6 +407,8 @@
 }
 -(void)nameBtnAction:(UIButton *)sender
 {
+    [self.nameTextField resignFirstResponder];
+    [self.titleTextField resignFirstResponder];
     if (sender.selected) {
         return;
     }
