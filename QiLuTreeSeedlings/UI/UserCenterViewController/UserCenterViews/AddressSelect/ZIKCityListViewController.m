@@ -118,6 +118,9 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         if ([weakSelf.delegate respondsToSelector:@selector(selectCitysInfo:)]) {
             [weakSelf.delegate selectCitysInfo:cityCodeString];
         }
+        if ([weakSelf.delegate respondsToSelector:@selector(selectCityModels:)]) {
+            [weakSelf.delegate selectCityModels:@[]];
+        }
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
 

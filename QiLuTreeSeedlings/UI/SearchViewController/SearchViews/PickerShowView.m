@@ -81,6 +81,9 @@
     if ([self.delegate respondsToSelector:@selector(selectNum:andselectInfo:)]) {
         [self.delegate selectNum:selectNum andselectInfo:selected];
     }
+    if ([self.delegate respondsToSelector:@selector(selectNum:andselectInfo:PickerShowView:)]) {
+        [self.delegate selectNum:selectNum andselectInfo:selected PickerShowView:self];
+    }
     [UIView animateWithDuration:0.3f
                      animations:^{
                          [self setAlpha:0];

@@ -7,14 +7,20 @@
 //
 
 #import "YLDFaBuGongChengDingDanViewController.h"
+#import "YLDPickLocationView.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "PickerShowView.h"
+#import "ZIKCityModel.h"
+#import "GetCityDao.h"
 @interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
 @property (nonatomic,strong) NSArray *piceAry;
 @property (nonatomic,strong) NSArray *qualityAry;
+@property (nonatomic,weak) UIButton *typeBtn;
+@property (nonatomic,weak) UITextField *NameTextField;
+@property (nonatomic,weak) UIButton *areaBtn;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
@@ -54,13 +60,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle = @"订单发布";
-    UIScrollView *backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
+    UIScrollView *backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 65, kWidth, kHeight-65)];
     [backScrollView setBackgroundColor:BGColor];
+    self.backScrollView=backScrollView;
     [self.view addSubview:backScrollView];
-    CGRect tempFrame=CGRectMake(0, 67, kWidth, 50);
+    CGRect tempFrame=CGRectMake(0, 5, kWidth, 50);
     UIButton *pickTypeBtn=[self danxuanViewWithName:@"订单类型" alortStr:@"请输入订单类型" andFrame:tempFrame];
+    self.typeBtn=pickTypeBtn;
     [pickTypeBtn addTarget:self action:@selector(pickTypeBtnAcion:) forControlEvents:UIControlEventTouchUpInside];
+    tempFrame.origin.y+=50;
+    self.NameTextField=[self creatTextFieldWithName:@"项目名称" alortStr:@"请输入项目名称" andFrame:tempFrame];
+    tempFrame.origin.y+=50;
+    UIButton *areaBtn=[self danxuanViewWithName:@"用苗地址" alortStr:@"请选择用苗地" andFrame:tempFrame];
+    self.areaBtn=areaBtn;
+    [areaBtn addTarget:self action:@selector(areaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
+}
+-(void)areaBtnAction:(UIButton *)sender
+{
+    YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
 }
 -(void)pickTypeBtnAcion:(UIButton *)sender
 {
@@ -72,14 +90,24 @@
     }
     PickerShowView *pickerSV=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     pickerSV.delegate=self;
+    pickerSV.tag=111;
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
 }
+-(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr PickerShowView:(PickerShowView *)pickerShowView
+{
+    if (pickerShowView.tag==111) {
+        [self.typeBtn setTitle:selectStr forState:UIControlStateNormal];
+    }
+}
+
 -(UIButton *)danxuanViewWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];
+    [view setBackgroundColor:[UIColor whiteColor]];
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, frame.size.height)];
     [nameLab setText:nameStr];
+    [view addSubview:nameLab];
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
@@ -94,13 +122,15 @@
     UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width-42.5, 15, 15, 15)];
     [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
     [view addSubview:imageVVV];
-
+     
     [view addSubview:pickBtn];
+    [self.backScrollView addSubview:view];
     return pickBtn;
 }
 -(UITextField *)creatTextFieldWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];
+    [view setBackgroundColor:[UIColor whiteColor]];
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, frame.size.height)];
     [nameLab setText:nameStr];
     [nameLab setTextColor:DarkTitleColor];
@@ -111,14 +141,15 @@
     [view addSubview:textField];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
+   
     [view addSubview:lineImagV];
+     [self.backScrollView addSubview:view];
     return textField;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
 #pragma mark - Navigation
 

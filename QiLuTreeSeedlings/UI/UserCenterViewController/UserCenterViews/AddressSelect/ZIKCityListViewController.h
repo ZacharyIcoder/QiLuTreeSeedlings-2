@@ -43,6 +43,8 @@ typedef NS_ENUM(NSInteger, SelectStyle) {
  *  @param citysStr 选择的城市的code字符串
  */
 - (void)selectCitysInfo:(NSString *)citysStr;
+@optional
+-(void)selectCityModels:(NSArray *)ary;
 
 @end
 
