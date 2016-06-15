@@ -14,6 +14,7 @@
 #import "YLDPickLocationView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "NSString+Phone.h"
+#import "BWTextView.h"
 #import "ZIKHintTableViewCell.h"
 @interface CompanyViewController ()<YLDPickLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
@@ -367,7 +368,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(BWTextView*)jianjieTextViewWithName:(NSString *)name WithAlort:(NSString *)alort WithFrame:(CGRect)frame
+{
+    UIView *view=[[UIView alloc]initWithFrame:frame];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    [self.backScrollView addSubview:view];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, 50)];
+    [nameLab setTextColor:DarkTitleColor];
+    [nameLab setFont:[UIFont systemFontOfSize:14]];
+    [view addSubview:nameLab];
+    
+    BWTextView *TextView=[[BWTextView alloc]init];
+    TextView.placeholder=@"请输入50字以内的说明...";
+    TextView.font=[UIFont systemFontOfSize:14];
+    TextView.textColor=detialLabColor;
+    return TextView;
+}
 /*
 #pragma mark - Navigation
 

@@ -14,6 +14,7 @@
 #import "PickerShowView.h"
 #import "ZIKCityModel.h"
 #import "GetCityDao.h"
+#import "BWTextView.h"
 @interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
@@ -27,6 +28,10 @@
 @property (nonatomic,copy) NSString *AreaCity;
 @property (nonatomic,weak) UIButton *priceBtn;
 @property (nonatomic,weak) UIButton *qualityBtn;
+@property (nonatomic,weak) UITextField *xiongjingField;
+@property (nonatomic,weak) UITextField *dijingField;
+@property (nonatomic,weak) UITextField *lianxirenField;
+@property (nonatomic,weak) BWTextView *jianjieTextView;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
@@ -92,6 +97,18 @@
     UIButton *qualityBtn=[self danxuanViewWithName:@"质量要求" alortStr:@"请选择质量要求" andFrame:tempFrame];
     self.qualityBtn = qualityBtn;
     [qualityBtn addTarget:self action:@selector(pickqualityBtnAcion:) forControlEvents:UIControlEventTouchUpInside];
+    tempFrame.origin.y+=50;
+    tempFrame.size.height=90;
+    [self celiangyangqiuViewWith:tempFrame];
+    tempFrame.origin.y+=95;
+    tempFrame.size.height=50;
+    self.lianxirenField=[self creatTextFieldWithName:@"联系人" alortStr:@"请输入联系人姓名" andFrame:tempFrame];
+    tempFrame.origin.y+=50;
+    tempFrame.size.height=90;
+    self.jianjieTextView=[self jianjieTextViewWithName:@"其他说明" WithAlort:@"" WithFrame:tempFrame];
+    UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(tempFrame)+10, kWidth/2-15, 50)];
+    [chongzhiBtn setBackgroundColor:NavYellowColor];
+    [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)areaBtnAction:(UIButton *)sender
@@ -243,10 +260,70 @@
 -(void)celiangyangqiuViewWith:(CGRect)frame
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];
-    
+    [view setBackgroundColor:[UIColor whiteColor]];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, frame.size.height/2-15, 90, 30)];
+    [nameLab setText:@"测量要求"];
+    [nameLab setTextColor:DarkTitleColor];
+    [nameLab setFont:[UIFont systemFontOfSize:14]];
+    [view addSubview:nameLab];
     [self.backScrollView addSubview:view];
+    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(110,frame.size.height/2-0.5, kWidth-120, 0.5)];
+    [lineImagV setBackgroundColor:kLineColor];
+    
+    [view addSubview:lineImagV];
+    UILabel *detiallab1=[[UILabel alloc]initWithFrame:CGRectMake(110, frame.size.height/4-15, 80, 30)];
+    [detiallab1 setText:@"胸径离地面"];
+    [detiallab1 setFont:[UIFont systemFontOfSize:14]];
+    [detiallab1 setTextColor:detialLabColor];
+    [view addSubview:detiallab1];
+    UILabel *unitLab1=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-55, frame.size.height/4-15, 45, 30)];
+    [unitLab1 setText:@"厘米处"];
+    [unitLab1 setFont:[UIFont systemFontOfSize:14]];
+    [unitLab1 setTextColor:detialLabColor];
+    [view addSubview:unitLab1];
+    [self.backScrollView addSubview:view];
+    UITextField *xiongjingTextField=[[UITextField alloc]initWithFrame:CGRectMake(185, frame.size.height/4-15, kWidth-55-190, 30)];
+    xiongjingTextField.borderStyle=UITextBorderStyleRoundedRect;
+    self.xiongjingField=xiongjingTextField;
+    xiongjingTextField.keyboardType=UIKeyboardTypeDecimalPad;
+    [view addSubview:xiongjingTextField];
     
     
+    
+    UILabel *detiallab2=[[UILabel alloc]initWithFrame:CGRectMake(110, frame.size.height/4*3-15, 80, 30)];
+    [detiallab2 setText:@"地径离地面"];
+    [detiallab2 setFont:[UIFont systemFontOfSize:14]];
+    [detiallab2 setTextColor:detialLabColor];
+    [view addSubview:detiallab2];
+    UILabel *unitLab2=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-55, frame.size.height/4*3-15, 45, 30)];
+    [unitLab2 setText:@"厘米处"];
+    [unitLab2 setFont:[UIFont systemFontOfSize:14]];
+    [unitLab2 setTextColor:detialLabColor];
+    [view addSubview:unitLab2];
+    UITextField *dijingTextField=[[UITextField alloc]initWithFrame:CGRectMake(185, frame.size.height/4*3-15, kWidth-55-190, 30)];
+    dijingTextField.borderStyle=UITextBorderStyleRoundedRect;
+    dijingTextField.keyboardType=UIKeyboardTypeDecimalPad;
+    self.dijingField=dijingTextField;
+    [view addSubview:dijingTextField];
+}
+-(BWTextView*)jianjieTextViewWithName:(NSString *)name WithAlort:(NSString *)alort WithFrame:(CGRect)frame
+{
+    UIView *view=[[UIView alloc]initWithFrame:frame];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    [self.backScrollView addSubview:view];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, 50)];
+    [nameLab setText:name];
+    [nameLab setTextColor:DarkTitleColor];
+    [nameLab setFont:[UIFont systemFontOfSize:14]];
+    [view addSubview:nameLab];
+    
+    BWTextView *TextView=[[BWTextView alloc]init];
+    TextView.placeholder=@"请输入50字以内的说明...";
+    TextView.frame=CGRectMake(110, 10, kWidth-120, frame.size.height-20);
+    TextView.font=[UIFont systemFontOfSize:14];
+    TextView.textColor=detialLabColor;
+    [view addSubview:TextView];
+    return TextView;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
