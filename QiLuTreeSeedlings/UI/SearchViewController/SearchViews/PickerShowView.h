@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class PickerShowView;
 @protocol PickeShowDelegate <NSObject>
 
 @optional
 -(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr;
 - (void)selectNum:(NSInteger)select;
 - (void)selectInfo:(NSString *)select;
+-(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr PickerShowView:(PickerShowView*)pickerShowView;
 @end
 
 @interface PickerShowView : UIView 

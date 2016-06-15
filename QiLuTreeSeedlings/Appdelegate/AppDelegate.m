@@ -44,7 +44,16 @@
     self.window.rootViewController = mainController;
     [self.window makeKeyAndVisible];
     [self initData];
-
+    [HTTPCLIENT getVersionSuccess:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]==1) {
+             NSInteger version=[[[responseObject objectForKey:@"result"] objectForKey:@"version"] integerValue];
+            if (version>1) {
+                [ToastView showTopToast:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"]];
+            }
+        }
+    } failure:^(NSError *error) {
+        
+    }];
     /*******************友盟分享*******************/
     //[UMSocialData setAppKey:@"569c3c37e0f55a8e3b001658"];
     //[UMSocialData defaultData].appKey = @"56fde8aae0f55a1cd300047c";

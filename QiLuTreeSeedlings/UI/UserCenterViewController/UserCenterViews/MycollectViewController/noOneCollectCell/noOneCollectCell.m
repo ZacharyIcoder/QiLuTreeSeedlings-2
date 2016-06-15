@@ -28,7 +28,7 @@
         [lab2 setTextColor:detialLabColor];
         lab2.text=@"点击查看更多信息～";
         [self addSubview:lab2];
-        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-35, CGRectGetMaxY(lab2.frame)+10, 60, 20)];
+        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-50, CGRectGetMaxY(lab2.frame)+10, 100, 40)];
         NSString *str=@"更多信息";
         if (type==1) {
             str=@"更多供应";
@@ -40,7 +40,7 @@
         btn.layer.borderWidth=0.5;
         [btn setTitleColor:detialLabColor forState:UIControlStateNormal];
         btn.layer.borderColor=detialLabColor.CGColor;
-        [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:16]];
         btn.layer.cornerRadius=3;
         self.actionBtn=btn;
         [self addSubview:btn];
