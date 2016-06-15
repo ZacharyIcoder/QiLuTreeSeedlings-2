@@ -409,15 +409,16 @@
         if([APPDELEGATE isNeedLogin])
         {
             [self hiddingSelfTabBar];
-            if (APPDELEGATE.userModel.isworkstation) {
+#warning 暂且不判断权限，直接进入
+//            if (APPDELEGATE.userModel.isworkstation) {
                   ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
                 //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
                 [self.navigationController pushViewController:stationtab animated:YES];
 
-            } else {
-                ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
-                [self.navigationController pushViewController:helpfulVC animated:YES];
-            }
+//            } else {
+//                ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
+//                [self.navigationController pushViewController:helpfulVC animated:YES];
+//            }
             return;
         }else
         {

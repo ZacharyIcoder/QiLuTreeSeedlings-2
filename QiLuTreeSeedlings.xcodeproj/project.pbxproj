@@ -511,6 +511,7 @@
 		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
 		FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7D66D71CF4277500DF4FEC /* 分享.png */; };
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
+		FC859A351D10EAB000CA63A2 /* ZIKStationOrderScreeningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC859A341D10EAB000CA63A2 /* ZIKStationOrderScreeningView.m */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
@@ -1443,6 +1444,8 @@
 		FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
 		FC7D66D71CF4277500DF4FEC /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
 		FC7ED2401D054FD70010A8E5 /* downImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downImage.png; sourceTree = "<group>"; };
+		FC859A331D10EAB000CA63A2 /* ZIKStationOrderScreeningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderScreeningView.h; sourceTree = "<group>"; };
+		FC859A341D10EAB000CA63A2 /* ZIKStationOrderScreeningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderScreeningView.m; sourceTree = "<group>"; };
 		FCA7E0611CD050B6002111FF /* ZIKPayRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordCell.h; sourceTree = "<group>"; };
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
@@ -2750,6 +2753,8 @@
 				FC4A51921D0E962A0060587B /* ZIKStationOrderTableViewCell.h */,
 				FC4A51931D0E962A0060587B /* ZIKStationOrderTableViewCell.xib */,
 				FC4A51941D0E962A0060587B /* ZIKStationOrderTableViewCell.m */,
+				FC859A331D10EAB000CA63A2 /* ZIKStationOrderScreeningView.h */,
+				FC859A341D10EAB000CA63A2 /* ZIKStationOrderScreeningView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4220,6 +4225,7 @@
 				FC56128C1D0C092F00E5743B /* ZIKSupplyBottomSelectButton.m in Sources */,
 				FC5612591D0C092F00E5743B /* ZIKFunction.m in Sources */,
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
+				FC859A351D10EAB000CA63A2 /* ZIKStationOrderScreeningView.m in Sources */,
 				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,
 				FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */,
 				FC50B3451CAE4C4A0022A24C /* base64.m in Sources */,
@@ -4538,6 +4544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -4586,6 +4593,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

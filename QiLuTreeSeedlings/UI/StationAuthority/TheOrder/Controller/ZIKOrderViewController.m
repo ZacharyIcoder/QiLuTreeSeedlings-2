@@ -21,7 +21,9 @@
 #import "AdvertView.h"//广告页 section（0）
 #import "BigImageViewShowView.h"//点击显示大图
 #import "ZIKOrderSecondTableViewCell.h"//筛选cell section（1）
+#import "ZIKStationOrderScreeningView.h"//筛选页面
 #import "ZIKStationOrderTableViewCell.h"//工程订单cell  section（2）
+
 /*****View******/
 
 /*****Controller******/
@@ -33,7 +35,8 @@
 @property (nonatomic, weak) UITableView   *orderTV;//工程订单Tableview
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
 @property (nonatomic, strong) NSMutableArray *orderMArr;//我的订单数组
-@property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
+@property (nonatomic, strong) BigImageViewShowView *bigImageViewShowView;
+@property (nonatomic, strong) ZIKStationOrderScreeningView *screenView;
 
 @end
 
@@ -121,11 +124,30 @@
         return adView;
     } else if (indexPath.section == 1) {
         ZIKOrderSecondTableViewCell *cell = [ZIKOrderSecondTableViewCell cellWithTableView:tableView];
+        [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
 
     ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];
     return cell;
+}
+
+- (void)screeningBtnClick {
+    [self showSideView];
+}
+
+- (void)showSideView {
+
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    if (!self.screenView) {
+        self.screenView = [[ZIKStationOrderScreeningView alloc] init];//WithFrame:CGRectMake(Width, 0, Width, Height)];
+    }
+
+    [UIView animateWithDuration:.3 animations:^{
+        self.screenView.frame = CGRectMake(0, 0, Width, Height);
+    }];
+    [[[UIApplication sharedApplication] keyWindow] addSubview:_screenView];
+//    [self.view addSubview:self.screenView];
 }
 
 #pragma mark ----- AdvertDelegate广告页面点击

@@ -21,7 +21,9 @@
     // Do any additional setup after loading the view.
     self.vcTitle = @"我的二维码";
 
-    NSString *qrCodeString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];
+    //NSString *qrCodeString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];//http://www.qlhm.cn:8081/qlmm/
+    NSString *qrCodeString = [NSString stringWithFormat:@"http://www.qlhm.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];//http://www.qlhm.cn:8081/qlmm/
+
 
     UIImageView *qrCodeImageView = [[UIImageView alloc] init];
     qrCodeImageView.frame = CGRectMake(20, Height/4, Width-40, Height/2);
