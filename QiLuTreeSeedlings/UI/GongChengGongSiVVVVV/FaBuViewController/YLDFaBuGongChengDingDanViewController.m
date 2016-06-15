@@ -8,12 +8,13 @@
 
 #import "YLDFaBuGongChengDingDanViewController.h"
 #import "YLDPickLocationView.h"
+#import "YLDPickTimeView.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "PickerShowView.h"
 #import "ZIKCityModel.h"
 #import "GetCityDao.h"
-@interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate>
+@interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
 @property (nonatomic,strong) NSArray *piceAry;
@@ -21,6 +22,11 @@
 @property (nonatomic,weak) UIButton *typeBtn;
 @property (nonatomic,weak) UITextField *NameTextField;
 @property (nonatomic,weak) UIButton *areaBtn;
+@property (nonatomic,weak) UIButton *timeBtn;
+@property (nonatomic,copy) NSString *AreaProvince;
+@property (nonatomic,copy) NSString *AreaCity;
+@property (nonatomic,weak) UIButton *priceBtn;
+@property (nonatomic,weak) UIButton *qualityBtn;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
@@ -74,11 +80,46 @@
     UIButton *areaBtn=[self danxuanViewWithName:@"用苗地址" alortStr:@"请选择用苗地" andFrame:tempFrame];
     self.areaBtn=areaBtn;
     [areaBtn addTarget:self action:@selector(areaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    tempFrame.origin.y+=55;
+     UIButton *timeBtn=[self danxuanViewWithName:@"截止日期" alortStr:@"请选择截止日期" andFrame:tempFrame];
+    self.timeBtn=timeBtn;
+    [timeBtn addTarget:self action:@selector(timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+     tempFrame.origin.y+=50;
+    UIButton *priceBtn=[self danxuanViewWithName:@"报价要求" alortStr:@"请选择报价要求" andFrame:tempFrame];
+    self.priceBtn=priceBtn;
+    [priceBtn addTarget:self action:@selector(pickPiceBtnAcion:) forControlEvents:UIControlEventTouchUpInside];
+    tempFrame.origin.y+=50;
+    UIButton *qualityBtn=[self danxuanViewWithName:@"质量要求" alortStr:@"请选择质量要求" andFrame:tempFrame];
+    self.qualityBtn = qualityBtn;
+    [qualityBtn addTarget:self action:@selector(pickqualityBtnAcion:) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)areaBtnAction:(UIButton *)sender
 {
     YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
+    pickLocationV.delegate=self;
+    [pickLocationV showPickView];
+}
+-(void)timeBtnAction:(UIButton *)sender
+{
+    YLDPickTimeView *pickTimeView=[[YLDPickTimeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    pickTimeView.delegate=self;
+    [pickTimeView showInView];
+    
+}
+-(void)pickqualityBtnAcion:(UIButton *)sender
+{
+    NSMutableArray *newAry=[NSMutableArray array];
+    for (int i=0; i<self.qualityAry.count; i++) {
+        NSDictionary *dic=self.qualityAry[i];
+        NSString *name=dic[@"name"];
+        [newAry addObject:name];
+    }
+    PickerShowView *pickerSV=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    pickerSV.delegate=self;
+    pickerSV.tag=113;
+    [pickerSV resetPickerData:newAry];
+    [pickerSV showInView];
 }
 -(void)pickTypeBtnAcion:(UIButton *)sender
 {
@@ -94,10 +135,63 @@
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
 }
+-(void)pickPiceBtnAcion:(UIButton *)sender
+{
+    NSMutableArray *newAry=[NSMutableArray array];
+    for (int i=0; i<self.piceAry.count; i++) {
+        NSDictionary *dic=self.piceAry[i];
+        NSString *name=dic[@"name"];
+        [newAry addObject:name];
+    }
+    PickerShowView *pickerSV=[[PickerShowView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    pickerSV.delegate=self;
+    pickerSV.tag=112;
+    [pickerSV resetPickerData:newAry];
+    [pickerSV showInView];
+}
+-(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
+{
+    [self.timeBtn setTitle:timeStr forState:UIControlStateNormal];
+}
+
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
+{
+    NSMutableString *namestr=[NSMutableString new];
+    if (sheng.code) {
+        [namestr appendString:sheng.cityName];
+        self.AreaProvince=sheng.code;
+    }else
+    {
+        self.AreaProvince=nil;
+    }
+    
+    if (shi.code) {
+        [namestr appendString:shi.cityName];
+        self.AreaCity=shi.code;
+    }else
+    {
+        self.AreaCity=nil;
+        
+    }
+    if (namestr.length>0) {
+        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+    }else{
+        [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+        
+    }
+}
 -(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr PickerShowView:(PickerShowView *)pickerShowView
 {
     if (pickerShowView.tag==111) {
         [self.typeBtn setTitle:selectStr forState:UIControlStateNormal];
+    }
+    if (pickerShowView.tag==112) {
+        [self.priceBtn setTitle:selectStr forState:UIControlStateNormal];
+    }
+    if (pickerShowView.tag==113) {
+        [self.qualityBtn setTitle:selectStr forState:UIControlStateNormal];
     }
 }
 
@@ -108,7 +202,7 @@
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, frame.size.height)];
     [nameLab setText:nameStr];
     [view addSubview:nameLab];
-    [nameLab setTextColor:DarkTitleColor];
+    [nameLab setTextColor:detialLabColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
     pickBtn.center=CGPointMake(frame.size.width/2+10,frame.size.height/2);
@@ -145,6 +239,14 @@
     [view addSubview:lineImagV];
      [self.backScrollView addSubview:view];
     return textField;
+}
+-(void)celiangyangqiuViewWith:(CGRect)frame
+{
+    UIView *view=[[UIView alloc]initWithFrame:frame];
+    
+    [self.backScrollView addSubview:view];
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -52,6 +52,22 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark -版本检测
+-(void)getVersionSuccess:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL = @"iosVersion";
+    [self GET:postURL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+}
 #pragma mark -修改个人信息
 -(void)changeUserInfoWithToken:(NSString *)token
                   WithAccessID:(NSString *)accessID

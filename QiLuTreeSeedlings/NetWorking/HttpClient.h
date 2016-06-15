@@ -16,6 +16,9 @@
 - (void)getHomePageInfoSuccess:(void (^)(id responseObject))success
        failure:(void (^)(NSError *error))failure;
 
+#pragma mark -版本检测
+-(void)getVersionSuccess:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure;
 
 #pragma mark -修改个人信息
 -(void)changeUserInfoWithToken:(NSString *)token
