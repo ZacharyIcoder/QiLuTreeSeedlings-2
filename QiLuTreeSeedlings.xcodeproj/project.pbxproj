@@ -222,6 +222,9 @@
 		EA9A229D1D1241E3000CA161 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A229A1D1241E3000CA161 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EA9A229E1D1241E3000CA161 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EA9A229B1D1241E3000CA161 /* README.md */; };
 		EA9A22A21D124D15000CA161 /* YLDDingDanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A11D124D15000CA161 /* YLDDingDanModel.m */; };
+		EA9A22A61D128DFF000CA161 /* YLDDingDanDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A51D128DFF000CA161 /* YLDDingDanDetialViewController.m */; };
+		EA9A22A91D128FDC000CA161 /* YLDDingDanJianJieView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */; };
+		EA9A22AD1D12904B000CA161 /* YLDDingDanJianJieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */; };
 		EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */; };
 		EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */; };
 		EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */; };
@@ -895,6 +898,11 @@
 		EA9A229B1D1241E3000CA161 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA9A22A01D124D15000CA161 /* YLDDingDanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanModel.h; sourceTree = "<group>"; };
 		EA9A22A11D124D15000CA161 /* YLDDingDanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanModel.m; sourceTree = "<group>"; };
+		EA9A22A41D128DFF000CA161 /* YLDDingDanDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanDetialViewController.h; sourceTree = "<group>"; };
+		EA9A22A51D128DFF000CA161 /* YLDDingDanDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanDetialViewController.m; sourceTree = "<group>"; };
+		EA9A22A71D128FDC000CA161 /* YLDDingDanJianJieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanJianJieView.h; sourceTree = "<group>"; };
+		EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanJianJieView.m; sourceTree = "<group>"; };
+		EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDDingDanJianJieView.xib; sourceTree = "<group>"; };
 		EA9EFCC11CEEA2E000A71F2D /* GuiGeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeView.h; sourceTree = "<group>"; };
 		EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeView.m; sourceTree = "<group>"; };
 		EA9EFCC41CEEE48C00A71F2D /* GuiGeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeCell.h; sourceTree = "<group>"; };
@@ -2240,6 +2248,7 @@
 		EA5E6E361CFFC9A5003D357C /* WoDeDingDanViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA9A22A31D128DA4000CA161 /* YLDdingdanXiangQingViewController */,
 				EA9A229F1D124CFB000CA161 /* DingDanModel */,
 				EA5E6E471CFFCA57003D357C /* WoDeDingDanViewController.h */,
 				EA5E6E481CFFCA57003D357C /* WoDeDingDanViewController.m */,
@@ -2464,6 +2473,18 @@
 				EA9A22A11D124D15000CA161 /* YLDDingDanModel.m */,
 			);
 			path = DingDanModel;
+			sourceTree = "<group>";
+		};
+		EA9A22A31D128DA4000CA161 /* YLDdingdanXiangQingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A22A41D128DFF000CA161 /* YLDDingDanDetialViewController.h */,
+				EA9A22A51D128DFF000CA161 /* YLDDingDanDetialViewController.m */,
+				EA9A22A71D128FDC000CA161 /* YLDDingDanJianJieView.h */,
+				EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */,
+				EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */,
+			);
+			path = YLDdingdanXiangQingViewController;
 			sourceTree = "<group>";
 		};
 		EAA81BA31C744D02007F207D /* HotBuyView */ = {
@@ -4081,6 +4102,7 @@
 				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
 				EA56C3BF1D08025D00750BC3 /* dingdandinahua@2x.png in Resources */,
 				FC56126B1D0C092F00E5743B /* WHC_PictureListVC.xib in Resources */,
+				EA9A22AD1D12904B000CA161 /* YLDDingDanJianJieView.xib in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
@@ -4203,6 +4225,7 @@
 				EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */,
 				FC5612451D0C092F00E5743B /* IQUITextFieldView+Additions.m in Sources */,
 				FCCFA7101CF2E12400CC1313 /* ZIKSelectViewController.m in Sources */,
+				EA9A22A61D128DFF000CA161 /* YLDDingDanDetialViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
 				EAE32DF11C7E9C3800C4CEA2 /* AFImageDownloader.m in Sources */,
 				FC56129A1D0C092F00E5743B /* ZIKArrowViewController.m in Sources */,
@@ -4367,6 +4390,7 @@
 				FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */,
 				EAAFCFA91CBE20E200EB894F /* EAIntroPage.m in Sources */,
 				FC6FED5B1CACEEA2000E2CA5 /* ZIKCustomizedSetViewController.m in Sources */,
+				EA9A22A91D128FDC000CA161 /* YLDDingDanJianJieView.m in Sources */,
 				FC56125F1D0C092F00E5743B /* ZIKPickerBtn.m in Sources */,
 				FC23D5351D0CEE1400611E34 /* ZIKWorkstationViewController.m in Sources */,
 				EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */,
@@ -4623,9 +4647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -4675,7 +4697,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -628,4 +628,5 @@ failure:(void (^)(NSError *error))failure;
                                     With:(NSString *)itemjson
                                  Success:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 我的订单详情 -----------
 @end

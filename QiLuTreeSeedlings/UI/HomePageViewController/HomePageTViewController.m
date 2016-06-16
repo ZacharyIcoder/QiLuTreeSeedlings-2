@@ -185,7 +185,7 @@
         return adView;
     }
     if (indexPath.section==1) {
-        CircleViews *circleViews=[[CircleViews alloc]initWithFrame:CGRectMake(0, 0, kWidth, 200)];
+        CircleViews *circleViews=[[CircleViews alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
         circleViews.delegate=self;
         circleViews.selectionStyle=UITableViewCellSelectionStyleNone;
         return circleViews;
@@ -227,7 +227,7 @@
         return 160.f/320.f*kWidth;
     }
     if (indexPath.section==1) {
-        return 200;
+        return 100;
     }
     if (indexPath.section==2) {
         if (self.productDataAry.count>0) {

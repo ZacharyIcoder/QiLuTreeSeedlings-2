@@ -616,7 +616,6 @@
 -(void)CallAction
 {
     NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"]];
-                //NSLog(@"str======%@",[[self.infoDic objectForKey:@"detail"] objectForKey:@"phone"]);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 -(void)meaageAction
@@ -1022,7 +1021,7 @@
     }
     if(indexPath.section==3)
     {
-        NSString *labelText=[[self.infoDic objectForKey:@"detial"] objectForKey:@"description"];
+        NSString *labelText=[[self.infoDic objectForKey:@"detail"] objectForKey:@"description"];
         if (labelText) {
             return  [self getHeightWithContent:labelText width:kWidth-40 font:13]+20;
         }
