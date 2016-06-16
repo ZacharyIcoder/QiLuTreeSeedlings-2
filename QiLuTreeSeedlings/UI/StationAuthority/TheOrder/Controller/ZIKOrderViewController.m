@@ -13,7 +13,7 @@
 #import "YYModel.h"//类型转换
 #import "MJRefresh.h"//MJ刷新
 #import "UIDefines.h"
-
+#import "JSONKit.h"
 /*****工具******/
 
 /*****Model******/
@@ -69,7 +69,7 @@
     [super viewDidLoad];
     [self initData];
     [self initUI];
-    [self requestData];
+    //[self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -118,8 +118,12 @@
 - (void)requestMyOrderList:(NSString *)page {
     //我的供应列表
     [self.orderTV headerEndRefreshing];
-    [HTTPCLIENT stationGetOrderSearchWithOrderBy:@"orderDate" orderSort:@"desc" status:@"0" orderTypeUid:nil area:nil pageNumber:@"1" pageSize:@"15" Success:^(id responseObject) {
+    [HTTPCLIENT stationGetOrderSearchWithOrderBy:@"order_date" orderSort:@"desc" status:self.status orderTypeUid:self.ordetTypeUid area:self.area pageNumber:page pageSize:@"15" Success:^(id responseObject) {
         CLog(@"result:%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        }
+
         ;
     } failure:^(NSError *error) {
         CLog(@"%@",error);
@@ -204,6 +208,10 @@
 
 -(void)screeningBtnClickSendOrderStateInfo:(NSString *)orderState orderTypeInfo:(NSString *)orderType orderAddressInfo:(NSString *)orderAddress {
     CLog(@"orderState:%@,orderType:%@,orderAddress:%@",orderState,orderType,orderAddress);
+    self.status = orderState;
+    self.ordetTypeUid = orderType;
+    self.area = [self.areaMArr JSONString];
+    [self requestMyOrderList:@"1"];
 
 }
 -(void)StationOrderScreeningbackBtnAction {
