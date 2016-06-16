@@ -12,4 +12,5 @@
 -(NSMutableArray *)getCityByLeve:(NSString *)str;
 -(NSMutableArray *)getCityByLeve:(NSString *)str andParent_code:(NSString *)parent_code;
 -(NSString *)getCityNameByCityUid:(NSString *)uid;
+- (NSString *)getCityParentCode:(NSString *)uid;
 @end

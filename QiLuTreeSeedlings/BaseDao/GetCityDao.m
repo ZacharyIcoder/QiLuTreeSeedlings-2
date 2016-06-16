@@ -61,5 +61,20 @@
     }
     return str;
 }
+- (NSString *)getCityParentCode:(NSString *)uid {
 
+    NSString *str;
+
+    NSString *sql = [NSString stringWithFormat:@"select * from area where code = %@",uid];
+
+    FMResultSet *frs = [self executeQuery:sql];
+    while(frs.next)
+    {
+        str = [frs stringForColumn:@"parent_code"];
+        NSLog(@"%@",[frs stringForColumn:@"name"]);
+        NSLog(@"%@",frs);
+        NSLog(@"%@",[frs stringForColumn:@"parent_code"]);
+    }
+    return str;
+}
 @end

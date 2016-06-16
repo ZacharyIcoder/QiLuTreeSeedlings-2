@@ -12,6 +12,7 @@
 @required
 - (void)screeningBtnClickSendOrderStateInfo:(NSString *)orderState orderTypeInfo:(NSString *)orderType orderAddressInfo:(NSString *)orderAddress;
 - (void)StationOrderScreeningbackBtnAction;
+- (void)addressSelectLabelAction;
 @end
 
 @interface ZIKStationOrderScreeningView : UIView
@@ -31,6 +32,18 @@
  *  筛选delegate
  */
 @property (nonatomic, assign) id <ZIKStationOrderScreeningViewDelegate> delegate;
+/**
+ *  订单类型名字
+ */
+@property (nonatomic, copy) NSString *orderTypeName;//订单类型名字
+/**
+ *  订单类型数组
+ */
+@property (nonatomic, strong) NSArray *orderTypeArr;//订单类型数组
+/**
+ *  //用苗地选择显示label
+ */
+@property (nonatomic, strong) UILabel *orderAddressSelectLabel;//用苗地选择显示label
 
 /**
  *  初始化
