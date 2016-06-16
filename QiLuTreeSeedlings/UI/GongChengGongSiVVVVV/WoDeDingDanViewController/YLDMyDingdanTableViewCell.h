@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YLDDingDanModel.h"
 @interface YLDMyDingdanTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *dingdanTypeLab;
@@ -17,5 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *miaomuPinZhongLab;
 @property (weak, nonatomic) IBOutlet UILabel *fabuRiQiLab;
 @property (weak, nonatomic) IBOutlet UILabel *jiezhiRiqiLab;
-
+@property (nonatomic,strong) YLDDingDanModel *model;
+@property (weak, nonatomic) IBOutlet UIImageView *loggV;
++(YLDMyDingdanTableViewCell *)yldMyDingdanTableViewCell;
+@property (weak, nonatomic) IBOutlet UIImageView *fengxiView;
 @end

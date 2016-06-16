@@ -20,6 +20,7 @@
     [super viewDidLoad];
     self.navBackView =[self makeNavView];
     [self.view addSubview:self.navBackView];
+    [self.view setBackgroundColor:BGColor];
     // Do any additional setup after loading the view.
 }
 -(UIView *)makeNavView

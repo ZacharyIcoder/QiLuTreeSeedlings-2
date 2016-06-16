@@ -8,6 +8,7 @@
 
 #import "YLDFaBuGongChengDingDanViewController.h"
 #import "YLDPickLocationView.h"
+#import "YLDFuBuTijiaoViewController.h"
 #import "YLDPickTimeView.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
@@ -15,6 +16,7 @@
 #import "ZIKCityModel.h"
 #import "GetCityDao.h"
 #import "BWTextView.h"
+
 @interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
@@ -32,6 +34,12 @@
 @property (nonatomic,weak) UITextField *dijingField;
 @property (nonatomic,weak) UITextField *lianxirenField;
 @property (nonatomic,weak) BWTextView *jianjieTextView;
+@property (nonatomic,copy) NSString *typeStr;
+//@property (nonatomic,copy) NSString *nameStr;
+@property (nonatomic,copy) NSString *timeStr;
+@property (nonatomic,copy) NSString *priceStr;
+@property (nonatomic,copy) NSString *qualityStr;
+@property (nonatomic,weak) UITextField *lianxifangshiField;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
@@ -104,12 +112,88 @@
     tempFrame.size.height=50;
     self.lianxirenField=[self creatTextFieldWithName:@"联系人" alortStr:@"请输入联系人姓名" andFrame:tempFrame];
     tempFrame.origin.y+=50;
+    self.lianxifangshiField=[self creatTextFieldWithName:@"联系方式" alortStr:@"请输入联系方式" andFrame:tempFrame];
+    self.lianxifangshiField.keyboardType=UIKeyboardTypePhonePad;
+    tempFrame.origin.y+=50;
     tempFrame.size.height=90;
     self.jianjieTextView=[self jianjieTextViewWithName:@"其他说明" WithAlort:@"" WithFrame:tempFrame];
-    UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(tempFrame)+10, kWidth/2-15, 50)];
+    UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
     [chongzhiBtn setBackgroundColor:NavYellowColor];
     [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
-    // Do any additional setup after loading the view from its nib.
+    [self.backScrollView addSubview:chongzhiBtn];
+    [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *xiayibuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2+5, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
+    [xiayibuBtn setBackgroundColor:NavColor];
+    [xiayibuBtn setTitle:@"下一步" forState:UIControlStateNormal];
+    [xiayibuBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.backScrollView addSubview:xiayibuBtn];
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame)+60)];
+}
+-(void)chongzhiBtnAction:(UIButton *)sender
+{
+    self.typeStr=nil;
+    [self.typeBtn setTitle:@"请选择订单类型" forState:UIControlStateNormal];
+    self.NameTextField.text=nil;
+    self.AreaProvince=nil;
+    self.AreaCity=nil;
+    [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
+    self.timeStr=nil;
+    [self.timeBtn setTitle:@"请选择截止日期" forState:UIControlStateNormal];
+    self.priceStr=nil;
+    [self.priceBtn setTitle:@"请选择报价要求" forState:UIControlStateNormal];
+    self.qualityStr=nil;
+    [self.qualityBtn setTitle:@"请选择质量要求" forState:UIControlStateNormal];
+    self.xiongjingField.text=nil;
+    self.dijingField.text=nil;
+    self.lianxirenField.text=nil;
+    self.lianxifangshiField.text=nil;
+    self.jianjieTextView.text=nil;
+    
+}
+-(void)nextBtnAction:(UIButton *)sender
+{
+    if (!self.typeStr) {
+        [ToastView showTopToast:@"请选择订单类型"];
+        return;
+    }
+    if (self.NameTextField.text.length==0) {
+        [ToastView showTopToast:@"请输入项目名称"];
+        return;
+    }
+    if (!self.AreaProvince) {
+        [ToastView showTopToast:@"请选择用苗地"];
+        return;
+    }
+    if (!self.timeStr) {
+        [ToastView showTopToast:@"请选择截止日期"];
+        return;
+    }
+    if (!self.priceStr) {
+        [ToastView showTopToast:@"请选择报价要求"];
+        return;
+    }
+    if (!self.qualityStr) {
+        [ToastView showTopToast:@"请选择质量要求"];
+        return;
+    }
+    if (self.xiongjingField.text.length==0) {
+        [ToastView showTopToast:@"请完善胸径信息"];
+        return;
+    }
+    if (self.dijingField.text.length==0) {
+        [ToastView showTopToast:@"请完善地径信息"];
+        return;
+    }
+    if (self.lianxirenField.text.length==0) {
+        [ToastView showTopToast:@"请完善联系人姓名"];
+        return;
+    }
+    if (self.lianxifangshiField.text.length==0) {
+        [ToastView showTopToast:@"请完善联系方式"];
+        return;
+    }
+    YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andName:self.NameTextField.text andAreaSheng:self.AreaProvince andAreaShi:self.AreaCity andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
+    [self.navigationController pushViewController:YLDtititiVC animated:YES];
 }
 -(void)areaBtnAction:(UIButton *)sender
 {
@@ -168,6 +252,7 @@
 }
 -(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
 {
+    self.timeStr=[NSString stringWithFormat:@"%@ 23:59:59",timeStr];
     [self.timeBtn setTitle:timeStr forState:UIControlStateNormal];
 }
 
@@ -202,12 +287,18 @@
 -(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr PickerShowView:(PickerShowView *)pickerShowView
 {
     if (pickerShowView.tag==111) {
+        NSDictionary *dic=self.typeAry[select];
+        self.typeStr=[dic objectForKey:@"uid"];
         [self.typeBtn setTitle:selectStr forState:UIControlStateNormal];
     }
     if (pickerShowView.tag==112) {
+        NSDictionary *dic=self.piceAry[select];
+        self.priceStr=[dic objectForKey:@"uid"];
         [self.priceBtn setTitle:selectStr forState:UIControlStateNormal];
     }
     if (pickerShowView.tag==113) {
+        NSDictionary *dic=self.qualityAry[select];
+        self.qualityStr=[dic objectForKey:@"uid"];
         [self.qualityBtn setTitle:selectStr forState:UIControlStateNormal];
     }
 }
@@ -320,8 +411,8 @@
     BWTextView *TextView=[[BWTextView alloc]init];
     TextView.placeholder=@"请输入50字以内的说明...";
     TextView.frame=CGRectMake(110, 10, kWidth-120, frame.size.height-20);
-    TextView.font=[UIFont systemFontOfSize:14];
-    TextView.textColor=detialLabColor;
+    TextView.font=[UIFont systemFontOfSize:16];
+    TextView.textColor=DarkTitleColor;
     [view addSubview:TextView];
     return TextView;
 }

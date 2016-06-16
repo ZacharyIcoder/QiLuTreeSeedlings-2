@@ -2694,20 +2694,24 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
-    parmers[@"status"]           = status;
-    parmers[@"keywords"]         = keywords;
     parmers[@"pageNumber"]       = pageNumber;
     parmers[@"pageSize"]         = pageSize;
+    if (keywords) {
+        parmers[@"keywords"]         = keywords;
+    }
+    if (status) {
+        parmers[@"status"]           = status;
 
-    ShowActionV();
+    }
+//    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
-        RemoveActionV();
+//        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
-        RemoveActionV();
+//        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
