@@ -9,5 +9,5 @@
 #import "NomarBaseViewController.h"
 
 @interface YLDDingDanDetialViewController : NomarBaseViewController
-
+-(id)initWithUid:(NSString *)uid;
 @end

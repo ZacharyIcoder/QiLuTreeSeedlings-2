@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface YLDDingDanModel : NSObject
 @property (nonatomic,copy) NSString *area;
 @property (nonatomic,copy) NSString *endDate;
@@ -18,6 +18,9 @@
 @property (nonatomic,copy) NSString *quotation;
 @property (nonatomic,copy) NSString *status;
 @property (nonatomic,copy) NSString *uid;
+@property (nonatomic)CGFloat showHeight;
+@property (nonatomic)BOOL isShow;
 +(YLDDingDanModel *)yldDingDanModelWithDic:(NSDictionary *)dic;
 +(NSArray *)YLDDingDanModelAryWithAry:(NSArray *)ary;
++(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font;
 @end

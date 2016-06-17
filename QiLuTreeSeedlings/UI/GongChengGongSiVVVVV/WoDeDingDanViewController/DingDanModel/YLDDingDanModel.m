@@ -7,7 +7,7 @@
 //
 
 #import "YLDDingDanModel.h"
-
+#import "UIDefines.h"
 @implementation YLDDingDanModel
 +(YLDDingDanModel *)yldDingDanModelWithDic:(NSDictionary *)dic
 {
@@ -21,6 +21,8 @@
     model.quotation=[dic objectForKey:@"quotation"];
     model.status=[dic objectForKey:@"status"];
     model.uid=[dic objectForKey:@"uid"];
+    model.showHeight=250-18+[YLDDingDanModel getHeightWithContent:model.miaomu width:kWidth-140 font:14];
+    model.isShow=NO;
     return model;
 }
 +(NSArray *)YLDDingDanModelAryWithAry:(NSArray *)ary{
@@ -31,5 +33,14 @@
         [Ary addObject:model];
     }
     return Ary;
+}
+//获取字符串的高度
++(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
+    
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(width, 999)
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
+                                        context:nil];
+    return rect.size.height;
 }
 @end

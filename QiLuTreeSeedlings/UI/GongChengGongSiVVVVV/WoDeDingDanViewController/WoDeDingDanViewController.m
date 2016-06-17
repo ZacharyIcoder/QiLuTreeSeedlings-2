@@ -8,6 +8,7 @@
 
 #import "WoDeDingDanViewController.h"
 #import "YLDMyDingdanTableViewCell.h"
+#import "YLDDingDanDetialViewController.h"
 #import "UIDefines.h"
 #import "MJRefresh.h"
 #import "HttpClient.h"
@@ -22,6 +23,11 @@
 
 @implementation WoDeDingDanViewController
 @synthesize pageNum,Status;
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"我的订单";
@@ -57,18 +63,36 @@
     return self.dataAry.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 250;
+{  YLDDingDanModel *model=self.dataAry[indexPath.row];
+    if (model.isShow) {
+        //NSLog(@"%ld----%lf",indexPath.row,model.showHeight);
+         return model.showHeight;
+    }else
+    {
+         return 250;
+    }
+   
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YLDMyDingdanTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDMyDingdanTableViewCell"];
     if (!cell) {
         cell=[YLDMyDingdanTableViewCell yldMyDingdanTableViewCell];
+        [cell.showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     }
+    cell.showBtn.tag=indexPath.row;
     YLDDingDanModel *model=self.dataAry[indexPath.row];
     cell.model=model;
     return cell;
+}
+-(void)showBtnAction:(UIButton *)sender
+{
+
+    YLDDingDanModel *model=self.dataAry[sender.tag];
+    model.isShow=!model.isShow;
+    //NSLog(@"%ld",sender.tag);
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:sender.tag inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 -(void)getDataWithSearchWord:(NSString *)keywords andPageNum:(NSString *)pageNumZ andStatus:(NSString *)status
 {
@@ -179,7 +203,11 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+      [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    YLDDingDanModel *model=self.dataAry[indexPath.row];
+    YLDDingDanDetialViewController *vcsss=[[YLDDingDanDetialViewController alloc]initWithUid:model.uid];
+    [self.navigationController pushViewController:vcsss animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

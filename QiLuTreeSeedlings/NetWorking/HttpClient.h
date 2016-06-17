@@ -629,7 +629,9 @@ failure:(void (^)(NSError *error))failure;
                                  Success:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 我的订单详情 -----------
-
+-(void)myDingDanDetialWithUid:(NSString *)uid
+                      Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 我的分享 -----------
 -(void)getMyShareSuccess:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;

@@ -108,7 +108,7 @@
     if (!cell) {
         cell=[YLDMiaoMuUnTableViewCell yldMiaoMuUnTableViewCell];
     }
-    cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",indexPath.row];
+    cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
     NSDictionary *DIC=self.miaomuAry[indexPath.row];
     cell.messageDic=DIC;
     return cell;

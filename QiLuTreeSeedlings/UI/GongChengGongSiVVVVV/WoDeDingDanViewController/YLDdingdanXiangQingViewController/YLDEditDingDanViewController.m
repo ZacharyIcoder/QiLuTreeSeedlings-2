@@ -1,12 +1,12 @@
 //
-//  YLDFaBuGongChengDingDanViewController.m
+//  YLDEditDingDanViewController.m
 //  QiLuTreeSeedlings
 //
-//  Created by 杨乐栋 on 16/6/2.
+//  Created by 杨乐栋 on 16/6/17.
 //  Copyright © 2016年 中亿科技. All rights reserved.
 //
 
-#import "YLDFaBuGongChengDingDanViewController.h"
+#import "YLDEditDingDanViewController.h"
 #import "YLDPickLocationView.h"
 #import "YLDFuBuTijiaoViewController.h"
 #import "YLDPickTimeView.h"
@@ -16,8 +16,7 @@
 #import "ZIKCityModel.h"
 #import "GetCityDao.h"
 #import "BWTextView.h"
-
-@interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate>
+@interface YLDEditDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
 @property (nonatomic,strong) NSArray *piceAry;
@@ -42,7 +41,7 @@
 @property (nonatomic,weak) UITextField *lianxifangshiField;
 @end
 
-@implementation YLDFaBuGongChengDingDanViewController
+@implementation YLDEditDingDanViewController
 @synthesize typeAry;
 -(id)init
 {
@@ -59,7 +58,7 @@
                         self.typeAry=ddddis[@"zidianList"];
                     }
                     if ([lxName isEqualToString:@"报价要求"]) {
-                         self.piceAry=ddddis[@"zidianList"];
+                        self.piceAry=ddddis[@"zidianList"];
                     }
                     if ([lxName isEqualToString:@"质量要求"]) {
                         self.qualityAry=ddddis[@"zidianList"];
@@ -67,18 +66,19 @@
                 }
             }else
             {
-              [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
             }
-
+            
         } failure:^(NSError *error) {
             
         }];
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.vcTitle = @"订单发布";
+    self.vcTitle = @"订单编辑";
     UIScrollView *backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 65, kWidth, kHeight-65)];
     [backScrollView setBackgroundColor:BGColor];
     self.backScrollView=backScrollView;
@@ -94,10 +94,10 @@
     self.areaBtn=areaBtn;
     [areaBtn addTarget:self action:@selector(areaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=55;
-     UIButton *timeBtn=[self danxuanViewWithName:@"截止日期" alortStr:@"请选择截止日期" andFrame:tempFrame];
+    UIButton *timeBtn=[self danxuanViewWithName:@"截止日期" alortStr:@"请选择截止日期" andFrame:tempFrame];
     self.timeBtn=timeBtn;
     [timeBtn addTarget:self action:@selector(timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-     tempFrame.origin.y+=50;
+    tempFrame.origin.y+=50;
     UIButton *priceBtn=[self danxuanViewWithName:@"报价要求" alortStr:@"请选择报价要求" andFrame:tempFrame];
     self.priceBtn=priceBtn;
     [priceBtn addTarget:self action:@selector(pickPiceBtnAcion:) forControlEvents:UIControlEventTouchUpInside];
@@ -117,39 +117,40 @@
     tempFrame.origin.y+=50;
     tempFrame.size.height=90;
     self.jianjieTextView=[self jianjieTextViewWithName:@"其他说明" WithAlort:@"" WithFrame:tempFrame];
-    UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
-    [chongzhiBtn setBackgroundColor:NavYellowColor];
-    [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
-    [self.backScrollView addSubview:chongzhiBtn];
-    [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIButton *xiayibuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2+5, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
+//    UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
+//    [chongzhiBtn setBackgroundColor:NavYellowColor];
+//    [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
+//    [self.backScrollView addSubview:chongzhiBtn];
+//    [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *xiayibuBtn=[[UIButton alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(tempFrame)+5, kWidth-60, 40)];
     [xiayibuBtn setBackgroundColor:NavColor];
-    [xiayibuBtn setTitle:@"下一步" forState:UIControlStateNormal];
+    [xiayibuBtn setTitle:@"发布" forState:UIControlStateNormal];
     [xiayibuBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.backScrollView addSubview:xiayibuBtn];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame)+60)];
+    // Do any additional setup after loading the view.
 }
-//-(void)chongzhiBtnAction:(UIButton *)sender
-//{
-//    self.typeStr=nil;
-//    [self.typeBtn setTitle:@"请选择订单类型" forState:UIControlStateNormal];
-//    self.NameTextField.text=nil;
-//    self.AreaProvince=nil;
-//    self.AreaCity=nil;
-//    [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
-//    self.timeStr=nil;
-//    [self.timeBtn setTitle:@"请选择截止日期" forState:UIControlStateNormal];
-//    self.priceStr=nil;
-//    [self.priceBtn setTitle:@"请选择报价要求" forState:UIControlStateNormal];
-//    self.qualityStr=nil;
-//    [self.qualityBtn setTitle:@"请选择质量要求" forState:UIControlStateNormal];
-//    self.xiongjingField.text=nil;
-//    self.dijingField.text=nil;
-//    self.lianxirenField.text=nil;
-//    self.lianxifangshiField.text=nil;
-//    self.jianjieTextView.text=nil;
-//    
-//}
+-(void)chongzhiBtnAction:(UIButton *)sender
+{
+    self.typeStr=nil;
+    [self.typeBtn setTitle:@"请选择订单类型" forState:UIControlStateNormal];
+    self.NameTextField.text=nil;
+    self.AreaProvince=nil;
+    self.AreaCity=nil;
+    [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
+    self.timeStr=nil;
+    [self.timeBtn setTitle:@"请选择截止日期" forState:UIControlStateNormal];
+    self.priceStr=nil;
+    [self.priceBtn setTitle:@"请选择报价要求" forState:UIControlStateNormal];
+    self.qualityStr=nil;
+    [self.qualityBtn setTitle:@"请选择质量要求" forState:UIControlStateNormal];
+    self.xiongjingField.text=nil;
+    self.dijingField.text=nil;
+    self.lianxirenField.text=nil;
+    self.lianxifangshiField.text=nil;
+    self.jianjieTextView.text=nil;
+    
+}
 -(void)nextBtnAction:(UIButton *)sender
 {
     if (!self.typeStr) {
@@ -192,8 +193,6 @@
         [ToastView showTopToast:@"请完善联系方式"];
         return;
     }
-    YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andName:self.NameTextField.text andAreaSheng:self.AreaProvince andAreaShi:self.AreaCity andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
-    [self.navigationController pushViewController:YLDtititiVC animated:YES];
 }
 -(void)areaBtnAction:(UIButton *)sender
 {
@@ -324,7 +323,7 @@
     UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width-42.5, 15, 15, 15)];
     [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
     [view addSubview:imageVVV];
-     
+    
     [view addSubview:pickBtn];
     [self.backScrollView addSubview:view];
     return pickBtn;
@@ -343,9 +342,9 @@
     [view addSubview:textField];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
-   
+    
     [view addSubview:lineImagV];
-     [self.backScrollView addSubview:view];
+    [self.backScrollView addSubview:view];
     return textField;
 }
 -(void)celiangyangqiuViewWith:(CGRect)frame
@@ -420,6 +419,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 /*
 #pragma mark - Navigation
 

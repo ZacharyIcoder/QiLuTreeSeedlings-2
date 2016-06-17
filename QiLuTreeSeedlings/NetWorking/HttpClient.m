@@ -2913,7 +2913,32 @@
     
     NSLog(@"%@",str1);
 }
-
+#pragma mark ---------- 我的订单详情 -----------
+-(void)myDingDanDetialWithUid:(NSString *)uid
+                      Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/order/my/detail";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        //        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        //        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
 #pragma mark ---------- 我的分享 -----------
 -(void)getMyShareSuccess:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure {
@@ -2938,5 +2963,4 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
-
 @end

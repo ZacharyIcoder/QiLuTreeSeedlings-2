@@ -72,6 +72,10 @@
 		EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */; };
 		EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */; };
 		EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */; };
+		EA4C4DCE1D139E1F00DF1B93 /* YLDDingDanDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C4DCD1D139E1F00DF1B93 /* YLDDingDanDetialModel.m */; };
+		EA4C4DD21D13C31E00DF1B93 /* chengsezhankai.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4C4DD11D13C31E00DF1B93 /* chengsezhankai.png */; };
+		EA4C4DD41D13D88500DF1B93 /* edintBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4C4DD31D13D88500DF1B93 /* edintBtn.png */; };
+		EA4C4DD71D13E0F600DF1B93 /* YLDEditDingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C4DD61D13E0F600DF1B93 /* YLDEditDingDanViewController.m */; };
 		EA4E64631D0E413600A7D731 /* YLDSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4E64621D0E413600A7D731 /* YLDSearchView.m */; };
 		EA4E64661D0E4D1500A7D731 /* YLDUserHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4E64651D0E4D1500A7D731 /* YLDUserHelpViewController.m */; };
 		EA4E64691D0E54F800A7D731 /* YLDHelpDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4E64681D0E54F800A7D731 /* YLDHelpDetialViewController.m */; };
@@ -691,6 +695,12 @@
 		EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounlock@2x.png"; sourceTree = "<group>"; };
 		EA4ADB021CD9DD5C0068C10F /* YLDMyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyBuyListViewController.h; sourceTree = "<group>"; };
 		EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMyBuyListViewController.m; sourceTree = "<group>"; };
+		EA4C4DCC1D139E1F00DF1B93 /* YLDDingDanDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanDetialModel.h; sourceTree = "<group>"; };
+		EA4C4DCD1D139E1F00DF1B93 /* YLDDingDanDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanDetialModel.m; sourceTree = "<group>"; };
+		EA4C4DD11D13C31E00DF1B93 /* chengsezhankai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chengsezhankai.png; sourceTree = "<group>"; };
+		EA4C4DD31D13D88500DF1B93 /* edintBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edintBtn.png; sourceTree = "<group>"; };
+		EA4C4DD51D13E0F600DF1B93 /* YLDEditDingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDEditDingDanViewController.h; sourceTree = "<group>"; };
+		EA4C4DD61D13E0F600DF1B93 /* YLDEditDingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDEditDingDanViewController.m; sourceTree = "<group>"; };
 		EA4E64611D0E413600A7D731 /* YLDSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDSearchView.h; sourceTree = "<group>"; };
 		EA4E64621D0E413600A7D731 /* YLDSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDSearchView.m; sourceTree = "<group>"; };
 		EA4E64641D0E4D1500A7D731 /* YLDUserHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDUserHelpViewController.h; sourceTree = "<group>"; };
@@ -1867,6 +1877,8 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA4C4DD31D13D88500DF1B93 /* edintBtn.png */,
+				EA4C4DD11D13C31E00DF1B93 /* chengsezhankai.png */,
 				EA1A16D61D114B86008CA20F /* addView@2x.png */,
 				FC4A51801D0E63650060587B /* 工程订单_筛选.png */,
 				FC4A51811D0E63650060587B /* 工程订单_筛选on.png */,
@@ -2471,6 +2483,8 @@
 			children = (
 				EA9A22A01D124D15000CA161 /* YLDDingDanModel.h */,
 				EA9A22A11D124D15000CA161 /* YLDDingDanModel.m */,
+				EA4C4DCC1D139E1F00DF1B93 /* YLDDingDanDetialModel.h */,
+				EA4C4DCD1D139E1F00DF1B93 /* YLDDingDanDetialModel.m */,
 			);
 			path = DingDanModel;
 			sourceTree = "<group>";
@@ -2483,6 +2497,8 @@
 				EA9A22A71D128FDC000CA161 /* YLDDingDanJianJieView.h */,
 				EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */,
 				EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */,
+				EA4C4DD51D13E0F600DF1B93 /* YLDEditDingDanViewController.h */,
+				EA4C4DD61D13E0F600DF1B93 /* YLDEditDingDanViewController.m */,
 			);
 			path = YLDdingdanXiangQingViewController;
 			sourceTree = "<group>";
@@ -4011,6 +4027,7 @@
 				EAF050F01C92939E00F435A9 /* userInfoNomer@2x.png in Resources */,
 				FC6FED6B1CACF833000E2CA5 /* 图标.png in Resources */,
 				EA5252F51CE179E40004639C /* CityTableViewCell.xib in Resources */,
+				EA4C4DD41D13D88500DF1B93 /* edintBtn.png in Resources */,
 				EAAFCFAD1CBE23CD00EB894F /* 1miaomu960.png in Resources */,
 				EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */,
 				EA03CCF11C9003AC0032BAD3 /* passwordLiteImage@2x.png in Resources */,
@@ -4077,6 +4094,7 @@
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
 				FC5612901D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
 				FC7134231CB3465C0037D507 /* 已选.png in Resources */,
+				EA4C4DD21D13C31E00DF1B93 /* chengsezhankai.png in Resources */,
 				EA833D8E1CFE848500D56AFB /* shiyongbangzhu@2x.png in Resources */,
 				FC859A3C1D112F4600CA63A2 /* ZIKHelpfulHintsViewController.xib in Resources */,
 				FC5612611D0C092F00E5743B /* shanchutupian@3x.png in Resources */,
@@ -4277,6 +4295,7 @@
 				EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */,
 				FC50B3491CAE4C4A0022A24C /* NSDataEx.m in Sources */,
 				EA9A22951D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m in Sources */,
+				EA4C4DCE1D139E1F00DF1B93 /* YLDDingDanDetialModel.m in Sources */,
 				EA040FBF1C8826D900E43B5E /* ToastView.m in Sources */,
 				EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */,
 				EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */,
@@ -4396,6 +4415,7 @@
 				EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */,
 				FC56129E1D0C092F00E5743B /* ZIKMySupplyDetailViewController.m in Sources */,
 				EAEB63BD1C90FC1E0001ABC9 /* NSString+Phone.m in Sources */,
+				EA4C4DD71D13E0F600DF1B93 /* YLDEditDingDanViewController.m in Sources */,
 				FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */,
 				EA12E2691CBB416B009D8A8A /* AbountUsViewController.m in Sources */,
 				EA8CAA651C8963D500058A34 /* DataCache.m in Sources */,
@@ -4610,7 +4630,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -4647,7 +4667,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4658,8 +4678,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -4696,7 +4716,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

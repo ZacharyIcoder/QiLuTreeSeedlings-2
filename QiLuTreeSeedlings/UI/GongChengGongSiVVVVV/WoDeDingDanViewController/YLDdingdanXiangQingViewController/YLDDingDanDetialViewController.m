@@ -7,19 +7,102 @@
 //
 
 #import "YLDDingDanDetialViewController.h"
+#import "YLDDingDanJianJieView.h"
+#import "YLDEditDingDanViewController.h"
+#import "YLDMiaoMuUnTableViewCell.h"
+#import "YLDDingDanDetialModel.h"
 #import "UIDefines.h"
-@interface YLDDingDanDetialViewController ()
+#import "HttpClient.h"
+@interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
+@property (nonatomic,weak)YLDDingDanJianJieView *jianjieView;
+@property (nonatomic,weak)UITableView *tableView;
+@property (nonatomic,copy)NSString *Uid;
+@property (nonatomic,strong)YLDDingDanDetialModel *model;
+@property (nonatomic,weak) UIButton *editingBtn;
+
 @end
 
 @implementation YLDDingDanDetialViewController
-
+-(id)initWithUid:(NSString *)uid
+{
+    self=[super init];
+    if (self) {
+        self.Uid=uid;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"订单详情";
     [self topActionView];
+    YLDDingDanJianJieView *jianjieView=[YLDDingDanJianJieView yldDingDanJianJieView];
+    CGRect tempFrame=jianjieView.frame;
+    tempFrame.origin.y=115;
+    jianjieView.frame=tempFrame;
+    self.jianjieView=jianjieView;
+    [self.view addSubview:jianjieView];
+    
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-115)];
+    tableView.hidden=YES;
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    self.tableView=tableView;
+    [self.view addSubview:tableView];
+    UIButton *editingBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-46, 24, 30, 30)];
+    [editingBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+    [self.navBackView addSubview:editingBtn];
+    [editingBtn setImage:[UIImage imageNamed:@"edintBtn"] forState:UIControlStateNormal];
+    [editingBtn addTarget: self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.editingBtn=editingBtn;
+    [self getdataAction];
     // Do any additional setup after loading the view.
+}
+-(void)getdataAction
+{
+    ShowActionV();
+    [HTTPCLIENT myDingDanDetialWithUid:self.Uid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"orderDetail"];
+            YLDDingDanDetialModel *model=[YLDDingDanDetialModel yldDingDanDetialModelWithDic:dic];
+            self.model=model;
+            self.jianjieView.model=model;
+            //[self.tableView reloadData];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"success"]];
+        }
+        RemoveActionV();
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+}
+-(void)editingBtnAction:(UIButton *)sender
+{
+    YLDEditDingDanViewController *EditVC=[[YLDEditDingDanViewController alloc]init];
+    [self.navigationController pushViewController:EditVC animated:YES];
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.model.itemList.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    YLDMiaoMuUnTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDMiaoMuUnTableViewCell"];
+    if (!cell) {
+        cell=[YLDMiaoMuUnTableViewCell yldMiaoMuUnTableViewCell];
+    }
+    NSDictionary *DIC=self.model.itemList[indexPath.row];
+    cell.messageDic=DIC;
+    cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
+    //NSDictionary *DIC=self.miaomuAry[indexPath.row];
+//    cell.messageDic=DIC;
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
 }
 - (void)topActionView {
     NSArray *ary=@[@"订单简介",@"苗木详情"];
@@ -41,7 +124,7 @@
         [btn setTitle:ary[i] forState:UIControlStateSelected];
         [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
         [btn setTitleColor:NavYellowColor forState:UIControlStateSelected];
-        [btn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:16]];
         btn.tag=i;
         if (i==0) {
             btn.selected=YES;
@@ -62,7 +145,17 @@
     sender.selected=YES;
     _nowBtn.selected=NO;
     _nowBtn=sender;
-    
+    if (sender.tag==0) {
+        self.jianjieView.hidden=NO;
+        self.editingBtn.hidden=NO;
+        self.tableView.hidden=YES;
+    }
+    if (sender.tag==1) {
+        self.jianjieView.hidden=YES;
+        self.tableView.hidden=NO;
+         self.editingBtn.hidden=YES;
+        [self.tableView reloadData];
+    }
     CGRect frame=_moveView.frame;
     frame.origin.x=kWidth/2*(sender.tag);
     [UIView animateWithDuration:0.3 animations:^{
