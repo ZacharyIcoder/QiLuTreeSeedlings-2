@@ -35,6 +35,7 @@
 /*****View******/
 
 /*****Controller******/
+#import "ZIKStationOrderDetailViewController.h"//订单详情界面
 /*****Controller******/
 
 /*****宏定义******/
@@ -167,6 +168,13 @@
 
     ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKStationOrderDetailViewController *orderDetailVC = [[ZIKStationOrderDetailViewController alloc] init];
+    orderDetailVC.hidesBottomBarWhenPushed  = YES;
+    [self.navigationController pushViewController:orderDetailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)screeningBtnClick {
