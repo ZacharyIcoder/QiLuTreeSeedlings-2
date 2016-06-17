@@ -43,10 +43,10 @@ typedef void(^LeftBarBtnClickedBlock)();
  *  是否搜索状态
  */
 @property (nonatomic, assign) BOOL isSearch;
-///**
-// *  右侧按钮是否隐藏
-// */
-//@property (nonatomic, assign) BOOL isRightBtnHidden;
+/**
+ *  右侧按钮是否隐藏
+ */
+@property (nonatomic, assign) BOOL isRightBtnHidden;
 ///**
 // *  导航栏
 // */

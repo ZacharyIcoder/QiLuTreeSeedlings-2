@@ -8,7 +8,6 @@
 
 #import "ZIKBaseChangeNavViewController.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
-#import "ZIKSearchBarView.h"
 #import "ZIKFunction.h"
 
 #define titleFont [UIFont systemFontOfSize:20]//标题字体Font20o
@@ -36,6 +35,7 @@
 
     [self initNavView];
     self.isSearch = NO;
+    self.isRightBtnHidden = NO;
 }
 
 - (void)initNavView {
@@ -137,7 +137,10 @@
 //        _isSearch ? (rightButton.hidden = YES) : (rightButton.hidden = NO);
     }
 }
-
+-(void)setIsRightBtnHidden:(BOOL)isRightBtnHidden {
+    _isRightBtnHidden  = isRightBtnHidden;
+    _isRightBtnHidden ? (rightButton.hidden = YES) : (rightButton.hidden = NO);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
