@@ -27,7 +27,7 @@
 }
 -(UIView *)makeNavView
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 30, 30)];
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
