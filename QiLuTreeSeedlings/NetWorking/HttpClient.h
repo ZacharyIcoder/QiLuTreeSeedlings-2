@@ -642,4 +642,10 @@ failure:(void (^)(NSError *error))failure;
                  WithpageSize:(NSString *)pageSize
                       Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 报价详情-苗木信息-----------
+-(void)baojiaDetialMiaoMuWtihUid:(NSString *)uid
+                         Success:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure;
+
 @end

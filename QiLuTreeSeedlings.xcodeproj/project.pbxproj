@@ -133,6 +133,7 @@
 		EA5A082A1D15333D005000E9 /* Gyichakan.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5A08291D15333D005000E9 /* Gyichakan.png */; };
 		EA5A082C1D153353005000E9 /* Gyiguoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5A082B1D153353005000E9 /* Gyiguoqi.png */; };
 		EA5A08301D1534C7005000E9 /* YLDBaoJiaDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A082F1D1534C7005000E9 /* YLDBaoJiaDetialViewController.m */; };
+		EA5A08331D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A08321D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m */; };
 		EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */; };
 		EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC351C8D16F400660FC9 /* region@2x.png */; };
 		EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */; };
@@ -796,6 +797,8 @@
 		EA5A082B1D153353005000E9 /* Gyiguoqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gyiguoqi.png; sourceTree = "<group>"; };
 		EA5A082E1D1534C7005000E9 /* YLDBaoJiaDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaDetialViewController.h; sourceTree = "<group>"; };
 		EA5A082F1D1534C7005000E9 /* YLDBaoJiaDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBaoJiaDetialViewController.m; sourceTree = "<group>"; };
+		EA5A08311D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaMiaoMuModel.h; sourceTree = "<group>"; };
+		EA5A08321D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBaoJiaMiaoMuModel.m; sourceTree = "<group>"; };
 		EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LISTtreeNumber@2x.png"; sourceTree = "<group>"; };
 		EA5AAC351C8D16F400660FC9 /* region@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "region@2x.png"; sourceTree = "<group>"; };
 		EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listtime@2x.png"; sourceTree = "<group>"; };
@@ -2254,6 +2257,8 @@
 			children = (
 				EA5A08221D15216E005000E9 /* YLDBaoModel.h */,
 				EA5A08231D15216E005000E9 /* YLDBaoModel.m */,
+				EA5A08311D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.h */,
+				EA5A08321D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m */,
 			);
 			path = baojiaomodel;
 			sourceTree = "<group>";
@@ -4362,6 +4367,7 @@
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
+				EA5A08331D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m in Sources */,
 				EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */,
 				EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */,
 				FC5612451D0C092F00E5743B /* IQUITextFieldView+Additions.m in Sources */,

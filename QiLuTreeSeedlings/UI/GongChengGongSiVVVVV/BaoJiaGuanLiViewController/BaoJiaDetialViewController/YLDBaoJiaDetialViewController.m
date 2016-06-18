@@ -8,6 +8,9 @@
 
 #import "YLDBaoJiaDetialViewController.h"
 #import "UIDefines.h"
+#import "MJRefresh.h"
+#import "HttpClient.h"
+#import "YLDBaoJiaMiaoMuModel.h"
 @interface YLDBaoJiaDetialViewController ()
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
@@ -28,6 +31,15 @@
     [super viewDidLoad];
     self.vcTitle=@"报价详情";
     [self topActionView];
+    [HTTPCLIENT baojiaDetialMiaoMuWtihUid:self.Uid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
     // Do any additional setup after loading the view.
 }
 - (void)topActionView {
