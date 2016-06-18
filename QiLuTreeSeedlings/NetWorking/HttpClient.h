@@ -635,4 +635,11 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 我的分享 -----------
 -(void)getMyShareSuccess:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 报价管理-----------
+-(void)baojiaGuanLiWithStatus:(NSString *)status
+                  Withkeyword:(NSString *)keyword
+               WithpageNumber:(NSString *)pageNumber
+                 WithpageSize:(NSString *)pageSize
+                      Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure;
 @end

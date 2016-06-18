@@ -27,6 +27,11 @@
 @end
 
 @implementation YLDDingDanDetialViewController
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
+}
 -(id)initWithUid:(NSString *)uid
 {
     self=[super init];

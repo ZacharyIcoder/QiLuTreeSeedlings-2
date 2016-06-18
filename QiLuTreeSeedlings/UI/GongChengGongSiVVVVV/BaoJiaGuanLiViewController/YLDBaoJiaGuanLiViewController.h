@@ -6,8 +6,8 @@
 //  Copyright © 2016年 中亿科技. All rights reserved.
 //
 
-#import "ZIKArrowViewController.h"
+#import "YLDBaseViewController.h"
 
-@interface YLDBaoJiaGuanLiViewController : ZIKArrowViewController
+@interface YLDBaoJiaGuanLiViewController : YLDBaseViewController
 
 @end
