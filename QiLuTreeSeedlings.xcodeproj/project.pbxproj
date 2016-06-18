@@ -76,6 +76,8 @@
 		EA4C4DD21D13C31E00DF1B93 /* chengsezhankai.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4C4DD11D13C31E00DF1B93 /* chengsezhankai.png */; };
 		EA4C4DD41D13D88500DF1B93 /* edintBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4C4DD31D13D88500DF1B93 /* edintBtn.png */; };
 		EA4C4DD71D13E0F600DF1B93 /* YLDEditDingDanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C4DD61D13E0F600DF1B93 /* YLDEditDingDanViewController.m */; };
+		EA4C4DDD1D13EB1C00DF1B93 /* searchOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4C4DDC1D13EB1C00DF1B93 /* searchOrange.png */; };
+		EA4C4DE01D13F20200DF1B93 /* YLDSearchNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4C4DDF1D13F20200DF1B93 /* YLDSearchNavView.m */; };
 		EA4E64631D0E413600A7D731 /* YLDSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4E64621D0E413600A7D731 /* YLDSearchView.m */; };
 		EA4E64661D0E4D1500A7D731 /* YLDUserHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4E64651D0E4D1500A7D731 /* YLDUserHelpViewController.m */; };
 		EA4E64691D0E54F800A7D731 /* YLDHelpDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4E64681D0E54F800A7D731 /* YLDHelpDetialViewController.m */; };
@@ -708,6 +710,9 @@
 		EA4C4DD31D13D88500DF1B93 /* edintBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edintBtn.png; sourceTree = "<group>"; };
 		EA4C4DD51D13E0F600DF1B93 /* YLDEditDingDanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDEditDingDanViewController.h; sourceTree = "<group>"; };
 		EA4C4DD61D13E0F600DF1B93 /* YLDEditDingDanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDEditDingDanViewController.m; sourceTree = "<group>"; };
+		EA4C4DDC1D13EB1C00DF1B93 /* searchOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchOrange.png; sourceTree = "<group>"; };
+		EA4C4DDE1D13F20200DF1B93 /* YLDSearchNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDSearchNavView.h; sourceTree = "<group>"; };
+		EA4C4DDF1D13F20200DF1B93 /* YLDSearchNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDSearchNavView.m; sourceTree = "<group>"; };
 		EA4E64611D0E413600A7D731 /* YLDSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDSearchView.h; sourceTree = "<group>"; };
 		EA4E64621D0E413600A7D731 /* YLDSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDSearchView.m; sourceTree = "<group>"; };
 		EA4E64641D0E4D1500A7D731 /* YLDUserHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDUserHelpViewController.h; sourceTree = "<group>"; };
@@ -1896,12 +1901,10 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
+				EA4C4DDC1D13EB1C00DF1B93 /* searchOrange.png */,
 				EA4C4DD31D13D88500DF1B93 /* edintBtn.png */,
 				EA4C4DD11D13C31E00DF1B93 /* chengsezhankai.png */,
-
 				FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */,
-
 				EA1A16D61D114B86008CA20F /* addView@2x.png */,
 				FC4A51801D0E63650060587B /* 工程订单_筛选.png */,
 				FC4A51811D0E63650060587B /* 工程订单_筛选on.png */,
@@ -2103,6 +2106,15 @@
 				EA5444BD1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m */,
 			);
 			path = UIVender;
+			sourceTree = "<group>";
+		};
+		EA4C4DD81D13E83E00DF1B93 /* YLDNvaChangeSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				EA4C4DDE1D13F20200DF1B93 /* YLDSearchNavView.h */,
+				EA4C4DDF1D13F20200DF1B93 /* YLDSearchNavView.m */,
+			);
+			path = YLDNvaChangeSearchView;
 			sourceTree = "<group>";
 		};
 		EA4E64601D0E410000A7D731 /* CitySearchView */ = {
@@ -2515,6 +2527,7 @@
 		EA9A22A31D128DA4000CA161 /* YLDdingdanXiangQingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA4C4DD81D13E83E00DF1B93 /* YLDNvaChangeSearchView */,
 				EA9A22A41D128DFF000CA161 /* YLDDingDanDetialViewController.h */,
 				EA9A22A51D128DFF000CA161 /* YLDDingDanDetialViewController.m */,
 				EA9A22A71D128FDC000CA161 /* YLDDingDanJianJieView.h */,
@@ -4185,6 +4198,7 @@
 				FC859A4C1D112F5C00CA63A2 /* 底部菜单-站长中心off.png in Resources */,
 				EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */,
 				EA552E791D0D3FAF00FB88A0 /* wodedingdanoff.png in Resources */,
+				EA4C4DDD1D13EB1C00DF1B93 /* searchOrange.png in Resources */,
 				FC5612941D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
 				EA7AE8EC1C96874400B43073 /* price@2x.png in Resources */,
 				EA9A22961D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib in Resources */,
@@ -4327,6 +4341,7 @@
 				FC859A531D112F7C00CA63A2 /* ZIKStationCenterViewController.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
 				EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */,
+				EA4C4DE01D13F20200DF1B93 /* YLDSearchNavView.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
 				FC5612801D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */,
 				FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */,

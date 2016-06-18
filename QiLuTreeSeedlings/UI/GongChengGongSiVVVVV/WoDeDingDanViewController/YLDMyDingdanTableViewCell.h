@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "YLDDingDanModel.h"
+@protocol YLDMyDingdanTableViewCellDelegate <NSObject>
+@optional
+-(void)hezuoXiangQingActinWithMode:(YLDDingDanModel *)model;
+@end
 @interface YLDMyDingdanTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *dingdanTypeLab;
@@ -19,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *jiezhiRiqiLab;
 @property (nonatomic,strong) YLDDingDanModel *model;
 @property (weak, nonatomic) IBOutlet UIImageView *loggV;
+@property (nonatomic,weak) id<YLDMyDingdanTableViewCellDelegate> delegate;
 +(YLDMyDingdanTableViewCell *)yldMyDingdanTableViewCell;
 @property (weak, nonatomic) IBOutlet UIImageView *fengxiView;
+@property (weak, nonatomic) IBOutlet UIButton *hezuoBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *yincanglineV;
 @end

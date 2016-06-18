@@ -36,17 +36,28 @@
     {
         self.showBtn.hidden=NO;
     }
+    CGRect frame=self.frame;
     if (model.isShow) {
-        CGRect frame=self.frame;
+       
         frame.size.height=model.showHeight;
-        self.frame=frame;
         self.miaomuPinZhongLab.numberOfLines=0;
     }else{
-        CGRect frame=self.frame;
+
         frame.size.height=250;
-        self.frame=frame;
+        
         self.miaomuPinZhongLab.numberOfLines=1;
     }
+    [self.hezuoBtn addTarget:self action:@selector(hezuoBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    if ([model.status isEqualToString:@"已结束"]) {
+        frame.size.height+=40;
+        self.yincanglineV.hidden=NO;
+        self.hezuoBtn.hidden=NO;
+        [self.loggV setImage:[UIImage imageNamed:@""]];
+    }else{
+        self.yincanglineV.hidden=YES;
+         self.hezuoBtn.hidden=YES;
+    }
+    self.frame=frame;
     self.showBtn.selected=model.isShow;
     if ([model.status isEqualToString:@"报价中"]) {
         [self.loggV setImage:[UIImage imageNamed:@""]];
@@ -56,7 +67,12 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)hezuoBtnAction:(UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(hezuoXiangQingActinWithMode:)]) {
+        [self.delegate hezuoXiangQingActinWithMode:self.model];
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

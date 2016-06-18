@@ -13,7 +13,8 @@
 #import "YLDDingDanDetialModel.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
-@interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "YLDSearchNavView.h"
+@interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
 @property (nonatomic,weak)YLDDingDanJianJieView *jianjieView;
@@ -21,7 +22,8 @@
 @property (nonatomic,copy)NSString *Uid;
 @property (nonatomic,strong)YLDDingDanDetialModel *model;
 @property (nonatomic,weak) UIButton *editingBtn;
-
+@property (nonatomic,weak) YLDSearchNavView *searchV;
+@property (nonatomic,strong) UIButton *saerchBtn;
 @end
 
 @implementation YLDDingDanDetialViewController
@@ -57,8 +59,20 @@
     [editingBtn setImage:[UIImage imageNamed:@"edintBtn"] forState:UIControlStateNormal];
     [editingBtn addTarget: self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     self.editingBtn=editingBtn;
+    
+ 
+    UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 24, 30, 30)];
+    [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+    [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
+    [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.saerchBtn=searchShowBtn;
+    //[self.navBackView addSubview:searchShowBtn];
+    YLDSearchNavView *searchV =[[YLDSearchNavView alloc]init];
+    self.searchV=searchV;
+    searchV.delegate=self;
+    searchV.hidden=YES;
+    [self.navBackView addSubview:searchV];
     [self getdataAction];
-    // Do any additional setup after loading the view.
 }
 -(void)getdataAction
 {
@@ -83,6 +97,12 @@
 {
     YLDEditDingDanViewController *EditVC=[[YLDEditDingDanViewController alloc]init];
     [self.navigationController pushViewController:EditVC animated:YES];
+}
+-(void)searchBtnAction:(UIButton *)sender
+{
+    sender.selected=YES;
+    [sender removeFromSuperview];
+    self.searchV.hidden=NO;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.model.itemList.count;
@@ -149,11 +169,19 @@
         self.jianjieView.hidden=NO;
         self.editingBtn.hidden=NO;
         self.tableView.hidden=YES;
+        self.searchV.hidden=YES;
+        [self.saerchBtn removeFromSuperview];
     }
     if (sender.tag==1) {
         self.jianjieView.hidden=YES;
         self.tableView.hidden=NO;
          self.editingBtn.hidden=YES;
+        if (self.saerchBtn.selected) {
+             self.searchV.hidden=NO;
+        }else{
+          [self.navBackView addSubview:self.saerchBtn];  
+        }
+       
         [self.tableView reloadData];
     }
     CGRect frame=_moveView.frame;
@@ -161,6 +189,11 @@
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame=frame;
     }];
+}
+-(void)hidingAction
+{
+    [self.navBackView addSubview:self.saerchBtn];
+    self.saerchBtn.selected=NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -12,7 +12,7 @@
 
 
 
-static NSString * const AFBaseURLString = @"http://192.168.1.5:8080/";
+//static NSString * const AFBaseURLString = @"http://192.168.1.5:8080/";
 
 static NSString * const AFBaseURLString = @"http://192.168.1.5:8080/";
 

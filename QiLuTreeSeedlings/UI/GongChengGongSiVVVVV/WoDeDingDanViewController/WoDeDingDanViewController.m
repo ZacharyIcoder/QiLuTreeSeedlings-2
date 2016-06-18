@@ -12,7 +12,7 @@
 #import "UIDefines.h"
 #import "MJRefresh.h"
 #import "HttpClient.h"
-@interface WoDeDingDanViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface WoDeDingDanViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMyDingdanTableViewCellDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,weak) UIView *moveView;
 @property (nonatomic,weak) UIButton *nowBtn;
@@ -66,9 +66,15 @@
 {  YLDDingDanModel *model=self.dataAry[indexPath.row];
     if (model.isShow) {
         //NSLog(@"%ld----%lf",indexPath.row,model.showHeight);
+        if ([model.status isEqualToString:@"已结束"]) {
+            return model.showHeight+40;
+        }
          return model.showHeight;
     }else
     {
+        if ([model.status isEqualToString:@"已结束"]) {
+            return 250+40;
+        }
          return 250;
     }
    
@@ -79,6 +85,7 @@
     if (!cell) {
         cell=[YLDMyDingdanTableViewCell yldMyDingdanTableViewCell];
         [cell.showBtn addTarget:self action:@selector(showBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        cell.delegate=self;
     }
     cell.showBtn.tag=indexPath.row;
     YLDDingDanModel *model=self.dataAry[indexPath.row];
@@ -200,6 +207,10 @@
         self.Status=0;
     }
     [self.tableView headerBeginRefreshing];
+}
+-(void)hezuoXiangQingActinWithMode:(YLDDingDanModel *)model
+{
+    NSLog( @" %@",model.orderName);
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
