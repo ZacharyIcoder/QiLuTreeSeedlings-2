@@ -6,8 +6,7 @@
 //  Copyright © 2016年 中亿科技. All rights reserved.
 //
 
-#import "ZIKArrowViewController.h"
-
-@interface ZIKWorkstationViewController : ZIKArrowViewController
+#import "ZIKBaseChangeNavViewController.h"
+@interface ZIKWorkstationViewController : ZIKBaseChangeNavViewController
 
 @end

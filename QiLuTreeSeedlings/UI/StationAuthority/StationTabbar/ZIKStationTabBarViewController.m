@@ -11,7 +11,7 @@
 #import "ZIKWorkstationViewController.h"  //工作站
 #import "ZIKMyOfferViewController.h"      //我的报价
 #import "ZIKStationCenterViewController.h"//站长中心
-
+#import "ZIKStationCenterTableViewController.h"
 
 @interface ZIKStationTabBarViewController ()
 
@@ -60,11 +60,11 @@
     offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-我的报价on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     //站长中心
-    ZIKStationCenterViewController *stationVC = [[ZIKStationCenterViewController alloc] init];
+    ZIKStationCenterTableViewController *stationVC = [[ZIKStationCenterTableViewController alloc] init];
     UINavigationController *stationNav = [[UINavigationController alloc] initWithRootViewController:stationVC];
     stationNav.viewControllers  = @[stationVC];
     stationNav.tabBarItem.enabled = YES;
-    stationVC.vcTitle = @"站长中心";
+//    stationVC.vcTitle = @"站长中心";
     stationVC.tabBarItem.title = @"站长中心";
     stationVC.navigationController.navigationBar.hidden = YES;
 

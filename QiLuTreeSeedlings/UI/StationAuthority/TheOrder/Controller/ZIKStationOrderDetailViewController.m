@@ -78,7 +78,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKStationOrderOfferTableViewCell *cell = [ZIKStationOrderOfferTableViewCell cellWithTableView:tableView];
     if (indexPath.row == 2) {
-        cell.contentLabel.text = @"fewifjeiwjaiefjwajeifjwajefjwajefijwajefjwajefjwaijefijwajfiwajifejwajefjwajfejiwajfijwaifjwjaifejiwajfijwaiefjiwajfijawifejajweifjwaiejfijawewa";
+        cell.contentLabel.text = @"fewifjeiwjaiefjwajeifjwajefjwajefijwajefjwajefjwaijefijwajfiwajifejwajefjwajfejiwajfijwaifjwjaifejiwajfijwaiefjiwajfijawifejajweifjwaiejfijawewwefwefaefweqfweqfwqefwqefwqefwfwefwqefqwefwqefwqewqefwqefwqefwqewqea";
     }
     return cell;
 }
@@ -102,7 +102,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 }
 -(void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
-    CLog(@"textField:%@",textField);
+    CLog(@"textField:%@",textField.text);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
