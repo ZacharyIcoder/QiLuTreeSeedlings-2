@@ -71,7 +71,7 @@
     [super viewDidLoad];
     [self initData];
     [self initUI];
-    //[self requestData];
+    [self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -147,12 +147,21 @@
 };
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 160.f/320.f*kWidth;
-    } else if (indexPath.section == 1) {
-        return 35;
-    }
-    return 180;
+
+        if (indexPath.section == 0) {
+            return 160.f/320.f*kWidth;
+        } else if (indexPath.section == 1) {
+            return 35;
+        }
+        else {
+              self.orderTV.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
+                self.orderTV.estimatedRowHeight = 180;
+                return tableView.rowHeight;
+
+
+        }
+    return 44;
+
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -165,7 +174,7 @@
     if (section == 0 || section == 1) {
         return 1;
     }
-    return 10;
+    return self.orderMArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -180,21 +189,7 @@
         [adView adStart];
         return adView;
     } else if (indexPath.section == 1) {
-//        ZIKOrderSecondTableViewCell *cell = [ZIKOrderSecondTableViewCell cellWithTableView:tableView cellForRowAtIndexPath:indexPath];
-//        cell.delegate = self;
-//        [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell;
-//        ZIKOrderSecondTableViewCell *cell =  [tableView cellForRowAtIndexPath:indexPath];
-//        if (cell == nil) {
-//            cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKOrderSecondTableViewCell" owner:self options:nil] lastObject];
-//        }
-//                cell.delegate = self;
-//                [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                return cell;
-
-        static NSString *CellIdentifier = @"Cell";
+        static NSString *CellIdentifier = @"ZIKOrderSecondTableViewCellId";
         BOOL nibsRegistered = NO;
         if (!nibsRegistered) {
             UINib *nib = [UINib nibWithNibName:@"ZIKOrderSecondTableViewCell" bundle:nil];
@@ -202,13 +197,10 @@
             nibsRegistered = YES;
         }
         ZIKOrderSecondTableViewCell *cell = (ZIKOrderSecondTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        //cell.titleLabel.text = [self.dataList objectAtIndex:indexPath.row];
-                        cell.delegate = self;
-                        [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
-                        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        cell.delegate = self;
+        [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-
 
     } else if (indexPath.section == 2) {
         ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];

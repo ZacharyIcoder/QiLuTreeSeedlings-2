@@ -33,7 +33,6 @@
  */
 @property (nonatomic, assign) id<ZIKOrderSecondTableViewCellDelegate>delegate;
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)configureCell:(id)model;
 
 @end

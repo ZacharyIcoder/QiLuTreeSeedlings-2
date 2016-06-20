@@ -137,10 +137,12 @@
 //        _isSearch ? (rightButton.hidden = YES) : (rightButton.hidden = NO);
     }
 }
+
 -(void)setIsRightBtnHidden:(BOOL)isRightBtnHidden {
     _isRightBtnHidden  = isRightBtnHidden;
     _isRightBtnHidden ? (rightButton.hidden = YES) : (rightButton.hidden = NO);
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

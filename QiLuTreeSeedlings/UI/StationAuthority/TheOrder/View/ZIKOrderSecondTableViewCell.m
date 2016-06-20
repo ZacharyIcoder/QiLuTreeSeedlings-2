@@ -28,18 +28,6 @@
     // Configure the view for the selected state
 }
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //static NSString *kZIKOrderSecondTableViewCellID = @"kZIKOrderSecondTableViewCellID";
-//    ZIKOrderSecondTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKOrderSecondTableViewCellID];
-    // 定义cell标识  每个cell对应一个自己的标识
-//    NSString *CellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",indexPath.section,indexPath.row];
-    // 通过不同标识创建cell实例
-    ZIKOrderSecondTableViewCell *cell =  [tableView cellForRowAtIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKOrderSecondTableViewCell" owner:self options:nil] lastObject];
-    }
-    return cell;
-}
 
 - (void)configureCell:(id)model {
 }
