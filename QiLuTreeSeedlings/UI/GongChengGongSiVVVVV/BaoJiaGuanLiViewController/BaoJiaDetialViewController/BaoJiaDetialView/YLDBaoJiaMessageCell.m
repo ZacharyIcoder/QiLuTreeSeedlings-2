@@ -8,6 +8,7 @@
 
 #import "YLDBaoJiaMessageCell.h"
 #import "UIDefines.h"
+#import "UIImageView+AFNetworking.h"
 @implementation YLDBaoJiaMessageCell
 +(YLDBaoJiaMessageCell *)ylBdaoJiaMessageCell
 {
@@ -18,6 +19,37 @@
     cell.shuomingTextView.editable=NO;
     return cell;
     
+}
+-(void)setModel:(YLDBaoJiaMessageModel *)model
+{
+    _model=model;
+    self.titleLab.text=model.workstationName;
+    self.lianxirenLab.text=model.chargelPerson;
+    self.timeLab.text=model.quoteTime;
+    self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];
+    self.priceLab.text=model.price;
+    self.areaLab.text=model.area;
+    self.shuomingTextView.text=model.explain;
+    if ([model.status integerValue]==1) {
+        [self.hezuoActionBtn setImage:[UIImage imageNamed:@"jianlihezuo"] forState:UIControlStateNormal];
+        self.hezuoActionBtn.tag=1;
+    }
+    if ([model.status integerValue]==2) {
+        [self.hezuoActionBtn setImage:[UIImage imageNamed:@"yihezuo"] forState:UIControlStateNormal];
+        self.hezuoActionBtn.tag=2;
+    }
+    NSArray *imageAry=[model.image2 componentsSeparatedByString:@","];
+    for (int i=0; i<imageAry.count; i++) {
+        if (i==0) {
+            [self.imageV1 setImageWithURL:[NSURL URLWithString:imageAry[0]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+        }
+        if (i==1) {
+            [self.imageV2 setImageWithURL:[NSURL URLWithString:imageAry[1]]placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+        }
+        if (i==2) {
+            [self.imageV3 setImageWithURL:[NSURL URLWithString:imageAry[2]]placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+        }
+    }
 }
 + (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
 {

@@ -535,7 +535,7 @@
                 [self.navigationController pushViewController:zikPayVC animated:YES];
                 return ;
             }
-            _buyAlertView =[BuyMessageAlertView addActionVieWithPrice:[NSString stringWithFormat:@"%.1f",self.model.buyPrice               ] AndMone:[NSString stringWithFormat:@"%.1f",moneyNum]];
+            _buyAlertView =[BuyMessageAlertView addActionVieWithPrice:[NSString stringWithFormat:@"%.2f",self.model.buyPrice               ] AndMone:[NSString stringWithFormat:@"%.2f",moneyNum]];
             [_buyAlertView.rightBtn addTarget:self action:@selector(buySureAction) forControlEvents:UIControlEventTouchUpInside];
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];

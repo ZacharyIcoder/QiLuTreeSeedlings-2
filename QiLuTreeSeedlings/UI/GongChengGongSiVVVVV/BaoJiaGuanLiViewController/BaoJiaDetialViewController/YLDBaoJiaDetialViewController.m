@@ -13,6 +13,7 @@
 #import "YLDBaoJiaMiaoMuModel.h"
 #import "YLDBaoJiaMiaoMuView.h"
 #import "YLDBaoJiaMessageCell.h"
+#import "YLDBaoJiaMessageModel.h"
 @interface YLDBaoJiaDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
@@ -37,7 +38,8 @@
     [super viewDidLoad];
     self.vcTitle=@"报价详情";
     [self topActionView];
-    
+    self.pageNum=1;
+    self.dataAry=[NSMutableArray array];
     YLDBaoJiaMiaoMuView *yldBaoJiaMiaoMuView=[YLDBaoJiaMiaoMuView yldBaoJiaMiaoMuView];
     self.miaomuDetialV=yldBaoJiaMiaoMuView;
     [self.view addSubview:yldBaoJiaMiaoMuView];
@@ -48,10 +50,14 @@
     tableView.hidden=YES;
     __weak typeof(self) weakSlef=self;
     [tableView addHeaderWithCallback:^{
-        
+        weakSlef.pageNum=1;
+        ShowActionV();
+        [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
     }];
     [tableView addFooterWithCallback:^{
-        
+        weakSlef.pageNum+=1;
+        ShowActionV();
+        [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
     }];
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
@@ -67,21 +73,46 @@
     } failure:^(NSError *error) {
         
     }];
-   
+    [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
     // Do any additional setup after loading the view.
 }
 -(void)getMessageListWtihKeyWord:(NSString *)keyWord WithPageNumber:(NSString *)pageNumber
 {
     [HTTPCLIENT baojiaDetialMessageWithUid:self.Uid WithkeyWord:keyWord WithpageNumber:pageNumber WithpageSize:@"15" Success:^(id responseObject) {
-        
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if (self.pageNum==1) {
+                [self.dataAry removeAllObjects];
+            }
+            NSArray *relist=[[responseObject objectForKey:@"result"]objectForKey:@"quoteList"];
+            if (relist.count>0) {
+                NSArray *dataarss=[YLDBaoJiaMessageModel yldBaoJiaMessageModelWithAry:relist];
+                YLDBaoJiaMessageModel *model1=[dataarss lastObject];
+                YLDBaoJiaMessageModel *model2=[self.dataAry lastObject];
+                if ([model1.uid isEqualToString:model2.uid]) {
+                    [ToastView showTopToast:@"已无更多信息"];
+                    self.pageNum-=1;
+                }else{
+                    [self.dataAry addObjectsFromArray:dataarss];
+                    [self.tableView reloadData];
+                }
+            }else{
+               [ToastView showTopToast:@"已无更多信息"];
+                self.pageNum-=1;
+            }
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+       
         RemoveActionV();
+        [self.tableView headerEndRefreshing];
+        [self.tableView footerEndRefreshing];
     } failure:^(NSError *error) {
         RemoveActionV();
     }];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.dataAry.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -93,6 +124,8 @@
     if (!cell) {
         cell=[YLDBaoJiaMessageCell ylBdaoJiaMessageCell];
     }
+    YLDBaoJiaMessageModel *model=self.dataAry[indexPath.row];
+    cell.model=model;
     return cell;
 }
 - (void)topActionView {

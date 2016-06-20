@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YLDBaoJiaMessageModel.h"
 @interface YLDBaoJiaMessageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *backV;
 
@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageV1;
 @property (weak, nonatomic) IBOutlet UIImageView *imageV2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageV3;
+@property (nonatomic,strong)YLDBaoJiaMessageModel *model;
 +(YLDBaoJiaMessageCell *)ylBdaoJiaMessageCell;
 + (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth;
 @end
