@@ -211,6 +211,7 @@
 -(void)hezuoXiangQingActinWithMode:(YLDDingDanModel *)model
 {
     NSLog( @" %@",model.orderName);
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

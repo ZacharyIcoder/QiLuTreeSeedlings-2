@@ -69,6 +69,14 @@
 		EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29AA0A1C857859004913FF /* SellSearchTableViewCell.m */; };
 		EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */; };
 		EA3BA97A1CF2CC3B00097F8D /* YLDBuyFabuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3BA9791CF2CC3B00097F8D /* YLDBuyFabuViewController.m */; };
+		EA3D4D7D1D1780780010B56D /* YLDBaoJiaMiaoMuView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3D4D7C1D1780780010B56D /* YLDBaoJiaMiaoMuView.m */; };
+		EA3D4D7F1D17809B0010B56D /* YLDBaoJiaMiaoMuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3D4D7E1D17809B0010B56D /* YLDBaoJiaMiaoMuView.xib */; };
+		EA3D4D831D1791260010B56D /* YLDBaoJiaMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3D4D811D1791260010B56D /* YLDBaoJiaMessageCell.m */; };
+		EA3D4D841D1791260010B56D /* YLDBaoJiaMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3D4D821D1791260010B56D /* YLDBaoJiaMessageCell.xib */; };
+		EA3D4D861D1792450010B56D /* zhanzhangLong.png in Resources */ = {isa = PBXBuildFile; fileRef = EA3D4D851D1792450010B56D /* zhanzhangLong.png */; };
+		EA3D4D881D1792A10010B56D /* jianlihezuo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA3D4D871D1792A10010B56D /* jianlihezuo.png */; };
+		EA3D4D8A1D1792CD0010B56D /* yihezuo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA3D4D891D1792CD0010B56D /* yihezuo.png */; };
+		EA3D4D8C1D1793EB0010B56D /* dingdandinahua.png in Resources */ = {isa = PBXBuildFile; fileRef = EA3D4D8B1D1793EB0010B56D /* dingdandinahua.png */; };
 		EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */; };
 		EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */; };
 		EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */; };
@@ -123,7 +131,6 @@
 		EA552E861D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA552E841D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m */; };
 		EA552E871D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA552E851D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.xib */; };
 		EA552E891D0D472600FB88A0 /* ico_橙色收起.png in Resources */ = {isa = PBXBuildFile; fileRef = EA552E881D0D472600FB88A0 /* ico_橙色收起.png */; };
-		EA56C3BF1D08025D00750BC3 /* dingdandinahua@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA56C3BE1D08025D00750BC3 /* dingdandinahua@2x.png */; };
 		EA5A08171D14E648005000E9 /* YLDHeZuoDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A08161D14E648005000E9 /* YLDHeZuoDetialViewController.m */; };
 		EA5A081F1D14EEFD005000E9 /* YLDBaoJiaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A081D1D14EEFD005000E9 /* YLDBaoJiaCell.m */; };
 		EA5A08201D14EEFD005000E9 /* YLDBaoJiaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5A081E1D14EEFD005000E9 /* YLDBaoJiaCell.xib */; };
@@ -710,6 +717,16 @@
 		EA2E28B71CAE613500186DA5 /* UserBigInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBigInfoView.m; sourceTree = "<group>"; };
 		EA3BA9781CF2CC3B00097F8D /* YLDBuyFabuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBuyFabuViewController.h; sourceTree = "<group>"; };
 		EA3BA9791CF2CC3B00097F8D /* YLDBuyFabuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBuyFabuViewController.m; sourceTree = "<group>"; };
+		EA3D4D7B1D1780780010B56D /* YLDBaoJiaMiaoMuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaMiaoMuView.h; sourceTree = "<group>"; };
+		EA3D4D7C1D1780780010B56D /* YLDBaoJiaMiaoMuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBaoJiaMiaoMuView.m; sourceTree = "<group>"; };
+		EA3D4D7E1D17809B0010B56D /* YLDBaoJiaMiaoMuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDBaoJiaMiaoMuView.xib; sourceTree = "<group>"; };
+		EA3D4D801D1791260010B56D /* YLDBaoJiaMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaMessageCell.h; sourceTree = "<group>"; };
+		EA3D4D811D1791260010B56D /* YLDBaoJiaMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBaoJiaMessageCell.m; sourceTree = "<group>"; };
+		EA3D4D821D1791260010B56D /* YLDBaoJiaMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDBaoJiaMessageCell.xib; sourceTree = "<group>"; };
+		EA3D4D851D1792450010B56D /* zhanzhangLong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhanzhangLong.png; sourceTree = "<group>"; };
+		EA3D4D871D1792A10010B56D /* jianlihezuo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jianlihezuo.png; sourceTree = "<group>"; };
+		EA3D4D891D1792CD0010B56D /* yihezuo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yihezuo.png; sourceTree = "<group>"; };
+		EA3D4D8B1D1793EB0010B56D /* dingdandinahua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dingdandinahua.png; sourceTree = "<group>"; };
 		EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rolock@2x.png"; sourceTree = "<group>"; };
 		EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounlock@2x.png"; sourceTree = "<group>"; };
 		EA4ADB021CD9DD5C0068C10F /* YLDMyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyBuyListViewController.h; sourceTree = "<group>"; };
@@ -783,7 +800,6 @@
 		EA552E841D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMyDingdanTableViewCell.m; sourceTree = "<group>"; };
 		EA552E851D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMyDingdanTableViewCell.xib; sourceTree = "<group>"; };
 		EA552E881D0D472600FB88A0 /* ico_橙色收起.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_橙色收起.png"; sourceTree = "<group>"; };
-		EA56C3BE1D08025D00750BC3 /* dingdandinahua@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dingdandinahua@2x.png"; sourceTree = "<group>"; };
 		EA5A08151D14E648005000E9 /* YLDHeZuoDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDHeZuoDetialViewController.h; sourceTree = "<group>"; };
 		EA5A08161D14E648005000E9 /* YLDHeZuoDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDHeZuoDetialViewController.m; sourceTree = "<group>"; };
 		EA5A081C1D14EEFD005000E9 /* YLDBaoJiaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaCell.h; sourceTree = "<group>"; };
@@ -1926,6 +1942,10 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA3D4D8B1D1793EB0010B56D /* dingdandinahua.png */,
+				EA3D4D871D1792A10010B56D /* jianlihezuo.png */,
+				EA3D4D891D1792CD0010B56D /* yihezuo.png */,
+				EA3D4D851D1792450010B56D /* zhanzhangLong.png */,
 				EA5A08271D15332A005000E9 /* Gyihezuo.png */,
 				EA5A08251D153316005000E9 /* Gyibaojia.png */,
 				EA5A08291D15333D005000E9 /* Gyichakan.png */,
@@ -1955,7 +1975,6 @@
 				EA552E711D0D3F5900FB88A0 /* huangsefabu@2x.png */,
 				EA552E6F1D0D3DBC00FB88A0 /* touxianglianxiren.png */,
 				FC23D5361D0D03F600611E34 /* 已选小标.png */,
-				EA56C3BE1D08025D00750BC3 /* dingdandinahua@2x.png */,
 				FC7ED2401D054FD70010A8E5 /* downImage.png */,
 				EA7491681D0275910043BDAC /* xiala2.png */,
 				EA7491661D026FA40043BDAC /* xialakuang.png */,
@@ -2137,6 +2156,19 @@
 			path = UIVender;
 			sourceTree = "<group>";
 		};
+		EA3D4D7A1D1780590010B56D /* BaoJiaDetialView */ = {
+			isa = PBXGroup;
+			children = (
+				EA3D4D7B1D1780780010B56D /* YLDBaoJiaMiaoMuView.h */,
+				EA3D4D7C1D1780780010B56D /* YLDBaoJiaMiaoMuView.m */,
+				EA3D4D7E1D17809B0010B56D /* YLDBaoJiaMiaoMuView.xib */,
+				EA3D4D801D1791260010B56D /* YLDBaoJiaMessageCell.h */,
+				EA3D4D811D1791260010B56D /* YLDBaoJiaMessageCell.m */,
+				EA3D4D821D1791260010B56D /* YLDBaoJiaMessageCell.xib */,
+			);
+			path = BaoJiaDetialView;
+			sourceTree = "<group>";
+		};
 		EA4C4DD81D13E83E00DF1B93 /* YLDNvaChangeSearchView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2266,6 +2298,7 @@
 		EA5A082D1D1534AB005000E9 /* BaoJiaDetialViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA3D4D7A1D1780590010B56D /* BaoJiaDetialView */,
 				EA5A082E1D1534C7005000E9 /* YLDBaoJiaDetialViewController.h */,
 				EA5A082F1D1534C7005000E9 /* YLDBaoJiaDetialViewController.m */,
 			);
@@ -4125,6 +4158,8 @@
 				FC859A481D112F5C00CA63A2 /* 底部菜单-工作站off.png in Resources */,
 				EA5A08281D15332A005000E9 /* Gyihezuo.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
+				EA3D4D7F1D17809B0010B56D /* YLDBaoJiaMiaoMuView.xib in Resources */,
+				EA3D4D8A1D1792CD0010B56D /* yihezuo.png in Resources */,
 				EA17B5D21CC9D23A0054223B /* rightBtnImage@2x.png in Resources */,
 				EA833D921CFEBEAC00D56AFB /* gongchenggongsishouye.png in Resources */,
 				FC7EAFF31D13D90B00F4043D /* ZIKStationOrderOfferTableViewCell.xib in Resources */,
@@ -4165,6 +4200,7 @@
 				FCCEA4921CFD5FC2005D21F5 /* 我的积分-积分增加.png in Resources */,
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
 				FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */,
+				EA3D4D861D1792450010B56D /* zhanzhangLong.png in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
 				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
@@ -4233,6 +4269,7 @@
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
+				EA3D4D841D1791260010B56D /* YLDBaoJiaMessageCell.xib in Resources */,
 				EA6D36C41CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib in Resources */,
 				FC6FED6C1CACF833000E2CA5 /* 图片1.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
@@ -4244,10 +4281,10 @@
 				EA6D36CC1CE713BC00CE025C /* yiguanbi.png in Resources */,
 				FC6FED781CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.xib in Resources */,
 				EA1CF4161CACD4E300AF2D82 /* loading05@2x.png in Resources */,
-				EA56C3BF1D08025D00750BC3 /* dingdandinahua@2x.png in Resources */,
 				FC56126B1D0C092F00E5743B /* WHC_PictureListVC.xib in Resources */,
 				EA9A22AD1D12904B000CA161 /* YLDDingDanJianJieView.xib in Resources */,
 				EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */,
+				EA3D4D8C1D1793EB0010B56D /* dingdandinahua.png in Resources */,
 				EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */,
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
 				EA6D36CE1CE713E600CE025C /* yiguoqi.png in Resources */,
@@ -4291,6 +4328,7 @@
 				EA1A16D71D114B86008CA20F /* addView@2x.png in Resources */,
 				EA5E6E501CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib in Resources */,
 				FC859A461D112F5C00CA63A2 /* 底部菜单-工程订单off.png in Resources */,
+				EA3D4D881D1792A10010B56D /* jianlihezuo.png in Resources */,
 				EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */,
 				EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */,
 				FC5612771D0C092F00E5743B /* 添加照片-整片.png in Resources */,
@@ -4396,6 +4434,7 @@
 				EA5252E21CE171270004639C /* YLDPickLocationView.m in Sources */,
 				FC5612681D0C092F00E5743B /* WHC_ChoicePictureVC.m in Sources */,
 				EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */,
+				EA3D4D7D1D1780780010B56D /* YLDBaoJiaMiaoMuView.m in Sources */,
 				FC859A501D112F7100CA63A2 /* ZIKMyOfferViewController.m in Sources */,
 				FC6C133E1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m in Sources */,
 				EAE32DE41C7E97A600C4CEA2 /* UIWebView+AFNetworking.m in Sources */,
@@ -4411,6 +4450,7 @@
 				EA9A229D1D1241E3000CA161 /* JSONKit.m in Sources */,
 				EA9A22A21D124D15000CA161 /* YLDDingDanModel.m in Sources */,
 				FC5612991D0C092F00E5743B /* ZIKGreenButton.m in Sources */,
+				EA3D4D831D1791260010B56D /* YLDBaoJiaMessageCell.m in Sources */,
 				FCCEA4971CFD5FC2005D21F5 /* IntegraTableViewCell.m in Sources */,
 				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,
 				FC5612571D0C092F00E5743B /* UIScrollView+MJRefresh.m in Sources */,

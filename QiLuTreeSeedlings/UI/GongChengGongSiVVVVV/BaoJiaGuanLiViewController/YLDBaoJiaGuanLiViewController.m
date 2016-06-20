@@ -7,6 +7,7 @@
 //
 
 #import "YLDBaoJiaGuanLiViewController.h"
+#import "YLDBaoJiaDetialViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "MJRefresh.h"
@@ -74,6 +75,9 @@
 {
      [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    YLDBaoModel *model=self.dataAry[indexPath.row];
+    YLDBaoJiaDetialViewController *baojiaDetial=[[YLDBaoJiaDetialViewController alloc]initWithUid:model.uid];
+    [self.navigationController pushViewController:baojiaDetial animated:YES];
 }
 -(void)getDataListPageNum:(NSString *)pageNums andKeyWord:(NSString *)keyWord
 {
@@ -128,6 +132,11 @@
     return rect.size.height;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
+}
 /*
 #pragma mark - Navigation
 
