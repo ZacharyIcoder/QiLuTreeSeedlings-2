@@ -46,7 +46,7 @@
         return 160.f/320.f*kWidth;
     }
     if (indexPath.section==1) {
-        return 115;
+        return 125;
     }
     if (indexPath.section==2) {
         return 100;

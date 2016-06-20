@@ -647,5 +647,11 @@ failure:(void (^)(NSError *error))failure;
 -(void)baojiaDetialMiaoMuWtihUid:(NSString *)uid
                          Success:(void (^)(id responseObject))success
                          failure:(void (^)(NSError *error))failure;
-
+#pragma mark ---------- 报价详情-报价信息-----------
+-(void)baojiaDetialMessageWithUid:(NSString *)uid
+                      WithkeyWord:(NSString *)keyword
+                   WithpageNumber:(NSString *)pageNumber
+                     WithpageSize:(NSString *)pageSize
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
 @end

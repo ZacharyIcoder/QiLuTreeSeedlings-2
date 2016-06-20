@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZIKStationOrderModel;
 @interface ZIKStationOrderTableViewCell : UITableViewCell
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
-- (void)configureCell:(id)model;
++ (instancetype)cellWithTableView:(UITableView *)tableView ;
+- (void)configureCell:(ZIKStationOrderModel *)model;
 @end

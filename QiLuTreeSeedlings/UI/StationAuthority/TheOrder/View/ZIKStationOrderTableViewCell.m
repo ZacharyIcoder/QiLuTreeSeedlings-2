@@ -7,6 +7,20 @@
 //
 
 #import "ZIKStationOrderTableViewCell.h"
+#import "ZIKStationOrderModel.h"
+@interface ZIKStationOrderTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *topImageView;
+@property (weak, nonatomic) IBOutlet UILabel *orderTitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
+@property (weak, nonatomic) IBOutlet UILabel *offerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *qualityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *companyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *breedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+
+@end
 
 @implementation ZIKStationOrderTableViewCell
 
@@ -31,7 +45,9 @@
     return cell;
 }
 
-- (void)configureCell:(id)model {
+- (void)configureCell:(ZIKStationOrderModel *)model {
+    self.addressLabel.text = [NSString stringWithFormat:@"用苗地:%@",model.area];
+    self.orderTitleLabel.text = model.orderName;
 }
 
 

@@ -17,6 +17,7 @@
 /*****工具******/
 
 /*****Model******/
+#import "ZIKStationOrderModel.h"
 /*****Model******/
 
 /*****View******/
@@ -40,7 +41,7 @@
 
 /*****宏定义******/
 
-@interface ZIKOrderViewController ()<UITableViewDataSource,UITableViewDelegate,AdvertDelegate,ZIKCityListViewControllerDelegate,ZIKStationOrderScreeningViewDelegate>
+@interface ZIKOrderViewController ()<UITableViewDataSource,UITableViewDelegate,AdvertDelegate,ZIKCityListViewControllerDelegate,ZIKStationOrderScreeningViewDelegate,ZIKOrderSecondTableViewCellDelegate>
 @property (nonatomic, weak)  UITableView     *orderTV;//工程订单Tableview
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
 @property (nonatomic, strong) NSMutableArray *orderMArr;//我的订单数组
@@ -84,6 +85,7 @@
     self.page           = 1;//页面page从1开始
     self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
     self.areaMArr = [NSMutableArray arrayWithCapacity:5];
+    self.orderMArr = [[NSMutableArray alloc] init];
 }
 
 - (void)initUI {
@@ -91,7 +93,7 @@
     self.leftBarBtnBlock = ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKBackHome" object:nil];
     };
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-44) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStylePlain];
     tableView.delegate   = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -123,9 +125,21 @@
         CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        } else {
+            if (self.orderMArr.count > 0) {
+                [self.orderMArr removeAllObjects];
+            }
+            NSDictionary *resultDic = responseObject[@"result"];
+            NSArray *orderListArr = resultDic[@"orderList"];
+            [orderListArr enumerateObjectsUsingBlock:^(NSDictionary *orderDic, NSUInteger idx, BOOL * _Nonnull stop) {
+             ZIKStationOrderModel *model = [ZIKStationOrderModel yy_modelWithDictionary:orderDic];
+                [self.orderMArr addObject:model];
+            }];
+            //一个section刷新
+            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:2];
+            [self.orderTV reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
         }
 
-        ;
     } failure:^(NSError *error) {
         CLog(@"%@",error);
     }];
@@ -140,6 +154,12 @@
     }
     return 180;
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    if (section == 2) {
+//        re
+//    }
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0 || section == 1) {
@@ -160,14 +180,46 @@
         [adView adStart];
         return adView;
     } else if (indexPath.section == 1) {
-        ZIKOrderSecondTableViewCell *cell = [ZIKOrderSecondTableViewCell cellWithTableView:tableView];
-        [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        ZIKOrderSecondTableViewCell *cell = [ZIKOrderSecondTableViewCell cellWithTableView:tableView cellForRowAtIndexPath:indexPath];
+//        cell.delegate = self;
+//        [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        return cell;
+//        ZIKOrderSecondTableViewCell *cell =  [tableView cellForRowAtIndexPath:indexPath];
+//        if (cell == nil) {
+//            cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKOrderSecondTableViewCell" owner:self options:nil] lastObject];
+//        }
+//                cell.delegate = self;
+//                [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//                return cell;
+
+        static NSString *CellIdentifier = @"Cell";
+        BOOL nibsRegistered = NO;
+        if (!nibsRegistered) {
+            UINib *nib = [UINib nibWithNibName:@"ZIKOrderSecondTableViewCell" bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+            nibsRegistered = YES;
+        }
+        ZIKOrderSecondTableViewCell *cell = (ZIKOrderSecondTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        //cell.titleLabel.text = [self.dataList objectAtIndex:indexPath.row];
+                        cell.delegate = self;
+                        [cell.screeningButton addTarget:self action:@selector(screeningBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        return cell;
+
+
+    } else if (indexPath.section == 2) {
+        ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];
+        if (self.orderMArr.count > 0) {
+            ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
+            [cell configureCell:model];
+        }
+
         return cell;
     }
-
-    ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];
-    return cell;
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -222,9 +274,20 @@
     [self requestMyOrderList:@"1"];
 
 }
+
 -(void)StationOrderScreeningbackBtnAction {
 
 }
+
+#pragma mark ----- ZIKOrderSecondTableViewCellDelegate筛选按钮点击
+-(void)sendTimeSortInfo:(NSDictionary *)timeSortDic {
+    CLog(@"timeSortDic:%@",timeSortDic);
+    self.orderBy = timeSortDic[@"time"];
+    self.orderSort = timeSortDic[@"sort"];
+    self.page = 1;
+    [self requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+}
+
 #pragma mark ----- AdvertDelegate广告页面点击
 //广告页面点击
 -(void)advertPush:(NSInteger)index

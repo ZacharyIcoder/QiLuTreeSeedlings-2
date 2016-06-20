@@ -11,11 +11,18 @@
 #import "MJRefresh.h"
 #import "HttpClient.h"
 #import "YLDBaoJiaMiaoMuModel.h"
-@interface YLDBaoJiaDetialViewController ()
+#import "YLDBaoJiaMiaoMuView.h"
+#import "YLDBaoJiaMessageCell.h"
+#import "YLDBaoJiaMessageModel.h"
+@interface YLDBaoJiaDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *Uid;
+@property (nonatomic,weak)YLDBaoJiaMiaoMuView *miaomuDetialV;
+@property (nonatomic)NSInteger pageNum;
+@property (nonatomic,strong)NSMutableArray *dataAry;
+@property (nonatomic,strong)YLDBaoJiaMiaoMuModel *detialModel;
 @end
 
 @implementation YLDBaoJiaDetialViewController
@@ -31,16 +38,95 @@
     [super viewDidLoad];
     self.vcTitle=@"报价详情";
     [self topActionView];
+    self.pageNum=1;
+    self.dataAry=[NSMutableArray array];
+    YLDBaoJiaMiaoMuView *yldBaoJiaMiaoMuView=[YLDBaoJiaMiaoMuView yldBaoJiaMiaoMuView];
+    self.miaomuDetialV=yldBaoJiaMiaoMuView;
+    [self.view addSubview:yldBaoJiaMiaoMuView];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-115)];
+    self.tableView=tableView;
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    tableView.hidden=YES;
+    __weak typeof(self) weakSlef=self;
+    [tableView addHeaderWithCallback:^{
+        weakSlef.pageNum=1;
+        ShowActionV();
+        [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
+    }];
+    [tableView addFooterWithCallback:^{
+        weakSlef.pageNum+=1;
+        ShowActionV();
+        [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
+    }];
+    tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:tableView];
     [HTTPCLIENT baojiaDetialMiaoMuWtihUid:self.Uid Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
-            
+            NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
+            YLDBaoJiaMiaoMuModel *miaomumodel=[YLDBaoJiaMiaoMuModel yldBaoModelWithDic:dic];
+            self.detialModel=miaomumodel;
+            self.miaomuDetialV.model=miaomumodel;
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
     } failure:^(NSError *error) {
         
     }];
+    [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
     // Do any additional setup after loading the view.
+}
+-(void)getMessageListWtihKeyWord:(NSString *)keyWord WithPageNumber:(NSString *)pageNumber
+{
+    [HTTPCLIENT baojiaDetialMessageWithUid:self.Uid WithkeyWord:keyWord WithpageNumber:pageNumber WithpageSize:@"15" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if (self.pageNum==1) {
+                [self.dataAry removeAllObjects];
+            }
+            NSArray *relist=[[responseObject objectForKey:@"result"]objectForKey:@"quoteList"];
+            if (relist.count>0) {
+                NSArray *dataarss=[YLDBaoJiaMessageModel yldBaoJiaMessageModelWithAry:relist];
+                YLDBaoJiaMessageModel *model1=[dataarss lastObject];
+                YLDBaoJiaMessageModel *model2=[self.dataAry lastObject];
+                if ([model1.uid isEqualToString:model2.uid]) {
+                    [ToastView showTopToast:@"已无更多信息"];
+                    self.pageNum-=1;
+                }else{
+                    [self.dataAry addObjectsFromArray:dataarss];
+                    [self.tableView reloadData];
+                }
+            }else{
+               [ToastView showTopToast:@"已无更多信息"];
+                self.pageNum-=1;
+            }
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+       
+        RemoveActionV();
+        [self.tableView headerEndRefreshing];
+        [self.tableView footerEndRefreshing];
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataAry.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 270;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    YLDBaoJiaMessageCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDBaoJiaMessageCell"];
+    if (!cell) {
+        cell=[YLDBaoJiaMessageCell ylBdaoJiaMessageCell];
+    }
+    YLDBaoJiaMessageModel *model=self.dataAry[indexPath.row];
+    cell.model=model;
+    return cell;
 }
 - (void)topActionView {
     NSArray *ary=@[@"订单简介",@"苗木详情"];
@@ -84,14 +170,17 @@
     _nowBtn.selected=NO;
     _nowBtn=sender;
     if (sender.tag==0) {
-//        self.jianjieView.hidden=NO;
+        self.miaomuDetialV.hidden=NO;
+        self.tableView.hidden=YES;
 //        self.editingBtn.hidden=NO;
 //        self.tableView.hidden=YES;
 //        self.searchV.hidden=YES;
 //        [self.saerchBtn removeFromSuperview];
     }
     if (sender.tag==1) {
-//        self.jianjieView.hidden=YES;
+        self.miaomuDetialV.hidden=YES;
+        self.tableView.hidden=NO;
+        [self.tableView reloadData];
 //        self.tableView.hidden=NO;
 //        self.editingBtn.hidden=YES;
 //        if (self.saerchBtn.selected) {

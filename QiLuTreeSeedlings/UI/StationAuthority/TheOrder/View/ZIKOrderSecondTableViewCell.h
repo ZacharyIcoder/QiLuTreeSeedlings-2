@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ZIKOrderSecondTableViewCellDelegate <NSObject>
+
+@required
+-(void)sendTimeSortInfo:(NSDictionary *)timeSortDic;
+
+@end
+
 @interface ZIKOrderSecondTableViewCell : UITableViewCell
 /**
  *  发布时间按钮
@@ -21,8 +28,12 @@
  *  筛选按钮
  */
 @property (weak, nonatomic) IBOutlet UIButton *screeningButton;
+/**
+ *  选择发布截止时间的delegate
+ */
+@property (nonatomic, assign) id<ZIKOrderSecondTableViewCellDelegate>delegate;
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
++ (instancetype)cellWithTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)configureCell:(id)model;
 
 @end
