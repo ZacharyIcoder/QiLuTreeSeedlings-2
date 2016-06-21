@@ -9,7 +9,19 @@
 #import "YLDZhanZhangMessageCell.h"
 
 @implementation YLDZhanZhangMessageCell
++(YLDZhanZhangMessageCell *)yldZhanZhangMessageCell
+{
+    YLDZhanZhangMessageCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDZhanZhangMessageCell" owner:self options:nil] lastObject];
+    cell.UserImageV.layer.masksToBounds=YES;
+    cell.UserImageV.layer.cornerRadius=cell.UserImageV.frame.size.width/2;
+    return cell;
+}
 
+- (IBAction)BackBtnAction:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(backBtnAction:)]) {
+        [self.delegate backBtnAction:sender];
+    }
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
