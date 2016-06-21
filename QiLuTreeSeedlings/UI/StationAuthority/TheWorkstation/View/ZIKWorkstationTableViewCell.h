@@ -29,6 +29,7 @@
  *  工作站联系方式
  */
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *phoneButton;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 - (void)configureCell:(id)model;

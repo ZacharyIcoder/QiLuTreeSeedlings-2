@@ -98,7 +98,8 @@ NSString *kCellID = @"cellID";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_isCharge) {
-        if (self.sumScore == 0) {
+        ZIKIntegraExchangeModel *model = self.dataArr[indexPath.row];
+        if (self.sumScore == 0 || self.sumScore < model.integral.integerValue) {
             [ToastView showTopToast:@"很抱歉,您的积分不足"];
             return;
         }

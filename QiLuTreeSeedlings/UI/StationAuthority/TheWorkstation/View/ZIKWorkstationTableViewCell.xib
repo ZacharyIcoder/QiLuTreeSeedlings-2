@@ -81,6 +81,9 @@
                             <constraint firstAttribute="width" constant="30" id="y1t-VU-Ktg"/>
                         </constraints>
                         <state key="normal" title="Button" image="kefuxitongdadianhua.png"/>
+                        <connections>
+                            <action selector="phoneButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S8d-PR-5fF"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_工作站-分站text.png" translatesAutoresizingMaskIntoConstraints="NO" id="hDI-G2-tbU">
                         <rect key="frame" x="10" y="8" width="36" height="20"/>
@@ -120,6 +123,7 @@
                 <outlet property="logoImageView" destination="hDI-G2-tbU" id="jtv-uh-Bb0"/>
                 <outlet property="nameLabel" destination="Hde-g2-fRk" id="8uq-Bz-2Ou"/>
                 <outlet property="numberLabel" destination="T42-8e-upT" id="RS1-yh-Vug"/>
+                <outlet property="phoneButton" destination="eaY-kp-0EB" id="ouc-dx-sc7"/>
                 <outlet property="titleLabel" destination="fEz-hh-n9x" id="fFZ-sB-fyP"/>
             </connections>
             <point key="canvasLocation" x="474" y="342"/>

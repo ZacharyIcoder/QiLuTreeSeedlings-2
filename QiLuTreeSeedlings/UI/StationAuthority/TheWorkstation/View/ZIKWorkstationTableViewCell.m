@@ -31,5 +31,7 @@
 
 - (void)configureCell:(id)model {
 }
+- (IBAction)phoneButtonClick:(id)sender {
+}
 
 @end

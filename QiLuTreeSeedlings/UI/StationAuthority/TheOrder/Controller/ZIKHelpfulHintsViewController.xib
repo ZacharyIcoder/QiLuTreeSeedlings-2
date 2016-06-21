@@ -106,7 +106,7 @@
         </view>
     </objects>
     <resources>
-        <image name="dingdandinahua.png" width="12" height="12"/>
+        <image name="dingdandinahua.png" width="25" height="25"/>
         <image name="图片1.png" width="256" height="256"/>
     </resources>
 </document>
