@@ -38,6 +38,7 @@
 		EA08F7C71D19152700471C33 /* anliimage.png in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7C61D19152700471C33 /* anliimage.png */; };
 		EA08F7CA1D191B0200471C33 /* ico_工作站-分站text.png in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7C81D191B0200471C33 /* ico_工作站-分站text.png */; };
 		EA08F7CB1D191B0200471C33 /* ico_工作站-总站text.png in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7C91D191B0200471C33 /* ico_工作站-总站text.png */; };
+		EA08F7CF1D191C1E00471C33 /* YLDZiZhiAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08F7CE1D191C1E00471C33 /* YLDZiZhiAddViewController.m */; };
 		EA0B2B951C59F5220018A7BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2B941C59F5220018A7BD /* main.m */; };
 		EA0B2B9E1C59F5220018A7BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2B9C1C59F5220018A7BD /* Main.storyboard */; };
 		EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2B9F1C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld */; };
@@ -719,6 +720,8 @@
 		EA08F7C61D19152700471C33 /* anliimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anliimage.png; sourceTree = "<group>"; };
 		EA08F7C81D191B0200471C33 /* ico_工作站-分站text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_工作站-分站text.png"; sourceTree = "<group>"; };
 		EA08F7C91D191B0200471C33 /* ico_工作站-总站text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_工作站-总站text.png"; sourceTree = "<group>"; };
+		EA08F7CD1D191C1E00471C33 /* YLDZiZhiAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDZiZhiAddViewController.h; sourceTree = "<group>"; };
+		EA08F7CE1D191C1E00471C33 /* YLDZiZhiAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDZiZhiAddViewController.m; sourceTree = "<group>"; };
 		EA0B2B901C59F5220018A7BD /* QiLuTreeSeedlings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiLuTreeSeedlings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0B2B941C59F5220018A7BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA0B2B9D1C59F5220018A7BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1906,6 +1909,15 @@
 			path = GongChengAnLiViewController;
 			sourceTree = "<group>";
 		};
+		EA08F7CC1D191C0100471C33 /* GongChengZhongXinZiZhiTianJianViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA08F7CD1D191C1E00471C33 /* YLDZiZhiAddViewController.h */,
+				EA08F7CE1D191C1E00471C33 /* YLDZiZhiAddViewController.m */,
+			);
+			path = GongChengZhongXinZiZhiTianJianViewController;
+			sourceTree = "<group>";
+		};
 		EA0B2B871C59F5220018A7BD = {
 			isa = PBXGroup;
 			children = (
@@ -2604,6 +2616,7 @@
 		EA5E6E351CFFC9A5003D357C /* GongChnegZhongXinViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA08F7CC1D191C0100471C33 /* GongChengZhongXinZiZhiTianJianViewController */,
 				EA08F7BD1D1912DC00471C33 /* GongChengAnLiViewController */,
 				EA08F7B81D190DEC00471C33 /* GongChengZhongXinViewController.h */,
 				EA08F7B91D190DEC00471C33 /* GongChengZhongXinViewController.m */,
@@ -4665,6 +4678,7 @@
 				EA5E6E3B1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m in Sources */,
 				FC56127A1D0C092F00E5743B /* ZIKIteratorNode.m in Sources */,
 				EAE32DF41C7E9D5000C4CEA2 /* HttpClient.m in Sources */,
+				EA08F7CF1D191C1E00471C33 /* YLDZiZhiAddViewController.m in Sources */,
 				EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */,
 				EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */,
 				EAE32DE21C7E97A600C4CEA2 /* UIProgressView+AFNetworking.m in Sources */,

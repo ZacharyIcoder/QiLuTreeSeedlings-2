@@ -129,27 +129,27 @@
     [self.backScrollView addSubview:xiayibuBtn];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame)+60)];
 }
-//-(void)chongzhiBtnAction:(UIButton *)sender
-//{
-//    self.typeStr=nil;
-//    [self.typeBtn setTitle:@"请选择订单类型" forState:UIControlStateNormal];
-//    self.NameTextField.text=nil;
-//    self.AreaProvince=nil;
-//    self.AreaCity=nil;
-//    [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
-//    self.timeStr=nil;
-//    [self.timeBtn setTitle:@"请选择截止日期" forState:UIControlStateNormal];
-//    self.priceStr=nil;
-//    [self.priceBtn setTitle:@"请选择报价要求" forState:UIControlStateNormal];
-//    self.qualityStr=nil;
-//    [self.qualityBtn setTitle:@"请选择质量要求" forState:UIControlStateNormal];
-//    self.xiongjingField.text=nil;
-//    self.dijingField.text=nil;
-//    self.lianxirenField.text=nil;
-//    self.lianxifangshiField.text=nil;
-//    self.jianjieTextView.text=nil;
-//    
-//}
+-(void)chongzhiBtnAction:(UIButton *)sender
+{
+    self.typeStr=nil;
+    [self.typeBtn setTitle:@"请选择订单类型" forState:UIControlStateNormal];
+    self.NameTextField.text=nil;
+    self.AreaProvince=nil;
+    self.AreaCity=nil;
+    [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
+    self.timeStr=nil;
+    [self.timeBtn setTitle:@"请选择截止日期" forState:UIControlStateNormal];
+    self.priceStr=nil;
+    [self.priceBtn setTitle:@"请选择报价要求" forState:UIControlStateNormal];
+    self.qualityStr=nil;
+    [self.qualityBtn setTitle:@"请选择质量要求" forState:UIControlStateNormal];
+    self.xiongjingField.text=nil;
+    self.dijingField.text=nil;
+    self.lianxirenField.text=nil;
+    self.lianxifangshiField.text=nil;
+    self.jianjieTextView.text=nil;
+    
+}
 -(void)nextBtnAction:(UIButton *)sender
 {
     if (!self.typeStr) {

@@ -18,6 +18,7 @@
 @synthesize titleLab;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
     self.navBackView =[self makeNavView];
     [self.view addSubview:self.navBackView];
     [self.view setBackgroundColor:BGColor];

@@ -9,6 +9,7 @@
 #import "ZIKMyHonorViewController.h"
 #import "ZIKMyHonorCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "YLDZiZhiAddViewController.h"
 NSString *kHonorCellID = @"honorcellID";
 
 @interface ZIKMyHonorViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -29,9 +30,12 @@ NSString *kHonorCellID = @"honorcellID";
         [self.navBackView setBackgroundColor:NavYellowColor];
     }
     self.rightBarBtnTitleString = @"添加";
-//    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-        NSLog(@"添加点击");
+        if ([weakSelf.vctitle isEqualToString:@"公司资质"]) {
+            YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc]init];
+            [weakSelf.navigationController pushViewController:vcss animated:YES];
+        }
     };
     self.honorCollectionView.delegate = self;
     self.honorCollectionView.dataSource = self;
