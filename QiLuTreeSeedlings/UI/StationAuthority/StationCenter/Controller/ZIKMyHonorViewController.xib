@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZIKMyHonorViewController">
+            <connections>
+                <outlet property="honorCollectionView" destination="iBX-gf-GZz" id="L8B-1T-gxk"/>
+                <outlet property="honorCollectionViewFlowLayout" destination="FGG-aa-EWz" id="5bO-BK-bcQ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iBX-gf-GZz">
+                    <rect key="frame" x="0.0" y="21" width="375" height="646"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="scrollIndicatorInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FGG-aa-EWz">
+                        <size key="itemSize" width="182" height="145"/>
+                        <size key="headerReferenceSize" width="10" height="10"/>
+                        <size key="footerReferenceSize" width="20" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="473.5" y="361.5"/>
+        </view>
+    </objects>
+</document>

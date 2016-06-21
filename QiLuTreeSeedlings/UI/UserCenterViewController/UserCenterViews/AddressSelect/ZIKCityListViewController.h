@@ -9,7 +9,9 @@
 #import "ZIKRightBtnSringViewController.h"
 
 #import "ZIKCitySectionHeaderView.h"
-
+#import "GetCityDao.h"
+#import "CityModel.h"
+#import "ZIKCityModel.h"
 typedef NS_ENUM(NSInteger, SelectStyle) {
    SelectStyleSingleSelection = 0, //单选
    SelectStyleMultiSelect     = 1  //多选

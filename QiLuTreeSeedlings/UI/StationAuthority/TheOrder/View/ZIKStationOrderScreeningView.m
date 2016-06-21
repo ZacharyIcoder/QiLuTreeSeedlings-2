@@ -63,7 +63,7 @@
 }
 
 - (void)initView {
-
+    self.isScreen = NO;
     [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 64)];
     [backView setBackgroundColor:kRGB(210, 210, 210, 1)];
@@ -225,7 +225,7 @@
 }
 
 - (void)selectAddress:(UITapGestureRecognizer *)gesture {
-    CLog(@"%@",gesture);
+    //CLog(@"%@",gesture);
     if([self.delegate respondsToSelector:@selector(addressSelectLabelAction)]) {
         [self.delegate addressSelectLabelAction];
     }
@@ -304,7 +304,7 @@
     }];
 }
 
-#pragma mark - 筛选按钮点击事件
+#pragma mark - 开始筛选按钮点击事件
 - (void)screeningViewAction {
     if ([self.orderState isEqualToString:@""] || self.orderState == nil) {
         self.orderState = @"0,1,2";
@@ -312,9 +312,14 @@
     if ([self.orderType isEqualToString:@""] || self.orderType == nil) {
         self.orderType = [_orderTypeAllUid substringToIndex:_orderTypeAllUid.length-1];
     }
-    if ([self.orderAddressSelectLabel.text isEqualToString:@"请选择地址"]) {
-        [ToastView showTopToast:@"请选择地址"];
-        return;
+//    if ([self.orderAddressSelectLabel.text isEqualToString:@"请选择地址"]) {
+//        [ToastView showTopToast:@"请选择地址"];
+//        return;
+//    }
+    if ([self.orderStateLabel.text isEqualToString:@"全部"] && [self.orderTypeLabel.text isEqualToString:@"全部"] && [self.orderAddressSelectLabel.text isEqualToString:@"请选择地址"]) {
+        self.isScreen = NO;
+    } else {
+        self.isScreen = YES;
     }
     [self removeSideViewAction];
     if ([self.delegate respondsToSelector:@selector(screeningBtnClickSendOrderStateInfo:orderTypeInfo:orderAddressInfo:)]) {
@@ -324,7 +329,7 @@
 
 #pragma mark - 重置按钮点击事件
 - (void)chongzhiBtnAction:(UIButton *)button {
-    CLog(@"%@",self.contentView.subviews);
+    //CLog(@"%@",self.contentView.subviews);
     [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[UIButton class]]) {
             ((UIButton *)obj).selected = NO;

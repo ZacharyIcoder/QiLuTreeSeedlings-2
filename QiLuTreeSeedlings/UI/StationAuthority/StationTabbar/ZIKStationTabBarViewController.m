@@ -10,8 +10,7 @@
 #import "ZIKOrderViewController.h"        //工程订单
 #import "ZIKWorkstationViewController.h"  //工作站
 #import "ZIKMyOfferViewController.h"      //我的报价
-#import "ZIKStationCenterViewController.h"//站长中心
-#import "ZIKStationCenterTableViewController.h"
+#import "ZIKStationCenterTableViewController.h"//站长中心
 
 @interface ZIKStationTabBarViewController ()
 

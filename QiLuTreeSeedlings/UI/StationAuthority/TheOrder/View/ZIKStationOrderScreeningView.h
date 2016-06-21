@@ -44,7 +44,10 @@
  *  //用苗地选择显示label
  */
 @property (nonatomic, strong) UILabel *orderAddressSelectLabel;//用苗地选择显示label
-
+/**
+ *  是否人为更改过筛选
+ */
+@property (nonatomic, assign) BOOL isScreen;
 /**
  *  初始化
  *

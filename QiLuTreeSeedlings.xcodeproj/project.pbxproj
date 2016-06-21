@@ -332,6 +332,11 @@
 		EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5411C867D7D008B99D2 /* HotSellModel.m */; };
 		EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5441C867FF9008B99D2 /* HotBuyModel.m */; };
 		EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5471C868DD1008B99D2 /* GusseYourLikeModel.m */; };
+		FC0853E91D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0853E71D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m */; };
+		FC0853EA1D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0853E81D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib */; };
+		FC0853EE1D18EA57003A47BA /* ZIKMyHonorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0853EC1D18EA57003A47BA /* ZIKMyHonorViewController.m */; };
+		FC0853EF1D18EA57003A47BA /* ZIKMyHonorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0853ED1D18EA57003A47BA /* ZIKMyHonorViewController.xib */; };
+		FC0853F11D18EFB2003A47BA /* honor.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC0853F01D18EFB2003A47BA /* honor.plist */; };
 		FC2276621D177C9F0037B131 /* 底部菜单-工作站off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */; };
 		FC2276631D177C9F0037B131 /* 底部菜单-工作站on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */; };
 		FC2276641D177C9F0037B131 /* 底部菜单-工程订单off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */; };
@@ -345,7 +350,6 @@
 		FC22766C1D177C9F0037B131 /* ZIKMyofferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC22762D1D177C9F0037B131 /* ZIKMyofferTableViewCell.xib */; };
 		FC22766D1D177C9F0037B131 /* ZIKStationCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2276311D177C9F0037B131 /* ZIKStationCenterTableViewController.m */; };
 		FC22766E1D177C9F0037B131 /* ZIKStationCenterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2276321D177C9F0037B131 /* ZIKStationCenterTableViewController.xib */; };
-		FC22766F1D177C9F0037B131 /* ZIKStationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2276341D177C9F0037B131 /* ZIKStationCenterViewController.m */; };
 		FC2276701D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2276381D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.m */; };
 		FC2276711D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2276391D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.xib */; };
 		FC2276721D177C9F0037B131 /* ZIKStationCenterTableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC22763B1D177C9F0037B131 /* ZIKStationCenterTableViewHeaderView.m */; };
@@ -1124,6 +1128,13 @@
 		EAF8A5441C867FF9008B99D2 /* HotBuyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyModel.m; sourceTree = "<group>"; };
 		EAF8A5461C868DD1008B99D2 /* GusseYourLikeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GusseYourLikeModel.h; sourceTree = "<group>"; };
 		EAF8A5471C868DD1008B99D2 /* GusseYourLikeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GusseYourLikeModel.m; sourceTree = "<group>"; };
+		FC0853E61D18E903003A47BA /* ZIKMyHonorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyHonorCollectionViewCell.h; sourceTree = "<group>"; };
+		FC0853E71D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyHonorCollectionViewCell.m; sourceTree = "<group>"; };
+		FC0853E81D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyHonorCollectionViewCell.xib; sourceTree = "<group>"; };
+		FC0853EB1D18EA57003A47BA /* ZIKMyHonorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyHonorViewController.h; sourceTree = "<group>"; };
+		FC0853EC1D18EA57003A47BA /* ZIKMyHonorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyHonorViewController.m; sourceTree = "<group>"; };
+		FC0853ED1D18EA57003A47BA /* ZIKMyHonorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyHonorViewController.xib; sourceTree = "<group>"; };
+		FC0853F01D18EFB2003A47BA /* honor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = honor.plist; sourceTree = "<group>"; };
 		FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站off.png"; sourceTree = "<group>"; };
 		FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站on.png"; sourceTree = "<group>"; };
 		FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工程订单off.png"; sourceTree = "<group>"; };
@@ -1140,8 +1151,6 @@
 		FC2276301D177C9F0037B131 /* ZIKStationCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationCenterTableViewController.h; sourceTree = "<group>"; };
 		FC2276311D177C9F0037B131 /* ZIKStationCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationCenterTableViewController.m; sourceTree = "<group>"; };
 		FC2276321D177C9F0037B131 /* ZIKStationCenterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationCenterTableViewController.xib; sourceTree = "<group>"; };
-		FC2276331D177C9F0037B131 /* ZIKStationCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationCenterViewController.h; sourceTree = "<group>"; };
-		FC2276341D177C9F0037B131 /* ZIKStationCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationCenterViewController.m; sourceTree = "<group>"; };
 		FC2276371D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationCenterContentTableViewCell.h; sourceTree = "<group>"; };
 		FC2276381D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationCenterContentTableViewCell.m; sourceTree = "<group>"; };
 		FC2276391D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationCenterContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -2003,12 +2012,10 @@
 				FC2276951D17BC4E0037B131 /* zt已过期.png */,
 				FC2276961D17BC4E0037B131 /* zt已合作.png */,
 				FC2276971D17BC4E0037B131 /* zt已结束.png */,
-
 				EA3D4D8B1D1793EB0010B56D /* dingdandinahua.png */,
 				EA3D4D871D1792A10010B56D /* jianlihezuo.png */,
 				EA3D4D891D1792CD0010B56D /* yihezuo.png */,
 				EA3D4D851D1792450010B56D /* zhanzhangLong.png */,
-
 				FC2276841D177D1A0037B131 /* ico_订单标题.png */,
 				FC2276851D177D1A0037B131 /* ico_订单公司.png */,
 				FC2276861D177D1A0037B131 /* 标签-采购.png */,
@@ -3031,8 +3038,9 @@
 				FC2276301D177C9F0037B131 /* ZIKStationCenterTableViewController.h */,
 				FC2276311D177C9F0037B131 /* ZIKStationCenterTableViewController.m */,
 				FC2276321D177C9F0037B131 /* ZIKStationCenterTableViewController.xib */,
-				FC2276331D177C9F0037B131 /* ZIKStationCenterViewController.h */,
-				FC2276341D177C9F0037B131 /* ZIKStationCenterViewController.m */,
+				FC0853EB1D18EA57003A47BA /* ZIKMyHonorViewController.h */,
+				FC0853EC1D18EA57003A47BA /* ZIKMyHonorViewController.m */,
+				FC0853ED1D18EA57003A47BA /* ZIKMyHonorViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3040,6 +3048,7 @@
 		FC2276351D177C9F0037B131 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC0853F01D18EFB2003A47BA /* honor.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3053,6 +3062,9 @@
 				FC22763A1D177C9F0037B131 /* ZIKStationCenterTableViewHeaderView.h */,
 				FC22763B1D177C9F0037B131 /* ZIKStationCenterTableViewHeaderView.m */,
 				FC22763C1D177C9F0037B131 /* ZIKStationCenterTableViewHeaderView.xib */,
+				FC0853E61D18E903003A47BA /* ZIKMyHonorCollectionViewCell.h */,
+				FC0853E71D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m */,
+				FC0853E81D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4259,6 +4271,7 @@
 				FC2276681D177C9F0037B131 /* 底部菜单-站长中心off.png in Resources */,
 				FC22768D1D177D1A0037B131 /* 标签-求购.png in Resources */,
 				EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */,
+				FC0853EA1D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib in Resources */,
 				EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */,
 				FCCFA7151CF2E12400CC1313 /* carat-open.png in Resources */,
 				EA17B5D01CC9D1CE0054223B /* leftBtnImage@2x.png in Resources */,
@@ -4291,6 +4304,7 @@
 				EA7266301CFD6268005612E6 /* kefuxitong@2x.png in Resources */,
 				FCCEA4911CFD5FC2005D21F5 /* 我的积分-兑换.png in Resources */,
 				EA552E761D0D3F8D00FB88A0 /* zhanzhanggongyingOn.png in Resources */,
+				FC0853F11D18EFB2003A47BA /* honor.plist in Resources */,
 				EAF050F41C9295B100F435A9 /* settingBtnImage@2x.png in Resources */,
 				EA03CCEF1C90035B0032BAD3 /* phoneLiteImage@2x.png in Resources */,
 				EAF788A21CDB333700C4A301 /* guanbibiaoqian.png in Resources */,
@@ -4393,6 +4407,7 @@
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
 				EA3D4D841D1791260010B56D /* YLDBaoJiaMessageCell.xib in Resources */,
+				FC0853EF1D18EA57003A47BA /* ZIKMyHonorViewController.xib in Resources */,
 				EA6D36C41CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib in Resources */,
 				FC6FED6C1CACF833000E2CA5 /* 图片1.png in Resources */,
 				EAF050FF1C92A21D00F435A9 /* myReadMessage@2x.png in Resources */,
@@ -4532,6 +4547,7 @@
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
 				FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */,
 				EA5A08331D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m in Sources */,
+				FC0853EE1D18EA57003A47BA /* ZIKMyHonorViewController.m in Sources */,
 				EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */,
 				EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */,
 				FC5612451D0C092F00E5743B /* IQUITextFieldView+Additions.m in Sources */,
@@ -4585,6 +4601,7 @@
 				FC56125A1D0C092F00E5743B /* ZIKMySupplyCreateModel.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
 				EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */,
+				FC0853E91D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m in Sources */,
 				EA4C4DE01D13F20200DF1B93 /* YLDSearchNavView.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
 				FC5612801D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */,
@@ -4644,7 +4661,6 @@
 				EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */,
 				FC56125D1D0C092F00E5743B /* BWTextView.m in Sources */,
 				FC56128C1D0C092F00E5743B /* ZIKSupplyBottomSelectButton.m in Sources */,
-				FC22766F1D177C9F0037B131 /* ZIKStationCenterViewController.m in Sources */,
 				FC5612591D0C092F00E5743B /* ZIKFunction.m in Sources */,
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
 				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,

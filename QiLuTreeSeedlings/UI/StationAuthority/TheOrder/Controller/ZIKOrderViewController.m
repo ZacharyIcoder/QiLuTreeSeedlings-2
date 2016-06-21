@@ -26,16 +26,10 @@
 #import "ZIKOrderSecondTableViewCell.h"//筛选cell section（1）
 #import "ZIKStationOrderScreeningView.h"//筛选页面
 #import "ZIKStationOrderTableViewCell.h"//工程订单cell  section（2）
-
-#import "ZIKCityListViewController.h"
-#import "GetCityDao.h"
-#import "CityModel.h"
-#import "ZIKCityModel.h"
-
-
 /*****View******/
 
 /*****Controller******/
+#import "ZIKCityListViewController.h"//城市选择
 #import "ZIKStationOrderDetailViewController.h"//订单详情界面
 /*****Controller******/
 
@@ -45,8 +39,8 @@
 @property (nonatomic, weak)  UITableView     *orderTV;//工程订单Tableview
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
 @property (nonatomic, strong) NSMutableArray *orderMArr;//我的订单数组
-@property (nonatomic, strong) BigImageViewShowView         *bigImageViewShowView;
-@property (nonatomic, strong) ZIKStationOrderScreeningView *screenView;
+@property (nonatomic, strong) BigImageViewShowView         *bigImageViewShowView;//显示大图
+@property (nonatomic, strong) ZIKStationOrderScreeningView *screenView;//筛选界面
 
 @property (nonatomic, strong) NSMutableArray *citys;
 @property (nonatomic, strong) NSString       *citysStr;//地址的code string “，，”
@@ -84,7 +78,7 @@
 - (void)initData {
     self.page           = 1;//页面page从1开始
     self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
-    self.areaMArr = [NSMutableArray arrayWithCapacity:5];
+    self.areaMArr  = [NSMutableArray arrayWithCapacity:5];
     self.orderMArr = [[NSMutableArray alloc] init];
 }
 
@@ -117,31 +111,50 @@
 
 }
 
-#pragma mark - 请求我的供应列表信息
+#pragma mark - 请求工程订单列表信息
 - (void)requestMyOrderList:(NSString *)page {
     //我的供应列表
     [self.orderTV headerEndRefreshing];
-    [HTTPCLIENT stationGetOrderSearchWithOrderBy:@"order_date" orderSort:@"desc" status:self.status orderTypeUid:self.ordetTypeUid area:self.area pageNumber:page pageSize:@"15" Success:^(id responseObject) {
-        CLog(@"result:%@",responseObject);
+    [HTTPCLIENT stationGetOrderSearchWithOrderBy:self.orderBy orderSort:self.orderSort status:self.status orderTypeUid:self.ordetTypeUid area:self.area pageNumber:page pageSize:@"15" Success:^(id responseObject) {
+        //CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
         } else {
-            if (self.orderMArr.count > 0) {
-                [self.orderMArr removeAllObjects];
-            }
             NSDictionary *resultDic = responseObject[@"result"];
-            NSArray *orderListArr = resultDic[@"orderList"];
-            [orderListArr enumerateObjectsUsingBlock:^(NSDictionary *orderDic, NSUInteger idx, BOOL * _Nonnull stop) {
-             ZIKStationOrderModel *model = [ZIKStationOrderModel yy_modelWithDictionary:orderDic];
-                [self.orderMArr addObject:model];
-            }];
-            //一个section刷新
-            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:2];
-            [self.orderTV reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
+            NSArray *orderListArr   = resultDic[@"orderList"];
+            if (self.page == 1 && orderListArr.count == 0) {
+                [ToastView showTopToast:@"已无更多信息"];
+                [self.orderTV footerEndRefreshing];
+                if(self.orderMArr.count > 0 ) {
+                    [self.orderMArr removeAllObjects];
+                }
+                return ;
+            } else if (orderListArr.count == 0 && self.page > 1) {
+                [ToastView showTopToast:@"已无更多信息"];
+                self.page--;
+                [self.orderTV footerEndRefreshing];
+                return;
+            } else {
+                if (self.page == 1) {
+                    [self.orderMArr removeAllObjects];
+                }
 
+                [orderListArr enumerateObjectsUsingBlock:^(NSDictionary *orderDic, NSUInteger idx, BOOL * _Nonnull stop) {
+                    ZIKStationOrderModel *model = [ZIKStationOrderModel yy_modelWithDictionary:orderDic];
+                    [self.orderMArr addObject:model];
+                }];
+//                //一个section刷新
+//                NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:2];
+//                [self.orderTV reloadSections:indexSet withRowAnimation:UITableViewRowAnimationBottom];
+                [self.orderTV reloadData];
+
+                [self.orderTV footerEndRefreshing];
+
+            }
+        }
+        
     } failure:^(NSError *error) {
-        CLog(@"%@",error);
+        //CLog(@"%@",error);
     }];
 
 };
@@ -234,7 +247,7 @@
         } else {
             // CLog(@"%@",responseObject[@"orderType"]);
             NSDictionary *orderTypeDic = responseObject[@"result"];
-            CLog(@"%@",orderTypeDic);
+            //CLog(@"%@",orderTypeDic);
 
             NSString *typeName = [orderTypeDic[@"orderType"] objectForKey:@"lxName"];
             NSArray *typeArr = [orderTypeDic[@"orderType"] objectForKey:@"zidianList"];
@@ -259,11 +272,18 @@
 }
 
 -(void)screeningBtnClickSendOrderStateInfo:(NSString *)orderState orderTypeInfo:(NSString *)orderType orderAddressInfo:(NSString *)orderAddress {
-    CLog(@"orderState:%@,orderType:%@,orderAddress:%@",orderState,orderType,orderAddress);
+    //CLog(@"orderState:%@,orderType:%@,orderAddress:%@",orderState,orderType,orderAddress);
     self.status = orderState;
     self.ordetTypeUid = orderType;
     self.area = [self.areaMArr JSONString];
     [self requestMyOrderList:@"1"];
+    NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:0 inSection:1];
+    ZIKOrderSecondTableViewCell *cell = (ZIKOrderSecondTableViewCell *)[self.orderTV cellForRowAtIndexPath:indexPath];
+    if (self.screenView.isScreen) {
+       [cell.screeningButton setImage:[UIImage imageNamed:@"工程订单_筛选on"] forState:UIControlStateNormal];
+    } else {
+       [cell.screeningButton setImage:[UIImage imageNamed:@"工程订单_筛选"] forState:UIControlStateNormal];
+    }
 
 }
 
@@ -273,7 +293,7 @@
 
 #pragma mark ----- ZIKOrderSecondTableViewCellDelegate筛选按钮点击
 -(void)sendTimeSortInfo:(NSDictionary *)timeSortDic {
-    CLog(@"timeSortDic:%@",timeSortDic);
+    //CLog(@"timeSortDic:%@",timeSortDic);
     self.orderBy = timeSortDic[@"time"];
     self.orderSort = timeSortDic[@"sort"];
     self.page = 1;
@@ -326,7 +346,7 @@
         [self.areaMArr addObject:dic];
     }];
     [citydao closeDataBase];
-    CLog(@"%@",self.areaMArr);
+    //CLog(@"%@",self.areaMArr);
     self.screenView.orderAddressSelectLabel.text = [str substringToIndex:str.length-1];
 }
 
