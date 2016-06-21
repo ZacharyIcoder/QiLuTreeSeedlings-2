@@ -365,6 +365,8 @@
 		FC0853F61D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0853F41D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.xib */; };
 		FC0853FA1D191A29003A47BA /* ZIKWorkstationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0853F81D191A29003A47BA /* ZIKWorkstationTableViewCell.m */; };
 		FC0853FB1D191A29003A47BA /* ZIKWorkstationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0853F91D191A29003A47BA /* ZIKWorkstationTableViewCell.xib */; };
+		FC0853FE1D191D86003A47BA /* ico_地址-工作站.png in Resources */ = {isa = PBXBuildFile; fileRef = FC0853FC1D191D86003A47BA /* ico_地址-工作站.png */; };
+		FC0853FF1D191D86003A47BA /* ico_头像-联系人-工作站.png in Resources */ = {isa = PBXBuildFile; fileRef = FC0853FD1D191D86003A47BA /* ico_头像-联系人-工作站.png */; };
 		FC2276621D177C9F0037B131 /* 底部菜单-工作站off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */; };
 		FC2276631D177C9F0037B131 /* 底部菜单-工作站on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */; };
 		FC2276641D177C9F0037B131 /* 底部菜单-工程订单off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */; };
@@ -1201,6 +1203,8 @@
 		FC0853F71D191A29003A47BA /* ZIKWorkstationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationTableViewCell.h; sourceTree = "<group>"; };
 		FC0853F81D191A29003A47BA /* ZIKWorkstationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationTableViewCell.m; sourceTree = "<group>"; };
 		FC0853F91D191A29003A47BA /* ZIKWorkstationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKWorkstationTableViewCell.xib; sourceTree = "<group>"; };
+		FC0853FC1D191D86003A47BA /* ico_地址-工作站.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_地址-工作站.png"; sourceTree = "<group>"; };
+		FC0853FD1D191D86003A47BA /* ico_头像-联系人-工作站.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_头像-联系人-工作站.png"; sourceTree = "<group>"; };
 		FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站off.png"; sourceTree = "<group>"; };
 		FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站on.png"; sourceTree = "<group>"; };
 		FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工程订单off.png"; sourceTree = "<group>"; };
@@ -3278,6 +3282,8 @@
 		FC2276611D177C9F0037B131 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC0853FC1D191D86003A47BA /* ico_地址-工作站.png */,
+				FC0853FD1D191D86003A47BA /* ico_头像-联系人-工作站.png */,
 				FC0853F21D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.h */,
 				FC0853F31D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.m */,
 				FC0853F41D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.xib */,
@@ -4494,6 +4500,7 @@
 				EA5A08261D153316005000E9 /* Gyibaojia.png in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
+				FC0853FE1D191D86003A47BA /* ico_地址-工作站.png in Resources */,
 				FC56128E1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
@@ -4564,6 +4571,7 @@
 				EA1CF4051CACD11A00AF2D82 /* loading02@2x.png in Resources */,
 				EA6D36CE1CE713E600CE025C /* yiguoqi.png in Resources */,
 				FC2276661D177C9F0037B131 /* 底部菜单-我的报价off.png in Resources */,
+				FC0853FF1D191D86003A47BA /* ico_头像-联系人-工作站.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
 				FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,

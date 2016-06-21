@@ -20,5 +20,16 @@
 
     // Configure the view for the selected state
 }
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    static NSString *kZIKWorkstationTableViewCellID = @"kZIKWorkstationTableViewCellID";
+    ZIKWorkstationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKWorkstationTableViewCellID];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKWorkstationTableViewCell" owner:self options:nil] lastObject];
+    }
+    return cell;
+}
+
+- (void)configureCell:(id)model {
+}
 
 @end
