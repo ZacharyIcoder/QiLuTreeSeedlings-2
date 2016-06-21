@@ -8,6 +8,7 @@
 
 #import "YLDZhanZhangGongYingViewController.h"
 #import "YLDFaBuGongChengDingDanViewController.h"
+#import "YLDZhanZhangMessageViewController.h"
 #import "AdvertView.h"
 #import "UIDefines.h"
 #import "YLDTuiJianGongZuoZhanCell.h"
@@ -105,6 +106,17 @@
 - (void)advertPush:(NSInteger)index
 {
     
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    if (indexPath.section==1) {
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+        YLDZhanZhangMessageViewController *vccc=[[YLDZhanZhangMessageViewController alloc]init];
+        
+        [self.navigationController pushViewController:vccc animated:YES];
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

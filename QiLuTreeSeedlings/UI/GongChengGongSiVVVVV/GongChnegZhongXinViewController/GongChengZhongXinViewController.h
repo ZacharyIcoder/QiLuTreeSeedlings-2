@@ -7,7 +7,8 @@
 //
 
 
-#import "YLDBaseViewController.h"
-@interface GongChengZhongXinViewController : YLDBaseViewController
+#import <UIKit/UIKit.h>
+
+@interface GongChengZhongXinViewController : UIViewController
 
 @end

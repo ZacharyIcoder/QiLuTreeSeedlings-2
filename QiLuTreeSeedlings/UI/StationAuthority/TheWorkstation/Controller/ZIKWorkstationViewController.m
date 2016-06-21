@@ -28,7 +28,7 @@
         [weakSelf backBtnAction:nil];
     };
 
-    self.searchBarView.placeHolder = @"请输入苗木名称,公司名称";
+    self.searchBarView.placeHolder = @"请输入工作站名称、电话、联系人";
     self.searchBarView.searchBlock = ^(NSString *searchText){
         CLog(@"%@",searchText);
         weakSelf.isSearch = !weakSelf.isSearch;

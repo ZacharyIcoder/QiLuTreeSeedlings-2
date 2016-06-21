@@ -80,6 +80,7 @@
     [leftButton setImage:nil forState:UIControlStateNormal];
     leftButton.frame = CGRectMake(leftButtonX, leftButtonY, [ZIKFunction getCGRectWithContent:leftBarBtnTitleString width:100 font:navButtonFontSize].size.width, 30);
     [leftButton setTitle:leftBarBtnTitleString forState:UIControlStateNormal];
+    self.searchBarView.frame = CGRectMake(CGRectGetMaxX(leftButton.frame)+5, 25, kWidth-60-20, 30);
 }
 
 #pragma mark - 设置左侧按钮图像
