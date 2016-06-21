@@ -25,6 +25,9 @@ NSString *kHonorCellID = @"honorcellID";
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = BGColor;
     self.vcTitle = self.vctitle;
+    if ([self.vctitle isEqualToString:@"公司资质"]) {
+        [self.navBackView setBackgroundColor:NavYellowColor];
+    }
     self.rightBarBtnTitleString = @"添加";
 //    __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{

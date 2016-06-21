@@ -11,6 +11,8 @@
 #import "yYLDCompanyMessageCell.h"
 #import "YLDGCZXzizhiCell.h"
 #import "UIDefines.h"
+#import "ZIKMyHonorViewController.h"
+#import "YLDGongChengAnLiViewController.h"
 @interface GongChengZhongXinViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UITableView *talbeView;
 @end
@@ -98,12 +100,24 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==1) {
         if (indexPath.row==0) {
-            
+            ZIKMyHonorViewController *norViewController=[[ZIKMyHonorViewController alloc] init];
+        norViewController.vctitle=@"公司资质";
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+            [self.navigationController pushViewController:norViewController animated:YES];
         }
         if (indexPath.row==1) {
             
+            YLDGongChengAnLiViewController *gChengController=[[YLDGongChengAnLiViewController alloc] init];
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+            [self.navigationController pushViewController:gChengController animated:YES];
         }
     }
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

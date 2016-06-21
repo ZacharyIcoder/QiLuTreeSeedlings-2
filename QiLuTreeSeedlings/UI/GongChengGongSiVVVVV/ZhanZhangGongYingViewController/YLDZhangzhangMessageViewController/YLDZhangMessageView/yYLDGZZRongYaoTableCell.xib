@@ -23,6 +23,13 @@
                             <constraint firstAttribute="width" constant="7" id="sKK-qa-ISZ"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreRow.png" translatesAutoresizingMaskIntoConstraints="NO" id="0nL-AR-NFW">
+                        <rect key="frame" x="295" y="15" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="qRc-5H-HtK"/>
+                            <constraint firstAttribute="width" constant="15" id="uN5-Hp-hXq"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="荣誉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNU-G4-91e">
                         <rect key="frame" x="25" y="12" width="42" height="21"/>
                         <constraints>
@@ -67,8 +74,10 @@
                     <constraint firstItem="mNU-G4-91e" firstAttribute="leading" secondItem="GDI-gy-iCh" secondAttribute="trailing" constant="8" id="V98-Bf-9g8"/>
                     <constraint firstItem="mNU-G4-91e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="YG9-U9-gUz"/>
                     <constraint firstItem="6nx-V4-icO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="YWg-oe-mg0"/>
+                    <constraint firstItem="0nL-AR-NFW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="ZOT-GT-SBN"/>
                     <constraint firstItem="tPX-5c-dbA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="aMh-4C-8Lc"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LNC-VQ-Rcp" secondAttribute="trailing" constant="2" id="dTZ-jF-HQI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="0nL-AR-NFW" secondAttribute="trailing" constant="2" id="isJ-Lc-RSk"/>
                     <constraint firstAttribute="trailingMargin" secondItem="tPX-5c-dbA" secondAttribute="trailing" constant="13" id="pMe-lk-Chh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="6nx-V4-icO" secondAttribute="trailing" constant="2" id="yI3-ef-QNP"/>
                 </constraints>
@@ -79,4 +88,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="moreRow.png" width="12" height="12"/>
+    </resources>
 </document>

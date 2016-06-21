@@ -32,6 +32,12 @@
 		EA08F7B31D190B5C00471C33 /* GCZXgongsianli.png in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7B21D190B5C00471C33 /* GCZXgongsianli.png */; };
 		EA08F7BB1D190DEC00471C33 /* GongChengZhongXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08F7B91D190DEC00471C33 /* GongChengZhongXinViewController.m */; };
 		EA08F7BC1D190DEC00471C33 /* GongChengZhongXinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7BA1D190DEC00471C33 /* GongChengZhongXinViewController.xib */; };
+		EA08F7C01D1912F800471C33 /* YLDGongChengAnLiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08F7BF1D1912F800471C33 /* YLDGongChengAnLiViewController.m */; };
+		EA08F7C41D19135C00471C33 /* YLDGongChengAnLiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08F7C21D19135C00471C33 /* YLDGongChengAnLiCell.m */; };
+		EA08F7C51D19135C00471C33 /* YLDGongChengAnLiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7C31D19135C00471C33 /* YLDGongChengAnLiCell.xib */; };
+		EA08F7C71D19152700471C33 /* anliimage.png in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7C61D19152700471C33 /* anliimage.png */; };
+		EA08F7CA1D191B0200471C33 /* ico_工作站-分站text.png in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7C81D191B0200471C33 /* ico_工作站-分站text.png */; };
+		EA08F7CB1D191B0200471C33 /* ico_工作站-总站text.png in Resources */ = {isa = PBXBuildFile; fileRef = EA08F7C91D191B0200471C33 /* ico_工作站-总站text.png */; };
 		EA0B2B951C59F5220018A7BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2B941C59F5220018A7BD /* main.m */; };
 		EA0B2B9E1C59F5220018A7BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2B9C1C59F5220018A7BD /* Main.storyboard */; };
 		EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2B9F1C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld */; };
@@ -699,6 +705,14 @@
 		EA08F7B81D190DEC00471C33 /* GongChengZhongXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GongChengZhongXinViewController.h; sourceTree = "<group>"; };
 		EA08F7B91D190DEC00471C33 /* GongChengZhongXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GongChengZhongXinViewController.m; sourceTree = "<group>"; };
 		EA08F7BA1D190DEC00471C33 /* GongChengZhongXinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GongChengZhongXinViewController.xib; sourceTree = "<group>"; };
+		EA08F7BE1D1912F800471C33 /* YLDGongChengAnLiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGongChengAnLiViewController.h; sourceTree = "<group>"; };
+		EA08F7BF1D1912F800471C33 /* YLDGongChengAnLiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGongChengAnLiViewController.m; sourceTree = "<group>"; };
+		EA08F7C11D19135C00471C33 /* YLDGongChengAnLiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGongChengAnLiCell.h; sourceTree = "<group>"; };
+		EA08F7C21D19135C00471C33 /* YLDGongChengAnLiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGongChengAnLiCell.m; sourceTree = "<group>"; };
+		EA08F7C31D19135C00471C33 /* YLDGongChengAnLiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDGongChengAnLiCell.xib; sourceTree = "<group>"; };
+		EA08F7C61D19152700471C33 /* anliimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anliimage.png; sourceTree = "<group>"; };
+		EA08F7C81D191B0200471C33 /* ico_工作站-分站text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_工作站-分站text.png"; sourceTree = "<group>"; };
+		EA08F7C91D191B0200471C33 /* ico_工作站-总站text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_工作站-总站text.png"; sourceTree = "<group>"; };
 		EA0B2B901C59F5220018A7BD /* QiLuTreeSeedlings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiLuTreeSeedlings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0B2B941C59F5220018A7BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA0B2B9D1C59F5220018A7BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1866,6 +1880,18 @@
 			path = GongChengZhongXinView;
 			sourceTree = "<group>";
 		};
+		EA08F7BD1D1912DC00471C33 /* GongChengAnLiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA08F7BE1D1912F800471C33 /* YLDGongChengAnLiViewController.h */,
+				EA08F7BF1D1912F800471C33 /* YLDGongChengAnLiViewController.m */,
+				EA08F7C11D19135C00471C33 /* YLDGongChengAnLiCell.h */,
+				EA08F7C21D19135C00471C33 /* YLDGongChengAnLiCell.m */,
+				EA08F7C31D19135C00471C33 /* YLDGongChengAnLiCell.xib */,
+			);
+			path = GongChengAnLiViewController;
+			sourceTree = "<group>";
+		};
 		EA0B2B871C59F5220018A7BD = {
 			isa = PBXGroup;
 			children = (
@@ -2065,6 +2091,9 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA08F7C81D191B0200471C33 /* ico_工作站-分站text.png */,
+				EA08F7C91D191B0200471C33 /* ico_工作站-总站text.png */,
+				EA08F7C61D19152700471C33 /* anliimage.png */,
 				EA08F7B21D190B5C00471C33 /* GCZXgongsianli.png */,
 				EA08F7B01D190B4900471C33 /* GCZXgongsizizhi.png */,
 				EA08F7A91D1902A400471C33 /* 已认证.png */,
@@ -2561,6 +2590,7 @@
 		EA5E6E351CFFC9A5003D357C /* GongChnegZhongXinViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA08F7BD1D1912DC00471C33 /* GongChengAnLiViewController */,
 				EA08F7B81D190DEC00471C33 /* GongChengZhongXinViewController.h */,
 				EA08F7B91D190DEC00471C33 /* GongChengZhongXinViewController.m */,
 				EA08F7BA1D190DEC00471C33 /* GongChengZhongXinViewController.xib */,
@@ -4322,7 +4352,9 @@
 				EA08F7A81D19009100471C33 /* yYLDCompanyMessageCell.xib in Resources */,
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
+				EA08F7C71D19152700471C33 /* anliimage.png in Resources */,
 				FC4A51861D0E63650060587B /* 工程订单_筛选on.png in Resources */,
+				EA08F7CA1D191B0200471C33 /* ico_工作站-分站text.png in Resources */,
 				FC5612861D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib in Resources */,
 				FC7EAFEE1D13C63200F4043D /* ico_顶部搜索.png in Resources */,
 				EA7491691D0275910043BDAC /* xiala2.png in Resources */,
@@ -4410,6 +4442,7 @@
 				FC50B1601CAE243F0022A24C /* UMSocialLocalizable.strings in Resources */,
 				FCCEA4921CFD5FC2005D21F5 /* 我的积分-积分增加.png in Resources */,
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
+				EA08F7C51D19135C00471C33 /* YLDGongChengAnLiCell.xib in Resources */,
 				FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */,
 				EA3D4D861D1792450010B56D /* zhanzhangLong.png in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
@@ -4488,6 +4521,7 @@
 				EA5444C01CC76AEE00971A50 /* qiugouxiangqingye.png in Resources */,
 				FCCEA4931CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png in Resources */,
 				FC22768B1D177D1A0037B131 /* ico_订单公司.png in Resources */,
+				EA08F7CB1D191B0200471C33 /* ico_工作站-总站text.png in Resources */,
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
@@ -4619,6 +4653,7 @@
 				EA5E6E4A1CFFCA57003D357C /* WoDeDingDanViewController.m in Sources */,
 				EAE32DE11C7E97A600C4CEA2 /* UIImageView+AFNetworking.m in Sources */,
 				FC56125C1D0C092F00E5743B /* ZIKUserIDetc.m in Sources */,
+				EA08F7C41D19135C00471C33 /* YLDGongChengAnLiCell.m in Sources */,
 				EAEA07F81C5B0B0F003A0D8A /* CircleViews.m in Sources */,
 				FC56129F1D0C092F00E5743B /* ZIKMySupplyVC.m in Sources */,
 				EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */,
@@ -4673,6 +4708,7 @@
 				FC5612581D0C092F00E5743B /* UIView+MJExtension.m in Sources */,
 				EAE32DDD1C7E97A600C4CEA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				FC5612891D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m in Sources */,
+				EA08F7C01D1912F800471C33 /* YLDGongChengAnLiViewController.m in Sources */,
 				EAEB63C21C9147D50001ABC9 /* UserInfoModel.m in Sources */,
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,

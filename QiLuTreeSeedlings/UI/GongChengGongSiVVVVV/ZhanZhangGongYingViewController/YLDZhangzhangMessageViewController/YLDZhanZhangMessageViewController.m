@@ -7,6 +7,7 @@
 //
 
 #import "YLDZhanZhangMessageViewController.h"
+#import "ZIKMyHonorViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "YLDGongZuoZhanMessageCell.h"
@@ -104,6 +105,7 @@
         if (!cell) {
            cell =[yYLDGZZRongYaoTableCell yldGZZRongYaoTableCell];
            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            [cell.allBtn addTarget:self action:@selector(allRongYuBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         }
         return cell;
     }
@@ -120,7 +122,9 @@
 }
 -(void)allRongYuBtnAction:(UIButton *)sender
 {
-    
+    ZIKMyHonorViewController *zsdasda=[[ZIKMyHonorViewController alloc]init];
+    zsdasda.vctitle=@"荣誉";
+    [self.navigationController pushViewController:zsdasda animated:YES];
 }
 /*
 #pragma mark - Navigation
