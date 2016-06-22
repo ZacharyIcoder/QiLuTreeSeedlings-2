@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZIKMyOfferQuoteListModel;
 @interface ZIKMyofferTableViewCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
-- (void)configureCell:(id)model;
+- (void)configureCell:(ZIKMyOfferQuoteListModel *)model;
 @end

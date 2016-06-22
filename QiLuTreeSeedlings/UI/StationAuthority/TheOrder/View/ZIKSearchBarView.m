@@ -36,6 +36,7 @@
         UITextField *textField = [[UITextField alloc] init];
         textField.returnKeyType = UIReturnKeySearch;
         textField.font = [UIFont systemFontOfSize:14];
+        textField.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
         textField.tintColor = [UIColor darkGrayColor];
         [self addSubview:textField];
         self.textField = textField;
@@ -72,9 +73,6 @@
         self.backImageView.frame = CGRectMake(10, 8, originRect.size.width-20, originRect.size.height-16);
     }
     self.searIconBtn.frame = CGRectMake(originRect.size.width-iconH-20, (self.frame.size.height-iconH*2)/2, iconH*2, iconH*2);
-
-
-
 
 }
 

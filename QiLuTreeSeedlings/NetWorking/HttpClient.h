@@ -654,4 +654,21 @@ failure:(void (^)(NSError *error))failure;
                      WithpageSize:(NSString *)pageSize
                           Success:(void (^)(id responseObject))success
                           failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长助手-我的报价 -----------
+/**
+ *  我的报价
+ *
+ *  @param status     状态1：已报价；2：已合作；3:已过期；默认所有
+ *  @param keyword    检索词
+ *  @param pageNumber 页码，默认1
+ *  @param pageSize   每页显示数，默认15
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)stationMyQuoteListWithStatus:(NSString *)status
+                         Withkeyword:(NSString *)keyword
+                      WithpageNumber:(NSString *)pageNumber
+                        WithpageSize:(NSString *)pageSize
+                             Success:(void (^)(id responseObject))success
+                             failure:(void (^)(NSError *error))failure;
 @end

@@ -52,6 +52,7 @@
             UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(padding, 5, split, 30)];
             btn.titleLabel.textAlignment = NSTextAlignmentCenter;
             [btn setTitle:array[i] forState:UIControlStateNormal];
+            btn.titleLabel.font = [UIFont systemFontOfSize:15.0f];
             [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(actionMenu:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag = i;

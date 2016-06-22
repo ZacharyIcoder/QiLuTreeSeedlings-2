@@ -251,7 +251,9 @@ const unsigned int kToastLabelHeight = 25;
     } else {
         toastView = [[ToastView alloc] initWithText:text withOriginY:kToastViewYOffset];
     }
-    [((AppDelegate *)[UIApplication sharedApplication].delegate).window addSubview:toastView];
+//    [((AppDelegate *)[UIApplication sharedApplication].delegate).window addSubview:toastView];
+    UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject];
+    [window addSubview:toastView];
     [toastView showText];
     [toastView release];
 }

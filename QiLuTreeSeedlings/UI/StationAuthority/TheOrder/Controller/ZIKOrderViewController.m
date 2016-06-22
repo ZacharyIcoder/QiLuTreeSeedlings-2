@@ -119,6 +119,7 @@
         //CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
         } else {
             NSDictionary *resultDic = responseObject[@"result"];
             NSArray *orderListArr   = resultDic[@"orderList"];

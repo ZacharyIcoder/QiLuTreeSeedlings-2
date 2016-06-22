@@ -578,6 +578,7 @@
 		FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A061CAA5BBC00672241 /* ZIKUserNameSetViewController.m */; };
 		FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */; };
 		FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */; };
+		FC64874F1D1A313E00F89464 /* ZIKMyOfferQuoteListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC64874E1D1A313E00F89464 /* ZIKMyOfferQuoteListModel.m */; };
 		FC6C133E1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6C133C1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m */; };
 		FC6C133F1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC6C133D1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib */; };
 		FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6FED511CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m */; };
@@ -1645,6 +1646,8 @@
 		FC614A091CAA65C700672241 /* ZIKPasswordSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPasswordSetViewController.m; sourceTree = "<group>"; };
 		FC614A0B1CAA7B1500672241 /* BuyDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetialModel.h; sourceTree = "<group>"; };
 		FC614A0C1CAA7B1500672241 /* BuyDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetialModel.m; sourceTree = "<group>"; };
+		FC64874D1D1A313E00F89464 /* ZIKMyOfferQuoteListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyOfferQuoteListModel.h; sourceTree = "<group>"; };
+		FC64874E1D1A313E00F89464 /* ZIKMyOfferQuoteListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyOfferQuoteListModel.m; sourceTree = "<group>"; };
 		FC6C133B1CE1BC40003E0FF9 /* ZIKHintTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHintTableViewCell.h; sourceTree = "<group>"; };
 		FC6C133C1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHintTableViewCell.m; sourceTree = "<group>"; };
 		FC6C133D1CE1BC40003E0FF9 /* ZIKHintTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHintTableViewCell.xib; sourceTree = "<group>"; };
@@ -3139,6 +3142,8 @@
 		FC2276291D177C9F0037B131 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC64874D1D1A313E00F89464 /* ZIKMyOfferQuoteListModel.h */,
+				FC64874E1D1A313E00F89464 /* ZIKMyOfferQuoteListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4788,6 +4793,7 @@
 				EA9A229E1D1241E3000CA161 /* README.md in Sources */,
 				EAA9FFF11D12365E009CF19D /* YLDMiaoMuTableViewCell.m in Sources */,
 				EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */,
+				FC64874F1D1A313E00F89464 /* ZIKMyOfferQuoteListModel.m in Sources */,
 				EA16C4D91C93A57E00A33BD3 /* MyCollectViewController.m in Sources */,
 				EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */,
 				FCCEA4961CFD5FC2005D21F5 /* ZIKIntegraModel.m in Sources */,

@@ -3060,4 +3060,53 @@
     }];
     
 }
+
+#pragma mark ---------- 站长助手-我的报价 -----------
+/**
+ *  我的报价
+ *
+ *  @param status     状态1：已报价；2：已合作；3:已过期；默认所有
+ *  @param keyword    检索词
+ *  @param pageNumber 页码，默认1
+ *  @param pageSize   每页显示数，默认15
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)stationMyQuoteListWithStatus:(NSString *)status
+                         Withkeyword:(NSString *)keyword
+                      WithpageNumber:(NSString *)pageNumber
+                        WithpageSize:(NSString *)pageSize
+                             Success:(void (^)(id responseObject))success
+                             failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/quote/my/list";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    if (status) {
+        parmers[@"status"]       = status;
+    }
+    if (keyword) {
+        parmers[@"keyword"]      = keyword;
+    }
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+
+}
 @end
