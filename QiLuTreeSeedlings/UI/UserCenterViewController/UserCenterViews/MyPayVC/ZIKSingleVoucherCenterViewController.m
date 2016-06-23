@@ -35,7 +35,7 @@
     self.vcTitle = @"支付";
     if (iPhone35Inch) {
         self.payTableTopLayout.constant = 5;
-        self.sureButtonBottomLayoutConstraint.constant = 0;
+        self.sureButtonBottomLayoutConstraint.constant = 5;
     }
     [self initUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess:) name:@"SinglePaySuccessNotification" object:nil];
@@ -238,6 +238,7 @@
             else {
                 //NSLog(@"%@",responseObject[@"msg"]);
                 [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
             }
         } failure:^(NSError *error) {
 

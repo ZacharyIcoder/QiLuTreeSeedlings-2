@@ -9,7 +9,10 @@
 #import "ZIKStationOrderDetailViewController.h"
 #import "ZIKSelectMenuView.h"
 #import "ZIKStationOrderOfferTableViewCell.h"
-
+#import "HttpClient.h"
+#import "ZIKStationOrderDetailQuoteModel.h"
+#import "YYModel.h"
+#import "ZIKFunction.h"
 typedef NS_ENUM(NSInteger, TypeStyle) {
     TypeStyleOffer   = 0,   //产品报价
     TypeStyleRequire = 1    //订单要求
@@ -42,6 +45,8 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
                                                object:self.searchBarView.textField];
 
     [self initUI];
+    self.quoteMArr = [[NSMutableArray alloc] init];
+    [self requestOrderDetail];
 
 }
 
@@ -58,17 +63,54 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     orderTableView.dataSource = self;
     orderTableView.delegate = self;
     [self.view addSubview:orderTableView];
-//    orderTableView.rowHeight =  UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
-//    orderTableView.estimatedRowHeight = 110;//必须设置好预估值
+    [ZIKFunction setExtraCellLineHidden:orderTableView];
     self.orderTableView = orderTableView;
 }
 
+#pragma mark - 请求数据
+- (void)requestData {
+    //__weak typeof(self) weakSelf = self;//解决循环引用的问题
+//    [self.orderTV addHeaderWithCallback:^{
+//        weakSelf.page = 1;
+//        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+//    }];
+//    [self.orderTV addFooterWithCallback:^{
+//        weakSelf.page++;
+//        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+//    }];
+//    [self.orderTV headerBeginRefreshing];
+}
+
+- (void)requestOrderDetail {
+    [HTTPCLIENT stationGetOrderDetailWithOrderUid:self.orderUid keyword:nil Success:^(id responseObject) {
+       CLog(@"%@",responseObject) ;
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        }
+        NSDictionary *resultDic = responseObject[@"result"];
+        NSDictionary *orderDetailDic = resultDic[@"orderDetail"];
+        NSArray *itemListArray = orderDetailDic[@"itemList"];
+        [itemListArray enumerateObjectsUsingBlock:^(NSDictionary *itemDic, NSUInteger idx, BOOL * _Nonnull stop) {
+            ZIKStationOrderDetailQuoteModel *model = [ZIKStationOrderDetailQuoteModel yy_modelWithDictionary:itemDic];
+            [self.quoteMArr addObject:model];
+        }];
+        [self.orderTableView reloadData];
+    } failure:^(NSError *error) {
+        ;
+    }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 10.0f;
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.quoteMArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,10 +121,23 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKStationOrderOfferTableViewCell *cell = [ZIKStationOrderOfferTableViewCell cellWithTableView:tableView];
-    if (indexPath.row == 2) {
-        cell.contentLabel.text = @"fewifjeiwjaiefjwajeifjwajefjwajefijwajefjwajefjwaijefijwajfiwajifejwajefjwajfejiwajfijwaifjwjaifejiwajfijwaiefjiwajfijawifejajweifjwaiejfijawewwefwefaefweqfweqfwqefwqefwqefwfwefwqefqwefwqefwqewqefwqefwqefwqewqea";
+    if (self.quoteMArr.count > 0) {
+        ZIKStationOrderDetailQuoteModel *model = self.quoteMArr[indexPath.section];
+        cell.section = indexPath.section;
+        [cell configureCell:model];
     }
+    cell.quoteBtnBlock = ^(NSInteger section ) {
+        NSLog(@"报价:%ld",indexPath.section);
+    };
+//    if (indexPath.row == 2) {
+//        cell.contentLabel.text = @"fewifjeiwjaiefjwajeifjwajefjwajefijwajefjwajefjwaijefijwajfiwajifejwajefjwajfejiwajfijwaifjwjaifejiwajfijwaiefjiwajfijawifejajweifjwaiejfijawewwefwefaefweqfweqfwqefwqefwqefwfwefwqefqwefwqefwqewqefwqefwqefwqewqea";
+//    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -95,10 +150,12 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     CLog(@"searchText:%@",searchText);
     return YES;
 }
+
 -(void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
     CLog(@"textField:%@",textField.text);
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -211,6 +211,8 @@
             }
             else {
                 //NSLog(@"%@",responseObject[@"msg"]);
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
             }
         } failure:^(NSError *error) {
 

@@ -7,12 +7,22 @@
 //
 
 #import "ZIKStationOrderOfferTableViewCell.h"
-
+#import "UIDefines.h"
+#import "ZIKStationOrderDetailQuoteModel.h"
+#import "ZIKFunction.h"
+@interface ZIKStationOrderOfferTableViewCell ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderUidLabelLayoutConstraint;
+@end
 @implementation ZIKStationOrderOfferTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.orderUidLabel.layer.masksToBounds = YES;
+    self.orderUidLabel.layer.cornerRadius = 4.0f;
+    self.nameLabel.textColor = NavColor;
+    self.quoteButton.layer.masksToBounds = YES;
+    self.quoteButton.layer.cornerRadius = 5.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -30,8 +40,22 @@
     return cell;
 }
 
-- (void)configureCell:(id)model {
+- (void)configureCell:(ZIKStationOrderDetailQuoteModel *)model {
+    self.orderUidLabel.text = [NSString stringWithFormat:@"%ld",self.section];
+    self.nameLabel.text     = model.name;
+    self.quantityLabel.text = [NSString stringWithFormat:@"需求:%@",model.quantity];
+    self.contentLabel.text  = [NSString stringWithFormat:@"苗木规格说明:%@",model.treedescription];
+//    CGRect rect = [ZIKFunction getCGRectWithContent:model.orderUid width:200 font:14.0f];
+//    self.orderUidLabelLayoutConstraint.constant = rect.size.width;
 }
 
+- (void)setQuoteBtnBlock:(QuoteBtnBlock)quoteBtnBlock {
+    _quoteBtnBlock = quoteBtnBlock;
+    [self.quoteButton addTarget:self action:@selector(quoteBtnClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)quoteBtnClick {
+    _quoteBtnBlock(self.section);
+}
 
 @end

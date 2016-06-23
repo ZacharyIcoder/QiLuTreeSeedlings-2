@@ -9,5 +9,8 @@
 #import "ZIKStationOrderDetailQuoteModel.h"
 
 @implementation ZIKStationOrderDetailQuoteModel
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"treedescription" : @"description"};
+}
 
 @end

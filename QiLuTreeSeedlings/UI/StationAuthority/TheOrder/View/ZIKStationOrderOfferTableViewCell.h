@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZIKStationOrderDetailQuoteModel;
+typedef void (^QuoteBtnBlock) (NSInteger);
 @interface ZIKStationOrderOfferTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *quantityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderUidLabel;
+@property (weak, nonatomic) IBOutlet UIButton *quoteButton;
+@property (nonatomic, assign) NSInteger section;
+@property (nonatomic, copy  ) QuoteBtnBlock      quoteBtnBlock;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
-- (void)configureCell:(id)model;
+- (void)configureCell:(ZIKStationOrderDetailQuoteModel *)model;
 @end
