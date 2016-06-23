@@ -22,7 +22,7 @@
 @implementation ZIKFunction
 
 
-+ (void)zhiFuBao:(UIViewController *)controller name: (NSString*)name titile:(NSString*)title price:(NSString*)price orderId:(NSString*)orderId
++ (void)zhiFuBao:(UIViewController *)controller name: (NSString*)name titile:(NSString*)title price:(NSString*)price orderId:(NSString*)orderId supplyBuyUid:(NSString *)supplyBuyUid type:(NSString *)type
 {
 
 
@@ -61,7 +61,7 @@
     // NSString * updateURL = RequestURL;
     updateURL = [updateURL stringByAppendingString:@"apimember/pay/alipay/notify"];
 
-    order.notifyURL =  [NSString stringWithFormat:@"%@?access_id=%@",updateURL,orderId]; //回调URL
+    order.notifyURL =  [NSString stringWithFormat:@"%@?access_id=%@&supplyBuyUid=%@&type=%@",updateURL,orderId,supplyBuyUid,type]; //回调URL
 
     order.service = @"mobile.securitypay.pay";
     order.paymentType = @"1";
@@ -96,6 +96,8 @@
                 //                seccuss.tag = 166;
                 //                [seccuss show];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
+
                 [[[UIAlertView alloc] initWithTitle:@"提示"
                                             message:@"支付成功!"
                                    cancelButtonItem:[RIButtonItem itemWithLabel:@"确定" action:^{
@@ -110,6 +112,22 @@
             else if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"4000"]) {
                 //NSLog(@"订单交易失败");
                // NSLog(@"%@",resultDic[@"memo"]);
+                [[[UIAlertView alloc] initWithTitle:@"提示"
+                                            message:@"支付失败!"
+                                   cancelButtonItem:[RIButtonItem itemWithLabel:@"确定" action:^{
+
+                    //[controller.navigationController popToRootViewControllerAnimated:YES];
+
+                }] otherButtonItems:nil, nil] show];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"提示"
+                                            message:@"支付失败!"
+                                   cancelButtonItem:[RIButtonItem itemWithLabel:@"确定" action:^{
+
+                    //[controller.navigationController popToRootViewControllerAnimated:YES];
+
+                }] otherButtonItems:nil, nil] show];
+
             }
         }];
 

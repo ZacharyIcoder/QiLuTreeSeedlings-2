@@ -28,6 +28,18 @@
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
 
+#import "ZIKSingleVoucherCenterViewController.h"
+
+@interface BuyButton : UIButton
+@property (nonatomic, assign) float price;
+@property (nonatomic, strong) NSString *buyUid;
+@end
+@implementation BuyButton
+
+
+
+@end
+
 @interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *navTitleLab;
@@ -472,15 +484,18 @@
     [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [view addSubview:messageBtn];
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2,0, kWidth/2, 50)];
+    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth/2,0, kWidth/2, 50)];
     
     [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+    phoneBtn.price = price;
+    phoneBtn.buyUid = self.model.uid;
+//      [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
     [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
     [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
     [phoneBtn setBackgroundColor:yellowButtonColor];
-    [phoneBtn addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+    [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:phoneBtn];
     
     [self.view addSubview:view];
@@ -494,14 +509,17 @@
     [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [view addSubview:messageBtn];
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
+    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
     [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+    phoneBtn.price = price;
+    phoneBtn.buyUid = self.model.uid;
+//    [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
     [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
     [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
     [phoneBtn setBackgroundColor:yellowButtonColor];
-    [phoneBtn addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+    [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:phoneBtn];
 
     UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
@@ -517,7 +535,7 @@
     return view;
 }
 
--(void)buyAction
+-(void)buyAction:(BuyButton *)button
 {
     if (![APPDELEGATE isNeedLogin]) {
         [ToastView showTopToast:@"请先登录"];
@@ -525,6 +543,14 @@
         [self.navigationController pushViewController:loginViewC animated:YES];
         return;
     }
+
+//    NSString *srt = [button titleForState:UIControlStateSelected];
+   // NSLog(@"%@",srt);
+    ZIKSingleVoucherCenterViewController *svcvc =  [[ZIKSingleVoucherCenterViewController alloc]initWithNibName:@"ZIKSingleVoucherCenterViewController" bundle:nil];
+    svcvc.price  = button.price;
+    svcvc.buyUid = button.buyUid;
+    [self.navigationController pushViewController:svcvc animated:YES];
+    return;
     [HTTPCLIENT getAmountInfo:nil Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             float moneyNum =[[[responseObject objectForKey:@"result"] objectForKey:@"money"]floatValue];
@@ -544,6 +570,7 @@
         
     }];
 }
+
 -(void)buySureAction
 {
     ShowActionV();

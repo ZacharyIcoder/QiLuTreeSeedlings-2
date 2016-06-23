@@ -1624,8 +1624,10 @@
 }
 
 - (void)weixinPayOrder:(NSString *)price
-                      Success:(void (^)(id responseObject))success
-                      failure:(void (^)(NSError *error))failure {
+          supplyBuyUid:(NSString *)supplyBuyUid
+                  type:(NSString *)type
+               Success:(void (^)(id responseObject))success
+               failure:(void (^)(NSError *error))failure {
     //NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     //NSString *str                = [userdefaults objectForKey:kdeviceToken];
 //    NSString *postURL            = @"apimember/pay/wx/notify/";
@@ -1635,12 +1637,17 @@
     parmers[@"total_fee"]        = price;
     parmers[@"memberUid"]        = APPDELEGATE.userModel.access_id;
     parmers[@"spbill_create_ip"] = kclient_id;
+    parmers[@"supplyBuyUid"]     = supplyBuyUid;
+    parmers[@"type"]             = type;
+    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
@@ -3106,7 +3113,42 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
-
 }
+
+#pragma mark ---------- 站长助手-检索订单详情 -----------
+/**
+ *  检索订单详情
+ *
+ *  @param orderUid 订单ID
+ *  @param keyword  检索关键词
+ *  @param success  success description
+ *  @param failure  failure description
+ */
+- (void)stationGetOrderDetailWithOrderUid:(NSString *)orderUid
+                                  keyword:(NSString *)keyword
+                                  Success:(void (^)(id responseObject))success
+                                  failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/order/search/detail";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"orderUid"]         = orderUid;
+    parmers[@"keyword"]          = keyword;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
 @end

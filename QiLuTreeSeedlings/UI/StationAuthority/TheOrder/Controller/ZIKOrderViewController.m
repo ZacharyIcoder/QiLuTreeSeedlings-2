@@ -231,6 +231,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKStationOrderDetailViewController *orderDetailVC = [[ZIKStationOrderDetailViewController alloc] init];
     orderDetailVC.hidesBottomBarWhenPushed  = YES;
+     ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
+    orderDetailVC.orderUid = model.uid;
     [self.navigationController pushViewController:orderDetailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

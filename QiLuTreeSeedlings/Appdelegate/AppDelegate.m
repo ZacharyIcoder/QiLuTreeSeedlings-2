@@ -599,6 +599,8 @@
              {
                  aliRetValue = @"付款成功";
                  [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil userInfo:nil];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
+
              }else
              {
                  aliRetValue = @"付款失败";
@@ -687,7 +689,8 @@
             case WXSuccess:
                 strMsg = @"支付结果：成功！";
                 //                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil userInfo:nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];//SinglePaySuccessNotification
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
                 break;
 
             default:

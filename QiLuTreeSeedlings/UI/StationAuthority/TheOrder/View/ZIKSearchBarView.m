@@ -69,7 +69,7 @@
         self.backImageView.frame = CGRectMake(40, 8, originRect.size.width-50, originRect.size.height-16);
     }else
     {
-        self.textField.frame  = CGRectMake(20, 5, originRect.size.width-20-iconH, originRect.size.height-10);
+        self.textField.frame  = CGRectMake(20, 5, originRect.size.width-20-iconH*3, originRect.size.height-10);
         self.backImageView.frame = CGRectMake(10, 8, originRect.size.width-20, originRect.size.height-16);
     }
     self.searIconBtn.frame = CGRectMake(originRect.size.width-iconH-20, (self.frame.size.height-iconH*2)/2, iconH*2, iconH*2);

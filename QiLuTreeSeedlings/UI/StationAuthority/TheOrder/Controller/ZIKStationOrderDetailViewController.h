@@ -9,5 +9,8 @@
 #import "ZIKBaseViewController.h"
 #import "ZIKBaseChangeNavViewController.h"
 @interface ZIKStationOrderDetailViewController : ZIKBaseChangeNavViewController
-
+/**
+ *  订单ID
+ */
+@property (nonatomic, copy) NSString *orderUid;
 @end

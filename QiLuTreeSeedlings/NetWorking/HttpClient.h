@@ -360,7 +360,18 @@
                                    Success:(void (^)(id responseObject))success
                                    failure:(void (^)(NSError *error))failure ;
 #pragma mark ---------- 微信支付 -----------
+/**
+ *  微信支付
+ *
+ *  @param price        总金额
+ *  @param supplyBuyUid Type=1 时必传，求购ID
+ *  @param type         不传默认为0;代表充值 1代表微信单条购买
+ *  @param success      success description
+ *  @param failure      failure description
+ */
 - (void)weixinPayOrder:(NSString *)price
+          supplyBuyUid:(NSString *)supplyBuyUid
+                  type:(NSString *)type
                Success:(void (^)(id responseObject))success
                failure:(void (^)(NSError *error))failure;
 ;
@@ -671,4 +682,17 @@ failure:(void (^)(NSError *error))failure;
                         WithpageSize:(NSString *)pageSize
                              Success:(void (^)(id responseObject))success
                              failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长助手-检索订单详情 -----------
+/**
+ *  检索订单详情
+ *
+ *  @param orderUid 订单ID
+ *  @param keyword  检索关键词
+ *  @param success  success description
+ *  @param failure  failure description
+ */
+- (void)stationGetOrderDetailWithOrderUid:(NSString *)orderUid
+                                  keyword:(NSString *)keyword
+                                  Success:(void (^)(id responseObject))success
+                                  failure:(void (^)(NSError *error))failure;
 @end

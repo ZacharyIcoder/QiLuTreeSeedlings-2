@@ -16,8 +16,10 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 };
 
 @interface ZIKStationOrderDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, assign) TypeStyle typeStyle;
+@property (nonatomic, assign) TypeStyle   typeStyle;
 @property (nonatomic, strong) UITableView *orderTableView;
+@property (nonatomic, strong) NSMutableArray *quoteMArr;
+@property (nonatomic, strong) NSString    *keyword;
 @end
 
 @implementation ZIKStationOrderDetailViewController
@@ -90,13 +92,6 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     [textField resignFirstResponder];
     self.isSearch = NO;//搜索栏隐藏
     NSString *searchText = textField.text;
-//    NSLog(@"searchText is %@",searchText);
-//    if ([XtomFunction xfunc_check_strEmpty:searchText]) {
-//        [XtomFunction openIntervalHUD:@"请您输入关键词进行搜索" view:self.view];
-//    }
-//    else {
-//        [self requestCity:searchText];
-//    }
     CLog(@"searchText:%@",searchText);
     return YES;
 }

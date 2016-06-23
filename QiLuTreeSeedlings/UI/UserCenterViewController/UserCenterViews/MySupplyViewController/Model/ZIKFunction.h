@@ -48,7 +48,8 @@
  */
 +(NSDate *)getDateFromString:(NSString *)dateString;
 + (NSString *)weixinPayWithOrderID:(NSString *)orderID;
-+ (void)zhiFuBao:(UIViewController *)controller name: (NSString*)name titile:(NSString*)title price:(NSString*)price orderId:(NSString*)orderId;
++ (void)zhiFuBao:(UIViewController *)controller name: (NSString*)name titile:(NSString*)title price:(NSString*)price orderId:(NSString*)orderId supplyBuyUid:(NSString *)supplyBuyUid type:(NSString *)type
+;
 + (NSString *)generateTradeNO;
 +(NSData *)imageData:(UIImage *)myimage;
 /**
