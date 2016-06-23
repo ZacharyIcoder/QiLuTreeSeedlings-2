@@ -32,6 +32,7 @@
 #import "ZIKPurchaseRecordsViewController.h"//购买记录
 #import "MyMessageViewController.h"
 #import "KeFuViewController.h"
+#import "YLDShengJiViewViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -192,6 +193,7 @@
             [cell.collectBtn addTarget:self action:@selector(mycollectBtnAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.interBtn addTarget:self action:@selector(myJifenBtnAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.messageBtn addTarget:self action:@selector(myMessageBtnAciotn) forControlEvents:UIControlEventTouchUpInside];
+            [cell.shengJiBtn addTarget:self action:@selector(shengjiBtnAction) forControlEvents:UIControlEventTouchUpInside];
 
         }
 
@@ -411,6 +413,13 @@
 -(void)hiddingSelfTabBar
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"HidenTabBar" object:nil];
+}
+-(void)shengjiBtnAction
+{
+    YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
+
+    [self hiddingSelfTabBar];
+    [self.navigationController pushViewController:yldsda animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -22,22 +22,28 @@
     
         [self setBackgroundColor:[UIColor whiteColor]];
        
-        UIView *shoucangView=[self viewWithLLLLLLLImageNmae:@"mycollectionImage" andTitle:@"我的收藏" andNum:@"0" andFrame:CGRectMake(0, 0, kWidth/3, 80)];
+        UIView *shoucangView=[self viewWithLLLLLLLImageNmae:@"mycollectionImage" andTitle:@"我的收藏" andNum:@"0" andFrame:CGRectMake(0, 0, kWidth/4, 80)];
         [self addSubview:shoucangView];
         self.collectBtn=(UIButton *)[shoucangView viewWithTag:1111];
        self.coloectLab=(UILabel *)[shoucangView viewWithTag:1112];
         self.coloectLab.hidden=YES;
-        UIView *integralView=[self viewWithLLLLLLLImageNmae:@"myintegralImage" andTitle:@"我的积分" andNum:@"0" andFrame:CGRectMake(kWidth/3*1, 0, kWidth/3, 80)];
+        UIView *integralView=[self viewWithLLLLLLLImageNmae:@"myintegralImage" andTitle:@"我的积分" andNum:@"0" andFrame:CGRectMake(kWidth/4*1, 0, kWidth/4, 80)];
         [self addSubview:integralView];
         self.interBtn=(UIButton *)[integralView viewWithTag:1111];
         self.integralLab=(UILabel *)[integralView viewWithTag:1112];
         self.integralLab.hidden=YES;
-        UIView *myMessageView=[self viewWithLLLLLLLImageNmae:@"MyMessage" andTitle:@"我的消息" andNum:@"0" andFrame:CGRectMake(kWidth/3*2, 0, kWidth/3, 80)];
+        UIView *myMessageView=[self viewWithLLLLLLLImageNmae:@"MyMessage" andTitle:@"我的消息" andNum:@"0" andFrame:CGRectMake(kWidth/4*2, 0, kWidth/4, 80)];
         [self addSubview:myMessageView];
         
         self.messageLab=(UILabel *)[myMessageView viewWithTag:1112];
         self.messageLab.hidden=YES;
         self.messageBtn=(UIButton *)[myMessageView viewWithTag:1111];
+        UIView *shenfenSJView=[self viewWithLLLLLLLImageNmae:@"shenfenshengjiv" andTitle:@"身份升级" andNum:@"0" andFrame:CGRectMake(kWidth/4*3, 0, kWidth/4, 80)];
+        [self addSubview:shenfenSJView];
+        
+//        self.messageLab=(UILabel *)[myMessageView viewWithTag:1112];
+//        self.messageLab.hidden=YES;
+        self.shengJiBtn=(UIButton *)[shenfenSJView viewWithTag:1111];
     }
     return self;
 }
@@ -63,6 +69,9 @@
     [numLab setTextColor:[UIColor whiteColor]];
     [numLab setFont:[UIFont systemFontOfSize:9]];
     numLab.text=num;
+    if ([num isEqualToString:@"0"]) {
+        numLab.hidden=YES;
+    }
     [view addSubview:numLab];
     numLab.tag=1112;
     UIButton *btn=[[UIButton alloc]initWithFrame:view.bounds];

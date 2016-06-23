@@ -27,11 +27,6 @@
 @end
 
 @implementation YLDDingDanDetialViewController
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
-}
 -(id)initWithUid:(NSString *)uid
 {
     self=[super init];
@@ -83,7 +78,7 @@
 {
     ShowActionV();
     [HTTPCLIENT myDingDanDetialWithUid:self.Uid Success:^(id responseObject) {
-        if ([[responseObject objectForKey:@"success"] integerValue]) {
+        if ([[responseObject objectForKey:@"success"] integerValue]==1) {
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"orderDetail"];
             YLDDingDanDetialModel *model=[YLDDingDanDetialModel yldDingDanDetialModelWithDic:dic];
             self.model=model;
@@ -91,7 +86,7 @@
             //[self.tableView reloadData];
         }else
         {
-            [ToastView showTopToast:[responseObject objectForKey:@"success"]];
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
         RemoveActionV();
     } failure:^(NSError *error) {
@@ -204,7 +199,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 /*
 #pragma mark - Navigation
 

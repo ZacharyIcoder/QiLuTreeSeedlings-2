@@ -16,6 +16,7 @@
 @property (nonatomic,strong) UIButton *collectBtn;
 @property (nonatomic,strong) UIButton *interBtn;
 @property (nonatomic,strong) UIButton *messageBtn;
+@property (nonatomic,strong) UIButton *shengJiBtn;
 @property (nonatomic, weak) id<UserBigInfoTableViewCellDelegate>userDelegate;
 
 +(NSString *)IDstr;

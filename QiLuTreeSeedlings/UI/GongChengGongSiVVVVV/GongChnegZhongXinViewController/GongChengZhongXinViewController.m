@@ -8,6 +8,7 @@
 
 #import "GongChengZhongXinViewController.h"
 #import "YLDGongChengZhongXinBigCell.h"
+#import "YLDFaBuGongChengDingDanViewController.h"
 #import "yYLDCompanyMessageCell.h"
 #import "YLDGCZXzizhiCell.h"
 #import "UIDefines.h"
@@ -18,7 +19,9 @@
 @end
 
 @implementation GongChengZhongXinViewController
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -28,7 +31,8 @@
     talbeView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.talbeView=talbeView;
     [self.view addSubview:talbeView];
-
+    
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];
     // Do any additional setup after loading the view from its nib.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -112,6 +116,15 @@
             [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
             [self.navigationController pushViewController:gChengController animated:YES];
         }
+    }
+}
+-(void)fabubtnAction
+{
+    if(self.tabBarController.selectedIndex==3)
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+        YLDFaBuGongChengDingDanViewController *fabuVC=[[YLDFaBuGongChengDingDanViewController alloc]init];
+        [self.navigationController pushViewController:fabuVC animated:YES];
     }
 }
 -(void)viewWillAppear:(BOOL)animated

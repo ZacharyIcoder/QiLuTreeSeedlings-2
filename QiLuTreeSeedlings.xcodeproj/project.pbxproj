@@ -172,6 +172,8 @@
 		EA5A082C1D153353005000E9 /* Gyiguoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5A082B1D153353005000E9 /* Gyiguoqi.png */; };
 		EA5A08301D1534C7005000E9 /* YLDBaoJiaDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A082F1D1534C7005000E9 /* YLDBaoJiaDetialViewController.m */; };
 		EA5A08331D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A08321D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m */; };
+		EA5A26311D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A26301D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.m */; };
+		EA5A26331D1BABD100850812 /* PLUS.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5A26321D1BABD100850812 /* PLUS.png */; };
 		EA5AAC341C8D162A00660FC9 /* LISTtreeNumber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */; };
 		EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC351C8D16F400660FC9 /* region@2x.png */; };
 		EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */; };
@@ -357,6 +359,21 @@
 		EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5411C867D7D008B99D2 /* HotSellModel.m */; };
 		EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5441C867FF9008B99D2 /* HotBuyModel.m */; };
 		EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A5471C868DD1008B99D2 /* GusseYourLikeModel.m */; };
+		EAFB8FE21D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFB8FE01D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.m */; };
+		EAFB8FE31D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB8FE11D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.xib */; };
+		EAFB8FE81D1A223500FCF88B /* YLDMMPiLiangBianJiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFB8FE61D1A223500FCF88B /* YLDMMPiLiangBianJiCell.m */; };
+		EAFB8FE91D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB8FE71D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib */; };
+		EAFB8FEB1D1A3D5B00FCF88B /* deleteRad.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFB8FEA1D1A3D5A00FCF88B /* deleteRad.png */; };
+		EAFB8FF01D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFB8FEE1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.m */; };
+		EAFB8FF11D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB8FEF1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.xib */; };
+		EAFB8FF41D1A729F00FCF88B /* YLDHeZuoDetialGZZView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFB8FF31D1A729F00FCF88B /* YLDHeZuoDetialGZZView.m */; };
+		EAFB8FF61D1A72C200FCF88B /* YLDHeZuoDetialGZZView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB8FF51D1A72C200FCF88B /* YLDHeZuoDetialGZZView.xib */; };
+		EAFB8FF81D1A7AB400FCF88B /* shenfenshengjiv.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFB8FF71D1A7AB400FCF88B /* shenfenshengjiv.png */; };
+		EAFB8FFD1D1A824800FCF88B /* YLDShengJiViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFB8FFC1D1A824800FCF88B /* YLDShengJiViewViewController.m */; };
+		EAFB90021D1A83FB00FCF88B /* YLDShenFenShuoMingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFB90001D1A83FB00FCF88B /* YLDShenFenShuoMingCell.m */; };
+		EAFB90031D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB90011D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib */; };
+		EAFB90051D1A844700FCF88B /* drafts.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFB90041D1A844700FCF88B /* drafts.png */; };
+		EAFB90091D1A860300FCF88B /* 升级箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFB90081D1A860300FCF88B /* 升级箭头@2x.png */; };
 		FC0853E91D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0853E71D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m */; };
 		FC0853EA1D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0853E81D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib */; };
 		FC0853EE1D18EA57003A47BA /* ZIKMyHonorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0853EC1D18EA57003A47BA /* ZIKMyHonorViewController.m */; };
@@ -923,6 +940,9 @@
 		EA5A082F1D1534C7005000E9 /* YLDBaoJiaDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBaoJiaDetialViewController.m; sourceTree = "<group>"; };
 		EA5A08311D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaMiaoMuModel.h; sourceTree = "<group>"; };
 		EA5A08321D1540D1005000E9 /* YLDBaoJiaMiaoMuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDBaoJiaMiaoMuModel.m; sourceTree = "<group>"; };
+		EA5A262F1D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGCGSZiZhiTiJiaoViewController.h; sourceTree = "<group>"; };
+		EA5A26301D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGCGSZiZhiTiJiaoViewController.m; sourceTree = "<group>"; };
+		EA5A26321D1BABD100850812 /* PLUS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PLUS.png; sourceTree = "<group>"; };
 		EA5AAC331C8D162A00660FC9 /* LISTtreeNumber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LISTtreeNumber@2x.png"; sourceTree = "<group>"; };
 		EA5AAC351C8D16F400660FC9 /* region@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "region@2x.png"; sourceTree = "<group>"; };
 		EA5AAC371C8D1A5900660FC9 /* listtime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listtime@2x.png"; sourceTree = "<group>"; };
@@ -1198,6 +1218,27 @@
 		EAF8A5441C867FF9008B99D2 /* HotBuyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyModel.m; sourceTree = "<group>"; };
 		EAF8A5461C868DD1008B99D2 /* GusseYourLikeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GusseYourLikeModel.h; sourceTree = "<group>"; };
 		EAF8A5471C868DD1008B99D2 /* GusseYourLikeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GusseYourLikeModel.m; sourceTree = "<group>"; };
+		EAFB8FDF1D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMMPiLiangBianJiViewController.h; sourceTree = "<group>"; };
+		EAFB8FE01D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMMPiLiangBianJiViewController.m; sourceTree = "<group>"; };
+		EAFB8FE11D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMMPiLiangBianJiViewController.xib; sourceTree = "<group>"; };
+		EAFB8FE51D1A223500FCF88B /* YLDMMPiLiangBianJiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLDMMPiLiangBianJiCell.h; path = ../YLDMMPiLiangBianJiCell.h; sourceTree = "<group>"; };
+		EAFB8FE61D1A223500FCF88B /* YLDMMPiLiangBianJiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLDMMPiLiangBianJiCell.m; path = ../YLDMMPiLiangBianJiCell.m; sourceTree = "<group>"; };
+		EAFB8FE71D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YLDMMPiLiangBianJiCell.xib; path = ../YLDMMPiLiangBianJiCell.xib; sourceTree = "<group>"; };
+		EAFB8FEA1D1A3D5A00FCF88B /* deleteRad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteRad.png; sourceTree = "<group>"; };
+		EAFB8FED1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDHeZuoDEMessageCell.h; sourceTree = "<group>"; };
+		EAFB8FEE1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDHeZuoDEMessageCell.m; sourceTree = "<group>"; };
+		EAFB8FEF1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDHeZuoDEMessageCell.xib; sourceTree = "<group>"; };
+		EAFB8FF21D1A729F00FCF88B /* YLDHeZuoDetialGZZView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDHeZuoDetialGZZView.h; sourceTree = "<group>"; };
+		EAFB8FF31D1A729F00FCF88B /* YLDHeZuoDetialGZZView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDHeZuoDetialGZZView.m; sourceTree = "<group>"; };
+		EAFB8FF51D1A72C200FCF88B /* YLDHeZuoDetialGZZView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDHeZuoDetialGZZView.xib; sourceTree = "<group>"; };
+		EAFB8FF71D1A7AB400FCF88B /* shenfenshengjiv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shenfenshengjiv.png; sourceTree = "<group>"; };
+		EAFB8FFB1D1A824800FCF88B /* YLDShengJiViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShengJiViewViewController.h; sourceTree = "<group>"; };
+		EAFB8FFC1D1A824800FCF88B /* YLDShengJiViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShengJiViewViewController.m; sourceTree = "<group>"; };
+		EAFB8FFF1D1A83FB00FCF88B /* YLDShenFenShuoMingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShenFenShuoMingCell.h; sourceTree = "<group>"; };
+		EAFB90001D1A83FB00FCF88B /* YLDShenFenShuoMingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShenFenShuoMingCell.m; sourceTree = "<group>"; };
+		EAFB90011D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShenFenShuoMingCell.xib; sourceTree = "<group>"; };
+		EAFB90041D1A844700FCF88B /* drafts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drafts.png; sourceTree = "<group>"; };
+		EAFB90081D1A860300FCF88B /* 升级箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "升级箭头@2x.png"; sourceTree = "<group>"; };
 		FC0853E61D18E903003A47BA /* ZIKMyHonorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyHonorCollectionViewCell.h; sourceTree = "<group>"; };
 		FC0853E71D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyHonorCollectionViewCell.m; sourceTree = "<group>"; };
 		FC0853E81D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyHonorCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -2131,6 +2172,11 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA5A26321D1BABD100850812 /* PLUS.png */,
+				EAFB90081D1A860300FCF88B /* 升级箭头@2x.png */,
+				EAFB90041D1A844700FCF88B /* drafts.png */,
+				EAFB8FF71D1A7AB400FCF88B /* shenfenshengjiv.png */,
+				EAFB8FEA1D1A3D5A00FCF88B /* deleteRad.png */,
 				EA08F7C81D191B0200471C33 /* ico_工作站-分站text.png */,
 				EA08F7C91D191B0200471C33 /* ico_工作站-总站text.png */,
 				EA08F7C61D19152700471C33 /* anliimage.png */,
@@ -2506,6 +2552,7 @@
 		EA5A08141D14E629005000E9 /* YLDhezuoxiangqingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EAFB8FEC1D1A6FA900FCF88B /* HeZuoDetialCell */,
 				EA5A08151D14E648005000E9 /* YLDHeZuoDetialViewController.h */,
 				EA5A08161D14E648005000E9 /* YLDHeZuoDetialViewController.m */,
 			);
@@ -2543,6 +2590,15 @@
 				EA5A082F1D1534C7005000E9 /* YLDBaoJiaDetialViewController.m */,
 			);
 			path = BaoJiaDetialViewController;
+			sourceTree = "<group>";
+		};
+		EA5A262E1D1B74C200850812 /* YLDGCGSZiZhiTiJiaoViewConroller */ = {
+			isa = PBXGroup;
+			children = (
+				EA5A262F1D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.h */,
+				EA5A26301D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.m */,
+			);
+			path = YLDGCGSZiZhiTiJiaoViewConroller;
 			sourceTree = "<group>";
 		};
 		EA5AAC491C8D49B600660FC9 /* BuyDetialViewController */ = {
@@ -2610,6 +2666,7 @@
 		EA5E6E341CFFC9A5003D357C /* FaBuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EAFB8FDE1D1A206200FCF88B /* YLDPiLiangBianJiViewController */,
 				EA5E6E3D1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.h */,
 				EA5E6E3E1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m */,
 				EA5E6E3F1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib */,
@@ -3055,6 +3112,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				EAFB8FFA1D1A820D00FCF88B /* YLDShenFenShengJiViewController */,
 				FC56117F1D0C092F00E5743B /* MySupplyViewController */,
 				EA72662B1CFD5F79005612E6 /* KeFuViewController */,
 				FCCFA6FE1CF2E11300CC1313 /* AddressSelect */,
@@ -3101,6 +3159,68 @@
 				EA1120CD1CA62BE300857E48 /* NurseryModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EAFB8FDE1D1A206200FCF88B /* YLDPiLiangBianJiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EAFB8FE41D1A221200FCF88B /* PiLiangBianJiView */,
+				EAFB8FDF1D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.h */,
+				EAFB8FE01D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.m */,
+				EAFB8FE11D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.xib */,
+			);
+			path = YLDPiLiangBianJiViewController;
+			sourceTree = "<group>";
+		};
+		EAFB8FE41D1A221200FCF88B /* PiLiangBianJiView */ = {
+			isa = PBXGroup;
+			children = (
+				EAFB8FE51D1A223500FCF88B /* YLDMMPiLiangBianJiCell.h */,
+				EAFB8FE61D1A223500FCF88B /* YLDMMPiLiangBianJiCell.m */,
+				EAFB8FE71D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib */,
+			);
+			path = PiLiangBianJiView;
+			sourceTree = "<group>";
+		};
+		EAFB8FEC1D1A6FA900FCF88B /* HeZuoDetialCell */ = {
+			isa = PBXGroup;
+			children = (
+				EAFB8FED1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.h */,
+				EAFB8FEE1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.m */,
+				EAFB8FEF1D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.xib */,
+				EAFB8FF21D1A729F00FCF88B /* YLDHeZuoDetialGZZView.h */,
+				EAFB8FF31D1A729F00FCF88B /* YLDHeZuoDetialGZZView.m */,
+				EAFB8FF51D1A72C200FCF88B /* YLDHeZuoDetialGZZView.xib */,
+			);
+			path = HeZuoDetialCell;
+			sourceTree = "<group>";
+		};
+		EAFB8FF91D1A81EA00FCF88B /* YLDShenFenShengJiViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = YLDShenFenShengJiViewController;
+			sourceTree = "<group>";
+		};
+		EAFB8FFA1D1A820D00FCF88B /* YLDShenFenShengJiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA5A262E1D1B74C200850812 /* YLDGCGSZiZhiTiJiaoViewConroller */,
+				EAFB8FFE1D1A83CA00FCF88B /* ShenFengShengJiView */,
+				EAFB8FFB1D1A824800FCF88B /* YLDShengJiViewViewController.h */,
+				EAFB8FFC1D1A824800FCF88B /* YLDShengJiViewViewController.m */,
+			);
+			path = YLDShenFenShengJiViewController;
+			sourceTree = "<group>";
+		};
+		EAFB8FFE1D1A83CA00FCF88B /* ShenFengShengJiView */ = {
+			isa = PBXGroup;
+			children = (
+				EAFB8FFF1D1A83FB00FCF88B /* YLDShenFenShuoMingCell.h */,
+				EAFB90001D1A83FB00FCF88B /* YLDShenFenShuoMingCell.m */,
+				EAFB90011D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib */,
+			);
+			path = ShenFengShengJiView;
 			sourceTree = "<group>";
 		};
 		FC22761B1D177C9F0037B131 /* StationAuthority */ = {
@@ -3652,6 +3772,7 @@
 		FC56117F1D0C092F00E5743B /* MySupplyViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EAFB8FF91D1A81EA00FCF88B /* YLDShenFenShengJiViewController */,
 				FC5611801D0C092F00E5743B /* IQKeyBoardManager */,
 				FC5611A41D0C092F00E5743B /* MJRefresh */,
 				FC5611B51D0C092F00E5743B /* Model */,
@@ -4392,6 +4513,7 @@
 				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
 				FC56127D1D0C092F00E5743B /* duihao.png in Resources */,
 				EA4E64701D0E848900A7D731 /* kefuxitongyonghutouxiang.png in Resources */,
+				EAFB90091D1A860300FCF88B /* 升级箭头@2x.png in Resources */,
 				EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */,
 				EA0E8B6F1D17E5EA007C20D8 /* YLDGongZuoZhanJianJieCell.xib in Resources */,
 				EA6D36C81CE7138600CE025C /* yitongguo.png in Resources */,
@@ -4450,6 +4572,7 @@
 				EA17B5D01CC9D1CE0054223B /* leftBtnImage@2x.png in Resources */,
 				EA1120D71CA678C000857E48 /* nuseryBase@2x.png in Resources */,
 				FC2276621D177C9F0037B131 /* 底部菜单-工作站off.png in Resources */,
+				EA5A26331D1BABD100850812 /* PLUS.png in Resources */,
 				FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */,
 				EA5A082C1D153353005000E9 /* Gyiguoqi.png in Resources */,
 				FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */,
@@ -4502,12 +4625,15 @@
 				FCCEA4921CFD5FC2005D21F5 /* 我的积分-积分增加.png in Resources */,
 				FC71342D1CB351500037D507 /* ZIKPaySuccessViewController.xib in Resources */,
 				EA08F7C51D19135C00471C33 /* YLDGongChengAnLiCell.xib in Resources */,
+				EAFB90051D1A844700FCF88B /* drafts.png in Resources */,
 				FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */,
 				EA3D4D861D1792450010B56D /* zhanzhangLong.png in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
+				EAFB90031D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib in Resources */,
 				FC2276991D17BC4E0037B131 /* zt已报价.png in Resources */,
 				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
+				EAFB8FE31D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.xib in Resources */,
 				EA4E64741D0E866000A7D731 /* kefuxitongdadianhua.png in Resources */,
 				EA3D4D991D17D5BB0010B56D /* YLDZhanZhangMessageCell.xib in Resources */,
 				FC5337CB1CBE18FC008BFB11 /* 站长通-星级1.png in Resources */,
@@ -4541,6 +4667,7 @@
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
+				EAFB8FEB1D1A3D5B00FCF88B /* deleteRad.png in Resources */,
 				FC6FED691CACF833000E2CA5 /* 列表-时间.png in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,
 				FC0853FB1D191A29003A47BA /* ZIKWorkstationTableViewCell.xib in Resources */,
@@ -4548,6 +4675,7 @@
 				EA08F7B31D190B5C00471C33 /* GCZXgongsianli.png in Resources */,
 				FC5612511D0C092F00E5743B /* MJRefresh.bundle in Resources */,
 				EA552E891D0D472600FB88A0 /* ico_橙色收起.png in Resources */,
+				EAFB8FE91D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
 				FC0BE6151D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib in Resources */,
 				EA7491671D026FA40043BDAC /* xialakuang.png in Resources */,
@@ -4625,9 +4753,11 @@
 				EA4F4D191CBF5F47006E4988 /* bannelSmall2.jpg in Resources */,
 				FC5337CC1CBE18FC008BFB11 /* 站长通-星级2.png in Resources */,
 				EA5E6E3C1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.xib in Resources */,
+				EAFB8FF61D1A72C200FCF88B /* YLDHeZuoDetialGZZView.xib in Resources */,
 				EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */,
 				FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */,
 				FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */,
+				EAFB8FF11D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.xib in Resources */,
 				EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */,
 				EA552E791D0D3FAF00FB88A0 /* wodedingdanoff.png in Resources */,
 				EA4C4DDD1D13EB1C00DF1B93 /* searchOrange.png in Resources */,
@@ -4653,6 +4783,7 @@
 				FC5612771D0C092F00E5743B /* 添加照片-整片.png in Resources */,
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
 				EAA9FFF21D12365E009CF19D /* YLDMiaoMuTableViewCell.xib in Resources */,
+				EAFB8FF81D1A7AB400FCF88B /* shenfenshengjiv.png in Resources */,
 				FC5612671D0C092F00E5743B /* WHC_CameraVC.xib in Resources */,
 				FC4A51881D0E63650060587B /* ico_排序默认.png in Resources */,
 				EA08F79B1D18DBE700471C33 /* yYLDGZZRongYaoTableCell.xib in Resources */,
@@ -4724,6 +4855,7 @@
 				EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */,
 				FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */,
 				EA552E861D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m in Sources */,
+				EAFB8FF41D1A729F00FCF88B /* YLDHeZuoDetialGZZView.m in Sources */,
 				FC2276811D177C9F0037B131 /* ZIKStationOrderTableViewCell.m in Sources */,
 				EA1A16D21D10E5BB008CA20F /* YLDPickTimeView.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
@@ -4750,9 +4882,11 @@
 				EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */,
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
 				FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */,
+				EAFB8FE81D1A223500FCF88B /* YLDMMPiLiangBianJiCell.m in Sources */,
 				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,
 				FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */,
 				FC2276751D177C9F0037B131 /* ZIKBaseChangeNavViewController.m in Sources */,
+				EAFB8FFD1D1A824800FCF88B /* YLDShengJiViewViewController.m in Sources */,
 				FC0853F51D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.m in Sources */,
 				FC5612871D0C092F00E5743B /* ZIKNurseryListSelectButton.m in Sources */,
 				FC5612911D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */,
@@ -4771,6 +4905,7 @@
 				EAE32DE41C7E97A600C4CEA2 /* UIWebView+AFNetworking.m in Sources */,
 				FCCEA4901CFD5FC2005D21F5 /* MyIntegralViewController.m in Sources */,
 				EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */,
+				EAFB8FE21D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.m in Sources */,
 				FC5612581D0C092F00E5743B /* UIView+MJExtension.m in Sources */,
 				EAE32DDD1C7E97A600C4CEA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				FC5612891D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m in Sources */,
@@ -4886,6 +5021,7 @@
 				FC56126C1D0C092F00E5743B /* StringAttribute.m in Sources */,
 				FC5612661D0C092F00E5743B /* WHC_CameraVC.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,
+				EA5A26311D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.m in Sources */,
 				EA696FB31CDD7FE9001F037E /* YLDMyMessageModel.m in Sources */,
 				FCCEA4A61CFD7484005D21F5 /* ZIKIntegraExchangeModel.m in Sources */,
 				EAF050E21C924BEE00F435A9 /* UserBigInfoTableViewCell.m in Sources */,
@@ -4966,6 +5102,7 @@
 				EA3D4D981D17D5BB0010B56D /* YLDZhanZhangMessageCell.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
 				FC4B4F351CABA30200EBB2F8 /* ZIKPayViewController.m in Sources */,
+				EAFB8FF01D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.m in Sources */,
 				FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */,
 				FC56129B1D0C092F00E5743B /* ZIKBaseViewController.m in Sources */,
 				FC56124C1D0C092F00E5743B /* IQBarButtonItem.m in Sources */,
@@ -4990,6 +5127,7 @@
 				FC56128D1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.m in Sources */,
 				FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */,
 				EAAFCFBD1CBE3C0D00EB894F /* HomePageTViewController.m in Sources */,
+				EAFB90021D1A83FB00FCF88B /* YLDShenFenShuoMingCell.m in Sources */,
 				FC5337C11CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m in Sources */,
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,

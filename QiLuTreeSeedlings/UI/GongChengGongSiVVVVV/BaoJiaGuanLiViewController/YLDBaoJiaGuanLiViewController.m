@@ -8,6 +8,7 @@
 
 #import "YLDBaoJiaGuanLiViewController.h"
 #import "YLDBaoJiaDetialViewController.h"
+#import "YLDFaBuGongChengDingDanViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "MJRefresh.h"
@@ -22,11 +23,15 @@
 
 @implementation YLDBaoJiaGuanLiViewController
 @synthesize pageNum;
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"报价管理";
     self.pageNum=1;
     self.dataAry=[NSMutableArray array];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 65, kWidth, kHeight-64-50)];
     tableView.delegate=self;
     tableView.dataSource=self;
@@ -136,6 +141,15 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
+}
+-(void)fabubtnAction
+{
+    if(self.tabBarController.selectedIndex==2)
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+        YLDFaBuGongChengDingDanViewController *fabuVC=[[YLDFaBuGongChengDingDanViewController alloc]init];
+        [self.navigationController pushViewController:fabuVC animated:YES];
+    }
 }
 /*
 #pragma mark - Navigation

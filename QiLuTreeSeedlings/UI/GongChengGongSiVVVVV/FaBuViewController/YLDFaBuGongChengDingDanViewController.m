@@ -44,6 +44,9 @@
 
 @implementation YLDFaBuGongChengDingDanViewController
 @synthesize typeAry;
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 -(id)init
 {
     self=[super init];
@@ -152,49 +155,51 @@
 }
 -(void)nextBtnAction:(UIButton *)sender
 {
-    if (!self.typeStr) {
-        [ToastView showTopToast:@"请选择订单类型"];
-        return;
-    }
-    if (self.NameTextField.text.length==0) {
-        [ToastView showTopToast:@"请输入项目名称"];
-        return;
-    }
-    if (!self.AreaProvince) {
-        [ToastView showTopToast:@"请选择用苗地"];
-        return;
-    }
-    if (!self.timeStr) {
-        [ToastView showTopToast:@"请选择截止日期"];
-        return;
-    }
-    if (!self.priceStr) {
-        [ToastView showTopToast:@"请选择报价要求"];
-        return;
-    }
-    if (!self.qualityStr) {
-        [ToastView showTopToast:@"请选择质量要求"];
-        return;
-    }
-    if (self.xiongjingField.text.length==0) {
-        [ToastView showTopToast:@"请完善胸径信息"];
-        return;
-    }
-    if (self.dijingField.text.length==0) {
-        [ToastView showTopToast:@"请完善地径信息"];
-        return;
-    }
-    if (self.lianxirenField.text.length==0) {
-        [ToastView showTopToast:@"请完善联系人姓名"];
-        return;
-    }
-    if (self.lianxifangshiField.text.length==0) {
-        [ToastView showTopToast:@"请完善联系方式"];
-        return;
-    }
+//    if (!self.typeStr) {
+//        [ToastView showTopToast:@"请选择订单类型"];
+//        return;
+//    }
+//    if (self.NameTextField.text.length==0) {
+//        [ToastView showTopToast:@"请输入项目名称"];
+//        return;
+//    }
+//    if (!self.AreaProvince) {
+//        [ToastView showTopToast:@"请选择用苗地"];
+//        return;
+//    }
+//    if (!self.timeStr) {
+//        [ToastView showTopToast:@"请选择截止日期"];
+//        return;
+//    }
+//    if (!self.priceStr) {
+//        [ToastView showTopToast:@"请选择报价要求"];
+//        return;
+//    }
+//    if (!self.qualityStr) {
+//        [ToastView showTopToast:@"请选择质量要求"];
+//        return;
+//    }
+//    if (self.xiongjingField.text.length==0) {
+//        [ToastView showTopToast:@"请完善胸径信息"];
+//        return;
+//    }
+//    if (self.dijingField.text.length==0) {
+//        [ToastView showTopToast:@"请完善地径信息"];
+//        return;
+//    }
+//    if (self.lianxirenField.text.length==0) {
+//        [ToastView showTopToast:@"请完善联系人姓名"];
+//        return;
+//    }
+//    if (self.lianxifangshiField.text.length==0) {
+//        [ToastView showTopToast:@"请完善联系方式"];
+//        return;
+//    }
     YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andName:self.NameTextField.text andAreaSheng:self.AreaProvince andAreaShi:self.AreaCity andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
     [self.navigationController pushViewController:YLDtititiVC animated:YES];
 }
+
+
 -(void)areaBtnAction:(UIButton *)sender
 {
     YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
@@ -410,11 +415,54 @@
     
     BWTextView *TextView=[[BWTextView alloc]init];
     TextView.placeholder=@"请输入50字以内的说明...";
+    TextView.tag=50;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textViewChanged:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:TextView];
     TextView.frame=CGRectMake(110, 10, kWidth-120, frame.size.height-20);
     TextView.font=[UIFont systemFontOfSize:16];
     TextView.textColor=DarkTitleColor;
     [view addSubview:TextView];
     return TextView;
+}
+- (void)textViewChanged:(NSNotification *)obj {
+    BWTextView *textField = (BWTextView *)obj.object;
+    NSInteger kssss=10;
+    if (textField.tag>0) {
+        kssss=textField.tag;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -92,15 +92,15 @@
     _nowBtn.selected=NO;
     _nowBtn=sender;
     if (sender.tag==0) {
-//        self.jianjieView.hidden=NO;
+        self.jianjieView.hidden=NO;
 //        self.editingBtn.hidden=NO;
-//        self.tableView.hidden=YES;
+        self.tableView.hidden=YES;
 //        self.searchV.hidden=YES;
 //        [self.saerchBtn removeFromSuperview];
     }
     if (sender.tag==1) {
-//        self.jianjieView.hidden=YES;
-//        self.tableView.hidden=NO;
+        self.jianjieView.hidden=YES;
+        self.tableView.hidden=NO;
 //        self.editingBtn.hidden=YES;
 //        if (self.saerchBtn.selected) {
 //            self.searchV.hidden=NO;

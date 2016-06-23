@@ -9,6 +9,8 @@
 #import "WoDeDingDanViewController.h"
 #import "YLDMyDingdanTableViewCell.h"
 #import "YLDDingDanDetialViewController.h"
+#import "YLDFaBuGongChengDingDanViewController.h"
+#import "YLDHeZuoDetialViewController.h"
 #import "UIDefines.h"
 #import "MJRefresh.h"
 #import "HttpClient.h"
@@ -23,6 +25,9 @@
 
 @implementation WoDeDingDanViewController
 @synthesize pageNum,Status;
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -35,7 +40,7 @@
     Status=-1;
     self.dataAry=[NSMutableArray array];
     [self topActionView];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 118, kWidth, kHeight-115-50)];
     tableView.delegate=self;
     tableView.dataSource=self;
@@ -211,21 +216,31 @@
 -(void)hezuoXiangQingActinWithMode:(YLDDingDanModel *)model
 {
     NSLog( @" %@",model.orderName);
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+    YLDHeZuoDetialViewController *hezuodetialVC=[[YLDHeZuoDetialViewController alloc]init];
+    [self.navigationController pushViewController:hezuodetialVC animated:YES];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-      [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     YLDDingDanModel *model=self.dataAry[indexPath.row];
     YLDDingDanDetialViewController *vcsss=[[YLDDingDanDetialViewController alloc]initWithUid:model.uid];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
     [self.navigationController pushViewController:vcsss animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)fabubtnAction
+{
+    if(self.tabBarController.selectedIndex==1)
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+        YLDFaBuGongChengDingDanViewController *fabuVC=[[YLDFaBuGongChengDingDanViewController alloc]init];
+        [self.navigationController pushViewController:fabuVC animated:YES];
+    }
+}
 /*
 #pragma mark - Navigation
 

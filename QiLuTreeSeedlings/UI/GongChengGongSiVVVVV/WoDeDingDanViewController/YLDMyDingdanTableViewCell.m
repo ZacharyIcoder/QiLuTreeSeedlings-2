@@ -60,7 +60,10 @@
     self.frame=frame;
     self.showBtn.selected=model.isShow;
     if ([model.status isEqualToString:@"报价中"]) {
-        [self.loggV setImage:[UIImage imageNamed:@""]];
+        [self.loggV setImage:[UIImage imageNamed:@"zt报价中"]];
+    }
+    if ([model.status isEqualToString:@"已结束"]) {
+        [self.loggV setImage:[UIImage imageNamed:@"zt已结束"]];
     }
 }
 - (void)awakeFromNib {

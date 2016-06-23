@@ -8,10 +8,11 @@
 
 #import "YLDFuBuTijiaoViewController.h"
 #import "YLDMiaoMuUnTableViewCell.h"
+#import "YLDMMPiLiangBianJiViewController.h"
 #import "UIDefines.h"
 #import "JSONKit.h"
 #import "HttpClient.h"
-@interface YLDFuBuTijiaoViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface YLDFuBuTijiaoViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMMeditingDelegate>
 @property (nonatomic,copy) NSString *typeStr;
 @property (nonatomic,copy) NSString *nameStr;
 @property (nonatomic,copy) NSString *areaShengStr;
@@ -30,6 +31,9 @@
 @end
 
 @implementation YLDFuBuTijiaoViewController
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 -(id)initWithType:(NSString *)typeStr andName:(NSString *)nameStr andAreaSheng:(NSString *)areaShengStr andAreaShi:(NSString *)areaShiStr andTime:(NSString *)timeStr andPrice:(NSString *)priceStr andZhiL:(NSString *)zhiliangStr andXingJing:(NSString *)xingjingStr andDiJing:(NSString *)diJingStr andLianxR:(NSString *)lianxiRStr andPhone:(NSString *)phoneStr andShuoMing:(NSString *)shuomingStr
 {
     self=[super init];
@@ -53,6 +57,10 @@
     [super viewDidLoad];
     self.vcTitle=@"订单发布";
     self.miaomuAry=[NSMutableArray array];
+    UIButton *piliangBianJiBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-90, 24, 80, 40)];
+    [piliangBianJiBtn setTitle:@"批量编辑" forState:UIControlStateNormal];
+    [piliangBianJiBtn addTarget:self action:@selector(pliangbianjiBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.navBackView addSubview:piliangBianJiBtn];
     UITextField *nameField=[self creatTextFieldWithName:@"项目名称" alortStr:@"" andFrame:CGRectMake(0, 64, kWidth, 50)];
     nameField.text=self.nameStr;
     nameField.enabled=NO;
@@ -74,6 +82,20 @@
     [xiayibuBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:xiayibuBtn];
     // Do any additional setup after loading the view.
+}
+-(void)pliangbianjiBtnAction
+{
+    if (self.miaomuAry.count<=0) {
+        [ToastView showTopToast:@"至少添加一项苗木"];
+        return;
+    }
+    YLDMMPiLiangBianJiViewController *yldMM=[[YLDMMPiLiangBianJiViewController alloc]initWithDataAry:self.miaomuAry];
+    yldMM.delegate=self;
+    [self.navigationController pushViewController:yldMM animated:YES];
+}
+-(void)finishActionWithAry:(NSMutableArray *)ary{
+    self.miaomuAry=ary;
+    [self.tableView reloadData];
 }
 -(void)nextBtnAction:(UIButton *)sender
 {
@@ -124,6 +146,11 @@
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/2-45, 30)];
     nameTextField.tag=111;
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
+    nameTextField.tag=20;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:nameTextField];
     nameTextField.placeholder=@"请输入苗木品种";
     nameTextField.borderStyle=UITextBorderStyleRoundedRect;
     nameTextField.textColor=NavColor;
@@ -132,13 +159,23 @@
     UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-25, 5, kWidth/2-45, 30)];
     numTextField.placeholder=@"请输入需求数量";
     numTextField.tag=112;
+    numTextField.tag=7;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:numTextField];
     [numTextField setFont:[UIFont systemFontOfSize:14]];
     numTextField.borderStyle=UITextBorderStyleRoundedRect;
     numTextField.textColor=NavYellowColor;
     numTextField.keyboardType=UIKeyboardTypeNumberPad;
     [view addSubview:numTextField];
     UITextField *shuomingTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
-    shuomingTextField.placeholder=@"请输入需求数量";
+    shuomingTextField.tag=100;
+    shuomingTextField.placeholder=@"请输入苗木说明(100字以内)";
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:shuomingTextField];
     shuomingTextField.borderStyle=UITextBorderStyleRoundedRect;
     shuomingTextField.textColor=DarkTitleColor;
     shuomingTextField.tag=113;
@@ -155,6 +192,7 @@
     [view addSubview:lineImagV];
     return view;
 }
+
 -(void)addBtnAction:(UIButton *)sender
 {
     UITextField *nameTextField=[self.addView viewWithTag:111];
@@ -206,6 +244,44 @@
     [view addSubview:lineImagV];
     [self.view addSubview:view];
     return textField;
+}
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    NSInteger kssss=10;
+    if (textField.tag>0) {
+        kssss=textField.tag;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
