@@ -20,6 +20,10 @@
 @property (nonatomic, strong) UserInfoModel *userModel;
 @property (nonatomic, strong) BusinessMesageModel *companyModel;
 @property (nonatomic)BOOL isCanPublishBuy;
+/**
+ *  是否来自单条购买界面（用来判断单条购买界面余额不足，进行充值）
+ */
+@property (nonatomic, assign) BOOL isFromSingleVoucherCenter;
 -(BOOL)isNeedLogin;
 -(BOOL)isNeedCompany;
 -(void)reloadUserInfoSuccess:(void (^)(id responseObject))success

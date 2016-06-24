@@ -9,6 +9,7 @@
 #import "ZIKPaySuccessViewController.h"
 #import "ZIKMyBalanceViewController.h"
 #import "BuyDetialInfoViewController.h"
+#import "ZIKSingleVoucherCenterViewController.h"
 #define Recharge @"Is top-up for the first time"
 @interface ZIKPaySuccessViewController ()
 
@@ -31,6 +32,16 @@
 }
 
 - (IBAction)finishButton:(id)sender {
+    if (APPDELEGATE.isFromSingleVoucherCenter) {
+        APPDELEGATE.isFromSingleVoucherCenter = NO;
+         for(UIViewController *controller in self.navigationController.viewControllers) {
+             if ([controller isKindOfClass:[ZIKSingleVoucherCenterViewController class]]) {
+                 ZIKSingleVoucherCenterViewController *svc = (ZIKSingleVoucherCenterViewController*)controller;
+                 [self.navigationController popToViewController:svc animated:YES];
+             }
+         }
+        return;
+    }
     for(UIViewController *controller in self.navigationController.viewControllers) {
         if([controller isKindOfClass:[ZIKMyBalanceViewController class]]||[controller isKindOfClass:[BuyDetialInfoViewController class]]){
             ZIKMyBalanceViewController *owr = (ZIKMyBalanceViewController *)controller;

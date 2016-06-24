@@ -423,6 +423,7 @@
     //    NSString *documentsDirectory = [paths objectAtIndex:0];
     //    NSString *gpsPath = [documentsDirectory stringByAppendingString: @"/config.xml"];
     //    [[NSFileManager defaultManager] createFileAtPath: gpsPath contents:nil attributes:nil];
+    self.isFromSingleVoucherCenter  = NO;
     BOOL copySucceeded = NO;
     
     NSString *fileName = @"areadb";

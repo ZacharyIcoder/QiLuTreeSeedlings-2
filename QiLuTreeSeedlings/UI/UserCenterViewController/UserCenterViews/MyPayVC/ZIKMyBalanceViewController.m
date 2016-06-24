@@ -38,6 +38,8 @@
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
             self.moneyPrice = [responseObject[@"result"] objectForKey:@"money"];
+            APPDELEGATE.userModel.balance = self.moneyPrice;
+
             [self.myTalbeView reloadData];
         }
         else {

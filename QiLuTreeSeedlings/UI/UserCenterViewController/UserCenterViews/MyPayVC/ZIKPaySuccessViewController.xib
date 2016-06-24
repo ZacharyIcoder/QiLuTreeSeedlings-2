@@ -51,10 +51,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkE-Oe-U26">
-                    <rect key="frame" x="183" y="332" width="235" height="30"/>
+                    <rect key="frame" x="183" y="332" width="235" height="44"/>
                     <color key="backgroundColor" red="1" green="0.59249161073825507" blue="0.12722839765100671" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="EKg-oJ-bBy"/>
+                        <constraint firstAttribute="height" constant="44" id="EKg-oJ-bBy"/>
                         <constraint firstAttribute="width" constant="235" id="g4e-MB-6Xb"/>
                     </constraints>
                     <state key="normal" title="完成">

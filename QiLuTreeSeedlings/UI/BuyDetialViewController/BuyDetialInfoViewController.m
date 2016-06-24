@@ -480,7 +480,7 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
     UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/2, 50)];
-    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.1f",price] forState:UIControlStateNormal];
+    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
     [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [view addSubview:messageBtn];
@@ -505,7 +505,7 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
     UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*2/5, 50)];
-    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.1f",price] forState:UIControlStateNormal];
+    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
     [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [view addSubview:messageBtn];

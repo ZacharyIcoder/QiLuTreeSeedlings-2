@@ -9,6 +9,7 @@
 #import "ZIKSingleVoucherCenterViewController.h"
 #import "StringAttributeHelper.h"
 #import "BuyMessageAlertView.h"
+#import "ZIKPayViewController.h"
 //支付宝
 #import <AlipaySDK/AlipaySDK.h>
 //微信
@@ -191,16 +192,20 @@
         [HTTPCLIENT getAmountInfo:nil Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 float moneyNum = [[[responseObject objectForKey:@"result"] objectForKey:@"money"]floatValue];
+                APPDELEGATE.userModel.balance = [NSString stringWithFormat:@"%.2f",moneyNum];
                 if (moneyNum < self.price) {
-                    [ToastView showTopToast:@"您的余额不足，请先充值"];
+//                    [ToastView showTopToast:@"您的余额不足，请先充值"];
+                    _buyAlertView = [BuyMessageAlertView addActionVieWithMoney:[NSString stringWithFormat:@"%.2f",moneyNum]];
+                   [_buyAlertView.rightBtn addTarget:self action:@selector(chongzhi) forControlEvents:UIControlEventTouchUpInside];
 
 //                    ZIKPayViewController *zikPayVC=[[ZIKPayViewController alloc]init];
 //                    [self.navigationController pushViewController:zikPayVC animated:YES];
-                    return ;
-               }
+                   return ;
+              }
 //                _buyAlertView = [BuyMessageAlertView addActionVieWithPrice:[NSString stringWithFormat:@"%.2f",self.price               ] AndMone:[NSString stringWithFormat:@"%.2f",moneyNum]];
+//                 _buyAlertView = [BuyMessageAlertView addActionVieWithMoney:[NSString stringWithFormat:@"%.2f",moneyNum] withPrice:[NSString stringWithFormat:@"%.2f",self.price]];
 //                [_buyAlertView.rightBtn addTarget:self action:@selector(payYue) forControlEvents:UIControlEventTouchUpInside];
-                [self payYue];
+//                [self payYue];
             }else{
                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
                 return;
@@ -246,7 +251,7 @@
     }
     else if (self.lastIndexPath.row == 2) {
         //NSLog(@"支付宝支付");
-    NSString *pricesting = [NSString stringWithFormat:@"%f",self.price];
+    NSString *pricesting = [NSString stringWithFormat:@"%.2f",self.price];
         [ZIKFunction zhiFuBao:self name:@"苗木充值" titile:@"苗木充值" price:pricesting orderId:APPDELEGATE.userModel.access_id supplyBuyUid:self.buyUid type:@"1"];
     }
     else if (self.lastIndexPath.row == 3) {
@@ -281,6 +286,7 @@
 }
 
 - (void)payYue {
+    [BuyMessageAlertView removeActionView];
     ShowActionV();
    [HTTPCLIENT payForBuyMessageWithBuyUid:self.buyUid Success:^(id responseObject) {
     RemoveActionV();
@@ -341,5 +347,10 @@
     //    [self showAlertMessage:msg];
 }
 
-
+- (void)chongzhi {
+    [BuyMessageAlertView removeActionView];
+    APPDELEGATE.isFromSingleVoucherCenter = YES;
+    ZIKPayViewController *payVC = [[ZIKPayViewController alloc] init];
+    [self.navigationController pushViewController:payVC animated:YES];
+}
 @end
