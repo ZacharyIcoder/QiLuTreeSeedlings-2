@@ -1165,7 +1165,7 @@
     else if (self.model.buy == 2) {//已购买
         state  = @"4";
     }
-    [HTTPCLIENT buyShareWithUid:self.uid state:state Success:^(id responseObject) {
+    [HTTPCLIENT buyShareWithUid:self.model.supplybuyUid state:state Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
             return ;

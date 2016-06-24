@@ -129,9 +129,6 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     cell.quoteBtnBlock = ^(NSInteger section ) {
         NSLog(@"报价:%ld",indexPath.section);
     };
-//    if (indexPath.row == 2) {
-//        cell.contentLabel.text = @"fewifjeiwjaiefjwajeifjwajefjwajefijwajefjwajefjwaijefijwajfiwajifejwajefjwajfejiwajfijwaifjwjaifejiwajfijwaiefjiwajfijawifejajweifjwaiejfijawewwefwefaefweqfweqfwqefwqefwqefwfwefwqefqwefwqefwqewqefwqefwqefwqewqea";
-//    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
