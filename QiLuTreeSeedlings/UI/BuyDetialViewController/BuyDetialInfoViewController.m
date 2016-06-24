@@ -1162,7 +1162,7 @@
     else if (self.model.push == 1) {//已定制
         state = @"3";
     }
-    else if (self.model.buy == 2) {//已购买
+    else if (self.model.buy ) {//已购买
         state  = @"4";
     }
     [HTTPCLIENT buyShareWithUid:self.model.supplybuyUid state:state Success:^(id responseObject) {
