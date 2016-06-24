@@ -203,8 +203,8 @@
                    return ;
               }
 //                _buyAlertView = [BuyMessageAlertView addActionVieWithPrice:[NSString stringWithFormat:@"%.2f",self.price               ] AndMone:[NSString stringWithFormat:@"%.2f",moneyNum]];
-//                 _buyAlertView = [BuyMessageAlertView addActionVieWithMoney:[NSString stringWithFormat:@"%.2f",moneyNum] withPrice:[NSString stringWithFormat:@"%.2f",self.price]];
-//                [_buyAlertView.rightBtn addTarget:self action:@selector(payYue) forControlEvents:UIControlEventTouchUpInside];
+                 _buyAlertView = [BuyMessageAlertView addActionVieWithMoney:[NSString stringWithFormat:@"%.2f",moneyNum] withPrice:[NSString stringWithFormat:@"%.2f",self.price]];
+                [_buyAlertView.rightBtn addTarget:self action:@selector(payYue) forControlEvents:UIControlEventTouchUpInside];
 //                [self payYue];
             }else{
                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
