@@ -48,15 +48,14 @@
 }
 -(void)valueChanged:(UITextField *)textField
 {
-    if (textField.tag==11) {
+    if (textField.tag!=22) {
         return;
     }
-    NSString *toBeString = textField.text;
-    
     BOOL teBool = [textField isFirstResponder];
     if (!teBool) {
         return;
     }
+    NSString *toBeString = textField.text;
     NSInteger kssss=10;
     NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
     if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
