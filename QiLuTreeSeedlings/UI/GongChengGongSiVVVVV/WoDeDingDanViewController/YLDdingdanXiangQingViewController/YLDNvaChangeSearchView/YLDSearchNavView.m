@@ -9,6 +9,9 @@
 #import "YLDSearchNavView.h"
 #import "UIDefines.h"
 @implementation YLDSearchNavView
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 -(id)init
 {
     self=[super init];
@@ -20,7 +23,9 @@
         texeView.layer.cornerRadius=5;
         [self addSubview:texeView];
         
-        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(5, 0, 0, kWidth-160)];
+        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(5, 0, kWidth-160, 30)];
+        [textField addTarget:self  action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChanged:) name:UITextFieldTextDidChangeNotification object:textField];
         [texeView addSubview:textField];
         UIButton *hidingBtn=[[UIButton alloc]initWithFrame:CGRectMake(texeView.frame.size.width-40, 1.5, 27, 27)];
         [hidingBtn setImage:[UIImage imageNamed:@"searchOrange"] forState:UIControlStateNormal];
@@ -29,6 +34,47 @@
         [texeView addSubview:hidingBtn];
     }
     return self;
+}
+-(void)valueChanged:(UITextField *)textField
+{ NSString *toBeString = textField.text;
+    BOOL teBool = [textField isFirstResponder];
+    if (!teBool) {
+        return;
+    }
+    NSInteger kssss=10;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            NSLog(@"%@",textField.text);
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        NSLog(@"%@",textField.text);
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+
 }
 -(void)hidingSelf
 {

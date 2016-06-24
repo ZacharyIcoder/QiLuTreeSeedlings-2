@@ -57,7 +57,7 @@
 -(void)shengjiBtnAction:(UIButton *)sender
 {
     if (sender.tag==0) {
-        
+        [ToastView showTopToast:@"暂未开放此功能"];
     }
     if (sender.tag==1) {
         YLDGCGSZiZhiTiJiaoViewController *yldVC=[[YLDGCGSZiZhiTiJiaoViewController alloc]init];
