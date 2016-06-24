@@ -24,6 +24,7 @@
 @property (nonatomic,weak) UIButton *editingBtn;
 @property (nonatomic,weak) YLDSearchNavView *searchV;
 @property (nonatomic,strong) UIButton *saerchBtn;
+@property (nonatomic,strong) NSString *searchStr;
 @end
 
 @implementation YLDDingDanDetialViewController
@@ -92,6 +93,10 @@
     } failure:^(NSError *error) {
         RemoveActionV();
     }];
+}
+-(void)textFieldChangeVVWithStr:(NSString *)textStr
+{
+    self.searchStr=textStr;
 }
 -(void)editingBtnAction:(UIButton *)sender
 {

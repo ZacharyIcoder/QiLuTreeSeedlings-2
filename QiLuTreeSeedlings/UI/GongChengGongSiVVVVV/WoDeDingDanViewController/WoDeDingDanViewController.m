@@ -9,18 +9,21 @@
 #import "WoDeDingDanViewController.h"
 #import "YLDMyDingdanTableViewCell.h"
 #import "YLDDingDanDetialViewController.h"
+#import "YLDSearchNavView.h"
 #import "YLDFaBuGongChengDingDanViewController.h"
 #import "YLDHeZuoDetialViewController.h"
 #import "UIDefines.h"
 #import "MJRefresh.h"
 #import "HttpClient.h"
-@interface WoDeDingDanViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMyDingdanTableViewCellDelegate>
+@interface WoDeDingDanViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMyDingdanTableViewCellDelegate,YLDSearchNavViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,weak) UIView *moveView;
 @property (nonatomic,weak) UIButton *nowBtn;
 @property (nonatomic) NSInteger pageNum;
 @property (nonatomic) NSInteger Status;
 @property (nonatomic,strong) NSMutableArray *dataAry;
+@property (nonatomic,weak) YLDSearchNavView *searchV;
+@property (nonatomic,strong) NSString *searchStr;
 @end
 
 @implementation WoDeDingDanViewController
@@ -52,16 +55,40 @@
     [tableView addHeaderWithCallback:^{
         weakSelf.pageNum=1;
         ShowActionV();
-        [weakSelf getDataWithSearchWord:@"" andPageNum:[NSString stringWithFormat:@"%ld",weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",weakSelf.Status]];
+        [weakSelf getDataWithSearchWord:self.searchStr andPageNum:[NSString stringWithFormat:@"%ld",weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",weakSelf.Status]];
     }];
     [tableView addFooterWithCallback:^{
         weakSelf.pageNum+=1;
         ShowActionV();
-        [weakSelf getDataWithSearchWord:@"" andPageNum:[NSString stringWithFormat:@"%ld",weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",weakSelf.Status]];
+        [weakSelf getDataWithSearchWord:self.searchStr andPageNum:[NSString stringWithFormat:@"%ld",weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",weakSelf.Status]];
     }];
     
     [tableView headerBeginRefreshing];
+    UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-55, 23, 30, 30)];
+    [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+    [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
+    [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navBackView addSubview:searchShowBtn];
+//    self.saerchBtn=searchShowBtn;
+    YLDSearchNavView *searchV =[[YLDSearchNavView alloc]init];
+    self.searchV=searchV;
+    searchV.delegate=self;
+    searchV.hidden=YES;
+    [self.navBackView addSubview:searchV];
     // Do any additional setup after loading the view from its nib.
+}
+-(void)searchBtnAction:(UIButton *)sender
+{
+    self.searchV.hidden=NO;
+}
+-(void)textFieldChangeVVWithStr:(NSString *)textStr
+{
+    self.pageNum=1;
+    self.searchStr=textStr;
+    [self getDataWithSearchWord:textStr andPageNum:[NSString stringWithFormat:@"%ld",self.pageNum] andStatus:[NSString stringWithFormat:@"%ld",self.Status]];
+}
+-(void)hidingAction
+{
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -120,6 +147,7 @@
              if (orderList.count==0) {
                  pageNum--;
                  [ToastView showTopToast:@"已无更多信息"];
+                 [self.tableView reloadData];
              }else{
                  NSArray *dataSSary=[YLDDingDanModel YLDDingDanModelAryWithAry:orderList];
                  YLDDingDanModel *model1=[dataSSary lastObject];
@@ -127,6 +155,7 @@
                  if ([model1.uid isEqualToString:model2.uid]) {
                      pageNum--;
                      [ToastView showTopToast:@"已无更多信息"];
+                     [self.tableView reloadData];
                  }else{
                      [self.dataAry addObjectsFromArray:dataSSary];
                      [self.tableView reloadData];

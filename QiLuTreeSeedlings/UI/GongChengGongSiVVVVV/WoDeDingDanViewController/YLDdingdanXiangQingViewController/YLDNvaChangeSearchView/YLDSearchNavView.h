@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 @protocol YLDSearchNavViewDelegate <NSObject>
 @optional
+-(void)textFieldChangeVVWithStr:(NSString *)textStr;
 -(void)hidingAction;
 @end
-@interface YLDSearchNavView : UIView
+@interface YLDSearchNavView : UIView<UITextFieldDelegate>
 @property (nonatomic,weak) id<YLDSearchNavViewDelegate> delegate;
 @end

@@ -16,14 +16,17 @@
 {
     self=[super init];
     if (self) {
-        self.frame=CGRectMake(70, 0,kWidth-80 , 64);
-        UIView *texeView=[[UIView alloc]initWithFrame:CGRectMake(5, 24, kWidth-100, 30)];
+        self.frame=CGRectMake(75, 0,kWidth-80, 64);
+        UIView *texeView=[[UIView alloc]initWithFrame:CGRectMake(5, 23, kWidth-100, 32)];
         [texeView setBackgroundColor:[UIColor whiteColor]];
         texeView.layer.masksToBounds=YES;
         texeView.layer.cornerRadius=5;
         [self addSubview:texeView];
         
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(5, 0, kWidth-160, 30)];
+        textField.delegate=self;
+        textField.tag=11;
+        textField.clearButtonMode=UITextFieldViewModeWhileEditing;
         [textField addTarget:self  action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChanged:) name:UITextFieldTextDidChangeNotification object:textField];
         [texeView addSubview:textField];
@@ -35,8 +38,21 @@
     }
     return self;
 }
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    textField.tag=22;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    textField.tag=11;
+}
 -(void)valueChanged:(UITextField *)textField
-{ NSString *toBeString = textField.text;
+{
+    if (textField.tag==11) {
+        return;
+    }
+    NSString *toBeString = textField.text;
+    
     BOOL teBool = [textField isFirstResponder];
     if (!teBool) {
         return;
@@ -49,13 +65,19 @@
         UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
         // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
         if (!position) {
-            NSLog(@"%@",textField.text);
-            if (toBeString.length > kssss) {
+          
+                if (toBeString.length > kssss) {
                 // NSLog(@"最多%d个字符!!!",kMaxLength);
                 [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self];
                 //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
                 textField.text = [toBeString substringToIndex:kssss];
+                if ([self.delegate respondsToSelector:@selector(textFieldChangeVVWithStr:)]) {
+                        [self.delegate textFieldChangeVVWithStr:textField.text];
+                    }
                 return;
+            }
+            if ([self.delegate respondsToSelector:@selector(textFieldChangeVVWithStr:)]) {
+                [self.delegate textFieldChangeVVWithStr:textField.text];
             }
         }
         // 有高亮选择的字符串，则暂不对文字进行统计和限制
@@ -65,13 +87,18 @@
     }
     // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
     else{
-        NSLog(@"%@",textField.text);
-        if (toBeString.length > kssss) {
+            if (toBeString.length > kssss) {
             //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
             //NSLog(@"最多%d个字符!!!",kMaxLength);
             [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self];
             textField.text = [toBeString substringToIndex:kssss];
+            if ([self.delegate respondsToSelector:@selector(textFieldChangeVVWithStr:)]) {
+                    [self.delegate textFieldChangeVVWithStr:textField.text];
+            }
             return;
+        }
+        if ([self.delegate respondsToSelector:@selector(textFieldChangeVVWithStr:)]) {
+            [self.delegate textFieldChangeVVWithStr:textField.text];
         }
     }
 
