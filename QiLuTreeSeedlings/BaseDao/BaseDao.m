@@ -20,7 +20,7 @@
 	//NSArray *paths=[[NSArray alloc] initWithArray: NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)];
 	
 	//NSString *docDir=[[NSString alloc] initWithString:[paths objectAtIndex:0]];
-    NSString *dbPath = [FileUtil getDocumentPath:@"areadb"];
+    NSString *dbPath = [FileUtil getDocumentPath:@"areadbs"];
 	
 	//设置数据库路径
 //	NSString *dbPath=[[NSBundle mainBundle] pathForResource:@"mydatabase" ofType:@""];

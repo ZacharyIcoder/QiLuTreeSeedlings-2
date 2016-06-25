@@ -426,7 +426,7 @@
     self.isFromSingleVoucherCenter  = NO;
     BOOL copySucceeded = NO;
     
-    NSString *fileName = @"areadb";
+    NSString *fileName = @"areadbs";
     
     // Get our document path.
     NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
