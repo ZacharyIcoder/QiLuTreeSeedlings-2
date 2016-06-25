@@ -116,6 +116,7 @@
     if (self.searchBlock) {
         self.searchBlock(self.textField.text);
     }
+    self.textField.text = nil;
     [self.textField resignFirstResponder];
 }
 

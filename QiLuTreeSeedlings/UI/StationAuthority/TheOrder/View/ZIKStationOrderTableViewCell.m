@@ -48,12 +48,12 @@
 }
 
 - (void)configureCell:(ZIKStationOrderModel *)model {
-    self.addressLabel.text = [NSString stringWithFormat:@"用苗地:%@",model.area];
+    self.addressLabel.text    = [NSString stringWithFormat:@"用苗地:%@",model.area];
     self.orderTitleLabel.text = model.orderName;
-    self.startTimeLabel.text = [NSString stringWithFormat:@"发布日期:%@",model.orderDate];
-    self.endTimeLabel.text = [NSString stringWithFormat:@"截止日期:%@",model.endDate];
-    self.offerLabel.text = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
-    self.companyLabel.text = model.engineeringCompany;
+    self.startTimeLabel.text  = [NSString stringWithFormat:@"发布日期:%@",model.orderDate];
+    self.endTimeLabel.text    = [NSString stringWithFormat:@"截止日期:%@",model.endDate];
+    self.offerLabel.text      = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
+    self.companyLabel.text    = model.engineeringCompany;
     //self.qualityLabel.text = model.orderType;
     if ([model.orderType isEqualToString:@"求购单"]) {
         self.topImageView.image = [UIImage imageNamed:@"标签-求购"];
@@ -64,11 +64,11 @@
     }
     self.breedLabel.text = model.miaomu;
    //self.breedLabel.text = @"wejfijwiajfijwaifejwaifjjhwefhwhafohwohfiohwaofhiwoahfiohwifhiowhwefwefwqefwqefwqefwqefwqefwqfwqeffwqewqefwqefwqefwqefwewqfohwoaf";
-    if ([model.status isEqualToString:@"已过期"]) {
-        self.typeImageView.image = [UIImage imageNamed:@"zt已过期"];
-    } else if ([model.status isEqualToString:@"报价中"]) {
+    if (model.statusType == StationOrderStatusTypeOutOfDate) {
+        self.typeImageView.image = [UIImage imageNamed:@"zt已结束"];
+    } else if (model.statusType == StationOrderStatusTypeQuotation) {
         self.typeImageView.image = [UIImage imageNamed:@"zt报价中"];
-    } else if ([model.status isEqualToString:@"已报价"]) {
+    } else if (model.statusType == StationOrderStatusTypeAlreadyQuotation) {
         self.typeImageView.image = [UIImage imageNamed:@"zt已报价"];
     }
 

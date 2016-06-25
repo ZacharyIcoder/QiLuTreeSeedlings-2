@@ -141,6 +141,7 @@
 
                 [orderListArr enumerateObjectsUsingBlock:^(NSDictionary *orderDic, NSUInteger idx, BOOL * _Nonnull stop) {
                     ZIKStationOrderModel *model = [ZIKStationOrderModel yy_modelWithDictionary:orderDic];
+                    [model initStatusType];
                     [self.orderMArr addObject:model];
                 }];
 //                //一个section刷新
@@ -230,9 +231,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKStationOrderDetailViewController *orderDetailVC = [[ZIKStationOrderDetailViewController alloc] init];
     orderDetailVC.hidesBottomBarWhenPushed  = YES;
-     ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
-    orderDetailVC.orderUid = model.uid;
-    [self.navigationController pushViewController:orderDetailVC animated:YES];
+    if (self.orderMArr.count > 0) {
+        ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
+        orderDetailVC.orderUid   = model.uid;
+        orderDetailVC.statusType = model.statusType;
+        [self.navigationController pushViewController:orderDetailVC animated:YES];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

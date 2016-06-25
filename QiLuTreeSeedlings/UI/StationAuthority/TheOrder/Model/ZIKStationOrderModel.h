@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, StationOrderStatusType) {
+    StationOrderStatusTypeOutOfDate = 0,       //已过期
+    StationOrderStatusTypeQuotation = 1,       //报价中
+    StationOrderStatusTypeAlreadyQuotation = 2 //已报价
+};
+
 @interface ZIKStationOrderModel : NSObject
 
 /**
@@ -50,5 +56,12 @@
  *  --订单ID
  */
 @property (nonatomic, copy) NSString *uid;
-
+/**
+ *  枚举的订单状态
+ */
+@property (nonatomic, assign) StationOrderStatusType statusType;
+/**
+ *  初始化枚举的订单状态
+ */
+- (void)initStatusType;
 @end

@@ -8,9 +8,14 @@
 
 #import "ZIKBaseViewController.h"
 #import "ZIKBaseChangeNavViewController.h"
+#import "ZIKStationOrderModel.h"
 @interface ZIKStationOrderDetailViewController : ZIKBaseChangeNavViewController
 /**
  *  订单ID
  */
 @property (nonatomic, copy) NSString *orderUid;
+/**
+ *  枚举的订单状态
+ */
+@property (nonatomic, assign) StationOrderStatusType statusType;
 @end

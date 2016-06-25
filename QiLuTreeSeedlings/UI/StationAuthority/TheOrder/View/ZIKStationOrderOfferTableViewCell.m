@@ -41,12 +41,20 @@
 }
 
 - (void)configureCell:(ZIKStationOrderDetailQuoteModel *)model {
-    self.orderUidLabel.text = [NSString stringWithFormat:@"%ld",self.section];
+    self.orderUidLabel.text = [NSString stringWithFormat:@"%02d",(int)self.section];
     self.nameLabel.text     = model.name;
     self.quantityLabel.text = [NSString stringWithFormat:@"需求:%@",model.quantity];
     self.contentLabel.text  = [NSString stringWithFormat:@"苗木规格说明:%@",model.treedescription];
 //    CGRect rect = [ZIKFunction getCGRectWithContent:model.orderUid width:200 font:14.0f];
 //    self.orderUidLabelLayoutConstraint.constant = rect.size.width;
+    if ([model.stauts isEqualToString:@"1"]) {
+//        [self.quoteButton setTitle:@"已报价" forState:UIControlStateNormal];
+//        self.quoteButton.backgroundColor = self.orderUidLabel.backgroundColor;
+        self.quoteButton.hidden = YES;
+    } else if ([model.stauts isEqualToString:@"0"]){
+//        [self.quoteButton setTitle:@"立即报价" forState:UIControlStateNormal];
+        self.quoteButton.hidden = NO;
+    }
 }
 
 - (void)setQuoteBtnBlock:(QuoteBtnBlock)quoteBtnBlock {

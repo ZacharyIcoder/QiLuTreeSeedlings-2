@@ -13,6 +13,7 @@
 #import "ZIKStationOrderDetailQuoteModel.h"
 #import "YYModel.h"
 #import "ZIKFunction.h"
+#import "ZIKStationOrderQuoteViewController.h"
 typedef NS_ENUM(NSInteger, TypeStyle) {
     TypeStyleOffer   = 0,   //产品报价
     TypeStyleRequire = 1    //订单要求
@@ -55,7 +56,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     ZIKSelectMenuView *selectMenuView = [[ZIKSelectMenuView alloc] initWithFrame:CGRectMake(0, 64, kWidth, 43) dataArray:titleArray];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     selectMenuView.menuBtnBlock = ^(NSInteger menuBtnTag){
-        menuBtnTag == 0 ? (weakSelf.typeStyle = TypeStyleOffer) : (weakSelf.typeStyle = TypeStyleRequire);
+        menuBtnTag == 0 ? (weakSelf.typeStyle = TypeStyleOffer , self.isSearch = YES) : (weakSelf.typeStyle = TypeStyleRequire , self.isSearch = NO, self.isRightBtnHidden = YES);
     };
     [self.view addSubview:selectMenuView];
 
@@ -124,10 +125,17 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     if (self.quoteMArr.count > 0) {
         ZIKStationOrderDetailQuoteModel *model = self.quoteMArr[indexPath.section];
         cell.section = indexPath.section;
+//        if (self.statusType == StationOrderStatusTypeOutOfDate) {
+//            cell.quoteButton.hidden = YES;
+//        }
         [cell configureCell:model];
     }
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+
     cell.quoteBtnBlock = ^(NSInteger section ) {
         NSLog(@"报价:%ld",indexPath.section);
+        ZIKStationOrderQuoteViewController *quoteVC = [[ZIKStationOrderQuoteViewController alloc] initWithNibName:@"ZIKStationOrderQuoteViewController" bundle:nil];
+        [weakSelf.navigationController pushViewController:quoteVC animated:YES];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

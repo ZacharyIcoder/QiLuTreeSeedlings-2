@@ -24,7 +24,7 @@
 }
 
 - (IBAction)telePhoneButtonClick:(id)sender {
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://4007088369"];
+    NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"telprompt://4007088369"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

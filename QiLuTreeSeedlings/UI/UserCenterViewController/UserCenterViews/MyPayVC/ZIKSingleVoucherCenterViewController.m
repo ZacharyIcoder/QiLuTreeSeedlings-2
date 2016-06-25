@@ -202,6 +202,7 @@
 //                    [self.navigationController pushViewController:zikPayVC animated:YES];
                    return ;
               }
+                APPDELEGATE.isFromSingleVoucherCenter = NO;
 //                _buyAlertView = [BuyMessageAlertView addActionVieWithPrice:[NSString stringWithFormat:@"%.2f",self.price               ] AndMone:[NSString stringWithFormat:@"%.2f",moneyNum]];
                  _buyAlertView = [BuyMessageAlertView addActionVieWithMoney:[NSString stringWithFormat:@"%.2f",moneyNum] withPrice:[NSString stringWithFormat:@"%.2f",self.price]];
                 [_buyAlertView.rightBtn addTarget:self action:@selector(payYue) forControlEvents:UIControlEventTouchUpInside];
@@ -221,6 +222,7 @@
             [ToastView showTopToast:@"您还未安装微信!"];
             return;
         }
+        APPDELEGATE.isFromSingleVoucherCenter = NO;
         //NSLog(@"微信支付");
         NSString *pricesting = [NSString stringWithFormat:@"%f",self.price];
         [HTTPCLIENT weixinPayOrder:pricesting supplyBuyUid:self.buyUid type:@"1" Success:^(id responseObject) {
@@ -251,11 +253,13 @@
     }
     else if (self.lastIndexPath.row == 2) {
         //NSLog(@"支付宝支付");
+        APPDELEGATE.isFromSingleVoucherCenter = NO;
     NSString *pricesting = [NSString stringWithFormat:@"%.2f",self.price];
         [ZIKFunction zhiFuBao:self name:@"苗木充值" titile:@"苗木充值" price:pricesting orderId:APPDELEGATE.userModel.access_id supplyBuyUid:self.buyUid type:@"1"];
     }
     else if (self.lastIndexPath.row == 3) {
         //NSLog(@"银联支付");
+        APPDELEGATE.isFromSingleVoucherCenter = NO;
         [ToastView showToast:@"银联支付暂未开通" withOriginY:Width/3 withSuperView:self.view];
         return;
         //[self getUPPay];

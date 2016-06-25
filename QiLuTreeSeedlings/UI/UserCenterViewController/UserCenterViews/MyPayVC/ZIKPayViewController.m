@@ -86,8 +86,8 @@
 - (void)requestIsFirstRecharge {
     [HTTPCLIENT isFirstRecharge:nil Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 1) {
-            if ([responseObject[@"result"]  integerValue] == 1 && nameTextField.text.floatValue<100) {
-                [ToastView showTopToast:@"第一次充值金额不能低于100元"];
+            if ([responseObject[@"result"]  integerValue] == 1 && nameTextField.text.floatValue<1) {
+                [ToastView showTopToast:@"第一次充值金额不能低于1元"];
                 return;
             }
             else {
