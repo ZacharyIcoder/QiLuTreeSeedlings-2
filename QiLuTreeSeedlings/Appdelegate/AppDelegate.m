@@ -47,6 +47,7 @@
     [HTTPCLIENT getVersionSuccess:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
              NSInteger version=[[[responseObject objectForKey:@"result"] objectForKey:@"version"] integerValue];
+            //版本更新比较
             if (version>2) {
                 [ToastView showTopToast:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"]];
             }
