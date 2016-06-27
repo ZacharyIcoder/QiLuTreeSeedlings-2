@@ -20,5 +20,9 @@
 /**
  *  报价要求
  */
-@property (nonatomic, copy) NSString *quoteAsk;
+@property (nonatomic, copy) NSString *quoteRequirement;
+/**
+ *  规格要求
+ */
+@property (nonatomic, copy) NSString *standardRequirement;
 @end

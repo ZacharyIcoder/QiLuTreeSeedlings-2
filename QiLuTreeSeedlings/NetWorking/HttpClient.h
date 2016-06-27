@@ -726,7 +726,7 @@ failure:(void (^)(NSError *error))failure;
                      compressImgs:(NSString *)compressImgs
                           Success:(void (^)(id responseObject))success
                           failure:(void (^)(NSError *error))failure;
-#pragma mark ---------- APP设置首次充值最低额度 -----------
-- (void)getLimitChargeSuccess:(void (^)(id responseObject))success
-failure:(void (^)(NSError *error))failure;
+//#pragma mark ---------- APP设置首次充值最低额度 -----------
+//- (void)getLimitChargeSuccess:(void (^)(id responseObject))success
+//failure:(void (^)(NSError *error))failure;
 @end

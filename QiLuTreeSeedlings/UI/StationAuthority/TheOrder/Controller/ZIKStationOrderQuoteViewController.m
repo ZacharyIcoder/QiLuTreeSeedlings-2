@@ -7,14 +7,20 @@
 //
 
 #import "ZIKStationOrderQuoteViewController.h"
+#import "BWTextView.h"
 
 @interface ZIKStationOrderQuoteViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *quoteTableView;
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) BWTextView *countTextView;
+@property (nonatomic, strong) BWTextView *priceTextView;
+@property (nonatomic, strong) BWTextView *contentTextView;
 @end
 
 @implementation ZIKStationOrderQuoteViewController
-
+{
+    UILabel *detailLabel;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -30,7 +36,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -43,13 +49,41 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   static  NSString *tableViewCellId = @"cellID";
+    static  NSString *tableViewCellId = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewCellId];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:tableViewCellId];
+        detailLabel = [[UILabel alloc] init];
     }
     cell.textLabel.text = self.titleArray[indexPath.section][indexPath.row];
-    cell.detailTextLabel.text = cell.textLabel.text;
+    cell.textLabel.textColor = detialLabColor;
+    cell.textLabel.font = [UIFont systemFontOfSize:15.0f];
+    if (indexPath.section == 0) {
+        detailLabel.frame = CGRectMake(100, 5, kWidth-120, 34);
+        detailLabel.textAlignment = NSTextAlignmentLeft;
+        detailLabel.textColor = DarkTitleColor;
+        detailLabel.font = [UIFont systemFontOfSize:15.0f];
+        if (indexPath.row == 0) {
+            detailLabel.text = self.name;
+        } else if (indexPath.row == 1) {
+            detailLabel.text = self.count;
+        } else if (indexPath.row == 2) {
+            detailLabel.text = self.quoteRequirement;
+        } else if (indexPath.row == 3) {
+            detailLabel.text = self.standardRequirement;
+        }
+        [cell addSubview:detailLabel];
+
+    } else if (indexPath.section == 1) {
+        UITextField *priceTextField = [[UITextField alloc] init];
+        priceTextField.frame = CGRectMake(100, 5, kWidth-120, 34);
+        priceTextField.layer.masksToBounds = YES;
+        priceTextField.layer.cornerRadius = 6.0f;
+        priceTextField.layer.borderWidth =  1;
+        priceTextField.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        priceTextField.placeholder = @"ewifiwefjiwf";
+        [cell addSubview:priceTextField];
+    }
     return cell;
 }
 

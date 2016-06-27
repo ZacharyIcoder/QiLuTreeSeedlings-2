@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self requestLimit];
+//    [self requestLimit];
     self.vcTitle = @"充值";
 
 
@@ -74,21 +74,13 @@
 //        return;
 //    }
     [self requestIsFirstRecharge];
-//    if (![[NSUserDefaults standardUserDefaults] objectForKey:Recharge] && nameTextField.text.integerValue<100)/*[[NSUserDefaults standardUserDefaults] setValue:@"yes" forKey:BB_XCONST_ISAUTO_LOGIN])#define Recharge @"Is top-up for the first time"*/
-//    {
-////        [ToastView showTopToast:@"第一次充值金额不能低于100元"];
-////        return;
-//    }
-//
-//    ZIKVoucherCenterViewController *voucherVC = [[ZIKVoucherCenterViewController alloc] init];
-//    voucherVC.price = [NSString stringWithFormat:@"%.2f",nameTextField.text.floatValue];
-//    [self.navigationController pushViewController:voucherVC animated:YES];
 }
 
 - (void)requestIsFirstRecharge {
     [HTTPCLIENT isFirstRecharge:nil Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 1) {
-            if ([responseObject[@"result"]  integerValue] == 1 && nameTextField.text.floatValue<self.limitPrice.floatValue) {
+            self.limitPrice = [NSString stringWithFormat:@"%@",responseObject[@"result"]];
+            if ( nameTextField.text.floatValue < self.limitPrice.floatValue) {
                 [ToastView showTopToast:[NSString stringWithFormat:@"第一次充值金额不能低于%.2f元",self.limitPrice.floatValue]];
                 return;
             }
@@ -111,16 +103,16 @@
 - (void)textFieldChanged:(NSNotification *)obj {
 }
 
-- (void)requestLimit {
-    [HTTPCLIENT getLimitChargeSuccess:^(id responseObject) {
-        if ([responseObject[@"success"] integerValue] == 1) {
-            self.limitPrice = responseObject[@"result"];
-        } else {
-            self.limitPrice = [NSString stringWithFormat:@"%.2f",0.01f];
-        }
-    } failure:^(NSError *error) {
-    }];
-}
+//- (void)requestLimit {
+//    [HTTPCLIENT getLimitChargeSuccess:^(id responseObject) {
+//        if ([responseObject[@"success"] integerValue] == 1) {
+//            self.limitPrice = responseObject[@"result"];
+//        } else {
+//            self.limitPrice = [NSString stringWithFormat:@"%.2f",0.01f];
+//        }
+//    } failure:^(NSError *error) {
+//    }];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

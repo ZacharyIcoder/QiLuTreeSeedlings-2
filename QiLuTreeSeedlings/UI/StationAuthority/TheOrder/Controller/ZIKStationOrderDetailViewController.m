@@ -135,6 +135,9 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     cell.quoteBtnBlock = ^(NSInteger section ) {
         NSLog(@"报价:%ld",indexPath.section);
         ZIKStationOrderQuoteViewController *quoteVC = [[ZIKStationOrderQuoteViewController alloc] initWithNibName:@"ZIKStationOrderQuoteViewController" bundle:nil];
+        ZIKStationOrderDetailQuoteModel *model = weakSelf.quoteMArr[indexPath.section];
+        quoteVC.name  = model.name;
+        quoteVC.count = model.quantity;
         [weakSelf.navigationController pushViewController:quoteVC animated:YES];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
