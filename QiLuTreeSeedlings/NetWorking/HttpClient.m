@@ -3139,6 +3139,7 @@
     parmers[@"device_id"]        = str;
     parmers[@"orderUid"]         = orderUid;
     parmers[@"keyword"]          = keyword;
+    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -3149,6 +3150,70 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
+}
+#pragma mark ---------- 站长助手-报价 -----------
+/**
+ *  报价
+ *
+ *  @param uid          订单苗木ID
+ *  @param orderUid     订单ID
+ *  @param price        报价价格
+ *  @param quantity     报价数量
+ *  @param province     苗圃 省
+ *  @param city         苗圃 市
+ *  @param county       苗圃 县
+ *  @param town         苗圃 镇
+ *  @param description  描述
+ *  @param imags        大图‘,’分割
+ *  @param compressImgs 缩略图‘,’分割
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)stationQuoteCreateWithUid:(NSString *)uid
+                         orderUid:(NSString *)orderUid
+                            price:(NSString *)price
+                         quantity:(NSString *)quantity
+                         province:(NSString *)province
+                             city:(NSString *)city
+                           county:(NSString *)county
+                             town:(NSString *)town
+                      description:(NSString *)description
+                             imgs:(NSString *)imags
+                     compressImgs:(NSString *)compressImgs
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/quote/create";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"orderUid"]         = orderUid;
+    parmers[@"price"]            = price;
+    parmers[@"quantity"]         = quantity;
+    parmers[@"province"]         = province;
+    parmers[@"city"]             = city;
+    parmers[@"county"]           = county;
+    parmers[@"town"]             = town;
+    parmers[@"description"]      = description;
+    parmers[@"imags"]            = imags;
+    parmers[@"compressImgs"]     = compressImgs;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
 }
 
 @end

@@ -695,4 +695,35 @@ failure:(void (^)(NSError *error))failure;
                                   keyword:(NSString *)keyword
                                   Success:(void (^)(id responseObject))success
                                   failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长助手-报价 -----------
+/**
+ *  报价
+ *
+ *  @param uid          订单苗木ID
+ *  @param orderUid     订单ID
+ *  @param price        报价价格
+ *  @param quantity     报价数量
+ *  @param province     苗圃 省
+ *  @param city         苗圃 市
+ *  @param county       苗圃 县
+ *  @param town         苗圃 镇
+ *  @param description  描述
+ *  @param imags        大图‘,’分割
+ *  @param compressImgs 缩略图‘,’分割
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)stationQuoteCreateWithUid:(NSString *)uid
+                         orderUid:(NSString *)orderUid
+                            price:(NSString *)price
+                         quantity:(NSString *)quantity
+                         province:(NSString *)province
+                             city:(NSString *)city
+                           county:(NSString *)county
+                             town:(NSString *)town
+                      description:(NSString *)description
+                             imgs:(NSString *)imags
+                     compressImgs:(NSString *)compressImgs
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
 @end
