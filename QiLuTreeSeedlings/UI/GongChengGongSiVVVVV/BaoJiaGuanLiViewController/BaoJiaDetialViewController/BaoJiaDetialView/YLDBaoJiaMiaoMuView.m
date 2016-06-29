@@ -22,7 +22,7 @@
 -(void)setModel:(YLDBaoJiaMiaoMuModel *)model
 {
     _model=model;
-    self.timeLab.text=model.orderName;
+    self.titleLab.text=model.orderName;
     self.nameLab.text=model.name;
     self.timeLab.text=model.endDate;
     self.numLab.text=model.quantity;

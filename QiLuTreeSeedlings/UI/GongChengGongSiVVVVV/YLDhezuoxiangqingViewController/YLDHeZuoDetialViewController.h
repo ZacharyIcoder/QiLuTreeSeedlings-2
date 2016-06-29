@@ -9,5 +9,5 @@
 #import "NomarBaseViewController.h"
 
 @interface YLDHeZuoDetialViewController : NomarBaseViewController
-
+-(id)initWithOrderUid:(NSString *)orderUid WithitemUid:(NSString *)itemUid;
 @end

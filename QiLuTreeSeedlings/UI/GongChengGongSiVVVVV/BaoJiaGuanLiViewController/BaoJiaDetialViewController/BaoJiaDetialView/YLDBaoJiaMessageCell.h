@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "YLDBaoJiaMessageModel.h"
+@protocol YLDBaoJiaMessageCellDelegate <NSObject>
+@optional
+-(void)actionWithtype:(NSInteger)type andModel:(YLDBaoJiaMessageModel *)model;
+@end
 @interface YLDBaoJiaMessageCell : UITableViewCell
+@property (nonatomic,weak) id<YLDBaoJiaMessageCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *backV;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;

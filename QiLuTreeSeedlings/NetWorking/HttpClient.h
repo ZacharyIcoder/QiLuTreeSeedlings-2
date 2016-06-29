@@ -695,4 +695,13 @@ failure:(void (^)(NSError *error))failure;
                                   keyword:(NSString *)keyword
                                   Success:(void (^)(id responseObject))success
                                   failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 建立合作 -----
+-(void)jianliHezuoWithBaoJiaID:(NSString *)uid   Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 合作详情 -----
+-(void)hezuoDetialWithorderUid:(NSString *)orderUid withitemUid:(NSString *)itemUid
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 报价详情-苗木信息 -----
+//-(void)hezuoDetialMiaoMuXiXi
 @end

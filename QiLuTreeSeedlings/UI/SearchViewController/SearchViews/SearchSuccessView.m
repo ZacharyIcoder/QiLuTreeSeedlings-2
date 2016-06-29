@@ -45,8 +45,7 @@
         __weak typeof(self) weakSelf=self;
         [pullTableView addHeaderWithCallback:^{
             weakSelf.PageCount=1;
-            [weakSelf.sellDataAry removeAllObjects];
-            [weakSelf.buyDataAry removeAllObjects];
+    
             if (weakSelf.searchBAT==1) {
                 
                 [weakSelf getListData];
@@ -131,11 +130,17 @@
     if (self.searchType==1) {
         [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
              //NSLog(@"%@",responseObject);
+            if(self.PageCount==1)
+            {
+                [self.sellDataAry removeAllObjects];
+                [self.buyDataAry removeAllObjects];
+            }
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             NSArray *ary=[dic objectForKey:@"list"];
             NSArray *aryzz=[HotSellModel hotSellAryByAry:ary];
             HotSellModel *aryzzLast =  [aryzz lastObject];
             HotSellModel *dataLast =  [self.sellDataAry lastObject];
+            
             //NSLog(@"%@---%@",dataLast.uid,aryzzLast.uid);
             if (aryzz.count > 0) {
                 if ([dataLast.uid isEqualToString: aryzzLast.uid]) {
@@ -162,6 +167,11 @@
     if (self.searchType==2) {
         [HTTPCLIENT BuyListWithWithPageSize:@"15" WithStatus:[NSString stringWithFormat:@"%ld",(long)self.status]WithStartNumber:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
            // NSLog(@"%@",responseObject);
+            if(self.PageCount==1)
+            {
+                [self.sellDataAry removeAllObjects];
+                [self.buyDataAry removeAllObjects];
+            }
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.status= [[dic objectForKey:@"status"] integerValue];
             NSArray *ary=[dic objectForKey:@"list"];
@@ -245,6 +255,11 @@
     if (self.searchType==1) {
         [HTTPCLIENT sellSearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithProductUid:self.productUid WithProductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);
+            if(self.PageCount==1)
+            {
+                [self.sellDataAry removeAllObjects];
+                [self.buyDataAry removeAllObjects];
+            }
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             NSArray *ary=[dic objectForKey:@"list"];
             NSArray *aryzz=[HotSellModel hotSellAryByAry:ary];
@@ -279,6 +294,11 @@
     if (self.searchType==2) {
         [HTTPCLIENT buySearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithproductUid:self.productUid WithproductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
+            if(self.PageCount==1)
+            {
+                [self.sellDataAry removeAllObjects];
+                [self.buyDataAry removeAllObjects];
+            }
             if (dic) {
                 NSArray *Ary=[dic objectForKey:@"list"];
                 NSArray *aryzz=[HotBuyModel creathotBuyModelAryByAry:Ary];

@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface YLDHeZuoDEMessageCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *numLab;
+@property (weak, nonatomic) IBOutlet UILabel *nameLab;
+@property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
+@property (weak, nonatomic) IBOutlet UILabel *shuomingLab;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shuomingH;
 
 @end

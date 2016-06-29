@@ -13,6 +13,7 @@
 #import "UIDefines.h"
 #import "YLDTuiJianGongZuoZhanCell.h"
 #import "SellSearchTableViewCell.h"
+#import "ZIKWorkstationViewController.h"
 @interface YLDZhanZhangGongYingViewController ()<AdvertDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -122,6 +123,15 @@
 {
     if (section==1) {
         UIView *view=[self makeTitleViewWithTitle:@"推荐工作站" AndColor:kRedHintColor andY:0];
+       UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
+        [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
+        [moreBtn setTitleColor:kRedHintColor forState:UIControlStateNormal];
+        UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
+        [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
+        [view addSubview:hotMoreRowImgV];
+        [moreBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [moreBtn addTarget:self action:@selector(moreWorkstationAcion) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:moreBtn];
         return view;
     }
     if (section==2) {
@@ -131,6 +141,13 @@
     UIView *view=[[UIView alloc]init];
     
     return view;
+}
+-(void)moreWorkstationAcion
+{
+     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+    ZIKWorkstationViewController *vc=[[ZIKWorkstationViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 //构建小标题栏
 -(UIView *)makeTitleViewWithTitle:(NSString *)title AndColor:(UIColor *)color andY:(CGFloat )y

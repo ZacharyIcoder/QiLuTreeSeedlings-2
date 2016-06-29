@@ -270,6 +270,10 @@
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
 		EA8CAA651C8963D500058A34 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA641C8963D500058A34 /* DataCache.m */; };
 		EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8CAA671C89669800058A34 /* NSString+MD5.m */; };
+		EA8D3D331D2395660095840F /* 首页-ico_工程订单.png in Resources */ = {isa = PBXBuildFile; fileRef = EA8D3D321D2395660095840F /* 首页-ico_工程订单.png */; };
+		EA8D3D381D2396DB0095840F /* LYDGCGSTiShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D3D361D2396DB0095840F /* LYDGCGSTiShiViewController.m */; };
+		EA8D3D391D2396DB0095840F /* LYDGCGSTiShiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8D3D371D2396DB0095840F /* LYDGCGSTiShiViewController.xib */; };
+		EA8D3D3D1D23B2380095840F /* YLDHeZuoDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D3D3C1D23B2380095840F /* YLDHeZuoDetial.m */; };
 		EA9A22951D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22931D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m */; };
 		EA9A22961D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A22941D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib */; };
 		EA9A229C1D1241E3000CA161 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22981D1241E3000CA161 /* CHANGELOG.md */; };
@@ -1079,6 +1083,12 @@
 		EA8CAA641C8963D500058A34 /* DataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
 		EA8CAA661C89669800058A34 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		EA8CAA671C89669800058A34 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		EA8D3D321D2395660095840F /* 首页-ico_工程订单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-ico_工程订单.png"; sourceTree = "<group>"; };
+		EA8D3D351D2396DB0095840F /* LYDGCGSTiShiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDGCGSTiShiViewController.h; sourceTree = "<group>"; };
+		EA8D3D361D2396DB0095840F /* LYDGCGSTiShiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDGCGSTiShiViewController.m; sourceTree = "<group>"; };
+		EA8D3D371D2396DB0095840F /* LYDGCGSTiShiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LYDGCGSTiShiViewController.xib; sourceTree = "<group>"; };
+		EA8D3D3B1D23B2380095840F /* YLDHeZuoDetial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDHeZuoDetial.h; sourceTree = "<group>"; };
+		EA8D3D3C1D23B2380095840F /* YLDHeZuoDetial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDHeZuoDetial.m; sourceTree = "<group>"; };
 		EA9A22921D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMiaoMuUnTableViewCell.h; sourceTree = "<group>"; };
 		EA9A22931D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMiaoMuUnTableViewCell.m; sourceTree = "<group>"; };
 		EA9A22941D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMiaoMuUnTableViewCell.xib; sourceTree = "<group>"; };
@@ -2177,6 +2187,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA8D3D321D2395660095840F /* 首页-ico_工程订单.png */,
 				EA5A26321D1BABD100850812 /* PLUS.png */,
 				EAFB90081D1A860300FCF88B /* 升级箭头@2x.png */,
 				EAFB90041D1A844700FCF88B /* drafts.png */,
@@ -2557,6 +2568,7 @@
 		EA5A08141D14E629005000E9 /* YLDhezuoxiangqingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA8D3D3A1D23B0720095840F /* Model */,
 				EAFB8FEC1D1A6FA900FCF88B /* HeZuoDetialCell */,
 				EA5A08151D14E648005000E9 /* YLDHeZuoDetialViewController.h */,
 				EA5A08161D14E648005000E9 /* YLDHeZuoDetialViewController.m */,
@@ -2620,6 +2632,7 @@
 		EA5B26E81C7D6E5800863F9D /* HotSellView */ = {
 			isa = PBXGroup;
 			children = (
+				EA8D3D341D2396B10095840F /* YLDGCGSTishiViewController */,
 				EA5B26E91C7D6E7100863F9D /* HotSellView.h */,
 				EA5B26EA1C7D6E7100863F9D /* HotSellView.m */,
 				EA5B26EC1C7D6E8E00863F9D /* HotSellViewCell.h */,
@@ -2911,6 +2924,25 @@
 				EA8CAA641C8963D500058A34 /* DataCache.m */,
 			);
 			path = DataCache;
+			sourceTree = "<group>";
+		};
+		EA8D3D341D2396B10095840F /* YLDGCGSTishiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D3D351D2396DB0095840F /* LYDGCGSTiShiViewController.h */,
+				EA8D3D361D2396DB0095840F /* LYDGCGSTiShiViewController.m */,
+				EA8D3D371D2396DB0095840F /* LYDGCGSTiShiViewController.xib */,
+			);
+			path = YLDGCGSTishiViewController;
+			sourceTree = "<group>";
+		};
+		EA8D3D3A1D23B0720095840F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA8D3D3B1D23B2380095840F /* YLDHeZuoDetial.h */,
+				EA8D3D3C1D23B2380095840F /* YLDHeZuoDetial.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EA9A22971D1241E3000CA161 /* JSONKit */ = {
@@ -4651,6 +4683,7 @@
 				FCC5C3041CFE73BE004669ED /* 积分兑换-兑换成功.png in Resources */,
 				FC6FED8D1CAD103F000E2CA5 /* 支付订单48x48.png in Resources */,
 				FCCEA4A31CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.xib in Resources */,
+				EA8D3D391D2396DB0095840F /* LYDGCGSTiShiViewController.xib in Resources */,
 				EA16C4DF1C93B73000A33BD3 /* myCollectEmpy@2x.png in Resources */,
 				EA4EEA1B1CD8822800FEFD52 /* buybiaoqian.png in Resources */,
 				EA1CF4041CACD11A00AF2D82 /* loading01@2x.png in Resources */,
@@ -4672,6 +4705,7 @@
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
 				FC0853FE1D191D86003A47BA /* ico_地址-工作站.png in Resources */,
 				FC56128E1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
+				EA8D3D331D2395660095840F /* 首页-ico_工程订单.png in Resources */,
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
@@ -5002,6 +5036,7 @@
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
 				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,
 				FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */,
+				EA8D3D381D2396DB0095840F /* LYDGCGSTiShiViewController.m in Sources */,
 				FC50B3451CAE4C4A0022A24C /* base64.m in Sources */,
 				EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */,
 				FC5612471D0C092F00E5743B /* IQUIViewController+Additions.m in Sources */,
@@ -5120,6 +5155,7 @@
 				EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */,
 				EA5252F41CE179E40004639C /* CityTableViewCell.m in Sources */,
 				EA4E64661D0E4D1500A7D731 /* YLDUserHelpViewController.m in Sources */,
+				EA8D3D3D1D23B2380095840F /* YLDHeZuoDetial.m in Sources */,
 				EA5252EE1CE174990004639C /* CityModel.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,
 				FC56129C1D0C092F00E5743B /* ZIKNavConfigViewController.m in Sources */,

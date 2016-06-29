@@ -14,7 +14,8 @@
 #import "YLDBaoJiaMiaoMuView.h"
 #import "YLDBaoJiaMessageCell.h"
 #import "YLDBaoJiaMessageModel.h"
-@interface YLDBaoJiaDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "YLDSearchNavView.h"
+@interface YLDBaoJiaDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate,YLDBaoJiaMessageCellDelegate>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
 @property (nonatomic,weak)UITableView *tableView;
@@ -23,6 +24,9 @@
 @property (nonatomic)NSInteger pageNum;
 @property (nonatomic,strong)NSMutableArray *dataAry;
 @property (nonatomic,strong)YLDBaoJiaMiaoMuModel *detialModel;
+@property (nonatomic,strong) NSString *searchStr;
+@property (nonatomic,strong) UIButton *saerchBtn;
+@property (nonatomic,weak) YLDSearchNavView *searchV;
 @end
 
 @implementation YLDBaoJiaDetialViewController
@@ -52,15 +56,27 @@
     [tableView addHeaderWithCallback:^{
         weakSlef.pageNum=1;
         ShowActionV();
-        [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
+        [weakSlef getMessageListWtihKeyWord:weakSlef.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
     }];
     [tableView addFooterWithCallback:^{
         weakSlef.pageNum+=1;
         ShowActionV();
-        [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
+        [weakSlef getMessageListWtihKeyWord:weakSlef.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
     }];
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
+    UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 24, 30, 30)];
+    [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+    [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
+    [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.saerchBtn=searchShowBtn;
+    //[self.navBackView addSubview:searchShowBtn];
+    YLDSearchNavView *searchV =[[YLDSearchNavView alloc]init];
+    self.searchV=searchV;
+    searchV.delegate=self;
+    searchV.hidden=YES;
+    [self.navBackView addSubview:searchV];
+
     [HTTPCLIENT baojiaDetialMiaoMuWtihUid:self.Uid Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
@@ -75,6 +91,16 @@
     }];
     [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
     // Do any additional setup after loading the view.
+}
+-(void)searchBtnAction:(UIButton *)sender
+{
+    self.searchV.hidden=NO;
+}
+-(void)textFieldChangeVVWithStr:(NSString *)textStr
+{
+    self.pageNum=1;
+    self.searchStr=textStr;
+    [self getMessageListWtihKeyWord:textStr WithPageNumber:[NSString stringWithFormat:@"%ld",self.pageNum]];
 }
 -(void)getMessageListWtihKeyWord:(NSString *)keyWord WithPageNumber:(NSString *)pageNumber
 {
@@ -174,13 +200,15 @@
         self.tableView.hidden=YES;
 //        self.editingBtn.hidden=NO;
 //        self.tableView.hidden=YES;
-//        self.searchV.hidden=YES;
+        self.searchV.hidden=YES;
+        self.saerchBtn.hidden=YES;
 //        [self.saerchBtn removeFromSuperview];
     }
     if (sender.tag==1) {
         self.miaomuDetialV.hidden=YES;
         self.tableView.hidden=NO;
         [self.tableView reloadData];
+        self.saerchBtn.hidden=NO;
 //        self.tableView.hidden=NO;
 //        self.editingBtn.hidden=YES;
 //        if (self.saerchBtn.selected) {
@@ -196,6 +224,9 @@
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame=frame;
     }];
+}
+-(void)actionWithtype:(NSInteger)type andModel:(YLDBaoJiaMessageModel *)model{
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

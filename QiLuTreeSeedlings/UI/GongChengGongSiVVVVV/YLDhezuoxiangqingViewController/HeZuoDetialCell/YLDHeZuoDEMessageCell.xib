@@ -90,6 +90,13 @@
                     <constraint firstAttribute="trailingMargin" secondItem="IFZ-Ox-v5v" secondAttribute="trailing" constant="-8" id="yZY-yP-cRk"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLab" destination="Obk-H8-bO6" id="LBs-lX-g0G"/>
+                <outlet property="numLab" destination="fiD-Pl-Jlw" id="akl-k0-cRL"/>
+                <outlet property="shuliangLab" destination="e5r-HJ-udi" id="577-aF-50t"/>
+                <outlet property="shuomingH" destination="eLo-hm-msC" id="7zx-IT-EFK"/>
+                <outlet property="shuomingLab" destination="J5z-vP-j2S" id="Wjg-8S-SS4"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

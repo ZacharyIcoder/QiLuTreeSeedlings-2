@@ -21,7 +21,13 @@
     // Do any additional setup after loading the view.
 
     //    self.leftBarBtnImgString = @"BackBtn";
-    self.leftBarBtnTitleString = @"苗信通";
+    if (self.navigationController.childViewControllers.count>1) {
+        self.vcTitle=@"工作站";
+        self.leftBarBtnImgString=@"BackBtn";
+    }else{
+      self.leftBarBtnTitleString = @"苗信通";
+    }
+    
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.leftBarBtnBlock = ^{
         [weakSelf backBtnAction:nil];
@@ -99,7 +105,12 @@
 
 -(void)backBtnAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKBackHome" object:nil];
-}
+    if (self.navigationController.childViewControllers.count>1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKBackHome" object:nil];
+    }
+    }
+  
 
 @end

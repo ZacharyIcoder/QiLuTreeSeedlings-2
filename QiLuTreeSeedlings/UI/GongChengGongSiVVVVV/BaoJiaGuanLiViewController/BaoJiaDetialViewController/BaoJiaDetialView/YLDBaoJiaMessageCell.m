@@ -51,6 +51,12 @@
         }
     }
 }
+-(void)hezuoBtnAciotn:(UIButton *)sender
+{
+    if (self.delegate) {
+        [self.delegate actionWithtype:sender.tag andModel:self.model];
+    }
+}
 + (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
 {
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
@@ -71,6 +77,7 @@
     UIGraphicsEndImageContext();
     return image;
 }
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

@@ -19,8 +19,8 @@
     
     self=[super initWithFrame:frame];
     if (self) {
-        dataAry =@[@"供应信息",@"求购信息",@"我的收藏",@"信息定制",@"工作站助手",@"工程助手"];
-        NSArray *imageAry=@[@"NomerSellMessageBtn",@"NomerBuyMessageBtn",@"NomerMyCollectionBtn",@"NomerCustomBtn",@"zhanzhongtongshouye",@"gongchenggongsishouye"];
+        dataAry =@[@"供应信息",@"求购信息",@"我的收藏",@"信息定制",@"工作站助手",@"工程助手",@"工程订单",@"金牌供应商"];
+        NSArray *imageAry=@[@"NomerSellMessageBtn",@"NomerBuyMessageBtn",@"NomerMyCollectionBtn",@"NomerCustomBtn",@"zhanzhongtongshouye",@"gongchenggongsishouye",@"首页-ico_工程订单",@"gongchenggongsishouye"];
         [self setBackgroundColor:[UIColor whiteColor]];
         for (int i=0; i<dataAry.count; i++) {
             
