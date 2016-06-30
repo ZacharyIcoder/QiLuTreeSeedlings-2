@@ -740,5 +740,26 @@ failure:(void (^)(NSError *error))failure;
 //#pragma mark ---------- APP设置首次充值最低额度 -----------
 //- (void)getLimitChargeSuccess:(void (^)(id responseObject))success
 //failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长中心 -----------
+- (void)stationMasterSuccess:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 站长中心编辑 -----------
+/**
+ *  站长中心编辑
+ *
+ *  @param chargePerson 负责人
+ *  @param phone        电话
+ *  @param brief        简介，说明
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)stationMasterUpdateWithChargePerson:(NSString *)chargePerson
+                                      phone:(NSString *)phone
+                                      brief:(NSString *)brief
+                                    Success:(void (^)(id responseObject))success
+                                    failure:(void (^)(NSError *error))failure;
+
+
 
 @end

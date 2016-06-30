@@ -3293,4 +3293,69 @@
      //    }];
      //
      //}
+#pragma mark ---------- 站长中心 -----------
+- (void)stationMasterSuccess:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/master";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+
+#pragma mark ---------- 站长中心编辑 -----------
+/**
+ *  站长中心编辑
+ *
+ *  @param chargePerson 负责人
+ *  @param phone        电话
+ *  @param brief        简介，说明
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)stationMasterUpdateWithChargePerson:(NSString *)chargePerson
+                                      phone:(NSString *)phone
+                                      brief:(NSString *)brief
+                                    Success:(void (^)(id responseObject))success
+                                    failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/master/update";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"chargePerson"]     = chargePerson;
+    parmers[@"phone"]            = phone;
+    parmers[@"brief"]            = brief;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
 @end
