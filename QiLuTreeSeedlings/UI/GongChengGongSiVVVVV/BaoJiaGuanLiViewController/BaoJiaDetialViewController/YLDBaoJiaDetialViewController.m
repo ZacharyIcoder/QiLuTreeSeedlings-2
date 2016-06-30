@@ -228,6 +228,7 @@
     }];
 }
 -(void)actionWithtype:(NSInteger)type andModel:(YLDBaoJiaMessageModel *)model{
+    NSLog(@"%@",model.uid);
     if (type==1) {
        
         NSString *title = NSLocalizedString(@"建立合作", nil);
@@ -261,7 +262,7 @@
         return;
     }
     if (type==2) {
-        YLDHeZuoDetialViewController *DAA=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:self.Uid WithitemUid:model.uid];
+        YLDHeZuoDetialViewController *DAA=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:nil WithitemUid:model.uid];
         [self.navigationController pushViewController:DAA animated:YES];
     
     }

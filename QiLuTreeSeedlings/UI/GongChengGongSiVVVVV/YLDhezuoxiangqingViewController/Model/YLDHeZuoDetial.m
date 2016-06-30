@@ -27,6 +27,7 @@
     model.quotationRequired=[dic objectForKey:@"quotationRequired"];
     model.status=[dic objectForKey:@"status"];
     model.uid=[dic objectForKey:@"uid"];
+    model.company=[dic objectForKey:@"company"];
     return model;
 }
 @end

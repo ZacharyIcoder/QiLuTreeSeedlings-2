@@ -24,5 +24,6 @@
 @property (nonatomic,strong) NSString *quotationRequired;
 @property (nonatomic,strong) NSString *status;
 @property (nonatomic,strong) NSString *uid;
+@property (nonatomic,strong) NSString *company;
 +(YLDHeZuoDetial *)creatYLDHeZuoDetialWithDic:(NSDictionary *)dic;
 @end

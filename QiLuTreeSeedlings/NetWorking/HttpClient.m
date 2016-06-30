@@ -3259,7 +3259,9 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
-    parmers[@"orderUid"]         = orderUid;
+    if (orderUid) {
+        parmers[@"orderUid"]         = orderUid;
+    }
     if (itemUid) {
         parmers[@"itemUid"]      = itemUid;
     }

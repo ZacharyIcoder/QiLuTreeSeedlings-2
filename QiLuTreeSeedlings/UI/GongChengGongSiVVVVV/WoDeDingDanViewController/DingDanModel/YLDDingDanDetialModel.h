@@ -28,5 +28,6 @@
 @property (nonatomic,copy) NSString *uid;
 @property (nonatomic,copy) NSString *dbh;
 @property (nonatomic,copy) NSString *groundDiameter;
+@property (nonatomic,copy) NSString *company;
 +(YLDDingDanDetialModel *)yldDingDanDetialModelWithDic:(NSDictionary *)dic;
 @end

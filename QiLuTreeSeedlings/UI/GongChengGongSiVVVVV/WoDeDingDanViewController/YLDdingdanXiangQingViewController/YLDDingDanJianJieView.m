@@ -28,6 +28,7 @@
     self.nameLab.text=model.orderName;
     self.dingdanTypeLab.text=model.orderType;
     NSArray *timeAry=[model.endDate componentsSeparatedByString:@" "];
+    self.companyLab.text=model.company;
     self.endTimeLab.text=[timeAry firstObject];
     self.baojiaTypeLab.text=model.quotationRequired;
     self.zhiliangLab.text=model.quantityRequired;
@@ -50,6 +51,7 @@
     self.baojiaTypeLab.text=hezuomodel.quotationRequired;
     self.zhiliangLab.text=hezuomodel.quantityRequired;
     self.ciliangLab.text=hezuomodel.quotationRequired;
+    self.companyLab.text=hezuomodel.company;
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.ciliangLab.font,NSFontAttributeName, nil];
     CGSize sizeOne = [hezuomodel.quotationRequired boundingRectWithSize:CGSizeMake(self.ciliangLab.frame.size.width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
     self.celiangHeight.constant=sizeOne.height+5;

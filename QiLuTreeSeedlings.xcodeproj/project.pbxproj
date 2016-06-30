@@ -239,6 +239,7 @@
 		EA741A0E1C8FEA3B00F54478 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA741A0D1C8FEA3B00F54478 /* AVFoundation.framework */; };
 		EA741A101C8FEA4700F54478 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA741A0F1C8FEA4700F54478 /* CoreLocation.framework */; };
 		EA741A121C8FEA5200F54478 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA741A111C8FEA5200F54478 /* CoreBluetooth.framework */; };
+		EA7474A71D24EFB800B15848 /* YLDJinPaiGYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7474A61D24EFB800B15848 /* YLDJinPaiGYViewController.m */; };
 		EA7491671D026FA40043BDAC /* xialakuang.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7491661D026FA40043BDAC /* xialakuang.png */; };
 		EA7491691D0275910043BDAC /* xiala2.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7491681D0275910043BDAC /* xiala2.png */; };
 		EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7514791C9B889A003D63F1 /* backBtnBlack@2x.png */; };
@@ -1042,6 +1043,8 @@
 		EA741A0D1C8FEA3B00F54478 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA741A0F1C8FEA4700F54478 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EA741A111C8FEA5200F54478 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		EA7474A51D24EFB800B15848 /* YLDJinPaiGYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJinPaiGYViewController.h; sourceTree = "<group>"; };
+		EA7474A61D24EFB800B15848 /* YLDJinPaiGYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJinPaiGYViewController.m; sourceTree = "<group>"; };
 		EA7491661D026FA40043BDAC /* xialakuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xialakuang.png; sourceTree = "<group>"; };
 		EA7491681D0275910043BDAC /* xiala2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiala2.png; sourceTree = "<group>"; };
 		EA7514791C9B889A003D63F1 /* backBtnBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backBtnBlack@2x.png"; sourceTree = "<group>"; };
@@ -2870,6 +2873,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EA7474A41D24EF9100B15848 /* YLDJinPaiGongYing */ = {
+			isa = PBXGroup;
+			children = (
+				EA7474A51D24EFB800B15848 /* YLDJinPaiGYViewController.h */,
+				EA7474A61D24EFB800B15848 /* YLDJinPaiGYViewController.m */,
+			);
+			path = YLDJinPaiGongYing;
+			sourceTree = "<group>";
+		};
 		EA7514831C9B96C9003D63F1 /* buyFabuViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3102,6 +3114,7 @@
 		EAEA07E11C5AF257003A0D8A /* HomePageViews */ = {
 			isa = PBXGroup;
 			children = (
+				EA7474A41D24EF9100B15848 /* YLDJinPaiGongYing */,
 				EA5B26E81C7D6E5800863F9D /* HotSellView */,
 				EAA81BA31C744D02007F207D /* HotBuyView */,
 				EAEA07F91C5B2843003A0D8A /* Guessyoulike */,
@@ -4991,6 +5004,7 @@
 				EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */,
 				FC0853E91D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m in Sources */,
 				EA4C4DE01D13F20200DF1B93 /* YLDSearchNavView.m in Sources */,
+				EA7474A71D24EFB800B15848 /* YLDJinPaiGYViewController.m in Sources */,
 				EA0B2BDE1C5A06870018A7BD /* UIViewController+Ext.m in Sources */,
 				FC5612801D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.m in Sources */,
 				FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */,

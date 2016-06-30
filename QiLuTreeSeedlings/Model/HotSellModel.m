@@ -32,6 +32,7 @@
         hotSellModel.count=[dic objectForKey:@"count"];
         hotSellModel.supplybuyUid=[dic objectForKey:@"supplybuyUid"];
         hotSellModel.supplybuyNurseryUid=[dic objectForKey:@"supplybuyNurseryUid"];
+        hotSellModel.goldsupplier=[[dic objectForKey:@"goldsupplier"] integerValue];
         NSDate *creatTimeDate=[ZIKFunction getDateFromString:hotSellModel.createTime];
         hotSellModel.timeAger=[ZIKFunction compareCurrentTime:creatTimeDate];
     }

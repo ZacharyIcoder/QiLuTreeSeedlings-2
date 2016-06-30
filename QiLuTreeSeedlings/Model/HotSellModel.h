@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSString *price;
 @property (nonatomic,strong) NSString *supplybuyUid;
 @property (nonatomic,strong) NSString *supplybuyNurseryUid;
+@property (nonatomic) NSInteger goldsupplier;
 @property (nonatomic,strong) NSString *timeAger;
 +(HotSellModel *)hotSellCreatByDic:(NSDictionary *)dic;
 +(NSArray *)hotSellAryByAry:(NSArray *)ary;

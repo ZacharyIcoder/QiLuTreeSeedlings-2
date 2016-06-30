@@ -28,8 +28,9 @@
 #import "SellDetialViewController.h"
 #import "BigImageViewShowView.h"
 #import "LYDGCGSTiShiViewController.h"
-
-
+/********金牌供应*********/
+#import "YLDJinPaiGYViewController.h"
+/********工程助手*********/
 #import "YLDGongChengGongSiViewController.h"
 /********站长助手*********/
 #import "ZIKStationTabBarViewController.h"//站长助手Tabbar
@@ -444,6 +445,12 @@
               [self.navigationController pushViewController:view animated:YES];
             [ToastView showTopToast:@"请先登录"];
         }
+    }
+    
+    if (index==7) {
+        [self hiddingSelfTabBar];
+        YLDJinPaiGYViewController *gongyingV=[[YLDJinPaiGYViewController alloc]init];
+        [self.navigationController pushViewController:gongyingV animated:YES];
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

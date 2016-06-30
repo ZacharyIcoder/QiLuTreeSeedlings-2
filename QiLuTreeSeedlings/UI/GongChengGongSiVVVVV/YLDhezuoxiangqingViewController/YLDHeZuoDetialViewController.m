@@ -48,7 +48,7 @@
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView=tableView;
     [self.view addSubview:tableView];
-    [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid Success:^(id responseObject) {
+    [HTTPCLIENT hezuoDetialWithorderUid:nil withitemUid:self.itemUid Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
             YLDHeZuoDetial *model=[YLDHeZuoDetial creatYLDHeZuoDetialWithDic:dic];

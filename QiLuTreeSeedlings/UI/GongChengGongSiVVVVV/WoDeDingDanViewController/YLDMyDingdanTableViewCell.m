@@ -24,6 +24,7 @@
     self.dingdanTypeLab.text=model.orderType;
     self.priceLab.text=model.quotation;
     self.yongmiaodi.text=[NSString stringWithFormat:@"用苗地 %@",model.area];
+    
     self.miaomuPinZhongLab.text =model.miaomu;
     NSArray *fabutimeary=[model.orderDate componentsSeparatedByString:@" "];
     self.fabuRiQiLab.text=[NSString stringWithFormat:@"发布日期:%@",[fabutimeary firstObject]];
@@ -59,6 +60,7 @@
     }
     self.frame=frame;
     self.showBtn.selected=model.isShow;
+
     if ([model.status isEqualToString:@"报价中"]) {
         [self.loggV setImage:[UIImage imageNamed:@"zt报价中"]];
     }
