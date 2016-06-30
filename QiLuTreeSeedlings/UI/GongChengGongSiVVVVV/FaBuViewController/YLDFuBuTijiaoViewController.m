@@ -25,7 +25,7 @@
 @property (nonatomic,copy) NSString *lianxiRStr;
 @property (nonatomic,copy) NSString *phoneStr;
 @property (nonatomic,copy) NSString *shuomingStr;
-@property (nonatomic,weak) UIView *addView;
+@property (nonatomic,strong) UIView *addView;
 @property (nonatomic,strong) NSMutableArray *miaomuAry;
 @property (nonatomic,weak) UITableView *tableView;
 @end
@@ -144,7 +144,7 @@
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 120, kWidth, 80)];
     [view setBackgroundColor:[UIColor whiteColor]];
     UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/2-45, 30)];
-    nameTextField.tag=111;
+
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.tag=20;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -158,7 +158,7 @@
    
     UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-25, 5, kWidth/2-45, 30)];
     numTextField.placeholder=@"请输入需求数量";
-    numTextField.tag=112;
+  
     numTextField.tag=7;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
@@ -178,7 +178,7 @@
                                                object:shuomingTextField];
     shuomingTextField.borderStyle=UITextBorderStyleRoundedRect;
     shuomingTextField.textColor=DarkTitleColor;
-    shuomingTextField.tag=113;
+
     [shuomingTextField setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:shuomingTextField];
     UIButton *addBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 5, 55, 65)];
@@ -195,9 +195,9 @@
 
 -(void)addBtnAction:(UIButton *)sender
 {
-    UITextField *nameTextField=[self.addView viewWithTag:111];
-    UITextField *numTextField=[self.addView viewWithTag:112];
-    UITextField *shuomingTextField=[self.addView viewWithTag:113];
+    UITextField *nameTextField=[self.addView viewWithTag:20];
+    UITextField *numTextField=[self.addView viewWithTag:7];
+    UITextField *shuomingTextField=[self.addView viewWithTag:100];
     if (nameTextField.text.length==0) {
         [ToastView showTopToast:@"请输入苗木品种"];
         return;

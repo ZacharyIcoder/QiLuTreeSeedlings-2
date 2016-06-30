@@ -9,5 +9,10 @@
 #import "YLDHeZuoDetial.h"
 
 @implementation YLDHeZuoDetial
-
++(YLDHeZuoDetial *)creatYLDHeZuoDetialWithDic:(NSDictionary *)dic
+{
+    YLDHeZuoDetial *model=[YLDHeZuoDetial new];
+    
+    return model;
+}
 @end

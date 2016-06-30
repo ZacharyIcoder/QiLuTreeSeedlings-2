@@ -15,6 +15,7 @@
 #import "YLDBaoJiaMessageCell.h"
 #import "YLDBaoJiaMessageModel.h"
 #import "YLDSearchNavView.h"
+#import "YLDHeZuoDetialViewController.h"
 @interface YLDBaoJiaDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate,YLDBaoJiaMessageCellDelegate>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
@@ -149,6 +150,7 @@
     YLDBaoJiaMessageCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDBaoJiaMessageCell"];
     if (!cell) {
         cell=[YLDBaoJiaMessageCell ylBdaoJiaMessageCell];
+        cell.delegate=self;
     }
     YLDBaoJiaMessageModel *model=self.dataAry[indexPath.row];
     cell.model=model;
@@ -226,7 +228,43 @@
     }];
 }
 -(void)actionWithtype:(NSInteger)type andModel:(YLDBaoJiaMessageModel *)model{
+    if (type==1) {
+       
+        NSString *title = NSLocalizedString(@"建立合作", nil);
+        NSString *message = NSLocalizedString(@"是否确定建立合作", nil);
+        NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+        NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        // Create the actions.
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//            NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+        }];
+        
+        UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [HTTPCLIENT jianliHezuoWithBaoJiaID:model.uid Success:^(id responseObject) {
+                if ([[responseObject objectForKey:@"success"] integerValue]) {
+                    [self.tableView headerBeginRefreshing];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+//            NSLog(@"The \"Okay/Cancel\" alert's other action occured.");
+        }];
+        
+        // Add the actions.
+        [alertController addAction:cancelAction];
+        [alertController addAction:otherAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    }
+    if (type==2) {
+        YLDHeZuoDetialViewController *DAA=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:self.Uid WithitemUid:model.uid];
+        [self.navigationController pushViewController:DAA animated:YES];
     
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

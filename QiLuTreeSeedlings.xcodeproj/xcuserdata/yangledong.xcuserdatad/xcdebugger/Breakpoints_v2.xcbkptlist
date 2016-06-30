@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/UI/GongChengGongSiVVVVV/BaoJiaGuanLiViewController/BaoJiaDetialViewController/YLDBaoJiaDetialViewController.m"
-            timestampString = "488882277.0574"
+            filePath = "QiLuTreeSeedlings/UI/GongChengGongSiVVVVV/YLDhezuoxiangqingViewController/YLDHeZuoDetialViewController.m"
+            timestampString = "488956020.067593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "-actionWithtype:andModel:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
