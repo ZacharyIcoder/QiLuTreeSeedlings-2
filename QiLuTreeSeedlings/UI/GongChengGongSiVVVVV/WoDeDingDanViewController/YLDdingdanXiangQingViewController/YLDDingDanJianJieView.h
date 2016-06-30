@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YLDDingDanDetialModel.h"
+#import "YLDHeZuoDetial.h"
 @interface YLDDingDanJianJieView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *dingdanTypeLab;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *areaLab;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLab;
 @property (strong,nonatomic)YLDDingDanDetialModel *model;
+@property (strong,nonatomic)YLDHeZuoDetial *hezuomodel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *celiangHeight;
 @property (weak, nonatomic) IBOutlet UITextView *shuomingTextField;
 +(YLDDingDanJianJieView *)yldDingDanJianJieView;

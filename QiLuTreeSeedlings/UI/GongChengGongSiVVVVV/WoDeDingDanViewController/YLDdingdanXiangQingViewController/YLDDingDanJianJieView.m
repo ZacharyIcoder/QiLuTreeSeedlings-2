@@ -40,6 +40,25 @@
     self.areaLab.text=model.area;
     self.phoneLab.text=model.phone;
 }
+-(void)setHezuomodel:(YLDHeZuoDetial *)hezuomodel
+{
+    _hezuomodel=hezuomodel;
+    self.nameLab.text=hezuomodel.orderName;
+    self.dingdanTypeLab.text=hezuomodel.orderType;
+    NSArray *timeAry=[hezuomodel.endDate componentsSeparatedByString:@" "];
+    self.endTimeLab.text=[timeAry firstObject];
+    self.baojiaTypeLab.text=hezuomodel.quotationRequired;
+    self.zhiliangLab.text=hezuomodel.quantityRequired;
+    self.ciliangLab.text=hezuomodel.quotationRequired;
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.ciliangLab.font,NSFontAttributeName, nil];
+    CGSize sizeOne = [hezuomodel.quotationRequired boundingRectWithSize:CGSizeMake(self.ciliangLab.frame.size.width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+    self.celiangHeight.constant=sizeOne.height+5;
+    //    self.companyLab.text=model.
+    self.shuomingTextField.text=hezuomodel.descriptions;
+    self.areaLab.text=hezuomodel.area;
+    self.phoneLab.text=hezuomodel.phone;
+
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

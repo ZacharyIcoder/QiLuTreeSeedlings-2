@@ -10,6 +10,7 @@
 #import "UIDefines.h"
 #import "YLDDingDanJianJieView.h"
 #import "HttpClient.h"
+#import "YLDHeZuoDetial.h"
 @interface YLDHeZuoDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak) UIButton *nowBtn;
 @property (nonatomic,weak) UIView *moveView;
@@ -17,6 +18,7 @@
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *Uid;
 @property (nonatomic,copy)NSString *itemUid;
+@property (nonatomic,strong)YLDHeZuoDetial *model;
 @end
 
 @implementation YLDHeZuoDetialViewController
@@ -48,6 +50,10 @@
     [self.view addSubview:tableView];
     [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
+            YLDHeZuoDetial *model=[YLDHeZuoDetial creatYLDHeZuoDetialWithDic:dic];
+            self.model=model;
+            self.jianjieView.hezuomodel=model;
             
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];

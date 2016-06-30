@@ -2916,9 +2916,6 @@
     // 创建同步链接
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *str1 = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    
-    
-    NSLog(@"%@",str1);
 }
 #pragma mark ---------- 我的订单详情 -----------
 -(void)myDingDanDetialWithUid:(NSString *)uid
