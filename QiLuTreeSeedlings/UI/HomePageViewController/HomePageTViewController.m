@@ -406,8 +406,8 @@
 
 
     if(index==4){
-        if([APPDELEGATE isNeedLogin])
-        {
+//        if([APPDELEGATE isNeedLogin])
+//        {
             [self hiddingSelfTabBar];
 #warning 暂且不判断权限，直接进入
 //            if (APPDELEGATE.userModel.isworkstation) {
@@ -420,10 +420,11 @@
 //                [self.navigationController pushViewController:helpfulVC animated:YES];
 //            }
             return;
-        }else
-        {
-            [ToastView showTopToast:@"请先登录"];
-        }
+//        }
+//        else
+//        {
+//            [ToastView showTopToast:@"请先登录"];
+//        }
     }
 
 

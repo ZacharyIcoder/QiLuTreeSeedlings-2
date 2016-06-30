@@ -9,5 +9,20 @@
 #import "ZIKArrowViewController.h"
 
 @interface ZIKStationOrderQuoteViewController : ZIKArrowViewController
-
+/**
+ *  苗木名称
+ */
+@property (nonatomic, copy) NSString *name;
+/**
+ *  苗木数量
+ */
+@property (nonatomic, copy) NSString *count;
+/**
+ *  报价要求
+ */
+@property (nonatomic, copy) NSString *quoteRequirement;
+/**
+ *  规格要求
+ */
+@property (nonatomic, copy) NSString *standardRequirement;
 @end

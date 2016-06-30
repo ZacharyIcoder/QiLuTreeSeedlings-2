@@ -438,6 +438,8 @@
 		FC22769B1D17BC4E0037B131 /* zt已合作.png in Resources */ = {isa = PBXBuildFile; fileRef = FC2276961D17BC4E0037B131 /* zt已合作.png */; };
 		FC22769C1D17BC4E0037B131 /* zt已结束.png in Resources */ = {isa = PBXBuildFile; fileRef = FC2276971D17BC4E0037B131 /* zt已结束.png */; };
 		FC23D5371D0D03F600611E34 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FC23D5361D0D03F600611E34 /* 已选小标.png */; };
+		FC2D13251D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2D13231D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m */; };
+		FC2D13261D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2D13241D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib */; };
 		FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */; };
 		FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */; };
 		FC4A51851D0E63650060587B /* 工程订单_筛选.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4A51801D0E63650060587B /* 工程订单_筛选.png */; };
@@ -1335,6 +1337,9 @@
 		FC2276961D17BC4E0037B131 /* zt已合作.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zt已合作.png"; sourceTree = "<group>"; };
 		FC2276971D17BC4E0037B131 /* zt已结束.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zt已结束.png"; sourceTree = "<group>"; };
 		FC23D5361D0D03F600611E34 /* 已选小标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已选小标.png"; sourceTree = "<group>"; };
+		FC2D13221D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderQuoteSecondTableViewCell.h; sourceTree = "<group>"; };
+		FC2D13231D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderQuoteSecondTableViewCell.m; sourceTree = "<group>"; };
+		FC2D13241D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationOrderQuoteSecondTableViewCell.xib; sourceTree = "<group>"; };
 		FC31B2871CE07CCE0024E147 /* ZIKEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKEmptyTableViewCell.h; sourceTree = "<group>"; };
 		FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKEmptyTableViewCell.m; sourceTree = "<group>"; };
 		FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKEmptyTableViewCell.xib; sourceTree = "<group>"; };
@@ -3442,6 +3447,9 @@
 				FC2276591D177C9F0037B131 /* ZIKStationOrderTableViewCell.h */,
 				FC22765A1D177C9F0037B131 /* ZIKStationOrderTableViewCell.m */,
 				FC22765B1D177C9F0037B131 /* ZIKStationOrderTableViewCell.xib */,
+				FC2D13221D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.h */,
+				FC2D13231D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m */,
+				FC2D13241D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4602,6 +4610,7 @@
 				EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */,
 				FCCFA7161CF2E12400CC1313 /* carat.png in Resources */,
 				EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */,
+				FC2D13261D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib in Resources */,
 				FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */,
 				FC2276681D177C9F0037B131 /* 底部菜单-站长中心off.png in Resources */,
 				FC22768D1D177D1A0037B131 /* 标签-求购.png in Resources */,
@@ -5114,6 +5123,7 @@
 				FC56125F1D0C092F00E5743B /* ZIKPickerBtn.m in Sources */,
 				EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */,
 				FC56129E1D0C092F00E5743B /* ZIKMySupplyDetailViewController.m in Sources */,
+				FC2D13251D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m in Sources */,
 				EAEB63BD1C90FC1E0001ABC9 /* NSString+Phone.m in Sources */,
 				EA4C4DD71D13E0F600DF1B93 /* YLDEditDingDanViewController.m in Sources */,
 				FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */,
@@ -5336,8 +5346,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5374,7 +5384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5385,8 +5395,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5423,7 +5433,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -191,6 +191,10 @@
             [ToastView showTopToast:@"您还未安装微信!"];
             return;
         }
+        if (![WXApi isWXAppSupportApi]) {
+            [ToastView showTopToast:@"当前微信版本过低,请升级微信后再次充值"];
+            return;
+        }
         //NSLog(@"微信支付");
         [HTTPCLIENT weixinPayOrder:self.price supplyBuyUid:nil type:nil Success:^(id responseObject) {
             //NSLog(@"%@",responseObject);
