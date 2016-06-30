@@ -244,9 +244,9 @@
 }
 -(void)hezuoXiangQingActinWithMode:(YLDDingDanModel *)model
 {
-    NSLog( @" %@",model.orderName);
+    //NSLog( @" %@",model.orderName);
     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
-    YLDHeZuoDetialViewController *hezuodetialVC=[[YLDHeZuoDetialViewController alloc]init];
+    YLDHeZuoDetialViewController *hezuodetialVC=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:model.uid WithitemUid:nil];
     [self.navigationController pushViewController:hezuodetialVC animated:YES];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

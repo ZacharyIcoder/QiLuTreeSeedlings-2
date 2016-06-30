@@ -27,7 +27,7 @@
 #import "SellSearchTableViewCell.h"
 #import "SellDetialViewController.h"
 #import "BigImageViewShowView.h"
-
+#import "LYDGCGSTiShiViewController.h"
 
 
 #import "YLDGongChengGongSiViewController.h"
@@ -432,12 +432,16 @@
         if([APPDELEGATE isNeedLogin])
         {
             [self hiddingSelfTabBar];
+           
             YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
             [self.navigationController pushViewController:tab animated:YES];
             return;
             
         }else
         {
+            [self hiddingSelfTabBar];
+            LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+              [self.navigationController pushViewController:view animated:YES];
             [ToastView showTopToast:@"请先登录"];
         }
     }

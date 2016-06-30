@@ -9,16 +9,26 @@
 #import "YLDHeZuoDetialViewController.h"
 #import "UIDefines.h"
 #import "YLDDingDanJianJieView.h"
+#import "HttpClient.h"
 @interface YLDHeZuoDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak) UIButton *nowBtn;
 @property (nonatomic,weak) UIView *moveView;
 @property (nonatomic,weak)YLDDingDanJianJieView *jianjieView;
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *Uid;
+@property (nonatomic,copy)NSString *itemUid;
 @end
 
 @implementation YLDHeZuoDetialViewController
-
+-(id)initWithOrderUid:(NSString *)orderUid WithitemUid:(NSString *)itemUid
+{
+    self=[self init];
+    if (self) {
+        self.Uid=orderUid;
+        self.itemUid=itemUid;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"合作详情";
@@ -36,6 +46,16 @@
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView=tableView;
     [self.view addSubview:tableView];
+    [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
     // Do any additional setup after loading the view.
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

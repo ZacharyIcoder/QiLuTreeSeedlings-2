@@ -695,6 +695,17 @@ failure:(void (^)(NSError *error))failure;
                                   keyword:(NSString *)keyword
                                   Success:(void (^)(id responseObject))success
                                   failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 建立合作 -----
+-(void)jianliHezuoWithBaoJiaID:(NSString *)uid   Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 合作详情 -----
+-(void)hezuoDetialWithorderUid:(NSString *)orderUid withitemUid:(NSString *)itemUid
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 报价详情-苗木信息 -----
+//-(void)hezuoDetialMiaoMuXiXi
+
 #pragma mark ---------- 站长助手-报价 -----------
 /**
  *  报价
@@ -729,4 +740,5 @@ failure:(void (^)(NSError *error))failure;
 //#pragma mark ---------- APP设置首次充值最低额度 -----------
 //- (void)getLimitChargeSuccess:(void (^)(id responseObject))success
 //failure:(void (^)(NSError *error))failure;
+
 @end

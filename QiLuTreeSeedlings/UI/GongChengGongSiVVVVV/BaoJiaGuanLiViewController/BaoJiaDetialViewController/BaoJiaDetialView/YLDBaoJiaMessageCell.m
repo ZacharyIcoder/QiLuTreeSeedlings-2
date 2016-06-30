@@ -25,6 +25,7 @@
     _model=model;
     self.titleLab.text=model.workstationName;
     self.lianxirenLab.text=model.chargelPerson;
+    self.lianxirenWi.constant=model.chargelPerson.length*15;
     self.timeLab.text=model.quoteTime;
     self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];
     self.priceLab.text=model.price;
@@ -39,6 +40,7 @@
         self.hezuoActionBtn.tag=2;
     }
     NSArray *imageAry=[model.image2 componentsSeparatedByString:@","];
+    [self.hezuoActionBtn addTarget:self action:@selector(hezuoBtnAciotn:) forControlEvents:UIControlEventTouchUpInside];
     for (int i=0; i<imageAry.count; i++) {
         if (i==0) {
             [self.imageV1 setImageWithURL:[NSURL URLWithString:imageAry[0]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
@@ -49,6 +51,12 @@
         if (i==2) {
             [self.imageV3 setImageWithURL:[NSURL URLWithString:imageAry[2]]placeholderImage:[UIImage imageNamed:@"MoRentu"]];
         }
+    }
+}
+-(void)hezuoBtnAciotn:(UIButton *)sender
+{
+    if (self.delegate) {
+        [self.delegate actionWithtype:sender.tag andModel:self.model];
     }
 }
 + (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
@@ -71,6 +79,7 @@
     UIGraphicsEndImageContext();
     return image;
 }
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
