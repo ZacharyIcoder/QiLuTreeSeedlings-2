@@ -436,6 +436,8 @@
 		FC23D5371D0D03F600611E34 /* 已选小标.png in Resources */ = {isa = PBXBuildFile; fileRef = FC23D5361D0D03F600611E34 /* 已选小标.png */; };
 		FC2D13251D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2D13231D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m */; };
 		FC2D13261D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2D13241D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib */; };
+		FC2D13291D211BAE00F0973A /* ziktestchecker.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2D13281D211BAE00F0973A /* ziktestchecker.m */; };
+		FC2D132C1D211DA700F0973A /* ZIKQuoteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2D132B1D211DA700F0973A /* ZIKQuoteTextField.m */; };
 		FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */; };
 		FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */; };
 		FC4A51851D0E63650060587B /* 工程订单_筛选.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4A51801D0E63650060587B /* 工程订单_筛选.png */; };
@@ -1330,6 +1332,10 @@
 		FC2D13221D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderQuoteSecondTableViewCell.h; sourceTree = "<group>"; };
 		FC2D13231D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderQuoteSecondTableViewCell.m; sourceTree = "<group>"; };
 		FC2D13241D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationOrderQuoteSecondTableViewCell.xib; sourceTree = "<group>"; };
+		FC2D13271D211BAE00F0973A /* ziktestchecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ziktestchecker.h; sourceTree = "<group>"; };
+		FC2D13281D211BAE00F0973A /* ziktestchecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ziktestchecker.m; sourceTree = "<group>"; };
+		FC2D132A1D211DA700F0973A /* ZIKQuoteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKQuoteTextField.h; sourceTree = "<group>"; };
+		FC2D132B1D211DA700F0973A /* ZIKQuoteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKQuoteTextField.m; sourceTree = "<group>"; };
 		FC31B2871CE07CCE0024E147 /* ZIKEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKEmptyTableViewCell.h; sourceTree = "<group>"; };
 		FC31B2881CE07CCE0024E147 /* ZIKEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKEmptyTableViewCell.m; sourceTree = "<group>"; };
 		FC31B2891CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKEmptyTableViewCell.xib; sourceTree = "<group>"; };
@@ -3418,6 +3424,10 @@
 				FC2D13221D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.h */,
 				FC2D13231D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.m */,
 				FC2D13241D2107BB00F0973A /* ZIKStationOrderQuoteSecondTableViewCell.xib */,
+				FC2D13271D211BAE00F0973A /* ziktestchecker.h */,
+				FC2D13281D211BAE00F0973A /* ziktestchecker.m */,
+				FC2D132A1D211DA700F0973A /* ZIKQuoteTextField.h */,
+				FC2D132B1D211DA700F0973A /* ZIKQuoteTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4844,6 +4854,7 @@
 				FC6487521D1A847000F89464 /* ZIKStationOrderDetailQuoteModel.m in Sources */,
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
 				FC5337C81CBE17B0008BFB11 /* HCSStarRatingView.m in Sources */,
+				FC2D132C1D211DA700F0973A /* ZIKQuoteTextField.m in Sources */,
 				FC56126E1D0C092F00E5743B /* ForegroundColorAttribute.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
@@ -4961,6 +4972,7 @@
 				FC5612651D0C092F00E5743B /* WHC_PhotoListCell.m in Sources */,
 				EAE32DD71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m in Sources */,
 				FCE458C61CE7036600CBF802 /* ZIKHaveReadModel.m in Sources */,
+				FC2D13291D211BAE00F0973A /* ziktestchecker.m in Sources */,
 				FC50B34A1CAE4C4A0022A24C /* openssl_wrapper.m in Sources */,
 				FC2276791D177C9F0037B131 /* ZIKStationOrderDetailViewController.m in Sources */,
 				EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */,

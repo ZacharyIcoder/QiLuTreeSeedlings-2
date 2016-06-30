@@ -53,10 +53,10 @@
 
 - (void)initUI {
     myTalbeView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, 220+44+64) style:UITableViewStylePlain];
-    myTalbeView.delegate = self;
+    myTalbeView.delegate   = self;
     myTalbeView.dataSource = self;
     [self.view addSubview:myTalbeView];
-    myTalbeView.scrollEnabled = NO; //设置tableview 不能滚动
+    myTalbeView.scrollEnabled  = NO; //设置tableview 不能滚动
     myTalbeView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [ZIKFunction setExtraCellLineHidden:myTalbeView];
 }
