@@ -3549,4 +3549,43 @@
     }];
 }
 
+#pragma mark ---------- 我的团队 -----------
+/**
+ *  我的团队
+ *
+ *  @param uid        工作站ID
+ *  @param pageNumber 页码，默认1
+ *  @param pageSize   每页显示数。默认10
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)stationTeamWithUid:(NSString *)uid
+                pageNumber:(NSString *)pageNumber
+                  pageSize:(NSString *)pageSize
+                   Success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/team";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
 @end
