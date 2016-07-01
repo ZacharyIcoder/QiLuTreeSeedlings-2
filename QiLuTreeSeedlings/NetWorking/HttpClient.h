@@ -773,4 +773,66 @@ failure:(void (^)(NSError *error))failure;
               Withgoldsupplier:(NSString *)goldsupplier
                 Success:(void (^)(id responseObject))success
                                     failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 我的荣誉列表 -----------
+/**
+ *  我的荣誉列表
+ *
+ *  @param workstationUid 工作站ID
+ *  @param pageNumber     页码，默认1
+ *  @param pageSize       每页显示数。默认10
+ *  @param success        success description
+ *  @param failure        failure description
+ */
+- (void)stationHonorListWithWorkstationUid:(NSString *)workstationUid
+                                pageNumber:(NSString *)pageNumber
+                                  pageSize:(NSString *)pageSize
+                                   Success:(void (^)(id responseObject))success
+                                   failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 荣誉详情与编辑页信息共用接口 -----------
+/**
+ *  荣誉详情与编辑页信息共用接口
+ *
+ *  @param uid     荣誉ID
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)stationHonorDetailWithUid:(NSString *)uid
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 荣誉添加 -----------
+/**
+ *  荣誉添加
+ *
+ *  @param uid             新增是为空，更新是必传
+ *  @param workstationUid  工作站ID
+ *  @param name            荣誉名称
+ *  @param acquisitionTime 获取时间，格式：yyyy-MM-dd
+ *  @param image           荣誉图片
+ *  @param success         success description
+ *  @param failure         failure description
+ */
+- (void)stationHonorCreateWithUid:(NSString *)uid
+                   workstationUid:(NSString *)workstationUid
+                             name:(NSString *)name
+                  acquisitionTime:(NSString *)acquisitionTime
+                            image:(NSString *)image
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 荣誉删除 -----------
+/**
+ *  荣誉删除
+ *
+ *  @param uid     荣誉ID
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)stationHonorDeleteWithUid:(NSString *)uid
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
+
+
 @end

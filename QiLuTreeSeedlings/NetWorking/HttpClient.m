@@ -3395,4 +3395,158 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+
+#pragma mark ---------- 我的荣誉列表 -----------
+/**
+ *  我的荣誉列表
+ *
+ *  @param workstationUid 工作站ID
+ *  @param pageNumber     页码，默认1
+ *  @param pageSize       每页显示数。默认10
+ *  @param success        success description
+ *  @param failure        failure description
+ */
+- (void)stationHonorListWithWorkstationUid:(NSString *)workstationUid
+                                pageNumber:(NSString *)pageNumber
+                                  pageSize:(NSString *)pageSize
+                                   Success:(void (^)(id responseObject))success
+                                   failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/honor/list";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"workstationUid"]   = workstationUid;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
+#pragma mark ---------- 荣誉详情与编辑页信息共用接口 -----------
+/**
+ *  荣誉详情与编辑页信息共用接口
+ *
+ *  @param uid     荣誉ID
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)stationHonorDetailWithUid:(NSString *)uid
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/honor/detail";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- 荣誉添加 -----------
+/**
+ *  荣誉添加
+ *
+ *  @param uid             新增是为空，更新是必传
+ *  @param workstationUid  工作站ID
+ *  @param name            荣誉名称
+ *  @param acquisitionTime 获取时间，格式：yyyy-MM-dd
+ *  @param image           荣誉图片
+ *  @param success         success description
+ *  @param failure         failure description
+ */
+- (void)stationHonorCreateWithUid:(NSString *)uid
+                   workstationUid:(NSString *)workstationUid
+                             name:(NSString *)name
+                  acquisitionTime:(NSString *)acquisitionTime
+                            image:(NSString *)image
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/honor/create";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"workstationUid"]   = workstationUid;
+    parmers[@"name"]             = name;
+    parmers[@"acquisitionTime"]  = acquisitionTime;
+    parmers[@"image"]            = image;
+
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
+#pragma mark ---------- 荣誉删除 -----------
+/**
+ *  荣誉删除
+ *
+ *  @param uid     荣誉ID
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)stationHonorDeleteWithUid:(NSString *)uid
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/honor/delete";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
 @end
