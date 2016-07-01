@@ -702,6 +702,9 @@ failure:(void (^)(NSError *error))failure;
                        failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 合作详情 -----
 -(void)hezuoDetialWithorderUid:(NSString *)orderUid withitemUid:(NSString *)itemUid
+                   WithPageNum:(NSString *)pageNumber
+                  WithPageSize:(NSString *)pageSize
+                   WithKeyWord:(NSString *)keyword
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 报价详情-苗木信息 -----

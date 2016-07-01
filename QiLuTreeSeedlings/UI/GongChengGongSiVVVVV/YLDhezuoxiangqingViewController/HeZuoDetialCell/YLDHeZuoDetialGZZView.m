@@ -12,7 +12,11 @@
 +(YLDHeZuoDetialGZZView *)yldHeZuoDetialGZZView
 {
     YLDHeZuoDetialGZZView *view=[[[NSBundle mainBundle]loadNibNamed:@"YLDHeZuoDetialGZZView" owner:self options:nil] lastObject];
-
+//    CGRect frame=view.frame;
+//    frame.size.width=kWidth;
+//    view.frame=frame;
+//    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 80)];
+//    [view setBackgroundColor:[UIColor redColor]];
     return view;
 }
 -(void)setDic:(NSDictionary *)dic

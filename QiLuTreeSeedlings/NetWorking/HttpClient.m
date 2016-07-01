@@ -3248,6 +3248,9 @@
 
 #pragma mark ---------- 合作详情 -----
 -(void)hezuoDetialWithorderUid:(NSString *)orderUid withitemUid:(NSString *)itemUid
+                   WithPageNum:(NSString *)pageNumber
+                  WithPageSize:(NSString *)pageSize
+                   WithKeyWord:(NSString *)keyword
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure
 {
@@ -3260,6 +3263,12 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    if (keyword) {
+         parmers[@"keyword"]          = keyword;
+    }
+   
     if (orderUid) {
         parmers[@"orderUid"]         = orderUid;
     }

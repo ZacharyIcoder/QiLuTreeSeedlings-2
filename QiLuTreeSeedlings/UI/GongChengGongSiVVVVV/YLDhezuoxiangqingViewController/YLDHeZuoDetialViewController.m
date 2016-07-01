@@ -12,7 +12,9 @@
 #import "HttpClient.h"
 #import "YLDHeZuoDetial.h"
 #import "YLDHeZuoDEMessageCell.h"
-@interface YLDHeZuoDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "MJRefresh.h"
+#import "YLDSearchNavView.h"
+@interface YLDHeZuoDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
 @property (nonatomic,weak) UIButton *nowBtn;
 @property (nonatomic,weak) UIView *moveView;
 @property (nonatomic,weak)YLDDingDanJianJieView *jianjieView;
@@ -20,9 +22,16 @@
 @property (nonatomic,copy)NSString *Uid;
 @property (nonatomic,copy)NSString *itemUid;
 @property (nonatomic,strong)YLDHeZuoDetial *model;
+@property (nonatomic)NSInteger pageNum;
+@property (nonatomic)NSMutableArray *dataAry;
+@property (nonatomic,strong)NSString *keyWord;
+@property (nonatomic,weak) YLDSearchNavView *searchV;
 @end
 
 @implementation YLDHeZuoDetialViewController
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 -(id)initWithOrderUid:(NSString *)orderUid WithitemUid:(NSString *)itemUid
 {
     self=[self init];
@@ -32,9 +41,13 @@
     }
     return self;
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"合作详情";
+    self.pageNum=1;
+    self.dataAry=[NSMutableArray array];
     [self topActionView];
     YLDDingDanJianJieView *jianjieView=[YLDDingDanJianJieView yldDingDanJianJieView];
     CGRect tempFrame=jianjieView.frame;
@@ -43,34 +56,43 @@
     self.jianjieView=jianjieView;
     [self.view addSubview:jianjieView];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-115)];
-    tableView.hidden=YES;
+    
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    __weak typeof(self) weakSelf=self;
+    [tableView addHeaderWithCallback:^{
+        weakSelf.pageNum=1;
+        [weakSelf getDataList];
+    }];
+    [tableView addFooterWithCallback:^{
+        weakSelf.pageNum+=1;
+        [weakSelf getDataList];
+    }];
     self.tableView=tableView;
     [self.view addSubview:tableView];
-    [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid Success:^(id responseObject) {
-        if ([[responseObject objectForKey:@"success"] integerValue]) {
-            NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
-            YLDHeZuoDetial *model=[YLDHeZuoDetial creatYLDHeZuoDetialWithDic:dic];
-            self.model=model;
-            self.jianjieView.hezuomodel=model;
-            
-        }else{
-            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-        }
-        
-    } failure:^(NSError *error) {
-        
-    }];
+    tableView.hidden=YES;
+    [self getDataList];
+    UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-55, 23, 30, 30)];
+    [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+    [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
+    [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navBackView addSubview:searchShowBtn];
+    //    self.saerchBtn=searchShowBtn;
+    YLDSearchNavView *searchV =[[YLDSearchNavView alloc]init];
+    self.searchV=searchV;
+    searchV.delegate=self;
+    searchV.hidden=YES;
+    [self.navBackView addSubview:searchV];
+
     // Do any additional setup after loading the view.
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.model.cooperateList.count;
+    return self.dataAry.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *gongzuozhanAry=[self.model.cooperateList[indexPath.row] objectForKey:@"cooperateQuoteList"];
+    NSArray *gongzuozhanAry=[self.dataAry[indexPath.row] objectForKey:@"cooperateQuoteList"];
     return 80+gongzuozhanAry.count*85;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,9 +103,20 @@
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     cell.numLab.text=[NSString stringWithFormat:@"%ld",indexPath.row];
-    cell.dic=self.model.cooperateList[indexPath.row];
+    cell.dic=self.dataAry[indexPath.row];
     return cell;
 }
+-(void)searchBtnAction:(UIButton *)sender
+{
+    self.searchV.hidden=NO;
+}
+-(void)textFieldChangeVVWithStr:(NSString *)textStr
+{
+    self.pageNum=1;
+    self.keyWord=textStr;
+    [self getDataList];
+}
+
 - (void)topActionView {
     NSArray *ary=@[@"订单信息",@"合作信息"];
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 50)];
@@ -148,6 +181,39 @@
     frame.origin.x=kWidth/2*(sender.tag);
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame=frame;
+    }];
+}
+- (void)getDataList {
+    [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid WithPageNum:[NSString stringWithFormat:@"%ld",self.pageNum] WithPageSize:@"10" WithKeyWord:self.keyWord Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
+            if (self.pageNum==1) {
+                YLDHeZuoDetial *model=[YLDHeZuoDetial creatYLDHeZuoDetialWithDic:dic];
+                self.model=model;
+                self.jianjieView.hezuomodel=model;
+                [self.dataAry removeAllObjects];
+            }
+            NSArray *hezuoAry=[dic objectForKey:@"cooperateList"];
+            
+            if (hezuoAry.count==0) {
+                self.pageNum--;
+                [ToastView showTopToast:@"已无更多数据"];
+            }else{
+                [self.dataAry addObjectsFromArray:hezuoAry];
+            }
+            if (self.pageNum<1) {
+                self.pageNum=1;
+            }
+            
+            [self.tableView reloadData];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
+    } failure:^(NSError *error) {
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
     }];
 }
 - (void)didReceiveMemoryWarning {
