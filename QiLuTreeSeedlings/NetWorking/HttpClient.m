@@ -2920,6 +2920,9 @@
 }
 #pragma mark ---------- 我的订单详情 -----------
 -(void)myDingDanDetialWithUid:(NSString *)uid
+                 WithPageSize:(NSString *)pageSize
+                  WithPageNum:(NSString *)pageNumber
+                  Withkeyword:(NSString *)keyword
                       Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure
 {
@@ -2933,6 +2936,11 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"uid"]              = uid;
+    if (keyword) {
+        parmers[@"keyword"]      = keyword;
+    }
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -3266,7 +3274,7 @@
     parmers[@"pageNumber"]       = pageNumber;
     parmers[@"pageSize"]         = pageSize;
     if (keyword) {
-         parmers[@"keyword"]          = keyword;
+        parmers[@"keyword"]      = keyword;
     }
    
     if (orderUid) {
@@ -3366,5 +3374,25 @@
     }];
 
 }
-
+#pragma mark ---------- 金牌供应 -----------
+- (void)GoldSupplrWithPageSize:(NSString *)pageSize WithPage:(NSString *)page
+              Withgoldsupplier:(NSString *)goldsupplier
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"apisupplyGold";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"page"]            = page;
+    parmers[@"pageSize"]        = pageSize;
+    parmers[@"goldsupplier"]    = goldsupplier;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
 @end

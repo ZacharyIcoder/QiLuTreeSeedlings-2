@@ -14,6 +14,7 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "YLDSearchNavView.h"
+#import "MJRefresh.h"
 @interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
@@ -25,6 +26,8 @@
 @property (nonatomic,weak) YLDSearchNavView *searchV;
 @property (nonatomic,strong) UIButton *saerchBtn;
 @property (nonatomic,strong) NSString *searchStr;
+@property (nonatomic,strong) NSMutableArray *dataAry;
+@property (nonatomic)NSInteger pageNum;
 @end
 
 @implementation YLDDingDanDetialViewController
@@ -39,6 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"订单详情";
+    self.pageNum=1;
+    self.dataAry=[NSMutableArray array];
     [self topActionView];
     YLDDingDanJianJieView *jianjieView=[YLDDingDanJianJieView yldDingDanJianJieView];
     CGRect tempFrame=jianjieView.frame;
@@ -48,19 +53,31 @@
     [self.view addSubview:jianjieView];
     
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-115)];
-    tableView.hidden=YES;
+    
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    __weak typeof(self) weakSelf=self;
+    [tableView addHeaderWithCallback:^{
+        weakSelf.pageNum=1;
+        ShowActionV();
+        [weakSelf getdataAction];
+    }];
+    [tableView addFooterWithCallback:^{
+        weakSelf.pageNum+=1;
+        ShowActionV();
+        [weakSelf getdataAction];
+    }];
     self.tableView=tableView;
     [self.view addSubview:tableView];
+    tableView.hidden=YES;
     UIButton *editingBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-46, 24, 30, 30)];
     [editingBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
     [self.navBackView addSubview:editingBtn];
     [editingBtn setImage:[UIImage imageNamed:@"edintBtn"] forState:UIControlStateNormal];
     [editingBtn addTarget: self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     self.editingBtn=editingBtn;
-    
+ 
  
     UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 24, 30, 30)];
     [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
@@ -77,26 +94,51 @@
 }
 -(void)getdataAction
 {
-    ShowActionV();
-    [HTTPCLIENT myDingDanDetialWithUid:self.Uid Success:^(id responseObject) {
+    
+    [HTTPCLIENT myDingDanDetialWithUid:self.Uid WithPageSize:@"15" WithPageNum:[NSString stringWithFormat:@"%ld",self.pageNum] Withkeyword:self.searchStr Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"orderDetail"];
-            YLDDingDanDetialModel *model=[YLDDingDanDetialModel yldDingDanDetialModelWithDic:dic];
-            self.model=model;
-            self.jianjieView.model=model;
-            //[self.tableView reloadData];
+            if (self.pageNum==1) {
+                YLDDingDanDetialModel *model=[YLDDingDanDetialModel yldDingDanDetialModelWithDic:dic];
+                self.model=model;
+                self.jianjieView.model=model;
+                if (![self.model.status isEqualToString:@"可编辑"]) {
+                    [self.editingBtn removeFromSuperview];
+                    self.editingBtn=nil;
+                }
+                [self.dataAry removeAllObjects];
+
+            }
+            
+            NSArray *itemAry=[dic objectForKey:@"itemList"];
+            if (itemAry.count==0) {
+                self.pageNum--;
+            }else
+            {
+                [self.dataAry addObjectsFromArray:itemAry];
+                [self.tableView reloadData];
+            }
+            if (self.pageNum<1) {
+                self.pageNum=1;
+            }
         }else
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
         RemoveActionV();
     } failure:^(NSError *error) {
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
         RemoveActionV();
     }];
 }
 -(void)textFieldChangeVVWithStr:(NSString *)textStr
 {
     self.searchStr=textStr;
+    self.pageNum=1;
+    [self getdataAction];
 }
 -(void)editingBtnAction:(UIButton *)sender
 {
@@ -110,7 +152,7 @@
     self.searchV.hidden=NO;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.model.itemList.count;
+    return self.dataAry.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -118,7 +160,7 @@
     if (!cell) {
         cell=[YLDMiaoMuUnTableViewCell yldMiaoMuUnTableViewCell];
     }
-    NSDictionary *DIC=self.model.itemList[indexPath.row];
+    NSDictionary *DIC=self.dataAry[indexPath.row];
     cell.messageDic=DIC;
     cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
     //NSDictionary *DIC=self.miaomuAry[indexPath.row];

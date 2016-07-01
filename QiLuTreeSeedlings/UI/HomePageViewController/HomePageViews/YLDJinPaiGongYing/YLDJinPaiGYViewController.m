@@ -9,6 +9,7 @@
 #import "YLDJinPaiGYViewController.h"
 #import "SellSearchTableViewCell.h"
 #import "SellDetialViewController.h"
+#import "HotSellModel.h"
 #import "HttpClient.h"
 #import "MJRefresh.h"
 @interface YLDJinPaiGYViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -17,6 +18,7 @@
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,strong)NSMutableArray *dataAry;
 @property (nonatomic)NSInteger pageNum;
+@property (nonatomic)NSInteger goldsupplier;
 @end
 
 @implementation YLDJinPaiGYViewController
@@ -25,6 +27,8 @@
     [super viewDidLoad];
     self.vcTitle=@"金牌供应";
     self.dataAry=[NSMutableArray array];
+    self.pageNum=1;
+    self.goldsupplier=1;
     [self topActionView];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 120, kWidth, kHeight-120)];
     tableView.delegate=self;
@@ -32,6 +36,18 @@
     self.tableView=tableView;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
+    __weak typeof(self) weakSelf=self;
+    [tableView addHeaderWithCallback:^{
+        ShowActionV();
+        weakSelf.pageNum=1;
+        [weakSelf getDataLists];
+    }];
+    [tableView addFooterWithCallback:^{
+        ShowActionV();
+        weakSelf.pageNum+=1;
+        [weakSelf getDataLists];
+    }];
+    [tableView headerBeginRefreshing];
     // Do any additional setup after loading the view.
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -41,8 +57,44 @@
     return 100;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SellSearchTableViewCell *cell;
+    SellSearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[SellSearchTableViewCell IDStr]];
+    if (!cell) {
+        cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
+    }
+    HotSellModel *model=self.dataAry[indexPath.row];
+    cell.hotSellModel=model;
     return cell;
+}
+-(void)getDataLists
+{
+    [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",self.pageNum] Withgoldsupplier:[NSString stringWithFormat:@"%ld",self.goldsupplier] Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSArray *ary=[[responseObject objectForKey:@"result"] objectForKey:@"list"];
+            if (self.pageNum==1) {
+                [self.dataAry removeAllObjects];
+            }
+            if (ary.count<=0) {
+                self.pageNum--;
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }else
+            {
+                NSArray *dataAAA=[HotSellModel hotSellAryByAry:ary];
+                [self.dataAry addObjectsFromArray:dataAAA];
+                
+            }
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        RemoveActionV();
+        [self.tableView reloadData];
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
+    } failure:^(NSError *error) {
+        RemoveActionV();
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
+    }];
 }
 - (void)topActionView {
     NSArray *ary=@[@"全部",@"金牌",@"银牌",@"铜牌"];
@@ -65,7 +117,7 @@
         [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
         [btn setTitleColor:NavColor forState:UIControlStateSelected];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        btn.tag=i;
+        btn.tag=i+1;
         if (i==0) {
             btn.selected=YES;
             _nowBtn=btn;
@@ -86,8 +138,12 @@
     _nowBtn.selected=NO;
     _nowBtn=sender;
     
+    self.goldsupplier=sender.tag;
+    self.pageNum=1;
+    [self.tableView headerBeginRefreshing];
+    
     CGRect frame=_moveView.frame;
-    frame.origin.x=kWidth/4*(sender.tag);
+    frame.origin.x=kWidth/4*(sender.tag-1);
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame=frame;
     }];

@@ -642,6 +642,9 @@ failure:(void (^)(NSError *error))failure;
                                  failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 我的订单详情 -----------
 -(void)myDingDanDetialWithUid:(NSString *)uid
+                 WithPageSize:(NSString *)pageSize
+                 WithPageNum:(NSString *)pageNumber
+                 Withkeyword:(NSString *)keyword
                       Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 我的分享 -----------
@@ -765,5 +768,9 @@ failure:(void (^)(NSError *error))failure;
                                     failure:(void (^)(NSError *error))failure;
 
 
-
+#pragma mark ---------- 金牌供应 -----------
+- (void)GoldSupplrWithPageSize:(NSString *)pageSize WithPage:(NSString *)page
+              Withgoldsupplier:(NSString *)goldsupplier
+                Success:(void (^)(id responseObject))success
+                                    failure:(void (^)(NSError *error))failure;
 @end
