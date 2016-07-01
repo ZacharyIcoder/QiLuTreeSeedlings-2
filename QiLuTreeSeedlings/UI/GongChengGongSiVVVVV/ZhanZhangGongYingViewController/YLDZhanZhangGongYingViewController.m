@@ -14,7 +14,10 @@
 #import "YLDTuiJianGongZuoZhanCell.h"
 #import "SellSearchTableViewCell.h"
 #import "ZIKWorkstationViewController.h"
+#import "MJRefresh.h"
 @interface YLDZhanZhangGongYingViewController ()<AdvertDelegate,UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong)NSArray *dataAry;
+@property (nonatomic)NSInteger pageNum;
 
 @end
 
@@ -29,12 +32,21 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.pageNum=1;
+    self.dataAry=[NSMutableArray array];
     self.backBtn.frame=CGRectMake(13, 26, 60, 30);
     self.vcTitle=@"站长供应";
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
+    __weak typeof(self) weakSelf=self;
+    [tableView addHeaderWithCallback:^{
+        
+    }];
+    [tableView addFooterWithCallback:^{
+        
+    }];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];
     // Do any additional setup after loading the view from its nib.
 }

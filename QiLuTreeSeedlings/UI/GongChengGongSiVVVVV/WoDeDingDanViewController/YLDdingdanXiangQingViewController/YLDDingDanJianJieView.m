@@ -50,10 +50,10 @@
     self.endTimeLab.text=[timeAry firstObject];
     self.baojiaTypeLab.text=hezuomodel.quotationRequired;
     self.zhiliangLab.text=hezuomodel.quantityRequired;
-    self.ciliangLab.text=hezuomodel.quotationRequired;
+    self.ciliangLab.text=[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",hezuomodel.dbh,hezuomodel.groundDiameter];
     self.companyLab.text=hezuomodel.company;
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.ciliangLab.font,NSFontAttributeName, nil];
-    CGSize sizeOne = [hezuomodel.quotationRequired boundingRectWithSize:CGSizeMake(self.ciliangLab.frame.size.width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+    CGSize sizeOne = [[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",hezuomodel.dbh,hezuomodel.groundDiameter] boundingRectWithSize:CGSizeMake(self.ciliangLab.frame.size.width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
     self.celiangHeight.constant=sizeOne.height+5;
     //    self.companyLab.text=model.
     self.shuomingTextField.text=hezuomodel.descriptions;

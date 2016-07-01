@@ -90,6 +90,7 @@
     searchV.delegate=self;
     searchV.hidden=YES;
     [self.navBackView addSubview:searchV];
+    ShowActionV();
     [self getdataAction];
 }
 -(void)getdataAction

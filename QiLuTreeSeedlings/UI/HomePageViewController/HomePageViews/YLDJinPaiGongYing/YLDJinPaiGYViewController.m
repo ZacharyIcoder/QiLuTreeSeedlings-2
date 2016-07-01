@@ -28,7 +28,7 @@
     self.vcTitle=@"金牌供应";
     self.dataAry=[NSMutableArray array];
     self.pageNum=1;
-    self.goldsupplier=1;
+    self.goldsupplier=0;
     [self topActionView];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 120, kWidth, kHeight-120)];
     tableView.delegate=self;
@@ -67,7 +67,7 @@
 }
 -(void)getDataLists
 {
-    [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",self.pageNum] Withgoldsupplier:[NSString stringWithFormat:@"%ld",self.goldsupplier] Success:^(id responseObject) {
+    [HTTPCLIENT GoldSupplrWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",self.pageNum] Withgoldsupplier:[NSString stringWithFormat:@"%ld",self.goldsupplier]  Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSArray *ary=[[responseObject objectForKey:@"result"] objectForKey:@"list"];
             if (self.pageNum==1) {
@@ -75,7 +75,7 @@
             }
             if (ary.count<=0) {
                 self.pageNum--;
-                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                [ToastView showTopToast:@"已无更多数据"];
             }else
             {
                 NSArray *dataAAA=[HotSellModel hotSellAryByAry:ary];
@@ -117,7 +117,7 @@
         [btn setTitleColor:titleLabColor forState:UIControlStateNormal];
         [btn setTitleColor:NavColor forState:UIControlStateSelected];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        btn.tag=i+1;
+        btn.tag=i;
         if (i==0) {
             btn.selected=YES;
             _nowBtn=btn;
@@ -143,7 +143,7 @@
     [self.tableView headerBeginRefreshing];
     
     CGRect frame=_moveView.frame;
-    frame.origin.x=kWidth/4*(sender.tag-1);
+    frame.origin.x=kWidth/4*(sender.tag);
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame=frame;
     }];
