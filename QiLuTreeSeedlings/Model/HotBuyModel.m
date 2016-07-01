@@ -30,6 +30,7 @@
         model.checkReason=[dic objectForKey:@"checkReason"];
         NSDate *creatTimeDate=[ZIKFunction getDateFromString:model.creatTime];
         model.timeAger=[ZIKFunction compareCurrentTime:creatTimeDate];
+        model.goldsupplier=[dic[@"goldsupplier"] integerValue];
     }
     return model;
 }

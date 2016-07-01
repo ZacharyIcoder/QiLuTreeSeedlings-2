@@ -23,6 +23,7 @@
     model.status=dic[@"status"];
     model.uid=dic[@"uid"];
     model.workstationName=dic[@"workstationName"];
+    model.itemUid=dic[@"itemUid"];
     return model;
 }
 +(NSMutableArray *)yldBaoJiaMessageModelWithAry:(NSArray *)dataAry

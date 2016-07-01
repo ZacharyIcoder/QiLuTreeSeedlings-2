@@ -50,6 +50,7 @@
     model.push=[[dic objectForKey:@"push"]integerValue];
     model.publishUid=[dic objectForKey:@"publishUid"];
     model.buyPrice=[[dic objectForKey:@"buyPrice"] floatValue];
+    model.goldsupplier=[dic[@"goldsupplier"] integerValue];
     return model;
 }
 @end

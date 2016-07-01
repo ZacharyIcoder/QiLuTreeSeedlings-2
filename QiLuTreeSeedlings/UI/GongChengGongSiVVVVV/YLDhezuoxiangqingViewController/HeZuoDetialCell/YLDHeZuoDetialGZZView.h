@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *callBtn;
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
 @property (weak, nonatomic) IBOutlet UILabel *areaLab;
-
+@property (nonatomic,strong)NSDictionary *dic;
++(YLDHeZuoDetialGZZView *)yldHeZuoDetialGZZView;
 @end

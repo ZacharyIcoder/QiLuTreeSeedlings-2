@@ -11,6 +11,7 @@
 #import "YLDDingDanJianJieView.h"
 #import "HttpClient.h"
 #import "YLDHeZuoDetial.h"
+#import "YLDHeZuoDEMessageCell.h"
 @interface YLDHeZuoDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak) UIButton *nowBtn;
 @property (nonatomic,weak) UIView *moveView;
@@ -48,7 +49,7 @@
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView=tableView;
     [self.view addSubview:tableView];
-    [HTTPCLIENT hezuoDetialWithorderUid:nil withitemUid:self.itemUid Success:^(id responseObject) {
+    [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
             YLDHeZuoDetial *model=[YLDHeZuoDetial creatYLDHeZuoDetialWithDic:dic];
@@ -65,15 +66,22 @@
     // Do any additional setup after loading the view.
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return self.model.cooperateList.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    NSArray *gongzuozhanAry=[self.model.cooperateList[indexPath.row] objectForKey:@"cooperateQuoteList"];
+    return 80+gongzuozhanAry.count*85;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[UITableViewCell new];
+    YLDHeZuoDEMessageCell *cell=[tableView  dequeueReusableCellWithIdentifier:@"YLDHeZuoDEMessageCell"];
+    if (!cell) {
+        cell=[YLDHeZuoDEMessageCell yldHeZuoDEMessageCell];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    }
+    cell.numLab.text=[NSString stringWithFormat:@"%ld",indexPath.row];
+    cell.dic=self.model.cooperateList[indexPath.row];
     return cell;
 }
 - (void)topActionView {
@@ -134,7 +142,7 @@
 //            [self.navBackView addSubview:self.saerchBtn];
 //        }
 //        
-//        [self.tableView reloadData];
+        [self.tableView reloadData];
     }
     CGRect frame=_moveView.frame;
     frame.origin.x=kWidth/2*(sender.tag);

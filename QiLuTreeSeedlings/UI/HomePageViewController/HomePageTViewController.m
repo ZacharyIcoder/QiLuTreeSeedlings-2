@@ -125,7 +125,7 @@
 //加载更多供应信息
 -(void)getMoreSuppleyMessage
 {
-    [HTTPCLIENT SellListWithWithPageSize:@"10" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
+    [HTTPCLIENT SellListWithWithPageSize:@"10" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Withgoldsupplier:@"0" Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         NSDictionary *dic=[responseObject objectForKey:@"result"];
         NSArray *ary=[dic objectForKey:@"list"];

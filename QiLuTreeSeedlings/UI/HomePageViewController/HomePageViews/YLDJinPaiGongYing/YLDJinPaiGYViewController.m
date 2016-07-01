@@ -27,6 +27,9 @@
     self.dataAry=[NSMutableArray array];
     [self topActionView];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 120, kWidth, kHeight-120)];
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    self.tableView=tableView;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     // Do any additional setup after loading the view.

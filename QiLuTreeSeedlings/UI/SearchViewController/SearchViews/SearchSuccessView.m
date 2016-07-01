@@ -128,7 +128,7 @@
 {
     
     if (self.searchType==1) {
-        [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
+        [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Withgoldsupplier:@"0" Success:^(id responseObject) {
              //NSLog(@"%@",responseObject);
             if(self.PageCount==1)
             {

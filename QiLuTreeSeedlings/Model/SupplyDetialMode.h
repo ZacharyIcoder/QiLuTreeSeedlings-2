@@ -31,6 +31,8 @@
 
 @property (nonatomic, copy) NSString *memberPhone;
 @property (nonatomic, copy) NSString *memberName;
+//1金，2银，3铜
+@property (nonatomic) NSInteger goldsupplier;
 /**
  *  苗圃Uid
  */

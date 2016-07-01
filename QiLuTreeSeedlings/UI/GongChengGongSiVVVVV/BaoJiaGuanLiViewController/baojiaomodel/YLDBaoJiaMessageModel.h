@@ -20,6 +20,7 @@
 @property (nonatomic,copy) NSString *status;
 @property (nonatomic,copy) NSString *uid;
 @property (nonatomic,copy) NSString *workstationName;
+@property (nonatomic,copy) NSString *itemUid;
 +(YLDBaoJiaMessageModel *)yldBaoJiaMessageModelWithDic:(NSDictionary *)dic;
 +(NSMutableArray *)yldBaoJiaMessageModelWithAry:(NSArray *)dataAry;
 @end

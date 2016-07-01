@@ -104,15 +104,19 @@
                 <constraint firstItem="26v-hH-ATu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="3Ck-ju-abE"/>
                 <constraint firstItem="vzm-J8-v9k" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="3OR-cG-edM"/>
                 <constraint firstItem="izB-hu-rL6" firstAttribute="leading" secondItem="26v-hH-ATu" secondAttribute="trailing" constant="8" id="4yB-dg-57g"/>
+                <constraint firstItem="vzm-J8-v9k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="6UX-PW-5KZ"/>
                 <constraint firstItem="26v-hH-ATu" firstAttribute="leading" secondItem="qdw-mz-U00" secondAttribute="trailing" id="6v4-ar-uBL"/>
                 <constraint firstItem="izB-hu-rL6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="7Vr-iJ-7Wb"/>
+                <constraint firstAttribute="bottom" secondItem="vzm-J8-v9k" secondAttribute="bottom" constant="5" id="BhI-tr-Edj"/>
                 <constraint firstItem="znd-kK-M3c" firstAttribute="leading" secondItem="aBx-s2-XmO" secondAttribute="trailing" constant="8" id="FcC-dL-Ugp"/>
+                <constraint firstAttribute="bottom" secondItem="MkW-dU-oJq" secondAttribute="bottom" constant="8" id="GJg-xr-C9B"/>
                 <constraint firstItem="MkW-dU-oJq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="LYY-sk-qYO"/>
                 <constraint firstItem="vzm-J8-v9k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="O2Q-K7-HxF"/>
                 <constraint firstItem="aBx-s2-XmO" firstAttribute="top" secondItem="26v-hH-ATu" secondAttribute="bottom" constant="3" id="RdZ-7I-El9"/>
                 <constraint firstItem="qdw-mz-U00" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="SNY-Aj-4y5"/>
                 <constraint firstAttribute="trailing" secondItem="vzm-J8-v9k" secondAttribute="trailing" constant="5" id="UbM-vc-ru2"/>
                 <constraint firstItem="aBx-s2-XmO" firstAttribute="leading" secondItem="rOG-Gn-fiJ" secondAttribute="trailing" constant="36" id="XJv-Pc-pDg"/>
+                <constraint firstItem="vzm-J8-v9k" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="Xoh-wQ-HfS"/>
                 <constraint firstItem="Sbg-Gm-BRY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="dfM-Z2-iCd"/>
                 <constraint firstItem="znd-kK-M3c" firstAttribute="top" secondItem="izB-hu-rL6" secondAttribute="bottom" constant="1" id="em3-Vb-8y2"/>
                 <constraint firstItem="rOG-Gn-fiJ" firstAttribute="top" secondItem="qdw-mz-U00" secondAttribute="bottom" constant="3" id="f09-SP-xly"/>
@@ -122,12 +126,22 @@
                 <constraint firstItem="oGM-Vu-2Tg" firstAttribute="top" secondItem="Sbg-Gm-BRY" secondAttribute="bottom" constant="1" id="qFu-Fw-wdt"/>
                 <constraint firstAttribute="trailing" secondItem="izB-hu-rL6" secondAttribute="trailing" constant="9" id="qYx-8C-bje"/>
                 <constraint firstAttribute="trailing" secondItem="MkW-dU-oJq" secondAttribute="trailing" constant="9" id="qj1-dc-Jjk"/>
+                <constraint firstAttribute="trailing" secondItem="vzm-J8-v9k" secondAttribute="trailing" constant="5" id="rWp-Wc-9Of"/>
                 <constraint firstAttribute="trailing" secondItem="znd-kK-M3c" secondAttribute="trailing" constant="9" id="u8g-AI-yx1"/>
                 <constraint firstItem="oGM-Vu-2Tg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="wU7-ha-i6L"/>
                 <constraint firstAttribute="bottom" secondItem="vzm-J8-v9k" secondAttribute="bottom" constant="5" id="xof-GW-OzM"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="3OR-cG-edM"/>
+                    <exclude reference="O2Q-K7-HxF"/>
+                    <exclude reference="UbM-vc-ru2"/>
+                    <exclude reference="xof-GW-OzM"/>
+                    <exclude reference="0gS-fN-8lh"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="NameLab" destination="qdw-mz-U00" id="wt2-Ul-6jn"/>
                 <outlet property="areaLab" destination="MkW-dU-oJq" id="Ehy-wD-OHt"/>

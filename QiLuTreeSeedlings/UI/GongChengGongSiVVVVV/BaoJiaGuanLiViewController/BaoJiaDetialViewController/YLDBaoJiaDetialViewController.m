@@ -262,9 +262,8 @@
         return;
     }
     if (type==2) {
-        YLDHeZuoDetialViewController *DAA=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:nil WithitemUid:model.uid];
+        YLDHeZuoDetialViewController *DAA=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:nil WithitemUid:model.itemUid];
         [self.navigationController pushViewController:DAA animated:YES];
-    
     }
 }
 - (void)didReceiveMemoryWarning {

@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *shuliangLab;
 @property (weak, nonatomic) IBOutlet UILabel *shuomingLab;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *shuomingH;
-
+@property (nonatomic,strong)NSDictionary *dic;
++(YLDHeZuoDEMessageCell *)yldHeZuoDEMessageCell;
 @end

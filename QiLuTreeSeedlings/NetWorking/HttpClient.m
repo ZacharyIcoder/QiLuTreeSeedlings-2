@@ -361,7 +361,8 @@
 }
 #pragma mark-供应信息列表
 -(void)SellListWithWithPageSize:(NSString *)pageSize
-                     WithPage:(NSString *)page
+                       WithPage:(NSString *)page
+               Withgoldsupplier:(NSString *)goldsupplier
                         Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure
 {
