@@ -7,7 +7,7 @@
 //
 
 #import "ZIKArrowViewController.h"
-
+#import "MasterInfoModel.h"
 @interface ZIKStationCenterInfoViewController : ZIKArrowViewController
-
+@property (nonatomic, strong) MasterInfoModel *masterModel;
 @end

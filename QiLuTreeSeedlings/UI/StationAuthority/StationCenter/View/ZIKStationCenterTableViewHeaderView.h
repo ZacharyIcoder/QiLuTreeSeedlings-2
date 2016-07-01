@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MasterInfoModel;
 @interface ZIKStationCenterTableViewHeaderView : UITableViewHeaderFooterView
-
+- (void)configWithModel:(MasterInfoModel *)model;
 @end

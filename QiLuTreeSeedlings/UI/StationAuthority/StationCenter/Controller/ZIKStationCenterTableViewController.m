@@ -11,12 +11,13 @@
 #import "ZIKStationCenterContentTableViewCell.h"
 #import "UIDefines.h"
 #import "ZIKMyHonorViewController.h"
-
-
+#import "MasterInfoModel.h"
+#import "YYModel.h"//类型转换
+#import "ZIKStationCenterInfoViewController.h"
 static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewIdentifier";
 
 @interface ZIKStationCenterTableViewController ()
-
+@property (nonatomic, strong) MasterInfoModel *masterModel;
 @end
 
 #pragma mark -
@@ -28,19 +29,64 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+     //[self requestData];
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.sectionHeaderHeight    = HEADER_HEIGHT;
 //    self.tableView.rowHeight = 130;
+    self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
+
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"ZIKStationCenterTableViewHeaderView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
     UIView *view = [UIView new];
     view.backgroundColor = BGColor;
     [self.tableView setTableFooterView:view];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushChangeMasterInfo) name:@"ZIKChangeMasterInfo" object:nil];
+
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKChangeMasterInfo" object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self requestData];
+}
+
+- (void)pushChangeMasterInfo {
+    ZIKStationCenterInfoViewController *changeInfoVC = [[ZIKStationCenterInfoViewController alloc] init];
+    changeInfoVC.hidesBottomBarWhenPushed = YES;
+    changeInfoVC.masterModel = self.masterModel;
+    [self.navigationController pushViewController:changeInfoVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 请求数据
+- (void)requestData {
+   [HTTPCLIENT stationMasterSuccess:^(id responseObject) {
+       CLog(@"%@",responseObject);
+       if ([responseObject[@"success"] integerValue] == 0) {
+           [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+           return ;
+       }
+       if (self.masterModel) {
+           self.masterModel = nil;
+       }
+       NSDictionary *result = responseObject[@"result"];
+       NSDictionary *masterInfo = result[@"masterInfo"];
+       self.masterModel = [MasterInfoModel yy_modelWithDictionary:masterInfo];
+       [self.tableView reloadData];
+
+   } failure:^(NSError *error) {
+       ;
+   }];
 }
 
 #pragma mark - Table view data source
@@ -72,6 +118,9 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         ZIKStationCenterContentTableViewCell *cell = [ZIKStationCenterContentTableViewCell cellWithTableView:tableView];
+        if (self.masterModel) {
+            [cell configureCell:self.masterModel];
+        }
         return cell;
     } else if (indexPath.section == 1) {
       static NSString *cellID = @"cellID";
@@ -106,11 +155,14 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         ZIKStationCenterTableViewHeaderView *sectionHeaderView = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
+        if (self.masterModel) {
+            [sectionHeaderView configWithModel:self.masterModel];
+
+        }
         return sectionHeaderView;
     }
     return nil;
  }
-
 
 #pragma mark - Table view delegate
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
