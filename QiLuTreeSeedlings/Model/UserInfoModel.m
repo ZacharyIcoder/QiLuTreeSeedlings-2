@@ -20,6 +20,7 @@
     model.phone=[dic objectForKey:@"phone"];
     model.noReadCount=[dic objectForKey:@"noReadCount"];
     model.nrMessageCount=[dic objectForKey:@"nrMessageCount"];
+    model.projectCompany=[[dic objectForKey:@"projectCompany"] integerValue];
     return model;
 }
 -(void)reloadInfoByDic:(NSDictionary *)dic

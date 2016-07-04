@@ -854,5 +854,26 @@ failure:(void (^)(NSError *error))failure;
                   pageSize:(NSString *)pageSize
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;
-
+#pragma mark ---------- 工程助手－提交资质升级 -----------
+-(void)shengjiGCGSWithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone
+                        Withbrief:(NSString *)brief
+                     Withprovince:(NSString *)province
+                         Withcity:(NSString *)city
+                       Withcounty:(NSString *)county
+                      Withaddress:(NSString *)address
+                     WithqualJson:(NSString *)qualJson
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－工程中心----------
+-(void)gongchengZhongXinInfoSuccess:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－企业信息编辑----------
+-(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－我的资质----------
+-(void)GCZXwodezizhiWithuid:(NSString *)uid
+             WithpageNumber:(NSString *)pageNumber
+               WithpageSize:(NSString *)pageSize
+                    Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
 @end

@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSString *count;
 @property (nonatomic,strong) NSString *headUrl;
 @property (nonatomic,strong) NSString *workstationUId;
+@property (nonatomic) NSUInteger projectCompany;
 @property (nonatomic,strong) NSString *sumscore;
 @property (nonatomic,strong) NSString *noReadCount;
 @property (nonatomic,strong) NSString *nrMessageCount;
