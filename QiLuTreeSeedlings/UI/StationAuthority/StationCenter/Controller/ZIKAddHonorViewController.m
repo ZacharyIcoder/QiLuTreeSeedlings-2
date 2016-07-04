@@ -40,6 +40,8 @@
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
         }
+        [self.navigationController popViewControllerAnimated:YES];
+
 
 
     } failure:^(NSError *error) {
@@ -174,7 +176,7 @@
         imageData = UIImageJPEGRepresentation(image, 0.0001);
     }
     if (imageData.length>=1024*1024) {
-        CGSize newSize = {600,600};
+        CGSize newSize = {804,552};
         imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
@@ -184,6 +186,7 @@
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
         } else if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+//            [ToastView showTopToast:@"添加成功"];
             NSDictionary *result = responseObject[@"result"];
             self.honorCompressUrl = result[@"compressurl"];
             self.honorDetailUrl   = result[@"detailurl"];
