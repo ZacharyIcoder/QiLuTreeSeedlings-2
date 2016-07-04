@@ -45,4 +45,9 @@
  *  信誉保证金
  */
 @property (nonatomic, copy) NSString *creditMargin;
+
+/**
+ *  站长ID
+ */
+@property (nonatomic, copy) NSString *uid;
 @end

@@ -307,6 +307,11 @@
 -(void)upDataImageIOS:(NSString *)imageString
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure;
+-(void)upDataImageIOS:(NSString *)imageString
+       workstationUid:(NSString *)workstationUid
+                 type:(NSString *)type
+              Success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 获取产品分类列表 -----------
 - (void)getTypeInfoSuccess:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure;

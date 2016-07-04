@@ -393,6 +393,8 @@
 		FC0BE60B1D1B73A600744870 /* ZIKStationCenterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0BE60A1D1B73A600744870 /* ZIKStationCenterInfoViewController.m */; };
 		FC0BE6141D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0BE6121D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.m */; };
 		FC0BE6151D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0BE6131D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib */; };
+		FC224B991D29F48C001FFC47 /* ZIKAddHonorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */; };
+		FC224B9A1D29F48C001FFC47 /* ZIKAddHonorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */; };
 		FC2276621D177C9F0037B131 /* 底部菜单-工作站off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */; };
 		FC2276631D177C9F0037B131 /* 底部菜单-工作站on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */; };
 		FC2276641D177C9F0037B131 /* 底部菜单-工程订单off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */; };
@@ -498,6 +500,7 @@
 		FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B3521CAE68ED0022A24C /* AlipaySDK.framework */; };
 		FC523FF31D26137C002C001F /* ZIKStationChangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC523FF11D26137C002C001F /* ZIKStationChangeInfoViewController.m */; };
 		FC523FF41D26137C002C001F /* ZIKStationChangeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC523FF21D26137C002C001F /* ZIKStationChangeInfoViewController.xib */; };
+		FC523FF71D265933002C001F /* ZIKStationHonorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC523FF61D265933002C001F /* ZIKStationHonorListModel.m */; };
 		FC5337AA1CBDF885008BFB11 /* ZIKStationAgentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337A91CBDF885008BFB11 /* ZIKStationAgentViewController.m */; };
 		FC5337C11CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337BF1CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m */; };
 		FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5337C01CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib */; };
@@ -1281,6 +1284,9 @@
 		FC0BE6111D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSingleVoucherCenterViewController.h; sourceTree = "<group>"; };
 		FC0BE6121D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSingleVoucherCenterViewController.m; sourceTree = "<group>"; };
 		FC0BE6131D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSingleVoucherCenterViewController.xib; sourceTree = "<group>"; };
+		FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddHonorViewController.h; sourceTree = "<group>"; };
+		FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddHonorViewController.m; sourceTree = "<group>"; };
+		FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKAddHonorViewController.xib; sourceTree = "<group>"; };
 		FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站off.png"; sourceTree = "<group>"; };
 		FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站on.png"; sourceTree = "<group>"; };
 		FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工程订单off.png"; sourceTree = "<group>"; };
@@ -1530,6 +1536,8 @@
 		FC523FF01D26137C002C001F /* ZIKStationChangeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationChangeInfoViewController.h; sourceTree = "<group>"; };
 		FC523FF11D26137C002C001F /* ZIKStationChangeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationChangeInfoViewController.m; sourceTree = "<group>"; };
 		FC523FF21D26137C002C001F /* ZIKStationChangeInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationChangeInfoViewController.xib; sourceTree = "<group>"; };
+		FC523FF51D265933002C001F /* ZIKStationHonorListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationHonorListModel.h; sourceTree = "<group>"; };
+		FC523FF61D265933002C001F /* ZIKStationHonorListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationHonorListModel.m; sourceTree = "<group>"; };
 		FC5337A81CBDF885008BFB11 /* ZIKStationAgentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationAgentViewController.h; sourceTree = "<group>"; };
 		FC5337A91CBDF885008BFB11 /* ZIKStationAgentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationAgentViewController.m; sourceTree = "<group>"; };
 		FC5337BE1CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationAgentTableViewCell.h; sourceTree = "<group>"; };
@@ -3382,6 +3390,9 @@
 				FC523FF01D26137C002C001F /* ZIKStationChangeInfoViewController.h */,
 				FC523FF11D26137C002C001F /* ZIKStationChangeInfoViewController.m */,
 				FC523FF21D26137C002C001F /* ZIKStationChangeInfoViewController.xib */,
+				FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */,
+				FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */,
+				FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3392,6 +3403,8 @@
 				FC0853F01D18EFB2003A47BA /* honor.plist */,
 				FC2645291D24FB9A0077565A /* MasterInfoModel.h */,
 				FC26452A1D24FB9A0077565A /* MasterInfoModel.m */,
+				FC523FF51D265933002C001F /* ZIKStationHonorListModel.h */,
+				FC523FF61D265933002C001F /* ZIKStationHonorListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4643,6 +4656,7 @@
 				EA4F4D181CBF5F47006E4988 /* bannelSmall1.jpg in Resources */,
 				FC50B16D1CAE243F0022A24C /* WeiboSDK.bundle in Resources */,
 				FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */,
+				FC224B9A1D29F48C001FFC47 /* ZIKAddHonorViewController.xib in Resources */,
 				EAB7819B1C8E970F00807B44 /* collectionT@2x.png in Resources */,
 				FCCFA7161CF2E12400CC1313 /* carat.png in Resources */,
 				EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */,
@@ -4914,6 +4928,7 @@
 				EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */,
 				FC6487521D1A847000F89464 /* ZIKStationOrderDetailQuoteModel.m in Sources */,
 				EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */,
+				FC523FF71D265933002C001F /* ZIKStationHonorListModel.m in Sources */,
 				FC5337C81CBE17B0008BFB11 /* HCSStarRatingView.m in Sources */,
 				FC2D132C1D211DA700F0973A /* ZIKQuoteTextField.m in Sources */,
 				FC56126E1D0C092F00E5743B /* ForegroundColorAttribute.m in Sources */,
@@ -4964,6 +4979,7 @@
 				EA9A22A61D128DFF000CA161 /* YLDDingDanDetialViewController.m in Sources */,
 				EAB781A61C8EC4E200807B44 /* BuyDescriptionTableViewCell.m in Sources */,
 				EAE32DF11C7E9C3800C4CEA2 /* AFImageDownloader.m in Sources */,
+				FC224B991D29F48C001FFC47 /* ZIKAddHonorViewController.m in Sources */,
 				FC2276721D177C9F0037B131 /* ZIKStationCenterTableViewHeaderView.m in Sources */,
 				FC2276781D177C9F0037B131 /* ZIKOrderViewController.m in Sources */,
 				FC56129A1D0C092F00E5743B /* ZIKArrowViewController.m in Sources */,

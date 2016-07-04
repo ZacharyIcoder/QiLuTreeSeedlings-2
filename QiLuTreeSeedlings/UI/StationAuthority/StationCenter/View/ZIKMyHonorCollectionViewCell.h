@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ZIKStationHonorListModel;
 
 @interface ZIKMyHonorCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *honorImageView;
 @property (weak, nonatomic) IBOutlet UILabel *honorTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *honorTimeLabel;
 
+@property (nonatomic, assign) BOOL isEditState;
+
+-(void)configureCellWithModel:(ZIKStationHonorListModel *)model;
 @end

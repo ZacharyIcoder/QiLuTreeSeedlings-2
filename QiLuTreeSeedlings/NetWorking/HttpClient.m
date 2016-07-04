@@ -1341,16 +1341,23 @@
 }
 
 -(void)upDataImageIOS:(NSString *)imageString
+       workstationUid:(NSString *)workstationUid
+                 type:(NSString *)type
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure {
     NSString *postURL = @"apiuploadios";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                imageString,@"file",
-                                @"gongyingtupian.png",@"fileName",
-                                nil];
+//    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                imageString,@"file",
+//                                @"gongyingtupian.png",@"fileName",
+//                                nil];
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"file"]             = imageString;
+    parmers[@"fileName"]         = @"gongyingtupian.png";
+    parmers[@"workstationUid"]   = workstationUid;
+    parmers[@"type"]             = type;
     //NSLog(@"%@",parameters);
     ShowActionV();
-    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);

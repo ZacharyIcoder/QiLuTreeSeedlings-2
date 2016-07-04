@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -35,6 +36,43 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6M-b1-acg">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="145"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-IQ-dZZ">
+                                <rect key="frame" x="8" y="58" width="60" height="30"/>
+                                <color key="backgroundColor" red="0.41960784309999999" green="0.73725490199999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="578-MY-RLQ"/>
+                                </constraints>
+                                <state key="normal" title="编辑">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xZ-Mg-cbQ">
+                                <rect key="frame" x="80" y="58" width="60" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5924916107" blue="0.1272283977" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qj2-cp-Vsc"/>
+                                </constraints>
+                                <state key="normal" title="删除">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ToZ-IQ-dZZ" firstAttribute="leading" secondItem="I6M-b1-acg" secondAttribute="leading" constant="8" id="25s-Xe-e8w"/>
+                            <constraint firstItem="ToZ-IQ-dZZ" firstAttribute="centerY" secondItem="I6M-b1-acg" secondAttribute="centerY" id="Kn4-Cf-ZOP"/>
+                            <constraint firstItem="5xZ-Mg-cbQ" firstAttribute="leading" secondItem="ToZ-IQ-dZZ" secondAttribute="trailing" priority="250" constant="12" id="fIv-5K-NgA"/>
+                            <constraint firstItem="ToZ-IQ-dZZ" firstAttribute="width" secondItem="I6M-b1-acg" secondAttribute="width" multiplier="0.4" id="g5t-Ha-kcO"/>
+                            <constraint firstItem="5xZ-Mg-cbQ" firstAttribute="width" secondItem="I6M-b1-acg" secondAttribute="width" multiplier="0.4" id="jnJ-D7-MPZ"/>
+                            <constraint firstItem="5xZ-Mg-cbQ" firstAttribute="centerY" secondItem="I6M-b1-acg" secondAttribute="centerY" id="ovk-YJ-VZr"/>
+                            <constraint firstAttribute="trailing" secondItem="5xZ-Mg-cbQ" secondAttribute="trailing" constant="10" id="xdG-kE-qhH"/>
+                            <constraint firstItem="5xZ-Mg-cbQ" firstAttribute="leading" secondItem="ToZ-IQ-dZZ" secondAttribute="trailing" priority="250" constant="12" id="zdH-Rg-OcL"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -46,11 +84,18 @@
                 <constraint firstItem="ghx-Lj-I0p" firstAttribute="top" secondItem="5eQ-qg-EAu" secondAttribute="bottom" constant="3" id="FZ6-K8-ARC"/>
                 <constraint firstAttribute="trailing" secondItem="5eQ-qg-EAu" secondAttribute="trailing" constant="8" id="Ffj-3n-Sq9"/>
                 <constraint firstAttribute="trailing" secondItem="ghx-Lj-I0p" secondAttribute="trailing" id="Ldv-sb-pLs"/>
+                <constraint firstItem="I6M-b1-acg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Mj0-QY-x0z"/>
+                <constraint firstAttribute="bottom" secondItem="I6M-b1-acg" secondAttribute="bottom" id="WIs-9o-djt"/>
                 <constraint firstAttribute="trailing" secondItem="dGz-Y1-yRA" secondAttribute="trailing" constant="8" id="hbr-dd-5hf"/>
                 <constraint firstItem="dGz-Y1-yRA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="rAd-pI-fQy"/>
+                <constraint firstItem="I6M-b1-acg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="u9j-QM-Hgz"/>
+                <constraint firstAttribute="trailing" secondItem="I6M-b1-acg" secondAttribute="trailing" id="y2x-hU-7Ob"/>
             </constraints>
             <size key="customSize" width="318" height="127"/>
             <connections>
+                <outlet property="backView" destination="I6M-b1-acg" id="2jc-TR-uFA"/>
+                <outlet property="deleteButton" destination="5xZ-Mg-cbQ" id="uyP-CK-nvJ"/>
+                <outlet property="editButton" destination="ToZ-IQ-dZZ" id="n2x-pe-MBh"/>
                 <outlet property="honorImageView" destination="dGz-Y1-yRA" id="33L-xh-KCF"/>
                 <outlet property="honorTimeLabel" destination="ghx-Lj-I0p" id="Fpm-UA-y6m"/>
                 <outlet property="honorTitleLabel" destination="5eQ-qg-EAu" id="m62-fk-Vws"/>

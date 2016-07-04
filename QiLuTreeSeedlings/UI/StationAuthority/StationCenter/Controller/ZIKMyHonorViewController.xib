@@ -17,8 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iBX-gf-GZz">
-                    <rect key="frame" x="0.0" y="21" width="375" height="646"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iBX-gf-GZz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FGG-aa-EWz">
@@ -30,6 +30,12 @@
                 </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iBX-gf-GZz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hf5-ZQ-eBa"/>
+                <constraint firstItem="iBX-gf-GZz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YjO-vP-g3M"/>
+                <constraint firstAttribute="bottom" secondItem="iBX-gf-GZz" secondAttribute="bottom" id="cmw-ko-8U5"/>
+                <constraint firstAttribute="trailing" secondItem="iBX-gf-GZz" secondAttribute="trailing" id="tHi-lU-zQh"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="473.5" y="361.5"/>
         </view>
