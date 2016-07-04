@@ -1352,7 +1352,7 @@
 //                                nil];
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"file"]             = imageString;
-    parmers[@"fileName"]         = @"gongyingtupian.png";
+    parmers[@"fileName"]         = @"tupian.png";
     parmers[@"workstationUid"]   = workstationUid;
     parmers[@"type"]             = type;
     //NSLog(@"%@",parameters);

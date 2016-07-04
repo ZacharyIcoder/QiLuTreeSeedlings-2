@@ -395,6 +395,8 @@
 		FC0BE6151D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0BE6131D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib */; };
 		FC224B991D29F48C001FFC47 /* ZIKAddHonorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */; };
 		FC224B9A1D29F48C001FFC47 /* ZIKAddHonorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */; };
+		FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B9D1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib */; };
+		FC224BA01D2A29E1001FFC47 /* ZIKMyTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC224B9C1D2A13D3001FFC47 /* ZIKMyTeamViewController.m */; };
 		FC2276621D177C9F0037B131 /* 底部菜单-工作站off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */; };
 		FC2276631D177C9F0037B131 /* 底部菜单-工作站on.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */; };
 		FC2276641D177C9F0037B131 /* 底部菜单-工程订单off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */; };
@@ -1287,6 +1289,9 @@
 		FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddHonorViewController.h; sourceTree = "<group>"; };
 		FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddHonorViewController.m; sourceTree = "<group>"; };
 		FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKAddHonorViewController.xib; sourceTree = "<group>"; };
+		FC224B9B1D2A13D3001FFC47 /* ZIKMyTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyTeamViewController.h; sourceTree = "<group>"; };
+		FC224B9C1D2A13D3001FFC47 /* ZIKMyTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyTeamViewController.m; sourceTree = "<group>"; };
+		FC224B9D1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyTeamViewController.xib; sourceTree = "<group>"; };
 		FC22761D1D177C9F0037B131 /* 底部菜单-工作站off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站off.png"; sourceTree = "<group>"; };
 		FC22761E1D177C9F0037B131 /* 底部菜单-工作站on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工作站on.png"; sourceTree = "<group>"; };
 		FC22761F1D177C9F0037B131 /* 底部菜单-工程订单off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底部菜单-工程订单off.png"; sourceTree = "<group>"; };
@@ -3393,6 +3398,9 @@
 				FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */,
 				FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */,
 				FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */,
+				FC224B9B1D2A13D3001FFC47 /* ZIKMyTeamViewController.h */,
+				FC224B9C1D2A13D3001FFC47 /* ZIKMyTeamViewController.m */,
+				FC224B9D1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4775,6 +4783,7 @@
 				EA1CF4061CACD11A00AF2D82 /* loading03@2x.png in Resources */,
 				EA08F7B31D190B5C00471C33 /* GCZXgongsianli.png in Resources */,
 				FC5612511D0C092F00E5743B /* MJRefresh.bundle in Resources */,
+				FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */,
 				EA552E891D0D472600FB88A0 /* ico_橙色收起.png in Resources */,
 				EAFB8FE91D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
@@ -5076,6 +5085,7 @@
 				EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */,
 				FC614A0D1CAA7B1500672241 /* BuyDetialModel.m in Sources */,
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,
+				FC224BA01D2A29E1001FFC47 /* ZIKMyTeamViewController.m in Sources */,
 				EA5E6E4F1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m in Sources */,
 				EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */,
 				FC2276831D177C9F0037B131 /* ZIKWorkstationViewController.m in Sources */,

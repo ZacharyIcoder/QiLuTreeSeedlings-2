@@ -19,6 +19,7 @@
 // 最后的更新时间
 @property (nonatomic, strong) NSDate *lastUpdateTime;
 @property (nonatomic, weak) UILabel *lastUpdateTimeLabel;
+
 @end
 
 @implementation MJRefreshHeaderView
@@ -224,7 +225,13 @@
             // 执行动画
             [UIView animateWithDuration:MJRefreshFastAnimationDuration animations:^{
                 // 1.增加滚动区域
-                CGFloat top = self.scrollViewOriginalInset.top + self.mj_height;
+                CGFloat top = 0;
+                if (self.scrollViewOriginalInset.top <= 20) {
+                    top = self.mj_height;
+                } else {
+                    top = self.scrollViewOriginalInset.top + self.mj_height;
+                }
+ 
                 self.scrollView.mj_contentInsetTop = top;
                 
                 // 2.设置滚动位置

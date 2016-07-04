@@ -8,7 +8,7 @@
 
 #import "ZIKMyHonorCollectionViewCell.h"
 #import "ZIKStationHonorListModel.h"
-
+#import "UIImageView+AFNetworking.h"
 @interface ZIKMyHonorCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UIView *backView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -29,7 +29,10 @@
 }
 
 -(void)configureCellWithModel:(ZIKStationHonorListModel *)model {
-
+    NSURL *honorUrl = [NSURL URLWithString:model.image];
+    [self.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+    self.honorTimeLabel.text = model.acquisitionTime;
+    self.honorTitleLabel.text = model.name;
 }
 
 - (void)setIsEditState:(BOOL)isEditState {

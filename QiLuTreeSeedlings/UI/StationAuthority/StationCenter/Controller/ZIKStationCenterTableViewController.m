@@ -14,6 +14,7 @@
 #import "MasterInfoModel.h"
 #import "YYModel.h"//类型转换
 #import "ZIKStationCenterInfoViewController.h"
+#import "ZIKMyTeamViewController.h"//我的团队
 static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewIdentifier";
 
 @interface ZIKStationCenterTableViewController ()
@@ -174,6 +175,10 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             honorVC.vctitle = @"我的荣誉";
             honorVC.workstationUid = self.masterModel.uid;
             [self.navigationController pushViewController:honorVC animated:YES];
+        } else if (indexPath.row == 1) {
+            ZIKMyTeamViewController *teamVC = [[ZIKMyTeamViewController  alloc] initWithNibName:@"ZIKMyTeamViewController" bundle:nil];
+            teamVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:teamVC animated:YES];
         }
     }
 }

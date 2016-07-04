@@ -8,12 +8,15 @@
 
 #import "ZIKAddHonorViewController.h"
 #import "RSKImageCropper.h"
-
+#import "UIButton+AFNetworking.h"
 @interface ZIKAddHonorViewController ()<UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *honorNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *honorTimeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
 
+@property (nonatomic, strong) NSString *honorCompressUrl;
+@property (nonatomic, strong) NSString *honorDetailUrl;
+@property (nonatomic, strong) NSString *honorUrl;
 @end
 
 @implementation ZIKAddHonorViewController
@@ -31,7 +34,8 @@
     name = self.honorNameTextField.text;
     time = self.honorTimeTextField.text;
 
-    [HTTPCLIENT stationHonorCreateWithUid:nil workstationUid:nil name:name acquisitionTime:time image:nil Success:^(id responseObject) {
+    [HTTPCLIENT stationHonorCreateWithUid:nil workstationUid:_workstationUid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
+        CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -52,11 +56,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - 头像点击事件
-//头像点击事件
+#pragma mark - 添加荣誉图片事件
+//添加荣誉图片事件
 - (void)addPicture
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"修改头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄新照片",@"从相册选取", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"添加荣誉图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄新照片",@"从相册选取", nil];
     sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [sheet showInView:self.view];
 }
@@ -105,6 +109,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
+    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBarHidden = YES;
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     //修改图片
     [self chooseUserPictureChange:image];
@@ -114,6 +120,9 @@
 - (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
 {
     [self.navigationController popViewControllerAnimated:YES];
+    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBarHidden = YES;
+
 }
 
 - (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
@@ -123,7 +132,9 @@
     //NSData *temData = UIImagePNGRepresentation(_globalHeadImage);
     [self requestUploadHeadImage:croppedImage];
     [self.navigationController popViewControllerAnimated:YES];
-}
+    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBarHidden = YES;
+  }
 
 - (void)chooseUserPictureChange:(UIImage*)image
 {
@@ -131,6 +142,7 @@
     RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
     imageCropVC.cropMode = RSKImageCropModeSquare;
     imageCropVC.delegate = self;
+    imageCropVC.navigationController.navigationBar.hidden = YES;
     [self.navigationController pushViewController:imageCropVC animated:YES];
 }
 
@@ -152,13 +164,33 @@
 //    } failure:^(NSError *error) {
 //        //NSLog(@"%@",error);
 //    }];
+    NSData* imageData;
+    //判断图片是不是png格式的文件
+    if (UIImagePNGRepresentation(image)) {
+        //返回为png图像。
+        imageData = UIImagePNGRepresentation(image);
+    }else {
+        //返回为JPEG图像。
+        imageData = UIImageJPEGRepresentation(image, 0.0001);
+    }
+    if (imageData.length>=1024*1024) {
+        CGSize newSize = {600,600};
+        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+    }
+    NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
 
-    [HTTPCLIENT upDataImageIOS:nil workstationUid:nil type:@"3" Success:^(id responseObject) {
+    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil type:@"3" Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
         } else if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-
+            NSDictionary *result = responseObject[@"result"];
+            self.honorCompressUrl = result[@"compressurl"];
+            self.honorDetailUrl   = result[@"detailurl"];
+            self.honorUrl         = result[@"url"];
+//            NSURL *url = [NSURL URLWithString:self.honorUrl];
+//            [self.addImageButton setImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"添加图片"]];
+            [self.addImageButton setBackgroundImage:image forState:UIControlStateNormal];
         }
 
 
@@ -167,5 +199,20 @@
     }];
 }
 
+-(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+
+    return UIImagePNGRepresentation(newImage);
+}
 
 @end

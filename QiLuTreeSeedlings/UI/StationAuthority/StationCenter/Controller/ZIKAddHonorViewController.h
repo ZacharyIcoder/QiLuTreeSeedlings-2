@@ -9,5 +9,5 @@
 #import "ZIKArrowViewController.h"
 
 @interface ZIKAddHonorViewController : ZIKArrowViewController
-
+@property (nonatomic, copy) NSString *workstationUid;
 @end

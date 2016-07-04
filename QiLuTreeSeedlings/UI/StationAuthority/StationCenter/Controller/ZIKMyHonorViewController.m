@@ -61,44 +61,48 @@ NSString *kHonorCellID = @"honorcellID";
         }
         if ([weakSelf.vctitle isEqualToString:@"我的荣誉"]) {
             ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+            addVC.workstationUid = weakSelf.workstationUid;
             [weakSelf.navigationController pushViewController:addVC animated:YES];
         }
     };
     self.honorCollectionView.delegate   = self;
     self.honorCollectionView.dataSource = self;
+    self.honorCollectionView.alwaysBounceVertical = YES;
     //self.honorCollectionView.backgroundColor = [UIColor yellowColor];
     self.isEditState = NO;
     //添加长按手势
     _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
     [self.honorCollectionView addGestureRecognizer:_tapDeleteGR];
 
-    [self requestData];
+    self.honorData = [NSMutableArray array];
+    //[self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     self.page = 1;
+    [self requestData];
     //[self.honorCollectionView headerBeginRefreshing];
 }
 
-/**
- *  懒加载获取plist中对应的数据源
- *
- */
-- (NSMutableArray *)honorData
-{
-    if (_honorData == nil) {
-
-        NSString * honorPath = [[NSBundle mainBundle] pathForResource:@"honor" ofType:@"plist"];
-        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:honorPath];
-        NSMutableArray *array = [dic objectForKey:@"honorList"];
-//        NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:honorPath];
-
-        _honorData = array;
-    }
-
-    return _honorData;
-}
+///**
+// *  懒加载获取plist中对应的数据源
+// *
+// */
+//- (NSMutableArray *)honorData
+//{
+//    if (_honorData == nil) {
+//
+//        NSString * honorPath = [[NSBundle mainBundle] pathForResource:@"honor" ofType:@"plist"];
+//        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:honorPath];
+//        NSMutableArray *array = [dic objectForKey:@"honorList"];
+////        NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:honorPath];
+//
+//        _honorData = array;
+//    }
+//
+//    return _honorData;
+//}
 
 #pragma mark - 请求数据
 - (void)requestData {
@@ -113,6 +117,8 @@ NSString *kHonorCellID = @"honorcellID";
     }];
     [self.honorCollectionView headerBeginRefreshing];
 
+    //self.honorCollectionView.mj
+
 }
 
 - (void)requestHonorListData:(NSString *)pageNumber {
@@ -126,9 +132,9 @@ NSString *kHonorCellID = @"honorcellID";
             NSArray *array  = responseObject[@"result"][@"list"];
             if (array.count == 0 && self.page == 1) {
                 [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
-//                 if (self.honorData.count > 0) {
-//                    [self.honorData removeAllObjects];
-//                }
+                 if (self.honorData.count > 0) {
+                    [self.honorData removeAllObjects];
+                }
                 [self.honorCollectionView footerEndRefreshing];
                 [self.honorCollectionView reloadData];
                 return ;
@@ -141,20 +147,20 @@ NSString *kHonorCellID = @"honorcellID";
                 return;
             }
             else {
-//                 if (self.page == 1) {
-//                    [self.honorData removeAllObjects];
-//                }
-//                [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-//                    ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
-//                    [self.honorData addObject:honorListModel];
-////                    ZIKSupplyModel *model = [ZIKSupplyModel yy_modelWithDictionary:dic];
-////                    if (self.state == SupplyStateThrough && [model.shuaxin isEqualToString:@"1"]) {
-////                        model.isCanRefresh = NO;
-////                    } else {
-////                        model.isCanRefresh = YES;
-////                    }
-////                    [self.supplyInfoMArr addObject:model];
-//                }];
+                 if (self.page == 1) {
+                    [self.honorData removeAllObjects];
+                }
+                [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                    ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
+                    [self.honorData addObject:honorListModel];
+//                    ZIKSupplyModel *model = [ZIKSupplyModel yy_modelWithDictionary:dic];
+//                    if (self.state == SupplyStateThrough && [model.shuaxin isEqualToString:@"1"]) {
+//                        model.isCanRefresh = NO;
+//                    } else {
+//                        model.isCanRefresh = YES;
+//                    }
+//                    [self.supplyInfoMArr addObject:model];
+                }];
                 [self.honorCollectionView reloadData];
 //                //已通过状态并且可编辑状态
 //                if (self.honorCollectionView.editing && self.state == SupplyStateThrough) {
@@ -206,14 +212,15 @@ NSString *kHonorCellID = @"honorcellID";
                                                                         forIndexPath:indexPath];
     cell.isEditState = self.isEditState;
     if (self.honorData.count > 0) {
-       // NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]]];
-        NSString *myurlstr = [NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]];
-        NSURL *honorUrl = [NSURL URLWithString:myurlstr];
-        NSURL *myurl    = [[NSURL alloc] initWithString:myurlstr];
-        NSLog(@"%@",myurl);
-        [cell.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-        cell.honorTitleLabel.text = [self.honorData[indexPath.row] objectForKey:@"title"];
-        cell.honorTimeLabel.text  = [self.honorData[indexPath.row] objectForKey:@"time"];
+//       // NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]]];
+//        NSString *myurlstr = [NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]];
+//        NSURL *honorUrl = [NSURL URLWithString:myurlstr];
+//        NSURL *myurl    = [[NSURL alloc] initWithString:myurlstr];
+//        NSLog(@"%@",myurl);
+//        [cell.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+//        cell.honorTitleLabel.text = [self.honorData[indexPath.row] objectForKey:@"title"];
+//        cell.honorTimeLabel.text  = [self.honorData[indexPath.row] objectForKey:@"time"];
+        [cell configureCellWithModel:_honorData[indexPath.row]];
     }
     return cell;
 }
