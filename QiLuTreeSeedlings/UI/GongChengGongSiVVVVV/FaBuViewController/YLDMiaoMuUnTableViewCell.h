@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *numLab;
 @property (weak, nonatomic) IBOutlet UILabel *jieshaoLab;
+@property (nonatomic,strong) UIButton *chakanBtn;
 @property (nonatomic,strong) NSDictionary *messageDic;
 +(YLDMiaoMuUnTableViewCell *)yldMiaoMuUnTableViewCell;
++(YLDMiaoMuUnTableViewCell *)yldMiaoMuUnTableViewCell2;
 @end

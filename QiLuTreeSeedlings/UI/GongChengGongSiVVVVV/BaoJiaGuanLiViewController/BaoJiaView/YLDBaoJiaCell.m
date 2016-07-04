@@ -22,6 +22,7 @@
     self.areaLab.text=model.area;
     self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];
     CGRect frame=self.frame;
+    self.timeLab.text=model.endDate;
     CGFloat hieghtss=[self getHeightWithContent:model.descriptions width:kWidth-100 font:14];
     if (hieghtss>25) {
         frame.size.height = 150-23 +hieghtss;

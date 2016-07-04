@@ -139,6 +139,7 @@
 {
     YLDPickTimeView *pickTimeView=[[YLDPickTimeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     pickTimeView.delegate=self;
+    pickTimeView.pickerView.minimumDate=nil;
     [pickTimeView showInView];
     
 }
