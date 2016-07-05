@@ -22,6 +22,7 @@
     model.phone=dic[@"phone"];
     model.province=dic[@"province"];
     model.uid=dic[@"uid"];
+    model.address=dic[@"address"];
     return model;
 }
 @end

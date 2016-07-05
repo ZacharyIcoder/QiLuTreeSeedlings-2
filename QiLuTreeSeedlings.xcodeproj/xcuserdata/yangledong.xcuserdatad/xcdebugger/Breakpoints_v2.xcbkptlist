@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/YLDShenFenShengJiViewController/YLDGCGSZiZhiTiJiaoViewConroller/YLDGCGSZiZhiTiJiaoViewController.m"
-            timestampString = "489389264.453345"
+            filePath = "QiLuTreeSeedlings/Model/UserInfoModel.m"
+            timestampString = "489378085.47"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "-tijiaoBtnAction:"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "+userInfoCreatByDic:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

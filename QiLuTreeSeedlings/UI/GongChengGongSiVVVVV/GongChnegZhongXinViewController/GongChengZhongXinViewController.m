@@ -79,6 +79,7 @@
                 cell=[yYLDCompanyMessageCell yyldCompanyMessageCell];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
+            cell.model=APPDELEGATE.GCGSModel;
             return cell;
             
         }

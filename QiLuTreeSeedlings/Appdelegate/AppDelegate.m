@@ -211,9 +211,7 @@
     if (!self.userModel.access_token) {
         return;
     }
-    if (self.userModel.goldsupplierStatus==7) {
-      [self getGchenggongsiInfo];  
-    }
+    
     
     [HTTPCLIENT getUserInfoByToken:self.userModel.access_token byAccessId:self.userModel.access_id Success:^(id responseObject) {
         RemoveActionV();
@@ -228,6 +226,10 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:nil];
             [self.userModel reloadInfoByDic:[responseObject objectForKey:@"result"]];
             success(responseObject);
+            if (self.userModel.goldsupplierStatus==7) {
+                [self getGchenggongsiInfo];
+            }
+            
             // NSLog(@"用户信息 %@",responseObject);
         }
        

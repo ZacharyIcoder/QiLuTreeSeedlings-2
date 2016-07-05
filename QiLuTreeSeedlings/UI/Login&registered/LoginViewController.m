@@ -73,6 +73,7 @@
                 
             }];
             [APPDELEGATE reloadCompanyInfo];
+            [APPDELEGATE getGchenggongsiInfo];
             
         }else
         {

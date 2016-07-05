@@ -10,6 +10,7 @@
 
 @interface YLDGCGSModel : NSObject
 @property (nonatomic,strong)NSString *area;
+@property (nonatomic,strong)NSString *address;
 @property (nonatomic,strong)NSString *attachment;
 @property (nonatomic,strong)NSString *brief;
 @property (nonatomic,strong)NSString *province;

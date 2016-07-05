@@ -909,4 +909,21 @@ failure:(void (^)(NSError *error))failure;
                WithpageSize:(NSString *)pageSize
                     Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－工程助手首页--------
+-(void)GCGSshouyeWithPageSize:(NSString *)pageSize WithsupplyCount:(NSString *)supplyCount
+                      Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－我的资质保存--------
+-(void)GCGSRongYuTijiaoWithuid:(NSString *)uid
+      WtihcompanyQualification:(NSString *)companyQualification
+           WithacquisitionTime:(NSString *)acquisitionTime
+                          With:(NSString *)level
+                WithcompanyUid:(NSString *)companyUid
+          WithissuingAuthority:(NSString *)issuingAuthority
+                Withattachment:(NSString *)attachment   Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－我的资质删除-------
+-(void)GCZXDeleteRongYuWithuid:(NSString *)uid
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
 @end

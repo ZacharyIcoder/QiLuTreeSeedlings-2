@@ -35,5 +35,6 @@
 - (void)saveContext;
 - (void)requestBuyRestrict;
 - (NSURL *)applicationDocumentsDirectory;
+-(void)getGchenggongsiInfo;
 @end
 
