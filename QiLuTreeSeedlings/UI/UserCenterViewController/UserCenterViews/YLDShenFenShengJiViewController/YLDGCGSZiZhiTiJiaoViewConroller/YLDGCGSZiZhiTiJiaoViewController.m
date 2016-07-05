@@ -11,18 +11,24 @@
 #import "YLDZiZhiAddViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "BWTextView.h"
-@interface YLDGCGSZiZhiTiJiaoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+#import "YLDPickLocationView.h"
+#import "GetCityDao.h"
+#import "HttpClient.h"
+@interface YLDGCGSZiZhiTiJiaoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,YLDPickLocationDelegate>
 @property (nonatomic,weak) UICollectionView *collectionView;
 @property (nonatomic,strong) NSMutableArray *honorData;
 @property (nonatomic,copy)NSString *kHonorCellID;
 @property (nonatomic,strong)UIView *headerView;
 @property (nonatomic,weak)UITextField *qiyeTextField;
-@property (nonatomic,weak)UITextField *areaTextField;
+@property (nonatomic,weak)UIButton *areaBtn;
 @property (nonatomic,weak)UITextField *addressTextField;
 @property (nonatomic,weak)UITextField *legalPersonField;
 @property (nonatomic,weak)UITextField *phoneTextField;
 @property (nonatomic,weak)UITextField *youbianTextField;
 @property (nonatomic,weak)BWTextView *jieshaTextView;
+@property (nonatomic,strong)NSString *AreaProvince;
+@property (nonatomic,strong)NSString *AreaCity;
+@property (nonatomic,strong)NSString *AreaCounty;
 @end
 
 @implementation YLDGCGSZiZhiTiJiaoViewController
@@ -57,10 +63,59 @@
       [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier];
     UIButton *tijiaoBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-50, kWidth-80, 40)];
     [tijiaoBtn setBackgroundColor:NavColor];
+    [tijiaoBtn addTarget:self action:@selector(tijiaoBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [tijiaoBtn setTitle:@"提交审核" forState:UIControlStateNormal];
     [self.view addSubview:tijiaoBtn];
 
     // Do any additional setup after loading the view.
+}
+-(void)tijiaoBtnAction:(UIButton *)sender
+{
+    if (self.qiyeTextField.text.length<=0) {
+        [ToastView showTopToast:@"请输入企业名称"];
+        
+        return;
+    }
+    if (self.AreaProvince.length<=0) {
+        [ToastView showTopToast:@"请选择地区"];
+        
+        return;
+    }
+    if (self.addressTextField.text.length<=0) {
+        [ToastView showTopToast:@"请输入详细地址"];
+        
+        return;
+    }
+    if (self.legalPersonField.text.length<=0) {
+        [ToastView showTopToast:@"请输入法人代表"];
+        
+        return;
+    }
+    if (self.phoneTextField.text.length<=0) {
+        [ToastView showTopToast:@"请输入手机号"];
+        
+        return;
+    }
+    if (self.youbianTextField.text.length<=0) {
+        [ToastView showTopToast:@"请输入邮编"];
+        
+        return;
+    }
+    if (self.jieshaTextView.text.length<=0) {
+        [ToastView showTopToast:@"请输入简介"];
+        
+        return;
+    }
+    [HTTPCLIENT shengjiGCGSWithcompanyName:self.qiyeTextField.text WithlegalPerson:self.legalPersonField.text Withphone:self.phoneTextField.text Withbrief:self.jieshaTextView.text Withprovince:self.AreaProvince Withcity:self.AreaCity Withcounty:self.AreaCounty Withaddress:self.addressTextField.text WithqualJson:@"" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -110,7 +165,8 @@
     CGRect tempFrame=CGRectMake(0, 0, kWidth, 50);
     self.qiyeTextField=[self creatTextFieldWithName:@"企业名称" alortStr:@"请输入企业名称" andFrame:tempFrame andView:view];
     tempFrame.origin.y+=50;
-    self.areaTextField=[self creatTextFieldWithName:@"地区" alortStr:@"请输入地区名称" andFrame:tempFrame andView:view];
+    self.areaBtn=[self danxuanViewWithName:@"地区" alortStr:@"请选择地区" andFrame:tempFrame andView:view];
+    [self.areaBtn addTarget:self action:@selector(areaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=50;
     self.addressTextField=[self creatTextFieldWithName:@"地址" alortStr:@"请输入地址" andFrame:tempFrame andView:view];
     tempFrame.origin.y+=50;
@@ -145,11 +201,81 @@
     [view addSubview:self.headerView];
     return view;
 }
+-(void)areaBtnAction:(UIButton *)sender
+{
+    YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveXian];
+    pickLocationV.delegate=self;
+    [pickLocationV showPickView];
+}
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
+{
+    NSMutableString *namestr=[NSMutableString new];
+    if (sheng.code) {
+        [namestr appendString:sheng.cityName];
+        self.AreaProvince=sheng.code;
+    }else
+    {
+        self.AreaProvince=nil;
+    }
+    
+    if (shi.code) {
+        [namestr appendString:shi.cityName];
+        self.AreaCity=shi.code;
+    }else
+    {
+        self.AreaCity=nil;
+        
+    }
+    if (xian.code) {
+        [namestr appendString:xian.cityName];
+        self.AreaCounty=xian.code;
+    }else
+    {
+        self.AreaCounty=nil;
+        
+    }
+    
+    if (namestr.length>0) {
+        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+    }else{
+        [self.areaBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
+        [self.areaBtn.titleLabel sizeToFit];
+        
+    }
+}
 -(void)addBtnAction
 {
     YLDZiZhiAddViewController *viewCon=[[YLDZiZhiAddViewController alloc]init];
     [self.navigationController pushViewController:viewCon animated:YES];
 }
+-(UIButton *)danxuanViewWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame andView:(UIView *)views
+{
+    UIView *view=[[UIView alloc]initWithFrame:frame];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, frame.size.height)];
+    [nameLab setText:nameStr];
+    [view addSubview:nameLab];
+    [nameLab setTextColor:detialLabColor];
+    [nameLab setFont:[UIFont systemFontOfSize:14]];
+    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
+    pickBtn.center=CGPointMake(frame.size.width/2+10,frame.size.height/2);
+    [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
+    [pickBtn setTitle:alortStr forState:UIControlStateNormal];
+    [pickBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
+    [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
+    [lineImagV setBackgroundColor:kLineColor];
+    [view addSubview:lineImagV];
+    UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width-42.5, 15, 15, 15)];
+    [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
+    [view addSubview:imageVVV];
+    
+    [view addSubview:pickBtn];
+    [views addSubview:view];
+    return pickBtn;
+}
+
 -(UITextField *)creatTextFieldWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame andView:(UIView *)backView
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];

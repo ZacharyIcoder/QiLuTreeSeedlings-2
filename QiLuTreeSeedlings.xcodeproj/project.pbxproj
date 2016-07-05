@@ -133,6 +133,8 @@
 		EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA4F4D161CBF5F47006E4988 /* bannelSmall3.jpg */; };
 		EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA4F4D171CBF5F47006E4988 /* bannelSmall4.jpg */; };
 		EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA510EB21C98033900C5D071 /* FaBuViewController.m */; };
+		EA5163511D2B476800494604 /* GCZZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5163501D2B476800494604 /* GCZZModel.m */; };
+		EA5163541D2B493700494604 /* YLDGCGSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5163531D2B493700494604 /* YLDGCGSModel.m */; };
 		EA518C621CEDAAF30092BA40 /* GuiGeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA518C611CEDAAF30092BA40 /* GuiGeModel.m */; };
 		EA5252E21CE171270004639C /* YLDPickLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E11CE171270004639C /* YLDPickLocationView.m */; };
 		EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E51CE172410004639C /* YLDPickSelectVIew.m */; };
@@ -259,6 +261,7 @@
 		EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */; };
 		EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */; };
 		EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */; };
+		EA820AC91D2A5A880022AAC6 /* YLDGCGSZiZhiTiJiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A26301D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.m */; };
 		EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D851CFE6C3900D56AFB /* kefutouxiang@2x.png */; };
 		EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D871CFE792A00D56AFB /* kefuphone@2x.png */; };
 		EA833D8A1CFE81B600D56AFB /* kefuweixin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D891CFE81B600D56AFB /* kefuweixin@2x.png */; };
@@ -906,6 +909,10 @@
 		EA4F4D171CBF5F47006E4988 /* bannelSmall4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bannelSmall4.jpg; sourceTree = "<group>"; };
 		EA510EB11C98033900C5D071 /* FaBuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaBuViewController.h; sourceTree = "<group>"; };
 		EA510EB21C98033900C5D071 /* FaBuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaBuViewController.m; sourceTree = "<group>"; };
+		EA51634F1D2B476800494604 /* GCZZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCZZModel.h; sourceTree = "<group>"; };
+		EA5163501D2B476800494604 /* GCZZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCZZModel.m; sourceTree = "<group>"; };
+		EA5163521D2B493700494604 /* YLDGCGSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGCGSModel.h; sourceTree = "<group>"; };
+		EA5163531D2B493700494604 /* YLDGCGSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGCGSModel.m; sourceTree = "<group>"; };
 		EA518C601CEDAAF30092BA40 /* GuiGeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeModel.h; sourceTree = "<group>"; };
 		EA518C611CEDAAF30092BA40 /* GuiGeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeModel.m; sourceTree = "<group>"; };
 		EA5252E01CE171270004639C /* YLDPickLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLDPickLocationView.h; path = ../YLDPickLocationView.h; sourceTree = "<group>"; };
@@ -2019,6 +2026,8 @@
 			children = (
 				EA08F7CD1D191C1E00471C33 /* YLDZiZhiAddViewController.h */,
 				EA08F7CE1D191C1E00471C33 /* YLDZiZhiAddViewController.m */,
+				EA51634F1D2B476800494604 /* GCZZModel.h */,
+				EA5163501D2B476800494604 /* GCZZModel.m */,
 			);
 			path = GongChengZhongXinZiZhiTianJianViewController;
 			sourceTree = "<group>";
@@ -3239,6 +3248,8 @@
 				EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */,
 				EA1120CC1CA62BE300857E48 /* NurseryModel.h */,
 				EA1120CD1CA62BE300857E48 /* NurseryModel.m */,
+				EA5163521D2B493700494604 /* YLDGCGSModel.h */,
+				EA5163531D2B493700494604 /* YLDGCGSModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5091,6 +5102,7 @@
 				FC2276831D177C9F0037B131 /* ZIKWorkstationViewController.m in Sources */,
 				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCCFA7191CF2E12400CC1313 /* ZIKCityModel.m in Sources */,
+				EA5163511D2B476800494604 /* GCZZModel.m in Sources */,
 				FCCFA7131CF2E12400CC1313 /* ZIKCitySectionHeaderView.m in Sources */,
 				EAE881F61C87C399001EFF14 /* BuySearchTableViewCell.m in Sources */,
 				FC56128B1D0C092F00E5743B /* ZIKSideView.m in Sources */,
@@ -5111,6 +5123,7 @@
 				EAF8A5481C868DD1008B99D2 /* GusseYourLikeModel.m in Sources */,
 				FC614A001CAA57B600672241 /* RSKTouchView.m in Sources */,
 				FC6FED521CACEB09000E2CA5 /* ZIKMyCustomizedInfoViewController.m in Sources */,
+				EA5163541D2B493700494604 /* YLDGCGSModel.m in Sources */,
 				EA8D3D381D2396DB0095840F /* LYDGCGSTiShiViewController.m in Sources */,
 				FC50B3451CAE4C4A0022A24C /* base64.m in Sources */,
 				EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */,
@@ -5277,6 +5290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA820AC91D2A5A880022AAC6 /* YLDGCGSZiZhiTiJiaoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

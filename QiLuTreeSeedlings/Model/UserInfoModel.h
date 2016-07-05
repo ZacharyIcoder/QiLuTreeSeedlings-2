@@ -9,20 +9,21 @@
 #import <Foundation/Foundation.h>
 
 @interface UserInfoModel : NSObject
-@property (nonatomic,strong) NSString *access_id;
-@property (nonatomic,strong) NSString *access_token;
-@property (nonatomic,strong) NSString *goldsupplier;
+@property (nonatomic,copy) NSString *access_id;
+@property (nonatomic,copy) NSString *access_token;
+@property (nonatomic,copy) NSString *goldsupplier;
 @property (nonatomic)        NSInteger isworkstation;
-@property (nonatomic,strong) NSString *name;
-@property (nonatomic,strong) NSString *phone;
-@property (nonatomic,strong) NSString *balance;
-@property (nonatomic,strong) NSString *count;
-@property (nonatomic,strong) NSString *headUrl;
-@property (nonatomic,strong) NSString *workstationUId;
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *phone;
+@property (nonatomic,copy) NSString *balance;
+@property (nonatomic,copy) NSString *count;
+@property (nonatomic,copy) NSString *headUrl;
+@property (nonatomic,copy) NSString *workstationUId;
 @property (nonatomic) NSUInteger projectCompany;
-@property (nonatomic,strong) NSString *sumscore;
-@property (nonatomic,strong) NSString *noReadCount;
-@property (nonatomic,strong) NSString *nrMessageCount;
+@property (nonatomic,copy) NSString *sumscore;
+@property (nonatomic,copy) NSString *noReadCount;
+@property (nonatomic,copy) NSString *nrMessageCount;
+@property (nonatomic) NSInteger projectCompanyStatus;
 +(UserInfoModel *)userInfoCreatByDic:(NSDictionary *)dic;
 -(void)reloadInfoByDic:(NSDictionary *)dic;
 @end

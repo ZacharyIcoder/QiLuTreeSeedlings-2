@@ -9,7 +9,7 @@
 #import "UserBigInfoTableViewCell.h"
 #import "UIDefines.h"
 #import "UIImageView+AFNetworking.h"
-#define kNum 3
+#define kNum 4
 @interface UserBigInfoTableViewCell()
 @property (nonatomic,weak) UILabel *coloectLab;
 @property (nonatomic,weak) UILabel *integralLab;
@@ -39,12 +39,12 @@
         self.messageLab=(UILabel *)[myMessageView viewWithTag:1112];
         self.messageLab.hidden=YES;
         self.messageBtn=(UIButton *)[myMessageView viewWithTag:1111];
-       // UIView *shenfenSJView=[self viewWithLLLLLLLImageNmae:@"shenfenshengjiv" andTitle:@"身份升级" andNum:@"0" andFrame:CGRectMake(kWidth/kNum*3, 0, kWidth/kNum, 80)];
-        //[self addSubview:shenfenSJView];
+        UIView *shenfenSJView=[self viewWithLLLLLLLImageNmae:@"shenfenshengjiv" andTitle:@"身份升级" andNum:@"0" andFrame:CGRectMake(kWidth/kNum*3, 0, kWidth/kNum, 80)];
+        [self addSubview:shenfenSJView];
        
-//        self.messageLab=(UILabel *)[myMessageView viewWithTag:1112];
-//        self.messageLab.hidden=YES;
-       // self.shengJiBtn=(UIButton *)[shenfenSJView viewWithTag:1111];
+        self.messageLab=(UILabel *)[myMessageView viewWithTag:1112];
+        self.messageLab.hidden=YES;
+        self.shengJiBtn=(UIButton *)[shenfenSJView viewWithTag:1111];
     }
     return self;
 }

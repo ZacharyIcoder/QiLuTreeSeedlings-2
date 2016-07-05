@@ -155,46 +155,46 @@
 }
 -(void)nextBtnAction:(UIButton *)sender
 {
-//    if (!self.typeStr) {
-//        [ToastView showTopToast:@"请选择订单类型"];
-//        return;
-//    }
-//    if (self.NameTextField.text.length==0) {
-//        [ToastView showTopToast:@"请输入项目名称"];
-//        return;
-//    }
-//    if (!self.AreaProvince) {
-//        [ToastView showTopToast:@"请选择用苗地"];
-//        return;
-//    }
-//    if (!self.timeStr) {
-//        [ToastView showTopToast:@"请选择截止日期"];
-//        return;
-//    }
-//    if (!self.priceStr) {
-//        [ToastView showTopToast:@"请选择报价要求"];
-//        return;
-//    }
-//    if (!self.qualityStr) {
-//        [ToastView showTopToast:@"请选择质量要求"];
-//        return;
-//    }
-//    if (self.xiongjingField.text.length==0) {
-//        [ToastView showTopToast:@"请完善胸径信息"];
-//        return;
-//    }
-//    if (self.dijingField.text.length==0) {
-//        [ToastView showTopToast:@"请完善地径信息"];
-//        return;
-//    }
-//    if (self.lianxirenField.text.length==0) {
-//        [ToastView showTopToast:@"请完善联系人姓名"];
-//        return;
-//    }
-//    if (self.lianxifangshiField.text.length==0) {
-//        [ToastView showTopToast:@"请完善联系方式"];
-//        return;
-//    }
+    if (!self.typeStr) {
+        [ToastView showTopToast:@"请选择订单类型"];
+        return;
+    }
+    if (self.NameTextField.text.length==0) {
+        [ToastView showTopToast:@"请输入项目名称"];
+        return;
+    }
+    if (!self.AreaProvince) {
+        [ToastView showTopToast:@"请选择用苗地"];
+        return;
+    }
+    if (!self.timeStr) {
+        [ToastView showTopToast:@"请选择截止日期"];
+        return;
+    }
+    if (!self.priceStr) {
+        [ToastView showTopToast:@"请选择报价要求"];
+        return;
+    }
+    if (!self.qualityStr) {
+        [ToastView showTopToast:@"请选择质量要求"];
+        return;
+    }
+    if (self.xiongjingField.text.length==0) {
+        [ToastView showTopToast:@"请完善胸径信息"];
+        return;
+    }
+    if (self.dijingField.text.length==0) {
+        [ToastView showTopToast:@"请完善地径信息"];
+        return;
+    }
+    if (self.lianxirenField.text.length==0) {
+        [ToastView showTopToast:@"请完善联系人姓名"];
+        return;
+    }
+    if (self.lianxifangshiField.text.length==0) {
+        [ToastView showTopToast:@"请完善联系方式"];
+        return;
+    }
     YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andName:self.NameTextField.text andAreaSheng:self.AreaProvince andAreaShi:self.AreaCity andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
     [self.navigationController pushViewController:YLDtititiVC animated:YES];
 }

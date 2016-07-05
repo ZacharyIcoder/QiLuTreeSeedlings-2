@@ -120,7 +120,16 @@
     }
     
 }
-
+-(void)getGchenggongsiInfo
+{
+    [HTTPCLIENT gongchengZhongXinInfoSuccess:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            self.GCGSModel=[YLDGCGSModel yldGCGSModelWithDic:[[responseObject objectForKey:@"result"] objectForKey:@"companyInfo"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 - (void)showIntroWithCrossDissolve {
     int height=(int)kHeight;
     EAIntroPage *page1 = [EAIntroPage page];
@@ -202,6 +211,7 @@
     if (!self.userModel.access_token) {
         return;
     }
+    [self getGchenggongsiInfo];
     [HTTPCLIENT getUserInfoByToken:self.userModel.access_token byAccessId:self.userModel.access_id Success:^(id responseObject) {
         RemoveActionV();
         if (![[responseObject objectForKey:@"success"] integerValue]) {
