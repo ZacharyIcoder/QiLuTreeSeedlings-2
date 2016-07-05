@@ -1342,7 +1342,9 @@
 
 -(void)upDataImageIOS:(NSString *)imageString
        workstationUid:(NSString *)workstationUid
+           companyUid:(NSString *)companyUid
                  type:(NSString *)type
+             saveTyep:(NSString *)saveType
               Success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure {
     NSString *postURL = @"apiuploadios";
@@ -1354,7 +1356,9 @@
     parmers[@"file"]             = imageString;
     parmers[@"fileName"]         = @"tupian.png";
     parmers[@"workstationUid"]   = workstationUid;
+    parmers[@"companyUid"]       = companyUid;
     parmers[@"type"]             = type;
+    parmers[@"saveType"]         = saveType;
     //NSLog(@"%@",parameters);
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {

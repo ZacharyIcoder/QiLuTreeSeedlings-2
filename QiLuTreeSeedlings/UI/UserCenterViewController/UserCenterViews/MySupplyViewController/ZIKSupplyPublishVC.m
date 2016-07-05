@@ -674,14 +674,13 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 - (void)WHCChoicePictureVCdidSelectedPhotoArr:(NSArray *)photoArr{
     for (__weak UIImage *image in photoArr) {
 
-        HttpClient *httpClient  = [HttpClient sharedClient];
       __block  NSData* imageData = nil;
 
         imageData  = [self  imageData:image];
 
       __block  NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
          __weak typeof(self) weakSelf = self;
-        [httpClient upDataImageIOS:myStringImageFile workstationUid:nil type:@"1" Success:^(id responseObject) {
+        [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"1" saveTyep:@"1" Success:^(id responseObject) {
             myStringImageFile = nil;
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                  if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
@@ -716,7 +715,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     {
         //先把图片转成NSData
       __weak  UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        HttpClient *httpClient  = [HttpClient sharedClient];
         NSData* imageData = nil;
         imageData  = [self imageData:image];
         //NSLog(@"%ld",imageData.length);
@@ -724,7 +722,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
         NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
         //NSLog(@"%ld",myStringImageFile.length);
 
-         [httpClient upDataImageIOS:myStringImageFile workstationUid:nil type:@"1" Success:^(id responseObject) {
+         [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"1" saveTyep:@"1" Success:^(id responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
 
                 if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
