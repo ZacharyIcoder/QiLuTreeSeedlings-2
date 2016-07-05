@@ -14,6 +14,9 @@
 #import "MJRefresh.h"//MJ刷新
 #import "ZIKStationHonorListModel.h"
 #import "ZIKAddHonorViewController.h"
+#import "ZIKStationShowHonorView.h"//
+#import "ZIKBaseCertificateAdapter.h"
+#import "ZIKCertificateAdapter.h"
 NSString *kHonorCellID = @"honorcellID";
 
 @interface ZIKMyHonorViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -25,6 +28,7 @@ NSString *kHonorCellID = @"honorcellID";
 @property (nonatomic, assign) BOOL isEditState;
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
 
+@property (nonatomic, strong) ZIKStationShowHonorView *showHonorView;
 @end
 
 @implementation ZIKMyHonorViewController
@@ -216,7 +220,12 @@ NSString *kHonorCellID = @"honorcellID";
     cell.indexPath = indexPath;
     if (self.honorData.count > 0) {
       __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
-        [cell configureCellWithModel:model];
+//        [cell configureCellWithModel:model];
+        // 与输入建立联系
+        ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+        // 与输出建立联系
+        [cell loadData:modelAdapter];
+
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
         cell.editButtonBlock = ^(NSIndexPath *indexPath) {
             ZIKAddHonorViewController *addhonorVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
@@ -232,10 +241,19 @@ NSString *kHonorCellID = @"honorcellID";
 }
 
 #pragma mark --UICollectionViewDelegate
-//UICollectionView被选中时调用的方法
+//UICollectionView被选中时调用的3
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-      
+    if (!self.showHonorView) {
+//        self.showHonorView = [[ZIKStationShowHonorView alloc] initWithFrame:CGRectMake(0, kHeight, kWidth, kHeight)];
+//        self.showHonorView = [[[NSBundle mainBundle] loadNibNamed:@"ZIKStationShowHonorView" owner:self options:nil] lastObject];
+        self.showHonorView = [ZIKStationShowHonorView instanceShowHonorView];
+        self.showHonorView.frame = CGRectMake(0, kHeight, kWidth, kHeight);
+    }
+    [self.view addSubview:self.showHonorView];
+    [UIView animateWithDuration:.3 animations:^{
+        self.showHonorView.frame = CGRectMake(0, 0, kWidth, kHeight);
+    }];
 }
 
 - (void)deleteRequest:(NSString *)uid {

@@ -11,16 +11,42 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UZM-rm-Ciz">
-                    <rect key="frame" x="0.0" y="151" width="600" height="327"/>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyf-Qz-dhi">
                     <rect key="frame" x="0.0" y="520" width="600" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取时间:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsn-FU-T5T">
+                            <rect key="frame" x="8" y="45" width="578" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="4SB-Bj-GFl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="荣誉名称:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSK-8d-SoK">
+                            <rect key="frame" x="8" y="15" width="578" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="e8K-AS-Gbj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="wsn-FU-T5T" secondAttribute="trailing" constant="14" id="924-vL-Ddz"/>
+                        <constraint firstItem="KSK-8d-SoK" firstAttribute="top" secondItem="yyf-Qz-dhi" secondAttribute="top" constant="15" id="ASm-u2-K5q"/>
+                        <constraint firstAttribute="bottom" secondItem="wsn-FU-T5T" secondAttribute="bottom" constant="15" id="LIn-xP-vcV"/>
+                        <constraint firstAttribute="trailing" secondItem="KSK-8d-SoK" secondAttribute="trailing" constant="14" id="Wa8-GK-X5H"/>
                         <constraint firstAttribute="height" constant="80" id="e2H-Tc-f7E"/>
+                        <constraint firstItem="KSK-8d-SoK" firstAttribute="leading" secondItem="yyf-Qz-dhi" secondAttribute="leading" constant="8" id="paJ-Qf-g5q"/>
+                        <constraint firstItem="wsn-FU-T5T" firstAttribute="leading" secondItem="yyf-Qz-dhi" secondAttribute="leading" constant="8" id="yjr-d6-fhO"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoRentu.png" translatesAutoresizingMaskIntoConstraints="NO" id="UZM-rm-Ciz">
+                    <rect key="frame" x="0.0" y="200" width="600" height="230"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -28,15 +54,20 @@
                 <constraint firstAttribute="trailing" secondItem="yyf-Qz-dhi" secondAttribute="trailing" id="2NM-Pk-u3Z"/>
                 <constraint firstItem="UZM-rm-Ciz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FN3-eG-Vz8"/>
                 <constraint firstAttribute="bottom" secondItem="yyf-Qz-dhi" secondAttribute="bottom" id="StG-2H-M74"/>
-                <constraint firstItem="UZM-rm-Ciz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="151" id="x0L-1w-FWL"/>
-                <constraint firstAttribute="bottom" secondItem="UZM-rm-Ciz" secondAttribute="bottom" constant="122" id="yxW-9J-6Fi"/>
+                <constraint firstItem="UZM-rm-Ciz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="200" id="x0L-1w-FWL"/>
+                <constraint firstAttribute="bottom" secondItem="UZM-rm-Ciz" secondAttribute="bottom" constant="170" id="yxW-9J-6Fi"/>
                 <constraint firstItem="yyf-Qz-dhi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zBx-4l-5u2"/>
             </constraints>
             <connections>
                 <outlet property="bottomBgView" destination="yyf-Qz-dhi" id="X3d-Cs-QUT"/>
                 <outlet property="honorImageView" destination="UZM-rm-Ciz" id="OHI-6e-W58"/>
+                <outlet property="honorNameLabel" destination="KSK-8d-SoK" id="lks-Fn-8fR"/>
+                <outlet property="honorTimeLabel" destination="wsn-FU-T5T" id="hmk-SK-Cin"/>
             </connections>
             <point key="canvasLocation" x="403" y="247"/>
         </view>
     </objects>
+    <resources>
+        <image name="MoRentu.png" width="200" height="150"/>
+    </resources>
 </document>

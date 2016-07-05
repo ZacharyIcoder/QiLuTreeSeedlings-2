@@ -665,6 +665,8 @@
 		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
 		FCC5719C1D2B5713004AA096 /* ZIKStationShowHonorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC5719B1D2B5713004AA096 /* ZIKStationShowHonorView.m */; };
 		FCC5719E1D2B5725004AA096 /* ZIKStationShowHonorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC5719D1D2B5725004AA096 /* ZIKStationShowHonorView.xib */; };
+		FCC571A21D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC571A11D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m */; };
+		FCC571A51D2B89F5004AA096 /* ZIKCertificateAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC571A41D2B89F5004AA096 /* ZIKCertificateAdapter.m */; };
 		FCC5C3001CFE728F004669ED /* ZIKExchangeSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC5C2FF1CFE728F004669ED /* ZIKExchangeSuccessView.m */; };
 		FCC5C3021CFE729D004669ED /* ZIKExchangeSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC5C3011CFE729D004669ED /* ZIKExchangeSuccessView.xib */; };
 		FCC5C3041CFE73BE004669ED /* 积分兑换-兑换成功.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC5C3031CFE73BE004669ED /* 积分兑换-兑换成功.png */; };
@@ -1819,6 +1821,11 @@
 		FCC5719A1D2B5713004AA096 /* ZIKStationShowHonorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationShowHonorView.h; sourceTree = "<group>"; };
 		FCC5719B1D2B5713004AA096 /* ZIKStationShowHonorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationShowHonorView.m; sourceTree = "<group>"; };
 		FCC5719D1D2B5725004AA096 /* ZIKStationShowHonorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationShowHonorView.xib; sourceTree = "<group>"; };
+		FCC5719F1D2B86B9004AA096 /* ZIKCertificateAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKCertificateAdapterProtocol.h; sourceTree = "<group>"; };
+		FCC571A01D2B87CA004AA096 /* ZIKBaseCertificateAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKBaseCertificateAdapter.h; sourceTree = "<group>"; };
+		FCC571A11D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKBaseCertificateAdapter.m; sourceTree = "<group>"; };
+		FCC571A31D2B89F5004AA096 /* ZIKCertificateAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKCertificateAdapter.h; sourceTree = "<group>"; };
+		FCC571A41D2B89F5004AA096 /* ZIKCertificateAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKCertificateAdapter.m; sourceTree = "<group>"; };
 		FCC5C2FE1CFE728F004669ED /* ZIKExchangeSuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKExchangeSuccessView.h; sourceTree = "<group>"; };
 		FCC5C2FF1CFE728F004669ED /* ZIKExchangeSuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKExchangeSuccessView.m; sourceTree = "<group>"; };
 		FCC5C3011CFE729D004669ED /* ZIKExchangeSuccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKExchangeSuccessView.xib; sourceTree = "<group>"; };
@@ -3429,6 +3436,11 @@
 				FC26452A1D24FB9A0077565A /* MasterInfoModel.m */,
 				FC523FF51D265933002C001F /* ZIKStationHonorListModel.h */,
 				FC523FF61D265933002C001F /* ZIKStationHonorListModel.m */,
+				FCC5719F1D2B86B9004AA096 /* ZIKCertificateAdapterProtocol.h */,
+				FCC571A01D2B87CA004AA096 /* ZIKBaseCertificateAdapter.h */,
+				FCC571A11D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m */,
+				FCC571A31D2B89F5004AA096 /* ZIKCertificateAdapter.h */,
+				FCC571A41D2B89F5004AA096 /* ZIKCertificateAdapter.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5243,6 +5255,7 @@
 				EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */,
 				FC56128A1D0C092F00E5743B /* ZIKSelectView.m in Sources */,
 				FC5612641D0C092F00E5743B /* WHC_Asset.m in Sources */,
+				FCC571A21D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m in Sources */,
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,
 				EA3D4D981D17D5BB0010B56D /* YLDZhanZhangMessageCell.m in Sources */,
 				EA2727221C8A7F17000B0719 /* PickerLocation.m in Sources */,
@@ -5251,6 +5264,7 @@
 				FC55FB961CB503BC008D9CAD /* ZIKCustomizedTableViewCell.m in Sources */,
 				FC56129B1D0C092F00E5743B /* ZIKBaseViewController.m in Sources */,
 				FC56124C1D0C092F00E5743B /* IQBarButtonItem.m in Sources */,
+				FCC571A51D2B89F5004AA096 /* ZIKCertificateAdapter.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */,
 				EA5252F41CE179E40004639C /* CityTableViewCell.m in Sources */,

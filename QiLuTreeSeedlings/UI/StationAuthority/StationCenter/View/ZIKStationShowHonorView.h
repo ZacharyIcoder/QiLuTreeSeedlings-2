@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZIKStationShowHonorView : UIView
-
++(ZIKStationShowHonorView *)instanceShowHonorView;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZIKCertificateAdapterProtocol.h"
 @class ZIKStationHonorListModel;
 
 typedef void(^EditButtonBlock)(NSIndexPath *indexPath);
@@ -23,5 +24,16 @@ typedef void(^DeleteButtonBlock)(NSIndexPath *indexPath);
 @property (nonatomic, copy  ) EditButtonBlock   editButtonBlock;
 @property (nonatomic, copy  ) DeleteButtonBlock deleteButtonBlock;
 
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *time;
+@property (nonatomic, copy) NSString *imageString;
+/**
+ *  颁发机构
+ */
+@property (nonatomic, copy) NSString *issuingAuthority;
+@property (nonatomic, copy) NSString *level;
+@property (nonatomic, copy) NSString *uid;
+
 -(void)configureCellWithModel:(ZIKStationHonorListModel *)model;
+- (void)loadData:(id <ZIKCertificateAdapterProtocol>)data;
 @end
