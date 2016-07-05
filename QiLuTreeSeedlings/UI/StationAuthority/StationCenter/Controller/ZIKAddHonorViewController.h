@@ -10,4 +10,5 @@
 
 @interface ZIKAddHonorViewController : ZIKArrowViewController
 @property (nonatomic, copy) NSString *workstationUid;
+@property (nonatomic, copy) NSString *uid;
 @end

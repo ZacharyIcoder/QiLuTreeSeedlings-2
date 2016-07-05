@@ -80,8 +80,11 @@ NSString *kHonorCellID = @"honorcellID";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    self.isEditState = NO;
     self.page = 1;
     [self requestData];
+//    [self.honorCollectionView reloadData];
+
     //[self.honorCollectionView headerBeginRefreshing];
 }
 
@@ -207,20 +210,23 @@ NSString *kHonorCellID = @"honorcellID";
     UINib *nib = [UINib nibWithNibName:@"ZIKMyHonorCollectionViewCell"
                                 bundle: [NSBundle mainBundle]];
     [cv registerNib:nib forCellWithReuseIdentifier:kHonorCellID];
-    //ZIKIntegralCollectionViewCell *cell = [[ZIKIntegralCollectionViewCell alloc] init];
     ZIKMyHonorCollectionViewCell * cell = [cv dequeueReusableCellWithReuseIdentifier:kHonorCellID
                                                                         forIndexPath:indexPath];
     cell.isEditState = self.isEditState;
+    cell.indexPath = indexPath;
     if (self.honorData.count > 0) {
-//       // NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]]];
-//        NSString *myurlstr = [NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]];
-//        NSURL *honorUrl = [NSURL URLWithString:myurlstr];
-//        NSURL *myurl    = [[NSURL alloc] initWithString:myurlstr];
-//        NSLog(@"%@",myurl);
-//        [cell.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-//        cell.honorTitleLabel.text = [self.honorData[indexPath.row] objectForKey:@"title"];
-//        cell.honorTimeLabel.text  = [self.honorData[indexPath.row] objectForKey:@"time"];
-        [cell configureCellWithModel:_honorData[indexPath.row]];
+      __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
+        [cell configureCellWithModel:model];
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        cell.editButtonBlock = ^(NSIndexPath *indexPath) {
+            ZIKAddHonorViewController *addhonorVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+            addhonorVC.workstationUid = weakSelf.workstationUid;
+            addhonorVC.uid = model.uid;
+            [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
+        };
+        cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
+            [weakSelf deleteRequest:model.uid];
+        };
     }
     return cell;
 }
@@ -232,4 +238,19 @@ NSString *kHonorCellID = @"honorcellID";
       
 }
 
+- (void)deleteRequest:(NSString *)uid {
+    [HTTPCLIENT stationHonorDeleteWithUid:uid Success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+             return ;
+        }
+        [ToastView showTopToast:@"删除成功"];
+        self.isEditState = NO;
+        self.page = 1;
+        [self requestHonorListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
+//        [self.honorCollectionView reloadData];
+    } failure:^(NSError *error) {
+        ;
+    }];
+}
 @end

@@ -44,4 +44,21 @@
     }
 }
 
+-(void)setEditButtonBlock:(EditButtonBlock)editButtonBlock {
+    _editButtonBlock = editButtonBlock;
+    [self.editButton addTarget:self action:@selector(editButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)editButtonClick {
+    _editButtonBlock(self.indexPath);
+}
+
+-(void)setDeleteButtonBlock:(DeleteButtonBlock)deleteButtonBlock {
+    _deleteButtonBlock = deleteButtonBlock;
+    [self.deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)deleteButtonClick {
+    _deleteButtonBlock(self.indexPath);
+}
 @end

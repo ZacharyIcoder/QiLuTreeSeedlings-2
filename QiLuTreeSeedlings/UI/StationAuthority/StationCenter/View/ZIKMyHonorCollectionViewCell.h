@@ -9,12 +9,19 @@
 #import <UIKit/UIKit.h>
 @class ZIKStationHonorListModel;
 
-@interface ZIKMyHonorCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *honorImageView;
-@property (weak, nonatomic) IBOutlet UILabel *honorTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *honorTimeLabel;
+typedef void(^EditButtonBlock)(NSIndexPath *indexPath);
+typedef void(^DeleteButtonBlock)(NSIndexPath *indexPath);
 
-@property (nonatomic, assign) BOOL isEditState;
+@interface ZIKMyHonorCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic  ) IBOutlet UIImageView       *honorImageView;
+@property (weak, nonatomic  ) IBOutlet UILabel           *honorTitleLabel;
+@property (weak, nonatomic  ) IBOutlet UILabel           *honorTimeLabel;
+
+@property (nonatomic, assign) BOOL              isEditState;
+
+@property (nonatomic, strong) NSIndexPath       *indexPath;
+@property (nonatomic, copy  ) EditButtonBlock   editButtonBlock;
+@property (nonatomic, copy  ) DeleteButtonBlock deleteButtonBlock;
 
 -(void)configureCellWithModel:(ZIKStationHonorListModel *)model;
 @end

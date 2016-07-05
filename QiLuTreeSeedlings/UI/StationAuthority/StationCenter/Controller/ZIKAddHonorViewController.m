@@ -28,13 +28,19 @@
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
-
+    [self.honorNameTextField resignFirstResponder];
+    [self.honorTimeTextField resignFirstResponder];
+    
     NSString *name = nil;
     NSString *time = nil;
     name = self.honorNameTextField.text;
     time = self.honorTimeTextField.text;
 
-    [HTTPCLIENT stationHonorCreateWithUid:nil workstationUid:_workstationUid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
+    NSString *uid = nil;
+    if (uid) {
+        uid = self.uid;
+    }
+    [HTTPCLIENT stationHonorCreateWithUid:uid workstationUid:_workstationUid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
         CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
@@ -50,6 +56,8 @@
 }
 
 - (IBAction)addImageButttonClick {
+    [self.honorNameTextField resignFirstResponder];
+    [self.honorTimeTextField resignFirstResponder];
     [self addPicture];
 }
 
@@ -218,4 +226,9 @@
     return UIImagePNGRepresentation(newImage);
 }
 
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.honorNameTextField resignFirstResponder];
+    [self.honorTimeTextField resignFirstResponder];
+}
 @end
