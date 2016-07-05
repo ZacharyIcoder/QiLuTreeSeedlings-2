@@ -18,7 +18,12 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)setModel:(YLDGCGSModel *)model
+{
+    _model=model;
+    self.companyName.text=model.companyName;
+    self.personName.text=model.legalPerson;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

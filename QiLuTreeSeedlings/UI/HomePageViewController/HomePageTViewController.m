@@ -432,17 +432,32 @@
     if(index==5){
         if([APPDELEGATE isNeedLogin])
         {
-            [self hiddingSelfTabBar];
-           
-            YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
-            [self.navigationController pushViewController:tab animated:YES];
+            if (APPDELEGATE.userModel.goldsupplierStatus==7) {
+                [self hiddingSelfTabBar];
+             YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
+                [self.navigationController pushViewController:tab animated:YES];
+            }else{
+               
+                if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+                    [ToastView showTopToast:@"暂未审核，请耐心等待"];
+                    return;
+                }
+               
+                if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+                    [ToastView showTopToast:@"审核未通过"];
+                    return;
+                }
+               
+                [self hiddingSelfTabBar];
+                LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+                [self.navigationController pushViewController:view animated:YES];
+            }
+            
             return;
             
         }else
         {
-            [self hiddingSelfTabBar];
-            LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
-              [self.navigationController pushViewController:view animated:YES];
+            
             [ToastView showTopToast:@"请先登录"];
         }
     }

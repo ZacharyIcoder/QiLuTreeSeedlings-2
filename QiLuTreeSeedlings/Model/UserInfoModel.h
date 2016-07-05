@@ -11,7 +11,8 @@
 @interface UserInfoModel : NSObject
 @property (nonatomic,copy) NSString *access_id;
 @property (nonatomic,copy) NSString *access_token;
-@property (nonatomic,copy) NSString *goldsupplier;
+@property (nonatomic,copy) NSString * goldsupplier;
+@property (nonatomic)        NSInteger goldsupplierStatus;
 @property (nonatomic)        NSInteger isworkstation;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *phone;
@@ -19,7 +20,6 @@
 @property (nonatomic,copy) NSString *count;
 @property (nonatomic,copy) NSString *headUrl;
 @property (nonatomic,copy) NSString *workstationUId;
-@property (nonatomic) NSUInteger projectCompany;
 @property (nonatomic,copy) NSString *sumscore;
 @property (nonatomic,copy) NSString *noReadCount;
 @property (nonatomic,copy) NSString *nrMessageCount;

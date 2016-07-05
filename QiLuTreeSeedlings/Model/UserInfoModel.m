@@ -14,17 +14,18 @@
     UserInfoModel *model=[[UserInfoModel alloc]init];
     model.access_id=[dic objectForKey:@"access_id"];
     model.access_token=[dic objectForKey:@"access_token"];
-    model.goldsupplier=[dic objectForKey:@"goldsupplier"];
+//    model.goldsupplier=[[dic objectForKey:@"goldsupplier"] integerValue];
     model.isworkstation=[[dic objectForKey:@"isworkstation"] integerValue];
     model.name=[dic objectForKey:@"name"];
     model.phone=[dic objectForKey:@"phone"];
     model.noReadCount=[dic objectForKey:@"noReadCount"];
     model.nrMessageCount=[dic objectForKey:@"nrMessageCount"];
-    NSString *projectCompany=[dic objectForKey:@"projectCompany"];
-    if (projectCompany) {
-        model.projectCompany=[projectCompany integerValue];
+   
+    NSString *workstationUId=dic[@"workstationUId"];
+    if (workstationUId.length>0) {
+        model.workstationUId=workstationUId;
     }
-    
+     model.projectCompanyStatus=-2;
     NSString *projectCompanyStatus=dic[@"projectCompanyStatus"];
     if (projectCompanyStatus) {
         model.projectCompanyStatus=[projectCompanyStatus integerValue];
@@ -51,5 +52,12 @@
         headUrl=@"";
     }
     self.headUrl=headUrl;
+    self.projectCompanyStatus=-2;
+    NSString *projectCompanyStatus=dic[@"projectCompanyStatus"];
+    if (projectCompanyStatus) {
+        self.projectCompanyStatus=[projectCompanyStatus integerValue];
+    }
+    self.goldsupplierStatus =[dic[@"goldsupplierStatus"] integerValue];
+
 }
 @end

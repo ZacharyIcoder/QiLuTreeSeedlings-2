@@ -8,6 +8,7 @@
 
 #import "LYDGCGSTiShiViewController.h"
 #import "UIDefines.h"
+#import "YLDShengJiViewViewController.h"
 @interface LYDGCGSTiShiViewController ()
 
 @end
@@ -51,7 +52,8 @@
 }
 -(void)shengjiAction
 {
-    
+    YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
+    [self.navigationController pushViewController:yldsda animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

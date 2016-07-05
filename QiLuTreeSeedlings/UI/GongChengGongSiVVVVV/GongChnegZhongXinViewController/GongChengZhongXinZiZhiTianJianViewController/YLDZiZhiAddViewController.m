@@ -20,10 +20,20 @@
 @property (nonatomic,copy) NSString *timeStr;
 @property (nonatomic,weak) UIButton *timeBtn;
 @property (nonatomic,weak) UIButton *imageBtn;
+@property (nonatomic,copy) NSString *compressurl;
+@property (nonatomic,copy) NSString *url;
+@property (nonatomic) NSInteger type;
 @end
 
 @implementation YLDZiZhiAddViewController
-
+-(id)initWithType:(NSInteger)type
+{
+    self=[super init];
+    if (self) {
+        self.type=type;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"资质添加";
@@ -71,7 +81,48 @@
 }
 -(void)sureBtnAction
 {
-    
+//    @property (nonatomic,weak) UITextField *nameTextField;
+//    @property (nonatomic,weak) UITextField *rankTextField;
+//    @property (nonatomic,weak) UITextField *organizationalField;
+//    @property (nonatomic,copy) NSString *timeStr;
+//   
+//    @property (nonatomic,copy) NSString *compressurl;
+  
+    if (self.nameTextField.text.length<=0) {
+        [ToastView showTopToast:@"请输入荣誉名称"];
+        return;
+    }
+    if (self.rankTextField.text.length<=0) {
+        [ToastView showTopToast:@"请输入荣誉等级"];
+        return;
+    }
+   
+    if (self.organizationalField.text.length<=0) {
+        [ToastView showTopToast:@"请输入发证机关"];
+        return;
+    }
+    if (self.timeStr.length<=0) {
+        [ToastView showTopToast:@"请选择获得时间"];
+        return;
+    }
+    if (self.compressurl.length<=0) {
+        [ToastView showTopToast:@"请输入上传荣誉图片"];
+        return;
+    }
+    if (self.type==1) {
+        NSMutableDictionary *dic=[NSMutableDictionary new];
+        [dic setObject:self.nameTextField.text forKey:@"companyQualification"];
+        [dic setObject:self.rankTextField.text forKey:@"level"];
+        [dic setObject:self.organizationalField.text forKey:@"issuingAuthority"];
+        [dic setObject:self.timeStr forKey:@"acqueTime"];
+        [dic setObject:self.url forKey:@"attachment"];
+        GCZZModel *model=[GCZZModel GCZZModelWithDic:dic];
+        if (self.delegate) {
+            [self.delegate reloadViewWithModel:model andDic:dic];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+   
 }
 -(void)imageBtnAction:(UIButton *)sender
 {
@@ -218,10 +269,8 @@
 
 - (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
 {
-    //_globalHeadImage = croppedImage;
-    //NSData *temData = UIImageJPEGRepresentation(_globalHeadImage, 0.00001);
-    //NSData *temData = UIImagePNGRepresentation(_globalHeadImage);
-   // [self requestUploadHeadImage:croppedImage];
+
+    [self requestUploadHeadImage:croppedImage];
     [self.imageBtn setImage:croppedImage forState:UIControlStateNormal];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -233,6 +282,60 @@
     imageCropVC.cropMode = RSKImageCropModeSquare;
     imageCropVC.delegate = self;
     [self.navigationController pushViewController:imageCropVC animated:YES];
+}
+#pragma mark - 请求上传图片
+- (void)requestUploadHeadImage:(UIImage *)image {
+   
+    NSData* imageData;
+    //判断图片是不是png格式的文件
+    if (UIImagePNGRepresentation(image)) {
+        //返回为png图像。
+        imageData = UIImagePNGRepresentation(image);
+    }else {
+        //返回为JPEG图像。
+        imageData = UIImageJPEGRepresentation(image, 0.0001);
+    }
+    if (imageData.length>=1024*1024) {
+        CGSize newSize = {804,552};
+        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+    }
+    NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+    
+    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"2" saveTyep:nil Success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        } else if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+            [ToastView showTopToast:@"添加成功"];
+            NSDictionary *result = responseObject[@"result"];
+            
+            self.compressurl   = result[@"compressurl"];
+            self.url         = result[@"url"];
+      NSURL *url = [NSURL URLWithString:self.url];
+   [self.imageBtn setImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"添加图片"]];
+//            [self.imageBtn setBackgroundImage:image forState:UIControlStateNormal];
+        }
+        
+        
+    } failure:^(NSError *error) {
+        ;
+    }];
+}
+
+-(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    
+    return UIImagePNGRepresentation(newImage);
 }
 
 

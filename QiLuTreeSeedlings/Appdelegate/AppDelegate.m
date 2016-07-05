@@ -211,7 +211,10 @@
     if (!self.userModel.access_token) {
         return;
     }
-    [self getGchenggongsiInfo];
+    if (self.userModel.goldsupplierStatus==7) {
+      [self getGchenggongsiInfo];  
+    }
+    
     [HTTPCLIENT getUserInfoByToken:self.userModel.access_token byAccessId:self.userModel.access_id Success:^(id responseObject) {
         RemoveActionV();
         if (![[responseObject objectForKey:@"success"] integerValue]) {

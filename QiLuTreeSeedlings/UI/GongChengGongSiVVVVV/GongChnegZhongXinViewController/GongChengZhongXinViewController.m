@@ -14,6 +14,7 @@
 #import "UIDefines.h"
 #import "ZIKMyHonorViewController.h"
 #import "YLDGongChengAnLiViewController.h"
+#import "UIDefines.h"
 @interface GongChengZhongXinViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UITableView *talbeView;
 @end
@@ -68,6 +69,7 @@
                 cell=[YLDGongChengZhongXinBigCell yldGongChengZhongXinBigCell];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
+            cell.model=APPDELEGATE.GCGSModel;
             return cell;
             
         }

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "NomarBaseViewController.h"
+#import "GCZZModel.h"
+@protocol YLDZiZhiAddDelegate <NSObject>
+@optional
+-(void)reloadViewWithModel:(GCZZModel *)model andDic:(NSMutableDictionary *)dic;
+@end
 @interface YLDZiZhiAddViewController : NomarBaseViewController
-
+@property (nonatomic,weak) id<YLDZiZhiAddDelegate> delegate;
+-(id)initWithType:(NSInteger)type;
 @end

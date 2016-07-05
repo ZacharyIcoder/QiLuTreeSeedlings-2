@@ -14,7 +14,7 @@
     GCZZModel *model=[GCZZModel new];
     model.acqueTime=dic[@"acqueTime"];
     model.attachment=dic[@"attachment"];
-    model.companyQualification=dic[@"companyQualification"];
+ model.companyQualification=dic[@"companyQualification"];
     model.issuingAuthority=dic[@"issuingAuthority"];
     model.level=dic[@"level"];
     model.uid=dic[@"uid"];

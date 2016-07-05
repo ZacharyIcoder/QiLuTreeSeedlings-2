@@ -414,8 +414,35 @@
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"HidenTabBar" object:nil];
 }
+#pragma mark-身份升级
 -(void)shengjiBtnAction
 {
+    if (![APPDELEGATE isNeedLogin]) {
+        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        [ToastView showTopToast:@"请先登录"];
+        UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+        
+        [self presentViewController:navVC animated:YES completion:^{
+            
+        }];
+        return;
+    }
+    if (APPDELEGATE.userModel.goldsupplier!=0) {
+        [ToastView showTopToast:@"您已具备身份，不需升级"];
+        return;
+    }
+    if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+         [ToastView showTopToast:@"您已具备身份，不需升级"];
+        return;
+    }
+    if (APPDELEGATE.userModel.projectCompanyStatus==1) {
+        [ToastView showTopToast:@"您已具备身份，不需升级"];
+        return;
+    }
+    if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+        [ToastView showTopToast:@"审核未通过"];
+        return;
+    }
     YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
 
     [self hiddingSelfTabBar];

@@ -14,6 +14,14 @@
     yYLDCompanyMessageCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"yYLDCompanyMessageCell" owner:self options:nil] lastObject];
     return cell;
 }
+-(void)setModel:(YLDGCGSModel *)model
+{
+    _model=model;
+    self.companyNameLab.text=model.companyName;
+    self.personName.text=model.legalPerson;
+    self.areaLab.text=model.area;
+    self.phoneLab.text=model.phone;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

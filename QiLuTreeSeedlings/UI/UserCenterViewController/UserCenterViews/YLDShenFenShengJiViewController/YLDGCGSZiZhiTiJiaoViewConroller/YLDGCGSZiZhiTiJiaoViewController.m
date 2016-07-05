@@ -14,7 +14,8 @@
 #import "YLDPickLocationView.h"
 #import "GetCityDao.h"
 #import "HttpClient.h"
-@interface YLDGCGSZiZhiTiJiaoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,YLDPickLocationDelegate>
+#import "JSONKit.h"
+@interface YLDGCGSZiZhiTiJiaoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,YLDPickLocationDelegate,YLDZiZhiAddDelegate>
 @property (nonatomic,weak) UICollectionView *collectionView;
 @property (nonatomic,strong) NSMutableArray *honorData;
 @property (nonatomic,copy)NSString *kHonorCellID;
@@ -38,10 +39,10 @@
     self.vcTitle=@"资质提交";
     self.honorData=[NSMutableArray array];
     //临时数据
-    NSString * honorPath = [[NSBundle mainBundle] pathForResource:@"honor" ofType:@"plist"];
-    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:honorPath];
-    NSArray *array = [dic objectForKey:@"honorList"];
-    [self.honorData addObjectsFromArray:array];
+//    NSString * honorPath = [[NSBundle mainBundle] pathForResource:@"honor" ofType:@"plist"];
+//    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:honorPath];
+//    NSArray *array = [dic objectForKey:@"honorList"];
+//    [self.honorData addObjectsFromArray:array];
     
     
     kHonorCellID= @"honorcellID";
@@ -58,6 +59,7 @@
     [collectionView setBackgroundColor:BGColor];
     collectionView.delegate=self;
     collectionView.dataSource=self;
+    self.collectionView=collectionView;
     [self.view addSubview:collectionView];
       [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
       [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier];
@@ -106,14 +108,25 @@
         
         return;
     }
-    [HTTPCLIENT shengjiGCGSWithcompanyName:self.qiyeTextField.text WithlegalPerson:self.legalPersonField.text Withphone:self.phoneTextField.text Withbrief:self.jieshaTextView.text Withprovince:self.AreaProvince Withcity:self.AreaCity Withcounty:self.AreaCounty Withaddress:self.addressTextField.text WithqualJson:@"" Success:^(id responseObject) {
+    if (self.honorData.count<=0) {
+        [ToastView showTopToast:@"请天加至少一条荣誉"];
+        
+        return;
+    }
+    NSString *rongyuStr=[self.honorData JSONString];
+    ShowActionV();
+    [HTTPCLIENT shengjiGCGSWithcompanyName:self.qiyeTextField.text WithlegalPerson:self.legalPersonField.text Withphone:self.phoneTextField.text Withbrief:self.jieshaTextView.text Withprovince:self.AreaProvince Withcity:self.AreaCity Withcounty:self.AreaCounty Withaddress:self.addressTextField.text WithqualJson:rongyuStr Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [ToastView showTopToast:@"您已提交审核，敬请期待"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            APPDELEGATE.userModel.projectCompanyStatus=-1;
             
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
+        RemoveActionV();
     } failure:^(NSError *error) {
-        
+        RemoveActionV();
     }];
     
 }
@@ -136,15 +149,26 @@
                                                                         forIndexPath:indexPath];
     if (self.honorData.count > 0) {
         // NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]]];
-        NSString *myurlstr = [NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]];
+        NSString *myurlstr = [NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"attachment"]];
         NSURL *honorUrl = [NSURL URLWithString:myurlstr];
-        NSURL *myurl    = [[NSURL alloc] initWithString:myurlstr];
+       // NSURL *myurl    = [[NSURL alloc] initWithString:myurlstr];
        // NSLog(@"%@",myurl);
         [cell.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-        cell.honorTitleLabel.text = [self.honorData[indexPath.row] objectForKey:@"title"];
-        cell.honorTimeLabel.text  = [self.honorData[indexPath.row] objectForKey:@"time"];
+        cell.honorTitleLabel.text = [self.honorData[indexPath.row] objectForKey:@"companyQualification"];
+        cell.honorTimeLabel.text  = [self.honorData[indexPath.row] objectForKey:@"acqueTime"];
     }
     return cell;
+}
+-(void)addBtnAction
+{
+    YLDZiZhiAddViewController *viewCon=[[YLDZiZhiAddViewController alloc]initWithType:1];
+    viewCon.delegate=self;
+    [self.navigationController pushViewController:viewCon animated:YES];
+}
+-(void)reloadViewWithModel:(GCZZModel *)model andDic:(NSMutableDictionary *)dic
+{
+    [self.honorData addObject:dic];
+    [self.collectionView reloadData];
 }
 //头部显示的内容
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
@@ -174,7 +198,7 @@
     tempFrame.origin.y+=50;
     self.phoneTextField=[self creatTextFieldWithName:@"电话" alortStr:@"请输入电话号码" andFrame:tempFrame andView:view];
     tempFrame.origin.y+=50;
-    self.phoneTextField=[self creatTextFieldWithName:@"邮编" alortStr:@"请输入邮编号码" andFrame:tempFrame andView:view];
+    self.youbianTextField=[self creatTextFieldWithName:@"邮编" alortStr:@"请输入邮编号码" andFrame:tempFrame andView:view];
     tempFrame.origin.y+=50;
     tempFrame.size.height=100;
     self.jieshaTextView=[self jianjieTextViewWithName:@"简介" WithAlort:@"请输入简介（不超过50字）" WithFrame:tempFrame andView:view];
@@ -244,11 +268,7 @@
         
     }
 }
--(void)addBtnAction
-{
-    YLDZiZhiAddViewController *viewCon=[[YLDZiZhiAddViewController alloc]init];
-    [self.navigationController pushViewController:viewCon animated:YES];
-}
+
 -(UIButton *)danxuanViewWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame andView:(UIView *)views
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];
