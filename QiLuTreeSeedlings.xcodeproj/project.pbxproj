@@ -135,6 +135,7 @@
 		EA510EB31C98033900C5D071 /* FaBuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA510EB21C98033900C5D071 /* FaBuViewController.m */; };
 		EA5163511D2B476800494604 /* GCZZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5163501D2B476800494604 /* GCZZModel.m */; };
 		EA5163541D2B493700494604 /* YLDGCGSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5163531D2B493700494604 /* YLDGCGSModel.m */; };
+		EA5163571D2B971D00494604 /* YLDWorkstationlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5163561D2B971D00494604 /* YLDWorkstationlistModel.m */; };
 		EA518C621CEDAAF30092BA40 /* GuiGeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA518C611CEDAAF30092BA40 /* GuiGeModel.m */; };
 		EA5252E21CE171270004639C /* YLDPickLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E11CE171270004639C /* YLDPickLocationView.m */; };
 		EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5252E51CE172410004639C /* YLDPickSelectVIew.m */; };
@@ -918,6 +919,8 @@
 		EA5163501D2B476800494604 /* GCZZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCZZModel.m; sourceTree = "<group>"; };
 		EA5163521D2B493700494604 /* YLDGCGSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGCGSModel.h; sourceTree = "<group>"; };
 		EA5163531D2B493700494604 /* YLDGCGSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGCGSModel.m; sourceTree = "<group>"; };
+		EA5163551D2B971D00494604 /* YLDWorkstationlistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLDWorkstationlistModel.h; path = QiLuTreeSeedlings/Model/YLDWorkstationlistModel.h; sourceTree = SOURCE_ROOT; };
+		EA5163561D2B971D00494604 /* YLDWorkstationlistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLDWorkstationlistModel.m; path = QiLuTreeSeedlings/Model/YLDWorkstationlistModel.m; sourceTree = SOURCE_ROOT; };
 		EA518C601CEDAAF30092BA40 /* GuiGeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeModel.h; sourceTree = "<group>"; };
 		EA518C611CEDAAF30092BA40 /* GuiGeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeModel.m; sourceTree = "<group>"; };
 		EA5252E01CE171270004639C /* YLDPickLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLDPickLocationView.h; path = ../YLDPickLocationView.h; sourceTree = "<group>"; };
@@ -3569,6 +3572,8 @@
 		FC2276601D177C9F0037B131 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA5163551D2B971D00494604 /* YLDWorkstationlistModel.h */,
+				EA5163561D2B971D00494604 /* YLDWorkstationlistModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5096,6 +5101,7 @@
 				EAB781971C8E8C8C00807B44 /* BuyUserInfoTableViewCell.m in Sources */,
 				FC5612651D0C092F00E5743B /* WHC_PhotoListCell.m in Sources */,
 				EAE32DD71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m in Sources */,
+				EA5163571D2B971D00494604 /* YLDWorkstationlistModel.m in Sources */,
 				FCE458C61CE7036600CBF802 /* ZIKHaveReadModel.m in Sources */,
 				FC2D13291D211BAE00F0973A /* ziktestchecker.m in Sources */,
 				FC50B34A1CAE4C4A0022A24C /* openssl_wrapper.m in Sources */,

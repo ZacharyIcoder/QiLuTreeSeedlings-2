@@ -110,7 +110,7 @@
         ZIKMyHonorViewController *norViewController=[[ZIKMyHonorViewController alloc] init];
         norViewController.type = TypeQualification;
         [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
-            [self.navigationController pushViewController:norViewController animated:YES];
+        [self.navigationController pushViewController:norViewController animated:YES];
         }
         if (indexPath.row==1) {
             

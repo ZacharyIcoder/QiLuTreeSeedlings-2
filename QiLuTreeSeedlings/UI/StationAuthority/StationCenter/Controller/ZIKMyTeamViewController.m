@@ -53,6 +53,7 @@
 
 #pragma mark - 请求数据
 - (void)requestData {
+
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.teamTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
@@ -114,6 +115,7 @@
                                    }
                                } failure:^(NSError *error) {
                                }];
+
 
 
 }
