@@ -14,6 +14,7 @@
 #import "MJRefresh.h"//MJ刷新
 #import "ZIKStationHonorListModel.h"
 #import "ZIKAddHonorViewController.h"
+#import "GCZZModel.h"
 NSString *kHonorCellID = @"honorcellID";
 
 @interface ZIKMyHonorViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -55,7 +56,8 @@ NSString *kHonorCellID = @"honorcellID";
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
         if ([weakSelf.vctitle isEqualToString:@"公司资质"]) {
-            YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] init];
+            YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] initWithType:2];
+//            vcss.delegate=self;
             [weakSelf.navigationController pushViewController:vcss animated:YES];
             return ;
         }
@@ -82,7 +84,13 @@ NSString *kHonorCellID = @"honorcellID";
     [super viewWillAppear:YES];
     self.isEditState = NO;
     self.page = 1;
-    [self requestData];
+    if ([self.vctitle isEqualToString:@"公司资质"])
+    {
+        [self requestCompanyData];
+    }else{
+        [self requestData];
+    }
+    
 //    [self.honorCollectionView reloadData];
 
     //[self.honorCollectionView headerBeginRefreshing];
@@ -123,7 +131,67 @@ NSString *kHonorCellID = @"honorcellID";
     //self.honorCollectionView.mj
 
 }
-
+#pragma mark - 请求数据
+- (void)requestCompanyData {
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    [self.honorCollectionView addHeaderWithCallback:^{
+        weakSelf.page = 1;
+        [weakSelf requestCompanyZZListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.honorCollectionView addFooterWithCallback:^{
+        weakSelf.page++;
+        [weakSelf requestCompanyZZListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.honorCollectionView headerBeginRefreshing];
+    
+    //self.honorCollectionView.mj
+}
+- (void)requestCompanyZZListData:(NSString *)pageNumber
+{
+   [self.honorCollectionView headerEndRefreshing];
+    [HTTPCLIENT GCZXwodezizhiWithuid:APPDELEGATE.GCGSModel.uid WithpageNumber:pageNumber WithpageSize:@"10" Success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        } else if ([responseObject[@"success"] integerValue] == 1) {
+            NSArray *array  = responseObject[@"result"][@"list"];
+            if (array.count == 0 && self.page == 1) {
+                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                if (self.honorData.count > 0) {
+                    [self.honorData removeAllObjects];
+                }
+                [self.honorCollectionView footerEndRefreshing];
+                [self.honorCollectionView reloadData];
+                return ;
+            }
+            else if (array.count == 0 && self.page > 1) {
+                self.page--;
+                [self.honorCollectionView footerEndRefreshing];
+                //没有更多数据了
+                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                return;
+            }
+            else {
+                if (self.page == 1) {
+                    [self.honorData removeAllObjects];
+                }
+                [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                    GCZZModel *ZZModel = [GCZZModel GCZZModelWithDic:dic];
+                    [self.honorData addObject:ZZModel];
+                  
+                }];
+                [self.honorCollectionView reloadData];
+            
+                [self.honorCollectionView footerEndRefreshing];
+                
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
 - (void)requestHonorListData:(NSString *)pageNumber {
     [self.honorCollectionView headerEndRefreshing];
     [HTTPCLIENT stationHonorListWithWorkstationUid:self.workstationUid pageNumber:pageNumber pageSize:@"10" Success:^(id responseObject) {
@@ -215,18 +283,33 @@ NSString *kHonorCellID = @"honorcellID";
     cell.isEditState = self.isEditState;
     cell.indexPath = indexPath;
     if (self.honorData.count > 0) {
-      __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
-        [cell configureCellWithModel:model];
-        __weak typeof(self) weakSelf = self;//解决循环引用的问题
-        cell.editButtonBlock = ^(NSIndexPath *indexPath) {
-            ZIKAddHonorViewController *addhonorVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
-            addhonorVC.workstationUid = weakSelf.workstationUid;
-            addhonorVC.uid = model.uid;
-            [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
-        };
-        cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
-            [weakSelf deleteRequest:model.uid];
-        };
+        if ([self.vcTitle isEqualToString:@"我的荣誉"]) {
+            __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
+            [cell configureCellWithModel:model];
+            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+            cell.editButtonBlock = ^(NSIndexPath *indexPath) {
+                ZIKAddHonorViewController *addhonorVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+                addhonorVC.workstationUid = weakSelf.workstationUid;
+                addhonorVC.uid = model.uid;
+                [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
+            };
+            cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
+                [weakSelf deleteRequest:model.uid];
+            };
+
+        }else{
+            __block  GCZZModel  *model = _honorData[indexPath.row];
+            cell.ZZmodel=model;
+            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+            cell.editButtonBlock = ^(NSIndexPath *indexPath) {
+                YLDZiZhiAddViewController *addhonorVC = [[YLDZiZhiAddViewController alloc] initWithType:2];
+                [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
+            };
+            cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
+                [weakSelf deleteRequest:model.uid];
+            };
+
+        }
     }
     return cell;
 }
@@ -239,18 +322,36 @@ NSString *kHonorCellID = @"honorcellID";
 }
 
 - (void)deleteRequest:(NSString *)uid {
-    [HTTPCLIENT stationHonorDeleteWithUid:uid Success:^(id responseObject) {
-        if ([responseObject[@"success"] integerValue] == 0) {
-            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
-             return ;
-        }
-        [ToastView showTopToast:@"删除成功"];
-        self.isEditState = NO;
-        self.page = 1;
-        [self requestHonorListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
-//        [self.honorCollectionView reloadData];
-    } failure:^(NSError *error) {
-        ;
-    }];
+    if ([self.vcTitle isEqualToString:@"我的荣誉"])
+    {
+        [HTTPCLIENT stationHonorDeleteWithUid:uid Success:^(id responseObject) {
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"删除成功"];
+            self.isEditState = NO;
+            self.page = 1;
+            [self requestHonorListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
+            //        [self.honorCollectionView reloadData];
+        } failure:^(NSError *error) {
+            ;
+        }];
+
+        
+    }else{
+        [HTTPCLIENT GCZXDeleteRongYuWithuid:uid Success:^(id responseObject) {
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"删除成功"];
+            self.isEditState = NO;
+            self.page = 1;
+            [self requestCompanyZZListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
 }
 @end

@@ -15,10 +15,14 @@
 #import "SellSearchTableViewCell.h"
 #import "ZIKWorkstationViewController.h"
 #import "MJRefresh.h"
+#import "HttpClient.h"
+#import "YLDWorkstationlistModel.h"
 @interface YLDZhanZhangGongYingViewController ()<AdvertDelegate,UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic,strong)NSArray *dataAry;
-@property (nonatomic)NSInteger pageNum;
 
+@property (nonatomic)NSInteger pageNum;
+@property (nonatomic,strong)NSArray *workStationAry;
+@property (nonatomic,strong)NSMutableArray *supplyAry;
+@property (nonatomic,weak)UITableView *tableView;
 @end
 
 @implementation YLDZhanZhangGongYingViewController
@@ -33,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pageNum=1;
-    self.dataAry=[NSMutableArray array];
+    self.supplyAry=[NSMutableArray array];
     self.backBtn.frame=CGRectMake(13, 26, 60, 30);
     self.vcTitle=@"站长供应";
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
@@ -41,14 +45,39 @@
     tableView.dataSource=self;
     [self.view addSubview:tableView];
     __weak typeof(self) weakSelf=self;
+    self.tableView=tableView;
     [tableView addHeaderWithCallback:^{
-        
+        weakSelf.pageNum=1;
+        [weakSelf getDataList];
     }];
-    [tableView addFooterWithCallback:^{
-        
-    }];
+//    [tableView addFooterWithCallback:^{
+//        
+//    }];
+    [tableView headerBeginRefreshing];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];
     // Do any additional setup after loading the view from its nib.
+}
+-(void)getDataList
+{
+    [HTTPCLIENT GCGSshouyeWithPageSize:@"3" WithsupplyCount:@"10" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if (self.pageNum==1) {
+                [self.supplyAry removeAllObjects];
+            }
+            NSDictionary *dic=[responseObject objectForKey:@"result"];
+            NSArray *workStationList=dic[@"workStationList"];
+            self.workStationAry=[YLDWorkstationlistModel YLDWorkstationlistModelWithAry:workStationList];
+            [self.supplyAry addObjectsFromArray:dic[@"supplyList"]];
+            [self.tableView reloadData];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        [self.tableView headerEndRefreshing];
+        [self.tableView footerEndRefreshing];
+    } failure:^(NSError *error) {
+        [self.tableView headerEndRefreshing];
+        [self.tableView footerEndRefreshing];
+    }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -83,6 +112,13 @@
     if (section==0) {
         return 1;
     }
+    if (section==1)
+    {
+        return self.workStationAry.count;
+    }
+    if (section==2) {
+        return self.supplyAry.count;
+    }
     return 5;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -101,8 +137,9 @@
         YLDTuiJianGongZuoZhanCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDTuiJianGongZuoZhanCell"];
         if(!cell)
         {
-            cell=[[[NSBundle mainBundle] loadNibNamed:@"YLDTuiJianGongZuoZhanCell" owner:self options:nil] lastObject];
+            cell=[YLDTuiJianGongZuoZhanCell yldTuiJianGongZuoZhanCell];
         }
+        cell.model=self.workStationAry[indexPath.row];
         return cell;
     }
     if (indexPath.section==2) {
@@ -202,6 +239,7 @@
         [self.navigationController pushViewController:fabuVC animated:YES];
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

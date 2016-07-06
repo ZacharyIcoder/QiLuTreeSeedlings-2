@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class ZIKStationHonorListModel;
-
+#import "GCZZModel.h"
 typedef void(^EditButtonBlock)(NSIndexPath *indexPath);
 typedef void(^DeleteButtonBlock)(NSIndexPath *indexPath);
 
@@ -16,7 +16,7 @@ typedef void(^DeleteButtonBlock)(NSIndexPath *indexPath);
 @property (weak, nonatomic  ) IBOutlet UIImageView       *honorImageView;
 @property (weak, nonatomic  ) IBOutlet UILabel           *honorTitleLabel;
 @property (weak, nonatomic  ) IBOutlet UILabel           *honorTimeLabel;
-
+@property (strong,nonatomic ) GCZZModel *ZZmodel;
 @property (nonatomic, assign) BOOL              isEditState;
 
 @property (nonatomic, strong) NSIndexPath       *indexPath;

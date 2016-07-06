@@ -34,6 +34,14 @@
     self.honorTimeLabel.text = model.acquisitionTime;
     self.honorTitleLabel.text = model.name;
 }
+-(void)setZZmodel:(GCZZModel *)ZZmodel
+{
+    _ZZmodel = ZZmodel;
+    NSURL *honorUrl = [NSURL URLWithString:ZZmodel.attachment];
+    [self.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+    self.honorTimeLabel.text = ZZmodel.acqueTime;
+    self.honorTitleLabel.text = ZZmodel.companyQualification;
+}
 
 - (void)setIsEditState:(BOOL)isEditState {
     _isEditState = isEditState;

@@ -29,6 +29,10 @@
     cell.bianhaoLab.layer.cornerRadius=2;
     [lineView setBackgroundColor:kLineColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    UIButton *chakanBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 10, 60, 30)];
+    cell.chakanBtn=chakanBtn;
+    [chakanBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [cell addSubview:chakanBtn];
     return cell;
 }
 -(void)setMessageDic:(NSDictionary *)messageDic
@@ -40,7 +44,34 @@
     if (shuomingStr.length!=0) {
         self.jieshaoLab.text=[NSString stringWithFormat:@"要求说明：%@",messageDic[@"description"]];  
     }
-
+    NSString *stauts=[messageDic objectForKey:@"stauts"];
+    if (self.chakanBtn) {
+        if ([stauts integerValue]==0||[stauts integerValue]==1) {
+            [self.chakanBtn setBackgroundColor:NavYellowColor];
+            self.chakanBtn.tag=1;
+            [self.chakanBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+            [self.chakanBtn setTitle:@"查看报价" forState:UIControlStateNormal];
+        }
+        if ([stauts integerValue]==2) {
+            [self.chakanBtn setBackgroundColor:NavColor];
+            [self.chakanBtn setTitle:@"已合作" forState:UIControlStateNormal];
+            self.chakanBtn.tag=2;
+            [self.chakanBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        if ([stauts integerValue]==3) {
+            [self.chakanBtn setBackgroundColor:[UIColor colorWithRed:64/255.f green:204/255.f blue:246/255.f alpha:1]];
+            self.chakanBtn.tag=3;
+            [self.chakanBtn setTitle:@"编辑" forState:UIControlStateNormal];
+            [self.chakanBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+    }
+}
+-(void)chakanBtnAction:(UIButton *)sender
+{
+    if (self.delegate) {
+        [self.delegate chakanActionWithTag:sender.tag andDic:self.messageDic];
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

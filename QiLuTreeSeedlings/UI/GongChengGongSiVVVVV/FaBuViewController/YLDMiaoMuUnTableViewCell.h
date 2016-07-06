@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol YLDMiaoMuUnTableViewCellDelegate <NSObject>
+@optional
+-(void)chakanActionWithTag:(NSInteger)tag andDic:(NSDictionary *)dic;
+@end
 @interface YLDMiaoMuUnTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *bianhaoLab;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
@@ -15,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *jieshaoLab;
 @property (nonatomic,strong) UIButton *chakanBtn;
 @property (nonatomic,strong) NSDictionary *messageDic;
+@property (nonatomic,weak)id<YLDMiaoMuUnTableViewCellDelegate> delegate;
 +(YLDMiaoMuUnTableViewCell *)yldMiaoMuUnTableViewCell;
 +(YLDMiaoMuUnTableViewCell *)yldMiaoMuUnTableViewCell2;
 @end

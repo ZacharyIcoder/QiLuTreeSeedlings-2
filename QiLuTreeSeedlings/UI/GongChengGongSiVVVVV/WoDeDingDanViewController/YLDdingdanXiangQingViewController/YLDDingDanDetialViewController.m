@@ -15,7 +15,9 @@
 #import "HttpClient.h"
 #import "YLDSearchNavView.h"
 #import "MJRefresh.h"
-@interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
+#import "YLDBaoJiaDetialViewController.h"
+#import "YLDHeZuoDetialViewController.h"
+@interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate,YLDMiaoMuUnTableViewCellDelegate>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
 @property (nonatomic,weak)YLDDingDanJianJieView *jianjieView;
@@ -159,7 +161,8 @@
 {
     YLDMiaoMuUnTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDMiaoMuUnTableViewCell"];
     if (!cell) {
-        cell=[YLDMiaoMuUnTableViewCell yldMiaoMuUnTableViewCell];
+        cell=[YLDMiaoMuUnTableViewCell yldMiaoMuUnTableViewCell2];
+        cell.delegate=self;
     }
     NSDictionary *DIC=self.dataAry[indexPath.row];
     cell.messageDic=DIC;
@@ -167,6 +170,17 @@
     //NSDictionary *DIC=self.miaomuAry[indexPath.row];
 //    cell.messageDic=DIC;
     return cell;
+}
+-(void)chakanActionWithTag:(NSInteger)tag andDic:(NSDictionary *)dic
+{
+    if (tag==1) {
+        YLDBaoJiaDetialViewController *yldBaoJiaVC=[[YLDBaoJiaDetialViewController alloc] initWithUid:[dic objectForKey:@"uid"]];
+        [self.navigationController pushViewController:yldBaoJiaVC animated:YES];
+    }
+    if (tag==2) {
+        YLDHeZuoDetialViewController *hezuodeltai=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:nil WithitemUid:[dic objectForKey:@"uid"]];
+        [self.navigationController pushViewController:hezuodeltai animated:YES];
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
