@@ -311,7 +311,7 @@ NSString *kHonorCellID = @"honorcellID";
 
 - (void)deleteRequest:(NSString *)uid {
 
-    if (self.type ==TypeQualification)
+    if (self.type ==TypeHonor)
     {
         [HTTPCLIENT stationHonorDeleteWithUid:uid Success:^(id responseObject) {
             if ([responseObject[@"success"] integerValue] == 0) {

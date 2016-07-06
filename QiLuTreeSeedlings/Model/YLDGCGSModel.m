@@ -13,8 +13,8 @@
 {
     YLDGCGSModel *model=[YLDGCGSModel new];
     model.area=dic[@"area"];
-    model.area=dic[@"attachment"];
-    model.area=dic[@"brief"];
+    model.attachment=dic[@"attachment"];
+    model.brief=dic[@"brief"];
     model.city=dic[@"city"];
     model.companyName=dic[@"companyName"];
     model.county=dic[@"county"];

@@ -23,6 +23,7 @@
 @property (nonatomic,copy) NSString *compressurl;
 @property (nonatomic,copy) NSString *url;
 @property (nonatomic) NSInteger type;
+@property (nonatomic,strong)GCZZModel *model;
 @end
 
 @implementation YLDZiZhiAddViewController
@@ -31,6 +32,15 @@
     self=[super init];
     if (self) {
         self.type=type;
+    }
+    return self;
+}
+-(id)initWithModel:(GCZZModel *)model
+{
+    self=[super init];
+    if (self) {
+        self.type=2;
+        self.model=model;
     }
     return self;
 }
@@ -77,16 +87,21 @@
     [sureBtn addTarget: self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.backScrollView addSubview:sureBtn];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame))];
+    
+    if (self.model) {
+        self.nameTextField.text=self.model.companyQualification;
+        self.rankTextField.text=self.model.level;
+        self.organizationalField.text=self.model.issuingAuthority;
+        self.timeStr=self.model.acqueTime;
+        [self.timeBtn setTitle:self.model.acqueTime forState:UIControlStateNormal];
+        self.url=self.model.attachment;
+        [self.imageBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:self.model.attachment] placeholderImage:[UIImage imageNamed:@"添加图片"]];
+//        self.imageBtn
+    }
     // Do any additional setup after loading the view.
 }
 -(void)sureBtnAction
 {
-//    @property (nonatomic,weak) UITextField *nameTextField;
-//    @property (nonatomic,weak) UITextField *rankTextField;
-//    @property (nonatomic,weak) UITextField *organizationalField;
-//    @property (nonatomic,copy) NSString *timeStr;
-//   
-//    @property (nonatomic,copy) NSString *compressurl;
   
     if (self.nameTextField.text.length<=0) {
         [ToastView showTopToast:@"请输入荣誉名称"];
@@ -121,6 +136,18 @@
             [self.delegate reloadViewWithModel:model andDic:dic];
             [self.navigationController popViewControllerAnimated:YES];
         }
+    }
+    if (self.type==2) {
+        [HTTPCLIENT GCGSRongYuTijiaoWithuid:self.model.uid WtihcompanyQualification:self.nameTextField.text WithacquisitionTime:self.timeStr With:self.rankTextField.text WithcompanyUid:APPDELEGATE.GCGSModel.uid WithissuingAuthority:self.organizationalField.text Withattachment:self.url Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                [ToastView showTopToast:@"保存成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
     }
    
 }
@@ -271,7 +298,6 @@
 {
 
     [self requestUploadHeadImage:croppedImage];
-    [self.imageBtn setImage:croppedImage forState:UIControlStateNormal];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
