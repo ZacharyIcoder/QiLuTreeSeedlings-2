@@ -43,7 +43,13 @@
 
 }
 
-- (IBAction)phoneButtonClick:(id)sender {
+-(void)setPhoneButtonBlock:(PhoneButtonBlock)phoneBlock {
+    _phoneButtonBlock = [phoneBlock copy];
+    [self.phoneButton addTarget:self action:@selector(phoneBtnClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)phoneBtnClick {
+    _phoneButtonBlock(self.indexPath);
 }
 
 @end

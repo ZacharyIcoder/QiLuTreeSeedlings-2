@@ -144,6 +144,17 @@
     if (self.teamMarr.count > 0) {
         ZIKMyTeamModel *model = self.teamMarr[indexPath.section];
         [cell configureCell:model];
+        cell.indexPath = indexPath;
+        __weak typeof(self) weakSelf = self;
+        cell.phoneButtonBlock = ^(NSIndexPath *indexPath){
+            // NSLog(@"拨打电话");
+            NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",model.phone];
+            //NSLog(@"%@",str);
+            UIWebView * callWebview = [[UIWebView alloc] init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+            [weakSelf.view addSubview:callWebview];
+
+        };
     }
     return cell;
 }

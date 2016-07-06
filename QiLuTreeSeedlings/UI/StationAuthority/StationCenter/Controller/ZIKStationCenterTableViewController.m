@@ -182,6 +182,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             [self.navigationController pushViewController:teamVC animated:YES];
         }
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

@@ -32,7 +32,7 @@
 /**
  *  工作站编号
  */
-@property (nonatomic, copy) NSString *workstationNo;
+@property (nonatomic, copy) NSString *viewNo;
 /**
  *  站长头像url地址
  */

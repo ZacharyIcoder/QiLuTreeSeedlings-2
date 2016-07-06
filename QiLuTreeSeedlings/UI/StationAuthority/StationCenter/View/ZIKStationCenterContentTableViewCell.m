@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
 
 @end
 @implementation ZIKStationCenterContentTableViewCell
@@ -45,9 +46,14 @@
 
 - (void)configureCell:(MasterInfoModel *)model {
     self.nameLabel.text    = model.workstationName;
-    self.numberLabel.text  = model.workstationNo;
+    self.numberLabel.text  = model.viewNo;
     self.addressLabel.text = model.area;
     self.priceLabel.text   = model.creditMargin;
+    if ([model.type isEqualToString:@"总站"]) {
+        self.typeImageView.image = [UIImage imageNamed:@"yingzhangzongzhan"];
+    } else if ([model.type isEqualToString:@"分站"]) {
+        self.typeImageView.image = [UIImage imageNamed:@"yinzhangfenzhan"];
+    }
 }
 
 @end
