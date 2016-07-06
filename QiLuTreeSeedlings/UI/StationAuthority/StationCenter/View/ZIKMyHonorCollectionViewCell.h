@@ -34,6 +34,5 @@ typedef void(^DeleteButtonBlock)(NSIndexPath *indexPath);
 @property (nonatomic, copy) NSString *level;
 @property (nonatomic, copy) NSString *uid;
 
--(void)configureCellWithModel:(ZIKStationHonorListModel *)model;
 - (void)loadData:(id <ZIKCertificateAdapterProtocol>)data;
 @end

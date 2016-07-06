@@ -25,6 +25,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = @"添加荣誉";
+    if (self.uid) {
+        [HTTPCLIENT stationHonorDetailWithUid:_uid Success:^(id responseObject) {
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            NSDictionary *resultDic      = responseObject[@"result"];
+            NSDictionary *honorDic       = resultDic[@"honor"];
+            self.uid                     = honorDic[@"uid"];
+            self.workstationUid          = honorDic[@"workstationUid"];
+            self.honorTimeTextField.text = honorDic[@"acqueTime"];
+            self.honorNameTextField.text = honorDic[@"name"];
+            self.honorCompressUrl        = honorDic[@"image"];
+            NSURL *url = [NSURL URLWithString:self.honorCompressUrl];
+            [self.addImageButton setBackgroundImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+        } failure:^(NSError *error) {
+            ;
+        }];
+    }
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
@@ -37,7 +56,7 @@
     time = self.honorTimeTextField.text;
 
     NSString *uid = nil;
-    if (uid) {
+    if (self.uid) {
         uid = self.uid;
     }
     [HTTPCLIENT stationHonorCreateWithUid:uid workstationUid:_workstationUid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
@@ -47,8 +66,6 @@
             return ;
         }
         [self.navigationController popViewControllerAnimated:YES];
-
-
 
     } failure:^(NSError *error) {
         ;
@@ -92,7 +109,6 @@
         [self presentViewController:pickerImage animated:YES completion:^{
 
         }];
-        //[self presentModalViewController:pickerImage animated:YES];
     }else if (buttonIndex == 0) {
 
         //先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
@@ -100,17 +116,13 @@
         if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
             sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
-        //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
-        //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
-        //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
+         UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
         picker.delegate = self;
         picker.allowsEditing = YES;//设置可编辑
         picker.sourceType = sourceType;
         [self presentViewController:picker animated:YES completion:^{
 
         }];
-        //[self presentModalViewController:picker animated:YES];//进入照相界面
     }
 
 }
@@ -137,9 +149,6 @@
 
 - (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
 {
-    //_globalHeadImage = croppedImage;
-    //NSData *temData = UIImageJPEGRepresentation(_globalHeadImage, 0.00001);
-    //NSData *temData = UIImagePNGRepresentation(_globalHeadImage);
     [self requestUploadHeadImage:croppedImage];
     [self.navigationController popViewControllerAnimated:YES];
     self.navigationController.navigationBar.hidden = YES;
@@ -148,7 +157,6 @@
 
 - (void)chooseUserPictureChange:(UIImage*)image
 {
-    //UIImage *photo = [UIImage imageNamed:@"photo"];
     RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
     imageCropVC.cropMode = RSKImageCropModeSquare;
     imageCropVC.delegate = self;
@@ -158,22 +166,6 @@
 
 #pragma mark - 请求上传头像
 - (void)requestUploadHeadImage:(UIImage *)image {
-//    [HTTPCLIENT upDataUserImageWithToken:nil WithAccessID:nil WithClientID:nil WithClientSecret:nil WithDeviceID:nil WithUserIamge:image Success:^(id responseObject) {
-//        //NSLog(@"%@",responseObject);
-//        if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-//            [ToastView showTopToast:@"上传成功"];
-//            _globalHeadImage = image;
-//            cellHeadImageView.image = _globalHeadImage;
-//            //[self.myTalbeView reloadData];
-//            APPDELEGATE.userModel.headUrl = responseObject[@"url"];
-//        }
-//        else {
-//            //NSLog(@"%@",responseObject[@"msg"]);
-//            [ToastView showTopToast:responseObject[@"msg"]];
-//        }
-//    } failure:^(NSError *error) {
-//        //NSLog(@"%@",error);
-//    }];
     NSData* imageData;
     //判断图片是不是png格式的文件
     if (UIImagePNGRepresentation(image)) {
@@ -194,13 +186,10 @@
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
         } else if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-//            [ToastView showTopToast:@"添加成功"];
             NSDictionary *result = responseObject[@"result"];
             self.honorCompressUrl = result[@"compressurl"];
             self.honorDetailUrl   = result[@"detailurl"];
             self.honorUrl         = result[@"url"];
-//            NSURL *url = [NSURL URLWithString:self.honorUrl];
-//            [self.addImageButton setImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"添加图片"]];
             [self.addImageButton setBackgroundImage:image forState:UIControlStateNormal];
         }
 

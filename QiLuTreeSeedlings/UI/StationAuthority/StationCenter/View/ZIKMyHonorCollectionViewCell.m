@@ -25,15 +25,7 @@
     self.contentView.backgroundColor = [UIColor whiteColor];
     self.backView.alpha = 1;
     self.backView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-
     self.isEditState = NO;
-}
-
--(void)configureCellWithModel:(ZIKStationHonorListModel *)model {
-    NSURL *honorUrl = [NSURL URLWithString:model.image];
-    [self.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-    self.honorTimeLabel.text = model.acquisitionTime;
-    self.honorTitleLabel.text = model.name;
 }
 
 - (void)loadData:(id <ZIKCertificateAdapterProtocol>)data {

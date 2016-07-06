@@ -172,7 +172,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
         if (indexPath.row == 0) {
             ZIKMyHonorViewController *honorVC = [[ZIKMyHonorViewController alloc] initWithNibName:@"ZIKMyHonorViewController" bundle:nil];
             honorVC.hidesBottomBarWhenPushed  = YES;
-            honorVC.vctitle = @"我的荣誉";
+            honorVC.type = TypeHonor;
             honorVC.workstationUid = self.masterModel.uid;
             [self.navigationController pushViewController:honorVC animated:YES];
         } else if (indexPath.row == 1) {
