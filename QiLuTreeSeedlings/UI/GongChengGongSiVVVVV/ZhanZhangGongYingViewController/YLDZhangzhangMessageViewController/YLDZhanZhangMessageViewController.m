@@ -123,7 +123,7 @@
 -(void)allRongYuBtnAction:(UIButton *)sender
 {
     ZIKMyHonorViewController *zsdasda=[[ZIKMyHonorViewController alloc]init];
-    zsdasda.vctitle=@"荣誉";
+    zsdasda.type = TypeQualification;
     [self.navigationController pushViewController:zsdasda animated:YES];
 }
 /*

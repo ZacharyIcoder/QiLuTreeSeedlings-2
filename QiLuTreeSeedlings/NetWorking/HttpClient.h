@@ -879,12 +879,14 @@ failure:(void (^)(NSError *error))failure;
  *  @param uid        工作站ID
  *  @param pageNumber 页码，默认1
  *  @param pageSize   每页显示数。默认10
+ *  @param keyword    检索词
  *  @param success    success description
  *  @param failure    failure description
  */
 - (void)stationTeamWithUid:(NSString *)uid
                 pageNumber:(NSString *)pageNumber
                   pageSize:(NSString *)pageSize
+                   keyword:(NSString *)keyword
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－提交资质升级 -----------
@@ -926,4 +928,49 @@ failure:(void (^)(NSError *error))failure;
 -(void)GCZXDeleteRongYuWithuid:(NSString *)uid
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 工作站列表 -----------
+/**
+ *  工作站列表
+ *
+ *  @param province   省
+ *  @param city       市
+ *  @param county     县
+ *  @param keyword    检索词
+ *  @param pageNumber 页码，默认1
+ *  @param pageSize   每页显示数，默认15
+ *  @param success    {
+ "result":{
+ "workStationList":[
+ {
+ "area":"山东临沂河东区汤河镇",	--地区
+ "chargelPerson":"邢明龙",	--联系人
+ "phone":"18265391071",	--联系电话
+ "uid":"4A367CD4-8B46-4279-B7D1-015E9FECAEE6",	--工作站ID
+ "viewNo":"鲁 第0001号",	--工作站编号
+ "workstationName":"0001"	--工作站名称
+ },
+ {
+ ......
+ }
+ ]
+ },
+ "success":true
+ }
+
+ *  @param failure    {
+	"error_code":"500",
+	"msg":"",
+	"success":false
+ }
+
+ */
+- (void)stationListWithProvince:(NSString *)province
+                           city:(NSString *)city
+                         county:(NSString *)county
+                        keyword:(NSString *)keyword
+                     pageNumber:(NSString *)pageNumber
+                       pageSize:(NSString *)pageSize
+                        Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure;
 @end

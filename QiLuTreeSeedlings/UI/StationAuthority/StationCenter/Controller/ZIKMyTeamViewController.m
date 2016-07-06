@@ -49,15 +49,15 @@
     NSString *uid = nil;
     NSString *pageNumber = nil;
     NSString *pageSize = nil;
-    [HTTPCLIENT stationTeamWithUid:(NSString *)uid
-                        pageNumber:(NSString *)pageNumber
-                          pageSize:(NSString *)pageSize
-                           Success:^(id responseObject){
-
-                           }
-                           failure:^(NSError *error) {
-
-                           }];
+//    [HTTPCLIENT stationTeamWithUid:(NSString *)uid
+//                        pageNumber:(NSString *)pageNumber
+//                          pageSize:(NSString *)pageSize
+//                           Success:^(id responseObject){
+//
+//                           }
+//                           failure:^(NSError *error) {
+//
+//                           }];
 
 }
 

@@ -3573,6 +3573,7 @@
 - (void)stationTeamWithUid:(NSString *)uid
                 pageNumber:(NSString *)pageNumber
                   pageSize:(NSString *)pageSize
+                   keyword:(NSString *)keyword
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
@@ -3831,6 +3832,57 @@
         parmers[@"uid"]      = uid;
     
  
+    // parmers[@"address"]         = address;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- 工作站列表 -----------
+/**
+ *  工作站列表
+ *
+ *  @param province   省
+ *  @param city       市
+ *  @param county     县
+ *  @param keyword    检索词
+ *  @param pageNumber 页码，默认1
+ *  @param pageSize   每页显示数，默认15
+ */
+- (void)stationListWithProvince:(NSString *)province
+                           city:(NSString *)city
+                         county:(NSString *)county
+                        keyword:(NSString *)keyword
+                     pageNumber:(NSString *)pageNumber
+                       pageSize:(NSString *)pageSize
+                        Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure {
+
+    NSString *postURL            = @"api/company/workstationList";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"province"]         = province;
+    parmers[@"city"]             = city;
+    parmers[@"county"]           = county;
+    parmers[@"keyword"]          = keyword;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+
+
     // parmers[@"address"]         = address;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {

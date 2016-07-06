@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *backView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 @end
 
 @implementation ZIKMyHonorCollectionViewCell
@@ -24,15 +24,82 @@
     self.contentView.backgroundColor = [UIColor whiteColor];
     self.backView.alpha = 1;
     self.backView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-
     self.isEditState = NO;
 }
 
--(void)configureCellWithModel:(ZIKStationHonorListModel *)model {
-    NSURL *honorUrl = [NSURL URLWithString:model.image];
-    [self.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-    self.honorTimeLabel.text = model.acquisitionTime;
-    self.honorTitleLabel.text = model.name;
+- (void)loadData:(id <ZIKCertificateAdapterProtocol>)data {
+    self.name             = [data name];
+    self.time             = [data time];
+    self.imageString      = [data imageString];
+    self.issuingAuthority = [data issuingAuthority];
+    self.level            = [data level];
+    self.uid              = [data uid];
+}
+
+#pragma mark - 重写setter,getter方法
+@synthesize name             = _name;
+@synthesize time             = _time;
+@synthesize imageString      = _imageString;
+@synthesize issuingAuthority = _issuingAuthority;
+@synthesize level            = _level;
+@synthesize uid              = _uid;
+
+-(void)setName:(NSString *)name {
+    _name = name;
+    _honorTitleLabel.text = name;
+}
+
+-(NSString *)name {
+    return _name;
+}
+
+-(void)setTime:(NSString *)time {
+    _time = time;
+    _honorTimeLabel.text = time;
+}
+
+-(NSString *)time {
+    return _time;
+}
+
+-(void)setImageString:(NSString *)imageString {
+    _imageString = imageString;
+    NSURL *honorUrl = [NSURL URLWithString:imageString];
+    [_honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+}
+
+-(NSString *)imageString {
+    return _imageString;
+}
+
+-(void)setIssuingAuthority:(NSString *)issuingAuthority {
+    _issuingAuthority = issuingAuthority;
+}
+
+-(NSString *)issuingAuthority {
+    return _issuingAuthority;
+}
+
+-(void)setLevel:(NSString *)level {
+    _level = level;
+    if (level) {
+        _levelLabel.hidden = NO;
+        _levelLabel.text = level;
+    } else {
+        _levelLabel.hidden = YES;
+    }
+}
+
+-(NSString *)level {
+    return _level;
+}
+
+-(void)setUid:(NSString *)uid {
+    _uid = uid;
+}
+
+- (NSString *)uid {
+    return _uid;
 }
 -(void)setZZmodel:(GCZZModel *)ZZmodel
 {

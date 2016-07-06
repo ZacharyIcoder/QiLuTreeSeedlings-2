@@ -107,10 +107,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==1) {
         if (indexPath.row==0) {
-            ZIKMyHonorViewController *norViewController=[[ZIKMyHonorViewController alloc] init];
-        norViewController.vctitle=@"公司资质";
+        ZIKMyHonorViewController *norViewController=[[ZIKMyHonorViewController alloc] init];
+        norViewController.type = TypeQualification;
         [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
-            [self.navigationController pushViewController:norViewController animated:YES];
+        [self.navigationController pushViewController:norViewController animated:YES];
         }
         if (indexPath.row==1) {
             

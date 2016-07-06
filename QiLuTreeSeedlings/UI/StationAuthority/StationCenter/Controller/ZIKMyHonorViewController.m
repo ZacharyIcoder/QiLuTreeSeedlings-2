@@ -14,7 +14,13 @@
 #import "MJRefresh.h"//MJ刷新
 #import "ZIKStationHonorListModel.h"
 #import "ZIKAddHonorViewController.h"
+
 #import "GCZZModel.h"
+
+#import "ZIKStationShowHonorView.h"//
+#import "ZIKBaseCertificateAdapter.h"
+#import "ZIKCertificateAdapter.h"
+
 NSString *kHonorCellID = @"honorcellID";
 
 @interface ZIKMyHonorViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -26,6 +32,7 @@ NSString *kHonorCellID = @"honorcellID";
 @property (nonatomic, assign) BOOL isEditState;
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
 
+@property (nonatomic, strong) ZIKStationShowHonorView *showHonorView;
 @end
 
 @implementation ZIKMyHonorViewController
@@ -47,21 +54,27 @@ NSString *kHonorCellID = @"honorcellID";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = BGColor;
-    self.vcTitle = self.vctitle;
     self.page = 1;
-    if ([self.vctitle isEqualToString:@"公司资质"]) {
+    if (self.type == TypeHonor) {
+        self.vcTitle = @"我的荣誉";
+    }
+    if (self.type == TypeQualification) {
+        self.vcTitle = @"我的资质";
         [self.navBackView setBackgroundColor:NavYellowColor];
     }
     self.rightBarBtnTitleString = @"添加";
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-        if ([weakSelf.vctitle isEqualToString:@"公司资质"]) {
+
+        if (self.type == TypeQualification) {
             YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] initWithType:2];
 //            vcss.delegate=self;
+
+
             [weakSelf.navigationController pushViewController:vcss animated:YES];
             return ;
         }
-        if ([weakSelf.vctitle isEqualToString:@"我的荣誉"]) {
+        if (self.type == TypeHonor) {
             ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
             addVC.workstationUid = weakSelf.workstationUid;
             [weakSelf.navigationController pushViewController:addVC animated:YES];
@@ -77,43 +90,27 @@ NSString *kHonorCellID = @"honorcellID";
     [self.honorCollectionView addGestureRecognizer:_tapDeleteGR];
 
     self.honorData = [NSMutableArray array];
-    //[self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     self.isEditState = NO;
     self.page = 1;
-    if ([self.vctitle isEqualToString:@"公司资质"])
+
+    if (self.type ==TypeQualification)
     {
         [self requestCompanyData];
-    }else{
-        [self requestData];
     }
     
 //    [self.honorCollectionView reloadData];
 
     //[self.honorCollectionView headerBeginRefreshing];
-}
 
-///**
-// *  懒加载获取plist中对应的数据源
-// *
-// */
-//- (NSMutableArray *)honorData
-//{
-//    if (_honorData == nil) {
-//
-//        NSString * honorPath = [[NSBundle mainBundle] pathForResource:@"honor" ofType:@"plist"];
-//        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:honorPath];
-//        NSMutableArray *array = [dic objectForKey:@"honorList"];
-////        NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:honorPath];
-//
-//        _honorData = array;
-//    }
-//
-//    return _honorData;
-//}
+    if (self.type == TypeHonor) {
+        [self requestData];
+    }
+
+}
 
 #pragma mark - 请求数据
 - (void)requestData {
@@ -127,9 +124,6 @@ NSString *kHonorCellID = @"honorcellID";
         [weakSelf requestHonorListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.honorCollectionView headerBeginRefreshing];
-
-    //self.honorCollectionView.mj
-
 }
 #pragma mark - 请求数据
 - (void)requestCompanyData {
@@ -195,7 +189,7 @@ NSString *kHonorCellID = @"honorcellID";
 - (void)requestHonorListData:(NSString *)pageNumber {
     [self.honorCollectionView headerEndRefreshing];
     [HTTPCLIENT stationHonorListWithWorkstationUid:self.workstationUid pageNumber:pageNumber pageSize:@"10" Success:^(id responseObject) {
-        CLog(@"%@",responseObject);
+        //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -224,32 +218,8 @@ NSString *kHonorCellID = @"honorcellID";
                 [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                     ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
                     [self.honorData addObject:honorListModel];
-//                    ZIKSupplyModel *model = [ZIKSupplyModel yy_modelWithDictionary:dic];
-//                    if (self.state == SupplyStateThrough && [model.shuaxin isEqualToString:@"1"]) {
-//                        model.isCanRefresh = NO;
-//                    } else {
-//                        model.isCanRefresh = YES;
-//                    }
-//                    [self.supplyInfoMArr addObject:model];
                 }];
                 [self.honorCollectionView reloadData];
-//                //已通过状态并且可编辑状态
-//                if (self.honorCollectionView.editing && self.state == SupplyStateThrough) {
-//                    if (_throughSelectIndexArr.count > 0) {
-//                        [_throughSelectIndexArr enumerateObjectsUsingBlock:^(NSIndexPath *selectIndex, NSUInteger idx, BOOL * _Nonnull stop) {
-//                            [self.supplyTableView selectRowAtIndexPath:selectIndex animated:YES scrollPosition:UITableViewScrollPositionNone];
-//                        }];
-//                    }
-//                }
-//                //已过期并且可编辑状态
-//                else if (self.supplyTableView.editing && self.state == SupplyStateNoThrough) {
-//                    if (_deleteIndexArr.count > 0) {
-//                        [_deleteIndexArr enumerateObjectsUsingBlock:^(NSIndexPath *selectDeleteIndex, NSUInteger idx, BOOL * _Nonnull stop) {
-//                            [self.supplyTableView selectRowAtIndexPath:selectDeleteIndex animated:YES scrollPosition:UITableViewScrollPositionNone];
-//                        }];
-//                    }
-//                    [self updateBottomDeleteCellView];
-//                }
                 [self.honorCollectionView footerEndRefreshing];
                 
             }
@@ -283,9 +253,14 @@ NSString *kHonorCellID = @"honorcellID";
     cell.isEditState = self.isEditState;
     cell.indexPath = indexPath;
     if (self.honorData.count > 0) {
-        if ([self.vcTitle isEqualToString:@"我的荣誉"]) {
+
+        if (self.type==TypeHonor) {
             __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
-            [cell configureCellWithModel:model];
+//            [cell configureCellWithModel:model];
+            // 与输入建立联系
+            ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+            // 与输出建立联系
+            [cell loadData:modelAdapter];
             __weak typeof(self) weakSelf = self;//解决循环引用的问题
             cell.editButtonBlock = ^(NSIndexPath *indexPath) {
                 ZIKAddHonorViewController *addhonorVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
@@ -310,19 +285,33 @@ NSString *kHonorCellID = @"honorcellID";
             };
 
         }
+
     }
     return cell;
 }
 
 #pragma mark --UICollectionViewDelegate
-//UICollectionView被选中时调用的方法
+//UICollectionView被选中时调用的3
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-      
+    if (!self.showHonorView) {
+        self.showHonorView = [ZIKStationShowHonorView instanceShowHonorView];
+        self.showHonorView.frame = CGRectMake(0, kHeight, kWidth, kHeight);
+    }
+    ZIKStationHonorListModel  *model = _honorData[indexPath.row];
+    // 与输入建立联系
+    ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+    // 与输出建立联系
+    [self.showHonorView loadData:modelAdapter];
+    [self.view addSubview:self.showHonorView];
+    [UIView animateWithDuration:.3 animations:^{
+        self.showHonorView.frame = CGRectMake(0, 0, kWidth, kHeight);
+    }];
 }
 
 - (void)deleteRequest:(NSString *)uid {
-    if ([self.vcTitle isEqualToString:@"我的荣誉"])
+
+    if (self.type ==TypeQualification)
     {
         [HTTPCLIENT stationHonorDeleteWithUid:uid Success:^(id responseObject) {
             if ([responseObject[@"success"] integerValue] == 0) {
@@ -353,5 +342,6 @@ NSString *kHonorCellID = @"honorcellID";
             
         }];
     }
+
 }
 @end
