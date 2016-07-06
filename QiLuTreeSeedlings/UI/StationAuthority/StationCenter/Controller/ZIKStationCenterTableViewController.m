@@ -178,6 +178,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
         } else if (indexPath.row == 1) {
             ZIKMyTeamViewController *teamVC = [[ZIKMyTeamViewController  alloc] initWithNibName:@"ZIKMyTeamViewController" bundle:nil];
             teamVC.hidesBottomBarWhenPushed = YES;
+            teamVC.uid = self.masterModel.uid;
             [self.navigationController pushViewController:teamVC animated:YES];
         }
     }

@@ -56,15 +56,6 @@
                         <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMy-Ka-Ftg">
-                        <rect key="frame" x="32" y="43" width="233" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="3YT-yh-c76"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.39929390380000002" green="0.40173203299999999" blue="0.39827146250000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hde-g2-fRk">
                         <rect key="frame" x="32" y="70" width="233" height="21"/>
                         <constraints>
@@ -92,6 +83,15 @@
                             <constraint firstAttribute="width" constant="36" id="PBm-Pe-RRT"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMy-Ka-Ftg">
+                        <rect key="frame" x="32" y="43" width="233" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="3YT-yh-c76"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.39929390380000002" green="0.40173203299999999" blue="0.39827146250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Hde-g2-fRk" firstAttribute="leading" secondItem="il6-Zo-Jzp" secondAttribute="trailing" constant="2" id="2M1-UE-sc6"/>

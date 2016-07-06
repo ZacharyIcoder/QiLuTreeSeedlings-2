@@ -9,10 +9,15 @@
 #import "ZIKMyTeamViewController.h"
 #import "HttpClient.h"
 #import "ZIKWorkstationTableViewCell.h"
-
+#import "YYModel.h"//类型转换
+#import "MJRefresh.h"
+#import "ZIKMyTeamModel.h"
+#import "ZIKFunction.h"
 @interface ZIKMyTeamViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *teamTableView;
-
+@property (nonatomic, assign) NSInteger      page;            //页数从1开始
+@property (nonatomic, strong) NSMutableArray *teamMarr;
+@property (nonatomic, strong) NSString *keyword;
 @end
 
 @implementation ZIKMyTeamViewController
@@ -22,18 +27,20 @@
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = @"我的团队";
     self.leftBarBtnImgString = @"BackBtn";
+    self.page = 1;
+    self.teamMarr = [NSMutableArray array];
 
-    self.teamTableView.delegate = self;
+    self.teamTableView.delegate   = self;
     self.teamTableView.dataSource = self;
-
-    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    [ZIKFunction setExtraCellLineHidden:self.teamTableView];
+    __weak typeof(self) weakSelf  = self;//解决循环引用的问题
     self.leftBarBtnBlock = ^{
         [weakSelf backBtnAction:nil];
     };
 
-    self.searchBarView.placeHolder = @"请输入工作站名称、电话、联系人";
+    self.searchBarView.placeHolder = @"请输入工作站关键词";
     self.searchBarView.searchBlock = ^(NSString *searchText){
-        CLog(@"%@",searchText);
+        //CLog(@"%@",searchText);
         weakSelf.isSearch = !weakSelf.isSearch;
     };
     self.searchBarView.delegate = self;
@@ -41,28 +48,78 @@
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:self.searchBarView.textField];
-
-
+    [self requestData];
 }
 
+#pragma mark - 请求数据
 - (void)requestData {
-    NSString *uid = nil;
-    NSString *pageNumber = nil;
-    NSString *pageSize = nil;
-    [HTTPCLIENT stationTeamWithUid:(NSString *)uid
-                        pageNumber:(NSString *)pageNumber
-                          pageSize:(NSString *)pageSize
-                           Success:^(id responseObject){
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    [self.teamTableView addHeaderWithCallback:^{
+        weakSelf.page = 1;
+        [weakSelf requestMyTeamList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.teamTableView addFooterWithCallback:^{
+        weakSelf.page++;
+        [weakSelf requestMyTeamList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.teamTableView headerBeginRefreshing];
+}
 
-                           }
-                           failure:^(NSError *error) {
+- (void)requestMyTeamList:(NSString *)page {
+    [self.teamTableView headerEndRefreshing];
 
-                           }];
+        NSString *uid = self.uid;
+        NSString *pageNumber = page;
+        NSString *pageSize = @"15";
+        NSString *keyword = self.keyword;
+        [HTTPCLIENT stationTeamWithUid:(NSString *)uid
+                            pageNumber:(NSString *)pageNumber
+                              pageSize:(NSString *)pageSize
+                               keyword:(NSString *)keyword
+                               Success:^(id responseObject){
+                                   //CLog(@"%@",responseObject);
+                                   if ([responseObject[@"success"] integerValue] == 0) {
+                                       [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                                       return ;
+                                   }else if ([responseObject[@"success"] integerValue] == 1) {
+                                       NSArray *array  = responseObject[@"result"][@"list"];
+                                       if (array.count == 0 && self.page == 1) {
+                                           [ToastView showToast:@"暂无信息" withOriginY:Width/2 withSuperView:self.view];
+                                           if (self.teamMarr.count > 0) {
+                                               [self.teamMarr removeAllObjects];
+                                           }
+                                           [self.teamTableView footerEndRefreshing];
+                                           [self.teamTableView reloadData];
+                                           return ;
+                                       }
+                                       else if (array.count == 0 && self.page > 1) {
+                                           self.page--;
+                                           [self.teamTableView footerEndRefreshing];
+                                           //没有更多数据了
+                                           [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                                           return;
+                                       }
+                                       else {
+                                           if (self.page == 1) {
+                                               [self.teamMarr removeAllObjects];
+                                           }
+                                           [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                                               ZIKMyTeamModel *myTeamModel = [ZIKMyTeamModel yy_modelWithDictionary:dic];
+                                               [self.teamMarr addObject:myTeamModel];
+                                           }];
+                                           [self.teamTableView reloadData];
+                                           [self.teamTableView footerEndRefreshing];
+                                           
+                                       }
+                                   }
+                               } failure:^(NSError *error) {
+                               }];
+
 
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return self.teamMarr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -82,6 +139,10 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKWorkstationTableViewCell *cell = [ZIKWorkstationTableViewCell cellWithTableView:tableView];
+    if (self.teamMarr.count > 0) {
+        ZIKMyTeamModel *model = self.teamMarr[indexPath.section];
+        [cell configureCell:model];
+    }
     return cell;
 }
 
@@ -91,14 +152,20 @@
 {
     [textField resignFirstResponder];
     self.isSearch = NO;//搜索栏隐藏
-    NSString *searchText = textField.text;
-    CLog(@"searchText:%@",searchText);
+    //NSString *searchText = textField.text;
+    self.keyword = textField.text;
+//    [self.teamTableView headerBeginRefreshing];
+    [self requestMyTeamList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+    //CLog(@"searchText:%@",searchText);
     return YES;
 }
 
 -(void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
-    CLog(@"textField:%@",textField.text);
+    //CLog(@"textField:%@",textField.text);
+    self.keyword = textField.text;
+    [self requestMyTeamList:[NSString stringWithFormat:@"%ld",(long)self.page]];
+//    [self.teamTableView headerBeginRefreshing];
 }
 
 

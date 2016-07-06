@@ -9,5 +9,8 @@
 #import "ZIKBaseChangeNavViewController.h"
 
 @interface ZIKMyTeamViewController : ZIKBaseChangeNavViewController
-
+/**
+ *  工作站ID
+ */
+@property (nonatomic, copy) NSString *uid;
 @end

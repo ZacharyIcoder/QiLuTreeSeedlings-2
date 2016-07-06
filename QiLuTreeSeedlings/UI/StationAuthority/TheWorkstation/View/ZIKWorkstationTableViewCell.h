@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZIKMyTeamModel;
 @interface ZIKWorkstationTableViewCell : UITableViewCell
 /**
  *  工作站imageView(总站，分站)
