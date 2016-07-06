@@ -109,7 +109,7 @@
                 <outlet property="honorImageView" destination="dGz-Y1-yRA" id="33L-xh-KCF"/>
                 <outlet property="honorTimeLabel" destination="ghx-Lj-I0p" id="Fpm-UA-y6m"/>
                 <outlet property="honorTitleLabel" destination="5eQ-qg-EAu" id="m62-fk-Vws"/>
-                <outlet property="levelLabel" destination="I6M-b1-acg" id="Za0-QA-weL"/>
+                <outlet property="levelLabel" destination="pLO-Wb-IqA" id="L9a-bC-bc8"/>
             </connections>
             <point key="canvasLocation" x="472" y="333.5"/>
         </collectionViewCell>

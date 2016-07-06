@@ -44,10 +44,10 @@
 }
 
 - (void)configureCell:(MasterInfoModel *)model {
-    self.nameLabel.text = model.workstationName;
-    self.numberLabel.text = model.workstationNo;
+    self.nameLabel.text    = model.workstationName;
+    self.numberLabel.text  = model.workstationNo;
     self.addressLabel.text = model.area;
-    self.priceLabel.text = model.creditMargin;
+    self.priceLabel.text   = model.creditMargin;
 }
 
 @end

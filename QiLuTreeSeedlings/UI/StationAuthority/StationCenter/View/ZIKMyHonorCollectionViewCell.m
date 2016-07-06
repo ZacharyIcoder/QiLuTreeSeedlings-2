@@ -13,8 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *backView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-
-@property (weak, nonatomic) IBOutlet UIView *levelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 @end
 
 @implementation ZIKMyHonorCollectionViewCell
@@ -83,6 +82,12 @@
 
 -(void)setLevel:(NSString *)level {
     _level = level;
+    if (level) {
+        _levelLabel.hidden = NO;
+        _levelLabel.text = level;
+    } else {
+        _levelLabel.hidden = YES;
+    }
 }
 
 -(NSString *)level {

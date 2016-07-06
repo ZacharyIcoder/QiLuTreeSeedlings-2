@@ -879,12 +879,14 @@ failure:(void (^)(NSError *error))failure;
  *  @param uid        工作站ID
  *  @param pageNumber 页码，默认1
  *  @param pageSize   每页显示数。默认10
+ *  @param keyword    检索词
  *  @param success    success description
  *  @param failure    failure description
  */
 - (void)stationTeamWithUid:(NSString *)uid
                 pageNumber:(NSString *)pageNumber
                   pageSize:(NSString *)pageSize
+                   keyword:(NSString *)keyword
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－提交资质升级 -----------

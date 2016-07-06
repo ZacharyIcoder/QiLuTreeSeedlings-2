@@ -3573,6 +3573,7 @@
 - (void)stationTeamWithUid:(NSString *)uid
                 pageNumber:(NSString *)pageNumber
                   pageSize:(NSString *)pageSize
+                   keyword:(NSString *)keyword
                    Success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
