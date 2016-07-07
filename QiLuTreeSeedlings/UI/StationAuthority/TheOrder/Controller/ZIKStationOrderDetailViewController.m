@@ -14,6 +14,7 @@
 #import "YYModel.h"
 #import "ZIKFunction.h"
 #import "ZIKStationOrderQuoteViewController.h"
+#import "ZIKStationOrderDemandTableViewCell.h"//订单要求cell
 typedef NS_ENUM(NSInteger, TypeStyle) {
     TypeStyleOffer   = 0,   //产品报价
     TypeStyleRequire = 1    //订单要求
@@ -68,19 +69,19 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     self.orderTableView = orderTableView;
 }
 
-#pragma mark - 请求数据
-- (void)requestData {
-    //__weak typeof(self) weakSelf = self;//解决循环引用的问题
-//    [self.orderTV addHeaderWithCallback:^{
-//        weakSelf.page = 1;
-//        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
-//    }];
-//    [self.orderTV addFooterWithCallback:^{
-//        weakSelf.page++;
-//        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
-//    }];
-//    [self.orderTV headerBeginRefreshing];
-}
+//#pragma mark - 请求数据
+//- (void)requestData {
+//    //__weak typeof(self) weakSelf = self;//解决循环引用的问题
+////    [self.orderTV addHeaderWithCallback:^{
+////        weakSelf.page = 1;
+////        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+////    }];
+////    [self.orderTV addFooterWithCallback:^{
+////        weakSelf.page++;
+////        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+////    }];
+////    [self.orderTV headerBeginRefreshing];
+//}
 
 - (void)requestOrderDetail {
     [HTTPCLIENT stationGetOrderDetailWithOrderUid:self.orderUid keyword:nil Success:^(id responseObject) {
@@ -154,14 +155,14 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 {
     [textField resignFirstResponder];
     self.isSearch = NO;//搜索栏隐藏
-    NSString *searchText = textField.text;
-    CLog(@"searchText:%@",searchText);
+   // NSString *searchText = textField.text;
+    //CLog(@"searchText:%@",searchText);
     return YES;
 }
 
 -(void)textFieldChanged:(NSNotification *)obj {
-    UITextField *textField = (UITextField *)obj.object;
-    CLog(@"textField:%@",textField.text);
+    //UITextField *textField = (UITextField *)obj.object;
+    //CLog(@"textField:%@",textField.text);
 }
 
 - (void)didReceiveMemoryWarning {
