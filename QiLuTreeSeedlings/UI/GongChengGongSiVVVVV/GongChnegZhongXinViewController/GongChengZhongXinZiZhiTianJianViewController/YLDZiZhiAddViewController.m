@@ -120,7 +120,7 @@
         [ToastView showTopToast:@"请选择获得时间"];
         return;
     }
-    if (self.compressurl.length<=0) {
+    if (self.url.length<=0) {
         [ToastView showTopToast:@"请输入上传荣誉图片"];
         return;
     }

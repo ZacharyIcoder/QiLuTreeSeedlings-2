@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "ZIKArrowViewController.h"
 @interface YLDGCGSZiZhiTiJiaoViewController : ZIKArrowViewController
-
+-(id)initWithUid:(NSString *)uid;
 @end

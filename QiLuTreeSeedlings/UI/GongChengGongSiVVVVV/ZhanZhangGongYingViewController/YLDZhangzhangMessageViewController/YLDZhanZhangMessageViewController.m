@@ -20,6 +20,7 @@
 #import "SellSearchTableViewCell.h"
 #import "ZIKStationHonorListModel.h"
 #import "YYModel.h"
+#import "SellDetialViewController.h"
 @interface YLDZhanZhangMessageViewController ()<UITableViewDelegate,UITableViewDataSource,YLDZhanZhangMessageCellDelegate>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *uid;
@@ -229,6 +230,15 @@
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section==4) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        HotSellModel *model=self.supplyAry[indexPath.row];
+        SellDetialViewController *sellDetialViewC=[[SellDetialViewController alloc]initWithUid:model];
+        [self.navigationController pushViewController:sellDetialViewC animated:YES];
+    }
+}
 -(void)moreBtnAction
 {
     self.isShow=!self.isShow;
@@ -257,7 +267,8 @@
 -(void)allRongYuBtnAction:(UIButton *)sender
 {
     ZIKMyHonorViewController *zsdasda=[[ZIKMyHonorViewController alloc]init];
-    zsdasda.type = TypeQualification;
+    zsdasda.type = TypeHonorOther;
+    zsdasda.workstationUid=self.model.uid;
     [self.navigationController pushViewController:zsdasda animated:YES];
 }
 /*

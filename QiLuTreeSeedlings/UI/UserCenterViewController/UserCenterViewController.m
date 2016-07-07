@@ -33,6 +33,7 @@
 #import "MyMessageViewController.h"
 #import "KeFuViewController.h"
 #import "YLDShengJiViewViewController.h"
+#import "YLDGCGSZiZhiTiJiaoViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -427,12 +428,13 @@
         }];
         return;
     }
-    if (APPDELEGATE.userModel.goldsupplier!=0) {
+    CLog(@"%ld",APPDELEGATE.userModel.goldsupplierStatus);
+    if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
         [ToastView showTopToast:@"您已具备身份，不需升级"];
         return;
     }
     if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
-         [ToastView showTopToast:@"您已具备身份，不需升级"];
+         [ToastView showTopToast:@"审核中，请等待"];
         return;
     }
     if (APPDELEGATE.userModel.projectCompanyStatus==1) {
@@ -441,11 +443,17 @@
     }
     if (APPDELEGATE.userModel.projectCompanyStatus==0) {
         [ToastView showTopToast:@"审核未通过"];
+        YLDGCGSZiZhiTiJiaoViewController *yldsda=[YLDGCGSZiZhiTiJiaoViewController new];
+        
+        [self hiddingSelfTabBar];
+        [self.navigationController pushViewController:yldsda animated:YES];
+    }else{
+        YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
+        
+        [self hiddingSelfTabBar];
+        [self.navigationController pushViewController:yldsda animated:YES];
     }
-    YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
-
-    [self hiddingSelfTabBar];
-    [self.navigationController pushViewController:yldsda animated:YES];
+  
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

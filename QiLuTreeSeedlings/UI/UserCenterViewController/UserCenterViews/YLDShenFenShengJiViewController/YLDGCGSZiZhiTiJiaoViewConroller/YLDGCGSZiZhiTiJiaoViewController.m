@@ -30,10 +30,19 @@
 @property (nonatomic,strong)NSString *AreaProvince;
 @property (nonatomic,strong)NSString *AreaCity;
 @property (nonatomic,strong)NSString *AreaCounty;
+@property (nonatomic,strong)NSString *uid;
 @end
 
 @implementation YLDGCGSZiZhiTiJiaoViewController
 @synthesize kHonorCellID;
+-(id)initWithUid:(NSString *)uid
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"资质提交";
@@ -51,10 +60,15 @@
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     flowLayout.headerReferenceSize=CGSizeMake(kWidth, self.headerView.frame.size.height);
-    flowLayout.itemSize=  CGSizeMake(180, 145);
-    flowLayout.minimumLineSpacing=5;
-    flowLayout.minimumInteritemSpacing=5;
-    flowLayout.sectionInset=UIEdgeInsetsMake(5, 5,5,5);
+    flowLayout.itemSize=  CGSizeMake(182, 160);
+    if (kWidth != 375) {
+        CGFloat itemWidth  = (kWidth-10)/2;
+        CGFloat itemHeight =  itemWidth * 8 / 9;
+        flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    }
+    flowLayout.minimumLineSpacing=10;
+    flowLayout.minimumInteritemSpacing=10;
+    flowLayout.sectionInset=UIEdgeInsetsMake(0,0,0,0);
     UICollectionView *collectionView =[[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-60) collectionViewLayout:flowLayout];
     [collectionView setBackgroundColor:BGColor];
     collectionView.delegate=self;

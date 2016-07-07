@@ -8,7 +8,7 @@
 
 #import "LYDGCGSTiShiViewController.h"
 #import "UIDefines.h"
-#import "YLDShengJiViewViewController.h"
+#import "YLDGCGSZiZhiTiJiaoViewController.h"
 @interface LYDGCGSTiShiViewController ()
 
 @end
@@ -44,6 +44,15 @@
     [shengjiBtn setTitle:@"立即升级" forState:UIControlStateNormal];
     [shengjiBtn addTarget:self action:@selector(shengjiAction) forControlEvents:UIControlEventTouchUpInside];
     [backSvrollV addSubview:shengjiBtn];
+    UIButton *quxiaobtn=[[UIButton alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(shengjiBtn.frame)+10, kWidth-80, 45)];
+    [quxiaobtn setBackgroundColor:[UIColor colorWithRed:155/255.f green:155/255.f blue:155/255.f alpha:1]];
+    [quxiaobtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  
+    [quxiaobtn setTitle:@"取消" forState:UIControlStateNormal];
+    [quxiaobtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    [backSvrollV addSubview:quxiaobtn];
+    [backSvrollV setContentSize:CGSizeMake(0, CGRectGetMaxY(quxiaobtn.frame)+10)];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)callAction
@@ -52,7 +61,7 @@
 }
 -(void)shengjiAction
 {
-    YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
+    YLDGCGSZiZhiTiJiaoViewController *yldsda=[YLDGCGSZiZhiTiJiaoViewController new];
     [self.navigationController pushViewController:yldsda animated:YES];
 }
 - (void)didReceiveMemoryWarning {

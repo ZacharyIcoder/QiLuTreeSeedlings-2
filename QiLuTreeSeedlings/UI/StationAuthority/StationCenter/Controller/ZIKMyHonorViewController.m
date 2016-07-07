@@ -62,22 +62,30 @@ NSString *kHonorCellID = @"honorcellID";
         self.vcTitle = @"我的资质";
         [self.navBackView setBackgroundColor:NavYellowColor];
     }
-    self.rightBarBtnTitleString = @"添加";
-    __weak typeof(self) weakSelf = self;//解决循环引用的问题
-    self.rightBarBtnBlock = ^{
+    if (self.type==TypeHonorOther) {
+        self.vcTitle = @"工作站资质";
+    }else{
+        self.rightBarBtnTitleString = @"添加";
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        self.rightBarBtnBlock = ^{
+            
+            if (self.type == TypeQualification) {
+                YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] initWithType:2];
+                [weakSelf.navigationController pushViewController:vcss animated:YES];
+                return ;
+            }
+            if (self.type == TypeHonor) {
+                ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+                addVC.workstationUid = weakSelf.workstationUid;
+                [weakSelf.navigationController pushViewController:addVC animated:YES];
+            }
+        };
+        //添加长按手势
+        _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
+        [self.honorCollectionView addGestureRecognizer:_tapDeleteGR];
 
-        if (self.type == TypeQualification) {
-            YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] initWithType:2];
-            [weakSelf.navigationController pushViewController:vcss animated:YES];
-            return ;
-        }
-        if (self.type == TypeHonor) {
-            ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
-            addVC.workstationUid = weakSelf.workstationUid;
-            [weakSelf.navigationController pushViewController:addVC animated:YES];
-        }
-    };
-
+    }
+    
     if (kWidth != 375) {
         CGFloat itemWidth  = (kWidth-10)/2;
         CGFloat itemHeight =  itemWidth * 8 / 9;
@@ -88,9 +96,7 @@ NSString *kHonorCellID = @"honorcellID";
     self.honorCollectionView.dataSource = self;
     self.honorCollectionView.alwaysBounceVertical = YES;
     self.isEditState = NO;
-    //添加长按手势
-    _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
-    [self.honorCollectionView addGestureRecognizer:_tapDeleteGR];
+   
 
     self.honorData = [NSMutableArray array];
 }
@@ -108,9 +114,12 @@ NSString *kHonorCellID = @"honorcellID";
     if (self.type == TypeHonor) {
         [self requestData];
     }
+    if (self.type == TypeHonorOther) {
+        [self requestOtherWorkStaData];
+    }
 }
 
-#pragma mark - 请求数据
+#pragma mark - 请求自己工作站荣誉数据
 - (void)requestData {
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.honorCollectionView addHeaderWithCallback:^{
@@ -124,7 +133,7 @@ NSString *kHonorCellID = @"honorcellID";
     [self.honorCollectionView headerBeginRefreshing];
 }
 
-#pragma mark - 请求数据
+#pragma mark - 请求工程公司资质数据
 - (void)requestCompanyData {
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.honorCollectionView addHeaderWithCallback:^{
@@ -137,7 +146,21 @@ NSString *kHonorCellID = @"honorcellID";
     }];
     [self.honorCollectionView headerBeginRefreshing];
 }
+#pragma mark - 请求其它工作站荣誉数据
+- (void)requestOtherWorkStaData {
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    [self.honorCollectionView addHeaderWithCallback:^{
+        weakSelf.page = 1;
+        [weakSelf requestHonorListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
 
+    }];
+    [self.honorCollectionView addFooterWithCallback:^{
+        weakSelf.page++;
+        [weakSelf requestHonorListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.honorCollectionView headerBeginRefreshing];
+}
+#pragma mark - 请求自己工程公司数据
 - (void)requestCompanyZZListData:(NSString *)pageNumber
 {
    [self.honorCollectionView headerEndRefreshing];
@@ -184,6 +207,7 @@ NSString *kHonorCellID = @"honorcellID";
         
     }];
 }
+#pragma mark - 请求自己工作站荣誉数据
 - (void)requestHonorListData:(NSString *)pageNumber {
     [self.honorCollectionView headerEndRefreshing];
     [HTTPCLIENT stationHonorListWithWorkstationUid:self.workstationUid pageNumber:pageNumber pageSize:@"10" Success:^(id responseObject) {
