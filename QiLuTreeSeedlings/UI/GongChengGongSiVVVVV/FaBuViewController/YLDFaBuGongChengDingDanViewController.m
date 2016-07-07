@@ -35,7 +35,7 @@
 @property (nonatomic,weak) UITextField *lianxirenField;
 @property (nonatomic,weak) BWTextView *jianjieTextView;
 @property (nonatomic,copy) NSString *typeStr;
-//@property (nonatomic,copy) NSString *nameStr;
+@property (nonatomic,copy) NSString *typename;
 @property (nonatomic,copy) NSString *timeStr;
 @property (nonatomic,copy) NSString *priceStr;
 @property (nonatomic,copy) NSString *qualityStr;
@@ -195,7 +195,7 @@
         [ToastView showTopToast:@"请完善联系方式"];
         return;
     }
-    YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andName:self.NameTextField.text andAreaSheng:self.AreaProvince andAreaShi:self.AreaCity andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
+    YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andTypeName:self.typename andName:self.NameTextField.text andAreaSheng:self.AreaProvince andAreaShi:self.AreaCity andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
     [self.navigationController pushViewController:YLDtititiVC animated:YES];
 }
 
@@ -294,6 +294,7 @@
     if (pickerShowView.tag==111) {
         NSDictionary *dic=self.typeAry[select];
         self.typeStr=[dic objectForKey:@"uid"];
+        self.typename=selectStr;
         [self.typeBtn setTitle:selectStr forState:UIControlStateNormal];
     }
     if (pickerShowView.tag==112) {

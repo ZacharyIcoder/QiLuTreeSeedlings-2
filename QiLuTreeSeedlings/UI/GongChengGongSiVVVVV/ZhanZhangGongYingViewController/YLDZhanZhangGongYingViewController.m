@@ -17,6 +17,8 @@
 #import "MJRefresh.h"
 #import "HttpClient.h"
 #import "YLDWorkstationlistModel.h"
+#import "HotSellModel.h"
+#import "SellDetialViewController.h"
 @interface YLDZhanZhangGongYingViewController ()<AdvertDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic)NSInteger pageNum;
@@ -48,26 +50,37 @@
     self.tableView=tableView;
     [tableView addHeaderWithCallback:^{
         weakSelf.pageNum=1;
-        [weakSelf getDataList];
+        [weakSelf getDataListWithPageNum:weakSelf.pageNum];
     }];
-//    [tableView addFooterWithCallback:^{
-//        
-//    }];
+    [tableView addFooterWithCallback:^{
+        weakSelf.pageNum+=1;
+        [weakSelf getDataListWithPageNum:weakSelf.pageNum];
+    }];
     [tableView headerBeginRefreshing];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];
     // Do any additional setup after loading the view from its nib.
 }
--(void)getDataList
+-(void)getDataListWithPageNum:(NSInteger )pageNum
 {
-    [HTTPCLIENT GCGSshouyeWithPageSize:@"3" WithsupplyCount:@"10" Success:^(id responseObject) {
+    [HTTPCLIENT GCGSshouyeWithPageSize:@"3" WithsupplyCount:@"10"
+        WithsupplyNumber:[NSString stringWithFormat:@"%ld",pageNum]                       Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *dic=[responseObject objectForKey:@"result"];
             if (self.pageNum==1) {
                 [self.supplyAry removeAllObjects];
+                NSArray *workStationList=dic[@"workStationList"];
+                self.workStationAry=[YLDWorkstationlistModel YLDWorkstationlistModelWithAry:workStationList];
             }
-            NSDictionary *dic=[responseObject objectForKey:@"result"];
-            NSArray *workStationList=dic[@"workStationList"];
-            self.workStationAry=[YLDWorkstationlistModel YLDWorkstationlistModelWithAry:workStationList];
-            [self.supplyAry addObjectsFromArray:dic[@"supplyList"]];
+            
+            NSArray *supplyList=dic[@"supplyList"];
+            if (supplyList.count<=0) {
+                [ToastView showTopToast:@"已无更多信息"];
+                self.pageNum--;
+            }else{
+                NSArray *dataAry=[HotSellModel hotSellAryByAry:supplyList];
+              [self.supplyAry addObjectsFromArray:dataAry];
+            }
+            
             [self.tableView reloadData];
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -148,6 +161,7 @@
         {
             cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
         }
+        cell.hotSellModel=self.supplyAry[indexPath.row];
         return cell;
     }
     UITableViewCell *cell=[[UITableViewCell alloc]init];
@@ -166,6 +180,13 @@
         YLDZhanZhangMessageViewController *vccc=[[YLDZhanZhangMessageViewController alloc]init];
         
         [self.navigationController pushViewController:vccc animated:YES];
+    }
+    if (indexPath.section==2) {
+        HotSellModel *model=self.supplyAry[indexPath.row];
+        
+        SellDetialViewController *sellDetialViewC=[[SellDetialViewController alloc]initWithUid:model];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+        [self.navigationController pushViewController:sellDetialViewC animated:YES];
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

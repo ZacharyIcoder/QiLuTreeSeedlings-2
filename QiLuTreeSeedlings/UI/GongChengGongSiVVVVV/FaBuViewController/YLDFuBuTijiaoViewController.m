@@ -14,6 +14,7 @@
 #import "HttpClient.h"
 @interface YLDFuBuTijiaoViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMMeditingDelegate>
 @property (nonatomic,copy) NSString *typeStr;
+@property (nonatomic,copy) NSString *typeName;
 @property (nonatomic,copy) NSString *nameStr;
 @property (nonatomic,copy) NSString *areaShengStr;
 @property (nonatomic,copy) NSString *areaShiStr;
@@ -34,11 +35,12 @@
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
--(id)initWithType:(NSString *)typeStr andName:(NSString *)nameStr andAreaSheng:(NSString *)areaShengStr andAreaShi:(NSString *)areaShiStr andTime:(NSString *)timeStr andPrice:(NSString *)priceStr andZhiL:(NSString *)zhiliangStr andXingJing:(NSString *)xingjingStr andDiJing:(NSString *)diJingStr andLianxR:(NSString *)lianxiRStr andPhone:(NSString *)phoneStr andShuoMing:(NSString *)shuomingStr
+-(id)initWithType:(NSString *)typeStr andTypeName:(NSString *)typeName andName:(NSString *)nameStr andAreaSheng:(NSString *)areaShengStr andAreaShi:(NSString *)areaShiStr andTime:(NSString *)timeStr andPrice:(NSString *)priceStr andZhiL:(NSString *)zhiliangStr andXingJing:(NSString *)xingjingStr andDiJing:(NSString *)diJingStr andLianxR:(NSString *)lianxiRStr andPhone:(NSString *)phoneStr andShuoMing:(NSString *)shuomingStr
 {
     self=[super init];
     if (self) {
         self.typeStr=typeStr;
+        self.typeName=typeName;
         self.nameStr=nameStr;
         self.areaShengStr=areaShengStr;
         self.areaShiStr=areaShiStr;
@@ -104,7 +106,7 @@
         return;
     }
     NSString *miaomuJsonStr=[self.miaomuAry JSONString];
-    [HTTPCLIENT fabuGongChengDingDanWithorderName:self.nameStr WithorderTypeUid:self.typeStr WithusedProvince:self.areaShengStr WithusedCity:self.areaShiStr WithendDate:self.timeStr WithchargePerson:self.lianxiRStr Withphone:self.phoneStr WithqualityRequirement:self.zhiliangStr WithquotationRequires:self.priceStr Withdbh:self.xingjingStr WithgroundDiameter:self.diJingStr Withdescription:self.shuomingStr With:miaomuJsonStr Success:^(id responseObject) {
+    [HTTPCLIENT fabuGongChengDingDanWithprojectName:self.nameStr WithorderName:self.typeName WithorderTypeUid:self.typeStr WithusedProvince:self.areaShengStr WithusedCity:self.areaShiStr WithendDate:self.timeStr WithchargePerson:self.lianxiRStr Withphone:self.phoneStr WithqualityRequirement:self.zhiliangStr WithquotationRequires:self.priceStr Withdbh:self.xingjingStr WithgroundDiameter:self.diJingStr Withdescription:self.shuomingStr With:miaomuJsonStr Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"发布成功，即将返回"];
             [self.navigationController popToRootViewControllerAnimated:YES];

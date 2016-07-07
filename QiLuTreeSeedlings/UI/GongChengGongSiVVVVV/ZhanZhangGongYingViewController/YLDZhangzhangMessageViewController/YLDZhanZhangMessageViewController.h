@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface YLDZhanZhangMessageViewController : UIViewController
-
+-(id)initWithUid:(NSString *)uid;
 @end

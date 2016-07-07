@@ -10,6 +10,7 @@
 
 @interface YLDGongZuoZhanJianJieCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *jianjieLab;
+@property (nonatomic,copy)NSString *jianjieStr;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 +(YLDGongZuoZhanJianJieCell *)yldGongZuoZhanJianJieCell;
 @end

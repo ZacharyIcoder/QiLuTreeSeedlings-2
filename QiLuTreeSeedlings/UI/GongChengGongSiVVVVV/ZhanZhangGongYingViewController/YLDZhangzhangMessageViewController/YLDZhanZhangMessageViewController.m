@@ -14,14 +14,37 @@
 #import "YLDZhanZhangMessageCell.h"
 #import "YLDGongZuoZhanJianJieCell.h"
 #import "yYLDGZZRongYaoTableCell.h"
+#import "MJRefresh.h"
+#import "YLDZhanZhangDetialModel.h"
+#import "HotSellModel.h"
+#import "SellSearchTableViewCell.h"
+#import "ZIKStationHonorListModel.h"
+#import "YYModel.h"
 @interface YLDZhanZhangMessageViewController ()<UITableViewDelegate,UITableViewDataSource,YLDZhanZhangMessageCellDelegate>
 @property (nonatomic,weak)UITableView *tableView;
+@property (nonatomic,copy)NSString *uid;
+@property (nonatomic)NSInteger pageNum;
+@property (nonatomic,strong)YLDZhanZhangDetialModel *model;
+@property (nonatomic,strong)NSMutableArray *supplyAry;
+@property (nonatomic,strong)NSMutableArray *honorAry;
+@property (nonatomic)BOOL isShow;
 @end
 
 @implementation YLDZhanZhangMessageViewController
-
+-(id)initWithUid:(NSString *)uid
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+    }
+    return self;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.supplyAry=[NSMutableArray array];
+    self.honorAry=[NSMutableArray array];
+    self.isShow=NO;
      self.edgesForExtendedLayout = UIRectEdgeNone;
     UITableView *talbeView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) style:UITableViewStyleGrouped];
     talbeView.delegate=self;
@@ -29,7 +52,41 @@
     talbeView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView=talbeView;
     [self.view addSubview:talbeView];
+    [self getDatListWithPageNum:self.pageNum];
     // Do any additional setup after loading the view.
+}
+-(void)getDatListWithPageNum:(NSInteger)pageNum
+{
+    [HTTPCLIENT workstationdetialWithuid:self.uid WithpageNumber:[NSString stringWithFormat:@"%ld",pageNum] WithpageSize:@"15" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *result=[responseObject objectForKey:@"result"];
+            if (self.pageNum==1) {
+                self.model=[YLDZhanZhangDetialModel yldZhanZhangDetialModelWithDic:[result objectForKey:@"masterInfo"]];
+                [self.supplyAry removeAllObjects];
+                [self.honorAry removeAllObjects];
+//                ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:nil];
+                NSArray *honorList=[result objectForKey:@"honorList"];
+                [honorList enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                    ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
+                    [self.honorAry addObject:honorListModel];
+                }];
+
+            }
+            NSArray *supplyList=[result objectForKey:@"supplyList"];
+            if (supplyList.count<=0) {
+                [ToastView showTopToast:@"已无更多数据"];
+                self.pageNum--;
+            }else{
+                NSArray *supplyary=[HotSellModel hotSellAryByAry:supplyList];
+                [self.supplyAry addObjectsFromArray:supplyary];
+            }
+            [self.tableView reloadData];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 5;
@@ -50,6 +107,9 @@
     }
     if (indexPath.section==3) {
         return 150;
+    }
+    if (indexPath.section==4) {
+        return 100;
     }
     return 44;
 }
@@ -76,6 +136,7 @@
             cell.delegate=self;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
+//        cell.model=self.
         return cell;
         
     }

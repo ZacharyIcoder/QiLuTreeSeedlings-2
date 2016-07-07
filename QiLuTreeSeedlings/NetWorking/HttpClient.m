@@ -2848,7 +2848,8 @@
 
 }
 #pragma mark ---------- 发布工程订单 -----------
--(void)fabuGongChengDingDanWithorderName:(NSString *)orderName
+-(void)fabuGongChengDingDanWithprojectName:(NSString *)projectName
+WithorderName:(NSString *)orderName
                         WithorderTypeUid:(NSString *)orderTypeUid
                         WithusedProvince:(NSString *)usedProvince
                             WithusedCity:(NSString *)usedCity
@@ -2873,6 +2874,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+    parmers[@"projectName"]      =projectName;
     parmers[@"orderName"]        =orderName;
     parmers[@"orderTypeUid"]     =orderTypeUid;
     parmers[@"usedProvince"]     =usedProvince;
@@ -3745,7 +3747,7 @@ Success:(void (^)(id responseObject))success
 }
 #pragma mark ---------- 工程助手－工程助手首页--------
 -(void)GCGSshouyeWithPageSize:(NSString *)pageSize WithsupplyCount:(NSString *)supplyCount
-                      Success:(void (^)(id responseObject))success
+WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure
 {
     NSString *postURL            = @"api/company/index";
@@ -3760,8 +3762,7 @@ Success:(void (^)(id responseObject))success
     parmers[@"device_id"]        = str;
     parmers[@"supplyCount"]      = supplyCount;
     parmers[@"pageSize"]         = pageSize;
-    
-    // parmers[@"address"]         = address;
+    parmers[@"supplyNumber"]         = supplyNumber;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

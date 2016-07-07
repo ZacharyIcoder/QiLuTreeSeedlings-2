@@ -7,7 +7,7 @@
 //
 
 #import "YLDZhanZhangMessageCell.h"
-
+#import "UIImageView+AFNetworking.h"
 @implementation YLDZhanZhangMessageCell
 +(YLDZhanZhangMessageCell *)yldZhanZhangMessageCell
 {
@@ -16,7 +16,13 @@
     cell.UserImageV.layer.cornerRadius=cell.UserImageV.frame.size.width/2;
     return cell;
 }
-
+-(void)setModel:(YLDZhanZhangDetialModel *)model{
+    _model=model;
+    self.titileLab.text=model.workstationName;
+    self.nameLab.text=model.chargelPerson;
+    self.unkonwLab.text=model.phone;
+    [self.UserImageV setImageWithURL:[NSURL URLWithString:model.workstationPic] placeholderImage:[UIImage imageNamed:@"UserImage.png"]];
+}
 - (IBAction)BackBtnAction:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(backBtnAction:)]) {
         [self.delegate backBtnAction:sender];

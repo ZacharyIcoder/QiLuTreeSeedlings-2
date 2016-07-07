@@ -663,7 +663,8 @@ failure:(void (^)(NSError *error))failure;
 -(void)huiquZhiliangYaoQiuBaoDingSuccess:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 发布工程订单 -----------
--(void)fabuGongChengDingDanWithorderName:(NSString *)orderName
+-(void)fabuGongChengDingDanWithprojectName:(NSString *)projectName
+                           WithorderName:(NSString *)orderName
                         WithorderTypeUid:(NSString *)orderTypeUid
                         WithusedProvince:(NSString *)usedProvince
                             WithusedCity:(NSString *)usedCity
@@ -915,6 +916,7 @@ failure:(void (^)(NSError *error))failure;
                     failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－工程助手首页--------
 -(void)GCGSshouyeWithPageSize:(NSString *)pageSize WithsupplyCount:(NSString *)supplyCount
+             WithsupplyNumber:(NSString *)supplyNumber
                       Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－我的资质保存--------
