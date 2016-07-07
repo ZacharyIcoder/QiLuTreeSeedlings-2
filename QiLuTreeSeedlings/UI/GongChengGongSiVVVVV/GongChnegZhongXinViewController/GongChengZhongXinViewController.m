@@ -15,6 +15,8 @@
 #import "ZIKMyHonorViewController.h"
 #import "YLDGongChengAnLiViewController.h"
 #import "UIDefines.h"
+#import "YLDGCZXInfoViewController.h"
+#import "UIImageView+AFNetworking.h"
 @interface GongChengZhongXinViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UITableView *talbeView;
 @end
@@ -68,7 +70,10 @@
             if (!cell) {
                 cell=[YLDGongChengZhongXinBigCell yldGongChengZhongXinBigCell];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                [cell.imageBtn addTarget:self action:@selector(gczzMessageAction) forControlEvents:UIControlEventTouchUpInside];
             }
+            [cell.userImagV setImageWithURL:[NSURL URLWithString:APPDELEGATE.GCGSModel.attachment] placeholderImage:[UIImage imageNamed:@"UserImage"]];
+            
             cell.model=APPDELEGATE.GCGSModel;
             return cell;
             
@@ -102,6 +107,12 @@
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
 }
+-(void)gczzMessageAction
+{
+     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+    YLDGCZXInfoViewController *ViewController=[[YLDGCZXInfoViewController alloc]init];
+    [self.navigationController pushViewController:ViewController animated:YES];
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -133,6 +144,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.talbeView reloadData];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
 }
 - (void)didReceiveMemoryWarning {

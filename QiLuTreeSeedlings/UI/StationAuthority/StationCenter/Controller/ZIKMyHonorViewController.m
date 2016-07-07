@@ -68,9 +68,6 @@ NSString *kHonorCellID = @"honorcellID";
 
         if (self.type == TypeQualification) {
             YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] initWithType:2];
-//            vcss.delegate=self;
-
-
             [weakSelf.navigationController pushViewController:vcss animated:YES];
             return ;
         }
@@ -80,10 +77,16 @@ NSString *kHonorCellID = @"honorcellID";
             [weakSelf.navigationController pushViewController:addVC animated:YES];
         }
     };
+
+    if (kWidth != 375) {
+        CGFloat itemWidth  = (kWidth-10)/2;
+        CGFloat itemHeight =  itemWidth * 8 / 9;
+        _honorCollectionViewFlowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    }
+
     self.honorCollectionView.delegate   = self;
     self.honorCollectionView.dataSource = self;
     self.honorCollectionView.alwaysBounceVertical = YES;
-    //self.honorCollectionView.backgroundColor = [UIColor yellowColor];
     self.isEditState = NO;
     //添加长按手势
     _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
@@ -101,15 +104,10 @@ NSString *kHonorCellID = @"honorcellID";
     {
         [self requestCompanyData];
     }
-    
-//    [self.honorCollectionView reloadData];
-
-    //[self.honorCollectionView headerBeginRefreshing];
 
     if (self.type == TypeHonor) {
         [self requestData];
     }
-
 }
 
 #pragma mark - 请求数据
@@ -125,6 +123,7 @@ NSString *kHonorCellID = @"honorcellID";
     }];
     [self.honorCollectionView headerBeginRefreshing];
 }
+
 #pragma mark - 请求数据
 - (void)requestCompanyData {
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
@@ -137,14 +136,13 @@ NSString *kHonorCellID = @"honorcellID";
         [weakSelf requestCompanyZZListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.honorCollectionView headerBeginRefreshing];
-    
-    //self.honorCollectionView.mj
 }
+
 - (void)requestCompanyZZListData:(NSString *)pageNumber
 {
    [self.honorCollectionView headerEndRefreshing];
     [HTTPCLIENT GCZXwodezizhiWithuid:APPDELEGATE.GCGSModel.uid WithpageNumber:pageNumber WithpageSize:@"10" Success:^(id responseObject) {
-        CLog(@"%@",responseObject);
+        //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -256,10 +254,7 @@ NSString *kHonorCellID = @"honorcellID";
 
         if (self.type==TypeHonor) {
             __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
-//            [cell configureCellWithModel:model];
-            // 与输入建立联系
             ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
-            // 与输出建立联系
             [cell loadData:modelAdapter];
             __weak typeof(self) weakSelf = self;//解决循环引用的问题
             cell.editButtonBlock = ^(NSIndexPath *indexPath) {
@@ -274,7 +269,9 @@ NSString *kHonorCellID = @"honorcellID";
 
         }else{
             __block  GCZZModel  *model = _honorData[indexPath.row];
-            cell.ZZmodel=model;
+            ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+            [cell loadData:modelAdapter];
+           // cell.ZZmodel = model;
             __weak typeof(self) weakSelf = self;//解决循环引用的问题
             cell.editButtonBlock = ^(NSIndexPath *indexPath) {
                 YLDZiZhiAddViewController *addhonorVC = [[YLDZiZhiAddViewController alloc] initWithType:2];
@@ -291,18 +288,23 @@ NSString *kHonorCellID = @"honorcellID";
 }
 
 #pragma mark --UICollectionViewDelegate
-//UICollectionView被选中时调用的3
+//UICollectionView被选中时调用
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!self.showHonorView) {
         self.showHonorView = [ZIKStationShowHonorView instanceShowHonorView];
         self.showHonorView.frame = CGRectMake(0, kHeight, kWidth, kHeight);
     }
-    ZIKStationHonorListModel  *model = _honorData[indexPath.row];
-    // 与输入建立联系
-    ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
-    // 与输出建立联系
-    [self.showHonorView loadData:modelAdapter];
+    if (self.type == TypeHonor) {
+        ZIKStationHonorListModel  *model = _honorData[indexPath.row];
+        ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+        [self.showHonorView loadData:modelAdapter];
+    } else if (self.type == TypeQualification) {
+        GCZZModel *ZZModel = _honorData[indexPath.row];
+        ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:ZZModel];
+        [self.showHonorView loadData:modelAdapter];
+    }
+
     [self.view addSubview:self.showHonorView];
     [UIView animateWithDuration:.3 animations:^{
         self.showHonorView.frame = CGRectMake(0, 0, kWidth, kHeight);
@@ -311,7 +313,7 @@ NSString *kHonorCellID = @"honorcellID";
 
 - (void)deleteRequest:(NSString *)uid {
 
-    if (self.type ==TypeQualification)
+    if (self.type == TypeHonor)
     {
         [HTTPCLIENT stationHonorDeleteWithUid:uid Success:^(id responseObject) {
             if ([responseObject[@"success"] integerValue] == 0) {
@@ -322,12 +324,9 @@ NSString *kHonorCellID = @"honorcellID";
             self.isEditState = NO;
             self.page = 1;
             [self requestHonorListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
-            //        [self.honorCollectionView reloadData];
         } failure:^(NSError *error) {
             ;
         }];
-
-        
     }else{
         [HTTPCLIENT GCZXDeleteRongYuWithuid:uid Success:^(id responseObject) {
             if ([responseObject[@"success"] integerValue] == 0) {
@@ -342,6 +341,5 @@ NSString *kHonorCellID = @"honorcellID";
             
         }];
     }
-
 }
 @end

@@ -32,9 +32,9 @@
 
 - (void)configureCell:(ZIKMyTeamModel *)model {
     if ([model.type isEqualToString:@"总站"]) {
-        self.logoImageView.image = [UIImage imageNamed:@"yingzhangzongzhan"];
+        self.logoImageView.image = [UIImage imageNamed:@"ico_工作站-总站text"];
     } else if ([model.type isEqualToString:@"分站"]) {
-        self.logoImageView.image = [UIImage imageNamed:@"yinzhangfenzhan"];
+        self.logoImageView.image = [UIImage imageNamed:@"ico_工作站-分站text"];
     }
     self.addressLabel.text = model.area;
     self.nameLabel.text = [NSString stringWithFormat:@"%@   %@",model.chargelPerson,model.phone];

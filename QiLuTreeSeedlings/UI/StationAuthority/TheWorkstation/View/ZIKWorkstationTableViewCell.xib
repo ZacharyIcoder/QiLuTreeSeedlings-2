@@ -16,10 +16,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T42-8e-upT">
-                        <rect key="frame" x="241" y="8" width="72" height="20"/>
+                        <rect key="frame" x="223" y="8" width="90" height="20"/>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="72" id="00i-hY-fqY"/>
+                            <constraint firstAttribute="width" constant="90" id="00i-hY-fqY"/>
                             <constraint firstAttribute="height" constant="20" id="9dl-b6-whj"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -48,7 +48,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作站名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEz-hh-n9x">
-                        <rect key="frame" x="48" y="8" width="184" height="20"/>
+                        <rect key="frame" x="48" y="8" width="166" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="NV6-BP-8wq"/>
                         </constraints>
@@ -72,9 +72,6 @@
                             <constraint firstAttribute="width" constant="30" id="y1t-VU-Ktg"/>
                         </constraints>
                         <state key="normal" title="Button" image="kefuxitongdadianhua.png"/>
-                        <connections>
-                            <action selector="phoneButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S8d-PR-5fF"/>
-                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_工作站-分站text.png" translatesAutoresizingMaskIntoConstraints="NO" id="hDI-G2-tbU">
                         <rect key="frame" x="10" y="8" width="36" height="20"/>

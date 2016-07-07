@@ -108,6 +108,13 @@
 		EA3D4D931D17D14C0010B56D /* YLDZhanZhangMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3D4D921D17D14C0010B56D /* YLDZhanZhangMessageViewController.m */; };
 		EA3D4D981D17D5BB0010B56D /* YLDZhanZhangMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3D4D961D17D5BB0010B56D /* YLDZhanZhangMessageCell.m */; };
 		EA3D4D991D17D5BB0010B56D /* YLDZhanZhangMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3D4D971D17D5BB0010B56D /* YLDZhanZhangMessageCell.xib */; };
+		EA496E091D2CC8C700DBECF1 /* YLDGCZXInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA496E081D2CC8C700DBECF1 /* YLDGCZXInfoViewController.m */; };
+		EA496E0D1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA496E0B1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.m */; };
+		EA496E0E1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA496E0C1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.xib */; };
+		EA496E121D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA496E101D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.m */; };
+		EA496E131D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA496E111D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.xib */; };
+		EA496E161D2CE92700DBECF1 /* YLDGCGSBianJiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA496E151D2CE92700DBECF1 /* YLDGCGSBianJiViewController.m */; };
+		EA496E191D2CF64E00DBECF1 /* YLDZhanZhangDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA496E181D2CF64E00DBECF1 /* YLDZhanZhangDetialModel.m */; };
 		EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */; };
 		EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */; };
 		EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4ADB031CD9DD5C0068C10F /* YLDMyBuyListViewController.m */; };
@@ -880,6 +887,18 @@
 		EA3D4D951D17D5BB0010B56D /* YLDZhanZhangMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDZhanZhangMessageCell.h; sourceTree = "<group>"; };
 		EA3D4D961D17D5BB0010B56D /* YLDZhanZhangMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDZhanZhangMessageCell.m; sourceTree = "<group>"; };
 		EA3D4D971D17D5BB0010B56D /* YLDZhanZhangMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDZhanZhangMessageCell.xib; sourceTree = "<group>"; };
+		EA496E071D2CC8C700DBECF1 /* YLDGCZXInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGCZXInfoViewController.h; sourceTree = "<group>"; };
+		EA496E081D2CC8C700DBECF1 /* YLDGCZXInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGCZXInfoViewController.m; sourceTree = "<group>"; };
+		EA496E0A1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGCZXTouxiangTableViewCell.h; sourceTree = "<group>"; };
+		EA496E0B1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGCZXTouxiangTableViewCell.m; sourceTree = "<group>"; };
+		EA496E0C1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDGCZXTouxiangTableViewCell.xib; sourceTree = "<group>"; };
+		EA496E0F1D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGCZXInfoTableViewCell.h; sourceTree = "<group>"; };
+		EA496E101D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGCZXInfoTableViewCell.m; sourceTree = "<group>"; };
+		EA496E111D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDGCZXInfoTableViewCell.xib; sourceTree = "<group>"; };
+		EA496E141D2CE92700DBECF1 /* YLDGCGSBianJiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGCGSBianJiViewController.h; sourceTree = "<group>"; };
+		EA496E151D2CE92700DBECF1 /* YLDGCGSBianJiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGCGSBianJiViewController.m; sourceTree = "<group>"; };
+		EA496E171D2CF64E00DBECF1 /* YLDZhanZhangDetialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDZhanZhangDetialModel.h; sourceTree = "<group>"; };
+		EA496E181D2CF64E00DBECF1 /* YLDZhanZhangDetialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDZhanZhangDetialModel.m; sourceTree = "<group>"; };
 		EA4ADAFB1CD9CC510068C10F /* rolock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rolock@2x.png"; sourceTree = "<group>"; };
 		EA4ADAFC1CD9CC510068C10F /* rounlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounlock@2x.png"; sourceTree = "<group>"; };
 		EA4ADB021CD9DD5C0068C10F /* YLDMyBuyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyBuyListViewController.h; sourceTree = "<group>"; };
@@ -2508,6 +2527,8 @@
 				EA3D4D941D17D24A0010B56D /* YLDZhangMessageView */,
 				EA3D4D911D17D14C0010B56D /* YLDZhanZhangMessageViewController.h */,
 				EA3D4D921D17D14C0010B56D /* YLDZhanZhangMessageViewController.m */,
+				EA496E171D2CF64E00DBECF1 /* YLDZhanZhangDetialModel.h */,
+				EA496E181D2CF64E00DBECF1 /* YLDZhanZhangDetialModel.m */,
 			);
 			path = YLDZhangzhangMessageViewController;
 			sourceTree = "<group>";
@@ -2529,6 +2550,23 @@
 				EA08F7991D18DBE700471C33 /* yYLDGZZRongYaoTableCell.xib */,
 			);
 			path = YLDZhangMessageView;
+			sourceTree = "<group>";
+		};
+		EA496E061D2CC8AB00DBECF1 /* GCZXInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA496E071D2CC8C700DBECF1 /* YLDGCZXInfoViewController.h */,
+				EA496E081D2CC8C700DBECF1 /* YLDGCZXInfoViewController.m */,
+				EA496E0A1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.h */,
+				EA496E0B1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.m */,
+				EA496E0C1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.xib */,
+				EA496E0F1D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.h */,
+				EA496E101D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.m */,
+				EA496E111D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.xib */,
+				EA496E141D2CE92700DBECF1 /* YLDGCGSBianJiViewController.h */,
+				EA496E151D2CE92700DBECF1 /* YLDGCGSBianJiViewController.m */,
+			);
+			path = GCZXInfoViewController;
 			sourceTree = "<group>";
 		};
 		EA4C4DD81D13E83E00DF1B93 /* YLDNvaChangeSearchView */ = {
@@ -2767,6 +2805,7 @@
 		EA5E6E351CFFC9A5003D357C /* GongChnegZhongXinViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA496E061D2CC8AB00DBECF1 /* GCZXInfoViewController */,
 				EA08F7CC1D191C0100471C33 /* GongChengZhongXinZiZhiTianJianViewController */,
 				EA08F7BD1D1912DC00471C33 /* GongChengAnLiViewController */,
 				EA08F7B81D190DEC00471C33 /* GongChengZhongXinViewController.h */,
@@ -4723,6 +4762,7 @@
 				EA5A26331D1BABD100850812 /* PLUS.png in Resources */,
 				FC50B3511CAE60D20022A24C /* 微信支付.png in Resources */,
 				EA5A082C1D153353005000E9 /* Gyiguoqi.png in Resources */,
+				EA496E0E1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.xib in Resources */,
 				FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */,
 				EA5A08281D15332A005000E9 /* Gyihezuo.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
@@ -4943,6 +4983,7 @@
 				EA696FB01CDD7A6C001F037E /* MyMessage@2x.png in Resources */,
 				FC6FED8A1CAD103F000E2CA5 /* 银联支付.png in Resources */,
 				FCCEA46E1CFD33C7005D21F5 /* 已删除-2.png in Resources */,
+				EA496E131D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.xib in Resources */,
 				FCC5719E1D2B5725004AA096 /* ZIKStationShowHonorView.xib in Resources */,
 				EAF051031C92A2E600F435A9 /* myMiaoPu@2x.png in Resources */,
 				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
@@ -5014,6 +5055,7 @@
 				EA552E861D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m in Sources */,
 				EAFB8FF41D1A729F00FCF88B /* YLDHeZuoDetialGZZView.m in Sources */,
 				FC2276811D177C9F0037B131 /* ZIKStationOrderTableViewCell.m in Sources */,
+				EA496E121D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.m in Sources */,
 				EA1A16D21D10E5BB008CA20F /* YLDPickTimeView.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EA833D951CFEC13300D56AFB /* YLDGongChengGongSiViewController.m in Sources */,
@@ -5025,6 +5067,7 @@
 				FC0853EE1D18EA57003A47BA /* ZIKMyHonorViewController.m in Sources */,
 				EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */,
 				EAD217121CDC6F52006424FB /* MyMessageViewController.m in Sources */,
+				EA496E091D2CC8C700DBECF1 /* YLDGCZXInfoViewController.m in Sources */,
 				FC5612451D0C092F00E5743B /* IQUITextFieldView+Additions.m in Sources */,
 				EA08F7A01D18E5D000471C33 /* YLDGongChengZhongXinBigCell.m in Sources */,
 				FCCFA7101CF2E12400CC1313 /* ZIKSelectViewController.m in Sources */,
@@ -5061,6 +5104,7 @@
 				EA3D4D7D1D1780780010B56D /* YLDBaoJiaMiaoMuView.m in Sources */,
 				FC6C133E1CE1BC40003E0FF9 /* ZIKHintTableViewCell.m in Sources */,
 				EAE32DE41C7E97A600C4CEA2 /* UIWebView+AFNetworking.m in Sources */,
+				EA496E191D2CF64E00DBECF1 /* YLDZhanZhangDetialModel.m in Sources */,
 				FCCEA4901CFD5FC2005D21F5 /* MyIntegralViewController.m in Sources */,
 				FCB1BCDB1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m in Sources */,
 				EAE32DD61C7E97A600C4CEA2 /* AFHTTPSessionManager.m in Sources */,
@@ -5073,6 +5117,7 @@
 				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
 				FCC5C3001CFE728F004669ED /* ZIKExchangeSuccessView.m in Sources */,
+				EA496E0D1D2CC9B300DBECF1 /* YLDGCZXTouxiangTableViewCell.m in Sources */,
 				EA9A229D1D1241E3000CA161 /* JSONKit.m in Sources */,
 				EA9A22A21D124D15000CA161 /* YLDDingDanModel.m in Sources */,
 				FC5612991D0C092F00E5743B /* ZIKGreenButton.m in Sources */,
@@ -5218,6 +5263,7 @@
 				FCCFA7121CF2E12400CC1313 /* ZIKCityListViewController.m in Sources */,
 				FC56126A1D0C092F00E5743B /* WHC_PictureListVC.m in Sources */,
 				EA4E646D1D0E83F000A7D731 /* YLDKeFuTableViewCell.m in Sources */,
+				EA496E161D2CE92700DBECF1 /* YLDGCGSBianJiViewController.m in Sources */,
 				EA741A001C8FC69B00F54478 /* LoginView.m in Sources */,
 				FC6FED7F1CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.m in Sources */,
 				FC5612551D0C092F00E5743B /* MJRefreshHeaderView.m in Sources */,

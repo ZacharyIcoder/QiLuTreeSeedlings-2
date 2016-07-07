@@ -25,6 +25,8 @@
     self.backView.alpha = 1;
     self.backView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     self.isEditState = NO;
+    self.levelLabel.layer.masksToBounds = YES;
+    self.levelLabel.layer.cornerRadius = 6.0f;
 }
 
 - (void)loadData:(id <ZIKCertificateAdapterProtocol>)data {
@@ -84,7 +86,7 @@
     _level = level;
     if (level) {
         _levelLabel.hidden = NO;
-        _levelLabel.text = level;
+        _levelLabel.text = [NSString stringWithFormat:@"%@级资质",level];
     } else {
         _levelLabel.hidden = YES;
     }
@@ -101,14 +103,14 @@
 - (NSString *)uid {
     return _uid;
 }
--(void)setZZmodel:(GCZZModel *)ZZmodel
-{
-    _ZZmodel = ZZmodel;
-    NSURL *honorUrl = [NSURL URLWithString:ZZmodel.attachment];
-    [self.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
-    self.honorTimeLabel.text = ZZmodel.acqueTime;
-    self.honorTitleLabel.text = ZZmodel.companyQualification;
-}
+//-(void)setZZmodel:(GCZZModel *)ZZmodel
+//{
+//    _ZZmodel = ZZmodel;
+//    NSURL *honorUrl = [NSURL URLWithString:ZZmodel.attachment];
+//    [self.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+//    self.honorTimeLabel.text = ZZmodel.acqueTime;
+//    self.honorTitleLabel.text = ZZmodel.companyQualification;
+//}
 
 - (void)setIsEditState:(BOOL)isEditState {
     _isEditState = isEditState;

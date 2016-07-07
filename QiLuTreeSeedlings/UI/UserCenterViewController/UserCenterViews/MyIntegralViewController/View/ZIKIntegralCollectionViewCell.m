@@ -9,12 +9,16 @@
 #import "ZIKIntegralCollectionViewCell.h"
 #import "ZIKIntegraExchangeModel.h"
 #import "StringAttributeHelper.h"//富文本
+#define kWidth [UIScreen mainScreen].bounds.size.width
 
 @implementation ZIKIntegralCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    if (kWidth >= 375) {
+        self.integralLabel.font = [UIFont systemFontOfSize:11.0f];
+    }
 }
 
 - (void)configureCell:(ZIKIntegraExchangeModel *)model {

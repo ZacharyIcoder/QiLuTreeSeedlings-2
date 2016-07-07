@@ -12,6 +12,8 @@
 +(YLDGongChengZhongXinBigCell *)yldGongChengZhongXinBigCell
 {
     YLDGongChengZhongXinBigCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDGongChengZhongXinBigCell" owner:self options:nil] lastObject];
+    cell.userImagV.layer.masksToBounds=YES;
+    cell.userImagV.layer.cornerRadius=cell.userImagV.frame.size.height/2;
     return cell;
 }
 - (void)awakeFromNib {

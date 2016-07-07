@@ -903,7 +903,9 @@ failure:(void (^)(NSError *error))failure;
 -(void)gongchengZhongXinInfoSuccess:(void (^)(id responseObject))success
                             failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－企业信息编辑----------
--(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county Success:(void (^)(id responseObject))success
+-(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county
+                            WithAddress:(NSString *)address
+                                Success:(void (^)(id responseObject))success
                                 failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－我的资质----------
 -(void)GCZXwodezizhiWithuid:(NSString *)uid
@@ -971,6 +973,48 @@ failure:(void (^)(NSError *error))failure;
                         keyword:(NSString *)keyword
                      pageNumber:(NSString *)pageNumber
                        pageSize:(NSString *)pageSize
+                        Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工作站详情-----------
+//{
+//    "result":{
+//        "supplyList":[	--供应信息
+//                      {
+//                          "count":"1",
+//                          "createTime":"2016-05-28 09:20:31",
+//                          "edit":false,
+//                          "goldsupplier":0,
+//                          "image":"http://123.56.229.197:8082/qlmm//static/upload/attachment/member/image/201605/d7f3abe0-b220-411a-b2f3-1b6c547c2a57-compress.jpg",
+//                          "price":"面议",
+//                          "reason":"",
+//                          "shuaxin":false,
+//                          "state":0,
+//                          "title":"湖北地区8-15公分栾树",
+//                          "tuihui":false,
+//                          "uid":"FCFF44D3-D6F0-44F7-872A-26FBE1A9CFA8"
+//                      },
+//                      {
+//                          ......
+//                      }
+//                      ],
+//        "masterInfo":{	--工作站信息，第一页返回数据，其他页不返回
+//            "area":"山东省临沂市莒南县板泉镇",	--地区
+//            "brief":"",	--简介
+//            "chargelPerson":"李传刚",	--联系人
+//            "creditMargin":"0.00",	--保证金
+//            "phone":"18265391071",
+//            "type":"分站",
+//            "uid":"68699F89-D71C-4B84-A728-416A47F9A57D",
+//            "viewNo":"鲁 第0003号",	--工作站编号
+//            "workstationName":"012",	--工作站名称
+//            "workstationPic":""	--工作站头像
+//        }
+//    },
+//    "success":true
+//}
+-(void)workstationdetialWithuid:(NSString *)uid
+                 WithpageNumber:(NSString *)pageNumber
+                   WithpageSize:(NSString *)pageSize
                         Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure;
 @end
