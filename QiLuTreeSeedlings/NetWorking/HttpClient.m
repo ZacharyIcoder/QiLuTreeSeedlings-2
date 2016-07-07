@@ -3603,6 +3603,7 @@ WithorderName:(NSString *)orderName
 }
 #pragma mark ---------- 工程助手－提交资质升级 -----------
 -(void)shengjiGCGSWithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone
+     Withzipcode:(NSString *)zipcode
                         Withbrief:(NSString *)brief
                      Withprovince:(NSString *)province
                          Withcity:(NSString *)city
@@ -3627,6 +3628,7 @@ WithorderName:(NSString *)orderName
     parmers[@"brief"]            = brief;
     parmers[@"brief"]            = brief;
     parmers[@"province"]         = province;
+    parmers[@"zipcode"]          = zipcode;
     if (city) {
          parmers[@"city"]         = city;
     }
@@ -3933,5 +3935,32 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
+}
+#pragma mark ---------- 进入资质审核信息填写页面，获取之前的审核数据-----------
+-(void)gongchenggongsiShengheTuiHuiBianJiSuccess:(void (^)(id responseObject))success
+                                         failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/company/apply/info";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
 }
 @end

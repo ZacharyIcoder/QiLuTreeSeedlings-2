@@ -443,7 +443,7 @@
     }
     if (APPDELEGATE.userModel.projectCompanyStatus==0) {
         [ToastView showTopToast:@"审核未通过"];
-        YLDGCGSZiZhiTiJiaoViewController *yldsda=[YLDGCGSZiZhiTiJiaoViewController new];
+        YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxx"];
         
         [self hiddingSelfTabBar];
         [self.navigationController pushViewController:yldsda animated:YES];

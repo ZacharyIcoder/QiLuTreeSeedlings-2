@@ -298,7 +298,7 @@ NSString *kHonorCellID = @"honorcellID";
            // cell.ZZmodel = model;
             __weak typeof(self) weakSelf = self;//解决循环引用的问题
             cell.editButtonBlock = ^(NSIndexPath *indexPath) {
-                YLDZiZhiAddViewController *addhonorVC = [[YLDZiZhiAddViewController alloc] initWithType:2];
+                YLDZiZhiAddViewController *addhonorVC = [[YLDZiZhiAddViewController alloc] initWithModel:model andType:2];
                 [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
             };
             cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {

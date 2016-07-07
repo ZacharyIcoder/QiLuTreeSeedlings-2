@@ -892,6 +892,7 @@ failure:(void (^)(NSError *error))failure;
                    failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－提交资质升级 -----------
 -(void)shengjiGCGSWithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone
+                      Withzipcode:(NSString *)zipcode
                         Withbrief:(NSString *)brief
                      Withprovince:(NSString *)province
                          Withcity:(NSString *)city
@@ -1019,4 +1020,8 @@ failure:(void (^)(NSError *error))failure;
                    WithpageSize:(NSString *)pageSize
                         Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 进入资质审核信息填写页面，获取之前的审核数据-----------
+-(void)gongchenggongsiShengheTuiHuiBianJiSuccess:(void (^)(id responseObject))success
+                                         failure:(void (^)(NSError *error))failure;
+
 @end

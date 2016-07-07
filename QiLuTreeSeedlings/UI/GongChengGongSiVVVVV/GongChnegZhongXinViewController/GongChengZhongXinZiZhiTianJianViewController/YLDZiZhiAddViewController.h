@@ -16,5 +16,5 @@
 @interface YLDZiZhiAddViewController : NomarBaseViewController
 @property (nonatomic,weak) id<YLDZiZhiAddDelegate> delegate;
 -(id)initWithType:(NSInteger)type;
--(id)initWithModel:(GCZZModel *)model;
+-(id)initWithModel:(GCZZModel *)model andType:(NSInteger )type;
 @end

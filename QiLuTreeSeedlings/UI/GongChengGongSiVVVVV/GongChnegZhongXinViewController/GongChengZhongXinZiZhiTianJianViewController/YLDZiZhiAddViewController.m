@@ -35,11 +35,11 @@
     }
     return self;
 }
--(id)initWithModel:(GCZZModel *)model
+-(id)initWithModel:(GCZZModel *)model andType:(NSInteger )type
 {
     self=[super init];
     if (self) {
-        self.type=2;
+        self.type=type;
         self.model=model;
     }
     return self;
@@ -131,9 +131,8 @@
         [dic setObject:self.organizationalField.text forKey:@"issuingAuthority"];
         [dic setObject:self.timeStr forKey:@"acqueTime"];
         [dic setObject:self.url forKey:@"attachment"];
-        GCZZModel *model=[GCZZModel GCZZModelWithDic:dic];
         if (self.delegate) {
-            [self.delegate reloadViewWithModel:model andDic:dic];
+            [self.delegate reloadViewWithModel:self.model andDic:dic];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }

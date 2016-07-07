@@ -31,10 +31,20 @@
 @property (nonatomic,strong)NSString *AreaCity;
 @property (nonatomic,strong)NSString *AreaCounty;
 @property (nonatomic,strong)NSString *uid;
+@property (nonatomic, assign) BOOL isEditState;
 @end
 
 @implementation YLDGCGSZiZhiTiJiaoViewController
+{
+    UILongPressGestureRecognizer *_tapDeleteGR;//长按手势
+}
 @synthesize kHonorCellID;
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.isEditState=NO;
+    [self.collectionView reloadData];
+}
 -(id)initWithUid:(NSString *)uid
 {
     self=[super init];
@@ -82,8 +92,43 @@
     [tijiaoBtn addTarget:self action:@selector(tijiaoBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [tijiaoBtn setTitle:@"提交审核" forState:UIControlStateNormal];
     [self.view addSubview:tijiaoBtn];
-
+    //添加长按手势
+    _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
+    [self.collectionView addGestureRecognizer:_tapDeleteGR];
+    if (self.uid) {
+        ShowActionV();
+        [HTTPCLIENT gongchenggongsiShengheTuiHuiBianJiSuccess:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                NSDictionary *result=[responseObject objectForKey:@"result"];
+                NSDictionary *companyInfo=[result objectForKey:@"companyInfo"];
+                self.AreaProvince=companyInfo[@"province"];
+                self.AreaCity=companyInfo[@"city"];
+                self.AreaCounty=companyInfo[@"county"];
+                [self.areaBtn setTitle:companyInfo[@"area"]forState:UIControlStateNormal];
+                self.addressTextField.text=companyInfo[@"address"];
+                self.qiyeTextField.text=companyInfo[@"companyName"];
+                self.legalPersonField.text=companyInfo[@"legalPerson"];
+                self.phoneTextField.text=companyInfo[@"phone"];
+                self.youbianTextField.text=companyInfo[@"zipcode"];
+                self.jieshaTextView.text=companyInfo[@"brief"];
+                [self.honorData removeAllObjects];
+                [self.honorData addObjectsFromArray:companyInfo[@"qualList"]];
+                [self.collectionView reloadData];
+                
+            }else
+            {
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
+            RemoveActionV();
+        } failure:^(NSError *error) {
+            RemoveActionV();
+        }];
+    }
     // Do any additional setup after loading the view.
+}
+- (void)tapGR {
+    self.isEditState = YES;
+    [self.collectionView reloadData];
 }
 -(void)tijiaoBtnAction:(UIButton *)sender
 {
@@ -129,7 +174,7 @@
     }
     NSString *rongyuStr=[self.honorData JSONString];
     ShowActionV();
-    [HTTPCLIENT shengjiGCGSWithcompanyName:self.qiyeTextField.text WithlegalPerson:self.legalPersonField.text Withphone:self.phoneTextField.text Withbrief:self.jieshaTextView.text Withprovince:self.AreaProvince Withcity:self.AreaCity Withcounty:self.AreaCounty Withaddress:self.addressTextField.text WithqualJson:rongyuStr Success:^(id responseObject) {
+    [HTTPCLIENT shengjiGCGSWithcompanyName:self.qiyeTextField.text WithlegalPerson:self.legalPersonField.text Withphone:self.phoneTextField.text Withzipcode:self.youbianTextField.text Withbrief:self.jieshaTextView.text Withprovince:self.AreaProvince Withcity:self.AreaCity Withcounty:self.AreaCounty Withaddress:self.addressTextField.text WithqualJson:rongyuStr Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"您已提交审核，敬请期待"];
             [self.navigationController popToRootViewControllerAnimated:YES];
@@ -161,6 +206,8 @@
     //ZIKIntegralCollectionViewCell *cell = [[ZIKIntegralCollectionViewCell alloc] init];
     ZIKMyHonorCollectionViewCell * cell = [cv dequeueReusableCellWithReuseIdentifier:kHonorCellID
                                                                         forIndexPath:indexPath];
+    cell.isEditState = self.isEditState;
+     cell.indexPath = indexPath;
     if (self.honorData.count > 0) {
         // NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"url"]]];
         NSString *myurlstr = [NSString stringWithFormat:@"%@",[self.honorData[indexPath.row] objectForKey:@"attachment"]];
@@ -169,7 +216,24 @@
        // NSLog(@"%@",myurl);
         [cell.honorImageView setImageWithURL:honorUrl placeholderImage:[UIImage imageNamed:@"MoRentu"]];
         cell.honorTitleLabel.text = [self.honorData[indexPath.row] objectForKey:@"companyQualification"];
+        cell.level=[self.honorData[indexPath.row] objectForKey:@"level"];
         cell.honorTimeLabel.text  = [self.honorData[indexPath.row] objectForKey:@"acqueTime"];
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        cell.editButtonBlock = ^(NSIndexPath *indexPath) {
+            NSDictionary *dic=self.honorData[indexPath.row];
+            GCZZModel *model=[GCZZModel  GCZZModelWithDic:dic];
+            model.uid=[NSString stringWithFormat:@"%ld",indexPath.row];
+            YLDZiZhiAddViewController *addhonorVC = [[YLDZiZhiAddViewController alloc] initWithModel:model andType:1];
+            addhonorVC.delegate=self;
+            [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
+        };
+        cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
+            [weakSelf.honorData removeObjectAtIndex:indexPath.row];
+            weakSelf.isEditState=NO;
+            [weakSelf.collectionView reloadData];
+            //[weakSelf deleteRequest:model.uid];
+        };
+
     }
     return cell;
 }
@@ -181,8 +245,15 @@
 }
 -(void)reloadViewWithModel:(GCZZModel *)model andDic:(NSMutableDictionary *)dic
 {
-    [self.honorData addObject:dic];
-    [self.collectionView reloadData];
+    if (model) {
+        [self.honorData replaceObjectAtIndex:[model.uid integerValue] withObject:dic];
+//        [self.honorData addObject:dic];
+        [self.collectionView reloadData];
+    }else{
+        [self.honorData addObject:dic];
+        [self.collectionView reloadData];
+    }
+  
 }
 //头部显示的内容
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
