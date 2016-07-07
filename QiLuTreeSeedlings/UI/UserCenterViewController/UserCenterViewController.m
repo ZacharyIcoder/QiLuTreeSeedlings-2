@@ -441,7 +441,6 @@
     }
     if (APPDELEGATE.userModel.projectCompanyStatus==0) {
         [ToastView showTopToast:@"审核未通过"];
-        return;
     }
     YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
 

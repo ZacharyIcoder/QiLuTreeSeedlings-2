@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YLDZhanZhangDetialModel.h"
 @interface YLDGongZuoZhanMessageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *numLab;
 @property (weak, nonatomic) IBOutlet UILabel *areaLab;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLab;
 @property (weak, nonatomic) IBOutlet UIImageView *logoV;
+@property (nonatomic,strong)YLDZhanZhangDetialModel*model;
 +(YLDGongZuoZhanMessageCell *)yldGongZuoZhanMessageCell;
 @end

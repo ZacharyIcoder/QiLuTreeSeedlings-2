@@ -14,12 +14,13 @@
     YLDGongZuoZhanJianJieCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDGongZuoZhanJianJieCell" owner:self options:nil] lastObject];
     [cell.moreBtn setTitle:@"隐藏更多" forState:UIControlStateSelected];
     [cell.moreBtn setTitleColor:NavColor forState:UIControlStateSelected];
+//    [cell.moreBtn setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
 -(void)setJianjieStr:(NSString *)jianjieStr
 {
     _jianjieStr=jianjieStr;
-    self.jianjieLab.text=jianjieStr;
+    self.jianjieLab.text=[NSString stringWithFormat:@"简介：%@",jianjieStr];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

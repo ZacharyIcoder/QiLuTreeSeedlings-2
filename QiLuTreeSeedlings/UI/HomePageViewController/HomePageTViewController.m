@@ -27,6 +27,7 @@
 #import "SellSearchTableViewCell.h"
 #import "SellDetialViewController.h"
 #import "BigImageViewShowView.h"
+//不是工程公司的提示洁面
 #import "LYDGCGSTiShiViewController.h"
 /********金牌供应*********/
 #import "YLDJinPaiGYViewController.h"

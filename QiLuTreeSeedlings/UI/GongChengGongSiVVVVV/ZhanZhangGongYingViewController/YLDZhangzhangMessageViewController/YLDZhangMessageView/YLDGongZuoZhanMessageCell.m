@@ -14,6 +14,19 @@
     YLDGongZuoZhanMessageCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDGongZuoZhanMessageCell" owner:self options:nil] lastObject];
     return cell;
 }
+-(void)setModel:(YLDZhanZhangDetialModel *)model
+{
+    _model=model;
+    self.nameLab.text=model.workstationName;
+    self.areaLab.text=model.area;
+    self.moneyLab.text=model.creditMargin;
+    self.numLab.text=model.viewNo;
+    if ([model.type isEqualToString:@"总站"]) {
+        [self.logoV setImage:[UIImage imageNamed:@"yingzhangzongzhan"]];
+    }else{
+        [self.logoV setImage:[UIImage imageNamed:@"yinzhangfenzhan"]];
+    }
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

@@ -15,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简介：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX3-6r-5kc">
-                        <rect key="frame" x="8" y="8" width="304" height="41"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简介：" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX3-6r-5kc">
+                        <rect key="frame" x="10" y="8" width="300" height="41"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.60111682046979864" green="0.6007760067114094" blue="0.6005400587248314" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -27,6 +27,7 @@
                             <constraint firstAttribute="height" constant="22" id="adh-Ia-nGf"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="查看更多">
                             <color key="titleColor" red="0.42730180369127518" green="0.73537122483221473" blue="0.33541317114093883" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
@@ -37,9 +38,9 @@
                     <constraint firstAttribute="bottomMargin" secondItem="wcm-kC-WCW" secondAttribute="bottom" constant="-8" id="E5Z-yW-shL"/>
                     <constraint firstItem="wcm-kC-WCW" firstAttribute="top" secondItem="xX3-6r-5kc" secondAttribute="bottom" constant="8" id="F59-Nh-wd8"/>
                     <constraint firstAttribute="trailingMargin" secondItem="wcm-kC-WCW" secondAttribute="trailing" constant="-8" id="PMH-lk-HZ4"/>
-                    <constraint firstItem="xX3-6r-5kc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Wew-3p-vuT"/>
+                    <constraint firstItem="xX3-6r-5kc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="Wew-3p-vuT"/>
                     <constraint firstItem="wcm-kC-WCW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="h1r-Jr-Iau"/>
-                    <constraint firstItem="xX3-6r-5kc" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="xZ3-oN-Kz7"/>
+                    <constraint firstItem="xX3-6r-5kc" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-2" id="xZ3-oN-Kz7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

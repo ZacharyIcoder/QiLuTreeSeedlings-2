@@ -45,6 +45,7 @@
     self.supplyAry=[NSMutableArray array];
     self.honorAry=[NSMutableArray array];
     self.isShow=NO;
+    self.pageNum=1;
      self.edgesForExtendedLayout = UIRectEdgeNone;
     UITableView *talbeView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) style:UITableViewStyleGrouped];
     talbeView.delegate=self;
@@ -52,7 +53,20 @@
     talbeView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView=talbeView;
     [self.view addSubview:talbeView];
-    [self getDatListWithPageNum:self.pageNum];
+    __weak typeof(self)weakSelf=self;
+    [talbeView addHeaderWithCallback:^{
+       
+        weakSelf.pageNum=1;
+         ShowActionV();
+        [weakSelf getDatListWithPageNum:weakSelf.pageNum];
+    }];
+    [talbeView addFooterWithCallback:^{
+        weakSelf.pageNum+=1;
+         ShowActionV();
+        [weakSelf getDatListWithPageNum:weakSelf.pageNum];
+   }];
+    [talbeView headerBeginRefreshing];
+//    [self getDatListWithPageNum:self.pageNum];
     // Do any additional setup after loading the view.
 }
 -(void)getDatListWithPageNum:(NSInteger)pageNum
@@ -81,11 +95,17 @@
                 [self.supplyAry addObjectsFromArray:supplyary];
             }
             [self.tableView reloadData];
+            
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
+        RemoveActionV();
+        [self.tableView headerEndRefreshing];
+        [self.tableView footerEndRefreshing];
     } failure:^(NSError *error) {
-        
+        [self.tableView headerEndRefreshing];
+        [self.tableView footerEndRefreshing];
+        RemoveActionV();
     }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -93,14 +113,29 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if (section==4) {
+        return self.supplyAry.count;
+    }else{
+       return 1; 
+    }
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         return 200;
     }
     if (indexPath.section==1) {
-        return 80;
+        if (self.isShow) {
+        CGFloat hiss=[self getHeightWithContent:self.model.brief width:kWidth-20 font:15];
+            if (hiss>40) {
+                return hiss+40;
+            }else{
+                return 80;
+            }
+        }else{
+          return 80;
+        }
+        
     }
     if (indexPath.section==2) {
         return 120;
@@ -136,7 +171,7 @@
             cell.delegate=self;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
-//        cell.model=self.
+        cell.model=self.model;
         return cell;
         
     }
@@ -146,7 +181,19 @@
         if (!cell) {
             cell=[YLDGongZuoZhanJianJieCell yldGongZuoZhanJianJieCell];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            [cell.moreBtn addTarget:self action:@selector(moreBtnAction) forControlEvents:UIControlEventTouchUpInside];
         }
+        CGRect frame=cell.frame;
+        if (self.isShow) {
+            CGFloat hiss=[self getHeightWithContent:self.model.brief width:kWidth-20 font:15];
+            frame.size.height=hiss+40;
+            cell.moreBtn.selected=YES;
+        }else{
+            frame.size.height=80;
+            cell.moreBtn.selected=NO;
+        }
+        cell.frame=frame;
+        cell.jianjieStr=self.model.brief;
         return cell;
         
     }
@@ -157,6 +204,7 @@
             cell=[YLDGongZuoZhanMessageCell yldGongZuoZhanMessageCell];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
+        cell.model=self.model;
         return cell;
         
     }
@@ -170,9 +218,34 @@
         }
         return cell;
     }
+    if (indexPath.section==4) {
+        SellSearchTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[SellSearchTableViewCell IDStr]];
+        if (!cell) {
+            cell=[[SellSearchTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
+        }
+        cell.hotSellModel=self.supplyAry[indexPath.row];
+        return cell;
+    }
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
 }
+-(void)moreBtnAction
+{
+    self.isShow=!self.isShow;
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:1];
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+}
+//获取字符串的高度
+-(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
+    
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(width, 999)
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
+                                        context:nil];
+    return rect.size.height;
+}
+
 -(void)backBtnAction:(UIButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];

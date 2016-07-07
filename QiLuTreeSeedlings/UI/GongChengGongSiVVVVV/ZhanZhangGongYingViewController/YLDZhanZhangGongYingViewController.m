@@ -177,7 +177,8 @@
     
     if (indexPath.section==1) {
          [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
-        YLDZhanZhangMessageViewController *vccc=[[YLDZhanZhangMessageViewController alloc]init];
+        YLDWorkstationlistModel *model = self.workStationAry[indexPath.row];
+        YLDZhanZhangMessageViewController *vccc=[[YLDZhanZhangMessageViewController alloc]initWithUid:model.uid];
         
         [self.navigationController pushViewController:vccc animated:YES];
     }
