@@ -3670,18 +3670,21 @@
     }];
 }
 #pragma mark ---------- 工程助手－工程信息编辑----------
--(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county Success:(void (^)(id responseObject))success
+-(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county
+                            WithAddress:(NSString *)address
+Success:(void (^)(id responseObject))success
                                 failure:(void (^)(NSError *error))failure
 {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"aapi/company/update";
+    NSString *postURL            = @"api/company/update";
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
     parmers[@"companyName"]      = companyName;
     parmers[@"legalPerson"]      = legalPerson;
     parmers[@"phone"]            = phone;
@@ -3694,7 +3697,7 @@
     if (county) {
         parmers[@"county"]        = county;
     }
-   // parmers[@"address"]         = address;
+    parmers[@"address"]         = address;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

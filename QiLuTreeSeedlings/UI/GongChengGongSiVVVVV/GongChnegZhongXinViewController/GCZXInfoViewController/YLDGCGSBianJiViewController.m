@@ -27,6 +27,8 @@
     [super viewDidLoad];
     
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0, 70, kWidth, 44)];
+    [textField setBackgroundColor:[UIColor whiteColor]];
+    self.textField=textField;
     [self.view addSubview:textField];
     if (self.type==1) {
         self.vcTitle=@"联系人";
@@ -54,10 +56,52 @@
 }
 -(void)sureBtnAction
 {
+    if (self.textField.text.length<=0) {
+        [ToastView showTopToast:@"请输入信息"];
+        return;
+    }
     if(self.type==1)
     {
+        [self companyName:nil andlegalPerson:self.textField.text andphone:nil Withbrief:nil Withprovince:nil WithCity:nil Withcounty:nil WithAddress:nil];
+    }
+    if(self.type==2)
+    {
+        [self companyName:nil andlegalPerson:nil andphone:self.textField.text Withbrief:nil Withprovince:nil WithCity:nil Withcounty:nil WithAddress:nil];
+    }
+    if(self.type==3)
+    {
+         [self companyName:nil andlegalPerson:nil andphone:nil Withbrief:nil Withprovince:nil WithCity:nil Withcounty:nil WithAddress:self.textField.text];
         
     }
+    if(self.type==4)
+    {
+         [self companyName:nil andlegalPerson:nil andphone:nil Withbrief:self.textField.text Withprovince:nil WithCity:nil Withcounty:nil WithAddress:nil];
+    }
+}
+-(void)companyName:(NSString *)companyName andlegalPerson:(NSString *)legalPerson andphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county WithAddress:(NSString *)address
+{
+    ShowActionV();
+    [HTTPCLIENT gongchengZhongXinInfoEditWithUid:APPDELEGATE.GCGSModel.uid WithcompanyName:companyName WithlegalPerson:legalPerson Withphone:phone Withbrief:brief Withprovince:province WithCity:city Withcounty:county WithAddress:address Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [HTTPCLIENT gongchengZhongXinInfoSuccess:^(id responseObject) {
+                if ([[responseObject objectForKey:@"success"] integerValue]) {
+                    [ToastView showTopToast:@"编辑成功"];
+                    
+                    APPDELEGATE.GCGSModel=[YLDGCGSModel yldGCGSModelWithDic:[[responseObject objectForKey:@"result"] objectForKey:@"companyInfo"]];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                RemoveActionV();
+            } failure:^(NSError *error) {
+                RemoveActionV();
+            }];
+
+        }else{
+            RemoveActionV();
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

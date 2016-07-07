@@ -13,6 +13,7 @@
 #import "YLDGCZXTouxiangTableViewCell.h"
 #import "RSKImageCropper.h"
 #import "UIImageView+AFNetworking.h"
+#import "YLDGCGSBianJiViewController.h"
 @interface YLDGCZXInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *url;
@@ -20,7 +21,11 @@
 @end
 
 @implementation YLDGCZXInfoViewController
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"公司信息";
@@ -85,6 +90,9 @@
     if (indexPath.row==0) {
         [self addPicture];
         return;
+    }else{
+        YLDGCGSBianJiViewController *vc=[[YLDGCGSBianJiViewController alloc]initWithType:indexPath.row];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 #pragma mark - 图片添加

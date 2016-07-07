@@ -903,7 +903,9 @@ failure:(void (^)(NSError *error))failure;
 -(void)gongchengZhongXinInfoSuccess:(void (^)(id responseObject))success
                             failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－企业信息编辑----------
--(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county Success:(void (^)(id responseObject))success
+-(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county
+                            WithAddress:(NSString *)address
+                                Success:(void (^)(id responseObject))success
                                 failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－我的资质----------
 -(void)GCZXwodezizhiWithuid:(NSString *)uid
