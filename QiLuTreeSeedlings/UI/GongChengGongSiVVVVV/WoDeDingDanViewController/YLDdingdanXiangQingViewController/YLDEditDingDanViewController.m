@@ -141,7 +141,7 @@
                 if ([uidStr isEqualToString:self.typeStr]) {
                     NSString *nameStr=dic[@"name"];
                     [self.typeBtn setTitle:nameStr forState:UIControlStateNormal];
-                    break;
+//                    break;
                 }
             }
 //            @property (nonatomic,weak) UITextField *NameTextField;
@@ -165,24 +165,25 @@
                 if ([uidStr isEqualToString:self.priceStr]) {
                     NSString *nameStr=dic[@"name"];
                     [self.priceBtn setTitle:nameStr forState:UIControlStateNormal];
-                    break;
+//                    break;
                 }
             }
 
 //            @property (nonatomic,weak) UIButton *qualityBtn;
-            //            @property (nonatomic,copy) NSString *qualityStr;self.qualityStr=self.orderDetailDic[@"qualityRequirement"];
+            //            @property (nonatomic,copy) NSString *qualityStr;
+            self.qualityStr=self.orderDetailDic[@"qualityRequirement"];
             for (NSDictionary *dic in self.qualityAry) {
                 NSString *uidStr=dic[@"uid"];
                 if ([uidStr isEqualToString:self.priceStr]) {
                     NSString *nameStr=dic[@"name"];
                     [self.qualityBtn setTitle:nameStr forState:UIControlStateNormal];
-                    break;
+//                    break;
                 }
             }
 //            @property (nonatomic,weak) UITextField *xiongjingField;
-            self.xiongjingField.text=self.orderDetailDic[@"dbh"];
+            self.xiongjingField.text=[NSString stringWithFormat:@"%@",self.orderDetailDic[@"dbh"]];
 //            @property (nonatomic,weak) UITextField *dijingField;
-        self.dijingField.text=self.orderDetailDic[@"groundDiameter"];
+        self.dijingField.text=[NSString stringWithFormat:@"%@",self.orderDetailDic[@"groundDiameter"]];
 //            @property (nonatomic,weak) UITextField *lianxirenField;
             self.lianxirenField.text=self.orderDetailDic[@"chargePerson"];
 //            @property (nonatomic,weak) BWTextView *jianjieTextView;
@@ -421,6 +422,7 @@
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:nameLab];
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 7, 160/320.f*kWidth, 30)];
+    textField.textColor=DarkTitleColor;
     textField.placeholder=alortStr;
     [view addSubview:textField];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];

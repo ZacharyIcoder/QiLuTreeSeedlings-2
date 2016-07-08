@@ -297,6 +297,7 @@
 		EA9A22AD1D12904B000CA161 /* YLDDingDanJianJieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */; };
 		EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */; };
 		EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */; };
+		EA9FE6DB1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6DA1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m */; };
 		EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */; };
 		EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA51C744D21007F207D /* HotBuyView.m */; };
 		EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA81C746A7B007F207D /* HotBuyViewCell.m */; };
@@ -1158,6 +1159,8 @@
 		EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeView.m; sourceTree = "<group>"; };
 		EA9EFCC41CEEE48C00A71F2D /* GuiGeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeCell.h; sourceTree = "<group>"; };
 		EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeCell.m; sourceTree = "<group>"; };
+		EA9FE6D91D2F503400110A71 /* YLDDingDanMMBianJiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanMMBianJiViewController.h; sourceTree = "<group>"; };
+		EA9FE6DA1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanMMBianJiViewController.m; sourceTree = "<group>"; };
 		EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editngChange@2x.png"; sourceTree = "<group>"; };
 		EAA81BA41C744D21007F207D /* HotBuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotBuyView.h; sourceTree = "<group>"; };
 		EAA81BA51C744D21007F207D /* HotBuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyView.m; sourceTree = "<group>"; };
@@ -3093,6 +3096,8 @@
 				EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */,
 				EA4C4DD51D13E0F600DF1B93 /* YLDEditDingDanViewController.h */,
 				EA4C4DD61D13E0F600DF1B93 /* YLDEditDingDanViewController.m */,
+				EA9FE6D91D2F503400110A71 /* YLDDingDanMMBianJiViewController.h */,
+				EA9FE6DA1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m */,
 			);
 			path = YLDdingdanXiangQingViewController;
 			sourceTree = "<group>";
@@ -5318,6 +5323,7 @@
 				FC56124D1D0C092F00E5743B /* IQTitleBarButtonItem.m in Sources */,
 				EA29A9F01C8557D7004913FF /* SearchSuccessView.m in Sources */,
 				FC0BE6141D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.m in Sources */,
+				EA9FE6DB1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m in Sources */,
 				EA7056531C9F86F500E9D253 /* CompanyViewController.m in Sources */,
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */,

@@ -177,9 +177,12 @@
         YLDBaoJiaDetialViewController *yldBaoJiaVC=[[YLDBaoJiaDetialViewController alloc] initWithUid:[dic objectForKey:@"uid"]];
         [self.navigationController pushViewController:yldBaoJiaVC animated:YES];
     }
-    if (tag==2) {
+    if (tag==3) {
         YLDHeZuoDetialViewController *hezuodeltai=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:nil WithitemUid:[dic objectForKey:@"uid"]];
         [self.navigationController pushViewController:hezuodeltai animated:YES];
+    }
+    if (tag==4) {
+        
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

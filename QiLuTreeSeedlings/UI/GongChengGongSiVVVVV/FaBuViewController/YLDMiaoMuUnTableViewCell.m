@@ -46,21 +46,21 @@
     }
     NSString *stauts=[messageDic objectForKey:@"stauts"];
     if (self.chakanBtn) {
-        if ([stauts integerValue]==0||[stauts integerValue]==1) {
+        if ([stauts integerValue]==1||[stauts integerValue]==2) {
             [self.chakanBtn setBackgroundColor:NavYellowColor];
             self.chakanBtn.tag=1;
             [self.chakanBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
             [self.chakanBtn setTitle:@"查看报价" forState:UIControlStateNormal];
         }
-        if ([stauts integerValue]==2) {
+        if ([stauts integerValue]==3) {
             [self.chakanBtn setBackgroundColor:NavColor];
             [self.chakanBtn setTitle:@"已合作" forState:UIControlStateNormal];
-            self.chakanBtn.tag=2;
+            self.chakanBtn.tag=3;
             [self.chakanBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         }
-        if ([stauts integerValue]==3) {
+        if ([stauts integerValue]==4) {
             [self.chakanBtn setBackgroundColor:[UIColor colorWithRed:64/255.f green:204/255.f blue:246/255.f alpha:1]];
-            self.chakanBtn.tag=3;
+            self.chakanBtn.tag=4;
             [self.chakanBtn setTitle:@"编辑" forState:UIControlStateNormal];
             [self.chakanBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         }

@@ -3990,4 +3990,62 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark ---------- 工程助手－订单苗木编辑信息-----------
+-(void)dingdanMMbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/order/updateItem";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－订单苗木更新-----------
+-(void)dingdanMMgengxinWithUid:(NSString *)uid
+                      WithName:(NSString *)name
+                  Withquantity:(NSString *)quantity
+                Withdecription:(NSString *)decription Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/order/doUpdateItem";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"name"]             = name;
+    parmers[@"quantity"]         = quantity;
+    parmers[@"decription"]       = decription;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
 @end

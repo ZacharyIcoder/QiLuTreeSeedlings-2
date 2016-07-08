@@ -1026,4 +1026,13 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－我的订单基本信息编辑-----------
 -(void)wodedingdanbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－订单苗木编辑信息-----------
+-(void)dingdanMMbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－订单苗木更新-----------
+-(void)dingdanMMgengxinWithUid:(NSString *)uid
+                      WithName:(NSString *)name
+                  Withquantity:(NSString *)quantity
+                Withdecription:(NSString *)decription Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure;
 @end
