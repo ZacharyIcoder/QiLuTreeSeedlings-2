@@ -145,7 +145,7 @@
 }
 -(void)editingBtnAction:(UIButton *)sender
 {
-    YLDEditDingDanViewController *EditVC=[[YLDEditDingDanViewController alloc]init];
+    YLDEditDingDanViewController *EditVC=[[YLDEditDingDanViewController alloc]initWithUid:self.model.uid];
     [self.navigationController pushViewController:EditVC animated:YES];
 }
 -(void)searchBtnAction:(UIButton *)sender

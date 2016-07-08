@@ -2848,22 +2848,22 @@
 
 }
 #pragma mark ---------- 发布工程订单 -----------
--(void)fabuGongChengDingDanWithprojectName:(NSString *)projectName
-WithorderName:(NSString *)orderName
-                        WithorderTypeUid:(NSString *)orderTypeUid
-                        WithusedProvince:(NSString *)usedProvince
-                            WithusedCity:(NSString *)usedCity
-                             WithendDate:(NSString *)endDate
-                        WithchargePerson:(NSString *)chargePerson
-                               Withphone:(NSString *)phone
-                  WithqualityRequirement:(NSString *)qualityRequirement
-                   WithquotationRequires:(NSString *)quotationRequires
-                                 Withdbh:(NSString *)dbh
-                      WithgroundDiameter:(NSString *)groundDiameter
-                         Withdescription:(NSString *)description
-                                    With:(NSString *)itemjson
-                                 Success:(void (^)(id responseObject))success
-                                 failure:(void (^)(NSError *error))failure
+-(void)fabuGongChengDingDanWithUid:(NSString *)uid WithprojectName:(NSString *)projectName
+                     WithorderName:(NSString *)orderName
+                  WithorderTypeUid:(NSString *)orderTypeUid
+                  WithusedProvince:(NSString *)usedProvince
+                      WithusedCity:(NSString *)usedCity
+                       WithendDate:(NSString *)endDate
+                  WithchargePerson:(NSString *)chargePerson
+                         Withphone:(NSString *)phone
+            WithqualityRequirement:(NSString *)qualityRequirement
+             WithquotationRequires:(NSString *)quotationRequires
+                           Withdbh:(NSString *)dbh
+                WithgroundDiameter:(NSString *)groundDiameter
+                   Withdescription:(NSString *)description
+                              With:(NSString *)itemjson
+                           Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure
 {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
@@ -2874,6 +2874,7 @@ WithorderName:(NSString *)orderName
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+    parmers[@"uid"]              =uid;
     parmers[@"projectName"]      =projectName;
     parmers[@"orderName"]        =orderName;
     parmers[@"orderTypeUid"]     =orderTypeUid;
@@ -3962,5 +3963,31 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
         [HttpClient HTTPERRORMESSAGE:error];
     }];
     
+}
+#pragma mark ---------- 工程助手－我的订单基本信息编辑-----------
+-(void)wodedingdanbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/order/my/update";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
 }
 @end

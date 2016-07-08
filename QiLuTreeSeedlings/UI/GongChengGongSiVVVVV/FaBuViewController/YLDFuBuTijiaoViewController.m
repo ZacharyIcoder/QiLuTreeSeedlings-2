@@ -106,7 +106,7 @@
         return;
     }
     NSString *miaomuJsonStr=[self.miaomuAry JSONString];
-    [HTTPCLIENT fabuGongChengDingDanWithprojectName:self.nameStr WithorderName:self.typeName WithorderTypeUid:self.typeStr WithusedProvince:self.areaShengStr WithusedCity:self.areaShiStr WithendDate:self.timeStr WithchargePerson:self.lianxiRStr Withphone:self.phoneStr WithqualityRequirement:self.zhiliangStr WithquotationRequires:self.priceStr Withdbh:self.xingjingStr WithgroundDiameter:self.diJingStr Withdescription:self.shuomingStr With:miaomuJsonStr Success:^(id responseObject) {
+    [HTTPCLIENT fabuGongChengDingDanWithUid:nil WithprojectName:self.nameStr WithorderName:self.typeName WithorderTypeUid:self.typeStr WithusedProvince:self.areaShengStr WithusedCity:self.areaShiStr WithendDate:self.timeStr WithchargePerson:self.lianxiRStr Withphone:self.phoneStr WithqualityRequirement:self.zhiliangStr WithquotationRequires:self.priceStr Withdbh:self.xingjingStr WithgroundDiameter:self.diJingStr Withdescription:self.shuomingStr With:miaomuJsonStr Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"发布成功，即将返回"];
             [self.navigationController popToRootViewControllerAnimated:YES];

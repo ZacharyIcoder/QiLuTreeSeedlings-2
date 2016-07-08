@@ -663,7 +663,7 @@ failure:(void (^)(NSError *error))failure;
 -(void)huiquZhiliangYaoQiuBaoDingSuccess:(void (^)(id responseObject))success
                                  failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 发布工程订单 -----------
--(void)fabuGongChengDingDanWithprojectName:(NSString *)projectName
+-(void)fabuGongChengDingDanWithUid:(NSString *)uid WithprojectName:(NSString *)projectName
                            WithorderName:(NSString *)orderName
                         WithorderTypeUid:(NSString *)orderTypeUid
                         WithusedProvince:(NSString *)usedProvince
@@ -1023,5 +1023,7 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 进入资质审核信息填写页面，获取之前的审核数据-----------
 -(void)gongchenggongsiShengheTuiHuiBianJiSuccess:(void (^)(id responseObject))success
                                          failure:(void (^)(NSError *error))failure;
-
+#pragma mark ---------- 工程助手－我的订单基本信息编辑-----------
+-(void)wodedingdanbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure;
 @end

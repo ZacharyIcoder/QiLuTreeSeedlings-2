@@ -34,15 +34,16 @@
 @property (nonatomic,weak) UITextField *lianxirenField;
 @property (nonatomic,weak) BWTextView *jianjieTextView;
 @property (nonatomic,copy) NSString *typeStr;
-//@property (nonatomic,copy) NSString *nameStr;
 @property (nonatomic,copy) NSString *timeStr;
 @property (nonatomic,copy) NSString *priceStr;
 @property (nonatomic,copy) NSString *qualityStr;
 @property (nonatomic,weak) UITextField *lianxifangshiField;
 @property (nonatomic,copy) NSString *uid;
+@property (nonatomic)NSDictionary *orderDetailDic;
 @end
 
 @implementation YLDEditDingDanViewController
+@synthesize typeAry;
 -(id)initWithUid:(NSString *)uid
 {
     self=[super init];
@@ -51,39 +52,8 @@
     }
     return self;
 }
-@synthesize typeAry;
--(id)init
-{
-    self=[super init];
-    if (self) {
-        [HTTPCLIENT huiquZhiliangYaoQiuBaoDingSuccess:^(id responseObject) {
-            if ([[responseObject objectForKey:@"success"] integerValue]==1) {
-                NSDictionary *result=[responseObject objectForKey:@"result"];
-                NSArray *bigDataAry=[result objectForKey:@"lxBeanList"];
-                for (int i=0; i<bigDataAry.count; i++) {
-                    NSDictionary *ddddis=bigDataAry[i];
-                    NSString *lxName=ddddis[@"lxName"];
-                    if ([lxName isEqualToString:@"订单类型"]) {
-                        self.typeAry=ddddis[@"zidianList"];
-                    }
-                    if ([lxName isEqualToString:@"报价要求"]) {
-                        self.piceAry=ddddis[@"zidianList"];
-                    }
-                    if ([lxName isEqualToString:@"质量要求"]) {
-                        self.qualityAry=ddddis[@"zidianList"];
-                    }
-                }
-            }else
-            {
-                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-            }
-            
-        } failure:^(NSError *error) {
-            
-        }];
-    }
-    return self;
-}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -137,6 +107,98 @@
     [xiayibuBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.backScrollView addSubview:xiayibuBtn];
     [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame)+60)];
+    
+    //获取数据
+    ShowActionV();
+    [HTTPCLIENT wodedingdanbianjiWithUid:self.uid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]==1) {
+            NSDictionary *result=[responseObject objectForKey:@"result"];
+            self.orderDetailDic=result[@"orderDetail"];
+            self.uid=self.orderDetailDic[@"uid"];
+          
+            
+            NSArray *bigDataAry=[result objectForKey:@"lxBeanList"];
+            for (int i=0; i<bigDataAry.count; i++) {
+                NSDictionary *ddddis=bigDataAry[i];
+                NSString *lxName=ddddis[@"lxName"];
+                if ([lxName isEqualToString:@"订单类型"]) {
+                    self.typeAry=ddddis[@"zidianList"];
+                }
+                if ([lxName isEqualToString:@"报价要求"]) {
+                    self.piceAry=ddddis[@"zidianList"];
+                }
+                if ([lxName isEqualToString:@"质量要求"]) {
+                    self.qualityAry=ddddis[@"zidianList"];
+                }
+            }
+            
+            
+//            @property (nonatomic,weak) UIButton *typeBtn;
+            //            @property (nonatomic,copy) NSString *typeStr;
+            self.typeStr=self.orderDetailDic[@"orderTypeUid"];
+            for (NSDictionary *dic in self.typeAry) {
+                NSString *uidStr=dic[@"uid"];
+                if ([uidStr isEqualToString:self.typeStr]) {
+                    NSString *nameStr=dic[@"name"];
+                    [self.typeBtn setTitle:nameStr forState:UIControlStateNormal];
+                    break;
+                }
+            }
+//            @property (nonatomic,weak) UITextField *NameTextField;
+            self.NameTextField.text=[self.orderDetailDic objectForKey:@"projectName"];
+//            @property (nonatomic,weak) UIButton *areaBtn;
+            [self.areaBtn setTitle:self.orderDetailDic[@"area"] forState:UIControlStateNormal];
+            
+//            @property (nonatomic,weak) UIButton *timeBtn;
+            //            @property (nonatomic,copy) NSString *timeStr;
+            [self.timeBtn setTitle:self.orderDetailDic[@"endDates"] forState:UIControlStateNormal];
+            self.timeStr=[NSString stringWithFormat:@"%@ 23:59:59",self.orderDetailDic[@"endDates"]];
+//            @property (nonatomic,copy) NSString *AreaProvince;
+            self.AreaProvince=self.orderDetailDic[@"usedProvince"];
+//            @property (nonatomic,copy) NSString *AreaCity;
+            self.AreaCity=self.orderDetailDic[@"usedCity"];
+//            @property (nonatomic,weak) UIButton *priceBtn;
+            //            @property (nonatomic,copy) NSString *priceStr;
+            self.priceStr=self.orderDetailDic[@"quotationRequires"];
+            for (NSDictionary *dic in self.piceAry) {
+                NSString *uidStr=dic[@"uid"];
+                if ([uidStr isEqualToString:self.priceStr]) {
+                    NSString *nameStr=dic[@"name"];
+                    [self.priceBtn setTitle:nameStr forState:UIControlStateNormal];
+                    break;
+                }
+            }
+
+//            @property (nonatomic,weak) UIButton *qualityBtn;
+            //            @property (nonatomic,copy) NSString *qualityStr;self.qualityStr=self.orderDetailDic[@"qualityRequirement"];
+            for (NSDictionary *dic in self.qualityAry) {
+                NSString *uidStr=dic[@"uid"];
+                if ([uidStr isEqualToString:self.priceStr]) {
+                    NSString *nameStr=dic[@"name"];
+                    [self.qualityBtn setTitle:nameStr forState:UIControlStateNormal];
+                    break;
+                }
+            }
+//            @property (nonatomic,weak) UITextField *xiongjingField;
+            self.xiongjingField.text=self.orderDetailDic[@"dbh"];
+//            @property (nonatomic,weak) UITextField *dijingField;
+        self.dijingField.text=self.orderDetailDic[@"groundDiameter"];
+//            @property (nonatomic,weak) UITextField *lianxirenField;
+            self.lianxirenField.text=self.orderDetailDic[@"chargePerson"];
+//            @property (nonatomic,weak) BWTextView *jianjieTextView;
+            self.jianjieTextView.text=self.orderDetailDic[@"description"];
+//            @property (nonatomic,weak) UITextField *lianxifangshiField;
+            self.lianxifangshiField.text=self.orderDetailDic[@"phone"];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        
+        RemoveActionV();
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+
     // Do any additional setup after loading the view.
 }
 -(void)chongzhiBtnAction:(UIButton *)sender
@@ -202,6 +264,18 @@
         [ToastView showTopToast:@"请完善联系方式"];
         return;
     }
+    [HTTPCLIENT fabuGongChengDingDanWithUid:self.uid WithprojectName:self.NameTextField.text WithorderName:self.typeBtn.titleLabel.text WithorderTypeUid:self.typeStr WithusedProvince:self.AreaProvince WithusedCity:self.AreaCity WithendDate:self.timeStr WithchargePerson:self.lianxirenField.text Withphone:self.lianxifangshiField.text WithqualityRequirement:self.qualityStr WithquotationRequires:self.priceStr Withdbh:self.xiongjingField.text WithgroundDiameter:self.dijingField.text Withdescription:self.jianjieTextView.text With:nil Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [ToastView showTopToast:@"编辑成功，即将返回"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 -(void)areaBtnAction:(UIButton *)sender
 {
