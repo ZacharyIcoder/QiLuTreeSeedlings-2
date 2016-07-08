@@ -111,6 +111,7 @@
     }
   
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.searchType==1) {
@@ -128,6 +129,7 @@
 {
     
     if (self.searchType==1) {
+        ShowActionV();
         [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Withgoldsupplier:@"0" Success:^(id responseObject) {
              //NSLog(@"%@",responseObject);
             if(self.PageCount==1)
@@ -155,16 +157,19 @@
                 [ToastView showTopToast:@"已无更多信息"];
                 self.PageCount--;
             }
+            RemoveActionV();
             [self.buyDataAry removeAllObjects];
             [self.selfTableView reloadData];
             [self.selfTableView headerEndRefreshing];
             [self.selfTableView footerEndRefreshing];
         } failure:^(NSError *error) {
+            RemoveActionV();
             [self.selfTableView headerEndRefreshing];
             [self.selfTableView footerEndRefreshing];
         }];
     }
     if (self.searchType==2) {
+        ShowActionV();
         [HTTPCLIENT BuyListWithWithPageSize:@"15" WithStatus:[NSString stringWithFormat:@"%ld",(long)self.status]WithStartNumber:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
            // NSLog(@"%@",responseObject);
             if(self.PageCount==1)
@@ -190,12 +195,13 @@
                 self.PageCount--;
             }
             
-            
+            RemoveActionV();
             [self.sellDataAry removeAllObjects];;
             [self.selfTableView reloadData];
             [self.selfTableView headerEndRefreshing];
             [self.selfTableView footerEndRefreshing];
         } failure:^(NSError *error) {
+            RemoveActionV();
             [self.selfTableView headerEndRefreshing];
             [self.selfTableView footerEndRefreshing];
         }];
@@ -253,6 +259,7 @@
     }
 
     if (self.searchType==1) {
+        ShowActionV();
         [HTTPCLIENT sellSearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithProductUid:self.productUid WithProductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);
             if(self.PageCount==1)
@@ -280,18 +287,20 @@
                 self.PageCount--;
 
             }
-            
+            RemoveActionV();
             [self.buyDataAry removeAllObjects];
             [self.selfTableView reloadData];
             [self.selfTableView headerEndRefreshing];
             [self.selfTableView footerEndRefreshing];
         } failure:^(NSError *error) {
+            RemoveActionV();
             [self.selfTableView headerEndRefreshing];
             [self.selfTableView footerEndRefreshing];
         }];
         
     }
     if (self.searchType==2) {
+        ShowActionV();
         [HTTPCLIENT buySearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithproductUid:self.productUid WithproductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             if(self.PageCount==1)
@@ -322,8 +331,10 @@
                 [self.selfTableView headerEndRefreshing];
                 [self.selfTableView footerEndRefreshing];
             }
+            RemoveActionV();
             [self.selfTableView reloadData];
         } failure:^(NSError *error) {
+            RemoveActionV();
             [self.selfTableView headerEndRefreshing];
             [self.selfTableView footerEndRefreshing];
         }];

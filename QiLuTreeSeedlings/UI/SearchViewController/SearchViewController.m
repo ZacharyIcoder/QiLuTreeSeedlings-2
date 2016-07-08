@@ -306,28 +306,10 @@
     if (self.searchMessageField.text.length==0) {
         [ToastView showTopToast:@"请输入搜索内容"];
         [self.searchMessageField becomeFirstResponder];
-
-        //[alertV addAction:cancelAction];
-        
-       
         
         return;
     }
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSMutableArray *searchHistoryAry=[NSMutableArray arrayWithArray:[userDefaults objectForKey:@"searchHistoryAry"]];
-//    if (![searchHistoryAry containsObject:self.searchMessageField.text]) {
-//        if (searchHistoryAry.count<5) {
-//            [searchHistoryAry addObject:self.searchMessageField.text];
-//            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-//            [userDefaults synchronize];
-//        }else
-//        {
-//            [searchHistoryAry addObject:self.searchMessageField.text];
-//            [searchHistoryAry removeObjectAtIndex:0];
-//            [userDefaults setObject:searchHistoryAry forKey:@"searchHistoryAry"];
-//            [userDefaults synchronize];
-//        }
-//    }
+
     [self.searchMessageField resignFirstResponder];
     [self SearchActionWithString:self.searchMessageField.text];
     

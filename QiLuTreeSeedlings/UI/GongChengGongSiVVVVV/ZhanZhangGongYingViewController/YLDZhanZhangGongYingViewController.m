@@ -19,6 +19,7 @@
 #import "YLDWorkstationlistModel.h"
 #import "HotSellModel.h"
 #import "SellDetialViewController.h"
+#import "YLDZZsuppleyListViewController.h"
 @interface YLDZhanZhangGongYingViewController ()<AdvertDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic)NSInteger pageNum;
@@ -226,7 +227,9 @@
 }
 -(void)moresupplyAction
 {
-    
+     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+    YLDZZsuppleyListViewController *yldZZSUPPLEYVC=[[YLDZZsuppleyListViewController alloc]init];
+    [self.navigationController pushViewController:yldZZSUPPLEYVC animated:YES];
 }
 -(void)moreWorkstationAcion
 {
