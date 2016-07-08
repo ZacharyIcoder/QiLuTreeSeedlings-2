@@ -8,8 +8,13 @@
 
 #import "YLDDingDanMMBianJiViewController.h"
 #import "UIDefines.h"
+#import "HttpClient.h"
+
 @interface YLDDingDanMMBianJiViewController ()
 @property (nonatomic,copy)NSString *uid;
+@property (nonatomic,weak)UITextField *nameTextField;
+@property (nonatomic,weak)UITextField *numTextField;
+@property (nonatomic,weak)UITextField *shuomingTextField;
 @end
 
 @implementation YLDDingDanMMBianJiViewController
@@ -25,8 +30,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"苗木编辑";
+    UIButton *saveBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-80, 20, 70, 44)];
+    [saveBtn setEnlargeEdgeWithTop:0 right:10 bottom:0 left:30];
+    [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [self.navBackView addSubview:saveBtn];
+    [saveBtn addTarget:self action:@selector(saveBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self CreatAddView];
+    [HTTPCLIENT dingdanMMbianjiWithUid:self.uid Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *result=[responseObject objectForKey:@"result"];
+            NSDictionary *item=result[@"item"];
+            self.nameTextField.text=item[@"name"];
+            self.numTextField.text=[NSString stringWithFormat:@"%@",item[@"quantity"]];
+            if (item[@"description"]) {
+            self.shuomingTextField.text=item[@"description"];
+            }
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
     // Do any additional setup after loading the view.
+}
+-(void)saveBtnAction
+{
+    if (self.nameTextField.text.length<=0) {
+        [ToastView  showTopToast:@"请输入苗木名称"];
+        return;
+    }
+    if (self.numTextField.text.length<=0) {
+        [ToastView  showTopToast:@"请输入苗木数量"];
+        return;
+    }
+    [HTTPCLIENT dingdanMMgengxinWithUid:self.uid WithName:self.nameTextField.text Withquantity:self.numTextField.text Withdecription:self.shuomingTextField.text Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [ToastView showTopToast:@"编辑成功"];
+            if (self.delegate) {
+                [self.delegate MMreload];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 -(UIView *)CreatAddView
 {
@@ -36,6 +85,7 @@
     
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.tag=20;
+    self.nameTextField=nameTextField;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
@@ -47,7 +97,7 @@
     
     UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2+5, 5, kWidth/2-15, 30)];
     numTextField.placeholder=@"请输入需求数量";
-    
+    self.numTextField=numTextField;
     numTextField.tag=7;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
@@ -58,7 +108,8 @@
     numTextField.textColor=NavYellowColor;
     numTextField.keyboardType=UIKeyboardTypeNumberPad;
     [view addSubview:numTextField];
-    UITextField *shuomingTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
+    UITextField *shuomingTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 40, kWidth-20, 30)];
+    self.shuomingTextField=shuomingTextField;
     shuomingTextField.tag=100;
     shuomingTextField.placeholder=@"请输入苗木说明(100字以内)";
     [[NSNotificationCenter defaultCenter] addObserver:self

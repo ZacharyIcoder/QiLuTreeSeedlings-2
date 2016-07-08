@@ -1035,4 +1035,20 @@ failure:(void (^)(NSError *error))failure;
                   Withquantity:(NSString *)quantity
                 Withdecription:(NSString *)decription Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－站长供应信息列表-----------
+-(void)zhanzhanggongyingListWithPageNum:(NSString *)pageNumber WithPageSize:(NSString *)pageSize
+                                Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程助手－站长供应信息检索---------
+-(void)ZhanZhanggongyingListWithPage:(NSString*)page
+             WithPageSize:(NSString *)pageSize
+         Withgoldsupplier:(NSString *)goldsupplier
+           WithProductUid:(NSString *)productUid
+          WithProductName:(NSString *)productName
+             WithProvince:(NSString *)province
+                 WithCity:(NSString *)city
+               WithCounty:(NSString *)county
+                  WithAry:(NSArray *)ary
+                  Success:(void (^)(id responseObject))success
+                  failure:(void (^)(NSError *error))failure;
 @end

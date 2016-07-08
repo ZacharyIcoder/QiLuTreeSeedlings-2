@@ -4048,4 +4048,82 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark ---------- 工程助手－站长供应信息列表-----------
+-(void)zhanzhanggongyingListWithPageNum:(NSString *)pageNumber WithPageSize:(NSString *)pageSize
+                                Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/company/supplylist";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"pageNumber"]              = pageNumber;
+    parmers[@"pageSize"]             = pageSize;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+-(void)ZhanZhanggongyingListWithPage:(NSString*)page
+                        WithPageSize:(NSString *)pageSize
+                    Withgoldsupplier:(NSString *)goldsupplier
+                      WithProductUid:(NSString *)productUid
+                     WithProductName:(NSString *)productName
+                        WithProvince:(NSString *)province
+                            WithCity:(NSString *)city
+                          WithCounty:(NSString *)county
+                             WithAry:(NSArray *)ary
+                             Success:(void (^)(id responseObject))success
+                             failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL = @"api/project/supply/search";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
+    parameters[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parameters[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parameters[@"client_id"]        = kclient_id;
+    parameters[@"client_secret"]    = kclient_secret;
+    parameters[@"device_id"]        = str;
+
+    parameters[@"pageNumber"]=page;
+    parameters[@"pageSize"]=pageSize;
+    parameters[@"productName"]=productName;
+    
+    parameters[@"goldsupplier"]=goldsupplier;
+    parameters[@"productUid"]=productUid;
+    parameters[@"province"]=province;
+    parameters[@"city"]=city;
+    parameters[@"county"]=county;
+    
+    for (int i=0; i<ary.count; i++) {
+        NSDictionary *dic=ary[i];
+        [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
+    }
+    
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+            success(responseObject);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
 @end

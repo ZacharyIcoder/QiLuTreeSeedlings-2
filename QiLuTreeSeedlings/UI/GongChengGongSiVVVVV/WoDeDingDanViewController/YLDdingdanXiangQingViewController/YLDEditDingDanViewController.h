@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "NomarBaseViewController.h"
+@protocol YLDEditDingDanViewCdelegate<NSObject>
+@optional
+-(void)ddJJreload;
+@end
 @interface YLDEditDingDanViewController : NomarBaseViewController
+@property (nonatomic,weak) id<YLDEditDingDanViewCdelegate> delegate;
 -(id)initWithUid:(NSString *)uid;
 @end

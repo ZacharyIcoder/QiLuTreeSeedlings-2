@@ -268,7 +268,11 @@
     [HTTPCLIENT fabuGongChengDingDanWithUid:self.uid WithprojectName:self.NameTextField.text WithorderName:self.typeBtn.titleLabel.text WithorderTypeUid:self.typeStr WithusedProvince:self.AreaProvince WithusedCity:self.AreaCity WithendDate:self.timeStr WithchargePerson:self.lianxirenField.text Withphone:self.lianxifangshiField.text WithqualityRequirement:self.qualityStr WithquotationRequires:self.priceStr Withdbh:self.xiongjingField.text WithgroundDiameter:self.dijingField.text Withdescription:self.jianjieTextView.text With:nil Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"编辑成功，即将返回"];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            if (self.delegate) {
+                [self.delegate ddJJreload];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+            
         }else
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];

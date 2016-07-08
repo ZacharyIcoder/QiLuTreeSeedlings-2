@@ -298,6 +298,7 @@
 		EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */; };
 		EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */; };
 		EA9FE6DB1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6DA1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m */; };
+		EA9FE6DF1D2F733D00110A71 /* YLDZZsuppleyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6DE1D2F733D00110A71 /* YLDZZsuppleyListViewController.m */; };
 		EAA120C21CA8CAFC00C0D988 /* editngChange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */; };
 		EAA81BA61C744D21007F207D /* HotBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA51C744D21007F207D /* HotBuyView.m */; };
 		EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA81C746A7B007F207D /* HotBuyViewCell.m */; };
@@ -1161,6 +1162,8 @@
 		EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeCell.m; sourceTree = "<group>"; };
 		EA9FE6D91D2F503400110A71 /* YLDDingDanMMBianJiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanMMBianJiViewController.h; sourceTree = "<group>"; };
 		EA9FE6DA1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanMMBianJiViewController.m; sourceTree = "<group>"; };
+		EA9FE6DD1D2F733D00110A71 /* YLDZZsuppleyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDZZsuppleyListViewController.h; sourceTree = "<group>"; };
+		EA9FE6DE1D2F733D00110A71 /* YLDZZsuppleyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDZZsuppleyListViewController.m; sourceTree = "<group>"; };
 		EAA120C11CA8CAFC00C0D988 /* editngChange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editngChange@2x.png"; sourceTree = "<group>"; };
 		EAA81BA41C744D21007F207D /* HotBuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotBuyView.h; sourceTree = "<group>"; };
 		EAA81BA51C744D21007F207D /* HotBuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotBuyView.m; sourceTree = "<group>"; };
@@ -2842,6 +2845,7 @@
 		EA5E6E371CFFC9A5003D357C /* ZhanZhangGongYingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA9FE6DC1D2F732900110A71 /* ZhanZhangGongYingListViewController */,
 				EA3D4D901D17D1120010B56D /* YLDZhangzhangMessageViewController */,
 				EA5E6E4C1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.h */,
 				EA5E6E4D1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m */,
@@ -3100,6 +3104,15 @@
 				EA9FE6DA1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m */,
 			);
 			path = YLDdingdanXiangQingViewController;
+			sourceTree = "<group>";
+		};
+		EA9FE6DC1D2F732900110A71 /* ZhanZhangGongYingListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA9FE6DD1D2F733D00110A71 /* YLDZZsuppleyListViewController.h */,
+				EA9FE6DE1D2F733D00110A71 /* YLDZZsuppleyListViewController.m */,
+			);
+			path = ZhanZhangGongYingListViewController;
 			sourceTree = "<group>";
 		};
 		EAA81BA31C744D02007F207D /* HotBuyView */ = {
@@ -5041,6 +5054,7 @@
 				FC56126E1D0C092F00E5743B /* ForegroundColorAttribute.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
+				EA9FE6DF1D2F733D00110A71 /* YLDZZsuppleyListViewController.m in Sources */,
 				EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
 				EA5E6E3B1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m in Sources */,

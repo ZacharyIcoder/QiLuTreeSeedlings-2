@@ -17,7 +17,8 @@
 #import "MJRefresh.h"
 #import "YLDBaoJiaDetialViewController.h"
 #import "YLDHeZuoDetialViewController.h"
-@interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate,YLDMiaoMuUnTableViewCellDelegate>
+#import "YLDDingDanMMBianJiViewController.h"
+@interface YLDDingDanDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate,YLDMiaoMuUnTableViewCellDelegate,YLDDingDanMMBianJiViewCdelegate,YLDEditDingDanViewCdelegate>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
 @property (nonatomic,weak)YLDDingDanJianJieView *jianjieView;
@@ -40,6 +41,11 @@
         self.Uid=uid;
     }
     return self;
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+ 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,6 +98,18 @@
     searchV.delegate=self;
     searchV.hidden=YES;
     [self.navBackView addSubview:searchV];
+    
+    ShowActionV();
+    [self getdataAction];
+
+}
+-(void)MMreload
+{
+    ShowActionV();
+    [self getdataAction];
+}
+-(void)ddJJreload
+{
     ShowActionV();
     [self getdataAction];
 }
@@ -146,6 +164,7 @@
 -(void)editingBtnAction:(UIButton *)sender
 {
     YLDEditDingDanViewController *EditVC=[[YLDEditDingDanViewController alloc]initWithUid:self.model.uid];
+    EditVC.delegate=self;
     [self.navigationController pushViewController:EditVC animated:YES];
 }
 -(void)searchBtnAction:(UIButton *)sender
@@ -182,7 +201,9 @@
         [self.navigationController pushViewController:hezuodeltai animated:YES];
     }
     if (tag==4) {
-        
+        YLDDingDanMMBianJiViewController *MMBJVC=[[YLDDingDanMMBianJiViewController alloc]initWithUid:[dic objectForKey:@"uid"]];
+        MMBJVC.delegate=self;
+        [self.navigationController pushViewController:MMBJVC animated:YES];
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

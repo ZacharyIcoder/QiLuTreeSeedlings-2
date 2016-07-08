@@ -41,7 +41,7 @@
     self.areaLab.text=model.area;
     self.phoneLab.text=model.phone;
     if ([model.status isEqualToString:@"报价中"]) {
-        [self.logoImageV setImage:[UIImage imageNamed:@"Gyibaojia"]];
+        [self.logoImageV setImage:[UIImage imageNamed:@"zt报价中"]];
     }
     if ([model.status isEqualToString:@"已结束"]) {
         [self.logoImageV setImage:[UIImage imageNamed:@"zt已结束"]];

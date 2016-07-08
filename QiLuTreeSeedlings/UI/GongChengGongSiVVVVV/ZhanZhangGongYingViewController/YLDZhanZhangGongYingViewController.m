@@ -208,11 +208,25 @@
     }
     if (section==2) {
         UIView *view=[self makeTitleViewWithTitle:@"工作站供应" AndColor:NavColor andY:0];
+        UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
+        [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
+        [moreBtn setTitleColor:kRedHintColor forState:UIControlStateNormal];
+        UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
+        [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
+        [view addSubview:hotMoreRowImgV];
+        [moreBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [moreBtn addTarget:self action:@selector(moresupplyAction) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:moreBtn];
+
         return view;
     }
     UIView *view=[[UIView alloc]init];
     
     return view;
+}
+-(void)moresupplyAction
+{
+    
 }
 -(void)moreWorkstationAcion
 {
