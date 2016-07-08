@@ -39,9 +39,18 @@
 @property (nonatomic,copy) NSString *priceStr;
 @property (nonatomic,copy) NSString *qualityStr;
 @property (nonatomic,weak) UITextField *lianxifangshiField;
+@property (nonatomic,copy) NSString *uid;
 @end
 
 @implementation YLDEditDingDanViewController
+-(id)initWithUid:(NSString *)uid
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+    }
+    return self;
+}
 @synthesize typeAry;
 -(id)init
 {

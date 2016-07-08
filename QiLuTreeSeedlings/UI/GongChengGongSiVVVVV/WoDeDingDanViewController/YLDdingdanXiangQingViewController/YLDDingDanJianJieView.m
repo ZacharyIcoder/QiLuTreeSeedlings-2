@@ -40,6 +40,12 @@
     self.shuomingTextField.text=model.descriptionzz;
     self.areaLab.text=model.area;
     self.phoneLab.text=model.phone;
+    if ([model.status isEqualToString:@"报价中"]) {
+        [self.logoImageV setImage:[UIImage imageNamed:@"Gyibaojia"]];
+    }
+    if ([model.status isEqualToString:@"已结束"]) {
+        [self.logoImageV setImage:[UIImage imageNamed:@"zt已结束"]];
+    }
 }
 -(void)setHezuomodel:(YLDHeZuoDetial *)hezuomodel
 {

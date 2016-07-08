@@ -105,10 +105,10 @@
                 YLDDingDanDetialModel *model=[YLDDingDanDetialModel yldDingDanDetialModelWithDic:dic];
                 self.model=model;
                 self.jianjieView.model=model;
-                if (![self.model.status isEqualToString:@"可编辑"]) {
-                    [self.editingBtn removeFromSuperview];
-                    self.editingBtn=nil;
-                }
+//                if (![self.model.status isEqualToString:@"可编辑"]) {
+//                    [self.editingBtn removeFromSuperview];
+//                    self.editingBtn=nil;
+//                }
                 [self.dataAry removeAllObjects];
 
             }

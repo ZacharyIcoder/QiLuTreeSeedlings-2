@@ -45,6 +45,7 @@
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
     tableView.delegate=self;
     tableView.dataSource=self;
+    tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     __weak typeof(self) weakSelf=self;
     self.tableView=tableView;

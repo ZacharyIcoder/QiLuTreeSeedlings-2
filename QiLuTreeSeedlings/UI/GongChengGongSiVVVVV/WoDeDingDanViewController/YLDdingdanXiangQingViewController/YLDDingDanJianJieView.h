@@ -10,6 +10,7 @@
 #import "YLDDingDanDetialModel.h"
 #import "YLDHeZuoDetial.h"
 @interface YLDDingDanJianJieView : UIView
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *dingdanTypeLab;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLab;

@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "NomarBaseViewController.h"
 @interface YLDEditDingDanViewController : NomarBaseViewController
+-(id)initWithUid:(NSString *)uid;
 @end

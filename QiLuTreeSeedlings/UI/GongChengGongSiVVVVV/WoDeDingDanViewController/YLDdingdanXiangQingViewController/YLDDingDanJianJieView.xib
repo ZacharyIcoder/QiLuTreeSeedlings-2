@@ -205,6 +205,13 @@
                     <color key="textColor" red="0.26666666666666666" green="0.2627450980392157" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SFq-eE-3aV">
+                    <rect key="frame" x="260" y="0.0" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="dyK-de-gSe"/>
+                        <constraint firstAttribute="width" constant="60" id="kLh-xr-os9"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -232,6 +239,7 @@
                 <constraint firstAttribute="trailing" secondItem="UPj-k8-GHU" secondAttribute="trailing" constant="16" id="K9b-TO-1VZ"/>
                 <constraint firstItem="MiS-QM-S7Y" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="Kas-Zk-9eN"/>
                 <constraint firstAttribute="trailing" secondItem="gOH-Po-3dg" secondAttribute="trailing" constant="10" id="KlI-sO-V0R"/>
+                <constraint firstAttribute="trailing" secondItem="SFq-eE-3aV" secondAttribute="trailing" id="MIR-W0-DxJ"/>
                 <constraint firstAttribute="trailing" secondItem="8gK-z2-cOO" secondAttribute="trailing" constant="8" id="MOX-3k-eGP"/>
                 <constraint firstItem="elB-X5-MPf" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="MzN-Xd-UGC"/>
                 <constraint firstItem="UPj-k8-GHU" firstAttribute="leading" secondItem="txP-v1-Kqo" secondAttribute="trailing" constant="12" id="NuI-69-Lua"/>
@@ -260,6 +268,7 @@
                 <constraint firstItem="8gK-z2-cOO" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="u9E-7o-zJL"/>
                 <constraint firstItem="Yve-bX-cVH" firstAttribute="top" secondItem="gOH-Po-3dg" secondAttribute="bottom" constant="12" id="xZQ-be-Knx"/>
                 <constraint firstItem="Dpb-Sa-8zu" firstAttribute="leading" secondItem="7D8-LA-buL" secondAttribute="trailing" constant="8" id="yMj-1e-nxX"/>
+                <constraint firstItem="SFq-eE-3aV" firstAttribute="top" secondItem="7Pl-hZ-SPF" secondAttribute="top" id="zhM-D6-veV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -271,6 +280,7 @@
                 <outlet property="companyLab" destination="bEk-yz-xLq" id="yvK-ng-3y9"/>
                 <outlet property="dingdanTypeLab" destination="qtk-nv-uz0" id="Buf-KN-QRk"/>
                 <outlet property="endTimeLab" destination="8gK-z2-cOO" id="ptn-ai-Arq"/>
+                <outlet property="logoImageV" destination="SFq-eE-3aV" id="6hv-WW-Ebv"/>
                 <outlet property="nameLab" destination="Di7-rJ-57p" id="ku7-YO-59H"/>
                 <outlet property="phoneLab" destination="D05-lH-u2w" id="fy9-Zo-LeA"/>
                 <outlet property="shuomingTextField" destination="XKq-IN-gCK" id="vEy-kh-h2n"/>
