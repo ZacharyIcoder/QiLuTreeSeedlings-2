@@ -33,4 +33,9 @@
  *  工作站编号
  */
 @property (nonatomic, copy) NSString *viewNo;
+
+/**
+ *  工作站ID 工作站列表
+ */
+@property (nonatomic, copy) NSString *uid;
 @end

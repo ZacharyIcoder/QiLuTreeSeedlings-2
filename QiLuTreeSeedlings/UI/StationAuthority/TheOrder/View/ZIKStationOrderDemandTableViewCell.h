@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class  ZIKStationOrderDemandModel;
 @interface ZIKStationOrderDemandTableViewCell : UITableViewCell
++ (instancetype)cellWithTableView:(UITableView *)tableView;
+- (void)configureCell:(ZIKStationOrderDemandModel *)model;
+
 
 @end

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZIKWorkstationSelectView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqf-UZ-E9D">
+                    <rect key="frame" x="266" y="11" width="69" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="69" id="3Wq-YM-H8h"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="titleEdgeInsets" minX="-32" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="52" minY="1" maxX="4" maxY="2"/>
+                    <state key="normal" title="所有市" image="工程订单_排序off.png">
+                        <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cityButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="umT-eW-vCs"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCG-jk-31x">
+                    <rect key="frame" x="451" y="11" width="98" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="98" id="YXR-Yi-Btl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="titleEdgeInsets" minX="-33" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="80" minY="1" maxX="6" maxY="1"/>
+                    <state key="normal" title="所有县(区)" image="工程订单_排序off.png">
+                        <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="countryButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="9cP-NS-YMX"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-YB-Vyb">
+                    <rect key="frame" x="200" y="10" width="1" height="25"/>
+                    <color key="backgroundColor" red="0.73181452739999997" green="0.73482941830000004" blue="0.73482941830000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="VMB-ew-MXN"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzz-VL-Lha">
+                    <rect key="frame" x="400" y="10" width="1" height="24"/>
+                    <color key="backgroundColor" red="0.73181452739999997" green="0.73482941830000004" blue="0.73482941830000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="jiq-BC-3Ft"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0O-iI-6Wo">
+                    <rect key="frame" x="75" y="11" width="51" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="TEb-U4-9yS"/>
+                        <constraint firstAttribute="height" priority="250" constant="22" id="hbW-s3-CYT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="titleEdgeInsets" minX="-32" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="35" minY="0.0" maxX="3" maxY="2"/>
+                    <state key="normal" title="全国" image="工程订单_排序on.png">
+                        <color key="titleColor" red="0.41960784309999999" green="0.73725490199999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="provinceButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="w2o-GE-g1T"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="e1A-YB-Vyb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Dfp-to-6VF"/>
+                <constraint firstItem="jCG-jk-31x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="5:3" id="Dsi-6f-NeT"/>
+                <constraint firstAttribute="bottom" secondItem="e1A-YB-Vyb" secondAttribute="bottom" constant="9" id="Fn3-Sa-cZX"/>
+                <constraint firstItem="mzz-VL-Lha" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Hgl-mD-qxL"/>
+                <constraint firstAttribute="bottom" secondItem="mzz-VL-Lha" secondAttribute="bottom" constant="10" id="Ob5-aW-Tzp"/>
+                <constraint firstItem="w0O-iI-6Wo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="SQA-8Q-USA"/>
+                <constraint firstItem="Wqf-UZ-E9D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="VeM-fc-KRS"/>
+                <constraint firstAttribute="bottom" secondItem="w0O-iI-6Wo" secondAttribute="bottom" constant="11" id="WMq-6n-X89"/>
+                <constraint firstAttribute="bottom" secondItem="Wqf-UZ-E9D" secondAttribute="bottom" constant="11" id="Zkv-R6-WDq"/>
+                <constraint firstAttribute="bottom" secondItem="jCG-jk-31x" secondAttribute="bottom" constant="11" id="dTv-XT-4wl"/>
+                <constraint firstItem="mzz-VL-Lha" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="4:3" id="f8f-sv-zht"/>
+                <constraint firstItem="e1A-YB-Vyb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="2:3" id="mR0-Nm-VOT"/>
+                <constraint firstItem="w0O-iI-6Wo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.33333" id="qL1-D9-XZE"/>
+                <constraint firstItem="jCG-jk-31x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="tVo-QJ-FI9"/>
+                <constraint firstItem="Wqf-UZ-E9D" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="y4N-GJ-lG6"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cityButton" destination="Wqf-UZ-E9D" id="zlY-Wj-V97"/>
+                <outlet property="countryButton" destination="jCG-jk-31x" id="6GL-xv-sto"/>
+                <outlet property="provinceButton" destination="w0O-iI-6Wo" id="OGt-Li-Okc"/>
+            </connections>
+            <point key="canvasLocation" x="441" y="-179"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="工程订单_排序off.png" width="15" height="9"/>
+        <image name="工程订单_排序on.png" width="15" height="10"/>
+    </resources>
+</document>

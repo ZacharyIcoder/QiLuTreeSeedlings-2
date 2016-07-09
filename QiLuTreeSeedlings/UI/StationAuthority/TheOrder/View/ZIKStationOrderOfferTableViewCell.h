@@ -17,6 +17,8 @@ typedef void (^QuoteBtnBlock) (NSInteger);
 @property (weak, nonatomic) IBOutlet UIButton *quoteButton;
 @property (nonatomic, assign) NSInteger section;
 @property (nonatomic, copy  ) QuoteBtnBlock      quoteBtnBlock;
+
+@property (nonatomic, assign) BOOL isCanQuote;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 - (void)configureCell:(ZIKStationOrderDetailQuoteModel *)model;
 @end

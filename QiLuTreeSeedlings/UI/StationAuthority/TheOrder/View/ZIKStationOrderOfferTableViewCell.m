@@ -48,12 +48,12 @@
 //    CGRect rect = [ZIKFunction getCGRectWithContent:model.orderUid width:200 font:14.0f];
 //    self.orderUidLabelLayoutConstraint.constant = rect.size.width;
     if ([model.stauts isEqualToString:@"1"]) {
-//        [self.quoteButton setTitle:@"已报价" forState:UIControlStateNormal];
-//        self.quoteButton.backgroundColor = self.orderUidLabel.backgroundColor;
-        self.quoteButton.hidden = YES;
+        [self.quoteButton setTitle:@"已报价" forState:UIControlStateNormal];
+        self.quoteButton.backgroundColor = self.orderUidLabel.backgroundColor;
+        //self.quoteButton.hidden = YES;
     } else if ([model.stauts isEqualToString:@"0"]){
-//        [self.quoteButton setTitle:@"立即报价" forState:UIControlStateNormal];
-        self.quoteButton.hidden = NO;
+        [self.quoteButton setTitle:@"立即报价" forState:UIControlStateNormal];
+        //self.quoteButton.hidden = NO;
     }
 }
 
@@ -66,4 +66,12 @@
     _quoteBtnBlock(self.section);
 }
 
+- (void)setIsCanQuote:(BOOL)isCanQuote {
+    _isCanQuote = isCanQuote;
+    if (isCanQuote) {
+        self.quoteButton.hidden = NO;
+    } else {
+        self.quoteButton.hidden = YES;
+    }
+}
 @end

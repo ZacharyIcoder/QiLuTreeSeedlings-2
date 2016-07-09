@@ -3243,8 +3243,8 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
 
-    parmers[@"uid"]              = uid;
-    parmers[@"orderUid"]         = orderUid;
+    parmers[@"uid"]              = orderUid;
+    parmers[@"orderUid"]         = uid;
     parmers[@"price"]            = price;
     parmers[@"quantity"]         = quantity;
     parmers[@"province"]         = province;
@@ -3252,7 +3252,7 @@
     parmers[@"county"]           = county;
     parmers[@"town"]             = town;
     parmers[@"description"]      = description;
-    parmers[@"imags"]            = imags;
+    parmers[@"imgs"]             = imags;
     parmers[@"compressImgs"]     = compressImgs;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {

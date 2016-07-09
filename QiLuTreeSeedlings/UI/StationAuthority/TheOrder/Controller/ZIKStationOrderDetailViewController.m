@@ -15,9 +15,19 @@
 #import "ZIKFunction.h"
 #import "ZIKStationOrderQuoteViewController.h"
 #import "ZIKStationOrderDemandTableViewCell.h"//订单要求cell
+#import "ZIKStationOrderDemandModel.h"//订单要求Model
+/**
+ *  cell类型
+ */
 typedef NS_ENUM(NSInteger, TypeStyle) {
-    TypeStyleOffer   = 0,   //产品报价
-    TypeStyleRequire = 1    //订单要求
+    /**
+     *  产品报价
+     */
+    TypeStyleOffer   = 0,
+    /**
+     *  订单要求
+     */
+    TypeStyleRequire = 1
 };
 
 @interface ZIKStationOrderDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -25,6 +35,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 @property (nonatomic, strong) UITableView *orderTableView;
 @property (nonatomic, strong) NSMutableArray *quoteMArr;
 @property (nonatomic, strong) NSString    *keyword;
+@property (nonatomic, strong) ZIKStationOrderDemandModel *demandModel;
 @end
 
 @implementation ZIKStationOrderDetailViewController
@@ -34,6 +45,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     // Do any additional setup after loading the view.
     self.vcTitle = @"订单详情";
     self.leftBarBtnImgString = @"BackBtn";
+    self.typeStyle = TypeStyleOffer;
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.searchBarView.placeHolder = @"请输入苗木名称";
     self.searchBarView.searchBlock = ^(NSString *searchText){
@@ -58,6 +70,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     selectMenuView.menuBtnBlock = ^(NSInteger menuBtnTag){
         menuBtnTag == 0 ? (weakSelf.typeStyle = TypeStyleOffer , self.isSearch = YES) : (weakSelf.typeStyle = TypeStyleRequire , self.isSearch = NO, self.isRightBtnHidden = YES);
+        [weakSelf.orderTableView reloadData];
     };
     [self.view addSubview:selectMenuView];
 
@@ -92,6 +105,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
         }
         NSDictionary *resultDic = responseObject[@"result"];
         NSDictionary *orderDetailDic = resultDic[@"orderDetail"];
+        self.demandModel = [ZIKStationOrderDemandModel yy_modelWithDictionary:orderDetailDic];
         NSArray *itemListArray = orderDetailDic[@"itemList"];
         [itemListArray enumerateObjectsUsingBlock:^(NSDictionary *itemDic, NSUInteger idx, BOOL * _Nonnull stop) {
             ZIKStationOrderDetailQuoteModel *model = [ZIKStationOrderDetailQuoteModel yy_modelWithDictionary:itemDic];
@@ -104,10 +118,16 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (self.typeStyle == TypeStyleRequire) {
+        return 0.0f;
+    }
     return 10.0f;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.typeStyle == TypeStyleRequire) {
+        return 1;
+    }
     return self.quoteMArr.count;
 }
 
@@ -116,33 +136,50 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.orderTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
-    self.orderTableView.estimatedRowHeight = 110;////必须设置好预估值
-    return tableView.rowHeight;
+    if (self.typeStyle == TypeStyleOffer) {
+        self.orderTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
+        self.orderTableView.estimatedRowHeight = 110;////必须设置好预估值
+        return tableView.rowHeight;
+    } else if (self.typeStyle == TypeStyleRequire) {
+        return 300.0f;
+    }
+    return 44.0f;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKStationOrderOfferTableViewCell *cell = [ZIKStationOrderOfferTableViewCell cellWithTableView:tableView];
-    if (self.quoteMArr.count > 0) {
-        ZIKStationOrderDetailQuoteModel *model = self.quoteMArr[indexPath.section];
-        cell.section = indexPath.section;
-//        if (self.statusType == StationOrderStatusTypeOutOfDate) {
-//            cell.quoteButton.hidden = YES;
-//        }
-        [cell configureCell:model];
-    }
-    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    if (self.typeStyle == TypeStyleOffer) {
+        ZIKStationOrderOfferTableViewCell *cell = [ZIKStationOrderOfferTableViewCell cellWithTableView:tableView];
+        if ([self.demandModel.quote isEqualToString:@"1"]) {
+            cell.isCanQuote = YES;
+        } else {
+            cell.isCanQuote = NO;
+        }
+        if (self.quoteMArr.count > 0) {
+            ZIKStationOrderDetailQuoteModel *model = self.quoteMArr[indexPath.section];
+            cell.section = indexPath.section;
+            [cell configureCell:model];
+        }
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
 
-    cell.quoteBtnBlock = ^(NSInteger section ) {
-        NSLog(@"报价:%ld",indexPath.section);
-        ZIKStationOrderQuoteViewController *quoteVC = [[ZIKStationOrderQuoteViewController alloc] initWithNibName:@"ZIKStationOrderQuoteViewController" bundle:nil];
-        ZIKStationOrderDetailQuoteModel *model = weakSelf.quoteMArr[indexPath.section];
-        quoteVC.name  = model.name;
-        quoteVC.count = model.quantity;
-        [weakSelf.navigationController pushViewController:quoteVC animated:YES];
-    };
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+        cell.quoteBtnBlock = ^(NSInteger section ) {
+            NSLog(@"报价:%ld",indexPath.section);
+            ZIKStationOrderQuoteViewController *quoteVC = [[ZIKStationOrderQuoteViewController alloc] initWithNibName:@"ZIKStationOrderQuoteViewController" bundle:nil];
+            ZIKStationOrderDetailQuoteModel *model = weakSelf.quoteMArr[indexPath.section];
+            quoteVC.name  = model.name;
+            quoteVC.count = model.quantity;
+            quoteVC.uid = model.uid;
+            quoteVC.orderUid = _demandModel.uid;
+            [weakSelf.navigationController pushViewController:quoteVC animated:YES];
+        };
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+
+    } else if (self.typeStyle == TypeStyleRequire) {
+        ZIKStationOrderDemandTableViewCell *demandCell = [ZIKStationOrderDemandTableViewCell cellWithTableView:tableView];
+        [demandCell configureCell:_demandModel];
+        return demandCell;
+    }
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

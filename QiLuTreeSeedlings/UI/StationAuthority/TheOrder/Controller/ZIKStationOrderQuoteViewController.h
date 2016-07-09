@@ -25,4 +25,13 @@
  *  规格要求
  */
 @property (nonatomic, copy) NSString *standardRequirement;
+
+/**
+ *  订单苗木ID
+ */
+@property (nonatomic, copy) NSString *uid;
+/**
+ *  订单ID
+ */
+@property (nonatomic, copy) NSString *orderUid;
 @end

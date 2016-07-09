@@ -14,11 +14,22 @@
 #import "UIImageView+AFNetworking.h"
 #import "StringAttributeHelper.h"
 #import "ZIKHintTableViewCell.h"
-@interface ZIKStationOrderQuoteViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+#import "YLDPickLocationView.h"
+#import "ZIKAddPickerView.h"
+@interface ZIKStationOrderQuoteViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,YLDPickLocationDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *quoteTableView;
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) BWTextView *contentTextView;
+
+@property (nonatomic, strong) NSString *province;//省
+@property (nonatomic, strong) NSString *city;//市
+@property (nonatomic, strong) NSString *county;//县
+@property (nonatomic, strong) NSString *town;//镇
+
+@property (nonatomic, strong) UIButton *addressButton;
+@property (nonatomic, strong) ZIKAddPickerView *pickerImgView;
+@property (nonatomic, strong) UIActionSheet    *myActionSheet;
 
 @end
 
@@ -26,12 +37,12 @@
 {
     UILabel *detailLabel;
     ZIKQuoteTextField *priceTextField;
-
-        //UIImageView    *_globalHeadImageView; //个人头像
-        UIImage        *_globalHeadImage;
-        UIImageView    *cellHeadImageView;
-        UILabel        *cellNameLabel;
-        UILabel        *cellPhoneLabel;
+    ZIKQuoteTextField *quantityTextField;
+    //UIImageView    *_globalHeadImageView; //个人头像
+    UIImage        *_globalHeadImage;
+    UIImageView    *cellHeadImageView;
+    UILabel        *cellNameLabel;
+    UILabel        *cellPhoneLabel;
 }
 
 - (void)viewDidLoad {
@@ -89,21 +100,27 @@
         if (indexPath.section == 0) {
             detailLabel = [[UILabel alloc] init];
             [cell addSubview:detailLabel];
-        } else if (indexPath.section == 1 && (indexPath.row == 0 || indexPath.row == 1)) {
-            priceTextField = [[ZIKQuoteTextField alloc] init];
-            [cell addSubview:priceTextField];
-        } else if (indexPath.section == 1 && indexPath.row == 3) {
-            _contentTextView = [[BWTextView alloc] init];
-            _contentTextView.placeholder = @"请输入50字以内说明...";
-            _contentTextView.font = [UIFont systemFontOfSize:15.0f];
-            _contentTextView.layer.masksToBounds = YES;
-            _contentTextView.layer.cornerRadius = 6.0f;
-            _contentTextView.layer.borderWidth = 1;
-            _contentTextView.layer.borderColor = [kLineColor CGColor];
-            [cell addSubview:_contentTextView];
+        } else if (indexPath.section == 1 ){
+            if (indexPath.row == 0) {
+                priceTextField = [[ZIKQuoteTextField alloc] init];
+                [cell addSubview:priceTextField];
+            } else if (indexPath.row == 1) {
+                quantityTextField = [[ZIKQuoteTextField alloc] init];
+                [cell addSubview:quantityTextField];
+            } else if (indexPath.row == 3) {
+                _contentTextView = [[BWTextView alloc] init];
+                _contentTextView.placeholder = @"请输入50字以内说明...";
+                _contentTextView.font = [UIFont systemFontOfSize:15.0f];
+                _contentTextView.layer.masksToBounds = YES;
+                _contentTextView.layer.cornerRadius = 6.0f;
+                _contentTextView.layer.borderWidth = 1;
+                _contentTextView.layer.borderColor = [kLineColor CGColor];
+                [cell addSubview:_contentTextView];
+            }
+
         }
-        if (!cellHeadImageView) {
-            cellHeadImageView = [[UIImageView alloc] init];
+        if (!self.pickerImgView) {
+             self.pickerImgView = [[ZIKAddPickerView alloc] init ];
         }
 
     }
@@ -133,6 +150,7 @@
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 
         priceTextField.frame = CGRectMake(100, 5, kWidth-120-40, 34);
+        quantityTextField.frame = priceTextField.frame;
         if (indexPath.row == 0) {
             priceTextField.placeholder = @"请输入单价";
             UILabel *yuan = [self labelWithText:@"元  *"];
@@ -140,7 +158,7 @@
         } else if (indexPath.row == 1) {
             UILabel *ke         = [self labelWithText:@"棵  *"];
             [cell addSubview:ke];
-            priceTextField.placeholder = @"请输入数量";
+            quantityTextField.placeholder = @"请输入数量";
         } else if (indexPath.row == 2) {
             UILabel *arrowLabel = [self labelWithText:@"      *"];
             UIButton *addressButton = [[UIButton alloc] init];
@@ -149,6 +167,7 @@
             [addressButton setTitle:@"请选择地址" forState:UIControlStateNormal];
             [addressButton setTitleColor:NavColor forState:UIControlStateNormal];
             [addressButton addTarget:self action:@selector(selectAddress) forControlEvents:UIControlEventTouchUpInside];
+            self.addressButton = addressButton;
             [cell addSubview:addressButton];
             [cell addSubview:arrowLabel];
         } else if (indexPath.row == 3) {
@@ -156,12 +175,14 @@
         }
     } else if (indexPath.section == 2)  {
         cell.textLabel.textColor = DarkTitleColor;
-        cellHeadImageView.frame = CGRectMake(100, 10, 100, 100);
-        cellHeadImageView.image = [UIImage imageNamed:@"添加图片"];
-        cellHeadImageView.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPicture)];
-        [cellHeadImageView addGestureRecognizer:tapGR];
-        [cell addSubview:cellHeadImageView];
+        self.pickerImgView.frame =  CGRectMake(100, 10, 80, 80);
+        self.pickerImgView.backgroundColor = [UIColor whiteColor];
+        [cell addSubview:self.pickerImgView];
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+
+        self.pickerImgView.takePhotoBlock = ^{
+            [weakSelf openMenu];
+        };
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -191,10 +212,85 @@
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
+    if (self.pickerImgView.urlMArr.count<1) {
+        [ToastView showTopToast:@"请添加苗木图片"];
+        return;
+    }
+    __block NSString *urlSring      = @"";
+    __block NSString *compressSring = @"";
+    [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+        urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
+        compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
+    }];
+    if (self.pickerImgView.urlMArr.count != 0) {
+        urlSring         = [urlSring substringFromIndex:1];
+        compressSring = [compressSring substringFromIndex:1];
+    }
+
+
+    [HTTPCLIENT stationQuoteCreateWithUid:self.orderUid orderUid:self.uid price:priceTextField.text quantity:quantityTextField.text province:self.province city:self.city county:self.county town:self.town description:self.contentTextView.text imgs:urlSring compressImgs:compressSring Success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        }
+        [ToastView showTopToast:@"报价成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSError *error) {
+        CLog(@"%@",error);
+    }];
+}
+
+-(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen {
+    NSMutableString *namestr=[NSMutableString new];
+    if (sheng.code) {
+        [namestr appendString:sheng.cityName];
+        self.province=sheng.code;
+    }else
+    {
+        self.province=nil;
+    }
+
+    if (shi.code) {
+        [namestr appendString:shi.cityName];
+        self.city=shi.code;
+    }else
+    {
+        self.city=nil;
+
+    }
+    if (xian.code) {
+        [namestr appendString:xian.cityName];
+        self.county=xian.code;
+       // self.xiancityModel=xian;
+    }else
+    {
+       // self.xiancityModel=nil;
+        self.county=nil;
+    }
+
+    if (zhen.code) {
+        [namestr appendString:zhen.cityName];
+        self.town=zhen.code;
+    }else
+    {
+        self.town=nil;
+    }
+    if (namestr.length>0) {
+        [self.addressButton setTitle:namestr forState:UIControlStateNormal];
+        [self.addressButton.titleLabel sizeToFit];
+    }else{
+        [self.addressButton setTitle:@"不限" forState:UIControlStateNormal];
+        [self.addressButton.titleLabel sizeToFit];
+
+    }
+
 }
 
 - (void)selectAddress {
-
+    YLDPickLocationView *pickerLocation = [[YLDPickLocationView alloc] initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveZhen];
+    pickerLocation.delegate=self;
+    [pickerLocation showPickView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -223,62 +319,73 @@
     return label;
 }
 
-#pragma mark - 添加图片事件
-//添加图片事件
-- (void)addPicture
+-(void)openMenu
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"添加苗木图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄新照片",@"从相册选取", nil];
-    sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [sheet showInView:self.view];
+    //在这里呼出下方菜单按钮项
+    self.myActionSheet = [[UIActionSheet alloc]
+                          initWithTitle:nil
+                          delegate:self
+                          cancelButtonTitle:@"取消"
+                          destructiveButtonTitle:nil
+                          otherButtonTitles: @"拍摄新照片", @"从相册中选取",nil];
+
+    [self.myActionSheet showInView:self.view];
+
 }
 
-#pragma mark - UIActionSheet
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-
-    if (buttonIndex == 1) {
-
-        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            //pickerImage.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+    if (actionSheet == self.myActionSheet) {
+        //呼出的菜单按钮点击后的响应
+        if (buttonIndex == self.myActionSheet.cancelButtonIndex)
+        {
+            //取消
         }
-        pickerImage.delegate = self;
-        pickerImage.allowsEditing = NO;
-        [self presentViewController:pickerImage animated:YES completion:^{
+        switch (buttonIndex)
+        {
+            case 0:  //打开照相机拍照
+                [self takePhoto];
+                break;
 
-        }];
-        //[self presentModalViewController:pickerImage animated:YES];
-    }else if (buttonIndex == 0) {
-
-        //先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
-        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-        if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
-            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            case 1:  //打开本地相册
+                [self LocalPhoto];
+                break;
         }
-        //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
-        //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
-        //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
-        picker.delegate = self;
-        picker.allowsEditing = YES;//设置可编辑
-        picker.sourceType = sourceType;
-        [self presentViewController:picker animated:YES completion:^{
+    }else {
 
-        }];
-        //[self presentModalViewController:picker animated:YES];//进入照相界面
     }
 
 }
 
-#pragma mark UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+//开始拍照
+-(void)takePhoto
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    //修改图片
-    [self chooseUserPictureChange:image];
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        //设置拍照后的图片可被编辑
+        //        picker.allowsEditing = YES;
+        picker.sourceType = sourceType;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else
+    {
+        NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+    }
+}
+
+//打开本地相册
+-(void)LocalPhoto
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.navigationBar.barTintColor = NavColor;
+
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.delegate = self;
+    //设置选择后的图片可被编辑
+    //    picker.allowsEditing = YES;
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 #pragma mark - RSKImageCropViewControllerDelegate
@@ -289,40 +396,122 @@
 
 - (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
 {
-    //_globalHeadImage = croppedImage;
-    //NSData *temData = UIImageJPEGRepresentation(_globalHeadImage, 0.00001);
-    //NSData *temData = UIImagePNGRepresentation(_globalHeadImage);
-    [self requestUploadHeadImage:croppedImage];
+        NSData* imageData = nil;
+        imageData  = [self imageData:croppedImage];
+        //NSLog(@"%ld",imageData.length);
+        __weak typeof(self) weakSelf = self;
+
+        NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+        //NSLog(@"%ld",myStringImageFile.length);
+        [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:@"1" Success:^(id responseObject) {
+            CLog(@"%@",responseObject);
+            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+                if (weakSelf.pickerImgView.photos.count == 3) {
+                    return ;
+                }
+                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+                [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
+            }
+            else {
+                //NSLog(@"图片上传失败");
+                [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:weakSelf.view];
+                [UIColor darkGrayColor];
+            }
+
+        } failure:^(NSError *error) {
+            ;
+        }];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)chooseUserPictureChange:(UIImage*)image
+
+//当选择一张图片后进入这里
+-(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    //UIImage *photo = [UIImage imageNamed:@"photo"];
-    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
-    imageCropVC.cropMode = RSKImageCropModeSquare;
-    imageCropVC.delegate = self;
-    [self.navigationController pushViewController:imageCropVC animated:YES];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+
+    //当选择的类型是图片
+    if ([type isEqualToString:@"public.image"])
+    {
+        //先把图片转成NSData
+        __weak  UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        NSData* imageData = nil;
+        imageData  = [self imageData:image];
+        //NSLog(@"%ld",imageData.length);
+        __weak typeof(self) weakSelf = self;
+
+        NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+        //NSLog(@"%ld",myStringImageFile.length);
+        [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:@"1" Success:^(id responseObject) {
+            CLog(@"%@",responseObject);
+            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+                if (weakSelf.pickerImgView.photos.count == 3) {
+                    return ;
+                }
+                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+//                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+//                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+                [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
+            }
+            else {
+                //NSLog(@"图片上传失败");
+                [ToastView showToast:@"上传图片失败" withOriginY:250 withSuperView:weakSelf.view];
+                [UIColor darkGrayColor];
+            }
+
+        } failure:^(NSError *error) {
+            ;
+        }];
+//        [httpClient upDataImageIOS:image Success:^(id responseObject) {
+//            NSLog(@"%@",responseObject);
+//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//                NSLog(@"%@",responseObject[@"success"]);
+//                NSLog(@"%@",responseObject[@"msg"]);
+//                if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+//                    [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
+//                }
+//                else {
+//                    NSLog(@"图片上传失败");
+//                    [UIColor darkGrayColor];
+//                }
+//
+//                //self.pickerImgView.photos
+//            }
+//        } failure:^(NSError *error) {
+//            NSLog(@"%@",error);
+//            NSLog(@"上传图片失败");
+//        }];
+
+
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [ToastView showTopToast:@"暂不支持此图片格式,请换张图片"];
+    }
+
 }
 
-#pragma mark - 请求上传头像
-- (void)requestUploadHeadImage:(UIImage *)image {
-//    [HTTPCLIENT upDataUserImageWithToken:nil WithAccessID:nil WithClientID:nil WithClientSecret:nil WithDeviceID:nil WithUserIamge:image Success:^(id responseObject) {
-//        //NSLog(@"%@",responseObject);
-//        if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-//            [ToastView showTopToast:@"上传成功"];
-            _globalHeadImage = image;
-            cellHeadImageView.image = _globalHeadImage;
-            //[self.myTalbeView reloadData];
-//            APPDELEGATE.userModel.headUrl = responseObject[@"url"];
-//        }
-//        else {
-//            //NSLog(@"%@",responseObject[@"msg"]);
-//            [ToastView showTopToast:responseObject[@"msg"]];
-//        }
-//    } failure:^(NSError *error) {
-//        //NSLog(@"%@",error);
-//    }];
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
+-(NSData *)imageData:(UIImage *)myimage
+{
+    __weak typeof(myimage) weakImage = myimage;
+    NSData *data = UIImageJPEGRepresentation(weakImage, 1.0);
+    if (data.length>100*1024) {
+        if (data.length>1024*1024) {//1M以及以上
+            data = UIImageJPEGRepresentation(weakImage, 0.1);
+        }
+        else if (data.length>512*1024) {//0.5M-1M
+            data = UIImageJPEGRepresentation(weakImage, 0.9);
+        }
+        else if (data.length>200*1024) {//0.25M-0.5M
+            data=UIImageJPEGRepresentation(weakImage, 0.9);
+        }
+    }
+    return data;
+}
+
 
 @end
