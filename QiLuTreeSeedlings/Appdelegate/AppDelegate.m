@@ -66,8 +66,6 @@
     //    UMConfigInstance.eSType = E_UM_GAME;
     [MobClick startWithConfigure:UMConfigInstance];
     [MobClick setLogEnabled:YES];
-
-
     //设置微信AppId、appSecret，分享url
     [UMSocialWechatHandler setWXAppId:@"wx81b3cb415126671c" appSecret:@"1b7fcde03f9b195e9bc66db37e62ff07" url:@"http://www.qlmm.cn"];
     //设置分享到QQ/Qzone的应用Id，和分享url 链接
