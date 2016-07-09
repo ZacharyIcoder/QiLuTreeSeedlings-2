@@ -35,6 +35,5 @@
 - (IBAction)BackBtnAction:(id)sender {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"YLDBackMiaoXinTong" object:nil];
 }
-- (IBAction)shareBtnAction:(UIButton *)sender {
-}
+
 @end

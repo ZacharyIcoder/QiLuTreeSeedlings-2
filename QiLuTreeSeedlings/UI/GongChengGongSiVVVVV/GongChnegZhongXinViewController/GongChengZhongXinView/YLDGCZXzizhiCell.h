@@ -10,6 +10,7 @@
 
 @interface YLDGCZXzizhiCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imagev;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 +(YLDGCZXzizhiCell *)yldGCZXzizhiCell;
 -(void)setMessageWithImageName:(NSString *)imageName andTitle:(NSString *)title;
