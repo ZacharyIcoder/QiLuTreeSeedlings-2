@@ -24,8 +24,10 @@
 #import "ZIKMyCustomizedInfoViewController.h"
 #import "SettingViewController.h"
 #import "UserBigInfoView.h"
+//友盟分享
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
+//end 友盟分享
 #import "BaseTabBarController.h"
 #import "ZIKStationAgentViewController.h"//站长通
 #import "ZIKMySupplyVC.h"//我的供应列表
@@ -34,6 +36,7 @@
 #import "KeFuViewController.h"
 #import "YLDShengJiViewViewController.h"
 #import "YLDGCGSZiZhiTiJiaoViewController.h"
+#import "ZIKMyShopViewController.h"//我的店铺
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -125,10 +128,10 @@
     if(section==2)
     {
         if (APPDELEGATE.userModel.isworkstation) {
-            return 3;
+            return 4;
         }else
         {
-            return 2;
+            return 3;
         }
     }
     return 0;
@@ -240,11 +243,15 @@
         }
     }
     if (indexPath.section==2) {
-        if (indexPath.row==0) {
-            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"mycompany" andTitle:@"我的企业"];
+        if (indexPath.row == 0) {
+            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"1个人中心-我的店铺" andTitle:@"我的店铺"];
             return cell;
         }
         if (indexPath.row==1) {
+            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"mycompany" andTitle:@"我的企业"];
+            return cell;
+        }
+        if (indexPath.row==2) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myMiaoPu" andTitle:@"我的苗圃"];
             if (APPDELEGATE.userModel.isworkstation) {
                 cell.lineImage.hidden=NO;
@@ -254,7 +261,7 @@
             }
             return cell;
         }
-        if (indexPath.row==2) {
+        if (indexPath.row==3) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"zhanzhangtong" andTitle:@"站长通"];
             return cell;
         }
@@ -485,20 +492,26 @@
                 return;
      }
     if (indexPath.section==2) {
-        if (indexPath.row==0) {
-            NSLog(@"企业信息");
+        if (indexPath.row == 0) {
+            [self hiddingSelfTabBar];
+            ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] initWithNibName:@"ZIKMyShopViewController" bundle:nil];
+            [self.navigationController pushViewController:shopVC animated:YES];
+            return;
+        }
+        if (indexPath.row==1) {
+            //NSLog(@"企业信息");
             [self hiddingSelfTabBar];
             CompanyViewController *companyVC=[[CompanyViewController alloc]init];
             [self.navigationController pushViewController:companyVC animated:YES];
             return;
         }
-        if (indexPath.row==1) {
+        if (indexPath.row==2) {
             [self hiddingSelfTabBar];
             MyNuseryListViewController *nuserListVC=[[MyNuseryListViewController alloc]init];
             [self.navigationController pushViewController:nuserListVC animated:YES];
             return;
         }
-        if (indexPath.row == 2) {
+        if (indexPath.row == 3) {
             [self hiddingSelfTabBar];
             ZIKStationAgentViewController *stationVC = [[ZIKStationAgentViewController alloc] init];
             [self.navigationController pushViewController:stationVC animated:YES];

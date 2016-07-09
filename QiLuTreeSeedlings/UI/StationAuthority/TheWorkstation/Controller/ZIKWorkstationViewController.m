@@ -18,7 +18,7 @@
 #import "HttpClient.h"
 #import "ZIKMyTeamModel.h"
 #import "YLDZhanZhangMessageViewController.h"//工作站详情
-@interface ZIKWorkstationViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,ZIKWorkstationSelectViewDelegate>
+@interface ZIKWorkstationViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,ZIKWorkstationSelectViewDelegate,ZIKWorkstationSelectListViewDataSource>
 @property (nonatomic, strong) UITableView *orderTableView;
 
 @property (nonatomic, strong) ZIKWorkstationSelectView *selectAreaView;
@@ -159,6 +159,7 @@
     if (!self.selectListView) {
         self.selectListView = [ZIKWorkstationSelectListView instanceSelectListView];
     }
+    self.selectListView.dataSource = self;
     [self.view addSubview:self.selectListView];
     self.selectListView.frame = CGRectMake(0, 64+44+4, kWidth, kHeight-64-44-4);
 }
@@ -248,6 +249,13 @@
     return allProvince;
 }
 
+-(NSInteger)numberOfRowsInfTable:(ZIKWorkstationSelectListView *)selectListView {
+    return [self getData].count;
+}
+
+- (NSString*)selectListView:(ZIKWorkstationSelectListView *)selectListView titleForRow:(NSInteger)row {
+    return [[self getData][row] objectForKey:@"name"];
+}
 //- (NSArray *)citys {
 //    //if (_citys == nil) {
 //    _citys = [[NSMutableArray alloc] init];

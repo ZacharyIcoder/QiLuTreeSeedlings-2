@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xoo-Zv-Evq">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="已选小标.png" translatesAutoresizingMaskIntoConstraints="NO" id="xoo-Zv-Evq">
                         <rect key="frame" x="278" y="8" width="27" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="27" id="15l-Yz-vWB"/>
@@ -39,10 +39,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="nameLabel" destination="Ww7-T3-t9f" id="VO8-eW-Mee"/>
-                <outlet property="selectImageView" destination="xoo-Zv-Evq" id="edS-qc-yBh"/>
+                <outlet property="nameLable" destination="Ww7-T3-t9f" id="RPF-hV-hej"/>
+                <outlet property="selectImageView" destination="xoo-Zv-Evq" id="qVX-Bs-5Rw"/>
             </connections>
             <point key="canvasLocation" x="322" y="409"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="已选小标.png" width="22" height="22"/>
+    </resources>
 </document>

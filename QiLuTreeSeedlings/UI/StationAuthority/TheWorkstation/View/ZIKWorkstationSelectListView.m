@@ -7,8 +7,9 @@
 //
 
 #import "ZIKWorkstationSelectListView.h"
+#import "ZIKWorkstationSelectListViewTableViewCell.h"
 #define SCREEN_SIZE [[UIScreen mainScreen] bounds].size
-@interface ZIKWorkstationSelectListView ()//<UITableViewDelegate,UITableViewDataSource>
+@interface ZIKWorkstationSelectListView ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @end
 @implementation ZIKWorkstationSelectListView
@@ -25,6 +26,8 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeShowViewAction)];
     self.bottomView.userInteractionEnabled = YES;
     [self.bottomView addGestureRecognizer:tapGesture];
+    self.selectAraeTableView.delegate = self;
+    self.selectAraeTableView.dataSource = self;
 }
 
 - (void)removeShowViewAction {
@@ -35,10 +38,23 @@
     }];
 }
 
+#pragma mark - tableview delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.dataSource numberOfRowsInfTable:self];
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return nil;
-//}
-//
+    ZIKWorkstationSelectListViewTableViewCell *cell = [ZIKWorkstationSelectListViewTableViewCell cellWithTableView:tableView];
+    cell.nameLable.text = [self.dataSource selectListView:self titleForRow:indexPath.row];
+    cell.selectImageView.hidden = YES;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKWorkstationSelectListViewTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selectImageView.hidden = NO;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self removeShowViewAction];
+}
 @end

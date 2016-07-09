@@ -8,8 +8,6 @@
 
 #import "ZIKWorkstationSelectListViewTableViewCell.h"
 @interface ZIKWorkstationSelectListViewTableViewCell ()
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
 @end
 
 @implementation ZIKWorkstationSelectListViewTableViewCell
@@ -24,5 +22,15 @@
 
     // Configure the view for the selected state
 }
+
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    static NSString *kZIKWorkstationSelectListViewTableViewCellID = @"kZIKWorkstationSelectListViewTableViewCellID";
+    ZIKWorkstationSelectListViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKWorkstationSelectListViewTableViewCellID];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKWorkstationSelectListViewTableViewCell" owner:self options:nil] lastObject];
+    }
+    return cell;
+}
+
 
 @end
