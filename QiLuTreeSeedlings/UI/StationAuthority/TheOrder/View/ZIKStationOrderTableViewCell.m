@@ -9,6 +9,7 @@
 #import "ZIKStationOrderTableViewCell.h"
 #import "ZIKStationOrderModel.h"
 #import "UIDefines.h"
+#import "ZIKFunction.h"
 @interface ZIKStationOrderTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
 @property (weak, nonatomic) IBOutlet UILabel *orderTitleLabel;
@@ -52,6 +53,9 @@
     self.orderTitleLabel.text = model.orderName;
     self.startTimeLabel.text  = [NSString stringWithFormat:@"发布日期:%@",model.orderDate];
     self.endTimeLabel.text    = [NSString stringWithFormat:@"截止日期:%@",model.endDate];
+    if ([ZIKFunction xfunc_check_strEmpty:model.quotation]) {
+        model.quotation = @"";
+    }
     self.offerLabel.text      = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
     self.companyLabel.text    = model.engineeringCompany;
     //self.qualityLabel.text = model.orderType;

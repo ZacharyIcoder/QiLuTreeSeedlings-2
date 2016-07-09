@@ -229,7 +229,7 @@
 
 
     [HTTPCLIENT stationQuoteCreateWithUid:self.orderUid orderUid:self.uid price:priceTextField.text quantity:quantityTextField.text province:self.province city:self.city county:self.county town:self.town description:self.contentTextView.text imgs:urlSring compressImgs:compressSring Success:^(id responseObject) {
-        CLog(@"%@",responseObject);
+        //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -237,7 +237,7 @@
         [ToastView showTopToast:@"报价成功"];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
-        CLog(@"%@",error);
+        //CLog(@"%@",error);
     }];
 }
 

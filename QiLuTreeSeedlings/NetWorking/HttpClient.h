@@ -1051,4 +1051,8 @@ failure:(void (^)(NSError *error))failure;
                   WithAry:(NSArray *)ary
                   Success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长中心分享 -----------
+- (void)stationShareSuccess:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;
+
 @end

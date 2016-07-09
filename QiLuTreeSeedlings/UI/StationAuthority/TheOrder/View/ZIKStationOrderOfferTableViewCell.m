@@ -50,9 +50,11 @@
     if ([model.stauts isEqualToString:@"1"]) {
         [self.quoteButton setTitle:@"已报价" forState:UIControlStateNormal];
         self.quoteButton.backgroundColor = self.orderUidLabel.backgroundColor;
+        self.quoteButton.userInteractionEnabled = NO;
         //self.quoteButton.hidden = YES;
     } else if ([model.stauts isEqualToString:@"0"]){
         [self.quoteButton setTitle:@"立即报价" forState:UIControlStateNormal];
+        self.quoteButton.userInteractionEnabled = YES;
         //self.quoteButton.hidden = NO;
     }
 }

@@ -21,7 +21,8 @@
 @implementation ZIKStationCenterTableViewHeaderView
 
 - (IBAction)shareButtonClick {
-    NSLog(@"分享");
+   // NSLog(@"分享");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKUMShare" object:nil];
 }
 
 - (void)configWithModel:(MasterInfoModel *)model {

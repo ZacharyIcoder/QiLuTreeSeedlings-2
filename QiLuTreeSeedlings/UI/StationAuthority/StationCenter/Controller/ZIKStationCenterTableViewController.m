@@ -15,10 +15,18 @@
 #import "YYModel.h"//类型转换
 #import "ZIKStationCenterInfoViewController.h"
 #import "ZIKMyTeamViewController.h"//我的团队
+//友盟
+#import "UMSocialControllerService.h"
+#import "UMSocial.h"
 static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewIdentifier";
 
-@interface ZIKStationCenterTableViewController ()
+@interface ZIKStationCenterTableViewController ()<UMSocialUIDelegate>
 @property (nonatomic, strong) MasterInfoModel *masterModel;
+
+@property (nonatomic, strong) NSString       *shareText; //分享文字
+@property (nonatomic, strong) NSString       *shareTitle;//分享标题
+@property (nonatomic, strong) UIImage        *shareImage;//分享图片
+@property (nonatomic, strong) NSString       *shareUrl;  //分享url
 @end
 
 #pragma mark -
@@ -31,11 +39,8 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-     //[self requestData];
-    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.sectionHeaderHeight    = HEADER_HEIGHT;
-//    self.tableView.rowHeight = 130;
     self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
 
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"ZIKStationCenterTableViewHeaderView" bundle:nil];
@@ -46,10 +51,13 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushChangeMasterInfo) name:@"ZIKChangeMasterInfo" object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestShare) name:@"ZIKUMShare" object:nil];
+
 }
 
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKChangeMasterInfo" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKUMShare" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -72,7 +80,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 #pragma mark - 请求数据
 - (void)requestData {
    [HTTPCLIENT stationMasterSuccess:^(id responseObject) {
-       CLog(@"%@",responseObject);
+       //CLog(@"%@",responseObject);
        if ([responseObject[@"success"] integerValue] == 0) {
            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
            return ;
@@ -185,6 +193,89 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)requestShare {
+    ShowActionV();
+    [HTTPCLIENT stationShareSuccess:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            RemoveActionV();
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:kWidth/2 withSuperView:self.view];
+            return ;
+        }
+        NSDictionary *shareDic = [responseObject[@"result"] objectForKey:@"share"];
+        self.shareText   = shareDic[@"text"];
+        self.shareTitle  = shareDic[@"title"];
+        NSString *urlStr = shareDic[@"pic"];
+        NSData * data    = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStr]];
+        self.shareImage  = [[UIImage alloc] initWithData:data];
+        self.shareUrl    = shareDic[@"url"];
+        RemoveActionV();
+        [self umengShare];
+
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+
+}
+
+- (void)umengShare {
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"56fde8aae0f55a1cd300047c"
+                                      shareText:self.shareText
+                                     shareImage:self.shareImage
+                                shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
+                                       delegate:self];
+
+    NSString *urlString = self.shareUrl;
+
+
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = urlString;
+
+    //如果是朋友圈，则替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = urlString;
+
+    [UMSocialData defaultData].extConfig.qqData.url    = urlString;
+    [UMSocialData defaultData].extConfig.qzoneData.url = urlString;
+    //设置微信好友title方法为
+    NSString *titleString = self.shareTitle;
+
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = titleString;
+
+    //设置微信朋友圈title方法替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = titleString;
+
+    //QQ设置title方法为
+
+    [UMSocialData defaultData].extConfig.qqData.title = titleString;
+
+    //Qzone设置title方法将平台参数名替换即可
+
+    [UMSocialData defaultData].extConfig.qzoneData.title = titleString;
+
+}
+
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    //NSLog(@"didClose is %d",fromViewControllerType);
+}
+
+//下面得到分享完成的回调
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+}
+
+-(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"finish share with response is %@",response);
+}
 
 
 @end

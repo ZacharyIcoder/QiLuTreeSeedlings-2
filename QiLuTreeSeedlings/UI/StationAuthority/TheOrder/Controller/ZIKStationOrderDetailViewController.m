@@ -31,10 +31,10 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 };
 
 @interface ZIKStationOrderDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, assign) TypeStyle   typeStyle;
-@property (nonatomic, strong) UITableView *orderTableView;
-@property (nonatomic, strong) NSMutableArray *quoteMArr;
-@property (nonatomic, strong) NSString    *keyword;
+@property (nonatomic, assign) TypeStyle                  typeStyle;
+@property (nonatomic, strong) UITableView                *orderTableView;
+@property (nonatomic, strong) NSMutableArray             *quoteMArr;
+@property (nonatomic, strong) NSString                   *keyword;
 @property (nonatomic, strong) ZIKStationOrderDemandModel *demandModel;
 @end
 
@@ -43,13 +43,12 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.vcTitle = @"订单详情";
-    self.leftBarBtnImgString = @"BackBtn";
-    self.typeStyle = TypeStyleOffer;
-    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    [self initData];
+
+     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     self.searchBarView.placeHolder = @"请输入苗木名称";
     self.searchBarView.searchBlock = ^(NSString *searchText){
-        CLog(@"%@",searchText);
+        //CLog(@"%@",searchText);
         weakSelf.isSearch = !weakSelf.isSearch;
     };
     self.searchBarView.delegate = self;
@@ -57,11 +56,20 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:self.searchBarView.textField];
-
     [self initUI];
-    self.quoteMArr = [[NSMutableArray alloc] init];
-    [self requestOrderDetail];
+    //[self requestOrderDetail];
+}
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self requestOrderDetail];
+}
+
+- (void)initData {
+    self.vcTitle = @"订单详情";
+    self.leftBarBtnImgString = @"BackBtn";
+    self.typeStyle = TypeStyleOffer;
+    self.quoteMArr = [[NSMutableArray alloc] init];
 }
 
 - (void)initUI {
@@ -82,23 +90,9 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     self.orderTableView = orderTableView;
 }
 
-//#pragma mark - 请求数据
-//- (void)requestData {
-//    //__weak typeof(self) weakSelf = self;//解决循环引用的问题
-////    [self.orderTV addHeaderWithCallback:^{
-////        weakSelf.page = 1;
-////        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
-////    }];
-////    [self.orderTV addFooterWithCallback:^{
-////        weakSelf.page++;
-////        [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
-////    }];
-////    [self.orderTV headerBeginRefreshing];
-//}
-
 - (void)requestOrderDetail {
-    [HTTPCLIENT stationGetOrderDetailWithOrderUid:self.orderUid keyword:nil Success:^(id responseObject) {
-       CLog(@"%@",responseObject) ;
+    [HTTPCLIENT stationGetOrderDetailWithOrderUid:self.orderUid keyword:self.keyword Success:^(id responseObject) {
+       //CLog(@"%@",responseObject) ;
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -107,10 +101,19 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
         NSDictionary *orderDetailDic = resultDic[@"orderDetail"];
         self.demandModel = [ZIKStationOrderDemandModel yy_modelWithDictionary:orderDetailDic];
         NSArray *itemListArray = orderDetailDic[@"itemList"];
-        [itemListArray enumerateObjectsUsingBlock:^(NSDictionary *itemDic, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (self.quoteMArr.count != 0) {
+            [self.quoteMArr removeAllObjects];
+        }
+
+        if (itemListArray.count == 0) {
+            [ToastView showTopToast:@"暂无数据"];
+
+        } else {
+         [itemListArray enumerateObjectsUsingBlock:^(NSDictionary *itemDic, NSUInteger idx, BOOL * _Nonnull stop) {
             ZIKStationOrderDetailQuoteModel *model = [ZIKStationOrderDetailQuoteModel yy_modelWithDictionary:itemDic];
             [self.quoteMArr addObject:model];
         }];
+        }
         [self.orderTableView reloadData];
     } failure:^(NSError *error) {
         ;
@@ -162,12 +165,12 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
 
         cell.quoteBtnBlock = ^(NSInteger section ) {
-            NSLog(@"报价:%ld",indexPath.section);
+           // NSLog(@"报价:%ld",indexPath.section);
             ZIKStationOrderQuoteViewController *quoteVC = [[ZIKStationOrderQuoteViewController alloc] initWithNibName:@"ZIKStationOrderQuoteViewController" bundle:nil];
             ZIKStationOrderDetailQuoteModel *model = weakSelf.quoteMArr[indexPath.section];
-            quoteVC.name  = model.name;
-            quoteVC.count = model.quantity;
-            quoteVC.uid = model.uid;
+            quoteVC.name     = model.name;
+            quoteVC.count    = model.quantity;
+            quoteVC.uid      = model.uid;
             quoteVC.orderUid = _demandModel.uid;
             [weakSelf.navigationController pushViewController:quoteVC animated:YES];
         };
@@ -194,11 +197,15 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     self.isSearch = NO;//搜索栏隐藏
    // NSString *searchText = textField.text;
     //CLog(@"searchText:%@",searchText);
+    self.keyword = textField.text;
+    [self requestOrderDetail];
     return YES;
 }
 
 -(void)textFieldChanged:(NSNotification *)obj {
-    //UITextField *textField = (UITextField *)obj.object;
+    UITextField *textField = (UITextField *)obj.object;
+    self.keyword = textField.text;
+    [self requestOrderDetail];
     //CLog(@"textField:%@",textField.text);
 }
 
