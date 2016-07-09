@@ -408,6 +408,9 @@
 		FC0BE60B1D1B73A600744870 /* ZIKStationCenterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0BE60A1D1B73A600744870 /* ZIKStationCenterInfoViewController.m */; };
 		FC0BE6141D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0BE6121D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.m */; };
 		FC0BE6151D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0BE6131D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib */; };
+		FC0CF64C1D30C5140074194D /* ZIKMyShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CF64A1D30C5140074194D /* ZIKMyShopViewController.m */; };
+		FC0CF64D1D30C5140074194D /* ZIKMyShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0CF64B1D30C5140074194D /* ZIKMyShopViewController.xib */; };
+		FC0CF64F1D30C75E0074194D /* 1个人中心-我的店铺.png in Resources */ = {isa = PBXBuildFile; fileRef = FC0CF64E1D30C75E0074194D /* 1个人中心-我的店铺.png */; };
 		FC224B991D29F48C001FFC47 /* ZIKAddHonorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */; };
 		FC224B9A1D29F48C001FFC47 /* ZIKAddHonorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */; };
 		FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B9D1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib */; };
@@ -1339,6 +1342,10 @@
 		FC0BE6111D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSingleVoucherCenterViewController.h; sourceTree = "<group>"; };
 		FC0BE6121D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSingleVoucherCenterViewController.m; sourceTree = "<group>"; };
 		FC0BE6131D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKSingleVoucherCenterViewController.xib; sourceTree = "<group>"; };
+		FC0CF6491D30C5140074194D /* ZIKMyShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyShopViewController.h; sourceTree = "<group>"; };
+		FC0CF64A1D30C5140074194D /* ZIKMyShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyShopViewController.m; sourceTree = "<group>"; };
+		FC0CF64B1D30C5140074194D /* ZIKMyShopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyShopViewController.xib; sourceTree = "<group>"; };
+		FC0CF64E1D30C75E0074194D /* 1个人中心-我的店铺.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1个人中心-我的店铺.png"; sourceTree = "<group>"; };
 		FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddHonorViewController.h; sourceTree = "<group>"; };
 		FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddHonorViewController.m; sourceTree = "<group>"; };
 		FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKAddHonorViewController.xib; sourceTree = "<group>"; };
@@ -2186,6 +2193,7 @@
 				EA29A9F11C85614C004913FF /* UIVender */,
 				EA0079161C80153700FA66B1 /* SearchViewController */,
 				EA0B2BE51C5A08520018A7BD /* UIDefines.h */,
+				EAFB8FF91D1A81EA00FCF88B /* YLDShenFenShengJiViewController */,
 				EA0B2BCE1C59F6930018A7BD /* BaseNavigationViewController */,
 				EA0B2BCF1C59F6930018A7BD /* BaseTabBarViewController */,
 				EA0B2BD01C59F6930018A7BD /* HomePageViewController */,
@@ -2300,8 +2308,12 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+
 				EA7E7D9E1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png */,
 				EA7E7D9C1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png */,
+
+				FC0CF64E1D30C75E0074194D /* 1个人中心-我的店铺.png */,
+
 				FC4470471D2F468A00EA0D82 /* 工程订单_排序off.png */,
 				FC4470481D2F468A00EA0D82 /* 工程订单_排序on.png */,
 				EA8D3D321D2395660095840F /* 首页-ico_工程订单.png */,
@@ -3308,6 +3320,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				FC0CF6481D30C47F0074194D /* MyShop */,
 				EAFB8FFA1D1A820D00FCF88B /* YLDShenFenShengJiViewController */,
 				FC56117F1D0C092F00E5743B /* MySupplyViewController */,
 				EA72662B1CFD5F79005612E6 /* KeFuViewController */,
@@ -3397,7 +3410,8 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = YLDShenFenShengJiViewController;
+			name = YLDShenFenShengJiViewController;
+			path = UserCenterViewController/UserCenterViews/MySupplyViewController/YLDShenFenShengJiViewController;
 			sourceTree = "<group>";
 		};
 		EAFB8FFA1D1A820D00FCF88B /* YLDShenFenShengJiViewController */ = {
@@ -3419,6 +3433,16 @@
 				EAFB90011D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib */,
 			);
 			path = ShenFengShengJiView;
+			sourceTree = "<group>";
+		};
+		FC0CF6481D30C47F0074194D /* MyShop */ = {
+			isa = PBXGroup;
+			children = (
+				FC0CF6491D30C5140074194D /* ZIKMyShopViewController.h */,
+				FC0CF64A1D30C5140074194D /* ZIKMyShopViewController.m */,
+				FC0CF64B1D30C5140074194D /* ZIKMyShopViewController.xib */,
+			);
+			path = MyShop;
 			sourceTree = "<group>";
 		};
 		FC22761B1D177C9F0037B131 /* StationAuthority */ = {
@@ -4024,7 +4048,6 @@
 		FC56117F1D0C092F00E5743B /* MySupplyViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EAFB8FF91D1A81EA00FCF88B /* YLDShenFenShengJiViewController */,
 				FC5611801D0C092F00E5743B /* IQKeyBoardManager */,
 				FC5611A41D0C092F00E5743B /* MJRefresh */,
 				FC5611B51D0C092F00E5743B /* Model */,
@@ -4916,6 +4939,7 @@
 				FC2276821D177C9F0037B131 /* ZIKStationOrderTableViewCell.xib in Resources */,
 				EA5AAC421C8D2DF300660FC9 /* NomerSellMessageBtn@2x.png in Resources */,
 				EA0B2BA61C59F5220018A7BD /* LaunchScreen.storyboard in Resources */,
+				FC0CF64D1D30C5140074194D /* ZIKMyShopViewController.xib in Resources */,
 				EAF050F21C9293C200F435A9 /* homePageGreen@2x.png in Resources */,
 				FC7134221CB3465C0037D507 /* 待选.png in Resources */,
 				FC6FED6E1CACF833000E2CA5 /* 未读红点.png in Resources */,
@@ -4946,6 +4970,7 @@
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
 				FC2276981D17BC4E0037B131 /* zt报价中.png in Resources */,
 				EA696FB71CDD8F46001F037E /* messageUnRead@2x.png in Resources */,
+				FC0CF64F1D30C75E0074194D /* 1个人中心-我的店铺.png in Resources */,
 				EA4ADAFE1CD9CC510068C10F /* rounlock@2x.png in Resources */,
 				EA552E871D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.xib in Resources */,
 				EAF788A01CDB090500C4A301 /* guoqibiaoqian.png in Resources */,
@@ -5428,6 +5453,7 @@
 				EAFB90021D1A83FB00FCF88B /* YLDShenFenShuoMingCell.m in Sources */,
 				FC5337C11CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m in Sources */,
 				FC26452B1D24FB9A0077565A /* MasterInfoModel.m in Sources */,
+				FC0CF64C1D30C5140074194D /* ZIKMyShopViewController.m in Sources */,
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
 				FC56129D1D0C092F00E5743B /* ZIKRightBtnSringViewController.m in Sources */,

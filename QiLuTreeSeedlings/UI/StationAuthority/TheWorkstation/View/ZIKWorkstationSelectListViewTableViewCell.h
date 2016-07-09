@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ZIKWorkstationSelectListViewTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *nameLable;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
++ (instancetype)cellWithTableView:(UITableView *)tableView ;
 @end
