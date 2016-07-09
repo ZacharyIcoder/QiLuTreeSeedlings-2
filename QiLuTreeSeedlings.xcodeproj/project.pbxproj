@@ -268,6 +268,8 @@
 		EA7CB82E1CE01B140010EAE5 /* ForgetPassWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB82D1CE01B140010EAE5 /* ForgetPassWorldViewController.m */; };
 		EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */; };
 		EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */; };
+		EA7E7D9D1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7E7D9C1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png */; };
+		EA7E7D9F1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7E7D9E1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png */; };
 		EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */; };
 		EA820AC91D2A5A880022AAC6 /* YLDGCGSZiZhiTiJiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A26301D1B74E300850812 /* YLDGCGSZiZhiTiJiaoViewController.m */; };
 		EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D851CFE6C3900D56AFB /* kefutouxiang@2x.png */; };
@@ -1124,6 +1126,8 @@
 		EA7CB8311CE01BB20010EAE5 /* AuthcodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthcodeView.m; sourceTree = "<group>"; };
 		EA7CB8361CE02B960010EAE5 /* CheckIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckIDViewController.h; sourceTree = "<group>"; };
 		EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIDViewController.m; sourceTree = "<group>"; };
+		EA7E7D9C1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-ico_金牌供应商.png"; sourceTree = "<group>"; };
+		EA7E7D9E1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "个人中心-列表-工程公司.png"; sourceTree = "<group>"; };
 		EA7F5F351CE05A0A00B2EEFF /* YLDNewPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDNewPassWordViewController.h; sourceTree = "<group>"; };
 		EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDNewPassWordViewController.m; sourceTree = "<group>"; };
 		EA833D851CFE6C3900D56AFB /* kefutouxiang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kefutouxiang@2x.png"; sourceTree = "<group>"; };
@@ -2296,6 +2300,8 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA7E7D9E1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png */,
+				EA7E7D9C1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png */,
 				FC4470471D2F468A00EA0D82 /* 工程订单_排序off.png */,
 				FC4470481D2F468A00EA0D82 /* 工程订单_排序on.png */,
 				EA8D3D321D2395660095840F /* 首页-ico_工程订单.png */,
@@ -4776,6 +4782,7 @@
 				FC56127F1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib in Resources */,
 				EAF050E41C924FB300F435A9 /* userBigInfoBack@2x.png in Resources */,
 				FC5612731D0C092F00E5743B /* 注意.png in Resources */,
+				EA7E7D9F1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png in Resources */,
 				EAF0510B1C92A87B00F435A9 /* loginoutimage@2x.png in Resources */,
 				EA08F7A81D19009100471C33 /* yYLDCompanyMessageCell.xib in Resources */,
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
@@ -4882,6 +4889,7 @@
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
 				EAFB90031D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib in Resources */,
 				FC2276991D17BC4E0037B131 /* zt已报价.png in Resources */,
+				EA7E7D9D1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png in Resources */,
 				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
 				EA5AAC461C8D303F00660FC9 /* MoRentu.png in Resources */,
 				EAFB8FE31D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.xib in Resources */,

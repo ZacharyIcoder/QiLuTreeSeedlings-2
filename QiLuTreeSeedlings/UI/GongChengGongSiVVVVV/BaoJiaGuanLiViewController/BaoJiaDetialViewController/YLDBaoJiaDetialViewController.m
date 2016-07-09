@@ -159,7 +159,7 @@
     return cell;
 }
 - (void)topActionView {
-    NSArray *ary=@[@"订单简介",@"苗木详情"];
+    NSArray *ary=@[@"苗木信息",@"报价信息"];
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 50)];
     [view setBackgroundColor:[UIColor whiteColor]];
     view.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
