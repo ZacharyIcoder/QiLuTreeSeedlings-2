@@ -14,6 +14,7 @@
 #import "SellSearchTableViewCell.h"
 #import "ScreeningView.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
+#import "SellDetialViewController.h"
 @interface YLDZZsuppleyListViewController ()<ScreeningViewDelegate,UITableViewDelegate,UITableViewDataSource>
 //creeingActionWithAry:(NSArray *)ary WithProvince:(NSString *)province WihtCity:(NSString *)city WithCounty:(NSString *)county WithGoldsupplier:(NSString *)goldsupplier WithProductUid:(NSString *)productUid withProductName:(NSString *)productName
 @property (nonatomic)NSInteger pageNum;
@@ -55,7 +56,7 @@
         if (self.searchMessageField.text.length==0) {
             [self getSuppleyLsitWithPage:weakSlef.pageNum];
         }else{
-             [weakSlef getdatalistWithpageNumber:weakSlef.pageNum pageSize:@"15" goldsupplier:self.goldsupplier productUid:self.productUid productName:self.productUid province:self.AreaProvince city:self.AreaCity county:self.AreaCounty WithAry:self.guigeAry];
+             [weakSlef getdatalistWithpageNumber:weakSlef.pageNum pageSize:@"15" goldsupplier:self.goldsupplier productUid:self.productUid productName:self.productName province:self.AreaProvince city:self.AreaCity county:self.AreaCounty WithAry:self.guigeAry];
         }
     }];
     [tableView addFooterWithCallback:^{
@@ -64,7 +65,7 @@
         if (self.searchMessageField.text.length==0) {
             [self getSuppleyLsitWithPage:weakSlef.pageNum];
         }else{
-            [weakSlef getdatalistWithpageNumber:weakSlef.pageNum pageSize:@"15" goldsupplier:self.goldsupplier productUid:self.productUid productName:self.productUid province:self.AreaProvince city:self.AreaCity county:self.AreaCounty WithAry:self.guigeAry];
+            [weakSlef getdatalistWithpageNumber:weakSlef.pageNum pageSize:@"15" goldsupplier:self.goldsupplier productUid:self.productUid productName:self.productName province:self.AreaProvince city:self.AreaCity county:self.AreaCounty WithAry:self.guigeAry];
         }
     }];
     [self.tableView headerBeginRefreshing];
@@ -136,16 +137,18 @@
 
 - (void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
-    if (textField.text.length == 0) {
-        [self.tableView headerBeginRefreshing];
-    }
     self.goldsupplier=nil;
     self.productUid=nil;
-    self.productName=nil;
+    self.productName=textField.text;
     self.AreaProvince=nil;
     self.AreaCity=nil;
     self.AreaCounty=nil;
     self.guigeAry=nil;
+    if (textField.text.length == 0) {
+        [self.tableView headerBeginRefreshing];
+        self.productName=nil;
+    }
+  
 }
 -(void)creeingActionWithAry:(NSArray *)ary WithProvince:(NSString *)province WihtCity:(NSString *)city WithCounty:(NSString *)county WithGoldsupplier:(NSString *)goldsupplier WithProductUid:(NSString *)productUid withProductName:(NSString *)productName
 {
@@ -175,6 +178,12 @@
     HotSellModel *model=self.dataAry[indexPath.row];
     cell.hotSellModel=model;
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HotSellModel *model=self.dataAry[indexPath.row];
+    SellDetialViewController *sellDetialViewC=[[SellDetialViewController alloc]initWithUid:model];
+    [self.navigationController pushViewController:sellDetialViewC animated:YES];
 }
 -(void)creatVVVVVV
 {
@@ -238,6 +247,7 @@
     }
   
     [self.searchMessageField resignFirstResponder];
+    [self.tableView headerBeginRefreshing];
  
 }
 -(void)ScreeningbackBtnAction
