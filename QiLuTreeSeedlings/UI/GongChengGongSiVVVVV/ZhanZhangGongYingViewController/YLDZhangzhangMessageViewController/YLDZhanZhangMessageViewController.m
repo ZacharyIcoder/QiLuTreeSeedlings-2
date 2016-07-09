@@ -21,6 +21,9 @@
 #import "ZIKStationHonorListModel.h"
 #import "YYModel.h"
 #import "SellDetialViewController.h"
+#import "ZIKStationShowHonorView.h"//
+#import "ZIKBaseCertificateAdapter.h"
+#import "ZIKCertificateAdapter.h"
 @interface YLDZhanZhangMessageViewController ()<UITableViewDelegate,UITableViewDataSource,YLDZhanZhangMessageCellDelegate>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *uid;
@@ -29,6 +32,7 @@
 @property (nonatomic,strong)NSMutableArray *supplyAry;
 @property (nonatomic,strong)NSMutableArray *honorAry;
 @property (nonatomic)BOOL isShow;
+@property (nonatomic, strong) ZIKStationShowHonorView *showHonorView;
 @end
 
 @implementation YLDZhanZhangMessageViewController
@@ -142,7 +146,7 @@
         return 120;
     }
     if (indexPath.section==3) {
-        return 150;
+        return 170;
     }
     if (indexPath.section==4) {
         return 100;
@@ -221,6 +225,20 @@
             cell.dataAry=self.honorAry;
            cell.selectionStyle=UITableViewCellSelectionStyleNone;
             [cell.allBtn addTarget:self action:@selector(allRongYuBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+           [cell showImageActionBlock:^(ZIKStationHonorListModel *model) {
+               if (!self.showHonorView) {
+                   self.showHonorView = [ZIKStationShowHonorView instanceShowHonorView];
+                   self.showHonorView.frame = CGRectMake(0, kHeight, kWidth, kHeight);
+               }
+                   ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+                   [self.showHonorView loadData:modelAdapter];
+               
+               
+               [self.view addSubview:self.showHonorView];
+               [UIView animateWithDuration:.3 animations:^{
+                   self.showHonorView.frame = CGRectMake(0, 0, kWidth, kHeight);
+               }];
+           }];
         }
         return cell;
     }

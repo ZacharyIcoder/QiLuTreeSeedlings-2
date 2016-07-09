@@ -31,6 +31,19 @@
 
     self.userNameLab.text=dic[@"chargelPerson"];
     self.backImageV.image=[self imageWithSize:self.backImageV.frame.size borderColor:NavColor borderWidth:0.5];
+    [self.callBtn addTarget:self action:@selector(callBtnAction) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)callBtnAction
+{
+    NSString *phoneStr=self.dic[@"phone"];
+    if (phoneStr.length>0) {
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",phoneStr];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }else
+    {
+        [ToastView showTopToast:@"暂无联系方式"];
+    }
+    
 }
 - (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
 {

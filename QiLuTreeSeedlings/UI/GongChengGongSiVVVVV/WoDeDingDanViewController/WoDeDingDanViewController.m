@@ -105,9 +105,9 @@
     }else
     {
         if ([model.status isEqualToString:@"已结束"]) {
-            return 250+40;
+            return 240+40;
         }
-         return 250;
+         return 240;
     }
    
 }

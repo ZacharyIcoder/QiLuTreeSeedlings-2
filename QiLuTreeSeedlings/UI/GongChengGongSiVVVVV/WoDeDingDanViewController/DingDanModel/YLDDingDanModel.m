@@ -21,7 +21,7 @@
     model.quotation=[dic objectForKey:@"quotation"];
     model.status=[dic objectForKey:@"status"];
     model.uid=[dic objectForKey:@"uid"];
-    model.showHeight=250-18+[YLDDingDanModel getHeightWithContent:model.miaomu width:kWidth-140 font:14];
+    model.showHeight=240-18+[YLDDingDanModel getHeightWithContent:model.miaomu width:kWidth-140 font:14];
     model.isShow=NO;
     return model;
 }

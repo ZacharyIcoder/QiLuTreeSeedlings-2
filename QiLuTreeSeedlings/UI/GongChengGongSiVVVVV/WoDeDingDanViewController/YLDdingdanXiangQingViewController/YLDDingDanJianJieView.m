@@ -65,6 +65,12 @@
     self.shuomingTextField.text=hezuomodel.descriptions;
     self.areaLab.text=hezuomodel.area;
     self.phoneLab.text=hezuomodel.phone;
+    if ([hezuomodel.status isEqualToString:@"已结束"]) {
+        [self.logoImageV setImage:[UIImage imageNamed:@"zt已结束"]];
+    }
+    if ([hezuomodel.status isEqualToString:@"报价中"]) {
+        [self.logoImageV setImage:[UIImage imageNamed:@"zt报价中"]];
+    }
 
 }
 /*

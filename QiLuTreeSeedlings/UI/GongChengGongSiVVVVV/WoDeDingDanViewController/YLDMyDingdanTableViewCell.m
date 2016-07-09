@@ -15,6 +15,7 @@
         [cell.showBtn setImage:[UIImage imageNamed:@"ico_橙色收起"] forState:UIControlStateNormal];
     [cell.showBtn setImage:[UIImage imageNamed:@"chengsezhankai"] forState:UIControlStateSelected];
     [cell.showBtn setEnlargeEdgeWithTop:10 right:10 bottom:10 left:10];
+    [cell.hezuoBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:10];
     return cell;
 }
 -(void)setModel:(YLDDingDanModel *)model
@@ -31,7 +32,7 @@
     NSArray *endtimeAry=[model.endDate componentsSeparatedByString:@" "];
     self.jiezhiRiqiLab.text=[NSString stringWithFormat:@"截止日期:%@",[endtimeAry firstObject]];
     //NSLog(@"%f",.frame.size.height);
-    if (model.showHeight<=250) {
+    if (model.showHeight<=240) {
         self.showBtn.hidden=YES;
     }else
     {
@@ -44,7 +45,7 @@
         self.miaomuPinZhongLab.numberOfLines=0;
     }else{
 
-        frame.size.height=250;
+        frame.size.height=240;
         
         self.miaomuPinZhongLab.numberOfLines=1;
     }

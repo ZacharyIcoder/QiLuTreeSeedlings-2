@@ -124,7 +124,8 @@
         [self.navigationController pushViewController:norViewController animated:YES];
         }
         if (indexPath.row==1) {
-            
+            [ToastView showTopToast:@"暂无数据"];
+            return;
             YLDGongChengAnLiViewController *gChengController=[[YLDGongChengAnLiViewController alloc] init];
             
             [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];

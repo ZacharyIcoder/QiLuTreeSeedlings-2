@@ -433,7 +433,7 @@
     if(index==5){
         if([APPDELEGATE isNeedLogin])
         {
-            if (APPDELEGATE.userModel.goldsupplierStatus==7) {
+            if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
                 [self hiddingSelfTabBar];
              YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
                 [self.navigationController pushViewController:tab animated:YES];

@@ -52,6 +52,17 @@
             [self.imageV3 setImageWithURL:[NSURL URLWithString:imageAry[2]]placeholderImage:[UIImage imageNamed:@"MoRentu"]];
         }
     }
+    [self.callBtn addTarget:self action:@selector(callBtnAction) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)callBtnAction
+{
+    if (self.model.phone.length>0) {
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }else
+    {
+        [ToastView showTopToast:@"暂无联系方式"];
+    }
 }
 -(void)hezuoBtnAciotn:(UIButton *)sender
 {

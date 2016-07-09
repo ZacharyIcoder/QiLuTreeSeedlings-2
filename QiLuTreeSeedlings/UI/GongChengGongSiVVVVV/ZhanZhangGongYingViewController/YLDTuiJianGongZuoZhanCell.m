@@ -7,13 +7,15 @@
 //
 
 #import "YLDTuiJianGongZuoZhanCell.h"
-
+#import "UIButton+ZIKEnlargeTouchArea.h"
+#import "UIDefines.h"
 @implementation YLDTuiJianGongZuoZhanCell
 +(YLDTuiJianGongZuoZhanCell *)yldTuiJianGongZuoZhanCell
 {
     YLDTuiJianGongZuoZhanCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDTuiJianGongZuoZhanCell" owner:self options:nil] lastObject];
     
-    
+    [cell.callBtn setEnlargeEdgeWithTop:5 right:5 bottom:10 left:10];
+    //    self.callBtn addTarget:<#(nullable id)#> action:<#(nonnull SEL)#> forControlEvents:<#(UIControlEvents)#>
     return cell;
 }
 -(void)setModel:(YLDWorkstationlistModel *)model
@@ -28,6 +30,18 @@
     }else{
       [self.LogImag setImage:[UIImage imageNamed:@"ico_工作站-分站text.png"]];  
     }
+    [self.callBtn addTarget:self action:@selector(callBtnAction) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)callBtnAction
+{
+    if (self.model.phone.length>0) {
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }else
+    {
+        [ToastView showTopToast:@"暂无联系方式"];
+    }
+    
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -71,7 +71,7 @@
     [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
     [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     self.saerchBtn=searchShowBtn;
-    //[self.navBackView addSubview:searchShowBtn];
+    [self.navBackView addSubview:searchShowBtn];
     YLDSearchNavView *searchV =[[YLDSearchNavView alloc]init];
     self.searchV=searchV;
     searchV.delegate=self;
@@ -120,12 +120,13 @@
                     self.pageNum-=1;
                 }else{
                     [self.dataAry addObjectsFromArray:dataarss];
-                    [self.tableView reloadData];
+                    
                 }
             }else{
                [ToastView showTopToast:@"已无更多信息"];
                 self.pageNum-=1;
             }
+            [self.tableView reloadData];
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
@@ -151,6 +152,7 @@
     if (!cell) {
         cell=[YLDBaoJiaMessageCell ylBdaoJiaMessageCell];
         cell.delegate=self;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     YLDBaoJiaMessageModel *model=self.dataAry[indexPath.row];
     cell.model=model;
@@ -228,7 +230,7 @@
     }];
 }
 -(void)actionWithtype:(NSInteger)type andModel:(YLDBaoJiaMessageModel *)model{
-    NSLog(@"%@",model.uid);
+    //NSLog(@"%@",model.uid);
     if (type==1) {
        
         NSString *title = NSLocalizedString(@"建立合作", nil);
@@ -246,7 +248,10 @@
         UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [HTTPCLIENT jianliHezuoWithBaoJiaID:model.uid Success:^(id responseObject) {
                 if ([[responseObject objectForKey:@"success"] integerValue]) {
-                    [self.tableView headerBeginRefreshing];
+                    [ToastView showTopToast:@"合作成功"];
+                    self.pageNum=1;
+                    ShowActionV();
+                    [self getMessageListWtihKeyWord:self.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",self.pageNum]];
                 }
             } failure:^(NSError *error) {
                 

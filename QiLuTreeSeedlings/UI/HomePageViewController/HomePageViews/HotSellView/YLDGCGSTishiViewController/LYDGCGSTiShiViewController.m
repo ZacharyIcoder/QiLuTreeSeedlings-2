@@ -9,8 +9,10 @@
 #import "LYDGCGSTiShiViewController.h"
 #import "UIDefines.h"
 #import "YLDGCGSZiZhiTiJiaoViewController.h"
+#import "HttpClient.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface LYDGCGSTiShiViewController ()
-
+@property (nonatomic,copy)NSString *phone;
 @end
 
 @implementation LYDGCGSTiShiViewController
@@ -31,8 +33,30 @@
      [tixinglab sizeToFit];
     [backSvrollV addSubview:tixinglab];
     UIButton *kefuBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(tixinglab.frame) +10, kWidth, 50)];
-    [kefuBtn setTitle:@"客服电话0539-11111111" forState:UIControlStateNormal];
+    [HTTPCLIENT kefuXiTongWithPage:@"2" WithPageNumber:@"1" WithIsLoad:@"0" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *dic=[responseObject objectForKey:@"result"];
+            NSInteger type=[[dic objectForKey:@"type"] integerValue];
+            if (type==2) {
+                NSDictionary *dic2=[dic objectForKey:@"kehu"];
+                self.phone=dic2[@"phone"];
+//                self.nameLab.text=[dic2 objectForKey:@"name"];
+//                [self normalViewWithDic:dic2];
+                 [kefuBtn setTitle:[NSString stringWithFormat:@"客服电话%@",self.phone] forState:UIControlStateNormal];
+            }
+            if (type==1) {
+                [ToastView showTopToast:@"您本身是齐鲁苗木网客服人员"];
+            }
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
+    [kefuBtn setTitle:@"客服电话0539-0000000" forState:UIControlStateNormal];
     [kefuBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    [kefuBtn setEnlargeEdgeWithTop:3 right:10 bottom:3 left:10];
     [kefuBtn setImage:[UIImage imageNamed:@"dingdandinahua"] forState:UIControlStateNormal];
     [kefuBtn addTarget:self action:@selector(callAction) forControlEvents:UIControlEventTouchUpInside];
     [backSvrollV addSubview:kefuBtn];
@@ -57,7 +81,13 @@
 }
 -(void)callAction
 {
-    
+   if (self.phone.length>0) {
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }else
+    {
+        [ToastView showTopToast:@"暂无联系方式"];
+    }
 }
 -(void)shengjiAction
 {

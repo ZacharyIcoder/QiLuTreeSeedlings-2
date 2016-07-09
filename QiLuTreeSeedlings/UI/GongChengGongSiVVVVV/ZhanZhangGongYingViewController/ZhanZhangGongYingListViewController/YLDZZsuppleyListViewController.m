@@ -192,7 +192,7 @@
     backView.layer.masksToBounds=YES;
     backView.layer.cornerRadius=3;
     [self.navBackView addSubview:backView];
-    UITextField * searchMessageField=[[UITextField alloc]initWithFrame:CGRectMake(10, 0, backView.frame.size.width-100, 34)];
+    UITextField * searchMessageField=[[UITextField alloc]initWithFrame:CGRectMake(10, 0, backView.frame.size.width-60, 34)];
     self.searchMessageField=searchMessageField;
     searchMessageField.placeholder=@"请输入树种名称";
     [searchMessageField setTextColor:titleLabColor];
@@ -207,7 +207,7 @@
     [backView addSubview:searchMessageField];
     UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(backView.frame.size.width-45, 0, 34,34)];
     [searchBtn setImage:[UIImage imageNamed:@"searchOrange"] forState:UIControlStateNormal];
-    [searchBtn setEnlargeEdgeWithTop:10 right:0 bottom:0 left:20];
+    [searchBtn setEnlargeEdgeWithTop:10 right:0 bottom:0 left:0];
     [searchBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:searchBtn];
     

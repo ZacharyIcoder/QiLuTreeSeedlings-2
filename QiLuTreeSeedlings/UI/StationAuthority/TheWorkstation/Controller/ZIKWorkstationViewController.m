@@ -196,7 +196,12 @@
         ZIKMyTeamModel *model = self.stationMArr[indexPath.section];
         YLDZhanZhangMessageViewController *detailVC = [[YLDZhanZhangMessageViewController
                                                         alloc] initWithUid:model.uid];
-        detailVC.hidesBottomBarWhenPushed = YES;
+        if (self.navigationController.childViewControllers.count>1) {
+            
+        }else{
+          detailVC.hidesBottomBarWhenPushed = YES;
+        }
+        
         [self.navigationController pushViewController:detailVC animated:YES];
 
     }

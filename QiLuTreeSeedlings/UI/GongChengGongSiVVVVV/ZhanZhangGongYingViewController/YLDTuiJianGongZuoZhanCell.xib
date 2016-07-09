@@ -65,10 +65,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uD1-iV-z8P">
-                        <rect key="frame" x="278" y="76" width="30" height="30"/>
+                        <rect key="frame" x="278" y="76" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="SGG-vH-tZl"/>
-                            <constraint firstAttribute="height" constant="30" id="weG-UZ-fyi"/>
+                            <constraint firstAttribute="width" constant="20" id="SGG-vH-tZl"/>
+                            <constraint firstAttribute="height" constant="20" id="weG-UZ-fyi"/>
                         </constraints>
                         <state key="normal" backgroundImage="dingdandinahua.png"/>
                     </button>
@@ -112,10 +112,10 @@
                     <constraint firstItem="nbI-om-Aj6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="fQS-w0-FJj"/>
                     <constraint firstItem="JUg-fc-ZOK" firstAttribute="leading" secondItem="Xec-rf-GK1" secondAttribute="trailing" constant="8" id="kcT-46-gDV"/>
                     <constraint firstItem="DzH-la-uKU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="meZ-lY-5Uf"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="uD1-iV-z8P" secondAttribute="trailing" constant="4" id="ocy-uq-uJv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="uD1-iV-z8P" secondAttribute="trailing" constant="14" id="ocy-uq-uJv"/>
                     <constraint firstAttribute="bottomMargin" secondItem="JUg-fc-ZOK" secondAttribute="bottom" constant="21" id="q4L-TU-4sl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gvH-Re-CVN" secondAttribute="trailing" constant="-8" id="tA7-zt-pEm"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="uD1-iV-z8P" secondAttribute="bottom" constant="10" id="vjf-sA-Md2"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="uD1-iV-z8P" secondAttribute="bottom" constant="20" id="vjf-sA-Md2"/>
                     <constraint firstItem="JUg-fc-ZOK" firstAttribute="leading" secondItem="Xec-rf-GK1" secondAttribute="trailing" constant="8" id="zYr-f3-qk8"/>
                 </constraints>
             </tableViewCellContentView>
