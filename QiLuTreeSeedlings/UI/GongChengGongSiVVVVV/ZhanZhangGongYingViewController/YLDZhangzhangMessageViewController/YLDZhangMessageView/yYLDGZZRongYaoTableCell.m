@@ -7,7 +7,9 @@
 //
 
 #import "yYLDGZZRongYaoTableCell.h"
-
+#import "ZIKStationHonorListModel.h"
+#import "UIDefines.h"
+#import "UIButton+AFNetworking.h"
 @implementation yYLDGZZRongYaoTableCell
 +(yYLDGZZRongYaoTableCell *)yldGZZRongYaoTableCell
 {
@@ -19,7 +21,27 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)setDataAry:(NSArray *)dataAry{
+    _dataAry=dataAry;
+    int x=(int)dataAry.count/3;
+    int y=(int)dataAry.count%3;
+    if (y>0) {
+        x+=1;
+    }
+    [self.imageScrollV setContentSize:CGSizeMake((kWidth-20)*x, 0)];
+    CGFloat  jianxi=(kWidth-255)/4;
+    for (int i=0; i<dataAry.count; i++) {
+        ZIKStationHonorListModel *model=dataAry[i];
+        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake((jianxi+85)*i+jianxi, 5, 85, 70)];
+        if (model.image.length>0) {
+            [btn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:model.image]];
+        }
+       
+        btn.tag=i;
+        [self.imageScrollV addSubview:btn];
+    }
+    
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

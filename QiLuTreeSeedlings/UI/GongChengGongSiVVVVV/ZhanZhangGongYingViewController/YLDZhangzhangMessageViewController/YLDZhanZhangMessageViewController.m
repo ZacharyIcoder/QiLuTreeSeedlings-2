@@ -214,6 +214,7 @@
         yYLDGZZRongYaoTableCell *cell=[tableView dequeueReusableCellWithIdentifier:@"yYLDGZZRongYaoTableCell"];
         if (!cell) {
            cell =[yYLDGZZRongYaoTableCell yldGZZRongYaoTableCell];
+            cell.dataAry=self.honorAry;
            cell.selectionStyle=UITableViewCellSelectionStyleNone;
             [cell.allBtn addTarget:self action:@selector(allRongYuBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         }

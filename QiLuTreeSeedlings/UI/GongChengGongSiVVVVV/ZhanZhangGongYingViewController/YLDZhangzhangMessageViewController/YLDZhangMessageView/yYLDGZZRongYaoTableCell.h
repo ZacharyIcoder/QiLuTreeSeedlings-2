@@ -11,5 +11,6 @@
 @interface yYLDGZZRongYaoTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *allBtn;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollV;
+@property (nonatomic,strong)NSArray *dataAry;
 +(yYLDGZZRongYaoTableCell *)yldGZZRongYaoTableCell;
 @end
