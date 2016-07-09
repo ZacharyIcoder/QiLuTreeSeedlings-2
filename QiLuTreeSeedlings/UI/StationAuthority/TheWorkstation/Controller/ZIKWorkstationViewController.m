@@ -142,7 +142,13 @@
     self.selectAreaView.delegate = self;
     [self.view addSubview:self.selectAreaView];
     self.selectAreaView.frame = CGRectMake(0, 64, kWidth, 44);
-    UITableView *orderTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+44, kWidth, kHeight-64-44-44) style:UITableViewStylePlain];
+    CGRect frame;
+    if (self.navigationController.childViewControllers.count>1) {
+        frame=CGRectMake(0, 64+44, kWidth, kHeight-64-44);
+    }else{
+        frame=CGRectMake(0, 64+44, kWidth, kHeight-64-44-44);
+    }
+    UITableView *orderTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     orderTableView.dataSource = self;
     orderTableView.delegate = self;
     [self.view addSubview:orderTableView];

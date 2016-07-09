@@ -192,6 +192,10 @@
         }else{
             frame.size.height=80;
             cell.moreBtn.selected=NO;
+            CGFloat hiss=[self getHeightWithContent:self.model.brief width:kWidth-20 font:15];
+            if (hiss<40) {
+                cell.moreBtn.hidden=YES;
+            }
         }
         cell.frame=frame;
         cell.jianjieStr=self.model.brief;

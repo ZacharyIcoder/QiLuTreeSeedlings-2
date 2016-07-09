@@ -319,7 +319,7 @@ NSString *kHonorCellID = @"honorcellID";
         self.showHonorView = [ZIKStationShowHonorView instanceShowHonorView];
         self.showHonorView.frame = CGRectMake(0, kHeight, kWidth, kHeight);
     }
-    if (self.type == TypeHonor) {
+    if (self.type == TypeHonor||self.type == TypeHonorOther) {
         ZIKStationHonorListModel  *model = _honorData[indexPath.row];
         ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
         [self.showHonorView loadData:modelAdapter];
