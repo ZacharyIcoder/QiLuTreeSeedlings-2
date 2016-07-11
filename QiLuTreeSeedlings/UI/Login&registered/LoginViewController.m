@@ -61,6 +61,9 @@
         if ([[responseObject objectForKey:@"success"] integerValue]) {
           [self loginSuccessAction];
             APPDELEGATE.userModel=[UserInfoModel userInfoCreatByDic:[responseObject objectForKey:@"result"]];
+
+            [[NSUserDefaults standardUserDefaults] setObject:phone forKey:@"myphone"];
+
             NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
             NSString *token=APPDELEGATE.userModel.access_token;
             NSString *uid=APPDELEGATE.userModel.access_id;

@@ -37,6 +37,8 @@
 #import "YLDShengJiViewViewController.h"
 #import "YLDGCGSZiZhiTiJiaoViewController.h"
 #import "ZIKMyShopViewController.h"//我的店铺
+#import "ZIKStationTabBarViewController.h"//站长助手
+#import "YLDGongChengGongSiViewController.h"//工程助手
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -128,7 +130,7 @@
     if(section==2)
     {
 
-        return 2;
+        return 5;
 
     }
     return 0;
@@ -258,6 +260,15 @@
             }
             return cell;
         }
+        if (indexPath.row == 3) {
+            UserInfoNomerTableViewCell *cell = [[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"mycompany" andTitle:@"站长助手"];
+            return  cell;
+        }
+        if (indexPath.row == 4) {
+            UserInfoNomerTableViewCell *cell = [[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"个人中心-列表-工程公司" andTitle:@"工程助手"];
+            return  cell;
+        }
+
 
 //        if (indexPath.row==2) {
 //            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"zhanzhangtong" andTitle:@"站长通"];
@@ -514,12 +525,27 @@
             [self.navigationController pushViewController:nuserListVC animated:YES];
             return;
         }
-        if (indexPath.row == 3) {
+        if (indexPath.row==3) {
             [self hiddingSelfTabBar];
-            ZIKStationAgentViewController *stationVC = [[ZIKStationAgentViewController alloc] init];
-            [self.navigationController pushViewController:stationVC animated:YES];
+            ZIKStationTabBarViewController *nuserListVC=[[ZIKStationTabBarViewController alloc]init];
+            [self.navigationController pushViewController:nuserListVC animated:YES];
             return;
         }
+        if (indexPath.row==4) {
+            [self hiddingSelfTabBar];
+            YLDGongChengGongSiViewController *nuserListVC=[[YLDGongChengGongSiViewController alloc]init];
+            [self.navigationController pushViewController:nuserListVC animated:YES];
+            return;
+        }
+
+
+
+//        if (indexPath.row == 3) {
+//            [self hiddingSelfTabBar];
+//            ZIKStationAgentViewController *stationVC = [[ZIKStationAgentViewController alloc] init];
+//            [self.navigationController pushViewController:stationVC animated:YES];
+//            return;
+//        }
     }
     else if (indexPath.section == 1) {
         if (indexPath.row == 0) {

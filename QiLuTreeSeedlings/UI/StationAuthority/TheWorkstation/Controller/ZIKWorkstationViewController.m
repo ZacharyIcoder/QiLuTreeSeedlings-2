@@ -18,6 +18,7 @@
 #import "HttpClient.h"
 #import "ZIKMyTeamModel.h"
 #import "YLDZhanZhangMessageViewController.h"//工作站详情
+#import "ZIKFunction.h"
 @interface ZIKWorkstationViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,ZIKWorkstationSelectViewDelegate,ZIKWorkstationSelectListViewDataSource>
 @property (nonatomic, strong) UITableView *orderTableView;
 
@@ -153,6 +154,7 @@
     orderTableView.delegate = self;
     [self.view addSubview:orderTableView];
     self.orderTableView = orderTableView;
+    [ZIKFunction setExtraCellLineHidden:orderTableView];
 }
 
 -(void)didSelector:(NSString *)selectId title:(NSString *)selectTitle {
@@ -256,6 +258,7 @@
 - (NSString*)selectListView:(ZIKWorkstationSelectListView *)selectListView titleForRow:(NSInteger)row {
     return [[self getData][row] objectForKey:@"name"];
 }
+
 //- (NSArray *)citys {
 //    //if (_citys == nil) {
 //    _citys = [[NSMutableArray alloc] init];

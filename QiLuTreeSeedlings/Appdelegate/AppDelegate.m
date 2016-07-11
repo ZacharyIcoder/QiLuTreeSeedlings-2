@@ -241,6 +241,7 @@
     NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:kACCESS_ID];
     [userDefaults removeObjectForKey:kACCESS_TOKEN];
+    [[NSUserDefaults standardUserDefaults] setObject:@""   forKey:@"myphone"];
     [userDefaults synchronize];
     self.userModel=nil;
     self.companyModel=nil;

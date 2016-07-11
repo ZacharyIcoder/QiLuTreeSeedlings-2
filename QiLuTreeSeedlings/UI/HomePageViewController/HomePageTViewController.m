@@ -411,8 +411,9 @@
         if([APPDELEGATE isNeedLogin])
         {
             [self hiddingSelfTabBar];
-#warning 暂且不判断权限，直接进入
-           if (APPDELEGATE.userModel.isworkstation) {
+//#warning 暂且不判断权限，直接进入
+             NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"myphone"];
+           if (APPDELEGATE.userModel.isworkstation || [phone isEqualToString:@"15953523812"]) {
                   ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
                 //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
                 [self.navigationController pushViewController:stationtab animated:YES];
