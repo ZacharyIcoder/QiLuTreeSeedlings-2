@@ -194,10 +194,10 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 }
 
 - (void)requestShare {
-    ShowActionV();
+    //ShowActionV();
     [HTTPCLIENT stationShareSuccess:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
-            RemoveActionV();
+            //RemoveActionV();
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:kWidth/2 withSuperView:self.view];
             return ;
         }
@@ -208,11 +208,11 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
         NSData * data    = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStr]];
         self.shareImage  = [[UIImage alloc] initWithData:data];
         self.shareUrl    = shareDic[@"url"];
-        RemoveActionV();
+        //RemoveActionV();
         [self umengShare];
 
     } failure:^(NSError *error) {
-        RemoveActionV();
+        //RemoveActionV();
     }];
 
 }

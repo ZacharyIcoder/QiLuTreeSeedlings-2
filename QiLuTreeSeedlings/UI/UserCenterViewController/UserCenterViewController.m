@@ -127,12 +127,9 @@
     }
     if(section==2)
     {
-        if (APPDELEGATE.userModel.isworkstation) {
-            return 4;
-        }else
-        {
-            return 3;
-        }
+
+        return 2;
+
     }
     return 0;
 }
@@ -261,10 +258,16 @@
             }
             return cell;
         }
-        if (indexPath.row==3) {
-            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"zhanzhangtong" andTitle:@"站长通"];
-            return cell;
-        }
+
+//        if (indexPath.row==2) {
+//            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"zhanzhangtong" andTitle:@"站长通"];
+//            return cell;
+//        }
+//        if (indexPath.row==3) {
+//            UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"个人中心-列表-工程公司" andTitle:@"工程公司"];
+//            return cell;
+//        }
+
      
     }
     if (indexPath.section==3) {

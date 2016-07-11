@@ -1054,5 +1054,12 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 站长中心分享 -----------
 - (void)stationShareSuccess:(void (^)(id responseObject))success
 failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 店铺分享 -----------
+- (void)shopShareWithMemberUid:(NSString *)memberUid
+                       Success:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 工程中心分享 -----------
+- (void)GCZXShareSuccess:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
 @end

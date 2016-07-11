@@ -73,9 +73,6 @@
                             <constraint firstAttribute="height" constant="22" id="Hmd-lk-UAK"/>
                         </constraints>
                         <state key="normal" image="分享.png"/>
-                        <connections>
-                            <action selector="shareBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dg6-DB-CLf"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tx-eI-ME7">
                         <rect key="frame" x="120" y="60" width="80" height="80"/>
@@ -112,6 +109,7 @@
                 <outlet property="companyName" destination="aRt-rp-3Hv" id="qIC-Ow-PBp"/>
                 <outlet property="imageBtn" destination="0tx-eI-ME7" id="lB4-G6-eLv"/>
                 <outlet property="personName" destination="MUb-nT-m3i" id="5p3-mI-TEj"/>
+                <outlet property="shareBtn" destination="DBt-5R-Arj" id="cl7-QU-9Gx"/>
                 <outlet property="userImagV" destination="RbH-f1-qwP" id="mgE-W2-JFO"/>
             </connections>
         </tableViewCell>

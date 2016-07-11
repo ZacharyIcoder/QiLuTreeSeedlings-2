@@ -7,7 +7,7 @@
 //
 
 #import "YLDGCZXzizhiCell.h"
-
+#import "UIDefines.h"
 @implementation YLDGCZXzizhiCell
 +(YLDGCZXzizhiCell *)yldGCZXzizhiCell
 {
@@ -17,6 +17,11 @@
 -(void)setMessageWithImageName:(NSString *)imageName andTitle:(NSString *)title
 {
     [self.imagev setImage:[UIImage imageNamed:imageName]];
+    if ([title isEqualToString:@"公司资质"]) {
+        UIImageView *lineV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 49, kWidth-20, 1)];
+        [self addSubview:lineV];
+        [lineV setBackgroundColor:kLineColor];
+    }
     self.titleLab.text=title;
 }
 - (void)awakeFromNib {
