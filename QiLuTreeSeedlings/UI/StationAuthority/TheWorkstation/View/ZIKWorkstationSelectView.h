@@ -10,7 +10,7 @@
 @protocol ZIKWorkstationSelectViewDelegate <NSObject>
 @optional
 
-- (void)didSelector:(NSString *)selectId title:(NSString *)selectTitle;
+- (void)didSelector:(NSString *)selectId title:(NSString *)selectTitle level:(NSString *)level;
 
 @end
 
@@ -19,6 +19,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *cityButton;
 @property (weak, nonatomic) IBOutlet UIButton *countryButton;
 
+@property (nonatomic, copy) NSString *provinceName;
+@property (nonatomic, copy) NSString *provinceCode;
+@property (nonatomic, copy) NSString *cityName;
+@property (nonatomic, copy) NSString *cityCode;
+@property (nonatomic, copy) NSString *countryName;
+@property (nonatomic, copy) NSString *countryCode;
+
+@property (nonatomic, copy) NSString *level;
 @property (nonatomic, assign) id<ZIKWorkstationSelectViewDelegate>delegate;
 +(ZIKWorkstationSelectView *)instanceSelectAreaView;
 @end

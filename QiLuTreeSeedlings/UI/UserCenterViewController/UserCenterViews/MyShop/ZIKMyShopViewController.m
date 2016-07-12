@@ -28,14 +28,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.titleLable.text = @"我的店铺";
+    if (_type == 0) {
+        self.titleLable.text = @"我的店铺";
+    } else {
+        self.titleLable.text = @"店铺";
+    }
     self.edgesForExtendedLayout = UIRectEdgeNone;
-
-    self.memberUid = APPDELEGATE.userModel.access_id;
-    NSString  *urlString = [NSString stringWithFormat:@"http://192.168.1.9?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];
+    NSString  *urlString = [NSString stringWithFormat:@"http://115.28.228.147:999?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];
     //NSString *baidu = @"https://www.baidu.com";
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     [self.shopWebView loadRequest:request];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [ToastView showTopToast:@"正在加载"];
 }
 
 - (IBAction)backButtonClick:(UIButton *)sender {

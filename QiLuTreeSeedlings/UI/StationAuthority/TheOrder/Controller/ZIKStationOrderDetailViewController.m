@@ -157,6 +157,9 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
         } else {
             cell.isCanQuote = NO;
         }
+        if (_statusType == StationOrderStatusTypeOutOfDate) {
+            cell.isCanQuote = NO;
+        }
         if (self.quoteMArr.count > 0) {
             ZIKStationOrderDetailQuoteModel *model = self.quoteMArr[indexPath.section];
             cell.section = indexPath.section;

@@ -13,12 +13,28 @@
 - (NSInteger)numberOfRowsInfTable:(ZIKWorkstationSelectListView *)selectListView;
 //标题
 - (NSString *)selectListView:(ZIKWorkstationSelectListView *)selectListView titleForRow:(NSInteger)row;
+//编码
+- (NSString *)selectListView:(ZIKWorkstationSelectListView *)selectListView codeForRow:(NSInteger)row;
+@end
+
+@protocol ZIKWorkstationSelectListViewDelegate <NSObject>
+
+- (void) didSelectRowAtIndexPath:(ZIKWorkstationSelectListView *)selectListView title:(NSString *)title coel:(NSString *)code;
 
 @end
+
+//@protocol ZIKWorkstationSelectListViewSelectDelegate <NSObject>
+//
+//- (void)select
+//
+//@end
 
 @interface ZIKWorkstationSelectListView : UIView
 
 @property (weak, nonatomic) IBOutlet UITableView *selectAraeTableView;
 @property (nonatomic,assign)id<ZIKWorkstationSelectListViewDataSource> dataSource;
+@property (nonatomic,assign)id<ZIKWorkstationSelectListViewDelegate> listdelegate ;
+
+@property (nonatomic, assign) BOOL isShow;
 +(ZIKWorkstationSelectListView *)instanceSelectListView;
 @end

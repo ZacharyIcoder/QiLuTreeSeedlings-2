@@ -9,13 +9,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ZIKOrderSecondTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="KGk-i7-Jjw" customClass="ZIKOrderSecondTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc0-a9-aKm">
+                        <rect key="frame" x="0.0" y="36" width="320" height="2"/>
+                        <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="bhN-j7-uB8"/>
+                        </constraints>
+                    </view>
                     <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHO-Ck-Hpd">
                         <rect key="frame" x="5" y="6" width="100" height="24"/>
                         <constraints>
@@ -83,12 +90,15 @@
                     <constraint firstItem="o8c-aw-iN0" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9XG-fq-d7W"/>
                     <constraint firstItem="k1l-GZ-RXk" firstAttribute="leading" secondItem="YoJ-tU-dVg" secondAttribute="trailing" constant="6" id="AY6-zv-bGP"/>
                     <constraint firstItem="o8c-aw-iN0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="Bdc-9x-HSs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Bc0-a9-aKm" secondAttribute="bottom" constant="-9" id="DTp-PM-dKj"/>
                     <constraint firstItem="YoJ-tU-dVg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="FYf-gb-gpW"/>
                     <constraint firstItem="YoJ-tU-dVg" firstAttribute="leading" secondItem="cA7-Ke-buq" secondAttribute="trailing" constant="2" id="Osr-hx-NXz"/>
                     <constraint firstItem="cA7-Ke-buq" firstAttribute="leading" secondItem="NHO-Ck-Hpd" secondAttribute="trailing" constant="7" id="iRN-xq-DHx"/>
                     <constraint firstItem="NHO-Ck-Hpd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-3" id="jn5-da-mki"/>
                     <constraint firstItem="k1l-GZ-RXk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="peK-6Z-PER"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Bc0-a9-aKm" secondAttribute="trailing" constant="-8" id="qOY-TY-luf"/>
                     <constraint firstItem="cA7-Ke-buq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="qOg-ro-9u1"/>
+                    <constraint firstItem="Bc0-a9-aKm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="xmd-5w-bdS"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
@@ -101,7 +111,7 @@
                 <outlet property="screeningButton" destination="o8c-aw-iN0" id="nLf-uE-uxT"/>
                 <outlet property="startTimeButton" destination="NHO-Ck-Hpd" id="Pn0-3r-0zP"/>
             </connections>
-            <point key="canvasLocation" x="587" y="353"/>
+            <point key="canvasLocation" x="587" y="355"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -29,7 +29,7 @@
 #import "UMSocial.h"
 
 #import "ZIKSingleVoucherCenterViewController.h"
-
+#import "ZIKMyShopViewController.h"
 @interface BuyButton : UIButton
 @property (nonatomic, assign) float price;
 @property (nonatomic, strong) NSString *buyUid;
@@ -69,6 +69,8 @@
 @property (nonatomic, strong) NSString       *shareUrl;  //分享url
 
 @property (nonatomic, assign) BOOL isFromDingzhi;
+@property (nonatomic, strong) NSString *memberUid;
+
 @end
 
 @implementation BuyDetialInfoViewController
@@ -91,6 +93,7 @@
                                 }
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                                 self.infoDic=dic;
+                                self.memberUid = dic[@"memberUid"];
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
 
                                 self.model.uid=self.uid;
@@ -112,6 +115,7 @@
                             }
                             NSDictionary *dic=[responseObject objectForKey:@"result"];
                             self.infoDic=dic;
+                            self.memberUid = dic[@"memberUid"];
                             self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
                                                        self.model.uid=self.uid;
                             if (self.model.push||self.model.buy) {
@@ -197,6 +201,7 @@
                                 //NSLog(@"%@",responseObject);
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                                 self.infoDic=dic;
+                                self.memberUid = dic[@"memberUid"];
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
                                 self.model.uid=self.uid;
                                 if (self.model.push||self.model.buy) {
@@ -286,6 +291,7 @@
              }
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             self.infoDic=dic;
+             self.memberUid = dic[@"memberUid"];
              self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
              self.model.uid=uid;
              if (self.model.push||self.model.buy) {
@@ -376,6 +382,7 @@
                                 }
                                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                                 self.infoDic=dic;
+                                self.memberUid = dic[@"memberUid"];
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
                                 self.model.uid=uid;
                                 if (self.model.state==4) {
@@ -414,23 +421,45 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
+- (void)shopBtnAction {
+    if ([ZIKFunction xfunc_check_strEmpty:_memberUid]) {
+        [ToastView showTopToast:@"无店铺信息"];
+        return;
+    }
+    ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
+    //    self.memberUid = dic[@"memberUid"];
+    shopVC.memberUid = _memberUid;
+    shopVC.type = 1;
+    [self.navigationController pushViewController:shopVC animated:YES];
 
+}
 -(UIView *)lianxiMessageView
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/2, 50)];
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 50)];
+    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+    [shopBtn setBackgroundColor:[UIColor whiteColor]];
+    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+    [view addSubview:shopBtn];
+
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, 0, kWidth*2/5, 50)];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
     [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
     [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
     [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
     [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [view addSubview:messageBtn];
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2,0, kWidth/2, 50)];
+    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*3/5,0, kWidth*2/5, 50)];
     [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
     [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
     [phoneBtn setBackgroundColor:NavColor];
     [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
@@ -443,20 +472,32 @@
 -(UIView *)lianxiMessageShareView
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*2/5, 50)];
+
+    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*1/5, 50)];
+    [shopBtn setBackgroundColor:[UIColor whiteColor]];
+    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+    [view addSubview:shopBtn];
+
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, 0, kWidth*1.5/5, 50)];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
     [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
     [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
     [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
     [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [view addSubview:messageBtn];
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
+    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*1.5/5, 50)];
     [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
     [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
     [phoneBtn setBackgroundColor:NavColor];
     [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
@@ -479,12 +520,24 @@
 -(UIView *)laobanViewWithPrice:(float)price
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/2, 50)];
+
+    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*1/5, 50)];
+    [shopBtn setBackgroundColor:[UIColor whiteColor]];
+//    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+    [view addSubview:shopBtn];
+
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, 0, kWidth*2/5, 50)];
     [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
     [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [view addSubview:messageBtn];
-    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth/2,0, kWidth/2, 50)];
+    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*3/5,0, kWidth*2/5, 50)];
     
     [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
     phoneBtn.price = price;
@@ -492,7 +545,7 @@
 //      [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
     [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
     [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
     [phoneBtn setBackgroundColor:yellowButtonColor];
     [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -503,20 +556,32 @@
 }
 -(UIView *)laobanShareViewWithPrice:(float)price
 {
+    
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*2/5, 50)];
+    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*1/5, 50)];
+    [shopBtn setBackgroundColor:[UIColor whiteColor]];
+    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+    [view addSubview:shopBtn];
+
+    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, 0, kWidth*1.5/5, 50)];
     [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
     [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
     [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
     [view addSubview:messageBtn];
-    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
+    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*1.5/5, 50)];
     [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
     phoneBtn.price = price;
     phoneBtn.buyUid = self.model.uid;
 //    [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
     [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
     [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
     [phoneBtn setBackgroundColor:yellowButtonColor];
     [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -585,6 +650,7 @@
                                     RemoveActionV();
                                     NSDictionary *dic=[responseObject objectForKey:@"result"];
                                     self.infoDic=dic;
+                                    self.memberUid = dic[@"memberUid"];
                                     self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
                                     self.model.uid=self.uid;
                                     if (self.model.push||self.model.buy) {

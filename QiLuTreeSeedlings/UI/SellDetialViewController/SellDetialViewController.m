@@ -26,6 +26,7 @@
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
 
+#import "ZIKMyShopViewController.h"
 @interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIButton *collectionBtn;
@@ -43,6 +44,9 @@
 @property (nonatomic, strong) NSString       *shareTitle;//分享标题
 @property (nonatomic, strong) UIImage        *shareImage;//分享图片
 @property (nonatomic, strong) NSString       *shareUrl;  //分享url
+
+
+@property (nonatomic, strong) NSString *memberUid;
 
 @end
 
@@ -62,6 +66,7 @@
                     [ToastView showTopToast:@"请刷新列表后重新进入该供应"];
                     [self.navigationController popViewControllerAnimated:YES];
                 }
+                self.memberUid = dic[@"memberUid"];
                 self.model=model;
                   BigImageViewShowView *bigImageVShowV=[[BigImageViewShowView  alloc]initWithImageAry:model.images];
                 self.hotModel.title=model.title;
@@ -101,21 +106,33 @@
     [self.view addSubview:navView];
 
     if (!APPDELEGATE.isNeedLogin) {
-        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth/2, 50)];
+
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+        [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [self.view addSubview:shopBtn];
+
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2/5, 50)];
         [messageBtn setBackgroundColor:[UIColor whiteColor]];
         [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
         [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
         [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
         [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
         [self.view addSubview:messageBtn];
-        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2, kHeight-50, kWidth/2, 50)];
+        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*3/5, kHeight-50, kWidth*2/5, 50)];
         [phoneBtn   .titleLabel setFont:[UIFont systemFontOfSize:15]];
         [phoneBtn setTitle:@"联系供应商" forState:UIControlStateNormal];
         [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
         [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
         [phoneBtn setBackgroundColor:NavColor];
         [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
@@ -123,21 +140,33 @@
         [self.view addSubview:phoneBtn];
 
     } else {
-        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*2/5, 50)];
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+        [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [self.view addSubview:shopBtn];
+
+
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*1.5/5, 50)];
         [messageBtn setBackgroundColor:[UIColor whiteColor]];
         [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
         [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
         [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
         [self.view addSubview:messageBtn];
-        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2/5, kHeight-50, kWidth*2/5, 50)];
+        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5, kHeight-50, kWidth*1.5/5, 50)];
         [phoneBtn   .titleLabel setFont:[UIFont systemFontOfSize:15]];
         [phoneBtn setTitle:@"联系供应商" forState:UIControlStateNormal];
         [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 20, 0, 0);
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
         [phoneBtn setBackgroundColor:NavColor];
         [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
@@ -158,6 +187,14 @@
 
 
     //    [APPDELEGATE]
+}
+- (void)shopBtnAction {
+    ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
+//    self.memberUid = dic[@"memberUid"];
+    shopVC.memberUid = _memberUid;
+    shopVC.type = 1;
+    [self.navigationController pushViewController:shopVC animated:YES];
+
 }
 -(void)CallAction
 {
@@ -424,6 +461,7 @@
     }
     
 }
+
 //获取字符串的高度
 -(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
     

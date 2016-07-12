@@ -25,7 +25,7 @@
     self.nameLabel.textColor    = DarkTitleColor;
     self.numberLabel.textColor  = DarkTitleColor;
     self.addressLabel.textColor = DarkTitleColor;
-    self.priceLabel.textColor   = DarkTitleColor;
+    self.priceLabel.textColor   = yellowButtonColor;
 
   }
 

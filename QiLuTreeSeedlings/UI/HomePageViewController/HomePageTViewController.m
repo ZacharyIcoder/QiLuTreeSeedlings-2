@@ -463,7 +463,10 @@
             [ToastView showTopToast:@"请先登录"];
         }
     }
-    
+    if (index == 6) {
+        [ToastView showTopToast:@"敬请期待"];
+        return;
+    }
     if (index==7) {
         [self hiddingSelfTabBar];
         YLDJinPaiGYViewController *gongyingV=[[YLDJinPaiGYViewController alloc]init];

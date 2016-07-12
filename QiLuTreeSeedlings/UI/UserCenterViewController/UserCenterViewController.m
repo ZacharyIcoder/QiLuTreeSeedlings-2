@@ -39,6 +39,7 @@
 #import "ZIKMyShopViewController.h"//我的店铺
 #import "ZIKStationTabBarViewController.h"//站长助手
 #import "YLDGongChengGongSiViewController.h"//工程助手
+#import "LYDGCGSTiShiViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -261,7 +262,7 @@
             return cell;
         }
         if (indexPath.row == 3) {
-            UserInfoNomerTableViewCell *cell = [[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"mycompany" andTitle:@"站长助手"];
+            UserInfoNomerTableViewCell *cell = [[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"站长通" andTitle:@"站长助手"];
             return  cell;
         }
         if (indexPath.row == 4) {
@@ -509,6 +510,8 @@
         if (indexPath.row == 0) {
             [self hiddingSelfTabBar];
             ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] initWithNibName:@"ZIKMyShopViewController" bundle:nil];
+            shopVC.memberUid = APPDELEGATE.userModel.access_id;
+            shopVC.type = 0;
             [self.navigationController pushViewController:shopVC animated:YES];
             return;
         }
@@ -532,13 +535,54 @@
             return;
         }
         if (indexPath.row==4) {
-            [self hiddingSelfTabBar];
-            YLDGongChengGongSiViewController *nuserListVC=[[YLDGongChengGongSiViewController alloc]init];
-            [self.navigationController pushViewController:nuserListVC animated:YES];
-            return;
+            if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
+                [self hiddingSelfTabBar];
+                YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
+                [self.navigationController pushViewController:tab animated:YES];
+            }else{
+
+                if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+                    [ToastView showTopToast:@"暂未审核，请耐心等待"];
+                    return;
+                }
+
+                if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+                    [ToastView showTopToast:@"审核未通过"];
+                    return;
+                }
+
+                [self hiddingSelfTabBar];
+                LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+                [self.navigationController pushViewController:view animated:YES];
+            }
+
+//            [self hiddingSelfTabBar];
+//            YLDGongChengGongSiViewController *nuserListVC=[[YLDGongChengGongSiViewController alloc]init];
+//            [self.navigationController pushViewController:nuserListVC animated:YES];
+//            return;
         }
 
+        /*         if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
+         [self hiddingSelfTabBar];
+         YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
+         [self.navigationController pushViewController:tab animated:YES];
+         }else{
 
+         if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+         [ToastView showTopToast:@"暂未审核，请耐心等待"];
+         return;
+         }
+
+         if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+         [ToastView showTopToast:@"审核未通过"];
+         return;
+         }
+
+         [self hiddingSelfTabBar];
+         LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+         [self.navigationController pushViewController:view animated:YES];
+         }
+*/
 
 //        if (indexPath.row == 3) {
 //            [self hiddingSelfTabBar];

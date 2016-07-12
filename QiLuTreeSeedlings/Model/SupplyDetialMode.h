@@ -37,6 +37,10 @@
  *  苗圃Uid
  */
 @property (nonatomic, copy) NSString *nurseryUid;//苗圃Uid
+///**
+// *  店铺信息时使用
+// */
+//@property (nonatomic, copy) NSString *memberUid;
 //@property (nonatomic, copy) NSString *state;
 +(SupplyDetialMode *)creatSupplyDetialModelByDic:(NSDictionary *)dic;
 @end

@@ -15,18 +15,23 @@
 @property (nonatomic,strong)UILabel *titleLab;
 @property (nonatomic,strong)UILabel *cityLab;
 @property (nonatomic,strong)UILabel *timeLab;
+@property (nonatomic,strong)UIImageView *goldImageView;
+
 @end
-@implementation BuySearchTableViewCell
-{
+@implementation BuySearchTableViewCell{
     UIImageView * timeImag;
 }
+@synthesize goldImageView;
+
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithFrame:(CGRect)frame
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.frame=frame;
         //[self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
-        self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 10, kWidth-20, 13)];
+        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(18, 10, 20, 20)];
+        [self.contentView addSubview:goldImageView];
+        self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18+22, 10, kWidth-20-22-10, 13)];
         [self.titleLab setTextColor:titleLabColor];
         [self.titleLab setFont:[UIFont systemFontOfSize:15]];
         [self.titleLab setText:@"标题"];
@@ -67,8 +72,10 @@
     self=[super initWithFrame:frame];
     if (self) {
         //self.frame=frame;
+        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(18, 10, 20, 20)];
+        [self.contentView addSubview:goldImageView];
         [self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
-        self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18, 10, kWidth-20, 13)];
+        self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18+22, 10, kWidth-20-22-10, 13)];
         [self.titleLab setTextColor:titleLabColor];
         [self.titleLab setFont:[UIFont systemFontOfSize:15]];
         [self.titleLab setText:@"标题"];
@@ -149,7 +156,26 @@
         self.selected = YES;
         self.isSelect = YES;
     }
-    
+    if (hotBuyModel.goldsupplier == 0 || hotBuyModel.goldsupplier == 10) {
+        goldImageView.image = [UIImage imageNamed:@"列表-普通供应商"];
+    } else if (hotBuyModel.goldsupplier == 1) {
+        goldImageView.image = [UIImage imageNamed:@"列表-金牌供应商"];
+    } else if (hotBuyModel.goldsupplier == 2) {
+        goldImageView.image = [UIImage imageNamed:@"列表-银牌供应商"];
+    } else if (hotBuyModel.goldsupplier == 3) {
+        goldImageView.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+    } else if (hotBuyModel.goldsupplier == 4) {
+        goldImageView.image = [UIImage imageNamed:@"列表-认证供应商"];
+    } else if (hotBuyModel.goldsupplier == 5) {
+        goldImageView.image = [UIImage imageNamed:@"列表-总站"];
+    } else if (hotBuyModel.goldsupplier == 6) {
+        goldImageView.image = [UIImage imageNamed:@"列表-分站"];
+    } else if (hotBuyModel.goldsupplier == 7) {
+        goldImageView.image = [UIImage imageNamed:@"列表-工程公司"];
+    }
+
+
+
 }
 - (void)awakeFromNib {
     // Initialization code

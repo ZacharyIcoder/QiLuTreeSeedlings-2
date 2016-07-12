@@ -679,6 +679,19 @@
 		FC7134351CB358720037D507 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134321CB358720037D507 /* RIButtonItem.m */; };
 		FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7134341CB358720037D507 /* UIAlertView+Blocks.m */; };
 		FC71343B1CB3ABED0037D507 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */; };
+		FC74AD5F1D348D7A009D8409 /* 站长中心-我的荣誉.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD5D1D348D7A009D8409 /* 站长中心-我的荣誉.png */; };
+		FC74AD601D348D7A009D8409 /* 站长中心-我的团队.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD5E1D348D7A009D8409 /* 站长中心-我的团队.png */; };
+		FC74AD661D3496A5009D8409 /* 列表-金牌供应商.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD611D3496A5009D8409 /* 列表-金牌供应商.png */; };
+		FC74AD671D3496A5009D8409 /* 列表-普通供应商.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD621D3496A5009D8409 /* 列表-普通供应商.png */; };
+		FC74AD681D3496A5009D8409 /* 列表-认证供应商.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD631D3496A5009D8409 /* 列表-认证供应商.png */; };
+		FC74AD691D3496A5009D8409 /* 列表-铜牌牌供应商.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD641D3496A5009D8409 /* 列表-铜牌牌供应商.png */; };
+		FC74AD6A1D3496A5009D8409 /* 列表-银牌供应商.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD651D3496A5009D8409 /* 列表-银牌供应商.png */; };
+		FC74AD6C1D349F99009D8409 /* 站长通.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD6B1D349F99009D8409 /* 站长通.png */; };
+		FC74AD6E1D34BE23009D8409 /* 1求购供应详情-店铺图标.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD6D1D34BE23009D8409 /* 1求购供应详情-店铺图标.png */; };
+		FC74AD701D34C220009D8409 /* 1求购供应详情-店铺图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD6F1D34C220009D8409 /* 1求购供应详情-店铺图标@2x.png */; };
+		FC74AD741D34D8C1009D8409 /* 列表-分站.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD711D34D8C1009D8409 /* 列表-分站.png */; };
+		FC74AD751D34D8C1009D8409 /* 列表-工程公司.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD721D34D8C1009D8409 /* 列表-工程公司.png */; };
+		FC74AD761D34D8C1009D8409 /* 列表-总站.png in Resources */ = {isa = PBXBuildFile; fileRef = FC74AD731D34D8C1009D8409 /* 列表-总站.png */; };
 		FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7D66D71CF4277500DF4FEC /* 分享.png */; };
 		FC7EAFEE1D13C63200F4043D /* ico_顶部搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */; };
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
@@ -1869,6 +1882,19 @@
 		FC7134381CB3ABED0037D507 /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
 		FC7134391CB3ABED0037D507 /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
 		FC71343A1CB3ABED0037D507 /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
+		FC74AD5D1D348D7A009D8409 /* 站长中心-我的荣誉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站长中心-我的荣誉.png"; sourceTree = "<group>"; };
+		FC74AD5E1D348D7A009D8409 /* 站长中心-我的团队.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站长中心-我的团队.png"; sourceTree = "<group>"; };
+		FC74AD611D3496A5009D8409 /* 列表-金牌供应商.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-金牌供应商.png"; sourceTree = "<group>"; };
+		FC74AD621D3496A5009D8409 /* 列表-普通供应商.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-普通供应商.png"; sourceTree = "<group>"; };
+		FC74AD631D3496A5009D8409 /* 列表-认证供应商.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-认证供应商.png"; sourceTree = "<group>"; };
+		FC74AD641D3496A5009D8409 /* 列表-铜牌牌供应商.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-铜牌牌供应商.png"; sourceTree = "<group>"; };
+		FC74AD651D3496A5009D8409 /* 列表-银牌供应商.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-银牌供应商.png"; sourceTree = "<group>"; };
+		FC74AD6B1D349F99009D8409 /* 站长通.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站长通.png"; sourceTree = "<group>"; };
+		FC74AD6D1D34BE23009D8409 /* 1求购供应详情-店铺图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1求购供应详情-店铺图标.png"; sourceTree = "<group>"; };
+		FC74AD6F1D34C220009D8409 /* 1求购供应详情-店铺图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1求购供应详情-店铺图标@2x.png"; sourceTree = "<group>"; };
+		FC74AD711D34D8C1009D8409 /* 列表-分站.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-分站.png"; sourceTree = "<group>"; };
+		FC74AD721D34D8C1009D8409 /* 列表-工程公司.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-工程公司.png"; sourceTree = "<group>"; };
+		FC74AD731D34D8C1009D8409 /* 列表-总站.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列表-总站.png"; sourceTree = "<group>"; };
 		FC7D66D71CF4277500DF4FEC /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
 		FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_顶部搜索.png"; sourceTree = "<group>"; };
 		FC7ED2401D054FD70010A8E5 /* downImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downImage.png; sourceTree = "<group>"; };
@@ -2308,12 +2334,22 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
+				FC74AD711D34D8C1009D8409 /* 列表-分站.png */,
+				FC74AD721D34D8C1009D8409 /* 列表-工程公司.png */,
+				FC74AD731D34D8C1009D8409 /* 列表-总站.png */,
+				FC74AD6F1D34C220009D8409 /* 1求购供应详情-店铺图标@2x.png */,
+				FC74AD6D1D34BE23009D8409 /* 1求购供应详情-店铺图标.png */,
+				FC74AD6B1D349F99009D8409 /* 站长通.png */,
+				FC74AD611D3496A5009D8409 /* 列表-金牌供应商.png */,
+				FC74AD621D3496A5009D8409 /* 列表-普通供应商.png */,
+				FC74AD631D3496A5009D8409 /* 列表-认证供应商.png */,
+				FC74AD641D3496A5009D8409 /* 列表-铜牌牌供应商.png */,
+				FC74AD651D3496A5009D8409 /* 列表-银牌供应商.png */,
+				FC74AD5D1D348D7A009D8409 /* 站长中心-我的荣誉.png */,
+				FC74AD5E1D348D7A009D8409 /* 站长中心-我的团队.png */,
 				EA7E7D9E1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png */,
 				EA7E7D9C1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png */,
-
 				FC0CF64E1D30C75E0074194D /* 1个人中心-我的店铺.png */,
-
 				FC4470471D2F468A00EA0D82 /* 工程订单_排序off.png */,
 				FC4470481D2F468A00EA0D82 /* 工程订单_排序on.png */,
 				EA8D3D321D2395660095840F /* 首页-ico_工程订单.png */,
@@ -4790,6 +4826,7 @@
 				FC56127D1D0C092F00E5743B /* duihao.png in Resources */,
 				EA4E64701D0E848900A7D731 /* kefuxitongyonghutouxiang.png in Resources */,
 				EAFB90091D1A860300FCF88B /* 升级箭头@2x.png in Resources */,
+				FC74AD5F1D348D7A009D8409 /* 站长中心-我的荣誉.png in Resources */,
 				EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */,
 				EA0E8B6F1D17E5EA007C20D8 /* YLDGongZuoZhanJianJieCell.xib in Resources */,
 				EA6D36C81CE7138600CE025C /* yitongguo.png in Resources */,
@@ -4799,11 +4836,13 @@
 				FC56127C1D0C092F00E5743B /* check49.png in Resources */,
 				FC2276641D177C9F0037B131 /* 底部菜单-工程订单off.png in Resources */,
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
+				FC74AD6E1D34BE23009D8409 /* 1求购供应详情-店铺图标.png in Resources */,
 				EA552E7D1D0D3FD700FB88A0 /* baojiaguanliOff.png in Resources */,
 				FC2276771D177C9F0037B131 /* ZIKHelpfulHintsViewController.xib in Resources */,
 				FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */,
 				FC56127F1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib in Resources */,
 				EAF050E41C924FB300F435A9 /* userBigInfoBack@2x.png in Resources */,
+				FC74AD761D34D8C1009D8409 /* 列表-总站.png in Resources */,
 				FC5612731D0C092F00E5743B /* 注意.png in Resources */,
 				EA7E7D9F1D30DECB001F4BD4 /* 个人中心-列表-工程公司.png in Resources */,
 				EAF0510B1C92A87B00F435A9 /* loginoutimage@2x.png in Resources */,
@@ -4889,6 +4928,7 @@
 				EA5444C51CC770BD00971A50 /* bangde1.jpg in Resources */,
 				EAF050F01C92939E00F435A9 /* userInfoNomer@2x.png in Resources */,
 				FC4470511D2F515D00EA0D82 /* ZIKWorkstationSelectListView.xib in Resources */,
+				FC74AD6A1D3496A5009D8409 /* 列表-银牌供应商.png in Resources */,
 				FC6FED6B1CACF833000E2CA5 /* 图标.png in Resources */,
 				EA5252F51CE179E40004639C /* CityTableViewCell.xib in Resources */,
 				EA4C4DD41D13D88500DF1B93 /* edintBtn.png in Resources */,
@@ -4900,6 +4940,7 @@
 				EAB7819A1C8E970F00807B44 /* collectionN@2x.png in Resources */,
 				FC22768A1D177D1A0037B131 /* ico_订单标题.png in Resources */,
 				EAF051011C92A2B700F435A9 /* mycompany@2x.png in Resources */,
+				FC74AD6C1D349F99009D8409 /* 站长通.png in Resources */,
 				EAB7819D1C8EA55600807B44 /* UserImage@2x.png in Resources */,
 				EA833D8A1CFE81B600D56AFB /* kefuweixin@2x.png in Resources */,
 				FC50B1601CAE243F0022A24C /* UMSocialLocalizable.strings in Resources */,
@@ -4963,6 +5004,7 @@
 				FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */,
 				EA552E891D0D472600FB88A0 /* ico_橙色收起.png in Resources */,
 				EAFB8FE91D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib in Resources */,
+				FC74AD601D348D7A009D8409 /* 站长中心-我的团队.png in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
 				FC0BE6151D1B7D1D00744870 /* ZIKSingleVoucherCenterViewController.xib in Resources */,
 				EA7491671D026FA40043BDAC /* xialakuang.png in Resources */,
@@ -4978,12 +5020,14 @@
 				FC22769A1D17BC4E0037B131 /* zt已过期.png in Resources */,
 				FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
+				FC74AD741D34D8C1009D8409 /* 列表-分站.png in Resources */,
 				FC5612841D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
 				FC50B16A1CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle in Resources */,
 				FC22768F1D177D1A0037B131 /* 站长中心-蓝背景.png in Resources */,
 				FC4B4F301CAB9F4F00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib in Resources */,
 				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
+				FC74AD671D3496A5009D8409 /* 列表-普通供应商.png in Resources */,
 				FC5612901D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
 				FC7134231CB3465C0037D507 /* 已选.png in Resources */,
 				EA4C4DD21D13C31E00DF1B93 /* chengsezhankai.png in Resources */,
@@ -5031,7 +5075,9 @@
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
 				EA552E751D0D3F8D00FB88A0 /* zhanzhanggongyingoff.png in Resources */,
 				EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */,
+				FC74AD751D34D8C1009D8409 /* 列表-工程公司.png in Resources */,
 				FC4A51891D0E63650060587B /* ico_排序正序.png in Resources */,
+				FC74AD691D3496A5009D8409 /* 列表-铜牌牌供应商.png in Resources */,
 				EA696FAE1CDD7914001F037E /* YLDMyMessageTableViewCell.xib in Resources */,
 				EAF050FD1C92A1A900F435A9 /* myBuyV@2x.png in Resources */,
 				FC5612811D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */,
@@ -5048,6 +5094,7 @@
 				FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */,
 				FC4B4F321CABA0D300EBB2F8 /* 我的余额大图标256x256.png in Resources */,
 				EAFB8FF11D1A6FE100FCF88B /* YLDHeZuoDEMessageCell.xib in Resources */,
+				FC74AD681D3496A5009D8409 /* 列表-认证供应商.png in Resources */,
 				EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */,
 				EA552E791D0D3FAF00FB88A0 /* wodedingdanoff.png in Resources */,
 				EA4C4DDD1D13EB1C00DF1B93 /* searchOrange.png in Resources */,
@@ -5066,11 +5113,13 @@
 				FC5612601D0C092F00E5743B /* shanchutupian@2x.png in Resources */,
 				EA1A16D71D114B86008CA20F /* addView@2x.png in Resources */,
 				FC2276651D177C9F0037B131 /* 底部菜单-工程订单on.png in Resources */,
+				FC74AD701D34C220009D8409 /* 1求购供应详情-店铺图标@2x.png in Resources */,
 				EA5E6E501CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.xib in Resources */,
 				EA3D4D881D1792A10010B56D /* jianlihezuo.png in Resources */,
 				EA4F4D1A1CBF5F47006E4988 /* bannelSmall3.jpg in Resources */,
 				EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */,
 				FC5612771D0C092F00E5743B /* 添加照片-整片.png in Resources */,
+				FC74AD661D3496A5009D8409 /* 列表-金牌供应商.png in Resources */,
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
 				EAA9FFF21D12365E009CF19D /* YLDMiaoMuTableViewCell.xib in Resources */,
 				EAFB8FF81D1A7AB400FCF88B /* shenfenshengjiv.png in Resources */,
@@ -5616,8 +5665,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5654,7 +5703,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5665,8 +5714,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5703,7 +5752,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

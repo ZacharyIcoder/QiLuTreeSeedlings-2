@@ -165,7 +165,7 @@
         if (indexPath.section == 0) {
             return 160.f/320.f*kWidth;
         } else if (indexPath.section == 1) {
-            return 35;
+            return 38;
         }
         else {
               self.orderTV.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束

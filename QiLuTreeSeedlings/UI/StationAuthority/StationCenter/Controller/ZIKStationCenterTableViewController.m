@@ -141,12 +141,12 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             twocell.textLabel.text = @"我的荣誉";
             twocell.textLabel.textColor = [UIColor darkGrayColor];
             twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
-            twocell.imageView.image = [UIImage imageNamed:@"消费记录40x40"];
+            twocell.imageView.image = [UIImage imageNamed:@"站长中心-我的荣誉"];
         } else if (indexPath.row == 1) {
             twocell.textLabel.text = @"我的团队";
             twocell.textLabel.textColor = [UIColor darkGrayColor];
             twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
-            twocell.imageView.image = [UIImage imageNamed:@"消费记录40x40"];
+            twocell.imageView.image = [UIImage imageNamed:@"站长中心-我的团队"];
         }
 
         float sw=23/twocell.imageView.image.size.width;

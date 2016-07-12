@@ -9,7 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZIKWorkstationSelectView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="46"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqf-UZ-E9D">
@@ -72,23 +72,33 @@
                         <action selector="provinceButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="w2o-GE-g1T"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-LH-4w0">
+                    <rect key="frame" x="0.0" y="44" width="600" height="2"/>
+                    <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="d4z-Nb-UsV"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="0Om-LH-4w0" secondAttribute="bottom" id="4yU-u6-KFm"/>
                 <constraint firstItem="e1A-YB-Vyb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Dfp-to-6VF"/>
                 <constraint firstItem="jCG-jk-31x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="5:3" id="Dsi-6f-NeT"/>
-                <constraint firstAttribute="bottom" secondItem="e1A-YB-Vyb" secondAttribute="bottom" constant="9" id="Fn3-Sa-cZX"/>
+                <constraint firstAttribute="bottom" secondItem="e1A-YB-Vyb" secondAttribute="bottom" constant="11" id="Fn3-Sa-cZX"/>
                 <constraint firstItem="mzz-VL-Lha" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Hgl-mD-qxL"/>
-                <constraint firstAttribute="bottom" secondItem="mzz-VL-Lha" secondAttribute="bottom" constant="10" id="Ob5-aW-Tzp"/>
+                <constraint firstAttribute="bottom" secondItem="mzz-VL-Lha" secondAttribute="bottom" constant="12" id="Ob5-aW-Tzp"/>
                 <constraint firstItem="w0O-iI-6Wo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="SQA-8Q-USA"/>
                 <constraint firstItem="Wqf-UZ-E9D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="VeM-fc-KRS"/>
-                <constraint firstAttribute="bottom" secondItem="w0O-iI-6Wo" secondAttribute="bottom" constant="11" id="WMq-6n-X89"/>
-                <constraint firstAttribute="bottom" secondItem="Wqf-UZ-E9D" secondAttribute="bottom" constant="11" id="Zkv-R6-WDq"/>
-                <constraint firstAttribute="bottom" secondItem="jCG-jk-31x" secondAttribute="bottom" constant="11" id="dTv-XT-4wl"/>
+                <constraint firstAttribute="bottom" secondItem="w0O-iI-6Wo" secondAttribute="bottom" constant="13" id="WMq-6n-X89"/>
+                <constraint firstAttribute="bottom" secondItem="Wqf-UZ-E9D" secondAttribute="bottom" constant="13" id="Zkv-R6-WDq"/>
+                <constraint firstItem="0Om-LH-4w0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aeO-Ty-alo"/>
+                <constraint firstAttribute="bottom" secondItem="jCG-jk-31x" secondAttribute="bottom" constant="13" id="dTv-XT-4wl"/>
                 <constraint firstItem="mzz-VL-Lha" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="4:3" id="f8f-sv-zht"/>
                 <constraint firstItem="e1A-YB-Vyb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="2:3" id="mR0-Nm-VOT"/>
                 <constraint firstItem="w0O-iI-6Wo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.33333" id="qL1-D9-XZE"/>
                 <constraint firstItem="jCG-jk-31x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="tVo-QJ-FI9"/>
+                <constraint firstAttribute="trailing" secondItem="0Om-LH-4w0" secondAttribute="trailing" id="xnO-bB-TcK"/>
                 <constraint firstItem="Wqf-UZ-E9D" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="y4N-GJ-lG6"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

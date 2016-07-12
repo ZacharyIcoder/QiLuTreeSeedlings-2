@@ -19,12 +19,13 @@
 @property (nonatomic,strong)UILabel *cityLab;
 @property (nonatomic,strong)UILabel *timeLab;
 @property (nonatomic,strong)UILabel *numLab;
+@property (nonatomic,strong)UIImageView *goldImageView;
 @end
 @implementation SellSearchTableViewCell
 {
     UIImageView *timeImagV;
 }
-@synthesize imageV,titleLab,cityLab,timeLab,numLab,priceLab;
+@synthesize imageV,titleLab,cityLab,timeLab,numLab,priceLab,goldImageView;
 -(id)initWithFrame:(CGRect)frame
 {
     self=[super initWithFrame:frame];
@@ -33,7 +34,9 @@
         imageV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 15, 80, frame.size.height-30)];
         [imageV setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:imageV];
-        titleLab=[[UILabel alloc]initWithFrame:CGRectMake(100, 15, frame.size.width-100, 20)];
+        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(97, 15, 20, 20)];
+        [self addSubview:goldImageView];
+        titleLab=[[UILabel alloc]initWithFrame:CGRectMake(100+20, 15, frame.size.width-100-20-10, 20)];
         [titleLab setFont:[UIFont systemFontOfSize:15]];
         [titleLab setText:@"标题"];
         [titleLab setTextColor:titleLabColor];
@@ -124,6 +127,24 @@
     [timeImagV setFrame:CGRectMake(timeLab.frame.origin.x-17, timeImagV.frame.origin.y, timeImagV.frame.size.width, timeImagV.frame.size.height)];
     cityLab.frame = CGRectMake(cityLab.frame.origin.x, 40, timeImagV.frame.origin.x-cityLab.frame.origin.x, 20);
     //cityLab.backgroundColor = [UIColor yellowColor];
+    if (hotSellModel.goldsupplier == 0 || hotSellModel.goldsupplier == 10) {
+        goldImageView.image = [UIImage imageNamed:@"列表-普通供应商"];
+    } else if (hotSellModel.goldsupplier == 1) {
+        goldImageView.image = [UIImage imageNamed:@"列表-金牌供应商"];
+    } else if (hotSellModel.goldsupplier == 2) {
+        goldImageView.image = [UIImage imageNamed:@"列表-银牌供应商"];
+    } else if (hotSellModel.goldsupplier == 3) {
+        goldImageView.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+    } else if (hotSellModel.goldsupplier == 4) {
+        goldImageView.image = [UIImage imageNamed:@"列表-认证供应商"];
+    } else if (hotSellModel.goldsupplier == 5) {
+        goldImageView.image = [UIImage imageNamed:@"列表-总站"];
+    } else if (hotSellModel.goldsupplier == 6) {
+        goldImageView.image = [UIImage imageNamed:@"列表-分站"];
+    } else if (hotSellModel.goldsupplier == 7) {
+        goldImageView.image = [UIImage imageNamed:@"列表-工程公司"];
+    }
+
 }
 
 - (void)awakeFromNib {
