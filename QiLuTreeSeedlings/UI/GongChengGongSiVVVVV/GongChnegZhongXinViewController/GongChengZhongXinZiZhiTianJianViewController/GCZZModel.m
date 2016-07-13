@@ -18,6 +18,13 @@
     model.issuingAuthority=dic[@"issuingAuthority"];
     model.level=dic[@"level"];
     model.uid=dic[@"uid"];
+    NSString *image=dic[@"image"];
+    if (image.length>0) {
+        model.image=image;
+    }else{
+        model.image=model.attachment;
+    }
+    
     return model;
 }
 +(NSMutableArray *)GCZZModelAryWithAry:(NSArray *)ary

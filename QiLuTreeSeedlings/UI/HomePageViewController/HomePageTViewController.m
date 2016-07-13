@@ -439,23 +439,39 @@
              YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
                 [self.navigationController pushViewController:tab animated:YES];
             }else{
-               
-                if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
-                    [ToastView showTopToast:@"暂未审核，请耐心等待"];
+                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
+                    [ToastView showTopToast:@"您已具备其它身份"];
                     return;
                 }
-               
-                if (APPDELEGATE.userModel.projectCompanyStatus==0) {
-                    [ToastView showTopToast:@"审核未通过"];
-                    return;
-                }
-               
-                [self hiddingSelfTabBar];
-                LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
-                [self.navigationController pushViewController:view animated:YES];
+                ShowActionV();
+               [HTTPCLIENT projectCompanyStatusSuccess:^(id responseObject) {
+                   if([[responseObject objectForKey:@"success"] integerValue])
+                   {
+                       APPDELEGATE.userModel.projectCompanyStatus=[[[responseObject objectForKey:@"result"] objectForKey:@"projectCompanyStatus"] integerValue];
+                       if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+                           [ToastView showTopToast:@"暂未审核，请耐心等待"];
+                           return;
+                       }
+                       
+                       if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+                           [ToastView showTopToast:@"审核未通过"];
+                           return;
+                       }
+                       
+                       [self hiddingSelfTabBar];
+                       LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+                       [self.navigationController pushViewController:view animated:YES];
+                   }
+                   else
+                   {
+                       [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                   }
+                   RemoveActionV();
+               } failure:^(NSError *error) {
+                   RemoveActionV();
+               }];
+                
             }
-            
-            return;
             
         }else
         {

@@ -49,7 +49,7 @@
     NSString *imageString = nil;
     if ([self.data isMemberOfClass:[GCZZModel class]]) {
         GCZZModel *model = self.data;
-        imageString = model.attachment;
+        imageString = model.image;
     } else if ([self.data isMemberOfClass:[ZIKStationHonorListModel class]]) {
         ZIKStationHonorListModel *model = self.data;
         imageString = model.image;

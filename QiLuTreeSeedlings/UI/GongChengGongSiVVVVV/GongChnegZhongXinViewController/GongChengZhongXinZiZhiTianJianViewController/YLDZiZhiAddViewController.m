@@ -94,7 +94,7 @@
         self.organizationalField.text=self.model.issuingAuthority;
         self.timeStr=self.model.acqueTime;
         [self.timeBtn setTitle:self.model.acqueTime forState:UIControlStateNormal];
-        self.url=self.model.attachment;
+        self.compressurl=self.model.attachment;
         [self.imageBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:self.model.attachment] placeholderImage:[UIImage imageNamed:@"添加图片"]];
 //        self.imageBtn
     }
@@ -120,7 +120,7 @@
         [ToastView showTopToast:@"请选择获得时间"];
         return;
     }
-    if (self.url.length<=0) {
+    if (self.compressurl.length<=0) {
         [ToastView showTopToast:@"请输入上传荣誉图片"];
         return;
     }
@@ -130,14 +130,14 @@
         [dic setObject:self.rankTextField.text forKey:@"level"];
         [dic setObject:self.organizationalField.text forKey:@"issuingAuthority"];
         [dic setObject:self.timeStr forKey:@"acqueTime"];
-        [dic setObject:self.url forKey:@"attachment"];
+        [dic setObject:self.compressurl forKey:@"attachment"];
         if (self.delegate) {
             [self.delegate reloadViewWithModel:self.model andDic:dic];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
     if (self.type==2) {
-        [HTTPCLIENT GCGSRongYuTijiaoWithuid:self.model.uid WtihcompanyQualification:self.nameTextField.text WithacquisitionTime:self.timeStr With:self.rankTextField.text WithcompanyUid:APPDELEGATE.GCGSModel.uid WithissuingAuthority:self.organizationalField.text Withattachment:self.url Success:^(id responseObject) {
+        [HTTPCLIENT GCGSRongYuTijiaoWithuid:self.model.uid WtihcompanyQualification:self.nameTextField.text WithacquisitionTime:self.timeStr With:self.rankTextField.text WithcompanyUid:APPDELEGATE.GCGSModel.uid WithissuingAuthority:self.organizationalField.text Withattachment:self.compressurl Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 [ToastView showTopToast:@"保存成功"];
                 [self.navigationController popViewControllerAnimated:YES];
@@ -196,7 +196,7 @@
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
     UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
-    pickBtn.center=CGPointMake(frame.size.width/2+10,frame.size.height/2);
+    pickBtn.center=CGPointMake(frame.size.width/2-1.5,frame.size.height/2);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
     [pickBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
@@ -326,7 +326,7 @@
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
     
-    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"2" saveTyep:nil Success:^(id responseObject) {
+    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:nil Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -336,7 +336,7 @@
             
             self.compressurl   = result[@"compressurl"];
             self.url         = result[@"url"];
-      NSURL *url = [NSURL URLWithString:self.url];
+      NSURL *url = [NSURL URLWithString:self.compressurl];
    [self.imageBtn setImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"添加图片"]];
 //            [self.imageBtn setBackgroundImage:image forState:UIControlStateNormal];
         }

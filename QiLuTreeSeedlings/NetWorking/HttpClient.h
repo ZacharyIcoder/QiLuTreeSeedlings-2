@@ -1063,4 +1063,7 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程中心分享 -----------
 - (void)GCZXShareSuccess:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程公司资质申请状态 -----------
+- (void)projectCompanyStatusSuccess:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure;
 @end

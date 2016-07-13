@@ -15,6 +15,7 @@
 @property (nonatomic,strong) NSString *issuingAuthority;
 @property (nonatomic,strong) NSString *level;
 @property (nonatomic,strong) NSString *uid;
+@property (nonatomic,strong) NSString *image;
 +(GCZZModel *)GCZZModelWithDic:(NSDictionary *)dic;
 +(NSMutableArray *)GCZZModelAryWithAry:(NSArray *)ary
 ;
