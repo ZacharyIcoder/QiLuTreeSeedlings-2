@@ -360,17 +360,19 @@
 
 }
 #pragma mark-供应信息列表
+#pragma mark-供应信息列表
 -(void)SellListWithWithPageSize:(NSString *)pageSize
                        WithPage:(NSString *)page
                Withgoldsupplier:(NSString *)goldsupplier
+                 WithSerachTime:(NSString *)searchTime
                         Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure
 {
     NSString *postURL = @"apisupply";
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
-                              pageSize,@"pageSize",
-                              page,@"page",
-                            nil];
+    NSMutableDictionary *parameters=[NSMutableDictionary new];
+    parameters[@"page"]=page;
+    parameters[@"pageSize"]=pageSize;
+    parameters[@"searchTime"]=searchTime;
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -571,6 +573,7 @@
              WithProvince:(NSString *)province
                  WithCity:(NSString *)city
                WithCounty:(NSString *)county
+           WithSearchTime:(NSString *)searchTime
                   WithAry:(NSArray *)ary
                   Success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure
@@ -599,7 +602,7 @@
     if (county) {
         [parameters setObject:county forKey:@"county"];
     }
-    
+    parameters[@"searchTime"]=searchTime;
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
         [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];

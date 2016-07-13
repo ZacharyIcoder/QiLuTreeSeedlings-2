@@ -130,7 +130,12 @@
     
     if (self.searchType==1) {
         ShowActionV();
-        [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Withgoldsupplier:@"0" Success:^(id responseObject) {
+        HotSellModel *model=[self.sellDataAry lastObject];
+        NSString *searhTimeStr;
+        if (self.PageCount>1) {
+            searhTimeStr=model.searchtime;
+        }
+        [HTTPCLIENT SellListWithWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Withgoldsupplier:@"0" WithSerachTime:searhTimeStr  Success:^(id responseObject) {
              //NSLog(@"%@",responseObject);
             if(self.PageCount==1)
             {
@@ -260,7 +265,12 @@
 
     if (self.searchType==1) {
         ShowActionV();
-        [HTTPCLIENT sellSearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithProductUid:self.productUid WithProductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
+        NSString *saerchTime;
+        HotSellModel *model=[self.sellDataAry lastObject];
+        if (self.PageCount>1) {
+            saerchTime=model.searchtime;
+        }
+        [HTTPCLIENT sellSearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithProductUid:self.productUid WithProductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithSearchTime:saerchTime  WithAry:self.shaixuanAry  Success:^(id responseObject) {
             // NSLog(@"%@",responseObject);
             if(self.PageCount==1)
             {

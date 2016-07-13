@@ -21,6 +21,7 @@
                 hotSellModel.createTime=[NSString stringWithFormat:@"%@ 00:00:00",hotSellModel.createTime];
             }
         }
+         hotSellModel.searchtime=[dic objectForKey:@"searchTime"];
         hotSellModel.iamge=[dic objectForKey:@"image"];
         hotSellModel.title=[dic objectForKey:@"title"];
         hotSellModel.uid=[dic objectForKey:@"uid"];
@@ -35,6 +36,7 @@
         hotSellModel.goldsupplier=[[dic objectForKey:@"goldsupplier"] integerValue];
         NSDate *creatTimeDate=[ZIKFunction getDateFromString:hotSellModel.createTime];
         hotSellModel.timeAger=[ZIKFunction compareCurrentTime:creatTimeDate];
+       
     }
     return hotSellModel;
 }

@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSString *price;
 @property (nonatomic,strong) NSString *supplybuyUid;
 @property (nonatomic,strong) NSString *supplybuyNurseryUid;
+@property (nonatomic,strong) NSString *searchtime;
 //1金，2银，3铜
 
 @property (nonatomic) NSInteger goldsupplier;

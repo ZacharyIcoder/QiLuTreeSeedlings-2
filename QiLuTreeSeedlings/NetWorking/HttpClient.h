@@ -95,6 +95,7 @@
 -(void)SellListWithWithPageSize:(NSString *)pageSize
                     WithPage:(NSString *)page
                Withgoldsupplier:(NSString *)goldsupplier
+                 WithSerachTime:(NSString *)searchTime
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure;
 #pragma mark-求购信息列表
@@ -145,6 +146,7 @@
              WithProvince:(NSString *)province
                  WithCity:(NSString *)city
                WithCounty:(NSString *)county
+           WithSearchTime:(NSString *)searchTime
                   WithAry:(NSArray *)ary
                   Success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure;

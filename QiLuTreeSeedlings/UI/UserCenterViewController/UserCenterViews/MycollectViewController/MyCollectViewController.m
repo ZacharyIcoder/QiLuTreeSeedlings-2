@@ -467,8 +467,12 @@
 }
 -(void)creatSellLikeAry
 {
-    //HTTPCLIENT
-    [HTTPCLIENT SellListWithWithPageSize:@"5" WithPage:@"1" Withgoldsupplier:@"0"  Success:^(id responseObject) {
+    HotSellModel *model=[self.sellDataAry lastObject];
+    NSString *searhTimeStr;
+    if (self.sellPageCount>1) {
+        searhTimeStr=model.searchtime;
+    }
+    [HTTPCLIENT SellListWithWithPageSize:@"5" WithPage:@"1" Withgoldsupplier:@"0" WithSerachTime:searhTimeStr  Success:^(id responseObject) {
         if([[responseObject objectForKey:@"success"] integerValue])
         {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
