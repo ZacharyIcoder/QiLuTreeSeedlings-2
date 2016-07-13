@@ -40,6 +40,7 @@
 #import "ZIKStationTabBarViewController.h"//站长助手
 #import "YLDGongChengGongSiViewController.h"//工程助手
 #import "LYDGCGSTiShiViewController.h"
+#import "ZIKHelpfulHintsViewController.h"
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -530,9 +531,21 @@
         }
         if (indexPath.row==3) {
             [self hiddingSelfTabBar];
-            ZIKStationTabBarViewController *nuserListVC=[[ZIKStationTabBarViewController alloc]init];
-            [self.navigationController pushViewController:nuserListVC animated:YES];
+//            ZIKStationTabBarViewController *nuserListVC=[[ZIKStationTabBarViewController alloc]init];
+//            [self.navigationController pushViewController:nuserListVC animated:YES];
+//            return;
+            NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"myphone"];
+            if (APPDELEGATE.userModel.isworkstation || [phone isEqualToString:@"15953523812"]) {
+                ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
+                //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
+                [self.navigationController pushViewController:stationtab animated:YES];
+
+            } else {
+                ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
+                [self.navigationController pushViewController:helpfulVC animated:YES];
+            }
             return;
+
         }
         if (indexPath.row==4) {
             if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {

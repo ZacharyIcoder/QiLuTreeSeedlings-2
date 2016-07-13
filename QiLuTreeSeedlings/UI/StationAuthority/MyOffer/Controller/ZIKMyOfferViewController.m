@@ -38,9 +38,9 @@
     self.searchBarView.searchBlock = ^(NSString *searchText){
         //CLog(@"%@",searchText);
         weakSelf.isSearch = !weakSelf.isSearch;
-        if (!weakSelf.isSearch) {
-            weakSelf.keyword = nil;
-        }
+        weakSelf.keyword = searchText;
+        weakSelf.page = 1;
+        [weakSelf requestMyQuoteList:@"1"];
     };
     self.searchBarView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -85,6 +85,9 @@
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.quoteTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
+        if (!weakSelf.isSearch) {
+            weakSelf.keyword = nil;
+        }
         [weakSelf requestMyQuoteList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.quoteTableView addFooterWithCallback:^{

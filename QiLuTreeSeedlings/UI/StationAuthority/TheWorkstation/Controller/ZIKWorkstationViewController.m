@@ -60,6 +60,9 @@
     self.searchBarView.searchBlock = ^(NSString *searchText){
         CLog(@"%@",searchText);
         weakSelf.isSearch = !weakSelf.isSearch;
+        weakSelf.keyword = searchText;
+        weakSelf.page = 1;
+        [weakSelf requestMyOrderList:@"1"];
     };
     self.searchBarView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -79,8 +82,14 @@
 
 - (void)requestData {
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
+//    if (!weakSelf.isSearch) {
+//        weakSelf.keyword = nil;
+//    }
     [self.orderTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
+        if (!weakSelf.isSearch) {
+            weakSelf.keyword = nil;
+        }
         [weakSelf requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.orderTableView addFooterWithCallback:^{
@@ -95,7 +104,7 @@
     //请求工程订单列表信息
     [self.orderTableView headerEndRefreshing];
     [HTTPCLIENT stationListWithProvince:_selectAreaView.provinceCode city:_selectAreaView.cityCode county:_selectAreaView.countryCode keyword:_keyword pageNumber:page pageSize:@"15" Success:^(id responseObject) {
-        CLog(@"result:%@",responseObject);
+        //CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -108,6 +117,7 @@
                 if(self.stationMArr.count > 0 ) {
                     [self.stationMArr removeAllObjects];
                 }
+                [self.orderTableView reloadData];
                 return ;
             } else if (orderListArr.count == 0 && self.page > 1) {
                 [ToastView showTopToast:@"已无更多信息"];
@@ -228,6 +238,9 @@
     //NSString *searchText = textField.text;
     //CLog(@"searchText:%@",searchText);
     self.keyword = textField.text;
+//    - (void)requestMyOrderList:(NSString *)page
+    self.page = 1;
+    [self requestMyOrderList:@"1"];
     return YES;
 }
 
@@ -235,6 +248,8 @@
     UITextField *textField = (UITextField *)obj.object;
     CLog(@"textField:%@",textField.text);
     self.keyword = textField.text;
+    self.page = 1;
+    [self requestMyOrderList:@"1"];
 }
 
 - (void)didReceiveMemoryWarning {

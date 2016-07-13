@@ -50,6 +50,9 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     self.searchBarView.searchBlock = ^(NSString *searchText){
         //CLog(@"%@",searchText);
         weakSelf.isSearch = !weakSelf.isSearch;
+        weakSelf.keyword = searchText;
+//        weakSelf.page = 1;
+        [weakSelf requestOrderDetail];
     };
     self.searchBarView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -175,6 +178,8 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
             quoteVC.count    = model.quantity;
             quoteVC.uid      = model.uid;
             quoteVC.orderUid = _demandModel.uid;
+            quoteVC.quoteRequirement = _demandModel.quotationRequired;
+            quoteVC.standardRequirement = _demandModel.quantityRequired;
             [weakSelf.navigationController pushViewController:quoteVC animated:YES];
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
