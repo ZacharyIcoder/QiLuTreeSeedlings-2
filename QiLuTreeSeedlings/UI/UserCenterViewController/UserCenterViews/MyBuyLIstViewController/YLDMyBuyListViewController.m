@@ -225,8 +225,13 @@
 
 -(void)getDataList
 {
+    NSString *searchTime;
+    if (self.pageCount>1) {
+        BuyDetialModel *model=[self.dataAry lastObject];
+        searchTime=model.searchTime;
+    }
     [HTTPCLIENT myBuyInfoListWtihPage:[NSString stringWithFormat:@"%ld",(long)_pageCount]
-                            WithState:[NSString stringWithFormat:@"%ld",(long)_MessageState] Success:^(id responseObject) {
+                            WithState:[NSString stringWithFormat:@"%ld",(long)_MessageState] WithsearchTime:searchTime  Success:^(id responseObject) {
                                 [self.tableView headerEndRefreshing];
                                 [self.tableView footerEndRefreshing];
                                 if ([[responseObject objectForKey:@"success"] integerValue]) {

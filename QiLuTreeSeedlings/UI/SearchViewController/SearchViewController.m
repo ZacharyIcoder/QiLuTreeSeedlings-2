@@ -275,6 +275,9 @@
                 [self.screeningView removeFromSuperview];
                 self.screeningView=nil;
             }
+            if (self.searchSuccessView) {
+                self.searchSuccessView.searchType = 1;
+            }
         }
         
     }];
@@ -285,6 +288,9 @@
             if (self.screeningView) {
                 [self.screeningView removeFromSuperview];
                 self.screeningView=nil;
+            }
+            if (self.searchSuccessView) {
+                self.searchSuccessView.searchType = 2;
             }
         }
     }];

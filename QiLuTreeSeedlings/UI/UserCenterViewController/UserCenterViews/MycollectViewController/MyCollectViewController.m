@@ -467,7 +467,7 @@
 }
 -(void)creatSellLikeAry
 {
-    HotSellModel *model=[self.sellDataAry lastObject];
+    HotSellModel *model=[self.sellLikeAry lastObject];
     NSString *searhTimeStr;
     if (self.sellPageCount>1) {
         searhTimeStr=model.searchtime;
@@ -489,7 +489,12 @@
 }
 -(void)creatBuyLikeAry
 {
-    [HTTPCLIENT BuyListWithWithPageSize:@"5" WithStatus:@"1" WithStartNumber:@"" Success:^(id responseObject) {
+    HotBuyModel *model=[self.buyLikeAry lastObject];
+    NSString *searhTimeStr;
+    if (self.buyPageCount>1) {
+        searhTimeStr=model.searchTime;
+    }
+    [HTTPCLIENT BuyListWithWithPageSize:@"5" WithStatus:@"1" WithStartNumber:@"" withSearchTime:searhTimeStr  Success:^(id responseObject) {
         if([[responseObject objectForKey:@"success"] integerValue])
         {
             NSDictionary *dic=[responseObject objectForKey:@"result"];

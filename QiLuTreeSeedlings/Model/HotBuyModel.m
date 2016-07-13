@@ -31,6 +31,7 @@
         NSDate *creatTimeDate=[ZIKFunction getDateFromString:model.creatTime];
         model.timeAger=[ZIKFunction compareCurrentTime:creatTimeDate];
         model.goldsupplier=[dic[@"goldsupplier"] integerValue];
+        model.searchTime=dic[@"searchTime"];
     }
     return model;
 }

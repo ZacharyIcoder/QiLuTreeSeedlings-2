@@ -360,7 +360,6 @@
 
 }
 #pragma mark-供应信息列表
-#pragma mark-供应信息列表
 -(void)SellListWithWithPageSize:(NSString *)pageSize
                        WithPage:(NSString *)page
                Withgoldsupplier:(NSString *)goldsupplier
@@ -387,15 +386,17 @@
 -(void)BuyListWithWithPageSize:(NSString *)pageSize
                     WithStatus:(NSString *)status
                WithStartNumber:(NSString *)startNumber
+                withSearchTime:(NSString *)searchTime
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure
 {
     NSString *postURL = @"apibuy";
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:
                               pageSize,@"pageSize",
                               status,@"status",
                               startNumber,@"startNumber",
                               nil];
+    parameters[@"searchTime"]=searchTime;
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -415,7 +416,8 @@
             WithProvince:(NSString *)province
                 WithCity:(NSString *)city
               WithCounty:(NSString *)county
-               WithAry:(NSArray *)ary
+          WithsearchTime:(NSString *)searchTime
+                 WithAry:(NSArray *)ary
                  Success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure
 {
@@ -443,7 +445,7 @@
     if (county) {
         [parameters setObject:county forKey:@"county"];
     }
-    
+    parameters[@"searchTime"]=searchTime;
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
         [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
@@ -618,7 +620,7 @@
         }else
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-            
+            RemoveActionV();
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -934,6 +936,7 @@
 #pragma mark -我的求购列表
 -(void)myBuyInfoListWtihPage:(NSString *)page
                    WithState:(NSString *)state
+              WithsearchTime:(NSString *)searchTime
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure
 {
@@ -944,7 +947,7 @@
         str=@"用户未授权";
     }
     NSString *postURL = @"api/buy/my";
-    NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:
                               APPDELEGATE.userModel.access_token,@"access_token",
                               APPDELEGATE.userModel.access_id,@"access_id",
                               str,@"device_id",
@@ -955,6 +958,7 @@
                               @"15",@"pageSize",
                               state,@"state",
                               nil];
+    parameters[@"searchTime"]=searchTime;
     ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         

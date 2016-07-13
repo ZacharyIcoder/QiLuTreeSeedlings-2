@@ -31,6 +31,7 @@
 @property (nonatomic,strong) NSString *supplybuyUid;
 @property (nonatomic,strong) NSString *title;
 @property (nonatomic) NSInteger views;
+@property (nonatomic,strong) NSString *searchTime;
 @property (nonatomic,strong) NSString *productName;
 //1金，2银，3铜
 

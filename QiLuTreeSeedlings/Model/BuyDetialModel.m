@@ -51,6 +51,7 @@
     model.publishUid=[dic objectForKey:@"publishUid"];
     model.buyPrice=[[dic objectForKey:@"buyPrice"] floatValue];
     model.goldsupplier=[dic[@"goldsupplier"] integerValue];
+    model.searchTime=dic[@"searchTime"];
     return model;
 }
 @end

@@ -29,6 +29,7 @@ typedef enum {
 @property (nonatomic)NSInteger state;
 @property (nonatomic,strong) NSString *timeAger;
 @property (nonatomic,strong) NSString *checkReason;
+@property (nonatomic,strong) NSString *searchTime;
 //1金，2银，3铜
 @property (nonatomic) NSInteger goldsupplier;
 @property (nonatomic,assign) BOOL isSelect;

@@ -102,6 +102,7 @@
 -(void)BuyListWithWithPageSize:(NSString *)pageSize
                     WithStatus:(NSString *)status
                WithStartNumber:(NSString *)startNumber
+                withSearchTime:(NSString *)searchTime
                        Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure;
 #pragma mark-求购检索
@@ -113,6 +114,7 @@
             WithProvince:(NSString *)province
                 WithCity:(NSString *)city
               WithCounty:(NSString *)county
+          WithsearchTime:(NSString *)searchTime
                WithAry:(NSArray *)ary
                  Success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure;
@@ -200,6 +202,7 @@
 #pragma mark -我的求购列表
 -(void)myBuyInfoListWtihPage:(NSString *)page
                    WithState:(NSString *)state
+              WithsearchTime:(NSString *)searchTime
                      Success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;
 #pragma mark-个人积分

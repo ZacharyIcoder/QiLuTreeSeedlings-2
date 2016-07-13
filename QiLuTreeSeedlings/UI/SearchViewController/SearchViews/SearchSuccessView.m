@@ -175,7 +175,12 @@
     }
     if (self.searchType==2) {
         ShowActionV();
-        [HTTPCLIENT BuyListWithWithPageSize:@"15" WithStatus:[NSString stringWithFormat:@"%ld",(long)self.status]WithStartNumber:[NSString stringWithFormat:@"%ld",(long)self.PageCount] Success:^(id responseObject) {
+        HotBuyModel *model=[self.buyDataAry lastObject];
+        NSString *searhTimeStr;
+        if (self.PageCount>1) {
+            searhTimeStr=model.searchTime;
+        }
+        [HTTPCLIENT BuyListWithWithPageSize:@"15" WithStatus:[NSString stringWithFormat:@"%ld",(long)self.status]WithStartNumber:[NSString stringWithFormat:@"%ld",(long)self.PageCount] withSearchTime:searhTimeStr  Success:^(id responseObject) {
            // NSLog(@"%@",responseObject);
             if(self.PageCount==1)
             {
@@ -311,7 +316,12 @@
     }
     if (self.searchType==2) {
         ShowActionV();
-        [HTTPCLIENT buySearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithproductUid:self.productUid WithproductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithAry:self.shaixuanAry Success:^(id responseObject) {
+        HotBuyModel *model=[self.buyDataAry lastObject];
+        NSString *searhTimeStr;
+        if (self.PageCount>1) {
+            searhTimeStr=model.searchTime;
+        }
+        [HTTPCLIENT buySearchWithPage:[NSString stringWithFormat:@"%ld",(long)self.PageCount] WithPageSize:@"15" Withgoldsupplier:self.goldsupplier WithproductUid:self.productUid WithproductName:self.searchStr WithProvince:self.province WithCity:self.City WithCounty:self.county WithsearchTime:searhTimeStr  WithAry:self.shaixuanAry Success:^(id responseObject) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             if(self.PageCount==1)
             {
