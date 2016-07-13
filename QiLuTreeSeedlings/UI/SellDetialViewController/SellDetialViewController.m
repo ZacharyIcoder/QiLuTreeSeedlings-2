@@ -107,9 +107,12 @@
 
     if (!APPDELEGATE.isNeedLogin) {
 
-        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeight-50, kWidth*3/5+2, 2)];
+        topLineView.backgroundColor = kLineColor;
+        [self.view addSubview:topLineView];
+
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50+2, kWidth*1/5, 50-2)];
         [shopBtn setBackgroundColor:[UIColor whiteColor]];
-        [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
         [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
@@ -118,9 +121,13 @@
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
         [self.view addSubview:shopBtn];
 
-        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2/5, 50)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];
+        lineView.backgroundColor = kLineColor;
+        [self.view addSubview:lineView];
+
+
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, kHeight-50+2, kWidth*2/5-2, 50-2)];
         [messageBtn setBackgroundColor:[UIColor whiteColor]];
-        [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
         [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
@@ -140,9 +147,13 @@
         [self.view addSubview:phoneBtn];
 
     } else {
-        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+
+        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeight-50, kWidth*2.5/5+2, 2)];
+        topLineView.backgroundColor = kLineColor;
+        [self.view addSubview:topLineView];
+
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50+2, kWidth*1/5, 50-2)];
         [shopBtn setBackgroundColor:[UIColor whiteColor]];
-        [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
         [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
@@ -151,10 +162,13 @@
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
         [self.view addSubview:shopBtn];
 
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];
+        lineView.backgroundColor = kLineColor;
+        [self.view addSubview:lineView];
 
-        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*1.5/5, 50)];
+
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, kHeight-50+2, kWidth*1.5/5-2, 50-2)];
         [messageBtn setBackgroundColor:[UIColor whiteColor]];
-        [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
         [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
