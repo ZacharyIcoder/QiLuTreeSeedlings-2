@@ -540,6 +540,10 @@
                 YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
                 [self.navigationController pushViewController:tab animated:YES];
             }else{
+                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
+                    [ToastView showTopToast:@"您已具备其它身份"];
+                    return;
+                }
 
                 if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
                     [ToastView showTopToast:@"暂未审核，请耐心等待"];
