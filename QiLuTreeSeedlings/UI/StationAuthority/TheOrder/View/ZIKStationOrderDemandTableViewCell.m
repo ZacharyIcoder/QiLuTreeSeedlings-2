@@ -55,6 +55,14 @@
     self.areaLabel.text     = model.area;
     self.phoneLabel.text    = model.phone;
     self.shuomingLabel.text = model.demandDescription;
-    self.celiangLabel.text = [NSString stringWithFormat:@"胸径离地面%@处,地径离地面%@处",model.dbh,model.groundDiameter];
+    self.celiangLabel.text = [NSString stringWithFormat:@"胸径离地面%@CM处,地径离地面%@CM处",model.dbh,model.groundDiameter];
+    if ([model.status isEqualToString:@"已结束"]) {
+        self.typeImageView.image  = [UIImage imageNamed:@"zt已结束"];
+    } else if ([model.status isEqualToString:@"报价中"]) {
+        self.typeImageView.image  = [UIImage imageNamed:@"zt报价中"];
+    } else if ([model.status isEqualToString:@"已报价"]) {
+        self.typeImageView.image  = [UIImage imageNamed:@"zt已报价"];
+    }
+
 }
 @end

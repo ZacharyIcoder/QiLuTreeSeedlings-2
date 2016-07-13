@@ -16,7 +16,11 @@
 #import "ZIKHintTableViewCell.h"
 #import "YLDPickLocationView.h"
 #import "ZIKAddPickerView.h"
-@interface ZIKStationOrderQuoteViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,YLDPickLocationDelegate>
+
+#import "WHC_PhotoListCell.h"
+#import "WHC_PictureListVC.h"
+
+@interface ZIKStationOrderQuoteViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,YLDPickLocationDelegate,WHC_ChoicePictureVCDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *quoteTableView;
 @property (nonatomic, strong) NSArray *titleArray;
@@ -378,31 +382,32 @@
 //打开本地相册
 -(void)LocalPhoto
 {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.navigationBar.barTintColor = NavColor;
+    WHC_PictureListVC  * vc = [WHC_PictureListVC new];
+    vc.delegate = self;
+    vc.maxChoiceImageNumberumber = 3-self.pickerImgView.urlMArr.count;
+    [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
 
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    picker.delegate = self;
-    //设置选择后的图片可被编辑
-    //    picker.allowsEditing = YES;
-    [self presentViewController:picker animated:YES completion:nil];
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.navigationBar.barTintColor = NavColor;
+//
+//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    picker.delegate = self;
+//    //设置选择后的图片可被编辑
+//    //    picker.allowsEditing = YES;
+//    [self presentViewController:picker animated:YES completion:nil];
 }
-
-#pragma mark - RSKImageCropViewControllerDelegate
-- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
-{
+#pragma mark - WHC_ChoicePictureVCDelegate
+- (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
+    for ( UIImage *image in photoArr) {
         NSData* imageData = nil;
-        imageData  = [self imageData:croppedImage];
+        imageData  = [self  imageData:image];
         //NSLog(@"%ld",imageData.length);
-        __weak typeof(self) weakSelf = self;
+        //imageData = [self imageWithImageSimple:image scaledToSize:<#(CGSize)#>]
 
         NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
         //NSLog(@"%ld",myStringImageFile.length);
+        __weak typeof(self) weakSelf = self;
+
         [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:@"1" Success:^(id responseObject) {
             CLog(@"%@",responseObject);
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
@@ -410,6 +415,8 @@
                     return ;
                 }
                 [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+                //                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+                //                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
                 [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
             }
             else {
@@ -421,10 +428,8 @@
         } failure:^(NSError *error) {
             ;
         }];
-
-    [self.navigationController popViewControllerAnimated:YES];
+    }
 }
-
 
 //当选择一张图片后进入这里
 -(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -463,26 +468,6 @@
         } failure:^(NSError *error) {
             ;
         }];
-//        [httpClient upDataImageIOS:image Success:^(id responseObject) {
-//            NSLog(@"%@",responseObject);
-//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//                NSLog(@"%@",responseObject[@"success"]);
-//                NSLog(@"%@",responseObject[@"msg"]);
-//                if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
-//                    [self.pickerImgView addImage:image withUrl:responseObject[@"result"]];
-//                }
-//                else {
-//                    NSLog(@"图片上传失败");
-//                    [UIColor darkGrayColor];
-//                }
-//
-//                //self.pickerImgView.photos
-//            }
-//        } failure:^(NSError *error) {
-//            NSLog(@"%@",error);
-//            NSLog(@"上传图片失败");
-//        }];
-
 
         [picker dismissViewControllerAnimated:YES completion:nil];
     } else {

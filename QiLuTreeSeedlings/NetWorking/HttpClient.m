@@ -3376,7 +3376,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
-    parmers[@"chargePerson"]     = chargePerson;
+    parmers[@"chargelPerson"]     = chargePerson;
     parmers[@"phone"]            = phone;
     parmers[@"brief"]            = brief;
     ShowActionV();

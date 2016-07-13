@@ -14,10 +14,10 @@
     [super awakeFromNib];
     // Initialization code
 //    self.contentView
-    self.contentView.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
-    self.contentView.layer.shadowOpacity = 0.2;////阴影透明度，默认0
-    self.contentView.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
-    self.contentView.layer.shadowRadius  = 3;//阴影半径，默认3
+//    self.contentView.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
+//    self.contentView.layer.shadowOpacity = 0.2;////阴影透明度，默认0
+//    self.contentView.layer.shadowOffset  = CGSizeMake(0, -3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
+//    self.contentView.layer.shadowRadius  = 3;//阴影半径，默认3
 
 //    [self.startTimeButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
 }

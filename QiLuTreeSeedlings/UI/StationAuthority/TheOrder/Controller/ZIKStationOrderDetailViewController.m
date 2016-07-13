@@ -182,7 +182,9 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 
     } else if (self.typeStyle == TypeStyleRequire) {
         ZIKStationOrderDemandTableViewCell *demandCell = [ZIKStationOrderDemandTableViewCell cellWithTableView:tableView];
-        [demandCell configureCell:_demandModel];
+        if (_demandModel) {
+            [demandCell configureCell:_demandModel];
+        }
         return demandCell;
     }
     return nil;

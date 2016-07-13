@@ -7,6 +7,8 @@
 //
 
 #import "ZIKStationChangeInfoViewController.h"
+//#import "ZIKFunction.h"
+#import "NSString+Phone.h"
 
 @interface ZIKStationChangeInfoViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -19,7 +21,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = self.titleString;
+    if (_setString) {
+        self.textField.text = _setString;
+    } else {
     self.textField.placeholder = self.placeholderString;
+    }
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
@@ -34,6 +40,15 @@
         chargePerson = self.textField.text;
     } else if ([self.titleString isEqualToString:@"电话"]) {
         phone = self.textField.text;
+        if(phone.length!=11)
+        {
+            [ToastView showTopToast:@"手机号必须是11位"];
+            return;
+        }
+        if (![phone checkPhoneNumInput]) {
+            [ToastView showTopToast:@"手机号格式不正确"];
+            return;
+        }
     } else {
         brief = self.textField.text;
     }

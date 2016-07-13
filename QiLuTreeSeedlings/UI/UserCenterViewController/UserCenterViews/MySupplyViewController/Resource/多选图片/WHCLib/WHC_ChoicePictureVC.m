@@ -109,8 +109,8 @@
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:^{
             if(_delegate){
-                if([_delegate respondsToSelector:@selector(WHCChoicePictureVCdidSelectedPhotoArr:)]){
-                    [_delegate WHCChoicePictureVCdidSelectedPhotoArr:imageArr];
+                if([_delegate respondsToSelector:@selector(WHCChoicePictureVC:didSelectedPhotoArr:)]){
+                    [_delegate WHCChoicePictureVC:_sf didSelectedPhotoArr:imageArr];
                 }
             }
         }];
@@ -170,14 +170,5 @@
     return cell;
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

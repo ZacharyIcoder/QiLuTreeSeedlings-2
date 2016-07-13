@@ -106,6 +106,14 @@
     ZIKStationChangeInfoViewController *changeInfoVC = [[ZIKStationChangeInfoViewController alloc] initWithNibName:@"ZIKStationChangeInfoViewController" bundle:nil];
     NSString *placeholderStr = [NSString stringWithFormat:@"请输入%@",titlesArray[indexPath.row]];
     changeInfoVC.titleString = titlesArray[indexPath.row];
+    if (indexPath.row == 1) {
+        changeInfoVC.setString = self.masterModel.chargelPerson;
+    } else if (indexPath.row == 2) {
+        changeInfoVC.setString = self.masterModel.phone;
+    } else if (indexPath.row == 3) {
+        changeInfoVC.setString = self.masterModel.brief;
+    }
+
     changeInfoVC.placeholderString = placeholderStr;
     [self.navigationController pushViewController:changeInfoVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

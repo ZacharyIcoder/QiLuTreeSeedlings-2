@@ -13,5 +13,6 @@
  *  标题
  */
 @property (nonatomic, copy) NSString *titleString;
+@property (nonatomic, copy) NSString *setString;
 @property (nonatomic, copy) NSString *placeholderString;
 @end

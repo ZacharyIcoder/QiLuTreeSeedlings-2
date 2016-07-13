@@ -10,6 +10,7 @@
 #import "UIDefines.h"
 #import "ZIKStationOrderDetailQuoteModel.h"
 #import "ZIKFunction.h"
+#import "StringAttributeHelper.h"
 @interface ZIKStationOrderOfferTableViewCell ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderUidLabelLayoutConstraint;
 @end
@@ -43,8 +44,7 @@
 - (void)configureCell:(ZIKStationOrderDetailQuoteModel *)model {
     self.orderUidLabel.text = [NSString stringWithFormat:@"%02d",(int)self.section];
     self.nameLabel.text     = model.name;
-    self.quantityLabel.text = [NSString stringWithFormat:@"需求:%@",model.quantity];
-    self.contentLabel.text  = [NSString stringWithFormat:@"苗木规格说明:%@",model.treedescription];
+    self.contentLabel.text  = [NSString stringWithFormat:@"苗木规格说明: %@",model.treedescription];
 //    CGRect rect = [ZIKFunction getCGRectWithContent:model.orderUid width:200 font:14.0f];
 //    self.orderUidLabelLayoutConstraint.constant = rect.size.width;
     if ([model.stauts isEqualToString:@"1"]) {
@@ -57,6 +57,24 @@
         self.quoteButton.userInteractionEnabled = YES;
         //self.quoteButton.hidden = NO;
     }
+
+    NSString *quoteStr = [NSString stringWithFormat:@"需求: %@棵",model.quantity];
+//    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵",model.quoteQuantity];
+    FontAttribute *quotefullFont = [FontAttribute new];
+    quotefullFont.font = [UIFont systemFontOfSize:14.0f];
+    quotefullFont.effectRange  = NSMakeRange(0, quoteStr.length);
+    ForegroundColorAttribute *quotefullColor = [ForegroundColorAttribute new];
+    quotefullColor.color = [UIColor darkGrayColor];
+    quotefullColor.effectRange = NSMakeRange(0,quoteStr.length);
+    //局部设置
+    FontAttribute *quotepartFont = [FontAttribute new];
+    quotepartFont.font = [UIFont systemFontOfSize:14.0f];
+    quotepartFont.effectRange = NSMakeRange(3, quoteStr.length-3);
+    ForegroundColorAttribute *quotedarkColor = [ForegroundColorAttribute new];
+    quotedarkColor.color = yellowButtonColor;
+    quotedarkColor.effectRange = NSMakeRange(3, quoteStr.length-3);
+
+    self.quantityLabel.attributedText = [quoteStr mutableAttributedStringWithStringAttributes:@[quotefullFont,quotepartFont,quotefullColor,quotedarkColor]];
 }
 
 - (void)setQuoteBtnBlock:(QuoteBtnBlock)quoteBtnBlock {

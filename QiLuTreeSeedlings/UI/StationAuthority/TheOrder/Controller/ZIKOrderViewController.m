@@ -128,6 +128,7 @@
                 if(self.orderMArr.count > 0 ) {
                     [self.orderMArr removeAllObjects];
                 }
+                [self.orderTV reloadData];
                 return ;
             } else if (orderListArr.count == 0 && self.page > 1) {
                 [ToastView showTopToast:@"已无更多信息"];

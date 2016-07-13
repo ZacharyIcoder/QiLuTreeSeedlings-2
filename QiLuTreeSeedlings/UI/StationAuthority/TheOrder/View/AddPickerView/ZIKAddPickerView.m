@@ -6,7 +6,6 @@
 //  Copyright © 2016年 中亿科技. All rights reserved.
 //
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
-
 //获取屏幕宽跟高度
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width - 100
 
@@ -16,18 +15,22 @@
 
 #define ScreenHeight ((IS_IOS_7)?([UIScreen mainScreen].bounds.size.height):([UIScreen mainScreen].bounds.size.height - 20))
 
-
 #import "ZIKAddPickerView.h"
 #import "UIView+MJExtension.h"
 
 #import "ZIKPickerBtn.h"
 #import "UIImageView+AFNetworking.h"
+
 @interface ZIKAddPickerView () <ZIKPickerBtnDeleteDelegate>
+
 @property(nonatomic, strong) NSMutableArray *imageBtnArr;
 @property(nonatomic, strong) UIButton       *pickBtn;
 
 @end
+
+
 @implementation ZIKAddPickerView
+
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -61,6 +64,7 @@
     [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
     imageBtn.urlDic = urlDic;
     imageBtn.deleteDelegate = self;
+//    [imageBtn addTarget:self action:@selector(pickImageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
 
     [self addSubview:imageBtn];
 
@@ -138,12 +142,14 @@
         imageViewY = marginX + i/row_nums*(marginX + imageViewH);
 
         ZIKPickerBtn *imageView = self.imageBtnArr[i];
+//        imageView.deleteDelegate = self;
         imageView.frame = CGRectMake(imageViewX, imageViewY, imageViewW, imageViewH);
 
     }
 
-    UIButton *lastImageBtn= [self.imageBtnArr lastObject];
+    ZIKPickerBtn *lastImageBtn= [self.imageBtnArr lastObject];
     self.mj_height = CGRectGetMaxY(lastImageBtn.frame) + marginX;
+    [lastImageBtn addTarget:self action:@selector(pickImageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
 
 
     if (CGRectGetMaxY(self.frame) + marginX > ScreenHeight) {
@@ -157,6 +163,7 @@
 - (void)pickImageBtnClicked:(UIButton * )pickBtn
 {
 
+    NSLog(@"%@",pickBtn.description);
     if (self.takePhotoBlock) {
         self.takePhotoBlock();
     }
@@ -168,7 +175,6 @@
 {
     UIImage *image = [pickBtn currentBackgroundImage];
     [self.photos removeObject:image];
-    //[self.urlMArr removeObject:(nonnull id)]
     [self.urlMArr removeObject:pickBtn.urlDic];
     [pickBtn removeFromSuperview];
     [self.imageBtnArr removeObject:pickBtn];

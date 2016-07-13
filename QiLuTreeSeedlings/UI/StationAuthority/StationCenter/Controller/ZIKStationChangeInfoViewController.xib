@@ -24,6 +24,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="fbj-vc-Jwg"/>
                             </constraints>
+                            <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
