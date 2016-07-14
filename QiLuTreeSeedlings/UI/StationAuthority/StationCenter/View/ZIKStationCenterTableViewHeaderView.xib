@@ -15,7 +15,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCX-AF-gv0">
-                    <rect key="frame" x="18" y="22" width="45" height="30"/>
+                    <rect key="frame" x="18" y="24" width="45" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Gf6-fa-GYP"/>
                         <constraint firstAttribute="width" constant="45" id="in6-46-FaA"/>
@@ -28,7 +28,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="站长中心" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHz-Rs-8sP">
-                    <rect key="frame" x="254" y="25" width="93" height="21"/>
+                    <rect key="frame" x="254" y="27" width="93" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="KwK-Fp-4at"/>
                         <constraint firstAttribute="width" constant="93" id="NU6-Wt-7yN"/>
@@ -38,14 +38,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="8XZ-yG-QXQ">
-                    <rect key="frame" x="258" y="67" width="85" height="85"/>
+                    <rect key="frame" x="258" y="69" width="85" height="85"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="3NP-6j-tML"/>
                         <constraint firstAttribute="width" constant="85" id="RcA-OY-pSA"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="站长通" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-QA-K6h">
-                    <rect key="frame" x="8" y="169" width="584" height="21"/>
+                    <rect key="frame" x="8" y="171" width="584" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="MoL-5U-utQ"/>
                     </constraints>
@@ -54,13 +54,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是站长，我骄傲" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcZ-IB-ONi">
-                    <rect key="frame" x="22" y="198" width="557" height="40"/>
+                    <rect key="frame" x="22" y="200" width="557" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gp-JV-Ve4">
-                    <rect key="frame" x="568" y="25" width="22" height="22"/>
+                    <rect key="frame" x="568" y="27" width="22" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="HPm-cP-yWY"/>
                         <constraint firstAttribute="width" constant="22" id="JBF-lf-rbj"/>
@@ -83,7 +83,7 @@
                 <constraint firstAttribute="trailing" secondItem="XcZ-IB-ONi" secondAttribute="trailing" constant="21" id="ER4-tU-X0Z"/>
                 <constraint firstItem="8XZ-yG-QXQ" firstAttribute="top" secondItem="IHz-Rs-8sP" secondAttribute="bottom" constant="21" id="OaN-d4-fqW"/>
                 <constraint firstAttribute="trailing" secondItem="MKf-Q1-UpT" secondAttribute="trailing" id="Ors-J4-oka"/>
-                <constraint firstItem="IHz-Rs-8sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="Scd-cK-c9v"/>
+                <constraint firstItem="IHz-Rs-8sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="Scd-cK-c9v"/>
                 <constraint firstAttribute="trailing" secondItem="TNI-QA-K6h" secondAttribute="trailing" constant="8" id="U9k-KG-LrO"/>
                 <constraint firstItem="XcZ-IB-ONi" firstAttribute="top" secondItem="TNI-QA-K6h" secondAttribute="bottom" constant="8" id="Vuh-Nl-wwX"/>
                 <constraint firstItem="TNI-QA-K6h" firstAttribute="top" secondItem="8XZ-yG-QXQ" secondAttribute="bottom" constant="17" id="WmV-j3-SIr"/>
@@ -91,8 +91,8 @@
                 <constraint firstItem="8XZ-yG-QXQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bpl-8D-llA"/>
                 <constraint firstItem="MKf-Q1-UpT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hZH-a8-OwU"/>
                 <constraint firstItem="TNI-QA-K6h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="htQ-rq-2Bp"/>
-                <constraint firstItem="ZCX-AF-gv0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="22" id="lC2-gi-xy8"/>
-                <constraint firstItem="8gp-JV-Ve4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="lGh-Hc-4Z8"/>
+                <constraint firstItem="ZCX-AF-gv0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="lC2-gi-xy8"/>
+                <constraint firstItem="8gp-JV-Ve4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="lGh-Hc-4Z8"/>
                 <constraint firstItem="ZCX-AF-gv0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="nrZ-NI-V31"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

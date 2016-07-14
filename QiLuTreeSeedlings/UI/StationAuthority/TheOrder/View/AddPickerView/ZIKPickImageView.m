@@ -1,9 +1,8 @@
 //
-//  ZIKAddPickerView.m
-//  QiLuTreeSeedlings
+//  PickImageView.m
 //
-//  Created by kong on 16/7/8.
-//  Copyright © 2016年 中亿科技. All rights reserved.
+//  Created by Apple on 15/10/9.
+//  Copyright (c) 2015年 ShanDongSanMi. All rights reserved.
 //
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
 
@@ -16,13 +15,13 @@
 
 #define ScreenHeight ((IS_IOS_7)?([UIScreen mainScreen].bounds.size.height):([UIScreen mainScreen].bounds.size.height - 20))
 
-#import "ZIKAddPickerView.h"
+#import "ZIKPickImageView.h"
 #import "UIView+MJExtension.h"
 
 #import "ZIKPickerBtn.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface ZIKAddPickerView ()<ZIKPickerBtnDeleteDelegate>
+@interface ZIKPickImageView ()<ZIKPickerBtnDeleteDelegate>
 
 @property(nonatomic, strong) NSMutableArray *imageBtnArr;
 @property(nonatomic, strong) UIButton       *pickBtn;
@@ -30,7 +29,7 @@
 
 @end
 
-@implementation ZIKAddPickerView
+@implementation ZIKPickImageView
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -45,7 +44,7 @@
         [self addSubview:self.pickBtn];
         [self.imageBtnArr addObject:self.pickBtn];
     }
-
+    
     return self;
 }
 
@@ -60,23 +59,23 @@
 
     [self.photos addObject:image];
     [self.urlMArr addObject:urlDic];
-
+    
     ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
     [imageBtn setBackgroundImage:image forState:UIControlStateNormal];
     imageBtn.urlDic = urlDic;
     imageBtn.deleteDelegate = self;
-
+    
     [self addSubview:imageBtn];
-
+    
     [self.imageBtnArr insertObject:imageBtn atIndex:self.imageBtnArr.count-1];
-
+    
     //最多允许添加9张图片
-
+    
     if (self.imageBtnArr.count == 4) {
-
+        
         self.pickBtn.hidden = YES;
     }
-
+    
     [self setNeedsLayout];
 }
 
@@ -108,19 +107,19 @@
     _urlMArr = urlMArr;
     for (NSDictionary *dic in urlMArr) {
         [self addImageUrl:[UIImage
-                           imageWithData:[NSData
-                                          dataWithContentsOfURL:[NSURL
-                                                                 URLWithString:dic[@"compressurl"]]]] withUrl:dic];
+                        imageWithData:[NSData
+                                       dataWithContentsOfURL:[NSURL
+                                                              URLWithString:dic[@"compressurl"]]]] withUrl:dic];
     }
 }
 
 - (void)removeImage:(UIImage *)image
 {
-
+    
 }
 
 -(void)removeImageURl:(NSDictionary *)dic {
-
+    
 }
 
 - (void)removeALL
@@ -141,38 +140,43 @@
 
 - (void)layoutSubviews
 {
-
+    
     //UIScrollView *scrollView = (UIScrollView *)self.superview;
-
+    
     NSInteger row_nums = 3;
     CGFloat marginX = 10;
     CGFloat imageViewW = (ScreenWidth-100 - (row_nums+1)*marginX)/row_nums;
     CGFloat imageViewH = imageViewW;
-
+    
     CGFloat imageViewX = 0;
     CGFloat imageViewY = 0;
-
+    
     for(NSInteger i = 0; i < self.imageBtnArr.count; i++)
     {
         imageViewX  = marginX + i%row_nums*(marginX + imageViewW);
 //        imageViewY = marginX + i/row_nums*(marginX + imageViewH);
-        imageViewY = 0;
-        UIButton *imageView = self.imageBtnArr[i];
+        imageViewY = 20;
+        ZIKPickerBtn *imageView = self.imageBtnArr[i];
         imageView.frame = CGRectMake(imageViewX, imageViewY, imageViewW, imageViewH);
-
+        
     }
-
+    
     UIButton *lastImageBtn = [self.imageBtnArr lastObject];
-    self.mj_height = 80;
+    self.mj_height = 100;
     NSLog(@"-----------------------------------------CGRectGetMaxY(lastImageBtn.frame):%f",CGRectGetMaxY(lastImageBtn.frame));
-    NSLog(@"%@",lastImageBtn.description);
+//    
+//    
+//    if (CGRectGetMaxY(self.frame) + marginX > ScreenHeight) {
+//        
+//        scrollView.contentSize = CGSizeMake(ScreenWidth, CGRectGetMaxY(self.frame) + marginX + NavBarHeight);
+//    }
 }
 
 
 
 - (void)pickImageBtnClicked:(UIButton * )pickBtn
 {
-    NSLog(@"%@",pickBtn.description);
+    
     if (self.takePhotoBlock) {
         self.takePhotoBlock();
     }

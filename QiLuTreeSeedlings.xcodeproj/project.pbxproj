@@ -411,6 +411,9 @@
 		FC0CF64C1D30C5140074194D /* ZIKMyShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CF64A1D30C5140074194D /* ZIKMyShopViewController.m */; };
 		FC0CF64D1D30C5140074194D /* ZIKMyShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0CF64B1D30C5140074194D /* ZIKMyShopViewController.xib */; };
 		FC0CF64F1D30C75E0074194D /* 1个人中心-我的店铺.png in Resources */ = {isa = PBXBuildFile; fileRef = FC0CF64E1D30C75E0074194D /* 1个人中心-我的店铺.png */; };
+		FC11CBEE1D37730800C3F47D /* ZIKTestAddImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC11CBEC1D37730800C3F47D /* ZIKTestAddImageViewController.m */; };
+		FC11CBEF1D37730800C3F47D /* ZIKTestAddImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC11CBED1D37730800C3F47D /* ZIKTestAddImageViewController.xib */; };
+		FC11CBF21D37764800C3F47D /* ZIKPickImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC11CBF11D37764800C3F47D /* ZIKPickImageView.m */; };
 		FC224B991D29F48C001FFC47 /* ZIKAddHonorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */; };
 		FC224B9A1D29F48C001FFC47 /* ZIKAddHonorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */; };
 		FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B9D1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib */; };
@@ -1359,6 +1362,11 @@
 		FC0CF64A1D30C5140074194D /* ZIKMyShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyShopViewController.m; sourceTree = "<group>"; };
 		FC0CF64B1D30C5140074194D /* ZIKMyShopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyShopViewController.xib; sourceTree = "<group>"; };
 		FC0CF64E1D30C75E0074194D /* 1个人中心-我的店铺.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1个人中心-我的店铺.png"; sourceTree = "<group>"; };
+		FC11CBEB1D37730800C3F47D /* ZIKTestAddImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKTestAddImageViewController.h; sourceTree = "<group>"; };
+		FC11CBEC1D37730800C3F47D /* ZIKTestAddImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKTestAddImageViewController.m; sourceTree = "<group>"; };
+		FC11CBED1D37730800C3F47D /* ZIKTestAddImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKTestAddImageViewController.xib; sourceTree = "<group>"; };
+		FC11CBF01D37764800C3F47D /* ZIKPickImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickImageView.h; sourceTree = "<group>"; };
+		FC11CBF11D37764800C3F47D /* ZIKPickImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickImageView.m; sourceTree = "<group>"; };
 		FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddHonorViewController.h; sourceTree = "<group>"; };
 		FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddHonorViewController.m; sourceTree = "<group>"; };
 		FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKAddHonorViewController.xib; sourceTree = "<group>"; };
@@ -3653,6 +3661,9 @@
 				FCB1BCD81D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.h */,
 				FCB1BCD91D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m */,
 				FCB1BCDA1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.xib */,
+				FC11CBEB1D37730800C3F47D /* ZIKTestAddImageViewController.h */,
+				FC11CBEC1D37730800C3F47D /* ZIKTestAddImageViewController.m */,
+				FC11CBED1D37730800C3F47D /* ZIKTestAddImageViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3753,6 +3764,8 @@
 		FC4470571D2F881700EA0D82 /* AddPickerView */ = {
 			isa = PBXGroup;
 			children = (
+				FC11CBF01D37764800C3F47D /* ZIKPickImageView.h */,
+				FC11CBF11D37764800C3F47D /* ZIKPickImageView.m */,
 				FC4470581D2F884900EA0D82 /* ZIKAddPickerView.h */,
 				FC4470591D2F884900EA0D82 /* ZIKAddPickerView.m */,
 			);
@@ -4983,6 +4996,7 @@
 				FC0CF64D1D30C5140074194D /* ZIKMyShopViewController.xib in Resources */,
 				EAF050F21C9293C200F435A9 /* homePageGreen@2x.png in Resources */,
 				FC7134221CB3465C0037D507 /* 待选.png in Resources */,
+				FC11CBEF1D37730800C3F47D /* ZIKTestAddImageViewController.xib in Resources */,
 				FC6FED6E1CACF833000E2CA5 /* 未读红点.png in Resources */,
 				EA5A08261D153316005000E9 /* Gyibaojia.png in Resources */,
 				EA1120C51CA6220600857E48 /* myNuserNull@2x.png in Resources */,
@@ -5277,6 +5291,7 @@
 				FC55FB921CB5018A008D9CAD /* ZIKCustomizedModel.m in Sources */,
 				FC5612571D0C092F00E5743B /* UIScrollView+MJRefresh.m in Sources */,
 				EA4EEA201CD8891400FEFD52 /* BuyMessageAlertView.m in Sources */,
+				FC11CBEE1D37730800C3F47D /* ZIKTestAddImageViewController.m in Sources */,
 				FC56125A1D0C092F00E5743B /* ZIKMySupplyCreateModel.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
 				EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */,
@@ -5466,6 +5481,7 @@
 				EAB781A01C8EAF8F00807B44 /* BuyOtherInfoTableViewCell.m in Sources */,
 				EA7CB8321CE01BB20010EAE5 /* AuthcodeView.m in Sources */,
 				FC56128A1D0C092F00E5743B /* ZIKSelectView.m in Sources */,
+				FC11CBF21D37764800C3F47D /* ZIKPickImageView.m in Sources */,
 				FC5612641D0C092F00E5743B /* WHC_Asset.m in Sources */,
 				FCC571A21D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m in Sources */,
 				FC50B3471CAE4C4A0022A24C /* DataVerifier.m in Sources */,

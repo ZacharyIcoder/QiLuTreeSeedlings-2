@@ -15,7 +15,9 @@
 #import "StringAttributeHelper.h"
 #import "ZIKHintTableViewCell.h"
 #import "YLDPickLocationView.h"
-#import "ZIKAddPickerView.h"
+
+//#import "ZIKAddPickerView.h"
+#import "ZIKPickImageView.h"
 
 #import "WHC_PhotoListCell.h"
 #import "WHC_PictureListVC.h"
@@ -33,8 +35,10 @@
 
 @property (nonatomic, strong) UIButton *addressButton;
 @property (nonatomic, strong) UIView   *addImageBGView;
-@property (nonatomic, strong) ZIKAddPickerView *pickerImgView;
+//@property (nonatomic, strong) ZIKAddPickerView *pickerImgView;
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
+@property (nonatomic, strong  ) ZIKPickImageView *pickerImgView;
+
 
 @end
 
@@ -77,6 +81,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 2) {
         return 30;
+//        return 120;
     }
     return 0.01f;
 }
@@ -124,9 +129,13 @@
             }
 
         }
-        if (!self.addImageBGView) {
-             self.addImageBGView = [[UIView alloc] init];
-            self.pickerImgView = [[ZIKAddPickerView alloc] init];
+//        if (!self.addImageBGView) {
+//             self.addImageBGView = [[UIView alloc] init];
+////            self.pickerImgView = [[ZIKAddPickerView alloc] init];
+//        }
+        if (!self.pickerImgView) {
+            self.pickerImgView = [[ZIKPickImageView alloc] initWithFrame:CGRectMake(100, 0, Width-100, 120)];
+
         }
 
     }
@@ -181,18 +190,28 @@
         }
     } else if (indexPath.section == 2)  {
         cell.textLabel.textColor = DarkTitleColor;
-        self.addImageBGView.frame = CGRectMake(100, 0, kWidth-100, 120);
+//        self.addImageBGView.frame = CGRectMake(100, 0, kWidth-100, 120);
         //self.addImageBGView.backgroundColor = [UIColor yellowColor];
-        self.pickerImgView.frame =  CGRectMake(0, 20, 80, 80);
+//        self.pickerImgView.frame =  CGRectMake(0, 20, 80, 80);
+//        self.pickerImgView.backgroundColor = [UIColor whiteColor];
+//        self.pickerImgView.userInteractionEnabled = YES;
+//        [self.addImageBGView addSubview:self.pickerImgView];
+//        [cell.contentView addSubview:self.addImageBGView];
+//        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+//        ZIKPickImageView *pickView = [[ZIKPickImageView alloc] initWithFrame:CGRectMake(100, 0, Width-100, 120)];
+        //pickView.backgroundColor = [UIColor yellowColor];
         self.pickerImgView.backgroundColor = [UIColor whiteColor];
-        self.pickerImgView.userInteractionEnabled = YES;
-        [self.addImageBGView addSubview:self.pickerImgView];
-        [cell.contentView addSubview:self.addImageBGView];
-        __weak typeof(self) weakSelf = self;//解决循环引用的问题
 
+        [cell.contentView addSubview:self.pickerImgView];
+//        self.pickerImgView = pickView;
+        __weak typeof(self) weakSelf = self;
         self.pickerImgView.takePhotoBlock = ^{
             [weakSelf openMenu];
         };
+
+//        self.pickerImgView.takePhotoBlock = ^{
+//            [weakSelf openMenu];
+//        };
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -207,8 +226,8 @@
 - (UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section == 2) {
         UIView *footerView = [[UIView alloc] init];
-        footerView.frame = CGRectMake(0, 0, kWidth, 30);
-        footerView.backgroundColor = BGColor;
+        footerView.frame = CGRectMake(0, 0, kWidth, 120);
+        footerView.backgroundColor = [UIColor whiteColor];
         ZIKHintTableViewCell *hintCell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
         hintCell.frame = CGRectMake(0, 0, kWidth, 30);
         [footerView addSubview:hintCell];
@@ -216,16 +235,35 @@
         hintCell.contentView.backgroundColor = BGColor;
         hintCell.hintStr = @"注：输入框后有*的为必填项";
         return footerView;
+        //self.addImageBGView = [[UIView alloc] init];
+        //self.addImageBGView.frame = CGRectMake(100, 0, kWidth-100, 120);
+        //self.addImageBGView.backgroundColor = [UIColor yellowColor];
+//        self.pickerImgView = [[ZIKAddPickerView alloc] init];
+//        self.pickerImgView.frame =  CGRectMake(0, 20, 80, 80);
+//        self.pickerImgView.backgroundColor = [UIColor whiteColor];
+//        self.pickerImgView.userInteractionEnabled = YES;
+//        [footerView addSubview:self.pickerImgView];
+////        [cell.contentView addSubview:self.addImageBGView];
+//        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+//
+//        self.pickerImgView.takePhotoBlock = ^{
+//            [weakSelf openMenu];
+//        };
+//
+        return footerView;
 
     }
     return nil;
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
-    if (self.pickerImgView.urlMArr.count<1) {
-        [ToastView showTopToast:@"请添加苗木图片"];
-        return;
-    }
+//    if (self.pickerImgView.urlMArr.count<1) {
+//        [ToastView showTopToast:@"请添加苗木图片"];
+//        return;
+//    }
+    [_contentTextView resignFirstResponder];
+    [priceTextField resignFirstResponder];
+    [quantityTextField resignFirstResponder];
     __block NSString *urlSring      = @"";
     __block NSString *compressSring = @"";
     [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -298,6 +336,9 @@
 }
 
 - (void)selectAddress {
+    [_contentTextView resignFirstResponder];
+    [priceTextField resignFirstResponder];
+    [quantityTextField resignFirstResponder];
     YLDPickLocationView *pickerLocation = [[YLDPickLocationView alloc] initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveZhen];
     pickerLocation.delegate=self;
     [pickerLocation showPickView];

@@ -16,6 +16,8 @@
 #import "ZIKStationOrderQuoteViewController.h"
 #import "ZIKStationOrderDemandTableViewCell.h"//订单要求cell
 #import "ZIKStationOrderDemandModel.h"//订单要求Model
+
+#import "ZIKTestAddImageViewController.h"
 /**
  *  cell类型
  */
@@ -172,6 +174,8 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 
         cell.quoteBtnBlock = ^(NSInteger section ) {
            // NSLog(@"报价:%ld",indexPath.section);
+//            ZIKTestAddImageViewController *vc = [[ZIKTestAddImageViewController alloc] init];
+//            [weakSelf.navigationController pushViewController:vc animated:YES];
             ZIKStationOrderQuoteViewController *quoteVC = [[ZIKStationOrderQuoteViewController alloc] initWithNibName:@"ZIKStationOrderQuoteViewController" bundle:nil];
             ZIKStationOrderDetailQuoteModel *model = weakSelf.quoteMArr[indexPath.section];
             quoteVC.name     = model.name;
