@@ -12,22 +12,22 @@
 +(YLDMiaoMuUnTableViewCell *)yldMiaoMuUnTableViewCell
 {
      YLDMiaoMuUnTableViewCell *cell=[[[NSBundle mainBundle] loadNibNamed:@"YLDMiaoMuUnTableViewCell" owner:self options:nil] lastObject];
-    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 79.5,kWidth-20 , 0.5)];
-    [cell addSubview:lineView];
+//    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 79.5,kWidth-20 , 0.5)];
+//    [cell addSubview:lineView];
     cell.bianhaoLab.layer.masksToBounds=YES;
     cell.bianhaoLab.layer.cornerRadius=2;
-    [lineView setBackgroundColor:kLineColor];
+    //[lineView setBackgroundColor:kLineColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
 +(YLDMiaoMuUnTableViewCell *)yldMiaoMuUnTableViewCell2
 {
     YLDMiaoMuUnTableViewCell *cell=[[[NSBundle mainBundle] loadNibNamed:@"YLDMiaoMuUnTableViewCell" owner:self options:nil] lastObject];
-    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 79.5,kWidth-20 , 0.5)];
-    [cell addSubview:lineView];
+//    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 79.5,kWidth-20 , 0.5)];
+//    [cell addSubview:lineView];
     cell.bianhaoLab.layer.masksToBounds=YES;
     cell.bianhaoLab.layer.cornerRadius=2;
-    [lineView setBackgroundColor:kLineColor];
+  //  [lineView setBackgroundColor:kLineColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     UIButton *chakanBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 10, 60, 30)];
     cell.chakanBtn=chakanBtn;
@@ -42,7 +42,9 @@
     self.numLab.text=[NSString stringWithFormat:@"%@棵",messageDic[@"quantity"]];
     NSString *shuomingStr=messageDic[@"description"];
     if (shuomingStr.length!=0) {
-        self.jieshaoLab.text=[NSString stringWithFormat:@"要求说明：%@",messageDic[@"description"]];  
+        self.jieshaoLab.text=[NSString stringWithFormat:@"规格要求：%@",messageDic[@"description"]];
+    }else{
+        self.jieshaoLab.text=@"规格要求：";
     }
     NSString *stauts=[messageDic objectForKey:@"stauts"];
     if (self.chakanBtn) {

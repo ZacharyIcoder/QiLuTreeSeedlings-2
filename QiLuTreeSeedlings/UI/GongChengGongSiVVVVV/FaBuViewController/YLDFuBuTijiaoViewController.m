@@ -135,11 +135,29 @@
     cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
     NSDictionary *DIC=self.miaomuAry[indexPath.row];
     cell.messageDic=DIC;
+    NSString *sdsadsa=DIC[@"description"];
+    CGFloat height=[self getHeightWithContent:sdsadsa width:kWidth-70 font:15];
+    CGRect frame=cell.frame;
+    if (height>20) {
+        frame.size.height=70+height;
+    }else{
+        frame.size.height=90;
+    }
+    cell.frame=frame;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    NSDictionary *DIC=self.miaomuAry[indexPath.row];
+   
+    NSString *sdsadsa=DIC[@"description"];
+    CGFloat height=[self getHeightWithContent:sdsadsa width:kWidth-70 font:15];
+//    CGRect frame=cell.frame;
+    if (height>20) {
+        return 70+height;
+    }else{
+         return 90;
+    }
 }
 -(UIView *)CreatAddView
 {
@@ -284,6 +302,15 @@
             return;
         }
     }
+}
+//获取字符串的高度
+-(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
+    
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(width, 999)
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
+                                        context:nil];
+    return rect.size.height;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
