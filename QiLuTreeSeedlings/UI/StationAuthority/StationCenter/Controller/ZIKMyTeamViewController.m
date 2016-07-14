@@ -42,6 +42,10 @@
     self.searchBarView.searchBlock = ^(NSString *searchText){
         //CLog(@"%@",searchText);
         weakSelf.isSearch = !weakSelf.isSearch;
+        weakSelf.keyword = searchText;
+        weakSelf.page = 1;
+        [weakSelf requestMyTeamList:@"1"];
+
     };
     self.searchBarView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -57,6 +61,9 @@
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
     [self.teamTableView addHeaderWithCallback:^{
         weakSelf.page = 1;
+        if (!weakSelf.isSearch) {
+            weakSelf.keyword = nil;
+        }
         [weakSelf requestMyTeamList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.teamTableView addFooterWithCallback:^{
@@ -116,8 +123,6 @@
                                } failure:^(NSError *error) {
                                }];
 
-
-
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -171,6 +176,7 @@
     //NSString *searchText = textField.text;
     self.keyword = textField.text;
 //    [self.teamTableView headerBeginRefreshing];
+    self.page = 1;
     [self requestMyTeamList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     //CLog(@"searchText:%@",searchText);
     return YES;
@@ -180,6 +186,7 @@
     UITextField *textField = (UITextField *)obj.object;
     //CLog(@"textField:%@",textField.text);
     self.keyword = textField.text;
+    self.page = 1;
     [self requestMyTeamList:[NSString stringWithFormat:@"%ld",(long)self.page]];
 //    [self.teamTableView headerBeginRefreshing];
 }

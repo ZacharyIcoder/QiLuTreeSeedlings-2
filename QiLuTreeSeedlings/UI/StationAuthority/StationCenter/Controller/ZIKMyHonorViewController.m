@@ -22,6 +22,7 @@
 #import "ZIKCertificateAdapter.h"
 
 NSString *kHonorCellID = @"honorcellID";
+static NSString *uid = nil;
 
 @interface ZIKMyHonorViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)    NSMutableArray     *honorData;
@@ -288,7 +289,12 @@ NSString *kHonorCellID = @"honorcellID";
                 [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
             };
             cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
-                [weakSelf deleteRequest:model.uid];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除提示" message:@"确定删除所选内容？" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alert show];
+                alert.tag = 300;
+                alert.delegate = weakSelf;
+//                [weakSelf deleteRequest:model.uid];
+                uid = model.uid;
             };
 
         }else{
@@ -302,7 +308,14 @@ NSString *kHonorCellID = @"honorcellID";
                 [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
             };
             cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
-                [weakSelf deleteRequest:model.uid];
+//                [weakSelf deleteRequest:model.uid];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除提示" message:@"确定删除所选内容？" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alert show];
+                alert.tag = 300;
+                alert.delegate = weakSelf;
+                //                [weakSelf deleteRequest:model.uid];
+                uid = model.uid;
+
             };
 
         }
@@ -333,6 +346,17 @@ NSString *kHonorCellID = @"honorcellID";
     [UIView animateWithDuration:.3 animations:^{
         self.showHonorView.frame = CGRectMake(0, 0, kWidth, kHeight);
     }];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(alertView.tag == 300)//是否退出编辑
+    {
+        if (buttonIndex == 1) {
+            [self deleteRequest:uid];
+        }
+    }
+
 }
 
 - (void)deleteRequest:(NSString *)uid {

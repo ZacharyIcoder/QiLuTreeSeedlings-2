@@ -115,10 +115,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvx-h4-LhF">
-                        <rect key="frame" x="83" y="52" width="92" height="21"/>
+                        <rect key="frame" x="83" y="52" width="38" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="8Ty-pf-5Ix"/>
-                            <constraint firstAttribute="width" constant="92" id="RLH-mP-KbQ"/>
+                            <constraint firstAttribute="width" priority="250" constant="92" id="RLH-mP-KbQ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="1" green="0.5924916107" blue="0.1272283977" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,13 +151,13 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxE-uj-XR4">
                         <rect key="frame" x="83" y="199" width="229" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJg-El-T4k">
                         <rect key="frame" x="83" y="228" width="229" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zt报价中.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wnl-Aj-ifZ">
@@ -187,7 +187,7 @@
                     <constraint firstItem="LJg-El-T4k" firstAttribute="centerY" secondItem="Etu-g5-ydC" secondAttribute="centerY" id="6Io-6Y-A0J"/>
                     <constraint firstItem="s5z-lc-CaL" firstAttribute="leading" secondItem="Fjq-w1-6ax" secondAttribute="leading" id="7So-uT-WKB"/>
                     <constraint firstItem="GxE-uj-XR4" firstAttribute="centerY" secondItem="OU2-YZ-ATQ" secondAttribute="centerY" id="8Mg-Hf-C5H"/>
-                    <constraint firstItem="Fjq-w1-6ax" firstAttribute="leading" secondItem="Yvx-h4-LhF" secondAttribute="trailing" constant="8" id="9Dc-Za-4aE"/>
+                    <constraint firstItem="Fjq-w1-6ax" firstAttribute="leading" secondItem="Yvx-h4-LhF" secondAttribute="trailing" priority="250" constant="8" id="9Dc-Za-4aE"/>
                     <constraint firstItem="tiu-ar-pwr" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="B3E-FW-5v1"/>
                     <constraint firstItem="6mU-fg-kha" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="CDZ-8v-obY"/>
                     <constraint firstItem="Etu-g5-ydC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="CpV-fI-ayN"/>

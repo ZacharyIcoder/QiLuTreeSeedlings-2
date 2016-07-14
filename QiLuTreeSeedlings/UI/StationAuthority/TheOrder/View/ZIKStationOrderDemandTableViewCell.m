@@ -8,6 +8,8 @@
 
 #import "ZIKStationOrderDemandTableViewCell.h"
 #import "ZIKStationOrderDemandModel.h"
+#import "StringAttributeHelper.h"
+#import "UIDefines.h"
 @interface ZIKStationOrderDemandTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
@@ -55,7 +57,7 @@
     self.areaLabel.text     = model.area;
     self.phoneLabel.text    = model.phone;
     self.shuomingLabel.text = model.demandDescription;
-    self.celiangLabel.text = [NSString stringWithFormat:@"胸径离地面%@CM处,地径离地面%@CM处",model.dbh,model.groundDiameter];
+
     if ([model.status isEqualToString:@"已结束"]) {
         self.typeImageView.image  = [UIImage imageNamed:@"zt已结束"];
     } else if ([model.status isEqualToString:@"报价中"]) {
@@ -63,6 +65,45 @@
     } else if ([model.status isEqualToString:@"已报价"]) {
         self.typeImageView.image  = [UIImage imageNamed:@"zt已报价"];
     }
+//    self.celiangLabel.text  = [NSString stringWithFormat:@"胸径离地面%@CM处,地径离地面%@CM处",model.dbh,model.groundDiameter];
+    NSString *celiangString = [NSString stringWithFormat:@"胸径离地面%@CM处,地径离地面%@CM处",model.dbh,model.groundDiameter];
+    NSArray *array = [celiangString componentsSeparatedByString:@","];
+    NSString *string1 = array[0];
+    NSString *string2 = array[1];
+
+    NSRange range12 = [string1 rangeOfString:@"处"];//匹配得到的下标
+    NSRange range11 = [string1 rangeOfString:@"面"];
+    NSRange range21 = [string2 rangeOfString:@"面"];//匹配得到的下标
+    NSRange range22 = [string2 rangeOfString:@"处"];
+//    NSLog(@"%@",range1);
+//    NSLog(@"%@",range2);
+//    NSString *priceString = [NSString stringWithFormat:@"我的报价: ¥%@",model.price];
+    FontAttribute *fullFont = [FontAttribute new];
+    fullFont.font = [UIFont systemFontOfSize:15.0f];
+    fullFont.effectRange  = NSMakeRange(0, celiangString.length);
+    ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
+    fullColor.color = DarkTitleColor;
+    fullColor.effectRange = NSMakeRange(0,celiangString.length);
+//    NSLog(@"%d,%d,%d,%d",(int)range11.location,(int)(range12.location-range11.location),(int)(range12.location+1+range21.location),(int)(range22.location-range21.location));
+    //局部设置
+    FontAttribute *partFont = [FontAttribute new];
+    partFont.font = [UIFont systemFontOfSize:15.0f];
+    partFont.effectRange = NSMakeRange(range11.location+1, range12.location-range11.location-1);
+    ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
+    darkColor.color = NavColor;
+    darkColor.effectRange = NSMakeRange(range11.location+1, range12.location-range11.location-1);
+
+    FontAttribute *partFont2 = [FontAttribute new];
+    partFont2.font = [UIFont systemFontOfSize:15.0f];
+    partFont2.effectRange = NSMakeRange(range12.location+1+range21.location+2, range22.location-range21.location-1);
+    ForegroundColorAttribute *darkColor2 = [ForegroundColorAttribute new];
+    darkColor2.color = NavColor;
+    darkColor2.effectRange = NSMakeRange(range12.location+1+range21.location+2, range22.location-range21.location-1);
+
+
+    self.celiangLabel.attributedText = [celiangString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,partFont2,fullColor,darkColor,darkColor2]];
+
+
 
 }
 @end
