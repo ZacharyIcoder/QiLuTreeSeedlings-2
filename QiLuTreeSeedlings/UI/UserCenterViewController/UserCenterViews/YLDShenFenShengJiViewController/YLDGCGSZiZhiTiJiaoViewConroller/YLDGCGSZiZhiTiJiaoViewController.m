@@ -157,18 +157,18 @@
         
         return;
     }
-    if (self.youbianTextField.text.length<=0) {
-        [ToastView showTopToast:@"请输入邮编"];
-        
-        return;
-    }
-    if (self.jieshaTextView.text.length<=0) {
-        [ToastView showTopToast:@"请输入简介"];
-        
-        return;
-    }
+//    if (self.youbianTextField.text.length<=0) {
+//        [ToastView showTopToast:@"请输入邮编"];
+//        
+//        return;
+//    }
+//    if (self.jieshaTextView.text.length<=0) {
+//        [ToastView showTopToast:@"请输入简介"];
+//        
+//        return;
+//    }
     if (self.honorData.count<=0) {
-        [ToastView showTopToast:@"请天加至少一条荣誉"];
+        [ToastView showTopToast:@"请天加至少一条资质"];
         
         return;
     }
@@ -385,8 +385,9 @@
     [view addSubview:nameLab];
     [nameLab setTextColor:detialLabColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
-    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
-    pickBtn.center=CGPointMake(frame.size.width/2+10,frame.size.height/2);
+    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 190/320.f*kWidth, frame.size.height)];
+    pickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 17, 0, 0);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
     [pickBtn setTitleColor:titleLabColor forState:UIControlStateNormal];

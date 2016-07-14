@@ -104,11 +104,11 @@
 {
   
     if (self.nameTextField.text.length<=0) {
-        [ToastView showTopToast:@"请输入荣誉名称"];
+        [ToastView showTopToast:@"请输入资质名称"];
         return;
     }
     if (self.rankTextField.text.length<=0) {
-        [ToastView showTopToast:@"请输入荣誉等级"];
+        [ToastView showTopToast:@"请输入资质等级"];
         return;
     }
    
@@ -121,7 +121,7 @@
         return;
     }
     if (self.compressurl.length<=0) {
-        [ToastView showTopToast:@"请输入上传荣誉图片"];
+        [ToastView showTopToast:@"请输入上传资质图片"];
         return;
     }
     if (self.type==1) {
@@ -218,7 +218,9 @@
     pickTimeView.delegate=self;
     pickTimeView.pickerView.minimumDate=nil;
     [pickTimeView showInView];
-    
+    [self.nameTextField resignFirstResponder];
+    [self.rankTextField resignFirstResponder];
+    [self.organizationalField resignFirstResponder];
 }
 -(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
 {
