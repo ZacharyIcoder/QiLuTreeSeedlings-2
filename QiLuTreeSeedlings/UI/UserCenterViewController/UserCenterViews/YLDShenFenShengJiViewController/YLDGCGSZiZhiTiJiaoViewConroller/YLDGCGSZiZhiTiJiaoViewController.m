@@ -228,9 +228,31 @@
             [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
         };
         cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
-            [weakSelf.honorData removeObjectAtIndex:indexPath.row];
-            weakSelf.isEditState=NO;
-            [weakSelf.collectionView reloadData];
+           
+            NSString *title = NSLocalizedString(@"资质删除", nil);
+            NSString *message = NSLocalizedString(@"是否确定删除该资质？", nil);
+            NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+            NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            // Create the actions.
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+               
+            }];
+            
+            UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+               [weakSelf.honorData removeObjectAtIndex:indexPath.row];
+                      weakSelf.isEditState=NO;
+                      [weakSelf.collectionView reloadData];
+            }];
+            
+            // Add the actions.
+            [alertController addAction:cancelAction];
+            [alertController addAction:otherAction];
+            
+            [weakSelf presentViewController:alertController animated:YES completion:nil];
+        
             //[weakSelf deleteRequest:model.uid];
         };
 
