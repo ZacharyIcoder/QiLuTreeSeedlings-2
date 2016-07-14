@@ -121,7 +121,7 @@
         return;
     }
     if (self.compressurl.length<=0) {
-        [ToastView showTopToast:@"请输入上传资质图片"];
+        [ToastView showTopToast:@"请上传资质图片"];
         return;
     }
     if (self.type==1) {
@@ -195,18 +195,20 @@
     [view addSubview:nameLab];
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:15]];
-    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
-    pickBtn.center=CGPointMake(frame.size.width/2-1.5,frame.size.height/2);
+    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 190/320.f*kWidth, frame.size.height)];
+    pickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 17, 0, 0);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
+    //[pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
-    [pickBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
+    [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
     [view addSubview:lineImagV];
-//    UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width-42.5, 15, 15, 15)];
-//    [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
-//    [view addSubview:imageVVV];
+    UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width-42.5, 15, 15, 15)];
+    [imageVVV setImage:[UIImage imageNamed:@"xiala2"]];
+    [view addSubview:imageVVV];
     
     [view addSubview:pickBtn];
     [self.backScrollView addSubview:view];
@@ -216,7 +218,7 @@
 {
     YLDPickTimeView *pickTimeView=[[YLDPickTimeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     pickTimeView.delegate=self;
-    pickTimeView.pickerView.minimumDate=nil;
+    pickTimeView.pickerView.maximumDate=[NSDate new];
     [pickTimeView showInView];
     [self.nameTextField resignFirstResponder];
     [self.rankTextField resignFirstResponder];
@@ -225,6 +227,7 @@
 -(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
 {
     self.timeStr=timeStr;
+    [self.timeBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     [self.timeBtn setTitle:timeStr forState:UIControlStateNormal];
 }
 - (void)didReceiveMemoryWarning {

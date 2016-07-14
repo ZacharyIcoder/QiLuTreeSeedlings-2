@@ -367,9 +367,11 @@
     }
     
     if (namestr.length>0) {
+         [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
     }else{
+        [self.areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         [self.areaBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
         
@@ -383,14 +385,14 @@
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, frame.size.height)];
     [nameLab setText:nameStr];
     [view addSubview:nameLab];
-    [nameLab setTextColor:detialLabColor];
+    [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 190/320.f*kWidth, frame.size.height)];
     pickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 17, 0, 0);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
-    [pickBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
+    [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
@@ -416,6 +418,8 @@
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 0.5, 160/320.f*kWidth, frame.size.height-1)];
     textField.placeholder=alortStr;
     [view addSubview:textField];
+    [textField setTextColor:MoreDarkTitleColor];
+    [textField setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
     
