@@ -451,31 +451,57 @@
         }];
         return;
     }
-    CLog(@"%ld",APPDELEGATE.userModel.goldsupplierStatus);
+    CLog(@"%ld",APPDELEGATE.userModel.projectCompanyStatus);
     if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
         [ToastView showTopToast:@"您已具备身份，不需升级"];
         return;
     }
-    if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
-         [ToastView showTopToast:@"审核中，请等待"];
-        return;
-    }
-    if (APPDELEGATE.userModel.projectCompanyStatus==1) {
-        [ToastView showTopToast:@"您已具备身份，不需升级"];
-        return;
-    }
-    if (APPDELEGATE.userModel.projectCompanyStatus==0) {
-        [ToastView showTopToast:@"审核未通过"];
-        YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxx"];
-        
-        [self hiddingSelfTabBar];
-        [self.navigationController pushViewController:yldsda animated:YES];
-    }else{
-        YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
-        
-        [self hiddingSelfTabBar];
-        [self.navigationController pushViewController:yldsda animated:YES];
-    }
+    ShowActionV();
+    [HTTPCLIENT projectCompanyStatusSuccess:^(id responseObject) {
+        if([[responseObject objectForKey:@"success"] integerValue])
+        {
+            APPDELEGATE.userModel.projectCompanyStatus=[[[responseObject objectForKey:@"result"] objectForKey:@"projectCompanyStatus"] integerValue];
+            if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+                [ToastView showTopToast:@"暂未审核，请耐心等待"];
+                return;
+            }
+            
+            if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+                [ToastView showTopToast:@"审核未通过"];
+                YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:APPDELEGATE.GCGSModel.uid];
+                
+                [self hiddingSelfTabBar];
+                [self.navigationController pushViewController:yldsda animated:YES];
+                return;
+            }
+            YLDShengJiViewViewController *yldsda=[YLDShengJiViewViewController new];
+            
+            [self hiddingSelfTabBar];
+            [self.navigationController pushViewController:yldsda animated:YES];
+        }
+        else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        RemoveActionV();
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+
+//    if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+//         [ToastView showTopToast:@"审核中，请等待"];
+//        return;
+//    }
+//    if (APPDELEGATE.userModel.projectCompanyStatus==1) {
+//        [ToastView showTopToast:@"您已具备身份，不需升级"];
+//        return;
+//    }
+//    if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+//        [ToastView showTopToast:@"审核未通过"];
+// 
+//    }else{
+//       
+//    }
   
 }
 - (void)didReceiveMemoryWarning {

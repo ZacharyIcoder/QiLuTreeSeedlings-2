@@ -78,7 +78,7 @@
         self.titleLab.text=model.name;
         [self.userImageV setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"UserImageV"]];
         self.phoneLab.text=model.phone;
-        self.gongyiDLab.text=[NSString stringWithFormat:@"%@",model.goldsupplier];
+        self.gongyiDLab.text=model.goldsupplier;
     }else
     {
         self.titleLab.text=@"";

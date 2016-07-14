@@ -1,4 +1,4 @@
-//
+ //
 //  YLDZZsuppleyListViewController.m
 //  QiLuTreeSeedlings
 //
@@ -16,7 +16,7 @@
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "SellDetialViewController.h"
 @interface YLDZZsuppleyListViewController ()<ScreeningViewDelegate,UITableViewDelegate,UITableViewDataSource>
-//creeingActionWithAry:(NSArray *)ary WithProvince:(NSString *)province WihtCity:(NSString *)city WithCounty:(NSString *)county WithGoldsupplier:(NSString *)goldsupplier WithProductUid:(NSString *)productUid withProductName:(NSString *)productName
+
 @property (nonatomic)NSInteger pageNum;
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,strong)NSMutableArray *dataAry;
@@ -73,14 +73,18 @@
 }
 -(void)getSuppleyLsitWithPage:(NSInteger)pagenum
 {
-    
-    [HTTPCLIENT zhanzhanggongyingListWithPageNum:[NSString stringWithFormat:@"%ld",pagenum] WithPageSize:@"15" Success:^(id responseObject) {
+    NSString *searchTime;
+    if (self.pageNum>1) {
+        HotSellModel *model=[self.dataAry lastObject];
+        searchTime=model.searchtime;
+    }
+    [HTTPCLIENT zhanzhanggongyingListWithPageNum:[NSString stringWithFormat:@"%ld",pagenum] WithPageSize:@"15" WithsearchTime:searchTime Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             if (self.pageNum==1) {
                 [self.dataAry removeAllObjects];
             }
             NSDictionary *result=[responseObject objectForKey:@"result"];
-            NSArray *supplyList=result[@"supplyList"];
+            NSArray *supplyList=result[@"list"];
             if (supplyList.count==0) {
                 [ToastView showTopToast:@"已无更多信息"];
                 self.pageNum--;
@@ -105,13 +109,18 @@
 -(void)getdatalistWithpageNumber:(NSInteger)pageNumber  pageSize:(NSString *)pageSize goldsupplier:(NSString *)goldsupplier productUid:(NSString *)productUid productName:(NSString *)productName province:(NSString *)province city:(NSString *)city
                           county:(NSString *)county WithAry:(NSArray *)ary
 {
-    [HTTPCLIENT ZhanZhanggongyingListWithPage:[NSString stringWithFormat:@"%ld",pageNumber] WithPageSize:pageSize Withgoldsupplier:goldsupplier WithProductUid:productUid WithProductName:productName WithProvince:province WithCity:city WithCounty:county WithAry:ary Success:^(id responseObject) {
+    NSString *searchTime;
+    if (self.pageNum>1) {
+        HotSellModel *model=[self.dataAry lastObject];
+        searchTime=model.searchtime;
+    }
+    [HTTPCLIENT ZhanZhanggongyingListWithPage:[NSString stringWithFormat:@"%ld",pageNumber] WithPageSize:pageSize Withgoldsupplier:goldsupplier WithProductUid:productUid WithProductName:productName WithProvince:province WithCity:city WithCounty:county  WithAry:ary WithSearchTime:searchTime Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             if (self.pageNum==1) {
                 [self.dataAry removeAllObjects];
             }
             NSDictionary *result=[responseObject objectForKey:@"result"];
-            NSArray *supplyList=result[@"supplyList"];
+            NSArray *supplyList=result[@"list"];
             if (supplyList.count==0) {
                 [ToastView showTopToast:@"已无更多信息"];
                 self.pageNum--;

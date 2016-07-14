@@ -4056,7 +4056,7 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
     }];
 }
 #pragma mark ---------- 工程助手－站长供应信息列表-----------
--(void)zhanzhanggongyingListWithPageNum:(NSString *)pageNumber WithPageSize:(NSString *)pageSize
+-(void)zhanzhanggongyingListWithPageNum:(NSString *)pageNumber WithPageSize:(NSString *)pageSize WithsearchTime:(NSString *)searchTime
                                 Success:(void (^)(id responseObject))success
                                 failure:(void (^)(NSError *error))failure
 {
@@ -4071,7 +4071,8 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"pageNumber"]              = pageNumber;
-    parmers[@"pageSize"]             = pageSize;
+    parmers[@"pageSize"]         = pageSize;
+    parmers[@"searchTime"]       = searchTime;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -4083,6 +4084,7 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark ---------- 工程助手－站长供应信息检索-----------
 -(void)ZhanZhanggongyingListWithPage:(NSString*)page
                         WithPageSize:(NSString *)pageSize
                     Withgoldsupplier:(NSString *)goldsupplier
@@ -4092,6 +4094,7 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
                             WithCity:(NSString *)city
                           WithCounty:(NSString *)county
                              WithAry:(NSArray *)ary
+                      WithSearchTime:(NSString *)searchTime
                              Success:(void (^)(id responseObject))success
                              failure:(void (^)(NSError *error))failure
 {
@@ -4114,7 +4117,7 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
     parameters[@"province"]=province;
     parameters[@"city"]=city;
     parameters[@"county"]=county;
-    
+    parameters[@"searchTime"]=searchTime;
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
         [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
