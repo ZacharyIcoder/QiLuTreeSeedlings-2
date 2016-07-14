@@ -414,12 +414,15 @@
             [self hiddingSelfTabBar];
 //#warning 暂且不判断权限，直接进入
              NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"myphone"];
-           if (APPDELEGATE.userModel.isworkstation || [phone isEqualToString:@"15953523812"]) {
-                  ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
+            if (APPDELEGATE.userModel.goldsupplierStatus == 5 || APPDELEGATE.userModel.goldsupplierStatus  == 6 || [phone isEqualToString:@"15953523812"]) {                  ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
                 //UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:tab];
                 [self.navigationController pushViewController:stationtab animated:YES];
 
             } else {
+                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
+                    [ToastView showTopToast:@"您已具备其它身份"];
+                    return;
+                }
                 ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
                 [self.navigationController pushViewController:helpfulVC animated:YES];
             }
