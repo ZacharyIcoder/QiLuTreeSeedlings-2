@@ -86,7 +86,7 @@
     _level = level;
     if (level) {
         _levelLabel.hidden = NO;
-        _levelLabel.text = [NSString stringWithFormat:@"%@级资质",level];
+        _levelLabel.text = [NSString stringWithFormat:@"%@",level];
     } else {
         _levelLabel.hidden = YES;
     }

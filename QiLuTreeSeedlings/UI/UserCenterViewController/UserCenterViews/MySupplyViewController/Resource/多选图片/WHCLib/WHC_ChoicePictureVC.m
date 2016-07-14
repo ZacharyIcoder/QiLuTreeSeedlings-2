@@ -109,8 +109,8 @@
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:^{
             if(_delegate){
-                if([_delegate respondsToSelector:@selector(WHCChoicePictureVC:didSelectedPhotoArr:)]){
-                    [_delegate WHCChoicePictureVC:_sf didSelectedPhotoArr:imageArr];
+                if([_delegate respondsToSelector:@selector(WHCChoicePictureVCdidSelectedPhotoArr:)]){
+                    [_delegate WHCChoicePictureVCdidSelectedPhotoArr:imageArr];
                 }
             }
         }];

@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSString *town;//镇
 
 @property (nonatomic, strong) UIButton *addressButton;
+@property (nonatomic, strong) UIView   *addImageBGView;
 @property (nonatomic, strong) ZIKAddPickerView *pickerImgView;
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
 
@@ -123,8 +124,9 @@
             }
 
         }
-        if (!self.pickerImgView) {
-             self.pickerImgView = [[ZIKAddPickerView alloc] init ];
+        if (!self.addImageBGView) {
+             self.addImageBGView = [[UIView alloc] init];
+            self.pickerImgView = [[ZIKAddPickerView alloc] init];
         }
 
     }
@@ -179,9 +181,13 @@
         }
     } else if (indexPath.section == 2)  {
         cell.textLabel.textColor = DarkTitleColor;
-        self.pickerImgView.frame =  CGRectMake(100, 10, 80, 80);
+        self.addImageBGView.frame = CGRectMake(100, 0, kWidth-100, 120);
+        //self.addImageBGView.backgroundColor = [UIColor yellowColor];
+        self.pickerImgView.frame =  CGRectMake(0, 20, 80, 80);
         self.pickerImgView.backgroundColor = [UIColor whiteColor];
-        [cell addSubview:self.pickerImgView];
+        self.pickerImgView.userInteractionEnabled = YES;
+        [self.addImageBGView addSubview:self.pickerImgView];
+        [cell.contentView addSubview:self.addImageBGView];
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
 
         self.pickerImgView.takePhotoBlock = ^{
@@ -397,7 +403,8 @@
 //    [self presentViewController:picker animated:YES completion:nil];
 }
 #pragma mark - WHC_ChoicePictureVCDelegate
-- (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
+-(void)WHCChoicePictureVCdidSelectedPhotoArr:(NSArray *)photoArr {
+//- (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
     for ( UIImage *image in photoArr) {
         NSData* imageData = nil;
         imageData  = [self  imageData:image];
