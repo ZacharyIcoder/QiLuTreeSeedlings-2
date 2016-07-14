@@ -29,6 +29,7 @@
 #import "BigImageViewShowView.h"
 //不是工程公司的提示洁面
 #import "LYDGCGSTiShiViewController.h"
+#import "YLDGCGSZiZhiTiJiaoViewController.h"
 /********金牌供应*********/
 #import "YLDJinPaiGYViewController.h"
 /********工程助手*********/
@@ -455,6 +456,10 @@
                        
                        if (APPDELEGATE.userModel.projectCompanyStatus==0) {
                            [ToastView showTopToast:@"审核未通过"];
+                           YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
+                           
+                           [self hiddingSelfTabBar];
+                           [self.navigationController pushViewController:yldsda animated:YES];
                            return;
                        }
                        

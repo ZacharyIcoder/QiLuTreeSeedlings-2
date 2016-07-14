@@ -468,7 +468,7 @@
             
             if (APPDELEGATE.userModel.projectCompanyStatus==0) {
                 [ToastView showTopToast:@"审核未通过"];
-                YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:APPDELEGATE.GCGSModel.uid];
+                YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
                 
                 [self hiddingSelfTabBar];
                 [self.navigationController pushViewController:yldsda animated:YES];
@@ -487,21 +487,6 @@
     } failure:^(NSError *error) {
         RemoveActionV();
     }];
-
-//    if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
-//         [ToastView showTopToast:@"审核中，请等待"];
-//        return;
-//    }
-//    if (APPDELEGATE.userModel.projectCompanyStatus==1) {
-//        [ToastView showTopToast:@"您已具备身份，不需升级"];
-//        return;
-//    }
-//    if (APPDELEGATE.userModel.projectCompanyStatus==0) {
-//        [ToastView showTopToast:@"审核未通过"];
-// 
-//    }else{
-//       
-//    }
   
 }
 - (void)didReceiveMemoryWarning {
@@ -591,6 +576,10 @@
 
                 if (APPDELEGATE.userModel.projectCompanyStatus==0) {
                     [ToastView showTopToast:@"审核未通过"];
+                    YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
+                    
+                    [self hiddingSelfTabBar];
+                    [self.navigationController pushViewController:yldsda animated:YES];
                     return;
                 }
 
