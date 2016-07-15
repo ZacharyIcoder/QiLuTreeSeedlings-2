@@ -39,7 +39,7 @@
     for (int i=0; i<gongzuozhanAry.count; i++) {
         YLDHeZuoDetialGZZView *zzview =[YLDHeZuoDetialGZZView yldHeZuoDetialGZZView];
         CGRect frame=zzview.frame;
-        frame.origin.y=60+self.shuomingH.constant+i*85;
+        frame.origin.y=55+self.shuomingH.constant+i*85;
         frame.size.width=self.contentView.frame.size.width;
         zzview.frame=frame;
         zzview.dic=gongzuozhanAry[i];
