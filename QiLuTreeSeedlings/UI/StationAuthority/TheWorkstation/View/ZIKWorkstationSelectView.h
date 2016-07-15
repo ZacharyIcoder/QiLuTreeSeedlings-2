@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZIKWorkstationSelectViewAboutAddressButton.h"
 @protocol ZIKWorkstationSelectViewDelegate <NSObject>
 @optional
 
@@ -15,9 +16,9 @@
 @end
 
 @interface ZIKWorkstationSelectView : UIView
-@property (weak, nonatomic) IBOutlet UIButton *provinceButton;
-@property (weak, nonatomic) IBOutlet UIButton *cityButton;
-@property (weak, nonatomic) IBOutlet UIButton *countryButton;
+@property (weak, nonatomic) IBOutlet ZIKWorkstationSelectViewAboutAddressButton *provinceButton;
+@property (weak, nonatomic) IBOutlet ZIKWorkstationSelectViewAboutAddressButton *cityButton;
+@property (weak, nonatomic) IBOutlet ZIKWorkstationSelectViewAboutAddressButton *countryButton;
 
 @property (nonatomic, copy) NSString *provinceName;
 @property (nonatomic, copy) NSString *provinceCode;

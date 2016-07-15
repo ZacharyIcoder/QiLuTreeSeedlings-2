@@ -30,6 +30,16 @@
     _provinceName = @"全国";
     _cityName     = @"所有市";
     _countryName  = @"所有县(区)";
+    [self.provinceButton setTitle:_provinceName forState:UIControlStateNormal];
+    [self.cityButton setTitle:_cityName forState:UIControlStateNormal];
+    [self.countryButton setTitle:_countryName forState:UIControlStateNormal];
+//    self.provinceButton.backgroundColor = [UIColor whiteColor];
+//    self.provinceButton.titleLabel.backgroundColor = [UIColor whiteColor];
+//    self.provinceButton.imageView.backgroundColor = [UIColor whiteColor];
+//    self.provinceButton.lzType = LZRelayoutButtonTypeLeft;
+//    self.cityButton.lzType = LZRelayoutButtonTypeLeft;
+//    self.countryButton.lzType = LZRelayoutButtonTypeLeft;
+
 }
 
 - (IBAction)provinceButtonClick:(UIButton *)sender {

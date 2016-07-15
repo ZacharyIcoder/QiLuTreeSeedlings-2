@@ -702,6 +702,7 @@
 		FC7EAFEE1D13C63200F4043D /* ico_顶部搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */; };
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
 		FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC828EA61D38921B0047731D /* 标签-我的报价.png */; };
+		FC828EAA1D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCB1BCDB1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BCD91D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m */; };
@@ -1915,6 +1916,8 @@
 		FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_顶部搜索.png"; sourceTree = "<group>"; };
 		FC7ED2401D054FD70010A8E5 /* downImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downImage.png; sourceTree = "<group>"; };
 		FC828EA61D38921B0047731D /* 标签-我的报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-我的报价.png"; sourceTree = "<group>"; };
+		FC828EA81D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationSelectViewAboutAddressButton.h; sourceTree = "<group>"; };
+		FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationSelectViewAboutAddressButton.m; sourceTree = "<group>"; };
 		FCA7E0611CD050B6002111FF /* ZIKPayRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordCell.h; sourceTree = "<group>"; };
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
@@ -3771,6 +3774,8 @@
 				FC4470521D2F702300EA0D82 /* ZIKWorkstationSelectListViewTableViewCell.h */,
 				FC4470531D2F702300EA0D82 /* ZIKWorkstationSelectListViewTableViewCell.m */,
 				FC4470541D2F702300EA0D82 /* ZIKWorkstationSelectListViewTableViewCell.xib */,
+				FC828EA81D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.h */,
+				FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5512,6 +5517,7 @@
 				FC56124C1D0C092F00E5743B /* IQBarButtonItem.m in Sources */,
 				FCC571A51D2B89F5004AA096 /* ZIKCertificateAdapter.m in Sources */,
 				EAE32DE31C7E97A600C4CEA2 /* UIRefreshControl+AFNetworking.m in Sources */,
+				FC828EAA1D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m in Sources */,
 				EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */,
 				EA5252F41CE179E40004639C /* CityTableViewCell.m in Sources */,
 				EA4E64661D0E4D1500A7D731 /* YLDUserHelpViewController.m in Sources */,

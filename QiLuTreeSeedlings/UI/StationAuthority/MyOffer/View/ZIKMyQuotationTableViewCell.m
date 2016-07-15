@@ -70,14 +70,14 @@
     self.orderNameLabel.text = model.orderName;
     self.engineeringCompanyLabel.text = model.engineeringCompany;
     self.itemNameLabel.text = model.itemName;
-    CGRect rect =  [model.itemName boundingRectWithSize:CGSizeMake(kWidth/2, CGFLOAT_MAX)
-                                                options:NSStringDrawingUsesLineFragmentOrigin
-                                             attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0f]}
-                                                context:nil];
+//    CGRect rect =  [model.itemName boundingRectWithSize:CGSizeMake(kWidth/2, CGFLOAT_MAX)
+//                                                options:NSStringDrawingUsesLineFragmentOrigin
+//                                             attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0f]}
+//                                                context:nil];
 
     NSString *priceString = [NSString stringWithFormat:@"报价单价: ¥%@",model.price];
     FontAttribute *fullFont = [FontAttribute new];
-    fullFont.font = [UIFont systemFontOfSize:13.0f];
+    fullFont.font = [UIFont systemFontOfSize:14.0f];
     fullFont.effectRange  = NSMakeRange(0, priceString.length);
     ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
     fullColor.color = detialLabColor;
@@ -94,7 +94,7 @@
 
     NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵",model.quoteQuantity];
     FontAttribute *quotefullFont = [FontAttribute new];
-    quotefullFont.font = [UIFont systemFontOfSize:13.0f];
+    quotefullFont.font = [UIFont systemFontOfSize:14.0f];
     quotefullFont.effectRange  = NSMakeRange(0, quoteStr.length);
     ForegroundColorAttribute *quotefullColor = [ForegroundColorAttribute new];
     quotefullColor.color = detialLabColor;
