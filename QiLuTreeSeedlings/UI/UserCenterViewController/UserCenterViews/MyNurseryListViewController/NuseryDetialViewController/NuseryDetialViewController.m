@@ -42,6 +42,7 @@
 
     if (self) {
         model.uid=uid;
+        ShowActionV();
         [HTTPCLIENT nurseryDetialWithUid:uid Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic=[responseObject objectForKey:@"result"];
@@ -51,8 +52,9 @@
             {
                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
             }
+            RemoveActionV();
         } failure:^(NSError *error) {
-            
+            RemoveActionV();
         }];
 
     }
@@ -175,14 +177,12 @@
     TextView.placeholder=alort;
     TextView.tag=100;
     [TextView setTextColor:detialLabColor];
-    [TextView setFont:[UIFont systemFontOfSize:13]];
+    [TextView setFont:[UIFont systemFontOfSize:14]];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textViewChanged:)
                                                  name:UITextViewTextDidChangeNotification
                                                object:TextView];
     TextView.frame=CGRectMake(kWidth*0.35, 10, kWidth*0.6, frame.size.height-20);
-    TextView.font=[UIFont systemFontOfSize:16];
-    TextView.textColor=DarkTitleColor;
     [view addSubview:TextView];
     return TextView;
 }
