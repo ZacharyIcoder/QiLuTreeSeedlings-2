@@ -60,6 +60,7 @@
 [ActionView removeActionView];\
 [ActionView addActionView];\
 }
+#define GetTextHeight(content,width,font)  ([content boundingRectWithSize:CGSizeMake(width, 999) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size.height)
 
 #define RemoveActionV() [ActionView removeActionView]
 

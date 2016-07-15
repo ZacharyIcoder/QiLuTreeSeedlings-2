@@ -92,8 +92,18 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *gongzuozhanAry=[self.dataAry[indexPath.row] objectForKey:@"cooperateQuoteList"];
-    return 80+gongzuozhanAry.count*85;
+    NSDictionary *dicc=self.dataAry[indexPath.row];
+    NSArray *gongzuozhanAry=[dicc objectForKey:@"cooperateQuoteList"];
+    NSString *shuomingStr=[dicc objectForKey:@"description"];
+    if (shuomingStr.length>0) {
+        CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求：%@",shuomingStr] width:kWidth-41 font:15];
+        //self.shuomingH.constant=height;
+        return 65+height+gongzuozhanAry.count*85;
+    }else{
+       return 80+gongzuozhanAry.count*85;
+    }
+
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -102,7 +112,7 @@
         cell=[YLDHeZuoDEMessageCell yldHeZuoDEMessageCell];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
-    cell.numLab.text=[NSString stringWithFormat:@"%ld",indexPath.row];
+    cell.numLab.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
     cell.dic=self.dataAry[indexPath.row];
     return cell;
 }
@@ -220,7 +230,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//获取字符串的高度
+-(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
+    
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(width, 999)
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
+                                        context:nil];
+    return rect.size.height;
+}
 /*
 #pragma mark - Navigation
 
