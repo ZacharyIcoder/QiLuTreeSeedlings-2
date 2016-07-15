@@ -12,6 +12,7 @@
 #import "UIDefines.h"
 #import "JSONKit.h"
 #import "HttpClient.h"
+#import "BWTextView.h"
 @interface YLDFuBuTijiaoViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMMeditingDelegate>
 @property (nonatomic,copy) NSString *typeStr;
 @property (nonatomic,copy) NSString *typeName;
@@ -136,7 +137,8 @@
     NSDictionary *DIC=self.miaomuAry[indexPath.row];
     cell.messageDic=DIC;
     NSString *sdsadsa=DIC[@"description"];
-    CGFloat height=[self getHeightWithContent:sdsadsa width:kWidth-70 font:15];
+    
+    CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求:%@",sdsadsa] width:kWidth-70 font:15];
     CGRect frame=cell.frame;
     if (height>20) {
         frame.size.height=70+height;
@@ -151,7 +153,7 @@
     NSDictionary *DIC=self.miaomuAry[indexPath.row];
    
     NSString *sdsadsa=DIC[@"description"];
-    CGFloat height=[self getHeightWithContent:sdsadsa width:kWidth-70 font:15];
+    CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求:%@",sdsadsa] width:kWidth-70 font:15];
 //    CGRect frame=cell.frame;
     if (height>20) {
         return 70+height;
@@ -189,18 +191,23 @@
     numTextField.textColor=NavYellowColor;
     numTextField.keyboardType=UIKeyboardTypeNumberPad;
     [view addSubview:numTextField];
-    UITextField *shuomingTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
-    shuomingTextField.tag=100;
-    shuomingTextField.placeholder=@"请输入苗木说明(100字以内)";
+    BWTextView *shuomingTextView=[[BWTextView alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
+    shuomingTextView.tag=100;
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldChanged:)
-                                                 name:UITextFieldTextDidChangeNotification
-                                               object:shuomingTextField];
-    shuomingTextField.borderStyle=UITextBorderStyleRoundedRect;
-    shuomingTextField.textColor=DarkTitleColor;
+                                             selector:@selector(textViewChanged:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:shuomingTextView];
+    shuomingTextView.placeholder=@"请输入苗木说明(100字以内)";
+    
+//    shuomingTextView.borderStyle=UITextBorderStyleRoundedRect;
+    shuomingTextView.layer.masksToBounds=YES;
+    shuomingTextView.layer.cornerRadius=4;
+    shuomingTextView.layer.borderColor=kLineColor.CGColor;
+    shuomingTextView.layer.borderWidth=1;
+    shuomingTextView.textColor=DarkTitleColor;
 
-    [shuomingTextField setFont:[UIFont systemFontOfSize:14]];
-    [view addSubview:shuomingTextField];
+    [shuomingTextView setFont:[UIFont systemFontOfSize:14]];
+    [view addSubview:shuomingTextView];
     UIButton *addBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 5, 55, 65)];
     [addBtn setImage:[UIImage imageNamed:@"addView"] forState:UIControlStateNormal];
     [view addSubview:addBtn];
@@ -265,6 +272,44 @@
     [self.view addSubview:view];
     return textField;
 }
+- (void)textViewChanged:(NSNotification *)obj {
+    BWTextView *textField = (BWTextView *)obj.object;
+    NSInteger kssss=10;
+    if (textField.tag>0) {
+        kssss=textField.tag;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
 - (void)textFieldChanged:(NSNotification *)obj {
     UITextField *textField = (UITextField *)obj.object;
     NSInteger kssss=10;
@@ -303,6 +348,7 @@
         }
     }
 }
+
 //获取字符串的高度
 -(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
     

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class YLDMMPiLiangBianJiCell;
+@class BWTextView;
 @protocol YLDMMPiLiangBianJiCellDelegate <NSObject>
 @optional
 -(void)deleteWithSelf:(YLDMMPiLiangBianJiCell *)cell andRow:(NSInteger)row andDic:(NSMutableDictionary*)dic;
@@ -15,7 +16,7 @@
 @interface YLDMMPiLiangBianJiCell : UITableViewCell
 @property (nonatomic,weak) UITextField *nameTextField;
 @property (nonatomic,weak) UITextField *numTextField;
-@property (nonatomic,weak) UITextField *shuomingTextField;
+@property (nonatomic,weak) BWTextView *shuomingTextView;
 @property (nonatomic,weak) UIButton *deleteBtn;
 @property (nonatomic,weak) NSMutableDictionary *messageDic;
 @property (nonatomic,weak) id<YLDMMPiLiangBianJiCellDelegate> delegate;
