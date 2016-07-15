@@ -15,13 +15,14 @@
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "NSString+Phone.h"
 #import "ZIKHintTableViewCell.h"
+#import "BWTextView.h"
 @interface NuseryDetialViewController ()<YLDPickLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) UITextField *nuseryNameField;
 @property (nonatomic,strong) UITextField *nuseryAddressField;
 @property (nonatomic,strong) UITextField *changePersonField;
 @property (nonatomic,strong) UITextField *phoneTextField;
-@property (nonatomic,strong) UITextField *bierfTextField;
+@property (nonatomic,strong) BWTextView *bierfTextView;
 @property (nonatomic,strong) UIButton *areaBtn;
 @property (nonatomic,strong) NurseryModel *model;
 @property (nonatomic,weak) UITextField * nowTextField;
@@ -57,7 +58,7 @@
     }
     return self;
 }
-@synthesize nuseryNameField,nuseryAddressField,changePersonField,phoneTextField,bierfTextField,areaBtn;
+@synthesize nuseryNameField,nuseryAddressField,changePersonField,phoneTextField,bierfTextView,areaBtn;
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIView *navView=[self makeNavView];
@@ -82,8 +83,9 @@
     tempFrame.origin.y+=50;
     phoneTextField = [self makeViewWtihName:@"电话" alert:@"请输入电话" unit:@"" withFrame:tempFrame];
     tempFrame.origin.y+=50;
-    bierfTextField=[self makeViewWtihName:@"简介" alert:@"请填写简介" unit:@"" withFrame:tempFrame];
-    tempFrame.origin.y+=55;
+    tempFrame.size.height=100;
+    bierfTextView=[self jianjieTextViewWithName:@"简介" WithAlort:@"请输入简介" WithFrame: tempFrame];
+    tempFrame.origin.y+=110;
     tempFrame.size.height=30;
     ZIKHintTableViewCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
@@ -108,7 +110,7 @@
     NSString *nuserAddress=self.nuseryAddressField.text;
     NSString *changePerson=self.changePersonField.text;
     NSString *phone=self.phoneTextField.text;
-    NSString *birefStr=self.bierfTextField.text;
+    NSString *birefStr=self.bierfTextView.text;
     if (nuserName.length==0) {
         [ToastView showTopToast:@"请输入苗圃名称"];
         return;
@@ -145,7 +147,7 @@
         return;
     }
     ShowActionV();
-    [HTTPCLIENT saveNuresryWithUid:model.uid WithNurseryName:nuserName WithnurseryAreaProvince:self.AreaProvince WithnurseryAreaCity:self.AreaCity WithnurseryAreaCounty:self.AreaCounty WithnurseryAreaTown:@"" WithnurseryAddress:nuserAddress WithchargelPerson:changePerson WithPhone:phone Withbrief:birefStr Success:^(id responseObject) {
+    [HTTPCLIENT saveNuresryWithUid:model.uid WithNurseryName:nuserName WithnurseryAreaProvince:self.AreaProvince WithnurseryAreaCity:self.AreaCity WithnurseryAreaCounty:self.AreaCounty WithnurseryAreaTown:self.AreaTown WithnurseryAddress:nuserAddress WithchargelPerson:changePerson WithPhone:phone Withbrief:birefStr Success:^(id responseObject) {
         RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"添加成功，即将返回"];
@@ -158,12 +160,76 @@
         RemoveActionV();
     }];
 }
+-(BWTextView*)jianjieTextViewWithName:(NSString *)name WithAlort:(NSString *)alort WithFrame:(CGRect)frame
+{
+    UIView *view=[[UIView alloc]initWithFrame:frame];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    [self.backScrollView addSubview:view];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 90, 50)];
+    [nameLab setText:name];
+    [nameLab setTextColor:DarkTitleColor];
+    [nameLab setFont:[UIFont systemFontOfSize:14]];
+    [view addSubview:nameLab];
+    
+    BWTextView *TextView=[[BWTextView alloc]init];
+    TextView.placeholder=alort;
+    TextView.tag=100;
+    [TextView setTextColor:detialLabColor];
+    [TextView setFont:[UIFont systemFontOfSize:13]];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textViewChanged:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:TextView];
+    TextView.frame=CGRectMake(kWidth*0.35, 10, kWidth*0.6, frame.size.height-20);
+    TextView.font=[UIFont systemFontOfSize:16];
+    TextView.textColor=DarkTitleColor;
+    [view addSubview:TextView];
+    return TextView;
+}
+- (void)textViewChanged:(NSNotification *)obj {
+    BWTextView *textField = (BWTextView *)obj.object;
+    NSInteger kssss=10;
+    if (textField.tag>0) {
+        kssss=textField.tag;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
 -(void)setMessage
 {
     self.nuseryNameField.text=model.nurseryName;
     self.nuseryAddressField.text=model.nurseryAddress;
     self.phoneTextField.text=model.phone;
-    self.bierfTextField.text=model.brief;
+    self.bierfTextView.text=model.brief;
     self.changePersonField.text=model.chargelPerson;
     self.AreaProvince =model.nurseryAreaProvince;
     self.AreaCity=model.nurseryAreaCity;

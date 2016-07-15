@@ -27,7 +27,7 @@
 @property (nonatomic,strong) UITextField *legalPersonField;
 @property (nonatomic,strong) UITextField *phoneField;
 @property (nonatomic,strong) UITextField *zipcodeField;
-@property (nonatomic,strong) UITextField *briefField;
+@property (nonatomic,strong) BWTextView *briefView;
 //@property (nonatomic,strong) YLDPickLocationView *pickCityView;
 @property (nonatomic,strong) UIButton *areaBtn;
 @property (nonatomic,weak) UITextField *nowTextField;
@@ -37,7 +37,7 @@
 @end
 
 @implementation CompanyViewController
-@synthesize backScrollView,companyNameField,companyAddressField,AreaCity,AreaCounty,AreaProvince,AreaTown,legalPersonField,phoneField,zipcodeField,briefField,upDataBtn,editingBtn;
+@synthesize backScrollView,companyNameField,companyAddressField,AreaCity,AreaCounty,AreaProvince,AreaTown,legalPersonField,phoneField,zipcodeField,briefView,upDataBtn,editingBtn;
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -70,7 +70,7 @@
     cityNameLab.text=@"地区";
     [cityNameLab setTextColor:titleLabColor];
     [cityNameLab setFont:[UIFont systemFontOfSize:14]];
-    UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.25, 0, kWidth*0.6, 44)];
+    UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.20, 0, kWidth*0.6, 44)];
     [cityBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
     [cityBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [cityBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
@@ -95,9 +95,11 @@
     zipcodeField.delegate=self;
     zipcodeField.keyboardType=UIKeyboardTypePhonePad;
     tempFrame.origin.y+=44;
-    briefField=[self mackViewWtihName:@"简介" alert:@"请输入简介内容" unit:@"" withFrame:tempFrame];
-    briefField.delegate=self;
-    tempFrame.origin.y+=50;
+    tempFrame.size.height=88;
+    briefView=[self jianjieTextViewWithName:@"简介" WithAlort:@"请输入简介" WithFrame:tempFrame];
+//    briefView.delegate=self;
+    tempFrame.origin.y+=100;
+    tempFrame.size.height=30;
     ZIKHintTableViewCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundColor:[UIColor clearColor]];
@@ -134,7 +136,7 @@
         self.companyAddressField.text=APPDELEGATE.companyModel.companyAddress;
         self.phoneField.text=APPDELEGATE.companyModel.phone;
         self.legalPersonField.text=APPDELEGATE.companyModel.legalPerson;
-        self.briefField.text=APPDELEGATE.companyModel.brief;
+        self.briefView.text=APPDELEGATE.companyModel.brief;
         NSMutableString *areaStr=[[NSMutableString alloc]init];
         GetCityDao *citydao=[GetCityDao new];
         [citydao openDataBase];
@@ -163,7 +165,7 @@
     self.companyAddressField.enabled=YES;
     self.phoneField.enabled=YES;
     self.legalPersonField.enabled=YES;
-    self.briefField.enabled=YES;
+//    self.briefField.enabled=YES;
     self.areaBtn.enabled=YES;
     self.zipcodeField.enabled=YES;
     self.upDataBtn.hidden=NO;
@@ -174,7 +176,7 @@
     self.companyAddressField.enabled=NO;
     self.phoneField.enabled=NO;
     self.legalPersonField.enabled=NO;
-    self.briefField.enabled=NO;
+//    self.briefField.enabled=NO;
     self.areaBtn.enabled=NO;
     self.zipcodeField.enabled=NO;
       self.upDataBtn.hidden=YES;
@@ -213,7 +215,7 @@
     }
     ShowActionV();
     __weak __typeof(self) blockSelf = self;
-    [HTTPCLIENT saveCompanyInfoWithUid:APPDELEGATE.companyModel.uid     WithCompanyName:companyNameField.text WithCompanyAddress:companyAddressField.text WithcompanyAreaProvince:AreaProvince WithcompanyAreaCity:AreaCity WithcompanyAreaCounty:AreaCounty WithcompanyAreaTown:AreaTown WithlegalPerson:legalPersonField.text Withphone:phoneField.text Withzipcode:zipcodeField.text Withbrief:briefField.text Success:^(id responseObject) {
+    [HTTPCLIENT saveCompanyInfoWithUid:APPDELEGATE.companyModel.uid     WithCompanyName:companyNameField.text WithCompanyAddress:companyAddressField.text WithcompanyAreaProvince:AreaProvince WithcompanyAreaCity:AreaCity WithcompanyAreaCounty:AreaCounty WithcompanyAreaTown:AreaTown WithlegalPerson:legalPersonField.text Withphone:phoneField.text Withzipcode:zipcodeField.text Withbrief:briefView.text Success:^(id responseObject) {
       //  NSLog(@"%@",responseObject);
         RemoveActionV();
         if([[responseObject objectForKey:@"success"] integerValue])
@@ -333,6 +335,71 @@
 {
     [self.nowTextField resignFirstResponder];
 }
+-(BWTextView*)jianjieTextViewWithName:(NSString *)name WithAlort:(NSString *)alort WithFrame:(CGRect)frame
+{
+    UIView *view=[[UIView alloc]initWithFrame:frame];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    [self.backScrollView addSubview:view];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 90, 50)];
+    [nameLab setText:name];
+    [nameLab setTextColor:DarkTitleColor];
+    [nameLab setFont:[UIFont systemFontOfSize:14]];
+    [view addSubview:nameLab];
+    
+    BWTextView *TextView=[[BWTextView alloc]init];
+    TextView.placeholder=alort;
+    TextView.tag=100;
+    [TextView setTextColor:detialLabColor];
+    [TextView setFont:[UIFont systemFontOfSize:13]];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textViewChanged:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:TextView];
+    TextView.frame=CGRectMake(kWidth*0.35, 10, kWidth*0.6, frame.size.height-20);
+    TextView.font=[UIFont systemFontOfSize:16];
+    TextView.textColor=DarkTitleColor;
+    [view addSubview:TextView];
+    return TextView;
+}
+- (void)textViewChanged:(NSNotification *)obj {
+    BWTextView *textField = (BWTextView *)obj.object;
+    NSInteger kssss=10;
+    if (textField.tag>0) {
+        kssss=textField.tag;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
+
 -(UITextField *)mackViewWtihName:(NSString *)name alert:(NSString *)alert unit:(NSString *)unit withFrame:(CGRect)frame
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];
@@ -368,22 +435,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(BWTextView*)jianjieTextViewWithName:(NSString *)name WithAlort:(NSString *)alort WithFrame:(CGRect)frame
-{
-    UIView *view=[[UIView alloc]initWithFrame:frame];
-    [view setBackgroundColor:[UIColor whiteColor]];
-    [self.backScrollView addSubview:view];
-    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, 50)];
-    [nameLab setTextColor:DarkTitleColor];
-    [nameLab setFont:[UIFont systemFontOfSize:14]];
-    [view addSubview:nameLab];
-    
-    BWTextView *TextView=[[BWTextView alloc]init];
-    TextView.placeholder=@"请输入50字以内的说明...";
-    TextView.font=[UIFont systemFontOfSize:14];
-    TextView.textColor=detialLabColor;
-    return TextView;
-}
+
 /*
 #pragma mark - Navigation
 
