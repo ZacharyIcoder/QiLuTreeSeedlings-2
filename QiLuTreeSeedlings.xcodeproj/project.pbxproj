@@ -414,6 +414,9 @@
 		FC11CBEE1D37730800C3F47D /* ZIKTestAddImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC11CBEC1D37730800C3F47D /* ZIKTestAddImageViewController.m */; };
 		FC11CBEF1D37730800C3F47D /* ZIKTestAddImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC11CBED1D37730800C3F47D /* ZIKTestAddImageViewController.xib */; };
 		FC11CBF21D37764800C3F47D /* ZIKPickImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC11CBF11D37764800C3F47D /* ZIKPickImageView.m */; };
+		FC11CBF61D37885200C3F47D /* ZIKMyQuotationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC11CBF41D37885200C3F47D /* ZIKMyQuotationTableViewCell.m */; };
+		FC11CBF71D37885200C3F47D /* ZIKMyQuotationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC11CBF51D37885200C3F47D /* ZIKMyQuotationTableViewCell.xib */; };
+		FC11CBF91D37886900C3F47D /* 圆角矩形-3.png in Resources */ = {isa = PBXBuildFile; fileRef = FC11CBF81D37886900C3F47D /* 圆角矩形-3.png */; };
 		FC224B991D29F48C001FFC47 /* ZIKAddHonorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */; };
 		FC224B9A1D29F48C001FFC47 /* ZIKAddHonorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */; };
 		FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC224B9D1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib */; };
@@ -1367,6 +1370,10 @@
 		FC11CBED1D37730800C3F47D /* ZIKTestAddImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKTestAddImageViewController.xib; sourceTree = "<group>"; };
 		FC11CBF01D37764800C3F47D /* ZIKPickImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPickImageView.h; sourceTree = "<group>"; };
 		FC11CBF11D37764800C3F47D /* ZIKPickImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPickImageView.m; sourceTree = "<group>"; };
+		FC11CBF31D37885200C3F47D /* ZIKMyQuotationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyQuotationTableViewCell.h; sourceTree = "<group>"; };
+		FC11CBF41D37885200C3F47D /* ZIKMyQuotationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyQuotationTableViewCell.m; sourceTree = "<group>"; };
+		FC11CBF51D37885200C3F47D /* ZIKMyQuotationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMyQuotationTableViewCell.xib; sourceTree = "<group>"; };
+		FC11CBF81D37886900C3F47D /* 圆角矩形-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆角矩形-3.png"; sourceTree = "<group>"; };
 		FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKAddHonorViewController.h; sourceTree = "<group>"; };
 		FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKAddHonorViewController.m; sourceTree = "<group>"; };
 		FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKAddHonorViewController.xib; sourceTree = "<group>"; };
@@ -2342,6 +2349,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FC11CBF81D37886900C3F47D /* 圆角矩形-3.png */,
 				FC74AD711D34D8C1009D8409 /* 列表-分站.png */,
 				FC74AD721D34D8C1009D8409 /* 列表-工程公司.png */,
 				FC74AD731D34D8C1009D8409 /* 列表-总站.png */,
@@ -3551,6 +3559,9 @@
 				FC22762B1D177C9F0037B131 /* ZIKMyofferTableViewCell.h */,
 				FC22762C1D177C9F0037B131 /* ZIKMyofferTableViewCell.m */,
 				FC22762D1D177C9F0037B131 /* ZIKMyofferTableViewCell.xib */,
+				FC11CBF31D37885200C3F47D /* ZIKMyQuotationTableViewCell.h */,
+				FC11CBF41D37885200C3F47D /* ZIKMyQuotationTableViewCell.m */,
+				FC11CBF51D37885200C3F47D /* ZIKMyQuotationTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4867,6 +4878,7 @@
 				EA08F7CA1D191B0200471C33 /* ico_工作站-分站text.png in Resources */,
 				FC5612861D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib in Resources */,
 				FC7EAFEE1D13C63200F4043D /* ico_顶部搜索.png in Resources */,
+				FC11CBF91D37886900C3F47D /* 圆角矩形-3.png in Resources */,
 				EA7491691D0275910043BDAC /* xiala2.png in Resources */,
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
 				FC5612501D0C092F00E5743B /* IQKeyboardManager.bundle in Resources */,
@@ -4972,6 +4984,7 @@
 				EAFB8FE31D1A208900FCF88B /* YLDMMPiLiangBianJiViewController.xib in Resources */,
 				EA4E64741D0E866000A7D731 /* kefuxitongdadianhua.png in Resources */,
 				EA3D4D991D17D5BB0010B56D /* YLDZhanZhangMessageCell.xib in Resources */,
+				FC11CBF71D37885200C3F47D /* ZIKMyQuotationTableViewCell.xib in Resources */,
 				FC5337CB1CBE18FC008BFB11 /* 站长通-星级1.png in Resources */,
 				FC22768C1D177D1A0037B131 /* 标签-采购.png in Resources */,
 				EA552E811D0D400100FB88A0 /* gongchengzhongxinoff.png in Resources */,
@@ -5329,6 +5342,7 @@
 				FC5612521D0C092F00E5743B /* MJRefreshBaseView.m in Sources */,
 				EA518C621CEDAAF30092BA40 /* GuiGeModel.m in Sources */,
 				FC0BE60B1D1B73A600744870 /* ZIKStationCenterInfoViewController.m in Sources */,
+				FC11CBF61D37885200C3F47D /* ZIKMyQuotationTableViewCell.m in Sources */,
 				FCE458C31CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m in Sources */,
 				FC56127E1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.m in Sources */,
 				EA5252E61CE172410004639C /* YLDPickSelectVIew.m in Sources */,
