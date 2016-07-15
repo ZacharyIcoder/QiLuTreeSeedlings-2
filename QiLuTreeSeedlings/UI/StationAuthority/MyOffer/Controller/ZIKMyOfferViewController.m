@@ -73,7 +73,7 @@
     };
     [self.view addSubview:selectMenuView];
 
-    UITableView *orderTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectMenuView.frame)+2, kWidth, kHeight-64-2-selectMenuView.frame.size.height) style:UITableViewStylePlain];
+    UITableView *orderTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectMenuView.frame)+2, kWidth, kHeight-64-2-selectMenuView.frame.size.height-50) style:UITableViewStylePlain];
     orderTableView.dataSource = self;
     orderTableView.delegate   = self;
     [self.view addSubview:orderTableView];
@@ -114,18 +114,24 @@
 //    self.orderTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
 //    self.orderTableView.estimatedRowHeight = 220;////必须设置好预估值
 //    return 210;
-    return 180;
+    return 200;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKMyofferTableViewCell *cell = [ZIKMyofferTableViewCell cellWithTableView:tableView];
-    if (self.quoteMArr.count > 0) {
-        ZIKMyOfferQuoteListModel *model = self.quoteMArr[indexPath.section];
-        [cell configureCell:model];
-    }
-    return cell;
-//    ZIKMyQuotationTableViewCell *cell = [ZIKMyQuotationTableViewCell cellWithTableView:tableView];
+//    ZIKMyofferTableViewCell *cell = [ZIKMyofferTableViewCell cellWithTableView:tableView];
+//    if (self.quoteMArr.count > 0) {
+//        ZIKMyOfferQuoteListModel *model = self.quoteMArr[indexPath.section];
+//        [cell configureCell:model];
+//    }
 //    return cell;
+    ZIKMyQuotationTableViewCell *cell = [ZIKMyQuotationTableViewCell cellWithTableView:tableView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (self.quoteMArr.count > 0) {
+            ZIKMyOfferQuoteListModel *model = self.quoteMArr[indexPath.section];
+            [cell configureCell:model];
+        }
+
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -701,6 +701,7 @@
 		FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7D66D71CF4277500DF4FEC /* 分享.png */; };
 		FC7EAFEE1D13C63200F4043D /* ico_顶部搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */; };
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
+		FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC828EA61D38921B0047731D /* 标签-我的报价.png */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCB1BCDB1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BCD91D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m */; };
@@ -1913,6 +1914,7 @@
 		FC7D66D71CF4277500DF4FEC /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
 		FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_顶部搜索.png"; sourceTree = "<group>"; };
 		FC7ED2401D054FD70010A8E5 /* downImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downImage.png; sourceTree = "<group>"; };
+		FC828EA61D38921B0047731D /* 标签-我的报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-我的报价.png"; sourceTree = "<group>"; };
 		FCA7E0611CD050B6002111FF /* ZIKPayRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordCell.h; sourceTree = "<group>"; };
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
@@ -2394,6 +2396,7 @@
 				EA3D4D851D1792450010B56D /* zhanzhangLong.png */,
 				FC2276841D177D1A0037B131 /* ico_订单标题.png */,
 				FC2276851D177D1A0037B131 /* ico_订单公司.png */,
+				FC828EA61D38921B0047731D /* 标签-我的报价.png */,
 				FC2276861D177D1A0037B131 /* 标签-采购.png */,
 				FC2276871D177D1A0037B131 /* 标签-求购.png */,
 				FC2276881D177D1A0037B131 /* 标签-询价.png */,
@@ -5063,6 +5066,7 @@
 				FC22766C1D177C9F0037B131 /* ZIKMyofferTableViewCell.xib in Resources */,
 				FC22766E1D177C9F0037B131 /* ZIKStationCenterTableViewController.xib in Resources */,
 				FC5612611D0C092F00E5743B /* shanchutupian@3x.png in Resources */,
+				FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
 				FC22769B1D17BC4E0037B131 /* zt已合作.png in Resources */,
 				EA552E701D0D3DBC00FB88A0 /* touxianglianxiren.png in Resources */,
