@@ -32,10 +32,10 @@
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]  removeObserver:self];
 }
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-      [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
+    [super viewDidAppear:NO];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -152,11 +152,12 @@
         [self.navigationController pushViewController:fabuVC animated:YES];
     }
 }
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    [self.talbeView reloadData];
+    [super viewDidAppear:NO];
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengshowTabBar" object:nil];
+    [self.talbeView reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

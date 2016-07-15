@@ -63,6 +63,9 @@
         [deleteBtn setImage:[UIImage imageNamed:@"deleteRad"] forState:UIControlStateNormal];
         [self addSubview:deleteBtn];
         [deleteBtn addTarget:self action:@selector(deleteBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 80, kWidth, 10)];
+        [imageV setBackgroundColor:kRGB(245, 245, 245, 1)];
+        [self addSubview:imageV];
     }
     return self;
 }

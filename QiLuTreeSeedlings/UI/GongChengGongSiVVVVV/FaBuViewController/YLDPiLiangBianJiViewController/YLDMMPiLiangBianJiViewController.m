@@ -33,6 +33,7 @@
     tableView.delegate=self;
     tableView.dataSource=self;
     self.tableView=tableView;
+    tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     UIButton *finishBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 24, 60, 40)];
     [finishBtn addTarget:self action:@selector(finishBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -70,7 +71,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 80;
+    return 90;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *IDStr=[NSString stringWithFormat:@"YLDMMPiLiangBianJiCell%ld",indexPath.row];
