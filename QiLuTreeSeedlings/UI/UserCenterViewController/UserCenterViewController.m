@@ -254,14 +254,14 @@
         }
         if (indexPath.row==2) {
             UserInfoNomerTableViewCell *cell=[[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"myMiaoPu" andTitle:@"我的苗圃"];
-            if (APPDELEGATE.userModel.isworkstation) {
-                cell.lineImage.hidden=NO;
-            }else
-            {
-                cell.lineImage.hidden=YES;
-            }
+//            if (APPDELEGATE.userModel.isworkstation) {
+//                cell.lineImage.hidden=NO;
+//            }else
+//            {
+//                cell.lineImage.hidden=YES;
+//            }
             return cell;
-        }
+        } 
         if (indexPath.row == 3) {
             UserInfoNomerTableViewCell *cell = [[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"站长通" andTitle:@"站长助手"];
             return  cell;

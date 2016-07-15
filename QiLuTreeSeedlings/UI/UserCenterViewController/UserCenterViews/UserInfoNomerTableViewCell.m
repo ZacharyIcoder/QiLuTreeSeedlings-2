@@ -27,6 +27,9 @@
         [self addSubview:lineImage];
         if ([title isEqualToString:@"购买记录"]||[title isEqualToString:@"我的余额"]||[title isEqualToString:@"我的分享"]||[title isEqualToString:@"工程助手"]) {
             lineImage.hidden=YES;
+        }else
+        {
+             lineImage.hidden=NO;
         }
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
