@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJM-Bf-X59">
-                        <rect key="frame" x="46" y="45" width="228" height="22"/>
+                        <rect key="frame" x="46" y="45" width="230" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="dJM-Bf-X59" secondAttribute="trailing" constant="38" id="685-oS-O0l"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="dJM-Bf-X59" secondAttribute="trailing" constant="36" id="685-oS-O0l"/>
                     <constraint firstItem="ewO-9i-uAr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="9yf-Uw-lgB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Dzj-VJ-ity" secondAttribute="trailing" constant="-8" id="DoM-7G-evP"/>
                     <constraint firstItem="6RA-QJ-QZm" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="1.5" id="JQT-Ee-Hav"/>
