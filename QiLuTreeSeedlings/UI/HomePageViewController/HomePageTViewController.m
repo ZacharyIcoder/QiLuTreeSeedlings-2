@@ -446,10 +446,6 @@
              YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
                 [self.navigationController pushViewController:tab animated:YES];
             }else{
-                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
-                    [ToastView showTopToast:@"您已具备其它身份"];
-                    return;
-                }
                 ShowActionV();
                [HTTPCLIENT projectCompanyStatusSuccess:^(id responseObject) {
                    if([[responseObject objectForKey:@"success"] integerValue])

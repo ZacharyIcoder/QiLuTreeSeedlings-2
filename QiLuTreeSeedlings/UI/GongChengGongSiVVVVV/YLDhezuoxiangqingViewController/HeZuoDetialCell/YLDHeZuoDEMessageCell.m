@@ -23,7 +23,7 @@
     self.shuliangLab.text=[NSString stringWithFormat:@"%@",[dic objectForKey:@"quantity"]];
     NSString *shuomingStr=[dic objectForKey:@"description"];
     if (shuomingStr.length>0) {
-        self.shuomingLab.text=[NSString stringWithFormat:@"苗木规格说明：%@",shuomingStr];
+        self.shuomingLab.text=[NSString stringWithFormat:@"规格要求：%@",shuomingStr];
     }
     [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[YLDHeZuoDetialGZZView class]]) {

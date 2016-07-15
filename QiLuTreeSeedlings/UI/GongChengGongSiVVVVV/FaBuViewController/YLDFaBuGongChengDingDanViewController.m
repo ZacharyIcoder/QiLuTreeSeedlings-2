@@ -123,9 +123,9 @@
     UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
     [chongzhiBtn setBackgroundColor:NavYellowColor];
     [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
-    [self.backScrollView addSubview:chongzhiBtn];
+    //[self.backScrollView addSubview:chongzhiBtn];
     [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIButton *xiayibuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2+5, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
+    UIButton *xiayibuBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(tempFrame)+5, kWidth-80, 40)];
     [xiayibuBtn setBackgroundColor:NavColor];
     [xiayibuBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [xiayibuBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -205,12 +205,24 @@
     YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
     pickLocationV.delegate=self;
     [pickLocationV showPickView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)timeBtnAction:(UIButton *)sender
 {
     YLDPickTimeView *pickTimeView=[[YLDPickTimeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     pickTimeView.delegate=self;
     [pickTimeView showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
     
 }
 -(void)pickqualityBtnAcion:(UIButton *)sender
@@ -226,6 +238,12 @@
     pickerSV.tag=113;
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)pickTypeBtnAcion:(UIButton *)sender
 {
@@ -240,6 +258,12 @@
     pickerSV.tag=111;
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)pickPiceBtnAcion:(UIButton *)sender
 {
@@ -254,11 +278,18 @@
     pickerSV.tag=112;
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
 {
     self.timeStr=[NSString stringWithFormat:@"%@ 23:59:59",timeStr];
     [self.timeBtn setTitle:timeStr forState:UIControlStateNormal];
+    [self.timeBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
 }
 
 -(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
@@ -282,10 +313,12 @@
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
+//        [self.areaBtn.titleLabel sizeToFit];
+        [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }else{
         [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
+        [self.areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         
     }
 }
@@ -296,16 +329,19 @@
         self.typeStr=[dic objectForKey:@"uid"];
         self.typename=selectStr;
         [self.typeBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.typeBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }
     if (pickerShowView.tag==112) {
         NSDictionary *dic=self.piceAry[select];
         self.priceStr=[dic objectForKey:@"uid"];
         [self.priceBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.priceBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }
     if (pickerShowView.tag==113) {
         NSDictionary *dic=self.qualityAry[select];
         self.qualityStr=[dic objectForKey:@"uid"];
         [self.qualityBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.qualityBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }
 }
 
@@ -316,13 +352,14 @@
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, frame.size.height)];
     [nameLab setText:nameStr];
     [view addSubview:nameLab];
-    [nameLab setTextColor:detialLabColor];
+    [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
-    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
-    pickBtn.center=CGPointMake(frame.size.width/2+10,frame.size.height/2);
+    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(90, 0, 190/320.f*kWidth, frame.size.height)];
+    pickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 17, 0, 0);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
-    [pickBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
+    [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
@@ -344,12 +381,12 @@
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 7, 160/320.f*kWidth, 30)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
     textField.placeholder=alortStr;
     [view addSubview:textField];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
-   
+    [textField setFont:[UIFont systemFontOfSize:15]];
     [view addSubview:lineImagV];
      [self.backScrollView addSubview:view];
     return textField;
@@ -417,6 +454,8 @@
     BWTextView *TextView=[[BWTextView alloc]init];
     TextView.placeholder=@"请输入50字以内的说明...";
     TextView.tag=50;
+    [TextView setTextColor:MoreDarkTitleColor];
+    [TextView setFont:[UIFont systemFontOfSize:15]];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textViewChanged:)
                                                  name:UITextViewTextDidChangeNotification

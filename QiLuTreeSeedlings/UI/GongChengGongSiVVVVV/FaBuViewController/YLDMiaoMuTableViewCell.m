@@ -8,10 +8,11 @@
 
 #import "YLDMiaoMuTableViewCell.h"
 #import "UIDefines.h"
+#import "BWTextView.h"
 @interface YLDMiaoMuTableViewCell ()
 @property (nonatomic,weak)UITextField *nameField;
 @property (nonatomic,weak)UITextField *numField;
-@property (nonatomic,weak)UITextField *jianjieField;
+@property (nonatomic,weak)BWTextView *jianjieField;
 @end
 @implementation YLDMiaoMuTableViewCell
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -28,7 +29,7 @@
         nameTextField.borderStyle=UITextBorderStyleRoundedRect;
         nameTextField.textColor=NavColor;
         [self addSubview:nameTextField];
-        nameTextField.enabled=NO;
+        //nameTextField.enabled=NO;
         UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-25, 5, kWidth/2-45, 30)];
         numTextField.placeholder=@"请输入需求数量";
         numTextField.tag=112;
@@ -38,16 +39,26 @@
         numTextField.textColor=NavYellowColor;
         numTextField.keyboardType=UIKeyboardTypeNumberPad;
         [self addSubview:numTextField];
-        numTextField.enabled=NO;
-        UITextField *shuomingTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
-        shuomingTextField.placeholder=@"请输入需求数量";
-        shuomingTextField.borderStyle=UITextBorderStyleRoundedRect;
-        shuomingTextField.textColor=DarkTitleColor;
-        shuomingTextField.tag=113;
-         self.jianjieField=shuomingTextField;
-        [shuomingTextField setFont:[UIFont systemFontOfSize:14]];
-        [self addSubview:shuomingTextField];
-        shuomingTextField.enabled=NO;
+        //numTextField.enabled=NO;
+        BWTextView *shuomingTextView=[[BWTextView alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
+        shuomingTextView.placeholder=@"请输入规格要求(100字以内)";
+//        shuomingTextField.borderStyle=UITextBorderStyleRoundedRect;
+        shuomingTextView.textColor=DarkTitleColor;
+        shuomingTextView.tag=113;
+         self.jianjieField=shuomingTextView;
+        [shuomingTextView setFont:[UIFont systemFontOfSize:14]];
+        [self addSubview:shuomingTextView];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(textViewChanged:)
+                                                     name:UITextViewTextDidChangeNotification
+                                                   object:shuomingTextView];
+        shuomingTextView.layer.masksToBounds=YES;
+        shuomingTextView.layer.cornerRadius=4;
+        shuomingTextView.layer.borderColor=kLineColor.CGColor;
+        shuomingTextView.layer.borderWidth=1;
+        shuomingTextView.textColor=DarkTitleColor;
+
+        //shuomingTextField.enabled=NO;
 //        UIButton *addBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 5, 55, 65)];
 //        [addBtn setImage:[UIImage imageNamed:@"addView"] forState:UIControlStateNormal];
 //        [self addSubview:addBtn];
@@ -62,6 +73,7 @@
     return self;
     
 }
+
 -(void)setMessageDic:(NSDictionary *)messageDic
 {
     _messageDic=messageDic;

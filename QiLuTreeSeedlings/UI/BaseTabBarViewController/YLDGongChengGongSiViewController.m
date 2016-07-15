@@ -125,7 +125,7 @@
     [wodedingdanLab setFont:[UIFont systemFontOfSize:11]];
     [wodedingdanLab setTextAlignment:NSTextAlignmentCenter];
     [wodedingdanLab setTextColor:detialLabColor];
-    [wodedingdanLab setText:@"我得订单"];
+    [wodedingdanLab setText:@"我的订单"];
     [self.labAry addObject:wodedingdanLab];
     //self.homePageLab=hompageLab;
     [self.BTabBar addSubview:wodedingdanLab];

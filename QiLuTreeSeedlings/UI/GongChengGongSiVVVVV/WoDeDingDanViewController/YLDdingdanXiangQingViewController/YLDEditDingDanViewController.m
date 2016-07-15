@@ -282,17 +282,30 @@
     }];
 
 }
+
 -(void)areaBtnAction:(UIButton *)sender
 {
     YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
     pickLocationV.delegate=self;
     [pickLocationV showPickView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)timeBtnAction:(UIButton *)sender
 {
     YLDPickTimeView *pickTimeView=[[YLDPickTimeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     pickTimeView.delegate=self;
     [pickTimeView showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
     
 }
 -(void)pickqualityBtnAcion:(UIButton *)sender
@@ -308,6 +321,12 @@
     pickerSV.tag=113;
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)pickTypeBtnAcion:(UIButton *)sender
 {
@@ -322,6 +341,12 @@
     pickerSV.tag=111;
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)pickPiceBtnAcion:(UIButton *)sender
 {
@@ -336,11 +361,18 @@
     pickerSV.tag=112;
     [pickerSV resetPickerData:newAry];
     [pickerSV showInView];
+    [self.NameTextField resignFirstResponder];
+    [self.xiongjingField resignFirstResponder];
+    [self.dijingField resignFirstResponder];
+    [self.lianxifangshiField resignFirstResponder];
+    [self.lianxirenField resignFirstResponder];
+    [self.jianjieTextView resignFirstResponder];
 }
 -(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
 {
     self.timeStr=[NSString stringWithFormat:@"%@ 23:59:59",timeStr];
     [self.timeBtn setTitle:timeStr forState:UIControlStateNormal];
+    [self.timeBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
 }
 
 -(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
@@ -364,10 +396,12 @@
     }
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
+        //        [self.areaBtn.titleLabel sizeToFit];
+        [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }else{
         [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
+        [self.areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         
     }
 }
@@ -376,17 +410,21 @@
     if (pickerShowView.tag==111) {
         NSDictionary *dic=self.typeAry[select];
         self.typeStr=[dic objectForKey:@"uid"];
+        //self.typename=selectStr;
         [self.typeBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.typeBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }
     if (pickerShowView.tag==112) {
         NSDictionary *dic=self.piceAry[select];
         self.priceStr=[dic objectForKey:@"uid"];
         [self.priceBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.priceBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }
     if (pickerShowView.tag==113) {
         NSDictionary *dic=self.qualityAry[select];
         self.qualityStr=[dic objectForKey:@"uid"];
         [self.qualityBtn setTitle:selectStr forState:UIControlStateNormal];
+        [self.qualityBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     }
 }
 
@@ -397,13 +435,14 @@
     UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 90, frame.size.height)];
     [nameLab setText:nameStr];
     [view addSubview:nameLab];
-    [nameLab setTextColor:detialLabColor];
+    [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
-    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
-    pickBtn.center=CGPointMake(frame.size.width/2+10,frame.size.height/2);
+    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 190/320.f*kWidth, frame.size.height)];
+    pickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 17, 0, 0);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
-    [pickBtn setTitleColor:titleLabColor forState:UIControlStateNormal];
+    [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
@@ -425,10 +464,10 @@
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 7, 160/320.f*kWidth, 30)];
-    textField.textColor=DarkTitleColor;
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
     textField.placeholder=alortStr;
     [view addSubview:textField];
+    [textField setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
     
@@ -498,11 +537,56 @@
     
     BWTextView *TextView=[[BWTextView alloc]init];
     TextView.placeholder=@"请输入50字以内的说明...";
+    TextView.tag=50;
+    [TextView setTextColor:MoreDarkTitleColor];
+    [TextView setFont:[UIFont systemFontOfSize:15]];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textViewChanged:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:TextView];
     TextView.frame=CGRectMake(110, 10, kWidth-120, frame.size.height-20);
     TextView.font=[UIFont systemFontOfSize:16];
     TextView.textColor=DarkTitleColor;
     [view addSubview:TextView];
     return TextView;
+}
+- (void)textViewChanged:(NSNotification *)obj {
+    BWTextView *textField = (BWTextView *)obj.object;
+    NSInteger kssss=10;
+    if (textField.tag>0) {
+        kssss=textField.tag;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
