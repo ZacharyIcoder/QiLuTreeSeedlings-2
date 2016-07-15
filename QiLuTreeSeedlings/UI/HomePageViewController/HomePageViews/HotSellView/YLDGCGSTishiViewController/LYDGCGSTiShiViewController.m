@@ -91,8 +91,34 @@
 }
 -(void)shengjiAction
 {
-    YLDGCGSZiZhiTiJiaoViewController *yldsda=[YLDGCGSZiZhiTiJiaoViewController new];
-    [self.navigationController pushViewController:yldsda animated:YES];
+    if (APPDELEGATE.userModel.goldsupplierStatus==0) {
+        YLDGCGSZiZhiTiJiaoViewController *yldsda=[YLDGCGSZiZhiTiJiaoViewController new];
+        [self.navigationController pushViewController:yldsda animated:YES];
+    }else
+    {
+        NSString *title = NSLocalizedString(@"升级工程公司提示", nil);
+        NSString *message = [NSString stringWithFormat:@"您已具备%@身份，不可升级为工程公司。",APPDELEGATE.userModel.goldsupplier];
+        NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+        NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        // Create the actions.
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        }];
+        
+        UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+        // Add the actions.
+        [alertController addAction:cancelAction];
+        [alertController addAction:otherAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

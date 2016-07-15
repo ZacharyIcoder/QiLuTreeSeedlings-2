@@ -123,9 +123,9 @@
     UIButton *chongzhiBtn=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
     [chongzhiBtn setBackgroundColor:NavYellowColor];
     [chongzhiBtn setTitle:@"重置" forState:UIControlStateNormal];
-    [self.backScrollView addSubview:chongzhiBtn];
+    //[self.backScrollView addSubview:chongzhiBtn];
     [chongzhiBtn addTarget:self action:@selector(chongzhiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIButton *xiayibuBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2+5, CGRectGetMaxY(tempFrame)+5, kWidth/2-15, 40)];
+    UIButton *xiayibuBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(tempFrame)+5, kWidth-80, 40)];
     [xiayibuBtn setBackgroundColor:NavColor];
     [xiayibuBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [xiayibuBtn addTarget:self action:@selector(nextBtnAction:) forControlEvents:UIControlEventTouchUpInside];

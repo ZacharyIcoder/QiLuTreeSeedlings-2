@@ -32,7 +32,7 @@
     NSArray *endtimeAry=[model.endDate componentsSeparatedByString:@" "];
     self.jiezhiRiqiLab.text=[NSString stringWithFormat:@"截止日期:%@",[endtimeAry firstObject]];
     //NSLog(@"%f",.frame.size.height);
-    if (model.showHeight<=240) {
+    if (model.showHeight<=190) {
         self.showBtn.hidden=YES;
     }else
     {
@@ -45,7 +45,7 @@
         self.miaomuPinZhongLab.numberOfLines=0;
     }else{
 
-        frame.size.height=240;
+        frame.size.height=190;
         
         self.miaomuPinZhongLab.numberOfLines=1;
     }

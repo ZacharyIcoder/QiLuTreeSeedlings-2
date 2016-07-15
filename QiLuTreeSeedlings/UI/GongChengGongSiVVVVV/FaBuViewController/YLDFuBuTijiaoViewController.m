@@ -213,10 +213,10 @@
     [view addSubview:addBtn];
     [addBtn addTarget:self action:@selector(addBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:view];
-    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,80-0.5, kWidth-20, 0.5)];
-    [lineImagV setBackgroundColor:kLineColor];
-    
-    [view addSubview:lineImagV];
+//    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,80-0.5, kWidth-20, 0.5)];
+//    [lineImagV setBackgroundColor:kLineColor];
+//    
+//    [view addSubview:lineImagV];
     return view;
 }
 
@@ -265,10 +265,10 @@
     textField.placeholder=alortStr;
     textField.textColor=DarkTitleColor;
     [view addSubview:textField];
-    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
-    [lineImagV setBackgroundColor:kLineColor];
-    
-    [view addSubview:lineImagV];
+//    UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
+//    [lineImagV setBackgroundColor:kLineColor];
+//    
+//    [view addSubview:lineImagV];
     [self.view addSubview:view];
     return textField;
 }

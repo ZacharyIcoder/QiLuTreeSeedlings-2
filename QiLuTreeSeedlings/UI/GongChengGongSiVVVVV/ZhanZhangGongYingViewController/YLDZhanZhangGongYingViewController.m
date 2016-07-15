@@ -202,7 +202,7 @@
         UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
         [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
         [view addSubview:hotMoreRowImgV];
-        [moreBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [moreBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [moreBtn addTarget:self action:@selector(moreWorkstationAcion) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:moreBtn];
         return view;
@@ -215,7 +215,7 @@
         UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
         [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
         [view addSubview:hotMoreRowImgV];
-        [moreBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [moreBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [moreBtn addTarget:self action:@selector(moresupplyAction) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:moreBtn];
 
