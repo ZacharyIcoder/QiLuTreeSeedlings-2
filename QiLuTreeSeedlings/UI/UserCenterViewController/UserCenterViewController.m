@@ -261,7 +261,7 @@
 //                cell.lineImage.hidden=YES;
 //            }
             return cell;
-        } 
+        }
         if (indexPath.row == 3) {
             UserInfoNomerTableViewCell *cell = [[UserInfoNomerTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight) andImageName:@"站长通" andTitle:@"站长助手"];
             return  cell;
@@ -571,10 +571,10 @@
                 YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
                 [self.navigationController pushViewController:tab animated:YES];
             }else{
-                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
-                    [ToastView showTopToast:@"您已具备其它身份"];
-                    return;
-                }
+//                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
+//                    [ToastView showTopToast:@"您已具备其它身份"];
+//                    return;
+//                }
 
                 if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
                     [ToastView showTopToast:@"暂未审核，请耐心等待"];
