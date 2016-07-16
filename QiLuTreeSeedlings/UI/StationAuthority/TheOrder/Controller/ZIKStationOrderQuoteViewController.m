@@ -39,7 +39,7 @@
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
 @property (nonatomic, strong  ) ZIKPickImageView *pickerImgView;
 
-
+@property (nonatomic,strong) NSString *areaStr;
 @end
 
 @implementation ZIKStationOrderQuoteViewController
@@ -61,6 +61,61 @@
     self.titleArray = @[@[@"苗木名称",@"苗木数量",@"报价要求",@"规格要求"],@[@"报价价格",@"可供数量",@"苗圃地址",@"报价说明"],@[@"苗木图片"]];
     self.quoteTableView.delegate   = self;
     self.quoteTableView.dataSource = self;
+    ShowActionV();
+    [HTTPCLIENT getstationBaoJiaMessageWithUid:self.uid Success:^(id responseObject) {
+        RemoveActionV();
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *quote=[[responseObject objectForKey:@"result"] objectForKey:@"quote"];
+//            /**
+//             *  苗木名称
+//             */
+
+            self.name=quote[@"name"];
+//            /**
+//             *  苗木数量
+//             */
+            self.count=[NSString stringWithFormat:@"%@",quote[@"quantity"]];
+            
+//            /**
+//             *  报价要求
+//             */
+//            @property (nonatomic, copy) NSString *quoteRequirement;
+            self.quoteRequirement=quote[@"quote"];
+//            /**
+//             *  规格要求
+//             */
+//            @property (nonatomic, copy) NSString *standardRequirement;
+            self.standardRequirement=quote[@"decription"];
+//            
+//            /**
+//             *  订单苗木ID
+//             */
+//            @property (nonatomic, copy) NSString *uid;
+            self.uid=quote[@"uid"];
+//            /**
+//             *  订单ID
+//             */
+//            @property (nonatomic, copy) NSString *orderUid;
+            self.orderUid=quote[@"orderUid"];
+//            @property (nonatomic, strong) NSString *province;//省
+            self.province=quote[@"province"];
+//            @property (nonatomic, strong) NSString *city;//市
+            self.city=quote[@"city"];
+//            @property (nonatomic, strong) NSString *county;//县
+            self.county=quote[@"county"];
+//            @property (nonatomic, strong) NSString *town;//镇
+            self.town=quote[@"town"];
+//            
+//            @property (nonatomic, strong) UIButton *addressButton;
+            self.areaStr=quote[@"area"];
+    
+            [self.quoteTableView reloadData];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
     
    [ZIKFunction setExtraCellLineHidden:self.quoteTableView];
 }
@@ -179,7 +234,7 @@
             UIButton *addressButton = [[UIButton alloc] init];
             addressButton.frame = priceTextField.frame;
             addressButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
-            [addressButton setTitle:@"请选择地址" forState:UIControlStateNormal];
+            [addressButton setTitle:self.areaStr forState:UIControlStateNormal];
             [addressButton setTitleColor:NavColor forState:UIControlStateNormal];
             [addressButton addTarget:self action:@selector(selectAddress) forControlEvents:UIControlEventTouchUpInside];
             UIImageView *rowImageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-45, 10, cell.frame.size.height-20, cell.frame.size.height-20)];
@@ -260,10 +315,22 @@
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
-//    if (self.pickerImgView.urlMArr.count<1) {
-//        [ToastView showTopToast:@"请添加苗木图片"];
-//        return;
-//    }
+    if (self.pickerImgView.urlMArr.count<1) {
+        [ToastView showTopToast:@"请添加苗木图片"];
+        return;
+    }
+    if (priceTextField.text.length<1) {
+        [ToastView showTopToast:@"请输入报价价格"];
+        return;
+    }
+    if (quantityTextField.text.length<1) {
+        [ToastView showTopToast:@"请输入可供数量"];
+        return;
+    }
+    if (self.county.length<1) {
+        [ToastView showTopToast:@"苗圃地址需精确到县以下"];
+        return;
+    }
     [_contentTextView resignFirstResponder];
     [priceTextField resignFirstResponder];
     [quantityTextField resignFirstResponder];
@@ -277,7 +344,7 @@
         urlSring         = [urlSring substringFromIndex:1];
         compressSring = [compressSring substringFromIndex:1];
     }
-
+    
 
     [HTTPCLIENT stationQuoteCreateWithUid:self.orderUid orderUid:self.uid price:priceTextField.text quantity:quantityTextField.text province:self.province city:self.city county:self.county town:self.town description:self.contentTextView.text imgs:urlSring compressImgs:compressSring Success:^(id responseObject) {
         //CLog(@"%@",responseObject);

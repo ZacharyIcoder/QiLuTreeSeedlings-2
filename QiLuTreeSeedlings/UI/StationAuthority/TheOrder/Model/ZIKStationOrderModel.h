@@ -49,6 +49,10 @@ typedef NS_ENUM(NSInteger, StationOrderStatusType) {
  */
 @property (nonatomic, copy) NSString *quotation;
 /**
+ *  --质量要求
+ */
+@property (nonatomic, copy) NSString *qualityRequest;
+/**
  *  --状态
  */
 @property (nonatomic, copy) NSString *status;

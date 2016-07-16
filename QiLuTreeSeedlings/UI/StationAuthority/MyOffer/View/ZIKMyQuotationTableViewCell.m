@@ -31,7 +31,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.bottomBgImageView.image = [self imageWithSize:self.bottomBgImageView.frame.size borderColor:NavColor borderWidth:1];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -45,6 +45,7 @@
     ZIKMyQuotationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kdzZIKMyQuotationTableViewCellID];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKMyQuotationTableViewCell" owner:self options:nil] lastObject];
+        cell.bottomBgImageView.image = [ZIKMyQuotationTableViewCell imageWithSize:cell.bottomBgImageView.frame.size borderColor:NavColor borderWidth:1];
     }
     return cell;
 }
@@ -110,9 +111,7 @@
     self.quoteQuantityLabel.attributedText = [quoteStr mutableAttributedStringWithStringAttributes:@[quotefullFont,quotepartFont,quotefullColor,quotedarkColor]];
 }
 
-
-
-- (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
++(UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
 {
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
     [[UIColor clearColor] set];

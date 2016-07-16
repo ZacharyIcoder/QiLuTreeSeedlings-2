@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class ZIKMyOfferQuoteListModel;
 @interface ZIKMyQuotationTableViewCell : UITableViewCell
+@property (nonatomic,strong)ZIKMyOfferQuoteListModel *model;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 - (void)configureCell:(ZIKMyOfferQuoteListModel *)model;
 

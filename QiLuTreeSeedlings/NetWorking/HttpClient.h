@@ -1072,4 +1072,7 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程公司资质申请状态 -----------
 - (void)projectCompanyStatusSuccess:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长助手－报价获取苗木信息 -----------
+- (void)getstationBaoJiaMessageWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure;
 @end

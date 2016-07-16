@@ -56,7 +56,9 @@
     if ([ZIKFunction xfunc_check_strEmpty:model.quotation]) {
         model.quotation = @"";
     }
+    
     self.offerLabel.text      = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
+    self.qualityLabel.text= [NSString stringWithFormat:@"质量要求:%@",model.qualityRequest];
     self.companyLabel.text    = model.engineeringCompany;
     //self.qualityLabel.text = model.orderType;
     if ([model.orderType isEqualToString:@"求购单"]) {
