@@ -44,7 +44,10 @@
 - (void)configureCell:(ZIKStationOrderDetailQuoteModel *)model {
     self.orderUidLabel.text = [NSString stringWithFormat:@"%02d",(int)self.section];
     self.nameLabel.text     = model.name;
-    self.contentLabel.text  = [NSString stringWithFormat:@"规格要求: %@",model.treedescription];
+    if (model.treedescription.length>0) {
+      self.contentLabel.text  = [NSString stringWithFormat:@"规格要求: %@",model.treedescription];  
+    }
+    
 //    CGRect rect = [ZIKFunction getCGRectWithContent:model.orderUid width:200 font:14.0f];
 //    self.orderUidLabelLayoutConstraint.constant = rect.size.width;
     if ([model.stauts isEqualToString:@"1"]) {

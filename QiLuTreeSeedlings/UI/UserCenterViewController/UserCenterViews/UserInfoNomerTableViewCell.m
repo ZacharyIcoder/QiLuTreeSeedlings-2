@@ -25,7 +25,7 @@
         self.lineImage=lineImage;
         [lineImage setBackgroundColor:kLineColor];
         [self addSubview:lineImage];
-        if ([title isEqualToString:@"购买记录"]||[title isEqualToString:@"我的余额"]||[title isEqualToString:@"我的分享"]||[title isEqualToString:@"工程助手"]) {
+        if ([title isEqualToString:@"购买记录"]||[title isEqualToString:@"我的余额"]||[title isEqualToString:@"我的分享"]||[title isEqualToString:@"工程助手"]||[title isEqualToString:@"客服系统"]) {
             lineImage.hidden=YES;
         }else
         {

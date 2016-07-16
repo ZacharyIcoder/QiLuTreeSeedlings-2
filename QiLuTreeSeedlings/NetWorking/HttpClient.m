@@ -16,12 +16,10 @@
     static HttpClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[HttpClient alloc] initWithBaseURL:[NSURL URLWithString:AFBaseURLString]];
-        _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-
-//        _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
+         _sharedClient = [[HttpClient alloc] initWithBaseURL:[NSURL URLWithString:AFBaseURLString]];
+         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         [_sharedClient.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        _sharedClient.requestSerializer.timeoutInterval = 20.f;
+         _sharedClient.requestSerializer.timeoutInterval = 20.f;
         [_sharedClient.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     });
     return _sharedClient;

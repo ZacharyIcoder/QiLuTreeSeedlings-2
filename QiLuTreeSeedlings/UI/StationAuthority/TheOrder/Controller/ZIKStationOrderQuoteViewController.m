@@ -182,7 +182,10 @@
             [addressButton setTitle:@"请选择地址" forState:UIControlStateNormal];
             [addressButton setTitleColor:NavColor forState:UIControlStateNormal];
             [addressButton addTarget:self action:@selector(selectAddress) forControlEvents:UIControlEventTouchUpInside];
+            UIImageView *rowImageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-45, 10, cell.frame.size.height-20, cell.frame.size.height-20)];
+            [rowImageV setImage:[UIImage imageNamed:@"moreRow"]];
             self.addressButton = addressButton;
+            [cell addSubview:rowImageV];
             [cell addSubview:addressButton];
             [cell addSubview:arrowLabel];
         } else if (indexPath.row == 3) {

@@ -90,6 +90,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     UITableView *orderTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectMenuView.frame)+2, kWidth, kHeight-64-2-selectMenuView.frame.size.height) style:UITableViewStylePlain];
     orderTableView.dataSource = self;
     orderTableView.delegate = self;
+    orderTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:orderTableView];
     [ZIKFunction setExtraCellLineHidden:orderTableView];
     self.orderTableView = orderTableView;
@@ -183,7 +184,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
             quoteVC.uid      = model.uid;
             quoteVC.orderUid = _demandModel.uid;
             quoteVC.quoteRequirement = _demandModel.quotationRequired;
-            quoteVC.standardRequirement = _demandModel.quantityRequired;
+            quoteVC.standardRequirement = _demandModel.demandDescription;
             [weakSelf.navigationController pushViewController:quoteVC animated:YES];
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
