@@ -54,7 +54,6 @@
         frame.size.height+=40;
         self.yincanglineV.hidden=NO;
         self.hezuoBtn.hidden=NO;
-        [self.loggV setImage:[UIImage imageNamed:@""]];
     }else{
         self.yincanglineV.hidden=YES;
          self.hezuoBtn.hidden=YES;

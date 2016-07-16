@@ -20,7 +20,10 @@
 -(void)setJianjieStr:(NSString *)jianjieStr
 {
     _jianjieStr=jianjieStr;
-    self.jianjieLab.text=[NSString stringWithFormat:@"简介：%@",jianjieStr];
+    if (jianjieStr.length>0) {
+        self.jianjieLab.text=[NSString stringWithFormat:@"简介：%@",jianjieStr];
+    }
+    
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

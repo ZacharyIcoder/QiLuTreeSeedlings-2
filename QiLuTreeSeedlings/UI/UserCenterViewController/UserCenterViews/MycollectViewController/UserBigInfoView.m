@@ -55,7 +55,7 @@
         [phoneLab setText:@"登录"];
         [self addSubview:phoneLab];
         
-        UILabel *gongyishangLab=[[UILabel alloc] initWithFrame:CGRectMake(kWidth/2-60, CGRectGetMaxY(phoneLab.frame), 120, 25)];
+        UILabel *gongyishangLab=[[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(phoneLab.frame), kWidth-20, 25)];
         self.gongyiDLab=gongyishangLab;
         [gongyishangLab setTextColor:[UIColor whiteColor]];
         [gongyishangLab setTextAlignment:NSTextAlignmentCenter];

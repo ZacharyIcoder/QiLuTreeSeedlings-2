@@ -203,6 +203,10 @@
     //    [APPDELEGATE]
 }
 - (void)shopBtnAction {
+    if (_memberUid<=0) {
+        [ToastView showTopToast:@"该店铺歇业中"];
+        return;
+    }
     ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
 //    self.memberUid = dic[@"memberUid"];
     shopVC.memberUid = _memberUid;

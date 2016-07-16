@@ -97,6 +97,7 @@
     self.searchV=searchV;
     searchV.delegate=self;
     searchV.hidden=YES;
+    searchV.textfield.placeholder=@"请输入苗木名称";
     [self.navBackView addSubview:searchV];
     
     ShowActionV();

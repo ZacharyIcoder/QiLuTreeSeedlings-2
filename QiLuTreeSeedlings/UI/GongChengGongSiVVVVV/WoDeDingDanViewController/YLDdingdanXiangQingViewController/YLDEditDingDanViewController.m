@@ -174,7 +174,7 @@
             self.qualityStr=self.orderDetailDic[@"qualityRequirement"];
             for (NSDictionary *dic in self.qualityAry) {
                 NSString *uidStr=dic[@"uid"];
-                if ([uidStr isEqualToString:self.priceStr]) {
+                if ([uidStr isEqualToString:self.qualityStr]) {
                     NSString *nameStr=dic[@"name"];
                     [self.qualityBtn setTitle:nameStr forState:UIControlStateNormal];
 //                    break;
@@ -442,7 +442,7 @@
     pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 17, 0, 0);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
-    [pickBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    [pickBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
     [pickBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];

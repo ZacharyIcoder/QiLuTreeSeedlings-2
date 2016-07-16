@@ -74,6 +74,7 @@
     self.searchV=searchV;
     searchV.delegate=self;
     searchV.hidden=YES;
+    searchV.textfield.placeholder=@"请输入项目名称、苗木名称";
     [self.navBackView addSubview:searchV];
     // Do any additional setup after loading the view from its nib.
 }
@@ -105,7 +106,7 @@
     }else
     {
         if ([model.status isEqualToString:@"已结束"]) {
-            return 190+30;
+            return 190+ 40;
         }
          return 190;
     }

@@ -441,41 +441,64 @@
     topLineView.backgroundColor = kLineColor;
     [view addSubview:topLineView];
 
-    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-    [shopBtn setBackgroundColor:[UIColor whiteColor]];
-//    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
-    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
-    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
-    [view addSubview:shopBtn];
+    if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
+        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+        [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [view addSubview:shopBtn];
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
+        lineView.backgroundColor = kLineColor;
+        [view addSubview:lineView];
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*2/5-2, 50-2)];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
+        [messageBtn setBackgroundColor:[UIColor whiteColor]];
+        [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
+        [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
+        [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+        [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
+        [view addSubview:messageBtn];
+        
+        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*3/5,0, kWidth*2/5, 50)];
+        [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:NavColor];
+        [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
+    }else{
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*2.5/5-2, 50-2)];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
+        [messageBtn setBackgroundColor:[UIColor whiteColor]];
+        [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
+        [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
+        [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+        [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
+        [view addSubview:messageBtn];
+        
+        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*2.5/5, 50)];
+        [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:NavColor];
+        [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
 
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
-    lineView.backgroundColor = kLineColor;
-    [view addSubview:lineView];
+    }
+  
 
 
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*2/5-2, 50-2)];
-//    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
-    [messageBtn setBackgroundColor:[UIColor whiteColor]];
-    [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
-    [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
-    [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
-    [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
-    [view addSubview:messageBtn];
-
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*3/5,0, kWidth*2/5, 50)];
-    [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
-    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
-    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
-    [phoneBtn setBackgroundColor:NavColor];
-    [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:phoneBtn];
-
+   
     [self.view addSubview:view];
     return view;
 }
@@ -487,50 +510,77 @@
     UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth*2.5/5+2, 2)];
     topLineView.backgroundColor = kLineColor;
     [view addSubview:topLineView];
-
-    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-    [shopBtn setBackgroundColor:[UIColor whiteColor]];
-//    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
-    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
-    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
-    [view addSubview:shopBtn];
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
-    lineView.backgroundColor = kLineColor;
-    [view addSubview:lineView];
-
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*1.5/5-2, 50-2)];
-    messageBtn.backgroundColor = [UIColor whiteColor];
-//    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
-    [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
-    [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
-    [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
-    [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
-    [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [view addSubview:messageBtn];
-    UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*1.5/5, 50)];
-    [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
-    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
-    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
-    [phoneBtn setBackgroundColor:NavColor];
-    [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:phoneBtn];
-    [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
-    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
-    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
-    [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
-    [shareBtn setBackgroundColor:yellowButtonColor];
-    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:shareBtn];
-
-
+    if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
+        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+        [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [view addSubview:shopBtn];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
+        lineView.backgroundColor = kLineColor;
+        [view addSubview:lineView];
+        
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*1.5/5-2, 50-2)];
+        messageBtn.backgroundColor = [UIColor whiteColor];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
+        [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
+        [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+        [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
+        [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [view addSubview:messageBtn];
+        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*1.5/5, 50)];
+        [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:NavColor];
+        [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
+        [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
+        [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+        [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+        [shareBtn setBackgroundColor:yellowButtonColor];
+        [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:shareBtn];
+    }else{
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*2/5-2, 50-2)];
+        messageBtn.backgroundColor = [UIColor whiteColor];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:0.7]];
+        [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
+        [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
+        [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
+        [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [view addSubview:messageBtn];
+        UIButton *phoneBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
+        [phoneBtn setTitle:@"联系商家" forState:UIControlStateNormal];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:NavColor];
+        [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
+        [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
+        [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+        [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+        [shareBtn setBackgroundColor:yellowButtonColor];
+        [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:shareBtn];
+    }
     [self.view addSubview:view];
     return view;
 }
@@ -542,41 +592,64 @@
     UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth*3/5+2, 2)];
     topLineView.backgroundColor = kLineColor;
     [view addSubview:topLineView];
+    if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
+        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+        [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [view addSubview:shopBtn];
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
+        lineView.backgroundColor = kLineColor;
+        [view addSubview:lineView];
+        
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*2/5-2, 50-2)];
+        [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
+        [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
+        messageBtn.backgroundColor = [UIColor whiteColor];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+        [view addSubview:messageBtn];
+        BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*3/5,0, kWidth*2/5, 50)];
+        
+        [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+        phoneBtn.price = price;
+        phoneBtn.buyUid = self.model.uid;
+        //      [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
+        [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:yellowButtonColor];
+        [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
 
-    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-    [shopBtn setBackgroundColor:[UIColor whiteColor]];
-//    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
-    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
-    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
-    [view addSubview:shopBtn];
+    }else{
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*2.5/5-2, 50-2)];
+        [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
+        [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
+        messageBtn.backgroundColor = [UIColor whiteColor];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+        [view addSubview:messageBtn];
+        BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*2.5/5, 50)];
+        
+        [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+        phoneBtn.price = price;
+        phoneBtn.buyUid = self.model.uid;
+        //      [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
+        [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:yellowButtonColor];
+        [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
 
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
-    lineView.backgroundColor = kLineColor;
-    [view addSubview:lineView];
-
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*2/5-2, 50-2)];
-    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
-    [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
-    messageBtn.backgroundColor = [UIColor whiteColor];
-//    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
-    [view addSubview:messageBtn];
-    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*3/5,0, kWidth*2/5, 50)];
-    
-    [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
-    phoneBtn.price = price;
-    phoneBtn.buyUid = self.model.uid;
-//      [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
-    [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
-    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
-    [phoneBtn setBackgroundColor:yellowButtonColor];
-    [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:phoneBtn];
+    }
     
     [self.view addSubview:view];
     return view;
@@ -589,50 +662,82 @@
     topLineView.backgroundColor = kLineColor;
     [view addSubview:topLineView];
 
-    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-    [shopBtn setBackgroundColor:[UIColor whiteColor]];
-//    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
-    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-    [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
-    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
-    [view addSubview:shopBtn];
+    
+    if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
+        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
+        [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [view addSubview:shopBtn];
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
+        lineView.backgroundColor = kLineColor;
+        [view addSubview:lineView];
+        
+        
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*1.5/5-2, 50-2)];
+        [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
+        [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
+        messageBtn.backgroundColor = [UIColor whiteColor];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+        [view addSubview:messageBtn];
+        BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*1.5/5, 50)];
+        [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+        phoneBtn.price = price;
+        phoneBtn.buyUid = self.model.uid;
+        //    [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
+        [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:yellowButtonColor];
+        [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
+        
+        UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
+        [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+        [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+        [shareBtn setBackgroundColor:NavColor];
+        [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:shareBtn];
 
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
-    lineView.backgroundColor = kLineColor;
-    [view addSubview:lineView];
-
-
-    UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, 2, kWidth*1.5/5-2, 50-2)];
-    [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
-    [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
-    messageBtn.backgroundColor = [UIColor whiteColor];
-//    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
-    [view addSubview:messageBtn];
-    BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*2.5/5,0, kWidth*1.5/5, 50)];
-    [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
-    phoneBtn.price = price;
-    phoneBtn.buyUid = self.model.uid;
-//    [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
-    [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
-    [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
-    [phoneBtn setBackgroundColor:yellowButtonColor];
-    [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:phoneBtn];
-
-    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
-    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
-    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
-    [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
-    [shareBtn setBackgroundColor:NavColor];
-    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:shareBtn];
-
+    }else{
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*2/5-2, 50-2)];
+        [messageBtn setTitle:[NSString stringWithFormat:@"¥%.2f",price] forState:UIControlStateNormal];
+        [messageBtn setTitleColor:yellowButtonColor forState:UIControlStateNormal];
+        messageBtn.backgroundColor = [UIColor whiteColor];
+        //    [messageBtn setBackgroundColor:[UIColor colorWithRed:244/255.f green:244/255.f blue:244/255.f alpha:1]];
+        [view addSubview:messageBtn];
+        BuyButton *phoneBtn=[[BuyButton alloc]initWithFrame:CGRectMake(kWidth*2/5,0, kWidth*2/5, 50)];
+        [phoneBtn setTitle:@"查看联系方式" forState:UIControlStateNormal];
+        phoneBtn.price = price;
+        phoneBtn.buyUid = self.model.uid;
+        //    [phoneBtn setTitle:[NSString stringWithFormat:@"%lf",price] forState:UIControlStateSelected];
+        [phoneBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
+        [phoneBtn setBackgroundColor:yellowButtonColor];
+        [phoneBtn addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:phoneBtn];
+        
+        UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
+        [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+        [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [shareBtn setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
+        [shareBtn setBackgroundColor:NavColor];
+        [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:shareBtn];
+    }
+    
     [self.view addSubview:view];
     return view;
 }

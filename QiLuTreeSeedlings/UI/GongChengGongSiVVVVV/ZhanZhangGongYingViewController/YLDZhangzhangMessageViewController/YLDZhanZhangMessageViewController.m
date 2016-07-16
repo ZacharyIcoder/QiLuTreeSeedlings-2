@@ -93,8 +93,10 @@
             }
             NSArray *supplyList=[result objectForKey:@"supplyList"];
             if (supplyList.count<=0) {
-                [ToastView showTopToast:@"已无更多数据"];
-                self.pageNum--;
+                if (self.pageNum!=1) {
+                  [ToastView showTopToast:@"已无更多数据"];
+                }
+                  self.pageNum--;
             }else{
                 NSArray *supplyary=[HotSellModel hotSellAryByAry:supplyList];
                 [self.supplyAry addObjectsFromArray:supplyary];
@@ -196,7 +198,7 @@
         }else{
             frame.size.height=80;
             cell.moreBtn.selected=NO;
-            CGFloat hiss=[self getHeightWithContent:self.model.brief width:kWidth-20 font:15];
+            CGFloat hiss=[self getHeightWithContent:[NSString stringWithFormat:@"简介%@",self.model.brief] width:kWidth-20 font:15];
             if (hiss<40) {
                 cell.moreBtn.hidden=YES;
             }
