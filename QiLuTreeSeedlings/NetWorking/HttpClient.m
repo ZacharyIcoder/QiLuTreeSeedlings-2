@@ -1242,45 +1242,16 @@
                              kclient_secret,@"client_secret",
                              nil];
     NSMutableDictionary *parameters=[[NSMutableDictionary alloc]initWithDictionary:parameter];
-    if (uid) {
-        [parameters setObject:uid forKey:@"uid"];
-    }
-    if (nurseryName) {
-        [parameters setObject:nurseryName forKey:@"nurseryName"];
-    }
-    if (nurseryAreaProvince) {
-        [parameters setObject:nurseryAreaProvince forKey:@"nurseryAreaProvince"];
-    }
-    if (nurseryAreaCity) {
-        [parameters setObject:nurseryAreaCity forKey:@"nurseryAreaCity"];
-    }else
-    {
-        [parameters setObject:@"" forKey:@"nurseryAreaCity"];
-    }
-    if (nurseryAreaCounty) {
-        [parameters setObject:nurseryAreaCounty forKey:@"nurseryAreaCounty"];
-    }else
-    {
-        [parameters setObject:@"" forKey:@"nurseryAreaCounty"];
-    }
-    if (nurseryAreaTown) {
-        [parameters setObject:nurseryAreaTown forKey:@"nurseryAreaTown"];
-    }
-    else{
-        [parameters setObject:@"" forKey:@"nurseryAreaTown"];
-    }
-    if (nurseryAddress) {
-        [parameters setObject:nurseryAddress forKey:@"nurseryAddress"];
-    }
-    if (chargelPerson) {
-        [parameters setObject:chargelPerson forKey:@"chargelPerson"];
-    }
-    if (phone) {
-        [parameters setObject:phone forKey:@"phone"];
-    }
-    if (brief) {
-        [parameters setObject:brief forKey:@"brief"];
-    }
+    parameters[@"uid"]=uid;
+    parameters[@"nurseryName"]=nurseryName;
+    parameters[@"nurseryAreaProvince"]=nurseryAreaProvince;
+    parameters[@"nurseryAreaCity"]=nurseryAreaCity;
+    parameters[@"nurseryAreaCounty"]=nurseryAreaCounty;
+    parameters[@"nurseryAreaTown"]=nurseryAreaTown;
+    parameters[@"nurseryAddress"]=nurseryAddress;
+    parameters[@"chargelPerson"]=chargelPerson;
+    parameters[@"phone"]=phone;
+    parameters[@"brief"]=brief;
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1493,12 +1464,6 @@
     parmers[@"imageUrls"]         = imageUrls;
     parmers[@"imageCompressUrls"] = imageCompressUrls;
     NSArray *array = etcAttributes[0];
-//    for (int i=0; i < array.count; i++) {
-//        NSDictionary *dic = array[i];
-//        NSString *field =  dic[@"field"];
-//        parmers[field]  = [dic objectForKey:@"anwser"];
-//        //[parmers setObject:[dic objectForKey:@"anwser"] forKey:[dic objectForKey:@"field"]];
-//    }
     for (int i=0; i<array.count; i++) {
         NSDictionary *dic=array[i];
         [parmers setObject:[NSString stringWithFormat:@"%@",[dic objectForKey:@"value"]] forKey:[dic objectForKey:@"field"]];
@@ -2740,66 +2705,6 @@
     }];
 }
 
-
-/******************* end 工程助手API  end*******************/
-
-
-
-#pragma mark ---------- 站长助手API -----------
-/*******************站长助手API*******************/
-#pragma mark ---------- 检索工程订单 -----------
-/**
- *  检索工程订单
- *
- *  @param orderBy      排序，发布时间：orderDate,截止日期：endDate,默认orderDate
- *  @param orderSort    排序，升序：asc,降序：desc,默认desc
- *  @param status       0:已结束，1：报价中，2：已报价
- *  @param orderTypeUid 订单类型ID
- *  @param area         用苗地，Json格式， [{"provinceCode":"11", "cityCode":"110101"},{"provinceCode":"11", "cityCode":"110102"}]
- *  @param pageNumber   当前页码， 默认1
- *  @param pageSize     每页显示数，默认15
- *  @param success      success description
- *  @param failure      failure description
- */
-- (void)stationGetOrderSearchWithOrderBy:(NSString *)orderBy
-                               orderSort:(NSString *)orderSort
-                                  status:(NSString *)status
-                            orderTypeUid:(NSString *)orderTypeUid
-                                    area:(NSString *)area
-                              pageNumber:(NSString *)pageNumber
-                                pageSize:(NSString *)pageSize
-                                 Success:(void (^)(id responseObject))success
-                                 failure:(void (^)(NSError *error))failure{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/workstation/order/search";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"orderBy"]          = orderBy;
-    parmers[@"orderSort"]        = orderSort;
-    parmers[@"status"]           = status;
-    parmers[@"orderTypeUid"]     = orderTypeUid;
-    parmers[@"area"]             = area;
-    parmers[@"pageNumber"]       = pageNumber;
-    parmers[@"pageSize"]         = pageSize;
-
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-
 #pragma mark ---------- 获取订单类型 -----------
 - (void)stationGetOrderTypeSuccess:(void (^)(id responseObject))success
                            failure:(void (^)(NSError *error))failure {
@@ -2814,7 +2719,7 @@
     parmers[@"device_id"]        = str;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-
+        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
         RemoveActionV();
@@ -2823,7 +2728,7 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
+    
 }
 #pragma mark ---------- 获取质量要求、报价要求、订单类型 -----------
 -(void)huiquZhiliangYaoQiuBaoDingSuccess:(void (^)(id responseObject))success
@@ -2850,7 +2755,7 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
+    
 }
 #pragma mark ---------- 发布工程订单 -----------
 -(void)fabuGongChengDingDanWithUid:(NSString *)uid WithprojectName:(NSString *)projectName
@@ -2905,37 +2810,61 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
+    
 }
-/******************* end 站长助手API  end*******************/
--(void)jiaoyanfanhuideshuju:(NSString *)postStr Parmers:(NSDictionary *)parmers
+
+#pragma mark ---------- 工程中心分享 -----------
+- (void)GCZXShareSuccess:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure
 {
-    // 1.根据网址初始化OC字符串对象
-    NSString *urlStr = [NSString stringWithFormat:@"%@",AFBaseURLString];
-    // 2.创建NSURL对象
-    NSURL *url = [NSURL URLWithString:urlStr];
-    // 3.创建请求
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    // 4.创建参数字符串对象
-    NSMutableString *parmStr;
-    NSArray *keyArrays = [parmers allKeys];
-    for (int i=0; i<keyArrays.count; i++) {
-        NSString *keyStr=keyArrays[i];
-        NSString *valueStr=parmers[keyStr];
-        NSString *tempStr=[NSString stringWithFormat:@"%@=%@",keyStr,valueStr];
-        [parmStr appendString:tempStr];
-    }
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/company/share";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
     
-    // 5.将字符串转为NSData对象
-    NSData *pramData = [parmStr dataUsingEncoding:NSUTF8StringEncoding];
-    // 6.设置请求体
-    [request setHTTPBody:pramData];
-    // 7.设置请求方式
-    [request setHTTPMethod:@"POST"];
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
     
-    // 创建同步链接
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *str1 = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+}
+#pragma mark ---------- 工程公司资质申请状态 -----------
+- (void)projectCompanyStatusSuccess:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/apply/company";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
 }
 #pragma mark ---------- 我的订单详情 -----------
 -(void)myDingDanDetialWithUid:(NSString *)uid
@@ -2971,30 +2900,6 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
-#pragma mark ---------- 我的分享 -----------
--(void)getMyShareSuccess:(void (^)(id responseObject))success
-                 failure:(void (^)(NSError *error))failure {
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/integral/invitation";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-//    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-//        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-//        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
 #pragma mark ---------- 报价管理-----------
 -(void)baojiaGuanLiWithStatus:(NSString *)status
                   Withkeyword:(NSString *)keyword
@@ -3016,7 +2921,7 @@
         parmers[@"status"]           = status;
     }
     if (keyword) {
-         parmers[@"keyword"]          = keyword;
+        parmers[@"keyword"]          = keyword;
     }
     parmers[@"pageNumber"]       = pageNumber;
     parmers[@"pageSize"]         = pageSize;
@@ -3024,10 +2929,10 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
-                RemoveActionV();
+        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
-                RemoveActionV();
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
@@ -3056,7 +2961,7 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
+    
 }
 #pragma mark ---------- 报价详情-报价信息-----------
 -(void)baojiaDetialMessageWithUid:(NSString *)uid
@@ -3091,6 +2996,686 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
     
+}
+#pragma mark ---------- 金牌供应 -----------
+- (void)GoldSupplrWithPageSize:(NSString *)pageSize WithPage:(NSString *)page
+              Withgoldsupplier:(NSString *)goldsupplier
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"apisupplyGold";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"page"]            = page;
+    parmers[@"pageSize"]        = pageSize;
+    parmers[@"goldsupplier"]    = goldsupplier;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+
+#pragma mark ---------- 建立合作 -----
+-(void)jianliHezuoWithBaoJiaID:(NSString *)uid   Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/company/quote/cooperate";
+    
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    
+    parmers[@"uid"]              =uid;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- 工作站详情 -----------
+-(void)workstationdetialWithuid:(NSString *)uid
+                 WithpageNumber:(NSString *)pageNumber
+                   WithpageSize:(NSString *)pageSize
+                        Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/company/workstationList/detail";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    
+    
+    // parmers[@"address"]         = address;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+}
+#pragma mark ---------- 进入资质审核信息填写页面，获取之前的审核数据-----------
+-(void)gongchenggongsiShengheTuiHuiBianJiSuccess:(void (^)(id responseObject))success
+                                         failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/apply/company/info";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+}
+#pragma mark ---------- 工程助手－我的订单基本信息编辑-----------
+-(void)wodedingdanbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/order/my/update";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－订单苗木编辑信息-----------
+-(void)dingdanMMbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/order/updateItem";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－订单苗木更新-----------
+-(void)dingdanMMgengxinWithUid:(NSString *)uid
+                      WithName:(NSString *)name
+                  Withquantity:(NSString *)quantity
+                Withdecription:(NSString *)decription Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/order/doUpdateItem";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"name"]             = name;
+    parmers[@"quantity"]         = quantity;
+    parmers[@"decription"]       = decription;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－站长供应信息列表-----------
+-(void)zhanzhanggongyingListWithPageNum:(NSString *)pageNumber WithPageSize:(NSString *)pageSize WithsearchTime:(NSString *)searchTime
+                                Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/company/supplylist";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"pageNumber"]              = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    parmers[@"searchTime"]       = searchTime;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－站长供应信息检索-----------
+-(void)ZhanZhanggongyingListWithPage:(NSString*)page
+                        WithPageSize:(NSString *)pageSize
+                    Withgoldsupplier:(NSString *)goldsupplier
+                      WithProductUid:(NSString *)productUid
+                     WithProductName:(NSString *)productName
+                        WithProvince:(NSString *)province
+                            WithCity:(NSString *)city
+                          WithCounty:(NSString *)county
+                             WithAry:(NSArray *)ary
+                      WithSearchTime:(NSString *)searchTime
+                             Success:(void (^)(id responseObject))success
+                             failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL = @"api/project/supply/search";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
+    parameters[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parameters[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parameters[@"client_id"]        = kclient_id;
+    parameters[@"client_secret"]    = kclient_secret;
+    parameters[@"device_id"]        = str;
+    
+    parameters[@"pageNumber"]=page;
+    parameters[@"pageSize"]=pageSize;
+    parameters[@"productName"]=productName;
+    
+    parameters[@"goldsupplier"]=goldsupplier;
+    parameters[@"productUid"]=productUid;
+    parameters[@"province"]=province;
+    parameters[@"city"]=city;
+    parameters[@"county"]=county;
+    parameters[@"searchTime"]=searchTime;
+    for (int i=0; i<ary.count; i++) {
+        NSDictionary *dic=ary[i];
+        [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
+    }
+    
+    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        success(responseObject);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+}
+#pragma mark ---------- 工程助手－提交资质升级 -----------
+-(void)shengjiGCGSWithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone
+                      Withzipcode:(NSString *)zipcode
+                        Withbrief:(NSString *)brief
+                     Withprovince:(NSString *)province
+                         Withcity:(NSString *)city
+                       Withcounty:(NSString *)county
+                      Withaddress:(NSString *)address
+                     WithqualJson:(NSString *)qualJson
+                          Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/apply/company/update";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"companyName"]      = companyName;
+    parmers[@"legalPerson"]      = legalPerson;
+    parmers[@"phone"]            = phone;
+    parmers[@"brief"]            = brief;
+    parmers[@"brief"]            = brief;
+    parmers[@"province"]         = province;
+    parmers[@"zipcode"]          = zipcode;
+    if (city) {
+        parmers[@"city"]         = city;
+    }
+    if (county) {
+        parmers[@"county"]        = county;
+    }
+    parmers[@"address"]         = address;
+    parmers[@"qualJson"]        = qualJson;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－工程中心----------
+-(void)gongchengZhongXinInfoSuccess:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/company";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    
+    
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－工程信息编辑----------
+-(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county
+                            WithAddress:(NSString *)address
+                                Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/company/update";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"companyName"]      = companyName;
+    parmers[@"legalPerson"]      = legalPerson;
+    parmers[@"phone"]            = phone;
+    parmers[@"brief"]            = brief;
+    parmers[@"brief"]            = brief;
+    parmers[@"province"]         = province;
+    if (city) {
+        parmers[@"city"]         = city;
+    }
+    if (county) {
+        parmers[@"county"]        = county;
+    }
+    parmers[@"address"]         = address;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+}
+#pragma mark ---------- 工程助手－我的资质----------
+-(void)GCZXwodezizhiWithuid:(NSString *)uid
+             WithpageNumber:(NSString *)pageNumber
+               WithpageSize:(NSString *)pageSize
+                    Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/qualification/list";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]      = uid;
+    parmers[@"pageNumber"]      = pageNumber;
+    parmers[@"pageSize"]            = pageSize;
+    
+    // parmers[@"address"]         = address;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－工程助手首页--------
+-(void)GCGSshouyeWithPageSize:(NSString *)pageSize WithsupplyCount:(NSString *)supplyCount
+             WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)(id responseObject))success
+                      failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/company/index";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"supplyCount"]      = supplyCount;
+    parmers[@"pageSize"]         = pageSize;
+    parmers[@"supplyNumber"]         = supplyNumber;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+    
+}
+#pragma mark ---------- 工程助手－我的资质保存--------
+-(void)GCGSRongYuTijiaoWithuid:(NSString *)uid
+      WtihcompanyQualification:(NSString *)companyQualification
+           WithacquisitionTime:(NSString *)acquisitionTime
+                          With:(NSString *)level
+                WithcompanyUid:(NSString *)companyUid
+          WithissuingAuthority:(NSString *)issuingAuthority
+                Withattachment:(NSString *)attachment   Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/qualification/create";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    if (uid) {
+        parmers[@"uid"]      = uid;
+    }
+    
+    parmers[@"companyQualification"]= companyQualification;
+    parmers[@"acquisitionTime"]         = acquisitionTime;
+    parmers[@"level"]         = level;
+    parmers[@"companyUid"]         = companyUid;
+    parmers[@"issuingAuthority"]         = issuingAuthority;
+    parmers[@"attachment"]         = attachment;
+    // parmers[@"address"]         = address;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 工程助手－我的资质删除-------
+-(void)GCZXDeleteRongYuWithuid:(NSString *)uid
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/qualification/delete";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    
+    
+    // parmers[@"address"]         = address;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 合作详情 -----
+-(void)hezuoDetialWithorderUid:(NSString *)orderUid withitemUid:(NSString *)itemUid
+                   WithPageNum:(NSString *)pageNumber
+                  WithPageSize:(NSString *)pageSize
+                   WithKeyWord:(NSString *)keyword
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/company/quote/cooperate/detail";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    if (keyword) {
+        parmers[@"keyword"]      = keyword;
+    }
+    
+    if (orderUid) {
+        parmers[@"orderUid"]         = orderUid;
+    }
+    if (itemUid) {
+        parmers[@"itemUid"]      = itemUid;
+    }
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+}
+/******************* end 工程助手API  end*******************/
+-(void)jiaoyanfanhuideshuju:(NSString *)postStr Parmers:(NSDictionary *)parmers
+{
+    // 1.根据网址初始化OC字符串对象
+    NSString *urlStr = [NSString stringWithFormat:@"%@",AFBaseURLString];
+    // 2.创建NSURL对象
+    NSURL *url = [NSURL URLWithString:urlStr];
+    // 3.创建请求
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    // 4.创建参数字符串对象
+    NSMutableString *parmStr;
+    NSArray *keyArrays = [parmers allKeys];
+    for (int i=0; i<keyArrays.count; i++) {
+        NSString *keyStr=keyArrays[i];
+        NSString *valueStr=parmers[keyStr];
+        NSString *tempStr=[NSString stringWithFormat:@"%@=%@",keyStr,valueStr];
+        [parmStr appendString:tempStr];
+    }
+    
+    // 5.将字符串转为NSData对象
+    NSData *pramData = [parmStr dataUsingEncoding:NSUTF8StringEncoding];
+    // 6.设置请求体
+    [request setHTTPBody:pramData];
+    // 7.设置请求方式
+    [request setHTTPMethod:@"POST"];
+    
+    // 创建同步链接
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *str1 = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str1);
+}
+
+#pragma mark ---------- 站长助手API -----------
+/*******************站长助手API*******************/
+#pragma mark ---------- 检索工程订单 -----------
+/**
+ *  检索工程订单
+ *
+ *  @param orderBy      排序，发布时间：orderDate,截止日期：endDate,默认orderDate
+ *  @param orderSort    排序，升序：asc,降序：desc,默认desc
+ *  @param status       0:已结束，1：报价中，2：已报价
+ *  @param orderTypeUid 订单类型ID
+ *  @param area         用苗地，Json格式， [{"provinceCode":"11", "cityCode":"110101"},{"provinceCode":"11", "cityCode":"110102"}]
+ *  @param pageNumber   当前页码， 默认1
+ *  @param pageSize     每页显示数，默认15
+ *  @param success      success description
+ *  @param failure      failure description
+ */
+- (void)stationGetOrderSearchWithOrderBy:(NSString *)orderBy
+                               orderSort:(NSString *)orderSort
+                                  status:(NSString *)status
+                            orderTypeUid:(NSString *)orderTypeUid
+                                    area:(NSString *)area
+                              pageNumber:(NSString *)pageNumber
+                                pageSize:(NSString *)pageSize
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/workstation/order/search";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"orderBy"]          = orderBy;
+    parmers[@"orderSort"]        = orderSort;
+    parmers[@"status"]           = status;
+    parmers[@"orderTypeUid"]     = orderTypeUid;
+    parmers[@"area"]             = area;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- 我的分享 -----------
+-(void)getMyShareSuccess:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure {
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/integral/invitation";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+//    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+//        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+//        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
 }
 
 #pragma mark ---------- 站长助手-我的报价 -----------
@@ -3177,34 +3762,6 @@
     }];
 }
 
-#pragma mark ---------- 建立合作 -----
--(void)jianliHezuoWithBaoJiaID:(NSString *)uid   Success:(void (^)(id responseObject))success
-                       failure:(void (^)(NSError *error))failure
-{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/company/quote/cooperate";
- 
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-
-    parmers[@"uid"]              =uid;
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
 
 #pragma mark ---------- 站长助手-报价 -----------
 /**
@@ -3273,47 +3830,7 @@
 
 }
 
-#pragma mark ---------- 合作详情 -----
--(void)hezuoDetialWithorderUid:(NSString *)orderUid withitemUid:(NSString *)itemUid
-                   WithPageNum:(NSString *)pageNumber
-                  WithPageSize:(NSString *)pageSize
-                   WithKeyWord:(NSString *)keyword
-                       Success:(void (^)(id responseObject))success
-                       failure:(void (^)(NSError *error))failure
-{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/company/quote/cooperate/detail";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"pageNumber"]       = pageNumber;
-    parmers[@"pageSize"]         = pageSize;
-    if (keyword) {
-        parmers[@"keyword"]      = keyword;
-    }
-   
-    if (orderUid) {
-        parmers[@"orderUid"]         = orderUid;
-    }
-    if (itemUid) {
-        parmers[@"itemUid"]      = itemUid;
-    }
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
 
-}
      //#pragma mark ---------- APP设置首次充值最低额度 -----------
      //- (void)getLimitChargeSuccess:(void (^)(id responseObject))success
      //                      failure:(void (^)(NSError *error))failure {
@@ -3393,27 +3910,7 @@
     }];
 
 }
-#pragma mark ---------- 金牌供应 -----------
-- (void)GoldSupplrWithPageSize:(NSString *)pageSize WithPage:(NSString *)page
-              Withgoldsupplier:(NSString *)goldsupplier
-                       Success:(void (^)(id responseObject))success
-                       failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"apisupplyGold";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"page"]            = page;
-    parmers[@"pageSize"]        = pageSize;
-    parmers[@"goldsupplier"]    = goldsupplier;
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
+
 
 #pragma mark ---------- 我的荣誉列表 -----------
 /**
@@ -3607,533 +4104,8 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
-#pragma mark ---------- 工程助手－提交资质升级 -----------
--(void)shengjiGCGSWithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone
-     Withzipcode:(NSString *)zipcode
-                        Withbrief:(NSString *)brief
-                     Withprovince:(NSString *)province
-                         Withcity:(NSString *)city
-                       Withcounty:(NSString *)county
-                      Withaddress:(NSString *)address
-                     WithqualJson:(NSString *)qualJson
-                          Success:(void (^)(id responseObject))success
-                          failure:(void (^)(NSError *error))failure
-{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/apply/company/update";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"companyName"]      = companyName;
-    parmers[@"legalPerson"]      = legalPerson;
-    parmers[@"phone"]            = phone;
-    parmers[@"brief"]            = brief;
-    parmers[@"brief"]            = brief;
-    parmers[@"province"]         = province;
-    parmers[@"zipcode"]          = zipcode;
-    if (city) {
-         parmers[@"city"]         = city;
-    }
-    if (county) {
-        parmers[@"county"]        = county;
-    }
-    parmers[@"address"]         = address;
-    parmers[@"qualJson"]        = qualJson;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－工程中心----------
--(void)gongchengZhongXinInfoSuccess:(void (^)(id responseObject))success
-                            failure:(void (^)(NSError *error))failure
-{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/company";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-
-    
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－工程信息编辑----------
--(void)gongchengZhongXinInfoEditWithUid:(NSString *)uid WithcompanyName:(NSString *)companyName WithlegalPerson:(NSString *)legalPerson Withphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county
-                            WithAddress:(NSString *)address
-Success:(void (^)(id responseObject))success
-                                failure:(void (^)(NSError *error))failure
-{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/company/update";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"uid"]              = uid;
-    parmers[@"companyName"]      = companyName;
-    parmers[@"legalPerson"]      = legalPerson;
-    parmers[@"phone"]            = phone;
-    parmers[@"brief"]            = brief;
-    parmers[@"brief"]            = brief;
-    parmers[@"province"]         = province;
-    if (city) {
-        parmers[@"city"]         = city;
-    }
-    if (county) {
-        parmers[@"county"]        = county;
-    }
-    parmers[@"address"]         = address;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-    
-}
-#pragma mark ---------- 工程助手－我的资质----------
--(void)GCZXwodezizhiWithuid:(NSString *)uid
-             WithpageNumber:(NSString *)pageNumber
-               WithpageSize:(NSString *)pageSize
-                    Success:(void (^)(id responseObject))success
-                    failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/qualification/list";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"uid"]      = uid;
-    parmers[@"pageNumber"]      = pageNumber;
-    parmers[@"pageSize"]            = pageSize;
-  
-    // parmers[@"address"]         = address;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－工程助手首页--------
--(void)GCGSshouyeWithPageSize:(NSString *)pageSize WithsupplyCount:(NSString *)supplyCount
-WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)(id responseObject))success
-                      failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/company/index";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"supplyCount"]      = supplyCount;
-    parmers[@"pageSize"]         = pageSize;
-    parmers[@"supplyNumber"]         = supplyNumber;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-
-    
-}
-#pragma mark ---------- 工程助手－我的资质保存--------
--(void)GCGSRongYuTijiaoWithuid:(NSString *)uid
-      WtihcompanyQualification:(NSString *)companyQualification
-           WithacquisitionTime:(NSString *)acquisitionTime
-                          With:(NSString *)level
-                WithcompanyUid:(NSString *)companyUid
-          WithissuingAuthority:(NSString *)issuingAuthority
-                Withattachment:(NSString *)attachment   Success:(void (^)(id responseObject))success
-                       failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/qualification/create";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    if (uid) {
-       parmers[@"uid"]      = uid;
-    }
-   
-    parmers[@"companyQualification"]= companyQualification;
-    parmers[@"acquisitionTime"]         = acquisitionTime;
-    parmers[@"level"]         = level;
-    parmers[@"companyUid"]         = companyUid;
-    parmers[@"issuingAuthority"]         = issuingAuthority;
-    parmers[@"attachment"]         = attachment;
-    // parmers[@"address"]         = address;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－我的资质删除-------
--(void)GCZXDeleteRongYuWithuid:(NSString *)uid
-                       Success:(void (^)(id responseObject))success
-                       failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/qualification/delete";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"uid"]              = uid;
-    
- 
-    // parmers[@"address"]         = address;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-
-#pragma mark ---------- 工作站列表 -----------
-/**
- *  工作站列表
- *
- *  @param province   省
- *  @param city       市
- *  @param county     县
- *  @param keyword    检索词
- *  @param pageNumber 页码，默认1
- *  @param pageSize   每页显示数，默认15
- */
-- (void)stationListWithProvince:(NSString *)province
-                           city:(NSString *)city
-                         county:(NSString *)county
-                        keyword:(NSString *)keyword
-                     pageNumber:(NSString *)pageNumber
-                       pageSize:(NSString *)pageSize
-                        Success:(void (^)(id responseObject))success
-                        failure:(void (^)(NSError *error))failure {
-
-    NSString *postURL            = @"api/company/workstationList";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"province"]         = province;
-    parmers[@"city"]             = city;
-    parmers[@"county"]           = county;
-    parmers[@"keyword"]          = keyword;
-    parmers[@"pageNumber"]       = pageNumber;
-    parmers[@"pageSize"]         = pageSize;
 
 
-    // parmers[@"address"]         = address;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工作站详情 -----------
--(void)workstationdetialWithuid:(NSString *)uid
-                 WithpageNumber:(NSString *)pageNumber
-                   WithpageSize:(NSString *)pageSize
-                        Success:(void (^)(id responseObject))success
-                        failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/company/workstationList/detail";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"uid"]              = uid;
-    parmers[@"pageNumber"]       = pageNumber;
-    parmers[@"pageSize"]         = pageSize;
-    
-    
-    // parmers[@"address"]         = address;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-
-}
-#pragma mark ---------- 进入资质审核信息填写页面，获取之前的审核数据-----------
--(void)gongchenggongsiShengheTuiHuiBianJiSuccess:(void (^)(id responseObject))success
-                                         failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/apply/company/info";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-    
-}
-#pragma mark ---------- 工程助手－我的订单基本信息编辑-----------
--(void)wodedingdanbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
-                        failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/order/my/update";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"uid"]              = uid;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－订单苗木编辑信息-----------
--(void)dingdanMMbianjiWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
-                      failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/order/updateItem";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"uid"]              = uid;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－订单苗木更新-----------
--(void)dingdanMMgengxinWithUid:(NSString *)uid
-                      WithName:(NSString *)name
-                  Withquantity:(NSString *)quantity
-                Withdecription:(NSString *)decription Success:(void (^)(id responseObject))success
-                       failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/order/doUpdateItem";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"uid"]              = uid;
-    parmers[@"name"]             = name;
-    parmers[@"quantity"]         = quantity;
-    parmers[@"decription"]       = decription;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－站长供应信息列表-----------
--(void)zhanzhanggongyingListWithPageNum:(NSString *)pageNumber WithPageSize:(NSString *)pageSize WithsearchTime:(NSString *)searchTime
-                                Success:(void (^)(id responseObject))success
-                                failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL            = @"api/company/supplylist";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    parmers[@"pageNumber"]              = pageNumber;
-    parmers[@"pageSize"]         = pageSize;
-    parmers[@"searchTime"]       = searchTime;
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
-#pragma mark ---------- 工程助手－站长供应信息检索-----------
--(void)ZhanZhanggongyingListWithPage:(NSString*)page
-                        WithPageSize:(NSString *)pageSize
-                    Withgoldsupplier:(NSString *)goldsupplier
-                      WithProductUid:(NSString *)productUid
-                     WithProductName:(NSString *)productName
-                        WithProvince:(NSString *)province
-                            WithCity:(NSString *)city
-                          WithCounty:(NSString *)county
-                             WithAry:(NSArray *)ary
-                      WithSearchTime:(NSString *)searchTime
-                             Success:(void (^)(id responseObject))success
-                             failure:(void (^)(NSError *error))failure
-{
-    NSString *postURL = @"api/project/supply/search";
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
-    parameters[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parameters[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parameters[@"client_id"]        = kclient_id;
-    parameters[@"client_secret"]    = kclient_secret;
-    parameters[@"device_id"]        = str;
-
-    parameters[@"pageNumber"]=page;
-    parameters[@"pageSize"]=pageSize;
-    parameters[@"productName"]=productName;
-    
-    parameters[@"goldsupplier"]=goldsupplier;
-    parameters[@"productUid"]=productUid;
-    parameters[@"province"]=province;
-    parameters[@"city"]=city;
-    parameters[@"county"]=county;
-    parameters[@"searchTime"]=searchTime;
-    for (int i=0; i<ary.count; i++) {
-        NSDictionary *dic=ary[i];
-        [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
-    }
-    
-    [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-            success(responseObject);
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-
-}
 
 #pragma mark ---------- 站长中心分享 -----------
 - (void)stationShareSuccess:(void (^)(id responseObject))success
@@ -4187,59 +4159,6 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
     }];
 }
 
-#pragma mark ---------- 工程中心分享 -----------
-- (void)GCZXShareSuccess:(void (^)(id responseObject))success
-                 failure:(void (^)(NSError *error))failure
-{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/company/share";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-
-}
-#pragma mark ---------- 工程公司资质申请状态 -----------
-- (void)projectCompanyStatusSuccess:(void (^)(id responseObject))success
-                            failure:(void (^)(NSError *error))failure
-{
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/apply/company";
-    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-    parmers[@"client_id"]        = kclient_id;
-    parmers[@"client_secret"]    = kclient_secret;
-    parmers[@"device_id"]        = str;
-    
-    ShowActionV();
-    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-        RemoveActionV();
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-        RemoveActionV();
-        [HttpClient HTTPERRORMESSAGE:error];
-    }];
-}
 #pragma mark ---------- 站长助手－报价获取苗木信息 -----------
 - (void)getstationBaoJiaMessageWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
                                failure:(void (^)(NSError *error))failure
@@ -4266,4 +4185,55 @@ WithsupplyNumber:(NSString *)supplyNumber                      Success:(void (^)
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark ---------- 工作站列表 -----------
+/**
+ *  工作站列表
+ *
+ *  @param province   省
+ *  @param city       市
+ *  @param county     县
+ *  @param keyword    检索词
+ *  @param pageNumber 页码，默认1
+ *  @param pageSize   每页显示数，默认15
+ */
+- (void)stationListWithProvince:(NSString *)province
+                           city:(NSString *)city
+                         county:(NSString *)county
+                        keyword:(NSString *)keyword
+                     pageNumber:(NSString *)pageNumber
+                       pageSize:(NSString *)pageSize
+                        Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure {
+    
+    NSString *postURL            = @"api/company/workstationList";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"province"]         = province;
+    parmers[@"city"]             = city;
+    parmers[@"county"]           = county;
+    parmers[@"keyword"]          = keyword;
+    parmers[@"pageNumber"]       = pageNumber;
+    parmers[@"pageSize"]         = pageSize;
+    
+    
+    // parmers[@"address"]         = address;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+/******************* end 站长助手API  end*******************/
 @end

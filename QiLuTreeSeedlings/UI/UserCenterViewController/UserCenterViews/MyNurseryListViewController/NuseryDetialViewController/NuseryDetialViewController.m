@@ -303,7 +303,7 @@
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
     }else{
-        [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
+        [self.areaBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
         
     }
