@@ -32,7 +32,12 @@
     self.endTimeLab.text=[timeAry firstObject];
     self.baojiaTypeLab.text=model.quotationRequired;
     self.zhiliangLab.text=model.quantityRequired;
-    self.ciliangLab.text=model.measureRequired;
+    NSString *oldStr=[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",model.dbh,model.groundDiameter];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:oldStr];
+    [str addAttribute:NSForegroundColorAttributeName value:NavColor range:NSMakeRange(5,model.dbh.length+2)];
+    [str addAttribute:NSForegroundColorAttributeName value:NavColor range:NSMakeRange(14+model.dbh.length,model.groundDiameter.length+2)];
+    
+    self.ciliangLab.attributedText=str;
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.ciliangLab.font,NSFontAttributeName, nil];
     CGSize sizeOne = [model.measureRequired boundingRectWithSize:CGSizeMake(self.ciliangLab.frame.size.width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
     self.celiangHeight.constant=sizeOne.height+5;
@@ -56,7 +61,13 @@
     self.endTimeLab.text=[timeAry firstObject];
     self.baojiaTypeLab.text=hezuomodel.quotationRequired;
     self.zhiliangLab.text=hezuomodel.quantityRequired;
-    self.ciliangLab.text=[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",hezuomodel.dbh,hezuomodel.groundDiameter];
+    
+    NSString *oldStr=[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",hezuomodel.dbh,hezuomodel.groundDiameter];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:oldStr];
+     	[str addAttribute:NSForegroundColorAttributeName value:NavColor range:NSMakeRange(5,hezuomodel.dbh.length+2)];
+     	[str addAttribute:NSForegroundColorAttributeName value:NavColor range:NSMakeRange(14+hezuomodel.dbh.length,hezuomodel.groundDiameter.length+2)];
+
+    self.ciliangLab.attributedText=str;
     self.companyLab.text=hezuomodel.company;
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.ciliangLab.font,NSFontAttributeName, nil];
     CGSize sizeOne = [[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",hezuomodel.dbh,hezuomodel.groundDiameter] boundingRectWithSize:CGSizeMake(self.ciliangLab.frame.size.width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;

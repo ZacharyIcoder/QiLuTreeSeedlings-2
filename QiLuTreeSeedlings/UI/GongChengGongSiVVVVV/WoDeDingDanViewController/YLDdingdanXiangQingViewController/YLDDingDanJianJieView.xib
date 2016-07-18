@@ -172,8 +172,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15953523812" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D05-lH-u2w">
-                    <rect key="frame" x="85" y="205" width="219" height="21"/>
+                    <rect key="frame" x="85" y="205" width="104" height="21"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="104" id="HHL-20-uBU"/>
                         <constraint firstAttribute="height" constant="21" id="Lpj-Pu-RGn"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -212,6 +213,13 @@
                         <constraint firstAttribute="width" constant="60" id="kLh-xr-os9"/>
                     </constraints>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dingdandinahua.png" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-TT-ifE">
+                    <rect key="frame" x="190" y="207" width="17" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="UKo-Si-Av0"/>
+                        <constraint firstAttribute="width" constant="17" id="m2B-ux-fVV"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -241,6 +249,7 @@
                 <constraint firstAttribute="trailing" secondItem="gOH-Po-3dg" secondAttribute="trailing" constant="10" id="KlI-sO-V0R"/>
                 <constraint firstAttribute="trailing" secondItem="SFq-eE-3aV" secondAttribute="trailing" id="MIR-W0-DxJ"/>
                 <constraint firstAttribute="trailing" secondItem="8gK-z2-cOO" secondAttribute="trailing" constant="8" id="MOX-3k-eGP"/>
+                <constraint firstItem="gN3-TT-ifE" firstAttribute="top" secondItem="UPj-k8-GHU" secondAttribute="bottom" constant="10" id="Maz-G5-NVi"/>
                 <constraint firstItem="elB-X5-MPf" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="MzN-Xd-UGC"/>
                 <constraint firstItem="UPj-k8-GHU" firstAttribute="leading" secondItem="txP-v1-Kqo" secondAttribute="trailing" constant="12" id="NuI-69-Lua"/>
                 <constraint firstItem="CaZ-e0-EX3" firstAttribute="leading" secondItem="ZLT-Bt-znb" secondAttribute="trailing" constant="12" id="PHd-pm-5dF"/>
@@ -253,8 +262,8 @@
                 <constraint firstItem="D05-lH-u2w" firstAttribute="leading" secondItem="9m9-oZ-wGJ" secondAttribute="trailing" constant="10" id="V3B-Nm-cqg"/>
                 <constraint firstAttribute="bottom" secondItem="XKq-IN-gCK" secondAttribute="bottom" constant="23" id="VrP-YT-p28"/>
                 <constraint firstAttribute="trailing" secondItem="5Da-t7-iIq" secondAttribute="trailing" constant="10" id="W2l-w8-tD3"/>
-                <constraint firstAttribute="trailing" secondItem="D05-lH-u2w" secondAttribute="trailing" constant="16" id="YFN-Om-j9h"/>
                 <constraint firstItem="elB-X5-MPf" firstAttribute="top" secondItem="ZLT-Bt-znb" secondAttribute="bottom" constant="8" id="Zp2-4X-sMs"/>
+                <constraint firstItem="gN3-TT-ifE" firstAttribute="leading" secondItem="D05-lH-u2w" secondAttribute="trailing" constant="1" id="bmN-eQ-g4h"/>
                 <constraint firstItem="vfP-uD-jR7" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="cP4-en-gFD"/>
                 <constraint firstAttribute="trailing" secondItem="Yve-bX-cVH" secondAttribute="trailing" constant="20" id="cRH-w8-PSd"/>
                 <constraint firstItem="Di7-rJ-57p" firstAttribute="top" secondItem="7Pl-hZ-SPF" secondAttribute="top" constant="15" id="cUA-ha-zBd"/>
@@ -289,4 +298,7 @@
             <point key="canvasLocation" x="322" y="-247"/>
         </view>
     </objects>
+    <resources>
+        <image name="dingdandinahua.png" width="25" height="25"/>
+    </resources>
 </document>

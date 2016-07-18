@@ -23,7 +23,6 @@
         NSDate *mindata=[NSDate new];
         [datePicker setBackgroundColor:[UIColor whiteColor]];
         self.selectDate=mindata;
-        datePicker.minimumDate = mindata;
         [self addSubview:datePicker];
         [ datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     

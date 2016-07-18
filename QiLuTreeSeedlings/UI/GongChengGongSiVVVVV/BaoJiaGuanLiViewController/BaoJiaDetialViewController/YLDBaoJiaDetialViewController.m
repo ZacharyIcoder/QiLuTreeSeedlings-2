@@ -17,17 +17,17 @@
 #import "YLDSearchNavView.h"
 #import "YLDHeZuoDetialViewController.h"
 @interface YLDBaoJiaDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate,YLDBaoJiaMessageCellDelegate>
-@property (nonatomic,weak)UIView *moveView;
-@property (nonatomic,weak)UIButton *nowBtn;
-@property (nonatomic,weak)UITableView *tableView;
+@property (nonatomic,strong)UIView *moveView;
+@property (nonatomic,strong)UIButton *nowBtn;
+@property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,copy)NSString *Uid;
-@property (nonatomic,weak)YLDBaoJiaMiaoMuView *miaomuDetialV;
+@property (nonatomic,strong)YLDBaoJiaMiaoMuView *miaomuDetialV;
 @property (nonatomic)NSInteger pageNum;
 @property (nonatomic,strong)NSMutableArray *dataAry;
 @property (nonatomic,strong)YLDBaoJiaMiaoMuModel *detialModel;
 @property (nonatomic,strong) NSString *searchStr;
 @property (nonatomic,strong) UIButton *saerchBtn;
-@property (nonatomic,weak) YLDSearchNavView *searchV;
+@property (nonatomic,strong) YLDSearchNavView *searchV;
 @end
 
 @implementation YLDBaoJiaDetialViewController
@@ -76,6 +76,8 @@
     self.searchV=searchV;
     searchV.delegate=self;
     searchV.hidden=YES;
+    searchV.textfield.placeholder=@"请输入工作站名称";
+    self.saerchBtn.hidden=YES;
     [self.navBackView addSubview:searchV];
 
     [HTTPCLIENT baojiaDetialMiaoMuWtihUid:self.Uid Success:^(id responseObject) {

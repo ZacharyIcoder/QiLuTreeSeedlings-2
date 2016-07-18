@@ -23,15 +23,21 @@
     self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];
     CGRect frame=self.frame;
     self.timeLab.text=model.endDate;
-    CGFloat hieghtss=[self getHeightWithContent:model.descriptions width:kWidth-100 font:14];
+    NSString *stsada;
+    if (model.descriptions.length>0) {
+        stsada=[NSString stringWithFormat:@"苗木说明：%@",model.descriptions];
+    }else{
+        stsada=@"苗木说明：";
+    }
+    CGFloat hieghtss=[self getHeightWithContent:stsada width:kWidth-20 font:14];
     if (hieghtss>25) {
-        frame.size.height = 150-23 +hieghtss;
+        frame.size.height = 150-10 +hieghtss;
     }else
     {
        frame.size.height =  150;
     }
     self.frame=frame;
-    self.shuomingLab.text=model.descriptions;
+    self.shuomingLab.text=stsada;
     if ([model.status integerValue]==1) {
         [self.statusV setImage:[UIImage imageNamed:@"Gyibaojia"]];
     }

@@ -219,6 +219,7 @@
     YLDPickTimeView *pickTimeView=[[YLDPickTimeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     pickTimeView.delegate=self;
     pickTimeView.pickerView.maximumDate=[NSDate new];
+    pickTimeView.pickerView.minimumDate=nil;
     [pickTimeView showInView];
     [self.nameTextField resignFirstResponder];
     [self.rankTextField resignFirstResponder];

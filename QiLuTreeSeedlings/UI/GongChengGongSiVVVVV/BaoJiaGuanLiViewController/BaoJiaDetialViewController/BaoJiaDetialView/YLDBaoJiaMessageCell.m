@@ -24,7 +24,12 @@
 {
     _model=model;
     self.titleLab.text=model.workstationName;
-    self.lianxirenLab.text=model.chargelPerson;
+    if (model.chargelPerson.length>0) {
+        self.lianxirenLab.text=[NSString stringWithFormat:@"联系人：%@",model.chargelPerson];
+    }else{
+        self.lianxirenLab.text=@"联系人：";
+    }
+    
     self.lianxirenWi.constant=model.chargelPerson.length*15;
     self.timeLab.text=model.quoteTime;
     self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];

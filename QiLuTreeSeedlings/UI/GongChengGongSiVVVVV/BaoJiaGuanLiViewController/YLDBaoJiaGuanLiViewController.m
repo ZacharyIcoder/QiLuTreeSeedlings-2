@@ -59,9 +59,15 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YLDBaoModel *model=self.dataAry[indexPath.row];
-    CGFloat hieghtss=[self getHeightWithContent:model.descriptions width:kWidth-100 font:14];
+    NSString *stsada;
+    if (model.descriptions.length>0) {
+        stsada=[NSString stringWithFormat:@"苗木说明：%@",model.descriptions];
+    }else{
+        stsada=@"苗木说明：";
+    }
+    CGFloat hieghtss=[self getHeightWithContent:stsada width:kWidth-20 font:14];
     if (hieghtss>25) {
-        return 150-23 +hieghtss;
+        return 150-10 +hieghtss;
     }else
     {
         return 150;
