@@ -111,47 +111,47 @@
             [self nameBtnAction:quedingBtn];
         }
         tempFrame.origin.y+=50;
-        if (searchType==1) {
-            UIView *gongyingshangView=[[UIView alloc]initWithFrame:tempFrame];
-            UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, 70, 40)];
-            
-            gongyingLab.text=@"供应商";
-            [gongyingLab setFont:[UIFont systemFontOfSize:14]];
-            [gongyingLab setTextColor:DarkTitleColor];
-            UIImageView *lineGYL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
-            [gongyingshangView addSubview:lineGYL];
-            [lineGYL setBackgroundColor:kLineColor];
-            
-            [gongyingshangView addSubview:gongyingLab];
-            
-            UIButton *nomegongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(160, 7,90, 25)];
-            [nomegongyingbtn setTitle:@"普通供应商" forState:UIControlStateNormal];
-            nomegongyingbtn.tag=110;
-            [nomegongyingbtn setTitle:@"普通供应商" forState:UIControlStateSelected];
-            [nomegongyingbtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-            //nomegongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
-            [nomegongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-            [nomegongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
-            [nomegongyingbtn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
-            [nomegongyingbtn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
-            [nomegongyingbtn addTarget:self action:@selector(gongyingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [gongyingshangView addSubview:nomegongyingbtn];
-            UIButton *goldgongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(60, 7, 90, 25)];
-            [goldgongyingbtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-            [goldgongyingbtn setTitle:@"金牌供应商" forState:UIControlStateNormal];
-            goldgongyingbtn.tag=111;
-            [goldgongyingbtn setTitle:@"金牌供应商" forState:UIControlStateSelected];
-            [goldgongyingbtn addTarget:self action:@selector(gongyingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [goldgongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-            [goldgongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
-            [goldgongyingbtn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
-            [goldgongyingbtn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
-            //goldgongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
-            [gongyingshangView addSubview:goldgongyingbtn];
-            [self.backScrollView addSubview:gongyingshangView];
-            tempFrame.origin.y+=50;
-   
-        }
+//        if (searchType==1) {
+//            UIView *gongyingshangView=[[UIView alloc]initWithFrame:tempFrame];
+//            UILabel *gongyingLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, 70, 40)];
+//            
+//            gongyingLab.text=@"供应商";
+//            [gongyingLab setFont:[UIFont systemFontOfSize:14]];
+//            [gongyingLab setTextColor:DarkTitleColor];
+//            UIImageView *lineGYL=[[UIImageView alloc]initWithFrame:CGRectMake(0, 43.5, kWidth*0.8, 0.5)];
+//            [gongyingshangView addSubview:lineGYL];
+//            [lineGYL setBackgroundColor:kLineColor];
+//            
+//            [gongyingshangView addSubview:gongyingLab];
+//            
+//            UIButton *nomegongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(160, 7,90, 25)];
+//            [nomegongyingbtn setTitle:@"普通供应商" forState:UIControlStateNormal];
+//            nomegongyingbtn.tag=110;
+//            [nomegongyingbtn setTitle:@"普通供应商" forState:UIControlStateSelected];
+//            [nomegongyingbtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+//            //nomegongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
+//            [nomegongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+//            [nomegongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
+//            [nomegongyingbtn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
+//            [nomegongyingbtn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+//            [nomegongyingbtn addTarget:self action:@selector(gongyingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//            [gongyingshangView addSubview:nomegongyingbtn];
+//            UIButton *goldgongyingbtn=[[UIButton alloc]initWithFrame:CGRectMake(60, 7, 90, 25)];
+//            [goldgongyingbtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+//            [goldgongyingbtn setTitle:@"金牌供应商" forState:UIControlStateNormal];
+//            goldgongyingbtn.tag=111;
+//            [goldgongyingbtn setTitle:@"金牌供应商" forState:UIControlStateSelected];
+//            [goldgongyingbtn addTarget:self action:@selector(gongyingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//            [goldgongyingbtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+//            [goldgongyingbtn setTitleColor:NavColor forState:UIControlStateSelected];
+//            [goldgongyingbtn setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
+//            [goldgongyingbtn setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+//            //goldgongyingbtn.titleEdgeInsets = UIEdgeInsetsMake(0, -90, 0, 0);
+//            [gongyingshangView addSubview:goldgongyingbtn];
+//            [self.backScrollView addSubview:gongyingshangView];
+//            tempFrame.origin.y+=50;
+//   
+//        }
         UIView *areaView=[[UIView alloc]initWithFrame:tempFrame];
         UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, 70, 40)];
         
