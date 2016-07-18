@@ -343,9 +343,9 @@
             }
 
             CGFloat YSS=100;
-            if (self.searchType==1) {
-                YSS=150;
-            }
+//            if (self.searchType==1) {
+//                YSS=150;
+//            }
             GuiGeView *guigeView=[[GuiGeView alloc]initWithAry:self.guige1Ary andFrame:CGRectMake(0, YSS, kWidth*0.8, 0) andMainSure:NO];
             [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(guigeView.frame))];
             guigeView.delegate=self;
