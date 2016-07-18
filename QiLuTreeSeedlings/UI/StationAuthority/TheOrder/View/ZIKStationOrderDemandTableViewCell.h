@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 @class  ZIKStationOrderDemandModel;
+@protocol ZIKStationOrderDemandTableViewCellDelegate <NSObject>
+
+@required
+-(void)sendPhoneInfo:(NSString *)phoneString;
+
+@end
+
 @interface ZIKStationOrderDemandTableViewCell : UITableViewCell
+@property (nonatomic,assign) id <ZIKStationOrderDemandTableViewCellDelegate>delegate;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 - (void)configureCell:(ZIKStationOrderDemandModel *)model;
 

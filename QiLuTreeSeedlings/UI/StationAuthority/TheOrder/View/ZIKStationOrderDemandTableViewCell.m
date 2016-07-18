@@ -10,6 +10,7 @@
 #import "ZIKStationOrderDemandModel.h"
 #import "StringAttributeHelper.h"
 #import "UIDefines.h"
+#import "ZIKFunction.h"
 @interface ZIKStationOrderDemandTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
@@ -22,14 +23,24 @@
 @property (weak, nonatomic) IBOutlet UILabel *areaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shuomingLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameWidthLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneWidthLayoutConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *dianhuaLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *dianhuaImageView;
 
 @end
 
-@implementation ZIKStationOrderDemandTableViewCell
 
+@implementation ZIKStationOrderDemandTableViewCell
+{
+    NSString *phone;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phone:)];
+//    [self addGestureRecognizer:tapGesture];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -55,8 +66,24 @@
     self.endDataLabel.text  = model.endDate;
     self.companyLabel.text  = model.company;
     self.areaLabel.text     = model.area;
-    self.phoneLabel.text    = model.phone;
+    self.phoneLabel.text    = model.person;
+    CGRect nameRect =  [ZIKFunction getCGRectWithContent:model.person width:180 font:15.0f];
+    self.nameWidthLayoutConstraint.constant = nameRect.size.width+5;
     self.shuomingLabel.text = model.demandDescription;
+
+    self.dianhuaLabel.text = model.phone;
+    phone = model.phone;
+    CGRect phoneRect = [ZIKFunction getCGRectWithContent:model.phone width:180 font:15.0f];
+    self.phoneWidthLayoutConstraint.constant = phoneRect.size.width+5;
+
+    self.dianhuaLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phone:)];
+    [self.dianhuaLabel addGestureRecognizer:tapGesture];
+
+    self.dianhuaImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phone:)];
+    [self.dianhuaImageView addGestureRecognizer:tapGesture2];
+
 
     if ([model.status isEqualToString:@"已结束"]) {
         self.typeImageView.image  = [UIImage imageNamed:@"zt已结束"];
@@ -103,7 +130,12 @@
 
     self.celiangLabel.attributedText = [celiangString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,partFont2,fullColor,darkColor,darkColor2]];
 
+}
 
+- (void)phone:(UIGestureRecognizer *)gr {
+    if ([self.delegate respondsToSelector:@selector(sendPhoneInfo:)]) {
+        [self.delegate sendPhoneInfo:phone];
+    }
 
 }
 @end

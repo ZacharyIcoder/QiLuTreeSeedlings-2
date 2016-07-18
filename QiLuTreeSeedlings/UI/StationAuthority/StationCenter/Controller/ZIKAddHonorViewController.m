@@ -9,14 +9,20 @@
 #import "ZIKAddHonorViewController.h"
 #import "RSKImageCropper.h"
 #import "UIButton+AFNetworking.h"
-@interface ZIKAddHonorViewController ()<UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+#import "YLDPickTimeView.h"
+#import "ZIKFunction.h"
+@interface ZIKAddHonorViewController ()<UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,YLDPickTimeDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *honorNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *honorTimeTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *honorTimeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *honorTimeButton;
 
 @property (nonatomic, strong) NSString *honorCompressUrl;
 @property (nonatomic, strong) NSString *honorDetailUrl;
 @property (nonatomic, strong) NSString *honorUrl;
+
+@property (nonatomic,copy) NSString *timeStr;
+
 @end
 
 @implementation ZIKAddHonorViewController
@@ -25,6 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = @"添加荣誉";
+    [self.honorNameTextField setValue:detialLabColor forKeyPath:@"_placeholderLabel.textColor"];
     if (self.uid) {
         [HTTPCLIENT stationHonorDetailWithUid:_uid Success:^(id responseObject) {
             if ([responseObject[@"success"] integerValue] == 0) {
@@ -35,7 +42,8 @@
             NSDictionary *honorDic       = resultDic[@"honor"];
             self.uid                     = honorDic[@"uid"];
             self.workstationUid          = honorDic[@"workstationUid"];
-            self.honorTimeTextField.text = honorDic[@"acqueTime"];
+//            self.honorTimeTextField.text = honorDic[@"acqueTime"];
+            [self.honorTimeButton setTitle:honorDic[@"acqueTime"] forState:UIControlStateNormal];
             self.honorNameTextField.text = honorDic[@"name"];
             self.honorCompressUrl        = honorDic[@"image"];
             NSURL *url = [NSURL URLWithString:self.honorCompressUrl];
@@ -45,26 +53,56 @@
         }];
     }
 }
+- (IBAction)honorButtonClick:(UIButton *)sender {
+    
+    YLDPickTimeView *pickTimeView = [[YLDPickTimeView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    pickTimeView.delegate = self;
+    pickTimeView.pickerView.maximumDate = [NSDate new];
+    pickTimeView.pickerView.minimumDate = nil;
+    [pickTimeView showInView];
+    [self.honorNameTextField resignFirstResponder];
+ }
+
+-(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
+{
+    self.timeStr = timeStr;
+    [self.honorTimeButton setTitleColor:detialLabColor forState:UIControlStateNormal];
+    [self.honorTimeButton setTitle:timeStr forState:UIControlStateNormal];
+}
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
     [self.honorNameTextField resignFirstResponder];
-    [self.honorTimeTextField resignFirstResponder];
-    
+//    [self.honorTimeTextField resignFirstResponder];
+
     NSString *name = nil;
     NSString *time = nil;
     name = self.honorNameTextField.text;
-    time = self.honorTimeTextField.text;
+//    time = self.honorTimeTextField.text;
+    time = self.honorTimeButton.titleLabel.text;
 
+    if ([ZIKFunction xfunc_check_strEmpty:name]) {
+        [ToastView showTopToast:@"请输入荣誉名称"];
+        return;
+    }
+    if ([ZIKFunction xfunc_check_strEmpty:time]) {
+        [ToastView showTopToast:@"请选择获取时间"];
+        return;
+    }
+    if ([ZIKFunction xfunc_check_strEmpty:_honorCompressUrl]) {
+        [ToastView showTopToast:@"请添加荣誉图片"];
+        return;
+    }
     NSString *uid = nil;
     if (self.uid) {
         uid = self.uid;
     }
     [HTTPCLIENT stationHonorCreateWithUid:uid workstationUid:_workstationUid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
-        CLog(@"result:%@",responseObject);
+        //CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
         }
+        [ToastView showTopToast:@"添加成功"];
         [self.navigationController popViewControllerAnimated:YES];
 
     } failure:^(NSError *error) {
@@ -74,7 +112,7 @@
 
 - (IBAction)addImageButttonClick {
     [self.honorNameTextField resignFirstResponder];
-    [self.honorTimeTextField resignFirstResponder];
+//    [self.honorTimeTextField resignFirstResponder];
     [self addPicture];
 }
 
@@ -218,6 +256,6 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.honorNameTextField resignFirstResponder];
-    [self.honorTimeTextField resignFirstResponder];
+//    [self.honorTimeTextField resignFirstResponder];
 }
 @end

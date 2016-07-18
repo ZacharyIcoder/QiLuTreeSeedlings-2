@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     TypeStyleRequire = 1
 };
 
-@interface ZIKStationOrderDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ZIKStationOrderDetailViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,ZIKStationOrderDemandTableViewCellDelegate>
 @property (nonatomic, assign) TypeStyle                  typeStyle;
 @property (nonatomic, strong) UITableView                *orderTableView;
 @property (nonatomic, strong) NSMutableArray             *quoteMArr;
@@ -192,6 +192,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 
     } else if (self.typeStyle == TypeStyleRequire) {
         ZIKStationOrderDemandTableViewCell *demandCell = [ZIKStationOrderDemandTableViewCell cellWithTableView:tableView];
+        demandCell.delegate = self;
         if (_demandModel) {
             [demandCell configureCell:_demandModel];
         }
@@ -229,5 +230,12 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     // Dispose of any resources that can be recreated.
 }
 
+-(void)sendPhoneInfo:(NSString *)phoneString {
+    NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",phoneString];
+    //NSLog(@"%@",str);
+    UIWebView * callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
 
+}
 @end

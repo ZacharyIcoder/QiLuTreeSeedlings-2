@@ -54,7 +54,7 @@
     self.createTimeLabel.text = model.createTime;
     self.endDateLabel.text = [NSString stringWithFormat:@"截止日期: %@",model.endDate];
     if ([model.status isEqualToString:@"1"]) {//已报价
-        self.statusImageView.image = [UIImage imageNamed:@"zt已报价"];
+        self.statusImageView.image = [UIImage imageNamed:@"已报价"];
     } else if ([model.status isEqualToString:@"2"]) {//已合作
         self.statusImageView.image = [UIImage imageNamed:@"zt已合作"];
     } else if ([model.status isEqualToString:@"3"]) {//已过期

@@ -10,6 +10,7 @@
 #import "ZIKStationOrderModel.h"
 #import "UIDefines.h"
 #import "ZIKFunction.h"
+#import "StringAttributeHelper.h"
 @interface ZIKStationOrderTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
 @property (weak, nonatomic) IBOutlet UILabel *orderTitleLabel;
@@ -57,8 +58,45 @@
         model.quotation = @"";
     }
     
-    self.offerLabel.text      = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
-    self.qualityLabel.text= [NSString stringWithFormat:@"质量要求:%@",model.qualityRequest];
+//    self.offerLabel.text      = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
+    NSString *offerString = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
+//    self.qualityLabel.text = [NSString stringWithFormat:@"质量要求:%@",model.qualityRequest];
+    FontAttribute *fullFont = [FontAttribute new];
+    fullFont.font = [UIFont systemFontOfSize:14.0f];
+    fullFont.effectRange  = NSMakeRange(0, offerString.length);
+    ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
+    fullColor.color = self.addressLabel.textColor;
+    fullColor.effectRange = NSMakeRange(0,offerString.length);
+    //    NSLog(@"%d,%d,%d,%d",(int)range11.location,(int)(range12.location-range11.location),(int)(range12.location+1+range21.location),(int)(range22.location-range21.location));
+    //局部设置
+    FontAttribute *partFont = [FontAttribute new];
+    partFont.font = [UIFont systemFontOfSize:14.0f];
+    partFont.effectRange = NSMakeRange(5, offerString.length-5);
+    ForegroundColorAttribute *darkColor = [ForegroundColorAttribute new];
+    darkColor.color = yellowButtonColor;
+    darkColor.effectRange = NSMakeRange(5, offerString.length-5);
+
+    self.offerLabel.attributedText = [offerString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
+
+    NSString *qualityString = [NSString stringWithFormat:@"质量要求:%@",model.qualityRequest];
+    FontAttribute *qualityfullFont = [FontAttribute new];
+    qualityfullFont.font = [UIFont systemFontOfSize:14.0f];
+    qualityfullFont.effectRange  = NSMakeRange(0, qualityString.length);
+    ForegroundColorAttribute *qualityfullColor = [ForegroundColorAttribute new];
+    qualityfullColor.color = self.addressLabel.textColor;
+    qualityfullColor.effectRange = NSMakeRange(0,qualityString.length);
+    //    NSLog(@"%d,%d,%d,%d",(int)range11.location,(int)(range12.location-range11.location),(int)(range12.location+1+range21.location),(int)(range22.location-range21.location));
+    //局部设置
+    FontAttribute *qualitypartFont = [FontAttribute new];
+    qualitypartFont.font = [UIFont systemFontOfSize:14.0f];
+    qualitypartFont.effectRange = NSMakeRange(5, qualityString.length-5);
+    ForegroundColorAttribute *qualitdarkColor = [ForegroundColorAttribute new];
+    qualitdarkColor.color = yellowButtonColor;
+    qualitdarkColor.effectRange = NSMakeRange(5, qualityString.length-5);
+
+    self.qualityLabel.attributedText = [qualityString mutableAttributedStringWithStringAttributes:@[qualityfullFont,qualitypartFont,qualityfullColor,qualitdarkColor]];
+
+
     self.companyLabel.text    = model.engineeringCompany;
     //self.qualityLabel.text = model.orderType;
     if ([model.orderType isEqualToString:@"求购单"]) {
