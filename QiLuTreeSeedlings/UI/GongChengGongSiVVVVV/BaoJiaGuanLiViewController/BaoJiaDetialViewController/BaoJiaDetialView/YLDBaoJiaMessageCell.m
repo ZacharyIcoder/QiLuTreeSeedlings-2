@@ -30,7 +30,7 @@
         self.lianxirenLab.text=@"联系人：";
     }
     
-    self.lianxirenWi.constant=model.chargelPerson.length*15;
+    self.lianxirenWi.constant=model.chargelPerson.length*15+62;
     self.timeLab.text=model.quoteTime;
     self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];
     self.priceLab.text=model.price;
