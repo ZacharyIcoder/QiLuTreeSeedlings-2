@@ -22,6 +22,7 @@
 
 /*****View******/
 #import "AdvertView.h"//广告页 section（0）
+#import "ZIKOrderSingleTableViewCell.h"
 #import "BigImageViewShowView.h"//点击显示大图
 #import "ZIKOrderSecondTableViewCell.h"//筛选cell section（1）
 #import "ZIKStationOrderScreeningView.h"//筛选页面
@@ -77,7 +78,8 @@
 
 - (void)initData {
     self.page           = 1;//页面page从1开始
-    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
+//    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
+    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"站长通-海报-2"]];
     self.areaMArr  = [NSMutableArray arrayWithCapacity:5];
     self.orderMArr = [[NSMutableArray alloc] init];
 }
@@ -198,11 +200,13 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        AdvertView *adView = [[AdvertView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 160.f/320.f*kWidth)];
-        adView.delegate = self;
-        [adView setAdInfo];
-        [adView adStart];
-        return adView;
+//        AdvertView *adView = [[AdvertView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 160.f/320.f*kWidth)];
+//        adView.delegate = self;
+//        [adView setAdInfo];
+//        [adView adStart];
+//        return adView;
+        ZIKOrderSingleTableViewCell *cell = [ZIKOrderSingleTableViewCell cellWithTableView:tableView];
+        return cell;
     } else if (indexPath.section == 1) {
         static NSString *CellIdentifier = @"ZIKOrderSecondTableViewCellId";
         BOOL nibsRegistered = NO;

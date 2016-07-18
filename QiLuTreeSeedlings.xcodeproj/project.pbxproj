@@ -642,6 +642,9 @@
 		FC5612A01D0C092F00E5743B /* ZIKSupplyPublishNextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56123F1D0C092F00E5743B /* ZIKSupplyPublishNextVC.m */; };
 		FC5612A11D0C092F00E5743B /* ZIKSupplyPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612411D0C092F00E5743B /* ZIKSupplyPublishVC.m */; };
 		FC59481F1D3C77850014E39B /* 已报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC59481E1D3C77850014E39B /* 已报价.png */; };
+		FC5948211D3C98A50014E39B /* 站长通-海报-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5948201D3C98A50014E39B /* 站长通-海报-2.png */; };
+		FC5948251D3C9B410014E39B /* ZIKOrderSingleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5948231D3C9B410014E39B /* ZIKOrderSingleTableViewCell.m */; };
+		FC5948261D3C9B410014E39B /* ZIKOrderSingleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5948241D3C9B410014E39B /* ZIKOrderSingleTableViewCell.xib */; };
 		FC6149DF1CAA2EE200672241 /* ZIKUserInfoSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */; };
 		FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F71CAA57B600672241 /* RSKImageCropViewController.m */; };
 		FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6149F91CAA57B600672241 /* RSKImageScrollView.m */; };
@@ -1833,6 +1836,10 @@
 		FC5612401D0C092F00E5743B /* ZIKSupplyPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishVC.h; sourceTree = "<group>"; };
 		FC5612411D0C092F00E5743B /* ZIKSupplyPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishVC.m; sourceTree = "<group>"; };
 		FC59481E1D3C77850014E39B /* 已报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已报价.png"; sourceTree = "<group>"; };
+		FC5948201D3C98A50014E39B /* 站长通-海报-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站长通-海报-2.png"; sourceTree = "<group>"; };
+		FC5948221D3C9B400014E39B /* ZIKOrderSingleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKOrderSingleTableViewCell.h; sourceTree = "<group>"; };
+		FC5948231D3C9B410014E39B /* ZIKOrderSingleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKOrderSingleTableViewCell.m; sourceTree = "<group>"; };
+		FC5948241D3C9B410014E39B /* ZIKOrderSingleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKOrderSingleTableViewCell.xib; sourceTree = "<group>"; };
 		FC6149DD1CAA2EE200672241 /* ZIKUserInfoSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKUserInfoSetViewController.h; sourceTree = "<group>"; };
 		FC6149DE1CAA2EE200672241 /* ZIKUserInfoSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKUserInfoSetViewController.m; sourceTree = "<group>"; };
 		FC6149F51CAA57B600672241 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
@@ -2356,6 +2363,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FC5948201D3C98A50014E39B /* 站长通-海报-2.png */,
 				FC59481E1D3C77850014E39B /* 已报价.png */,
 				EA8865E91D3A06FD008B89D6 /* areadbss.sqlite */,
 				FC11CBF81D37886900C3F47D /* 圆角矩形-3.png */,
@@ -3725,6 +3733,9 @@
 				FC368B4C1D2E2C09009E0160 /* ZIKStationOrderDemandTableViewCell.h */,
 				FC368B4D1D2E2C09009E0160 /* ZIKStationOrderDemandTableViewCell.m */,
 				FC368B4E1D2E2C09009E0160 /* ZIKStationOrderDemandTableViewCell.xib */,
+				FC5948221D3C9B400014E39B /* ZIKOrderSingleTableViewCell.h */,
+				FC5948231D3C9B410014E39B /* ZIKOrderSingleTableViewCell.m */,
+				FC5948241D3C9B410014E39B /* ZIKOrderSingleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4860,6 +4871,7 @@
 				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
 				FC56127D1D0C092F00E5743B /* duihao.png in Resources */,
 				EA4E64701D0E848900A7D731 /* kefuxitongyonghutouxiang.png in Resources */,
+				FC5948261D3C9B410014E39B /* ZIKOrderSingleTableViewCell.xib in Resources */,
 				EAFB90091D1A860300FCF88B /* 升级箭头@2x.png in Resources */,
 				FC74AD5F1D348D7A009D8409 /* 站长中心-我的荣誉.png in Resources */,
 				EA833D881CFE792A00D56AFB /* kefuphone@2x.png in Resources */,
@@ -4988,6 +5000,7 @@
 				EA3D4D861D1792450010B56D /* zhanzhangLong.png in Resources */,
 				EA4EEA1C1CD8822800FEFD52 /* dibgzhibiaoqian.png in Resources */,
 				EAFB90031D1A83FB00FCF88B /* YLDShenFenShuoMingCell.xib in Resources */,
+				FC5948211D3C98A50014E39B /* 站长通-海报-2.png in Resources */,
 				FC2276991D17BC4E0037B131 /* zt已报价.png in Resources */,
 				EA7E7D9D1D30DDA6001F4BD4 /* 首页-ico_金牌供应商.png in Resources */,
 				EA5E6E411CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.xib in Resources */,
@@ -5405,6 +5418,7 @@
 				EA7AE8EF1C96908B00B43073 /* SellQiyeInfoTableViewCell.m in Sources */,
 				FC22766B1D177C9F0037B131 /* ZIKMyofferTableViewCell.m in Sources */,
 				EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */,
+				FC5948251D3C9B410014E39B /* ZIKOrderSingleTableViewCell.m in Sources */,
 				EA7514861C9BA41F003D63F1 /* buyFabuViewController.m in Sources */,
 				FC523FF31D26137C002C001F /* ZIKStationChangeInfoViewController.m in Sources */,
 				EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */,
