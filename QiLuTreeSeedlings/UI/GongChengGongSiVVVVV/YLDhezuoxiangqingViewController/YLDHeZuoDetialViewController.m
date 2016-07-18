@@ -15,17 +15,18 @@
 #import "MJRefresh.h"
 #import "YLDSearchNavView.h"
 @interface YLDHeZuoDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
-@property (nonatomic,weak) UIButton *nowBtn;
-@property (nonatomic,weak) UIView *moveView;
-@property (nonatomic,weak)YLDDingDanJianJieView *jianjieView;
-@property (nonatomic,weak)UITableView *tableView;
+@property (nonatomic,strong) UIButton *nowBtn;
+@property (nonatomic,strong) UIView *moveView;
+@property (nonatomic,strong)YLDDingDanJianJieView *jianjieView;
+@property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,copy)NSString *Uid;
 @property (nonatomic,copy)NSString *itemUid;
 @property (nonatomic,strong)YLDHeZuoDetial *model;
 @property (nonatomic)NSInteger pageNum;
 @property (nonatomic)NSMutableArray *dataAry;
 @property (nonatomic,strong)NSString *keyWord;
-@property (nonatomic,weak) YLDSearchNavView *searchV;
+@property (nonatomic,strong) YLDSearchNavView *searchV;
+@property (nonatomic,strong) UIButton *searchBtn;
 @end
 
 @implementation YLDHeZuoDetialViewController
@@ -76,6 +77,7 @@
     UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-55, 23, 30, 30)];
     [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
     [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
+    self.searchBtn=searchShowBtn;
     [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.navBackView addSubview:searchShowBtn];
     //    self.saerchBtn=searchShowBtn;
@@ -83,6 +85,7 @@
     self.searchV=searchV;
     searchV.delegate=self;
     searchV.hidden=YES;
+    
     [self.navBackView addSubview:searchV];
 
     // Do any additional setup after loading the view.
@@ -170,14 +173,15 @@
     _nowBtn=sender;
     if (sender.tag==0) {
         self.jianjieView.hidden=NO;
-//        self.editingBtn.hidden=NO;
+        self.searchBtn.hidden=YES;
         self.tableView.hidden=YES;
-//        self.searchV.hidden=YES;
-//        [self.saerchBtn removeFromSuperview];
+        self.searchV.hidden=YES;
+
     }
     if (sender.tag==1) {
         self.jianjieView.hidden=YES;
         self.tableView.hidden=NO;
+        self.searchBtn.hidden=NO;
 //        self.editingBtn.hidden=YES;
 //        if (self.saerchBtn.selected) {
 //            self.searchV.hidden=NO;
