@@ -733,7 +733,6 @@
                               phone,@"phone",
                               password,@"password",
                               repassword,@"repassword",
-                              code,@"code",
                               nil];
     ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {

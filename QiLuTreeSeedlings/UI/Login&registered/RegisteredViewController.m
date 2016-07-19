@@ -62,18 +62,7 @@
     self.rePassWordTextField.delegate=self;
     self.rePassWordTextField.tag=10003;
     self.rePassWordTextField.secureTextEntry = YES;
-    
-    self.codeTextField=[self viewWithY:3 andImageName:@"yanzhengCode" andTitle:@"验证码"];
-    self.codeTextField.placeholder=@"请输入验证码";
-    self.codeTextField.delegate=self;
-    self.codeTextField.tag=10004;
-    self.codeTextField.keyboardType=UIKeyboardTypeNumberPad;
-    UILabel *zzzzLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 4*50+74+5, kWidth-80, 20)];
-    [zzzzLab setFont:[UIFont systemFontOfSize:13]];
-    [zzzzLab setTextColor:detialLabColor];
-    [zzzzLab setText:@"验证码将发送到您所填写的手机上"];
-    [self.view addSubview:zzzzLab];
-    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 4*50+74+20+30, kWidth-80, 40)];
+    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 3*50+54+20+30, kWidth-80, 40)];
     [self.view addSubview:sureBtn];
     [sureBtn addTarget:self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [sureBtn setBackgroundColor:NavColor];
@@ -118,12 +107,8 @@
         [ToastView showTopToast:@"两次输入的密码不一致"];
         return;
     }
-    if (self.codeTextField.text.length==0) {
-        [ToastView showTopToast:@"验证码不能为空"];
-        return;
-    }
     
-    [HTTPCLIENT registeredUserWithPhone:self.phoneTextField.text withPassWord:self.passWordTextField.text withRepassWord:self.rePassWordTextField.text withCode:self.codeTextField.text Success:^(id responseObject) {
+    [HTTPCLIENT registeredUserWithPhone:self.phoneTextField.text withPassWord:self.passWordTextField.text withRepassWord:self.rePassWordTextField.text withCode:nil Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [self registeredSuccessAction];
         }else
