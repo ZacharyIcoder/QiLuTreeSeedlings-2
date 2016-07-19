@@ -157,20 +157,52 @@
         self.isSelect = YES;
     }
     if (hotBuyModel.goldsupplier == 0 || hotBuyModel.goldsupplier == 10) {
-        goldImageView.image = [UIImage imageNamed:@"列表-普通供应商"];
+        //goldImageView.image = [UIImage imageNamed:@"列表-普通供应商"];
+        goldImageView.hidden=YES;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=18;
+        self.titleLab.frame=frame;
     } else if (hotBuyModel.goldsupplier == 1) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-金牌供应商"];
     } else if (hotBuyModel.goldsupplier == 2) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-银牌供应商"];
     } else if (hotBuyModel.goldsupplier == 3) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
     } else if (hotBuyModel.goldsupplier == 4) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-认证供应商"];
     } else if (hotBuyModel.goldsupplier == 5) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-总站"];
     } else if (hotBuyModel.goldsupplier == 6) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-分站"];
     } else if (hotBuyModel.goldsupplier == 7) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-工程公司"];
     }
 

@@ -554,7 +554,7 @@
 
             } else {
                 if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
-                    [ToastView showTopToast:@"您已具备其它身份"];
+                    [ToastView showTopToast:[NSString stringWithFormat:@"您已具备%@身份",APPDELEGATE.userModel.goldsupplier]];
                     return;
                 }
                 [self hiddingSelfTabBar];
