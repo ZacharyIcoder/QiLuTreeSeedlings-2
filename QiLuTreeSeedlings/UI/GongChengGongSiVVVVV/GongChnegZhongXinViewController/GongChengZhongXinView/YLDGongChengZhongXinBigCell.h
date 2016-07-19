@@ -15,6 +15,7 @@
 - (IBAction)BackBtnAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *userImagV;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+@property (weak, nonatomic) IBOutlet UIButton *fenxiangBtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *companyName;
 @property (weak, nonatomic) IBOutlet UILabel *personName;

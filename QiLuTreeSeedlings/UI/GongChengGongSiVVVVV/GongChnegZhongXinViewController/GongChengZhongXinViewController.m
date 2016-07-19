@@ -80,6 +80,7 @@
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
                 [cell.imageBtn addTarget:self action:@selector(gczzMessageAction) forControlEvents:UIControlEventTouchUpInside];
                 [cell.shareBtn addTarget:self action:@selector(shareBtnAction) forControlEvents:UIControlEventTouchUpInside];
+                [cell.fenxiangBtn addTarget:self action:@selector(shareBtnAction) forControlEvents:UIControlEventTouchUpInside];
             }
             [cell.userImagV setImageWithURL:[NSURL URLWithString:APPDELEGATE.GCGSModel.attachment] placeholderImage:[UIImage imageNamed:@"UserImage"]];
             

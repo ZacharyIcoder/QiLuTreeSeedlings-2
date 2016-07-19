@@ -32,9 +32,9 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工程中心" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVA-ki-0QK">
-                        <rect key="frame" x="58" y="20" width="204" height="21"/>
+                        <rect key="frame" x="110" y="20" width="100" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="204" id="5Qm-9I-jDB"/>
+                            <constraint firstAttribute="width" constant="100" id="5Qm-9I-jDB"/>
                             <constraint firstAttribute="height" constant="21" id="KJ5-5I-xg5"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -67,9 +67,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBt-5R-Arj">
-                        <rect key="frame" x="270" y="20" width="42" height="22"/>
+                        <rect key="frame" x="290" y="20" width="22" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="42" id="FZI-UF-0jL"/>
+                            <constraint firstAttribute="width" constant="22" id="FZI-UF-0jL"/>
                             <constraint firstAttribute="height" constant="22" id="Hmd-lk-UAK"/>
                         </constraints>
                         <state key="normal" image="分享.png"/>
@@ -81,6 +81,16 @@
                             <constraint firstAttribute="height" constant="80" id="I00-QB-dls"/>
                         </constraints>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLj-kr-6x1">
+                        <rect key="frame" x="255" y="20" width="35" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="4uh-af-h75"/>
+                            <constraint firstAttribute="width" constant="35" id="v0c-Xh-rGu"/>
+                        </constraints>
+                        <state key="normal" title="分享">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bVA-ki-0QK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="5Kg-pk-fWx"/>
@@ -88,8 +98,10 @@
                     <constraint firstItem="0tx-eI-ME7" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9wQ-eR-24a"/>
                     <constraint firstItem="aRt-rp-3Hv" firstAttribute="top" secondItem="RbH-f1-qwP" secondAttribute="bottom" constant="8" id="Eqg-9G-Bw4"/>
                     <constraint firstItem="JoY-0c-qem" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="H1u-9Y-Bl8"/>
+                    <constraint firstItem="DBt-5R-Arj" firstAttribute="leading" secondItem="WLj-kr-6x1" secondAttribute="trailing" id="J1D-H1-qJ8"/>
                     <constraint firstItem="RbH-f1-qwP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="JL6-dJ-fk0"/>
                     <constraint firstItem="JoY-0c-qem" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="JZn-ej-ufP"/>
+                    <constraint firstItem="WLj-kr-6x1" firstAttribute="centerY" secondItem="DBt-5R-Arj" secondAttribute="centerY" id="M5M-Gm-9Ka"/>
                     <constraint firstItem="Wid-n8-kmK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Rs6-lz-J37"/>
                     <constraint firstItem="RbH-f1-qwP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SB8-fQ-nRj"/>
                     <constraint firstItem="MUb-nT-m3i" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Syp-5W-Of6"/>
@@ -107,6 +119,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="companyName" destination="aRt-rp-3Hv" id="qIC-Ow-PBp"/>
+                <outlet property="fenxiangBtn" destination="WLj-kr-6x1" id="cbf-Zm-4BD"/>
                 <outlet property="imageBtn" destination="0tx-eI-ME7" id="lB4-G6-eLv"/>
                 <outlet property="personName" destination="MUb-nT-m3i" id="5p3-mI-TEj"/>
                 <outlet property="shareBtn" destination="DBt-5R-Arj" id="cl7-QU-9Gx"/>
