@@ -34,9 +34,9 @@
         self.titleLable.text = @"店铺";
     }
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    NSString  *urlString = [NSString stringWithFormat:@"http://115.28.228.147:999?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];
+//    NSString  *urlString = [NSString stringWithFormat:@"http://115.28.228.147:999?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];
     //http://101.200.77.145:9000
-//    NSString  *urlString = [NSString stringWithFormat:@"http://101.200.77.145:9000?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];//http://dianpu.qlhm.cn正式的
+    NSString  *urlString = [NSString stringWithFormat:@"http://dianpu.qlhm.cn?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];//http://dianpu.qlhm.cn正式的
 
     //NSString *baidu = @"https://www.baidu.com";
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];

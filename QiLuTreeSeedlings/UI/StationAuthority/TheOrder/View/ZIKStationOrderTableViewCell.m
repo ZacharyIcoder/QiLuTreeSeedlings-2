@@ -11,6 +11,7 @@
 #import "UIDefines.h"
 #import "ZIKFunction.h"
 #import "StringAttributeHelper.h"
+
 @interface ZIKStationOrderTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
 @property (weak, nonatomic) IBOutlet UILabel *orderTitleLabel;
@@ -58,9 +59,9 @@
         model.quotation = @"";
     }
     
-//    self.offerLabel.text      = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
+    //    self.offerLabel.text      = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
     NSString *offerString = [NSString stringWithFormat:@"报价要求:%@",model.quotation];
-//    self.qualityLabel.text = [NSString stringWithFormat:@"质量要求:%@",model.qualityRequest];
+    //    self.qualityLabel.text = [NSString stringWithFormat:@"质量要求:%@",model.qualityRequest];
     FontAttribute *fullFont = [FontAttribute new];
     fullFont.font = [UIFont systemFontOfSize:14.0f];
     fullFont.effectRange  = NSMakeRange(0, offerString.length);
@@ -95,7 +96,6 @@
     qualitdarkColor.effectRange = NSMakeRange(5, qualityString.length-5);
 
     self.qualityLabel.attributedText = [qualityString mutableAttributedStringWithStringAttributes:@[qualityfullFont,qualitypartFont,qualityfullColor,qualitdarkColor]];
-
 
     self.companyLabel.text    = model.engineeringCompany;
     //self.qualityLabel.text = model.orderType;

@@ -172,8 +172,16 @@
         }
         else {
               self.orderTV.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
-                self.orderTV.estimatedRowHeight = 180;
+                self.orderTV.estimatedRowHeight = 185;
                 return tableView.rowHeight;
+//            ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
+//            if (model.isMore) {
+////                statements
+////                return 185+model.rows-17;
+//                return 200;
+//            }
+//            return 185;
+
 
 
         }

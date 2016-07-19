@@ -84,7 +84,7 @@
         [ToastView showTopToast:@"请输入荣誉名称"];
         return;
     }
-    if ([ZIKFunction xfunc_check_strEmpty:time]) {
+    if ([ZIKFunction xfunc_check_strEmpty:time] || [time isEqualToString:@"请选择获取时间"]) {
         [ToastView showTopToast:@"请选择获取时间"];
         return;
     }
