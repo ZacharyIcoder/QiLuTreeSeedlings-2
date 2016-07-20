@@ -1286,11 +1286,11 @@
 }
 
 #pragma mark ---------- 我的供应列表 -----------
-- (void)getMysupplyListWithToken:(NSString *)token withAccessId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviewId:(NSString *)deviceId withState:(NSString *)state withPage:(NSString *)page withPageSize:(NSString *)pageSize success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+- (void)getMysupplyListWithToken:(NSString *)token withAccessId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviewId:(NSString *)deviceId withState:(NSString *)state withPage:(NSString *)page withPageSize:(NSString *)pageSize               WithsearchTime:(NSString *)searchTime success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     NSUserDefaults *userdefaults=[NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
     NSString *postURL = @"api/supply/my";
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                 APPDELEGATE.userModel.access_token,@"access_token",
                                 APPDELEGATE.userModel.access_id,@"access_id",
                                 kclient_id,@"client_id",
@@ -1300,6 +1300,7 @@
                                 page,@"page",
                                 pageSize,@"pageSize",
                                 nil];
+    parameters[@"searchTime"] = searchTime;
     ShowActionV()
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         

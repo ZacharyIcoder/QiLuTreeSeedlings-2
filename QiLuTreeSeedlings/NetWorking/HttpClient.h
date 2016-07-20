@@ -301,7 +301,16 @@
  *  @param success      success description
  *  @param failure      failure description
  */
-- (void)getMysupplyListWithToken:(NSString *)token withAccessId:(NSString *)accessID withClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withDeviewId:(NSString *)deviceId withState:(NSString *)state withPage:(NSString *)page withPageSize:(NSString *)pageSize success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+- (void)getMysupplyListWithToken:(NSString *)token
+                    withAccessId:(NSString *)accessID
+                    withClientId:(NSString *)clientID
+                withClientSecret:(NSString *)clientSecret
+                    withDeviewId:(NSString *)deviceId
+                       withState:(NSString *)state
+                        withPage:(NSString *)page
+                    withPageSize:(NSString *)pageSize
+                  WithsearchTime:(NSString *)searchTime
+success:(void (^)(id))success failure:(void (^)(NSError *))failure;
 
 #pragma mark-上传图片
 -(void)upDataImage:(UIImage *)image
