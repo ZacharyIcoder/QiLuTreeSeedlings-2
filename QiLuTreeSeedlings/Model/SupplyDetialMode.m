@@ -34,7 +34,7 @@
     model.nurseryUid = dic[@"nurseryUid"];
     model.memberPhone = dic[@"memberPhone"];
     model.memberName = dic[@"memberName"];
-    model.goldsupplier=[dic[@"goldsupplier"] integerValue];
+    
 //    model.memberUid = dic[@"memberUid"];
     return model;
 }

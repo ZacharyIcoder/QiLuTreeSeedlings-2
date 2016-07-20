@@ -13,8 +13,11 @@
 @property (nonatomic,strong)UILabel *nameLab;
 @property (nonatomic,strong)UILabel *numLab;
 @property (nonatomic,strong)UILabel *priceLab;
+@property (nonatomic,strong)UILabel *shenfenLab;
+@property (nonatomic,strong)UIImageView *logoImageV;
 @end
 @implementation BuyUserInfoTableViewCell
+@synthesize shenfenLab,logoImageV;
 -(id)initWithFrame:(CGRect)frame
 {
     self=[super initWithFrame:frame];
@@ -24,6 +27,17 @@
         [self addSubview:iamgeV];
         iamgeV.layer.masksToBounds=YES;
         iamgeV.layer.cornerRadius=35;
+        
+        
+        UIImageView *logoImageVx=[[UIImageView alloc]initWithFrame:CGRectMake(18, CGRectGetMaxY(iamgeV.frame)+5, 20, 20)];
+        self.logoImageV=logoImageVx;
+        [self addSubview:logoImageVx];
+        
+        UILabel *shenfenLabx=[[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(iamgeV.frame)+5, 200, 20)];
+        [shenfenLabx setFont:[UIFont systemFontOfSize:15]];
+        [shenfenLabx setTextColor:NavYellowColor];
+        self.shenfenLab=shenfenLabx;
+        [self addSubview:shenfenLabx];
         UILabel *namezLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 17, 55, 20)];
         [namezLab setTextAlignment:NSTextAlignmentRight];
         [namezLab setTextColor:detialLabColor];
@@ -73,6 +87,42 @@
     NSString *nubStr=[dic objectForKey:@"count"];
     self.numLab.text =[NSString stringWithFormat:@"%@棵",nubStr];
     self.priceLab.text=[dic objectForKey:@"price"];
+
+
+}
+-(void)setModel:(BuyDetialModel *)model
+{
+    _model=model;
+    self.nameLab.text=model.supplybuyName;
+    NSString *nubStr=model.count;
+    self.numLab.text =[NSString stringWithFormat:@"%@棵",nubStr];
+    self.priceLab.text=model.price;
+        if (model.goldsupplier == 0 || model.goldsupplier == 10) {
+            CGRect frame=logoImageV.frame;
+            frame.size.height=1;
+            logoImageV.frame=frame;
+        } else if (model.goldsupplier == 1) {
+            shenfenLab.text=@"金牌供应商";
+            logoImageV.image = [UIImage imageNamed:@"列表-金牌供应商"];
+        } else if (model.goldsupplier == 2) {
+            shenfenLab.text=@"银牌供应商";
+            logoImageV.image = [UIImage imageNamed:@"列表-银牌供应商"];
+        } else if (model.goldsupplier == 3) {
+            shenfenLab.text=@"铜牌供应商";
+            logoImageV.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+        } else if (model.goldsupplier == 4) {
+            shenfenLab.text=@"认证供应商";
+            logoImageV.image = [UIImage imageNamed:@"列表-认证供应商"];
+        } else if (model.goldsupplier == 5) {
+            shenfenLab.text=@"工作站总站";
+            logoImageV.image = [UIImage imageNamed:@"列表-总站"];
+        } else if (model.goldsupplier == 6) {
+            shenfenLab.text=@"工作站分站";
+            logoImageV.image = [UIImage imageNamed:@"列表-分站"];
+        } else if (model.goldsupplier == 7) {
+            shenfenLab.text=@"工程公司";
+            logoImageV.image = [UIImage imageNamed:@"列表-工程公司"];
+        }
 }
 - (void)awakeFromNib {
     // Initialization code

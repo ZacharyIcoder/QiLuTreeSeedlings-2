@@ -62,6 +62,7 @@
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 NSDictionary *dic=[responseObject objectForKey:@"result"];
                 SupplyDetialMode *model=[SupplyDetialMode creatSupplyDetialModelByDic:[dic objectForKey:@"detail"]];
+                model.goldsupplier=[dic[@"goldsupplier"] integerValue];
                 if (model.uid.length<=0) {
                     [ToastView showTopToast:@"请刷新列表后重新进入该供应"];
                     [self.navigationController popViewControllerAnimated:YES];
@@ -301,7 +302,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 330;
+        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+            return 320;
+        }else{
+            return 350;
+        }
     }
     if (indexPath.section==1) {
         if (self.model.spec.count>0) {
@@ -406,7 +411,13 @@
 {
     if (self.model) {
         if (indexPath.section==0) {
-            SellBanderTableViewCell *cell=[[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 330) andModel:self.model andHotSellModel:self.hotModel];
+            CGFloat height;
+            if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+                height=320;
+            }else{
+                height=350;
+            }
+            SellBanderTableViewCell *cell=[[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, height) andModel:self.model andHotSellModel:self.hotModel];
             cell.delegate=self;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;

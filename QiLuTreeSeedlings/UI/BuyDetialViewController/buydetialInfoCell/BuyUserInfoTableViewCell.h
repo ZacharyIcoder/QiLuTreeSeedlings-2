@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BuyDetialModel.h"
 @interface BuyUserInfoTableViewCell : UITableViewCell
 @property (nonatomic,strong)NSDictionary *dic;
+@property (nonatomic,strong)BuyDetialModel *model;
 -(id)initWithFrame:(CGRect)frame;
 @end

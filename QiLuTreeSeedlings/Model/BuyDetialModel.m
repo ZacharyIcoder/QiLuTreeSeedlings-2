@@ -52,6 +52,9 @@
     model.buyPrice=[[dic objectForKey:@"buyPrice"] floatValue];
     model.goldsupplier=[dic[@"goldsupplier"] integerValue];
     model.searchTime=dic[@"searchTime"];
+    if (model.supplybuyName.length<=0) {
+        model.supplybuyName=@"请付费查看";
+    }
     return model;
 }
 @end

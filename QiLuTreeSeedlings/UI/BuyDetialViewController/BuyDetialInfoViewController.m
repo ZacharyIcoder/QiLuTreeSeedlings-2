@@ -61,7 +61,7 @@
 @property (nonatomic,weak) UIButton *editingBtn;
 @property (nonatomic)NSInteger push_;
 @property (nonatomic,copy) NSString *memberCustomUid;
-
+@property (nonatomic,assign) NSInteger goldsupplier;
 //@property (nonatomic, strong) NSString *state;//用于求购中 1:热门求购（热门求购中除去已定制和已购买的）；2：我的求购；3：已定制；4：已购买
 @property (nonatomic, strong) NSString       *shareText; //分享文字
 @property (nonatomic, strong) NSString       *shareTitle;//分享标题
@@ -117,7 +117,8 @@
                             self.infoDic=dic;
                             self.memberUid = dic[@"memberUid"];
                             self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
-                                                       self.model.uid=self.uid;
+                            self.model.uid=self.uid;
+                            self.model.goldsupplier=[[dic objectForKey:@"goldsupplier"] integerValue];
                             if (self.model.push||self.model.buy) {
                                 self.isPuy=YES;
                                 _biaoqianView.hidden=NO;
@@ -294,6 +295,7 @@
              self.memberUid = dic[@"memberUid"];
              self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
              self.model.uid=uid;
+             self.model.goldsupplier=[[dic objectForKey:@"goldsupplier"] integerValue];
              if (self.model.push||self.model.buy) {
                  self.isPuy=YES;
                  _biaoqianView.hidden=NO;
@@ -1142,21 +1144,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 100)];
+        CGFloat height;
+        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+            height=100;
+        }else{
+            height=125;
+        }
+        BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, height)];
                  cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (self.infoDic) {
-            NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
-            if(!_isPuy&&self.type==1)
-            {
-                if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
-                    
-                }else
-                {
-                    [dic setValue:@"请付费查看" forKey:@"supplybuyName"];
-                }
-                
-            }
-            cell.dic=dic;
+        if (self.model) {
+            cell.model=self.model;
         }
         return cell;
     }else if(indexPath.section==1)
@@ -1235,7 +1232,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return 100;
+        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+            return 100;
+        }else{
+            return 125;
+        }
     }
     if (indexPath.section==1) {
         if (self.specAry) {
