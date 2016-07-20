@@ -82,7 +82,8 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+//    [super viewDidAppear:animated];
+    [super viewDidAppear:YES];
     if (self.type==2) {
         [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {

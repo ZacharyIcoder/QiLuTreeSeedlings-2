@@ -42,12 +42,12 @@
     [tableView addHeaderWithCallback:^{
         weakSelf.pageNum=1;
         ShowActionV();
-        [weakSelf getDataListPageNum:[NSString stringWithFormat:@"%ld",weakSelf.pageNum] andKeyWord:@""];
+        [weakSelf getDataListPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andKeyWord:@""];
     }];
     [tableView addFooterWithCallback:^{
         weakSelf.pageNum+=1;
          ShowActionV();
-        [weakSelf getDataListPageNum:[NSString stringWithFormat:@"%ld",weakSelf.pageNum] andKeyWord:@""];
+        [weakSelf getDataListPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andKeyWord:@""];
     }];
     [tableView headerBeginRefreshing];
     // Do any additional setup after loading the view from its nib.

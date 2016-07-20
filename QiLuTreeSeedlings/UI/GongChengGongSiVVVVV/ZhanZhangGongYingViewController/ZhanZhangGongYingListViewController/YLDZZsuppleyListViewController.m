@@ -78,7 +78,7 @@
         HotSellModel *model=[self.dataAry lastObject];
         searchTime=model.searchtime;
     }
-    [HTTPCLIENT zhanzhanggongyingListWithPageNum:[NSString stringWithFormat:@"%ld",pagenum] WithPageSize:@"15" WithsearchTime:searchTime Success:^(id responseObject) {
+    [HTTPCLIENT zhanzhanggongyingListWithPageNum:[NSString stringWithFormat:@"%ld",(long)pagenum] WithPageSize:@"15" WithsearchTime:searchTime Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             if (self.pageNum==1) {
                 [self.dataAry removeAllObjects];
@@ -114,7 +114,7 @@
         HotSellModel *model=[self.dataAry lastObject];
         searchTime=model.searchtime;
     }
-    [HTTPCLIENT ZhanZhanggongyingListWithPage:[NSString stringWithFormat:@"%ld",pageNumber] WithPageSize:pageSize Withgoldsupplier:goldsupplier WithProductUid:productUid WithProductName:productName WithProvince:province WithCity:city WithCounty:county  WithAry:ary WithSearchTime:searchTime Success:^(id responseObject) {
+    [HTTPCLIENT ZhanZhanggongyingListWithPage:[NSString stringWithFormat:@"%ld",(long)pageNumber] WithPageSize:pageSize Withgoldsupplier:goldsupplier WithProductUid:productUid WithProductName:productName WithProvince:province WithCity:city WithCounty:county  WithAry:ary WithSearchTime:searchTime Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             if (self.pageNum==1) {
                 [self.dataAry removeAllObjects];

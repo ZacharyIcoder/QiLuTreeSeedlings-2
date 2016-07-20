@@ -66,4 +66,6 @@
  *  是否可刷新
  */
 @property (nonatomic,assign) BOOL isCanRefresh;
+
+@property (nonatomic, copy) NSString *searchTime;
 @end

@@ -268,10 +268,10 @@
         if ([obj isKindOfClass:[UIButton class]]) {
             if (((UIButton *)obj).selected && (obj.tag < 200 && obj.tag >= 100)) {
                 orderStateStr = [orderStateStr stringByAppendingString:[NSString stringWithFormat:@"%@,",((UIButton *)obj).currentTitle]];
-                orderStateUid = [orderStateUid stringByAppendingString:[NSString stringWithFormat:@"%ld,",((UIButton *)obj).tag-100]];
+                orderStateUid = [orderStateUid stringByAppendingString:[NSString stringWithFormat:@"%ld,",(long)(((UIButton *)obj).tag-100)]];
             }
             if (![obj isKindOfClass:[ZIKOrderTypeButton class]]) {
-                orderStateAllUid = [orderStateAllUid stringByAppendingString:[NSString stringWithFormat:@"%ld,",((UIButton *)obj).tag-100]];
+                orderStateAllUid = [orderStateAllUid stringByAppendingString:[NSString stringWithFormat:@"%ld,",(long)(((UIButton *)obj).tag-100)]];
             }
         }
     }];

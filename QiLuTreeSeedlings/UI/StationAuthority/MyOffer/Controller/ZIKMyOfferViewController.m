@@ -147,7 +147,7 @@
     //CLog(@"searchText:%@",searchText);
     self.keyword = textField.text;
     self.page = 1;
-    [self requestMyQuoteList:[NSString stringWithFormat:@"%ld",self.page]];
+    [self requestMyQuoteList:[NSString stringWithFormat:@"%ld",(long)self.page]];
     return YES;
 }
 
@@ -156,7 +156,7 @@
     //CLog(@"textField:%@",textField.text);
     self.keyword = textField.text;
     self.page = 1;
-    [self requestMyQuoteList:[NSString stringWithFormat:@"%ld",self.page]];
+    [self requestMyQuoteList:[NSString stringWithFormat:@"%ld",(long)self.page]];
 }
 
 - (void)requestMyQuoteList:(NSString *)page {

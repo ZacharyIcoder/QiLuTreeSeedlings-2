@@ -312,9 +312,15 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 #pragma mark - 请求我的供应列表信息
 - (void)requestMySupplyList:(NSString *)page {
     //我的供应列表
+    NSString *searchTime;
+    if (self.page > 1 && self.supplyInfoMArr.count > 0) {
+        ZIKSupplyModel *model = [self.supplyInfoMArr lastObject];
+        searchTime = model.searchTime;
+    }
+
     [self.supplyTableView headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
-    [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withState:[NSString stringWithFormat:@"%ld",(long)self.state] withPage:page withPageSize:@"15" success:^(id responseObject) {
+    [httpClient getMysupplyListWithToken:nil withAccessId:nil withClientId:nil withClientSecret:nil withDeviewId:nil withState:[NSString stringWithFormat:@"%ld",(long)self.state] withPage:page withPageSize:@"15" WithsearchTime:searchTime success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
             return ;
