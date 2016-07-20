@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, StationOrderStatusType) {
  *  枚举的订单状态
  */
 @property (nonatomic, assign) StationOrderStatusType statusType;
-//@property (nonatomic, assign) BOOL isShow;
+@property (nonatomic, assign) BOOL isShow;
 //@property (nonatomic, assign) BOOL isMore;
 //@property (nonatomic, assign) NSInteger rows;
 /**

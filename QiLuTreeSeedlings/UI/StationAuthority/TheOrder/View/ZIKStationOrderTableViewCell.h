@@ -10,7 +10,12 @@
 
 @class ZIKStationOrderModel;
 
+typedef void(^OpenButtonBlock)(NSIndexPath *indexPath);
+
 @interface ZIKStationOrderTableViewCell : UITableViewCell
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, copy) OpenButtonBlock openButtonBlock;
+
 + (instancetype)cellWithTableView:(UITableView *)tableView ;
 - (void)configureCell:(ZIKStationOrderModel *)model;
 @end

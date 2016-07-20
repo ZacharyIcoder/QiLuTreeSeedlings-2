@@ -23,7 +23,7 @@
     } else if ([self.status isEqualToString:@"已报价"]) {
         self.statusType = StationOrderStatusTypeAlreadyQuotation;
     }
-//    self.isShow = NO;
+    self.isShow = NO;
 //    self.isMore = NO;
 //    self.rows = 1;
 //

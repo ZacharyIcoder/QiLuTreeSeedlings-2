@@ -230,10 +230,16 @@
         return cell;
 
     } else if (indexPath.section == 2) {
-        ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];
+      __block  ZIKStationOrderTableViewCell *cell = [ZIKStationOrderTableViewCell cellWithTableView:tableView];
         if (self.orderMArr.count > 0) {
-            ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
+          __block  ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
             [cell configureCell:model];
+            cell.indexPath = indexPath;
+            //按钮点击展开隐藏
+            cell.openButtonBlock = ^(NSIndexPath *indexPath){
+                model.isShow = !model.isShow;
+                [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            };
         }
 
         return cell;
