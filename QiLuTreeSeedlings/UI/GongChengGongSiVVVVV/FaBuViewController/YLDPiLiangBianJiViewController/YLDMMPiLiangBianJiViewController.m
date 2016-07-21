@@ -74,7 +74,7 @@
     return 90;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *IDStr=[NSString stringWithFormat:@"YLDMMPiLiangBianJiCell%ld",indexPath.row];
+    NSString *IDStr=[NSString stringWithFormat:@"YLDMMPiLiangBianJiCell%ld",(long)indexPath.row];
     YLDMMPiLiangBianJiCell *cell=[tableView dequeueReusableCellWithIdentifier:IDStr];
     if (!cell) {
         cell=[[YLDMMPiLiangBianJiCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IDStr];

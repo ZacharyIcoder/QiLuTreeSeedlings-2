@@ -290,9 +290,7 @@
 		EA8D3D3D1D23B2380095840F /* YLDHeZuoDetial.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8D3D3C1D23B2380095840F /* YLDHeZuoDetial.m */; };
 		EA9A22951D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22931D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m */; };
 		EA9A22961D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A22941D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib */; };
-		EA9A229C1D1241E3000CA161 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22981D1241E3000CA161 /* CHANGELOG.md */; };
 		EA9A229D1D1241E3000CA161 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A229A1D1241E3000CA161 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EA9A229E1D1241E3000CA161 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EA9A229B1D1241E3000CA161 /* README.md */; };
 		EA9A22A21D124D15000CA161 /* YLDDingDanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A11D124D15000CA161 /* YLDDingDanModel.m */; };
 		EA9A22A61D128DFF000CA161 /* YLDDingDanDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A51D128DFF000CA161 /* YLDDingDanDetialViewController.m */; };
 		EA9A22A91D128FDC000CA161 /* YLDDingDanJianJieView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */; };
@@ -1185,10 +1183,8 @@
 		EA9A22921D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMiaoMuUnTableViewCell.h; sourceTree = "<group>"; };
 		EA9A22931D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMiaoMuUnTableViewCell.m; sourceTree = "<group>"; };
 		EA9A22941D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMiaoMuUnTableViewCell.xib; sourceTree = "<group>"; };
-		EA9A22981D1241E3000CA161 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		EA9A22991D1241E3000CA161 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		EA9A229A1D1241E3000CA161 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		EA9A229B1D1241E3000CA161 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA9A22A01D124D15000CA161 /* YLDDingDanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanModel.h; sourceTree = "<group>"; };
 		EA9A22A11D124D15000CA161 /* YLDDingDanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanModel.m; sourceTree = "<group>"; };
 		EA9A22A41D128DFF000CA161 /* YLDDingDanDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanDetialViewController.h; sourceTree = "<group>"; };
@@ -3179,10 +3175,8 @@
 		EA9A22971D1241E3000CA161 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
-				EA9A22981D1241E3000CA161 /* CHANGELOG.md */,
 				EA9A22991D1241E3000CA161 /* JSONKit.h */,
 				EA9A229A1D1241E3000CA161 /* JSONKit.m */,
-				EA9A229B1D1241E3000CA161 /* README.md */,
 			);
 			path = JSONKit;
 			sourceTree = "<group>";
@@ -5360,7 +5354,6 @@
 				FC2276791D177C9F0037B131 /* ZIKStationOrderDetailViewController.m in Sources */,
 				FC44704D1D2F513400EA0D82 /* ZIKWorkstationSelectListView.m in Sources */,
 				EA8CAA681C89669800058A34 /* NSString+MD5.m in Sources */,
-				EA9A229E1D1241E3000CA161 /* README.md in Sources */,
 				EAA9FFF11D12365E009CF19D /* YLDMiaoMuTableViewCell.m in Sources */,
 				FC368B541D2E4486009E0160 /* ZIKStationOrderDemandTableViewCell.m in Sources */,
 				EA2E28B81CAE613500186DA5 /* UserBigInfoView.m in Sources */,
@@ -5455,7 +5448,6 @@
 				FC56124F1D0C092F00E5743B /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				FC0853FA1D191A29003A47BA /* ZIKWorkstationTableViewCell.m in Sources */,
 				EAEA07EB1C5AFFE9003A0D8A /* AdvertView.m in Sources */,
-				EA9A229C1D1241E3000CA161 /* CHANGELOG.md in Sources */,
 				FC71342C1CB351500037D507 /* ZIKPaySuccessViewController.m in Sources */,
 				EA5A081F1D14EEFD005000E9 /* YLDBaoJiaCell.m in Sources */,
 				EA5A08241D15216E005000E9 /* YLDBaoModel.m in Sources */,
@@ -5727,8 +5719,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5765,7 +5757,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5776,8 +5768,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5814,7 +5806,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

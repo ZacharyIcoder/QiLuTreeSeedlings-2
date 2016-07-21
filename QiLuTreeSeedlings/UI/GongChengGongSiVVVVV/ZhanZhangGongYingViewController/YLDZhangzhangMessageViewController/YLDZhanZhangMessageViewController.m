@@ -76,7 +76,7 @@
 }
 -(void)getDatListWithPageNum:(NSInteger)pageNum
 {
-    [HTTPCLIENT workstationdetialWithuid:self.uid WithpageNumber:[NSString stringWithFormat:@"%ld",pageNum] WithpageSize:@"15" Success:^(id responseObject) {
+    [HTTPCLIENT workstationdetialWithuid:self.uid WithpageNumber:[NSString stringWithFormat:@"%ld",(long)pageNum] WithpageSize:@"15" Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *result=[responseObject objectForKey:@"result"];
             if (self.pageNum==1) {

@@ -117,7 +117,7 @@
 -(void)getdataAction
 {
     
-    [HTTPCLIENT myDingDanDetialWithUid:self.Uid WithPageSize:@"15" WithPageNum:[NSString stringWithFormat:@"%ld",self.pageNum] Withkeyword:self.searchStr Success:^(id responseObject) {
+    [HTTPCLIENT myDingDanDetialWithUid:self.Uid WithPageSize:@"15" WithPageNum:[NSString stringWithFormat:@"%ld",(long)self.pageNum] Withkeyword:self.searchStr Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"orderDetail"];
             if (self.pageNum==1) {
@@ -186,9 +186,9 @@
     }
     NSDictionary *DIC=self.dataAry[indexPath.row];
     cell.messageDic=DIC;
-    cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
+    cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
     NSString *sdsadsa=DIC[@"description"];
-    
+
     CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求:%@",sdsadsa] width:kWidth-90 font:15];
     CGRect frame=cell.frame;
     if (height>20) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,7 +15,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dGz-Y1-yRA">
-                        <rect key="frame" x="8" y="8" width="134" height="84"/>
+                        <rect key="frame" x="11" y="4" width="128" height="92"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="128" id="7Oq-Ca-bhm"/>
+                            <constraint firstAttribute="height" constant="92" id="ou0-rn-djX"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLO-Wb-IqA">
                         <rect key="frame" x="3" y="126" width="60" height="18"/>
@@ -83,6 +87,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="dGz-Y1-yRA" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-25" id="2k9-rk-NDg"/>
                 <constraint firstAttribute="bottom" secondItem="I6M-b1-acg" secondAttribute="bottom" id="53W-QP-PVt"/>
                 <constraint firstAttribute="trailing" secondItem="dGz-Y1-yRA" secondAttribute="trailing" constant="8" id="5GB-Uk-gyJ"/>
                 <constraint firstItem="I6M-b1-acg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8xD-bL-e1a"/>
@@ -95,6 +100,7 @@
                 <constraint firstItem="ghx-Lj-I0p" firstAttribute="leading" secondItem="pLO-Wb-IqA" secondAttribute="trailing" constant="2" id="Rg4-S9-phe"/>
                 <constraint firstItem="dGz-Y1-yRA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="WiH-Vc-CkI"/>
                 <constraint firstItem="5eQ-qg-EAu" firstAttribute="top" secondItem="dGz-Y1-yRA" secondAttribute="bottom" constant="8" id="fAK-aa-kEN"/>
+                <constraint firstItem="dGz-Y1-yRA" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="hKh-Wq-g5p"/>
                 <constraint firstAttribute="trailing" secondItem="ghx-Lj-I0p" secondAttribute="trailing" constant="5" id="iaa-t6-uGs"/>
                 <constraint firstItem="ghx-Lj-I0p" firstAttribute="top" secondItem="5eQ-qg-EAu" secondAttribute="bottom" constant="7" id="nan-2r-Gqh"/>
                 <constraint firstItem="5eQ-qg-EAu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="sNK-Mk-0zr"/>
@@ -103,6 +109,14 @@
                 <constraint firstItem="I6M-b1-acg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="z7b-nm-Elq"/>
             </constraints>
             <size key="customSize" width="318" height="127"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="5GB-Uk-gyJ"/>
+                    <exclude reference="B3T-iz-RdM"/>
+                    <exclude reference="WiH-Vc-CkI"/>
+                    <exclude reference="fAK-aa-kEN"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="backView" destination="I6M-b1-acg" id="2jc-TR-uFA"/>
                 <outlet property="deleteButton" destination="5xZ-Mg-cbQ" id="uyP-CK-nvJ"/>

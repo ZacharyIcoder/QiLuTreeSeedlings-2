@@ -74,6 +74,10 @@
     
 }
 
+-(void)textViewChanged:(id)my {
+
+}
+
 -(void)setMessageDic:(NSDictionary *)messageDic
 {
     _messageDic=messageDic;

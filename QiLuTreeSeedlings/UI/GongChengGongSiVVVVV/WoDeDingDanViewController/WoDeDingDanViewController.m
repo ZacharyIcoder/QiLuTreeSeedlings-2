@@ -55,12 +55,12 @@
     [tableView addHeaderWithCallback:^{
         weakSelf.pageNum=1;
         ShowActionV();
-        [weakSelf getDataWithSearchWord:self.searchStr andPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",weakSelf.Status]];
+        [weakSelf getDataWithSearchWord:self.searchStr andPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",(long)weakSelf.Status]];
     }];
     [tableView addFooterWithCallback:^{
         weakSelf.pageNum+=1;
         ShowActionV();
-        [weakSelf getDataWithSearchWord:self.searchStr andPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",weakSelf.Status]];
+        [weakSelf getDataWithSearchWord:self.searchStr andPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",(long)weakSelf.Status]];
     }];
     
     [tableView headerBeginRefreshing];
@@ -86,7 +86,7 @@
 {
     self.pageNum=1;
     self.searchStr=textStr;
-    [self getDataWithSearchWord:textStr andPageNum:[NSString stringWithFormat:@"%ld",(long)self.pageNum] andStatus:[NSString stringWithFormat:@"%ld",self.Status]];
+    [self getDataWithSearchWord:textStr andPageNum:[NSString stringWithFormat:@"%ld",(long)self.pageNum] andStatus:[NSString stringWithFormat:@"%ld",(long)self.Status]];
 }
 -(void)hidingAction
 {

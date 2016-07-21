@@ -115,7 +115,7 @@
         cell=[YLDHeZuoDEMessageCell yldHeZuoDEMessageCell];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
-    cell.numLab.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
+    cell.numLab.text=[NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
     cell.dic=self.dataAry[indexPath.row];
     return cell;
 }
@@ -198,7 +198,7 @@
     }];
 }
 - (void)getDataList {
-    [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid WithPageNum:[NSString stringWithFormat:@"%ld",self.pageNum] WithPageSize:@"10" WithKeyWord:self.keyWord Success:^(id responseObject) {
+    [HTTPCLIENT hezuoDetialWithorderUid:self.Uid withitemUid:self.itemUid WithPageNum:[NSString stringWithFormat:@"%ld",(long)self.pageNum] WithPageSize:@"10" WithKeyWord:self.keyWord Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"detail"];
             if (self.pageNum==1) {

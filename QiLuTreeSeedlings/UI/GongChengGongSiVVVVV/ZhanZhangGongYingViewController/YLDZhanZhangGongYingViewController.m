@@ -65,7 +65,7 @@
 -(void)getDataListWithPageNum:(NSInteger )pageNum
 {
     [HTTPCLIENT GCGSshouyeWithPageSize:@"3" WithsupplyCount:@"10"
-        WithsupplyNumber:[NSString stringWithFormat:@"%ld",pageNum]                       Success:^(id responseObject) {
+        WithsupplyNumber:[NSString stringWithFormat:@"%ld",(long)pageNum]                       Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
             if (self.pageNum==1) {
