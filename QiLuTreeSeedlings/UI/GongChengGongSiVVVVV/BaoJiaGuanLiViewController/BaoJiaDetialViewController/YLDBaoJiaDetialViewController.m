@@ -57,12 +57,12 @@
     [tableView addHeaderWithCallback:^{
         weakSlef.pageNum=1;
         ShowActionV();
-        [weakSlef getMessageListWtihKeyWord:weakSlef.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
+        [weakSlef getMessageListWtihKeyWord:weakSlef.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",(long)weakSlef.pageNum]];
     }];
     [tableView addFooterWithCallback:^{
         weakSlef.pageNum+=1;
         ShowActionV();
-        [weakSlef getMessageListWtihKeyWord:weakSlef.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
+        [weakSlef getMessageListWtihKeyWord:weakSlef.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",(long)weakSlef.pageNum]];
     }];
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
@@ -92,7 +92,7 @@
     } failure:^(NSError *error) {
         
     }];
-    [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",weakSlef.pageNum]];
+    [weakSlef getMessageListWtihKeyWord:nil WithPageNumber:[NSString stringWithFormat:@"%ld",(long)weakSlef.pageNum]];
     // Do any additional setup after loading the view.
 }
 -(void)searchBtnAction:(UIButton *)sender
@@ -103,7 +103,7 @@
 {
     self.pageNum=1;
     self.searchStr=textStr;
-    [self getMessageListWtihKeyWord:textStr WithPageNumber:[NSString stringWithFormat:@"%ld",self.pageNum]];
+    [self getMessageListWtihKeyWord:textStr WithPageNumber:[NSString stringWithFormat:@"%ld",(long)self.pageNum]];
 }
 -(void)getMessageListWtihKeyWord:(NSString *)keyWord WithPageNumber:(NSString *)pageNumber
 {
@@ -253,7 +253,7 @@
                     [ToastView showTopToast:@"合作成功"];
                     self.pageNum=1;
                     ShowActionV();
-                    [self getMessageListWtihKeyWord:self.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",self.pageNum]];
+                    [self getMessageListWtihKeyWord:self.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",(long)self.pageNum]];
                 }
             } failure:^(NSError *error) {
                 

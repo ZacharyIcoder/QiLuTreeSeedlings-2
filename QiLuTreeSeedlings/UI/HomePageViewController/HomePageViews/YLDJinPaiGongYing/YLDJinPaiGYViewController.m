@@ -67,7 +67,7 @@
 }
 -(void)getDataLists
 {
-    [HTTPCLIENT GoldSupplrWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",self.pageNum] Withgoldsupplier:[NSString stringWithFormat:@"%ld",self.goldsupplier]  Success:^(id responseObject) {
+    [HTTPCLIENT GoldSupplrWithPageSize:@"15" WithPage:[NSString stringWithFormat:@"%ld",(long)(self.pageNum)] Withgoldsupplier:[NSString stringWithFormat:@"%ld",(long)(self.goldsupplier)]  Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSArray *ary=[[responseObject objectForKey:@"result"] objectForKey:@"list"];
             if (self.pageNum==1) {

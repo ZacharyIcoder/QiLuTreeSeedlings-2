@@ -214,7 +214,7 @@
         imageData = UIImageJPEGRepresentation(image, 0.0001);
     }
     if (imageData.length>=1024*1024) {
-        CGSize newSize = {804,552};
+        CGSize newSize = {916,681};
         imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];

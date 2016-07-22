@@ -55,8 +55,8 @@
                NSDictionary *dic3=[dic objectForKey:@"kehu"];
                 NSInteger allNum=[[dic3 objectForKey:@"allKehu"] integerValue];
                 NSInteger unchongzhiNum=[[dic3 objectForKey:@"rechargeKehu"] integerValue];
-                NSString *allStr=[NSString stringWithFormat:@"%ld",allNum];
-                NSString *unchongzhiStr=[NSString stringWithFormat:@"%ld",unchongzhiNum];
+                NSString *allStr=[NSString stringWithFormat:@"%ld",(long)allNum];
+                NSString *unchongzhiStr=[NSString stringWithFormat:@"%ld",(long)unchongzhiNum];
                 NSString *ssssStr=[NSString stringWithFormat:@"当前服务会员%@人，尚有%@人未进行充值",allStr,unchongzhiStr];
                 NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:ssssStr];
                 
@@ -99,7 +99,7 @@
 }
 -(void)getDataList
 {
-    [HTTPCLIENT kefuXiTongWithPage:PageSize WithPageNumber:[NSString stringWithFormat:@"%ld",self.pageNum] WithIsLoad:@"1" Success:^(id responseObject) {
+    [HTTPCLIENT kefuXiTongWithPage:PageSize WithPageNumber:[NSString stringWithFormat:@"%ld",(long)self.pageNum] WithIsLoad:@"1" Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             
             NSDictionary *dic=[responseObject objectForKey:@"result"];

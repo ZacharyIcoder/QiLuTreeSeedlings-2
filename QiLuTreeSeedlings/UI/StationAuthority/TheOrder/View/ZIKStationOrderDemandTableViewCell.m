@@ -27,6 +27,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneWidthLayoutConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *dianhuaLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *dianhuaImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *celiangyaoqiuLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dingdangongsiLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *baojiaLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dingdangongsiTopLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *yongmiaodiTopLayoutConstraint;
 
 @end
 
@@ -67,6 +72,8 @@
     self.companyLabel.text  = model.company;
     self.areaLabel.text     = model.area;
     self.phoneLabel.text    = model.person;
+
+
     CGRect nameRect =  [ZIKFunction getCGRectWithContent:model.person width:180 font:15.0f];
     self.nameWidthLayoutConstraint.constant = nameRect.size.width+5;
     self.shuomingLabel.text = model.demandDescription;
@@ -129,6 +136,26 @@
 
 
     self.celiangLabel.attributedText = [celiangString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,partFont2,fullColor,darkColor,darkColor2]];
+
+    CGRect celiangyaoqiuRect = [ZIKFunction getCGRectWithContent:celiangString width:kWidth-85  font:15.0f];
+    if (celiangyaoqiuRect.size.height>18) {
+        self.celiangyaoqiuLayoutConstraint.constant = 15;
+        self.dingdangongsiLayoutConstraint.constant = 15;
+    }
+
+    CGRect baojiaRect = [ZIKFunction getCGRectWithContent:model.quotationRequired width:self.baojiaLabel.frame.size.width font:15.0f];
+    if (baojiaRect.size.height>18) {
+        self.baojiaLayoutConstraint.constant = (baojiaRect.size.height-20)/2+9;
+        self.celiangyaoqiuLayoutConstraint.constant+= (baojiaRect.size.height-20)/2;
+    }
+
+    CGRect gongsiRect = [ZIKFunction getCGRectWithContent:model.company width:self.companyLabel.frame.size.width font:15.0f];
+    if (gongsiRect.size.height>18) {
+        self.dingdangongsiLayoutConstraint.constant = (gongsiRect.size.height-20)/2 + 11;
+        self.yongmiaodiTopLayoutConstraint.constant += (gongsiRect.size.height-20)/2;
+    }
+
+
 
 }
 

@@ -222,7 +222,7 @@
         cell.editButtonBlock = ^(NSIndexPath *indexPath) {
             NSDictionary *dic=self.honorData[indexPath.row];
             GCZZModel *model=[GCZZModel  GCZZModelWithDic:dic];
-            model.uid=[NSString stringWithFormat:@"%ld",indexPath.row];
+            model.uid=[NSString stringWithFormat:@"%ld",(long)indexPath.row];
             YLDZiZhiAddViewController *addhonorVC = [[YLDZiZhiAddViewController alloc] initWithModel:model andType:1];
             addhonorVC.delegate=self;
             [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
@@ -475,7 +475,7 @@
         if (!position) {
             if (toBeString.length > kssss) {
                 // NSLog(@"最多%d个字符!!!",kMaxLength);
-                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",(long)kssss] withOriginY:250 withSuperView:self.view];
                 //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
                 textField.text = [toBeString substringToIndex:kssss];
                 return;
@@ -491,7 +491,7 @@
         if (toBeString.length > kssss) {
             //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
             //NSLog(@"最多%d个字符!!!",kMaxLength);
-            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",(long)kssss] withOriginY:250 withSuperView:self.view];
             textField.text = [toBeString substringToIndex:kssss];
             return;
         }
