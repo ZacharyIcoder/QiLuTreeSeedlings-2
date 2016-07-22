@@ -213,19 +213,21 @@
                         <constraint firstAttribute="width" constant="60" id="kLh-xr-os9"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dingdandinahua.png" translatesAutoresizingMaskIntoConstraints="NO" id="gN3-TT-ifE">
-                    <rect key="frame" x="190" y="207" width="17" height="17"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smz-st-c4t">
+                    <rect key="frame" x="186" y="204" width="20" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="17" id="UKo-Si-Av0"/>
-                        <constraint firstAttribute="width" constant="17" id="m2B-ux-fVV"/>
+                        <constraint firstAttribute="width" constant="20" id="TBD-CY-J6F"/>
+                        <constraint firstAttribute="height" constant="20" id="Y05-UD-fZ8"/>
                     </constraints>
-                </imageView>
+                    <state key="normal" image="dingdandinahua.png"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ZLT-Bt-znb" firstAttribute="top" secondItem="7D8-LA-buL" secondAttribute="bottom" constant="8" id="124-qo-lYI"/>
                 <constraint firstItem="ZLT-Bt-znb" firstAttribute="height" secondItem="CaZ-e0-EX3" secondAttribute="height" id="19b-lc-7Lc"/>
                 <constraint firstItem="CaZ-e0-EX3" firstAttribute="top" secondItem="Dpb-Sa-8zu" secondAttribute="bottom" constant="7" id="2U1-yx-rSM"/>
+                <constraint firstItem="smz-st-c4t" firstAttribute="leading" secondItem="9m9-oZ-wGJ" secondAttribute="trailing" constant="111" id="2ww-Nn-ZEi"/>
                 <constraint firstItem="5Da-t7-iIq" firstAttribute="top" secondItem="D05-lH-u2w" secondAttribute="bottom" constant="20" id="31v-Jz-l6P"/>
                 <constraint firstItem="7D8-LA-buL" firstAttribute="top" secondItem="gOH-Po-3dg" secondAttribute="bottom" constant="13" id="3Bq-xq-w4b"/>
                 <constraint firstItem="gOH-Po-3dg" firstAttribute="top" secondItem="8gK-z2-cOO" secondAttribute="bottom" constant="10" id="4Wt-KK-4iJ"/>
@@ -249,7 +251,6 @@
                 <constraint firstAttribute="trailing" secondItem="gOH-Po-3dg" secondAttribute="trailing" constant="10" id="KlI-sO-V0R"/>
                 <constraint firstAttribute="trailing" secondItem="SFq-eE-3aV" secondAttribute="trailing" id="MIR-W0-DxJ"/>
                 <constraint firstAttribute="trailing" secondItem="8gK-z2-cOO" secondAttribute="trailing" constant="8" id="MOX-3k-eGP"/>
-                <constraint firstItem="gN3-TT-ifE" firstAttribute="top" secondItem="UPj-k8-GHU" secondAttribute="bottom" constant="10" id="Maz-G5-NVi"/>
                 <constraint firstItem="elB-X5-MPf" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="MzN-Xd-UGC"/>
                 <constraint firstItem="UPj-k8-GHU" firstAttribute="leading" secondItem="txP-v1-Kqo" secondAttribute="trailing" constant="12" id="NuI-69-Lua"/>
                 <constraint firstItem="CaZ-e0-EX3" firstAttribute="leading" secondItem="ZLT-Bt-znb" secondAttribute="trailing" constant="12" id="PHd-pm-5dF"/>
@@ -263,7 +264,6 @@
                 <constraint firstAttribute="bottom" secondItem="XKq-IN-gCK" secondAttribute="bottom" constant="23" id="VrP-YT-p28"/>
                 <constraint firstAttribute="trailing" secondItem="5Da-t7-iIq" secondAttribute="trailing" constant="10" id="W2l-w8-tD3"/>
                 <constraint firstItem="elB-X5-MPf" firstAttribute="top" secondItem="ZLT-Bt-znb" secondAttribute="bottom" constant="8" id="Zp2-4X-sMs"/>
-                <constraint firstItem="gN3-TT-ifE" firstAttribute="leading" secondItem="D05-lH-u2w" secondAttribute="trailing" constant="1" id="bmN-eQ-g4h"/>
                 <constraint firstItem="vfP-uD-jR7" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="cP4-en-gFD"/>
                 <constraint firstAttribute="trailing" secondItem="Yve-bX-cVH" secondAttribute="trailing" constant="20" id="cRH-w8-PSd"/>
                 <constraint firstItem="Di7-rJ-57p" firstAttribute="top" secondItem="7Pl-hZ-SPF" secondAttribute="top" constant="15" id="cUA-ha-zBd"/>
@@ -273,6 +273,7 @@
                 <constraint firstItem="7D8-LA-buL" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="mzJ-rY-ouh"/>
                 <constraint firstAttribute="trailing" secondItem="XKq-IN-gCK" secondAttribute="trailing" constant="10" id="nA0-oo-dGQ"/>
                 <constraint firstItem="txP-v1-Kqo" firstAttribute="top" secondItem="elB-X5-MPf" secondAttribute="bottom" constant="8" id="o17-MY-nzK"/>
+                <constraint firstItem="smz-st-c4t" firstAttribute="top" secondItem="UPj-k8-GHU" secondAttribute="bottom" constant="7" id="o6t-Kl-7Sd"/>
                 <constraint firstItem="9m9-oZ-wGJ" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="10" id="rPJ-Yv-CAx"/>
                 <constraint firstItem="8gK-z2-cOO" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="u9E-7o-zJL"/>
                 <constraint firstItem="Yve-bX-cVH" firstAttribute="top" secondItem="gOH-Po-3dg" secondAttribute="bottom" constant="12" id="xZQ-be-Knx"/>
@@ -284,6 +285,7 @@
             <connections>
                 <outlet property="areaLab" destination="UPj-k8-GHU" id="mru-ZY-hSs"/>
                 <outlet property="baojiaTypeLab" destination="Dpb-Sa-8zu" id="K51-N1-MRM"/>
+                <outlet property="callBtn" destination="smz-st-c4t" id="m3I-eM-NGK"/>
                 <outlet property="celiangHeight" destination="8Uh-RB-9hd" id="2IJ-Xo-Yfo"/>
                 <outlet property="ciliangLab" destination="CaZ-e0-EX3" id="RMC-NN-mds"/>
                 <outlet property="companyLab" destination="bEk-yz-xLq" id="yvK-ng-3y9"/>

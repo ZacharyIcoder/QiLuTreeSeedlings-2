@@ -45,24 +45,30 @@
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [navView addSubview:backBtn];
     [self.view addSubview:navView];
-    self.phoneTextField=[self viewWithY:0 andImageName:@"phoneLiteImage" andTitle:@"手机号"];
+    UILabel *tishiLab=[[UILabel alloc]initWithFrame:CGRectMake(17, 64, kWidth-20, 30)];
+    [tishiLab setFont:[UIFont systemFontOfSize:15]];
+    [tishiLab setTextColor:kRedHintColor];
+    [tishiLab setText:@"请输入正确手机号，否则客户无法联系您。"];
+    [self.view addSubview:tishiLab];
+    
+    self.phoneTextField=[self viewWithY:1 andImageName:@"phoneLiteImage" andTitle:@"手机号"];
     self.phoneTextField.placeholder=@"请输入手机号";
     self.phoneTextField.delegate=self;
     self.phoneTextField.tag=10001;
     self.phoneTextField.keyboardType=UIKeyboardTypeNumberPad;
     
-    self.passWordTextField=[self viewWithY:1 andImageName:@"passwordLiteImage" andTitle:@"输入密码"];
+    self.passWordTextField=[self viewWithY:2 andImageName:@"passwordLiteImage" andTitle:@"输入密码"];
     self.passWordTextField.placeholder=@"请输入密码";
     self.passWordTextField.delegate=self;
     self.passWordTextField.tag=10002;
     self.passWordTextField.secureTextEntry = YES;
     
-    self.rePassWordTextField=[self viewWithY:2 andImageName:@"passwordLiteImage" andTitle:@"确认密码"];
+    self.rePassWordTextField=[self viewWithY:3 andImageName:@"passwordLiteImage" andTitle:@"确认密码"];
     self.rePassWordTextField.placeholder=@"确认密码";
     self.rePassWordTextField.delegate=self;
     self.rePassWordTextField.tag=10003;
     self.rePassWordTextField.secureTextEntry = YES;
-    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 3*50+54+20+30, kWidth-80, 40)];
+    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 4*50+54+20+30, kWidth-80, 40)];
     [self.view addSubview:sureBtn];
     [sureBtn addTarget:self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [sureBtn setBackgroundColor:NavColor];
@@ -198,7 +204,7 @@
 }
 -(UITextField *)viewWithY:(CGFloat)Y andImageName:(NSString *)iamgeName andTitle:(NSString *)title
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, Y*50+74, kWidth, 50)];
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, Y*50+54, kWidth, 50)];
     UIImageView *phoneImageV =[[UIImageView alloc]initWithFrame:CGRectMake(15, 12, 25, 25)];
     [phoneImageV setImage:[UIImage imageNamed:iamgeName]];
     [view addSubview:phoneImageV];

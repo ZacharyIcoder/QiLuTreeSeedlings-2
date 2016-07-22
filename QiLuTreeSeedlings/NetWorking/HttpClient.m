@@ -19,7 +19,7 @@
          _sharedClient = [[HttpClient alloc] initWithBaseURL:[NSURL URLWithString:AFBaseURLString]];
          _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         [_sharedClient.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-         _sharedClient.requestSerializer.timeoutInterval = 20.f;
+         _sharedClient.requestSerializer.timeoutInterval = 30.f;
         [_sharedClient.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     });
     return _sharedClient;
@@ -3993,7 +3993,8 @@
  *  @param workstationUid  工作站ID
  *  @param name            荣誉名称
  *  @param acquisitionTime 获取时间，格式：yyyy-MM-dd
- *  @param image           荣誉图片
+ *  @param image           荣誉
+ 
  *  @param success         success description
  *  @param failure         failure description
  */

@@ -8,6 +8,7 @@
 
 #import "YLDDingDanJianJieView.h"
 #import "UIDefines.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @implementation YLDDingDanJianJieView
 +(YLDDingDanJianJieView *)yldDingDanJianJieView
 {
@@ -19,8 +20,15 @@
     view.shuomingTextField.editable=NO;
     [view.shuomingTextField setTextColor:DarkTitleColor];
     [view.shuomingTextField setFont:[UIFont systemFontOfSize:15]];
-   
-      return view;
+    [view.callBtn setEnlargeEdgeWithTop:0 right:10 bottom:5 left:150];
+    
+    return view;
+}
+-(void)callAction
+{
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
+    //            NSLog(@"str======%@",str);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 -(void)setModel:(YLDDingDanDetialModel *)model
 {
@@ -51,6 +59,7 @@
     if ([model.status isEqualToString:@"已结束"]) {
         [self.logoImageV setImage:[UIImage imageNamed:@"zt已结束"]];
     }
+    [self.callBtn addTarget:self action:@selector(callAction) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)setHezuomodel:(YLDHeZuoDetial *)hezuomodel
 {
@@ -82,6 +91,7 @@
     if ([hezuomodel.status isEqualToString:@"报价中"]) {
         [self.logoImageV setImage:[UIImage imageNamed:@"zt报价中"]];
     }
+    [self.callBtn addTarget:self action:@selector(callAction) forControlEvents:UIControlEventTouchUpInside];     
 
 }
 /*

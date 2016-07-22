@@ -16,8 +16,8 @@
 #import "ZIKCityModel.h"
 #import "GetCityDao.h"
 #import "BWTextView.h"
-
-@interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate>
+#import "YLDRangeTextField.h"
+@interface YLDFaBuGongChengDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
 @property (nonatomic,strong) NSArray *piceAry;
@@ -163,8 +163,8 @@
         [ToastView showTopToast:@"请输入项目名称"];
         return;
     }
-    if (!self.AreaProvince) {
-        [ToastView showTopToast:@"请选择用苗地"];
+    if (!self.AreaCity) {
+        [ToastView showTopToast:@"用苗地需精确到市"];
         return;
     }
     if (!self.timeStr) {
@@ -183,8 +183,13 @@
         [ToastView showTopToast:@"请完善胸径信息"];
         return;
     }
+   
     if (self.dijingField.text.length==0) {
         [ToastView showTopToast:@"请完善地径信息"];
+        return;
+    }
+    if ([self.xiongjingField.text integerValue]==0) {
+        [ToastView showTopToast:@"胸径不能等于0"];
         return;
     }
     if (self.lianxirenField.text.length==0) {
@@ -418,14 +423,14 @@
     [unitLab1 setTextColor:detialLabColor];
     [view addSubview:unitLab1];
     [self.backScrollView addSubview:view];
-    UITextField *xiongjingTextField=[[UITextField alloc]initWithFrame:CGRectMake(185, frame.size.height/4-15, kWidth-55-190, 30)];
+    YLDRangeTextField *xiongjingTextField=[[YLDRangeTextField alloc]initWithFrame:CGRectMake(185, frame.size.height/4-15, kWidth-55-190, 30)];
+    xiongjingTextField.delegate=self;
+    xiongjingTextField.rangeNumber=7;
     xiongjingTextField.borderStyle=UITextBorderStyleRoundedRect;
     self.xiongjingField=xiongjingTextField;
-    xiongjingTextField.keyboardType=UIKeyboardTypeDecimalPad;
+    xiongjingTextField.keyboardType=UIKeyboardTypeNumberPad;
+    xiongjingTextField.text=@"120";
     [view addSubview:xiongjingTextField];
-    
-    
-    
     UILabel *detiallab2=[[UILabel alloc]initWithFrame:CGRectMake(110, frame.size.height/4*3-15, 80, 30)];
     [detiallab2 setText:@"地径离地面"];
     [detiallab2 setFont:[UIFont systemFontOfSize:14]];
@@ -436,9 +441,11 @@
     [unitLab2 setFont:[UIFont systemFontOfSize:14]];
     [unitLab2 setTextColor:detialLabColor];
     [view addSubview:unitLab2];
-    UITextField *dijingTextField=[[UITextField alloc]initWithFrame:CGRectMake(185, frame.size.height/4*3-15, kWidth-55-190, 30)];
+    YLDRangeTextField *dijingTextField=[[YLDRangeTextField alloc]initWithFrame:CGRectMake(185, frame.size.height/4*3-15, kWidth-55-190, 30)];
     dijingTextField.borderStyle=UITextBorderStyleRoundedRect;
-    dijingTextField.keyboardType=UIKeyboardTypeDecimalPad;
+    dijingTextField.rangeNumber=7;
+    dijingTextField.delegate=self;
+    dijingTextField.keyboardType=UIKeyboardTypeNumberPad;
     self.dijingField=dijingTextField;
     [view addSubview:dijingTextField];
 }
@@ -467,6 +474,18 @@
     TextView.textColor=DarkTitleColor;
     [view addSubview:TextView];
     return TextView;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField.text.length>0) {
+        CGFloat sss=[textField.text floatValue];
+        if (sss>0) {
+            textField.text=[NSString stringWithFormat:@"%.2lf",sss];
+        }else{
+            textField.text=[NSString stringWithFormat:@"%.2lf",sss];
+            
+        }
+    }
 }
 - (void)textViewChanged:(NSNotification *)obj {
     BWTextView *textField = (BWTextView *)obj.object;

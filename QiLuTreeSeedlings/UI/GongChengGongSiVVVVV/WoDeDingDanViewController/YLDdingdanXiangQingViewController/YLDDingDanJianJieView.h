@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLab;
 @property (strong,nonatomic)YLDDingDanDetialModel *model;
 @property (strong,nonatomic)YLDHeZuoDetial *hezuomodel;
+@property (weak, nonatomic) IBOutlet UIButton *callBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *celiangHeight;
 @property (weak, nonatomic) IBOutlet UITextView *shuomingTextField;
 +(YLDDingDanJianJieView *)yldDingDanJianJieView;

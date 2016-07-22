@@ -53,11 +53,21 @@
     [self.view addSubview:backScrollView];
     CGRect tempFrame=CGRectMake(0, 5, kWidth, 50);
     self.nameTextField=[self makeViewWithName:@"资质名称" alert:@"请输入资质名称" unit:@"" withFrame:tempFrame];
+    self.nameTextField.tag=20;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:self.nameTextField];
     tempFrame.origin.y+=50;
     self.timeBtn=[self danxuanViewWithName:@"获取时间" alortStr:@"请选择获取时间" andFrame:tempFrame];
     [self.timeBtn addTarget:self action:@selector(timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=50;
     self.rankTextField=[self makeViewWithName:@"资质等级" alert:@"请输入资质等级" unit:@"" withFrame:tempFrame];
+    self.rankTextField.tag=10;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:self.rankTextField];
     tempFrame.origin.y+=50;
     self.organizationalField=[self makeViewWithName:@"发证机关" alert:@"请输入发证机关" unit:@"" withFrame:tempFrame];
     tempFrame.origin.y+=55;
@@ -327,11 +337,21 @@
         imageData = UIImageJPEGRepresentation(image, 0.0001);
     }
     if (imageData.length>=1024*1024) {
-        CGSize newSize = {804,552};
-        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+        if (image.size.width>916 && image.size.height>681) {
+            CGSize newSize = {916,681};
+            imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+            
+        } else {
+            CGFloat mywidth = image.size.width/2;
+            CGFloat myheight = image.size.height/2;
+            CGSize newSize = {mywidth,myheight};
+            imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+        }
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
-    
+//    NSData *newimage=[[NSData alloc]initWithBase64EncodedString:myStringImageFile options:NSDataBase64DecodingIgnoreUnknownCharacters];
+//     UIImage *newjiaban=[[UIImage alloc] initWithData:newimage];
+//    [self.imageBtn setImage:newjiaban forState:UIControlStateNormal];
     [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:nil Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
@@ -344,12 +364,11 @@
             self.url         = result[@"url"];
       NSURL *url = [NSURL URLWithString:self.compressurl];
    [self.imageBtn setImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"添加图片"]];
-//            [self.imageBtn setBackgroundImage:image forState:UIControlStateNormal];
         }
         
         
     } failure:^(NSError *error) {
-        ;
+       
     }];
 }
 
@@ -369,6 +388,42 @@
     return UIImagePNGRepresentation(newImage);
 }
 
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    NSInteger kssss=10;
+    if (textField.tag>0) {
+        kssss=textField.tag;
+    }
+    NSString *toBeString = textField.text;
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
 
 /*
 #pragma mark - Navigation

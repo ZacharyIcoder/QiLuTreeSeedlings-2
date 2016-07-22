@@ -178,6 +178,7 @@
 - (void)requestUploadHeadImage:(UIImage *)image {
     
     NSData* imageData;
+    
     //判断图片是不是png格式的文件
     if (UIImagePNGRepresentation(image)) {
         //返回为png图像。
@@ -187,7 +188,7 @@
         imageData = UIImageJPEGRepresentation(image, 0.0001);
     }
     if (imageData.length>=1024*1024) {
-        CGSize newSize = {804,552};
+        CGSize newSize = {400,400};
         imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];

@@ -233,7 +233,10 @@
         [ToastView showTopToast:@"请输入需求数量"];
         return;
     }
-    
+    if ([numTextField.text integerValue]==0) {
+        [ToastView showTopToast:@"苗木数量不能为0"];
+        return;
+    }
     NSMutableDictionary *miaomuDic=[NSMutableDictionary dictionary];
     miaomuDic[@"name"]=nameTextField.text;
     miaomuDic[@"quantity"]=numTextField.text;
