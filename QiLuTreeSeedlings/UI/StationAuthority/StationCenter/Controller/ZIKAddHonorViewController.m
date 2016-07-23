@@ -241,11 +241,7 @@
 
 
     } failure:^(NSError *error) {
-<<<<<<< HEAD
         NSLog(@"%@",error);
-=======
-        
->>>>>>> 2c899f5ca20439b787ca78e52e8d1ce5451b8778
     }];
 //    NSData* imageData;
 //    //判断图片是不是png格式的文件
