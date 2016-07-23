@@ -15,7 +15,7 @@
 #import "UIDefines.h"
 #import "MJRefresh.h"
 #import "HttpClient.h"
-@interface WoDeDingDanViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMyDingdanTableViewCellDelegate,YLDSearchNavViewDelegate>
+@interface WoDeDingDanViewController ()<UITableViewDelegate,UITableViewDataSource,YLDMyDingdanTableViewCellDelegate,YLDSearchNavViewDelegate,YLDDingDanDVCDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,weak) UIView *moveView;
 @property (nonatomic,weak) UIButton *nowBtn;
@@ -90,6 +90,10 @@
 }
 -(void)hidingAction
 {
+}
+-(void)shenheTongGuoAcion
+{
+    [self.tableView headerBeginRefreshing];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -186,7 +190,7 @@
     
 }
 - (void)topActionView {
-    NSArray *ary=@[@"全部",@"审核中",@"报价中",@"已结束"];
+    NSArray *ary=@[@"全部",@"待审核",@"报价中",@"已结束"];
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 50)];
     [view setBackgroundColor:[UIColor whiteColor]];
     view.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
@@ -272,6 +276,9 @@
     }
     YLDDingDanDetialViewController *vcsss=[[YLDDingDanDetialViewController alloc]initWithUid:model.uid andType:type];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
+    if (type==0) {
+        vcsss.delegate=self;
+    }
     [self.navigationController pushViewController:vcsss animated:YES];
 }
 - (void)didReceiveMemoryWarning {

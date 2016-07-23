@@ -88,6 +88,16 @@
         [editingBtn setImage:[UIImage imageNamed:@"edintBtn"] forState:UIControlStateNormal];
         [editingBtn addTarget: self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         self.editingBtn=editingBtn;
+        
+        UIButton *shenheBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+        [shenheBtn setBackgroundColor:NavColor];
+        [shenheBtn addTarget: self action:@selector(shenhetongguo) forControlEvents:UIControlEventTouchUpInside];
+        [shenheBtn setTitle:@"审核通过" forState:UIControlStateNormal];
+        [self.view addSubview:shenheBtn];
+        CGRect frame=tableView.frame;
+        frame.size.height=kHeight-165;
+        tableView.frame=frame;
+        
     }
     UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 24, 30, 30)];
     [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
@@ -115,6 +125,22 @@
 {
     ShowActionV();
     [self getdataAction];
+}
+-(void)shenhetongguo
+{
+    [HTTPCLIENT shenhedingdanWithUid:self.model.uid WithauditStatus:YES Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [ToastView showTopToast:@"审核成功，即将返回"];
+            if ([self.delegate respondsToSelector:@selector(shenheTongGuoAcion)]) {
+                [self.delegate shenheTongGuoAcion];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 -(void)getdataAction
 {
@@ -199,7 +225,22 @@
         frame.size.height=90;
     }
     cell.frame=frame;
-
+    NSString *stauts=[DIC objectForKey:@"stauts"];
+   if (self.type!=weishenhe&&[stauts integerValue]==4) {
+      
+       if (cell.chakanBtn.enabled==YES) {
+           cell.chakanBtn.enabled=NO;
+           cell.chakanBtn.hidden=YES;
+       }
+//       [cell.chakanBtn setBackgroundColor:detialLabColor];
+//       [cell.chakanBtn setTitle:@"暂无报价" forState:UIControlStateNormal];
+   }else{
+       if (cell.chakanBtn.enabled==NO) {
+           cell.chakanBtn.enabled=YES;
+           cell.chakanBtn.hidden=NO;
+       }
+      
+   }
     //NSDictionary *DIC=self.miaomuAry[indexPath.row];
 //    cell.messageDic=DIC;
     return cell;

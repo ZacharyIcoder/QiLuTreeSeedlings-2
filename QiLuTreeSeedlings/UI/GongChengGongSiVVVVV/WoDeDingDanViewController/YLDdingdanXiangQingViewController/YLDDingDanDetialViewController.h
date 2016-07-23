@@ -14,7 +14,10 @@ typedef enum
     yijieshu=2
     
 }dingDanType;
-
+@protocol YLDDingDanDVCDelegate <NSObject>
+-(void)shenheTongGuoAcion;
+@end
 @interface YLDDingDanDetialViewController : NomarBaseViewController
+@property (nonatomic,weak) id <YLDDingDanDVCDelegate> delegate;
 -(id)initWithUid:(NSString *)uid andType:(NSInteger)type;
 @end

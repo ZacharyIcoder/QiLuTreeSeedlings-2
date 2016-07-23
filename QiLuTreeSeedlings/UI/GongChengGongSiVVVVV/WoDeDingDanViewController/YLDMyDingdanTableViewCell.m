@@ -50,23 +50,31 @@
         self.miaomuPinZhongLab.numberOfLines=1;
     }
     [self.hezuoBtn addTarget:self action:@selector(hezuoBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    if ([model.status isEqualToString:@"已结束"]) {
-        frame.size.height+=40;
-        self.yincanglineV.hidden=NO;
-        self.hezuoBtn.hidden=NO;
-    }else{
+    if (model.auditStatus==0) {
         self.yincanglineV.hidden=YES;
-         self.hezuoBtn.hidden=YES;
+        self.hezuoBtn.hidden=YES;
+        [self.loggV setImage:[UIImage imageNamed:@"shenhezhong"]];
+    }else{
+        if ([model.status isEqualToString:@"已结束"]) {
+            frame.size.height+=40;
+            self.yincanglineV.hidden=NO;
+            self.hezuoBtn.hidden=NO;
+        }else{
+            self.yincanglineV.hidden=YES;
+            self.hezuoBtn.hidden=YES;
+        }
+
+        
+        if ([model.status isEqualToString:@"报价中"]) {
+            [self.loggV setImage:[UIImage imageNamed:@"zt报价中"]];
+        }
+        if ([model.status isEqualToString:@"已结束"]) {
+            [self.loggV setImage:[UIImage imageNamed:@"zt已结束"]];
+        }
+ 
     }
     self.frame=frame;
     self.showBtn.selected=model.isShow;
-
-    if ([model.status isEqualToString:@"报价中"]) {
-        [self.loggV setImage:[UIImage imageNamed:@"zt报价中"]];
-    }
-    if ([model.status isEqualToString:@"已结束"]) {
-        [self.loggV setImage:[UIImage imageNamed:@"zt已结束"]];
-    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
