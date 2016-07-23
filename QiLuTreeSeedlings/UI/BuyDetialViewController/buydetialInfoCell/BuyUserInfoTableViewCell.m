@@ -98,9 +98,8 @@
     self.numLab.text =[NSString stringWithFormat:@"%@棵",nubStr];
     self.priceLab.text=model.price;
         if (model.goldsupplier == 0 || model.goldsupplier == 10) {
-            CGRect frame=logoImageV.frame;
-            frame.size.height=1;
-            logoImageV.frame=frame;
+            shenfenLab.text=@"普通供应商";
+            logoImageV.image = [UIImage imageNamed:@"列表-普通供应商"];
         } else if (model.goldsupplier == 1) {
             shenfenLab.text=@"金牌供应商";
             logoImageV.image = [UIImage imageNamed:@"列表-金牌供应商"];

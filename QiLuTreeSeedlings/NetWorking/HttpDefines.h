@@ -18,7 +18,7 @@
 
 
 static NSString * const AFBaseURLString = @"http://115.28.228.147:8088/qlmm/";
-
+//
 //static NSString *const AFBaseURLString = @"http://123.56.229.197:8084/qlmm/";
 
 #define kclient_id @"00C6D374-930C-472B-9B98-D759ACD2F98D"

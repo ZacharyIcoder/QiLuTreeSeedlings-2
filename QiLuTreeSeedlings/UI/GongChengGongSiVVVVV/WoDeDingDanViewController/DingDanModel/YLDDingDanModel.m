@@ -21,6 +21,7 @@
     model.quotation=[dic objectForKey:@"quotation"];
     model.status=[dic objectForKey:@"status"];
     model.uid=[dic objectForKey:@"uid"];
+    model.auditStatus=[[dic objectForKey:@"auditStatus"] integerValue];
     model.showHeight=190-18+[YLDDingDanModel getHeightWithContent:model.miaomu width:kWidth-140 font:14];
     model.isShow=NO;
     return model;

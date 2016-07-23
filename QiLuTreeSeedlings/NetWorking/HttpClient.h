@@ -1084,4 +1084,7 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 站长助手－报价获取苗木信息 -----------
 - (void)getstationBaoJiaMessageWithUid:(NSString *)uid Success:(void (^)(id responseObject))success
                             failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长助手－审核工程订单 -----------
+- (void)shenhedingdanWithUid:(NSString *)uid WithauditStatus:(BOOL)auditStatus Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure;
 @end

@@ -137,7 +137,7 @@
         
         return;
     }
-    if (self.AreaProvince.length<=0) {
+    if (self.AreaCity.length<=0) {
         [ToastView showTopToast:@"请选择地区"];
         
         return;
@@ -304,8 +304,10 @@
     self.legalPersonField=[self creatTextFieldWithName:@"法人代表" alortStr:@"请输入法人代表" andFrame:tempFrame andView:view];
     tempFrame.origin.y+=50;
     self.phoneTextField=[self creatTextFieldWithName:@"电话" alortStr:@"请输入电话号码" andFrame:tempFrame andView:view];
+    self.phoneTextField.keyboardType=UIKeyboardTypeNumberPad;
     tempFrame.origin.y+=50;
     self.youbianTextField=[self creatTextFieldWithName:@"邮编" alortStr:@"请输入邮编号码" andFrame:tempFrame andView:view];
+    self.youbianTextField.keyboardType=UIKeyboardTypeNumberPad;
     tempFrame.origin.y+=50;
     tempFrame.size.height=100;
     self.jieshaTextView=[self jianjieTextViewWithName:@"简介" WithAlort:@"请输入简介（不超过50字）" WithFrame:tempFrame andView:view];
@@ -422,8 +424,14 @@
     [textField setFont:[UIFont systemFontOfSize:15]];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];
     [lineImagV setBackgroundColor:kLineColor];
-    
     [view addSubview:lineImagV];
+    if(![nameStr isEqualToString:@"邮编"])
+    {
+        UILabel *diandianLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-50, 0, 20, frame.size.height)];
+        [diandianLab setText:@"＊"];
+        [diandianLab setTextColor:NavYellowColor];
+        [view addSubview:diandianLab];
+    }
     [backView addSubview:view];
     return textField;
 }

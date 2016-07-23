@@ -209,6 +209,7 @@
 		EA5E6E541CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5E6E521CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m */; };
 		EA5E6E551CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */; };
 		EA5F6D8C1D0F9AC600E78404 /* NomarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5F6D8B1D0F9AC600E78404 /* NomarBaseViewController.m */; };
+		EA5F8A641D40AD3A00DCCD1C /* YLDRangeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5F8A631D40AD3A00DCCD1C /* YLDRangeTextField.m */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
 		EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */; };
@@ -1071,6 +1072,8 @@
 		EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDTuiJianGongZuoZhanCell.xib; sourceTree = "<group>"; };
 		EA5F6D8A1D0F9AC600E78404 /* NomarBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NomarBaseViewController.h; sourceTree = "<group>"; };
 		EA5F6D8B1D0F9AC600E78404 /* NomarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NomarBaseViewController.m; sourceTree = "<group>"; };
+		EA5F8A621D40AD3A00DCCD1C /* YLDRangeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDRangeTextField.h; sourceTree = "<group>"; };
+		EA5F8A631D40AD3A00DCCD1C /* YLDRangeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDRangeTextField.m; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MybuyListTableViewCell.h; sourceTree = "<group>"; };
@@ -2300,6 +2303,7 @@
 		EA0B2BD21C59F6930018A7BD /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				EA5F8A611D40AD1E00DCCD1C /* RangeTextField */,
 				EA9A22971D1241E3000CA161 /* JSONKit */,
 				EAAFCFA41CBE20E200EB894F /* yindaoye */,
 				FC7134371CB3ABED0037D507 /* 银联 */,
@@ -2960,6 +2964,15 @@
 				EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */,
 			);
 			path = ZhanZhangGongYingViewController;
+			sourceTree = "<group>";
+		};
+		EA5F8A611D40AD1E00DCCD1C /* RangeTextField */ = {
+			isa = PBXGroup;
+			children = (
+				EA5F8A621D40AD3A00DCCD1C /* YLDRangeTextField.h */,
+				EA5F8A631D40AD3A00DCCD1C /* YLDRangeTextField.m */,
+			);
+			path = RangeTextField;
 			sourceTree = "<group>";
 		};
 		EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */ = {
@@ -5283,6 +5296,7 @@
 				FC614A071CAA5BBC00672241 /* ZIKUserNameSetViewController.m in Sources */,
 				FC7134361CB358720037D507 /* UIAlertView+Blocks.m in Sources */,
 				EAFB8FE81D1A223500FCF88B /* YLDMMPiLiangBianJiCell.m in Sources */,
+				EA5F8A641D40AD3A00DCCD1C /* YLDRangeTextField.m in Sources */,
 				EA1CF4031CACD11A00AF2D82 /* ActionView.m in Sources */,
 				FC50B34F1CAE56320022A24C /* ZIKVoucherCenterViewController.m in Sources */,
 				FC2276751D177C9F0037B131 /* ZIKBaseChangeNavViewController.m in Sources */,
@@ -5719,8 +5733,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5757,7 +5773,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5768,8 +5786,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5806,7 +5826,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
