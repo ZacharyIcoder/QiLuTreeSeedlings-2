@@ -31,14 +31,16 @@
 @property (nonatomic,strong) NSString *searchStr;
 @property (nonatomic,strong) NSMutableArray *dataAry;
 @property (nonatomic)NSInteger pageNum;
+@property (nonatomic)NSInteger type;
 @end
 
 @implementation YLDDingDanDetialViewController
--(id)initWithUid:(NSString *)uid
+-(id)initWithUid:(NSString *)uid andType:(NSInteger)type
 {
     self=[super init];
     if (self) {
         self.Uid=uid;
+        self.type=type;
     }
     return self;
 }
@@ -79,14 +81,14 @@
     self.tableView=tableView;
     [self.view addSubview:tableView];
     tableView.hidden=YES;
-    UIButton *editingBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-46, 24, 30, 30)];
-    [editingBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
-    [self.navBackView addSubview:editingBtn];
-    [editingBtn setImage:[UIImage imageNamed:@"edintBtn"] forState:UIControlStateNormal];
-    [editingBtn addTarget: self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.editingBtn=editingBtn;
- 
- 
+    if (self.type==weishenhe) {
+        UIButton *editingBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-46, 24, 30, 30)];
+        [editingBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+        [self.navBackView addSubview:editingBtn];
+        [editingBtn setImage:[UIImage imageNamed:@"edintBtn"] forState:UIControlStateNormal];
+        [editingBtn addTarget: self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        self.editingBtn=editingBtn;
+    }
     UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 24, 30, 30)];
     [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
     [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];

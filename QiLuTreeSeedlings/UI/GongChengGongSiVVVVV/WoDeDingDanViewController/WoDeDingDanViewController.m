@@ -194,7 +194,7 @@
     view.layer.shadowOffset  = CGSizeMake(0, 3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
     
     view.layer.shadowRadius  = 3;//阴影半径，默认3
-    CGFloat btnWith=kWidth/3;
+    CGFloat btnWith=kWidth/ary.count;
     UIView *moveView=[[UIView alloc]initWithFrame:CGRectMake(0, 47, btnWith, 3)];
     [moveView setBackgroundColor:NavYellowColor];
     self.moveView=moveView;
@@ -228,12 +228,15 @@
     _nowBtn=sender;
     
     CGRect frame=_moveView.frame;
-    frame.origin.x=kWidth/3*(sender.tag);
+    frame.origin.x=kWidth/4*(sender.tag);
     [UIView animateWithDuration:0.3 animations:^{
         _moveView.frame=frame;
     }];
     if (sender.tag==0) {
         self.Status=-1;
+    }
+    if (sender.tag==1) {
+        self.Status=2;
     }
     if (sender.tag==2) {
         self.Status=1;
@@ -254,7 +257,20 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     YLDDingDanModel *model=self.dataAry[indexPath.row];
-    YLDDingDanDetialViewController *vcsss=[[YLDDingDanDetialViewController alloc]initWithUid:model.uid];
+    NSInteger type;
+    if (model.auditStatus==0) {
+        type=0;
+    }else
+    {
+        if ([model.status isEqualToString:@"已结束"]) {
+            type=2;
+        }else
+        {
+            type=1;
+        }
+
+    }
+    YLDDingDanDetialViewController *vcsss=[[YLDDingDanDetialViewController alloc]initWithUid:model.uid andType:type];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
     [self.navigationController pushViewController:vcsss animated:YES];
 }

@@ -7,7 +7,14 @@
 //
 
 #import "NomarBaseViewController.h"
+typedef enum
+{
+    weishenhe=0,
+    baojiaozhong=1,
+    yijieshu=2
+    
+}dingDanType;
 
 @interface YLDDingDanDetialViewController : NomarBaseViewController
--(id)initWithUid:(NSString *)uid;
+-(id)initWithUid:(NSString *)uid andType:(NSInteger)type;
 @end
