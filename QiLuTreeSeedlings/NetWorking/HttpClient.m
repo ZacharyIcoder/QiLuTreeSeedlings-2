@@ -175,6 +175,8 @@
                        failure:(void (^)(NSError *error))failure
 {
     NSString *postURL = @"fileUpload/uploadphotoios";
+//    NSString *postURL = @"fileupload/uploadphotoios";
+
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str = [userdefaults objectForKey:kdeviceToken];
 

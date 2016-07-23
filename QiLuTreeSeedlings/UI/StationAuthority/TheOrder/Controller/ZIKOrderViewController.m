@@ -120,6 +120,7 @@
         //CLog(@"result:%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            [self.orderTV footerEndRefreshing];
             return ;
         } else {
             NSDictionary *resultDic = responseObject[@"result"];
@@ -158,6 +159,8 @@
         }
         
     } failure:^(NSError *error) {
+        [self.orderTV footerEndRefreshing];
+
         //CLog(@"%@",error);
     }];
 

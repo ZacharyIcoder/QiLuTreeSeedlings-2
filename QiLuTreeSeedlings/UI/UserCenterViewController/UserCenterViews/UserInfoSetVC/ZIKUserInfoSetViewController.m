@@ -272,7 +272,7 @@
             APPDELEGATE.userModel.headUrl = responseObject[@"url"];
         }
         else {
-            //NSLog(@"%@",responseObject[@"msg"]);
+            NSLog(@"%@",responseObject[@"msg"]);
             [ToastView showTopToast:responseObject[@"msg"]];
         }
     } failure:^(NSError *error) {

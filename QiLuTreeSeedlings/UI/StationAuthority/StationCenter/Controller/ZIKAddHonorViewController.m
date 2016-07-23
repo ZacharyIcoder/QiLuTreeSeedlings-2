@@ -214,8 +214,16 @@
         imageData = UIImageJPEGRepresentation(image, 0.0001);
     }
     if (imageData.length>=1024*1024) {
-        CGSize newSize = {916,681};
-        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+        if (image.size.width>916 && image.size.height>681) {
+            CGSize newSize = {916,681};
+            imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+
+        } else {
+            CGFloat mywidth = image.size.width/2;
+            CGFloat myheight = image.size.height/2;
+            CGSize newSize = {mywidth,myheight};
+            imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+        }
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
 
@@ -233,8 +241,42 @@
 
 
     } failure:^(NSError *error) {
-        ;
+        NSLog(@"%@",error);
     }];
+//    NSData* imageData;
+//    //判断图片是不是png格式的文件
+//    if (UIImagePNGRepresentation(image)) {
+//        //返回为png图像。
+//        imageData = UIImagePNGRepresentation(image);
+//    }else {
+//        //返回为JPEG图像。
+//        imageData = UIImageJPEGRepresentation(image, 0.0001);
+//    }
+//    if (imageData.length>=1024*1024) {
+//        CGSize newSize = {600,600};
+//        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+//    }
+//    NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+//
+//
+//    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:@"1" Success:^(id responseObject) {
+//        //        CLog(@"%@",responseObject);
+//        if ([responseObject[@"success"] integerValue] == 0) {
+//            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+//            return ;
+//        } else if ([responseObject[@"success"] integerValue] == 1) {
+//                        NSDictionary *result = responseObject[@"result"];
+//                        self.honorCompressUrl = result[@"compressurl"];
+//                        self.honorDetailUrl   = result[@"detailurl"];
+//                        self.honorUrl         = result[@"url"];
+//                        [self.addImageButton setBackgroundImage:image forState:UIControlStateNormal];
+//
+//        }
+//    } failure:^(NSError *error) {
+//        ;
+//    }];
+
+
 }
 
 -(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize

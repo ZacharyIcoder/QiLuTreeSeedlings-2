@@ -12,8 +12,13 @@
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
 
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMessageComposeViewController.h>
+
 #import "HttpClient.h"
-@interface ZIKMyShopViewController ()<UMSocialUIDelegate>
+
+static NSString *flag = @"";
+@interface ZIKMyShopViewController ()<UMSocialUIDelegate,UIWebViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *shopWebView;
 @property (weak, nonatomic) IBOutlet UILabel   *titleLable;
 
@@ -33,7 +38,9 @@
     } else {
         self.titleLable.text = @"店铺";
     }
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.shopWebView.scalesPageToFit =YES;
+    self.shopWebView.delegate = self;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
     NSString  *urlString = [NSString stringWithFormat:@"http://115.28.228.147:999?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];
     //http://101.200.77.145:9000
 //    NSString  *urlString = [NSString stringWithFormat:@"http://dianpu.qlhm.cn?memberUid=%@&appMemberUid=%@&title=1",_memberUid,APPDELEGATE.userModel.access_id];//http://dianpu.qlhm.cn正式的
@@ -81,6 +88,134 @@
    } failure:^(NSError *error) {
        ;
    }];
+}
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType  {
+//    NSString *requestString = [[[request URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",requestString);
+
+//    NSString *url = request.URL.absoluteString;
+//    NSLog(@"打印请求的URL-->%@", url);
+//    NSRange range = [url rangeOfString:@"tel:"];
+//    NSUInteger location = range.location;
+//    flag = @"";
+//    if (location != NSNotFound) {
+//        flag = @"wu";
+//        NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"telprompt://%@",[url substringFromIndex:4]];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+//    }
+//    NSRange smsrange = [url rangeOfString:@"sms:"];
+//    NSUInteger smslocation = smsrange.location;
+//    if (smslocation != NSNotFound) {
+//        flag = @"wu";
+//        NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"sms://%@",[url substringFromIndex:4]];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+////        　[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms://%@",[url substringFromIndex:4]]];
+//        //[self showMessage:[NSArray arrayWithObjects:[url substringFromIndex:4], nil]];
+////        [self showMessageView:[NSArray arrayWithObjects:[url substringFromIndex:4], nil] title:@"苗木供应" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的信息很感兴趣。h"]];
+//    }
+    return YES;
+}
+
+- (void)showMessage:(NSArray *)message {
+    NSLog(@"%@",self);
+    [self showMessageView:message title:@"苗木供应" body:[NSString stringWithFormat:@"我对您在齐鲁苗木网APP发布的信息很感兴趣。"]];
+
+}
+
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    switch (result) {
+        case MessageComposeResultSent:
+            //信息传送成功
+        {
+            [ToastView showToast:@"消息发送成功" withOriginY:250 withSuperView:self.view];
+        }
+
+            break;
+        case MessageComposeResultFailed:
+            //信息传送失败
+        {
+            [ToastView showToast:@"消息发送失败" withOriginY:250 withSuperView:self.view];
+        }
+
+            break;
+        case MessageComposeResultCancelled:
+            //信息被用户取消传送
+        {
+            [ToastView showToast:@"取消发送" withOriginY:250 withSuperView:self.view];
+        }
+
+            break;
+        default:
+            break;
+    }
+//    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+
+}
+
+-(void)showMessageView:(NSArray *)phones title:(NSString *)title body:(NSString *)body
+{
+    if( [MFMessageComposeViewController canSendText] )
+    {
+        MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+        picker.messageComposeDelegate = self;
+
+        // You can specify one or more preconfigured recipients.  The user has
+        // the option to remove or add recipients from the message composer view
+        // controller.
+        picker.recipients = phones;
+
+        // You can specify the initial message text that will appear in the message
+        // composer view controller.
+        picker.body = body;
+
+//        [self.navigationController pushViewController:picker animated:YES];
+        [self presentViewController:picker animated:YES completion:NULL];
+        //        MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
+        //        controller.recipients = phones;
+        //        controller.navigationBar.tintColor = [UIColor redColor];
+        //        controller.body = body;
+        //        controller.messageComposeDelegate = self;
+        //        [self presentViewController:controller animated:YES completion:nil];
+//        [[[[picker viewControllers] lastObject] navigationItem] setTitle:title];//修改短信界面标题
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息"
+                                                        message:@"该设备不支持短信功能"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+//- (void)phoneCall {
+////    NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.memberPhone];
+////    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+//}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    ShowActionV();
+
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    RemoveActionV();
+
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
+    if ([flag isEqualToString:@"wu"]) {
+        return;
+    }
+    [ToastView showTopToast:@"加载失败"];
+    RemoveActionV();
+//    NSLog(@"%@",webView.request.URL.absoluteString);
+//    NSLog(@"%@",error);
+
 }
 
 - (void)didReceiveMemoryWarning {
