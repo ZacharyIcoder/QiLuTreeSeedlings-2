@@ -302,11 +302,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
-            return 320;
-        }else{
+//        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+//            return 320;
+//        }else{
             return 350;
-        }
+//        }
     }
     if (indexPath.section==1) {
         if (self.model.spec.count>0) {
@@ -411,13 +411,13 @@
 {
     if (self.model) {
         if (indexPath.section==0) {
-            CGFloat height;
-            if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
-                height=320;
-            }else{
-                height=350;
-            }
-            SellBanderTableViewCell *cell=[[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, height) andModel:self.model andHotSellModel:self.hotModel];
+//            CGFloat height;
+//            if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+//                height=320;
+//            }else{
+//                height=350;
+//            }
+            SellBanderTableViewCell *cell=[[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 350) andModel:self.model andHotSellModel:self.hotModel];
             cell.delegate=self;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;

@@ -3566,6 +3566,38 @@
     }];
     
 }
+#pragma mark ---------- 站长助手－审核工程订单 -----------
+- (void)shenhedingdanWithUid:(NSString *)uid WithauditStatus:(BOOL)auditStatus Success:(void (^)(id responseObject))success
+                     failure:(void (^)(NSError *error))failure
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *postURL            = @"api/order/audit";
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    if (auditStatus) {
+        parmers[@"auditStatus"]      = @"1";
+    }else{
+        parmers[@"auditStatus"]      = @"0";
+    }
+    
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+    
+}
 /******************* end 工程助手API  end*******************/
 -(void)jiaoyanfanhuideshuju:(NSString *)postStr Parmers:(NSDictionary *)parmers
 {

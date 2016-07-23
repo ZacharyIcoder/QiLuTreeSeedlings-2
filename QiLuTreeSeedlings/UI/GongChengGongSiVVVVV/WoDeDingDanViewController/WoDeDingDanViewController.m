@@ -186,7 +186,7 @@
     
 }
 - (void)topActionView {
-    NSArray *ary=@[@"全部",@"报价中",@"已结束"];
+    NSArray *ary=@[@"全部",@"审核中",@"报价中",@"已结束"];
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 50)];
     [view setBackgroundColor:[UIColor whiteColor]];
     view.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
@@ -235,10 +235,10 @@
     if (sender.tag==0) {
         self.Status=-1;
     }
-    if (sender.tag==1) {
+    if (sender.tag==2) {
         self.Status=1;
     }
-    if (sender.tag==2) {
+    if (sender.tag==3) {
         self.Status=0;
     }
     [self.tableView headerBeginRefreshing];

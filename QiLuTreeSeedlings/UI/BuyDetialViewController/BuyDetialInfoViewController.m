@@ -1145,13 +1145,13 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        CGFloat height;
-        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
-            height=100;
-        }else{
-            height=125;
-        }
-        BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, height)];
+//        CGFloat height;
+//        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+//            height=100;
+//        }else{
+//            height=125;
+//        }
+        BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 125)];
                  cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.model) {
             cell.model=self.model;
@@ -1233,11 +1233,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
-            return 100;
-        }else{
+//        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+//            return 100;
+//        }else{
             return 125;
-        }
+//        }
     }
     if (indexPath.section==1) {
         if (self.specAry) {

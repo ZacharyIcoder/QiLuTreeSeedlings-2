@@ -18,6 +18,7 @@
 @property (nonatomic,copy) NSString *quotation;
 @property (nonatomic,copy) NSString *status;
 @property (nonatomic,copy) NSString *uid;
+@property (nonatomic,assign) NSInteger auditStatus;
 @property (nonatomic)CGFloat showHeight;
 @property (nonatomic)BOOL isShow;
 +(YLDDingDanModel *)yldDingDanModelWithDic:(NSDictionary *)dic;
