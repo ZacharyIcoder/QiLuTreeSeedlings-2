@@ -302,11 +302,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-//        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
-//            return 320;
-//        }else{
+
             return 350;
-//        }
+
     }
     if (indexPath.section==1) {
         if (self.model.spec.count>0) {

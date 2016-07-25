@@ -41,6 +41,7 @@
 #import "YLDGongChengGongSiViewController.h"//工程助手
 #import "LYDGCGSTiShiViewController.h"
 #import "ZIKHelpfulHintsViewController.h"
+#import "YLDShopMessageViewController.h"//我的店铺第二版
 @interface UserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,UserBigInfoViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UserBigInfoView *userBigInfoV;
 @property (nonatomic,strong)UIView *logoutView;
@@ -521,9 +522,7 @@
     if (indexPath.section==2) {
         if (indexPath.row == 0) {
             [self hiddingSelfTabBar];
-            ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] initWithNibName:@"ZIKMyShopViewController" bundle:nil];
-            shopVC.memberUid = APPDELEGATE.userModel.access_id;
-            shopVC.type = 0;
+            YLDShopMessageViewController *shopVC = [[YLDShopMessageViewController alloc]init];
             [self.navigationController pushViewController:shopVC animated:YES];
             return;
         }

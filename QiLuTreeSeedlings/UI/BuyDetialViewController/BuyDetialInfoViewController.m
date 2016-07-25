@@ -35,9 +35,6 @@
 @property (nonatomic, strong) NSString *buyUid;
 @end
 @implementation BuyButton
-
-
-
 @end
 
 @interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
@@ -388,6 +385,7 @@
                                 self.memberUid = dic[@"memberUid"];
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
                                 self.model.uid=uid;
+                              
                                 if (self.model.state==4) {
                                     myshareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
                                     [myshareBtn setBackgroundColor:NavColor];
@@ -1145,14 +1143,12 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-//        CGFloat height;
-//        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
-//            height=100;
-//        }else{
-//            height=125;
-//        }
+
         BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 125)];
                  cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (self.type==2) {
+              self.model.goldsupplier=APPDELEGATE.userModel.goldsupplierStatus;
+        }
         if (self.model) {
             cell.model=self.model;
         }

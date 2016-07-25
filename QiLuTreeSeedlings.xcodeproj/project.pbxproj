@@ -223,6 +223,18 @@
 		EA6B31BE1CABA5F70068CCB5 /* NuseryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B71CABA5F70068CCB5 /* NuseryListTableViewCell.m */; };
 		EA6B31BF1CABA5F70068CCB5 /* MyNuseryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */; };
 		EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */; };
+		EA6BDA241D45AE8C00F317F2 /* YLDShopMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6BDA231D45AE8C00F317F2 /* YLDShopMessageViewController.m */; };
+		EA6BDA291D45B00800F317F2 /* YLDShopIndexinfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6BDA271D45B00800F317F2 /* YLDShopIndexinfoCell.m */; };
+		EA6BDA2A1D45B00800F317F2 /* YLDShopIndexinfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA281D45B00800F317F2 /* YLDShopIndexinfoCell.xib */; };
+		EA6BDA2C1D45B0EB00F317F2 /* SHOPBACKVIEW.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA2B1D45B0EB00F317F2 /* SHOPBACKVIEW.png */; };
+		EA6BDA2E1D45B5AE00F317F2 /* 我的店铺-访问量-每日.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA2D1D45B5AE00F317F2 /* 我的店铺-访问量-每日.png */; };
+		EA6BDA311D45B85F00F317F2 /* 我的店铺-访问量-总.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA2F1D45B85F00F317F2 /* 我的店铺-访问量-总.png */; };
+		EA6BDA321D45B85F00F317F2 /* 我的店铺-分享次数.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA301D45B85F00F317F2 /* 我的店铺-分享次数.png */; };
+		EA6BDA361D45D27100F317F2 /* YLDShopIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6BDA351D45D27100F317F2 /* YLDShopIndexModel.m */; };
+		EA6BDA381D45DD4000F317F2 /* 诚信保证金背景.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA371D45DD4000F317F2 /* 诚信保证金背景.png */; };
+		EA6BDA3A1D45DF8F00F317F2 /* Store.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA391D45DF8F00F317F2 /* Store.png */; };
+		EA6BDA3E1D45E9FA00F317F2 /* YLDShopYuanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6BDA3C1D45E9FA00F317F2 /* YLDShopYuanCell.m */; };
+		EA6BDA3F1D45E9FA00F317F2 /* YLDShopYuanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA3D1D45E9FA00F317F2 /* YLDShopYuanCell.xib */; };
 		EA6D36C31CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D36C11CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m */; };
 		EA6D36C41CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6D36C21CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib */; };
 		EA6D36C61CE7136900CE025C /* shenhezhong.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6D36C51CE7136900CE025C /* shenhezhong.png */; };
@@ -1094,6 +1106,22 @@
 		EA6B31B91CABA5F70068CCB5 /* MyNuseryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuseryListViewController.m; sourceTree = "<group>"; };
 		EA6B31BB1CABA5F70068CCB5 /* NuseryDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuseryDetialViewController.h; sourceTree = "<group>"; };
 		EA6B31BC1CABA5F70068CCB5 /* NuseryDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuseryDetialViewController.m; sourceTree = "<group>"; };
+		EA6BDA221D45AE8C00F317F2 /* YLDShopMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopMessageViewController.h; sourceTree = "<group>"; };
+		EA6BDA231D45AE8C00F317F2 /* YLDShopMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopMessageViewController.m; sourceTree = "<group>"; };
+		EA6BDA261D45B00800F317F2 /* YLDShopIndexinfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopIndexinfoCell.h; sourceTree = "<group>"; };
+		EA6BDA271D45B00800F317F2 /* YLDShopIndexinfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopIndexinfoCell.m; sourceTree = "<group>"; };
+		EA6BDA281D45B00800F317F2 /* YLDShopIndexinfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopIndexinfoCell.xib; sourceTree = "<group>"; };
+		EA6BDA2B1D45B0EB00F317F2 /* SHOPBACKVIEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SHOPBACKVIEW.png; sourceTree = "<group>"; };
+		EA6BDA2D1D45B5AE00F317F2 /* 我的店铺-访问量-每日.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-访问量-每日.png"; sourceTree = "<group>"; };
+		EA6BDA2F1D45B85F00F317F2 /* 我的店铺-访问量-总.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-访问量-总.png"; sourceTree = "<group>"; };
+		EA6BDA301D45B85F00F317F2 /* 我的店铺-分享次数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-分享次数.png"; sourceTree = "<group>"; };
+		EA6BDA341D45D27100F317F2 /* YLDShopIndexModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopIndexModel.h; sourceTree = "<group>"; };
+		EA6BDA351D45D27100F317F2 /* YLDShopIndexModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopIndexModel.m; sourceTree = "<group>"; };
+		EA6BDA371D45DD4000F317F2 /* 诚信保证金背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "诚信保证金背景.png"; sourceTree = "<group>"; };
+		EA6BDA391D45DF8F00F317F2 /* Store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Store.png; sourceTree = "<group>"; };
+		EA6BDA3B1D45E9FA00F317F2 /* YLDShopYuanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopYuanCell.h; sourceTree = "<group>"; };
+		EA6BDA3C1D45E9FA00F317F2 /* YLDShopYuanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopYuanCell.m; sourceTree = "<group>"; };
+		EA6BDA3D1D45E9FA00F317F2 /* YLDShopYuanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopYuanCell.xib; sourceTree = "<group>"; };
 		EA6D36C01CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDCustomUnReadTableViewCell.h; sourceTree = "<group>"; };
 		EA6D36C11CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDCustomUnReadTableViewCell.m; sourceTree = "<group>"; };
 		EA6D36C21CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDCustomUnReadTableViewCell.xib; sourceTree = "<group>"; };
@@ -2365,6 +2393,12 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA6BDA391D45DF8F00F317F2 /* Store.png */,
+				EA6BDA371D45DD4000F317F2 /* 诚信保证金背景.png */,
+				EA6BDA2F1D45B85F00F317F2 /* 我的店铺-访问量-总.png */,
+				EA6BDA301D45B85F00F317F2 /* 我的店铺-分享次数.png */,
+				EA6BDA2D1D45B5AE00F317F2 /* 我的店铺-访问量-每日.png */,
+				EA6BDA2B1D45B0EB00F317F2 /* SHOPBACKVIEW.png */,
 				FC5948271D3CA09C0014E39B /* ico_橙色展开-2.png */,
 				FC5948201D3C98A50014E39B /* 站长通-海报-2.png */,
 				FC59481E1D3C77850014E39B /* 已报价.png */,
@@ -3007,6 +3041,28 @@
 			path = NuseryDetialViewController;
 			sourceTree = "<group>";
 		};
+		EA6BDA251D45AFCC00F317F2 /* MySopHomePageView */ = {
+			isa = PBXGroup;
+			children = (
+				EA6BDA261D45B00800F317F2 /* YLDShopIndexinfoCell.h */,
+				EA6BDA271D45B00800F317F2 /* YLDShopIndexinfoCell.m */,
+				EA6BDA281D45B00800F317F2 /* YLDShopIndexinfoCell.xib */,
+				EA6BDA3B1D45E9FA00F317F2 /* YLDShopYuanCell.h */,
+				EA6BDA3C1D45E9FA00F317F2 /* YLDShopYuanCell.m */,
+				EA6BDA3D1D45E9FA00F317F2 /* YLDShopYuanCell.xib */,
+			);
+			path = MySopHomePageView;
+			sourceTree = "<group>";
+		};
+		EA6BDA331D45C35400F317F2 /* shopModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA6BDA341D45D27100F317F2 /* YLDShopIndexModel.h */,
+				EA6BDA351D45D27100F317F2 /* YLDShopIndexModel.m */,
+			);
+			path = shopModel;
+			sourceTree = "<group>";
+		};
 		EA7056501C9F869900E9D253 /* CompanyInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3517,9 +3573,13 @@
 		FC0CF6481D30C47F0074194D /* MyShop */ = {
 			isa = PBXGroup;
 			children = (
+				EA6BDA331D45C35400F317F2 /* shopModel */,
+				EA6BDA251D45AFCC00F317F2 /* MySopHomePageView */,
 				FC0CF6491D30C5140074194D /* ZIKMyShopViewController.h */,
 				FC0CF64A1D30C5140074194D /* ZIKMyShopViewController.m */,
 				FC0CF64B1D30C5140074194D /* ZIKMyShopViewController.xib */,
+				EA6BDA221D45AE8C00F317F2 /* YLDShopMessageViewController.h */,
+				EA6BDA231D45AE8C00F317F2 /* YLDShopMessageViewController.m */,
 			);
 			path = MyShop;
 			sourceTree = "<group>";
@@ -4844,8 +4904,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6BDA321D45B85F00F317F2 /* 我的店铺-分享次数.png in Resources */,
 				EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */,
 				EAE085F01CE3199D00D0A45A /* wanshanmiaopo.png in Resources */,
+				EA6BDA311D45B85F00F317F2 /* 我的店铺-访问量-总.png in Resources */,
 				EA7419F61C8FB5AA00F54478 /* selectBtnAction2@2x.png in Resources */,
 				EAF0510D1C92B3A000F435A9 /* tabbarBackImage1@2x.png in Resources */,
 				EA4E64721D0E863C00A7D731 /* kefuxitongfaduanxin.png in Resources */,
@@ -4855,6 +4917,7 @@
 				FC5612781D0C092F00E5743B /* 苗圃基地已选择框.png in Resources */,
 				FC22768E1D177D1A0037B131 /* 标签-询价.png in Resources */,
 				EA552E7E1D0D3FD700FB88A0 /* baojiaguanliOn.png in Resources */,
+				EA6BDA2A1D45B00800F317F2 /* YLDShopIndexinfoCell.xib in Resources */,
 				EA1CF4071CACD11A00AF2D82 /* loading04@2x.png in Resources */,
 				EAEB63BF1C911AA20001ABC9 /* yanzhengCode@2x.png in Resources */,
 				EA5252F01CE179500004639C /* areaselected@2x.png in Resources */,
@@ -4956,6 +5019,7 @@
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
 				EA3D4D7F1D17809B0010B56D /* YLDBaoJiaMiaoMuView.xib in Resources */,
 				EA3D4D8A1D1792CD0010B56D /* yihezuo.png in Resources */,
+				EA6BDA2C1D45B0EB00F317F2 /* SHOPBACKVIEW.png in Resources */,
 				EA17B5D21CC9D23A0054223B /* rightBtnImage@2x.png in Resources */,
 				EA833D921CFEBEAC00D56AFB /* gongchenggongsishouye.png in Resources */,
 				EAAFCFB91CBE267700EB894F /* 1miaomu1472.png in Resources */,
@@ -5051,6 +5115,7 @@
 				FC50B3411CAE4C4A0022A24C /* AlipaySDK.bundle in Resources */,
 				FC0853FE1D191D86003A47BA /* ico_地址-工作站.png in Resources */,
 				FC44704A1D2F468A00EA0D82 /* 工程订单_排序on.png in Resources */,
+				EA6BDA381D45DD4000F317F2 /* 诚信保证金背景.png in Resources */,
 				FC56128E1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
 				EA8D3D331D2395660095840F /* 首页-ico_工程订单.png in Resources */,
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
@@ -5083,6 +5148,7 @@
 				FC22769A1D17BC4E0037B131 /* zt已过期.png in Resources */,
 				FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
+				EA6BDA3A1D45DF8F00F317F2 /* Store.png in Resources */,
 				FC74AD741D34D8C1009D8409 /* 列表-分站.png in Resources */,
 				FC5612841D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
 				FC50B16A1CAE243F0022A24C /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -5098,6 +5164,7 @@
 				EA833D8E1CFE848500D56AFB /* shiyongbangzhu@2x.png in Resources */,
 				FC22766C1D177C9F0037B131 /* ZIKMyofferTableViewCell.xib in Resources */,
 				FC22766E1D177C9F0037B131 /* ZIKStationCenterTableViewController.xib in Resources */,
+				EA6BDA3F1D45E9FA00F317F2 /* YLDShopYuanCell.xib in Resources */,
 				FC5612611D0C092F00E5743B /* shanchutupian@3x.png in Resources */,
 				FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
@@ -5109,6 +5176,7 @@
 				FCCEA4931CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png in Resources */,
 				FC22768B1D177D1A0037B131 /* ico_订单公司.png in Resources */,
 				EA08F7CB1D191B0200471C33 /* ico_工作站-总站text.png in Resources */,
+				EA6BDA2E1D45B5AE00F317F2 /* 我的店铺-访问量-每日.png in Resources */,
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
 				EA5AAC361C8D16F400660FC9 /* region@2x.png in Resources */,
 				FC6FED881CAD103F000E2CA5 /* 消费记录-充值.png in Resources */,
@@ -5271,6 +5339,7 @@
 				EA1A16D21D10E5BB008CA20F /* YLDPickTimeView.m in Sources */,
 				EAEA07F41C5B09FF003A0D8A /* QLsearchView.m in Sources */,
 				EA833D951CFEC13300D56AFB /* YLDGongChengGongSiViewController.m in Sources */,
+				EA6BDA3E1D45E9FA00F317F2 /* YLDShopYuanCell.m in Sources */,
 				FC5612931D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.m in Sources */,
 				EAE32DF01C7E9C3800C4CEA2 /* AFAutoPurgingImageCache.m in Sources */,
 				EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */,
@@ -5424,8 +5493,10 @@
 				EA5163541D2B493700494604 /* YLDGCGSModel.m in Sources */,
 				EA8D3D381D2396DB0095840F /* LYDGCGSTiShiViewController.m in Sources */,
 				FC50B3451CAE4C4A0022A24C /* base64.m in Sources */,
+				EA6BDA291D45B00800F317F2 /* YLDShopIndexinfoCell.m in Sources */,
 				EA16C4DD1C93B5EB00A33BD3 /* noOneCollectCell.m in Sources */,
 				FC5612471D0C092F00E5743B /* IQUIViewController+Additions.m in Sources */,
+				EA6BDA241D45AE8C00F317F2 /* YLDShopMessageViewController.m in Sources */,
 				EA7AE8EF1C96908B00B43073 /* SellQiyeInfoTableViewCell.m in Sources */,
 				FC22766B1D177C9F0037B131 /* ZIKMyofferTableViewCell.m in Sources */,
 				EA29AA0B1C857859004913FF /* SellSearchTableViewCell.m in Sources */,
@@ -5468,6 +5539,7 @@
 				EA27271A1C8A7D8E000B0719 /* FMDatabasePool.m in Sources */,
 				EA6D36C31CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m in Sources */,
 				FC5612481D0C092F00E5743B /* IQUIWindow+Hierarchy.m in Sources */,
+				EA6BDA361D45D27100F317F2 /* YLDShopIndexModel.m in Sources */,
 				FC5612981D0C092F00E5743B /* YYClassInfo.m in Sources */,
 				EA5444BE1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m in Sources */,
 				FC5612831D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */,
@@ -5733,10 +5805,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5773,9 +5843,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5786,10 +5854,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5826,9 +5892,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
