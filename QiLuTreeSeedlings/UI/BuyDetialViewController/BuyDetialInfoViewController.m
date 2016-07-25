@@ -438,7 +438,7 @@
 }
 -(UIView *)lianxiMessageView
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 50)];
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
 
     UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth*3/5+2, 2)];
     topLineView.backgroundColor = kLineColor;
@@ -508,7 +508,7 @@
 
 -(UIView *)lianxiMessageShareView
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
 
     UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth*2.5/5+2, 2)];
     topLineView.backgroundColor = kLineColor;
