@@ -26,9 +26,16 @@
 }
 -(void)callAction
 {
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
+    if (self.model.phone.length>0) {
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }else{
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.hezuomodel.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
+   
     //            NSLog(@"str======%@",str);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
 }
 -(void)setModel:(YLDDingDanDetialModel *)model
 {
