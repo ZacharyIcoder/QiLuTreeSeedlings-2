@@ -213,8 +213,6 @@ static NSString *flag = @"";
     }
     [ToastView showTopToast:@"加载失败"];
     RemoveActionV();
-//    NSLog(@"%@",webView.request.URL.absoluteString);
-//    NSLog(@"%@",error);
 
 }
 

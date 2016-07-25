@@ -1087,4 +1087,29 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 站长助手－审核工程订单 -----------
 - (void)shenhedingdanWithUid:(NSString *)uid WithauditStatus:(BOOL)auditStatus Success:(void (^)(id responseObject))success
                                failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 店铺首页 -----------
+-(void)getMyShopHomePageMessageSuccess:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 店铺基本信息 -----------
+-(void)getMyShopBaseMessageSuccess:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 店铺基本信息修改-----------
+-(void)getMyShopBaseMessageUpDataWithType:(NSString *)type value:(NSString *)value Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 店铺地址信息修改-----------
+-(void)UpDataMyShopAddressWithshopProvince:(NSString *)shopProvince
+                              WithshopCity:(NSString *)shopCity
+                            WithshopCounty:(NSString *)shopCounty
+                           WithshopAddress:(NSString *)shopAddress
+                                   Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 后台店铺上传图片-----------
+-(void)updataShopImageWithType:(NSString *)type WithImageStr:(NSString *)imageStr
+                       Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 添加店铺分享记录-----------
+-(void)shareShopMessageViewNumWithmemberUid:(NSString *)memberUid
+                                    Success:(void (^)(id responseObject))success
+                                    failure:(void (^)(NSError *error))failure;
 @end
