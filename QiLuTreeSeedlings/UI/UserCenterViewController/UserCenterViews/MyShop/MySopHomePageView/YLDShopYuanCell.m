@@ -13,9 +13,17 @@
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.frame=CGRectMake(0, 0,kWidth,230);
+        self.frame=CGRectMake(0, 0,kWidth,210);
         NSArray *titleAry=@[@"发布供应",@"发布求购",@"我的企业",@"我的苗圃",@"店铺装修",@"查看店铺"];
          NSArray *imageAry=@[@"我的店铺-发布供应.png",@"我的店铺-发布求购.png",@"我的店铺-我的企业.png",@"我的店铺-我的苗圃.png",@"我的店铺-店铺装修.png",@"我的店铺-查看店铺.png"];
+        [self setBackgroundColor:[UIColor whiteColor]];
+        for (int i=0; i<titleAry.count; i++) {
+            
+            UIView *circV=[self makeCircleViewWtihName:titleAry[i] WithImagName:imageAry[i] WithNum:i];
+            [self.contentView addSubview:circV];
+            
+        }
+
         
     }
     return self;
@@ -26,10 +34,10 @@
     int k=i/3;
     int z=i%3;
     UIView *circleView=[[UIView alloc]initWithFrame:CGRectMake(z*CWith, k*100, CWith, 100)];
-    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(circleView.frame.size.width/2-43/2,100/2-31, 43, 43)];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(circleView.frame.size.width/2-55/2,100/2-36, 55, 55)];
     [imageV setImage:[UIImage imageNamed:imagName]];
     imageV.layer.masksToBounds=YES;
-    imageV.layer.cornerRadius=43/2;
+    imageV.layer.cornerRadius=55/2;
     [circleView addSubview:imageV];
     UIButton *circBtn=[[UIButton alloc]initWithFrame:imageV.frame];
     circBtn.tag=i;
@@ -39,14 +47,17 @@
     nameLab.textAlignment=NSTextAlignmentCenter;
     nameLab.text=nameStr;
     [nameLab setTextColor:[UIColor darkGrayColor]];
-    [nameLab setFont:[UIFont systemFontOfSize:13]];
+    [nameLab setFont:[UIFont systemFontOfSize:15]];
     [circleView addSubview:nameLab];
    
     return circleView;
 }
 -(void)circleBtnAction:(UIButton *)sender
 {
-    
+    if (self.delegate) {
+        [self.delegate YLDShopYuanCellPush:sender.tag];
+    }
+
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

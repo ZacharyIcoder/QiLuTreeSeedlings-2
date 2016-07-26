@@ -29,14 +29,6 @@ const unsigned int kToastLabelHeight = 25;
     }
     return self;
 }
-
-//- (void)dealloc
-//{
-////    [_textLabel release];
-////    [_backgroundView release];
-////     
-//}
-
 - (void)showText
 {
     [UIView beginAnimations:@"show" context:nil];
@@ -72,7 +64,7 @@ const unsigned int kToastLabelHeight = 25;
     else if ([animationID isEqualToString:@"show"])
     {
         if (_duration == 0.0)
-            _duration = 1;
+            _duration = 1.7;
         [NSTimer scheduledTimerWithTimeInterval:_duration target:self selector:@selector(hide) userInfo:nil repeats:NO];
     }
 }

@@ -64,7 +64,7 @@ static NSString *uid = nil;
         [self.navBackView setBackgroundColor:NavYellowColor];
     }
     if (self.type==TypeHonorOther) {
-        self.vcTitle = @"工作站资质";
+        self.vcTitle = @"荣誉";
     }else{
         self.rightBarBtnTitleString = @"添加";
         __weak typeof(self) weakSelf = self;//解决循环引用的问题

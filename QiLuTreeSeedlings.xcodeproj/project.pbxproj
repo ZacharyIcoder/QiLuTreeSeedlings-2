@@ -235,6 +235,12 @@
 		EA6BDA3A1D45DF8F00F317F2 /* Store.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA391D45DF8F00F317F2 /* Store.png */; };
 		EA6BDA3E1D45E9FA00F317F2 /* YLDShopYuanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6BDA3C1D45E9FA00F317F2 /* YLDShopYuanCell.m */; };
 		EA6BDA3F1D45E9FA00F317F2 /* YLDShopYuanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA3D1D45E9FA00F317F2 /* YLDShopYuanCell.xib */; };
+		EA6BDA461D45FE5F00F317F2 /* 我的店铺-查看店铺.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA401D45FE5F00F317F2 /* 我的店铺-查看店铺.png */; };
+		EA6BDA471D45FE5F00F317F2 /* 我的店铺-店铺装修.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA411D45FE5F00F317F2 /* 我的店铺-店铺装修.png */; };
+		EA6BDA481D45FE5F00F317F2 /* 我的店铺-发布供应.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA421D45FE5F00F317F2 /* 我的店铺-发布供应.png */; };
+		EA6BDA491D45FE5F00F317F2 /* 我的店铺-发布求购.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA431D45FE5F00F317F2 /* 我的店铺-发布求购.png */; };
+		EA6BDA4A1D45FE5F00F317F2 /* 我的店铺-我的苗圃.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA441D45FE5F00F317F2 /* 我的店铺-我的苗圃.png */; };
+		EA6BDA4B1D45FE5F00F317F2 /* 我的店铺-我的企业.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6BDA451D45FE5F00F317F2 /* 我的店铺-我的企业.png */; };
 		EA6D36C31CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D36C11CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m */; };
 		EA6D36C41CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6D36C21CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib */; };
 		EA6D36C61CE7136900CE025C /* shenhezhong.png in Resources */ = {isa = PBXBuildFile; fileRef = EA6D36C51CE7136900CE025C /* shenhezhong.png */; };
@@ -317,6 +323,7 @@
 		EAA81BA91C746A7B007F207D /* HotBuyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA81BA81C746A7B007F207D /* HotBuyViewCell.m */; };
 		EAA9FFF11D12365E009CF19D /* YLDMiaoMuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9FFEF1D12365E009CF19D /* YLDMiaoMuTableViewCell.m */; };
 		EAA9FFF21D12365E009CF19D /* YLDMiaoMuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA9FFF01D12365E009CF19D /* YLDMiaoMuTableViewCell.xib */; };
+		EAAD2AB71D46F8520070F6CE /* YLDShopInteriorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8400481D46F0890017C37B /* YLDShopInteriorViewController.m */; };
 		EAAFCF701CBDD94300EB894F /* BigImageViewShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAFCF6F1CBDD94300EB894F /* BigImageViewShowView.m */; };
 		EAAFCFA91CBE20E200EB894F /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAFCFA61CBE20E200EB894F /* EAIntroPage.m */; };
 		EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAFCFA81CBE20E200EB894F /* EAIntroView.m */; };
@@ -1122,6 +1129,12 @@
 		EA6BDA3B1D45E9FA00F317F2 /* YLDShopYuanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopYuanCell.h; sourceTree = "<group>"; };
 		EA6BDA3C1D45E9FA00F317F2 /* YLDShopYuanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopYuanCell.m; sourceTree = "<group>"; };
 		EA6BDA3D1D45E9FA00F317F2 /* YLDShopYuanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopYuanCell.xib; sourceTree = "<group>"; };
+		EA6BDA401D45FE5F00F317F2 /* 我的店铺-查看店铺.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-查看店铺.png"; sourceTree = "<group>"; };
+		EA6BDA411D45FE5F00F317F2 /* 我的店铺-店铺装修.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-店铺装修.png"; sourceTree = "<group>"; };
+		EA6BDA421D45FE5F00F317F2 /* 我的店铺-发布供应.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-发布供应.png"; sourceTree = "<group>"; };
+		EA6BDA431D45FE5F00F317F2 /* 我的店铺-发布求购.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-发布求购.png"; sourceTree = "<group>"; };
+		EA6BDA441D45FE5F00F317F2 /* 我的店铺-我的苗圃.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-我的苗圃.png"; sourceTree = "<group>"; };
+		EA6BDA451D45FE5F00F317F2 /* 我的店铺-我的企业.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的店铺-我的企业.png"; sourceTree = "<group>"; };
 		EA6D36C01CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDCustomUnReadTableViewCell.h; sourceTree = "<group>"; };
 		EA6D36C11CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDCustomUnReadTableViewCell.m; sourceTree = "<group>"; };
 		EA6D36C21CE6BE9800CE025C /* YLDCustomUnReadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDCustomUnReadTableViewCell.xib; sourceTree = "<group>"; };
@@ -1196,6 +1209,8 @@
 		EA833D901CFEBEAC00D56AFB /* gongchenggongsishouye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gongchenggongsishouye.png; sourceTree = "<group>"; };
 		EA833D931CFEC13300D56AFB /* YLDGongChengGongSiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDGongChengGongSiViewController.h; sourceTree = "<group>"; };
 		EA833D941CFEC13300D56AFB /* YLDGongChengGongSiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGongChengGongSiViewController.m; sourceTree = "<group>"; };
+		EA8400471D46F0890017C37B /* YLDShopInteriorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopInteriorViewController.h; sourceTree = "<group>"; };
+		EA8400481D46F0890017C37B /* YLDShopInteriorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopInteriorViewController.m; sourceTree = "<group>"; };
 		EA8865E91D3A06FD008B89D6 /* areadbss.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = areadbss.sqlite; sourceTree = "<group>"; };
 		EA88BE721C83E06E001E4E1F /* SearchRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendView.h; sourceTree = "<group>"; };
 		EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendView.m; sourceTree = "<group>"; };
@@ -2393,6 +2408,12 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA6BDA401D45FE5F00F317F2 /* 我的店铺-查看店铺.png */,
+				EA6BDA411D45FE5F00F317F2 /* 我的店铺-店铺装修.png */,
+				EA6BDA421D45FE5F00F317F2 /* 我的店铺-发布供应.png */,
+				EA6BDA431D45FE5F00F317F2 /* 我的店铺-发布求购.png */,
+				EA6BDA441D45FE5F00F317F2 /* 我的店铺-我的苗圃.png */,
+				EA6BDA451D45FE5F00F317F2 /* 我的店铺-我的企业.png */,
 				EA6BDA391D45DF8F00F317F2 /* Store.png */,
 				EA6BDA371D45DD4000F317F2 /* 诚信保证金背景.png */,
 				EA6BDA2F1D45B85F00F317F2 /* 我的店铺-访问量-总.png */,
@@ -3211,6 +3232,22 @@
 			path = ../SellDetialViewController/AuthcodeView;
 			sourceTree = "<group>";
 		};
+		EA8400451D46EF5F0017C37B /* ShopBaseInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShopBaseInfoViewController;
+			sourceTree = "<group>";
+		};
+		EA8400461D46F05F0017C37B /* ShopInteriorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA8400471D46F0890017C37B /* YLDShopInteriorViewController.h */,
+				EA8400481D46F0890017C37B /* YLDShopInteriorViewController.m */,
+			);
+			path = ShopInteriorViewController;
+			sourceTree = "<group>";
+		};
 		EA8CAA621C8963D500058A34 /* DataCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -3573,6 +3610,8 @@
 		FC0CF6481D30C47F0074194D /* MyShop */ = {
 			isa = PBXGroup;
 			children = (
+				EA8400461D46F05F0017C37B /* ShopInteriorViewController */,
+				EA8400451D46EF5F0017C37B /* ShopBaseInfoViewController */,
 				EA6BDA331D45C35400F317F2 /* shopModel */,
 				EA6BDA251D45AFCC00F317F2 /* MySopHomePageView */,
 				FC0CF6491D30C5140074194D /* ZIKMyShopViewController.h */,
@@ -4975,6 +5014,7 @@
 				FC5612861D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib in Resources */,
 				FC7EAFEE1D13C63200F4043D /* ico_顶部搜索.png in Resources */,
 				FC11CBF91D37886900C3F47D /* 圆角矩形-3.png in Resources */,
+				EA6BDA471D45FE5F00F317F2 /* 我的店铺-店铺装修.png in Resources */,
 				EA7491691D0275910043BDAC /* xiala2.png in Resources */,
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
 				FC5612501D0C092F00E5743B /* IQKeyboardManager.bundle in Resources */,
@@ -5102,6 +5142,7 @@
 				EAF050EC1C928E3300F435A9 /* homePageNomer@2x.png in Resources */,
 				FC5612751D0C092F00E5743B /* 添加照片-人苗.png in Resources */,
 				FC22767F1D177C9F0037B131 /* ZIKStationOrderOfferTableViewCell.xib in Resources */,
+				EA6BDA4B1D45FE5F00F317F2 /* 我的店铺-我的企业.png in Resources */,
 				EAF051051C92A31000F435A9 /* zhanzhangtong@2x.png in Resources */,
 				EA5AAC421C8D2DF300660FC9 /* NomerSellMessageBtn@2x.png in Resources */,
 				EA0B2BA61C59F5220018A7BD /* LaunchScreen.storyboard in Resources */,
@@ -5148,6 +5189,7 @@
 				FC22769A1D17BC4E0037B131 /* zt已过期.png in Resources */,
 				FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
+				EA6BDA461D45FE5F00F317F2 /* 我的店铺-查看店铺.png in Resources */,
 				EA6BDA3A1D45DF8F00F317F2 /* Store.png in Resources */,
 				FC74AD741D34D8C1009D8409 /* 列表-分站.png in Resources */,
 				FC5612841D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.xib in Resources */,
@@ -5165,6 +5207,7 @@
 				FC22766C1D177C9F0037B131 /* ZIKMyofferTableViewCell.xib in Resources */,
 				FC22766E1D177C9F0037B131 /* ZIKStationCenterTableViewController.xib in Resources */,
 				EA6BDA3F1D45E9FA00F317F2 /* YLDShopYuanCell.xib in Resources */,
+				EA6BDA4A1D45FE5F00F317F2 /* 我的店铺-我的苗圃.png in Resources */,
 				FC5612611D0C092F00E5743B /* shanchutupian@3x.png in Resources */,
 				FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */,
 				EA5AAC441C8D2E4A00660FC9 /* NomerCustomBtn@2x.png in Resources */,
@@ -5212,7 +5255,9 @@
 				FC74AD691D3496A5009D8409 /* 列表-铜牌牌供应商.png in Resources */,
 				EA696FAE1CDD7914001F037E /* YLDMyMessageTableViewCell.xib in Resources */,
 				EAF050FD1C92A1A900F435A9 /* myBuyV@2x.png in Resources */,
+				EA6BDA481D45FE5F00F317F2 /* 我的店铺-发布供应.png in Resources */,
 				FC5612811D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */,
+				EA6BDA491D45FE5F00F317F2 /* 我的店铺-发布求购.png in Resources */,
 				EA5AAC411C8D2DF300660FC9 /* NomerMyCollectionBtn@2x.png in Resources */,
 				EA6D36CA1CE713A500CE025C /* weitonguo.png in Resources */,
 				FCCEA49E1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib in Resources */,
@@ -5294,6 +5339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAAD2AB71D46F8520070F6CE /* YLDShopInteriorViewController.m in Sources */,
 				FC2276701D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.m in Sources */,
 				FC45C3F01D2CABF30038D22A /* ZIKMyTeamModel.m in Sources */,
 				FC5612881D0C092F00E5743B /* ZIKNurseryListView.m in Sources */,
@@ -5805,10 +5851,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5845,9 +5889,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5858,10 +5900,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -5898,9 +5938,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
-
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
