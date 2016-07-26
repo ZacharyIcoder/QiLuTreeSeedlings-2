@@ -5853,7 +5853,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
- 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -5889,6 +5889,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -5938,6 +5939,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
