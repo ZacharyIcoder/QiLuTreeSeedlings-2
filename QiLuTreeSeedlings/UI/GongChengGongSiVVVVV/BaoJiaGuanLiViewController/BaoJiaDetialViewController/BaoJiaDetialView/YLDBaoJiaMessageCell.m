@@ -32,7 +32,10 @@
     
     self.lianxirenWi.constant=model.chargelPerson.length*15+62;
     self.timeLab.text=model.quoteTime;
-    self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];
+    
+    self.numLab.text=[NSString stringWithFormat:@"%@棵",model.quantity];
+    
+   
     self.priceLab.text=model.price;
     self.areaLab.text=model.area;
     self.shuomingTextView.text=model.explain;
@@ -47,6 +50,10 @@
     NSArray *imageAry=[model.image2 componentsSeparatedByString:@","];
     [self.hezuoActionBtn addTarget:self action:@selector(hezuoBtnAciotn:) forControlEvents:UIControlEventTouchUpInside];
     for (int i=0; i<imageAry.count; i++) {
+        NSString *sds=imageAry[0];
+        if (sds.length<=0) {
+            break;
+        }
         if (i==0) {
             [self.imageV1 setImageWithURL:[NSURL URLWithString:imageAry[0]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
         }

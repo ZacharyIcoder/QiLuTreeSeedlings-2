@@ -141,11 +141,16 @@
     if(indexPath.section==0)
     {
         if (indexPath.row==0) {
-            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-            adView.delegate=self;
-            [adView setAdInfo];
-            [adView adStart];
-            return adView;
+//            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+//            adView.delegate=self;
+////            [adView setAdInfo];
+////            [adView adStart];
+//            return adView;
+            UITableViewCell *cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+            UIImageView *imageV=[[UIImageView alloc]initWithFrame:cell.bounds];
+            [imageV setImage:[UIImage imageNamed:@"站长通-海报-2.png"]];
+            [cell addSubview:imageV];
+            return cell;
         }
     }
     if (indexPath.section==1) {
@@ -198,7 +203,7 @@
         UIView *view=[self makeTitleViewWithTitle:@"推荐工作站" AndColor:kRedHintColor andY:0];
        UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
         [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
-        [moreBtn setTitleColor:kRedHintColor forState:UIControlStateNormal];
+        [moreBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
         [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
         [view addSubview:hotMoreRowImgV];
@@ -211,7 +216,7 @@
         UIView *view=[self makeTitleViewWithTitle:@"工作站供应" AndColor:NavColor andY:0];
         UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 0, 40, 36)];
         [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
-        [moreBtn setTitleColor:kRedHintColor forState:UIControlStateNormal];
+        [moreBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
         UIImageView *hotMoreRowImgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-35, 10.5, 15, 15)];
         [hotMoreRowImgV setImage:[UIImage imageNamed:@"moreRow"]];
         [view addSubview:hotMoreRowImgV];

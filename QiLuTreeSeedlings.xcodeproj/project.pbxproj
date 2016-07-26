@@ -324,6 +324,11 @@
 		EAA9FFF11D12365E009CF19D /* YLDMiaoMuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9FFEF1D12365E009CF19D /* YLDMiaoMuTableViewCell.m */; };
 		EAA9FFF21D12365E009CF19D /* YLDMiaoMuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA9FFF01D12365E009CF19D /* YLDMiaoMuTableViewCell.xib */; };
 		EAAD2AB71D46F8520070F6CE /* YLDShopInteriorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8400481D46F0890017C37B /* YLDShopInteriorViewController.m */; };
+		EAAD2ABA1D4708440070F6CE /* YLDShopBaseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD2AB91D4708440070F6CE /* YLDShopBaseInfoViewController.m */; };
+		EAAD2ABD1D4729040070F6CE /* YLDRangeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD2ABC1D4729040070F6CE /* YLDRangeTextView.m */; };
+		EAAD2AC11D472BE90070F6CE /* YLDShopNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD2ABF1D472BE90070F6CE /* YLDShopNameViewController.m */; };
+		EAAD2AC21D472BE90070F6CE /* YLDShopNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAAD2AC01D472BE90070F6CE /* YLDShopNameViewController.xib */; };
+		EAAD2AC61D472EE30070F6CE /* YLDshopWareView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD2AC51D472EE30070F6CE /* YLDshopWareView.m */; };
 		EAAFCF701CBDD94300EB894F /* BigImageViewShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAFCF6F1CBDD94300EB894F /* BigImageViewShowView.m */; };
 		EAAFCFA91CBE20E200EB894F /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAFCFA61CBE20E200EB894F /* EAIntroPage.m */; };
 		EAAFCFAA1CBE20E200EB894F /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAFCFA81CBE20E200EB894F /* EAIntroView.m */; };
@@ -1254,6 +1259,15 @@
 		EAA9FFEE1D12365E009CF19D /* YLDMiaoMuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMiaoMuTableViewCell.h; sourceTree = "<group>"; };
 		EAA9FFEF1D12365E009CF19D /* YLDMiaoMuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMiaoMuTableViewCell.m; sourceTree = "<group>"; };
 		EAA9FFF01D12365E009CF19D /* YLDMiaoMuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMiaoMuTableViewCell.xib; sourceTree = "<group>"; };
+		EAAD2AB81D4708440070F6CE /* YLDShopBaseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopBaseInfoViewController.h; sourceTree = "<group>"; };
+		EAAD2AB91D4708440070F6CE /* YLDShopBaseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopBaseInfoViewController.m; sourceTree = "<group>"; };
+		EAAD2ABB1D4729040070F6CE /* YLDRangeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDRangeTextView.h; sourceTree = "<group>"; };
+		EAAD2ABC1D4729040070F6CE /* YLDRangeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDRangeTextView.m; sourceTree = "<group>"; };
+		EAAD2ABE1D472BE90070F6CE /* YLDShopNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopNameViewController.h; sourceTree = "<group>"; };
+		EAAD2ABF1D472BE90070F6CE /* YLDShopNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopNameViewController.m; sourceTree = "<group>"; };
+		EAAD2AC01D472BE90070F6CE /* YLDShopNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopNameViewController.xib; sourceTree = "<group>"; };
+		EAAD2AC41D472EE30070F6CE /* YLDshopWareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDshopWareView.h; sourceTree = "<group>"; };
+		EAAD2AC51D472EE30070F6CE /* YLDshopWareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDshopWareView.m; sourceTree = "<group>"; };
 		EAAFCF6E1CBDD94300EB894F /* BigImageViewShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigImageViewShowView.h; sourceTree = "<group>"; };
 		EAAFCF6F1CBDD94300EB894F /* BigImageViewShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigImageViewShowView.m; sourceTree = "<group>"; };
 		EAAFCF711CBDDF0500EB894F /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AFNetworking.h"; sourceTree = "<group>"; };
@@ -3026,6 +3040,8 @@
 			children = (
 				EA5F8A621D40AD3A00DCCD1C /* YLDRangeTextField.h */,
 				EA5F8A631D40AD3A00DCCD1C /* YLDRangeTextField.m */,
+				EAAD2ABB1D4729040070F6CE /* YLDRangeTextView.h */,
+				EAAD2ABC1D4729040070F6CE /* YLDRangeTextView.m */,
 			);
 			path = RangeTextField;
 			sourceTree = "<group>";
@@ -3235,6 +3251,12 @@
 		EA8400451D46EF5F0017C37B /* ShopBaseInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EAAD2AC31D472E590070F6CE /* shopbaseInfoView */,
+				EAAD2AB81D4708440070F6CE /* YLDShopBaseInfoViewController.h */,
+				EAAD2AB91D4708440070F6CE /* YLDShopBaseInfoViewController.m */,
+				EAAD2ABE1D472BE90070F6CE /* YLDShopNameViewController.h */,
+				EAAD2ABF1D472BE90070F6CE /* YLDShopNameViewController.m */,
+				EAAD2AC01D472BE90070F6CE /* YLDShopNameViewController.xib */,
 			);
 			path = ShopBaseInfoViewController;
 			sourceTree = "<group>";
@@ -3333,6 +3355,15 @@
 				EAA81BA81C746A7B007F207D /* HotBuyViewCell.m */,
 			);
 			path = HotBuyView;
+			sourceTree = "<group>";
+		};
+		EAAD2AC31D472E590070F6CE /* shopbaseInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD2AC41D472EE30070F6CE /* YLDshopWareView.h */,
+				EAAD2AC51D472EE30070F6CE /* YLDshopWareView.m */,
+			);
+			path = shopbaseInfoView;
 			sourceTree = "<group>";
 		};
 		EAAFCFA41CBE20E200EB894F /* yindaoye */ = {
@@ -5042,6 +5073,7 @@
 				EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */,
 				FC71342F1CB352730037D507 /* 充值成功76x76-2.png in Resources */,
 				FC2276681D177C9F0037B131 /* 底部菜单-站长中心off.png in Resources */,
+				EAAD2AC21D472BE90070F6CE /* YLDShopNameViewController.xib in Resources */,
 				FC22768D1D177D1A0037B131 /* 标签-求购.png in Resources */,
 				EA5AAC381C8D1A5900660FC9 /* listtime@2x.png in Resources */,
 				FC0853EA1D18E903003A47BA /* ZIKMyHonorCollectionViewCell.xib in Resources */,
@@ -5508,6 +5540,7 @@
 				EAE32DDC1C7E97A600C4CEA2 /* AFURLSessionManager.m in Sources */,
 				FC224BA01D2A29E1001FFC47 /* ZIKMyTeamViewController.m in Sources */,
 				EA5E6E4F1CFFCA7D003D357C /* YLDZhanZhangGongYingViewController.m in Sources */,
+				EAAD2AC61D472EE30070F6CE /* YLDshopWareView.m in Sources */,
 				EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */,
 				FC59482C1D3CB8570014E39B /* ZIKStationOrderTableViewCell.m in Sources */,
 				FC2276831D177C9F0037B131 /* ZIKWorkstationViewController.m in Sources */,
@@ -5590,6 +5623,7 @@
 				EA5444BE1CC7485B00971A50 /* UIButton+ZIKEnlargeTouchArea.m in Sources */,
 				FC5612831D0C092F00E5743B /* ZIKMySupplyDetailBottomShareTableViewCell.m in Sources */,
 				FC6149FF1CAA57B600672241 /* RSKImageScrollView.m in Sources */,
+				EAAD2AC11D472BE90070F6CE /* YLDShopNameViewController.m in Sources */,
 				FC5612531D0C092F00E5743B /* MJRefreshConst.m in Sources */,
 				FC5612A01D0C092F00E5743B /* ZIKSupplyPublishNextVC.m in Sources */,
 				EA5A08171D14E648005000E9 /* YLDHeZuoDetialViewController.m in Sources */,
@@ -5603,6 +5637,7 @@
 				EA496E161D2CE92700DBECF1 /* YLDGCGSBianJiViewController.m in Sources */,
 				EA741A001C8FC69B00F54478 /* LoginView.m in Sources */,
 				FC6FED7F1CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.m in Sources */,
+				EAAD2ABA1D4708440070F6CE /* YLDShopBaseInfoViewController.m in Sources */,
 				FC5612551D0C092F00E5743B /* MJRefreshHeaderView.m in Sources */,
 				FC4470551D2F702300EA0D82 /* ZIKWorkstationSelectListViewTableViewCell.m in Sources */,
 				FC22767C1D177C9F0037B131 /* ZIKSearchBarView.m in Sources */,
@@ -5625,6 +5660,7 @@
 				EA4C4DD71D13E0F600DF1B93 /* YLDEditDingDanViewController.m in Sources */,
 				FC31B28A1CE07CCE0024E147 /* ZIKEmptyTableViewCell.m in Sources */,
 				EA12E2691CBB416B009D8A8A /* AbountUsViewController.m in Sources */,
+				EAAD2ABD1D4729040070F6CE /* YLDRangeTextView.m in Sources */,
 				FC22766D1D177C9F0037B131 /* ZIKStationCenterTableViewController.m in Sources */,
 				EA8CAA651C8963D500058A34 /* DataCache.m in Sources */,
 				FC5612541D0C092F00E5743B /* MJRefreshFooterView.m in Sources */,

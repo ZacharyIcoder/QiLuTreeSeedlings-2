@@ -1,14 +1,14 @@
 //
-//  YLDRangeTextField.m
+//  YLDRangeTextView.m
 //  QiLuTreeSeedlings
 //
-//  Created by 杨乐栋 on 16/7/21.
+//  Created by 杨乐栋 on 16/7/26.
 //  Copyright © 2016年 中亿科技. All rights reserved.
 //
 
-#import "YLDRangeTextField.h"
+#import "YLDRangeTextView.h"
 #import "UIDefines.h"
-@implementation YLDRangeTextField
+@implementation YLDRangeTextView
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
@@ -16,15 +16,15 @@
 -(void)setRangeNumber:(NSInteger)rangeNumber
 {
     _rangeNumber=rangeNumber;
-//    [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldChanged:)
-                                                 name:UITextFieldTextDidChangeNotification
+                                             selector:@selector(textViewChanged:)
+                                                 name:UITextViewTextDidChangeNotification
                                                object:self];
 }
-- (void)textFieldChanged:(NSNotification *)obj {
-    UITextField *textField = (UITextField *)obj.object;
-    NSInteger kssss=100000;
+- (void)textViewChanged:(NSNotification *)obj {
+    BWTextView *textField = (BWTextView *)obj.object;
+    NSInteger kssss=10;
     if (self.rangeNumber>0) {
         kssss=self.rangeNumber;
     }
@@ -38,7 +38,7 @@
         if (!position) {
             if (toBeString.length > kssss) {
                 // NSLog(@"最多%d个字符!!!",kMaxLength);
-                [ToastView showTopToast :[NSString stringWithFormat:@"最多%ld个字符",kssss]];
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",(long)kssss] withOriginY:250 withSuperView:self];
                 //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
                 textField.text = [toBeString substringToIndex:kssss];
                 return;
@@ -54,13 +54,12 @@
         if (toBeString.length > kssss) {
             //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
             //NSLog(@"最多%d个字符!!!",kMaxLength);
-            [ToastView showTopToast :[NSString stringWithFormat:@"最多%ld个字符",kssss]];
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",(long)kssss] withOriginY:250 withSuperView:self];
             textField.text = [toBeString substringToIndex:kssss];
             return;
         }
     }
 }
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

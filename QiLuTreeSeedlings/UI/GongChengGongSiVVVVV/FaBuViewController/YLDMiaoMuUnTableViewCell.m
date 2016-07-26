@@ -50,10 +50,18 @@
     NSString *stauts=[messageDic objectForKey:@"stauts"];
     if (self.chakanBtn) {
         if ([stauts integerValue]==1||[stauts integerValue]==2) {
-            [self.chakanBtn setBackgroundColor:NavYellowColor];
+           
             self.chakanBtn.tag=1;
             [self.chakanBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [self.chakanBtn setTitle:@"查看报价" forState:UIControlStateNormal];
+            if ([stauts integerValue]==1) {
+                 [self.chakanBtn setBackgroundColor:NavYellowColor];
+                [self.chakanBtn setTitle:@"查看报价" forState:UIControlStateNormal];
+            }else
+            {
+                [self.chakanBtn setBackgroundColor:NavColor];
+                [self.chakanBtn setTitle:@"部分合作" forState:UIControlStateNormal];
+            }
+            
         }
         if ([stauts integerValue]==3) {
             [self.chakanBtn setBackgroundColor:NavColor];

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YLDGCZXTouxiangTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UIImageView *imagev;
 +(YLDGCZXTouxiangTableViewCell *)yldGCZXTouxiangTableViewCell;
 @end

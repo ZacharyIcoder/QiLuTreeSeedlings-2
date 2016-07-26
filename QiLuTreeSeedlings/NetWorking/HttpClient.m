@@ -1337,6 +1337,9 @@
     parmers[@"companyUid"]       = companyUid;
     parmers[@"type"]             = type;
     parmers[@"saveType"]         = saveType;
+    if ([saveType isEqualToString:@"5"]||[saveType isEqualToString:@"4"]) {
+        parmers[@"access_id"]    = APPDELEGATE.userModel.access_id;
+    }
     //NSLog(@"%@",parameters);
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -4313,7 +4316,6 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     
-    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);

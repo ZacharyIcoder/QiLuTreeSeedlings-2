@@ -25,7 +25,10 @@
     self.titleLab.text=model.orderName;
     self.nameLab.text=model.name;
     self.timeLab.text=model.endDate;
-    self.numLab.text=model.quantity;
+    
+      self.numLab.text=[NSString stringWithFormat:@"%@棵",model.quantity];
+    
+    
     self.areaLab.text=model.area;
     self.priceLab.text=model.quote;
     self.shuomingLab.text=model.descriptions;

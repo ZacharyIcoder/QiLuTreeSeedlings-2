@@ -12,6 +12,8 @@
 +(YLDHeZuoDetialGZZView *)yldHeZuoDetialGZZView
 {
     YLDHeZuoDetialGZZView *view=[[[NSBundle mainBundle]loadNibNamed:@"YLDHeZuoDetialGZZView" owner:self options:nil] lastObject];
+    view.backImageV.layer.masksToBounds=YES;
+    view.backImageV.layer.cornerRadius=4;
 //    CGRect frame=view.frame;
 //    frame.size.width=kWidth;
 //    view.frame=frame;
@@ -25,9 +27,9 @@
     self.areaLab.text=[NSString stringWithFormat:@"苗源地:%@",dic[@"area"]];
     
 //    NSArray *creatTime=[dic[@"createTime"] componentsSeparatedByString:@" "];
-    self.numLab.text=[NSString stringWithFormat:@"%@",dic[@"quantity"]];
+    self.numLab.text=[NSString stringWithFormat:@"%@棵",dic[@"quantity"]];
     self.NameLab.text=dic[@"workstationName"];
-    self.priceLab.text=[NSString stringWithFormat:@"%@",dic[@"price"]];
+    self.priceLab.text=[NSString stringWithFormat:@"¥%@",dic[@"price"]];
 
     self.userNameLab.text=dic[@"chargelPerson"];
     self.backImageV.image=[self imageWithSize:self.backImageV.frame.size borderColor:NavColor borderWidth:0.5];
@@ -53,7 +55,7 @@
     CGContextBeginPath(context);
     CGContextSetLineWidth(context, borderWidth);
     CGContextSetStrokeColorWithColor(context, color.CGColor);
-    CGFloat lengths[] = { 3, 1 };
+    CGFloat lengths[] = { 2, 0.5 };
     CGContextSetLineDash(context, 0, lengths, 1);
     CGContextMoveToPoint(context, 0.0, 0.0);
     CGContextAddLineToPoint(context, size.width, 0.0);

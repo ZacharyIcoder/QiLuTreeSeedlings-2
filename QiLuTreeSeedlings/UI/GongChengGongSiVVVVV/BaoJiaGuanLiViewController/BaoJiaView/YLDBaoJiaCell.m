@@ -20,7 +20,9 @@
     self.titleLabx.text=model.orderName;
     self.nameMiaoMuLab.text=model.name;
     self.areaLab.text=model.area;
-    self.numLab.text=[NSString stringWithFormat:@"%@",model.quantity];
+        self.numLab.text=[NSString stringWithFormat:@"%@棵",model.quantity];
+    
+    
     CGRect frame=self.frame;
     self.timeLab.text=model.endDate;
     NSString *stsada;
