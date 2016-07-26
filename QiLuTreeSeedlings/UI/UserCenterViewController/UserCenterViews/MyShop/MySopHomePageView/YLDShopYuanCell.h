@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol YLDShopYuanCellsDelegate <NSObject>
 
+- (void)YLDShopYuanCellPush:(NSInteger)index;
+
+@end
 @interface YLDShopYuanCell : UITableViewCell
-
+@property (nonatomic,weak) id<YLDShopYuanCellsDelegate> delegate;
 @end

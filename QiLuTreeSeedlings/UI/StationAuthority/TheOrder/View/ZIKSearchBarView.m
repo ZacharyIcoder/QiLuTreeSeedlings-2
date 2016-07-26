@@ -39,6 +39,7 @@
         textField.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
         textField.tintColor = [UIColor darkGrayColor];
         [self addSubview:textField];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.textField = textField;
 
 

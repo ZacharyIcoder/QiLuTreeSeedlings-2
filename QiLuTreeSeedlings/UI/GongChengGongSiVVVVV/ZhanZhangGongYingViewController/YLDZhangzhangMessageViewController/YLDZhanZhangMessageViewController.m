@@ -159,8 +159,10 @@
 {
     if (section==1||section==0) {
         return 0.01;
-    }else
+    }else if(section==4)
     {
+        return 46;
+    }else{
         return 10;
     }
  
@@ -255,6 +257,15 @@
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
 }
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    if (section==4) {
+        return [self makeTitleViewWithTitle:@"供应" AndColor:NavColor andY:10];
+    }
+    UIView *view;
+    return view;
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==4) {
@@ -296,6 +307,26 @@
     zsdasda.workstationUid=self.model.uid;
     [self.navigationController pushViewController:zsdasda animated:YES];
 }
+//构建小标题栏
+-(UIView *)makeTitleViewWithTitle:(NSString *)title AndColor:(UIColor *)color andY:(CGFloat )y
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, y, kWidth, 36)];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7, 5, 22)];
+    [imageV setBackgroundColor:color];
+    [view addSubview:imageV];
+    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 70, 36)];
+    titleLab.text=title;
+    [titleLab setTextColor:color];
+    [titleLab setFont:[UIFont systemFontOfSize:14]];
+    [view addSubview:titleLab];
+    UIView *lineV=[[UIView alloc]initWithFrame:CGRectMake(10, 36, kWidth-20, 0.5)];
+    [lineV setBackgroundColor:kLineColor];
+    [view addSubview:lineV];
+    return view;
+    
+}
+
 /*
 #pragma mark - Navigation
 

@@ -7,11 +7,21 @@
 //
 
 #import "YLDShopMessageViewController.h"
+#import "YLDShopInteriorViewController.h"
 #import "HttpClient.h"
 #import "UIDefines.h"
 #import "YLDShopIndexinfoCell.h"
 #import "YLDShopIndexModel.h"
-@interface YLDShopMessageViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "YLDShopYuanCell.h"
+#import "buyFabuViewController.h"
+#import "ZIKSupplyPublishVC.h"
+#import "BuyMessageAlertView.h"
+#import "NuseryDetialViewController.h"
+#import "CompanyViewController.h"
+#import "MyNuseryListViewController.h"
+#import "ZIKMyShopViewController.h"
+
+@interface YLDShopMessageViewController ()<UITableViewDelegate,UITableViewDataSource,YLDShopYuanCellsDelegate>
 @property (nonatomic,weak)UITableView *talbeView;
 @property (nonatomic,strong)YLDShopIndexModel *indexModel;
 @end
@@ -20,7 +30,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    ShowActionV();
+    
     [HTTPCLIENT getMyShopHomePageMessageSuccess:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             NSDictionary *result=[responseObject objectForKey:@"result"];
@@ -42,18 +52,22 @@
     tableView.dataSource=self;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.talbeView=tableView;
+    [tableView setBackgroundColor:BGColor];
     [self.view addSubview:tableView];
-   
+    ShowActionV();
     // Do any additional setup after loading the view.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 2;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==1) {
+        return 210;
+    }
     if (indexPath.row==0) {
         return 230;
     }else{
@@ -68,8 +82,62 @@
         cell.model=self.indexModel;
         return cell;
     }
+    if (indexPath.row==1) {
+        YLDShopYuanCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDShopYuanCell"];
+        if (!cell) {
+            cell=[[YLDShopYuanCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YLDShopYuanCell"];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            cell.delegate=self;
+        
+        }
+        return cell;
+    }
     UITableViewCell *cell=[UITableViewCell  new];
     return cell;
+}
+-(void)YLDShopYuanCellPush:(NSInteger)index
+{
+    if (index==0) {
+        if (APPDELEGATE.isCanPublishBuy==NO)
+        {
+            [ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
+            NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]init];
+            [self.navigationController pushViewController:nuseryDetialVC animated:YES];
+            return;
+        }
+        ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
+        [self.navigationController pushViewController:supplyLishVC animated:YES];
+
+    }
+    if (index==1) {
+        if (APPDELEGATE.isCanPublishBuy==NO)
+        {
+            [ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
+            NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]init];
+            [self.navigationController pushViewController:nuseryDetialVC animated:YES];
+            return;
+        }
+        ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
+        [self.navigationController pushViewController:supplyLishVC animated:YES];
+
+    }
+    if (index==2) {
+        CompanyViewController *companyVC=[[CompanyViewController alloc]init];
+        [self.navigationController pushViewController:companyVC animated:YES];
+    }
+    if (index==3) {
+        MyNuseryListViewController *nuserListVC=[[MyNuseryListViewController alloc]init];
+        [self.navigationController pushViewController:nuserListVC animated:YES];
+    }
+    if (index==4) {
+        YLDShopInteriorViewController *VCCCC=[[YLDShopInteriorViewController alloc]init];
+        [self.navigationController pushViewController:VCCCC animated:YES];
+    }
+    if (index==5) {
+        ZIKMyShopViewController *viewC=[[ZIKMyShopViewController alloc]init];
+        viewC.type=0;
+        [self.navigationController pushViewController:viewC animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -522,8 +522,12 @@
     if (indexPath.section==2) {
         if (indexPath.row == 0) {
             [self hiddingSelfTabBar];
-            YLDShopMessageViewController *shopVC = [[YLDShopMessageViewController alloc]init];
+            ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
+            shopVC.memberUid = APPDELEGATE.userModel.access_id;
+            shopVC.type = 0;
             [self.navigationController pushViewController:shopVC animated:YES];
+//            YLDShopMessageViewController *shopVC = [[YLDShopMessageViewController alloc]init];
+//            [self.navigationController pushViewController:shopVC animated:YES];
             return;
         }
         if (indexPath.row==1) {

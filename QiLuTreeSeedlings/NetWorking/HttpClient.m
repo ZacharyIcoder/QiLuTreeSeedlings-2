@@ -4287,14 +4287,14 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
 
-    ShowActionV();
+//    ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
-        RemoveActionV();
+//        RemoveActionV();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
-        RemoveActionV();
+//        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
@@ -4429,6 +4429,31 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
+}
+#pragma mark ---------- 店铺装修-----------
+-(void)getShopInoterMessageSuccess:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/apishopRenovation";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
 }
 /******************* end 店铺API  end*******************/
 @end

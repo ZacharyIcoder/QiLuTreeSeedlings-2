@@ -1112,4 +1112,7 @@ failure:(void (^)(NSError *error))failure;
 -(void)shareShopMessageViewNumWithmemberUid:(NSString *)memberUid
                                     Success:(void (^)(id responseObject))success
                                     failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 店铺装修-----------
+-(void)getShopInoterMessageSuccess:(void (^)(id responseObject))success
+                                    failure:(void (^)(NSError *error))failure;
 @end
