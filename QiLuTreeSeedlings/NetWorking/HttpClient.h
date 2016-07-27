@@ -1115,4 +1115,7 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 店铺装修-----------
 -(void)getShopInoterMessageSuccess:(void (^)(id responseObject))success
                                     failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 未通过审核订单删除-----------
+-(void)deleteOrderByUids:(NSString *)uids Success:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure;
 @end

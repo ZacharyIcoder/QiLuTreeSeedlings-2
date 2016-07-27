@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YLDGCZXInfoTableViewCell : UITableViewCell
+@property (nonatomic,weak)UIImageView *lineV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *NameLab;
 +(YLDGCZXInfoTableViewCell *)yldGCZXInfoTableViewCell;

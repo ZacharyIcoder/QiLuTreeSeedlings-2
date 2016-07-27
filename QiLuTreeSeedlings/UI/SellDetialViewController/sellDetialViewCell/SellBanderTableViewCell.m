@@ -119,14 +119,14 @@
         }
 //        UIView *userView=[self viewWithTitle:model.supplybuyName andX:(kWidth-150)/4.f andColor:titleLabColor andImageName:@"person"];
         [self addSubview:userView];
-        UIView *numView=[self viewWithTitle:[NSString stringWithFormat:@"%@棵",model.count] andX:kWidth/2-25 andY:yyy andColor:titleLabColor andImageName:@"LISTtreeNumber"];
+        UIView *numView=[self viewWithTitle:[NSString stringWithFormat:@"%@棵(株)",model.count] andX:kWidth/2-25 andY:yyy andColor:titleLabColor andImageName:@"LISTtreeNumber"];
         [self addSubview:numView];
         NSString *priceStr;
         if ([model.price isEqualToString:@"面议"]) {
             priceStr=@"面议";
         }else
         {
-            priceStr=[NSString stringWithFormat:@"%@元/棵",model.price];
+            priceStr=[NSString stringWithFormat:@"%@元/棵(株)",model.price];
         }
         UIView *priceView=[self viewWithTitle:priceStr andX:kWidth-(kWidth-150)/4.f-50 andY:yyy andColor:yellowButtonColor andImageName:@"price"];
         [self addSubview:priceView];

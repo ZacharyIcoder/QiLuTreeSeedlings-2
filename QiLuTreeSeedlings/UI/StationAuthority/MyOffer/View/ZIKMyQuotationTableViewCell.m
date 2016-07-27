@@ -67,7 +67,7 @@
     } else if ([model.orderType isEqualToString:@"询价单"]) {
         self.orderTypeImageView.image = [UIImage imageNamed:@"标签-询价"];
     }
-    self.itemQuantityLabel.text = [NSString stringWithFormat:@"需求: %@棵",model.itemQuantity];
+    self.itemQuantityLabel.text = [NSString stringWithFormat:@"需求: %@棵(株)",model.itemQuantity];
     self.orderNameLabel.text = model.orderName;
     self.engineeringCompanyLabel.text = model.engineeringCompany;
     self.itemNameLabel.text = model.itemName;
@@ -93,7 +93,11 @@
 
     self.priceLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
 
-    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵",model.quoteQuantity];
+<<<<<<< HEAD
+    NSString *quoteStr = [NSString stringWithFormat:@"报价数量: %@棵",model.quoteQuantity];
+=======
+    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵(株)",model.quoteQuantity];
+>>>>>>> origin/master
     FontAttribute *quotefullFont = [FontAttribute new];
     quotefullFont.font = [UIFont systemFontOfSize:14.0f];
     quotefullFont.effectRange  = NSMakeRange(0, quoteStr.length);
@@ -103,10 +107,10 @@
     //局部设置
     FontAttribute *quotepartFont = [FontAttribute new];
     quotepartFont.font = [UIFont systemFontOfSize:18.0f];
-    quotepartFont.effectRange = NSMakeRange(3, quoteStr.length-4);
+    quotepartFont.effectRange = NSMakeRange(5, quoteStr.length-6);
     ForegroundColorAttribute *quotedarkColor = [ForegroundColorAttribute new];
     quotedarkColor.color = yellowButtonColor;
-    quotedarkColor.effectRange = NSMakeRange(3, quoteStr.length-3);
+    quotedarkColor.effectRange = NSMakeRange(5, quoteStr.length-5);
 
     self.quoteQuantityLabel.attributedText = [quoteStr mutableAttributedStringWithStringAttributes:@[quotefullFont,quotepartFont,quotefullColor,quotedarkColor]];
 }
@@ -119,7 +123,7 @@
     CGContextBeginPath(context);
     CGContextSetLineWidth(context, borderWidth);
     CGContextSetStrokeColorWithColor(context, color.CGColor);
-    CGFloat lengths[] = { 3, 1 };
+    CGFloat lengths[] = {1, 0.2};
     CGContextSetLineDash(context, 0, lengths, 1);
     CGContextMoveToPoint(context, 0.0, 0.0);
     CGContextAddLineToPoint(context, size.width, 0.0);

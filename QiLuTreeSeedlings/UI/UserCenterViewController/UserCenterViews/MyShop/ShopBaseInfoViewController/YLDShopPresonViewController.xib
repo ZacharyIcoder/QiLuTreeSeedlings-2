@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YLDShopPresonViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5q-qZ-WJp" customClass="YLDshopWareView">
+                    <rect key="frame" x="150" y="185" width="300" height="150"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注意.png" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-JW-gyL">
+                            <rect key="frame" x="0.0" y="8" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="NsR-YX-yau"/>
+                                <constraint firstAttribute="height" constant="25" id="nLl-62-bz7"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKb-yT-Y7B">
+                            <rect key="frame" x="33" y="10" width="31" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="31" id="IOM-b3-492"/>
+                                <constraint firstAttribute="height" constant="21" id="e9g-ux-9h1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.99215686270000003" green="0.52156862749999999" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="fKb-yT-Y7B" firstAttribute="leading" secondItem="nc8-JW-gyL" secondAttribute="trailing" constant="8" id="LJk-ns-qZe"/>
+                        <constraint firstItem="nc8-JW-gyL" firstAttribute="top" secondItem="V5q-qZ-WJp" secondAttribute="top" constant="8" id="Umu-0r-vzo"/>
+                        <constraint firstAttribute="height" constant="150" id="db9-RS-GWG"/>
+                        <constraint firstAttribute="width" constant="300" id="eXK-BP-7dz"/>
+                        <constraint firstItem="fKb-yT-Y7B" firstAttribute="top" secondItem="V5q-qZ-WJp" secondAttribute="top" constant="10" id="l7X-kX-H5f"/>
+                        <constraint firstItem="nc8-JW-gyL" firstAttribute="leading" secondItem="V5q-qZ-WJp" secondAttribute="leading" id="zmh-PR-pe1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="V5q-qZ-WJp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Er8-nU-L29"/>
+                <constraint firstItem="V5q-qZ-WJp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="185" id="xUt-Ai-F0j"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="注意.png" width="40" height="40"/>
+    </resources>
+</document>

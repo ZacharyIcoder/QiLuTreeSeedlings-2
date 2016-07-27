@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YLDShopNameViewController">
+            <connections>
+                <outlet property="sureBtn" destination="YxU-Dn-488" id="BNg-ax-6QV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wareView" destination="AjO-Lz-BCc" id="zKh-IM-pC5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxU-Dn-488">
+                    <rect key="frame" x="40" y="540" width="520" height="40"/>
+                    <color key="backgroundColor" red="0.34901960784313724" green="0.70588235294117652" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="guN-tM-IN5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="确认提交">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjO-Lz-BCc" customClass="YLDshopWareView">
+                    <rect key="frame" x="150" y="185" width="300" height="150"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注意.png" translatesAutoresizingMaskIntoConstraints="NO" id="aUv-pW-DER">
+                            <rect key="frame" x="0.0" y="8" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="8dn-If-1dk"/>
+                                <constraint firstAttribute="width" constant="25" id="m5K-ia-Ygw"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTh-7e-iSe">
+                            <rect key="frame" x="33" y="10" width="31" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="agQ-0K-el4"/>
+                                <constraint firstAttribute="width" constant="31" id="iDj-LX-rFy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.99215686274509807" green="0.52156862745098043" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="TTh-7e-iSe" firstAttribute="leading" secondItem="aUv-pW-DER" secondAttribute="trailing" constant="8" id="FjD-og-Q7Q"/>
+                        <constraint firstItem="aUv-pW-DER" firstAttribute="top" secondItem="AjO-Lz-BCc" secondAttribute="top" constant="8" id="LUt-EJ-rxO"/>
+                        <constraint firstAttribute="width" constant="300" id="VMz-Kl-46U"/>
+                        <constraint firstAttribute="height" constant="150" id="YDV-4w-cIX"/>
+                        <constraint firstItem="aUv-pW-DER" firstAttribute="leading" secondItem="AjO-Lz-BCc" secondAttribute="leading" id="pfi-3p-Qzy"/>
+                        <constraint firstItem="TTh-7e-iSe" firstAttribute="top" secondItem="AjO-Lz-BCc" secondAttribute="top" constant="10" id="vha-Px-pML"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="YxU-Dn-488" secondAttribute="trailing" constant="40" id="5wP-d4-BUb"/>
+                <constraint firstAttribute="bottom" secondItem="YxU-Dn-488" secondAttribute="bottom" constant="20" id="6JD-Cs-Ju7"/>
+                <constraint firstItem="AjO-Lz-BCc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="185" id="Xj6-Xr-o43"/>
+                <constraint firstItem="AjO-Lz-BCc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="j4s-YE-tRa"/>
+                <constraint firstItem="YxU-Dn-488" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="xNt-1w-TD8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="注意.png" width="40" height="40"/>
+    </resources>
+</document>

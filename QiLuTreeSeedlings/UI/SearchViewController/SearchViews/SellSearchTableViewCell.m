@@ -64,7 +64,7 @@
         [self addSubview:numImage];
         numLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.11+20+87, 70, 88, 20)];
         [numLab setFont:[UIFont systemFontOfSize:14]];
-        numLab.text=@"599棵";
+        numLab.text=@"599棵(株)";
         [numLab setTextColor:detialLabColor];
         [self addSubview:numLab];
 //        UILabel *shangcheLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65-10+77, 70, 50, 20)];
@@ -114,7 +114,7 @@
     self.priceLab.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
 
     self.titleLab.text=hotSellModel.title;
-    self.numLab.text=[NSString stringWithFormat:@"%@ 棵",hotSellModel.count];
+    self.numLab.text=[NSString stringWithFormat:@"%@ 棵(株)",hotSellModel.count];
     self.cityLab.text=hotSellModel.area;
     self.timeLab.text=  hotSellModel.timeAger;
 //    self.timeLab.text=  @"24小时前";

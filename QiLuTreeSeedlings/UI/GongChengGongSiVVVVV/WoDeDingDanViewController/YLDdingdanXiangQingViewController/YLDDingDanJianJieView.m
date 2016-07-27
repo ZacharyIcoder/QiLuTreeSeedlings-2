@@ -76,7 +76,7 @@
     NSArray *timeAry=[hezuomodel.endDate componentsSeparatedByString:@" "];
     self.endTimeLab.text=[timeAry firstObject];
     self.baojiaTypeLab.text=hezuomodel.quotationRequired;
-    self.zhiliangLab.text=hezuomodel.quantityRequired;
+    self.zhiliangLab.text=[NSString stringWithFormat:@"%@",hezuomodel.quantityRequired];
     
     NSString *oldStr=[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",hezuomodel.dbh,hezuomodel.groundDiameter];
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:oldStr];

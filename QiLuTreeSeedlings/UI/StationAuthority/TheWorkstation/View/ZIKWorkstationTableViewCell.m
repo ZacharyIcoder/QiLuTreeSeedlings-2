@@ -8,6 +8,12 @@
 
 #import "ZIKWorkstationTableViewCell.h"
 #import "ZIKMyTeamModel.h"
+#import "ZIKFunction.h"
+
+@interface ZIKWorkstationTableViewCell ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *numberWidthLayoutConstraint;
+@end
+
 @implementation ZIKWorkstationTableViewCell
 
 - (void)awakeFromNib {
@@ -40,6 +46,8 @@
     self.nameLabel.text = [NSString stringWithFormat:@"%@   %@",model.chargelPerson,model.phone];
     self.titleLabel.text = model.workstationName;
     self.numberLabel.text = model.viewNo;
+    CGRect numberRect = [ZIKFunction getCGRectWithContent:model.viewNo width:120.0f font:13.0f];
+    self.numberWidthLayoutConstraint.constant = numberRect.size.width+15;
 
 }
 

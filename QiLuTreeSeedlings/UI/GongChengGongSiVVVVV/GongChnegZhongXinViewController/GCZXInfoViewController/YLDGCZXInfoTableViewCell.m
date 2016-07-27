@@ -14,6 +14,7 @@
     YLDGCZXInfoTableViewCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDGCZXInfoTableViewCell" owner:self options:nil] lastObject];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     UIImageView *imaLine=[[UIImageView alloc]initWithFrame:CGRectMake(10, 49, kWidth-20, 1)];
+    cell.lineV=imaLine;
     [cell addSubview:imaLine];
     [imaLine setBackgroundColor:kLineColor];
     return cell;

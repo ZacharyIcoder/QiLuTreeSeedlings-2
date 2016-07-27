@@ -16,12 +16,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ai-9m-pub">
-                        <rect key="frame" x="15" y="14" width="52" height="21"/>
+                        <rect key="frame" x="15" y="14" width="64" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="0CQ-KD-Qnn"/>
-                            <constraint firstAttribute="width" constant="52" id="jhi-2M-4O7"/>
+                            <constraint firstAttribute="width" constant="64" id="jhi-2M-4O7"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.2627149748322139" green="0.26339660234899331" blue="0.26271497483221473" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -42,6 +42,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imagev" destination="lFf-Lt-Itx" id="8gZ-f0-KQ5"/>
+                <outlet property="titleLab" destination="3Ai-9m-pub" id="GHe-bW-ibE"/>
             </connections>
         </tableViewCell>
     </objects>

@@ -20,7 +20,7 @@
 {
     _dic=dic;
     self.nameLab.text=[dic objectForKey:@"name"];
-    self.shuliangLab.text=[NSString stringWithFormat:@"%@",[dic objectForKey:@"quantity"]];
+    self.shuliangLab.text=[NSString stringWithFormat:@"%@棵(株)",[dic objectForKey:@"quantity"]];
     NSString *shuomingStr=[dic objectForKey:@"description"];
     if (shuomingStr.length>0) {
         self.shuomingLab.text=[NSString stringWithFormat:@"规格要求：%@",shuomingStr];

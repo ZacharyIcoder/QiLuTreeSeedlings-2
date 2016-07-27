@@ -22,7 +22,10 @@
     self.vcTitle = @"我的二维码";
 
     //NSString *qrCodeString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];//http://www.qlhm.cn:8081/qlmm/
-    NSString *qrCodeString = [NSString stringWithFormat:@"http://www.qlhm.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];//http://www.qlhm.cn:8081/qlmm/
+//    NSString *qrCodeString = [NSString stringWithFormat:@"http://www.qlhm.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];//http://www.qlhm.cn:8081/qlmm/
+    //http://www.qlhm.cn:8081/qlmm/
+    //http://a.app.qq.com/o/simple.jsp?pkgname=com.zhongyi.nurserystock
+     NSString *qrCodeString = @"http://a.app.qq.com/o/simple.jsp?pkgname=com.zhongyi.nurserystock";
 
 
     UIImageView *qrCodeImageView = [[UIImageView alloc] init];

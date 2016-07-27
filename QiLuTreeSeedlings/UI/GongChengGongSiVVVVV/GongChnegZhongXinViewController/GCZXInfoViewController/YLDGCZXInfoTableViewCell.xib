@@ -21,22 +21,22 @@
                             <constraint firstAttribute="width" constant="84" id="i15-dk-AjW"/>
                             <constraint firstAttribute="height" constant="21" id="k9v-ja-YX8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.2627149748322139" green="0.26318687080536912" blue="0.26746015100671139" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李向阳" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiF-g6-VYo">
-                        <rect key="frame" x="137" y="14" width="168" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiF-g6-VYo">
+                        <rect key="frame" x="107" y="14" width="198" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="168" id="Jcn-yP-CLN"/>
                             <constraint firstAttribute="height" constant="21" id="fPE-ge-gA9"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.60206061241610742" green="0.60544253355704702" blue="0.60289953859060408" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="BiF-g6-VYo" firstAttribute="leading" secondItem="qwb-Qm-xgx" secondAttribute="trailing" constant="8" id="Rce-sJ-ygj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="BiF-g6-VYo" secondAttribute="trailing" constant="7" id="Vth-8V-KXX"/>
                     <constraint firstItem="BiF-g6-VYo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="YNB-WX-L8y"/>
                     <constraint firstItem="qwb-Qm-xgx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="aNK-qn-Yiv"/>
