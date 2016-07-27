@@ -705,7 +705,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         else {
             NuseryDetialViewController *ndvc = [[NuseryDetialViewController alloc] init];
             [weakSelf.navigationController pushViewController:ndvc animated:YES];
-            [ToastView showTopToast:@"您没有求购发布权限,请先完善苗圃信息"];
+            [ToastView showTopToast:@"请先完善您的苗圃信息"];
         }
     };
 }

@@ -29,7 +29,7 @@
     NSURL *imageURL = [NSURL URLWithString:model.workstationPic];
     [self.headImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"UserImage"]];
     self.nameLabel.text  = model.chargelPerson;
-    self.briefLabel.text = model.brief;
+    self.briefLabel.text = model.phone;
 
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
     UITapGestureRecognizer *tapGR2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];

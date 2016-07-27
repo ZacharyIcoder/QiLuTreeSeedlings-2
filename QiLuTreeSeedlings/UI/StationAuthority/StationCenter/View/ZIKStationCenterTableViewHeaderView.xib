@@ -8,11 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZIKStationCenterTableViewHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="站长中心-蓝背景.png" translatesAutoresizingMaskIntoConstraints="NO" id="MKf-Q1-UpT">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCX-AF-gv0">
                     <rect key="frame" x="18" y="24" width="45" height="30"/>
@@ -38,14 +38,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="8XZ-yG-QXQ">
-                    <rect key="frame" x="258" y="69" width="85" height="85"/>
+                    <rect key="frame" x="258" y="73" width="85" height="85"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="3NP-6j-tML"/>
                         <constraint firstAttribute="width" constant="85" id="RcA-OY-pSA"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="站长通" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-QA-K6h">
-                    <rect key="frame" x="8" y="171" width="584" height="21"/>
+                    <rect key="frame" x="8" y="173" width="584" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="MoL-5U-utQ"/>
                     </constraints>
@@ -54,7 +54,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是站长，我骄傲" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcZ-IB-ONi">
-                    <rect key="frame" x="22" y="200" width="557" height="38"/>
+                    <rect key="frame" x="22" y="202" width="557" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -96,13 +96,13 @@
                 <constraint firstItem="8gp-JV-Ve4" firstAttribute="leading" secondItem="vvV-c5-De8" secondAttribute="trailing" id="D2A-DO-SxD"/>
                 <constraint firstItem="XcZ-IB-ONi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="E3x-XS-f44"/>
                 <constraint firstAttribute="trailing" secondItem="XcZ-IB-ONi" secondAttribute="trailing" constant="21" id="ER4-tU-X0Z"/>
-                <constraint firstItem="8XZ-yG-QXQ" firstAttribute="top" secondItem="IHz-Rs-8sP" secondAttribute="bottom" constant="21" id="OaN-d4-fqW"/>
+                <constraint firstItem="8XZ-yG-QXQ" firstAttribute="top" secondItem="IHz-Rs-8sP" secondAttribute="bottom" constant="25" id="OaN-d4-fqW"/>
                 <constraint firstAttribute="trailing" secondItem="MKf-Q1-UpT" secondAttribute="trailing" id="Ors-J4-oka"/>
                 <constraint firstItem="IHz-Rs-8sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="Scd-cK-c9v"/>
                 <constraint firstAttribute="trailing" secondItem="TNI-QA-K6h" secondAttribute="trailing" constant="8" id="U9k-KG-LrO"/>
                 <constraint firstItem="XcZ-IB-ONi" firstAttribute="top" secondItem="TNI-QA-K6h" secondAttribute="bottom" constant="8" id="Vuh-Nl-wwX"/>
-                <constraint firstItem="TNI-QA-K6h" firstAttribute="top" secondItem="8XZ-yG-QXQ" secondAttribute="bottom" constant="17" id="WmV-j3-SIr"/>
-                <constraint firstAttribute="bottom" secondItem="XcZ-IB-ONi" secondAttribute="bottom" constant="22" id="Xi6-yV-GH3"/>
+                <constraint firstItem="TNI-QA-K6h" firstAttribute="top" secondItem="8XZ-yG-QXQ" secondAttribute="bottom" constant="15" id="WmV-j3-SIr"/>
+                <constraint firstAttribute="bottom" secondItem="XcZ-IB-ONi" secondAttribute="bottom" constant="17" id="Xi6-yV-GH3"/>
                 <constraint firstItem="8XZ-yG-QXQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bpl-8D-llA"/>
                 <constraint firstItem="MKf-Q1-UpT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hZH-a8-OwU"/>
                 <constraint firstItem="TNI-QA-K6h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="htQ-rq-2Bp"/>
@@ -117,7 +117,7 @@
                 <outlet property="headImageView" destination="8XZ-yG-QXQ" id="g26-pu-AJF"/>
                 <outlet property="nameLabel" destination="TNI-QA-K6h" id="YcD-hU-OEP"/>
             </connections>
-            <point key="canvasLocation" x="329" y="225"/>
+            <point key="canvasLocation" x="356" y="263"/>
         </view>
     </objects>
     <resources>

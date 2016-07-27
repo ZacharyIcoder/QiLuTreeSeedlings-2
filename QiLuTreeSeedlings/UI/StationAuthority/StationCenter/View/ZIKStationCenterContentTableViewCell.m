@@ -48,7 +48,7 @@
     self.nameLabel.text    = model.workstationName;
     self.numberLabel.text  = model.viewNo;
     self.addressLabel.text = model.area;
-    self.priceLabel.text   = model.creditMargin;
+    self.priceLabel.text   = [NSString stringWithFormat:@"%@元",model.creditMargin];
     if ([model.type isEqualToString:@"总站"]) {
         self.typeImageView.image = [UIImage imageNamed:@"yingzhangzongzhan"];
     } else if ([model.type isEqualToString:@"分站"]) {

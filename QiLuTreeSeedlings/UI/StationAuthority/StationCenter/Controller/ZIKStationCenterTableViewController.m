@@ -32,7 +32,8 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 #pragma mark -
 
 #define DEFAULT_ROW_HEIGHT 44
-#define HEADER_HEIGHT 260
+#define HEADER_HEIGHT 240
+#define FOOTER_HEIGHT (kHeight-HEADER_HEIGHT-44-44-130-60)
 
 @implementation ZIKStationCenterTableViewController
 
@@ -42,7 +43,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.sectionHeaderHeight    = HEADER_HEIGHT;
     self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
-
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"ZIKStationCenterTableViewHeaderView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
     UIView *view = [UIView new];
@@ -113,6 +114,13 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
     return 44;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 1) {
+        return FOOTER_HEIGHT;
+    }
+    return 0.01f;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
@@ -130,6 +138,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
         if (self.masterModel) {
             [cell configureCell:self.masterModel];
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (indexPath.section == 1) {
       static NSString *cellID = @"cellID";
@@ -142,6 +151,10 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             twocell.textLabel.textColor = [UIColor darkGrayColor];
             twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
             twocell.imageView.image = [UIImage imageNamed:@"站长中心-我的荣誉"];
+            UIView *lineView = [[UIView alloc] init];
+            lineView.frame = CGRectMake(15, 43, kWidth-15, 1);
+            lineView.backgroundColor = kLineColor;
+            [twocell addSubview:lineView];
         } else if (indexPath.row == 1) {
             twocell.textLabel.text = @"我的团队";
             twocell.textLabel.textColor = [UIColor darkGrayColor];
@@ -166,12 +179,23 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
         ZIKStationCenterTableViewHeaderView *sectionHeaderView = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
         if (self.masterModel) {
             [sectionHeaderView configWithModel:self.masterModel];
-
         }
         return sectionHeaderView;
     }
     return nil;
- }
+}
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
+    view.tintColor = BGColor;
+}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    if (section == 1) {
+//        UIView *bottomView = [[UIView alloc] init];
+//        bottomView.frame = CGRectMake(0, 0, kWidth, FOOTER_HEIGHT);
+//        bottomView.backgroundColor = BGColor;
+//        return bottomView;
+//    }
+//    return nil;
+//}
 
 #pragma mark - Table view delegate
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
