@@ -214,6 +214,10 @@
 		EA605B3B1D48652500E0EF04 /* YLDShopJianJieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA605B391D48652500E0EF04 /* YLDShopJianJieViewController.xib */; };
 		EA605B3F1D48764800E0EF04 /* YLDShopPresonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA605B3D1D48764800E0EF04 /* YLDShopPresonViewController.m */; };
 		EA605B401D48764800E0EF04 /* YLDShopPresonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA605B3E1D48764800E0EF04 /* YLDShopPresonViewController.xib */; };
+		EA605B441D488CFB00E0EF04 /* YLDShopPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA605B421D488CFB00E0EF04 /* YLDShopPhoneViewController.m */; };
+		EA605B451D488CFB00E0EF04 /* YLDShopPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA605B431D488CFB00E0EF04 /* YLDShopPhoneViewController.xib */; };
+		EA605B4C1D4891A100E0EF04 /* LYDShopAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA605B4A1D4891A100E0EF04 /* LYDShopAddressViewController.m */; };
+		EA605B4D1D4891A100E0EF04 /* LYDShopAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA605B4B1D4891A100E0EF04 /* LYDShopAddressViewController.xib */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
 		EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */; };
@@ -1112,6 +1116,12 @@
 		EA605B3C1D48764800E0EF04 /* YLDShopPresonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopPresonViewController.h; sourceTree = "<group>"; };
 		EA605B3D1D48764800E0EF04 /* YLDShopPresonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopPresonViewController.m; sourceTree = "<group>"; };
 		EA605B3E1D48764800E0EF04 /* YLDShopPresonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopPresonViewController.xib; sourceTree = "<group>"; };
+		EA605B411D488CFB00E0EF04 /* YLDShopPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopPhoneViewController.h; sourceTree = "<group>"; };
+		EA605B421D488CFB00E0EF04 /* YLDShopPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopPhoneViewController.m; sourceTree = "<group>"; };
+		EA605B431D488CFB00E0EF04 /* YLDShopPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopPhoneViewController.xib; sourceTree = "<group>"; };
+		EA605B491D4891A100E0EF04 /* LYDShopAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDShopAddressViewController.h; sourceTree = "<group>"; };
+		EA605B4A1D4891A100E0EF04 /* LYDShopAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDShopAddressViewController.m; sourceTree = "<group>"; };
+		EA605B4B1D4891A100E0EF04 /* LYDShopAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LYDShopAddressViewController.xib; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MybuyListTableViewCell.h; sourceTree = "<group>"; };
@@ -3283,6 +3293,12 @@
 				EA605B3C1D48764800E0EF04 /* YLDShopPresonViewController.h */,
 				EA605B3D1D48764800E0EF04 /* YLDShopPresonViewController.m */,
 				EA605B3E1D48764800E0EF04 /* YLDShopPresonViewController.xib */,
+				EA605B411D488CFB00E0EF04 /* YLDShopPhoneViewController.h */,
+				EA605B421D488CFB00E0EF04 /* YLDShopPhoneViewController.m */,
+				EA605B431D488CFB00E0EF04 /* YLDShopPhoneViewController.xib */,
+				EA605B491D4891A100E0EF04 /* LYDShopAddressViewController.h */,
+				EA605B4A1D4891A100E0EF04 /* LYDShopAddressViewController.m */,
+				EA605B4B1D4891A100E0EF04 /* LYDShopAddressViewController.xib */,
 			);
 			path = ShopBaseInfoViewController;
 			sourceTree = "<group>";
@@ -5369,6 +5385,7 @@
 				EA552E721D0D3F5900FB88A0 /* huangsefabu@2x.png in Resources */,
 				EAF051091C92A35D00F435A9 /* myShareImage@2x.png in Resources */,
 				EA5AAC481C8D317000660FC9 /* BackBtn@2x.png in Resources */,
+				EA605B4D1D4891A100E0EF04 /* LYDShopAddressViewController.xib in Resources */,
 				EA0B2B9E1C59F5220018A7BD /* Main.storyboard in Resources */,
 				FC4A51851D0E63650060587B /* 工程订单_筛选.png in Resources */,
 				FC5612601D0C092F00E5743B /* shanchutupian@2x.png in Resources */,
@@ -5397,6 +5414,7 @@
 				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
 				FC6FED681CACF833000E2CA5 /* 编辑修改.png in Resources */,
 				FC4470561D2F702300EA0D82 /* ZIKWorkstationSelectListViewTableViewCell.xib in Resources */,
+				EA605B451D488CFB00E0EF04 /* YLDShopPhoneViewController.xib in Resources */,
 				FCCEA4941CFD5FC2005D21F5 /* 积分兑换-背景框.png in Resources */,
 				EA5444C71CC770BD00971A50 /* bangde3.jpg in Resources */,
 			);
@@ -5564,6 +5582,7 @@
 				EAE32DD71C7E97A600C4CEA2 /* AFNetworkReachabilityManager.m in Sources */,
 				EA5163571D2B971D00494604 /* YLDWorkstationlistModel.m in Sources */,
 				FCE458C61CE7036600CBF802 /* ZIKHaveReadModel.m in Sources */,
+				EA605B441D488CFB00E0EF04 /* YLDShopPhoneViewController.m in Sources */,
 				FC50B34A1CAE4C4A0022A24C /* openssl_wrapper.m in Sources */,
 				FC2276791D177C9F0037B131 /* ZIKStationOrderDetailViewController.m in Sources */,
 				FC44704D1D2F513400EA0D82 /* ZIKWorkstationSelectListView.m in Sources */,
@@ -5597,6 +5616,7 @@
 				EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */,
 				FC59482C1D3CB8570014E39B /* ZIKStationOrderTableViewCell.m in Sources */,
 				FC2276831D177C9F0037B131 /* ZIKWorkstationViewController.m in Sources */,
+				EA605B4C1D4891A100E0EF04 /* LYDShopAddressViewController.m in Sources */,
 				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCCFA7191CF2E12400CC1313 /* ZIKCityModel.m in Sources */,
 				FC44705A1D2F884900EA0D82 /* ZIKAddPickerView.m in Sources */,

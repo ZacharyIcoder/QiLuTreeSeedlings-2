@@ -83,7 +83,6 @@
                 self.model=[YLDZhanZhangDetialModel yldZhanZhangDetialModelWithDic:[result objectForKey:@"masterInfo"]];
                 [self.supplyAry removeAllObjects];
                 [self.honorAry removeAllObjects];
-//                ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:nil];
                 NSArray *honorList=[result objectForKey:@"honorList"];
                 [honorList enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
                     ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
@@ -148,6 +147,9 @@
         return 120;
     }
     if (indexPath.section==3) {
+        if (self.honorAry.count<=0) {
+            return 60;
+        }
         return 170;
     }
     if (indexPath.section==4) {

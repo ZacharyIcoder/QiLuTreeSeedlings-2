@@ -1,19 +1,19 @@
 //
-//  YLDShopPresonViewController.m
+//  YLDShopPhoneViewController.m
 //  QiLuTreeSeedlings
 //
 //  Created by 杨乐栋 on 16/7/27.
 //  Copyright © 2016年 中亿科技. All rights reserved.
 //
 
-#import "YLDShopPresonViewController.h"
+#import "YLDShopPhoneViewController.h"
 #import "YLDRangeTextView.h"
-@interface YLDShopPresonViewController ()
+@interface YLDShopPhoneViewController ()
 @property (weak, nonatomic)  YLDRangeTextView *textView;
 @property (nonatomic,copy)NSString *str;
 @end
 
-@implementation YLDShopPresonViewController
+@implementation YLDShopPhoneViewController
 -(id)initWithMessage:(NSString *)str
 {
     self=[super init];
@@ -30,31 +30,24 @@
     [self.view addSubview:textView];
     self.textView=textView;
     textView.text=self.str;
-    textView.rangeNumber=20;
-    textView.placeholder=@"请输入联系人姓名";
-    [self.wareView addTextWithAry:@[@"1、名称由汉字、字母、数字组成；",@"2、不能包含“@＃％&”等特殊字符；",@"3、名称字数不超过20个字符。"]];
+    textView.rangeNumber=11;
+    textView.placeholder=@"请输入联系方式";
+    textView.keyboardType=UIKeyboardTypeNumberPad;
+    [self.wareBtn addTextWithAry:@[@"1、固定电话或移动电话"]];
     // Do any additional setup after loading the view from its nib.
     [self.sureBtn addTarget:self action:@selector(sureBtnAcion) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)sureBtnAcion
 {
-    
-    
-    NSString *regex = @"[a-zA-Z\u4e00-\u9fa5][a-zA-Z0-9\u4e00-\u9fa5]+";
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    if(self.textView.text.length <=0)
+  if(self.textView.text.length!=11)
     {
-        [ToastView showTopToast:@"请输入联系人姓名"];
+        [ToastView showTopToast:@"请输入11位电话"];
         return;
     }
-    if(![pred evaluateWithObject: self.textView.text])
-    {
-        [ToastView showTopToast:@"名称只能由汉字、字母、数字组成"];
-        return;
-    }
-
-    [HTTPCLIENT getMyShopBaseMessageUpDataWithType:@"3" value:self.textView.text Success:^(id responseObject) {
+    
+    
+    [HTTPCLIENT getMyShopBaseMessageUpDataWithType:@"4" value:self.textView.text Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"修改成功，即将返回"];
             [self.navigationController popViewControllerAnimated:YES];
@@ -64,9 +57,10 @@
     } failure:^(NSError *error) {
         
     }];
-
+    
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

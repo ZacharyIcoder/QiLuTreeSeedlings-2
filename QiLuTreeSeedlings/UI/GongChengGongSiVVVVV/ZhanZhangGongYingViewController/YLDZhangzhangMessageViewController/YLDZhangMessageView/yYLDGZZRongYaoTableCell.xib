@@ -64,8 +64,8 @@
                             <constraint firstAttribute="height" constant="82" id="Sm9-P6-Kje"/>
                         </constraints>
                     </scrollView>
-                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6M4-pR-xvh">
-                        <rect key="frame" x="132" y="137" width="39" height="37"/>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6M4-pR-xvh">
+                        <rect key="frame" x="140" y="137" width="39" height="37"/>
                     </pageControl>
                 </subviews>
                 <constraints>
@@ -73,7 +73,9 @@
                     <constraint firstItem="LNC-VQ-Rcp" firstAttribute="top" secondItem="tPX-5c-dbA" secondAttribute="bottom" constant="12" id="1fa-zP-55B"/>
                     <constraint firstItem="GDI-gy-iCh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="53v-Zn-kwC"/>
                     <constraint firstItem="6nx-V4-icO" firstAttribute="top" secondItem="LNC-VQ-Rcp" secondAttribute="bottom" constant="8" id="EdZ-Ik-VbM"/>
+                    <constraint firstItem="6M4-pR-xvh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="HHZ-Vt-zYe"/>
                     <constraint firstItem="GDI-gy-iCh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="KFI-4B-OiP"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="6M4-pR-xvh" secondAttribute="bottom" constant="-13" id="KRR-rs-tq6"/>
                     <constraint firstItem="mNU-G4-91e" firstAttribute="leading" secondItem="GDI-gy-iCh" secondAttribute="trailing" constant="8" id="V98-Bf-9g8"/>
                     <constraint firstItem="mNU-G4-91e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="YG9-U9-gUz"/>
                     <constraint firstItem="6nx-V4-icO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="YWg-oe-mg0"/>

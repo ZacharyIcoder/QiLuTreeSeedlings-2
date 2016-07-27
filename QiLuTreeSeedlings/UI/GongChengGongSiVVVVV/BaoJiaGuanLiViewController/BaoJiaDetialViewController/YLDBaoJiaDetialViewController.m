@@ -146,7 +146,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 270;
+    return 310;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -248,6 +248,7 @@
         }];
         
         UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            ShowActionV();
             [HTTPCLIENT jianliHezuoWithBaoJiaID:model.uid Success:^(id responseObject) {
                 if ([[responseObject objectForKey:@"success"] integerValue]) {
                     [ToastView showTopToast:@"合作成功"];
@@ -255,8 +256,9 @@
                     ShowActionV();
                     [self getMessageListWtihKeyWord:self.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",(long)self.pageNum]];
                 }
+                RemoveActionV();
             } failure:^(NSError *error) {
-                
+                RemoveActionV();
             }];
 //            NSLog(@"The \"Okay/Cancel\" alert's other action occured.");
         }];
@@ -265,7 +267,7 @@
         [alertController addAction:cancelAction];
         [alertController addAction:otherAction];
         
-        [self presentViewController:alertController animated:YES completion:nil];
+        [self presentViewController:alertController animated:NO completion:nil];
         return;
     }
     if (type==2) {

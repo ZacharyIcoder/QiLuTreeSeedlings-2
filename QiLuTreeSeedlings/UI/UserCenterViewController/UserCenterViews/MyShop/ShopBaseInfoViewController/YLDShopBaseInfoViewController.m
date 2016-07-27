@@ -15,6 +15,9 @@
 #import "YLDShopNameViewController.h"
 #import "RSKImageCropper.h"
 #import "YLDShopJianJieViewController.h"
+#import "YLDShopPresonViewController.h"
+#import "YLDShopPhoneViewController.h"
+#import "LYDShopAddressViewController.h"
 @interface YLDShopBaseInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,weak)YLDGCZXTouxiangTableViewCell *touxiangCell;
@@ -63,6 +66,20 @@
     if (indexPath.row==2) {
         
         YLDShopJianJieViewController *vc=[[YLDShopJianJieViewController alloc]initWithMessage:[self.dic objectForKey:@"brief"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row==3) {
+        
+        YLDShopPresonViewController *vc=[[YLDShopPresonViewController alloc]initWithMessage:[self.dic objectForKey:@"chargelPerson"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row==4) {
+        
+        YLDShopPhoneViewController *vc=[[YLDShopPhoneViewController alloc]initWithMessage:[self.dic objectForKey:@"phone"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row==5) {
+        LYDShopAddressViewController *vc=[[LYDShopAddressViewController alloc]initWithshopProvince:[self.dic objectForKey:@"shopProvince"] withshopCity:[self.dic objectForKey:@"shopCity"] withshopCounty:[self.dic objectForKey:@"shopCounty"] withshopAddress:[self.dic objectForKey:@"shopAddress"] WithareaAddress:[self.dic objectForKey:@"areaAddress"]];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -122,8 +139,12 @@
         }
         if (indexPath.row==5) {
             cell.titleLab.text=@"所在地";
-            cell.NameLab.text=[self.dic objectForKey:@"areaAddress"];
-            //            cell.NameLab.text=APPDELEGATE.GCGSModel.brief;
+            NSString *are1=[self.dic objectForKey:@"areaAddress"];
+            NSString *are2=[self.dic objectForKey:@"shopAddress"];
+
+            if (are1.length>0) {
+                cell.NameLab.text=[NSString stringWithFormat:@"%@%@",are1,are2];
+            }
             
         }
         if (indexPath.row==5) {

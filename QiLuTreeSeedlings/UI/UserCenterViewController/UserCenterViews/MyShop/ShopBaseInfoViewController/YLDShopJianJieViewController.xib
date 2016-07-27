@@ -52,7 +52,6 @@
                     <rect key="frame" x="40" y="540" width="520" height="40"/>
                     <color key="backgroundColor" red="0.34901960780000002" green="0.70588235290000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="kqi-LP-2Y2"/>
                         <constraint firstAttribute="height" constant="40" id="nuA-zL-1DL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

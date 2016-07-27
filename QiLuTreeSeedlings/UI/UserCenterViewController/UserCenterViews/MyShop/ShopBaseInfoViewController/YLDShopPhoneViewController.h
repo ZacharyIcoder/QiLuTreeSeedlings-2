@@ -1,5 +1,5 @@
 //
-//  YLDShopPresonViewController.h
+//  YLDShopPhoneViewController.h
 //  QiLuTreeSeedlings
 //
 //  Created by 杨乐栋 on 16/7/27.
@@ -8,8 +8,8 @@
 
 #import "ZIKArrowViewController.h"
 #import "YLDshopWareView.h"
-@interface YLDShopPresonViewController : ZIKArrowViewController
-@property (weak, nonatomic) IBOutlet YLDshopWareView *wareView;
+@interface YLDShopPhoneViewController : ZIKArrowViewController
+@property (weak, nonatomic) IBOutlet YLDshopWareView *wareBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sureBtn;
 -(id)initWithMessage:(NSString *)str;
 @end

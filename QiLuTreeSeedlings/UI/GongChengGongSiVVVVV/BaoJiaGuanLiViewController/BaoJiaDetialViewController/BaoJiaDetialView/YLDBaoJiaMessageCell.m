@@ -78,9 +78,11 @@
 }
 -(void)hezuoBtnAciotn:(UIButton *)sender
 {
+//    sender.enabled=NO;
     if (self.delegate) {
         [self.delegate actionWithtype:sender.tag andModel:self.model];
     }
+//     sender.enabled=YES;
 }
 + (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
 {

@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YLDShopPresonViewController">
             <connections>
+                <outlet property="sureBtn" destination="dKX-W9-IUb" id="DeK-fa-nXC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wareView" destination="V5q-qZ-WJp" id="3vc-R9-c4D"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -46,10 +48,24 @@
                         <constraint firstItem="nc8-JW-gyL" firstAttribute="leading" secondItem="V5q-qZ-WJp" secondAttribute="leading" id="zmh-PR-pe1"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKX-W9-IUb">
+                    <rect key="frame" x="40" y="540" width="520" height="40"/>
+                    <color key="backgroundColor" red="0.34901960780000002" green="0.70588235290000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Ihz-pM-w0R"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="确认提交">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="dKX-W9-IUb" secondAttribute="trailing" constant="40" id="9tV-fd-gv1"/>
                 <constraint firstItem="V5q-qZ-WJp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Er8-nU-L29"/>
+                <constraint firstAttribute="bottom" secondItem="dKX-W9-IUb" secondAttribute="bottom" constant="20" id="fdD-u2-vzh"/>
+                <constraint firstItem="dKX-W9-IUb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="jay-MJ-r97"/>
                 <constraint firstItem="V5q-qZ-WJp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="185" id="xUt-Ai-F0j"/>
             </constraints>
         </view>
