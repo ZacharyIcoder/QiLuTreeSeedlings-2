@@ -444,11 +444,11 @@
 
     if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
         UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        [shopBtn setBackgroundColor:kBlueShopColor];
         //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
@@ -513,11 +513,11 @@
     [view addSubview:topLineView];
     if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
         UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        [shopBtn setBackgroundColor:kBlueShopColor];
         //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
@@ -595,11 +595,11 @@
     [view addSubview:topLineView];
     if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
         UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        [shopBtn setBackgroundColor:kBlueShopColor];
         //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
@@ -666,11 +666,11 @@
     
     if (![ZIKFunction xfunc_check_strEmpty:_memberUid]) {
         UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 2, kWidth*1/5, 50-2)];
-        [shopBtn setBackgroundColor:[UIColor whiteColor]];
+        [shopBtn setBackgroundColor:kBlueShopColor];
         //    [shopBtn setBackgroundColor:[UIColor colorWithRed:222/255.f green:222/255.f blue:222/255.f alpha:1]];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
-        [shopBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];

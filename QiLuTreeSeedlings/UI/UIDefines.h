@@ -46,6 +46,7 @@
 #define kRedHintColor kRGB(237, 136, 116, 1)
 #define DarkTitleColor kRGB(68,68,68,1)
 #define MoreDarkTitleColor kRGB(51,51,51,1)
+#define kBlueShopColor kRGB(53,204,249,1)
 #pragma mark- 对屏幕尺寸进行判断
 #define iPhone35Inch            (([[UIScreen mainScreen] bounds].size.height == 480) ? YES : NO)
 #define iPhone47InchLater       (([[UIScreen mainScreen] bounds].size.height >= 667) ? YES : NO)

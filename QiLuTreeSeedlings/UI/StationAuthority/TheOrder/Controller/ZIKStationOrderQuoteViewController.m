@@ -315,10 +315,10 @@
 }
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
-    if (self.pickerImgView.urlMArr.count<1) {
-        [ToastView showTopToast:@"请添加苗木图片"];
-        return;
-    }
+//    if (self.pickerImgView.urlMArr.count<1) {
+//        [ToastView showTopToast:@"请添加苗木图片"];
+//        return;
+//    }
     if (priceTextField.text.length<1) {
         [ToastView showTopToast:@"请输入报价价格"];
         return;
@@ -336,16 +336,17 @@
     [quantityTextField resignFirstResponder];
     __block NSString *urlSring      = @"";
     __block NSString *compressSring = @"";
-    [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-        urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
-        compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
-    }];
-    if (self.pickerImgView.urlMArr.count != 0) {
-        urlSring         = [urlSring substringFromIndex:1];
-        compressSring = [compressSring substringFromIndex:1];
-    }
-    
 
+    if (self.pickerImgView.urlMArr.count>0) {
+        [self.pickerImgView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+            urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
+            compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
+        }];
+        if (self.pickerImgView.urlMArr.count != 0) {
+            urlSring         = [urlSring substringFromIndex:1];
+            compressSring = [compressSring substringFromIndex:1];
+        }
+    }
     [HTTPCLIENT stationQuoteCreateWithUid:self.orderUid orderUid:self.uid price:priceTextField.text quantity:quantityTextField.text province:self.province city:self.city county:self.county town:self.town description:self.contentTextView.text imgs:urlSring compressImgs:compressSring Success:^(id responseObject) {
         //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {

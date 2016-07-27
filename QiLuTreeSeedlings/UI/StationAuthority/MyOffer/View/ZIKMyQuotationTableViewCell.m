@@ -93,7 +93,15 @@
 
     self.priceLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    NSString *quoteStr = [NSString stringWithFormat:@"报价数量: %@棵",model.quoteQuantity];
+=======
     NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵(株)",model.quoteQuantity];
+>>>>>>> origin/master
+=======
+    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵(株)",model.quoteQuantity];
+>>>>>>> 30a60c3a08ebd298ce7302b7b13ace26430f9a18
     FontAttribute *quotefullFont = [FontAttribute new];
     quotefullFont.font = [UIFont systemFontOfSize:14.0f];
     quotefullFont.effectRange  = NSMakeRange(0, quoteStr.length);
@@ -103,10 +111,10 @@
     //局部设置
     FontAttribute *quotepartFont = [FontAttribute new];
     quotepartFont.font = [UIFont systemFontOfSize:18.0f];
-    quotepartFont.effectRange = NSMakeRange(3, quoteStr.length-4);
+    quotepartFont.effectRange = NSMakeRange(5, quoteStr.length-6);
     ForegroundColorAttribute *quotedarkColor = [ForegroundColorAttribute new];
     quotedarkColor.color = yellowButtonColor;
-    quotedarkColor.effectRange = NSMakeRange(3, quoteStr.length-3);
+    quotedarkColor.effectRange = NSMakeRange(5, quoteStr.length-5);
 
     self.quoteQuantityLabel.attributedText = [quoteStr mutableAttributedStringWithStringAttributes:@[quotefullFont,quotepartFont,quotefullColor,quotedarkColor]];
 }

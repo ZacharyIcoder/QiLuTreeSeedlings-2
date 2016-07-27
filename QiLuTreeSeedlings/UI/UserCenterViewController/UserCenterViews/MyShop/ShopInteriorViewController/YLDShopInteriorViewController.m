@@ -10,9 +10,21 @@
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "UIImageView+AFNetworking.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#import "ZIKGongyingWeihuViewController.h"//供应列表维护
+#import "ZIKQiugouWeihuViewController.h"//求购列表维护
+@interface YLDShopInteriorViewController ()<UITableViewDelegate,UITableViewDataSource>
+=======
 #import "YLDShopBaseInfoViewController.h"
 #import "RSKImageCropper.h"
 @interface YLDShopInteriorViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+>>>>>>> origin/master
+=======
+#import "YLDShopBaseInfoViewController.h"
+#import "RSKImageCropper.h"
+@interface YLDShopInteriorViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+>>>>>>> 30a60c3a08ebd298ce7302b7b13ace26430f9a18
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,strong)NSDictionary *dic;
 @property (nonatomic,weak) UIImageView *imageVV;
@@ -47,8 +59,16 @@
     ShowActionV();
     // Do any additional setup after loading the view.
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 2) {
+        ZIKGongyingWeihuViewController *gywhVC = [[ZIKGongyingWeihuViewController alloc] initWithNibName:@"ZIKGongyingWeihuViewController" bundle:nil];
+        [self.navigationController pushViewController:gywhVC animated:YES];
+    } else if (indexPath.row == 3) {
+        ZIKQiugouWeihuViewController *qgwhVC = [[ZIKQiugouWeihuViewController alloc] initWithNibName:@"ZIKQiugouWeihuViewController" bundle:nil];
+        [self.navigationController pushViewController:qgwhVC animated:YES];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row==0) {
         YLDShopBaseInfoViewController *vc=[[YLDShopBaseInfoViewController alloc]init];
@@ -59,14 +79,17 @@
     }
     
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 4;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"UITableViewCell%ld",indexPath.row]];
     
@@ -124,6 +147,9 @@
     }
     return cell;
 }
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -185,6 +211,7 @@
     //修改图片
     [self chooseUserPictureChange:image];
 }
+<<<<<<< HEAD
 
 #pragma mark - RSKImageCropViewControllerDelegate
 - (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
@@ -199,6 +226,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+=======
+
+#pragma mark - RSKImageCropViewControllerDelegate
+- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
+{
+    
+    [self requestUploadHeadImage:croppedImage];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+>>>>>>> 30a60c3a08ebd298ce7302b7b13ace26430f9a18
 - (void)chooseUserPictureChange:(UIImage*)image
 {
     //UIImage *photo = [UIImage imageNamed:@"photo"];

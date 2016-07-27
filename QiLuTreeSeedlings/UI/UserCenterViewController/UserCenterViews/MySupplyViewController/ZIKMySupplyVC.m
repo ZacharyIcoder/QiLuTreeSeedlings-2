@@ -815,7 +815,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     else {//不可发布，进入苗圃信息界面完善
         NuseryDetialViewController *ndvc = [[NuseryDetialViewController alloc] init];
         [self.navigationController pushViewController:ndvc animated:YES];
-        [ToastView showTopToast:@"您没有求购发布权限,请先完善苗圃信息"];
+        [ToastView showTopToast:@"请先完善您的苗圃信息"];
     }
 }
 
