@@ -11,6 +11,7 @@
 #import "HttpClient.h"
 #import "UIImageView+AFNetworking.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #import "ZIKGongyingWeihuViewController.h"//供应列表维护
 #import "ZIKQiugouWeihuViewController.h"//求购列表维护
 @interface YLDShopInteriorViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -19,6 +20,11 @@
 #import "RSKImageCropper.h"
 @interface YLDShopInteriorViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 >>>>>>> origin/master
+=======
+#import "YLDShopBaseInfoViewController.h"
+#import "RSKImageCropper.h"
+@interface YLDShopInteriorViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+>>>>>>> 30a60c3a08ebd298ce7302b7b13ace26430f9a18
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,strong)NSDictionary *dic;
 @property (nonatomic,weak) UIImageView *imageVV;
@@ -205,6 +211,7 @@
     //修改图片
     [self chooseUserPictureChange:image];
 }
+<<<<<<< HEAD
 
 #pragma mark - RSKImageCropViewControllerDelegate
 - (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
@@ -219,6 +226,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+=======
+
+#pragma mark - RSKImageCropViewControllerDelegate
+- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
+{
+    
+    [self requestUploadHeadImage:croppedImage];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+>>>>>>> 30a60c3a08ebd298ce7302b7b13ace26430f9a18
 - (void)chooseUserPictureChange:(UIImage*)image
 {
     //UIImage *photo = [UIImage imageNamed:@"photo"];
