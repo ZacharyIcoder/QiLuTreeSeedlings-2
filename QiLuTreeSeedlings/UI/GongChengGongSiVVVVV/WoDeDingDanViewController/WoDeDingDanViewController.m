@@ -144,7 +144,7 @@
     }];
     NSString *uids = [uidString substringFromIndex:1];
     ShowActionV();
-    [HTTPCLIENT deleteMyBuyInfo:uids Success:^(id responseObject) {
+    [HTTPCLIENT deleteOrderByUids:uids Success:^(id responseObject) {
         RemoveActionV();
         if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showTopToast:@"删除成功"];
@@ -228,6 +228,22 @@
 }
 -(void)textFieldChangeVVWithStr:(NSString *)textStr
 {
+    if (self.tableView.editing) {
+        self.tableView.editing = NO;
+        bottomcell.hidden = YES;
+        self.tableView.frame = CGRectMake(0, 64+53, kWidth, kHeight-115-50);
+        [_removeArray removeAllObjects];
+        __weak typeof(self)weakSelf=self;
+        
+        [self.tableView addHeaderWithCallback:^{
+            weakSelf.pageNum=1;
+            ShowActionV();
+            [weakSelf getDataWithSearchWord:weakSelf.searchStr andPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",(long)weakSelf.Status]];
+        }];
+        
+        
+    }
+
     self.pageNum=1;
     self.searchStr=textStr;
     [self getDataWithSearchWord:textStr andPageNum:[NSString stringWithFormat:@"%ld",(long)self.pageNum] andStatus:[NSString stringWithFormat:@"%ld",(long)self.Status]];

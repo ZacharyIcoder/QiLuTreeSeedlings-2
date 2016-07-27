@@ -74,19 +74,22 @@
     [self.view addSubview:tableView];
     tableView.hidden=YES;
     [self getDataList];
-    UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-55, 23, 30, 30)];
-    [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
-    [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
-    self.searchBtn=searchShowBtn;
-    [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.navBackView addSubview:searchShowBtn];
-        self.searchBtn=searchShowBtn;
-    YLDSearchNavView *searchV =[[YLDSearchNavView alloc]init];
-    self.searchV=searchV;
-    searchV.delegate=self;
-    searchV.hidden=YES;
-    
-    [self.navBackView addSubview:searchV];
+//    if (self.Uid.length>0) {
+//            UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-55, 23, 30, 30)];
+//            [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+//            [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
+//            self.searchBtn=searchShowBtn;
+//            [searchShowBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//            [self.navBackView addSubview:searchShowBtn];
+//                self.searchBtn=searchShowBtn;
+//            YLDSearchNavView *searchV =[[YLDSearchNavView alloc]init];
+//            self.searchV=searchV;
+//            searchV.delegate=self;
+//            searchV.hidden=YES;
+//            
+//            [self.navBackView addSubview:searchV];
+//    }
+
 
     // Do any additional setup after loading the view.
 }

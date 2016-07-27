@@ -119,7 +119,7 @@
     CGContextBeginPath(context);
     CGContextSetLineWidth(context, borderWidth);
     CGContextSetStrokeColorWithColor(context, color.CGColor);
-    CGFloat lengths[] = { 3, 1 };
+    CGFloat lengths[] = {1, 0.2};
     CGContextSetLineDash(context, 0, lengths, 1);
     CGContextMoveToPoint(context, 0.0, 0.0);
     CGContextAddLineToPoint(context, size.width, 0.0);

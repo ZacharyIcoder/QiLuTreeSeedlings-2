@@ -107,7 +107,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5K-ZJ-p4l">
-                        <rect key="frame" x="219" y="68" width="82" height="21"/>
+                        <rect key="frame" x="219" y="68" width="90" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Kuw-E5-2yG"/>
                         </constraints>
@@ -145,7 +145,7 @@
                     <constraint firstItem="v76-87-v6K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="HJA-fJ-Jcc"/>
                     <constraint firstItem="ZgO-Kb-e8q" firstAttribute="leading" secondItem="v76-87-v6K" secondAttribute="trailing" constant="15" id="Neq-7q-6SD"/>
                     <constraint firstAttribute="bottomMargin" secondItem="HgI-IT-ipf" secondAttribute="bottom" constant="12" id="Nmk-Jn-aUC"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="K5K-ZJ-p4l" secondAttribute="trailing" constant="11" id="PlC-ip-KCW"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="K5K-ZJ-p4l" secondAttribute="trailing" constant="3" id="PlC-ip-KCW"/>
                     <constraint firstItem="iry-qX-9hT" firstAttribute="top" secondItem="R8g-Mi-qw8" secondAttribute="bottom" constant="8" id="Sw9-ME-gfo"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ZgO-Kb-e8q" secondAttribute="trailing" constant="-8" id="T0R-ZQ-FjG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="L97-hE-sPp" secondAttribute="trailing" constant="2" id="Ukn-co-vns"/>
