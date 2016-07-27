@@ -67,7 +67,7 @@
     } else if ([model.orderType isEqualToString:@"询价单"]) {
         self.orderTypeImageView.image = [UIImage imageNamed:@"标签-询价"];
     }
-    self.itemQuantityLabel.text = [NSString stringWithFormat:@"需求: %@棵",model.itemQuantity];
+    self.itemQuantityLabel.text = [NSString stringWithFormat:@"需求: %@棵(株)",model.itemQuantity];
     self.orderNameLabel.text = model.orderName;
     self.engineeringCompanyLabel.text = model.engineeringCompany;
     self.itemNameLabel.text = model.itemName;
@@ -93,7 +93,7 @@
 
     self.priceLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
 
-    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵",model.quoteQuantity];
+    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵(株)",model.quoteQuantity];
     FontAttribute *quotefullFont = [FontAttribute new];
     quotefullFont.font = [UIFont systemFontOfSize:14.0f];
     quotefullFont.effectRange  = NSMakeRange(0, quoteStr.length);

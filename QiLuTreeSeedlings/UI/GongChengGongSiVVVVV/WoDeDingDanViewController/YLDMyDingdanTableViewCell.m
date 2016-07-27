@@ -75,6 +75,9 @@
     }
     self.frame=frame;
     self.showBtn.selected=model.isShow;
+    if (model.isSelect) {
+        self.selected = YES;
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -226,7 +226,7 @@
             UILabel *yuan = [self labelWithText:@"元  *"];
             [cell addSubview:yuan];
         } else if (indexPath.row == 1) {
-            UILabel *ke         = [self labelWithText:@"棵  *"];
+            UILabel *ke         = [self labelWithText:@"棵(株)  *"];
             [cell addSubview:ke];
             quantityTextField.placeholder = @"请输入数量";
         } else if (indexPath.row == 2) {

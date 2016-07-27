@@ -31,13 +31,13 @@
     [self.iconImageView setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
     self.titleLabel.text = model.title;
     self.timeLabel.textColor = titleLabColor;
-    //棵数
+    //棵(株)数
     NSString *treeCountString = nil;
     if (model.count.integerValue>=10000) {
-        treeCountString = [NSString stringWithFormat:@"%d万棵",(int)model.count.integerValue/10000];
+        treeCountString = [NSString stringWithFormat:@"%d万棵(株)",(int)model.count.integerValue/10000];
     }
     else {
-        treeCountString = [NSString stringWithFormat:@"%@棵",model.count];
+        treeCountString = [NSString stringWithFormat:@"%@棵(株)",model.count];
     }
     self.countLabel.text = treeCountString;
     self.countLabel.textColor = detialLabColor;

@@ -147,7 +147,7 @@
 ////            [adView adStart];
 //            return adView;
             UITableViewCell *cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-            UIImageView *imageV=[[UIImageView alloc]initWithFrame:cell.bounds];
+            UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 160.f/320.f*kWidth)];
             [imageV setImage:[UIImage imageNamed:@"站长通-海报-2.png"]];
             [cell addSubview:imageV];
             return cell;

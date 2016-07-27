@@ -61,8 +61,8 @@
         //self.quoteButton.hidden = NO;
     }
 
-    NSString *quoteStr = [NSString stringWithFormat:@"需求: %@棵",model.quantity];
-//    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵",model.quoteQuantity];
+    NSString *quoteStr = [NSString stringWithFormat:@"需求: %@棵(株)",model.quantity];
+//    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵(株)",model.quoteQuantity];
     FontAttribute *quotefullFont = [FontAttribute new];
     quotefullFont.font = [UIFont systemFontOfSize:14.0f];
     quotefullFont.effectRange  = NSMakeRange(0, quoteStr.length);

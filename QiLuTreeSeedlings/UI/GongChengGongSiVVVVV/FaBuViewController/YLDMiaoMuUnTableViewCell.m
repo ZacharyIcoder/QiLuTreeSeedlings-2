@@ -40,7 +40,7 @@
 {
     _messageDic=messageDic;
     self.nameLab.text=messageDic[@"name"];
-    self.numLab.text=[NSString stringWithFormat:@"%@棵",messageDic[@"quantity"]];
+    self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",messageDic[@"quantity"]];
     NSString *shuomingStr=messageDic[@"description"];
     if (shuomingStr.length!=0) {
         self.jieshaoLab.text=[NSString stringWithFormat:@"规格要求：%@",messageDic[@"description"]];

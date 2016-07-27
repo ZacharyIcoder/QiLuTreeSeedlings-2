@@ -60,7 +60,7 @@
         UILabel *numLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.15+20+95, 70, 90, 20)];
         [numLab setFont:[UIFont systemFontOfSize:14]];
           [numLab setTextColor:detialLabColor];
-        numLab.text=@"599棵";
+        numLab.text=@"599棵(株)";
         self.numLab=numLab;
         [self addSubview:numLab];
         UILabel *shangcheLab=[[UILabel alloc]initWithFrame:CGRectMake((frame.size.width-80)*0.65-10+75, 70, 50, 20)];
@@ -77,7 +77,7 @@
         [self addSubview:priceLab];
         UIImageView *lineV=[[UIImageView alloc]initWithFrame:CGRectMake(13, self.frame.size.height, self.frame.size.width-26, 0.5)];
         [lineV setBackgroundColor:kLineColor];
-        self.numLab.text=[NSString stringWithFormat:@"%@ 棵",Model.count];
+        self.numLab.text=[NSString stringWithFormat:@"%@ 棵(株)",Model.count];
         
                     self.timeLab.text=Model.timeAger;
         
@@ -92,7 +92,7 @@
     _model=model;
      [self.bigImageV setImageWithURL:[NSURL URLWithString:model.iamge] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
     self.titleLab.text=model.title;
-    self.numLab.text=[NSString stringWithFormat:@"%@ 棵",model.count];
+    self.numLab.text=[NSString stringWithFormat:@"%@ 棵(株)",model.count];
     self.timeLab.text=model.timeAger;
     NSArray *priceAry=[model.price componentsSeparatedByString:@"."];
     self.priceLab.text=[priceAry firstObject];

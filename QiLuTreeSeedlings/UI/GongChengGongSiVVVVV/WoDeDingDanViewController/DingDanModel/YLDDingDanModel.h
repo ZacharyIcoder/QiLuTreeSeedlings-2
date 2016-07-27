@@ -21,6 +21,7 @@
 @property (nonatomic,assign) NSInteger auditStatus;
 @property (nonatomic)CGFloat showHeight;
 @property (nonatomic)BOOL isShow;
+@property (nonatomic)BOOL isSelect;
 +(YLDDingDanModel *)yldDingDanModelWithDic:(NSDictionary *)dic;
 +(NSArray *)YLDDingDanModelAryWithAry:(NSArray *)ary;
 +(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font;

@@ -61,7 +61,7 @@
         [self.numLab setTextAlignment:NSTextAlignmentLeft];
         [self.numLab setTextColor:titleLabColor];
         [self.numLab setFont:[UIFont systemFontOfSize:13]];
-        [self.numLab setText:@"0棵"];
+        [self.numLab setText:@"0棵(株)"];
         [self addSubview:self.numLab];
         UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 63, 55, 20)];
         [priceLab setTextAlignment:NSTextAlignmentRight];
@@ -85,7 +85,7 @@
    // [self.imageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@""]];
     self.nameLab.text=[dic objectForKey:@"supplybuyName"];
     NSString *nubStr=[dic objectForKey:@"count"];
-    self.numLab.text =[NSString stringWithFormat:@"%@棵",nubStr];
+    self.numLab.text =[NSString stringWithFormat:@"%@棵(株)",nubStr];
     self.priceLab.text=[dic objectForKey:@"price"];
 
 
@@ -95,7 +95,7 @@
     _model=model;
     self.nameLab.text=model.supplybuyName;
     NSString *nubStr=model.count;
-    self.numLab.text =[NSString stringWithFormat:@"%@棵",nubStr];
+    self.numLab.text =[NSString stringWithFormat:@"%@棵(株)",nubStr];
     self.priceLab.text=model.price;
         if (model.goldsupplier == 0 || model.goldsupplier == 10) {
             shenfenLab.text=@"普通供应商";

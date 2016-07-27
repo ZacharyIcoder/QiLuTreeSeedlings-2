@@ -99,7 +99,7 @@
         // barButtonItem.title = @"Remove";
         self.tableView.editing = YES;
         bottomcell.hidden = NO;
-        self.tableView.frame = CGRectMake(0, 64+53, kWidth, kHeight-64-44-53);
+        self.tableView.frame = CGRectMake(0, 64+53, kWidth, kHeight-115-44-53);
         [self.tableView removeHeader];//编辑状态取消下拉刷新
         bottomcell.isAllSelect = NO;
         if (_removeArray.count > 0) {

@@ -26,7 +26,7 @@
     self.nameLab.text=model.name;
     self.timeLab.text=model.endDate;
     
-      self.numLab.text=[NSString stringWithFormat:@"%@棵",model.quantity];
+      self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",model.quantity];
     
     
     self.areaLab.text=model.area;

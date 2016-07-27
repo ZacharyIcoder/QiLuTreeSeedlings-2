@@ -27,7 +27,7 @@
     self.areaLab.text=[NSString stringWithFormat:@"苗源地:%@",dic[@"area"]];
     
 //    NSArray *creatTime=[dic[@"createTime"] componentsSeparatedByString:@" "];
-    self.numLab.text=[NSString stringWithFormat:@"%@棵",dic[@"quantity"]];
+    self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",dic[@"quantity"]];
     self.NameLab.text=dic[@"workstationName"];
     self.priceLab.text=[NSString stringWithFormat:@"¥%@",dic[@"price"]];
 

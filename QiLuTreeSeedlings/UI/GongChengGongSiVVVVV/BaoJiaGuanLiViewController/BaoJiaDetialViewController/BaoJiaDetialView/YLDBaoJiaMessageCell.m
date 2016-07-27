@@ -33,7 +33,7 @@
     self.lianxirenWi.constant=model.chargelPerson.length*15+62;
     self.timeLab.text=model.quoteTime;
     
-    self.numLab.text=[NSString stringWithFormat:@"%@棵",model.quantity];
+    self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",model.quantity];
     
    
     self.priceLab.text=model.price;
