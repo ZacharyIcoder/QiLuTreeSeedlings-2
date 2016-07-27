@@ -93,15 +93,10 @@
 
     self.priceLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    NSString *quoteStr = [NSString stringWithFormat:@"报价数量: %@棵",model.quoteQuantity];
-=======
+
     NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵(株)",model.quoteQuantity];
->>>>>>> origin/master
-=======
-    NSString *quoteStr = [NSString stringWithFormat:@"供应: %@棵(株)",model.quoteQuantity];
->>>>>>> 30a60c3a08ebd298ce7302b7b13ace26430f9a18
+
+
     FontAttribute *quotefullFont = [FontAttribute new];
     quotefullFont.font = [UIFont systemFontOfSize:14.0f];
     quotefullFont.effectRange  = NSMakeRange(0, quoteStr.length);
