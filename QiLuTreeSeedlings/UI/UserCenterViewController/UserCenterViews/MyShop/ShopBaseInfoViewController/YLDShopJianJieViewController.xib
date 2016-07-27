@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YLDShopJianJieViewController">
+            <connections>
+                <outlet property="sureBtn" destination="y53-Ii-atG" id="reL-xJ-Zt5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wareView" destination="iTD-es-1n9" id="ML3-eS-qGA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTD-es-1n9" customClass="YLDshopWareView">
+                    <rect key="frame" x="150" y="185" width="300" height="150"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注意.png" translatesAutoresizingMaskIntoConstraints="NO" id="yUJ-jn-THk">
+                            <rect key="frame" x="0.0" y="8" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="3Yg-8c-CLh"/>
+                                <constraint firstAttribute="height" constant="25" id="wPK-8O-h6d"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hX0-56-hVb">
+                            <rect key="frame" x="33" y="10" width="31" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="NG3-bT-geX"/>
+                                <constraint firstAttribute="width" constant="31" id="Twx-Mf-3BN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.99215686270000003" green="0.52156862749999999" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="yUJ-jn-THk" firstAttribute="top" secondItem="iTD-es-1n9" secondAttribute="top" constant="8" id="4tg-R5-7Os"/>
+                        <constraint firstItem="hX0-56-hVb" firstAttribute="top" secondItem="iTD-es-1n9" secondAttribute="top" constant="10" id="Bbb-1P-cQe"/>
+                        <constraint firstAttribute="width" constant="300" id="GzU-rO-07s"/>
+                        <constraint firstAttribute="height" constant="150" id="JKX-Tr-TMW"/>
+                        <constraint firstItem="yUJ-jn-THk" firstAttribute="leading" secondItem="iTD-es-1n9" secondAttribute="leading" id="cwg-TT-npy"/>
+                        <constraint firstItem="hX0-56-hVb" firstAttribute="leading" secondItem="yUJ-jn-THk" secondAttribute="trailing" constant="8" id="xIJ-UZ-nJY"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y53-Ii-atG">
+                    <rect key="frame" x="40" y="540" width="520" height="40"/>
+                    <color key="backgroundColor" red="0.34901960780000002" green="0.70588235290000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="kqi-LP-2Y2"/>
+                        <constraint firstAttribute="height" constant="40" id="nuA-zL-1DL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="确认提交">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="y53-Ii-atG" secondAttribute="trailing" constant="40" id="5XE-ch-cFk"/>
+                <constraint firstItem="iTD-es-1n9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="185" id="7g5-Lh-aK6"/>
+                <constraint firstAttribute="bottom" secondItem="y53-Ii-atG" secondAttribute="bottom" constant="20" id="8TK-oH-kWY"/>
+                <constraint firstItem="y53-Ii-atG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="v9Z-v8-UKn"/>
+                <constraint firstItem="iTD-es-1n9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vKf-2F-p3M"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="注意.png" width="40" height="40"/>
+    </resources>
+</document>

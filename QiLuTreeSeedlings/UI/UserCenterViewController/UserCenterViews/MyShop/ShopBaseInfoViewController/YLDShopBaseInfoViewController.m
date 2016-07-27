@@ -1,4 +1,4 @@
-//
+    //
 //  YLDShopBaseInfoViewController.m
 //  QiLuTreeSeedlings
 //
@@ -13,7 +13,9 @@
 #import "YLDGCZXTouxiangTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "YLDShopNameViewController.h"
-@interface YLDShopBaseInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "RSKImageCropper.h"
+#import "YLDShopJianJieViewController.h"
+@interface YLDShopBaseInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,weak)YLDGCZXTouxiangTableViewCell *touxiangCell;
 @property (nonatomic,copy) NSDictionary *dic;
@@ -51,8 +53,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row==0) {
+        [self addPicture];
+    }
     if (indexPath.row==1) {
         YLDShopNameViewController *vc=[[YLDShopNameViewController alloc]initWithMessage:[self.dic objectForKey:@"shopName"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row==2) {
+        
+        YLDShopJianJieViewController *vc=[[YLDShopJianJieViewController alloc]initWithMessage:[self.dic objectForKey:@"brief"]];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -69,13 +79,19 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==0) {
-        YLDGCZXTouxiangTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDGCZXTouxiangTableViewCell"];
+     
     
-        if (!cell) {
-            cell=[YLDGCZXTouxiangTableViewCell yldGCZXTouxiangTableViewCell];
-            [cell.imagev setImageWithURL:[NSURL URLWithString:APPDELEGATE.GCGSModel.attachment] placeholderImage:[UIImage imageNamed:@"UserImage"]];
-        }
+        
+        YLDGCZXTouxiangTableViewCell *  cell=[YLDGCZXTouxiangTableViewCell yldGCZXTouxiangTableViewCell];
+
         cell.titleLab.text=@"店铺头像";
+        NSString *urlStr=[self.dic objectForKey:@"shopHeadUrl"];
+        if (urlStr.length>0) {
+               [cell.imagev setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"Store.png"]];
+        }else{
+            [cell.imagev setImage:[UIImage imageNamed:@"Store.png"]];
+        }
+   
         self.touxiangCell=cell;
         return cell;
     }else{
@@ -129,6 +145,138 @@
     }
     
 }
+#pragma mark - 图片添加
+//头像点击事件
+- (void)addPicture
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"修改店铺头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄新照片",@"从相册选取", nil];
+    sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [sheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheet
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (buttonIndex == 1) {
+        
+        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            //pickerImage.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+        }
+        pickerImage.delegate = self;
+        pickerImage.allowsEditing = NO;
+        [self presentViewController:pickerImage animated:YES completion:^{
+            
+        }];
+        //[self presentModalViewController:pickerImage animated:YES];
+    }else if (buttonIndex == 0) {
+        
+        //先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
+        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+        if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
+        //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
+        //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
+        picker.delegate = self;
+        picker.allowsEditing = YES;//设置可编辑
+        picker.sourceType = sourceType;
+        [self presentViewController:picker animated:YES completion:^{
+            
+        }];
+        //[self presentModalViewController:picker animated:YES];//进入照相界面
+    }
+    
+}
+
+#pragma mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //修改图片
+    [self chooseUserPictureChange:image];
+}
+
+#pragma mark - RSKImageCropViewControllerDelegate
+- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage
+{
+    
+    [self requestUploadHeadImage:croppedImage];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)chooseUserPictureChange:(UIImage*)image
+{
+    //UIImage *photo = [UIImage imageNamed:@"photo"];
+    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeSquare];
+    
+    imageCropVC.delegate = self;
+    [self.navigationController pushViewController:imageCropVC animated:YES];
+}
+#pragma mark - 请求上传图片
+- (void)requestUploadHeadImage:(UIImage *)image {
+    
+    NSData* imageData;
+    
+    //判断图片是不是png格式的文件
+    if (UIImagePNGRepresentation(image)) {
+        //返回为png图像。
+        imageData = UIImagePNGRepresentation(image);
+    }else {
+        //返回为JPEG图像。
+        imageData = UIImageJPEGRepresentation(image, 0.0001);
+    }
+    if (imageData.length>=1024*1024) {
+        CGSize newSize = {400,400};
+        imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
+    }
+    NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
+    
+    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:nil saveTyep:@"4" Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            
+            NSString *backUrl=[[responseObject objectForKey:@"result"] objectForKey:@"compressurl"];
+            
+            [self.touxiangCell.imagev setImageWithURL:[NSURL URLWithString:backUrl] placeholderImage:[UIImage imageNamed:@"Store.png"]];
+            [ToastView showTopToast:@"上传成功"];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
+
+-(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    
+    return UIImagePNGRepresentation(newImage);
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

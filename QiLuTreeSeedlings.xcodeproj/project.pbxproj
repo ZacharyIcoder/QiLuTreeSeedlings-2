@@ -210,6 +210,10 @@
 		EA5E6E551CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5E6E531CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.xib */; };
 		EA5F6D8C1D0F9AC600E78404 /* NomarBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5F6D8B1D0F9AC600E78404 /* NomarBaseViewController.m */; };
 		EA5F8A641D40AD3A00DCCD1C /* YLDRangeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5F8A631D40AD3A00DCCD1C /* YLDRangeTextField.m */; };
+		EA605B3A1D48652500E0EF04 /* YLDShopJianJieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA605B381D48652500E0EF04 /* YLDShopJianJieViewController.m */; };
+		EA605B3B1D48652500E0EF04 /* YLDShopJianJieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA605B391D48652500E0EF04 /* YLDShopJianJieViewController.xib */; };
+		EA605B3F1D48764800E0EF04 /* YLDShopPresonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA605B3D1D48764800E0EF04 /* YLDShopPresonViewController.m */; };
+		EA605B401D48764800E0EF04 /* YLDShopPresonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA605B3E1D48764800E0EF04 /* YLDShopPresonViewController.xib */; };
 		EA6338C81C9D3E2E00F359EA /* BusinessMesageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */; };
 		EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA647E191CCF0E9100C039F4 /* MybuyListTableViewCell.m */; };
 		EA647E1C1CCF0E9100C039F4 /* MybuyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA647E1A1CCF0E9100C039F4 /* MybuyListTableViewCell.xib */; };
@@ -1098,6 +1102,12 @@
 		EA5F6D8B1D0F9AC600E78404 /* NomarBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NomarBaseViewController.m; sourceTree = "<group>"; };
 		EA5F8A621D40AD3A00DCCD1C /* YLDRangeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDRangeTextField.h; sourceTree = "<group>"; };
 		EA5F8A631D40AD3A00DCCD1C /* YLDRangeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDRangeTextField.m; sourceTree = "<group>"; };
+		EA605B371D48652500E0EF04 /* YLDShopJianJieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopJianJieViewController.h; sourceTree = "<group>"; };
+		EA605B381D48652500E0EF04 /* YLDShopJianJieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopJianJieViewController.m; sourceTree = "<group>"; };
+		EA605B391D48652500E0EF04 /* YLDShopJianJieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopJianJieViewController.xib; sourceTree = "<group>"; };
+		EA605B3C1D48764800E0EF04 /* YLDShopPresonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopPresonViewController.h; sourceTree = "<group>"; };
+		EA605B3D1D48764800E0EF04 /* YLDShopPresonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopPresonViewController.m; sourceTree = "<group>"; };
+		EA605B3E1D48764800E0EF04 /* YLDShopPresonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDShopPresonViewController.xib; sourceTree = "<group>"; };
 		EA6338C61C9D3E2E00F359EA /* BusinessMesageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessMesageModel.h; sourceTree = "<group>"; };
 		EA6338C71C9D3E2E00F359EA /* BusinessMesageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessMesageModel.m; sourceTree = "<group>"; };
 		EA647E181CCF0E9100C039F4 /* MybuyListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MybuyListTableViewCell.h; sourceTree = "<group>"; };
@@ -3257,6 +3267,12 @@
 				EAAD2ABE1D472BE90070F6CE /* YLDShopNameViewController.h */,
 				EAAD2ABF1D472BE90070F6CE /* YLDShopNameViewController.m */,
 				EAAD2AC01D472BE90070F6CE /* YLDShopNameViewController.xib */,
+				EA605B371D48652500E0EF04 /* YLDShopJianJieViewController.h */,
+				EA605B381D48652500E0EF04 /* YLDShopJianJieViewController.m */,
+				EA605B391D48652500E0EF04 /* YLDShopJianJieViewController.xib */,
+				EA605B3C1D48764800E0EF04 /* YLDShopPresonViewController.h */,
+				EA605B3D1D48764800E0EF04 /* YLDShopPresonViewController.m */,
+				EA605B3E1D48764800E0EF04 /* YLDShopPresonViewController.xib */,
 			);
 			path = ShopBaseInfoViewController;
 			sourceTree = "<group>";
@@ -5194,6 +5210,7 @@
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
+				EA605B3B1D48652500E0EF04 /* YLDShopJianJieViewController.xib in Resources */,
 				EAFB8FEB1D1A3D5B00FCF88B /* deleteRad.png in Resources */,
 				FC6FED691CACF833000E2CA5 /* 列表-时间.png in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,
@@ -5279,6 +5296,7 @@
 				FC0853FF1D191D86003A47BA /* ico_头像-联系人-工作站.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
 				FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */,
+				EA605B401D48764800E0EF04 /* YLDShopPresonViewController.xib in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
 				EA552E751D0D3F8D00FB88A0 /* zhanzhanggongyingoff.png in Resources */,
 				EA4F4D1B1CBF5F47006E4988 /* bannelSmall4.jpg in Resources */,
@@ -5500,6 +5518,7 @@
 				FC4B4F3A1CABAB6400EBB2F8 /* ZIKPayRecordViewController.m in Sources */,
 				FC50B34C1CAE4C4A0022A24C /* RSADataVerifier.m in Sources */,
 				EA08F7AE1D19062100471C33 /* YLDGCZXzizhiCell.m in Sources */,
+				EA605B3A1D48652500E0EF04 /* YLDShopJianJieViewController.m in Sources */,
 				EA7CB8381CE02B960010EAE5 /* CheckIDViewController.m in Sources */,
 				FC50B3491CAE4C4A0022A24C /* NSDataEx.m in Sources */,
 				EA9A22951D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.m in Sources */,
@@ -5593,6 +5612,7 @@
 				EA1A16D51D11388E008CA20F /* YLDFuBuTijiaoViewController.m in Sources */,
 				EAE32DDB1C7E97A600C4CEA2 /* AFURLResponseSerialization.m in Sources */,
 				FCE458CA1CE7048600CBF802 /* ZIKHaveReadTableViewCell.m in Sources */,
+				EA605B3F1D48764800E0EF04 /* YLDShopPresonViewController.m in Sources */,
 				FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */,
 				FC5612431D0C092F00E5743B /* IQNSArray+Sort.m in Sources */,
 				FCCFA7171CF2E12400CC1313 /* ZIKCityTableViewCell.m in Sources */,
@@ -5925,7 +5945,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -5975,7 +5994,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
