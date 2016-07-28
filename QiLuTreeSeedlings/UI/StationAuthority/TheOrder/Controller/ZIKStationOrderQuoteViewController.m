@@ -121,7 +121,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *array  = self.titleArray[section];
+    NSArray *array = self.titleArray[section];
     return array.count;
 }
 
@@ -224,11 +224,23 @@
         if (indexPath.row == 0) {
             priceTextField.placeholder = @"请输入单价";
             UILabel *yuan = [self labelWithText:@"元  *"];
+             priceTextField.keyboardType = UIKeyboardTypeDecimalPad;
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(textFieldChanged:)
+                                                         name:UITextFieldTextDidChangeNotification
+                                                       object:priceTextField];
+
             [cell addSubview:yuan];
         } else if (indexPath.row == 1) {
-            UILabel *ke         = [self labelWithText:@"棵(株)  *"];
+            UILabel *ke         = [self labelWithText:@"棵  *"];
             [cell addSubview:ke];
+            quantityTextField.keyboardType = UIKeyboardTypeNumberPad;
             quantityTextField.placeholder = @"请输入数量";
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(quantityTextFieldChanged:)
+                                                         name:UITextFieldTextDidChangeNotification
+                                                       object:quantityTextField];
+
         } else if (indexPath.row == 2) {
             UILabel *arrowLabel = [self labelWithText:@"      *"];
             UIButton *addressButton = [[UIButton alloc] init];
@@ -248,28 +260,14 @@
         }
     } else if (indexPath.section == 2)  {
         cell.textLabel.textColor = DarkTitleColor;
-//        self.addImageBGView.frame = CGRectMake(100, 0, kWidth-100, 120);
-        //self.addImageBGView.backgroundColor = [UIColor yellowColor];
-//        self.pickerImgView.frame =  CGRectMake(0, 20, 80, 80);
-//        self.pickerImgView.backgroundColor = [UIColor whiteColor];
-//        self.pickerImgView.userInteractionEnabled = YES;
-//        [self.addImageBGView addSubview:self.pickerImgView];
-//        [cell.contentView addSubview:self.addImageBGView];
-//        __weak typeof(self) weakSelf = self;//解决循环引用的问题
-//        ZIKPickImageView *pickView = [[ZIKPickImageView alloc] initWithFrame:CGRectMake(100, 0, Width-100, 120)];
-        //pickView.backgroundColor = [UIColor yellowColor];
         self.pickerImgView.backgroundColor = [UIColor whiteColor];
 
         [cell.contentView addSubview:self.pickerImgView];
-//        self.pickerImgView = pickView;
         __weak typeof(self) weakSelf = self;
         self.pickerImgView.takePhotoBlock = ^{
             [weakSelf openMenu];
         };
 
-//        self.pickerImgView.takePhotoBlock = ^{
-//            [weakSelf openMenu];
-//        };
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -293,23 +291,6 @@
         hintCell.contentView.backgroundColor = BGColor;
         hintCell.hintStr = @"注：输入框后有*的为必填项";
         return footerView;
-        //self.addImageBGView = [[UIView alloc] init];
-        //self.addImageBGView.frame = CGRectMake(100, 0, kWidth-100, 120);
-        //self.addImageBGView.backgroundColor = [UIColor yellowColor];
-//        self.pickerImgView = [[ZIKAddPickerView alloc] init];
-//        self.pickerImgView.frame =  CGRectMake(0, 20, 80, 80);
-//        self.pickerImgView.backgroundColor = [UIColor whiteColor];
-//        self.pickerImgView.userInteractionEnabled = YES;
-//        [footerView addSubview:self.pickerImgView];
-////        [cell.contentView addSubview:self.addImageBGView];
-//        __weak typeof(self) weakSelf = self;//解决循环引用的问题
-//
-//        self.pickerImgView.takePhotoBlock = ^{
-//            [weakSelf openMenu];
-//        };
-//
-        return footerView;
-
     }
     return nil;
 }
@@ -504,24 +485,14 @@
     vc.delegate = self;
     vc.maxChoiceImageNumberumber = 3-self.pickerImgView.urlMArr.count;
     [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
-
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.navigationBar.barTintColor = NavColor;
-//
-//    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    picker.delegate = self;
-//    //设置选择后的图片可被编辑
-//    //    picker.allowsEditing = YES;
-//    [self presentViewController:picker animated:YES completion:nil];
 }
+
 #pragma mark - WHC_ChoicePictureVCDelegate
 -(void)WHCChoicePictureVCdidSelectedPhotoArr:(NSArray *)photoArr {
 //- (void)WHCChoicePictureVC:(WHC_ChoicePictureVC *)choicePictureVC didSelectedPhotoArr:(NSArray *)photoArr{
     for ( UIImage *image in photoArr) {
         NSData* imageData = nil;
         imageData  = [self  imageData:image];
-        //NSLog(@"%ld",imageData.length);
-        //imageData = [self imageWithImageSimple:image scaledToSize:<#(CGSize)#>]
 
         NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
         //NSLog(@"%ld",myStringImageFile.length);
@@ -534,9 +505,7 @@
                     return ;
                 }
                 [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
-                //                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
-                //                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
-                [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
+                 [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
             }
             else {
                 //NSLog(@"图片上传失败");
@@ -568,14 +537,12 @@
         NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
         //NSLog(@"%ld",myStringImageFile.length);
         [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:@"1" Success:^(id responseObject) {
-            CLog(@"%@",responseObject);
+            //CLog(@"%@",responseObject);
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
                 if (weakSelf.pickerImgView.photos.count == 3) {
                     return ;
                 }
                 [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
-//                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
-//                [weakSelf.pickerImgView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
                 [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
             }
             else {
@@ -599,6 +566,7 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
 -(NSData *)imageData:(UIImage *)myimage
 {
     __weak typeof(myimage) weakImage = myimage;
@@ -616,6 +584,166 @@
     }
     return data;
 }
+
+- (void)textFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    NSString *toBeString = textField.text;
+    int kssss;
+    if (textField.keyboardType==UIKeyboardTypeNumberPad) {
+        kssss=8;
+    }else{
+        kssss=10;
+    }
+    if (textField.keyboardType==UIKeyboardTypeDecimalPad) {
+        kssss=11;
+        NSArray *valueAryy=[textField.text componentsSeparatedByString:@"."];
+        if (valueAryy.count==1) {
+            NSString *zhengshuStr=[valueAryy firstObject];
+            if (zhengshuStr.length>8) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"整数部分不得超过8位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+        }
+        if (valueAryy.count==2) {
+            // NSLog(@"%@",[valueAryy firstObject]);
+            NSString *zhengshuStr=[valueAryy firstObject];
+            if (zhengshuStr.length>8) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"整数部分不得超过8位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+            NSString *xiaoshuStr=valueAryy[1];
+            if (xiaoshuStr.length>2) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"小数精确到两位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+
+        }
+        if (valueAryy.count>2) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"请不要输入多个小数点"]];
+            textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+            return;
+        }
+
+    }
+
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showTopToast:[NSString stringWithFormat:@"最多为%d位",kssss]];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showTopToast:[NSString stringWithFormat:@"最多%d个字符",kssss]];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
+
+- (void)quantityTextFieldChanged:(NSNotification *)obj {
+    UITextField *textField = (UITextField *)obj.object;
+    NSString *toBeString = textField.text;
+    int kssss;
+    if (textField.keyboardType==UIKeyboardTypeNumberPad) {
+        kssss=8;
+    }else{
+        kssss=10;
+    }
+    if (textField.keyboardType==UIKeyboardTypeDecimalPad) {
+        kssss=11;
+        NSArray *valueAryy=[textField.text componentsSeparatedByString:@"."];
+        if (valueAryy.count==1) {
+            NSString *zhengshuStr=[valueAryy firstObject];
+            if (zhengshuStr.length>8) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"整数部分不得超过8位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+        }
+        if (valueAryy.count==2) {
+            // NSLog(@"%@",[valueAryy firstObject]);
+            NSString *zhengshuStr=[valueAryy firstObject];
+            if (zhengshuStr.length>8) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"整数部分不得超过8位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+            NSString *xiaoshuStr=valueAryy[1];
+            if (xiaoshuStr.length>2) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"小数精确到两位"]];
+                textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+                return;
+            }
+
+        }
+        if (valueAryy.count>2) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"请不要输入多个小数点"]];
+            textField.text = [toBeString substringToIndex:[toBeString length] - 1];
+            return;
+        }
+
+    }
+
+    NSString *lang = [textField.textInputMode primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > kssss) {
+                // NSLog(@"最多%d个字符!!!",kMaxLength);
+                [ToastView showTopToast:[NSString stringWithFormat:@"最多为%d位",kssss]];
+                //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
+                textField.text = [toBeString substringToIndex:kssss];
+                return;
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > kssss) {
+            //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
+            //NSLog(@"最多%d个字符!!!",kMaxLength);
+            [ToastView showTopToast:[NSString stringWithFormat:@"最多%d个字符",kssss]];
+            textField.text = [toBeString substringToIndex:kssss];
+            return;
+        }
+    }
+}
+//if ([propers.numberType isEqualToString:@"float"]) {
+//    minTextField.keyboardType=UIKeyboardTypeDecimalPad;
+//    maxTextField.keyboardType=UIKeyboardTypeDecimalPad;
+//}
+//if ([propers.numberType isEqualToString:@"int"]){
+//    minTextField.keyboardType=UIKeyboardTypeNumberPad;
+//    maxTextField.keyboardType=UIKeyboardTypeNumberPad;
+//}
 
 
 @end

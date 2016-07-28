@@ -164,7 +164,7 @@
                     self.countTextField = [[UITextField alloc] init];
                     UILabel *label      = [[UILabel alloc] init];
                     label.frame         = CGRectMake(kWidth-50, 5, 40, 30);
-                    label.text          = @"棵(株)";
+                    label.text          = @"棵";
                     label.textColor     = DarkTitleColor;
                     label.font          = [UIFont systemFontOfSize:15.0f];
                     label.textAlignment = NSTextAlignmentRight;
