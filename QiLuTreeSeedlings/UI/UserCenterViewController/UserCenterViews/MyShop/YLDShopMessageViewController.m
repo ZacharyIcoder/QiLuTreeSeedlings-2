@@ -136,6 +136,7 @@
     if (index==5) {
         ZIKMyShopViewController *viewC=[[ZIKMyShopViewController alloc]init];
         viewC.type=0;
+        viewC.memberUid = APPDELEGATE.userModel.access_id;
         [self.navigationController pushViewController:viewC animated:YES];
     }
 }
