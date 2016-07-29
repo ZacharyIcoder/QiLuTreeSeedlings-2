@@ -42,7 +42,11 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.sectionHeaderHeight    = HEADER_HEIGHT;
-    self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
+    if (self.view.frame.size.height>480) {
+        self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
+    } else {
+        self.tableView.scrollEnabled  = YES; //设置tableview 不能滚动
+    }
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"ZIKStationCenterTableViewHeaderView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];

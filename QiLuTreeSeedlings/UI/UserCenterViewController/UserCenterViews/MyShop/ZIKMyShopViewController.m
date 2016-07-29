@@ -262,24 +262,35 @@ static NSString *flag = @"";
 
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
 {
-    //NSLog(@"didClose is %d",fromViewControllerType);
+    NSLog(@"didClose is %d",fromViewControllerType);
+    
 }
 
 //下面得到分享完成的回调
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    //NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
+    NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
     //根据`responseCode`得到发送结果,如果分享成功
     if(response.responseCode == UMSResponseCodeSuccess)
     {
         //得到分享到的微博平台名
         //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        [HTTPCLIENT shareShopMessageViewNumWithmemberUid:_memberUid Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+                [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+                //            [self.buyTableView footerEndRefreshing];
+
+                return ;
+            }
+        } failure:^(NSError *error) {
+            ;
+        }];
     }
 }
 
 -(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
 {
-    //NSLog(@"finish share with response is %@",response);
+    NSLog(@"finish share with response is %@",response);
 }
 
 @end

@@ -9,5 +9,5 @@
 #import "ZIKRightBtnSringViewController.h"
 
 @interface ZIKQiugouWeihuViewController : ZIKRightBtnSringViewController
-
+@property (nonatomic, copy) NSString *count;
 @end

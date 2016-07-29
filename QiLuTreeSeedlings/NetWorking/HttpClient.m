@@ -4510,5 +4510,154 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+
+#pragma mark ---------- APP店铺全部求购 -----------
+- (void)shopBuyList:(NSString *)memberUid
+               page:(NSString *)page
+           pageSize:(NSString *)pageSize
+      selfrecommend:(NSString *)selfrecommend
+            Success:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"shopbuy";
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"memberUid"]        = memberUid;
+    parmers[@"page"]             = page;
+    parmers[@"pageSize"]         = pageSize;
+    parmers[@"selfrecommend"]    = selfrecommend;
+     ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+#pragma mark ---------- APP店铺全部供应 -----------
+- (void)shopSupplyList:(NSString *)memberUid
+                  page:(NSString *)page
+              pageSize:(NSString *)pageSize
+         selfrecommend:(NSString *)selfrecommend
+               Success:(void (^)(id responseObject))success
+               failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"shopsupply";
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"memberUid"]        = memberUid;
+    parmers[@"page"]             = page;
+    parmers[@"pageSize"]         = pageSize;
+    parmers[@"selfrecommend"]    = selfrecommend;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- APP后台店铺供应信息推荐 -----------
+- (void)shopAddSupply:(NSString *)supplyUid
+              Success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/apishopAddSupply";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"supplyUid"]        = supplyUid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- APP后台店铺求购信息推荐 -----------
+- (void)shopAddBuy:(NSString *)supplyUid
+           Success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/apishopAddbuy";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"supplyUid"]        = supplyUid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
 /******************* end 店铺API  end*******************/
+#pragma mark ---------- 分组分享 -----------
+- (void)groupShareWithProductUid:(NSString *)porductUid
+                     productName:(NSString *)productName
+                        province:(NSString *)province
+                            city:(NSString *)city
+                          county:(NSString *)county
+                       startTime:(NSString *)startTime
+                     spec_XXXXXX:(NSString *)spec
+                         Success:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/group/share";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"porductUid"]       = porductUid;
+    parmers[@"productName"]      = productName;
+    parmers[@"province"]         = province;
+    parmers[@"city"]             = city;
+    parmers[@"county"]           = county;
+    parmers[@"startTime"]        = startTime;
+    parmers[@"spec"]             = spec;
+
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
 @end

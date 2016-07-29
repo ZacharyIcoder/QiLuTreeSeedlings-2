@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.vcTitle = @"推荐供应1/10";
+    self.vcTitle = [NSString stringWithFormat:@"推荐供应%@/10",self.count];
     self.rightBarBtnTitleString = @"维护";
 }
 

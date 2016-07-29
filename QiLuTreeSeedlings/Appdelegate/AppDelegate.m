@@ -589,12 +589,17 @@
 
 #pragma mark - 微信支付
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSLog(@"%@",url);
     return  [WXApi handleOpenURL:url delegate:self];
 }
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == TRUE) {
+        return result;
+    }
     BOOL appJump;
 
     if ([url.host isEqualToString:@"response_from_qq"] || [url.host isEqualToString:@"platformId=wechat"]) {
@@ -643,7 +648,6 @@
         }else
         {
             appJump = [UMSocialSnsService handleOpenURL:url];
-
         }
     }
     return  appJump;

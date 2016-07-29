@@ -1121,4 +1121,78 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 未通过审核订单苗木删除-----------
 -(void)deleteOrderMMByUid:(NSString *)uid Success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- APP店铺全部求购 -----------
+- (void)shopBuyList:(NSString *)memberUid
+               page:(NSString *)page
+           pageSize:(NSString *)pageSize
+      selfrecommend:(NSString *)selfrecommend
+            Success:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- APP店铺全部供应 -----------
+- (void)shopSupplyList:(NSString *)memberUid
+               page:(NSString *)page
+           pageSize:(NSString *)pageSize
+      selfrecommend:(NSString *)selfrecommend
+            Success:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- APP后台店铺供应信息推荐 -----------
+/**
+ *  APP后台店铺供应信息推荐
+ *
+ *  @param supplyUid 供求id(List<String>)
+ *  @param success   {"result":true,"success":true}
+ *  @param failure   {
+	"error_code":"500",
+	"msg":"保存店铺推荐供应信息失败",
+	"success":false
+ }
+ */
+- (void)shopAddSupply:(NSString *)supplyUid
+              Success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- APP后台店铺求购信息推荐 -----------
+- (void)shopAddBuy:(NSString *)supplyUid
+           Success:(void (^)(id responseObject))success
+           failure:(void (^)(NSError *error))failure;
+
+
+#pragma mark ---------- 分组分享 -----------
+/**
+ *  分组分享
+ *
+ *  @param porductUid  产品ID，根据规格查询必传
+ *  @param productName 产品名称
+ *  @param province    省
+ *  @param city        市
+ *  @param county      县
+ *  @param startTime   选择时间
+ *  @param spec        填写的规格参数值
+ *  @param success     {
+ "result":{
+ "pic":"http://192.168.1.5:8080//static/images/ic_launcher-web.png",
+ "text":"23日00时至16时,采购的树种：白蜡 测试树种 串钱柳",
+ "title":"23日最新求购",
+ "url":"http://192.168.1.5:8080//wap/group/list?uid=040F0BC0-9DB6-44B5-8BF8-6E4D990B92A0"
+ },
+ "success":true
+ }
+
+ *  @param failure     {
+	"error_code":"500",
+	"msg":"",
+	"success":false
+ }
+
+ */
+- (void)groupShareWithProductUid:(NSString *)porductUid
+                     productName:(NSString *)productName
+                        province:(NSString *)province
+                            city:(NSString *)city
+                          county:(NSString *)county
+                       startTime:(NSString *)startTime
+                     spec_XXXXXX:(NSString *)spec
+                         Success:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure;
+
+
 @end
