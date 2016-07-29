@@ -28,6 +28,7 @@
     model.uid=dic[@"uid"];
     model.measureRequired=[NSString stringWithFormat:@"胸径离地面%@CM处，地径离地面%@CM处",model.dbh,model.groundDiameter];
     model.company=[dic objectForKey:@"company"];
+    model.auditStatus=-1;
     return model;
 }
 @end

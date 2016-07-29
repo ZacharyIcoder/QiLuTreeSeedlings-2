@@ -1118,6 +1118,7 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 未通过审核订单删除-----------
 -(void)deleteOrderByUids:(NSString *)uids Success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure;
-
-
+#pragma mark ---------- 未通过审核订单苗木删除-----------
+-(void)deleteOrderMMByUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                 failure:(void (^)(NSError *error))failure;
 @end

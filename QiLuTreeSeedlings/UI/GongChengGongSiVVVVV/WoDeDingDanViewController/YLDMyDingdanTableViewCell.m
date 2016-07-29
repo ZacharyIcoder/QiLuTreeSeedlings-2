@@ -53,7 +53,7 @@
     if (model.auditStatus==0) {
         self.yincanglineV.hidden=YES;
         self.hezuoBtn.hidden=YES;
-        [self.loggV setImage:[UIImage imageNamed:@"shenhezhong"]];
+        [self.loggV setImage:[UIImage imageNamed:@"待审核"]];
     }else{
         if ([model.status isEqualToString:@"已结束"]) {
             frame.size.height+=40;

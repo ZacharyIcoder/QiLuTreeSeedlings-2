@@ -19,7 +19,10 @@
     _model=model;
     self.nameLab.text=model.workstationName;
     self.areaLab.text=model.area;
-    self.moneyLab.text=model.creditMargin;
+    if (model.creditMargin.length>0) {
+        self.moneyLab.text=[NSString stringWithFormat:@"%@元",model.creditMargin];
+    }
+    
     self.numLab.text=model.viewNo;
     if ([model.type isEqualToString:@"总站"]) {
         [self.logoV setImage:[UIImage imageNamed:@"yingzhangzongzhan"]];
