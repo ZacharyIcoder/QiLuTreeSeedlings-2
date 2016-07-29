@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *shenfenImageV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *shenfenLab;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *moneLabW;
 @property (weak, nonatomic) IBOutlet UILabel *fangwenRiLab;
 @property (weak, nonatomic) IBOutlet UILabel *fengxhangZongLab;
 @property (weak, nonatomic) IBOutlet UILabel *fenxhangNumLab;

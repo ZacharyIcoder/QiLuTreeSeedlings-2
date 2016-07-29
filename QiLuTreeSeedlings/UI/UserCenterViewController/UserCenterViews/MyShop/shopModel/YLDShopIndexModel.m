@@ -14,9 +14,10 @@
     YLDShopIndexModel *model=[YLDShopIndexModel new];
     model.goldsupplier=[dic objectForKey:@"goldsupplier"];
     model.shopBackgroundUrl=[dic objectForKey:@"shopBackgroundUrl"];
+    model.name=[dic objectForKey:@"name"];
     model.shopHeadUrl=[dic objectForKey:@"shopHeadUrl"];
     model.visitCount=[[dic objectForKey:@"visitCount"] integerValue];
-    model.creditMargin=[[dic objectForKey:@"creditMargin"] integerValue];
+    model.creditMargin=[dic objectForKey:@"creditMargin"];
     model.visitDay=[[dic objectForKey:@"visitDay"] integerValue];
     model.shareCount=[[dic objectForKey:@"shareCount"] integerValue];
     model.goldsupplierflag=[[dic objectForKey:@"goldsupplierflag"] integerValue];

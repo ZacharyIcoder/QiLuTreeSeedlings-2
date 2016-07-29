@@ -40,7 +40,7 @@
     CGFloat  jianxi=(kWidth-290)/4;
     for (int i=0; i<dataAry.count; i++) {
         ZIKStationHonorListModel *model=dataAry[i];
-        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake((jianxi+90)*i+jianxi, 5, 90, 70)];
+        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake((jianxi+90)*i+jianxi+(i)/3*jianxi, 5, 90, 70)];
         if (model.image.length>0) {
             [btn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
         }

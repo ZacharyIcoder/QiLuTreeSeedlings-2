@@ -89,7 +89,7 @@
         [editingBtn addTarget: self action:@selector(editingBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         self.editingBtn=editingBtn;
         
-        UIButton *shenheBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+        UIButton *shenheBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-50, kWidth-80, 40)];
         [shenheBtn setBackgroundColor:NavColor];
         [shenheBtn addTarget: self action:@selector(shenhetongguo) forControlEvents:UIControlEventTouchUpInside];
         [shenheBtn setTitle:@"审核通过" forState:UIControlStateNormal];
@@ -237,6 +237,8 @@
            cell.chakanBtn.enabled=NO;
            cell.chakanBtn.hidden=YES;
        }
+       cell.deleteBtn.hidden=YES;
+       cell.deleteBtn.enabled=NO;
 //       [cell.chakanBtn setBackgroundColor:detialLabColor];
 //       [cell.chakanBtn setTitle:@"暂无报价" forState:UIControlStateNormal];
    }else{
@@ -244,6 +246,8 @@
            cell.chakanBtn.enabled=YES;
            cell.chakanBtn.hidden=NO;
        }
+       cell.deleteBtn.enabled=YES;
+       cell.deleteBtn.hidden=NO;
       
    }
     //NSDictionary *DIC=self.miaomuAry[indexPath.row];
@@ -264,6 +268,44 @@
         YLDDingDanMMBianJiViewController *MMBJVC=[[YLDDingDanMMBianJiViewController alloc]initWithUid:[dic objectForKey:@"uid"]];
         MMBJVC.delegate=self;
         [self.navigationController pushViewController:MMBJVC animated:YES];
+    }
+    if (tag==5) {
+//        if (self.dataAry.count<=1) {
+//            [ToastView showTopToast:@"至少保留一条苗木信息"];
+//            return;
+//        }
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"订单苗木删除" message:@"您确定删除该苗木信息？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+            
+        }]];
+        
+        
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [HTTPCLIENT deleteOrderMMByUid:[dic objectForKey:@"uid"] Success:^(id responseObject) {
+                if ([[responseObject objectForKey:@"success"]integerValue]) {
+                    [ToastView showTopToast:@"苗木信息删除成功"];
+                    [self.dataAry removeObject:dic];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //回调或者说是通知主线程刷新，
+                        
+                        [self.tableView reloadData];
+                    });
+                }else{
+                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+            
+        }]];
+        
+
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -14,7 +14,7 @@
 @property (nonatomic,assign)NSInteger visitCount;
 @property (nonatomic,copy) NSString *shopBackgroundUrl;
 @property (nonatomic,copy) NSString *shopHeadUrl;
-@property (nonatomic,assign) NSInteger creditMargin;
+@property (nonatomic,assign) NSString * creditMargin;
 @property (nonatomic,assign) NSInteger visitDay;
 @property (nonatomic,assign) NSInteger shareCount;
 @property (nonatomic,assign)NSInteger goldsupplierflag;

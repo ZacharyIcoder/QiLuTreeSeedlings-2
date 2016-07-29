@@ -4488,7 +4488,7 @@
 -(void)deleteOrderMMByUid:(NSString *)uid Success:(void (^)(id responseObject))success
                   failure:(void (^)(NSError *error))failure
 {
-    NSString *postURL            = @"api/order/delete";
+    NSString *postURL            = @"api/order/deleteItem";
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
     

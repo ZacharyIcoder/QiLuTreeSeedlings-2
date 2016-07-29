@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numLab;
 @property (weak, nonatomic) IBOutlet UILabel *jieshaoLab;
 @property (nonatomic,strong) UIButton *chakanBtn;
+@property (nonatomic,strong) UIButton *deleteBtn;
 @property (nonatomic,strong) NSDictionary *messageDic;
 @property (nonatomic,weak)id<YLDMiaoMuUnTableViewCellDelegate> delegate;
 +(YLDMiaoMuUnTableViewCell *)yldMiaoMuUnTableViewCell;

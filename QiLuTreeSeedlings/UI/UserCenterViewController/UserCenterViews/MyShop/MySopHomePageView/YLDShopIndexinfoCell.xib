@@ -179,18 +179,19 @@
                             <constraint firstItem="dWr-Xn-Lbr" firstAttribute="centerX" secondItem="ooI-7v-t0s" secondAttribute="centerX" constant="-45.5" id="jkh-zG-Ms3"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="诚信保证金背景.png" translatesAutoresizingMaskIntoConstraints="NO" id="fea-Fg-awU">
-                        <rect key="frame" x="216" y="63" width="100" height="23"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="诚信保证金图标.png" translatesAutoresizingMaskIntoConstraints="NO" id="fea-Fg-awU">
+                        <rect key="frame" x="216" y="63" width="23" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="RZO-4T-xgl"/>
-                            <constraint firstAttribute="width" constant="100" id="dtL-mN-hd1"/>
+                            <constraint firstAttribute="width" constant="23" id="dtL-mN-hd1"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emN-TY-6Q2">
-                        <rect key="frame" x="241" y="64" width="71" height="21"/>
+                        <rect key="frame" x="239" y="63" width="71" height="23"/>
+                        <color key="backgroundColor" red="0.94290675582313455" green="0.99607843137254903" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="71" id="iLE-vr-Lgt"/>
-                            <constraint firstAttribute="height" constant="21" id="un3-Fc-hwm"/>
+                            <constraint firstAttribute="height" constant="23" id="un3-Fc-hwm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.34901960784313724" green="0.70588235294117652" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
@@ -210,9 +211,10 @@
                     <constraint firstItem="c3M-UA-sDI" firstAttribute="top" secondItem="yvl-TM-MJE" secondAttribute="bottom" id="E2D-lz-Yql"/>
                     <constraint firstItem="Nqu-Zj-Cqq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Gxj-pX-yob"/>
                     <constraint firstItem="c3M-UA-sDI" firstAttribute="leading" secondItem="Nqu-Zj-Cqq" secondAttribute="trailing" constant="1" id="Kgv-fL-GjK"/>
+                    <constraint firstItem="emN-TY-6Q2" firstAttribute="leading" secondItem="fea-Fg-awU" secondAttribute="trailing" id="N4U-lH-nBh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="c3M-UA-sDI" secondAttribute="trailing" constant="-8" id="Pyv-ap-pl6"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ooI-7v-t0s" secondAttribute="bottom" constant="12" id="Rpb-4x-Z64"/>
-                    <constraint firstItem="emN-TY-6Q2" firstAttribute="top" secondItem="QPw-Ld-WGQ" secondAttribute="bottom" constant="12" id="U9B-bi-waW"/>
+                    <constraint firstItem="emN-TY-6Q2" firstAttribute="top" secondItem="QPw-Ld-WGQ" secondAttribute="bottom" constant="11" id="U9B-bi-waW"/>
                     <constraint firstItem="c3M-UA-sDI" firstAttribute="leading" secondItem="Nqu-Zj-Cqq" secondAttribute="trailing" constant="1" id="cyg-FV-aSj"/>
                     <constraint firstItem="fea-Fg-awU" firstAttribute="top" secondItem="QPw-Ld-WGQ" secondAttribute="bottom" constant="11" id="dXC-1c-hNF"/>
                     <constraint firstItem="yvl-TM-MJE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="dYV-gH-1E8"/>
@@ -231,6 +233,7 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="7Wh-sO-PvB"/>
+                        <exclude reference="toQ-4V-dK0"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -239,6 +242,7 @@
                 <outlet property="fangwenRiLab" destination="PmA-1E-vm0" id="6Ob-77-5ll"/>
                 <outlet property="fengxhangZongLab" destination="fDJ-nw-GSE" id="Yq5-gg-XU4"/>
                 <outlet property="fenxhangNumLab" destination="tac-Os-Uo4" id="5Gx-s7-mn4"/>
+                <outlet property="moneLabW" destination="iLE-vr-Lgt" id="0nS-7g-HMA"/>
                 <outlet property="moneyLab" destination="emN-TY-6Q2" id="a2H-Ft-vCT"/>
                 <outlet property="nameLab" destination="QPw-Ld-WGQ" id="JFM-mc-DnQ"/>
                 <outlet property="rifangWigth" destination="7JS-x2-phm" id="7PL-Yz-RF4"/>
@@ -256,6 +260,6 @@
         <image name="我的店铺-分享次数.png" width="39" height="39"/>
         <image name="我的店铺-访问量-总.png" width="39" height="39"/>
         <image name="我的店铺-访问量-每日.png" width="39" height="39"/>
-        <image name="诚信保证金背景.png" width="130" height="30"/>
+        <image name="诚信保证金图标.png" width="27" height="29"/>
     </resources>
 </document>
