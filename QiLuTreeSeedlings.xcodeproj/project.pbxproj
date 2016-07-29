@@ -521,6 +521,8 @@
 		FC4A51871D0E63650060587B /* ico_排序倒序.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4A51821D0E63650060587B /* ico_排序倒序.png */; };
 		FC4A51881D0E63650060587B /* ico_排序默认.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4A51831D0E63650060587B /* ico_排序默认.png */; };
 		FC4A51891D0E63650060587B /* ico_排序正序.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4A51841D0E63650060587B /* ico_排序正序.png */; };
+		FC4B41391D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4B41371D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png */; };
+		FC4B413A1D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4B41381D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png */; };
 		FC4B4F211CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */; };
 		FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F241CAB7C8900EBB2F8 /* NSString+Helper.m */; };
 		FC4B4F291CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B4F281CAB95F900EBB2F8 /* ZIKMyBalanceViewController.m */; };
@@ -1566,6 +1568,8 @@
 		FC4A51821D0E63650060587B /* ico_排序倒序.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_排序倒序.png"; sourceTree = "<group>"; };
 		FC4A51831D0E63650060587B /* ico_排序默认.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_排序默认.png"; sourceTree = "<group>"; };
 		FC4A51841D0E63650060587B /* ico_排序正序.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_排序正序.png"; sourceTree = "<group>"; };
+		FC4B41371D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1求购供应详情-店铺图标2.png"; sourceTree = "<group>"; };
+		FC4B41381D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1求购供应详情-店铺图标2@2x.png"; sourceTree = "<group>"; };
 		FC4B4F1F1CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMyQRCodeViewController.h; sourceTree = "<group>"; };
 		FC4B4F201CAB6A2900EBB2F8 /* ZIKMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMyQRCodeViewController.m; sourceTree = "<group>"; };
 		FC4B4F231CAB7C8900EBB2F8 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
@@ -2458,8 +2462,13 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+
 				EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */,
 				EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */,
+
+				FC4B41371D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png */,
+				FC4B41381D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png */,
+
 				EA64E75F1D4AE4F60065C032 /* 待审核.png */,
 				EA6BDA401D45FE5F00F317F2 /* 我的店铺-查看店铺.png */,
 				EA6BDA411D45FE5F00F317F2 /* 我的店铺-店铺装修.png */,
@@ -5113,6 +5122,7 @@
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
 				EA08F7C71D19152700471C33 /* anliimage.png in Resources */,
+				FC4B413A1D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png in Resources */,
 				FC4A51861D0E63650060587B /* 工程订单_筛选on.png in Resources */,
 				EA08F7CA1D191B0200471C33 /* ico_工作站-分站text.png in Resources */,
 				FC5612861D0C092F00E5743B /* ZIKMySupplyTableViewCell.xib in Resources */,
@@ -5356,6 +5366,7 @@
 				FC2276661D177C9F0037B131 /* 底部菜单-我的报价off.png in Resources */,
 				FC0853FF1D191D86003A47BA /* ico_头像-联系人-工作站.png in Resources */,
 				EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */,
+				FC4B41391D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png in Resources */,
 				FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */,
 				EA605B401D48764800E0EF04 /* YLDShopPresonViewController.xib in Resources */,
 				EA03CCED1C8FEFF80032BAD3 /* shotMessageImage@2x.png in Resources */,
@@ -5975,8 +5986,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6013,7 +6024,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6024,8 +6035,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6062,7 +6073,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

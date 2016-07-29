@@ -108,18 +108,18 @@
 
     if (!APPDELEGATE.isNeedLogin) {
 
-        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeight-50, kWidth*3/5+2, 2)];
+        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2/5+2, 2)];
         topLineView.backgroundColor = kLineColor;
         [self.view addSubview:topLineView];
 
-        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50+2, kWidth*1/5, 50-2)];
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
         [shopBtn setBackgroundColor:kBlueShopColor];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [self.view addSubview:shopBtn];
 
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];
@@ -160,7 +160,7 @@
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [self.view addSubview:shopBtn];
 
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];

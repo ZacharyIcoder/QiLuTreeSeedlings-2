@@ -451,7 +451,7 @@
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [view addSubview:shopBtn];
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
@@ -520,7 +520,7 @@
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [view addSubview:shopBtn];
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
         lineView.backgroundColor = kLineColor;
@@ -602,7 +602,7 @@
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [view addSubview:shopBtn];
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
@@ -673,7 +673,7 @@
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
-        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标"] forState:UIControlStateNormal];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [view addSubview:shopBtn];
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, 2, 50)];
