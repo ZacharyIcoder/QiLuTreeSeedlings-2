@@ -34,6 +34,14 @@
     cell.chakanBtn=chakanBtn;
     [chakanBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [cell addSubview:chakanBtn];
+    
+    UIButton *deleteBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-70, 45, 60, 30)];
+    cell.deleteBtn=deleteBtn;
+    [deleteBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [deleteBtn setBackgroundColor:kRGB(252, 101, 104, 1)];
+    deleteBtn.hidden=YES;
+    [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+    [cell addSubview:deleteBtn];
     return cell;
 }
 -(void)setMessageDic:(NSDictionary *)messageDic
@@ -77,6 +85,9 @@
         }
         
     }
+    self.deleteBtn.tag=5;
+    [self.deleteBtn addTarget:self action:@selector(chakanBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 -(void)chakanBtnAction:(UIButton *)sender
 {

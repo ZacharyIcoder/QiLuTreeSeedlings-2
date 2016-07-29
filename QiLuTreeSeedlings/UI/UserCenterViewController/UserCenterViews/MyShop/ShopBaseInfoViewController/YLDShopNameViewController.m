@@ -32,13 +32,13 @@
     textView.text=self.str;
     textView.rangeNumber=20;
     textView.placeholder=@"请输入店铺名称";
-    [self.wareView addTextWithAry:@[@"1、名称由汉字、字母、数字组成；",@"2、不能包含“@＃％&”等特殊字符；",@"3、名称字数不超过20个字符。"]];
+    [self.wareView addTextWithAry:@[@"1、名称由汉字、字母或数字组成；",@"2、不能包含“@＃％&”等特殊字符；",@"3、名称字数不超过20个字符。"]];
     // Do any additional setup after loading the view from its nib.
     [self.sureBtn addTarget:self action:@selector(sureBtnAcion) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)sureBtnAcion
 {
-    NSString *regex = @"[a-zA-Z\u4e00-\u9fa5][a-zA-Z0-9\u4e00-\u9fa5]+";
+    NSString *regex = @"[a-zA-Z0-9\u4e00-\u9fa5]+";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     if(self.textView.text.length <=0)
     {
@@ -47,7 +47,7 @@
     }
     if(![pred evaluateWithObject: self.textView.text])
     {
-        [ToastView showTopToast:@"名称只能由汉字、字母、数字组成"];
+        [ToastView showTopToast:@"名称只能由汉字、字母或数字组成"];
         return;
     }
     [HTTPCLIENT getMyShopBaseMessageUpDataWithType:@"1" value:self.textView.text Success:^(id responseObject) {

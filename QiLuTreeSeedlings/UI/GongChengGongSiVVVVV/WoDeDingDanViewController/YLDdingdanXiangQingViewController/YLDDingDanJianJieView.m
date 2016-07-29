@@ -61,7 +61,7 @@
     self.areaLab.text=model.area;
     self.phoneLab.text=model.phone;
     if (model.auditStatus==0) {
-        [self.logoImageV setImage:[UIImage imageNamed:@"未审核"]];
+        [self.logoImageV setImage:[UIImage imageNamed:@"待审核"]];
     }else
     {
         if ([model.status isEqualToString:@"报价中"]) {

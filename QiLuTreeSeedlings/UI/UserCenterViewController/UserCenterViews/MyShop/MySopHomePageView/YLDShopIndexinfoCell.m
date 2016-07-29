@@ -17,6 +17,10 @@
     cell.touxiangImageV.layer.masksToBounds=YES;
     cell.touxiangImageV.layer.cornerRadius=35;
     cell.rifangWigth.constant=kWidth/2-1;
+    cell.moneyLab.layer.masksToBounds=YES;
+    cell.moneyLab.layer.borderWidth=1;
+    cell.moneyLab.layer.borderColor=NavColor.CGColor;
+    
     return cell;
 }
 -(void)setModel:(YLDShopIndexModel *)model
@@ -28,13 +32,26 @@
     if (model.shopHeadUrl.length>0) {
         [self.touxiangImageV setImageWithURL:[NSURL URLWithString:model.shopHeadUrl] placeholderImage:[UIImage imageNamed:@"Store.png"]];
     }
+    self.nameLab.text=model.name;
     CGRect rect = [model.goldsupplier boundingRectWithSize:CGSizeMake(999, 21)
                                         options:NSStringDrawingUsesLineFragmentOrigin
                                      attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
                                         context:nil];
     self.shenfenLab.text=model.goldsupplier;
-    self.shenfenLabW.constant=rect.size.width;
-    self.moneyLab.text=[NSString stringWithFormat:@"%ld元",model.creditMargin];
+    self.shenfenLabW.constant=rect.size.width+5;
+   
+    if (model.creditMargin) {
+        NSString *moneyStr=[NSString stringWithFormat:@"%@元",model.creditMargin];
+        CGRect rect2 = [moneyStr boundingRectWithSize:CGSizeMake(999, 21)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
+                                                        context:nil];
+        if (rect2.size.width+5>71) {
+            self.moneLabW.constant=rect2.size.width+5;
+        }
+        self.moneyLab.text=moneyStr;
+    }
+    
     self.fangwenRiLab.text=[NSString stringWithFormat:@"%ld",model.visitDay];
     self.fengxhangZongLab.text=[NSString stringWithFormat:@"%ld",model.visitCount];
     self.fenxhangNumLab.text=[NSString stringWithFormat:@"%ld",model.shareCount];
