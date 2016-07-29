@@ -20,6 +20,7 @@
 @property (nonatomic,copy) NSString *phone;
 @property (nonatomic,copy) NSString *quantityRequired;
 @property (nonatomic,copy) NSString *quotationRequired;
+@property (nonatomic,assign) NSInteger auditStatus;
 //1：可建立合作（已报价，但无合作工作站）
 //2：部分合作（有合作工作站，但要求数量不足）
 //3：已合作（有合作工作站，且苗木数量已足够）

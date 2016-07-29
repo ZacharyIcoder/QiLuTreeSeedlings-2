@@ -31,7 +31,7 @@
         [dizhiLab setFont:[UIFont systemFontOfSize:13]];
         [dizhiLab setTextAlignment:NSTextAlignmentRight];
         [dizhiLab setTextColor:detialLabColor];
-         dizhiLab.text = @"地址";
+         dizhiLab.text = @"苗源地";
         [self addSubview:dizhiLab];
        
         self.addressLab = [[UILabel alloc] init];//WithFrame:CGRectMake(130, 10, 200, 20)];

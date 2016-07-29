@@ -150,8 +150,13 @@
             NSDictionary *dic=[[responseObject objectForKey:@"result"] objectForKey:@"orderDetail"];
             if (self.pageNum==1) {
                 YLDDingDanDetialModel *model=[YLDDingDanDetialModel yldDingDanDetialModelWithDic:dic];
+                if (self.type==weishenhe) {
+                    model.auditStatus=0;
+                }
                 self.model=model;
+                
                 self.jianjieView.model=model;
+                
 //                if (![self.model.status isEqualToString:@"可编辑"]) {
 //                    [self.editingBtn removeFromSuperview];
 //                    self.editingBtn=nil;

@@ -1178,7 +1178,7 @@
                     
                 }else
                 {
-                    [dic setValue:@"请付费查看" forKey:@"address"];
+//                    [dic setValue:@"请付费查看" forKey:@"address"];
                     [dic setValue:@"请付费查看" forKey:@"phone"];
                 }
                 

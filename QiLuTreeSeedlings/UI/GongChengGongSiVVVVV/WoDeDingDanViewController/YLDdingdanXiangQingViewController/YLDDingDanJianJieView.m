@@ -60,12 +60,18 @@
     self.shuomingTextField.text=model.descriptionzz;
     self.areaLab.text=model.area;
     self.phoneLab.text=model.phone;
-    if ([model.status isEqualToString:@"报价中"]) {
-        [self.logoImageV setImage:[UIImage imageNamed:@"zt报价中"]];
+    if (model.auditStatus==0) {
+        [self.logoImageV setImage:[UIImage imageNamed:@"未审核"]];
+    }else
+    {
+        if ([model.status isEqualToString:@"报价中"]) {
+            [self.logoImageV setImage:[UIImage imageNamed:@"zt报价中"]];
+        }
+        if ([model.status isEqualToString:@"已结束"]) {
+            [self.logoImageV setImage:[UIImage imageNamed:@"zt已结束"]];
+        }
     }
-    if ([model.status isEqualToString:@"已结束"]) {
-        [self.logoImageV setImage:[UIImage imageNamed:@"zt已结束"]];
-    }
+   
     [self.callBtn addTarget:self action:@selector(callAction) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)setHezuomodel:(YLDHeZuoDetial *)hezuomodel
@@ -92,6 +98,7 @@
     self.shuomingTextField.text=hezuomodel.descriptions;
     self.areaLab.text=hezuomodel.area;
     self.phoneLab.text=hezuomodel.phone;
+   
     if ([hezuomodel.status isEqualToString:@"已结束"]) {
         [self.logoImageV setImage:[UIImage imageNamed:@"zt已结束"]];
     }
