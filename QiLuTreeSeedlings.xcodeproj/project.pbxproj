@@ -2462,13 +2462,10 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
 				EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */,
 				EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */,
-
 				FC4B41371D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png */,
 				FC4B41381D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png */,
-
 				EA64E75F1D4AE4F60065C032 /* 待审核.png */,
 				EA6BDA401D45FE5F00F317F2 /* 我的店铺-查看店铺.png */,
 				EA6BDA411D45FE5F00F317F2 /* 我的店铺-店铺装修.png */,
@@ -5008,7 +5005,7 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = L674B6W9DX;
+						DevelopmentTeam = 84BBPKS2D6;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -5913,8 +5910,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5936,7 +5933,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5958,8 +5955,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -5974,7 +5971,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5986,8 +5983,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6024,7 +6021,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6035,8 +6032,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6073,7 +6070,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

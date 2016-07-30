@@ -90,12 +90,12 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "491538826.882366"
+                  timestampString = "491539551.100983"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
                   endingLineNumber = "212"
-                  offsetFromSymbolStart = "1643">
+                  offsetFromSymbolStart = "1716">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "491538826.882467"
+                  timestampString = "491539551.101114"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
                   endingLineNumber = "212"
-                  offsetFromSymbolStart = "137">
+                  offsetFromSymbolStart = "144">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -120,12 +120,12 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "491538826.882546"
+                  timestampString = "491539551.101195"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
                   endingLineNumber = "212"
-                  offsetFromSymbolStart = "42">
+                  offsetFromSymbolStart = "56">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -135,12 +135,27 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "491538826.882625"
+                  timestampString = "491539551.101273"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
                   endingLineNumber = "212"
-                  offsetFromSymbolStart = "29">
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__125-[HttpClient upDataUserImageWithToken:WithAccessID:WithClientID:WithClientSecret:WithDeviceID:WithUserIamge:Success:failure:]_block_invoke.173"
+                  moduleName = "QiLuTreeSeedlings"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
+                  timestampString = "491539551.101343"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
