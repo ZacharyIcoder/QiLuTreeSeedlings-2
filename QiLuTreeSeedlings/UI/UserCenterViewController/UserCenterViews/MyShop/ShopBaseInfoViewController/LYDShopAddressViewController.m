@@ -48,14 +48,11 @@
 }
 -(void)sureBtnAcion:(UIButton *)sender
 {
-    if (self.shopProvince.length<=0) {
-        [ToastView showTopToast:@"请选择地区"];
+    if (self.shopCounty.length<=0) {
+        [ToastView showTopToast:@"地区需精确到县"];
         return;
     }
-    if (self.addressTextField.text.length<=0) {
-        [ToastView showTopToast:@"请输入详细地址"];
-        return;
-    }
+    
     [HTTPCLIENT UpDataMyShopAddressWithshopProvince:self.shopProvince WithshopCity:self.shopCity WithshopCounty:self.shopCounty WithshopAddress:self.addressTextField.text Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"修改成功，即将返回"];

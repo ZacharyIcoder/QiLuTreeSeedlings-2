@@ -63,6 +63,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiala2.png" translatesAutoresizingMaskIntoConstraints="NO" id="6fq-5A-YcJ">
+                            <rect key="frame" x="542" y="17" width="15" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="coC-32-tPO"/>
+                                <constraint firstAttribute="width" constant="15" id="i5R-nx-Y8B"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -74,9 +81,11 @@
                         <constraint firstItem="rYt-AY-JXD" firstAttribute="leading" secondItem="RNd-vG-GxK" secondAttribute="leading" constant="13" id="Q09-g2-RYs"/>
                         <constraint firstItem="Wtb-Mz-2xh" firstAttribute="top" secondItem="RNd-vG-GxK" secondAttribute="top" id="Re1-5m-xxC"/>
                         <constraint firstAttribute="trailing" secondItem="VDL-DA-Jti" secondAttribute="trailing" constant="13" id="UmT-VA-XkD"/>
+                        <constraint firstAttribute="trailing" secondItem="6fq-5A-YcJ" secondAttribute="trailing" constant="43" id="Vu0-rb-845"/>
                         <constraint firstItem="Xvs-ON-eNm" firstAttribute="top" secondItem="rYt-AY-JXD" secondAttribute="bottom" constant="15" id="XRL-Sf-GrE"/>
                         <constraint firstItem="Wtb-Mz-2xh" firstAttribute="leading" secondItem="ZaO-3K-hwZ" secondAttribute="trailing" constant="58" id="exi-Hd-bqw"/>
                         <constraint firstItem="rYt-AY-JXD" firstAttribute="top" secondItem="Wtb-Mz-2xh" secondAttribute="bottom" id="fbM-pY-K0J"/>
+                        <constraint firstItem="6fq-5A-YcJ" firstAttribute="top" secondItem="RNd-vG-GxK" secondAttribute="top" constant="17" id="i55-XF-6TC"/>
                         <constraint firstItem="VDL-DA-Jti" firstAttribute="leading" secondItem="Xvs-ON-eNm" secondAttribute="trailing" constant="25" id="iG7-77-MqN"/>
                         <constraint firstAttribute="trailing" secondItem="rYt-AY-JXD" secondAttribute="trailing" constant="13" id="iLM-2W-j00"/>
                         <constraint firstItem="VDL-DA-Jti" firstAttribute="top" secondItem="rYt-AY-JXD" secondAttribute="bottom" constant="10" id="oGY-nP-G0n"/>
@@ -106,4 +115,7 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="xiala2.png" width="30" height="30"/>
+    </resources>
 </document>
