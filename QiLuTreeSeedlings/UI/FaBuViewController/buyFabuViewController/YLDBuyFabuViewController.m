@@ -121,7 +121,7 @@
     [ecttiveBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     tempFrame.origin.y+=50;
 
-    UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵(株)" withFrame:tempFrame];
+    UITextField *countTextField=[self mackViewWtihName:@"数量" alert:@"请输入数量" unit:@"棵" withFrame:tempFrame];
         self.countTextField=countTextField;
     
         [[NSNotificationCenter defaultCenter] addObserver:self

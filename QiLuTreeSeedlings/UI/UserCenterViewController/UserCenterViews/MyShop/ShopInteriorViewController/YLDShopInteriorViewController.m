@@ -63,10 +63,12 @@
     }
     if (indexPath.row == 2) {
         ZIKGongyingWeihuViewController *gywhVC = [[ZIKGongyingWeihuViewController alloc] initWithNibName:@"ZIKGongyingWeihuViewController" bundle:nil];
+        gywhVC.count = [self.dic objectForKey:@"supplyCount"];
         [self.navigationController pushViewController:gywhVC animated:YES];
     }
     if (indexPath.row == 3) {
         ZIKQiugouWeihuViewController *qgwhVC = [[ZIKQiugouWeihuViewController alloc] initWithNibName:@"ZIKQiugouWeihuViewController" bundle:nil];
+        qgwhVC.count = [self.dic objectForKey:@"buyCount"];
         [self.navigationController pushViewController:qgwhVC animated:YES];
     }
    

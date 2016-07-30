@@ -506,6 +506,11 @@
 		FC368B501D2E2C0A009E0160 /* ZIKStationOrderDemandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC368B4E1D2E2C09009E0160 /* ZIKStationOrderDemandTableViewCell.xib */; };
 		FC368B531D2E3738009E0160 /* ZIKStationOrderDemandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368B521D2E3738009E0160 /* ZIKStationOrderDemandModel.m */; };
 		FC368B541D2E4486009E0160 /* ZIKStationOrderDemandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC368B4D1D2E2C09009E0160 /* ZIKStationOrderDemandTableViewCell.m */; };
+		FC3D63B01D4AF97600F1515C /* ZIKShopBuyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3D63AF1D4AF97600F1515C /* ZIKShopBuyModel.m */; };
+		FC3D63B41D4AFA3400F1515C /* ZIKShopBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3D63B21D4AFA3400F1515C /* ZIKShopBuyTableViewCell.m */; };
+		FC3D63B51D4AFA3400F1515C /* ZIKShopBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC3D63B31D4AFA3400F1515C /* ZIKShopBuyTableViewCell.xib */; };
+		FC3D63B91D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3D63B71D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.m */; };
+		FC3D63BA1D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC3D63B81D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib */; };
 		FC4470441D2F425C00EA0D82 /* ZIKWorkstationSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4470431D2F425C00EA0D82 /* ZIKWorkstationSelectView.m */; };
 		FC4470461D2F431A00EA0D82 /* ZIKWorkstationSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC4470451D2F431A00EA0D82 /* ZIKWorkstationSelectView.xib */; };
 		FC4470491D2F468A00EA0D82 /* 工程订单_排序off.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4470471D2F468A00EA0D82 /* 工程订单_排序off.png */; };
@@ -1548,6 +1553,14 @@
 		FC368B4E1D2E2C09009E0160 /* ZIKStationOrderDemandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationOrderDemandTableViewCell.xib; sourceTree = "<group>"; };
 		FC368B511D2E3738009E0160 /* ZIKStationOrderDemandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderDemandModel.h; sourceTree = "<group>"; };
 		FC368B521D2E3738009E0160 /* ZIKStationOrderDemandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderDemandModel.m; sourceTree = "<group>"; };
+		FC3D63AE1D4AF97600F1515C /* ZIKShopBuyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKShopBuyModel.h; sourceTree = "<group>"; };
+		FC3D63AF1D4AF97600F1515C /* ZIKShopBuyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKShopBuyModel.m; sourceTree = "<group>"; };
+		FC3D63B11D4AFA3400F1515C /* ZIKShopBuyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKShopBuyTableViewCell.h; sourceTree = "<group>"; };
+		FC3D63B21D4AFA3400F1515C /* ZIKShopBuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKShopBuyTableViewCell.m; sourceTree = "<group>"; };
+		FC3D63B31D4AFA3400F1515C /* ZIKShopBuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKShopBuyTableViewCell.xib; sourceTree = "<group>"; };
+		FC3D63B61D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKQiugouEditWeihuViewController.h; sourceTree = "<group>"; };
+		FC3D63B71D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKQiugouEditWeihuViewController.m; sourceTree = "<group>"; };
+		FC3D63B81D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKQiugouEditWeihuViewController.xib; sourceTree = "<group>"; };
 		FC4470421D2F425C00EA0D82 /* ZIKWorkstationSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationSelectView.h; sourceTree = "<group>"; };
 		FC4470431D2F425C00EA0D82 /* ZIKWorkstationSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationSelectView.m; sourceTree = "<group>"; };
 		FC4470451D2F431A00EA0D82 /* ZIKWorkstationSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKWorkstationSelectView.xib; sourceTree = "<group>"; };
@@ -3331,6 +3344,9 @@
 				FC6C7D1B1D472EB1009D4FEC /* ZIKQiugouWeihuViewController.h */,
 				FC6C7D1C1D472EB1009D4FEC /* ZIKQiugouWeihuViewController.m */,
 				FC6C7D1D1D472EB1009D4FEC /* ZIKQiugouWeihuViewController.xib */,
+				FC3D63B61D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.h */,
+				FC3D63B71D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.m */,
+				FC3D63B81D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib */,
 			);
 			path = ShopInteriorViewController;
 			sourceTree = "<group>";
@@ -4733,6 +4749,8 @@
 		FC6C7D0F1D472B8C009D4FEC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC3D63AE1D4AF97600F1515C /* ZIKShopBuyModel.h */,
+				FC3D63AF1D4AF97600F1515C /* ZIKShopBuyModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4740,6 +4758,9 @@
 		FC6C7D101D472B8C009D4FEC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC3D63B11D4AFA3400F1515C /* ZIKShopBuyTableViewCell.h */,
+				FC3D63B21D4AFA3400F1515C /* ZIKShopBuyTableViewCell.m */,
+				FC3D63B31D4AFA3400F1515C /* ZIKShopBuyTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5005,7 +5026,9 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
+
 						DevelopmentTeam = 84BBPKS2D6;
+
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -5185,6 +5208,7 @@
 				FC2276711D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.xib in Resources */,
 				FC5612721D0C092F00E5743B /* 标签-已退回.png in Resources */,
 				EA4E646E1D0E83F000A7D731 /* YLDKeFuTableViewCell.xib in Resources */,
+				FC3D63BA1D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib in Resources */,
 				FC4470491D2F468A00EA0D82 /* 工程订单_排序off.png in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
@@ -5209,6 +5233,7 @@
 				EA5252F51CE179E40004639C /* CityTableViewCell.xib in Resources */,
 				EA64E7621D4B319C0065C032 /* 诚信保证金图标.png in Resources */,
 				EA4C4DD41D13D88500DF1B93 /* edintBtn.png in Resources */,
+				FC3D63B51D4AFA3400F1515C /* ZIKShopBuyTableViewCell.xib in Resources */,
 				EA08F7A11D18E5D000471C33 /* YLDGongChengZhongXinBigCell.xib in Resources */,
 				EAAFCFAD1CBE23CD00EB894F /* 1miaomu960.png in Resources */,
 				EA1CF3FB1CACC87A00AF2D82 /* myBuyNull@2x.png in Resources */,
@@ -5490,6 +5515,7 @@
 				EAAFCF701CBDD94300EB894F /* BigImageViewShowView.m in Sources */,
 				FC22766A1D177C9F0037B131 /* ZIKMyOfferViewController.m in Sources */,
 				EA5E6E541CFFD9C8003D357C /* YLDTuiJianGongZuoZhanCell.m in Sources */,
+				FC3D63B01D4AF97600F1515C /* ZIKShopBuyModel.m in Sources */,
 				FC4B4F251CAB7C8900EBB2F8 /* NSString+Helper.m in Sources */,
 				FC50B34B1CAE4C4A0022A24C /* RSADataSigner.m in Sources */,
 				FC22767E1D177C9F0037B131 /* ZIKStationOrderOfferTableViewCell.m in Sources */,
@@ -5500,6 +5526,7 @@
 				EAEA07F81C5B0B0F003A0D8A /* CircleViews.m in Sources */,
 				FC56129F1D0C092F00E5743B /* ZIKMySupplyVC.m in Sources */,
 				EA52ACDC1CB4958900CE2210 /* FabutiaojiaCell.m in Sources */,
+				FC3D63B91D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.m in Sources */,
 				FC614A0A1CAA65C700672241 /* ZIKPasswordSetViewController.m in Sources */,
 				EA552E861D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m in Sources */,
 				EAFB8FF41D1A729F00FCF88B /* YLDHeZuoDetialGZZView.m in Sources */,
@@ -5763,6 +5790,7 @@
 				FCCEA49D1CFD5FE1005D21F5 /* ZIKExchangeViewController.m in Sources */,
 				EA0B2B951C59F5220018A7BD /* main.m in Sources */,
 				FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */,
+				FC3D63B41D4AFA3400F1515C /* ZIKShopBuyTableViewCell.m in Sources */,
 				FC5612821D0C092F00E5743B /* ZIKMySupplyCellBackButton.m in Sources */,
 				EAEA07FC1C5B285C003A0D8A /* YouLickView.m in Sources */,
 				EA2727191C8A7D8E000B0719 /* FMDatabaseAdditions.m in Sources */,
@@ -5983,8 +6011,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6019,9 +6049,11 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkkkong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6032,8 +6064,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+
 				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6068,9 +6102,11 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkkkong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
