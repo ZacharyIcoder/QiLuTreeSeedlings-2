@@ -5026,9 +5026,7 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-
-						DevelopmentTeam = 84BBPKS2D6;
-
+						DevelopmentTeam = L674B6W9DX;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -6011,10 +6009,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6049,11 +6045,9 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkkkong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6064,10 +6058,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
-
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6102,11 +6094,9 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkkkong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
-
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

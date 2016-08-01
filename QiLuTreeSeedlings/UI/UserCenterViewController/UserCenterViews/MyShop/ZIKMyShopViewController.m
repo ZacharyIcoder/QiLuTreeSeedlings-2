@@ -278,12 +278,11 @@ static NSString *flag = @"";
         [HTTPCLIENT shareShopMessageViewNumWithmemberUid:_memberUid Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
                 [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
-                //            [self.buyTableView footerEndRefreshing];
 
                 return ;
             }
         } failure:^(NSError *error) {
-            ;
+            
         }];
     }
 }
