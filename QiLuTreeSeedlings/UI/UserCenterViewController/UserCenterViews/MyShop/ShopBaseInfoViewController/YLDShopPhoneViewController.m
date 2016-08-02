@@ -24,7 +24,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.vcTitle=@"联系人";
+    self.vcTitle=@"联系方式";
     YLDRangeTextView *textView=[[YLDRangeTextView alloc]initWithFrame:CGRectMake(0, 70, kWidth, 100)];
     [textView setFont:[UIFont systemFontOfSize:17]];
     [self.view addSubview:textView];

@@ -32,7 +32,7 @@
     textView.text=self.str;
     textView.rangeNumber=120;
     textView.placeholder=@"请输入店铺简介";
-    [self.wareView addTextWithAry:@[@"简介紫薯不超过120个字符。"]];
+    [self.wareView addTextWithAry:@[@"简介字数不超过120个字符。"]];
     // Do any additional setup after loading the view from its nib.
     [self.sureBtn addTarget:self action:@selector(sureBtnAcion) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
