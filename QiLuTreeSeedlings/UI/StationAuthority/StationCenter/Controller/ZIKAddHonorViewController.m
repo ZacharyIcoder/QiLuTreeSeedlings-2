@@ -289,7 +289,7 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 
     // End the context
-    UIGraphicsEndImageContext();
+    UIGraphicsEndImageContext(); 
     // Return the new image.
 
     return UIImagePNGRepresentation(newImage);
