@@ -13,6 +13,7 @@
 #import "ZIKShopBuyTableViewCell.h"
 #import "ZIKFunction.h"
 #import "ZIKQiugouEditWeihuViewController.h"
+#import "BuyDetialInfoViewController.h"
 
 @interface ZIKQiugouWeihuViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
@@ -33,6 +34,19 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [self requestData];
+    [HTTPCLIENT getShopInoterMessageSuccess:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            NSDictionary *dic = [responseObject objectForKey:@"result"];
+            self.count = [dic objectForKey:@"buyCount"];
+            self.vcTitle = [NSString stringWithFormat:@"推荐求购%@/10",self.count];
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+
+    }];
+
 }
 
 - (void)initData {
@@ -144,19 +158,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (self.buyInfoMArr.count > 0) {
-//        ZIKMyTeamModel *model = self.stationMArr[indexPath.section];
-//        YLDZhanZhangMessageViewController *detailVC = [[YLDZhanZhangMessageViewController
-//                                                        alloc] initWithUid:model.uid];
-//        if (self.navigationController.childViewControllers.count>1) {
-//
-//        }else{
-//            detailVC.hidesBottomBarWhenPushed = YES;
-//        }
-//
-//        [self.navigationController pushViewController:detailVC animated:YES];
-//
-//    }
+    ZIKShopBuyModel *model = self.buyInfoMArr[indexPath.row];
+    BuyDetialInfoViewController *buyDetialVC = [[BuyDetialInfoViewController alloc] initMyDetialWithSaercherInfo:model.uid];
+    [self.navigationController pushViewController:buyDetialVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -46,6 +46,9 @@
                             <state key="normal" title="确定">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="sureButtonClick:" destination="-1" eventType="touchUpInside" id="wwc-jU-KyT"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,7 +77,7 @@
                 <constraint firstItem="2yN-lM-yuE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="ht4-j8-qNQ"/>
                 <constraint firstItem="2yN-lM-yuE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wbi-a5-QZV"/>
             </constraints>
-            <point key="canvasLocation" x="531" y="272"/>
+            <point key="canvasLocation" x="482" y="270"/>
         </view>
     </objects>
     <resources>

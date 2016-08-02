@@ -20,7 +20,9 @@
 @end
 
 @implementation ZIKQiugouEditWeihuViewController
-
+{
+    NSMutableArray *_refreshMarr;   //保存选中行数据
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -38,7 +40,8 @@
 
 - (void)initData {
     self.page = 1;
-     self.buyInfoMArr = [NSMutableArray array];
+    self.buyInfoMArr = [NSMutableArray array];
+    _refreshMarr = [NSMutableArray array];
     self.editBuyTableView.editing = YES;
 }
 
@@ -79,7 +82,7 @@
         NSDictionary *dic = [responseObject objectForKey:@"result"];
         NSArray *array = dic[@"list"];
         if (array.count == 0 && self.page == 1) {
-            [ToastView showToast:@"请设置自己的推荐" withOriginY:Width/2 withSuperView:self.view];
+            [ToastView showToast:@"你还没有发布通过的推荐信息" withOriginY:Width/2 withSuperView:self.view];
             if (self.buyInfoMArr.count > 0) {
                 [self.buyInfoMArr removeAllObjects];
             }
@@ -107,6 +110,13 @@
             //            [self.buyTableView footerEndRefreshing];
 
         }
+        [self.buyInfoMArr enumerateObjectsUsingBlock:^(ZIKShopBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([model.selfrecommend isEqualToString:@"1"]) {
+                [self.editBuyTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+                [_refreshMarr addObject:model];
+            }
+         }];
+
 
     } failure:^(NSError *error) {
         //        [self.buyTableView footerEndRefreshing];
@@ -151,7 +161,53 @@
     //        [self.navigationController pushViewController:detailVC animated:YES];
     //
     //    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ZIKShopBuyModel *model = self.buyInfoMArr[indexPath.row];
+    if (_refreshMarr.count >= 10) {
+        [self.editBuyTableView deselectRowAtIndexPath:indexPath animated:YES];
+        [ToastView showTopToast:@"一次最多推荐10条"];
+        return;
+    } else {
+        [_refreshMarr addObject:model];
+    }
+
+
+
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKShopBuyModel *model = self.buyInfoMArr[indexPath.row];
+    // 删除反选数据
+    if ([_refreshMarr containsObject:model])
+    {
+        [_refreshMarr removeObject:model];
+    }
+}
+
+- (IBAction)sureButtonClick:(UIButton *)sender {
+    if (_refreshMarr.count == 0) {
+        [ToastView showTopToast:@"请选择要维护的内容"];
+        return;
+    }
+    __block NSString *buyUidString = @"";
+    [_refreshMarr enumerateObjectsUsingBlock:^(ZIKShopBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        buyUidString = [buyUidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+    }];
+    buyUidString = [buyUidString substringFromIndex:1];
+
+    [HTTPCLIENT shopAddBuy:buyUidString Success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
+            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
+            return ;
+        } else {
+            [ToastView showTopToast:@"维护成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+
+    } failure:^(NSError *error) {
+        ;
+    }];
 }
 
 #pragma mark - 可选方法实现
@@ -192,14 +248,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

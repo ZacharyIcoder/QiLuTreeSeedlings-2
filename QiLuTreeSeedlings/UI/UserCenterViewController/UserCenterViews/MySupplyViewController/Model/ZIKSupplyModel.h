@@ -68,4 +68,8 @@
 @property (nonatomic,assign) BOOL isCanRefresh;
 
 @property (nonatomic, copy) NSString *searchTime;
+
+//店铺供应推荐维护新增
+// 是否推荐 1是 0否
+@property (nonatomic, copy) NSString *selfrecommend;
 @end

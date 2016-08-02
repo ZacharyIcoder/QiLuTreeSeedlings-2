@@ -755,6 +755,8 @@
 		FC828EAA1D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
+		FCA92C501D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA92C4E1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m */; };
+		FCA92C511D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA92C4F1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.xib */; };
 		FCB1BCDB1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BCD91D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m */; };
 		FCB1BCDC1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB1BCDA1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.xib */; };
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
@@ -2042,6 +2044,9 @@
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
 		FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKConsumeRecordFrame.m; sourceTree = "<group>"; };
+		FCA92C4D1D50609F00D8EE64 /* ZIKGongyingEditWeihuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKGongyingEditWeihuViewController.h; sourceTree = "<group>"; };
+		FCA92C4E1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKGongyingEditWeihuViewController.m; sourceTree = "<group>"; };
+		FCA92C4F1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKGongyingEditWeihuViewController.xib; sourceTree = "<group>"; };
 		FCB1BCD81D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationOrderQuoteViewController.h; sourceTree = "<group>"; };
 		FCB1BCD91D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationOrderQuoteViewController.m; sourceTree = "<group>"; };
 		FCB1BCDA1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationOrderQuoteViewController.xib; sourceTree = "<group>"; };
@@ -2475,13 +2480,10 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
 				EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */,
 				EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */,
-
 				FC4B41371D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png */,
 				FC4B41381D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png */,
-
 				EA64E75F1D4AE4F60065C032 /* 待审核.png */,
 				EA6BDA401D45FE5F00F317F2 /* 我的店铺-查看店铺.png */,
 				EA6BDA411D45FE5F00F317F2 /* 我的店铺-店铺装修.png */,
@@ -3344,6 +3346,9 @@
 				FC6C7D161D472CB6009D4FEC /* ZIKGongyingWeihuViewController.h */,
 				FC6C7D171D472CB6009D4FEC /* ZIKGongyingWeihuViewController.m */,
 				FC6C7D181D472CB6009D4FEC /* ZIKGongyingWeihuViewController.xib */,
+				FCA92C4D1D50609F00D8EE64 /* ZIKGongyingEditWeihuViewController.h */,
+				FCA92C4E1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m */,
+				FCA92C4F1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.xib */,
 				FC6C7D1B1D472EB1009D4FEC /* ZIKQiugouWeihuViewController.h */,
 				FC6C7D1C1D472EB1009D4FEC /* ZIKQiugouWeihuViewController.m */,
 				FC6C7D1D1D472EB1009D4FEC /* ZIKQiugouWeihuViewController.xib */,
@@ -5029,7 +5034,7 @@
 				TargetAttributes = {
 					EA0B2B8F1C59F5220018A7BD = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = HP8U3K66H6;
+						DevelopmentTeam = L674B6W9DX;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -5446,6 +5451,7 @@
 				EA75147A1C9B889A003D63F1 /* backBtnBlack@2x.png in Resources */,
 				EAA9FFF21D12365E009CF19D /* YLDMiaoMuTableViewCell.xib in Resources */,
 				EAFB8FF81D1A7AB400FCF88B /* shenfenshengjiv.png in Resources */,
+				FCA92C511D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.xib in Resources */,
 				FC5612671D0C092F00E5743B /* WHC_CameraVC.xib in Resources */,
 				FC523FF41D26137C002C001F /* ZIKStationChangeInfoViewController.xib in Resources */,
 				FC4A51881D0E63650060587B /* ico_排序默认.png in Resources */,
@@ -5763,6 +5769,7 @@
 				FC6FED7F1CAD0940000E2CA5 /* ZIKPayRecordTableViewCell.m in Sources */,
 				EAAD2ABA1D4708440070F6CE /* YLDShopBaseInfoViewController.m in Sources */,
 				FC5612551D0C092F00E5743B /* MJRefreshHeaderView.m in Sources */,
+				FCA92C501D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m in Sources */,
 				FC4470551D2F702300EA0D82 /* ZIKWorkstationSelectListViewTableViewCell.m in Sources */,
 				FC22767C1D177C9F0037B131 /* ZIKSearchBarView.m in Sources */,
 				EAF8A5421C867D7D008B99D2 /* HotSellModel.m in Sources */,
@@ -6048,7 +6055,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkkkong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -6097,7 +6104,7 @@
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwangkkkong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
