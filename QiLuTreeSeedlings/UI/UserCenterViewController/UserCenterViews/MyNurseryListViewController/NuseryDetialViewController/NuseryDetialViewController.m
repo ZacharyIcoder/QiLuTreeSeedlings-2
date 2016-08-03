@@ -32,6 +32,7 @@
 @property (nonatomic,copy) NSString *AreaCounty;
 @property (nonatomic,copy) NSString *AreaTown;
 @property (nonatomic,strong) CityModel *xiancityModel;
+@property (nonatomic,copy) NSString *uid;
 @end
 
 @implementation NuseryDetialViewController
@@ -41,7 +42,7 @@
     self=[super init];
 
     if (self) {
-        model.uid=uid;
+        self.uid=uid;
         ShowActionV();
         [HTTPCLIENT nurseryDetialWithUid:uid Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
@@ -234,6 +235,7 @@
     self.AreaProvince =model.nurseryAreaProvince;
     self.AreaCity=model.nurseryAreaCity;
     self.AreaCounty=model.nurseryAreaCounty;
+    self.AreaTown=model.nurseryAreaTown;
     NSMutableString *areaStr=[[NSMutableString alloc]init];
     GetCityDao *citydao=[GetCityDao new];
     [citydao openDataBase];
@@ -323,7 +325,7 @@
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
      NSString *nameStr=@"新增苗圃信息";
-    if (model.uid) {
+    if (self.uid) {
         nameStr=@"修改苗圃信息";
     }else
     {
