@@ -43,6 +43,20 @@
     } failure:^(NSError *error) {
         RemoveActionV();
     }];
+    [HTTPCLIENT getSupplyRestrictWithToken:APPDELEGATE.userModel.access_token  withId:APPDELEGATE.userModel.access_id withClientId:nil withClientSecret:nil withDeviceId:nil withType:@"1" success:^(id responseObject) {
+        NSDictionary *dic=[responseObject objectForKey:@"result"];
+        if ( [dic[@"count"] integerValue] == 0) {// “count”: 1	--当数量大于0时，表示可发布；等于0时，不可发布
+            APPDELEGATE.isCanPublishBuy = NO;
+     
+            return;
+        }
+        else {
+            APPDELEGATE.isCanPublishBuy = YES;
+        }
+    } failure:^(NSError *error) {
+    
+    }];
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -117,8 +131,8 @@
             [self.navigationController pushViewController:nuseryDetialVC animated:YES];
             return;
         }
-        ZIKSupplyPublishVC *supplyLishVC=[[ZIKSupplyPublishVC alloc]init];
-        [self.navigationController pushViewController:supplyLishVC animated:YES];
+        buyFabuViewController *fabuVC=[[buyFabuViewController alloc]init];
+        [self.navigationController pushViewController:fabuVC animated:YES];
 
     }
     if (index==2) {
