@@ -11,11 +11,15 @@
 
 - (void)SearchSuccessViewPushBuyDetial:(NSString *)uid;
 - (void)SearchSuccessViewPushSellDetial:(HotSellModel*)uid;
+/**
+ *  分享的代理方法
+ *
+ *  @param shareText  分享内容
+ *  @param shareTitle 分享标题
+ *  @param shareImage 分享图片
+ *  @param shareUrl   分享地址
+ */
 - (void)umshare:(NSString *)shareText title:(NSString *)shareTitle image:(UIImage *)shareImage url:(NSString *)shareUrl;
-//@property (nonatomic, strong) NSString       *shareText; //分享文字
-//@property (nonatomic, strong) NSString       *shareTitle;//分享标题
-//@property (nonatomic, strong) UIImage        *shareImage;//分享图片
-//@property (nonatomic, strong) NSString       *shareUrl;  //分享url
 @end
 @interface SearchSuccessView : UIView
 @property (nonatomic,weak) id<SearchSuccessViewDelegatel> delegate;

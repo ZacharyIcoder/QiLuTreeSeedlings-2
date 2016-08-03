@@ -16,14 +16,6 @@
 
 @implementation ZIKQiugouMoreShareView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 +(ZIKQiugouMoreShareView *)instanceShowShareView {
     NSArray* nibView =  [[NSBundle mainBundle] loadNibNamed:@"ZIKQiugouMoreShareView" owner:nil options:nil];
     ZIKQiugouMoreShareView *showShareView = [nibView objectAtIndex:0];
@@ -33,14 +25,10 @@
 
 - (void)initView {
     self.backgroundColor = [UIColor whiteColor];
-    self.selectTimeButton.layer.cornerRadius = 1;
+    self.selectTimeButton.layer.cornerRadius  = 1;
     self.selectTimeButton.layer.masksToBounds = YES;
-    self.selectTimeButton.layer.borderWidth = 0.5;
-    self.selectTimeButton.layer.borderColor = [kLineColor CGColor];
-//    self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-//    self.bottomBgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
-//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeShowViewAction)];
-//    [self addGestureRecognizer:tapGesture];
+    self.selectTimeButton.layer.borderWidth   = 0.5;
+    self.selectTimeButton.layer.borderColor   = [kLineColor CGColor];
 }
 
 - (IBAction)selectTimeButtonClick:(UIButton *)sender {
@@ -52,8 +40,9 @@
     [pickTimeView showInView];
 
 }
+
 - (IBAction)shareButtonClick:(UIButton *)sender {
-    CLog(@"分享");
+    //CLog(@"分享");
     if ([self.delegate respondsToSelector:@selector(sendTimeInfo:)]) {
         [self.delegate sendTimeInfo:self.timeInfo];
     }
@@ -61,8 +50,6 @@
 -(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
 {
     self.timeInfo = timeStr;
-//    self.timeStr = timeStr;
-//    [self.honorTimeButton setTitleColor:detialLabColor forState:UIControlStateNormal];
     [self.selectTimeButton setTitle:timeStr forState:UIControlStateNormal];
 }
 
