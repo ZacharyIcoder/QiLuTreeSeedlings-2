@@ -16,7 +16,12 @@
 #import "SellDetialViewController.h"
 #import "HttpClient.h"
 
-@interface SearchViewController ()<UITextFieldDelegate,SearchRecommendViewDelegate,SearchSuccessViewDelegatel,ScreeningViewDelegate>
+//友盟分享
+#import "UMSocialControllerService.h"
+#import "UMSocial.h"
+//end 友盟分享
+
+@interface SearchViewController ()<UITextFieldDelegate,SearchRecommendViewDelegate,SearchSuccessViewDelegatel,ScreeningViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,weak) UIButton *chooseSBBtn;
 @property (nonatomic,copy) NSString *searchStr;
 @property (nonatomic,strong) SearchSuccessView *searchSuccessView;
@@ -24,6 +29,11 @@
 @property (nonatomic,strong)UITextField *searchMessageField;
 @property (nonatomic) NSInteger searchType;
 @property (nonatomic,weak) ScreeningView *screeningView;
+
+@property (nonatomic, strong) NSString       *shareText; //分享文字
+@property (nonatomic, strong) NSString       *shareTitle;//分享标题
+@property (nonatomic, strong) UIImage        *shareImage;//分享图片
+@property (nonatomic, strong) NSString       *shareUrl;  //分享url
 
 @end
 
@@ -395,6 +405,74 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)umshare:(NSString *)shareText title:(NSString *)shareTitle image:(UIImage *)shareImage url:(NSString *)shareUrl {
+    self.shareText  = shareText;
+    self.shareTitle = shareTitle;
+    self.shareImage = shareImage;
+    self.shareUrl   = shareUrl;
+    [self umengShare];
+}
+
+- (void)umengShare {
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"56fde8aae0f55a1cd300047c"
+                                      shareText:self.shareText
+                                     shareImage:self.shareImage
+                                shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
+                                       delegate:self];
+    NSString *urlString = self.shareUrl;
+
+
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = urlString;
+
+    //如果是朋友圈，则替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = urlString;
+
+    [UMSocialData defaultData].extConfig.qqData.url    = urlString;
+    [UMSocialData defaultData].extConfig.qzoneData.url = urlString;
+    //设置微信好友title方法为
+    //    NSString *titleString = @"苗信通-苗木买卖神器";
+    NSString *titleString = self.shareTitle;
+
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = titleString;
+
+    //设置微信朋友圈title方法替换平台参数名即可
+
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = titleString;
+
+    //QQ设置title方法为
+
+    [UMSocialData defaultData].extConfig.qqData.title = titleString;
+
+    //Qzone设置title方法将平台参数名替换即可
+
+    [UMSocialData defaultData].extConfig.qzoneData.title = titleString;
+
+}
+
+-(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
+{
+    //NSLog(@"didClose is %d",fromViewControllerType);
+}
+
+//下面得到分享完成的回调
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"didFinishGetUMSocialDataInViewController with response is %@",response);
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+}
+
+-(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
+{
+    //NSLog(@"finish share with response is %@",response);
 }
 
 @end

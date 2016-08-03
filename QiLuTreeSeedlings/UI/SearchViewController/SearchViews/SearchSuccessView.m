@@ -15,16 +15,19 @@
 #import "HotBuyModel.h"
 #import "BuySearchTableViewCell.h"
 
-#import "ZIKQiugouMoreShareView.h"
+#import "ZIKQiugouMoreShareView.h"//分组分享view
 
-@interface SearchSuccessView()<UITableViewDataSource,UITableViewDelegate>
+@interface SearchSuccessView()<UITableViewDataSource,UITableViewDelegate,ZIKQiugouMoreShareViewDelegate>//ZIKQiugouMoreShareViewDelegate分组分享代理
 @property (nonatomic,strong)UITableView *selfTableView;
 @property (nonatomic,strong)NSMutableArray *sellDataAry;
 @property (nonatomic,strong)NSMutableArray *buyDataAry;
 @property (nonatomic)NSInteger PageCount;
 @property (nonatomic) NSInteger status;
 
-@property (nonatomic, strong) ZIKQiugouMoreShareView *shareView;
+@property (nonatomic, strong) ZIKQiugouMoreShareView *shareView;//分组分享新增
+
+
+
 @end
 @implementation SearchSuccessView
 -(void)dealloc
@@ -74,12 +77,15 @@
         self.sellDataAry=[NSMutableArray array];
         self.buyDataAry=[NSMutableArray array];
 
+        //新增代码（分组分享）
         self.backgroundColor = [UIColor whiteColor];
         ZIKQiugouMoreShareView *shareView = [ZIKQiugouMoreShareView instanceShowShareView];
         shareView.frame = CGRectMake(0, self.frame.size.height-50, kWidth, 50);
+        shareView.delegate = self;
         [self addSubview:shareView];
         self.shareView = shareView;
         self.shareView.hidden = YES;
+         //新增代码（分组分享）end
          
 
     }
@@ -232,10 +238,12 @@
 
 -(void)searchViewActionWithSearchType:(NSInteger)type
 {
+    //新增代码（分组分享）
     if (type == 2) {
         self.selfTableView.frame = CGRectMake(self.selfTableView.frame.origin.x, self.selfTableView.frame.origin.y, self.selfTableView.frame.size.width, self.selfTableView.frame.size.height-50);
         self.shareView.hidden = NO;
     }
+    //新增代码（分组分享）end
 
     self.searchType=type;
     self.PageCount=1;
@@ -392,6 +400,29 @@
 }
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+}
+
+//新增分组分享
+-(void)sendTimeInfo:(NSString *)timeStr {
+    [HTTPCLIENT groupShareWithProductUid:self.productUid  productName:self.searchStr province:self.province city:self.City county:self.county startTime:timeStr spec_XXXXXX:self.shaixuanAry  Success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        }
+        NSDictionary *shareDic = responseObject[@"result"];
+        NSString *shareText   = shareDic[@"text"];
+        NSString *shareTitle  = shareDic[@"title"];
+        NSString *urlStr = shareDic[@"pic"];
+        NSData * data    = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlStr]];
+        UIImage *shareImage  = [[UIImage alloc] initWithData:data];
+        NSString *shareUrl    = shareDic[@"url"];
+        if ([self.delegate respondsToSelector:@selector(umshare:title:image:url:)]) {
+            [self.delegate umshare:shareText title:shareTitle image:shareImage url:shareUrl];
+        }
+
+    } failure:^(NSError *error) {
+        ;
+    }];
 }
 
 

@@ -1190,7 +1190,7 @@ failure:(void (^)(NSError *error))failure;
                             city:(NSString *)city
                           county:(NSString *)county
                        startTime:(NSString *)startTime
-                     spec_XXXXXX:(NSString *)spec
+                     spec_XXXXXX:(NSArray *)spec
                          Success:(void (^)(id responseObject))success
                          failure:(void (^)(NSError *error))failure;
 

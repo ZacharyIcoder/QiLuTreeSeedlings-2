@@ -46,7 +46,7 @@
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     if ([self.type isEqualToString:@"1"]) {
-        [formatter setDateFormat:@"YYYY-MM-dd H"];
+        [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
     }
     NSString *timeStr=[formatter stringFromDate:self.selectDate];
     

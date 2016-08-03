@@ -11,7 +11,7 @@
 #import "YLDPickTimeView.h"
 
 @interface ZIKQiugouMoreShareView ()<YLDPickTimeDelegate>
-
+@property (nonatomic, strong) NSString *timeInfo;
 @end
 
 @implementation ZIKQiugouMoreShareView
@@ -54,9 +54,13 @@
 }
 - (IBAction)shareButtonClick:(UIButton *)sender {
     CLog(@"分享");
+    if ([self.delegate respondsToSelector:@selector(sendTimeInfo:)]) {
+        [self.delegate sendTimeInfo:self.timeInfo];
+    }
 }
 -(void)timeDate:(NSDate *)selectDate andTimeStr:(NSString *)timeStr
 {
+    self.timeInfo = timeStr;
 //    self.timeStr = timeStr;
 //    [self.honorTimeButton setTitleColor:detialLabColor forState:UIControlStateNormal];
     [self.selectTimeButton setTitle:timeStr forState:UIControlStateNormal];

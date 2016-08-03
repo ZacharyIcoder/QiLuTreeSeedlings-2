@@ -4626,7 +4626,7 @@
                             city:(NSString *)city
                           county:(NSString *)county
                        startTime:(NSString *)startTime
-                     spec_XXXXXX:(NSString *)spec
+                     spec_XXXXXX:(NSArray *)ary
                          Success:(void (^)(id responseObject))success
                          failure:(void (^)(NSError *error))failure {
     NSString *postURL            = @"api/group/share";
@@ -4645,7 +4645,11 @@
     parmers[@"city"]             = city;
     parmers[@"county"]           = county;
     parmers[@"startTime"]        = startTime;
-    parmers[@"spec"]             = spec;
+//    parmers[@"spec"]             = spec;
+    for (int i = 0; i < ary.count; i++) {
+        NSDictionary *dic = ary[i];
+        [parmers setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];
+    }
 
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
