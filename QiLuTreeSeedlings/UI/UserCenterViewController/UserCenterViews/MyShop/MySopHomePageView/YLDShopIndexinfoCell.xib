@@ -83,7 +83,7 @@
                             <constraint firstItem="PZY-Vr-gao" firstAttribute="centerX" secondItem="Nqu-Zj-Cqq" secondAttribute="centerX" constant="26.5" id="7bj-Vi-BQq"/>
                             <constraint firstItem="qsQ-0L-qRl" firstAttribute="centerX" secondItem="Nqu-Zj-Cqq" secondAttribute="centerX" constant="-34" id="NNM-eW-fQ9"/>
                             <constraint firstItem="qsQ-0L-qRl" firstAttribute="top" secondItem="Nqu-Zj-Cqq" secondAttribute="top" constant="37" id="QBY-BL-K1R"/>
-                            <constraint firstItem="PmA-1E-vm0" firstAttribute="centerX" secondItem="Nqu-Zj-Cqq" secondAttribute="centerX" constant="26.5" id="vME-v3-28b"/>
+                            <constraint firstItem="PmA-1E-vm0" firstAttribute="centerX" secondItem="Nqu-Zj-Cqq" secondAttribute="centerX" constant="26" id="vME-v3-28b"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-UA-sDI">

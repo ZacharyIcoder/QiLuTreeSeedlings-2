@@ -80,6 +80,7 @@
 		EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF40A1CACD4E300AF2D82 /* loading07@2x.png */; };
 		EA1CF4191CACD4E300AF2D82 /* loading08@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1CF40B1CACD4E300AF2D82 /* loading08@2x.png */; };
 		EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA262B271C8AC299001E8C9C /* PickerShowView.m */; };
+		EA271DBD1D51C7A4007974B3 /* 首页-ico_工程公司.png in Resources */ = {isa = PBXBuildFile; fileRef = EA271DBC1D51C7A4007974B3 /* 首页-ico_工程公司.png */; };
 		EA2727021C8A7CCA000B0719 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2727011C8A7CCA000B0719 /* BaseDao.m */; };
 		EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2727041C8A7D0C000B0719 /* FileUtil.m */; };
 		EA2727181C8A7D8E000B0719 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EA27270C1C8A7D8E000B0719 /* FMDatabase.m */; };
@@ -931,6 +932,7 @@
 		EA1CF40B1CACD4E300AF2D82 /* loading08@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading08@2x.png"; sourceTree = "<group>"; };
 		EA262B261C8AC299001E8C9C /* PickerShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerShowView.h; sourceTree = "<group>"; };
 		EA262B271C8AC299001E8C9C /* PickerShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerShowView.m; sourceTree = "<group>"; };
+		EA271DBC1D51C7A4007974B3 /* 首页-ico_工程公司.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-ico_工程公司.png"; sourceTree = "<group>"; };
 		EA2727001C8A7CCA000B0719 /* BaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDao.h; sourceTree = "<group>"; };
 		EA2727011C8A7CCA000B0719 /* BaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDao.m; sourceTree = "<group>"; };
 		EA2727031C8A7D0C000B0719 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
@@ -2488,6 +2490,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA271DBC1D51C7A4007974B3 /* 首页-ico_工程公司.png */,
 				EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */,
 				EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */,
 				FC4B41371D49CDBD00EEB593 /* 1求购供应详情-店铺图标2.png */,
@@ -5374,6 +5377,7 @@
 				EA5444C01CC76AEE00971A50 /* qiugouxiangqingye.png in Resources */,
 				FCCEA4931CFD5FC2005D21F5 /* 积分兑换-背景框(点击后).png in Resources */,
 				FC22768B1D177D1A0037B131 /* ico_订单公司.png in Resources */,
+				EA271DBD1D51C7A4007974B3 /* 首页-ico_工程公司.png in Resources */,
 				EA08F7CB1D191B0200471C33 /* ico_工作站-总站text.png in Resources */,
 				EA6BDA2E1D45B5AE00F317F2 /* 我的店铺-访问量-每日.png in Resources */,
 				EAAFCFAE1CBE23CD00EB894F /* 2miaomu960.png in Resources */,
