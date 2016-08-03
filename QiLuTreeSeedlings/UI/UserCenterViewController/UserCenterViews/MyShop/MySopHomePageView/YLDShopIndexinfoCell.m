@@ -15,7 +15,7 @@
 {
     YLDShopIndexinfoCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDShopIndexinfoCell" owner:self  options:nil] firstObject];
     cell.touxiangImageV.layer.masksToBounds=YES;
-    cell.touxiangImageV.layer.cornerRadius=35;
+    cell.touxiangImageV.layer.cornerRadius=75/2;
     cell.rifangWigth.constant=kWidth/2-1;
     cell.moneyLab.layer.masksToBounds=YES;
     cell.moneyLab.layer.borderWidth=1;
