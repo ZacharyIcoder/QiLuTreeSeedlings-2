@@ -15,6 +15,8 @@
 #import "BWTextView.h"
 #import "ZIKMySupplyVC.h"
 #import "FaBuViewController.h"
+
+#import "YLDShopMessageViewController.h"
 @interface ZIKSupplyPublishNextVC ()<UITableViewDelegate,UITableViewDataSource,PickeShowDelegate>
 @property (nonatomic, strong) UITableView    *supplyInfoTableView;
 @property (nonatomic, strong) NSArray        *titleMarray;
@@ -429,7 +431,7 @@
             //[ToastView showTopToast:@"提交成功，即将返回"];
             //[self performSelector:@selector(backRootView) withObject:nil afterDelay:1];
             for(UIViewController *controller in self.navigationController.viewControllers) {
-                if([controller isKindOfClass:[ZIKMySupplyVC class]]||[controller isKindOfClass:[FaBuViewController class]]){
+                if([controller isKindOfClass:[ZIKMySupplyVC class]]||[controller isKindOfClass:[FaBuViewController class]] || [controller isKindOfClass:[YLDShopMessageViewController class]]){
                     //ZIKMySupplyVC *owr = (ZIKMySupplyVC *)controller;
                     [self.navigationController popToViewController:controller animated:YES];
                 }

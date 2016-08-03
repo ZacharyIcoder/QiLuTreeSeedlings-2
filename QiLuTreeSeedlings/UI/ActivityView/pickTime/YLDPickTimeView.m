@@ -28,14 +28,26 @@
     
         UITapGestureRecognizer *tapGestureR=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pickerCancel:)];
         [self addGestureRecognizer:tapGestureR];
+
+        self.type = @"0";
         
     }
     return self;
 }
+-(void)setType:(NSString *)type {
+    _type = type;
+    if ([type isEqualToString:@"1"]) {
+        self.pickerView.datePickerMode  = UIDatePickerModeDateAndTime;
+    }
+}
+
 - (void)pickerDone:(id)sender
 {
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
+    if ([self.type isEqualToString:@"1"]) {
+        [formatter setDateFormat:@"YYYY-MM-dd H"];
+    }
     NSString *timeStr=[formatter stringFromDate:self.selectDate];
     
     if ([self.delegate respondsToSelector:@selector(timeDate:andTimeStr:)]) {

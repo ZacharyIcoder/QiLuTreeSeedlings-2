@@ -15,6 +15,8 @@
 #import "HotBuyModel.h"
 #import "BuySearchTableViewCell.h"
 
+#import "ZIKQiugouMoreShareView.h"
+
 @interface SearchSuccessView()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *selfTableView;
 @property (nonatomic,strong)NSMutableArray *sellDataAry;
@@ -22,6 +24,7 @@
 @property (nonatomic)NSInteger PageCount;
 @property (nonatomic) NSInteger status;
 
+@property (nonatomic, strong) ZIKQiugouMoreShareView *shareView;
 @end
 @implementation SearchSuccessView
 -(void)dealloc
@@ -70,6 +73,15 @@
         [self addSubview:pullTableView];
         self.sellDataAry=[NSMutableArray array];
         self.buyDataAry=[NSMutableArray array];
+
+        self.backgroundColor = [UIColor whiteColor];
+        ZIKQiugouMoreShareView *shareView = [ZIKQiugouMoreShareView instanceShowShareView];
+        shareView.frame = CGRectMake(0, self.frame.size.height-50, kWidth, 50);
+        [self addSubview:shareView];
+        self.shareView = shareView;
+        self.shareView.hidden = YES;
+         
+
     }
     return self;
 }
@@ -220,6 +232,11 @@
 
 -(void)searchViewActionWithSearchType:(NSInteger)type
 {
+    if (type == 2) {
+        self.selfTableView.frame = CGRectMake(self.selfTableView.frame.origin.x, self.selfTableView.frame.origin.y, self.selfTableView.frame.size.width, self.selfTableView.frame.size.height-50);
+        self.shareView.hidden = NO;
+    }
+
     self.searchType=type;
     self.PageCount=1;
     self.searchBAT=1;
