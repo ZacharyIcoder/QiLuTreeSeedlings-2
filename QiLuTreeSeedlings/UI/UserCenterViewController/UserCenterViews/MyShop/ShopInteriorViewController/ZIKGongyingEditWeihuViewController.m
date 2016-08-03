@@ -180,15 +180,17 @@
 
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
-    if (_refreshMarr.count == 0) {
-        [ToastView showTopToast:@"请选择要维护的内容"];
-        return;
-    }
     __block NSString *buyUidString = @"";
-    [_refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        buyUidString = [buyUidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
-    }];
-    buyUidString = [buyUidString substringFromIndex:1];
+
+    if (_refreshMarr.count == 0) {
+//        [ToastView showTopToast:@"请选择要维护的内容"];
+//        return;
+    } else {
+        [_refreshMarr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+            buyUidString = [buyUidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+        }];
+        buyUidString = [buyUidString substringFromIndex:1];
+    }
 
     [HTTPCLIENT shopAddSupply:buyUidString Success:^(id responseObject) {
         CLog(@"%@",responseObject);
