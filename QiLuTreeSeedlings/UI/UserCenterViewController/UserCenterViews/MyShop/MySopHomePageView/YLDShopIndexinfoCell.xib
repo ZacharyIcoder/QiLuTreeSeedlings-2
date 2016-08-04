@@ -29,7 +29,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店铺名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPw-Ld-WGQ">
-                        <rect key="frame" x="92" y="20" width="198" height="21"/>
+                        <rect key="frame" x="92" y="20" width="220" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="VK1-Qy-6jn"/>
                         </constraints>
@@ -222,7 +222,7 @@
                     <constraint firstItem="fea-Fg-awU" firstAttribute="top" secondItem="QPw-Ld-WGQ" secondAttribute="bottom" constant="31" id="dXC-1c-hNF"/>
                     <constraint firstItem="yvl-TM-MJE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="dYV-gH-1E8"/>
                     <constraint firstItem="Nqu-Zj-Cqq" firstAttribute="top" secondItem="yvl-TM-MJE" secondAttribute="bottom" id="gbz-Sn-oCj"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="QPw-Ld-WGQ" secondAttribute="trailing" constant="22" id="jst-8T-8yg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QPw-Ld-WGQ" secondAttribute="trailing" id="jst-8T-8yg"/>
                     <constraint firstItem="fea-Fg-awU" firstAttribute="leading" secondItem="qtU-gd-7QD" secondAttribute="trailing" constant="-114" id="lwh-DT-wGb"/>
                     <constraint firstItem="3qM-8Q-Vre" firstAttribute="top" secondItem="QPw-Ld-WGQ" secondAttribute="bottom" constant="4" id="mrp-ed-Yda"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yvl-TM-MJE" secondAttribute="trailing" constant="-8" id="nQ3-pK-MqQ"/>

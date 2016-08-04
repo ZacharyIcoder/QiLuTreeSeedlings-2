@@ -145,6 +145,10 @@
         
     }
     if (indexPath.section==2) {
+        CGFloat hiss=[self getHeightWithContent:self.model.workstationName width:kWidth-124 font:15];
+        if (hiss>18) {
+            return 140;
+        }
         return 120;
     }
     if (indexPath.section==3) {

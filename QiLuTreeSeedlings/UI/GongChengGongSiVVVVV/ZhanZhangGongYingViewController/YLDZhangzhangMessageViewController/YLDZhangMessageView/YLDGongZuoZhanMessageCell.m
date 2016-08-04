@@ -18,6 +18,7 @@
 {
     _model=model;
     self.nameLab.text=model.workstationName;
+    [self.nameLab sizeToFit];
     self.areaLab.text=model.area;
     if (model.creditMargin.length>0) {
         self.moneyLab.text=[NSString stringWithFormat:@"%@元",model.creditMargin];
