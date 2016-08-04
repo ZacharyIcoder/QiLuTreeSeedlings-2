@@ -19,5 +19,6 @@
 @property (nonatomic,copy) NSString *viewNo;
 @property (nonatomic,copy) NSString *workstationName;
 @property (nonatomic,copy) NSString *workstationPic;
+@property (nonatomic,copy) NSString *memberUid;
 +(YLDZhanZhangDetialModel *)yldZhanZhangDetialModelWithDic:(NSDictionary *)dic;
 @end

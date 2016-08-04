@@ -22,6 +22,7 @@
     model.viewNo=dic[@"viewNo"];
     model.workstationName=dic[@"workstationName"];
     model.workstationPic=dic[@"workstationPic"];
+    model.memberUid=dic[@"memberUid"];
     return model;
     
 }

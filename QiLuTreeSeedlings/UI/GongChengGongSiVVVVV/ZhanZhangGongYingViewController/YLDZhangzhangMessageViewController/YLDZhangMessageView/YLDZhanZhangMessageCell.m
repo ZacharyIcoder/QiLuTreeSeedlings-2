@@ -22,6 +22,16 @@
     self.nameLab.text=model.chargelPerson;
     self.unkonwLab.text=model.phone;
     [self.UserImageV setImageWithURL:[NSURL URLWithString:model.workstationPic] placeholderImage:[UIImage imageNamed:@"UserImage.png"]];
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showShopAction)];
+    self.UserImageV.userInteractionEnabled=YES;
+    [self.UserImageV addGestureRecognizer:tap];
+
+}
+-(void)showShopAction
+{
+    if ([self.delegate respondsToSelector:@selector(showShopAcionWithUid:)]) {
+        [self.delegate showShopAcionWithUid:self.model.memberUid];
+    }
 }
 - (IBAction)BackBtnAction:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(backBtnAction:)]) {

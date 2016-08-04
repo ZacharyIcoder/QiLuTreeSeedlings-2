@@ -24,6 +24,7 @@
 #import "ZIKStationShowHonorView.h"//
 #import "ZIKBaseCertificateAdapter.h"
 #import "ZIKCertificateAdapter.h"
+#import "ZIKMyShopViewController.h"
 @interface YLDZhanZhangMessageViewController ()<UITableViewDelegate,UITableViewDataSource,YLDZhanZhangMessageCellDelegate>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *uid;
@@ -293,7 +294,14 @@
                                         context:nil];
     return rect.size.height;
 }
-
+-(void)showShopAcionWithUid:(NSString *)uid
+{
+        ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
+    
+        shopVC.memberUid = uid;
+        shopVC.type = 1;
+        [self.navigationController pushViewController:shopVC animated:YES];
+}
 -(void)backBtnAction:(UIButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];

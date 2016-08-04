@@ -225,17 +225,7 @@
         linimageV.hidden=YES;
     }
     [linimageV setBackgroundColor:kLineColor];
-//    if (Y==3) {
-//        UIButton *getYanzhengBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-88, 12.5, 75, 30)];
-//        self.getCodeButton=getYanzhengBtn;
-//        [getYanzhengBtn setBackgroundColor:[UIColor orangeColor]];
-//        [getYanzhengBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-//        [view addSubview:getYanzhengBtn];
-//        [getYanzhengBtn addTarget:self action:@selector(getcodeAction:) forControlEvents:UIControlEventTouchUpInside];
-//        [getYanzhengBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-//        
-//    }
-    [self.view addSubview:view];
+        [self.view addSubview:view];
     return phoneTextField;
 }
 -(void)backBtnAction

@@ -10,6 +10,7 @@
 #import "YLDZhanZhangDetialModel.h"
 @protocol YLDZhanZhangMessageCellDelegate <NSObject>
 -(void)backBtnAction:(UIButton *)sender;
+-(void)showShopAcionWithUid:(NSString *)uid;
 @end
 
 @interface YLDZhanZhangMessageCell : UITableViewCell
