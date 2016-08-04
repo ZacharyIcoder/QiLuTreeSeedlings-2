@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 #import "ZIKMyTeamModel.h"
 #import "ZIKFunction.h"
+#import "YLDZhanZhangMessageViewController.h"
 @interface ZIKMyTeamViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *teamTableView;
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
@@ -165,6 +166,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.teamMarr.count > 0) {
+        ZIKMyTeamModel *model = self.teamMarr[indexPath.section];
+        YLDZhanZhangMessageViewController *detailVC = [[YLDZhanZhangMessageViewController
+                                                        alloc] initWithUid:model.uid];
+//        if (self.navigationController.childViewControllers.count>1) {
+//
+//        }else{
+//            detailVC.hidesBottomBarWhenPushed = YES;
+//        }
+
+        [self.navigationController pushViewController:detailVC animated:YES];
+
+    }
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

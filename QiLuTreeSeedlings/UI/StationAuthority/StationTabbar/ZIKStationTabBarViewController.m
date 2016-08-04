@@ -12,6 +12,7 @@
 #import "ZIKMyOfferViewController.h"      //我的报价
 #import "ZIKStationCenterTableViewController.h"//站长中心
 
+
 @interface ZIKStationTabBarViewController ()
 
 @end
@@ -32,9 +33,8 @@
     orderVC.vcTitle = @"工程订单";
     orderVC.tabBarItem.title = @"工程订单";
     orderVC.navigationController.navigationBar.hidden = YES;
-    orderVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程订单off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工程订单on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-
+    orderVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程订单off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工程订单on(1)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     //工作站
     ZIKWorkstationViewController *workVC = [[ZIKWorkstationViewController alloc] init];
@@ -44,8 +44,8 @@
     workVC.vcTitle = @"工作站";
     workVC.tabBarItem.title = @"工作站";
     workVC.navigationController.navigationBar.hidden = YES;
-    workVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工作站off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    workVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工作站on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    workVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工作站off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    workVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工作站on(2)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     //我的报价
     ZIKMyOfferViewController *offerVC = [[ZIKMyOfferViewController alloc] init];
@@ -55,8 +55,8 @@
     offerVC.vcTitle = @"我的报价";
     offerVC.tabBarItem.title = @"我的报价";
     offerVC.navigationController.navigationBar.hidden = YES;
-    offerVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-我的报价off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-我的报价on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    offerVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-我的报价off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-我的报价on(1)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     //站长中心
     ZIKStationCenterTableViewController *stationVC = [[ZIKStationCenterTableViewController alloc] init];
@@ -67,8 +67,8 @@
     stationVC.tabBarItem.title = @"站长中心";
     stationVC.navigationController.navigationBar.hidden = YES;
 
-    stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-站长中心off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-站长中心on"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-站长中心off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-站长中心on(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
     NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:orderNav,workNav,offerNav,stationNav,nil];
