@@ -41,6 +41,7 @@
 {
     _model=model;
     self.nameLab.text=model.orderName;
+    [self.nameLab sizeToFit];
     self.dingdanTypeLab.text=model.orderType;
     NSArray *timeAry=[model.endDate componentsSeparatedByString:@" "];
     self.companyLab.text=model.company;

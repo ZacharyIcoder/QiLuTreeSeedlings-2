@@ -52,7 +52,7 @@
     }
     if (indexPath.row==1) {
         NSMutableDictionary *dic=[NSMutableDictionary new];
-        dic[@"title"]=@"工作站身份简介";
+        dic[@"title"]=@"工程公司身份简介";
         dic[@"detial"]=@"工程公司是通过齐鲁苗木网资质审核的苗木采购方，可免费发布工程采购订单，免费发布询价订单，免费查看苗农苗企的苗源信息，展示工程案例。";
         cell.dic=dic;
         cell.shengjiBtn.tag=1;

@@ -23,7 +23,7 @@
 @property (nonatomic,strong) NSArray *piceAry;
 @property (nonatomic,strong) NSArray *qualityAry;
 @property (nonatomic,weak) UIButton *typeBtn;
-@property (nonatomic,weak) UITextField *NameTextField;
+@property (nonatomic,weak) YLDRangeTextField *NameTextField;
 @property (nonatomic,weak) UIButton *areaBtn;
 @property (nonatomic,weak) UIButton *timeBtn;
 @property (nonatomic,copy) NSString *AreaProvince;
@@ -32,14 +32,14 @@
 @property (nonatomic,weak) UIButton *qualityBtn;
 @property (nonatomic,weak) UITextField *xiongjingField;
 @property (nonatomic,weak) UITextField *dijingField;
-@property (nonatomic,weak) UITextField *lianxirenField;
+@property (nonatomic,weak) YLDRangeTextField *lianxirenField;
 @property (nonatomic,weak) BWTextView *jianjieTextView;
 @property (nonatomic,copy) NSString *typeStr;
 @property (nonatomic,copy) NSString *typename;
 @property (nonatomic,copy) NSString *timeStr;
 @property (nonatomic,copy) NSString *priceStr;
 @property (nonatomic,copy) NSString *qualityStr;
-@property (nonatomic,weak) UITextField *lianxifangshiField;
+@property (nonatomic,weak) YLDRangeTextField *lianxifangshiField;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
@@ -92,6 +92,7 @@
     [pickTypeBtn addTarget:self action:@selector(pickTypeBtnAcion:) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=50;
     self.NameTextField=[self creatTextFieldWithName:@"项目名称" alortStr:@"请输入项目名称" andFrame:tempFrame];
+    self.NameTextField.rangeNumber=30;
     tempFrame.origin.y+=50;
     UIButton *areaBtn=[self danxuanViewWithName:@"用苗地址" alortStr:@"请选择用苗地" andFrame:tempFrame];
     self.areaBtn=areaBtn;
@@ -114,8 +115,10 @@
     tempFrame.origin.y+=95;
     tempFrame.size.height=50;
     self.lianxirenField=[self creatTextFieldWithName:@"联系人" alortStr:@"请输入联系人姓名" andFrame:tempFrame];
+    self.lianxirenField.rangeNumber=15;
     tempFrame.origin.y+=50;
     self.lianxifangshiField=[self creatTextFieldWithName:@"联系方式" alortStr:@"请输入联系方式" andFrame:tempFrame];
+    self.lianxifangshiField.rangeNumber=11;
     self.lianxifangshiField.keyboardType=UIKeyboardTypePhonePad;
     tempFrame.origin.y+=50;
     tempFrame.size.height=90;
@@ -379,7 +382,7 @@
     [self.backScrollView addSubview:view];
     return pickBtn;
 }
--(UITextField *)creatTextFieldWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame
+-(YLDRangeTextField *)creatTextFieldWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame
 {
     UIView *view=[[UIView alloc]initWithFrame:frame];
     [view setBackgroundColor:[UIColor whiteColor]];
@@ -388,7 +391,7 @@
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
+    YLDRangeTextField *textField=[[YLDRangeTextField alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
     textField.placeholder=alortStr;
     [view addSubview:textField];
     UIImageView *lineImagV=[[UIImageView alloc]initWithFrame:CGRectMake(10,frame.size.height-0.5, kWidth-20, 0.5)];

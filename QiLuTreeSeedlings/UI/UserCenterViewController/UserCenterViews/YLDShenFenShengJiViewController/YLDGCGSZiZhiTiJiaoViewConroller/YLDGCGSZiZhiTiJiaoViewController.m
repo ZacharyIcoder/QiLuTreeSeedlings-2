@@ -1,4 +1,4 @@
-//
+ //
 //  YLDGCGSZiZhiTiJiaoViewController.m
 //  QiLuTreeSeedlings
 //
@@ -105,6 +105,7 @@
                 self.AreaCity=companyInfo[@"city"];
                 self.AreaCounty=companyInfo[@"county"];
                 [self.areaBtn setTitle:companyInfo[@"area"]forState:UIControlStateNormal];
+                [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
                 self.addressTextField.text=companyInfo[@"address"];
                 self.qiyeTextField.text=companyInfo[@"companyName"];
                 self.legalPersonField.text=companyInfo[@"legalPerson"];
@@ -123,6 +124,23 @@
         } failure:^(NSError *error) {
             RemoveActionV();
         }];
+    }else{
+        self.AreaProvince=APPDELEGATE.companyModel.companyAreaProvince;
+        self.AreaCity=APPDELEGATE.companyModel.companyAreaCity;
+        self.AreaCounty=APPDELEGATE.companyModel.companyAreaCounty;
+        if(APPDELEGATE.companyModel.areaall.length>0)
+        {
+            [self.areaBtn setTitle:APPDELEGATE.companyModel.areaall forState:UIControlStateNormal];
+            [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
+        }
+        
+        self.addressTextField.text=APPDELEGATE.companyModel.companyAddress;
+        self.qiyeTextField.text=APPDELEGATE.companyModel.companyName;
+        self.legalPersonField.text=APPDELEGATE.companyModel.legalPerson;
+        self.phoneTextField.text=APPDELEGATE.companyModel.phone;
+        self.youbianTextField.text=APPDELEGATE.companyModel.zipcode;
+        self.jieshaTextView.text=APPDELEGATE.companyModel.brief;
+        [self.collectionView reloadData];
     }
     // Do any additional setup after loading the view.
 }

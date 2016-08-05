@@ -193,8 +193,8 @@
         [ToastView showTopToast:@"请输入公司地址"];
         return;
     }
-    if (self.AreaProvince.length==0) {
-        [ToastView showTopToast:@"请选择公司所在地"];
+    if (self.AreaCity.length==0) {
+        [ToastView showTopToast:@"公司地区需精确到市"];
         return;
     }
     if (self.legalPersonField.text.length==0) {
