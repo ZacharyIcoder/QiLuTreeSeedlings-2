@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -50,13 +50,14 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrI-ew-ZqT">
-                            <rect key="frame" x="552" y="26" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrI-ew-ZqT" customClass="ZIKShareButton">
+                            <rect key="frame" x="529" y="30" width="53" height="22"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="Akp-sq-pw5"/>
-                                <constraint firstAttribute="height" constant="30" id="tfy-42-C7q"/>
+                                <constraint firstAttribute="width" constant="53" id="Akp-sq-pw5"/>
+                                <constraint firstAttribute="height" constant="22" id="tfy-42-C7q"/>
                             </constraints>
-                            <state key="normal" image="分享.png"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="分享" image="分享.png"/>
                             <connections>
                                 <action selector="shareButtonClick:" destination="-1" eventType="touchUpInside" id="Sgb-00-1fz"/>
                             </connections>
@@ -68,7 +69,7 @@
                         <constraint firstAttribute="height" constant="64" id="9p3-BT-KD2"/>
                         <constraint firstItem="XmU-Wu-W81" firstAttribute="top" secondItem="2jz-tL-AI2" secondAttribute="top" constant="26" id="NDd-4w-g1t"/>
                         <constraint firstItem="XmU-Wu-W81" firstAttribute="leading" secondItem="2jz-tL-AI2" secondAttribute="leading" constant="14" id="RFN-rR-GU9"/>
-                        <constraint firstItem="JrI-ew-ZqT" firstAttribute="top" secondItem="2jz-tL-AI2" secondAttribute="top" constant="26" id="RJf-JC-TqF"/>
+                        <constraint firstItem="JrI-ew-ZqT" firstAttribute="top" secondItem="2jz-tL-AI2" secondAttribute="top" constant="30" id="RJf-JC-TqF"/>
                         <constraint firstItem="Jbu-ZW-5ip" firstAttribute="top" secondItem="m0U-mj-zT2" secondAttribute="top" id="VXR-Kf-omI"/>
                         <constraint firstItem="m0U-mj-zT2" firstAttribute="leading" secondItem="XmU-Wu-W81" secondAttribute="trailing" constant="20" id="ZJB-pn-5oc"/>
                         <constraint firstItem="Jbu-ZW-5ip" firstAttribute="centerX" secondItem="2jz-tL-AI2" secondAttribute="centerX" id="dMS-zP-VgM"/>
