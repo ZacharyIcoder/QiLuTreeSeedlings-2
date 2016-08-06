@@ -38,6 +38,8 @@
 #import "ZIKHelpfulHintsViewController.h"//不是站长提示界面
 /********站长助手 end*********/
 
+#import "ZIKHezuomiaoqiViewController.h"//合作苗企
+
 
 @interface HomePageTViewController ()<UITableViewDelegate,UITableViewDataSource,AdvertDelegate,CircleViewsDelegate,YouLickViewDelegate>
 @property (nonatomic,strong) UIButton *loginBtn;
@@ -481,12 +483,16 @@
             
         }else
         {
-            
-            [ToastView showTopToast:@"请先登录"];
+             [ToastView showTopToast:@"请先登录"];
         }
     }
     if (index == 6) {
-        [ToastView showTopToast:@"敬请期待"];
+        ZIKHezuomiaoqiViewController *hezuoVC = [[ZIKHezuomiaoqiViewController alloc] initWithNibName:@"ZIKHezuomiaoqiViewController" bundle:nil];
+        [self hiddingSelfTabBar];
+        [self.navigationController pushViewController:hezuoVC animated:YES];
+
+
+//        [ToastView showTopToast:@"敬请期待"];
         return;
     }
     if (index==7) {

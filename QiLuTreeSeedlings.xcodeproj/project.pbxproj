@@ -758,6 +758,9 @@
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
 		FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC828EA61D38921B0047731D /* 标签-我的报价.png */; };
 		FC828EAA1D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */; };
+		FC8994441D557C1F00DC6AAC /* hezuomiaoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = FC8994431D557C1F00DC6AAC /* hezuomiaoqi.png */; };
+		FC8994491D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */; };
+		FC89944A1D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCA92C501D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA92C4E1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m */; };
@@ -2052,6 +2055,10 @@
 		FC828EA61D38921B0047731D /* 标签-我的报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-我的报价.png"; sourceTree = "<group>"; };
 		FC828EA81D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationSelectViewAboutAddressButton.h; sourceTree = "<group>"; };
 		FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationSelectViewAboutAddressButton.m; sourceTree = "<group>"; };
+		FC8994431D557C1F00DC6AAC /* hezuomiaoqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hezuomiaoqi.png; sourceTree = "<group>"; };
+		FC8994461D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHezuomiaoqiViewController.h; sourceTree = "<group>"; };
+		FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHezuomiaoqiViewController.m; sourceTree = "<group>"; };
+		FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHezuomiaoqiViewController.xib; sourceTree = "<group>"; };
 		FCA7E0611CD050B6002111FF /* ZIKPayRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordCell.h; sourceTree = "<group>"; };
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
@@ -2368,6 +2375,7 @@
 		EA0B2BCD1C59F6930018A7BD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FC8994451D557C7700DC6AAC /* Hezuomiaoqi */,
 				FC22761B1D177C9F0037B131 /* StationAuthority */,
 				EA5E6E321CFFC9A5003D357C /* GongChengGongSiVVVVV */,
 				EA518C5F1CEDAAD80092BA40 /* GUiGEView */,
@@ -2495,6 +2503,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FC8994431D557C1F00DC6AAC /* hezuomiaoqi.png */,
 				EA271DBC1D51C7A4007974B3 /* 首页-ico_工程公司.png */,
 				EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */,
 				EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */,
@@ -4888,6 +4897,16 @@
 			path = "银联";
 			sourceTree = "<group>";
 		};
+		FC8994451D557C7700DC6AAC /* Hezuomiaoqi */ = {
+			isa = PBXGroup;
+			children = (
+				FC8994461D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.h */,
+				FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */,
+				FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */,
+			);
+			path = Hezuomiaoqi;
+			sourceTree = "<group>";
+		};
 		FCCEA47E1CFD5FC2005D21F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -5234,6 +5253,7 @@
 				EA4E646E1D0E83F000A7D731 /* YLDKeFuTableViewCell.xib in Resources */,
 				FC3D63BA1D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib in Resources */,
 				FC4470491D2F468A00EA0D82 /* 工程订单_排序off.png in Resources */,
+				FC8994441D557C1F00DC6AAC /* hezuomiaoqi.png in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
 				EA833D8C1CFE81E300D56AFB /* callkefuBtn@2x.png in Resources */,
@@ -5430,6 +5450,7 @@
 				EA6BDA481D45FE5F00F317F2 /* 我的店铺-发布供应.png in Resources */,
 				FC5612811D0C092F00E5743B /* ZIKMySupplyBottomRefreshTableViewCell.xib in Resources */,
 				EA6BDA491D45FE5F00F317F2 /* 我的店铺-发布求购.png in Resources */,
+				FC89944A1D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib in Resources */,
 				EA5AAC411C8D2DF300660FC9 /* NomerMyCollectionBtn@2x.png in Resources */,
 				EA6D36CA1CE713A500CE025C /* weitonguo.png in Resources */,
 				FCCEA49E1CFD5FE1005D21F5 /* ZIKExchangeViewController.xib in Resources */,
@@ -5538,6 +5559,7 @@
 				EA08F7CF1D191C1E00471C33 /* YLDZiZhiAddViewController.m in Sources */,
 				EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */,
 				EA7F5F371CE05A0A00B2EEFF /* YLDNewPassWordViewController.m in Sources */,
+				FC8994491D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m in Sources */,
 				EAE32DE21C7E97A600C4CEA2 /* UIProgressView+AFNetworking.m in Sources */,
 				EA08F7BB1D190DEC00471C33 /* GongChengZhongXinViewController.m in Sources */,
 				FC56127B1D0C092F00E5743B /* ZIKLinkedList.m in Sources */,

@@ -111,10 +111,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    self.orderTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
-//    self.orderTableView.estimatedRowHeight = 220;////必须设置好预估值
-//    return 210;
-    return 200;
+//    self.quoteTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
+//    self.quoteTableView.estimatedRowHeight = 200;////必须设置好预估值
+//    return tableView.rowHeight;
+
+    return 205;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -10,6 +10,7 @@
 #import "ZIKMyOfferQuoteListModel.h"
 #import "UIDefines.h"
 #import "StringAttributeHelper.h"
+#import "ZIKFunction.h"
 
 @interface ZIKMyQuotationTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *bottomBgImageView;
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *engineeringCompanyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quoteQuantityLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderNameLabelLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *companyLabelLayoutConstraint;
 
 @end
 
@@ -112,6 +115,12 @@
     quotedarkColor.effectRange = NSMakeRange(5, quoteStr.length-5);
 
     self.quoteQuantityLabel.attributedText = [quoteStr mutableAttributedStringWithStringAttributes:@[quotefullFont,quotepartFont,quotefullColor,quotedarkColor]];
+
+    CGRect nameRect = [ZIKFunction getCGRectWithContent:model.orderName width:self.orderNameLabel.frame.size.width font:17];
+    if (nameRect.size.height>22) {
+        self.orderNameLabelLayoutConstraint.constant = 10;
+        self.companyLabelLayoutConstraint.constant = 10;
+    }
 }
 
 +(UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth
