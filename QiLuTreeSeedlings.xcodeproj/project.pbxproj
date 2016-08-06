@@ -758,9 +758,9 @@
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
 		FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC828EA61D38921B0047731D /* 标签-我的报价.png */; };
 		FC828EAA1D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */; };
-		FC8994441D557C1F00DC6AAC /* hezuomiaoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = FC8994431D557C1F00DC6AAC /* hezuomiaoqi.png */; };
 		FC8994491D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */; };
 		FC89944A1D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */; };
+		FC89944C1D55A8A600DC6AAC /* hezuomiaoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = FC89944B1D55A8A600DC6AAC /* hezuomiaoqi.png */; };
 		FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */; };
 		FCA7E0661CD05216002111FF /* ZIKConsumeRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA7E0651CD05216002111FF /* ZIKConsumeRecordFrame.m */; };
 		FCA92C501D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA92C4E1D5060A000D8EE64 /* ZIKGongyingEditWeihuViewController.m */; };
@@ -2055,10 +2055,10 @@
 		FC828EA61D38921B0047731D /* 标签-我的报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-我的报价.png"; sourceTree = "<group>"; };
 		FC828EA81D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationSelectViewAboutAddressButton.h; sourceTree = "<group>"; };
 		FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationSelectViewAboutAddressButton.m; sourceTree = "<group>"; };
-		FC8994431D557C1F00DC6AAC /* hezuomiaoqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hezuomiaoqi.png; sourceTree = "<group>"; };
 		FC8994461D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHezuomiaoqiViewController.h; sourceTree = "<group>"; };
 		FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHezuomiaoqiViewController.m; sourceTree = "<group>"; };
 		FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHezuomiaoqiViewController.xib; sourceTree = "<group>"; };
+		FC89944B1D55A8A600DC6AAC /* hezuomiaoqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hezuomiaoqi.png; sourceTree = "<group>"; };
 		FCA7E0611CD050B6002111FF /* ZIKPayRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPayRecordCell.h; sourceTree = "<group>"; };
 		FCA7E0621CD050B6002111FF /* ZIKPayRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPayRecordCell.m; sourceTree = "<group>"; };
 		FCA7E0641CD05216002111FF /* ZIKConsumeRecordFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKConsumeRecordFrame.h; sourceTree = "<group>"; };
@@ -2503,7 +2503,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				FC8994431D557C1F00DC6AAC /* hezuomiaoqi.png */,
+				FC89944B1D55A8A600DC6AAC /* hezuomiaoqi.png */,
 				EA271DBC1D51C7A4007974B3 /* 首页-ico_工程公司.png */,
 				EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */,
 				EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */,
@@ -5253,7 +5253,6 @@
 				EA4E646E1D0E83F000A7D731 /* YLDKeFuTableViewCell.xib in Resources */,
 				FC3D63BA1D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib in Resources */,
 				FC4470491D2F468A00EA0D82 /* 工程订单_排序off.png in Resources */,
-				FC8994441D557C1F00DC6AAC /* hezuomiaoqi.png in Resources */,
 				EA1CF4181CACD4E300AF2D82 /* loading07@2x.png in Resources */,
 				EAF050E61C92538800F435A9 /* UserImageV@2x.png in Resources */,
 				EA833D8C1CFE81E300D56AFB /* callkefuBtn@2x.png in Resources */,
@@ -5470,6 +5469,7 @@
 				EA4C4DDD1D13EB1C00DF1B93 /* searchOrange.png in Resources */,
 				FC5612941D0C092F00E5743B /* ZIKSupplyPublishSingleTableViewCell.xib in Resources */,
 				EA08F7AF1D19062100471C33 /* YLDGCZXzizhiCell.xib in Resources */,
+				FC89944C1D55A8A600DC6AAC /* hezuomiaoqi.png in Resources */,
 				EA7AE8EC1C96874400B43073 /* price@2x.png in Resources */,
 				EA9A22961D123BD3000CA161 /* YLDMiaoMuUnTableViewCell.xib in Resources */,
 				EA7AE8EB1C96874400B43073 /* person@2x.png in Resources */,
@@ -6065,8 +6065,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6114,8 +6114,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
