@@ -108,7 +108,7 @@
 
     if (!APPDELEGATE.isNeedLogin) {
 
-        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2/5+2, 2)];
+        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2/5, 1)];
         topLineView.backgroundColor = kLineColor;
         [self.view addSubview:topLineView];
 
@@ -117,22 +117,22 @@
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [self.view addSubview:shopBtn];
 
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];
-        lineView.backgroundColor = kLineColor;
-        [self.view addSubview:lineView];
+//        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];
+//        lineView.backgroundColor = kLineColor;
+//        [self.view addSubview:lineView];
 
 
-        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, kHeight-50+2, kWidth*2/5-2, 50-2)];
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50+1, kWidth*2/5, 50-1)];
         [messageBtn setBackgroundColor:[UIColor whiteColor]];
         [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
         [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
         [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
         [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
         [self.view addSubview:messageBtn];
@@ -140,7 +140,7 @@
         [phoneBtn   .titleLabel setFont:[UIFont systemFontOfSize:15]];
         [phoneBtn setTitle:@"联系供应商" forState:UIControlStateNormal];
         [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 15, 0, 0);
+        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
         [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
         [phoneBtn setBackgroundColor:NavColor];
         [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];
@@ -149,31 +149,31 @@
 
     } else {
 
-        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeight-50, kWidth*2.5/5+2, 2)];
+        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2.5/5, 1)];
         topLineView.backgroundColor = kLineColor;
         [self.view addSubview:topLineView];
 
-        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50+2, kWidth*1/5, 50-2)];
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
         [shopBtn setBackgroundColor:kBlueShopColor];
         [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
         [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
         [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
         [self.view addSubview:shopBtn];
 
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];
-        lineView.backgroundColor = kLineColor;
-        [self.view addSubview:lineView];
+//        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, 2, 50)];
+//        lineView.backgroundColor = kLineColor;
+//        [self.view addSubview:lineView];
 
 
-        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5+2, kHeight-50+2, kWidth*1.5/5-2, 50-2)];
+        UIButton *messageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50+1, kWidth*1.5/5, 50-1)];
         [messageBtn setBackgroundColor:[UIColor whiteColor]];
         [messageBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [messageBtn setTitle:@"短信留言" forState:UIControlStateNormal];
         [messageBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        messageBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
         [messageBtn addTarget:self action:@selector(meaageAction) forControlEvents:UIControlEventTouchUpInside];
         [messageBtn setImage:[UIImage imageNamed:@"shotMessageImage"] forState:UIControlStateNormal];
         [self.view addSubview:messageBtn];
@@ -181,7 +181,12 @@
         [phoneBtn   .titleLabel setFont:[UIFont systemFontOfSize:15]];
         [phoneBtn setTitle:@"联系供应商" forState:UIControlStateNormal];
         [phoneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        if (self.view.frame.size.width == 320) {
+            phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 0, 0, 0);
+            phoneBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        } else {
+            phoneBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        }
         [phoneBtn setImage:[UIImage imageNamed:@"phoneImage"] forState:UIControlStateNormal];
         [phoneBtn setBackgroundColor:NavColor];
         [phoneBtn addTarget:self action:@selector(CallAction) forControlEvents:UIControlEventTouchUpInside];

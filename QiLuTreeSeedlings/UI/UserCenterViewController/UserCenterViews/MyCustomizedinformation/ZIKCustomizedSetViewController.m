@@ -587,7 +587,11 @@
         self.AreaProvince=sheng.code;
     }else
     {
+        
         self.AreaProvince=nil;
+        [ToastView showTopToast:@"请选择精确地址"];
+        return;
+
     }
 
     if (shi.code) {
@@ -595,7 +599,11 @@
         self.AreaCity=shi.code;
     }else
     {
+
+        self.AreaProvince = nil;
         self.AreaCity=nil;
+        [ToastView showTopToast:@"请选择精确地址"];
+        return;
 
     }
     if (namestr.length>0) {
