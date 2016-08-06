@@ -118,7 +118,7 @@
     self.lianxirenField.rangeNumber=15;
     tempFrame.origin.y+=50;
     self.lianxifangshiField=[self creatTextFieldWithName:@"联系方式" alortStr:@"请输入联系方式" andFrame:tempFrame];
-    self.lianxifangshiField.rangeNumber=11;
+    self.lianxifangshiField.rangeNumber=11 ;
     self.lianxifangshiField.keyboardType=UIKeyboardTypePhonePad;
     tempFrame.origin.y+=50;
     tempFrame.size.height=90;
