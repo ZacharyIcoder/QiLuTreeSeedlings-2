@@ -6103,7 +6103,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6152,7 +6152,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

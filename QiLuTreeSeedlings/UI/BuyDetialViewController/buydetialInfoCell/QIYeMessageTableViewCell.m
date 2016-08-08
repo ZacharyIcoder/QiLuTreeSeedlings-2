@@ -102,7 +102,11 @@
 
     self.addressLab.frame = CGRectMake(130, dizhiLab.frame.origin.y, size.width, size.height);
 
+    if (size.height == 0) {
+        fabuTimeLab.frame = CGRectMake(20, 35, 80, 20);
+    } else{
     fabuTimeLab.frame = CGRectMake(20, CGRectGetMaxY(self.addressLab.frame)+10, 80, 20);
+    }
     self.creatTimeLab.frame = CGRectMake(130, fabuTimeLab.frame.origin.y, 200, 20);
 
     youxiaoTimeLab.frame = CGRectMake(20, CGRectGetMaxY(fabuTimeLab.frame)+10, 80, 20);
