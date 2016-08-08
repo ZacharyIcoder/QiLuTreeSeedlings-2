@@ -1114,20 +1114,20 @@
         [parameters setObject:companyAreaCounty forKey:@"companyAreaCounty"];
     }else
     {
-        [parameters setObject:@"" forKey:@"companyAreaCounty"];
+//        [parameters setObject:@"" forKey:@"companyAreaCounty"];
     }
     
     if (companyAreaCity) {
         [parameters setObject:companyAreaCity forKey:@"companyAreaCity"];
     }else
     {
-        [parameters setObject:@"" forKey:@"companyAreaCity"];
+//        [parameters setObject:@"" forKey:@"companyAreaCity"];
     }
     if (companyAreaTown) {
         [parameters setObject:companyAreaTown forKey:@"companyAreaTown"];
     }else
     {
-        [parameters setObject:@"" forKey:@"companyAreaTown"];
+//        [parameters setObject:@"" forKey:@"companyAreaTown"];
     }
     if (legalPerson) {
         [parameters setObject:legalPerson forKey:@"legalPerson"];
