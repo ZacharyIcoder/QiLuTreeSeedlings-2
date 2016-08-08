@@ -17,6 +17,7 @@
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "MyNuserListTableViewCell.h"
 #import "ZIKEmptyTableViewCell.h"
+#import "ZIKHintTableViewCell.h"
 @interface MyNuseryListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *pullTableView;
 @property (nonatomic,strong) NSMutableArray *dataAry;
@@ -56,7 +57,8 @@
     self.pageCount=1;
     UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
-    UITableView *pullTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
+ 
+    UITableView *pullTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64) style:UITableViewStyleGrouped];
     [pullTableView setBackgroundColor:BGColor];
     
     [self.view addSubview:pullTableView];
@@ -155,7 +157,7 @@
                 }
             }];
             [blockSelf.pullTableView reloadData];
-            [blockSelf.pullTableView deleteRowsAtIndexPaths:blockSelf.pullTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+            //[blockSelf.pullTableView deleteRowsAtIndexPaths:blockSelf.pullTableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
 //            if (blockSelf.dataAry.count == 0) {
 //                self.pageCount=1;
 //                [self getDataList];
@@ -222,7 +224,23 @@
     }
 
 }
-
+-(NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    ZIKHintTableViewCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    cell.hintStr=@"可添加多个苗圃";
+    cell.frame=CGRectMake(0, 5, kWidth, 30);
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.dataAry.count==0) {

@@ -70,13 +70,14 @@
             [defaults setObject:token forKey:kACCESS_TOKEN];
             [defaults setObject:uid forKey:kACCESS_ID];
             [defaults synchronize];
+            [APPDELEGATE reloadCompanyInfo];
+            [APPDELEGATE getGchenggongsiInfo];
             [APPDELEGATE  reloadUserInfoSuccess:^(id responseObject) {
                 
             } failure:^(NSError *error) {
                 
             }];
-            [APPDELEGATE reloadCompanyInfo];
-            [APPDELEGATE getGchenggongsiInfo];
+
             
         }else
         {

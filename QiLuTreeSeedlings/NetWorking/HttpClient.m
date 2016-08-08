@@ -681,14 +681,13 @@
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        RemoveActionV();
+        
         success(responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [self updataClient_id];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-         RemoveActionV();
         failure(error);
         [HttpClient HTTPERRORMESSAGE:error];
     }];
