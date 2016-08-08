@@ -685,10 +685,13 @@
         success(responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [self updataClient_id];
+        }else{
+            RemoveActionV();
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
