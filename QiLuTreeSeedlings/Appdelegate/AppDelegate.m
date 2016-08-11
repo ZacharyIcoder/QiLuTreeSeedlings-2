@@ -378,7 +378,7 @@
     }
     if ([application applicationState]==UIApplicationStateInactive) {
         NSString *tuisongType=[[userInfo objectForKey:@"aps"] objectForKey:@"category"];
-        if ([tuisongType isEqualToString:@"push_buy"]) {
+        if ([tuisongType isEqualToString:@"push_buy"]||[tuisongType isEqualToString:@"buy_match_supply"]) {
            [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"1"];
         }else
         {
