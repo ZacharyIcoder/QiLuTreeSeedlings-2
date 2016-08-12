@@ -66,20 +66,25 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"HidenTabBar" object:nil];
     // Do any additional setup after loading the view.
-    [self configNav];
     [self initData];
+    [self configNav];
     [self initUI];
     [self requestData];
 }
 
 - (void)configNav {
-    self.vcTitle = @"定制信息";
-    self.rightBarBtnTitleString = @"定制";
-    __weak typeof(self) weakSelf = self;//解决循环引用的问题
-    self.rightBarBtnBlock = ^{
-        ZIKCustomizedInfoListViewController *listVC = [[ZIKCustomizedInfoListViewController alloc] init];
-        [weakSelf.navigationController pushViewController:listVC animated:YES];
-    };
+    if (self.infoType == InfoTypeMy) {
+        self.vcTitle = @"定制信息";
+        self.rightBarBtnTitleString = @"定制";
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        self.rightBarBtnBlock = ^{
+            ZIKCustomizedInfoListViewController *listVC = [[ZIKCustomizedInfoListViewController alloc] init];
+            [weakSelf.navigationController pushViewController:listVC animated:YES];
+        };
+    } else if (self.infoType == InfoTypeStation) {
+        self.vcTitle = @"工程采购推送记录";
+        self.rightBarBtnTitleString = @"";
+    }
 }
 
 - (void)requestData {
@@ -171,7 +176,8 @@
         uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"uid"]]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT deleteprorecordWithIds:uids Success:^(id responseObject) {
+    NSInteger customizedType = (NSInteger)self.infoType;
+    [HTTPCLIENT deleteprorecordWithIds:uids infoType:customizedType Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
 
@@ -220,7 +226,8 @@
     [self.myCustomizedInfoTableView headerEndRefreshing];
     ShowActionV();
     HttpClient *httpClient = [HttpClient sharedClient];
-    [httpClient customizationUnReadWithPageSize:@"15" PageNumber:page Success:^(id responseObject) {
+    NSInteger customizedType = (NSInteger)self.infoType;
+    [httpClient customizationUnReadWithPageSize:@"15" PageNumber:page infoType:customizedType Success:^(id responseObject) {
          RemoveActionV();
         NSDictionary *dic = [responseObject objectForKey:@"result"];
         NSArray *array = dic[@"recordList"];
@@ -357,6 +364,7 @@
             ZIKHaveReadInfoViewController *hrVC = [[ZIKHaveReadInfoViewController alloc] init];
             hrVC.uidStr = dic[@"uid"];
             hrVC.name   = dic[@"name"];
+            hrVC.infoType = self.infoType;
             [self.navigationController pushViewController:hrVC animated:YES];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
@@ -439,6 +447,9 @@
 }
 
 - (void)initData {
+    if (!self.infoType) {
+        self.infoType = InfoTypeMy;
+    }
     self.page               = 1;
     self.customizedInfoMArr = [NSMutableArray array];
     self.custominzedZuAryy  = [NSMutableArray array];

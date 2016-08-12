@@ -7,7 +7,8 @@
 //
 
 #import "ZIKArrowViewController.h"
-
+//@class ZIKMyCustomizedInfoViewController;
+#import "ZIKMyCustomizedInfoViewController.h"
 @interface ZIKHaveReadInfoViewController : ZIKArrowViewController
 
 /**
@@ -19,4 +20,8 @@
  */
 @property (nonatomic, copy) NSString *name;
 
+/**
+ *  定制分类（我的定制，站长定制）
+ */
+@property (nonatomic, assign) InfoType infoType;
 @end

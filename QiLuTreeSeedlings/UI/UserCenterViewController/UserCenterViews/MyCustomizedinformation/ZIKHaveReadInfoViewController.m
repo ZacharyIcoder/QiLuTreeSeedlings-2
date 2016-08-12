@@ -20,6 +20,8 @@
 
 #import "BuyDetialInfoViewController.h"
 
+//#import "ZIKMyCustomizedInfoViewController.h"
+
 @interface ZIKHaveReadInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView    *readVC;      //已读信息列表
@@ -85,6 +87,9 @@
 
 #pragma mark - 初始化数据
 - (void)initData {
+    if (!self.infoType) {
+        self.infoType = InfoTypeMy;
+    }
     self.page         = 1;
     self.readDataMArr = [[NSMutableArray alloc] init];
     _removeArray      = [[NSMutableArray alloc] init];
@@ -169,7 +174,8 @@
         uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.mesUid]];
     }];
     NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT deleterecordWithIds:uids Success:^(id responseObject) {
+    NSInteger customizedType = (NSInteger)self.infoType;
+    [HTTPCLIENT deleterecordWithIds:uids infoType:customizedType Success:^(id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 1) {
 
@@ -217,7 +223,8 @@
 
     [self.readVC headerEndRefreshing];
     HttpClient *httpClient = [HttpClient sharedClient];
-    [httpClient recordByProductWithProductUid:self.uidStr pageSize:page Success:^(id responseObject) {
+    NSInteger customizedType = (NSInteger)self.infoType;
+    [httpClient recordByProductWithProductUid:self.uidStr infoType:customizedType pageSize:page Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 0) {
             [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]] withOriginY:Width/2 withSuperView:self.view];
             return ;

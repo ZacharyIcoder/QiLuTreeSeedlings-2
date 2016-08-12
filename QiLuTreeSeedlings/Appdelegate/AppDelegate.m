@@ -48,7 +48,7 @@
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
              NSInteger version=[[[responseObject objectForKey:@"result"] objectForKey:@"version"] integerValue];
             //版本更新比较
-            if (version>3) {
+            if (version>4) {
 //                [ToastView showTopToast:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"]];
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"更新提示" message:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -378,7 +378,7 @@
     }
     if ([application applicationState]==UIApplicationStateInactive) {
         NSString *tuisongType=[[userInfo objectForKey:@"aps"] objectForKey:@"category"];
-        if ([tuisongType isEqualToString:@"push_buy"]) {
+        if ([tuisongType isEqualToString:@"push_buy"]||[tuisongType isEqualToString:@"buy_match_supply"]) {
            [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"1"];
         }else
         {

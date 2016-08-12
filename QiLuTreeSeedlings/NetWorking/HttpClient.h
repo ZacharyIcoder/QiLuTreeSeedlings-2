@@ -556,21 +556,25 @@ success:(void (^)(id))success failure:(void (^)(NSError *))failure;
 #pragma mark ---------- 我的订制信息 -----------
 -(void)customizationUnReadWithPageSize:(NSString *)pageSize
                             PageNumber:(NSString *)pageNumber
+                              infoType:(NSInteger)infoType
                                Success:(void (^)(id responseObject))success
                                failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 按产品ID查询订制信息 -----------
 - (void)recordByProductWithProductUid:(NSString *)productUid
+                             infoType:(NSInteger)infoType
                             pageSize:(NSString *)pageSize
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure;
 
 #pragma mark ---------- 批量删除订制信息（按条） -----------
 - (void)deleterecordWithIds:(NSString *)ids
+                   infoType:(NSInteger)infoType
                     Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
 
 #pragma mark ---------- 批量删除订制信息（按树种） -----------
 - (void)deleteprorecordWithIds:(NSString *)ids
+                      infoType:(NSInteger)infoType
                     Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
 

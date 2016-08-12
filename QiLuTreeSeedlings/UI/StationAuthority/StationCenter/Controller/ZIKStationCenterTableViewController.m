@@ -18,6 +18,8 @@
 //友盟
 #import "UMSocialControllerService.h"
 #import "UMSocial.h"
+
+#import "ZIKMyCustomizedInfoViewController.h"//推送信息
 static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewIdentifier";
 
 @interface ZIKStationCenterTableViewController ()<UMSocialUIDelegate>
@@ -33,7 +35,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 
 #define DEFAULT_ROW_HEIGHT 44
 #define HEADER_HEIGHT 240
-#define FOOTER_HEIGHT (kHeight-HEADER_HEIGHT-44-44-130-60)
+#define FOOTER_HEIGHT (kHeight-HEADER_HEIGHT-44-44-44-130-60)
 
 @implementation ZIKStationCenterTableViewController
 
@@ -45,7 +47,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
     if (self.view.frame.size.height>480) {
         self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
     } else {
-        self.tableView.scrollEnabled  = YES; //设置tableview 不能滚动
+        self.tableView.scrollEnabled  = YES; //设置tableview 可以滚动
     }
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"ZIKStationCenterTableViewHeaderView" bundle:nil];
@@ -133,7 +135,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
     if (section == 0) {
         return 1;
     }
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,6 +166,15 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             twocell.textLabel.textColor = [UIColor darkGrayColor];
             twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
             twocell.imageView.image = [UIImage imageNamed:@"站长中心-我的团队"];
+            UIView *lineView = [[UIView alloc] init];
+            lineView.frame = CGRectMake(15, 43, kWidth-15, 1);
+            lineView.backgroundColor = kLineColor;
+            [twocell addSubview:lineView];
+        } else if (indexPath.row == 2) {
+            twocell.textLabel.text = @"推送信息";
+            twocell.textLabel.textColor = [UIColor darkGrayColor];
+            twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
+            twocell.imageView.image = [UIImage imageNamed:@"图标"];
         }
 
         float sw=23/twocell.imageView.image.size.width;
@@ -216,6 +227,11 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             teamVC.hidesBottomBarWhenPushed = YES;
             teamVC.uid = self.masterModel.uid;
             [self.navigationController pushViewController:teamVC animated:YES];
+        } else if (indexPath.row == 2) {
+            ZIKMyCustomizedInfoViewController *civc = [[ZIKMyCustomizedInfoViewController alloc] init];
+            civc.infoType = InfoTypeStation;
+            civc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:civc animated:YES];
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

@@ -685,10 +685,14 @@
         success(responseObject);
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [self updataClient_id];
+        }else{
+            RemoveActionV();
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+
+         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 
@@ -1114,20 +1118,20 @@
         [parameters setObject:companyAreaCounty forKey:@"companyAreaCounty"];
     }else
     {
-        [parameters setObject:@"" forKey:@"companyAreaCounty"];
+//        [parameters setObject:@"" forKey:@"companyAreaCounty"];
     }
     
     if (companyAreaCity) {
         [parameters setObject:companyAreaCity forKey:@"companyAreaCity"];
     }else
     {
-        [parameters setObject:@"" forKey:@"companyAreaCity"];
+//        [parameters setObject:@"" forKey:@"companyAreaCity"];
     }
     if (companyAreaTown) {
         [parameters setObject:companyAreaTown forKey:@"companyAreaTown"];
     }else
     {
-        [parameters setObject:@"" forKey:@"companyAreaTown"];
+//        [parameters setObject:@"" forKey:@"companyAreaTown"];
     }
     if (legalPerson) {
         [parameters setObject:legalPerson forKey:@"legalPerson"];
@@ -2359,12 +2363,21 @@
 #pragma mark ---------- 我的订制信息 -----------
 -(void)customizationUnReadWithPageSize:(NSString *)pageSize
                             PageNumber:(NSString *)pageNumber
+                              infoType:(NSInteger)infoType
                                Success:(void (^)(id responseObject))success
                                failure:(void (^)(NSError *error))failure
 {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/member/push/record";
+//    NSString *postURL            = @"api/member/push/record";
+    NSString *postURL            = nil;
+    if (infoType == 0) {
+        postURL = @"api/member/push/record";
+    } else if (infoType == 1) {
+        postURL = @"api/workstation/purchase/push/record";
+    }
+
+
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
@@ -2386,12 +2399,19 @@
 
 #pragma mark ---------- 按产品ID查询订制信息 -----------
 - (void)recordByProductWithProductUid:(NSString *)productUid
+                             infoType:(NSInteger)infoType
                              pageSize:(NSString *)pageSize
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/member/push/recordByProduct";
+//    NSString *postURL            = @"api/member/push/recordByProduct";
+    NSString *postURL            = nil;
+    if (infoType == 0) {
+         postURL = @"api/member/push/recordByProduct";
+    } else if (infoType == 1) {
+        postURL = @"api/workstation/purchase/push/recordByProduct";
+    }
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
@@ -2417,11 +2437,18 @@
 
 #pragma mark ---------- 批量删除订制信息（按条） -----------
 - (void)deleterecordWithIds:(NSString *)ids
+                   infoType:(NSInteger)infoType
                     Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/member/push/deleterecord";
+//    NSString *postURL            = @"api/member/push/deleterecord";
+    NSString *postURL            = nil;
+    if (infoType == 0) {
+        postURL = @"api/member/push/deleterecord";
+    } else if (infoType == 1) {
+        postURL = @"api/workstation/purchase/push/delete";
+    }
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
@@ -2444,11 +2471,18 @@
 }
 #pragma mark ---------- 批量删除订制信息（按树种） -----------
 - (void)deleteprorecordWithIds:(NSString *)ids
+                      infoType:(NSInteger)infoType
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/member/push/deleteprorecord";
+//    NSString *postURL            = @"api/member/push/deleteprorecord";
+    NSString *postURL            = nil;
+    if (infoType == 0) {
+        postURL = @"api/member/push/deleteprorecord";
+    } else if (infoType == 1) {
+        postURL = @"api/workstation/purchase/push/deletebyproduct";
+    }
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;

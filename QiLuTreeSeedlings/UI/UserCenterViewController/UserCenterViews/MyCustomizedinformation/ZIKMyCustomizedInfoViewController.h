@@ -7,7 +7,10 @@
 //
 
 #import "ZIKRightBtnSringViewController.h"
-
+typedef NS_ENUM(NSInteger, InfoType) {
+    InfoTypeMy = 0,        //我的定制信息
+    InfoTypeStation = 1    //站长推送定制信息
+};
 @interface ZIKMyCustomizedInfoViewController : ZIKRightBtnSringViewController
-
+@property (nonatomic, assign) InfoType infoType;
 @end
