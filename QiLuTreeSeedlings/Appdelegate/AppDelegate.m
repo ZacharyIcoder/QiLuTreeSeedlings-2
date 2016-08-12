@@ -48,7 +48,7 @@
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
              NSInteger version=[[[responseObject objectForKey:@"result"] objectForKey:@"version"] integerValue];
             //版本更新比较
-            if (version>3) {
+            if (version>4) {
 //                [ToastView showTopToast:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"]];
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"更新提示" message:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

@@ -29,7 +29,14 @@
  *  订制设置ID
  */
 @property (nonatomic,copy ) NSString       *memberCustomUid;
-
+/**
+ *   "type":"1"	--1:定制信息；2：求购匹配供应信息
+ */
+@property (nonatomic,assign ) NSInteger       type;
+/**
+ *   "buy":"1"	--1：已购买；0未购买
+ */
+@property (nonatomic,assign ) NSInteger       buy;
 /**
  *  信息uid
  */
