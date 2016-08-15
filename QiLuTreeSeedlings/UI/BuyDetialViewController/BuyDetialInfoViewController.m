@@ -160,7 +160,7 @@
                                     }
                                 }
 
-                            
+                             
                             }else{
                                 if (_messageView==nil) {
                                     if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
