@@ -90,7 +90,7 @@
     ZIKMyCustomizedInfoViewController *zikMyCustomInfoVC=[[ZIKMyCustomizedInfoViewController alloc]init];
     if ([notification.object isEqualToString:@"1"]) {
        [self.navigationController pushViewController:zikMyCustomInfoVC animated:YES];
-    }else
+    }else if([notification.object isEqualToString:@"2"])
     {
         
     }

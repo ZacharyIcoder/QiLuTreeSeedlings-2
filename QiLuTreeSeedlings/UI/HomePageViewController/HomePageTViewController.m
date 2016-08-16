@@ -290,6 +290,7 @@
     [loginBtn setBackgroundColor:[UIColor clearColor]];
     [loginBtn addTarget:self action:@selector(loginBtnAction) forControlEvents:UIControlEventTouchUpInside];
     self.loginBtn = loginBtn;
+    [loginBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [selfNavC addSubview:loginBtn];
     
@@ -299,7 +300,7 @@
     searchBtn.layer.masksToBounds=YES;
     searchBtn.layer.cornerRadius=4;
     UILabel *searchLab=[[UILabel alloc]initWithFrame:CGRectMake(5, 0, searchBtn.bounds.size.width-10, searchBtn.bounds.size.height)];
-    [searchLab setFont:[UIFont systemFontOfSize:15]];
+    [searchLab setFont:[UIFont systemFontOfSize:16]];
     [searchLab setTextColor:[UIColor grayColor]];
     [searchBtn addSubview:searchLab];
     [searchLab setText:@"请输入苗木名称"];
@@ -310,7 +311,17 @@
     [searchBtn addSubview:searchImageV];
     [searchBtn addTarget:self action:@selector(searchBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [selfNavC addSubview:searchBtn];
+    UIButton *saomaBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 20, 45, 44)];
+    [saomaBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    [saomaBtn setTitle:@"扫码" forState:UIControlStateNormal];
+    [saomaBtn addTarget:self action:@selector(saomaBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [selfNavC addSubview:saomaBtn];
     return selfNavC;
+}
+//扫码点击效果
+-(void)saomaBtnAction
+{
+    
 }
 //猜你喜欢点击效果
 -(void)YouLickViewsPush:(GusseYourLikeModel *)model
@@ -603,7 +614,7 @@
         
            CGRect frame =  _searchBtn.frame;
             frame.origin.x=20;
-            frame.size.width=kWidth-40;
+            frame.size.width=kWidth-70;
             _searchBtn.frame=frame;
             _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
        
@@ -615,7 +626,7 @@
         self.loginBtn.hidden=NO;
        
             CGRect frame =  _searchBtn.frame;
-            frame.origin.x=52;
+            frame.origin.x=51;
             frame.size.width=kWidth-100;
             _searchBtn.frame=frame;
              _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
@@ -633,7 +644,7 @@
    
         CGRect frame =  _searchBtn.frame;
         frame.origin.x=20;
-        frame.size.width=kWidth-40;
+        frame.size.width=kWidth-70;
         _searchBtn.frame=frame;
         _sreachiamgeV.frame=CGRectMake(_searchBtn.frame.size.width-36, 4, 27, 27);
     
