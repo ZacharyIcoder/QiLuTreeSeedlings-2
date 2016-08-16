@@ -4696,4 +4696,40 @@
 
 }
 
+#pragma mark ---------- 采购详情 -----------
+/**
+ *  站长中心定制信息的采购详情
+ *
+ *  @param uid     求购UID
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)workstationPushPurchaseInfo:(NSString *)uid
+                            Success:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/workstation/purchase/push/purchaseinfo";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
+
 @end

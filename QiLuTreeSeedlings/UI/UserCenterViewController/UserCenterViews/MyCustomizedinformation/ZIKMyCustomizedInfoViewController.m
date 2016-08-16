@@ -16,6 +16,9 @@
 #import "YLDCustomUnReadTableViewCell.h"
 #import "ZIKHaveReadInfoViewController.h"
 #import "ZIKBottomDeleteTableViewCell.h"
+
+#import "QRCodeViewController.h"
+
 @interface ZIKMyCustomizedInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, assign) NSInteger      page;//页数从1开始
 @property (nonatomic, strong) NSMutableArray *customizedInfoMArr;//定制信息数组
@@ -83,7 +86,33 @@
         };
     } else if (self.infoType == InfoTypeStation) {
         self.vcTitle = @"工程采购推送记录";
-        self.rightBarBtnTitleString = @"";
+        self.rightBarBtnTitleString = @"扫描";
+        //扫描二维码
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+        self.rightBarBtnBlock = ^{
+
+            QRCodeViewController *qrcodevc = [[QRCodeViewController alloc] init];
+            qrcodevc.QRCodeSuccessBlock = ^(QRCodeViewController *aqrvc,NSString *qrString){
+                //self.saomiaoLabel.text = qrString;
+                NSLog(@"二维码结果:%@",qrString);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:qrString]];
+//                [ToastView showTopToast:qrString];
+                [aqrvc dismissViewControllerAnimated:NO completion:nil];
+            };
+            qrcodevc.QRCodeFailBlock = ^(QRCodeViewController *aqrvc){
+                //self.saomiaoLabel.text = @"fail~";
+                [ToastView showTopToast:@"扫描失败"];
+                [aqrvc dismissViewControllerAnimated:NO completion:nil];
+            };
+            qrcodevc.QRCodeCancleBlock = ^(QRCodeViewController *aqrvc){
+                [aqrvc dismissViewControllerAnimated:NO completion:nil];
+                //self.saomiaoLabel.text = @"cancle~";
+                [ToastView showTopToast:@"取消扫描"];
+            };
+            [weakSelf presentViewController:qrcodevc animated:YES completion:nil];
+        };
+
+
     }
 }
 
@@ -160,7 +189,6 @@
             [self.myCustomizedInfoTableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i+1] animated:YES];
         }
     }
-
 }
 
 - (void)deleteButtonClick {

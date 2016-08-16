@@ -758,6 +758,19 @@
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
 		FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC828EA61D38921B0047731D /* 标签-我的报价.png */; };
 		FC828EAA1D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */; };
+		FC830FA81D62A5C2001E0CC6 /* ff_QRCodeScanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830F9D1D62A5C2001E0CC6 /* ff_QRCodeScanLine@2x.png */; };
+		FC830FA91D62A5C2001E0CC6 /* ff_QRCodeScanLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830F9E1D62A5C2001E0CC6 /* ff_QRCodeScanLine@3x.png */; };
+		FC830FAA1D62A5C2001E0CC6 /* ScanQR1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830F9F1D62A5C2001E0CC6 /* ScanQR1@2x.png */; };
+		FC830FAB1D62A5C2001E0CC6 /* ScanQR1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA01D62A5C2001E0CC6 /* ScanQR1@3x.png */; };
+		FC830FAC1D62A5C2001E0CC6 /* ScanQR2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA11D62A5C2001E0CC6 /* ScanQR2@2x.png */; };
+		FC830FAD1D62A5C2001E0CC6 /* ScanQR2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA21D62A5C2001E0CC6 /* ScanQR2@3x.png */; };
+		FC830FAE1D62A5C2001E0CC6 /* ScanQR3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA31D62A5C2001E0CC6 /* ScanQR3@2x.png */; };
+		FC830FAF1D62A5C2001E0CC6 /* ScanQR3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA41D62A5C2001E0CC6 /* ScanQR3@3x.png */; };
+		FC830FB01D62A5C2001E0CC6 /* ScanQR4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA51D62A5C2001E0CC6 /* ScanQR4@2x.png */; };
+		FC830FB11D62A5C2001E0CC6 /* ScanQR4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA61D62A5C2001E0CC6 /* ScanQR4@3x.png */; };
+		FC830FB21D62A5C2001E0CC6 /* sgdtw.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA71D62A5C2001E0CC6 /* sgdtw.png */; };
+		FC830FB71D62A5D3001E0CC6 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC830FB41D62A5D3001E0CC6 /* QRCodeViewController.m */; };
+		FC830FB81D62A5D3001E0CC6 /* ScanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC830FB61D62A5D3001E0CC6 /* ScanResultViewController.m */; };
 		FC8994491D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */; };
 		FC89944A1D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */; };
 		FC89944C1D55A8A600DC6AAC /* hezuomiaoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = FC89944B1D55A8A600DC6AAC /* hezuomiaoqi.png */; };
@@ -2055,6 +2068,21 @@
 		FC828EA61D38921B0047731D /* 标签-我的报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-我的报价.png"; sourceTree = "<group>"; };
 		FC828EA81D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationSelectViewAboutAddressButton.h; sourceTree = "<group>"; };
 		FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationSelectViewAboutAddressButton.m; sourceTree = "<group>"; };
+		FC830F9D1D62A5C2001E0CC6 /* ff_QRCodeScanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ff_QRCodeScanLine@2x.png"; sourceTree = "<group>"; };
+		FC830F9E1D62A5C2001E0CC6 /* ff_QRCodeScanLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ff_QRCodeScanLine@3x.png"; sourceTree = "<group>"; };
+		FC830F9F1D62A5C2001E0CC6 /* ScanQR1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR1@2x.png"; sourceTree = "<group>"; };
+		FC830FA01D62A5C2001E0CC6 /* ScanQR1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR1@3x.png"; sourceTree = "<group>"; };
+		FC830FA11D62A5C2001E0CC6 /* ScanQR2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR2@2x.png"; sourceTree = "<group>"; };
+		FC830FA21D62A5C2001E0CC6 /* ScanQR2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR2@3x.png"; sourceTree = "<group>"; };
+		FC830FA31D62A5C2001E0CC6 /* ScanQR3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR3@2x.png"; sourceTree = "<group>"; };
+		FC830FA41D62A5C2001E0CC6 /* ScanQR3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR3@3x.png"; sourceTree = "<group>"; };
+		FC830FA51D62A5C2001E0CC6 /* ScanQR4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR4@2x.png"; sourceTree = "<group>"; };
+		FC830FA61D62A5C2001E0CC6 /* ScanQR4@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR4@3x.png"; sourceTree = "<group>"; };
+		FC830FA71D62A5C2001E0CC6 /* sgdtw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sgdtw.png; sourceTree = "<group>"; };
+		FC830FB31D62A5D3001E0CC6 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		FC830FB41D62A5D3001E0CC6 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		FC830FB51D62A5D3001E0CC6 /* ScanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanResultViewController.h; sourceTree = "<group>"; };
+		FC830FB61D62A5D3001E0CC6 /* ScanResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanResultViewController.m; sourceTree = "<group>"; };
 		FC8994461D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHezuomiaoqiViewController.h; sourceTree = "<group>"; };
 		FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHezuomiaoqiViewController.m; sourceTree = "<group>"; };
 		FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHezuomiaoqiViewController.xib; sourceTree = "<group>"; };
@@ -3637,6 +3665,7 @@
 		EAF050DF1C924BCB00F435A9 /* UserCenterViews */ = {
 			isa = PBXGroup;
 			children = (
+				FC830F9B1D62A5B2001E0CC6 /* ScanQR */,
 				FC0CF6481D30C47F0074194D /* MyShop */,
 				EAFB8FFA1D1A820D00FCF88B /* YLDShenFenShengJiViewController */,
 				FC56117F1D0C092F00E5743B /* MySupplyViewController */,
@@ -4897,6 +4926,36 @@
 			path = "银联";
 			sourceTree = "<group>";
 		};
+		FC830F9B1D62A5B2001E0CC6 /* ScanQR */ = {
+			isa = PBXGroup;
+			children = (
+				FC830FB31D62A5D3001E0CC6 /* QRCodeViewController.h */,
+				FC830FB41D62A5D3001E0CC6 /* QRCodeViewController.m */,
+				FC830FB51D62A5D3001E0CC6 /* ScanResultViewController.h */,
+				FC830FB61D62A5D3001E0CC6 /* ScanResultViewController.m */,
+				FC830F9C1D62A5B2001E0CC6 /* saoimage */,
+			);
+			path = ScanQR;
+			sourceTree = "<group>";
+		};
+		FC830F9C1D62A5B2001E0CC6 /* saoimage */ = {
+			isa = PBXGroup;
+			children = (
+				FC830F9D1D62A5C2001E0CC6 /* ff_QRCodeScanLine@2x.png */,
+				FC830F9E1D62A5C2001E0CC6 /* ff_QRCodeScanLine@3x.png */,
+				FC830F9F1D62A5C2001E0CC6 /* ScanQR1@2x.png */,
+				FC830FA01D62A5C2001E0CC6 /* ScanQR1@3x.png */,
+				FC830FA11D62A5C2001E0CC6 /* ScanQR2@2x.png */,
+				FC830FA21D62A5C2001E0CC6 /* ScanQR2@3x.png */,
+				FC830FA31D62A5C2001E0CC6 /* ScanQR3@2x.png */,
+				FC830FA41D62A5C2001E0CC6 /* ScanQR3@3x.png */,
+				FC830FA51D62A5C2001E0CC6 /* ScanQR4@2x.png */,
+				FC830FA61D62A5C2001E0CC6 /* ScanQR4@3x.png */,
+				FC830FA71D62A5C2001E0CC6 /* sgdtw.png */,
+			);
+			path = saoimage;
+			sourceTree = "<group>";
+		};
 		FC8994451D557C7700DC6AAC /* Hezuomiaoqi */ = {
 			isa = PBXGroup;
 			children = (
@@ -5153,6 +5212,7 @@
 				FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */,
 				EA5A082A1D15333D005000E9 /* Gyichakan.png in Resources */,
 				FC0853F61D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.xib in Resources */,
+				FC830FAC1D62A5C2001E0CC6 /* ScanQR2@2x.png in Resources */,
 				EA08F7A31D18E61D00471C33 /* 橙色背景.png in Resources */,
 				FC5612921D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.xib in Resources */,
 				EA5AAC3E1C8D294700660FC9 /* NomerBuyMessageBtn@2x.png in Resources */,
@@ -5160,6 +5220,7 @@
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
 				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
 				FC56127D1D0C092F00E5743B /* duihao.png in Resources */,
+				FC830FAA1D62A5C2001E0CC6 /* ScanQR1@2x.png in Resources */,
 				EA4E64701D0E848900A7D731 /* kefuxitongyonghutouxiang.png in Resources */,
 				FC5948261D3C9B410014E39B /* ZIKOrderSingleTableViewCell.xib in Resources */,
 				EAFB90091D1A860300FCF88B /* 升级箭头@2x.png in Resources */,
@@ -5174,6 +5235,7 @@
 				EA7AE8E81C96833800B43073 /* viewsNum@2x.png in Resources */,
 				FC74AD6E1D34BE23009D8409 /* 1求购供应详情-店铺图标.png in Resources */,
 				EA552E7D1D0D3FD700FB88A0 /* baojiaguanliOff.png in Resources */,
+				FC830FA91D62A5C2001E0CC6 /* ff_QRCodeScanLine@3x.png in Resources */,
 				FC2276771D177C9F0037B131 /* ZIKHelpfulHintsViewController.xib in Resources */,
 				FC31B28B1CE07CCE0024E147 /* ZIKEmptyTableViewCell.xib in Resources */,
 				FC56127F1D0C092F00E5743B /* ZIKBottomDeleteTableViewCell.xib in Resources */,
@@ -5197,6 +5259,7 @@
 				FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */,
 				FC5612501D0C092F00E5743B /* IQKeyboardManager.bundle in Resources */,
 				EA8865EA1D3A06FD008B89D6 /* areadbss.sqlite in Resources */,
+				FC830FB01D62A5C2001E0CC6 /* ScanQR4@2x.png in Resources */,
 				FC5612741D0C092F00E5743B /* 添加图片.png in Resources */,
 				EA833D861CFE6C3900D56AFB /* kefutouxiang@2x.png in Resources */,
 				FC23D5371D0D03F600611E34 /* 已选小标.png in Resources */,
@@ -5237,6 +5300,7 @@
 				EA5A08281D15332A005000E9 /* Gyihezuo.png in Resources */,
 				EAF050EF1C92939E00F435A9 /* userInfoGreen@2x.png in Resources */,
 				EA3D4D7F1D17809B0010B56D /* YLDBaoJiaMiaoMuView.xib in Resources */,
+				FC830FAE1D62A5C2001E0CC6 /* ScanQR3@2x.png in Resources */,
 				EA3D4D8A1D1792CD0010B56D /* yihezuo.png in Resources */,
 				EA6BDA2C1D45B0EB00F317F2 /* SHOPBACKVIEW.png in Resources */,
 				EA17B5D21CC9D23A0054223B /* rightBtnImage@2x.png in Resources */,
@@ -5309,8 +5373,10 @@
 				EA4E64741D0E866000A7D731 /* kefuxitongdadianhua.png in Resources */,
 				EA3D4D991D17D5BB0010B56D /* YLDZhanZhangMessageCell.xib in Resources */,
 				FC11CBF71D37885200C3F47D /* ZIKMyQuotationTableViewCell.xib in Resources */,
+				FC830FB21D62A5C2001E0CC6 /* sgdtw.png in Resources */,
 				FC5337CB1CBE18FC008BFB11 /* 站长通-星级1.png in Resources */,
 				FC22768C1D177D1A0037B131 /* 标签-采购.png in Resources */,
+				FC830FAD1D62A5C2001E0CC6 /* ScanQR2@3x.png in Resources */,
 				EA552E811D0D400100FB88A0 /* gongchengzhongxinoff.png in Resources */,
 				FCCFA7111CF2E12400CC1313 /* ZIKSelectViewController.xib in Resources */,
 				FCC5C3041CFE73BE004669ED /* 积分兑换-兑换成功.png in Resources */,
@@ -5355,6 +5421,7 @@
 				EA1CF4061CACD11A00AF2D82 /* loading03@2x.png in Resources */,
 				EA08F7B31D190B5C00471C33 /* GCZXgongsianli.png in Resources */,
 				FC5612511D0C092F00E5743B /* MJRefresh.bundle in Resources */,
+				FC830FA81D62A5C2001E0CC6 /* ff_QRCodeScanLine@2x.png in Resources */,
 				FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */,
 				EA552E891D0D472600FB88A0 /* ico_橙色收起.png in Resources */,
 				EAFB8FE91D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib in Resources */,
@@ -5365,6 +5432,7 @@
 				EA7491671D026FA40043BDAC /* xialakuang.png in Resources */,
 				EA552E7A1D0D3FAF00FB88A0 /* wodedingdanon.png in Resources */,
 				FC4B4F371CABAB0F00EBB2F8 /* 消费记录40x40.png in Resources */,
+				FC830FB11D62A5C2001E0CC6 /* ScanQR4@3x.png in Resources */,
 				FC2276981D17BC4E0037B131 /* zt报价中.png in Resources */,
 				EA696FB71CDD8F46001F037E /* messageUnRead@2x.png in Resources */,
 				FC29EE7B1D530DC000F2E4B6 /* 底部菜单-工程订单on(1).png in Resources */,
@@ -5377,6 +5445,7 @@
 				FCCEA4951CFD5FC2005D21F5 /* 积分兑换banner.png in Resources */,
 				EAAFCFBA1CBE267700EB894F /* 2miaomu1472.png in Resources */,
 				EA6BDA461D45FE5F00F317F2 /* 我的店铺-查看店铺.png in Resources */,
+				FC830FAF1D62A5C2001E0CC6 /* ScanQR3@3x.png in Resources */,
 				FC29EE761D530DC000F2E4B6 /* 底部菜单-工作站on(1).png in Resources */,
 				EA6BDA3A1D45DF8F00F317F2 /* Store.png in Resources */,
 				FC74AD741D34D8C1009D8409 /* 列表-分站.png in Resources */,
@@ -5390,6 +5459,7 @@
 				FC5612901D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
 				FC7134231CB3465C0037D507 /* 已选.png in Resources */,
 				EA4C4DD21D13C31E00DF1B93 /* chengsezhankai.png in Resources */,
+				FC830FAB1D62A5C2001E0CC6 /* ScanQR1@3x.png in Resources */,
 				FCB1BCDC1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.xib in Resources */,
 				EA833D8E1CFE848500D56AFB /* shiyongbangzhu@2x.png in Resources */,
 				FC22766C1D177C9F0037B131 /* ZIKMyofferTableViewCell.xib in Resources */,
@@ -5714,6 +5784,7 @@
 				EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */,
 				FC59482C1D3CB8570014E39B /* ZIKStationOrderTableViewCell.m in Sources */,
 				FC2276831D177C9F0037B131 /* ZIKWorkstationViewController.m in Sources */,
+				FC830FB81D62A5D3001E0CC6 /* ScanResultViewController.m in Sources */,
 				EA605B4C1D4891A100E0EF04 /* LYDShopAddressViewController.m in Sources */,
 				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCCFA7191CF2E12400CC1313 /* ZIKCityModel.m in Sources */,
@@ -5892,6 +5963,7 @@
 				EA5AAC4F1C8D4A0100660FC9 /* BuyDetialInfoViewController.m in Sources */,
 				FCCEA4A21CFD6468005D21F5 /* ZIKIntegralCollectionViewCell.m in Sources */,
 				FCCFA71A1CF2E12400CC1313 /* ZIKSectionInfo.m in Sources */,
+				FC830FB71D62A5D3001E0CC6 /* QRCodeViewController.m in Sources */,
 				EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */,
 				EA08F7A71D19009100471C33 /* yYLDCompanyMessageCell.m in Sources */,
 				FC50B3481CAE4C4A0022A24C /* MD5DataSigner.m in Sources */,
