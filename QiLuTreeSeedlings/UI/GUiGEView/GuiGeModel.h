@@ -20,7 +20,6 @@
 @property (nonatomic) NSInteger level;
 @property (nonatomic,strong)NSMutableArray *answerAry;
 @property (nonatomic,strong)NSArray *values;
-//@property (nonatomic,copy) NSString *SonAnswer;
 @property (nonatomic,strong) GuiGeModel *sonModel;
 @property (nonatomic,strong) Propers *selectProper;
 @property (nonatomic,strong) NSMutableArray *propertyLists;
