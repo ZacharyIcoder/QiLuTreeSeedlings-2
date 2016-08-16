@@ -92,7 +92,10 @@
        [self.navigationController pushViewController:zikMyCustomInfoVC animated:YES];
     }else if([notification.object isEqualToString:@"2"])
     {
-        
+        ZIKMyCustomizedInfoViewController *civc = [[ZIKMyCustomizedInfoViewController alloc] init];
+        civc.infoType = InfoTypeStation;
+        civc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:civc animated:YES];
     }
     
 }
