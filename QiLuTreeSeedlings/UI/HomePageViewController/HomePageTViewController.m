@@ -290,7 +290,7 @@
     [loginBtn setBackgroundColor:[UIColor clearColor]];
     [loginBtn addTarget:self action:@selector(loginBtnAction) forControlEvents:UIControlEventTouchUpInside];
     self.loginBtn = loginBtn;
-    [loginBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+//    [loginBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [selfNavC addSubview:loginBtn];
     
@@ -311,8 +311,8 @@
     [searchBtn addSubview:searchImageV];
     [searchBtn addTarget:self action:@selector(searchBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [selfNavC addSubview:searchBtn];
-    UIButton *saomaBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 20, 45, 44)];
-    [saomaBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
+    UIButton *saomaBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 22, 47, 32)];
+//    [saomaBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
     [saomaBtn setTitle:@"扫码" forState:UIControlStateNormal];
     [saomaBtn addTarget:self action:@selector(saomaBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [selfNavC addSubview:saomaBtn];
