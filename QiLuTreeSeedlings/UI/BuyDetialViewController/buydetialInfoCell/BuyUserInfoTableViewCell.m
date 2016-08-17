@@ -15,6 +15,9 @@
 @property (nonatomic,strong)UILabel *priceLab;
 @property (nonatomic,strong)UILabel *shenfenLab;
 @property (nonatomic,strong)UIImageView *logoImageV;
+
+@property (nonatomic, assign) BOOL isCaiGou;
+
 @end
 @implementation BuyUserInfoTableViewCell
 @synthesize shenfenLab,logoImageV;
@@ -33,7 +36,7 @@
         self.logoImageV=logoImageVx;
         [self addSubview:logoImageVx];
         
-        UILabel *shenfenLabx=[[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(iamgeV.frame)+5, 200, 20)];
+        UILabel *shenfenLabx=[[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(iamgeV.frame)+5, kWidth-55, 20)];
         [shenfenLabx setFont:[UIFont systemFontOfSize:15]];
         [shenfenLabx setTextColor:NavYellowColor];
         self.shenfenLab=shenfenLabx;
@@ -82,6 +85,7 @@
 - (instancetype)initWithCaiGouFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.isCaiGou = YES;
         UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(20, 15, 70, 70)];
         [iamgeV setImage:[UIImage imageNamed:@"qiugouxiangqingye"]];
         [self addSubview:iamgeV];
@@ -93,7 +97,7 @@
         self.logoImageV=logoImageVx;
         [self addSubview:logoImageVx];
 
-        UILabel *shenfenLabx=[[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(iamgeV.frame)+5, 200, 20)];
+        UILabel *shenfenLabx=[[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(iamgeV.frame)+5, kWidth-50, 20)];
         [shenfenLabx setFont:[UIFont systemFontOfSize:15]];
         [shenfenLabx setTextColor:NavYellowColor];
         self.shenfenLab=shenfenLabx;
@@ -173,6 +177,10 @@
             shenfenLab.text=@"工程公司";
             logoImageV.image = [UIImage imageNamed:@"列表-工程公司"];
         }
+    if (self.isCaiGou) {
+        shenfenLab.text = [NSString stringWithFormat:@"工程公司 %@",model.companyName];
+        logoImageV.image = [UIImage imageNamed:@"列表-工程公司"];
+    }
 }
 - (void)awakeFromNib {
     // Initialization code

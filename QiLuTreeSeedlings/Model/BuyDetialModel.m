@@ -55,6 +55,8 @@
     if (model.supplybuyName.length<=0) {
         model.supplybuyName=@"请付费查看";
     }
+
+    model.companyName = dic[@"companyName"];
     return model;
 }
 @end

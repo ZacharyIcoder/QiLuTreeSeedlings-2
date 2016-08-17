@@ -42,5 +42,7 @@
 @property (nonatomic) NSInteger push;
 @property (nonatomic,strong) NSString *publishUid;
 @property (nonatomic) float buyPrice;
+
+@property (nonatomic, copy) NSString *companyName;
 +(BuyDetialModel *)creatBuyDetialModelByDic:(NSDictionary*)dic;
 @end

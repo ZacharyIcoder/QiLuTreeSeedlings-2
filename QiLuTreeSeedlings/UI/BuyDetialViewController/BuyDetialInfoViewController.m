@@ -1428,11 +1428,11 @@ static BOOL isCaiGouSuccess = NO;
     }else if (indexPath.section==2)
     {
         QIYeMessageTableViewCell *cell = nil;
-        if (isCaiGou) {
-             cell=[[QIYeMessageTableViewCell alloc]initWithCaiGouFrame:CGRectMake(0, 0, kWidth, 100)];
-        } else {
+//        if (isCaiGou) {
+//             cell=[[QIYeMessageTableViewCell alloc]initWithCaiGouFrame:CGRectMake(0, 0, kWidth, 100)];
+//        } else {
             cell=[[QIYeMessageTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 140)];
-        }
+    //    }
 //        QIYeMessageTableViewCell *cell=[[QIYeMessageTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 140)];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.infoDic) {
@@ -1511,9 +1511,9 @@ static BOOL isCaiGouSuccess = NO;
         }
     }if (indexPath.section==2) {
         //return 140;
-        if (isCaiGou) {
-            return 100;
-        } else {
+//        if (isCaiGou) {
+//            return 100;
+//        } else {
             NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
             NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
             CGSize size = [dic[@"address"] boundingRectWithSize:CGSizeMake(kWidth-130-15, CGFLOAT_MAX) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
@@ -1521,7 +1521,7 @@ static BOOL isCaiGouSuccess = NO;
                 return 15+110;
             }
             return size.height+110;
-        }
+        //}
 
     }
     if(indexPath.section==3)
