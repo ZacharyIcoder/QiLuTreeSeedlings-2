@@ -230,22 +230,28 @@
         frame.size.height=90;
     }
     cell.frame=frame;
-    NSString *stauts=[DIC objectForKey:@"stauts"];
-   if (self.type!=weishenhe&&[stauts integerValue]==4) {
+    NSInteger stauts=[[DIC objectForKey:@"stauts"] integerValue];
+   if (self.type!=weishenhe) {
       
-       if (cell.chakanBtn.enabled==YES) {
-           cell.chakanBtn.enabled=NO;
-           cell.chakanBtn.hidden=YES;
+       if (stauts==4 ) {
+           if (cell.chakanBtn.enabled==YES) {
+               cell.chakanBtn.enabled=NO;
+               cell.chakanBtn.hidden=YES;
+           }
        }
+       
        cell.deleteBtn.hidden=YES;
        cell.deleteBtn.enabled=NO;
 //       [cell.chakanBtn setBackgroundColor:detialLabColor];
 //       [cell.chakanBtn setTitle:@"暂无报价" forState:UIControlStateNormal];
    }else{
-       if (cell.chakanBtn.enabled==NO) {
-           cell.chakanBtn.enabled=YES;
-           cell.chakanBtn.hidden=NO;
+       if (stauts!=4) {
+           if (cell.chakanBtn.enabled==NO) {
+               cell.chakanBtn.enabled=YES;
+               cell.chakanBtn.hidden=NO;
+           }
        }
+       
        cell.deleteBtn.enabled=YES;
        cell.deleteBtn.hidden=NO;
       
