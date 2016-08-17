@@ -418,12 +418,14 @@ success:(void (^)(id))success failure:(void (^)(NSError *))failure;
  *
  *  @param price        总金额
  *  @param supplyBuyUid Type=1 时必传，求购ID
- *  @param type         不传默认为0;代表充值 1代表微信单条购买
+ *  @param recordUid    购买的记录的UID
+ *  @param type         不传默认为0;代表充值1代表微信单条购买;2代表工程采购单条购买
  *  @param success      success description
  *  @param failure      failure description
  */
 - (void)weixinPayOrder:(NSString *)total_fee
           supplyBuyUid:(NSString *)supplyBuyUid
+             recordUid:(NSString *)recordUid
                   type:(NSString *)type
                Success:(void (^)(id responseObject))success
                failure:(void (^)(NSError *error))failure;
@@ -483,6 +485,7 @@ success:(void (^)(id))success failure:(void (^)(NSError *))failure;
                                  failure:(void (^)(NSError *error))failure;
 #pragma mark 求购联系方式购买
 -(void)payForBuyMessageWithBuyUid:(NSString *)uid
+                             type:(NSString *)type
                           Success:(void (^)(id responseObject))success
                           failure:(void (^)(NSError *error))failure;
 #pragma mark 我的求购信息关闭
@@ -1209,5 +1212,17 @@ failure:(void (^)(NSError *error))failure;
 - (void)workstationPushPurchaseInfo:(NSString *)uid
                             Success:(void (^)(id responseObject))success
                             failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 推送信息求购联系方式购买 -----------
+/**
+ *  推送信息求购联系方式购买
+ *
+ *  @param recordUid 推送信息UID
+ *  @param success   success description
+ *  @param failure   failure description
+ */
+- (void)wrokstationPurchasePushBuy:(NSString *)recordUid
+                           Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
+
 
 @end

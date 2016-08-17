@@ -770,7 +770,8 @@
 		FC830FB11D62A5C2001E0CC6 /* ScanQR4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA61D62A5C2001E0CC6 /* ScanQR4@3x.png */; };
 		FC830FB21D62A5C2001E0CC6 /* sgdtw.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830FA71D62A5C2001E0CC6 /* sgdtw.png */; };
 		FC830FB71D62A5D3001E0CC6 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC830FB41D62A5D3001E0CC6 /* QRCodeViewController.m */; };
-		FC830FB81D62A5D3001E0CC6 /* ScanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC830FB61D62A5D3001E0CC6 /* ScanResultViewController.m */; };
+		FC830FBC1D62FD2F001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC830FBB1D62FD2F001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.m */; };
+		FC830FBE1D62FD6D001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC830FBD1D62FD6D001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.xib */; };
 		FC8994491D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */; };
 		FC89944A1D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */; };
 		FC89944C1D55A8A600DC6AAC /* hezuomiaoqi.png in Resources */ = {isa = PBXBuildFile; fileRef = FC89944B1D55A8A600DC6AAC /* hezuomiaoqi.png */; };
@@ -2081,8 +2082,9 @@
 		FC830FA71D62A5C2001E0CC6 /* sgdtw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sgdtw.png; sourceTree = "<group>"; };
 		FC830FB31D62A5D3001E0CC6 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
 		FC830FB41D62A5D3001E0CC6 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
-		FC830FB51D62A5D3001E0CC6 /* ScanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanResultViewController.h; sourceTree = "<group>"; };
-		FC830FB61D62A5D3001E0CC6 /* ScanResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanResultViewController.m; sourceTree = "<group>"; };
+		FC830FBA1D62FD2F001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKCaiGouDetailHaveBuyTopView.h; sourceTree = "<group>"; };
+		FC830FBB1D62FD2F001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKCaiGouDetailHaveBuyTopView.m; sourceTree = "<group>"; };
+		FC830FBD1D62FD6D001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKCaiGouDetailHaveBuyTopView.xib; sourceTree = "<group>"; };
 		FC8994461D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHezuomiaoqiViewController.h; sourceTree = "<group>"; };
 		FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHezuomiaoqiViewController.m; sourceTree = "<group>"; };
 		FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKHezuomiaoqiViewController.xib; sourceTree = "<group>"; };
@@ -3026,6 +3028,7 @@
 		EA5AAC491C8D49B600660FC9 /* BuyDetialViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FC830FB91D62FB2D001E0CC6 /* View */,
 				EA4EEA1D1CD888F800FEFD52 /* buyMessageAlertView */,
 				EAB781941C8E8C5500807B44 /* buydetialInfoCell */,
 				EA5AAC4D1C8D4A0100660FC9 /* BuyDetialInfoViewController.h */,
@@ -4931,8 +4934,6 @@
 			children = (
 				FC830FB31D62A5D3001E0CC6 /* QRCodeViewController.h */,
 				FC830FB41D62A5D3001E0CC6 /* QRCodeViewController.m */,
-				FC830FB51D62A5D3001E0CC6 /* ScanResultViewController.h */,
-				FC830FB61D62A5D3001E0CC6 /* ScanResultViewController.m */,
 				FC830F9C1D62A5B2001E0CC6 /* saoimage */,
 			);
 			path = ScanQR;
@@ -4954,6 +4955,16 @@
 				FC830FA71D62A5C2001E0CC6 /* sgdtw.png */,
 			);
 			path = saoimage;
+			sourceTree = "<group>";
+		};
+		FC830FB91D62FB2D001E0CC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC830FBA1D62FD2F001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.h */,
+				FC830FBB1D62FD2F001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.m */,
+				FC830FBD1D62FD6D001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FC8994451D557C7700DC6AAC /* Hezuomiaoqi */ = {
@@ -5574,6 +5585,7 @@
 				FCCEA46E1CFD33C7005D21F5 /* 已删除-2.png in Resources */,
 				EA496E131D2CC9CD00DBECF1 /* YLDGCZXInfoTableViewCell.xib in Resources */,
 				EA64E7641D4B33AC0065C032 /* 诚信保证金框.png in Resources */,
+				FC830FBE1D62FD6D001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.xib in Resources */,
 				FCC5719E1D2B5725004AA096 /* ZIKStationShowHonorView.xib in Resources */,
 				EAF051031C92A2E600F435A9 /* myMiaoPu@2x.png in Resources */,
 				EA12E26D1CBB6BEA009D8A8A /* registeredSuccess@2x.png in Resources */,
@@ -5729,6 +5741,7 @@
 				FC11CBEE1D37730800C3F47D /* ZIKTestAddImageViewController.m in Sources */,
 				FC56125A1D0C092F00E5743B /* ZIKMySupplyCreateModel.m in Sources */,
 				FC6FED731CACFA6B000E2CA5 /* ZIKCustomizedInfoListModel.m in Sources */,
+				FC830FBC1D62FD2F001E0CC6 /* ZIKCaiGouDetailHaveBuyTopView.m in Sources */,
 				EA4ADB041CD9DD5C0068C10F /* YLDMyBuyListViewController.m in Sources */,
 				FC0853E91D18E903003A47BA /* ZIKMyHonorCollectionViewCell.m in Sources */,
 				EA4C4DE01D13F20200DF1B93 /* YLDSearchNavView.m in Sources */,
@@ -5784,7 +5797,6 @@
 				EA5E6E401CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m in Sources */,
 				FC59482C1D3CB8570014E39B /* ZIKStationOrderTableViewCell.m in Sources */,
 				FC2276831D177C9F0037B131 /* ZIKWorkstationViewController.m in Sources */,
-				FC830FB81D62A5D3001E0CC6 /* ScanResultViewController.m in Sources */,
 				EA605B4C1D4891A100E0EF04 /* LYDShopAddressViewController.m in Sources */,
 				FC6149FE1CAA57B600672241 /* RSKImageCropViewController.m in Sources */,
 				FCCFA7191CF2E12400CC1313 /* ZIKCityModel.m in Sources */,

@@ -196,7 +196,7 @@
             return;
         }
         //NSLog(@"微信支付");
-        [HTTPCLIENT weixinPayOrder:self.price supplyBuyUid:nil type:nil Success:^(id responseObject) {
+        [HTTPCLIENT weixinPayOrder:self.price supplyBuyUid:nil   recordUid:nil type:nil Success:^(id responseObject) {
             //NSLog(@"%@",responseObject);
             NSDictionary *dict = responseObject[@"result"];
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {

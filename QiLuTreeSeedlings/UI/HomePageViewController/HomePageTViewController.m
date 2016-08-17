@@ -40,6 +40,7 @@
 
 #import "ZIKHezuomiaoqiViewController.h"//合作苗企
 
+#import "QRCodeViewController.h"//二维码扫描
 
 @interface HomePageTViewController ()<UITableViewDelegate,UITableViewDataSource,AdvertDelegate,CircleViewsDelegate,YouLickViewDelegate>
 @property (nonatomic,strong) UIButton *loginBtn;
@@ -321,12 +322,30 @@
 //扫码点击效果
 -(void)saomaBtnAction
 {
-    
+    QRCodeViewController *qrcodevc = [[QRCodeViewController alloc] init];
+    qrcodevc.QRCodeSuccessBlock = ^(QRCodeViewController *aqrvc,NSString *qrString){
+        //self.saomiaoLabel.text = qrString;
+        NSLog(@"二维码结果:%@",qrString);
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:qrString]];
+        //                [ToastView showTopToast:qrString];
+        [aqrvc dismissViewControllerAnimated:NO completion:nil];
+    };
+    qrcodevc.QRCodeFailBlock = ^(QRCodeViewController *aqrvc){
+        //self.saomiaoLabel.text = @"fail~";
+        [ToastView showTopToast:@"扫描失败"];
+        [aqrvc dismissViewControllerAnimated:NO completion:nil];
+    };
+    qrcodevc.QRCodeCancleBlock = ^(QRCodeViewController *aqrvc){
+        [aqrvc dismissViewControllerAnimated:NO completion:nil];
+        //self.saomiaoLabel.text = @"cancle~";
+        [ToastView showTopToast:@"取消扫描"];
+    };
+    [self presentViewController:qrcodevc animated:YES completion:nil];
 }
 //猜你喜欢点击效果
 -(void)YouLickViewsPush:(GusseYourLikeModel *)model
 {
-    
+
     SearchViewController *searVC=[[SearchViewController alloc]initWithSearchType:model.type andSaerChStr:model.productName];
     [self hiddingSelfTabBar];
     [self.navigationController pushViewController:searVC animated:YES];

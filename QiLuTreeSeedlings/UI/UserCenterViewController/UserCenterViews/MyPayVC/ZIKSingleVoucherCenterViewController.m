@@ -34,6 +34,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = @"支付";
+    if (!self.infoType) {
+        self.infoType = InfoTypeMy;
+    }
     if (iPhone35Inch) {
         self.payTableTopLayout.constant = 5;
         self.sureButtonBottomLayoutConstraint.constant = 5;
@@ -48,6 +51,7 @@
 
 - (void)paySuccess:(NSDictionary *)dictionary
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CaiGouPaySuccessNotification" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -205,7 +209,12 @@
                 APPDELEGATE.isFromSingleVoucherCenter = NO;
 //                _buyAlertView = [BuyMessageAlertView addActionVieWithPrice:[NSString stringWithFormat:@"%.2f",self.price               ] AndMone:[NSString stringWithFormat:@"%.2f",moneyNum]];
                  _buyAlertView = [BuyMessageAlertView addActionVieWithMoney:[NSString stringWithFormat:@"%.2f",moneyNum] withPrice:[NSString stringWithFormat:@"%.2f",self.price]];
-                [_buyAlertView.rightBtn addTarget:self action:@selector(payYue) forControlEvents:UIControlEventTouchUpInside];
+//                if (self.infoType == InfoTypeMy) {
+                    [_buyAlertView.rightBtn addTarget:self action:@selector(payYue) forControlEvents:UIControlEventTouchUpInside];
+//                } else if (self.infoType == InfoTypeStation) {
+//                    [_buyAlertView.rightBtn addTarget:self action:@selector(caiGouPayYue) forControlEvents:UIControlEventTouchUpInside];
+//                }
+
 //                [self payYue];
             }else{
                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -229,7 +238,13 @@
         APPDELEGATE.isFromSingleVoucherCenter = NO;
         //NSLog(@"微信支付");
         NSString *pricesting = [NSString stringWithFormat:@"%f",self.price];
-        [HTTPCLIENT weixinPayOrder:pricesting supplyBuyUid:self.buyUid type:@"1" Success:^(id responseObject) {
+        NSString *type = nil;
+        if (self.infoType == InfoTypeMy) {
+            type = @"1";
+        } else if (self.infoType == InfoTypeStation) {
+            type = @"2";
+        }
+        [HTTPCLIENT weixinPayOrder:pricesting supplyBuyUid:self.buyUid  recordUid:_recordUid type:@"1" Success:^(id responseObject) {
             //NSLog(@"%@",responseObject);
             NSDictionary *dict = responseObject[@"result"];
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
@@ -259,7 +274,17 @@
         //NSLog(@"支付宝支付");
         APPDELEGATE.isFromSingleVoucherCenter = NO;
     NSString *pricesting = [NSString stringWithFormat:@"%.2f",self.price];
-        [ZIKFunction zhiFuBao:self name:@"苗木充值" titile:@"苗木充值" price:pricesting orderId:APPDELEGATE.userModel.access_id supplyBuyUid:self.buyUid type:@"1"];
+        NSString *type = nil;
+        NSString *uid = nil;
+        if (self.infoType == InfoTypeMy) {
+            type = @"1";
+            uid = self.buyUid;
+        } else if (self.infoType == InfoTypeStation) {
+            type = @"2";
+            uid = _recordUid;
+        }
+
+        [ZIKFunction zhiFuBao:self name:@"苗木充值" titile:@"苗木充值" price:pricesting orderId:APPDELEGATE.userModel.access_id supplyBuyUid:uid type:type];
     }
     else if (self.lastIndexPath.row == 3) {
         //NSLog(@"银联支付");
@@ -296,7 +321,13 @@
 - (void)payYue {
     [BuyMessageAlertView removeActionView];
     ShowActionV();
-   [HTTPCLIENT payForBuyMessageWithBuyUid:self.buyUid Success:^(id responseObject) {
+    NSString *type = nil;
+    if (self.infoType == InfoTypeMy) {
+        type = @"1";
+    } else if (self.infoType == InfoTypeStation) {
+        type = @"2";
+    }
+    [HTTPCLIENT payForBuyMessageWithBuyUid:self.buyUid type:type Success:^(id responseObject) {
     RemoveActionV();
     if ([[responseObject objectForKey:@"success"] integerValue]) {
         [ToastView showTopToast:@"购买成功"];
@@ -309,6 +340,24 @@
       RemoveActionV();
   }];
 
+}
+
+- (void)caiGouPayYue {
+    [BuyMessageAlertView removeActionView];
+    ShowActionV();
+   [HTTPCLIENT wrokstationPurchasePushBuy:_recordUid Success:^(id responseObject) {
+        RemoveActionV();
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [ToastView showTopToast:@"购买成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            return ;
+        }
+    } failure:^(NSError *error) {
+        RemoveActionV();
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

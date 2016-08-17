@@ -30,6 +30,9 @@
 
 #import "ZIKSingleVoucherCenterViewController.h"
 #import "ZIKMyShopViewController.h"
+
+#import "ZIKStationOrderDetailViewController.h"//站长订单详情
+#import "ZIKCaiGouDetailHaveBuyTopView.h"//站长中心定制信息已购买详情顶部页面
 @interface BuyButton : UIButton
 @property (nonatomic, assign) float price;
 @property (nonatomic, strong) NSString *buyUid;
@@ -37,7 +40,9 @@
 @implementation BuyButton
 @end
 
-@interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
+static BOOL isCaiGou = NO;
+static BOOL isCaiGouSuccess = NO;
+@interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate,ZIKCaiGouDetailHaveBuyTopViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *navTitleLab;
 @property (nonatomic,strong)UIButton *collectionBtn;
@@ -67,6 +72,10 @@
 
 @property (nonatomic, assign) BOOL isFromDingzhi;
 @property (nonatomic, strong) NSString *memberUid;
+@property (nonatomic, weak)ZIKCaiGouDetailHaveBuyTopView *topView;
+@property (nonatomic, assign) BOOL isCaiGou;
+
+
 
 @end
 
@@ -74,9 +83,7 @@
 {
     UIButton *myshareBtn;
 }
--(void)dealloc{
-    
-}
+
 -(void)viewDidAppear:(BOOL)animated
 {
 //    [super viewDidAppear:animated];
@@ -102,6 +109,87 @@
         return;
     }
     if (self.isFromDingzhi) {
+        return;
+    }
+    if (isCaiGou) {
+        if (isCaiGouSuccess) {
+            [HTTPCLIENT workstationPushPurchaseInfo:self.uid Success:^(id responseObject) {
+                if (![[responseObject objectForKey:@"success"] integerValue]) {
+                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    return ;
+                }
+                //NSLog(@"%@",responseObject);
+                NSDictionary *dic=[responseObject objectForKey:@"result"];
+                self.infoDic=dic;
+                self.memberUid = dic[@"memberUid"];
+                self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                self.model.uid=self.uid;
+                self.topView.orderNo   = dic[@"detail"][@"orderNo"];
+                self.topView.orderUid  = dic[@"detail"][@"orderUid"];
+                self.topView.recordUid = dic[@"detail"][@"recordUid"];
+                if (![ZIKFunction xfunc_check_strEmpty:self.model.phone]) {
+                    self.isPuy=YES;
+                    _biaoqianView.hidden=NO;
+                    self.topView.hidden = NO;
+                    self.biaoqianView.frame = CGRectMake(kWidth-50, 64+50, 50, 50);
+
+                    [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+
+                }else
+                {
+
+                    self.isPuy=NO;
+                    _biaoqianView.hidden = YES;
+                    self.topView.hidden = YES;
+                }
+                if (!self.isPuy) {
+
+
+                    if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
+                        [_BuyMessageView removeFromSuperview];
+                        _BuyMessageView =nil;
+                    }else
+                    {
+                        // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
+                        if (_BuyMessageView==nil) {
+                            //                                            if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
+                            //                                                _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                            //                                            }
+                            //                                            else {
+                                                                        if (self.model.state == 4) {
+                            _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+                            }
+
+                            // }
+                            [_messageView removeFromSuperview];
+                            _messageView = nil;
+
+                        }
+                    }
+
+
+                }else{
+                    if (_messageView==nil) {
+                        //                                        if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
+                        //                                            _messageView = [self lianxiMessageShareView];
+                        //
+                        //                                        }
+                        //                                        else {
+                        _messageView = [self lianxiMessageView];
+                        //}
+                        [_BuyMessageView removeFromSuperview];
+                        _BuyMessageView = nil;
+                    }
+                }
+                [self reloadMyView];
+            } failure:^(NSError *error) {
+
+            }];
+
+        }
+
+
         return;
     }
     [HTTPCLIENT buyDetailWithUid:self.uid WithAccessID:APPDELEGATE.userModel.access_id
@@ -271,6 +359,120 @@
 
     return self;
 }
+-(id)initWithCaiGouModel:(ZIKCustomizedInfoListModel *)model {
+    self=[super init];
+    if (self) {
+        self.isPuy=NO;
+        self.uid=model.uid;
+        self.type=1;
+        _push_=1;
+        self.memberCustomUid=model.memberCustomUid;
+        self.isFromDingzhi = YES;
+        _isCaiGou = YES;
+        self.biaoqianView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 64, 50, 50)];
+        _biaoqianView.hidden = YES;
+        self.topView = [ZIKCaiGouDetailHaveBuyTopView instanceTopView];
+        self.topView.frame = CGRectMake(0, 64, kWidth, 50);
+        self.topView.delegate = self;
+        [self.view addSubview:self.topView];
+        self.topView.hidden = YES;
+
+
+        [HTTPCLIENT workstationPushPurchaseInfo:self.uid Success:^(id responseObject) {
+                                if (![[responseObject objectForKey:@"success"] integerValue]) {
+                                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                    return ;
+                                }
+                                //NSLog(@"%@",responseObject);
+                                NSDictionary *dic=[responseObject objectForKey:@"result"];
+                                self.infoDic=dic;
+                                self.memberUid = dic[@"memberUid"];
+                                self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                                self.model.uid=self.uid;
+            self.topView.orderNo   = dic[@"detail"][@"orderNo"];
+            self.topView.orderUid  = dic[@"detail"][@"orderUid"];
+            self.topView.recordUid = dic[@"detail"][@"recordUid"];
+                                if (![ZIKFunction xfunc_check_strEmpty:self.model.phone]) {
+                                    self.isPuy=YES;
+                                    _biaoqianView.hidden=NO;
+                                    self.topView.hidden = NO;
+                                    self.biaoqianView.frame = CGRectMake(kWidth-50, 64+50, 50, 50);
+
+                                    [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+
+                                }else
+                                {
+
+                                    self.isPuy=NO;
+                                    _biaoqianView.hidden = YES;
+                                    self.topView.hidden = YES;
+                                }
+                                if (!self.isPuy) {
+
+
+                                    if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
+                                        [_BuyMessageView removeFromSuperview];
+                                        _BuyMessageView =nil;
+                                    }else
+                                    {
+                                        // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
+                                        if (_BuyMessageView==nil) {
+//                                            if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
+//                                                _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+//                                            }
+//                                            else {
+                                            if (self.model.state == 4) {
+                                                _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+                                            }
+
+                                           // }
+                                            [_messageView removeFromSuperview];
+                                            _messageView = nil;
+
+                                        }
+                                    }
+
+
+                                }else{
+                                    if (_messageView==nil) {
+//                                        if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
+//                                            _messageView = [self lianxiMessageShareView];
+//
+//                                        }
+//                                        else {
+                                            _messageView = [self lianxiMessageView];
+                                        //}
+                                        [_BuyMessageView removeFromSuperview];
+                                        _BuyMessageView = nil;
+                                    }
+                                }
+                                [self reloadMyView];
+                            } failure:^(NSError *error) {
+
+                            }];
+
+    }
+    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
+    self.tableView.delegate=self;
+    self.tableView.dataSource=self;
+    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.biaoqianView];
+    UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-80, 50, 74, 48.3)];
+    [self.tableView addSubview:guoqiIamgV];
+    [guoqiIamgV bringSubviewToFront:self.view];
+    self.guoqiIamgV=guoqiIamgV;
+    
+    return self;
+
+}
+
+-(void)gotoDetail {
+    ZIKStationOrderDetailViewController *sodvc = [[ZIKStationOrderDetailViewController alloc] init];
+    sodvc.orderUid = self.topView.orderUid;
+    [self.navigationController pushViewController:sodvc animated:YES];
+}
+
 -(id)initWithSaercherInfo:(NSString *)uid
 {
     self=[super init];
@@ -414,13 +616,25 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isCaiGou = _isCaiGou;
     UIView *navView =  [self makeNavView];
     [self.view addSubview:navView];
     self.isShow=NO;
     self.isFromDingzhi = NO;//不是从定制列表进入的
     [self.view setBackgroundColor:BGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(caiGouPaySuccess:) name:@"CaiGouSinglePaySuccessNotification" object:nil];
 }
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CaiGouSinglePaySuccessNotification" object:nil];
+}
+
+- (void)caiGouPaySuccess:(NSDictionary *)dictionary
+{
+    isCaiGouSuccess = YES;
+}
+
 
 - (void)shopBtnAction {
     if ([ZIKFunction xfunc_check_strEmpty:_memberUid]) {
@@ -775,6 +989,10 @@
     ZIKSingleVoucherCenterViewController *svcvc =  [[ZIKSingleVoucherCenterViewController alloc]initWithNibName:@"ZIKSingleVoucherCenterViewController" bundle:nil];
     svcvc.price  = button.price;
     svcvc.buyUid = button.buyUid;
+    if (isCaiGou) {
+        svcvc.recordUid = self.topView.recordUid;
+        svcvc.infoType = InfoTypeStation;
+    }
     [self.navigationController pushViewController:svcvc animated:YES];
     return;
     [HTTPCLIENT getAmountInfo:nil Success:^(id responseObject) {
@@ -800,7 +1018,7 @@
 -(void)buySureAction
 {
     ShowActionV();
-    [HTTPCLIENT payForBuyMessageWithBuyUid:self.model.uid Success:^(id responseObject) {
+    [HTTPCLIENT payForBuyMessageWithBuyUid:self.model.uid type:nil Success:^(id responseObject) {
         RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"购买成功"];
@@ -964,6 +1182,14 @@
             _biaoqianView.hidden = YES;
             self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64);
         }
+        if (_isCaiGou) {
+            if (self.isPuy) {
+                self.tableView.frame = CGRectMake(0, 64+50, kWidth, kHeight-64-50);
+
+            } else {
+                self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+            }
+        }
 
     }
     if (self.type==2) {
@@ -1038,14 +1264,17 @@
         [view addSubview:editingBtn];
     }else
     {
-        UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
-        [collectionBtn setEnlargeEdgeWithTop:0 right:5 bottom:0 left:15];
-        self.collectionBtn = collectionBtn;
-        [collectionBtn setImage:[UIImage imageNamed:@"collectionN"] forState:UIControlStateNormal];
-        [collectionBtn setImage:[UIImage imageNamed:@"collectionT"] forState:UIControlStateSelected];
-        [collectionBtn addTarget:self action:@selector(collectionBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:collectionBtn];
-    }
+        if (!isCaiGou) {
+            UIButton *collectionBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-40, 26, 30, 30)];
+            [collectionBtn setEnlargeEdgeWithTop:0 right:5 bottom:0 left:15];
+            self.collectionBtn = collectionBtn;
+            [collectionBtn setImage:[UIImage imageNamed:@"collectionN"] forState:UIControlStateNormal];
+            [collectionBtn setImage:[UIImage imageNamed:@"collectionT"] forState:UIControlStateSelected];
+            [collectionBtn addTarget:self action:@selector(collectionBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [view addSubview:collectionBtn];
+
+        }
+     }
     
     return view;
 }
@@ -1423,15 +1652,7 @@
                                      shareImage:self.shareImage
                                 shareToSnsNames:@[UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToQQ]
                                        delegate:self];
-    //[NSArray arrayWithObjects:UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,nil]
-    //    [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQQ] content:@"sharTestQQ分享文字" image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
-    //        if (response.responseCode == UMSResponseCodeSuccess) {
-    //            NSLog(@"分享成功！");
-    //        }
-    //    }];
-    //当分享消息类型为图文时，点击分享内容会跳转到预设的链接，设置方法如下
-    //NSString *urlString = @"https://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8";
-    //NSString *urlString = [NSString stringWithFormat:@"http://www.miaoxintong.cn:8081/qlmm/invitation/create?muid=%@",APPDELEGATE.userModel.access_id];
+
 
     [UMSocialData defaultData].extConfig.wechatSessionData.url = self.shareUrl;
 
@@ -1480,7 +1701,7 @@
 
 -(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
 {
-    NSLog(@"finish share with response is %@",response);
+    //NSLog(@"finish share with response is %@",response);
 }
 
 @end

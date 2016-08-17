@@ -1614,6 +1614,7 @@
 
 - (void)weixinPayOrder:(NSString *)price
           supplyBuyUid:(NSString *)supplyBuyUid
+             recordUid:(NSString *)recordUid
                   type:(NSString *)type
                Success:(void (^)(id responseObject))success
                failure:(void (^)(NSError *error))failure {
@@ -1627,6 +1628,7 @@
     parmers[@"memberUid"]        = APPDELEGATE.userModel.access_id;
     parmers[@"spbill_create_ip"] = kclient_id;
     parmers[@"supplyBuyUid"]     = supplyBuyUid;
+    parmers[@"recordUid"]        = recordUid;
     parmers[@"type"]             = type;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -1984,6 +1986,7 @@
 }
 #pragma mark 求购联系方式购买
 -(void)payForBuyMessageWithBuyUid:(NSString *)uid
+                             type:(NSString *)type
                           Success:(void (^)(id responseObject))success
                           failure:(void (^)(NSError *error))failure
 {
@@ -4718,6 +4721,41 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"uid"]              = uid;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
+#pragma mark ---------- 推送信息求购联系方式购买 -----------
+/**
+ *  推送信息求购联系方式购买
+ *
+ *  @param recordUid 推送信息UID
+ *  @param success   success description
+ *  @param failure   failure description
+ */
+- (void)wrokstationPurchasePushBuy:(NSString *)recordUid
+                           Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/workstation/purchase/push/buyPurchasePushRecord";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"recordUid"]        = recordUid;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

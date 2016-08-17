@@ -9,6 +9,8 @@
 #import "QRCodeViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
+#import "ZIKFunction.h"
+
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width//设备宽
 #define kDeviceHeight [UIScreen mainScreen].bounds.size.height//设备高
 #define kDeviceFrame [UIScreen mainScreen].bounds//设备坐标
@@ -27,14 +29,16 @@ static const float kReaderViewHeight = 200;
 @end
 
 @implementation QRCodeViewController
-
+{
+    UILabel *_infoLabel;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initUI];
     [self setOverlayPickerView];
     [self startSYQRCodeReading];
-    self.vcTitle = @"扫一扫";
+    self.vcTitle = @"扫码";
     [self createBackBtn];
     
 }
@@ -65,7 +69,6 @@ static const float kReaderViewHeight = 200;
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
     if (error) {
-//        [XtomFunction openIntervalHUD:@"没有找到可用的摄像头 -_-||" view:self.view];
         [ToastView showTopToast:@"没有找到可用的摄像头 -_-||"];
         return;
     }
@@ -102,14 +105,12 @@ static const float kReaderViewHeight = 200;
         
        // output.metadataObjectTypes = [NSArray arrayWithObject:AVMetadataObjectTypeQRCode];
          [output setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
-        
-        NSLog(@"1");
+        //
+        //NSLog(@"1");
     }
     else {
         // output.metadataObjectTypes = [NSArray arrayWithObject:AVMetadataObjectTypeQRCode];
-        NSLog(@"2");
-        //[XtomFunction openIntervalHUDOK:@"摄像头不可用" view:self.view];
-//        [XtomFunction openIntervalDownHUD:@"摄像头不可用" view:self.view];
+        //NSLog(@"2");
         [ToastView showTopToast:@"摄像头不可用"];
 
         [self cancleSYQRCodeReading];
@@ -203,13 +204,22 @@ static const float kReaderViewHeight = 200;
     //说明label
     UILabel *labIntroudction = [[UILabel alloc] init];
     labIntroudction.backgroundColor = [UIColor clearColor];
-    labIntroudction.frame = CGRectMake(CGRectGetMaxX(leftView.frame), CGRectGetMinY(downView.frame) + 25, kReaderViewWidth, 20);
+    labIntroudction.frame = CGRectMake(20, CGRectGetMinY(downView.frame) + 25, kWidth-40, 20);
     labIntroudction.textAlignment = NSTextAlignmentCenter;
     labIntroudction.font = [UIFont boldSystemFontOfSize:13.0];
     labIntroudction.textColor = [UIColor whiteColor];
-    labIntroudction.text = @"将二维码置于框内,即可自动扫描";
+    labIntroudction.text = @"将二维码图片对准扫描框即可自动扫描";
     [self.view addSubview:labIntroudction];
-    
+
+    _infoLabel = [[UILabel alloc] init];
+    _infoLabel.backgroundColor = [UIColor clearColor];
+    _infoLabel.frame = CGRectMake(20, CGRectGetMaxY(labIntroudction.frame)+15, kWidth-40, 20);
+    _infoLabel.textAlignment = NSTextAlignmentCenter;
+    _infoLabel.font = [UIFont boldSystemFontOfSize:13.0f];
+    _infoLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:_infoLabel];
+    _infoLabel.hidden = YES;
+
     UIView *scanCropView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftView.frame) - 1,kLineMinY,kDeviceWidth - 2 * CGRectGetMaxX(leftView.frame) + 2, kReaderViewHeight + 2)];
     scanCropView.layer.borderColor = [UIColor greenColor].CGColor;
     scanCropView.layer.borderWidth = 2.0;
@@ -232,19 +242,27 @@ static const float kReaderViewHeight = 200;
         
         if (obj.stringValue && ![obj.stringValue isEqualToString:@""] && obj.stringValue.length > 0)
         {
-            NSLog(@"---------%@",obj.stringValue);
-            
+
             if ([obj.stringValue containsString:@"http"])
             {
                 if (self.QRCodeSuccessBlock) {
                     self.QRCodeSuccessBlock(self,obj.stringValue);
                 }
+                _infoLabel.hidden = YES;
             }
             else
             {
                 if (self.QRCodeSuccessBlock) {
                     self.QRCodeSuccessBlock(self,obj.stringValue);
                 }
+                _infoLabel.hidden = NO;
+                if (_infoLabel.text) {
+                    _infoLabel.text = nil;
+                }
+                _infoLabel.text = [NSString stringWithFormat:@"扫描结果:%@",obj.stringValue];
+              CGRect infoRect =  [ZIKFunction getCGRectWithContent:_infoLabel.text width:_infoLabel.frame.size.width font:13.0f];
+                _infoLabel.frame = CGRectMake(_infoLabel.frame.origin.x, _infoLabel.frame.origin.y, _infoLabel.frame.size.width, infoRect.size.height);
+
             }
         }
         else
@@ -271,7 +289,6 @@ static const float kReaderViewHeight = 200;
     
     [self.kSession startRunning];
     
-    NSLog(@"start reading");
 }
 
 - (void)stopSYQRCodeReading
@@ -284,7 +301,6 @@ static const float kReaderViewHeight = 200;
     
     [self.kSession stopRunning];
     
-    NSLog(@"stop reading");
 }
 
 //取消扫描
@@ -296,7 +312,6 @@ static const float kReaderViewHeight = 200;
     {
         self.QRCodeCancleBlock(self);
     }
-    NSLog(@"cancle reading");
 }
 
 
@@ -348,7 +363,6 @@ static const float kReaderViewHeight = 200;
         }
     }
     
-    //NSLog(@"_line.frame.origin.y==%f",_line.frame.origin.y);
 }
 
 
@@ -357,14 +371,5 @@ static const float kReaderViewHeight = 200;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

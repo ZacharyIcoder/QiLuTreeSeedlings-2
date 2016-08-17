@@ -7,6 +7,7 @@
 //
 
 #import "ZIKArrowViewController.h"
+#import "ZIKMyCustomizedInfoViewController.h"
 typedef NS_ENUM(NSUInteger, PayWay) {
     Pay_Online,     //在线支付
     Pay_ZhifuBao,   //支付宝
@@ -18,4 +19,6 @@ typedef NS_ENUM(NSUInteger, PayWay) {
 @property (nonatomic, assign) float price;
 @property (nonatomic, copy) NSString *buyUid;
 
+@property (nonatomic, copy) NSString *recordUid;
+@property (nonatomic, assign) InfoType infoType;
 @end

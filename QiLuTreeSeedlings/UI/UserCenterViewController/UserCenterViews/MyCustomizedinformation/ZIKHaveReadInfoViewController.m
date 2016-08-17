@@ -316,8 +316,14 @@
     }
     else {
         ZIKCustomizedInfoListModel *model = self.readDataMArr[indexPath.row];
-        BuyDetialInfoViewController *buyDetialVC = [[BuyDetialInfoViewController alloc] initWithDingzhiModel:model];
-        [self.navigationController pushViewController:buyDetialVC animated:YES];
+        if (self.infoType == InfoTypeMy) {
+            BuyDetialInfoViewController *buyDetialVC = [[BuyDetialInfoViewController alloc] initWithDingzhiModel:model];
+            [self.navigationController pushViewController:buyDetialVC animated:YES];
+        } else if (self.infoType == InfoTypeStation) {
+            BuyDetialInfoViewController *buyDetialVC = [[BuyDetialInfoViewController alloc] initWithCaiGouModel:model];
+//            buyDetialVC.isCaiGou = YES;
+            [self.navigationController pushViewController:buyDetialVC animated:YES];
+        }
 //        ZIKCustomizedInfoListModel *model = self.customizedInfoMArr[indexPath.row];
 //        BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc]initWithDingzhiModel:model];
 //        [self.navigationController pushViewController:viewC animated:YES];

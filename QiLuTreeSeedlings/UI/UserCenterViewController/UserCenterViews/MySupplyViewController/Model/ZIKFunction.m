@@ -63,7 +63,11 @@
     // NSString * updateURL = RequestURL;
     updateURL = [updateURL stringByAppendingString:@"apimember/pay/alipay/notify"];
 
-    order.notifyURL =  [NSString stringWithFormat:@"%@?access_id=%@&supplyBuyUid=%@&type=%@",updateURL,orderId,supplyBuyUid,type]; //回调URL
+    if ([type isEqualToString:@"2"]) {
+    order.notifyURL =  [NSString stringWithFormat:@"%@?access_id=%@&recordUid=%@&type=%@",updateURL,orderId,supplyBuyUid,type]; //回调URL
+    } else {
+   order.notifyURL =  [NSString stringWithFormat:@"%@?access_id=%@&supplyBuyUid=%@&type=%@",updateURL,orderId,supplyBuyUid,type]; //回调URL
+    }
 //    order.notifyURL =  [NSString stringWithFormat:@"%@?access_id=%@&supplyBuyUid=\"%@\"&type=\"%@\"",updateURL,orderId,supplyBuyUid,type]; //回调URL
 
 
