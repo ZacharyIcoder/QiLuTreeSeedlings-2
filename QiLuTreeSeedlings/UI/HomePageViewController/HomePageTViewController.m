@@ -63,6 +63,21 @@
 -(void)pushMessageForDingzhiXinXi:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
+    if (self.tabBarController.selectedIndex!=0) {
+        return;
+    }
+    ZIKMyCustomizedInfoViewController *zikMyCustomInfoVC=[[ZIKMyCustomizedInfoViewController alloc]init];
+    if ([notification.object isEqualToString:@"1"]) {
+        
+        [self.navigationController pushViewController:zikMyCustomInfoVC animated:YES];
+    }else if([notification.object isEqualToString:@"2"])
+    {
+        ZIKMyCustomizedInfoViewController *civc = [[ZIKMyCustomizedInfoViewController alloc] init];
+        civc.infoType = InfoTypeStation;
+        //        civc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:civc animated:YES];
+    }
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

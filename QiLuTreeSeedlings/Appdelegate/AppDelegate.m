@@ -301,12 +301,29 @@
      UIApplicationLaunchOptionsRemoteNotificationKey 远程推送Key
      */
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    
     if (userInfo) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
-        // NSLog(@"\n>>>[Launching RemoteNotification]:%@", userInfo);
-    }
-}
+//
+        [self performSelector:@selector(tongzhihuanxingchuli:) withObject:userInfo/*可传任意类型参数*/ afterDelay:2.0];
+        }
 
+}
+-(void)tongzhihuanxingchuli:(NSDictionary *)userInfo
+{
+    
+    
+    NSString *tuisongType=[[userInfo objectForKey:@"aps"] objectForKey:@"category"];
+    if ([tuisongType isEqualToString:@"push_buy"]||[tuisongType isEqualToString:@"buy_match_supply"]) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"1"];
+    }else if ([tuisongType isEqualToString:@"purchase_match_supply"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"2"];
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"0"];
+    }
+ 
+}
 
 #pragma mark - 用户通知(推送)回调 _IOS 8.0以上使用
 
@@ -356,7 +373,7 @@
         AudioServicesPlaySystemSound(sound);
     }
     if ([application applicationState]==UIApplicationStateInactive) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
+       // [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:nil];
         
     }
     
@@ -380,10 +397,9 @@
         NSString *tuisongType=[[userInfo objectForKey:@"aps"] objectForKey:@"category"];
         if ([tuisongType isEqualToString:@"push_buy"]||[tuisongType isEqualToString:@"buy_match_supply"]) {
            [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"1"];
-        }if ([tuisongType isEqualToString:@"purchase_match_supply"]) {
+        }else if ([tuisongType isEqualToString:@"purchase_match_supply"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"2"];
-        }
-        else
+        }else
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"dingzhixinxituisong" object:@"0"];
         }

@@ -80,21 +80,26 @@
 
 -(void)pushMessageForDingzhiXinXi:(NSNotification *)notification
 {
+    
     [self.navigationController popToRootViewControllerAnimated:NO];
-    self.tabBarController.selectedIndex=1;
-    BaseTabBarController *baseB=(BaseTabBarController *)self.tabBarController;
-    baseB.homePageBtn.selected=YES;
-    baseB.userInfoBtn.selected=NO;
-    [baseB.homePageLab setTextColor:NavColor];
-    [baseB.userLab setTextColor:[UIColor lightGrayColor]];
+    
+//    BaseTabBarController *baseB=(BaseTabBarController *)self.tabBarController;
+//    baseB.homePageBtn.selected=NO;
+//    baseB.userInfoBtn.selected=YES;
+//    [baseB.homePageLab setTextColor:[UIColor lightGrayColor]];
+//    [baseB.userLab setTextColor:NavColor];
+    if (self.tabBarController.selectedIndex!=1) {
+        return;
+    }
     ZIKMyCustomizedInfoViewController *zikMyCustomInfoVC=[[ZIKMyCustomizedInfoViewController alloc]init];
     if ([notification.object isEqualToString:@"1"]) {
+        
        [self.navigationController pushViewController:zikMyCustomInfoVC animated:YES];
     }else if([notification.object isEqualToString:@"2"])
     {
         ZIKMyCustomizedInfoViewController *civc = [[ZIKMyCustomizedInfoViewController alloc] init];
         civc.infoType = InfoTypeStation;
-        civc.hidesBottomBarWhenPushed = YES;
+//        civc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:civc animated:YES];
     }
     
