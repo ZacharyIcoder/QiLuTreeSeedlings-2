@@ -124,6 +124,9 @@ static BOOL isCaiGouSuccess = NO;
                 self.infoDic=dic;
                 self.memberUid = dic[@"memberUid"];
                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                if ([[dic objectForKey:@"supplybuyName"] length] <= 0 ) {
+                    self.model.supplybuyName = @"";
+                }
                 self.model.uid=self.uid;
                 self.topView.orderNo   = dic[@"detail"][@"orderNo"];
                 self.topView.orderUid  = dic[@"detail"][@"orderUid"];
@@ -389,6 +392,9 @@ static BOOL isCaiGouSuccess = NO;
                                 self.infoDic=dic;
                                 self.memberUid = dic[@"memberUid"];
                                 self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+            if ([[dic objectForKey:@"supplybuyName"] length] <= 0 ) {
+                self.model.supplybuyName = @"";
+            }
                                 self.model.uid=self.uid;
             self.topView.orderNo   = dic[@"detail"][@"orderNo"];
             self.topView.orderUid  = dic[@"detail"][@"orderUid"];
@@ -1390,16 +1396,22 @@ static BOOL isCaiGouSuccess = NO;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
+        BuyUserInfoTableViewCell *cell = nil;
+        if (isCaiGou) {
+            cell=[[BuyUserInfoTableViewCell alloc]initWithCaiGouFrame:CGRectMake(0, 0, kWidth, 125)];
 
-        BuyUserInfoTableViewCell *cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 125)];
-                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        } else {
+            cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 125)];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.type==2) {
-              self.model.goldsupplier=APPDELEGATE.userModel.goldsupplierStatus;
+            self.model.goldsupplier=APPDELEGATE.userModel.goldsupplierStatus;
         }
         if (self.model) {
             cell.model=self.model;
         }
         return cell;
+
     }else if(indexPath.section==1)
     {
         BuyOtherInfoTableViewCell *cell=[[BuyOtherInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, self.specAry.count*30+40) andName:self.model.productName];
@@ -1415,7 +1427,13 @@ static BOOL isCaiGouSuccess = NO;
         return cell;
     }else if (indexPath.section==2)
     {
-        QIYeMessageTableViewCell *cell=[[QIYeMessageTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 140)];
+        QIYeMessageTableViewCell *cell = nil;
+        if (isCaiGou) {
+             cell=[[QIYeMessageTableViewCell alloc]initWithCaiGouFrame:CGRectMake(0, 0, kWidth, 100)];
+        } else {
+            cell=[[QIYeMessageTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 140)];
+        }
+//        QIYeMessageTableViewCell *cell=[[QIYeMessageTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 140)];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.infoDic) {
             NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
@@ -1493,13 +1511,17 @@ static BOOL isCaiGouSuccess = NO;
         }
     }if (indexPath.section==2) {
         //return 140;
-        NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
-        NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
-        CGSize size = [dic[@"address"] boundingRectWithSize:CGSizeMake(kWidth-130-15, CGFLOAT_MAX) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
-        if (size.height == 0) {
-            return 15+110;
+        if (isCaiGou) {
+            return 100;
+        } else {
+            NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithDictionary:[self.infoDic objectForKey:@"detail"]];
+            NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:14]};
+            CGSize size = [dic[@"address"] boundingRectWithSize:CGSizeMake(kWidth-130-15, CGFLOAT_MAX) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+            if (size.height == 0) {
+                return 15+110;
+            }
+            return size.height+110;
         }
-        return size.height+110;
 
     }
     if(indexPath.section==3)

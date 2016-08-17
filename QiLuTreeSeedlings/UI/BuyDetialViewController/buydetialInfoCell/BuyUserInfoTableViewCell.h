@@ -12,4 +12,5 @@
 @property (nonatomic,strong)NSDictionary *dic;
 @property (nonatomic,strong)BuyDetialModel *model;
 -(id)initWithFrame:(CGRect)frame;
+- (instancetype)initWithCaiGouFrame:(CGRect)frame;
 @end

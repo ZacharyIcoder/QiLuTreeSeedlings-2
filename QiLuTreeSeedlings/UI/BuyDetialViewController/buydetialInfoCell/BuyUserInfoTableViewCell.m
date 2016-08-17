@@ -79,6 +79,57 @@
     }
     return self;
 }
+- (instancetype)initWithCaiGouFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(20, 15, 70, 70)];
+        [iamgeV setImage:[UIImage imageNamed:@"qiugouxiangqingye"]];
+        [self addSubview:iamgeV];
+        iamgeV.layer.masksToBounds=YES;
+        iamgeV.layer.cornerRadius=35;
+
+
+        UIImageView *logoImageVx=[[UIImageView alloc]initWithFrame:CGRectMake(18, CGRectGetMaxY(iamgeV.frame)+5, 20, 20)];
+        self.logoImageV=logoImageVx;
+        [self addSubview:logoImageVx];
+
+        UILabel *shenfenLabx=[[UILabel alloc]initWithFrame:CGRectMake(40, CGRectGetMaxY(iamgeV.frame)+5, 200, 20)];
+        [shenfenLabx setFont:[UIFont systemFontOfSize:15]];
+        [shenfenLabx setTextColor:NavYellowColor];
+        self.shenfenLab=shenfenLabx;
+        [self addSubview:shenfenLabx];
+
+        
+        UILabel *numebLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 30, 55, 20)];
+        [numebLab setTextAlignment:NSTextAlignmentRight];
+        [numebLab setTextColor:detialLabColor];
+        [numebLab setFont:[UIFont systemFontOfSize:13]];
+        [numebLab setText:@"数量"];
+        [self addSubview:numebLab];
+        self.numLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2+30, 30, 80, 20)];
+        [self.numLab setTextAlignment:NSTextAlignmentLeft];
+        [self.numLab setTextColor:titleLabColor];
+        [self.numLab setFont:[UIFont systemFontOfSize:13]];
+        [self.numLab setText:@"0棵(株)"];
+        [self addSubview:self.numLab];
+        UILabel *priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-60, 60, 55, 20)];
+        [priceLab setTextAlignment:NSTextAlignmentRight];
+        [priceLab setTextColor:detialLabColor];
+        [priceLab setFont:[UIFont systemFontOfSize:13]];
+        [priceLab setText:@"价格(元)"];
+        [self addSubview:priceLab];
+
+        self.priceLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2+30, 60, 80, 20)];
+        [self.priceLab setTextAlignment:NSTextAlignmentLeft];
+        [self.priceLab setTextColor:titleLabColor];
+        [self.priceLab setFont:[UIFont systemFontOfSize:13]];
+        [self.priceLab setText:@"面议"];
+        [self addSubview:self.priceLab];
+
+
+    }
+    return self;
+}
 -(void)setDic:(NSDictionary *)dic
 {
     _dic=dic;

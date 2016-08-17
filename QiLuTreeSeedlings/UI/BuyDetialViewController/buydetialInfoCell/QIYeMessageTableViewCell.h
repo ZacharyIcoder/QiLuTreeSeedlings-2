@@ -10,4 +10,5 @@
 
 @interface QIYeMessageTableViewCell : UITableViewCell
 @property (nonatomic,strong)NSDictionary *dic;
+-(id)initWithCaiGouFrame:(CGRect)frame;
 @end

@@ -30,7 +30,7 @@
                     <color key="textColor" red="1" green="0.5924916107" blue="0.1272283977" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dQ-so-LM6">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看详情" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dQ-so-LM6">
                     <rect key="frame" x="501" y="15" width="68" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="68" id="2DS-9F-PlN"/>
@@ -40,6 +40,13 @@
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreRow.png" translatesAutoresizingMaskIntoConstraints="NO" id="TkH-E3-Taj">
+                    <rect key="frame" x="570" y="14" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="JXp-bq-lKL"/>
+                        <constraint firstAttribute="height" constant="22" id="nEQ-XP-hwe"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.92156862745098034" green="1" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -50,13 +57,18 @@
                 <constraint firstItem="9dQ-so-LM6" firstAttribute="leading" secondItem="UhM-0H-UsQ" secondAttribute="trailing" constant="10" id="UWl-y3-CW7"/>
                 <constraint firstItem="jb0-lI-Vap" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ZHB-rl-3rG"/>
                 <constraint firstItem="UhM-0H-UsQ" firstAttribute="leading" secondItem="jb0-lI-Vap" secondAttribute="trailing" constant="8" id="hnf-Ty-gNA"/>
+                <constraint firstItem="TkH-E3-Taj" firstAttribute="centerY" secondItem="jb0-lI-Vap" secondAttribute="centerY" id="i6C-gK-rCd"/>
+                <constraint firstItem="TkH-E3-Taj" firstAttribute="leading" secondItem="9dQ-so-LM6" secondAttribute="trailing" constant="1" id="mbn-l5-hJZ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="numberLabel" destination="UhM-0H-UsQ" id="TMK-vb-zYW"/>
             </connections>
-            <point key="canvasLocation" x="649" y="-247"/>
+            <point key="canvasLocation" x="201" y="-180"/>
         </view>
     </objects>
+    <resources>
+        <image name="moreRow.png" width="12" height="12"/>
+    </resources>
 </document>

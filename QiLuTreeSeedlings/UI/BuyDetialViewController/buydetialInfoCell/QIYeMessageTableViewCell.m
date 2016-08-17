@@ -84,6 +84,54 @@
     }
     return self;
 }
+-(id)initWithCaiGouFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        dizhiLab = [[UILabel alloc] init ];//WithFrame:CGRectMake(20, 10, 80, 20)];
+        [dizhiLab setFont:[UIFont systemFontOfSize:13]];
+        [dizhiLab setTextAlignment:NSTextAlignmentRight];
+        [dizhiLab setTextColor:detialLabColor];
+        dizhiLab.text = @"苗源地";
+        [self addSubview:dizhiLab];
+
+        self.addressLab = [[UILabel alloc] init];//WithFrame:CGRectMake(130, 10, 200, 20)];
+        [self.addressLab setFont:[UIFont systemFontOfSize:14]];
+        //        [self.addressLab setTextAlignment:NSTextAlignmentRight];
+        [self.addressLab setTextColor:titleLabColor];
+        //        dizhiLab.text=@"地址";
+        [self.addressLab setNumberOfLines:0];
+        [self addSubview:self.addressLab];
+
+        fabuTimeLab= [[UILabel alloc]init];//WithFrame:CGRectMake(20, CGRectGetMaxY(self.addressLab.frame)+10, 80, 20)];
+        [fabuTimeLab setFont:[UIFont systemFontOfSize:13]];
+        [fabuTimeLab setTextAlignment:NSTextAlignmentRight];
+        [fabuTimeLab setTextColor:detialLabColor];
+        fabuTimeLab.text=@"发布日期";
+        [self addSubview:fabuTimeLab];
+
+        self.creatTimeLab=[[UILabel alloc]init ];//WithFrame:CGRectMake(130, fabuTimeLab.frame.origin.y, 200, 20)];
+        [self.creatTimeLab setFont:[UIFont systemFontOfSize:14]];
+        //        [self.creatTimeLab setTextAlignment:NSTextAlignmentRight];
+        [self.creatTimeLab setTextColor:titleLabColor];
+        //        dizhiLab.text=@"地址";
+        [self addSubview:self.creatTimeLab];
+
+        youxiaoTimeLab= [[UILabel alloc]init ];//WithFrame:CGRectMake(20, 70, 80, 20)];
+        [youxiaoTimeLab setFont:[UIFont systemFontOfSize:13]];
+        [youxiaoTimeLab setTextAlignment:NSTextAlignmentRight];
+        [youxiaoTimeLab setTextColor:detialLabColor];
+        youxiaoTimeLab.text=@"有效期至";
+        [self addSubview:youxiaoTimeLab];
+
+        self.endTimeLab=[[UILabel alloc]init];//WithFrame:CGRectMake(130, 70, 200, 20)];
+        [self.endTimeLab setFont:[UIFont systemFontOfSize:14]];
+        //        [self.endTimeLab setTextAlignment:NSTextAlignmentRight];
+        [self.endTimeLab setTextColor:titleLabColor];
+        //        dizhiLab.text=@"地址";
+        [self addSubview:self.endTimeLab];
+    }
+    return self;
+}
 
 -(void)setDic:(NSDictionary *)dic
 {
