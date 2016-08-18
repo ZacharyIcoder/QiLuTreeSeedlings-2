@@ -998,6 +998,7 @@ static BOOL isCaiGouSuccess = NO;
     if (isCaiGou) {
         svcvc.recordUid = self.topView.recordUid;
         svcvc.infoType = InfoTypeStation;
+        svcvc.buyUid = self.topView.recordUid;
     }
     [self.navigationController pushViewController:svcvc animated:YES];
     return;

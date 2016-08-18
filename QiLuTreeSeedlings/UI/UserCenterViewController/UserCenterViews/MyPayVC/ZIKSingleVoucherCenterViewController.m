@@ -51,7 +51,7 @@
 
 - (void)paySuccess:(NSDictionary *)dictionary
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"CaiGouPaySuccessNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CaiGouSinglePaySuccessNotification" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -331,6 +331,9 @@
     RemoveActionV();
     if ([[responseObject objectForKey:@"success"] integerValue]) {
         [ToastView showTopToast:@"购买成功"];
+        if (self.infoType == InfoTypeStation) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CaiGouSinglePaySuccessNotification" object:nil];
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
