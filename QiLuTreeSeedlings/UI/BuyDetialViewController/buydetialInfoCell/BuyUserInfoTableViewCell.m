@@ -86,6 +86,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.isCaiGou = YES;
+       
         UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(20, 15, 70, 70)];
         [iamgeV setImage:[UIImage imageNamed:@"qiugouxiangqingye"]];
         [self addSubview:iamgeV];

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "ZIKFunction.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width//设备宽
 #define kDeviceHeight [UIScreen mainScreen].bounds.size.height//设备高
@@ -58,6 +59,7 @@ static const float kReaderViewHeight = 200;
     [btn setFrame:CGRectMake(20, 28, 15, 22)];
     [btn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(cancleSYQRCodeReading) forControlEvents:UIControlEventTouchUpInside];
+    [btn setEnlargeEdgeWithTop:20 right:100 bottom:20 left:100];
     [self.view addSubview:btn];
 }
 
@@ -127,6 +129,8 @@ static const float kReaderViewHeight = 200;
     [preview setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     //设置preview图层的大小
     preview.frame = self.view.layer.bounds;
+//    preview.frame = CGRectMake(0, 64, kWidth, kHeight-64)
+
     //[preview setFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight)];
     //将图层添加到视图的图层
     [self.view.layer insertSublayer:preview atIndex:0];
@@ -252,9 +256,9 @@ static const float kReaderViewHeight = 200;
             }
             else
             {
-                if (self.QRCodeSuccessBlock) {
-                    self.QRCodeSuccessBlock(self,obj.stringValue);
-                }
+//                if (self.QRCodeSuccessBlock) {
+//                    self.QRCodeSuccessBlock(self,obj.stringValue);
+//                }
                 _infoLabel.hidden = NO;
                 if (_infoLabel.text) {
                     _infoLabel.text = nil;
