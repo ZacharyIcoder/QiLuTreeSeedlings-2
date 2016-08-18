@@ -107,6 +107,8 @@
 //                        
 //                } else {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"CaiGouSinglePaySuccessNotification" object:nil];
+
                 if (!APPDELEGATE.isFromSingleVoucherCenter) {
                    [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
                 }

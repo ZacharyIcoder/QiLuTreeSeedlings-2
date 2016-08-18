@@ -653,6 +653,8 @@
 //                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil userInfo:nil];
 //                 [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
                  [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"CaiGouSinglePaySuccessNotification" object:nil];
+
                  if (!self.isFromSingleVoucherCenter) {
                      [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
                  }
@@ -748,6 +750,7 @@
 //                [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];//SinglePaySuccessNotification
 //                [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccessNotification" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"CaiGouSinglePaySuccessNotification" object:nil];
                 if (!self.isFromSingleVoucherCenter) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"SinglePaySuccessNotification" object:nil];
                 }

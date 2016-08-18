@@ -1428,11 +1428,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/Model/ZIKFunction.m"
-            timestampString = "493096152.106177"
+            timestampString = "493184397.053689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "+zhiFuBao:name:titile:price:orderId:supplyBuyUid:type:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1444,11 +1444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/Model/ZIKFunction.m"
-            timestampString = "493096152.106177"
+            timestampString = "493184397.053689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "+zhiFuBao:name:titile:price:orderId:supplyBuyUid:type:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2464,11 +2464,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/Appdelegate/AppDelegate.m"
-            timestampString = "491464634.967723"
+            timestampString = "493184397.053689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "660"
-            endingLineNumber = "660"
+            startingLineNumber = "662"
+            endingLineNumber = "662"
             landmarkName = "-application:openURL:sourceApplication:annotation:"
             landmarkType = "5">
          </BreakpointContent>
