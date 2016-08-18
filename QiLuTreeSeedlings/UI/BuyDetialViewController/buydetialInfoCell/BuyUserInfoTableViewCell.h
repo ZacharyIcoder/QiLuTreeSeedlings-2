@@ -11,6 +11,8 @@
 @interface BuyUserInfoTableViewCell : UITableViewCell
 @property (nonatomic,strong)NSDictionary *dic;
 @property (nonatomic,strong)BuyDetialModel *model;
+@property (nonatomic, assign) BOOL isGouMai;
+
 -(id)initWithFrame:(CGRect)frame;
 - (instancetype)initWithCaiGouFrame:(CGRect)frame;
 @end

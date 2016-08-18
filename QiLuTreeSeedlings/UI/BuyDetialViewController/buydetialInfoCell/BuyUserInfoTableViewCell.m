@@ -8,7 +8,7 @@
 
 #import "BuyUserInfoTableViewCell.h"
 #import "UIDefines.h"
-
+static BOOL isBuy = NO;
 @interface BuyUserInfoTableViewCell()
 @property (nonatomic,strong)UILabel *nameLab;
 @property (nonatomic,strong)UILabel *numLab;
@@ -179,10 +179,20 @@
             logoImageV.image = [UIImage imageNamed:@"列表-工程公司"];
         }
     if (self.isCaiGou) {
-        shenfenLab.text = [NSString stringWithFormat:@"工程公司 %@",model.companyName];
+        if (isBuy) {
+            shenfenLab.text = [NSString stringWithFormat:@"工程公司 %@",model.companyName];
+
+        } else {
+            shenfenLab.text = @"工程公司";
+        }
         logoImageV.image = [UIImage imageNamed:@"列表-工程公司"];
     }
 }
+
+-(void)setIsGouMai:(BOOL)isGouMai {
+    _isGouMai = isGouMai;
+    isBuy = isGouMai;
+ }
 - (void)awakeFromNib {
     // Initialization code
 }

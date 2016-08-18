@@ -196,6 +196,8 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
         if (_demandModel) {
             [demandCell configureCell:_demandModel];
         }
+        demandCell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         return demandCell;
     }
     return nil;

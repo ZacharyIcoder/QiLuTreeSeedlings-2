@@ -244,7 +244,7 @@
         } else if (self.infoType == InfoTypeStation) {
             type = @"2";
         }
-        [HTTPCLIENT weixinPayOrder:pricesting supplyBuyUid:self.buyUid  recordUid:_recordUid type:@"1" Success:^(id responseObject) {
+        [HTTPCLIENT weixinPayOrder:pricesting supplyBuyUid:self.buyUid  recordUid:_recordUid type:type Success:^(id responseObject) {
             //NSLog(@"%@",responseObject);
             NSDictionary *dict = responseObject[@"result"];
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {

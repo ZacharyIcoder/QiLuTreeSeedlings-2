@@ -74,6 +74,7 @@ static BOOL isCaiGouSuccess = NO;
 @property (nonatomic, strong) NSString *memberUid;
 @property (nonatomic, weak)ZIKCaiGouDetailHaveBuyTopView *topView;
 @property (nonatomic, assign) BOOL isCaiGou;
+@property (nonatomic, assign) BOOL isGouMai;//采购信息是否已购买
 
 
 
@@ -146,6 +147,12 @@ static BOOL isCaiGouSuccess = NO;
                     _biaoqianView.hidden = YES;
                     self.topView.hidden = YES;
                 }
+                if (!self.isPuy) {//未购买
+                    self.isGouMai = NO;
+                } else {
+                    self.isGouMai = YES;
+                }
+
                 if (!self.isPuy) {
 
 
@@ -365,6 +372,11 @@ static BOOL isCaiGouSuccess = NO;
 -(id)initWithCaiGouModel:(ZIKCustomizedInfoListModel *)model {
     self=[super init];
     if (self) {
+        if (model.buy == 0) {//未购买
+            self.isGouMai = NO;
+        } else if (model.buy == 1) {
+            self.isGouMai = YES;
+        }
         self.isPuy=NO;
         self.uid=model.uid;
         self.type=1;
@@ -409,14 +421,11 @@ static BOOL isCaiGouSuccess = NO;
 
                                 }else
                                 {
-
                                     self.isPuy=NO;
                                     _biaoqianView.hidden = YES;
                                     self.topView.hidden = YES;
                                 }
                                 if (!self.isPuy) {
-
-
                                     if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
                                         [_BuyMessageView removeFromSuperview];
                                         _BuyMessageView =nil;
@@ -438,8 +447,6 @@ static BOOL isCaiGouSuccess = NO;
 
                                         }
                                     }
-
-
                                 }else{
                                     if (_messageView==nil) {
 //                                        if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
@@ -478,6 +485,7 @@ static BOOL isCaiGouSuccess = NO;
 -(void)gotoDetail {
     ZIKStationOrderDetailViewController *sodvc = [[ZIKStationOrderDetailViewController alloc] init];
     sodvc.orderUid = self.topView.orderUid;
+    sodvc.statusType = StationOrderStatusTypeQuotation;
     [self.navigationController pushViewController:sodvc animated:YES];
 }
 
@@ -1193,10 +1201,13 @@ static BOOL isCaiGouSuccess = NO;
         }
         if (_isCaiGou) {
             if (self.isPuy) {
-                self.tableView.frame = CGRectMake(0, 64+50, kWidth, kHeight-64-50);
-
+                self.tableView.frame = CGRectMake(0, 64+50, kWidth, kHeight-64-50-50);
             } else {
-                self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+                if (self.model.state == 4) {
+                    self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64-50);
+                } else {
+                    self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+                }
             }
         }
 
@@ -1402,8 +1413,8 @@ static BOOL isCaiGouSuccess = NO;
         BuyUserInfoTableViewCell *cell = nil;
         if (isCaiGou) {
             cell=[[BuyUserInfoTableViewCell alloc]initWithCaiGouFrame:CGRectMake(0, 0, kWidth, 125)];
-
-        } else {
+            cell.isGouMai = self.isGouMai;
+          } else {
             cell=[[BuyUserInfoTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 125)];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
