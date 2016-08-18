@@ -265,7 +265,8 @@ static const float kReaderViewHeight = 200;
                 }
                 _infoLabel.text = [NSString stringWithFormat:@"扫描结果:%@",obj.stringValue];
               CGRect infoRect =  [ZIKFunction getCGRectWithContent:_infoLabel.text width:_infoLabel.frame.size.width font:13.0f];
-                _infoLabel.frame = CGRectMake(_infoLabel.frame.origin.x, _infoLabel.frame.origin.y, _infoLabel.frame.size.width, infoRect.size.height);
+                _infoLabel.numberOfLines = 0;
+                _infoLabel.frame = CGRectMake(_infoLabel.frame.origin.x, _infoLabel.frame.origin.y, _infoLabel.frame.size.width, infoRect.size.height+5);
 
             }
         }
