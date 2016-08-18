@@ -463,6 +463,8 @@ static BOOL isCaiGouSuccess = NO;
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     [self.view addSubview:self.tableView];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     [self.view addSubview:self.biaoqianView];
     UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-80, 50, 74, 48.3)];
     [self.tableView addSubview:guoqiIamgV];
