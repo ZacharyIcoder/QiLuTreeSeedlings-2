@@ -23,11 +23,6 @@
 
 @end
 
-//@protocol ZIKWorkstationSelectListViewSelectDelegate <NSObject>
-//
-//- (void)select
-//
-//@end
 
 @interface ZIKWorkstationSelectListView : UIView
 

@@ -7,6 +7,7 @@
 //
 
 #import "ZIKCustomizedInfoListTableViewCell.h"
+#import "ZIKCustomizedInfoListModel.h"
 
 @implementation ZIKCustomizedInfoListTableViewCell
 

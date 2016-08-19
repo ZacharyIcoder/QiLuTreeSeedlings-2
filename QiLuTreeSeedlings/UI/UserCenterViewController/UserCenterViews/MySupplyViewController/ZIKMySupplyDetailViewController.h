@@ -7,12 +7,13 @@
 //
 
 #import "ZIKRightBtnSringViewController.h"
-#import "ZIKSupplyModel.h"
+@class ZIKSupplyModel;
 @interface ZIKMySupplyDetailViewController : ZIKRightBtnSringViewController
 ///**
 // *  供应ID
 // */
 //@property (nonatomic, copy) NSString *uid;
+
 /**
  *  根据供应Uid创建我的供应详情
  *

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HCSStarRatingView.h"
-#import "ZIKStationAgentModel.h"
+@class ZIKStationAgentModel;
 typedef void (^PhoneBlock) (NSInteger);
 @interface ZIKStationAgentTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *workstationNameLabel;

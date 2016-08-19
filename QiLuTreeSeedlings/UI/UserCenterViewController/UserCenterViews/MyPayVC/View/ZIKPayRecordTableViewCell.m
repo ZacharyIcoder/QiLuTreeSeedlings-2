@@ -8,6 +8,8 @@
 
 #import "ZIKPayRecordTableViewCell.h"
 #import "UIDefines.h"
+#import "ZIKConsumeRecordModel.h"
+
 @implementation ZIKPayRecordTableViewCell
 
 - (void)awakeFromNib {

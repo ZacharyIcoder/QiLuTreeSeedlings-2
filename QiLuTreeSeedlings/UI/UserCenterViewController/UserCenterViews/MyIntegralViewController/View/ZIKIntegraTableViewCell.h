@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZIKIntegraModel.h"
+@class ZIKIntegraModel;
 @interface ZIKIntegraTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 

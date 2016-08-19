@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "ZIKCityModel.h"
 @interface ZIKCityTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageView;

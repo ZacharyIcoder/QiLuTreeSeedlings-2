@@ -8,6 +8,8 @@
 
 #import "ZIKIntegraTableViewCell.h"
 #import "UIDefines.h"
+#import "ZIKIntegraModel.h"
+
 @implementation ZIKIntegraTableViewCell
 
 - (void)awakeFromNib {

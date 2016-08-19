@@ -8,10 +8,13 @@
 
 #import "ZIKWorkstationSelectListView.h"
 #import "ZIKWorkstationSelectListViewTableViewCell.h"
+
 #define SCREEN_SIZE [[UIScreen mainScreen] bounds].size
+
 @interface ZIKWorkstationSelectListView ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @end
+
 @implementation ZIKWorkstationSelectListView
 
 +(ZIKWorkstationSelectListView *)instanceSelectListView {
@@ -35,18 +38,14 @@
     [UIView animateWithDuration:.001 animations:^{
         self.frame = CGRectMake(0, SCREEN_SIZE.height, SCREEN_SIZE.width, SCREEN_SIZE.height);
     } completion:^(BOOL finished) {
-//        [self removeFromSuperview];
         _isShow = NO;
     }];
 }
 
 - (void)showView {
     [UIView animateWithDuration:.001 animations:^{
-        //self.frame = CGRectMake(0, SCREEN_SIZE.height, SCREEN_SIZE.width, SCREEN_SIZE.height);
         self.frame = CGRectMake(0, 64+46+4, SCREEN_SIZE.width, SCREEN_SIZE.height-64-46-4);
-
     } completion:^(BOOL finished) {
-//        [self ];
         _isShow = YES;
     }];
 }

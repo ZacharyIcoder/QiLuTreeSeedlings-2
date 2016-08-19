@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SupplyDetialMode.h"
-#import "HotSellModel.h"
+@class SupplyDetialMode;
+@class HotSellModel;
 @protocol SellBanderDelegate <NSObject>
 
 - (void)showBigImageWtihIndex:(NSInteger )index;

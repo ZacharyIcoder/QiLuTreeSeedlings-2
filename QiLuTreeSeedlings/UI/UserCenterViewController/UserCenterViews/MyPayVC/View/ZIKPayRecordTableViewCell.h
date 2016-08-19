@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZIKConsumeRecordModel.h"
 @interface ZIKPayRecordTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *typeImgeView;
 @property (weak, nonatomic) IBOutlet UILabel *typeNameLabel;

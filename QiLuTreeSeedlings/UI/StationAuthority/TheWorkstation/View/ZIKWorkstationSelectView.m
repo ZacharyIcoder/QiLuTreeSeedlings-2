@@ -8,9 +8,9 @@
 
 #import "ZIKWorkstationSelectView.h"
 #import "UIDefines.h"
+#import "ZIKWorkstationSelectViewAboutAddressButton.h"
+
 @implementation ZIKWorkstationSelectView
-
-
 
 +(ZIKWorkstationSelectView *)instanceSelectAreaView {
     NSArray* nibView =  [[NSBundle mainBundle] loadNibNamed:@"ZIKWorkstationSelectView" owner:nil options:nil];
@@ -20,12 +20,6 @@
 }
 
 - (void)initView {
-//    self.layer.shadowColor   = [UIColor blackColor].CGColor;///shadowColor阴影颜色
-//    self.layer.shadowOpacity = 0.2;////阴影透明度，默认0
-//    self.layer.shadowOffset  = CGSizeMake(0, 3);//shadowOffset阴影偏移,x向右偏移0，y向下偏移1，默认(0, -3),这个跟shadowRadius配合使用
-//    self.layer.shadowRadius  = 3;//阴影半径，默认3
-//    self.contentMode = UIViewContentModeScaleToFill;
-
     self.level    = @"1";
     _provinceName = @"全国";
     _cityName     = @"所有市";
@@ -33,23 +27,12 @@
     [self.provinceButton setTitle:_provinceName forState:UIControlStateNormal];
     [self.cityButton setTitle:_cityName forState:UIControlStateNormal];
     [self.countryButton setTitle:_countryName forState:UIControlStateNormal];
-//    self.provinceButton.backgroundColor = [UIColor whiteColor];
-//    self.provinceButton.titleLabel.backgroundColor = [UIColor whiteColor];
-//    self.provinceButton.imageView.backgroundColor = [UIColor whiteColor];
-//    self.provinceButton.lzType = LZRelayoutButtonTypeLeft;
-//    self.cityButton.lzType = LZRelayoutButtonTypeLeft;
-//    self.countryButton.lzType = LZRelayoutButtonTypeLeft;
-
 }
 
 - (IBAction)provinceButtonClick:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(didSelector:title:level:)]) {
         [self.delegate didSelector:_provinceCode title:_provinceName level:@"1"];
     }
-//    self.cityCode = nil;
-//    self.cityName = nil;
-//    self.countryName = nil;
-//    self.countryCode = nil;
 }
 
 - (IBAction)cityButtonClick:(UIButton *)sender {
@@ -60,10 +43,6 @@
     }
     if ([self.delegate respondsToSelector:@selector(didSelector:title:level:)]) {
         [self.delegate didSelector:_cityCode title:_cityName level:@"2"];
-//        [sender setTitleColor:NavColor forState:UIControlStateNormal];
-//        [sender setImage:[UIImage imageNamed:@"工程订单_排序on"] forState:UIControlStateNormal];
-//        [self.countryButton setTitleColor:titleLabColor forState:UIControlStateNormal];
-//        [self.countryButton setTitle:@"所有县(区)" forState:UIControlStateNormal];
     }
 }
 
@@ -74,9 +53,6 @@
     }
     if ([self.delegate respondsToSelector:@selector(didSelector:title:level:)]) {
         [self.delegate didSelector:_countryCode title:_countryName level:@"3"];
-//        [sender setTitleColor:NavColor forState:UIControlStateNormal];
-//        [sender setImage:[UIImage imageNamed:@"工程订单_排序on"] forState:UIControlStateNormal];
-
     }
 }
 
@@ -87,20 +63,15 @@
     [self.cityButton setImage:[UIImage imageNamed:@"工程订单_排序off"] forState:UIControlStateNormal];
     [self.cityButton setTitle:@"所有市" forState:UIControlStateNormal];
 
-
     [self.countryButton setTitleColor:titleLabColor forState:UIControlStateNormal];
     [self.countryButton setImage:[UIImage imageNamed:@"工程订单_排序off"] forState:UIControlStateNormal];
     [self.countryButton setTitle:@"所有县(区)" forState:UIControlStateNormal];
-
 }
 
 -(void)setProvinceCode:(NSString *)provinceCode {
     _provinceCode = provinceCode;
     self.cityCode = nil;
-//    self.cityName = nil;
-//    self.countryName = nil;
     self.countryCode = nil;
-
 }
 
 -(void)setCityName:(NSString *)cityName {
@@ -112,9 +83,6 @@
     [self.countryButton setTitleColor:titleLabColor forState:UIControlStateNormal];
     [self.countryButton setImage:[UIImage imageNamed:@"工程订单_排序off"] forState:UIControlStateNormal];
     [self.countryButton setTitle:@"所有县(区)" forState:UIControlStateNormal];
-
-
-
 }
 
 -(void)setCityCode:(NSString *)cityCode {

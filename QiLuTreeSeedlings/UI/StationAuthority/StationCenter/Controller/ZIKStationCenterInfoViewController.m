@@ -11,6 +11,7 @@
 #import "YYModel.h"//类型转换
 #import "RSKImageCropper.h"
 #import "UIImageView+AFNetworking.h"
+#import "MasterInfoModel.h"
 
 @interface ZIKStationCenterInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {

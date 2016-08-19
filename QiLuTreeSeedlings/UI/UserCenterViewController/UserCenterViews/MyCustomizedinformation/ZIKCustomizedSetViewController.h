@@ -7,8 +7,7 @@
 //
 
 #import "ZIKArrowViewController.h"
-#import "ZIKCustomizedModel.h"
-
+@class ZIKCustomizedModel;
 @interface ZIKCustomizedSetViewController : ZIKArrowViewController
 
 - (id)initWithModel:(ZIKCustomizedModel *)model;

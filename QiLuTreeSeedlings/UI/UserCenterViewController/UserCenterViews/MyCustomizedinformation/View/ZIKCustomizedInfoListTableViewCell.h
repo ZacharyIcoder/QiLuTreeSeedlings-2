@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZIKCustomizedInfoListModel.h"
+@class ZIKCustomizedInfoListModel;
 @interface ZIKCustomizedInfoListTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

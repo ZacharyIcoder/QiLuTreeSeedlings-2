@@ -8,6 +8,8 @@
 
 #import "ZIKCustomizedTableViewCell.h"
 #import "UIDefines.h"
+#import "ZIKCustomizedModel.h"
+
 @implementation ZIKCustomizedTableViewCell
 
 - (void)awakeFromNib {
@@ -38,7 +40,6 @@
         self.isSelect = model.isSelect;
         self.selected = model.isSelect;
     }
-
 }
 
 @end

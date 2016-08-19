@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZIKWorkstationSelectViewAboutAddressButton.h"
+@class ZIKWorkstationSelectViewAboutAddressButton;
 @protocol ZIKWorkstationSelectViewDelegate <NSObject>
 @optional
 

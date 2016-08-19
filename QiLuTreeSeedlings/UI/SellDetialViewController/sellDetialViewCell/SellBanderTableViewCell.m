@@ -9,6 +9,9 @@
 #import "SellBanderTableViewCell.h"
 #import "UIDefines.h"
 #import "UIImageView+AFNetworking.h"
+#import "SupplyDetialMode.h"
+#import "HotSellModel.h"
+
 @interface SellBanderTableViewCell ()<UIScrollViewDelegate>
 @property (nonatomic,weak) UIButton *leftBtn;
 @property (nonatomic,weak) UIButton *rightBtn;

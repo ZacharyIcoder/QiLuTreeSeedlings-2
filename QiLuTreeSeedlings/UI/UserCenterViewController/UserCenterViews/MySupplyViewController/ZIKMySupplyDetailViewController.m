@@ -15,6 +15,8 @@
 #import "ZIKSupplyPublishVC.h"
 #import "BigImageViewShowView.h"
 
+#import "ZIKSupplyModel.h"
+
 //新增
 #import "ZIKMySupplyDetailBottomShareTableViewCell.h"//底部分享按钮视图
 //友盟

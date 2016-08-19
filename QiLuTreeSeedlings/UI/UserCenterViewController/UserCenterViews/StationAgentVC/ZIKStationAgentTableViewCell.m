@@ -8,6 +8,8 @@
 
 #import "ZIKStationAgentTableViewCell.h"
 #import "UIDefines.h"
+#import "ZIKStationAgentModel.h"
+
 @implementation ZIKStationAgentTableViewCell
 
 - (void)awakeFromNib {

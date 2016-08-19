@@ -10,6 +10,7 @@
 #import "ZIKSideView.h"
 #import "TreeSpecificationsModel.h"
 #import "FabutiaojiaCell.h"
+#import "ZIKCustomizedModel.h"
 
 #import "HttpClient.h"
 #import "StringAttributeHelper.h"

@@ -81,12 +81,7 @@
 - (void)initData {
     self.ecttiv = 0;
     self.titleMarray = @[@[@"数量",@"上车价",@"有效期"],@[@"苗圃基地",@"产品描述"]];
-        self.nurseryUidMArray = [NSMutableArray array];
-//    if (self.oldnurseryArray) {
-//        for (NSDictionary *dic in self.oldnurseryArray) {
-//            [self.nurseryUidMArray addObject:[dic objectForKey:@"uid"]];
-//        }
-//    }
+    self.nurseryUidMArray = [NSMutableArray array];
 }
 
 - (void)initUI {
@@ -362,8 +357,8 @@
     self.supplyModel.remark = _productDetailTextView.text;
     [self requestSaveSupplyInfo];
 }
-//1. 整形判断
 
+//1. 整形判断
 - (BOOL)isPureInt:(NSString *)string{
     
     NSScanner* scan = [NSScanner scannerWithString:string];
@@ -374,11 +369,7 @@
     
 }
 
-
-
-
 //2.浮点形判断：
-
 - (BOOL)isPureFloat:(NSString *)string{
     
     NSScanner* scan = [NSScanner scannerWithString:string];
