@@ -227,7 +227,7 @@
     UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(5, 0, 40, 40)];
     [view addSubview:imageV];
     [imageV setImage:[UIImage imageNamed:imgeName]];
-    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(-25, 40, 100, 43)];
+    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(-25, 40, 100, 45)];
     titleLab.text=title;
     titleLab.numberOfLines=0;
     [titleLab setTextColor:color];

@@ -308,7 +308,7 @@
 {
     if (indexPath.section==0) {
 
-            return 350;
+            return 365;
 
     }
     if (indexPath.section==1) {
@@ -420,7 +420,7 @@
 //            }else{
 //                height=350;
 //            }
-            SellBanderTableViewCell *cell=[[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 350) andModel:self.model andHotSellModel:self.hotModel];
+            SellBanderTableViewCell *cell=[[SellBanderTableViewCell alloc]initWithFrame:CGRectMake(0, 0, kWidth, 365) andModel:self.model andHotSellModel:self.hotModel];
             cell.delegate=self;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return cell;
