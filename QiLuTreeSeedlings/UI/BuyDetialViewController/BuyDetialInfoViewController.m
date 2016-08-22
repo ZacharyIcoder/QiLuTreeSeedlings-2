@@ -244,13 +244,19 @@ static BOOL isCaiGouSuccess = NO;
                                                 _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
 
                                             } else {
+                                                if (self.model.state != 1) {
                                                 _BuyMessageView =[self laobanViewWithPrice:self.model.buyPrice];
+                                                }
 
                                             }
+
 //                                            _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
                                         }
                                         else {
+                                            if (self.model.state != 1) {
+
                                             _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+                                            }
                                         }
                                         [_messageView removeFromSuperview];
                                         _messageView = nil;
@@ -325,13 +331,16 @@ static BOOL isCaiGouSuccess = NO;
                                     {
                                         // NSLog(@"%@-----%@",self.model.supplybuyUid,APPDELEGATE.userModel.access_id);
                                         if (_BuyMessageView==nil) {
-                                            if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
-                                                _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
-                                            }
-                                            else {
-                                                _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
-                                            }
-                                            [_messageView removeFromSuperview];
+                                                if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
+                                                    _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+                                                }
+                                                else {
+                                                    if (self.model.state != 1) {
+                                                    _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+                                                    }
+                                                }
+
+                                             [_messageView removeFromSuperview];
                                             _messageView = nil;
                                             
                                         }

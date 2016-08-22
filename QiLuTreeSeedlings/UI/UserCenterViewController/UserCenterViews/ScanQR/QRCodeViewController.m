@@ -45,6 +45,7 @@ static const float kReaderViewHeight = 200;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
     if (_kSession) {
         [_kSession stopRunning];
     }

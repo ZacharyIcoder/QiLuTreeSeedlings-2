@@ -402,7 +402,7 @@
 
 -(void)didFinishShareInShakeView:(UMSocialResponseEntity *)response
 {
-    NSLog(@"finish share with response is %@",response);
+    //NSLog(@"finish share with response is %@",response);
 }
 
 @end
