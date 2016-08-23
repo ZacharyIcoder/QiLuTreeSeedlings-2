@@ -552,7 +552,6 @@
 		FC50B16F1CAE243F0022A24C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1561CAE243F0022A24C /* TencentOpenAPI.framework */; };
 		FC50B1701CAE243F0022A24C /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC50B1571CAE243F0022A24C /* TencentOpenApi_IOS_Bundle.bundle */; };
 		FC50B1711CAE243F0022A24C /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B15A1CAE243F0022A24C /* libSocialWechat.a */; };
-		FC50B1721CAE24400022A24C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B15B1CAE243F0022A24C /* libWeChatSDK.a */; };
 		FC50B1741CAE247E0022A24C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1731CAE247E0022A24C /* Security.framework */; };
 		FC50B1761CAE249A0022A24C /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1751CAE249A0022A24C /* libiconv.tbd */; };
 		FC50B1781CAE24AB0022A24C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC50B1771CAE24AB0022A24C /* CoreGraphics.framework */; };
@@ -783,6 +782,7 @@
 		FCB1BCDC1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB1BCDA1D1E4B4000437E40 /* ZIKStationOrderQuoteViewController.xib */; };
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
 		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
+		FCC160361D6AD6140030C4CB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC160321D6AD6140030C4CB /* libWeChatSDK.a */; };
 		FCC5719C1D2B5713004AA096 /* ZIKStationShowHonorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC5719B1D2B5713004AA096 /* ZIKStationShowHonorView.m */; };
 		FCC5719E1D2B5725004AA096 /* ZIKStationShowHonorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC5719D1D2B5725004AA096 /* ZIKStationShowHonorView.xib */; };
 		FCC571A21D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC571A11D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m */; };
@@ -1663,11 +1663,7 @@
 		FC50B1571CAE243F0022A24C /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		FC50B1581CAE243F0022A24C /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
 		FC50B15A1CAE243F0022A24C /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
-		FC50B15B1CAE243F0022A24C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		FC50B15C1CAE243F0022A24C /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
-		FC50B15D1CAE243F0022A24C /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		FC50B15E1CAE243F0022A24C /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		FC50B15F1CAE243F0022A24C /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		FC50B1731CAE247E0022A24C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FC50B1751CAE249A0022A24C /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		FC50B1771CAE24AB0022A24C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -2102,6 +2098,10 @@
 		FCB8A4771CCF0F0C005925E1 /* MyNuserListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNuserListTableViewCell.h; sourceTree = "<group>"; };
 		FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNuserListTableViewCell.m; sourceTree = "<group>"; };
 		FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNuserListTableViewCell.xib; sourceTree = "<group>"; };
+		FCC160321D6AD6140030C4CB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		FCC160331D6AD6140030C4CB /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		FCC160341D6AD6140030C4CB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		FCC160351D6AD6140030C4CB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		FCC5719A1D2B5713004AA096 /* ZIKStationShowHonorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationShowHonorView.h; sourceTree = "<group>"; };
 		FCC5719B1D2B5713004AA096 /* ZIKStationShowHonorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationShowHonorView.m; sourceTree = "<group>"; };
 		FCC5719D1D2B5725004AA096 /* ZIKStationShowHonorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationShowHonorView.xib; sourceTree = "<group>"; };
@@ -2189,9 +2189,9 @@
 				FC50B3531CAE68ED0022A24C /* AlipaySDK.framework in Frameworks */,
 				FCE458C01CE6D6AA00CBF802 /* UMMobClick.framework in Frameworks */,
 				EA741A121C8FEA5200F54478 /* CoreBluetooth.framework in Frameworks */,
-				FC50B1721CAE24400022A24C /* libWeChatSDK.a in Frameworks */,
 				FC50B3431CAE4C4A0022A24C /* libssl.a in Frameworks */,
 				EA741A101C8FEA4700F54478 /* CoreLocation.framework in Frameworks */,
+				FCC160361D6AD6140030C4CB /* libWeChatSDK.a in Frameworks */,
 				EA741A0E1C8FEA3B00F54478 /* AVFoundation.framework in Frameworks */,
 				FC50B1611CAE243F0022A24C /* libUMSocial_Sdk_5.0.1.a in Frameworks */,
 				EA741A0C1C8FEA3300F54478 /* CoreTelephony.framework in Frameworks */,
@@ -4259,12 +4259,12 @@
 		FC50B1591CAE243F0022A24C /* Wechat */ = {
 			isa = PBXGroup;
 			children = (
+				FCC160321D6AD6140030C4CB /* libWeChatSDK.a */,
+				FCC160331D6AD6140030C4CB /* WechatAuthSDK.h */,
+				FCC160341D6AD6140030C4CB /* WXApi.h */,
+				FCC160351D6AD6140030C4CB /* WXApiObject.h */,
 				FC50B15A1CAE243F0022A24C /* libSocialWechat.a */,
-				FC50B15B1CAE243F0022A24C /* libWeChatSDK.a */,
 				FC50B15C1CAE243F0022A24C /* UMSocialWechatHandler.h */,
-				FC50B15D1CAE243F0022A24C /* WechatAuthSDK.h */,
-				FC50B15E1CAE243F0022A24C /* WXApi.h */,
-				FC50B15F1CAE243F0022A24C /* WXApiObject.h */,
 			);
 			path = Wechat;
 			sourceTree = "<group>";
