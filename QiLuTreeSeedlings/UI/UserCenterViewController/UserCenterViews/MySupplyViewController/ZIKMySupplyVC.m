@@ -47,7 +47,7 @@ typedef NS_ENUM(NSInteger, SupplyState) {
     SupplyStateNoThrough = 5 //过期
 };
 
-@interface ZIKMySupplyVC ()<UITableViewDelegate,UITableViewDataSource/*,UIAlertViewDelegate*/>
+@interface ZIKMySupplyVC ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
 @property (nonatomic, strong) NSMutableArray *supplyInfoMArr; //供应信息数组
 @property (nonatomic, assign) BOOL           isCanPublish;    //是否能够发布
@@ -592,48 +592,61 @@ typedef NS_ENUM(NSInteger, SupplyState) {
         [ToastView showToast:@"请选择要删除的选项" withOriginY:200 withSuperView:self.view];
         return;
     }
-    __weak typeof(_removeArray) removeArr = _removeArray;
-    __weak __typeof(self) blockSelf = self;
-
-    __block NSString *uidString = @"";
-    [_removeArray enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
-    }];
-    NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
-        if ([responseObject[@"success"] integerValue] == 1) {
-
-            [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([blockSelf.supplyInfoMArr containsObject:model]) {
-                    [blockSelf.supplyInfoMArr removeObject:model];
-                }
-            }];
-            [blockSelf.supplyTableView reloadData];
-            if (blockSelf.supplyInfoMArr.count == 0) {
-                _bottomcell.hidden = YES;
-                self.supplyTableView.editing = NO;
-                self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);
-                [self requestData];
-            }
-            if (_removeArray.count > 0) {
-                [_removeArray removeAllObjects];
-            }
-            if (_deleteIndexArr.count > 0) {
-                _deleteIndexArr = nil;
-            }
-            _bottomcell.count = 0;
-            [self updateBottomDeleteCellView];
-            [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
-        }
-        else {
-            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
-
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定删除所选内容？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 300;
+    alert.delegate = self;
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //NSLog(@"%ld",(long)buttonIndex);
+    if(alertView.tag == 300)//是否退出编辑
+    {
+        if (buttonIndex == 1) {
+            __weak typeof(_removeArray) removeArr = _removeArray;
+            __weak __typeof(self) blockSelf = self;
+
+            __block NSString *uidString = @"";
+            [_removeArray enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
+            }];
+            NSString *uids = [uidString substringFromIndex:1];
+            [HTTPCLIENT deleteMySupplyInfo:uids Success:^(id responseObject) {
+                if ([responseObject[@"success"] integerValue] == 1) {
+
+                    [removeArr enumerateObjectsUsingBlock:^(ZIKSupplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if ([blockSelf.supplyInfoMArr containsObject:model]) {
+                            [blockSelf.supplyInfoMArr removeObject:model];
+                        }
+                    }];
+                    [blockSelf.supplyTableView reloadData];
+                    if (blockSelf.supplyInfoMArr.count == 0) {
+                        _bottomcell.hidden = YES;
+                        self.supplyTableView.editing = NO;
+                        self.supplyTableView.frame = CGRectMake(0, self.supplyTableView.frame.origin.y, Width, Height-64-50);
+                        [self requestData];
+                    }
+                    if (_removeArray.count > 0) {
+                        [_removeArray removeAllObjects];
+                    }
+                    if (_deleteIndexArr.count > 0) {
+                        _deleteIndexArr = nil;
+                    }
+                    _bottomcell.count = 0;
+                    [self updateBottomDeleteCellView];
+                    [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
+                }
+                else {
+                    [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+    }
+}
+
 
 #pragma mark - 选择不同状态按钮事件
 - (void)actionMenu:(UIButton *)button {
@@ -763,7 +776,6 @@ typedef NS_ENUM(NSInteger, SupplyState) {
 {
     //NSLog(@"commitEditingStyle");
 }
-
 
 - (void)createEmptyUI {
     if (!_emptyUI) {
