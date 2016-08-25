@@ -42,8 +42,8 @@
 @property (nonatomic, strong) NSMutableArray *guige1Ary;
 @property (nonatomic, strong) GuiGeView      *guigeView;
 @property (nonatomic, strong) UIButton       *areaBtn;
-@property (nonatomic, strong  ) NSString       *AreaProvince;
-@property (nonatomic, strong  ) NSString       *AreaCity;
+@property (nonatomic, strong) NSString       *AreaProvince;
+@property (nonatomic, strong) NSString       *AreaCity;
 @property (nonatomic, copy  ) NSString       *AreaTown;
 @property (nonatomic, copy  ) NSString       *AreaCounty;
 
@@ -60,8 +60,7 @@
     // Do any additional setup after loading the view.
     if (self.model) {
         self.vcTitle = @"定制设置修改";
-    }
-    else {
+    } else {
         self.vcTitle = @"定制设置";
     }
     self.cellAry = [NSMutableArray array];
@@ -111,11 +110,7 @@
 
     UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 44, kWidth*0.6, 44)];
     [cityBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
-
-//    cityBtn.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     cityBtn. contentHorizontalAlignment =UIControlContentHorizontalAlignmentLeft;
-
-//    cityBtn.backgroundColor = [UIColor grayColor];
     [cityBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [cityBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [cityBtn setTitle:@"请选择地区" forState:UIControlStateNormal];
@@ -133,7 +128,6 @@
     [nameView addSubview:arrowBtn];
     [arrowBtn addTarget:self action:@selector(cityBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [arrowBtn setImage:[UIImage imageNamed:@"moreRow"] forState:UIControlStateNormal];
-
 
     priceView = [[UIView alloc] init];
     priceView.backgroundColor = [UIColor whiteColor];
@@ -157,7 +151,6 @@
      if (self.model) {
         priceView.hidden = NO;
         NSString *priceStr = [NSString stringWithFormat:@"价格 ¥%.2f/条",self.model.price.floatValue];
-         // NSMutableString *
          FontAttribute *fullFont = [FontAttribute new];
          fullFont.font = [UIFont systemFontOfSize:15.0f];
          fullFont.effectRange  = NSMakeRange(0, priceStr.length);
@@ -196,7 +189,6 @@
         self.nameBtn.selected = YES;
         [self getEditingMessage];
     }
-
 }
 
 - (void)cityBtnAction:(UIButton *)button {
@@ -206,7 +198,6 @@
     if (self.nameTextField) {
         [self.nameTextField resignFirstResponder];
     }
-
 }
 
 -(void)getEditingMessage
@@ -241,27 +232,6 @@
         [self.guigeView removeFromSuperview];
         self.guigeView=nil;
     }
-
-//    for (int i=0; i<guigeAry.count; i++) {
-//        NSDictionary *dic=guigeAry[i];
-//        if ([[dic objectForKey:@"level"] integerValue]==0) {
-//            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-//            [self.guige1Ary addObject:guigeModel];
-//        }
-//        if ([[dic objectForKey:@"level"] integerValue]==1) {
-//            GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-//            //[selectAry addObject:guigeModel];
-//            for (int j=0; j<self.guige1Ary.count; j++) {
-//                GuiGeModel *guigeModel1=self.guige1Ary[j];
-//                for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
-//                    Propers *proper=guigeModel1.propertyLists[k];
-//                    if ([proper.relation isEqualToString:guigeModel.uid]) {
-//                        proper.guanlianModel = guigeModel;
-//                    }
-//                }
-//            }
-//        }
-//    }
     for (int i=0; i<guigeAry.count; i++) {
         NSDictionary *dic=guigeAry[i];
         if ([[dic objectForKey:@"level"] integerValue]==0) {
@@ -350,27 +320,6 @@
                 self.productUid = [dic objectForKey:@"productUid"];
                 button.selected = YES;
                 NSArray *guigeAry=[dic objectForKey:@"list"];
-                // NSMutableArray *selectAry=[NSMutableArray array];
-//                for (int i=0; i<guigeAry.count; i++) {
-//                    NSDictionary *dic=guigeAry[i];
-//                    if ([[dic objectForKey:@"level"] integerValue]==0) {
-//                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-//                        [self.guige1Ary addObject:guigeModel];
-//                    }
-//                    if ([[dic objectForKey:@"level"] integerValue]==1) {
-//                        GuiGeModel *guigeModel=[GuiGeModel creatGuiGeModelWithDic:dic];
-//                        //[selectAry addObject:guigeModel];
-//                        for (int j=0; j<self.guige1Ary.count; j++) {
-//                            GuiGeModel *guigeModel1=self.guige1Ary[j];
-//                            for (int k=0 ; k<guigeModel1.propertyLists.count; k++) {
-//                                Propers *proper=guigeModel1.propertyLists[k];
-//                                if ([proper.relation isEqualToString:guigeModel.uid]) {
-//                                    proper.guanlianModel=guigeModel;
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
                 for (int i=0; i<guigeAry.count; i++) {
                     NSDictionary *dic=guigeAry[i];
                     if ([[dic objectForKey:@"level"] integerValue]==0) {
@@ -453,8 +402,6 @@
     self.sideView.selectView.type = @"2";
     self.sideView.pleaseSelectLabel.text = @"请选择苗木";
     self.sideView.selectView.uidDelegate = self;
-    //    self.selectView = self.sideView.selectView;
-    //    self.selectView.delegate = self;
     self.sideView.dataArray = self.productTypeDataMArray;
     self.sideView.backgroundColor = [UIColor clearColor];
     [UIView animateWithDuration:.3 animations:^{
@@ -586,20 +533,16 @@
     if (sheng.code) {
         [namestr appendString:sheng.cityName];
         self.AreaProvince=sheng.code;
-    }else
-    {
+    } else {
         
         self.AreaProvince=nil;
         [ToastView showTopToast:@"请选择精确地址"];
         return;
-
     }
-
     if (shi.code) {
         [namestr appendString:shi.cityName];
         self.AreaCity=shi.code;
-    }else
-    {
+    } else {
 
         self.AreaProvince = nil;
         self.AreaCity=nil;
@@ -610,12 +553,10 @@
     if (namestr.length>0) {
         [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
-    }else{
+    } else {
         [self.areaBtn setTitle:@"不限" forState:UIControlStateNormal];
         [self.areaBtn.titleLabel sizeToFit];
-
     }
-
 }
 
 
