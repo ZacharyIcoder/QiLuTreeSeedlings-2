@@ -7,9 +7,11 @@
 //
 
 #import "ZIKStationTabBarViewController.h"
-#import "ZIKOrderViewController.h"        //工程订单
-#import "ZIKWorkstationViewController.h"  //工作站
-#import "ZIKMyOfferViewController.h"      //我的报价
+
+#import "ZIKOrderViewController.h"             //工程订单
+#import "ZIKStationBuyViewController.h"        //站长求购
+#import "ZIKWorkstationViewController.h"       //工作站
+#import "ZIKMyOfferViewController.h"           //我的报价
 #import "ZIKStationCenterTableViewController.h"//站长中心
 
 
@@ -35,6 +37,18 @@
     orderVC.navigationController.navigationBar.hidden = YES;
     orderVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程订单off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工程订单on(1)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    //站长求购
+    ZIKStationBuyViewController *buyVC = [[ZIKStationBuyViewController alloc] initWithNibName:@"ZIKStationBuyViewController" bundle:nil];
+    UINavigationController *buyNav = [[UINavigationController alloc] initWithRootViewController:buyVC];
+    buyNav.viewControllers = @[buyVC];
+    buyNav.tabBarItem.enabled = YES;
+    buyVC.vcTitle = @"站长求购";
+    buyVC.tabBarItem.title = @"站长求购";
+    buyVC.navigationController.navigationBar.hidden = YES;
+    buyVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工作站off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    buyVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工作站on(2)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
 
     //工作站
     ZIKWorkstationViewController *workVC = [[ZIKWorkstationViewController alloc] init];
@@ -71,7 +85,7 @@
     stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-站长中心on(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
-    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:orderNav,workNav,offerNav,stationNav,nil];
+    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:orderNav,buyNav,workNav,offerNav,stationNav,nil];
     self.viewControllers = list;
 
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];

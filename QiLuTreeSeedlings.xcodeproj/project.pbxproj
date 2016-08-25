@@ -755,6 +755,8 @@
 		FC7D66D81CF4277500DF4FEC /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7D66D71CF4277500DF4FEC /* 分享.png */; };
 		FC7EAFEE1D13C63200F4043D /* ico_顶部搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */; };
 		FC7ED2411D054FD70010A8E5 /* downImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7ED2401D054FD70010A8E5 /* downImage.png */; };
+		FC8047A21D6ED7BB004191A5 /* ZIKStationBuyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8047A01D6ED7BB004191A5 /* ZIKStationBuyViewController.xib */; };
+		FC8047A31D6EE21E004191A5 /* ZIKStationBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC80479F1D6ED7BB004191A5 /* ZIKStationBuyViewController.m */; };
 		FC828EA71D38921B0047731D /* 标签-我的报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC828EA61D38921B0047731D /* 标签-我的报价.png */; };
 		FC828EAA1D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */; };
 		FC830FA81D62A5C2001E0CC6 /* ff_QRCodeScanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC830F9D1D62A5C2001E0CC6 /* ff_QRCodeScanLine@2x.png */; };
@@ -2062,6 +2064,9 @@
 		FC7D66D71CF4277500DF4FEC /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
 		FC7EAFED1D13C63200F4043D /* ico_顶部搜索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_顶部搜索.png"; sourceTree = "<group>"; };
 		FC7ED2401D054FD70010A8E5 /* downImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downImage.png; sourceTree = "<group>"; };
+		FC80479E1D6ED7BB004191A5 /* ZIKStationBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationBuyViewController.h; sourceTree = "<group>"; };
+		FC80479F1D6ED7BB004191A5 /* ZIKStationBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationBuyViewController.m; sourceTree = "<group>"; };
+		FC8047A01D6ED7BB004191A5 /* ZIKStationBuyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationBuyViewController.xib; sourceTree = "<group>"; };
 		FC828EA61D38921B0047731D /* 标签-我的报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标签-我的报价.png"; sourceTree = "<group>"; };
 		FC828EA81D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKWorkstationSelectViewAboutAddressButton.h; sourceTree = "<group>"; };
 		FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKWorkstationSelectViewAboutAddressButton.m; sourceTree = "<group>"; };
@@ -3803,6 +3808,7 @@
 		FC22761B1D177C9F0037B131 /* StationAuthority */ = {
 			isa = PBXGroup;
 			children = (
+				FC80479A1D6ED6C4004191A5 /* StationBuy */,
 				FC22761C1D177C9F0037B131 /* Images */,
 				FC2276251D177C9F0037B131 /* MyOffer */,
 				FC22762E1D177C9F0037B131 /* StationCenter */,
@@ -4929,6 +4935,40 @@
 			path = "银联";
 			sourceTree = "<group>";
 		};
+		FC80479A1D6ED6C4004191A5 /* StationBuy */ = {
+			isa = PBXGroup;
+			children = (
+				FC80479B1D6ED6C4004191A5 /* Controller */,
+				FC80479C1D6ED6C4004191A5 /* Model */,
+				FC80479D1D6ED6C4004191A5 /* View */,
+			);
+			path = StationBuy;
+			sourceTree = "<group>";
+		};
+		FC80479B1D6ED6C4004191A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FC80479E1D6ED7BB004191A5 /* ZIKStationBuyViewController.h */,
+				FC80479F1D6ED7BB004191A5 /* ZIKStationBuyViewController.m */,
+				FC8047A01D6ED7BB004191A5 /* ZIKStationBuyViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FC80479C1D6ED6C4004191A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC80479D1D6ED6C4004191A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FC830F9B1D62A5B2001E0CC6 /* ScanQR */ = {
 			isa = PBXGroup;
 			children = (
@@ -5579,6 +5619,7 @@
 				FC523FF41D26137C002C001F /* ZIKStationChangeInfoViewController.xib in Resources */,
 				FC4A51881D0E63650060587B /* ico_排序默认.png in Resources */,
 				EA08F79B1D18DBE700471C33 /* yYLDGZZRongYaoTableCell.xib in Resources */,
+				FC8047A21D6ED7BB004191A5 /* ZIKStationBuyViewController.xib in Resources */,
 				EA696FB01CDD7A6C001F037E /* MyMessage@2x.png in Resources */,
 				FC29EE791D530DC000F2E4B6 /* 底部菜单-工作站off(1).png in Resources */,
 				FC6FED8A1CAD103F000E2CA5 /* 银联支付.png in Resources */,
@@ -5989,6 +6030,7 @@
 				FC0CF64C1D30C5140074194D /* ZIKMyShopViewController.m in Sources */,
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
+				FC8047A31D6EE21E004191A5 /* ZIKStationBuyViewController.m in Sources */,
 				FC56129D1D0C092F00E5743B /* ZIKRightBtnSringViewController.m in Sources */,
 				FC2276761D177C9F0037B131 /* ZIKHelpfulHintsViewController.m in Sources */,
 				FC5337AA1CBDF885008BFB11 /* ZIKStationAgentViewController.m in Sources */,
