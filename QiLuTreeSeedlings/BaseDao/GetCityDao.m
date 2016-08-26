@@ -72,7 +72,7 @@
     {
         str = [frs stringForColumn:@"parent_code"];
         NSLog(@"%@",[frs stringForColumn:@"name"]);
-        NSLog(@"%@",frs);
+        //NSLog(@"%@",frs);
         NSLog(@"%@",[frs stringForColumn:@"parent_code"]);
     }
     return str;

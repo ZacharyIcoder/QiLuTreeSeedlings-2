@@ -172,6 +172,7 @@
 		EA552E861D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA552E841D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m */; };
 		EA552E871D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA552E851D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.xib */; };
 		EA552E891D0D472600FB88A0 /* ico_橙色收起.png in Resources */ = {isa = PBXBuildFile; fileRef = EA552E881D0D472600FB88A0 /* ico_橙色收起.png */; };
+		EA565EBB1D6FCDE80093EFA0 /* YLDPickProvinceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA565EBA1D6FCDE80093EFA0 /* YLDPickProvinceViewController.m */; };
 		EA5A08171D14E648005000E9 /* YLDHeZuoDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A08161D14E648005000E9 /* YLDHeZuoDetialViewController.m */; };
 		EA5A081F1D14EEFD005000E9 /* YLDBaoJiaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A081D1D14EEFD005000E9 /* YLDBaoJiaCell.m */; };
 		EA5A08201D14EEFD005000E9 /* YLDBaoJiaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5A081E1D14EEFD005000E9 /* YLDBaoJiaCell.xib */; };
@@ -1089,6 +1090,8 @@
 		EA552E841D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMyDingdanTableViewCell.m; sourceTree = "<group>"; };
 		EA552E851D0D42B200FB88A0 /* YLDMyDingdanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMyDingdanTableViewCell.xib; sourceTree = "<group>"; };
 		EA552E881D0D472600FB88A0 /* ico_橙色收起.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_橙色收起.png"; sourceTree = "<group>"; };
+		EA565EB91D6FCDE80093EFA0 /* YLDPickProvinceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDPickProvinceViewController.h; sourceTree = "<group>"; };
+		EA565EBA1D6FCDE80093EFA0 /* YLDPickProvinceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDPickProvinceViewController.m; sourceTree = "<group>"; };
 		EA5A08151D14E648005000E9 /* YLDHeZuoDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDHeZuoDetialViewController.h; sourceTree = "<group>"; };
 		EA5A08161D14E648005000E9 /* YLDHeZuoDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDHeZuoDetialViewController.m; sourceTree = "<group>"; };
 		EA5A081C1D14EEFD005000E9 /* YLDBaoJiaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDBaoJiaCell.h; sourceTree = "<group>"; };
@@ -2972,6 +2975,15 @@
 			path = MyIntegralViewController;
 			sourceTree = "<group>";
 		};
+		EA565EB81D6FCDC70093EFA0 /* YLDPickProvinceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA565EB91D6FCDE80093EFA0 /* YLDPickProvinceViewController.h */,
+				EA565EBA1D6FCDE80093EFA0 /* YLDPickProvinceViewController.m */,
+			);
+			path = YLDPickProvinceViewController;
+			sourceTree = "<group>";
+		};
 		EA5A08141D14E629005000E9 /* YLDhezuoxiangqingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3092,6 +3104,7 @@
 		EA5E6E341CFFC9A5003D357C /* FaBuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA565EB81D6FCDC70093EFA0 /* YLDPickProvinceViewController */,
 				EAFB8FDE1D1A206200FCF88B /* YLDPiLiangBianJiViewController */,
 				EA5E6E3D1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.h */,
 				EA5E6E3E1CFFCA2A003D357C /* YLDFaBuGongChengDingDanViewController.m */,
@@ -5633,6 +5646,7 @@
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
 				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
 				EA9FE6DF1D2F733D00110A71 /* YLDZZsuppleyListViewController.m in Sources */,
+				EA565EBB1D6FCDE80093EFA0 /* YLDPickProvinceViewController.m in Sources */,
 				EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
 				EA5E6E3B1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m in Sources */,

@@ -30,7 +30,20 @@
         self.selectImageView.hidden = YES;
     }
 }
-
+-(void)setModel:(CityModel *)model
+{
+    
+    _model=model;
+    self.nameLable.text  =model.cityName;
+    if (model.select) {
+        self.nameLable.textColor = NavColor;
+        self.selectImageView.hidden = NO;
+    }
+    else {
+        self.nameLable.textColor = titleLabColor;
+        self.selectImageView.hidden = YES;
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

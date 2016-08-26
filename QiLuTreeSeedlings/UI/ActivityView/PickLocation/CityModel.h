@@ -14,6 +14,7 @@
 @property (nonatomic,  strong) NSString *code;
 @property (nonatomic,  strong) NSString *parent_code;
 @property (nonatomic,  strong) NSString *level;
+@property (nonatomic) BOOL select;
 +(CityModel *)creatCtiyModelByDic:(NSDictionary *)dic;
 +(NSMutableArray *)creatCityAryByAry:(NSArray *)ary;
 @end

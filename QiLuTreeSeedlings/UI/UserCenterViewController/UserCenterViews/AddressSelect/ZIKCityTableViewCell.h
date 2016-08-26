@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityModel.h"
 @interface ZIKCityTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
 @property (nonatomic) BOOL isSelect;
 @property (nonatomic) NSDictionary  *city;
+@property (nonatomic)CityModel *model;
 @end
