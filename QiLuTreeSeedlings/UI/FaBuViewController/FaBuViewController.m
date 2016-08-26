@@ -117,7 +117,7 @@
 {
     if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        [ToastView showTopToast:@"您还没有供应发布权限,请先完善苗圃信息"];
+        [ToastView showTopToast:@"请先完善您的苗圃信息"];
         NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]init];
         [self.navigationController pushViewController:nuseryDetialVC animated:YES];
         return;
@@ -130,7 +130,7 @@
    
     if (APPDELEGATE.isCanPublishBuy==NO)
     {
-        [ToastView showTopToast:@"您还没有求购发布权限,请先完善苗圃信息"];
+        [ToastView showTopToast:@"请先完善您的苗圃信息"];
         NuseryDetialViewController *nuseryDetialVC=[[NuseryDetialViewController alloc]init];
         [self.navigationController pushViewController:nuseryDetialVC animated:YES];
         return;

@@ -1223,6 +1223,22 @@ failure:(void (^)(NSError *error))failure;
 - (void)wrokstationPurchasePushBuy:(NSString *)recordUid
                            Success:(void (^)(id responseObject))success
                            failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长求购 -----------
+/**
+ *  站长求购
+ *
+ *  @param pageSize   每页显示条数，（默认15条）
+ *  @param page       当前页：默认为1
+ *  @param searchTime 检索时间，当前页的最后一条数据的searchTime，不传时，默认是第一页
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)workstationBuyWithPageSize:(NSString *)pageSize
+                              page:(NSString *)page
+                        searchTime:(NSString *)searchTime
+                           Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
+
 
 
 @end

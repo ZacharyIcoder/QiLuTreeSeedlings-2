@@ -12,7 +12,7 @@
 #import "YLDMyMessageModel.h"
 #import "YLDMyMessageTableViewCell.h"
 #import "ZIKBottomDeleteTableViewCell.h"
-@interface MyMessageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MyMessageViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     ZIKBottomDeleteTableViewCell *bottomcell;
     NSMutableArray *_removeArray;
@@ -33,6 +33,7 @@
 {
     [self.tableView removeObserver:self forKeyPath:@"editing"];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"通知消息";
@@ -71,6 +72,7 @@
 
    // Do any additional setup after loading the view.
 }
+
 // 显示删除按钮
 - (void)deleteCell {
     if (self.dataAry.count == 0) {
@@ -94,7 +96,6 @@
         }
         [self totalCount];
     }
-    
 }
 
 //全选按钮
@@ -125,10 +126,10 @@
         for (int i=0; i<self.dataAry.count; i++) {
              [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] animated:YES];
         }
-        
     }
     [self totalCount];
 }
+
 - (void)totalCount {
     bottomcell.count = _removeArray.count;
     bottomcell.isAllSelect = NO;
@@ -136,46 +137,57 @@
         bottomcell.isAllSelect = YES;
     }
 }
+
 //删除按钮action
 - (void)deleteButtonClick {
-    
     if (_removeArray.count<=0) {
         [ToastView showTopToast:@"您未选择删除数据"];
         return;
     }
-    
-    __block NSString *uidString = @"";
-    [_removeArray enumerateObjectsUsingBlock:^(YLDMyMessageModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
-    }];
-    NSString *uids = [uidString substringFromIndex:1];
-    [HTTPCLIENT myMessageDeleteWithUid:uids Success:^(id responseObject) {
-        if ([responseObject[@"success"] integerValue] == 1) {
-            [ToastView showTopToast:@"删除成功"];
-            
-            [_CanDelateAry removeAllObjects];
-            [_removeArray removeAllObjects];
-            [self totalCount];
-            _throughSelectIndexArr=nil;
-            bottomcell.hidden = YES;
-            self.tableView.editing = NO;
-            self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
-            __weak typeof(self) weakSelf = self;//解决循环引用的问题
-            [self.tableView addHeaderWithCallback:^{//添加刷新控件
-                weakSelf.pageCount=1;
-                [weakSelf getDataList];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定删除所选内容？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 300;
+    alert.delegate = self;
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //NSLog(@"%ld",(long)buttonIndex);
+    if(alertView.tag == 300)//是否退出编辑
+    {
+        if (buttonIndex == 1) {
+            __block NSString *uidString = @"";
+            [_removeArray enumerateObjectsUsingBlock:^(YLDMyMessageModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.uid]];
             }];
-            [self.tableView headerBeginRefreshing];
-           
-            
+            NSString *uids = [uidString substringFromIndex:1];
+            [HTTPCLIENT myMessageDeleteWithUid:uids Success:^(id responseObject) {
+                if ([responseObject[@"success"] integerValue] == 1) {
+                    [ToastView showTopToast:@"删除成功"];
+
+                    [_CanDelateAry removeAllObjects];
+                    [_removeArray removeAllObjects];
+                    [self totalCount];
+                    _throughSelectIndexArr=nil;
+                    bottomcell.hidden = YES;
+                    self.tableView.editing = NO;
+                    self.tableView.frame = CGRectMake(0, 64, kWidth, kHeight-64);
+                    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+                    [self.tableView addHeaderWithCallback:^{//添加刷新控件
+                        weakSelf.pageCount=1;
+                        [weakSelf getDataList];
+                    }];
+                    [self.tableView headerBeginRefreshing];
+                    
+                }
+                else {
+                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
         }
-        else {
-            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
-    
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -250,14 +262,17 @@
         [self.tableView footerEndRefreshing];
     }];
 }
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataAry.count;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     YLDMyMessageTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDMyMessageTableViewCell"];
     if (!cell) {
@@ -267,10 +282,12 @@
     cell.model=model;
     return cell;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 10;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (section==self.selectNum) {
@@ -280,6 +297,7 @@
     }
     return 0.01;
 }
+
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view=nil;
@@ -306,6 +324,7 @@
     }
     return view;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 判断编辑状态,必须要写
@@ -354,8 +373,8 @@
     _selectNum=indexPath.section;
     NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:indexPath.section];
     [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-  
 }
+
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YLDMyMessageModel *model=self.dataAry[indexPath.section];
@@ -370,12 +389,14 @@
         [self totalCount];
     }
 }
+
 #pragma mark - 可选方法实现
 // 设置删除按钮标题
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return @"Delete";
 }
+
 // 设置行是否可编辑
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -388,6 +409,7 @@
     }
     
 }
+
 // 删除数据风格
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -403,6 +425,7 @@
                                         context:nil];
     return rect.size.height;
 }
+
 -(void)backBtnAction:(UIButton *)sender
 {
     if (self.tableView.editing) {
@@ -423,19 +446,11 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

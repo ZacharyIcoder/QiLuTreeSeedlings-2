@@ -22,7 +22,7 @@
 
 //#import "ZIKMyCustomizedInfoViewController.h"
 
-@interface ZIKHaveReadInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ZIKHaveReadInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (nonatomic, strong) UITableView    *readVC;      //已读信息列表
 @property (nonatomic, strong) NSMutableArray *readDataMArr;//已读信息数据Marr
@@ -166,57 +166,127 @@
         [ToastView showToast:@"请选择要删除的选项" withOriginY:200 withSuperView:self.view];
         return;
     }
-    __weak typeof(_removeArray) removeArr = _removeArray;
-    __weak __typeof(self) blockSelf = self;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定删除所选内容？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    alert.tag = 300;
+    alert.delegate = self;
+////
+//    if (_removeArray.count  == 0) {
+//        [ToastView showToast:@"请选择要删除的选项" withOriginY:200 withSuperView:self.view];
+//        return;
+//    }
+//    __weak typeof(_removeArray) removeArr = _removeArray;
+//    __weak __typeof(self) blockSelf = self;
+//
+//    __block NSString *uidString = @"";
+//    [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedInfoListModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+//        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.mesUid]];
+//    }];
+//    NSString *uids = [uidString substringFromIndex:1];
+//    NSInteger customizedType = (NSInteger)self.infoType;
+//    [HTTPCLIENT deleterecordWithIds:uids infoType:customizedType Success:^(id responseObject) {
+//        //NSLog(@"%@",responseObject);
+//        if ([responseObject[@"success"] integerValue] == 1) {
+//
+//            [removeArr enumerateObjectsUsingBlock:^(ZIKCustomizedInfoListModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+//                if ([blockSelf.readDataMArr containsObject:model]) {
+//                    [blockSelf.readDataMArr removeObject:model];
+//                }
+//            }];
+//            [blockSelf.readVC reloadData];
+//            if (blockSelf.readDataMArr.count == 0) {
+//                _bottomcell.hidden  = YES;
+//                self.readVC.editing = NO;
+//                self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);
+//                [self requestData];
+//            }
+//            if (_removeArray.count > 0) {
+//                [_removeArray removeAllObjects];
+//            }
+//            if (_deleteIndexArr.count > 0) {
+//                _deleteIndexArr = nil;
+//            }
+//            _bottomcell.count  = 0;
+//            _bottomcell.hidden = YES;
+//            //[self updateBottomDeleteCellView];
+//            [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
+//            _bottomcell.hidden  = YES;
+//            self.readVC.editing = NO;
+//            self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);//更改tableview 的frame
+//            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+//            [self.readVC addHeaderWithCallback:^{//添加刷新控件
+//                [weakSelf requestHaveReadList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+//            }];
+//
+//        }
+//        else {
+//            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
+//        }
+//    } failure:^(NSError *error) {
+//    }];
 
-    __block NSString *uidString = @"";
-    [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedInfoListModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.mesUid]];
-    }];
-    NSString *uids = [uidString substringFromIndex:1];
-    NSInteger customizedType = (NSInteger)self.infoType;
-    [HTTPCLIENT deleterecordWithIds:uids infoType:customizedType Success:^(id responseObject) {
-        //NSLog(@"%@",responseObject);
-        if ([responseObject[@"success"] integerValue] == 1) {
-
-            [removeArr enumerateObjectsUsingBlock:^(ZIKCustomizedInfoListModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([blockSelf.readDataMArr containsObject:model]) {
-                    [blockSelf.readDataMArr removeObject:model];
-                }
-            }];
-            [blockSelf.readVC reloadData];
-            if (blockSelf.readDataMArr.count == 0) {
-                _bottomcell.hidden  = YES;
-                self.readVC.editing = NO;
-                self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);
-                [self requestData];
-            }
-            if (_removeArray.count > 0) {
-                [_removeArray removeAllObjects];
-            }
-            if (_deleteIndexArr.count > 0) {
-                _deleteIndexArr = nil;
-            }
-            _bottomcell.count  = 0;
-            _bottomcell.hidden = YES;
-            //[self updateBottomDeleteCellView];
-            [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
-            _bottomcell.hidden  = YES;
-            self.readVC.editing = NO;
-            self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);//更改tableview 的frame
-            __weak typeof(self) weakSelf = self;//解决循环引用的问题
-            [self.readVC addHeaderWithCallback:^{//添加刷新控件
-                [weakSelf requestHaveReadList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
-            }];
-
-        }
-        else {
-            [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
-        }
-    } failure:^(NSError *error) {
-    }];
-    
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //NSLog(@"%ld",(long)buttonIndex);
+    if(alertView.tag == 300)//是否退出编辑
+    {
+        if (buttonIndex == 1) {
+            __weak typeof(_removeArray) removeArr = _removeArray;
+            __weak __typeof(self) blockSelf = self;
+
+            __block NSString *uidString = @"";
+            [_removeArray enumerateObjectsUsingBlock:^(ZIKCustomizedInfoListModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                uidString = [uidString stringByAppendingString:[NSString stringWithFormat:@",%@",model.mesUid]];
+            }];
+            NSString *uids = [uidString substringFromIndex:1];
+            NSInteger customizedType = (NSInteger)self.infoType;
+            [HTTPCLIENT deleterecordWithIds:uids infoType:customizedType Success:^(id responseObject) {
+                //NSLog(@"%@",responseObject);
+                if ([responseObject[@"success"] integerValue] == 1) {
+
+                    [removeArr enumerateObjectsUsingBlock:^(ZIKCustomizedInfoListModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if ([blockSelf.readDataMArr containsObject:model]) {
+                            [blockSelf.readDataMArr removeObject:model];
+                        }
+                    }];
+                    [blockSelf.readVC reloadData];
+                    if (blockSelf.readDataMArr.count == 0) {
+                        _bottomcell.hidden  = YES;
+                        self.readVC.editing = NO;
+                        self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);
+                        [self requestData];
+                    }
+                    if (_removeArray.count > 0) {
+                        [_removeArray removeAllObjects];
+                    }
+                    if (_deleteIndexArr.count > 0) {
+                        _deleteIndexArr = nil;
+                    }
+                    _bottomcell.count  = 0;
+                    _bottomcell.hidden = YES;
+                    //[self updateBottomDeleteCellView];
+                    [ToastView showToast:@"删除成功" withOriginY:200 withSuperView:self.view];
+                    _bottomcell.hidden  = YES;
+                    self.readVC.editing = NO;
+                    self.readVC.frame   = CGRectMake(0, self.readVC.frame.origin.y, Width, Height-64);//更改tableview 的frame
+                    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+                    [self.readVC addHeaderWithCallback:^{//添加刷新控件
+                        [weakSelf requestHaveReadList:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+                    }];
+                    
+                }
+                else {
+                    [ToastView showToast:[NSString stringWithFormat:@"%@",responseObject[@"error"]] withOriginY:200 withSuperView:self.view];
+                }
+            } failure:^(NSError *error) {
+            }];
+
+        }
+    }
+}
+
 
 #pragma mark - 请求列表信息
 - (void)requestHaveReadList:(NSString *)page {

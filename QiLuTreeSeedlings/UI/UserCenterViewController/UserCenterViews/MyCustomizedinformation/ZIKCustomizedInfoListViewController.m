@@ -184,8 +184,6 @@
                 }
                 [self totalCount];
             }
-
-
             [self.myCustomizedInfoTableView footerEndRefreshing];
         }
 

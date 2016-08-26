@@ -4732,7 +4732,6 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
 }
 
 #pragma mark ---------- 推送信息求购联系方式购买 -----------
@@ -4767,8 +4766,49 @@
         RemoveActionV();
         [HttpClient HTTPERRORMESSAGE:error];
     }];
-
 }
+
+#pragma mark ---------- 站长求购 -----------
+/**
+ *  站长求购
+ *
+ *  @param pageSize   每页显示条数，（默认15条）
+ *  @param page       当前页：默认为1
+ *  @param searchTime 检索时间，当前页的最后一条数据的searchTime，不传时，默认是第一页
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)workstationBuyWithPageSize:(NSString *)pageSize
+                              page:(NSString *)page
+                        searchTime:(NSString *)searchTime
+                           Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/workstation/buy";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"page"]             = page;
+    parmers[@"pageSize"]         = pageSize;
+    parmers[@"searchTime"]       = searchTime;
+    ShowActionV();
+     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
 
 
 @end
