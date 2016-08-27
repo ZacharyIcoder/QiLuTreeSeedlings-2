@@ -7,7 +7,7 @@
 //
 
 #import "YLDEditDingDanViewController.h"
-#import "YLDPickLocationView.h"
+#import "YLDPickProvinceViewController.h"
 #import "YLDFuBuTijiaoViewController.h"
 #import "YLDPickTimeView.h"
 #import "UIDefines.h"
@@ -16,7 +16,7 @@
 #import "ZIKCityModel.h"
 #import "GetCityDao.h"
 #import "BWTextView.h"
-@interface YLDEditDingDanViewController ()<PickeShowDelegate,YLDPickLocationDelegate,YLDPickTimeDelegate>
+@interface YLDEditDingDanViewController ()<PickeShowDelegate,YLDPickProvinceControllerDelegate,YLDPickTimeDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
 @property (nonatomic,strong) NSArray *typeAry;
 @property (nonatomic,strong) NSArray *piceAry;
@@ -25,7 +25,8 @@
 @property (nonatomic,weak) UITextField *NameTextField;
 @property (nonatomic,weak) UIButton *areaBtn;
 @property (nonatomic,weak) UIButton *timeBtn;
-@property (nonatomic,copy) NSString *AreaProvince;
+@property (nonatomic,copy) NSString *AreaProvinces;
+@property (nonatomic,copy) NSString *AreaNames;
 @property (nonatomic,copy) NSString *AreaCity;
 @property (nonatomic,weak) UIButton *priceBtn;
 @property (nonatomic,weak) UIButton *qualityBtn;
@@ -40,6 +41,7 @@
 @property (nonatomic,weak) UITextField *lianxifangshiField;
 @property (nonatomic,copy) NSString *uid;
 @property (nonatomic)NSDictionary *orderDetailDic;
+@property (nonatomic,strong) NSMutableArray *selectAreaAry;
 @end
 
 @implementation YLDEditDingDanViewController
@@ -154,9 +156,25 @@
             [self.timeBtn setTitle:self.orderDetailDic[@"endDates"] forState:UIControlStateNormal];
             self.timeStr=[NSString stringWithFormat:@"%@ 23:59:59",self.orderDetailDic[@"endDates"]];
 //            @property (nonatomic,copy) NSString *AreaProvince;
-            self.AreaProvince=self.orderDetailDic[@"usedProvince"];
+            self.AreaProvinces=self.orderDetailDic[@"usedProvince"];
+            NSArray *cityCodeAry=[self.AreaProvinces componentsSeparatedByString:@","];
+            if (cityCodeAry.count>0) {
+                self.selectAreaAry=[NSMutableArray array];
+                GetCityDao *cityDao=[GetCityDao new];
+                [cityDao openDataBase];
+                
+                [self.selectAreaAry addObject:[cityDao getcityModelByCityCode:cityCodeAry[0]]];
+                NSMutableString *areaNameStr=[[NSMutableString alloc]initWithString:[cityDao getCityNameByCityUid:cityCodeAry[0]]];
+                for (int i=1; i<cityCodeAry.count; i++) {
+                    [areaNameStr appendFormat:@",%@",[cityDao getCityNameByCityUid:cityCodeAry[i]]];
+                    [self.selectAreaAry addObject:[cityDao getcityModelByCityCode:cityCodeAry[i]]];
+                }
+                
+                [cityDao closeDataBase];
+                self.AreaNames=areaNameStr;
+            }
 //            @property (nonatomic,copy) NSString *AreaCity;
-            self.AreaCity=self.orderDetailDic[@"usedCity"];
+//            self.AreaCity=self.orderDetailDic[@"usedCity"];
 //            @property (nonatomic,weak) UIButton *priceBtn;
             //            @property (nonatomic,copy) NSString *priceStr;
             self.priceStr=self.orderDetailDic[@"quotationRequires"];
@@ -207,7 +225,7 @@
     self.typeStr=nil;
     [self.typeBtn setTitle:@"请选择订单类型" forState:UIControlStateNormal];
     self.NameTextField.text=nil;
-    self.AreaProvince=nil;
+    self.AreaProvinces=nil;
     self.AreaCity=nil;
     [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
     self.timeStr=nil;
@@ -233,7 +251,7 @@
         [ToastView showTopToast:@"请输入项目名称"];
         return;
     }
-    if (!self.AreaProvince) {
+    if (!self.AreaProvinces) {
         [ToastView showTopToast:@"请选择用苗地"];
         return;
     }
@@ -265,7 +283,7 @@
         [ToastView showTopToast:@"请完善联系方式"];
         return;
     }
-    [HTTPCLIENT fabuGongChengDingDanWithUid:self.uid WithprojectName:self.NameTextField.text WithorderName:self.typeBtn.titleLabel.text WithorderTypeUid:self.typeStr WithusedProvince:self.AreaProvince WithusedCity:self.AreaCity WithendDate:self.timeStr WithchargePerson:self.lianxirenField.text Withphone:self.lianxifangshiField.text WithqualityRequirement:self.qualityStr WithquotationRequires:self.priceStr Withdbh:self.xiongjingField.text WithgroundDiameter:self.dijingField.text Withdescription:self.jianjieTextView.text With:nil Success:^(id responseObject) {
+    [HTTPCLIENT fabuGongChengDingDanWithUid:self.uid WithprojectName:self.NameTextField.text WithorderName:self.typeBtn.titleLabel.text WithorderTypeUid:self.typeStr WithusedProvince:self.AreaProvinces WithusedCity:self.AreaNames WithendDate:self.timeStr WithchargePerson:self.lianxirenField.text Withphone:self.lianxifangshiField.text WithqualityRequirement:self.qualityStr WithquotationRequires:self.priceStr Withdbh:self.xiongjingField.text WithgroundDiameter:self.dijingField.text Withdescription:self.jianjieTextView.text With:nil Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"编辑成功，即将返回"];
             if (self.delegate) {
@@ -285,15 +303,41 @@
 
 -(void)areaBtnAction:(UIButton *)sender
 {
-    YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
-    pickLocationV.delegate=self;
-    [pickLocationV showPickView];
+    YLDPickProvinceViewController *pickVC=[[YLDPickProvinceViewController alloc]init];
+    if (self.selectAreaAry.count>0) {
+        pickVC.selectAry=self.selectAreaAry;
+    }
+    pickVC.delegate=self;
+    [self.navigationController pushViewController:pickVC animated:YES];
     [self.NameTextField resignFirstResponder];
     [self.xiongjingField resignFirstResponder];
     [self.dijingField resignFirstResponder];
     [self.lianxifangshiField resignFirstResponder];
     [self.lianxirenField resignFirstResponder];
     [self.jianjieTextView resignFirstResponder];
+}
+-(void)selectCityModels:(NSMutableArray *)ary
+{
+    if (ary.count==0) {
+        self.AreaNames=nil;
+        self.AreaProvinces=nil;
+        self.selectAreaAry=nil;
+        return;
+    }
+    self.selectAreaAry=ary;
+    CityModel *model1=ary[0];
+    NSMutableString *cityNameStr=[[NSMutableString alloc]initWithString:model1.cityName];
+    NSMutableString *cityCodeStr=[[NSMutableString alloc]initWithString:model1.code];
+    for (int i=1; i<ary.count; i++) {
+        CityModel *model=ary[i];
+        [cityNameStr appendFormat:@",%@",model.cityName];
+        [cityCodeStr appendFormat:@",%@",model.code];
+    }
+    self.AreaProvinces=cityCodeStr;
+    self.AreaNames=cityNameStr;
+    [self.areaBtn setTitle:cityNameStr forState:UIControlStateNormal];
+    [self.areaBtn.titleLabel sizeToFit];
+    [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
 }
 -(void)timeBtnAction:(UIButton *)sender
 {
@@ -375,36 +419,7 @@
     [self.timeBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
 }
 
--(void)selectSheng:(CityModel *)sheng shi:(CityModel *)shi xian:(CityModel *)xian zhen:(CityModel *)zhen
-{
-    NSMutableString *namestr=[NSMutableString new];
-    if (sheng.code) {
-        [namestr appendString:sheng.cityName];
-        self.AreaProvince=sheng.code;
-    }else
-    {
-        self.AreaProvince=nil;
-    }
-    
-    if (shi.code) {
-        [namestr appendString:shi.cityName];
-        self.AreaCity=shi.code;
-    }else
-    {
-        self.AreaCity=nil;
-        
-    }
-    if (namestr.length>0) {
-        [self.areaBtn setTitle:namestr forState:UIControlStateNormal];
-        //        [self.areaBtn.titleLabel sizeToFit];
-        [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
-    }else{
-        [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
-        [self.areaBtn.titleLabel sizeToFit];
-        [self.areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
-        
-    }
-}
+
 -(void)selectNum:(NSInteger)select andselectInfo:(NSString *)selectStr PickerShowView:(PickerShowView *)pickerShowView
 {
     if (pickerShowView.tag==111) {

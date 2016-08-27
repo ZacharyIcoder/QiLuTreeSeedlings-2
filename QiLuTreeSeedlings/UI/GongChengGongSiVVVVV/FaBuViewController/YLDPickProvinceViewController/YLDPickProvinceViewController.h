@@ -18,9 +18,10 @@
 // */
 //- (void)selectCitysInfo:(NSString *)citysStr;
 @optional
--(void)selectCityModels:(NSArray *)ary;
+-(void)selectCityModels:(NSMutableArray *)ary;
 
 @end
 @interface YLDPickProvinceViewController : ZIKRightBtnSringViewController
 @property(nonatomic,weak)id<YLDPickProvinceControllerDelegate>delegate;
+@property (nonatomic,strong)NSMutableArray *selectAry;
 @end

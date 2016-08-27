@@ -2830,7 +2830,7 @@
     parmers[@"orderName"]        =orderName;
     parmers[@"orderTypeUid"]     =orderTypeUid;
     parmers[@"usedProvince"]     =usedProvince;
-    parmers[@"usedCity"]         =usedCity;
+    parmers[@"usedProvinceName"] =usedCity;
     parmers[@"endDate"]          =endDate;
     parmers[@"chargePerson"]     =chargePerson;
     parmers[@"phone"]            =phone;

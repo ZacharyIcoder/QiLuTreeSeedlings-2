@@ -13,14 +13,17 @@
 @interface YLDPickProvinceViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,strong)NSArray *cityModelAry;
-@property (nonatomic,strong)NSMutableArray *selectAry;
+
 @end
 
 @implementation YLDPickProvinceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.selectAry=[NSMutableArray array];
+    if (self.selectAry==nil) {
+        self.selectAry=[NSMutableArray array];
+    }
+    
     self.vcTitle=@"请选择地区";
     self.rightBarBtnTitleString = @"确定";
     
@@ -29,9 +32,25 @@
    NSArray *cityAry = [dao getCityByLeve:@"1"];
     [dao closeDataBase];
 
-    self.cityModelAry=[CityModel creatCityAryByAry:cityAry];
+    NSMutableArray *cityArys=[NSMutableArray array];
+    for (NSDictionary *dic in cityAry) {
+        CityModel *model = [CityModel creatCtiyModelByDic:dic];
+        [cityArys addObject:model];
+        for (CityModel *model2 in self.selectAry) {
+            if ([model.code isEqualToString:model2.code]) {
+                [cityArys removeObject:model];
+                [cityArys addObject:model2];
+                
+            }
+        }
+    }
+    self.cityModelAry=cityArys;
     __weak typeof(self) weakSelf = self;
     self.rightBarBtnBlock = ^{
+        if (weakSelf.selectAry.count==0) {
+            [ToastView showTopToast:@"请先选择地区"];
+            return ;
+        }
         if (weakSelf.delegate) {
             
 //            [weakSelf.delegate selectCitysInfo:@""];

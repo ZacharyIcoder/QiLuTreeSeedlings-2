@@ -58,7 +58,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "493881958.114137"
+                  timestampString = "493977405.660625"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
@@ -73,7 +73,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "493881958.114231"
+                  timestampString = "493977405.660717"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
@@ -88,7 +88,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "493881958.114381"
+                  timestampString = "493977405.660876"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
@@ -103,7 +103,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "493881958.114455"
+                  timestampString = "493977405.660959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
@@ -126,22 +126,6 @@
             startingLineNumber = "205"
             endingLineNumber = "205"
             landmarkName = "-upDataUserImageWithToken:WithAccessID:WithClientID:WithClientSecret:WithDeviceID:WithUserIamge:Success:failure:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/UI/GongChengGongSiVVVVV/FaBuViewController/YLDFaBuGongChengDingDanViewController.m"
-            timestampString = "493880207.906835"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "-selectCityModels:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

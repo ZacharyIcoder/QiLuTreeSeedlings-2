@@ -28,7 +28,7 @@
 @property (nonatomic,weak) UIButton *areaBtn;
 @property (nonatomic,weak) UIButton *timeBtn;
 @property (nonatomic,copy) NSString *AreaProvinces;
-//@property (nonatomic,copy) NSString *AreaCity;
+@property (nonatomic,copy) NSString *AreaNames;
 @property (nonatomic,weak) UIButton *priceBtn;
 @property (nonatomic,weak) UIButton *qualityBtn;
 @property (nonatomic,weak) UITextField *xiongjingField;
@@ -41,6 +41,7 @@
 @property (nonatomic,copy) NSString *priceStr;
 @property (nonatomic,copy) NSString *qualityStr;
 @property (nonatomic,weak) YLDRangeTextField *lianxifangshiField;
+@property (nonatomic,strong) NSMutableArray *selectAreaAry;
 @end
 
 @implementation YLDFaBuGongChengDingDanViewController
@@ -167,10 +168,10 @@
         [ToastView showTopToast:@"请输入项目名称"];
         return;
     }
-//    if (!self.AreaCity) {
-//        [ToastView showTopToast:@"用苗地需精确到市"];
-//        return;
-//    }
+    if (!self.AreaNames) {
+        [ToastView showTopToast:@"请选择地区"];
+        return;
+    }
     if (!self.timeStr) {
         [ToastView showTopToast:@"请选择截止日期"];
         return;
@@ -204,7 +205,7 @@
         [ToastView showTopToast:@"请完善联系方式"];
         return;
     }
-    YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andTypeName:self.typename andName:self.NameTextField.text andAreaSheng:self.AreaProvinces andAreaShi:nil andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
+    YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andTypeName:self.typename andName:self.NameTextField.text andAreaSheng:self.AreaProvinces andAreaShi:self.AreaNames andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
     [self.navigationController pushViewController:YLDtititiVC animated:YES];
 }
 
@@ -214,7 +215,10 @@
 //    YLDPickLocationView *pickLocationV=[[YLDPickLocationView alloc]initWithFrame:[UIScreen mainScreen].bounds CityLeve:CityLeveShi];
 //    pickLocationV.delegate=self;
 //    [pickLocationV showPickView];
-    YLDPickProvinceViewController *pickVC=[YLDPickProvinceViewController new];
+    YLDPickProvinceViewController *pickVC=[[YLDPickProvinceViewController alloc]init];
+    if (self.selectAreaAry.count>0) {
+        pickVC.selectAry=self.selectAreaAry;
+    }
     pickVC.delegate=self;
     [self.navigationController pushViewController:pickVC animated:YES];
     [self.NameTextField resignFirstResponder];
@@ -224,9 +228,28 @@
     [self.lianxirenField resignFirstResponder];
     [self.jianjieTextView resignFirstResponder];
 }
--(void)selectCityModels:(NSArray *)ary
+-(void)selectCityModels:(NSMutableArray *)ary
 {
-    
+    if (ary.count==0) {
+        self.AreaNames=nil;
+        self.AreaProvinces=nil;
+        self.selectAreaAry=nil;
+        return;
+    }
+    self.selectAreaAry=ary;
+    CityModel *model1=ary[0];
+    NSMutableString *cityNameStr=[[NSMutableString alloc]initWithString:model1.cityName];
+    NSMutableString *cityCodeStr=[[NSMutableString alloc]initWithString:model1.code];
+    for (int i=1; i<ary.count; i++) {
+        CityModel *model=ary[i];
+        [cityNameStr appendFormat:@",%@",model.cityName];
+        [cityCodeStr appendFormat:@",%@",model.code];
+    }
+    self.AreaProvinces=cityCodeStr;
+    self.AreaNames=cityNameStr;
+    [self.areaBtn setTitle:cityNameStr forState:UIControlStateNormal];
+    [self.areaBtn.titleLabel sizeToFit];
+    [self.areaBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
 }
 -(void)timeBtnAction:(UIButton *)sender
 {
