@@ -18,7 +18,7 @@
 @property (nonatomic,copy) NSString *typeName;
 @property (nonatomic,copy) NSString *nameStr;
 @property (nonatomic,copy) NSString *areaShengStr;
-@property (nonatomic,copy) NSString *areaShiStr;
+@property (nonatomic,copy) NSString *areaNameStr;
 @property (nonatomic,copy) NSString *timeStr;
 @property (nonatomic,copy) NSString *priceStr;
 @property (nonatomic,copy) NSString *zhiliangStr;
@@ -44,7 +44,7 @@
         self.typeName=typeName;
         self.nameStr=nameStr;
         self.areaShengStr=areaShengStr;
-        self.areaShiStr=areaShiStr;
+        self.areaNameStr=areaShiStr;
         self.timeStr=timeStr;
         self.priceStr=priceStr;
         self.zhiliangStr=zhiliangStr;
@@ -107,7 +107,7 @@
         return;
     }
     NSString *miaomuJsonStr=[self.miaomuAry JSONString];
-    [HTTPCLIENT fabuGongChengDingDanWithUid:nil WithprojectName:self.nameStr WithorderName:self.typeName WithorderTypeUid:self.typeStr WithusedProvince:self.areaShengStr WithusedCity:self.areaShiStr WithendDate:self.timeStr WithchargePerson:self.lianxiRStr Withphone:self.phoneStr WithqualityRequirement:self.zhiliangStr WithquotationRequires:self.priceStr Withdbh:self.xingjingStr WithgroundDiameter:self.diJingStr Withdescription:self.shuomingStr With:miaomuJsonStr Success:^(id responseObject) {
+    [HTTPCLIENT fabuGongChengDingDanWithUid:nil WithprojectName:self.nameStr WithorderName:self.typeName WithorderTypeUid:self.typeStr WithusedProvince:self.areaShengStr WithusedCity:self.areaNameStr WithendDate:self.timeStr WithchargePerson:self.lianxiRStr Withphone:self.phoneStr WithqualityRequirement:self.zhiliangStr WithquotationRequires:self.priceStr Withdbh:self.xingjingStr WithgroundDiameter:self.diJingStr Withdescription:self.shuomingStr With:miaomuJsonStr Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
              
             [ToastView showTopToast:@"提示：该订单需由您审核通过才能上传"];

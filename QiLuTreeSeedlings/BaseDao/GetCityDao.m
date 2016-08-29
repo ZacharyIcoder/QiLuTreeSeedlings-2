@@ -72,9 +72,31 @@
     {
         str = [frs stringForColumn:@"parent_code"];
         NSLog(@"%@",[frs stringForColumn:@"name"]);
-        NSLog(@"%@",frs);
+        //NSLog(@"%@",frs);
         NSLog(@"%@",[frs stringForColumn:@"parent_code"]);
     }
     return str;
+}
+-(CityModel *)getcityModelByCityCode:(NSString *)uid
+{
+    
+    
+    NSString *sql = [NSString stringWithFormat:@"select * from area where code = %@",uid];
+    
+    FMResultSet *frs = [self executeQuery:sql];
+    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+    while(frs.next)
+    {
+        
+        [dic setObject:[frs stringForColumn:@"id"] forKey:@"id"];
+        [dic setObject:[frs stringForColumn:@"code"] forKey:@"code"];
+        [dic setObject:[frs stringForColumn:@"parent_code"] forKey:@"parent_code"];
+        [dic setObject:[frs stringForColumn:@"name"] forKey:@"name"];
+        [dic setObject:[frs stringForColumn:@"level"] forKey:@"level"];
+       
+    }
+    CityModel *model =[CityModel creatCtiyModelByDic:dic];
+    model.select=YES;
+    return model;
 }
 @end

@@ -7,10 +7,11 @@
 //
 
 #import "BaseDao.h"
-
+#import "CityModel.h"
 @interface GetCityDao : BaseDao
 -(NSMutableArray *)getCityByLeve:(NSString *)str;
 -(NSMutableArray *)getCityByLeve:(NSString *)str andParent_code:(NSString *)parent_code;
 -(NSString *)getCityNameByCityUid:(NSString *)uid;
 - (NSString *)getCityParentCode:(NSString *)uid;
+-(CityModel *)getcityModelByCityCode:(NSString *)uid;
 @end

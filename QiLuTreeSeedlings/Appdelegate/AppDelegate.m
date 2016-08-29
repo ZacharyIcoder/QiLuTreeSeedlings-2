@@ -48,15 +48,15 @@
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
              NSInteger version=[[[responseObject objectForKey:@"result"] objectForKey:@"version"] integerValue];
             //版本更新比较
-            if (version>4) {
+            if (version>5) {
 //                [ToastView showTopToast:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"]];
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"更新提示" message:[[responseObject objectForKey:@"result"] objectForKey:@"updateContent"] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                     
                 }];
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull      action) {
                    
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8"]];
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/cn/app/miao-xin-tong/id1104131374?mt=8"]];
 
                 }];
                 [alertController addAction:cancelAction];
