@@ -73,16 +73,19 @@
 -(void)setLeftBarBtnImgString:(NSString *)leftBarBtnImgString {
     _leftBarBtnImgString = leftBarBtnImgString;
     [leftButton setTitle:nil forState:UIControlStateNormal];
-    leftButton.frame = CGRectMake(leftButtonY, leftButtonY, 30, 30);
+    leftButton.frame = CGRectMake(leftButtonX, leftButtonY, 30, 30);
     [leftButton setImage:[UIImage imageNamed:leftBarBtnImgString] forState:UIControlStateNormal];
 }
 
 #pragma mark - 设置右侧按钮文字
 -(void)setRightBarBtnTitleString:(NSString *)rightBarBtnTitleString {
     _rightBarBtnTitleString = rightBarBtnTitleString;
+    [rightButton setTitle:rightBarBtnTitleString forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightButton setImage:nil forState:UIControlStateNormal];
-    CGFloat rightWidth = [ZIKFunction getCGRectWithContent:rightBarBtnTitleString width:100 font:navButtonFontSize].size.width;
-    rightButton.frame = CGRectMake(kWidth-10-rightWidth, leftButtonY, rightWidth, leftButtonH);
+    [rightButton.titleLabel setTextAlignment:NSTextAlignmentRight];
+    CGFloat rightWidth = [ZIKFunction getCGRectWithContent:rightBarBtnTitleString width:180 font:navButtonFontSize].size.width;
+    rightButton.frame = CGRectMake(kWidth-10-rightWidth-25, leftButtonY, rightWidth+25, leftButtonH);
 }
 
 #pragma mark - 设置右侧图像

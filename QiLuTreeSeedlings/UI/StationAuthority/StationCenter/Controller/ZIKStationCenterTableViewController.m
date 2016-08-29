@@ -20,6 +20,7 @@
 #import "UMSocial.h"
 
 #import "ZIKMyCustomizedInfoViewController.h"//推送信息
+#import "ZIKStationShowListViewController.h"//站长晒单
 static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewIdentifier";
 
 @interface ZIKStationCenterTableViewController ()<UMSocialUIDelegate>
@@ -35,7 +36,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
 
 #define DEFAULT_ROW_HEIGHT 44
 #define HEADER_HEIGHT 240
-#define FOOTER_HEIGHT (kHeight-HEADER_HEIGHT-44-44-44-130-60)
+#define FOOTER_HEIGHT (kHeight-HEADER_HEIGHT-44-44-44-44-130-60)
 
 @implementation ZIKStationCenterTableViewController
 
@@ -135,7 +136,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
     if (section == 0) {
         return 1;
     }
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -172,6 +173,15 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             [twocell addSubview:lineView];
         } else if (indexPath.row == 2) {
             twocell.textLabel.text = @"推送信息";
+            twocell.textLabel.textColor = [UIColor darkGrayColor];
+            twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
+            twocell.imageView.image = [UIImage imageNamed:@"图标"];
+            UIView *lineView = [[UIView alloc] init];
+            lineView.frame = CGRectMake(15, 43, kWidth-15, 1);
+            lineView.backgroundColor = kLineColor;
+            [twocell addSubview:lineView];
+        } else if (indexPath.row == 3) {
+            twocell.textLabel.text = @"站长晒单";
             twocell.textLabel.textColor = [UIColor darkGrayColor];
             twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
             twocell.imageView.image = [UIImage imageNamed:@"图标"];
@@ -232,6 +242,10 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             civc.infoType = InfoTypeStation;
             civc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:civc animated:YES];
+        } else if (indexPath.row == 3) {
+            ZIKStationShowListViewController *showListVC = [[ZIKStationShowListViewController alloc] initWithNibName:@"ZIKStationShowListViewController" bundle:nil];
+            showListVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:showListVC animated:YES];
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

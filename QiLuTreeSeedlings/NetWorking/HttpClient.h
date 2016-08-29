@@ -1238,7 +1238,107 @@ failure:(void (^)(NSError *error))failure;
                         searchTime:(NSString *)searchTime
                            Success:(void (^)(id responseObject))success
                            failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长晒单-我的晒单列表 -----------
+- (void)workstationMyShaiDanWithPageNumber:(NSString *)pageNumber
+                                pageSize:(NSString *)pageSize
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 站长晒单-全部晒单列表 -----------
+- (void)workstationAllShaiDanWithPageNumber:(NSString *)pageNumber
+                                pageSize:(NSString *)pageSize
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 站长晒单-评论删除 -----------
+- (void)workStationShaiDanPingLunDeleteWithPingLunUid:(NSString *)pingLunUid//评论ID
+                                              Success:(void (^)(id responseObject))success
+                                              failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 站长晒单-评论 -----------
+/**
+ *  站长晒单-评论
+ *
+ *  @param shaiDanUid 晒单ID
+ *  @param content    评论内容内容
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)workstationShaiDanPIngLunWithShaiDanUid:(NSString *)shaiDanUid
+                                        content:(NSString *)content
+                                        Success:(void (^)(id responseObject))success
+                                        failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 站长晒单-晒单详情 -----------
+/**
+ * 站长晒单-晒单详情( 返回结果中，有dianZanUid字段表示已点赞；del=1表示为当前用户所评论，可删除，否则不可删除 )
+ *
+ *  @param uid        晒单ID
+ *  @param pageNumber 页码，默认1
+ *  @param pageSize   每页显示数。默认15
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)workstationShaiDanDetailWithUid:(NSString *)uid
+                             pageNumber:(NSString *)pageNumber
+                               pageSize:(NSString *)pageSize
+                                Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 站长晒单-点赞取消点赞 -----------
+/**
+ *  站长晒单-点赞取消点赞
+ *
+ *  @param shaiDanUid 晒单ID
+ *  @param dianZanUid 点赞ID，不传时，表示点赞，传入时，表示取消点赞
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)workStationShaiDaDianzanWithShaiDanUid:(NSString *)shaiDanUid
+                                    dianZanUid:(NSString *)dianZanUid
+                                       Success:(void (^)(id responseObject))success
+                                       failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 站长晒单编辑信息 -----------
+/**
+ *  站长晒单编辑信息
+ *
+ *  @param uid     晒单ID
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)workstationShaiDanUpdateWithUid:(NSString *)uid
+                                Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 站长晒单删除 -----------
+/**
+ *  站长晒单删除
+ *
+ *  @param uids    晒单ID, 单个或多个
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)workstationShaiDanDeleteWithUids:(NSString *)uids
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 站长晒单 -----------
+/**
+ *  站长晒单(图片上传原图和缩略图，使用图片上传接口，type=3,saveType=1)
+ *
+ *  @param uid     晒单ID，编辑时不为空
+ *  @param title   晒单名称
+ *  @param content 晒单内容
+ *  @param images  晒单图片，只传缩略图，多张以,分开
+ *  @param success success description
+ *  @param failure failure description
+ */
+- (void)workstationShaiDanSaveWithUid:(NSString *)uid
+                                title:(NSString *)title
+                              content:(NSString *)content
+                               images:(NSString *)images
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure;
 
 
 @end

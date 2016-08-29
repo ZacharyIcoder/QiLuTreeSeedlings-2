@@ -13,7 +13,7 @@
 #define titleFont [UIFont systemFontOfSize:20]//标题字体Font20o
 #define navButtonFont [UIFont systemFontOfSize:16]//navButton字体大小
 #define navButtonFontSize 16
-#define leftButtonX 15
+#define leftButtonX 17
 #define leftButtonY 26
 #define leftButtonH 30
 
@@ -113,8 +113,10 @@
 -(void)setRightBarBtnTitleString:(NSString *)rightBarBtnTitleString {
     _rightBarBtnTitleString = rightBarBtnTitleString;
     [rightButton setImage:nil forState:UIControlStateNormal];
-    CGFloat rightWidth = [ZIKFunction getCGRectWithContent:rightBarBtnTitleString width:100 font:navButtonFontSize].size.width;
-    rightButton.frame = CGRectMake(kWidth-10-rightWidth, leftButtonY, rightWidth, leftButtonH);
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightButton setTitle:rightBarBtnTitleString forState:UIControlStateNormal];
+    CGFloat rightWidth = [ZIKFunction getCGRectWithContent:rightBarBtnTitleString width:180 font:navButtonFontSize].size.width;
+    rightButton.frame = CGRectMake(kWidth-10-rightWidth-20, leftButtonY, rightWidth+20, leftButtonH);
 }
 
 #pragma mark - 设置右侧图像
