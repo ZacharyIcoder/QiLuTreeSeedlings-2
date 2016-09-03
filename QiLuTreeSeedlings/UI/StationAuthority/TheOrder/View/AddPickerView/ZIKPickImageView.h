@@ -20,7 +20,7 @@ typedef void(^TakePhotoBlock) ();
 - (void)addImageURL:(NSDictionary *)dic;
 - (void)removeImageURl:(NSDictionary *)dic;
 - (void)removeALL;
-
+- (void)initUI;
 @property(nonatomic, copy) TakePhotoBlock takePhotoBlock;
 
 @property(nonatomic, strong) NSMutableArray *photos;

@@ -5051,7 +5051,7 @@
                                images:(NSString *)images
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure {
-    NSString *postURL            = @"pi/workstation/shaidan/save";
+    NSString *postURL            = @"api/workstation/shaidan/save";
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
 

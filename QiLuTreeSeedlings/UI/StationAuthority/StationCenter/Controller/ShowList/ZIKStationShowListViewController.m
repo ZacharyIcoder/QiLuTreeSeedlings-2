@@ -8,6 +8,8 @@
 
 #import "ZIKStationShowListViewController.h"
 #import "ZIKAddShowListViewController.h"//新增晒单
+#import "ZIKSelectMenuView.h"
+
 @interface ZIKStationShowListViewController ()
 
 @end
@@ -29,6 +31,17 @@
         ZIKAddShowListViewController *addShowListVC = [[ZIKAddShowListViewController alloc] initWithNibName:@"ZIKAddShowListViewController" bundle:nil];
         [weakSelf.navigationController pushViewController:addShowListVC animated:YES];
     };
+
+    NSArray *titleArray = [NSArray arrayWithObjects:@"全部晒单",@"我的晒单", nil];
+    ZIKSelectMenuView *selectMenuView = [[ZIKSelectMenuView alloc] initWithFrame:CGRectMake(0, 64, kWidth, 43) dataArray:titleArray];
+    selectMenuView.menuBtnBlock = ^(NSInteger menuBtnTag){
+          if (menuBtnTag == 0) {
+              CLog(@"全部晒单");
+        } else {
+            CLog(@"我的晒单");
+        }
+    };
+    [self.view addSubview:selectMenuView];
 
 }
 

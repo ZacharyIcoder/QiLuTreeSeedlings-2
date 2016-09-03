@@ -47,7 +47,17 @@
     
     return self;
 }
+- (void)initUI {
+    self.imageBtnArr = [[NSMutableArray alloc] initWithCapacity:2];
+    self.photos = [[NSMutableArray alloc]  initWithCapacity:2];
+    self.urlMArr = [[NSMutableArray alloc] initWithCapacity:2];
+    self.pickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.pickBtn setImage:[UIImage imageNamed:@"添加图片"] forState:UIControlStateNormal];
+    [self.pickBtn addTarget:self action:@selector(pickImageBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.pickBtn];
+    [self.imageBtnArr addObject:self.pickBtn];
 
+}
 - (void)addImageURL:(NSDictionary *)dic
 {
     [self.urlMArr addObject:dic];
@@ -163,7 +173,7 @@
     
     UIButton *lastImageBtn = [self.imageBtnArr lastObject];
     self.mj_height = 100;
-    NSLog(@"-----------------------------------------CGRectGetMaxY(lastImageBtn.frame):%f",CGRectGetMaxY(lastImageBtn.frame));
+   // NSLog(@"-----------------------------------------CGRectGetMaxY(lastImageBtn.frame):%f",CGRectGetMaxY(lastImageBtn.frame));
 //    
 //    
 //    if (CGRectGetMaxY(self.frame) + marginX > ScreenHeight) {
