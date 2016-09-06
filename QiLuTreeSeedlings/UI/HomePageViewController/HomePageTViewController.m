@@ -38,7 +38,8 @@
 #import "ZIKHelpfulHintsViewController.h"//不是站长提示界面
 /********站长助手 end*********/
 
-#import "ZIKHezuomiaoqiViewController.h"//合作苗企
+//#import "ZIKHezuomiaoqiViewController.h"//合作苗企
+#import "ZIKMiaoQiTabBarViewController.h"//第九期合作苗企
 
 #import "QRCodeViewController.h"//二维码扫描
 
@@ -532,12 +533,16 @@
         }
     }
     if (index == 6) {
-        ZIKHezuomiaoqiViewController *hezuoVC = [[ZIKHezuomiaoqiViewController alloc] initWithNibName:@"ZIKHezuomiaoqiViewController" bundle:nil];
-        [self hiddingSelfTabBar];
-        [self.navigationController pushViewController:hezuoVC animated:YES];
+//        ZIKHezuomiaoqiViewController *hezuoVC = [[ZIKHezuomiaoqiViewController alloc] initWithNibName:@"ZIKHezuomiaoqiViewController" bundle:nil];
+//        [self hiddingSelfTabBar];
+//        [self.navigationController pushViewController:hezuoVC animated:YES];
 
 
 //        [ToastView showTopToast:@"敬请期待"];
+
+        ZIKMiaoQiTabBarViewController *hezuoTabBarVC = [[ZIKMiaoQiTabBarViewController alloc] initWithNibName:@"ZIKMiaoQiTabBarViewController" bundle:nil];
+        [self hiddingSelfTabBar];
+        [self.navigationController pushViewController:hezuoTabBarVC animated:YES];
         return;
     }
     if (index==7) {

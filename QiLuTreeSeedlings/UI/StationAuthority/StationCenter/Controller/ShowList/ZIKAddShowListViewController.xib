@@ -110,7 +110,7 @@
                 <constraint firstItem="0Zx-9d-gmf" firstAttribute="trailing" secondItem="3a8-Xb-RfB" secondAttribute="trailing" id="sE9-lU-66P"/>
                 <constraint firstItem="r9i-nH-vEL" firstAttribute="centerY" secondItem="0Zx-9d-gmf" secondAttribute="centerY" id="vtr-iK-SxV"/>
             </constraints>
-            <point key="canvasLocation" x="286" y="304"/>
+            <point key="canvasLocation" x="235" y="128"/>
         </view>
     </objects>
 </document>
