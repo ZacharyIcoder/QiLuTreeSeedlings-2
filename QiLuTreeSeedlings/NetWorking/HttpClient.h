@@ -385,6 +385,7 @@ success:(void (^)(id))success failure:(void (^)(NSError *))failure;
                             imageUrls:(NSString *)imageUrls
                     imageCompressUrls:(NSString *)imageCompressUrls
           withSpecificationAttributes:(NSArray *)etcAttributes
+                      imageDetailUrls:(NSString *)imageDetailUrls
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure ;
 #pragma mark ---------- 我的供应信息详情 -----------
@@ -1339,6 +1340,24 @@ failure:(void (^)(NSError *error))failure;
                                images:(NSString *)images
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-合作苗企首页 -----------
+- (void)cooperationCompanyIndexSuccess:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-苗企供应信息列表 -----------
+- (void)cooperationCompanySupplyWithPage:(NSString *)page
+                                pageSize:(NSString *)pageSize
+                              searchTime:(NSString *)searchTime
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-苗企求购 -----------
+- (void)cooperationCompanyBuyWithPageSize:(NSString *)pageSize
+                                     page:(NSString *)page
+                               searchTime:(NSString *)searchTime
+                                  Success:(void (^)(id responseObject))success
+                                  failure:(void (^)(NSError *error))failure;
 
 
 @end

@@ -57,4 +57,8 @@
  *  规格属性(英文名=value)
  */
 @property (nonatomic, copy) NSArray *specificationAttributes;
+/**
+ *  详情图url，字符串传入，以“,”分割
+ */
+@property (nonatomic, copy) NSString *imageDetailUrls;
 @end

@@ -1447,6 +1447,7 @@
                             imageUrls:(NSString *)imageUrls
                     imageCompressUrls:(NSString *)imageCompressUrls
           withSpecificationAttributes:(NSArray *)etcAttributes
+                      imageDetailUrls:(NSString *)imageDetailUrls
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure {
 
@@ -1470,6 +1471,7 @@
     parmers[@"nurseryUid"]        = nurseryUid;
     parmers[@"imageUrls"]         = imageUrls;
     parmers[@"imageCompressUrls"] = imageCompressUrls;
+    parmers[@"imageDetailUrls"]   = imageDetailUrls;
     NSArray *array = etcAttributes[0];
     for (int i=0; i<array.count; i++) {
         NSDictionary *dic=array[i];
@@ -5078,5 +5080,71 @@
     }];
 }
 
+#pragma mark ---------- 合作苗企-合作苗企首页 -----------
+- (void)cooperationCompanyIndexSuccess:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/cooperationcompany/index";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- 合作苗企-苗企供应信息列表 -----------
+- (void)cooperationCompanySupplyWithPage:(NSString *)page
+                                pageSize:(NSString *)pageSize
+                              searchTime:(NSString *)searchTime
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/cooperationcompany/supply";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+//    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+//    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+//    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+//    parmers[@"client_id"]        = kclient_id;
+//    parmers[@"client_secret"]    = kclient_secret;
+//    parmers[@"device_id"]        = str;
+
+    parmers[@"page"]             = page;
+    parmers[@"pageSize"]         = pageSize;
+    parmers[@"searchTime"]       = searchTime;
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+
+#pragma mark ---------- 合作苗企-苗企求购 -----------
+- (void)cooperationCompanyBuyWithPageSize:(NSString *)pageSize
+                                     page:(NSString *)page
+                               searchTime:(NSString *)searchTime
+                                  Success:(void (^)(id responseObject))success
+                                  failure:(void (^)(NSError *error))failure {
+}
 
 @end

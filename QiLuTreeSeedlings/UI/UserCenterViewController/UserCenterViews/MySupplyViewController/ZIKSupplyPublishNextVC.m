@@ -411,7 +411,7 @@
 }
 
 - (void)requestSaveSupplyInfo {
-    [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:self.baseMsgDic[@"uid"] title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:self.supplyModel.specificationAttributes Success:^(id responseObject) {
+    [HTTPCLIENT saveSupplyInfoWithAccessToken:nil accessId:nil clientId:nil clientSecret:nil deviceId:nil uid:self.baseMsgDic[@"uid"] title:self.supplyModel.title name:self.supplyModel.name productUid:self.supplyModel.productUid count:self.supplyModel.count price:self.supplyModel.price effectiveTime:self.supplyModel.effectiveTime remark:self.supplyModel.remark nurseryUid:self.supplyModel.murseryUid imageUrls:self.supplyModel.imageUrls imageCompressUrls:self.supplyModel.imageCompressUrls withSpecificationAttributes:self.supplyModel.specificationAttributes imageDetailUrls:self.supplyModel.imageDetailUrls  Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
             if (self.oldnurseryArray.count > 0 ) {
                 [ToastView showTopToast:@"修改成功"];
