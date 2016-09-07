@@ -1359,5 +1359,49 @@ failure:(void (^)(NSError *error))failure;
                                   Success:(void (^)(id responseObject))success
                                   failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 合作苗企-苗企详情 -----------
+- (void)cooperationCompanyDetailWithUid:(NSString *)uid
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-苗企中心 -----------
+- (void)cooperationCompanuCenterWithSuccess:(void (^)(id responseObject))success
+                                    failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-合作苗企列表 -----------
+/**
+ *  合作苗企列表
+ *
+ *  @param searchTime 查询时间
+ *  @param starLevel  星级，值：1、2、3、4、5
+ *  @param province   省
+ *  @param city       市
+ *  @param county     县
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)cooperationCompanyListWithSearchTime:(NSString *)searchTime
+                                   starLevel:(NSString *)starLevel
+                                    province:(NSString *)province
+                                        city:(NSString *)city
+                                      county:(NSString *)county
+                                     Success:(void (^)(id responseObject))success
+                                     failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-合作苗企荣誉列表 -----------
+/**
+ *  合作苗企荣誉列表
+ *
+ *  @param memberUid 供应商（会员ID）
+ *  @param page      页码，默认1
+ *  @param pageSize  每页条数，默认10
+ *  @param success   success description
+ *  @param failure   failure description
+ */
+- (void)cooperationCompanyHonorsWithMemberUid:(NSString *)memberUid
+                                         page:(NSString *)page
+                                     pageSize:(NSString *)pageSize
+                                      Success:(void (^)(id responseObject))success
+                                      failure:(void (^)(NSError *error))failure;
 
 @end
