@@ -5114,14 +5114,14 @@
                                  failure:(void (^)(NSError *error))failure {
     NSString *postURL            = @"api/cooperationcompany/supply";
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-//    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
 
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
-//    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
-//    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
-//    parmers[@"client_id"]        = kclient_id;
-//    parmers[@"client_secret"]    = kclient_secret;
-//    parmers[@"device_id"]        = str;
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
 
     parmers[@"page"]             = page;
     parmers[@"pageSize"]         = pageSize;
