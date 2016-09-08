@@ -226,6 +226,7 @@
 		EA64E7601D4AE4F60065C032 /* 待审核.png in Resources */ = {isa = PBXBuildFile; fileRef = EA64E75F1D4AE4F60065C032 /* 待审核.png */; };
 		EA64E7621D4B319C0065C032 /* 诚信保证金图标.png in Resources */ = {isa = PBXBuildFile; fileRef = EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */; };
 		EA64E7641D4B33AC0065C032 /* 诚信保证金框.png in Resources */ = {isa = PBXBuildFile; fileRef = EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */; };
+		EA6585391D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6585381D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.m */; };
 		EA696FAD1CDD7914001F037E /* YLDMyMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA696FAB1CDD7914001F037E /* YLDMyMessageTableViewCell.m */; };
 		EA696FAE1CDD7914001F037E /* YLDMyMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA696FAC1CDD7914001F037E /* YLDMyMessageTableViewCell.xib */; };
 		EA696FB01CDD7A6C001F037E /* MyMessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA696FAF1CDD7A6C001F037E /* MyMessage@2x.png */; };
@@ -1180,6 +1181,8 @@
 		EA64E75F1D4AE4F60065C032 /* 待审核.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "待审核.png"; sourceTree = "<group>"; };
 		EA64E7611D4B319C0065C032 /* 诚信保证金图标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "诚信保证金图标.png"; sourceTree = "<group>"; };
 		EA64E7631D4B33AC0065C032 /* 诚信保证金框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "诚信保证金框.png"; sourceTree = "<group>"; };
+		EA6585371D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPGYSBaseTabBarController.h; sourceTree = "<group>"; };
+		EA6585381D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPGYSBaseTabBarController.m; sourceTree = "<group>"; };
 		EA696FAA1CDD7914001F037E /* YLDMyMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDMyMessageTableViewCell.h; sourceTree = "<group>"; };
 		EA696FAB1CDD7914001F037E /* YLDMyMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDMyMessageTableViewCell.m; sourceTree = "<group>"; };
 		EA696FAC1CDD7914001F037E /* YLDMyMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDMyMessageTableViewCell.xib; sourceTree = "<group>"; };
@@ -2439,6 +2442,7 @@
 		EA0B2BCD1C59F6930018A7BD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EA6585361D810BE100BC5183 /* jinpaigongyingshangviewController */,
 				FC8994451D557C7700DC6AAC /* Hezuomiaoqi */,
 				FC22761B1D177C9F0037B131 /* StationAuthority */,
 				EA5E6E321CFFC9A5003D357C /* GongChengGongSiVVVVV */,
@@ -3209,6 +3213,22 @@
 				EAAD2ABC1D4729040070F6CE /* YLDRangeTextView.m */,
 			);
 			path = RangeTextField;
+			sourceTree = "<group>";
+		};
+		EA6585351D810BB300BC5183 /* jinpaigongyingshangviewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = jinpaigongyingshangviewController;
+			sourceTree = "<group>";
+		};
+		EA6585361D810BE100BC5183 /* jinpaigongyingshangviewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA6585371D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.h */,
+				EA6585381D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.m */,
+			);
+			path = jinpaigongyingshangviewController;
 			sourceTree = "<group>";
 		};
 		EA6B31B21CABA5F70068CCB5 /* MyNurseryListViewController */ = {
@@ -5089,6 +5109,7 @@
 		FC8994451D557C7700DC6AAC /* Hezuomiaoqi */ = {
 			isa = PBXGroup;
 			children = (
+				EA6585351D810BB300BC5183 /* jinpaigongyingshangviewController */,
 				FC8994461D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.h */,
 				FC8994471D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.m */,
 				FC8994481D557C9600DC6AAC /* ZIKHezuomiaoqiViewController.xib */,
@@ -5760,6 +5781,7 @@
 				EA565EBB1D6FCDE80093EFA0 /* YLDPickProvinceViewController.m in Sources */,
 				EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */,
 				EA2727051C8A7D0C000B0719 /* FileUtil.m in Sources */,
+				EA6585391D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.m in Sources */,
 				EA5E6E3B1CFFCA02003D357C /* YLDBaoJiaGuanLiViewController.m in Sources */,
 				FC56127A1D0C092F00E5743B /* ZIKIteratorNode.m in Sources */,
 				EAE32DF41C7E9D5000C4CEA2 /* HttpClient.m in Sources */,

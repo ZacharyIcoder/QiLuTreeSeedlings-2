@@ -10,10 +10,14 @@
 #import "YLDRangeTextField.h"
 #import "YLDRangeTextView.h"
 #import "RSKImageCropper.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIButton+AFNetworking.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface YLDFeedbackViewController ()<UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,weak) YLDRangeTextField *titleField;
 @property (nonatomic,weak) YLDRangeTextView *messageField;
+@property (nonatomic,weak) UIButton *imageBtn;
+@property (nonatomic,copy) NSString *url;
+@property (nonatomic,weak) UIButton *deleteBtn;
 @end
 
 @implementation YLDFeedbackViewController
@@ -34,7 +38,7 @@
     [titleLabb setFont:[UIFont systemFontOfSize:15]];
     [titleLabb setText:@"标题"];
     YLDRangeTextField *titleField=[[YLDRangeTextField alloc]initWithFrame:CGRectMake(110, 10, kWidth-130, 30)];
-    titleField.rangeNumber=50;
+    titleField.rangeNumber=100;
     titleField.placeholder=@"请输入标题";
     self.titleField=titleField;
     [titleField setFont:[UIFont systemFontOfSize:15]];
@@ -51,8 +55,9 @@
     [messageLabb setText:@"反馈内容"];
     YLDRangeTextView *messageTextView=[[YLDRangeTextView alloc]initWithFrame:CGRectMake(106, 59, kWidth-130, 100)];
     messageTextView.placeholder=@"请输入内容";
-    messageTextView.rangeNumber=800;
+    messageTextView.rangeNumber=3000;
     [messageTextView setFont:[UIFont systemFontOfSize:15]];
+    self.messageField=messageTextView;
     [view1 addSubview:messageTextView];
     
     UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, 200, kWidth, 100)];
@@ -64,13 +69,61 @@
     [imgLabb setTextAlignment:NSTextAlignmentRight];
     [imgLabb setFont:[UIFont systemFontOfSize:15]];
     [imgLabb setText:@"图片"];
+    UIButton *iamgeBtn=[[UIButton alloc]initWithFrame:CGRectMake(120, 10, 70, 80)];
+    [iamgeBtn addTarget:self action:@selector(addPicture) forControlEvents:UIControlEventTouchUpInside];
+    [iamgeBtn setImage:[UIImage imageNamed:@"添加图片"] forState:UIControlStateNormal];
+    [view2 addSubview:iamgeBtn];
+    self.imageBtn = iamgeBtn;
+    UIButton *deleteBtn=[[UIButton alloc]initWithFrame:CGRectMake(50, 5, 15, 15)];
+    [deleteBtn setImage:[UIImage imageNamed:@"delectLiteBtn"] forState:UIControlStateNormal];
+    [deleteBtn addTarget:self action:@selector(deleteBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [deleteBtn setEnlargeEdgeWithTop:5 right:5 bottom:5 left:5];
+    self.deleteBtn=deleteBtn;
+    deleteBtn.hidden=YES;
+    [iamgeBtn addSubview:deleteBtn];
+    
+    UIButton *tijiaoBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/2-110, 380, 220, 40)];
+    [tijiaoBtn setBackgroundColor:NavColor];
+    [tijiaoBtn setTitle:@"反馈" forState:UIControlStateNormal];
+    [tijiaoBtn addTarget:self action:@selector(tijiaoBtnAcion) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:tijiaoBtn];
+    [scrollView setContentSize:CGSizeMake(0, 410)];
     // Do any additional setup after loading the view.
+}
+-(void)tijiaoBtnAcion
+{
+    if (self.titleField.text.length<=0) {
+        
+        [ToastView showTopToast:@"请输入标题"];
+        return;
+    }
+    if (self.messageField.text.length<=0) {
+        
+        [ToastView showTopToast:@"请输入内容"];
+        return;
+    }
+    [HTTPCLIENT yijianfankuiWithcontent:self.messageField.text Withpic:self.url WithTitle:self.titleField.text Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]==1) {
+            [ToastView showTopToast:@"提交成功，即将返回上一页"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)deleteBtnAction
+{
+    [self.imageBtn setImage:[UIImage imageNamed:@"添加图片"] forState:UIControlStateNormal];
+    self.url=nil;
+    self.deleteBtn.hidden=YES;
 }
 #pragma mark - 图片添加
 //头像点击事件
 - (void)addPicture
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"修改头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄新照片",@"从相册选取", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"上传图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"从相册选取", nil];
     sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [sheet showInView:self.view];
 }
@@ -140,8 +193,8 @@
 - (void)chooseUserPictureChange:(UIImage*)image
 {
     //UIImage *photo = [UIImage imageNamed:@"photo"];
-    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
-    imageCropVC.cropMode = RSKImageCropModeSquare;
+    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCustom cropSize:CGSizeMake(kWidth, 1.2*kWidth)];
+//    imageCropVC.cropMode = RSKImageCropModeSquare;
     imageCropVC.delegate = self;
     [self.navigationController pushViewController:imageCropVC animated:YES];
 }
@@ -159,12 +212,12 @@
         imageData = UIImageJPEGRepresentation(image, 0.0001);
     }
     if (imageData.length>=1024*1024) {
-        CGSize newSize = {150,150};
+        CGSize newSize = {400,600};
         imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
     
-    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:APPDELEGATE.GCGSModel.uid type:@"2" saveTyep:@"3" Success:^(id responseObject) {
+    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:APPDELEGATE.GCGSModel.uid type:@"3" saveTyep:@"1" Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -172,12 +225,11 @@
             [ToastView showTopToast:@"添加成功"];
             NSDictionary *result = responseObject[@"result"];
             
-            // NSString * compressurl   = result[@"compressurl"];
-//            self.url         = result[@"url"];
-//            NSURL *url = [NSURL URLWithString:self.url];
-//            APPDELEGATE.GCGSModel.attachment=self.url;
-//            [self.touxiangCell.imagev setImageWithURL:url placeholderImage:[UIImage imageNamed:@"UserImage"]];
-//            //            [self.imageBtn setBackgroundImage:image forState:UIControlStateNormal];
+             NSString * compressurl   = result[@"compressurl"];
+            [self.imageBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:compressurl] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+            self.url         = result[@"url"];
+            self.deleteBtn.hidden=NO;
+
         }
         
         
