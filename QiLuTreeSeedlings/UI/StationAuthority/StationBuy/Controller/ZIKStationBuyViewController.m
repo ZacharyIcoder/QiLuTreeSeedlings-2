@@ -11,6 +11,7 @@
 #import "HttpClient.h"
 #import "YYModel.h"//类型转换
 #import "MJRefresh.h"//MJ刷新
+#import "ZIKFunction.h"
 /*****工具******/
 
 #import "HotBuyModel.h"
@@ -134,6 +135,7 @@
     };
     self.buyTableView.delegate = self;
     self.buyTableView.dataSource = self;
+    [ZIKFunction setExtraCellLineHidden:self.buyTableView];
 }
 
 - (void)didReceiveMemoryWarning {

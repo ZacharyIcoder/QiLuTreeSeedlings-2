@@ -7,7 +7,8 @@
 //
 
 #import "ZIKStationShowListViewController.h"
-#import "ZIKAddShowListViewController.h"//新增晒单
+//#import "ZIKAddShowListViewController.h"//新增晒单
+#import "ZIKAddShaiDanViewController.h"//新增晒单
 #import "ZIKSelectMenuView.h"
 
 @interface ZIKStationShowListViewController ()
@@ -28,7 +29,7 @@
    self.rightBarBtnTitleString = @"新增晒单";
     __weak typeof(self) weakSelf  = self;//解决循环引用的问题
     self.rightBarBtnBlock = ^{
-        ZIKAddShowListViewController *addShowListVC = [[ZIKAddShowListViewController alloc] initWithNibName:@"ZIKAddShowListViewController" bundle:nil];
+        ZIKAddShaiDanViewController *addShowListVC = [[ZIKAddShaiDanViewController alloc] initWithNibName:@"ZIKAddShaiDanViewController" bundle:nil];
         [weakSelf.navigationController pushViewController:addShowListVC animated:YES];
     };
 

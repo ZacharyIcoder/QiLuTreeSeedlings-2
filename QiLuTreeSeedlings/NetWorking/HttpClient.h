@@ -385,6 +385,7 @@ success:(void (^)(id))success failure:(void (^)(NSError *))failure;
                             imageUrls:(NSString *)imageUrls
                     imageCompressUrls:(NSString *)imageCompressUrls
           withSpecificationAttributes:(NSArray *)etcAttributes
+                      imageDetailUrls:(NSString *)imageDetailUrls
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure ;
 #pragma mark ---------- 我的供应信息详情 -----------
@@ -1339,8 +1340,74 @@ failure:(void (^)(NSError *error))failure;
                                images:(NSString *)images
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure;
+
 #pragma mark ---------- 意见反馈 -----------
 - (void)yijianfankuiWithcontent:(NSString *)content Withpic:(NSString *)pic WithTitle:(NSString *)title Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure;
+
+
+#pragma mark ---------- 合作苗企-合作苗企首页 -----------
+- (void)cooperationCompanyIndexSuccess:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-苗企供应信息列表 -----------
+- (void)cooperationCompanySupplyWithPage:(NSString *)page
+                                pageSize:(NSString *)pageSize
+                              searchTime:(NSString *)searchTime
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-苗企求购 -----------
+- (void)cooperationCompanyBuyWithPageSize:(NSString *)pageSize
+                                     page:(NSString *)page
+                               searchTime:(NSString *)searchTime
+                                  Success:(void (^)(id responseObject))success
+                                  failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-苗企详情 -----------
+- (void)cooperationCompanyDetailWithUid:(NSString *)uid
+                                 Success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-苗企中心 -----------
+- (void)cooperationCompanuCenterWithSuccess:(void (^)(id responseObject))success
+                                    failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-合作苗企列表 -----------
+/**
+ *  合作苗企列表
+ *
+ *  @param searchTime 查询时间
+ *  @param starLevel  星级，值：1、2、3、4、5
+ *  @param province   省
+ *  @param city       市
+ *  @param county     县
+ *  @param success    success description
+ *  @param failure    failure description
+ */
+- (void)cooperationCompanyListWithSearchTime:(NSString *)searchTime
+                                   starLevel:(NSString *)starLevel
+                                    province:(NSString *)province
+                                        city:(NSString *)city
+                                      county:(NSString *)county
+                                     Success:(void (^)(id responseObject))success
+                                     failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-合作苗企荣誉列表 -----------
+/**
+ *  合作苗企荣誉列表
+ *
+ *  @param memberUid 供应商（会员ID）
+ *  @param page      页码，默认1
+ *  @param pageSize  每页条数，默认10
+ *  @param success   success description
+ *  @param failure   failure description
+ */
+- (void)cooperationCompanyHonorsWithMemberUid:(NSString *)memberUid
+                                         page:(NSString *)page
+                                     pageSize:(NSString *)pageSize
+                                      Success:(void (^)(id responseObject))success
+                                      failure:(void (^)(NSError *error))failure;
+
 
 @end

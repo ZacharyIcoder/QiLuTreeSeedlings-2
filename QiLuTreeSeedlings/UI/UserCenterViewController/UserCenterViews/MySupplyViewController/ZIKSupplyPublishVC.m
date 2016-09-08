@@ -345,13 +345,16 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
 
     __block NSString *urlSring      = @"";
     __block NSString *compressSring = @"";
+    __block NSString *imageDetailUrls = @"";
     [self.addImageView.urlMArr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
         urlSring = [urlSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"url"]]];
         compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
+        imageDetailUrls = [imageDetailUrls stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"detailurl"]]];
     }];
     if (self.addImageView.urlMArr.count != 0) {
         self.supplyModel.imageUrls         = [urlSring substringFromIndex:1];
         self.supplyModel.imageCompressUrls = [compressSring substringFromIndex:1];
+        self.supplyModel.imageDetailUrls = [imageDetailUrls substringFromIndex:1];
     }
     NSMutableArray *screenTijiaoAry=[NSMutableArray array];
 
