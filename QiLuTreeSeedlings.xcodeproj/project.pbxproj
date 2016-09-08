@@ -289,6 +289,7 @@
 		EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA75147F1C9B8E52003D63F1 /* supplyImageV@2x.png */; };
 		EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7514811C9B9181003D63F1 /* buyImageV@2x.png */; };
 		EA7514861C9BA41F003D63F1 /* buyFabuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7514851C9BA41F003D63F1 /* buyFabuViewController.m */; };
+		EA7757411D7D037400EEAC56 /* YLDFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7757401D7D037400EEAC56 /* YLDFeedbackViewController.m */; };
 		EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8DE1C96538700B43073 /* SellDetialViewController.m */; };
 		EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8E21C9655E500B43073 /* SellBanderTableViewCell.m */; };
 		EA7AE8E61C9663A500B43073 /* SupplyDetialMode.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8E51C9663A500B43073 /* SupplyDetialMode.m */; };
@@ -1260,6 +1261,8 @@
 		EA7514811C9B9181003D63F1 /* buyImageV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyImageV@2x.png"; sourceTree = "<group>"; };
 		EA7514841C9BA41F003D63F1 /* buyFabuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buyFabuViewController.h; sourceTree = "<group>"; };
 		EA7514851C9BA41F003D63F1 /* buyFabuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buyFabuViewController.m; sourceTree = "<group>"; };
+		EA77573F1D7D037400EEAC56 /* YLDFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDFeedbackViewController.h; sourceTree = "<group>"; };
+		EA7757401D7D037400EEAC56 /* YLDFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDFeedbackViewController.m; sourceTree = "<group>"; };
 		EA7AE8DD1C96538700B43073 /* SellDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellDetialViewController.h; sourceTree = "<group>"; };
 		EA7AE8DE1C96538700B43073 /* SellDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellDetialViewController.m; sourceTree = "<group>"; };
 		EA7AE8E11C9655E500B43073 /* SellBanderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellBanderTableViewCell.h; sourceTree = "<group>"; };
@@ -3096,6 +3099,8 @@
 				EA5DF9541CB64FDF00BE0E8C /* SettingViewController.m */,
 				EA12E2671CBB416B009D8A8A /* AbountUsViewController.h */,
 				EA12E2681CBB416B009D8A8A /* AbountUsViewController.m */,
+				EA77573F1D7D037400EEAC56 /* YLDFeedbackViewController.h */,
+				EA7757401D7D037400EEAC56 /* YLDFeedbackViewController.m */,
 			);
 			path = setViewController;
 			sourceTree = "<group>";
@@ -6014,6 +6019,7 @@
 				FC22767A1D177C9F0037B131 /* ZIKOrderSecondTableViewCell.m in Sources */,
 				FC6FED771CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.m in Sources */,
 				FCCFA7121CF2E12400CC1313 /* ZIKCityListViewController.m in Sources */,
+				EA7757411D7D037400EEAC56 /* YLDFeedbackViewController.m in Sources */,
 				FC56126A1D0C092F00E5743B /* WHC_PictureListVC.m in Sources */,
 				EA4E646D1D0E83F000A7D731 /* YLDKeFuTableViewCell.m in Sources */,
 				EA496E161D2CE92700DBECF1 /* YLDGCGSBianJiViewController.m in Sources */,

@@ -1339,6 +1339,8 @@ failure:(void (^)(NSError *error))failure;
                                images:(NSString *)images
                               Success:(void (^)(id responseObject))success
                               failure:(void (^)(NSError *error))failure;
-
+#pragma mark ---------- 意见反馈 -----------
+- (void)yijianfankuiWithcontent:(NSString *)content Withpic:(NSString *)pic WithTitle:(NSString *)title Success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure;
 
 @end
