@@ -833,6 +833,7 @@
 		FCB8A47A1CCF0F0C005925E1 /* MyNuserListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A4781CCF0F0C005925E1 /* MyNuserListTableViewCell.m */; };
 		FCB8A47B1CCF0F0C005925E1 /* MyNuserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB8A4791CCF0F0C005925E1 /* MyNuserListTableViewCell.xib */; };
 		FCC160361D6AD6140030C4CB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC160321D6AD6140030C4CB /* libWeChatSDK.a */; };
+		FCC4ABDC1D82523A0032B68A /* ZIKMiaoQiZhongXinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC4ABDB1D82523A0032B68A /* ZIKMiaoQiZhongXinModel.m */; };
 		FCC5719C1D2B5713004AA096 /* ZIKStationShowHonorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC5719B1D2B5713004AA096 /* ZIKStationShowHonorView.m */; };
 		FCC5719E1D2B5725004AA096 /* ZIKStationShowHonorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC5719D1D2B5725004AA096 /* ZIKStationShowHonorView.xib */; };
 		FCC571A21D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC571A11D2B87CA004AA096 /* ZIKBaseCertificateAdapter.m */; };
@@ -2221,6 +2222,8 @@
 		FCC160331D6AD6140030C4CB /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		FCC160341D6AD6140030C4CB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		FCC160351D6AD6140030C4CB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		FCC4ABDA1D82523A0032B68A /* ZIKMiaoQiZhongXinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMiaoQiZhongXinModel.h; sourceTree = "<group>"; };
+		FCC4ABDB1D82523A0032B68A /* ZIKMiaoQiZhongXinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMiaoQiZhongXinModel.m; sourceTree = "<group>"; };
 		FCC5719A1D2B5713004AA096 /* ZIKStationShowHonorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationShowHonorView.h; sourceTree = "<group>"; };
 		FCC5719B1D2B5713004AA096 /* ZIKStationShowHonorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationShowHonorView.m; sourceTree = "<group>"; };
 		FCC5719D1D2B5725004AA096 /* ZIKStationShowHonorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationShowHonorView.xib; sourceTree = "<group>"; };
@@ -5386,6 +5389,8 @@
 		FCB31A741D7D368D00EFF24D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FCC4ABDA1D82523A0032B68A /* ZIKMiaoQiZhongXinModel.h */,
+				FCC4ABDB1D82523A0032B68A /* ZIKMiaoQiZhongXinModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6273,6 +6278,7 @@
 				FC56124B1D0C092F00E5743B /* IQTextView.m in Sources */,
 				EA3D4D8F1D17BF670010B56D /* YLDBaoJiaMessageModel.m in Sources */,
 				FC4B4F2F1CAB9F4E00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.m in Sources */,
+				FCC4ABDC1D82523A0032B68A /* ZIKMiaoQiZhongXinModel.m in Sources */,
 				EA0079191C80155E00FA66B1 /* SearchViewController.m in Sources */,
 				EAF8A5451C867FF9008B99D2 /* HotBuyModel.m in Sources */,
 				EA03405A1C891EFD00FBF148 /* TreeSpecificationsModel.m in Sources */,

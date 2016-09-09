@@ -23,7 +23,6 @@
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backHome) name:@"ZIKMiaoQiBackHome" object:nil];
 
-
     //合作苗企
     ZIKHeZuoMiaoQiViewController *orderVC = [[ZIKHeZuoMiaoQiViewController alloc] initWithNibName:@"ZIKHeZuoMiaoQiViewController" bundle:nil];
     UINavigationController *orderNav = [[UINavigationController alloc] initWithRootViewController:orderVC];
@@ -63,8 +62,7 @@
     UINavigationController *stationNav = [[UINavigationController alloc] initWithRootViewController:stationVC];
     stationNav.viewControllers  = @[stationVC];
     stationNav.tabBarItem.enabled = YES;
-    //    stationVC.vcTitle = @"站长中心";
-    stationVC.tabBarItem.title = @"站长中心";
+    stationVC.tabBarItem.title = @"苗企中心";
     stationVC.navigationController.navigationBar.hidden = YES;
 
     stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程中心off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -79,7 +77,6 @@
                                                        normalColor,           NSForegroundColorAttributeName,
                                                        [UIFont fontWithName:@"Helvetica" size:12.0], NSFontAttributeName,
                                                        nil] forState:UIControlStateNormal];
-    // UIColor *titleHighlightedColor = [UIColor colorWithRed:43/255.0 green:41/255.0 blue:56/255.0 alpha:1];
     UIColor *titleHighlightedColor = NavColor;
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        titleHighlightedColor, NSForegroundColorAttributeName,
