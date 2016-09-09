@@ -29,6 +29,7 @@
     UIButton *rightButton;//nav右侧按钮
 
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

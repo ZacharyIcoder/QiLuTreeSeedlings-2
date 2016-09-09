@@ -29,6 +29,7 @@
     self.dataAry=[NSMutableArray array];
     self.pageNum=1;
     self.goldsupplier=0;
+    [self.navBackView setBackgroundColor:NavYellowColor];
     [self topActionView];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 120, kWidth, kHeight-120)];
     tableView.delegate=self;

@@ -30,7 +30,8 @@
 #import "LYDGCGSTiShiViewController.h"
 #import "YLDGCGSZiZhiTiJiaoViewController.h"
 /********金牌供应*********/
-#import "YLDJinPaiGYViewController.h"
+//#import "YLDJinPaiGYViewController.h"
+#import "YLDJPGYSBaseTabBarController.h"
 /********工程助手*********/
 #import "YLDGongChengGongSiViewController.h"
 /********站长助手*********/
@@ -547,7 +548,7 @@
     }
     if (index==7) {
         [self hiddingSelfTabBar];
-        YLDJinPaiGYViewController *gongyingV=[[YLDJinPaiGYViewController alloc]init];
+        YLDJPGYSBaseTabBarController *gongyingV=[[YLDJPGYSBaseTabBarController alloc]init];
         [self.navigationController pushViewController:gongyingV animated:YES];
     }
 }

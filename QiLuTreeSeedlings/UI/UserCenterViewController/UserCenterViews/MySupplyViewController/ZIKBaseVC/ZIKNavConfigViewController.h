@@ -42,4 +42,8 @@ typedef void(^LeftBarBtnClickedBlock)();
  *  nav标题
  */
 @property (nonatomic, copy) NSString *vcTitle;
+/**
+ *  nav颜色
+ */
+@property (nonatomic, weak) UIColor *backColor;
 @end

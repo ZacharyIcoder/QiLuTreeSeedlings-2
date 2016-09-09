@@ -1410,4 +1410,12 @@ failure:(void (^)(NSError *error))failure;
                                       failure:(void (^)(NSError *error))failure;
 
 
+
+
+#pragma mark ---------- 金牌供应商-金牌供应商列表-----------
+-(void)goldSupplyListWithprovince:(NSString *)province withcity:(NSString *)city withcounty:(NSString *)county withPage:(NSString *)county withPageSize:(NSString *)pageSize  Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 金牌供应商-金牌中心-----------
+-(void)goldSupplierInfoSuccess:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;
 @end

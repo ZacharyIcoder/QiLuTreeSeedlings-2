@@ -26,12 +26,20 @@
     UILabel  *titleLable;//标题lable
     UIButton *leftButton;//nav左侧按钮
     UIButton *rightButton;//nav右侧按钮
+    UIView *navBackView;
 }
-
+-(id)init
+{
+    self=[super init];
+    if (self) {
+       [self makeNavView];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self makeNavView];
+    
 }
 
 #pragma mark - 设置navView
@@ -40,7 +48,7 @@
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
     [self.view addSubview:view];
-
+    navBackView=view;
     leftButton = [[UIButton alloc] initWithFrame:CGRectMake(leftButtonX, leftButtonY, 30, leftButtonH)];
     leftButton.titleLabel.font = navButtonFont;
 //    [leftButton setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
@@ -95,7 +103,12 @@
     rightButton.frame = CGRectMake(kWidth-45, leftButtonY, 30, 30);
     [rightButton setImage:[UIImage imageNamed:rightBarBtnImgString] forState:UIControlStateNormal];
 }
-
+#pragma mark - 设置背景颜色
+-(void)setBackColor:(UIColor *)backColor
+{
+    _backColor=backColor;
+    [navBackView setBackgroundColor:backColor];
+}
 #pragma mark - 设置标题
 -(void)setVcTitle:(NSString *)vcTitle {
     _vcTitle = vcTitle;

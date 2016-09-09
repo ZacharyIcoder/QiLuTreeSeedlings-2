@@ -7,7 +7,10 @@
 //
 
 #import "YLDJPGYSBaseTabBarController.h"
-
+#import "YLDJPGYSListViewController.h"
+#import "YLDJinPaiGYViewController.h"
+#import "ZIKMyOfferViewController.h"
+#import "ZIKOrderViewController.h"
 @interface YLDJPGYSBaseTabBarController ()
 
 @end
@@ -16,6 +19,60 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backHome) name:@"ZIKBackHome" object:nil];
+    //金牌供应商
+    YLDJPGYSListViewController *JPGYSListVC = [[YLDJPGYSListViewController alloc] init];
+    UINavigationController *JPGYSListNav = [[UINavigationController alloc] initWithRootViewController:JPGYSListVC];
+    //JPGYSListNav.viewControllers = @[JPGYSListVC];
+//    JPGYSListNav.tabBarItem.enabled = YES;
+    JPGYSListVC.vcTitle = @"金牌供应商";
+    JPGYSListVC.tabBarItem.title = @"金牌供应商";
+    JPGYSListVC.navigationController.navigationBar.hidden = YES;
+    JPGYSListVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单金牌供应商off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    JPGYSListVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单金牌供应商on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //金牌供应
+    YLDJinPaiGYViewController *jinpaigongyingVC=[[YLDJinPaiGYViewController alloc]init];
+    UINavigationController *JPGYListNav = [[UINavigationController alloc] initWithRootViewController:jinpaigongyingVC];
+    JPGYListNav.viewControllers = @[jinpaigongyingVC];
+    JPGYListNav.tabBarItem.enabled = YES;
+    jinpaigongyingVC.vcTitle = @"金牌供应";
+    jinpaigongyingVC.tabBarItem.title = @"金牌供应";
+    jinpaigongyingVC.navigationController.navigationBar.hidden = YES;
+    jinpaigongyingVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-站长供应off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    jinpaigongyingVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-站长供应On"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //金牌订单
+    ZIKOrderViewController *orderVCs = [[ZIKOrderViewController alloc] init];
+    UINavigationController *orderNav = [[UINavigationController alloc] initWithRootViewController:orderVCs];
+    orderNav.viewControllers = @[orderVCs];
+    orderNav.tabBarItem.enabled = YES;
+    orderVCs.vcTitle = @"金牌订单";
+    orderVCs.tabBarItem.title = @"金牌订单";
+    orderVCs.navigationController.navigationBar.hidden = YES;
+    orderVCs.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-我的订单off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    orderVCs.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-我的订单on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ 
+    //我的报价
+    ZIKMyOfferViewController *offerVC = [[ZIKMyOfferViewController alloc] init];
+    UINavigationController *offerNav = [[UINavigationController alloc] initWithRootViewController:offerVC];
+    offerNav.viewControllers = @[offerVC];
+    offerNav.tabBarItem.enabled = YES;
+    offerVC.vcTitle = @"我的报价";
+    offerVC.tabBarItem.title = @"我的报价";
+    offerVC.navigationController.navigationBar.hidden = YES;
+    offerVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-报价管理Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-报价管理On"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.viewControllers = @[JPGYSListNav,JPGYListNav,orderNav,offerNav];
+    UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       normalColor,           NSForegroundColorAttributeName,
+                                                       [UIFont fontWithName:@"Helvetica" size:12.0], NSFontAttributeName,
+                                                       nil] forState:UIControlStateNormal];
+    UIColor *titleHighlightedColor = NavYellowColor;
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       titleHighlightedColor, NSForegroundColorAttributeName,
+                                                       [UIFont fontWithName:@"Helvetica" size:12.0], NSFontAttributeName,
+                                                       nil] forState:UIControlStateSelected];
+
     // Do any additional setup after loading the view.
 }
 
@@ -23,7 +80,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)backHome {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKBackHome" object:nil];
+}
 /*
 #pragma mark - Navigation
 

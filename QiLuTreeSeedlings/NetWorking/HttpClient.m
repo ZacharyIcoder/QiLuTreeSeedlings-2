@@ -3700,7 +3700,7 @@
                                  failure:(void (^)(NSError *error))failure{
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/workstation/order/search";
+    NSString *postURL            = @"api/order/search";
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
@@ -3815,7 +3815,7 @@
                                   failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/workstation/order/search/detail";
+    NSString *postURL            = @"api/order/search/detail";
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
@@ -5088,6 +5088,7 @@
     NSString *postURL            = @"api/opinion/save";
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
     parmers[@"client_id"]        = kclient_id;
@@ -5341,7 +5342,66 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+#pragma mark ---------- 金牌供应商-金牌供应商列表-----------
+-(void)goldSupplyListWithprovince:(NSString *)province withcity:(NSString *)city withcounty:(NSString *)county withPage:(NSString *)page withPageSize:(NSString *)pageSize  Success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/goldsupplier/lists";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"city"]             = city;
+    parmers[@"province"]         = province;
+    parmers[@"county"]           = county;
+    //parmers[@"memberUid"]        = memberUid;
+    parmers[@"page"]             = page;
+    parmers[@"pageSize"]         = pageSize;
+    
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
+#pragma mark ---------- 金牌供应商-金牌中心-----------
+-(void)goldSupplierInfoSuccess:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSString *postURL            = @"api/goldsupplier/info ";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+    
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"memberUid"]        = APPDELEGATE.userModel.access_id;
 
-
->>>>>>> origin/master
+    
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+}
 @end
