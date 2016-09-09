@@ -28,18 +28,11 @@
     UIButton *rightButton;//nav右侧按钮
     UIView *navBackView;
 }
--(id)init
-{
-    self=[super init];
-    if (self) {
-       [self makeNavView];
-    }
-    return self;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self makeNavView];
 }
 
 #pragma mark - 设置navView
