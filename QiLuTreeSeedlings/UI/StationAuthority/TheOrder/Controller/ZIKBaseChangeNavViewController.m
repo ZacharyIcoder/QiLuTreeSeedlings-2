@@ -43,7 +43,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0, kWidth, 64)];
     [view setBackgroundColor:NavColor];
     [self.view addSubview:view];
-
+    self.navView = view;
     leftButton = [[UIButton alloc] initWithFrame:CGRectMake(leftButtonX, leftButtonY, 30, leftButtonH)];
     leftButton.titleLabel.font = navButtonFont;
     //    [leftButton setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];

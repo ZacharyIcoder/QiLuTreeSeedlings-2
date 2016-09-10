@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UIDefines.h"
 @interface YLDBaseViewController : UIViewController
 @property (nonatomic,weak)UIButton *backBtn;
 @property (nonatomic, strong) NSString *vcTitle;

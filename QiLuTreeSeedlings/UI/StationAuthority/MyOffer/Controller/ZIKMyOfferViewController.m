@@ -34,7 +34,12 @@
     self.leftBarBtnBlock = ^{
         [weakSelf backBtnAction:nil];
     };
-
+    if ([self.title isEqualToString:@"金牌订单"]) {
+        self.vcTitle = @"金牌订单";
+        [self.navView setBackgroundColor:NavYellowColor];
+        
+    }
+    
     self.searchBarView.placeHolder = @"请输入苗木名称,工程公司名称";
     self.searchBarView.searchBlock = ^(NSString *searchText){
         //CLog(@"%@",searchText);

@@ -12,6 +12,7 @@
 #import "HotSellModel.h"
 #import "HttpClient.h"
 #import "MJRefresh.h"
+
 @interface YLDJinPaiGYViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UIView *moveView;
 @property (nonatomic,weak)UIButton *nowBtn;
@@ -29,7 +30,7 @@
     self.dataAry=[NSMutableArray array];
     self.pageNum=1;
     self.goldsupplier=0;
-    [self.navBackView setBackgroundColor:NavYellowColor];
+    //[self.navBackView setBackgroundColor:NavYellowColor];
     [self topActionView];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 120, kWidth, kHeight-120)];
     tableView.delegate=self;

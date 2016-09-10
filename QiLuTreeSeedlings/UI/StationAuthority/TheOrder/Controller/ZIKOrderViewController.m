@@ -89,6 +89,12 @@
     self.leftBarBtnBlock = ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKBackHome" object:nil];
     };
+    if ([self.title isEqualToString:@"金牌订单"]) {
+        self.vcTitle=@"金牌订单";
+        self.backColor=NavYellowColor;
+
+    }
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStylePlain];
     tableView.delegate   = self;
     tableView.dataSource = self;

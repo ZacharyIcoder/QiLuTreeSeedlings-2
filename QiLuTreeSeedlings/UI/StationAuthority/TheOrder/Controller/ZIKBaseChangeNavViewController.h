@@ -50,7 +50,7 @@ typedef void(^LeftBarBtnClickedBlock)();
 ///**
 // *  导航栏
 // */
-//@property (nonatomic, strong) UIView *navView;
+@property (nonatomic, strong) UIView *navView;
 /**
  *  搜索栏
  */
