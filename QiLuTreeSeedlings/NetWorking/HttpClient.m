@@ -3700,7 +3700,7 @@
                                  failure:(void (^)(NSError *error))failure{
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/order/search";
+    NSString *postURL            = @"api/workstation/order/search";
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
@@ -3815,7 +3815,7 @@
                                   failure:(void (^)(NSError *error))failure {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
-    NSString *postURL            = @"api/order/search/detail";
+    NSString *postURL            = @"api/workstation/order/search/detail";
     NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
     parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
     parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;

@@ -50,21 +50,20 @@
     offerNav.viewControllers = @[offerVC];
     offerNav.tabBarItem.enabled = YES;
     offerVC.vcTitle = @"我的报价";
-    offerVC.tabBarItem.title = @"我的报价";
+    offerVC.title = @"我的报价";
     offerVC.navigationController.navigationBar.hidden = YES;
     offerVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-报价管理Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-报价管理On"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
+    [offerVC.navView setBackgroundColor:NavYellowColor];
     
     //金牌订单
-        ZIKMyOfferViewController *orderVCs = [[ZIKMyOfferViewController alloc] init];
-        UINavController *orderNav = [[UINavController alloc] initWithRootViewController:orderVCs];
-        orderNav.tabBarItem.enabled = YES;
-        orderVCs.vcTitle = @"金牌订单";
-        orderVCs.tabBarItem.title = @"金牌订单";
-        orderVCs.navigationController.navigationBar.hidden = YES;
-        orderVCs.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-我的订单off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        orderVCs.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-我的订单on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        ZIKOrderViewController *orderVC = [[ZIKOrderViewController alloc] init];
+        UINavController *orderNav = [[UINavController alloc] initWithRootViewController:orderVC];
+    orderVC.navigationController.navigationBar.hidden=YES;
+    orderVC.title=@"金牌订单";
+    orderVC.vcTitle=@"金牌订单";
+    orderVC.tabBarItem.image = [[UIImage imageNamed:@"jpwodedingdanoff"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"jpwodedingdanon"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.viewControllers = @[JPGYSListNav,JPGYListNav,orderNav,offerNav];
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
