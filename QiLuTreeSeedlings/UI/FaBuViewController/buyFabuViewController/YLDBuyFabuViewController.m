@@ -75,13 +75,13 @@
     [lineImagV2 setBackgroundColor:kLineColor];
     [areaView addSubview:lineImagV2];
     UILabel *areaLab=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 70, 50)];
-    areaLab.text=@"苗源地";
+    areaLab.text=@"供苗地";
     [areaLab setTextColor:titleLabColor];
     [areaLab setFont:[UIFont systemFontOfSize:15]];
     [areaView addSubview:areaLab];
     UIButton *areaBtn=[[UIButton alloc]initWithFrame:CGRectMake(100, 0, kWidth-150, 50)];
     [areaBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [areaBtn setTitle:@"请选择苗源地" forState:UIControlStateNormal];
+    [areaBtn setTitle:@"请选择供苗地" forState:UIControlStateNormal];
     [areaBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [areaView addSubview:areaBtn];
     self.areaBtn=areaBtn;
@@ -235,7 +235,7 @@
             }
         }
     if (self.citysStr.length<=0) {
-        [ToastView showTopToast:@"请选择苗源地"];
+        [ToastView showTopToast:@"请选择供苗地"];
         return;
     }
     ShowActionV();
@@ -429,7 +429,7 @@
     }];
     //self.dataAry = [CityModel creatCityAryByAry:allTown];
     [dao closeDataBase];
-    if (![[self.areaBtn currentTitle] isEqualToString:@"请选择苗源地"]) {
+    if (![[self.areaBtn currentTitle] isEqualToString:@"请选择供苗地"]) {
         NSArray *cityArray = [_citysStr componentsSeparatedByString:@","];
         __block NSInteger numcount = 0;
         [_citys enumerateObjectsUsingBlock:^(ZIKCityModel *model, NSUInteger idx, BOOL * _Nonnull stop) {

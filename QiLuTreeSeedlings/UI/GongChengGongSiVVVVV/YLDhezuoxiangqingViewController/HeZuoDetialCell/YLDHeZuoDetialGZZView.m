@@ -24,7 +24,7 @@
 -(void)setDic:(NSDictionary *)dic
 {
     _dic=dic;
-    self.areaLab.text=[NSString stringWithFormat:@"苗源地:%@",dic[@"area"]];
+    self.areaLab.text=[NSString stringWithFormat:@"供苗地:%@",dic[@"area"]];
     
 //    NSArray *creatTime=[dic[@"createTime"] componentsSeparatedByString:@" "];
     self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",dic[@"quantity"]];
