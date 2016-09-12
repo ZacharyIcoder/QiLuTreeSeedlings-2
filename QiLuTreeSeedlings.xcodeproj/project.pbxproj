@@ -326,6 +326,9 @@
 		EA833D911CFEBEAC00D56AFB /* zhanzhongtongshouye.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D8F1CFEBEAC00D56AFB /* zhanzhongtongshouye.png */; };
 		EA833D921CFEBEAC00D56AFB /* gongchenggongsishouye.png in Resources */ = {isa = PBXBuildFile; fileRef = EA833D901CFEBEAC00D56AFB /* gongchenggongsishouye.png */; };
 		EA833D951CFEC13300D56AFB /* YLDGongChengGongSiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA833D941CFEC13300D56AFB /* YLDGongChengGongSiViewController.m */; };
+		EA8610981D863CF800D3FCBC /* YLDJPGYListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8610961D863CF800D3FCBC /* YLDJPGYListCell.m */; };
+		EA8610991D863CF800D3FCBC /* YLDJPGYListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8610971D863CF800D3FCBC /* YLDJPGYListCell.xib */; };
+		EA86109D1D8648E900D3FCBC /* YLDJPGYSListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86109C1D8648E900D3FCBC /* YLDJPGYSListModel.m */; };
 		EA8865EA1D3A06FD008B89D6 /* areadbss.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EA8865E91D3A06FD008B89D6 /* areadbss.sqlite */; };
 		EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */; };
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
@@ -1355,6 +1358,11 @@
 		EA833D941CFEC13300D56AFB /* YLDGongChengGongSiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDGongChengGongSiViewController.m; sourceTree = "<group>"; };
 		EA8400471D46F0890017C37B /* YLDShopInteriorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDShopInteriorViewController.h; sourceTree = "<group>"; };
 		EA8400481D46F0890017C37B /* YLDShopInteriorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDShopInteriorViewController.m; sourceTree = "<group>"; };
+		EA8610951D863CF800D3FCBC /* YLDJPGYListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPGYListCell.h; sourceTree = "<group>"; };
+		EA8610961D863CF800D3FCBC /* YLDJPGYListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPGYListCell.m; sourceTree = "<group>"; };
+		EA8610971D863CF800D3FCBC /* YLDJPGYListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDJPGYListCell.xib; sourceTree = "<group>"; };
+		EA86109B1D8648E900D3FCBC /* YLDJPGYSListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPGYSListModel.h; sourceTree = "<group>"; };
+		EA86109C1D8648E900D3FCBC /* YLDJPGYSListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPGYSListModel.m; sourceTree = "<group>"; };
 		EA8865E91D3A06FD008B89D6 /* areadbss.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = areadbss.sqlite; sourceTree = "<group>"; };
 		EA88BE721C83E06E001E4E1F /* SearchRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendView.h; sourceTree = "<group>"; };
 		EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendView.m; sourceTree = "<group>"; };
@@ -3340,8 +3348,12 @@
 		EA65853A1D815A2500BC5183 /* YLDJPGYListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA86109A1D8648CC00D3FCBC /* Model */,
 				EA65853B1D815A8E00BC5183 /* YLDJPGYSListViewController.h */,
 				EA65853C1D815A8E00BC5183 /* YLDJPGYSListViewController.m */,
+				EA8610951D863CF800D3FCBC /* YLDJPGYListCell.h */,
+				EA8610961D863CF800D3FCBC /* YLDJPGYListCell.m */,
+				EA8610971D863CF800D3FCBC /* YLDJPGYListCell.xib */,
 			);
 			path = YLDJPGYListViewController;
 			sourceTree = "<group>";
@@ -3594,6 +3606,15 @@
 				FC3D63B81D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib */,
 			);
 			path = ShopInteriorViewController;
+			sourceTree = "<group>";
+		};
+		EA86109A1D8648CC00D3FCBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA86109B1D8648E900D3FCBC /* YLDJPGYSListModel.h */,
+				EA86109C1D8648E900D3FCBC /* YLDJPGYSListModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EA8CAA621C8963D500058A34 /* DataCache */ = {
@@ -5704,6 +5725,7 @@
 				EA08F7A81D19009100471C33 /* yYLDCompanyMessageCell.xib in Resources */,
 				EA6B31A61CAB99340068CCB5 /* moreRow@2x.png in Resources */,
 				FC6FED891CAD103F000E2CA5 /* 消费记录-消费.png in Resources */,
+				EA8610991D863CF800D3FCBC /* YLDJPGYListCell.xib in Resources */,
 				EA08F7C71D19152700471C33 /* anliimage.png in Resources */,
 				FC4B413A1D49CDBD00EEB593 /* 1求购供应详情-店铺图标2@2x.png in Resources */,
 				FC4A51861D0E63650060587B /* 工程订单_筛选on.png in Resources */,
@@ -6095,6 +6117,7 @@
 				EAAD2AB71D46F8520070F6CE /* YLDShopInteriorViewController.m in Sources */,
 				FC2276701D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.m in Sources */,
 				FC45C3F01D2CABF30038D22A /* ZIKMyTeamModel.m in Sources */,
+				EA86109D1D8648E900D3FCBC /* YLDJPGYSListModel.m in Sources */,
 				FC5612881D0C092F00E5743B /* ZIKNurseryListView.m in Sources */,
 				FC2276921D17B8E40037B131 /* ZIKStationOrderModel.m in Sources */,
 				EA647E1B1CCF0E9100C039F4 /* MybuyListTableViewCell.m in Sources */,
@@ -6463,6 +6486,7 @@
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,
 				FC56129C1D0C092F00E5743B /* ZIKNavConfigViewController.m in Sources */,
 				FC5612491D0C092F00E5743B /* IQKeyboardManager.m in Sources */,
+				EA8610981D863CF800D3FCBC /* YLDJPGYListCell.m in Sources */,
 				EA2727181C8A7D8E000B0719 /* FMDatabase.m in Sources */,
 				FC50B3441CAE4C4A0022A24C /* Order.m in Sources */,
 				FC56125B1D0C092F00E5743B /* ZIKSupplyModel.m in Sources */,

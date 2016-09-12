@@ -33,12 +33,12 @@
         [self.touxiangImageV setImageWithURL:[NSURL URLWithString:model.shopHeadUrl] placeholderImage:[UIImage imageNamed:@"Store.png"]];
     }
     self.nameLab.text=model.name;
-    CGRect rect = [model.goldsupplier boundingRectWithSize:CGSizeMake(999, 21)
-                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
-                                        context:nil];
+//    CGRect rect = [model.goldsupplier boundingRectWithSize:CGSizeMake(999, 21)
+//                                        options:NSStringDrawingUsesLineFragmentOrigin
+//                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
+//                                        context:nil];
     self.shenfenLab.text=model.goldsupplier;
-    self.shenfenLabW.constant=rect.size.width+5;
+//    self.shenfenLabW.constant=rect.size.width+5;
    
     if (model.creditMargin) {
         NSString *moneyStr=[NSString stringWithFormat:@"%@元",model.creditMargin];

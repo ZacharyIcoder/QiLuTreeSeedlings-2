@@ -5343,7 +5343,7 @@
     }];
 }
 #pragma mark ---------- 金牌供应商-金牌供应商列表-----------
--(void)goldSupplyListWithprovince:(NSString *)province withcity:(NSString *)city withcounty:(NSString *)county withPage:(NSString *)page withPageSize:(NSString *)pageSize  Success:(void (^)(id responseObject))success
+-(void)goldSupplyListWithprovince:(NSString *)province withcity:(NSString *)city withcounty:(NSString *)county WithKeyWord:(NSString *)keyword withPage:(NSString *)page withPageSize:(NSString *)pageSize  Success:(void (^)(id responseObject))success
                           failure:(void (^)(NSError *error))failure
 {
     NSString *postURL            = @"api/goldsupplier/lists";
@@ -5359,7 +5359,7 @@
     parmers[@"city"]             = city;
     parmers[@"province"]         = province;
     parmers[@"county"]           = county;
-    //parmers[@"memberUid"]        = memberUid;
+    parmers[@"keyword"]          = keyword;
     parmers[@"page"]             = page;
     parmers[@"pageSize"]         = pageSize;
     
