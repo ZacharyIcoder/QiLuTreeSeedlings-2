@@ -15,6 +15,21 @@
     
     return cell;
 }
+-(void)setModel:(YLDJPGYSListModel *)model{
+    _model=model;
+    self.nameL.text=model.companyName;
+    self.addressL.text=model.areaall;
+    self.personL.text=[NSString stringWithFormat:@"%@ %@",model.name,model.phone];
+    if (model.goldsupplier==1) {
+        self.shenfenV.image=[UIImage imageNamed:@"列表-金牌供应商2"];
+    }
+    if (model.goldsupplier==2) {
+        self.shenfenV.image=[UIImage imageNamed:@"列表-银牌供应商2"];
+    }
+    if (model.goldsupplier==3) {
+        self.shenfenV.image=[UIImage imageNamed:@"列表-铜牌供应商2"];
+    }
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

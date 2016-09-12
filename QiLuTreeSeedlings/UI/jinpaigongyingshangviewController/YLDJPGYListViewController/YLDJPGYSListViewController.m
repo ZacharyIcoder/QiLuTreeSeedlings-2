@@ -13,6 +13,8 @@
 #import "GetCityDao.h"
 #import "YLDJPGYListCell.h"
 #import "MJRefresh.h"
+#import "YLDJPGYSListModel.h"
+#import "YLDJPGYSDetialViewController.h"
 @interface YLDJPGYSListViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
 @property (nonatomic,strong)UIButton *shengBtn;
 @property (nonatomic,strong)UIButton *shiBtn;
@@ -42,17 +44,23 @@
     tableView.delegate=self;
     tableView.dataSource=self;
     self.cityTalbView=tableView;
-    UITableView *shangTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-64-51-44-30)];
+    UITableView *shangTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-64-51-46)];
     shangTableView.delegate=self;
     shangTableView.dataSource=self;
+    shangTableView.tag=8;
+    shangTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.shangTalbView=shangTableView;
     [self.view addSubview:shangTableView];
     __weak typeof(self) weakSelf=self;
     [shangTableView addHeaderWithCallback:^{
-        
+        ShowActionV();
+        weakSelf.pageNum=1;
+        [weakSelf getdata];
     }];
     [shangTableView addFooterWithCallback:^{
-        
+        ShowActionV();
+        weakSelf.pageNum+=1;
+        [weakSelf getdata];
     }];
     UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-55, 23, 30, 30)];
     [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
@@ -67,13 +75,38 @@
     searchV.textfield.placeholder=@"请输入项目名称、苗木名称";
     [self.navBackView addSubview:searchV];
     
-
+    [self.shangTalbView headerBeginRefreshing];
     
     // Do any additional setup after loading the view.
 }
 -(void)getdata
 {
-//    HTTPCLIENT 
+    [HTTPCLIENT goldSupplyListWithprovince:self.shengModel.code withcity:self.shiModel.code withcounty:self.xianModel.code WithKeyWord:self.searchStr withPage:[NSString stringWithFormat:@"%ld",self.pageNum] withPageSize:@"15" Success:^(id responseObject) {
+        RemoveActionV();
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            if (self.pageNum==1) {
+                [self.dataAry removeAllObjects];
+            }
+            NSArray *ary1=[responseObject objectForKey:@"result"];
+            NSArray *ary2=[YLDJPGYSListModel aryByAry:ary1];
+            if (ary2.count==0) {
+                [ToastView showTopToast:@"已无更多数据"];
+            }else
+            {
+                [self.dataAry addObjectsFromArray:ary2];
+                [self.shangTalbView reloadData];
+            }
+        }else
+        {
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+        [self.shangTalbView headerEndRefreshing];
+        [self.shangTalbView footerEndRefreshing];
+    } failure:^(NSError *error) {
+        RemoveActionV();
+        [self.shangTalbView headerEndRefreshing];
+        [self.shangTalbView footerEndRefreshing];
+    }];
 }
 -(UIView *)cityView
 {
@@ -93,7 +126,7 @@
     [line1 setBackgroundColor:kLineColor];
     [view addSubview:line1];
     
-    UIButton *shiBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/3, 0, kWidth/3, 46)];
+    UIButton *shiBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/3+1, 0, kWidth/3, 46)];
     [shiBtn setTitle:@"所有市" forState:UIControlStateNormal];
     [shiBtn setBackgroundColor:[UIColor whiteColor]];
     [shiBtn addTarget:self action:@selector(shiBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -107,7 +140,7 @@
     UIImageView *line2=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth/3*2, 8, 0.5, 30)];
     [line2 setBackgroundColor:kLineColor];
     [view addSubview:line2];
-    UIButton *xianBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/3*2, 0, kWidth/3, 46)];
+    UIButton *xianBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth/3*2+2, 0, kWidth/3, 46)];
     [xianBtn setTitle:@"所有县(区)" forState:UIControlStateNormal];
     [xianBtn setBackgroundColor:[UIColor whiteColor]];
     [xianBtn addTarget:self action:@selector(xianBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -184,9 +217,12 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView.tag>=10) {
       return self.cityAry.count+1;
-    }else{
-        return 20;
     }
+    if (tableView.tag==8) {
+        return self.dataAry.count;
+    }
+        return 0;
+    
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -220,13 +256,24 @@
         }
        
         return Cell;
-    }else{
-        UITableViewCell *Cell=[tableView dequeueReusableCellWithIdentifier:@"ssssss"];
+    }
+    
+    if (tableView.tag==8) {
+        YLDJPGYListCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDJPGYListCell"];
+        if (!cell) {
+            cell=[YLDJPGYListCell yldJPGYListCell];
+        }
+        YLDJPGYSListModel *model=self.dataAry[indexPath.row];
+        cell.model=model;
+        return cell;
+    }
+    
+    UITableViewCell *Cell=[tableView dequeueReusableCellWithIdentifier:@"ssssss"];
         if (!Cell) {
             Cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ssssss"];
         }
         return Cell;
-    }
+    
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -234,8 +281,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.cityTalbView removeFromSuperview];
     if (tableView.tag==10) {
-        [self.shengBtn setSelected:YES];
+        
         if (indexPath.row==0) {
+            [self.shengBtn setSelected:NO];
           [self.shengBtn setTitle:@"全国" forState:UIControlStateSelected];
             self.shiBtn.selected=NO;
             self.shiBtn.enabled=NO;
@@ -245,6 +293,7 @@
             self.shiModel=nil;
             self.xianModel=nil;
         }else{
+            [self.shengBtn setSelected:YES];
             CityModel *model=self.cityAry[indexPath.row-1];
             self.shengModel=model;
             [self.shengBtn setTitle:model.cityName forState:UIControlStateSelected];
@@ -259,14 +308,16 @@
         
     }
     if (tableView.tag==20) {
-        [self.shiBtn setSelected:YES];
+        
         if (indexPath.row==0) {
+            [self.shiBtn setSelected:NO];
             [self.shiBtn setTitle:@"所有市" forState:UIControlStateSelected];
             self.xianBtn.selected=NO;
             self.xianBtn.enabled=NO;
             self.xianModel=nil;
             self.shiModel=nil;
         }else{
+            [self.shiBtn setSelected:YES];
             CityModel *model=self.cityAry[indexPath.row-1];
             [self.shiBtn setTitle:model.cityName forState:UIControlStateSelected];
             self.xianBtn.selected=NO;
@@ -276,11 +327,13 @@
        
     }
     if (tableView.tag==30) {
-        [self.xianBtn setSelected:YES];
+        
         if (indexPath.row==0) {
+            [self.xianBtn setSelected:NO];
             [self.xianBtn setTitle:@"所有县(区)" forState:UIControlStateSelected];
             self.xianModel=nil;
         }else{
+            [self.xianBtn setSelected:YES];
             CityModel *model=self.cityAry[indexPath.row-1];
             [self.shiBtn setTitle:model.cityName forState:UIControlStateSelected];
             self.xianBtn.selected=NO;
@@ -289,31 +342,25 @@
         }
         
     }
+    if (tableView.tag>=10) {
+        [self.shangTalbView headerBeginRefreshing];
+    }
+    if (tableView.tag==8) {
+        YLDJPGYSListModel *model=self.dataAry[indexPath.row];
+        YLDJPGYSDetialViewController *yldJPGYSDetialVC=[YLDJPGYSDetialViewController new];
+    }
 }
 -(void)searchBtnAction:(UIButton *)sender
 {
     self.searchV.hidden=NO;
+   
 }
 -(void)textFieldChangeVVWithStr:(NSString *)textStr
 {
-//    if (self.tableView.editing) {
-//        self.tableView.editing = NO;
-//        bottomcell.hidden = YES;
-//        self.tableView.frame = CGRectMake(0, 64+53, kWidth, kHeight-115-50);
-//        [_removeArray removeAllObjects];
-//        __weak typeof(self)weakSelf=self;
-//        
-//        [self.tableView addHeaderWithCallback:^{
-//            weakSelf.pageNum=1;
-//            ShowActionV();
-//            [weakSelf getDataWithSearchWord:weakSelf.searchStr andPageNum:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNum] andStatus:[NSString stringWithFormat:@"%ld",(long)weakSelf.Status]];
-//        }];
-//        
-//        
-//    }
-//    
-//    self.pageNum=1;
-//    self.searchStr=textStr;
+
+    self.pageNum=1;
+    self.searchStr=textStr;
+    [self getdata];
    
 }
 - (void)didReceiveMemoryWarning {

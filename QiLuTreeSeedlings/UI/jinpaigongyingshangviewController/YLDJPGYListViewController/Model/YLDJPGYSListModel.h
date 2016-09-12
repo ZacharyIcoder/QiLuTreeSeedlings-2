@@ -23,5 +23,5 @@
 @property (nonatomic,copy) NSString *uid;
 @property (nonatomic,assign) NSInteger goldsupplier;
 +(YLDJPGYSListModel *)modelByDic:(NSDictionary *)dic;
-+(NSMutableArray *)aryByAry:(NSDictionary *)dic;
++(NSMutableArray *)aryByAry:(NSArray *)ary;
 @end

@@ -1418,4 +1418,7 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 金牌供应商-金牌中心-----------
 -(void)goldSupplierInfoSuccess:(void (^)(id responseObject))success
 failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 金牌供应商-金牌详情-----------
+-(void)goldSupplyDetialWithUid:(NSString *)memberUid Success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;
 @end

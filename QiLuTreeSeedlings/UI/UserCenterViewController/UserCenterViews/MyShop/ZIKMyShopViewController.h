@@ -8,5 +8,6 @@
 
 #import "ZIKBaseViewController.h"
 @interface ZIKMyShopViewController : ZIKBaseViewController
-keyword@property (nonatomic, assign) NSInteger type;//0 我的店铺 //别人店铺
+@property (nonatomic, copy) NSString *memberUid;
+@property (nonatomic, assign) NSInteger type;//0 我的店铺 //别人店铺
 @end
