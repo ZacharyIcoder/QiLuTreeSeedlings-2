@@ -31,6 +31,10 @@
         self.firstHintLabel.text  = @"抱歉您不是齐鲁苗木金牌供应商,无法进入此功能";
         self.secondHintLabel.text = @"如果您希望成为金牌供应商，请联系客服";
     }
+    if ([self.qubie isEqualToString:@"站长中心"]) {
+        self.firstHintLabel.text  = @"抱歉您不是齐鲁苗工作站站长,暂时无法使用站长通功能";
+        self.secondHintLabel.text = @"如果您希望成为工作站站长，请联系客服";
+    }
 }
 
 - (IBAction)telePhoneButtonClick:(id)sender {

@@ -552,23 +552,23 @@
             return;
         }
         if (indexPath.row==3) {
-            NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"myphone"];
-            if (APPDELEGATE.userModel.goldsupplierStatus == 5 || APPDELEGATE.userModel.goldsupplierStatus  == 6 || [phone isEqualToString:@"15953523812"]) {
+//            NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"myphone"];
+//            if (APPDELEGATE.userModel.goldsupplierStatus == 5 || APPDELEGATE.userModel.goldsupplierStatus  == 6 || [phone isEqualToString:@"15953523812"]) {
                 [self hiddingSelfTabBar];
 
                 ZIKStationTabBarViewController *stationtab = [[ZIKStationTabBarViewController alloc] init];
                 [self.navigationController pushViewController:stationtab animated:YES];
 
-            } else {
-                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
-                    [ToastView showTopToast:[NSString stringWithFormat:@"您已具备%@身份",APPDELEGATE.userModel.goldsupplier]];
-                    return;
-                }
-                [self hiddingSelfTabBar];
-
-                ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
-                [self.navigationController pushViewController:helpfulVC animated:YES];
-            }
+//            } else {
+//                if (APPDELEGATE.userModel.goldsupplierStatus!=0) {
+//                    [ToastView showTopToast:[NSString stringWithFormat:@"您已具备%@身份",APPDELEGATE.userModel.goldsupplier]];
+//                    return;
+//                }
+//                [self hiddingSelfTabBar];
+//
+//                ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
+//                [self.navigationController pushViewController:helpfulVC animated:YES];
+//            }
             return;
 
         }

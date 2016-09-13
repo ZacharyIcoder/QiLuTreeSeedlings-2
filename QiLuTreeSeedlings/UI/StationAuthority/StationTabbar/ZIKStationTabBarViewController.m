@@ -73,8 +73,8 @@
     buyVC.vcTitle = @"站长求购";
     buyVC.tabBarItem.title = @"站长求购";
     buyVC.navigationController.navigationBar.hidden = YES;
-    buyVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工作站off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    buyVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工作站on(2)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    buyVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-站长求购off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    buyVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-站长求购on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
     //工作站
@@ -112,9 +112,9 @@
     stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-站长中心on(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
-    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:workNav,buyNav,orderNav,offerNav,stationNav,nil];
+    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:orderNav,buyNav,workNav,offerNav,stationNav,nil];
     self.viewControllers = list;
-
+    self.delegate = self;
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        normalColor,           NSForegroundColorAttributeName,

@@ -21,6 +21,8 @@
 
 #import "ZIKShaiDanTableViewCell.h"
 #import "ZIKShaiDanModel.h"
+
+#import "ZIKStationShowListDetailViewController.h"//晒单详情
 @interface ZIKStationShowListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *showListTableView;
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
@@ -170,6 +172,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKStationShowListDetailViewController *detailVC = [[ZIKStationShowListDetailViewController alloc] initWithNibName:@"ZIKStationShowListDetailViewController" bundle:nil];
+    [self.navigationController pushViewController:detailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
