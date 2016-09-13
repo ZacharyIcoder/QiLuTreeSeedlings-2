@@ -14,12 +14,39 @@
 #import "ZIKMyOfferViewController.h"           //我的报价
 #import "ZIKStationCenterTableViewController.h"//站长中心
 
+#import "ZIKHelpfulHintsViewController.h"
 
-@interface ZIKStationTabBarViewController ()
+@interface ZIKStationTabBarViewController ()<UITabBarControllerDelegate>
+{
+    BOOL _isTiao;
+}
+@property(readonly, nonatomic) NSUInteger lastSelectedIndex;
 
 @end
 
 @implementation ZIKStationTabBarViewController
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    _isTiao = YES;
+    //获得选中的item
+    NSUInteger tabIndex = [tabBar.items indexOfObject:item];
+    if (tabIndex != self.selectedIndex) {
+        //设置最近一次变更
+        _lastSelectedIndex = self.selectedIndex;
+        //        CLog(@"2 OLD:%lu , NEW:%lu",(unsigned long)self.lastSelectedIndex,(unsigned long)tabIndex);
+    }
+    if (tabIndex == 3 || tabIndex == 4) {
+        if (APPDELEGATE.userModel.goldsupplierStatus == 5 || APPDELEGATE.userModel.goldsupplierStatus == 6) {
+            _isTiao = YES;//是苗企，可以进入苗企中心
+        } else {
+            _isTiao = NO;//不是苗企，不可进入苗企中心
+            ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
+            helpfulVC.qubie = @"站长中心";
+            [self.navigationController pushViewController:helpfulVC animated:YES];
+        }
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +112,7 @@
     stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-站长中心on(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
-    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:orderNav,buyNav,workNav,offerNav,stationNav,nil];
+    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:workNav,buyNav,orderNav,offerNav,stationNav,nil];
     self.viewControllers = list;
 
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
@@ -114,5 +141,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    return _isTiao;
+}
 
 @end
