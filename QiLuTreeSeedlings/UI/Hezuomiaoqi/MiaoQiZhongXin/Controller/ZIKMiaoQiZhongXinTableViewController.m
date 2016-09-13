@@ -208,4 +208,14 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2) {
+        ZIKMyHonorViewController *honorVC = [[ZIKMyHonorViewController alloc] initWithNibName:@"ZIKMyHonorViewController" bundle:nil];
+        honorVC.memberUid = APPDELEGATE.userModel.access_id;
+        honorVC.type = TypeMiaoQiHonor;
+        honorVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:honorVC animated:YES];
+    }
+}
+
 @end

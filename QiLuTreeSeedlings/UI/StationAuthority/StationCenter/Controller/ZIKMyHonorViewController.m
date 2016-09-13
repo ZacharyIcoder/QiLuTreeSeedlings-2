@@ -56,39 +56,49 @@ static NSString *uid = nil;
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = BGColor;
     self.page = 1;
-    if (self.type == TypeHonor) {
+    if (self.type == TypeHonor || (self.type == TypeMiaoQiHonor && [self.memberUid isEqualToString:APPDELEGATE.userModel.access_id])) {
         self.vcTitle = @"我的荣誉";
     }
-    if (self.type == TypeQualification) {
+    else if (self.type == TypeQualification) {
         self.vcTitle = @"我的资质";
         [self.navBackView setBackgroundColor:NavYellowColor];
     }
-    if (self.type==TypeHonorOther) {
-        self.vcTitle = @"荣誉";
-    }
-    if (self.type == TypeMiaoQiHonor) {
+
+    if (self.type == TypeHonorOther || (self.type == TypeMiaoQiHonor && ![self.memberUid isEqualToString:APPDELEGATE.userModel.access_id]) ) {
         self.vcTitle = @"荣誉";
     }
     else{
-        self.rightBarBtnTitleString = @"添加";
-        __weak typeof(self) weakSelf = self;//解决循环引用的问题
-        self.rightBarBtnBlock = ^{
-            
-            if (self.type == TypeQualification) {
-                YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] initWithType:2];
-                [weakSelf.navigationController pushViewController:vcss animated:YES];
-                return ;
-            }
-            if (self.type == TypeHonor) {
-                ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
-                addVC.workstationUid = weakSelf.workstationUid;
-                [weakSelf.navigationController pushViewController:addVC animated:YES];
-            }
-        };
-        //添加长按手势
-        _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
-        [self.honorCollectionView addGestureRecognizer:_tapDeleteGR];
+        if (self.miaoqiOther) {
 
+        }
+        else
+        {
+
+            self.rightBarBtnTitleString = @"添加";
+            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+            self.rightBarBtnBlock = ^{
+
+                if (self.type == TypeQualification) {
+                    YLDZiZhiAddViewController *vcss=[[YLDZiZhiAddViewController alloc] initWithType:2];
+                    [weakSelf.navigationController pushViewController:vcss animated:YES];
+                    return ;
+                }
+                if (self.type == TypeHonor) {
+                    ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+                    addVC.workstationUid = weakSelf.workstationUid;
+                    [weakSelf.navigationController pushViewController:addVC animated:YES];
+                }
+                if (self.type == TypeMiaoQiHonor) {
+                    ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+                    addVC.miaoqiUid = weakSelf.memberUid;
+                    [weakSelf.navigationController pushViewController:addVC animated:YES];
+                }
+            };
+            //添加长按手势
+            _tapDeleteGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR)];
+            [self.honorCollectionView addGestureRecognizer:_tapDeleteGR];
+        }
+        
     }
     
     if (kWidth != 375) {
@@ -240,7 +250,7 @@ static NSString *uid = nil;
         } else if ([responseObject[@"success"] integerValue] == 1) {
             NSArray *array  = responseObject[@"result"][@"list"];
             if (array.count == 0 && self.page == 1) {
-                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                [ToastView showToast:@"暂无数据" withOriginY:Width/2 withSuperView:self.view];
                  if (self.honorData.count > 0) {
                     [self.honorData removeAllObjects];
                 }
@@ -275,14 +285,14 @@ static NSString *uid = nil;
 - (void)requestMiaoQiHonorListData:(NSString *)pageNumber {
     [self.honorCollectionView headerEndRefreshing];
     [HTTPCLIENT cooperationCompanyHonorsWithMemberUid:self.memberUid page:pageNumber pageSize:@"10" Success:^(id responseObject) {
-        //CLog(@"%@",responseObject);
+        CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
         } else if ([responseObject[@"success"] integerValue] == 1) {
             NSArray *array  = responseObject[@"result"][@"list"];
             if (array.count == 0 && self.page == 1) {
-                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                [ToastView showToast:@"暂无数据" withOriginY:Width/2 withSuperView:self.view];
                 if (self.honorData.count > 0) {
                     [self.honorData removeAllObjects];
                 }
@@ -341,7 +351,29 @@ static NSString *uid = nil;
     cell.indexPath = indexPath;
     if (self.honorData.count > 0) {
 
-        if (self.type==TypeHonor) {
+        if (self.type == TypeMiaoQiHonor) {
+            __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
+            ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+            [cell loadData:modelAdapter];
+            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+            cell.editButtonBlock = ^(NSIndexPath *indexPath) {
+                ZIKAddHonorViewController *addhonorVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+                addhonorVC.miaoqiUid   = weakSelf.memberUid;
+                addhonorVC.memberUid = model.uid;
+                addhonorVC.miaoqiModel = model;
+                [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
+            };
+            cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除提示" message:@"确定删除所选内容？" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alert show];
+                alert.tag = 300;
+                alert.delegate = weakSelf;
+                //                [weakSelf deleteRequest:model.uid];
+                uid = model.uid;
+            };
+
+        }
+        else if (self.type==TypeHonor) {
             __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
             ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
             [cell loadData:modelAdapter];
@@ -396,7 +428,7 @@ static NSString *uid = nil;
         self.showHonorView = [ZIKStationShowHonorView instanceShowHonorView];
         self.showHonorView.frame = CGRectMake(0, kHeight, kWidth, kHeight);
     }
-    if (self.type == TypeHonor||self.type == TypeHonorOther) {
+    if (self.type == TypeHonor||self.type == TypeHonorOther || self.type == TypeMiaoQiHonor) {
         ZIKStationHonorListModel  *model = _honorData[indexPath.row];
         ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
         [self.showHonorView loadData:modelAdapter];
@@ -424,8 +456,21 @@ static NSString *uid = nil;
 }
 
 - (void)deleteRequest:(NSString *)uid {
-
-    if (self.type == TypeHonor)
+    if (self.type == TypeMiaoQiHonor) {
+        [HTTPCLIENT cooperationCompanyHonorDeleteWithUid:uid Success:^(id responseObject) {
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"删除成功"];
+            self.isEditState = NO;
+            self.page = 1;
+            [self requestMiaoQiHonorListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
+        } failure:^(NSError *error) {
+            ;
+        }];
+    }
+   else if (self.type == TypeHonor)
     {
         [HTTPCLIENT stationHonorDeleteWithUid:uid Success:^(id responseObject) {
             if ([responseObject[@"success"] integerValue] == 0) {

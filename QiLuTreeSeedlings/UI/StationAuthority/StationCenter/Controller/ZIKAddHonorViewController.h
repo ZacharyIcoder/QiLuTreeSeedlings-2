@@ -7,11 +7,14 @@
 //
 
 #import "ZIKArrowViewController.h"
-
+#import "ZIKStationHonorListModel.h"
 @interface ZIKAddHonorViewController : ZIKArrowViewController
 @property (nonatomic, copy) NSString *workstationUid;
 /**
  *  荣誉id
  */
 @property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *miaoqiUid;
+@property (nonatomic, copy) NSString *memberUid;
+@property (nonatomic, strong) ZIKStationHonorListModel *miaoqiModel;
 @end

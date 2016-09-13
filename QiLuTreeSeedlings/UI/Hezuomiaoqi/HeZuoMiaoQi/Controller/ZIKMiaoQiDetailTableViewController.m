@@ -33,6 +33,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 @property (nonatomic, strong) ZIKMiaoQiDetailModel *miaoModel;
 @property (nonatomic, strong) ZIKStationShowHonorView *showHonorView;
 
+
 @end
 
 @implementation ZIKMiaoQiDetailTableViewController
@@ -85,6 +86,14 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
         }
         NSDictionary *result = responseObject[@"result"];
         self.miaoModel = [ZIKMiaoQiDetailModel yy_modelWithDictionary:result];
+        NSMutableArray *array = [NSMutableArray array];
+        if (self.miaoModel.honor) {
+            [self.miaoModel.honor enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                ZIKStationHonorListModel *model = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
+                [array addObject:model];
+            }];
+        }
+        self.miaoModel.honor = array;
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
@@ -213,6 +222,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
     zsdasda.type = TypeMiaoQiHonor;
 //    zsdasda.workstationUid = self.miaoModel.uid;
     zsdasda.memberUid = self.miaoModel.memberUid;
+    zsdasda.miaoqiOther = YES;
     [self.navigationController pushViewController:zsdasda animated:YES];
 }
 

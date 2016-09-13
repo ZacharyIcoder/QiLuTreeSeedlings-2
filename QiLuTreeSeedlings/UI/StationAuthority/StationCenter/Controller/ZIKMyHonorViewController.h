@@ -26,4 +26,6 @@ typedef NS_ENUM(NSInteger, Type) {
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *memberUid;
 @property (nonatomic, assign) Type type;
+
+@property (nonatomic, assign) BOOL miaoqiOther;
 @end

@@ -23,6 +23,9 @@
 
 @property (nonatomic,copy) NSString *timeStr;
 
+
+
+
 @end
 
 @implementation ZIKAddHonorViewController
@@ -51,6 +54,34 @@
         } failure:^(NSError *error) {
             ;
         }];
+    }
+    if (self.miaoqiUid && self.miaoqiModel) {
+        self.memberUid = self.miaoqiModel.uid;
+        [self.honorTimeButton setTitle:self.miaoqiModel.acquisitionTime forState:UIControlStateNormal];
+                   self.honorNameTextField.text = self.miaoqiModel.name;
+                   self.honorCompressUrl        = self.miaoqiModel.image;
+                   NSURL *url = [NSURL URLWithString:self.honorCompressUrl];
+                   [self.addImageButton setBackgroundImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+
+//       [HTTPCLIENT cooperationCompanyHonorWithUid:_memberUid Success:^(id responseObject) {
+//           CLog(@"%@",responseObject);
+//           if ([responseObject[@"success"] integerValue] == 0) {
+//               [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+//               return ;
+//           }
+//           NSDictionary *resultDic      = responseObject[@"result"];
+//           NSDictionary *honorDic       = resultDic[@"honor"];
+//           self.miaoqiUid               = honorDic[@"uid"];
+//           self.memberUid          = honorDic[@"memberUid"];
+//           //            self.honorTimeTextField.text = honorDic[@"acqueTime"];
+//           [self.honorTimeButton setTitle:honorDic[@"acqueTime"] forState:UIControlStateNormal];
+//           self.honorNameTextField.text = honorDic[@"name"];
+//           self.honorCompressUrl        = honorDic[@"image"];
+//           NSURL *url = [NSURL URLWithString:self.honorCompressUrl];
+//           [self.addImageButton setBackgroundImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+//       } failure:^(NSError *error) {
+//           ;
+//       }];
     }
 }
 - (IBAction)honorButtonClick:(UIButton *)sender {
@@ -95,19 +126,39 @@
     NSString *uid = nil;
     if (self.uid) {
         uid = self.uid;
-    }
-    [HTTPCLIENT stationHonorCreateWithUid:uid workstationUid:_workstationUid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
-        //CLog(@"result:%@",responseObject);
-        if ([responseObject[@"success"] integerValue] == 0) {
-            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
-            return ;
-        }
-        [ToastView showTopToast:@"添加成功"];
-        [self.navigationController popViewControllerAnimated:YES];
+        [HTTPCLIENT stationHonorCreateWithUid:uid workstationUid:_workstationUid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
+            //CLog(@"result:%@",responseObject);
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"添加成功"];
+            [self.navigationController popViewControllerAnimated:YES];
 
-    } failure:^(NSError *error) {
-        ;
-    }];
+        } failure:^(NSError *error) {
+            ;
+        }];
+
+    }
+    if (self.miaoqiUid) {
+        uid = self.miaoqiUid;
+        if (self.memberUid) {
+            uid = self.memberUid;
+        }
+        [HTTPCLIENT cooperationCompanyHonorsCreateWithUid:uid name:name acquisitionTime:time image:_honorCompressUrl Success:^(id responseObject) {
+            //CLog(@"result:%@",responseObject);
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"添加成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+
+        } failure:^(NSError *error) {
+            ;
+        }];
+    }
+
 }
 
 - (IBAction)addImageButttonClick {
