@@ -5342,6 +5342,101 @@
         [HttpClient HTTPERRORMESSAGE:error];
     }];
 }
+
+#pragma mark ---------- 合作苗企-荣誉详情 -----------
+- (void)cooperationCompanyHonorWithUid:(NSString *)uid
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = [NSString stringWithFormat:@"api/cooperationcompany/honor/%@",uid];
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
+#pragma mark ---------- 合作苗企-新增荣誉 -----------
+- (void)cooperationCompanyHonorsCreateWithUid:(NSString *)uid
+                                         name:(NSString *)name
+                              acquisitionTime:(NSString *)acquisitionTime
+                                        image:(NSString *)image
+                                      Success:(void (^)(id responseObject))success
+                                      failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = @"api/cooperationcompany/honors/create";
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+    parmers[@"uid"]              = uid;
+    parmers[@"name"]             = name;
+    parmers[@"acquisitionTime"]  = acquisitionTime;
+    parmers[@"image"]            = image;
+     ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
+#pragma mark ---------- 合作苗企-荣誉删除 -----------
+- (void)cooperationCompanyHonorDeleteWithUid:(NSString *)uid
+                                     Success:(void (^)(id responseObject))success
+                                     failure:(void (^)(NSError *error))failure {
+
+    NSString *postURL            = [NSString stringWithFormat:@"api/cooperationcompany/honor/delete/%@",uid];
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str                = [userdefaults objectForKey:kdeviceToken];
+
+    NSMutableDictionary *parmers = [[NSMutableDictionary alloc] init];
+    parmers[@"access_token"]     = APPDELEGATE.userModel.access_token;
+    parmers[@"access_id"]        = APPDELEGATE.userModel.access_id;
+    parmers[@"client_id"]        = kclient_id;
+    parmers[@"client_secret"]    = kclient_secret;
+    parmers[@"device_id"]        = str;
+
+    ShowActionV();
+    [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+        RemoveActionV();
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+        RemoveActionV();
+        [HttpClient HTTPERRORMESSAGE:error];
+    }];
+
+}
+
 #pragma mark ---------- 金牌供应商-金牌供应商列表-----------
 -(void)goldSupplyListWithprovince:(NSString *)province withcity:(NSString *)city withcounty:(NSString *)county WithKeyWord:(NSString *)keyword withPage:(NSString *)page withPageSize:(NSString *)pageSize  Success:(void (^)(id responseObject))success
                           failure:(void (^)(NSError *error))failure

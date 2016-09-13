@@ -210,8 +210,9 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 -(void)allRongYuBtnAction:(UIButton *)sender
 {
     ZIKMyHonorViewController *zsdasda=[[ZIKMyHonorViewController alloc]init];
-    zsdasda.type = TypeHonorOther;
+    zsdasda.type = TypeMiaoQiHonor;
 //    zsdasda.workstationUid = self.miaoModel.uid;
+    zsdasda.memberUid = self.miaoModel.memberUid;
     [self.navigationController pushViewController:zsdasda animated:YES];
 }
 

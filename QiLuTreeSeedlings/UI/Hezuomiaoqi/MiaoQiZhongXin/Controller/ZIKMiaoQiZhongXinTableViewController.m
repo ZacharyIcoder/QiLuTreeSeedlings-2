@@ -18,6 +18,8 @@
 #import "ZIKStationCenterContentTableViewCell.h"
 
 #import "ZIKStationCenterInfoViewController.h"
+
+#import "ZIKMyHonorViewController.h"
 static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewIdentifier";
 #pragma mark -
 

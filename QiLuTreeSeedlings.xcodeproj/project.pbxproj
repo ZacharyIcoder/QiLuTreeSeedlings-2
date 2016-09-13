@@ -5840,7 +5840,6 @@
 				EAF050E81C92833A00F435A9 /* mycollectionImage@2x.png in Resources */,
 				EA75147E1C9B891E003D63F1 /* treeNameSure2@2x.png in Resources */,
 				EA8610A21D8679DD00D3FCBC /* 列表-金牌供应商2.png in Resources */,
-				FCA28CA11D7E8C9400862947 /* ZIKMiaoQiQiuGouViewController.xib in Resources */,
 				EA12E26B1CBB458B009D8A8A /* logV@2x.png in Resources */,
 				FC5612621D0C092F00E5743B /* shangchuanzhaopian@2x.png in Resources */,
 				EA08F7951D18CEB400471C33 /* yingzhangzongzhan.png in Resources */,
