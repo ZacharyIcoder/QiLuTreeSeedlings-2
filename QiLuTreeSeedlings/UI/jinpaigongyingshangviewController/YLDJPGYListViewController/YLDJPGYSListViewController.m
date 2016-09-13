@@ -347,7 +347,9 @@
     }
     if (tableView.tag==8) {
         YLDJPGYSListModel *model=self.dataAry[indexPath.row];
-        YLDJPGYSDetialViewController *yldJPGYSDetialVC=[YLDJPGYSDetialViewController new];
+        YLDJPGYSDetialViewController *yldJPGYSDetialVC=[[YLDJPGYSDetialViewController alloc]initWithUid:model.uid];
+        yldJPGYSDetialVC.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:yldJPGYSDetialVC animated:YES];
     }
 }
 -(void)searchBtnAction:(UIButton *)sender

@@ -335,6 +335,10 @@
 		EA8610A71D867A9400D3FCBC /* YLDJPGYSDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8610A61D867A9400D3FCBC /* YLDJPGYSDetialViewController.m */; };
 		EA8610AC1D86812500D3FCBC /* YLDJPGYSDBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8610AA1D86812500D3FCBC /* YLDJPGYSDBigCell.m */; };
 		EA8610AD1D86812500D3FCBC /* YLDJPGYSDBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8610AB1D86812500D3FCBC /* YLDJPGYSDBigCell.xib */; };
+		EA8610B11D86857700D3FCBC /* YLDJPGYSJJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8610AF1D86857700D3FCBC /* YLDJPGYSJJCell.m */; };
+		EA8610B21D86857700D3FCBC /* YLDJPGYSJJCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8610B01D86857700D3FCBC /* YLDJPGYSJJCell.xib */; };
+		EA8610B61D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8610B41D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.m */; };
+		EA8610B71D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8610B51D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.xib */; };
 		EA8865EA1D3A06FD008B89D6 /* areadbss.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = EA8865E91D3A06FD008B89D6 /* areadbss.sqlite */; };
 		EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */; };
 		EA88BE771C83F3AC001E4E1F /* searchHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA88BE761C83F3AC001E4E1F /* searchHistoryViewCell.m */; };
@@ -1377,6 +1381,12 @@
 		EA8610A91D86812500D3FCBC /* YLDJPGYSDBigCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPGYSDBigCell.h; sourceTree = "<group>"; };
 		EA8610AA1D86812500D3FCBC /* YLDJPGYSDBigCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPGYSDBigCell.m; sourceTree = "<group>"; };
 		EA8610AB1D86812500D3FCBC /* YLDJPGYSDBigCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDJPGYSDBigCell.xib; sourceTree = "<group>"; };
+		EA8610AE1D86857700D3FCBC /* YLDJPGYSJJCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPGYSJJCell.h; sourceTree = "<group>"; };
+		EA8610AF1D86857700D3FCBC /* YLDJPGYSJJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPGYSJJCell.m; sourceTree = "<group>"; };
+		EA8610B01D86857700D3FCBC /* YLDJPGYSJJCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDJPGYSJJCell.xib; sourceTree = "<group>"; };
+		EA8610B31D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPGYSInfoLabCell.h; sourceTree = "<group>"; };
+		EA8610B41D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPGYSInfoLabCell.m; sourceTree = "<group>"; };
+		EA8610B51D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDJPGYSInfoLabCell.xib; sourceTree = "<group>"; };
 		EA8865E91D3A06FD008B89D6 /* areadbss.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = areadbss.sqlite; sourceTree = "<group>"; };
 		EA88BE721C83E06E001E4E1F /* SearchRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRecommendView.h; sourceTree = "<group>"; };
 		EA88BE731C83E06E001E4E1F /* SearchRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRecommendView.m; sourceTree = "<group>"; };
@@ -3651,6 +3661,12 @@
 				EA8610A91D86812500D3FCBC /* YLDJPGYSDBigCell.h */,
 				EA8610AA1D86812500D3FCBC /* YLDJPGYSDBigCell.m */,
 				EA8610AB1D86812500D3FCBC /* YLDJPGYSDBigCell.xib */,
+				EA8610AE1D86857700D3FCBC /* YLDJPGYSJJCell.h */,
+				EA8610AF1D86857700D3FCBC /* YLDJPGYSJJCell.m */,
+				EA8610B01D86857700D3FCBC /* YLDJPGYSJJCell.xib */,
+				EA8610B31D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.h */,
+				EA8610B41D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.m */,
+				EA8610B51D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5943,6 +5959,7 @@
 				EA6BDA381D45DD4000F317F2 /* 诚信保证金背景.png in Resources */,
 				FC56128E1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.xib in Resources */,
 				EA8D3D331D2395660095840F /* 首页-ico_工程订单.png in Resources */,
+				EA8610B71D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.xib in Resources */,
 				FCCEA4991CFD5FC2005D21F5 /* ZIKIntegraTableViewCell.xib in Resources */,
 				EA696FB61CDD8F46001F037E /* messageRead@2x.png in Resources */,
 				FC6FED6D1CACF833000E2CA5 /* 图片2.png in Resources */,
@@ -5958,6 +5975,7 @@
 				FC224B9F1D2A13D3001FFC47 /* ZIKMyTeamViewController.xib in Resources */,
 				EA552E891D0D472600FB88A0 /* ico_橙色收起.png in Resources */,
 				EAFB8FE91D1A223500FCF88B /* YLDMMPiLiangBianJiCell.xib in Resources */,
+				EA8610B21D86857700D3FCBC /* YLDJPGYSJJCell.xib in Resources */,
 				FC74AD601D348D7A009D8409 /* 站长中心-我的团队.png in Resources */,
 				FC59481F1D3C77850014E39B /* 已报价.png in Resources */,
 				FC6FED701CACF833000E2CA5 /* 下拉.png in Resources */,
@@ -6440,6 +6458,7 @@
 				EA5A08171D14E648005000E9 /* YLDHeZuoDetialViewController.m in Sources */,
 				EA08F79A1D18DBE700471C33 /* yYLDGZZRongYaoTableCell.m in Sources */,
 				EA88BE741C83E06E001E4E1F /* SearchRecommendView.m in Sources */,
+				EA8610B61D869C5C00D3FCBC /* YLDJPGYSInfoLabCell.m in Sources */,
 				FC22767A1D177C9F0037B131 /* ZIKOrderSecondTableViewCell.m in Sources */,
 				FC6FED771CACFBE5000E2CA5 /* ZIKCustomizedInfoListTableViewCell.m in Sources */,
 				FCC4ABE51D82A4FD0032B68A /* ZIKMiaoQiZhongXinBriefSectionTableViewCell.m in Sources */,
@@ -6529,6 +6548,7 @@
 				EA5252EE1CE174990004639C /* CityModel.m in Sources */,
 				EAE32DD81C7E97A600C4CEA2 /* AFSecurityPolicy.m in Sources */,
 				FC56129C1D0C092F00E5743B /* ZIKNavConfigViewController.m in Sources */,
+				EA8610B11D86857700D3FCBC /* YLDJPGYSJJCell.m in Sources */,
 				FC5612491D0C092F00E5743B /* IQKeyboardManager.m in Sources */,
 				EA8610981D863CF800D3FCBC /* YLDJPGYListCell.m in Sources */,
 				EA2727181C8A7D8E000B0719 /* FMDatabase.m in Sources */,

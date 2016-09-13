@@ -7,7 +7,7 @@
 //
 
 #import "YLDJPGYSDBigCell.h"
-
+#import "UIImageView+AFNetworking.h"
 @implementation YLDJPGYSDBigCell
 +(id)YLDJPGYSDBigCell
 {
@@ -15,6 +15,25 @@
     cell.touxiangImgV.layer.masksToBounds=YES;
     cell.touxiangImgV.layer.cornerRadius=40;
     return cell;
+}
+-(void)setDic:(NSDictionary *)dic{
+    _dic=dic;
+    NSInteger goldsupplier=[dic[@"goldsupplier"] integerValue];
+    if (goldsupplier==2) {
+        self.shenfenLab.text=@"金牌供应商";
+    }
+    if (goldsupplier==1) {
+        self.shenfenLab.text=@"银牌供应商";
+    }
+    if (goldsupplier==1) {
+        self.shenfenLab.text=@"铜牌供应商";
+    }
+    self.companyNameL.text=dic[@"companyName"];
+    self.nameLab.text=dic[@"name"];
+    NSString *headUrl=dic[@"headUrl"];
+    if (headUrl.length>0) {
+        [self.touxiangImgV setImageWithURL:[NSURL URLWithString:headUrl]];
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
