@@ -356,6 +356,7 @@
 		EA9A22A91D128FDC000CA161 /* YLDDingDanJianJieView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */; };
 		EA9A22AD1D12904B000CA161 /* YLDDingDanJianJieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */; };
 		EA9AC2F01D8795E600CD55ED /* YLDJPZhongXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9AC2EF1D8795E600CD55ED /* YLDJPZhongXinViewController.m */; };
+		EA9AC2F31D87CF9800CD55ED /* YLDJPGYSInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9AC2F21D87CF9800CD55ED /* YLDJPGYSInfoViewController.m */; };
 		EA9AFAF61D83A864002D1A28 /* paixuOn.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9AFAF51D83A864002D1A28 /* paixuOn.png */; };
 		EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */; };
 		EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */; };
@@ -1430,6 +1431,8 @@
 		EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDDingDanJianJieView.xib; sourceTree = "<group>"; };
 		EA9AC2EE1D8795E600CD55ED /* YLDJPZhongXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPZhongXinViewController.h; sourceTree = "<group>"; };
 		EA9AC2EF1D8795E600CD55ED /* YLDJPZhongXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPZhongXinViewController.m; sourceTree = "<group>"; };
+		EA9AC2F11D87CF9800CD55ED /* YLDJPGYSInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPGYSInfoViewController.h; sourceTree = "<group>"; };
+		EA9AC2F21D87CF9800CD55ED /* YLDJPGYSInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPGYSInfoViewController.m; sourceTree = "<group>"; };
 		EA9AFAF51D83A864002D1A28 /* paixuOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paixuOn.png; sourceTree = "<group>"; };
 		EA9EFCC11CEEA2E000A71F2D /* GuiGeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeView.h; sourceTree = "<group>"; };
 		EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeView.m; sourceTree = "<group>"; };
@@ -3779,6 +3782,8 @@
 			children = (
 				EA9AC2EE1D8795E600CD55ED /* YLDJPZhongXinViewController.h */,
 				EA9AC2EF1D8795E600CD55ED /* YLDJPZhongXinViewController.m */,
+				EA9AC2F11D87CF9800CD55ED /* YLDJPGYSInfoViewController.h */,
+				EA9AC2F21D87CF9800CD55ED /* YLDJPGYSInfoViewController.m */,
 			);
 			path = YLDJinPaiZhongxinViewController;
 			sourceTree = "<group>";
@@ -6335,6 +6340,7 @@
 				EAFB8FFD1D1A824800FCF88B /* YLDShengJiViewViewController.m in Sources */,
 				FC0853F51D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.m in Sources */,
 				FC133D701D77F33C00E34A3B /* ZIKShaiDanTableViewCell.m in Sources */,
+				EA9AC2F31D87CF9800CD55ED /* YLDJPGYSInfoViewController.m in Sources */,
 				FC5612871D0C092F00E5743B /* ZIKNurseryListSelectButton.m in Sources */,
 				FC5612911D0C092F00E5743B /* ZIKSupplyPublishPickImageViewTableViewCell.m in Sources */,
 				EA03405D1C8927CB00FBF148 /* SreeningViewCell.m in Sources */,
@@ -6811,8 +6817,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6849,7 +6855,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6860,8 +6866,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = NO;
@@ -6898,7 +6904,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

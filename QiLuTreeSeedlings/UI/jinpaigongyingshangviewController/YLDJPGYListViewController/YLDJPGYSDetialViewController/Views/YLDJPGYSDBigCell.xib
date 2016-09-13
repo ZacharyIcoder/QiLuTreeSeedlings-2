@@ -54,19 +54,29 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="供应商" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eg0-Y8-5Qp">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="供应商" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eg0-Y8-5Qp">
                         <rect key="frame" x="72" y="22" width="176" height="30"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="176" id="DIJ-OF-6Fu"/>
                             <constraint firstAttribute="height" constant="30" id="tP6-dN-Zhx"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDk-az-jNq">
+                        <rect key="frame" x="120" y="57" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="LY5-F5-SJr"/>
+                            <constraint firstAttribute="width" constant="80" id="cDd-xJ-Q1v"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="zDk-az-jNq" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1wT-dv-IzG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="M0l-vF-llj" secondAttribute="trailing" constant="-8" id="418-dG-38X"/>
                     <constraint firstItem="GrI-Jd-jkh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="F9K-DP-KoO"/>
+                    <constraint firstItem="zDk-az-jNq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-2.5" id="H0z-h6-b4h"/>
                     <constraint firstItem="VzI-LQ-f99" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="SUU-1g-NAD"/>
                     <constraint firstItem="GrI-Jd-jkh" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-4" id="UUO-vN-Z3z"/>
                     <constraint firstItem="h7j-i9-oHl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-2.5" id="YEF-qV-m2N"/>
@@ -88,6 +98,7 @@
                 <outlet property="companyNameL" destination="buQ-En-AaW" id="1wu-Xb-BZJ"/>
                 <outlet property="nameLab" destination="GrI-Jd-jkh" id="vo9-KR-7NN"/>
                 <outlet property="shenfenLab" destination="Eg0-Y8-5Qp" id="80K-Rw-PGv"/>
+                <outlet property="touxiangBtn" destination="zDk-az-jNq" id="qHS-n9-e4S"/>
                 <outlet property="touxiangImgV" destination="h7j-i9-oHl" id="sG3-xW-MPs"/>
             </connections>
         </tableViewCell>

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *touxiangImgV;
 @property (weak, nonatomic) IBOutlet UILabel *companyNameL;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
+@property (weak, nonatomic) IBOutlet UIButton *touxiangBtn;
 @property (nonatomic,copy) NSDictionary *dic;
 @property (nonatomic,copy) NSDictionary *myDic;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backBtnW;

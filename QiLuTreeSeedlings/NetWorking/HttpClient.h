@@ -1440,4 +1440,13 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 金牌供应商-金牌供应商荣誉列表----------
 -(void)goldSupplierHonorListWithMemberUid:(NSString *)memberUid withPage:(NSString *)page withPageSize:(NSString *)pageSize Success:(void (^)(id responseObject))success
                                   failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 金牌供应商-金牌供应商荣誉详情----------
+-(void)goldSupplierHonordetialUid:(NSString *)uid Success:(void (^)(id responseObject))success
+                                  failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 金牌供应商-金牌供应商新增荣誉----------
+-(void)updatagoldSupplierHonordetialUid:(NSString *)Uid withName:(NSString *)name withacquisitionTime:(NSString *)acquisitionTime withimage:(NSString *)image Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 金牌供应商-荣誉删除----------
+-(void)deletegoldSupplierHonordetialUid:(NSString *)Uid Success:(void (^)(id responseObject))success
+                                failure:(void (^)(NSError *error))failure;
 @end

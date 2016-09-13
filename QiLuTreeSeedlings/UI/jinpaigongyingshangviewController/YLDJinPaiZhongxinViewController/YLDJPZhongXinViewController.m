@@ -7,6 +7,7 @@
 //
 
 #import "YLDJPZhongXinViewController.h"
+#import "YLDJPGYSInfoViewController.h"
 #import "YLDJPGYSDBigCell.h"
 #import "HttpClient.h"
 #import "UIDefines.h"
@@ -167,6 +168,11 @@
     }
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
+}
+-(void)touxiangBtnAcion
+{
+    YLDJPGYSInfoViewController *vvcc=[[YLDJPGYSInfoViewController alloc]init];
+    [self.navigationController pushViewController:vvcc animated:YES];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
