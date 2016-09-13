@@ -174,7 +174,14 @@
         frame.origin.x=120;
         self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-工程公司"];
+    } else if (hotSellModel.goldsupplier == 8) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=120;
+        self.titleLab.frame=frame;
+        goldImageView.image = [UIImage imageNamed:@"合作苗企43x43"];
     }
+
 
 }
 

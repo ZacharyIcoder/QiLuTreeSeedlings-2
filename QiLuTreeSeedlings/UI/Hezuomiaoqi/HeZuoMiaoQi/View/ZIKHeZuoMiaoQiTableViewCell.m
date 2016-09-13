@@ -51,5 +51,13 @@
     self.personLabel.text  = model.legalPerson;
 }
 
+-(void)setPhoneButtonBlock:(PhoneButtonBlock)phoneButtonBlock {
+    _phoneButtonBlock = [phoneButtonBlock copy];
+    [self.phoneButton addTarget:self action:@selector(openButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)openButtonClick {
+    _phoneButtonBlock(self.indexPath);
+}
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MasterInfoModel;
+@class MasterInfoModel,ZIKMiaoQiZhongXinModel;
 @interface ZIKStationCenterContentTableViewCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 - (void)configureCell:(MasterInfoModel *)model;
+- (void)configureCellWithMiaoQi:(ZIKMiaoQiZhongXinModel *)model;
+
 @end

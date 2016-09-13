@@ -9,6 +9,8 @@
 #import "ZIKHeZuoMiaoQiHeaderFooterView.h"
 @interface ZIKHeZuoMiaoQiHeaderFooterView ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *moreButton;
+@property (weak, nonatomic) IBOutlet UIButton *moremoreButton;
 @end
 
 @implementation ZIKHeZuoMiaoQiHeaderFooterView
@@ -21,10 +23,24 @@
         self.titleLabel.text = @"四星级合作苗企";
     } else if (starNum == 3) {
         self.titleLabel.text = @"三星级合作苗企";
-    } else if (starNum == 2) {
-        self.titleLabel.text = @"二星级合作苗企";
-    } else if (starNum == 1) {
-        self.titleLabel.text = @"一星级合作苗企";
     }
+//    else if (starNum == 2) {
+//        self.titleLabel.text = @"二星级合作苗企";
+//    } else if (starNum == 1) {
+//        self.titleLabel.text = @"一星级合作苗企";
+//    }
 }
+
+
+-(void)setMoreButtonBlock:(MoreButtonBlock)moreButtonBlock {
+    _moreButtonBlock = [moreButtonBlock copy];
+    [self.moreButton addTarget:self action:@selector(openButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.moremoreButton addTarget:self action:@selector(openButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)openButtonClick {
+    _moreButtonBlock(self.indexPath);
+}
+
+
 @end

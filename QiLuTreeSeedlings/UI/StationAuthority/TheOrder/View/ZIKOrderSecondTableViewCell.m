@@ -76,7 +76,6 @@
         if ([self.delegate respondsToSelector:@selector(sendTimeSortInfo:)]) {
             [self.delegate sendTimeSortInfo:dic];
         }
-
     }
 }
 

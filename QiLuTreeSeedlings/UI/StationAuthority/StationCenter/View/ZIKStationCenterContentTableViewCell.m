@@ -9,12 +9,18 @@
 #import "ZIKStationCenterContentTableViewCell.h"
 #import "MasterInfoModel.h"
 #import "UIDefines.h"
+#import "ZIKMiaoQiZhongXinModel.h"
 @interface ZIKStationCenterContentTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *headNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headSecondLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headThirdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headFourLabel;
 
 @end
 @implementation ZIKStationCenterContentTableViewCell
@@ -45,6 +51,11 @@
 }
 
 - (void)configureCell:(MasterInfoModel *)model {
+    self.headNameLabel.text   = @"工作站名称";
+    self.headSecondLabel.text = @"工作站编号";
+    self.headThirdLabel.text  = @"工作站地址";
+    self.headFourLabel.text   = @"诚信保证金";
+
     self.nameLabel.text    = model.workstationName;
     self.numberLabel.text  = model.viewNo;
     self.addressLabel.text = model.area;
@@ -55,5 +66,20 @@
         self.typeImageView.image = [UIImage imageNamed:@"yinzhangfenzhan"];
     }
 }
+
+- (void)configureCellWithMiaoQi:(ZIKMiaoQiZhongXinModel *)model {
+    self.headNameLabel.text   = @"公司名称";
+    self.headSecondLabel.text = @"联系人";
+    self.headThirdLabel.text  = @"公司地址";
+    self.headFourLabel.text   = @"诚信保证金";
+
+    self.nameLabel.text    = model.companyName;
+    self.numberLabel.text  = model.name;
+    self.addressLabel.text = model.area;
+    self.priceLabel.text   = model.creditMargin;
+
+    self.typeImageView.image = [UIImage imageNamed:@"印章-分站"];
+}
+
 
 @end

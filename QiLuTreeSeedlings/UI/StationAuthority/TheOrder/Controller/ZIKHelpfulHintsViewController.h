@@ -9,5 +9,5 @@
 #import "ZIKArrowViewController.h"
 
 @interface ZIKHelpfulHintsViewController : ZIKArrowViewController
-
+@property (nonatomic, copy) NSString *qubie;
 @end

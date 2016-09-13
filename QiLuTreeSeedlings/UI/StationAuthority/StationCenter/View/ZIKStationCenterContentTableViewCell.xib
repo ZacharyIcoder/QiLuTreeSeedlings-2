@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作站名称" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66o-I3-vkD">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66o-I3-vkD">
                         <rect key="frame" x="14" y="8" width="90" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="99G-h3-NIo"/>
@@ -25,17 +25,7 @@
                         <color key="textColor" red="0.60150698280000003" green="0.5993310181" blue="0.59977669759999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作站编号" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl5-Mu-2c6">
-                        <rect key="frame" x="14" y="37" width="90" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="90" id="Ahg-k2-1oj"/>
-                            <constraint firstAttribute="height" constant="21" id="dui-nl-zkh"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.60150698280000003" green="0.5993310181" blue="0.59977669759999996" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作站地址" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ib-nY-vhD">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ib-nY-vhD">
                         <rect key="frame" x="14" y="66" width="90" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Kno-Be-xFv"/>
@@ -98,6 +88,16 @@
                             <constraint firstAttribute="height" constant="70" id="PqU-Ps-bAC"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl5-Mu-2c6">
+                        <rect key="frame" x="14" y="37" width="90" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="Ahg-k2-1oj"/>
+                            <constraint firstAttribute="height" constant="21" id="dui-nl-zkh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.60150698280000003" green="0.5993310181" blue="0.59977669759999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wl5-Mu-2c6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="0FG-k5-dBW"/>
@@ -126,6 +126,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="addressLabel" destination="JiK-gJ-pcQ" id="J5B-SS-sED"/>
+                <outlet property="headFourLabel" destination="uEK-Ts-GrX" id="e9L-32-ueL"/>
+                <outlet property="headNameLabel" destination="66o-I3-vkD" id="MOw-61-87E"/>
+                <outlet property="headSecondLabel" destination="wl5-Mu-2c6" id="yfv-lf-6Wf"/>
+                <outlet property="headThirdLabel" destination="0Ib-nY-vhD" id="9xs-CO-AdG"/>
                 <outlet property="nameLabel" destination="z2P-X0-Pta" id="Jsq-98-EeZ"/>
                 <outlet property="numberLabel" destination="qs4-sQ-yAc" id="fZS-VI-fPw"/>
                 <outlet property="priceLabel" destination="sgm-kh-Q37" id="mLP-JH-uHC"/>
