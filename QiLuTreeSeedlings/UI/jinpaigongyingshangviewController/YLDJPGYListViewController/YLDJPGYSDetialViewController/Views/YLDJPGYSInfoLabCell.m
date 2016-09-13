@@ -12,6 +12,7 @@
 +(YLDJPGYSInfoLabCell *)yldJPGYSInfoLabCell
 {
     YLDJPGYSInfoLabCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDJPGYSInfoLabCell" owner:self options:nil] firstObject];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(void)setDic:(NSDictionary *)dic

@@ -547,9 +547,16 @@
         return;
     }
     if (index==7) {
-        [self hiddingSelfTabBar];
-        YLDJPGYSBaseTabBarController *gongyingV=[[YLDJPGYSBaseTabBarController alloc]init];
-        [self.navigationController pushViewController:gongyingV animated:YES];
+        if([APPDELEGATE isNeedLogin])
+        {
+           
+            [self hiddingSelfTabBar];
+            YLDJPGYSBaseTabBarController *gongyingV=[[YLDJPGYSBaseTabBarController alloc]init];
+            [self.navigationController pushViewController:gongyingV animated:YES];
+            }else{
+               [ToastView showTopToast:@"请先登录"];
+        }
+    
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

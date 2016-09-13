@@ -15,6 +15,7 @@
     [cell.chakanBtn setTitle:@"隐藏更多" forState:UIControlStateSelected];
     [cell.chakanBtn setTitleColor:NavColor forState:UIControlStateSelected];
     [cell.chakanBtn setImage:[UIImage imageNamed:@"rolock"] forState:UIControlStateSelected];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(void)setJianjieStr:(NSString *)jianjieStr
@@ -22,6 +23,7 @@
     _jianjieStr=jianjieStr;
     self.jianjieL.text=jianjieStr;
 }
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

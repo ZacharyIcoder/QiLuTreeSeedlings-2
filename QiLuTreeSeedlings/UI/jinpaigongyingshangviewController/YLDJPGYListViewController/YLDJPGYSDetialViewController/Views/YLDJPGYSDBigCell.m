@@ -14,6 +14,7 @@
     YLDJPGYSDBigCell *cell=[[[NSBundle mainBundle]loadNibNamed:@"YLDJPGYSDBigCell" owner:self options:nil] firstObject];
     cell.touxiangImgV.layer.masksToBounds=YES;
     cell.touxiangImgV.layer.cornerRadius=40;
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(void)setDic:(NSDictionary *)dic{
