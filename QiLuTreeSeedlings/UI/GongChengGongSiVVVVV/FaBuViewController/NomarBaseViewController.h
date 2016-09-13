@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIButton+ZIKEnlargeTouchArea.h"
+#import "UIDefines.h"
 @interface NomarBaseViewController : UIViewController
 @property (nonatomic,weak)UIButton *backBtn;
 @property (nonatomic, strong) NSString *vcTitle;
