@@ -35,6 +35,14 @@
         [self.touxiangImgV setImageWithURL:[NSURL URLWithString:headUrl]];
     }
 }
+-(void)setMyDic:(NSDictionary *)myDic
+{
+    _myDic=myDic;
+    self.shenfenLab.text=@"金牌中心";
+    [self.backBtn setImage:nil forState:UIControlStateNormal];
+    [self.backBtn setTitle:@"苗信通" forState:UIControlStateNormal];
+    [self.backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *companyNameL;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (nonatomic,copy) NSDictionary *dic;
+@property (nonatomic,copy) NSDictionary *myDic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *backBtnW;
 +(id)YLDJPGYSDBigCell;
 @end

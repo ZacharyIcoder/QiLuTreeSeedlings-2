@@ -12,6 +12,7 @@
 #import "ZIKMyOfferViewController.h"
 #import "ZIKOrderViewController.h"
 #import "UINavController.h"
+#import "YLDJPZhongXinViewController.h"
 @interface YLDJPGYSBaseTabBarController ()
 
 @end
@@ -64,7 +65,18 @@
     orderVC.vcTitle=@"金牌订单";
     orderVC.tabBarItem.image = [[UIImage imageNamed:@"jpwodedingdanoff"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"jpwodedingdanon"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        self.viewControllers = @[JPGYSListNav,JPGYListNav,orderNav,offerNav];
+    
+    
+    //金牌中心
+    YLDJPZhongXinViewController *jpzhongxinVC=[[YLDJPZhongXinViewController alloc]init];
+    UINavController *jpzhongxinNav = [[UINavController alloc] initWithRootViewController:jpzhongxinVC];
+    jpzhongxinVC.navigationController.navigationBar.hidden=YES;
+    jpzhongxinVC.title=@"金牌中心";
+    //jpzhongxinVC.vcTitle=@"金牌中心";
+    jpzhongxinVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程中心off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    jpzhongxinVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工程中心On"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+        self.viewControllers = @[JPGYSListNav,JPGYListNav,orderNav,offerNav,jpzhongxinNav];
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        normalColor,           NSForegroundColorAttributeName,

@@ -54,7 +54,7 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="供应商" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eg0-Y8-5Qp">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="供应商" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eg0-Y8-5Qp">
                         <rect key="frame" x="72" y="22" width="176" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="tP6-dN-Zhx"/>
@@ -75,16 +75,16 @@
                     <constraint firstItem="GrI-Jd-jkh" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="aEK-Kh-Sg8"/>
                     <constraint firstItem="h7j-i9-oHl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="bkH-b5-spx"/>
                     <constraint firstItem="Eg0-Y8-5Qp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="cE0-6H-sSi"/>
+                    <constraint firstItem="Eg0-Y8-5Qp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="fsm-qn-x9i"/>
                     <constraint firstItem="M0l-vF-llj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="fxW-e0-SF4"/>
                     <constraint firstItem="VzI-LQ-f99" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="17" id="gjk-Wm-eIg"/>
                     <constraint firstItem="buQ-En-AaW" firstAttribute="top" secondItem="h7j-i9-oHl" secondAttribute="bottom" constant="9" id="jEO-E3-OTL"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Eg0-Y8-5Qp" secondAttribute="trailing" constant="64" id="oUE-f6-UaP"/>
-                    <constraint firstItem="Eg0-Y8-5Qp" firstAttribute="leading" secondItem="VzI-LQ-f99" secondAttribute="trailing" constant="32" id="pMp-BW-ul4"/>
                     <constraint firstItem="buQ-En-AaW" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="zF0-2O-A8u"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="backBtn" destination="VzI-LQ-f99" id="26T-9S-Hti"/>
+                <outlet property="backBtnW" destination="2uw-el-Jr3" id="MjG-Jo-Ulf"/>
                 <outlet property="companyNameL" destination="buQ-En-AaW" id="1wu-Xb-BZJ"/>
                 <outlet property="nameLab" destination="GrI-Jd-jkh" id="vo9-KR-7NN"/>
                 <outlet property="shenfenLab" destination="Eg0-Y8-5Qp" id="80K-Rw-PGv"/>

@@ -355,6 +355,7 @@
 		EA9A22A61D128DFF000CA161 /* YLDDingDanDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A51D128DFF000CA161 /* YLDDingDanDetialViewController.m */; };
 		EA9A22A91D128FDC000CA161 /* YLDDingDanJianJieView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */; };
 		EA9A22AD1D12904B000CA161 /* YLDDingDanJianJieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */; };
+		EA9AC2F01D8795E600CD55ED /* YLDJPZhongXinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9AC2EF1D8795E600CD55ED /* YLDJPZhongXinViewController.m */; };
 		EA9AFAF61D83A864002D1A28 /* paixuOn.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9AFAF51D83A864002D1A28 /* paixuOn.png */; };
 		EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */; };
 		EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFCC51CEEE48C00A71F2D /* GuiGeCell.m */; };
@@ -1427,6 +1428,8 @@
 		EA9A22A71D128FDC000CA161 /* YLDDingDanJianJieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDDingDanJianJieView.h; sourceTree = "<group>"; };
 		EA9A22A81D128FDC000CA161 /* YLDDingDanJianJieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDDingDanJianJieView.m; sourceTree = "<group>"; };
 		EA9A22AC1D12904B000CA161 /* YLDDingDanJianJieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLDDingDanJianJieView.xib; sourceTree = "<group>"; };
+		EA9AC2EE1D8795E600CD55ED /* YLDJPZhongXinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDJPZhongXinViewController.h; sourceTree = "<group>"; };
+		EA9AC2EF1D8795E600CD55ED /* YLDJPZhongXinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDJPZhongXinViewController.m; sourceTree = "<group>"; };
 		EA9AFAF51D83A864002D1A28 /* paixuOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paixuOn.png; sourceTree = "<group>"; };
 		EA9EFCC11CEEA2E000A71F2D /* GuiGeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiGeView.h; sourceTree = "<group>"; };
 		EA9EFCC21CEEA2E000A71F2D /* GuiGeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuiGeView.m; sourceTree = "<group>"; };
@@ -3397,6 +3400,7 @@
 		EA6585361D810BE100BC5183 /* jinpaigongyingshangviewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA9AC2ED1D87959000CD55ED /* YLDJinPaiZhongxinViewController */,
 				EA65853A1D815A2500BC5183 /* YLDJPGYListViewController */,
 				EA6585371D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.h */,
 				EA6585381D812A2B00BC5183 /* YLDJPGYSBaseTabBarController.m */,
@@ -3768,6 +3772,15 @@
 				EA9FE6DA1D2F503400110A71 /* YLDDingDanMMBianJiViewController.m */,
 			);
 			path = YLDdingdanXiangQingViewController;
+			sourceTree = "<group>";
+		};
+		EA9AC2ED1D87959000CD55ED /* YLDJinPaiZhongxinViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA9AC2EE1D8795E600CD55ED /* YLDJPZhongXinViewController.h */,
+				EA9AC2EF1D8795E600CD55ED /* YLDJPZhongXinViewController.m */,
+			);
+			path = YLDJinPaiZhongxinViewController;
 			sourceTree = "<group>";
 		};
 		EA9FE6DC1D2F732900110A71 /* ZhanZhangGongYingListViewController */ = {
@@ -6635,6 +6648,7 @@
 				FC26452B1D24FB9A0077565A /* MasterInfoModel.m in Sources */,
 				FC0CF64C1D30C5140074194D /* ZIKMyShopViewController.m in Sources */,
 				EA262B281C8AC299001E8C9C /* PickerShowView.m in Sources */,
+				EA9AC2F01D8795E600CD55ED /* YLDJPZhongXinViewController.m in Sources */,
 				EA27271B1C8A7D8E000B0719 /* FMDatabaseQueue.m in Sources */,
 				FC8047A31D6EE21E004191A5 /* ZIKStationBuyViewController.m in Sources */,
 				FC56129D1D0C092F00E5743B /* ZIKRightBtnSringViewController.m in Sources */,
