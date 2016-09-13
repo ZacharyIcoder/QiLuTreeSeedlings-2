@@ -29,6 +29,12 @@
     if (model.goldsupplier==3) {
         self.shenfenV.image=[UIImage imageNamed:@"列表-铜牌供应商2"];
     }
+    [self.phoneBtn addTarget:self action:@selector(callAcion) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)callAcion
+{
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.model.phone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

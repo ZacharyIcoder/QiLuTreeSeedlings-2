@@ -16,14 +16,32 @@
 @end
 
 @implementation YLDJPZhongXinViewController
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getdata];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, -20, kWidth, kHeight-50) style:UITableViewStylePlain];
     tableView.dataSource=self;
     tableView.delegate=self;
+    self.tableView=tableView;
     [self.view addSubview:tableView];
     // Do any additional setup after loading the view.
+}
+-(void)getdata
+{
+    [HTTPCLIENT goldSupplierInfoSuccess:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]==1) {
+            self.dic=[responseObject objectForKey:@"result"];
+            [self.tableView reloadData];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -44,6 +62,7 @@
         if (!cell) {
             cell=[YLDJPGYSDBigCell YLDJPGYSDBigCell];
         }
+        cell.myDic=self.dic;
         return cell;
     }
     UITableViewCell *cell=[UITableViewCell new];

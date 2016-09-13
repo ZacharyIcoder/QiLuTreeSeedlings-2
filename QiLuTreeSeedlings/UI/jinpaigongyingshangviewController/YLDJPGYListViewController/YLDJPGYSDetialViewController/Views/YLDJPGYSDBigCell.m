@@ -41,7 +41,14 @@
     self.shenfenLab.text=@"金牌中心";
     [self.backBtn setImage:nil forState:UIControlStateNormal];
     [self.backBtn setTitle:@"苗信通" forState:UIControlStateNormal];
+    self.backBtnW.constant=65;
     [self.backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.companyNameL.text=myDic[@"companyName"];
+    self.nameLab.text=myDic[@"name"];
+    NSString *headUrl=myDic[@"headUrl"];
+    if (headUrl.length>0) {
+        [self.touxiangImgV setImageWithURL:[NSURL URLWithString:headUrl]];
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

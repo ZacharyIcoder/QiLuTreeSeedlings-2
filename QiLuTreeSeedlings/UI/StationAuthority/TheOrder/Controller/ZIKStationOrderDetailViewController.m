@@ -158,11 +158,16 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.typeStyle == TypeStyleOffer) {
         ZIKStationOrderOfferTableViewCell *cell = [ZIKStationOrderOfferTableViewCell cellWithTableView:tableView];
-        if ([self.demandModel.quote isEqualToString:@"1"]) {
-            cell.isCanQuote = YES;
-        } else {
+        if (APPDELEGATE.userModel.goldsupplierStatus==1||APPDELEGATE.userModel.goldsupplierStatus==2||APPDELEGATE.userModel.goldsupplierStatus==3||APPDELEGATE.userModel.goldsupplierStatus==5||APPDELEGATE.userModel.goldsupplierStatus==6) {
+            if ([self.demandModel.quote isEqualToString:@"1"]) {
+                cell.isCanQuote = YES;
+            } else {
+                cell.isCanQuote = NO;
+            }
+        }else{
             cell.isCanQuote = NO;
         }
+        
         if (_statusType == StationOrderStatusTypeOutOfDate) {
             cell.isCanQuote = NO;
         }

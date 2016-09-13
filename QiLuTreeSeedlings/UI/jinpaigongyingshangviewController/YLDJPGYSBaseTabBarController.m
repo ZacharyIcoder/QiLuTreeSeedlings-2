@@ -13,8 +13,12 @@
 #import "ZIKOrderViewController.h"
 #import "UINavController.h"
 #import "YLDJPZhongXinViewController.h"
-@interface YLDJPGYSBaseTabBarController ()
-
+#import "ZIKHelpfulHintsViewController.h"
+@interface YLDJPGYSBaseTabBarController ()<UITabBarControllerDelegate>
+{
+    BOOL _isTiao;
+}
+@property(readonly, nonatomic) NSUInteger lastSelectedIndex;
 @end
 
 @implementation YLDJPGYSBaseTabBarController
@@ -35,6 +39,7 @@
     JPGYSListVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单金牌供应商on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     //金牌供应
     YLDJinPaiGYViewController *jinpaigongyingVC=[[YLDJinPaiGYViewController alloc]init];
+    
     UINavigationController *JPGYListNav = [[UINavigationController alloc] initWithRootViewController:jinpaigongyingVC];
   
     JPGYListNav.tabBarItem.enabled = YES;
@@ -52,6 +57,7 @@
     offerNav.tabBarItem.enabled = YES;
     offerVC.vcTitle = @"我的报价";
     offerVC.title = @"我的报价";
+//    offerVC.hidesBottomBarWhenPushed=YES;
     offerVC.navigationController.navigationBar.hidden = YES;
     offerVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-报价管理Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-报价管理On"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -90,15 +96,40 @@
 
     // Do any additional setup after loading the view.
 }
-
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    return _isTiao;
+}
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    _isTiao = YES;
+    //获得选中的item
+    NSUInteger tabIndex = [tabBar.items indexOfObject:item];
+    if (tabIndex != self.selectedIndex) {
+        //设置最近一次变更
+        _lastSelectedIndex = self.selectedIndex;
+        //        CLog(@"2 OLD:%lu , NEW:%lu",(unsigned long)self.lastSelectedIndex,(unsigned long)tabIndex);
+    }
+    if (tabIndex == 3 ||tabIndex == 4) {
+        if (APPDELEGATE.userModel.goldsupplierStatus == 1||APPDELEGATE.userModel.goldsupplierStatus == 2||APPDELEGATE.userModel.goldsupplierStatus ==3) {
+            _isTiao = YES;//是苗企，可以进入苗企中心
+        } else {
+            _isTiao = NO;//不是苗企，不可进入苗企中心
+            
+            ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
+            helpfulVC.qubie = @"金牌中心";
+            [self.navigationController pushViewController:helpfulVC animated:YES];
+        }
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)backHome {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+//-(BOOL)
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKBackHome" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YLDBackMiaoXinTong" object:nil];

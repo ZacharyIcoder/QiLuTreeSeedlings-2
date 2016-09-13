@@ -17,7 +17,7 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTO-a6-7j7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
-                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.97164820206606139" green="0.96989170038820904" blue="0.96921007287143057" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="RUn-TJ-3tV"/>
                         </constraints>
@@ -97,7 +97,7 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0v-5a-eqK">
                         <rect key="frame" x="0.0" y="130" width="320" height="10"/>
-                        <color key="backgroundColor" red="0.86644901878536662" green="0.86240860228319516" blue="0.86305033968285294" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.97118370838268198" green="0.9730419915449402" blue="0.97192722726674563" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="3Zk-zd-9cf"/>
                         </constraints>

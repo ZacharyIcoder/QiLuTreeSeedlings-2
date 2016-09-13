@@ -30,9 +30,10 @@
     self.dataAry=[NSMutableArray array];
     self.pageNum=1;
     self.goldsupplier=0;
+    
     //[self.navBackView setBackgroundColor:NavYellowColor];
     [self topActionView];
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 120, kWidth, kHeight-120)];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 120, kWidth, kHeight-164)];
     tableView.delegate=self;
     tableView.dataSource=self;
     self.tableView=tableView;
@@ -157,6 +158,7 @@
     HotSellModel *model=self.dataAry[indexPath.row];
     
     SellDetialViewController *sellDetialViewC=[[SellDetialViewController alloc]initWithUid:model];
+    sellDetialViewC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:sellDetialViewC animated:YES];
 }
 - (void)didReceiveMemoryWarning {

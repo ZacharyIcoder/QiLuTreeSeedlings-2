@@ -27,6 +27,10 @@
         self.firstHintLabel.text  = @"抱歉您不是齐鲁苗木网合作苗企,无法进入苗企中心";
         self.secondHintLabel.text = @"如果您希望成为合作苗企，请联系客服";
     }
+    if ([self.qubie isEqualToString:@"金牌中心"]) {
+        self.firstHintLabel.text  = @"抱歉您不是齐鲁苗木金牌供应商,无法进入此功能";
+        self.secondHintLabel.text = @"如果您希望成为金牌供应商，请联系客服";
+    }
 }
 
 - (IBAction)telePhoneButtonClick:(id)sender {
