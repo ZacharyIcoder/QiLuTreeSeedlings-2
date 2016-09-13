@@ -16,18 +16,22 @@
 
 #import "ZIKMiaoQiZhongXinBriefSectionTableViewCell.h"
 #import "ZIKStationCenterContentTableViewCell.h"
+
+#import "ZIKStationCenterInfoViewController.h"
+
+#import "ZIKMyHonorViewController.h"
 static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewIdentifier";
 #pragma mark -
 
 #define DEFAULT_ROW_HEIGHT 44
 #define HEADER_HEIGHT 240
-#define FOOTER_HEIGHT (kHeight-HEADER_HEIGHT-44-44-44-130-60)
+//#define FOOTER_HEIGHT (kHeight-HEADER_HEIGHT-44-44-44-130-60-10)
+#define FOOTER_HEIGHT 100
 
 @interface ZIKMiaoQiZhongXinTableViewController ()
 @property (nonatomic, strong) ZIKMiaoQiZhongXinModel *miaoModel;
 
 @end
-
 
 @implementation ZIKMiaoQiZhongXinTableViewController
 
@@ -36,17 +40,35 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.sectionHeaderHeight    = HEADER_HEIGHT;
-    if (self.view.frame.size.height>480) {
-        self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
-    } else {
-        self.tableView.scrollEnabled  = YES; //设置tableview 可以滚动
-    }
+//    if (self.view.frame.size.height>480) {
+//        self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
+//    } else {
+//        self.tableView.scrollEnabled  = YES; //设置tableview 可以滚动
+//    }
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     UINib *sectionHeaderNib = [UINib nibWithNibName:@"ZIKMiaoQiZhongXinHeaderFooterView" bundle:nil];
     [self.tableView registerNib:sectionHeaderNib forHeaderFooterViewReuseIdentifier:SectionHeaderViewIdentifier];
     UIView *view = [UIView new];
     view.backgroundColor = BGColor;
     [self.tableView setTableFooterView:view];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushChangeMasterInfo) name:@"ZIKMiaoQiChangeMasterInfo" object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestShare) name:@"ZIKMiaoQiUMShare" object:nil];
+    
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKMiaoQiChangeMasterInfo" object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKMiaoQiUMShare" object:nil];
+}
+
+- (void)pushChangeMasterInfo {
+    ZIKStationCenterInfoViewController *changeInfoVC = [[ZIKStationCenterInfoViewController alloc] init];
+    changeInfoVC.hidesBottomBarWhenPushed = YES;
+    changeInfoVC.type = @"苗企";
+//    changeInfoVC.masterModel = self.masterModel;
+    changeInfoVC.miaoModel = self.miaoModel;
+    [self.navigationController pushViewController:changeInfoVC animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,6 +89,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
         }
         NSDictionary *result = responseObject[@"result"];
         self.miaoModel = [ZIKMiaoQiZhongXinModel yy_modelWithDictionary:result];
+        [self.miaoModel initStatusType];
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
@@ -118,14 +141,31 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         ZIKMiaoQiZhongXinBriefSectionTableViewCell *briefCell = [ZIKMiaoQiZhongXinBriefSectionTableViewCell cellWithTableView:tableView];
+        if (self.miaoModel) {
+            [briefCell configureCell:_miaoModel];
+        }
+        briefCell.indexPath = indexPath;
+        //按钮点击展开隐藏
+
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+
+        briefCell.openButtonBlock = ^(NSIndexPath *indexPath){
+//            weakSelf.miaoModel.isShow = !weakSelf.miaoModel.isShow;
+//            //一个section刷新
+//            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
+//            [tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//            [tableView reloadData];
+            weakSelf.miaoModel.isShow = !weakSelf.miaoModel.isShow;
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        };
         briefCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return briefCell;
     }
     if (indexPath.section == 1) {
         ZIKStationCenterContentTableViewCell *cell = [ZIKStationCenterContentTableViewCell cellWithTableView:tableView];
-//        if (self.masterModel) {
-//            [cell configureCell:self.masterModel];
-//        }
+        if (self.miaoModel) {
+            [cell configureCellWithMiaoQi:self.miaoModel];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (indexPath.section == 2) {
@@ -147,7 +187,6 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
 
         twocell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
 //        twocell.selectionStyle = UITableViewCellSelectionStyleNone;
-
         return twocell;
     }
     return nil;
@@ -156,9 +195,9 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         ZIKMiaoQiZhongXinHeaderFooterView *sectionHeaderView = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
-//        if (self.masterModel) {
-//            [sectionHeaderView configWithModel:self.masterModel];
-//        }
+        if (self.miaoModel) {
+            [sectionHeaderView configWithModel:self.miaoModel];
+        }
         return sectionHeaderView;
     }
     return nil;

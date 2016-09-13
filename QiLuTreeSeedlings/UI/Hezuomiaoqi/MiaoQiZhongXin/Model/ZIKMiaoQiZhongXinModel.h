@@ -40,9 +40,13 @@
 /**
  *  简介
  */
-@property (nonatomic, copy) NSString *brief;
+@property (nonatomic, copy) NSString *gybrief;
 /**
  *  星级
  */
 @property (nonatomic, copy) NSString *starLevel;
+
+@property (nonatomic, assign) BOOL isShow;
+
+- (void)initStatusType;
 @end

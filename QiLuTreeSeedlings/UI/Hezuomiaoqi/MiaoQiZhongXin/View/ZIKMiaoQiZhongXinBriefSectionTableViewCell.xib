@@ -17,17 +17,15 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="liojfijweifjiawj;fjawio;ejfiowjfiojqiwofjw;alekfjklwjaefi;ojwijfeiwahiofejaiwojfiojawioefjioowajfiowiajefoiwae" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yT-Ug-0fd">
                         <rect key="frame" x="8" y="8" width="304" height="42"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="42" id="MFV-YX-MFv"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLY-xJ-u3X">
                         <rect key="frame" x="120" y="55" width="81" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="81" id="el0-P6-ilf"/>
+                            <constraint firstAttribute="height" constant="21" id="AgN-wv-gMh"/>
+                            <constraint firstAttribute="width" constant="81" id="Rxx-Fn-QoZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="查看更多" image="rounlock.png">
@@ -36,14 +34,18 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="9yT-Ug-0fd" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="CsG-AV-3ac"/>
-                    <constraint firstItem="ZLY-xJ-u3X" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Kfv-Mf-bTD"/>
-                    <constraint firstItem="9yT-Ug-0fd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="MbH-Cj-v4f"/>
-                    <constraint firstItem="9yT-Ug-0fd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="NLK-w4-MYD"/>
-                    <constraint firstItem="ZLY-xJ-u3X" firstAttribute="top" secondItem="9yT-Ug-0fd" secondAttribute="bottom" constant="5" id="jJH-UP-Q5X"/>
-                    <constraint firstItem="ZLY-xJ-u3X" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="jOH-sz-6U5"/>
+                    <constraint firstItem="9yT-Ug-0fd" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="CUF-lC-4yN"/>
+                    <constraint firstItem="ZLY-xJ-u3X" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="FMg-sB-PZM"/>
+                    <constraint firstItem="9yT-Ug-0fd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Rnu-Tn-fO5"/>
+                    <constraint firstItem="ZLY-xJ-u3X" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="eyA-Ag-BYZ"/>
+                    <constraint firstItem="9yT-Ug-0fd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="lpA-Qd-RvQ"/>
+                    <constraint firstItem="ZLY-xJ-u3X" firstAttribute="top" secondItem="9yT-Ug-0fd" secondAttribute="bottom" constant="5" id="on2-V4-RB3"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="briefLabel" destination="9yT-Ug-0fd" id="KM3-en-ORq"/>
+                <outlet property="openButton" destination="ZLY-xJ-u3X" id="PDt-eq-WAp"/>
+            </connections>
             <point key="canvasLocation" x="497" y="420.5"/>
         </tableViewCell>
     </objects>

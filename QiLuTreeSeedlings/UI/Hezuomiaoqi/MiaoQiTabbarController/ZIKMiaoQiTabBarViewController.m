@@ -12,11 +12,39 @@
 #import "ZIKMiaoQiGongYingViewController.h"//苗企供应
 #import "ZIKMiaoQiQiuGouViewController.h"//苗企求购
 #import "ZIKMiaoQiZhongXinTableViewController.h"//苗企中心
-@interface ZIKMiaoQiTabBarViewController ()
+
+#import "ZIKHelpfulHintsViewController.h"
+@interface ZIKMiaoQiTabBarViewController ()<UITabBarControllerDelegate>
+{
+    BOOL _isTiao;
+}
+@property(readonly, nonatomic) NSUInteger lastSelectedIndex;
 
 @end
 
 @implementation ZIKMiaoQiTabBarViewController
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    _isTiao = YES;
+    //获得选中的item
+    NSUInteger tabIndex = [tabBar.items indexOfObject:item];
+    if (tabIndex != self.selectedIndex) {
+        //设置最近一次变更
+        _lastSelectedIndex = self.selectedIndex;
+//        CLog(@"2 OLD:%lu , NEW:%lu",(unsigned long)self.lastSelectedIndex,(unsigned long)tabIndex);
+    }
+    if (tabIndex == 3 ) {
+        if (APPDELEGATE.userModel.goldsupplierStatus == 8) {
+            _isTiao = YES;//是苗企，可以进入苗企中心
+        } else {
+            _isTiao = NO;//不是苗企，不可进入苗企中心
+            ZIKHelpfulHintsViewController *helpfulVC = [[ZIKHelpfulHintsViewController alloc] initWithNibName:@"ZIKHelpfulHintsViewController" bundle:nil];
+            helpfulVC.qubie = @"苗企中心";
+            [self.navigationController pushViewController:helpfulVC animated:YES];
+        }
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,13 +93,13 @@
     stationVC.tabBarItem.title = @"苗企中心";
     stationVC.navigationController.navigationBar.hidden = YES;
 
-    stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程中心off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-工程中心On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程中心offf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-工程中心onn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
     NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:orderNav,buyNav,workNav,stationNav,nil];
     self.viewControllers = list;
-
+    self.delegate = self;
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        normalColor,           NSForegroundColorAttributeName,
@@ -82,6 +110,10 @@
                                                        titleHighlightedColor, NSForegroundColorAttributeName,
                                                        [UIFont fontWithName:@"Helvetica" size:12.0], NSFontAttributeName,
                                                        nil] forState:UIControlStateSelected];
+}
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    return _isTiao;
 }
 
 - (void)didReceiveMemoryWarning {

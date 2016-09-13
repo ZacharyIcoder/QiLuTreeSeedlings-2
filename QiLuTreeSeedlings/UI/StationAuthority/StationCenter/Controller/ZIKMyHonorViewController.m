@@ -65,7 +65,11 @@ static NSString *uid = nil;
     }
     if (self.type==TypeHonorOther) {
         self.vcTitle = @"荣誉";
-    }else{
+    }
+    if (self.type == TypeMiaoQiHonor) {
+        self.vcTitle = @"荣誉";
+    }
+    else{
         self.rightBarBtnTitleString = @"添加";
         __weak typeof(self) weakSelf = self;//解决循环引用的问题
         self.rightBarBtnBlock = ^{
@@ -118,6 +122,9 @@ static NSString *uid = nil;
     if (self.type == TypeHonorOther) {
         [self requestOtherWorkStaData];
     }
+    if (self.type == TypeMiaoQiHonor) {
+        [self requestOtherHonorData];
+    }
 }
 
 #pragma mark - 请求自己工作站荣誉数据
@@ -160,6 +167,20 @@ static NSString *uid = nil;
         [weakSelf requestHonorListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
     }];
     [self.honorCollectionView headerBeginRefreshing];
+}
+#pragma mark - 请求其他苗企荣誉数据
+- (void)requestOtherHonorData {
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    [self.honorCollectionView addHeaderWithCallback:^{
+        weakSelf.page = 1;
+        [weakSelf requestMiaoQiHonorListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.honorCollectionView addFooterWithCallback:^{
+        weakSelf.page++;
+        [weakSelf requestMiaoQiHonorListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.honorCollectionView headerBeginRefreshing];
+
 }
 #pragma mark - 请求自己工程公司数据
 - (void)requestCompanyZZListData:(NSString *)pageNumber
@@ -249,6 +270,49 @@ static NSString *uid = nil;
         }
     } failure:^(NSError *error) {
     }];
+}
+
+- (void)requestMiaoQiHonorListData:(NSString *)pageNumber {
+    [self.honorCollectionView headerEndRefreshing];
+    [HTTPCLIENT cooperationCompanyHonorsWithMemberUid:self.memberUid page:pageNumber pageSize:@"10" Success:^(id responseObject) {
+        //CLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        } else if ([responseObject[@"success"] integerValue] == 1) {
+            NSArray *array  = responseObject[@"result"][@"list"];
+            if (array.count == 0 && self.page == 1) {
+                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                if (self.honorData.count > 0) {
+                    [self.honorData removeAllObjects];
+                }
+                [self.honorCollectionView footerEndRefreshing];
+                [self.honorCollectionView reloadData];
+                return ;
+            }
+            else if (array.count == 0 && self.page > 1) {
+                self.page--;
+                [self.honorCollectionView footerEndRefreshing];
+                //没有更多数据了
+                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                return;
+            }
+            else {
+                if (self.page == 1) {
+                    [self.honorData removeAllObjects];
+                }
+                [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                    ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
+                    [self.honorData addObject:honorListModel];
+                }];
+                [self.honorCollectionView reloadData];
+                [self.honorCollectionView footerEndRefreshing];
+
+            }
+        }
+    } failure:^(NSError *error) {
+    }];
+
 }
 
 - (void)tapGR {

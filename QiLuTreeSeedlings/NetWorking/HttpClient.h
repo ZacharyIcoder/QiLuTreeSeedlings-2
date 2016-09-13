@@ -1409,7 +1409,23 @@ failure:(void (^)(NSError *error))failure;
                                       Success:(void (^)(id responseObject))success
                                       failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 合作苗企-荣誉详情 -----------
+- (void)cooperationCompanyHonorWithUid:(NSString *)uid
+                               Success:(void (^)(id responseObject))success
+                               failure:(void (^)(NSError *error))failure;
 
+#pragma mark ---------- 合作苗企-新增荣誉 -----------
+- (void)cooperationCompanyHonorsCreateWithUid:(NSString *)uid
+                                         name:(NSString *)name
+                              acquisitionTime:(NSString *)acquisitionTime
+                                        image:(NSString *)image
+                                      Success:(void (^)(id responseObject))success
+                                      failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 合作苗企-荣誉删除 -----------
+- (void)cooperationCompanyHonorDeleteWithUid:(NSString *)uid
+                                     Success:(void (^)(id responseObject))success
+                                     failure:(void (^)(NSError *error))failure;
 
 
 #pragma mark ---------- 金牌供应商-金牌供应商列表-----------

@@ -108,6 +108,9 @@
         } else if (model.goldsupplier == 7) {
             shenfenLab.text=@"工程公司";
             logoImageV.image = [UIImage imageNamed:@"列表-工程公司"];
+        } else if (model.goldsupplier == 8) {
+            shenfenLab.text = @"合作苗企";
+            logoImageV.image = [UIImage imageNamed:@"合作苗企43x43"];
         }
 
         UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(17, CGRectGetMaxY(logoImageV.frame)+5, kWidth-40, 0.5)];

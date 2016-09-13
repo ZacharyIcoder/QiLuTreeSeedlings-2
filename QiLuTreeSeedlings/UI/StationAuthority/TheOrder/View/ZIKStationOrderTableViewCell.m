@@ -41,7 +41,6 @@
     // Configure the view for the selected state
 }
 
-
 + (instancetype)cellWithTableView:(UITableView *)tableView {
     static NSString *kZIKStationOrderTableViewCellID = @"kZIKStationOrderTableViewCellID";
     ZIKStationOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKStationOrderTableViewCellID];

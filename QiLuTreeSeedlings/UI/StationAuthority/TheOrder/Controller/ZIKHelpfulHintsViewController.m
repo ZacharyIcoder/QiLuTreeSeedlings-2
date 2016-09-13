@@ -10,6 +10,8 @@
 
 @interface ZIKHelpfulHintsViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *firstHintLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondHintLabel;
 @property (weak, nonatomic) IBOutlet UIButton *sureButton;
 
 @end
@@ -21,6 +23,10 @@
     // Do any additional setup after loading the view from its nib.
     self.vcTitle = @"友情提示";
     self.sureButton.backgroundColor = NavColor;
+    if ([self.qubie isEqualToString:@"苗企中心"]) {
+        self.firstHintLabel.text  = @"抱歉您不是齐鲁苗木网合作苗企,无法进入苗企中心";
+        self.secondHintLabel.text = @"如果您希望成为合作苗企，请联系客服";
+    }
 }
 
 - (IBAction)telePhoneButtonClick:(id)sender {

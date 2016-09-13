@@ -13,6 +13,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "MasterInfoModel.h"
 
+#import "ZIKMiaoQiZhongXinModel.h"
 @interface ZIKStationCenterInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
     UIImage        *_globalHeadImage;
@@ -31,7 +32,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if ([self.type isEqualToString: @"苗企"]) {
+        self.vcTitle = @"苗企信息";
+    } else {
     self.vcTitle = @"站长信息";
+    }
     titlesArray = @[@"我的头像",@"姓名",@"电话",@"自我介绍"];
 
     UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, 44*4) style:UITableViewStylePlain];
@@ -79,20 +84,32 @@
         if (_globalHeadImage) {
             cellHeadImageView.image = _globalHeadImage;
         }
-        else if (![ZIKFunction xfunc_check_strEmpty:self.masterModel.workstationPic]) {
+        else if (![ZIKFunction xfunc_check_strEmpty:self.masterModel.workstationPic] && self.masterModel) {
             [cellHeadImageView setImageWithURL:[NSURL URLWithString:self.masterModel.workstationPic] placeholderImage:[UIImage imageNamed:@"UserImageV"]];
         }
         else {
-            cellHeadImageView.image = [UIImage imageNamed:@"UserImageV"];
+//            cellHeadImageView.image = [UIImage imageNamed:@"UserImageV"];//APPDELEGATE.userModel.headUrl
+                        [cellHeadImageView setImageWithURL:[NSURL URLWithString:APPDELEGATE.userModel.headUrl] placeholderImage:[UIImage imageNamed:@"UserImageV"]];
         }
         [cell addSubview:cellHeadImageView];
     }
-    if (indexPath.row == 1) {
-        cell.detailTextLabel.text = self.masterModel.chargelPerson;
-    } else if (indexPath.row == 2) {
-        cell.detailTextLabel.text = self.masterModel.phone;
-    } else if (indexPath.row == 3) {
-        cell.detailTextLabel.text = self.masterModel.brief;
+    if (![self.type isEqualToString: @"苗企"]) {
+        if (indexPath.row == 1) {
+            cell.detailTextLabel.text = self.masterModel.chargelPerson;
+        } else if (indexPath.row == 2) {
+            cell.detailTextLabel.text = self.masterModel.phone;
+        } else if (indexPath.row == 3) {
+            cell.detailTextLabel.text = self.masterModel.brief;
+        }
+    } else {
+        if (indexPath.row == 1) {
+            cell.detailTextLabel.text = self.miaoModel.name;
+        } else if (indexPath.row == 2) {
+            cell.detailTextLabel.text = self.miaoModel.phone;
+        } else if (indexPath.row == 3) {
+            cell.detailTextLabel.text = self.miaoModel.gybrief;
+        }
+
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
     return cell;
@@ -107,12 +124,23 @@
     ZIKStationChangeInfoViewController *changeInfoVC = [[ZIKStationChangeInfoViewController alloc] initWithNibName:@"ZIKStationChangeInfoViewController" bundle:nil];
     NSString *placeholderStr = [NSString stringWithFormat:@"请输入%@",titlesArray[indexPath.row]];
     changeInfoVC.titleString = titlesArray[indexPath.row];
-    if (indexPath.row == 1) {
-        changeInfoVC.setString = self.masterModel.chargelPerson;
-    } else if (indexPath.row == 2) {
-        changeInfoVC.setString = self.masterModel.phone;
-    } else if (indexPath.row == 3) {
-        changeInfoVC.setString = self.masterModel.brief;
+    if (![self.type isEqualToString: @"苗企"]) {
+        if (indexPath.row == 1) {
+            changeInfoVC.setString = self.masterModel.chargelPerson;
+        } else if (indexPath.row == 2) {
+            changeInfoVC.setString = self.masterModel.phone;
+        } else if (indexPath.row == 3) {
+            changeInfoVC.setString = self.masterModel.brief;
+        }
+    } else {
+        if (indexPath.row == 1) {
+            changeInfoVC.setString = self.miaoModel.name;
+        } else if (indexPath.row == 2) {
+            changeInfoVC.setString = self.miaoModel.phone;
+        } else if (indexPath.row == 3) {
+            changeInfoVC.setString = self.miaoModel.gybrief;
+        }
+
     }
 
     changeInfoVC.placeholderString = placeholderStr;

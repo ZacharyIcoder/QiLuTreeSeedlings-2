@@ -15,6 +15,8 @@
 #import "ZIKHeZuoMiaoQiTableViewCell.h"
 #import "ZIKHeZuoMiaoQiHeaderFooterView.h"
 
+#import "ZIKMiaoQiDetailTableViewController.h"
+#import "ZIKMiaoQiListViewController.h"
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @interface ZIKHeZuoMiaoQiViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -23,8 +25,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 @property (nonatomic, strong) NSMutableArray *fiveStarMArr;
 @property (nonatomic, strong) NSMutableArray *fourStarMArr;
 @property (nonatomic, strong) NSMutableArray *threeStarMArr;
-@property (nonatomic, strong) NSMutableArray *twoStarMArr;
-@property (nonatomic, strong) NSMutableArray *oneStarMarr;
+//@property (nonatomic, strong) NSMutableArray *twoStarMArr;
+//@property (nonatomic, strong) NSMutableArray *oneStarMarr;
 
 @end
 
@@ -42,8 +44,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     self.fiveStarMArr  = [NSMutableArray array];
     self.fourStarMArr  = [NSMutableArray array];
     self.threeStarMArr = [NSMutableArray array];
-    self.twoStarMArr   = [NSMutableArray array];
-    self.oneStarMarr   = [NSMutableArray array];
+//    self.twoStarMArr   = [NSMutableArray array];
+//    self.oneStarMarr   = [NSMutableArray array];
 }
 
 - (void)initUI {
@@ -72,8 +74,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         NSArray *fiveArray  = resultDic[@"five"];
         NSArray *fourArray  = resultDic[@"four"];
         NSArray *threeArray = resultDic[@"three"];
-        NSArray *twoArray   = resultDic[@"two"];
-        NSArray *oneArray   = resultDic[@"one"];
+//        NSArray *twoArray   = resultDic[@"two"];
+//        NSArray *oneArray   = resultDic[@"one"];
 
         if (fiveArray.count>0) {
             [fiveArray enumerateObjectsUsingBlock:^(NSDictionary *fiveDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -93,18 +95,18 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
                 [self.threeStarMArr addObject:threeModel];
             }];
         }
-        if (twoArray.count > 0) {
-            [twoArray enumerateObjectsUsingBlock:^(NSDictionary *twoDic, NSUInteger idx, BOOL * _Nonnull stop) {
-                ZIKHeZuoMiaoQiModel *twoModel = [ZIKHeZuoMiaoQiModel yy_modelWithDictionary:twoDic];
-                [self.twoStarMArr addObject:twoModel];
-            }];
-        }
-        if (oneArray.count > 0) {
-            [oneArray enumerateObjectsUsingBlock:^(NSDictionary *oneDic, NSUInteger idx, BOOL * _Nonnull stop) {
-                ZIKHeZuoMiaoQiModel *oneModel = [ZIKHeZuoMiaoQiModel yy_modelWithDictionary:oneDic];
-                [self.oneStarMarr addObject:oneModel];
-            }];
-        }
+//        if (twoArray.count > 0) {
+//            [twoArray enumerateObjectsUsingBlock:^(NSDictionary *twoDic, NSUInteger idx, BOOL * _Nonnull stop) {
+//                ZIKHeZuoMiaoQiModel *twoModel = [ZIKHeZuoMiaoQiModel yy_modelWithDictionary:twoDic];
+//                [self.twoStarMArr addObject:twoModel];
+//            }];
+//        }
+//        if (oneArray.count > 0) {
+//            [oneArray enumerateObjectsUsingBlock:^(NSDictionary *oneDic, NSUInteger idx, BOOL * _Nonnull stop) {
+//                ZIKHeZuoMiaoQiModel *oneModel = [ZIKHeZuoMiaoQiModel yy_modelWithDictionary:oneDic];
+//                [self.oneStarMarr addObject:oneModel];
+//            }];
+//        }
         [self.mqTableView reloadData];
 
     } failure:^(NSError *error) {
@@ -121,16 +123,17 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         return self.fourStarMArr.count;
     } else if (section == 3) {
         return self.threeStarMArr.count;
-    } else if (section == 4) {
-        return self.twoStarMArr.count;
-    } else if (section == 5) {
-        return self.oneStarMarr.count;
     }
+//    else if (section == 4) {
+//        return self.twoStarMArr.count;
+//    } else if (section == 5) {
+//        return self.oneStarMarr.count;
+//    }
     return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 6;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -158,6 +161,18 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     if (section != 0) {
         ZIKHeZuoMiaoQiHeaderFooterView *headerView = [self.mqTableView dequeueReusableHeaderFooterViewWithIdentifier:SectionHeaderViewIdentifier];
         headerView.starNum = 6-section;
+        headerView.indexPath = section;
+        //按钮点击展开隐藏
+
+        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+
+        headerView.moreButtonBlock = ^(NSInteger indexPath){
+            ZIKMiaoQiListViewController *listVC = [[ZIKMiaoQiListViewController alloc] initWithNibName:@"ZIKMiaoQiListViewController" bundle:nil];
+            listVC.starLevel = indexPath;
+            listVC.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:listVC animated:YES];
+        };
+
         return headerView;
 
     }
@@ -178,13 +193,27 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
             model = self.fourStarMArr[indexPath.row];
         } else if (indexPath.section == 3) {
             model = self.threeStarMArr[indexPath.row];
-        } else if (indexPath.section == 4) {
-            model = self.twoStarMArr[indexPath.row];
-        } else if (indexPath.section == 5) {
-            model = self.oneStarMarr[indexPath.row];
         }
+//        else if (indexPath.section == 4) {
+//            model = self.twoStarMArr[indexPath.row];
+//        } else if (indexPath.section == 5) {
+//            model = self.oneStarMarr[indexPath.row];
+//        }
         cell.starNum = 6-indexPath.section;
         [cell configureCell:model];
+
+        cell.indexPath = indexPath;
+        __weak typeof(self) weakSelf = self;
+        cell.phoneButtonBlock = ^(NSIndexPath *indexPath){
+            // NSLog(@"拨打电话");
+            NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",model.phone];
+            //NSLog(@"%@",str);
+            UIWebView * callWebview = [[UIWebView alloc] init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+            [weakSelf.view addSubview:callWebview];
+
+        };
+
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     };
@@ -193,6 +222,18 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKHeZuoMiaoQiModel *model = nil;
+    if (indexPath.section == 1) {
+        model = self.fiveStarMArr[indexPath.row];
+    } else if (indexPath.section == 2) {
+        model = self.fourStarMArr[indexPath.row];
+    } else if (indexPath.section == 3) {
+        model = self.threeStarMArr[indexPath.row];
+    }
+    ZIKMiaoQiDetailTableViewController *mqdVC = [[ZIKMiaoQiDetailTableViewController alloc]initWithNibName:@"ZIKMiaoQiDetailTableViewController" bundle:nil];
+    mqdVC.uid = model.uid;
+    mqdVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:mqdVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 //- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
