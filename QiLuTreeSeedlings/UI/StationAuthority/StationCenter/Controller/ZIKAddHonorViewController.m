@@ -83,6 +83,25 @@
 //           ;
 //       }];
     }
+    if (self.type==5) {
+        [HTTPCLIENT goldSupplierHonordetialUid:_jinpaiUid Success:^(id responseObject) {
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            NSDictionary *resultDic      = responseObject[@"result"];
+            NSDictionary *honorDic       = resultDic[@"honor"];
+            self.jinpaiUid                     = honorDic[@"uid"];
+            [self.honorTimeButton setTitle:honorDic[@"acqueTime"] forState:UIControlStateNormal];
+            self.honorNameTextField.text = honorDic[@"name"];
+            self.honorCompressUrl        = honorDic[@"image"];
+            NSURL *url = [NSURL URLWithString:self.honorCompressUrl];
+            [self.addImageButton setBackgroundImageForState:UIControlStateNormal withURL:url placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+        } failure:^(NSError *error) {
+            ;
+        }];
+
+    }
 }
 - (IBAction)honorButtonClick:(UIButton *)sender {
     
@@ -156,6 +175,19 @@
 
         } failure:^(NSError *error) {
             ;
+        }];
+    }
+    if (self.type==4||self.type==5) {
+        [HTTPCLIENT updatagoldSupplierHonordetialUid:self.jinpaiUid withName:name withacquisitionTime:time withimage:_honorCompressUrl Success:^(id responseObject) {
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"添加成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+
+        } failure:^(NSError *error) {
+            
         }];
     }
 
@@ -265,8 +297,8 @@
         imageData = UIImageJPEGRepresentation(image, 0.0001);
     }
     if (imageData.length>=1024*1024) {
-        if (image.size.width>916 && image.size.height>681) {
-            CGSize newSize = {916,681};
+        if (image.size.width>800 && image.size.height>558) {
+            CGSize newSize = {800,558};
             imageData =  [self imageWithImageSimple:image scaledToSize:newSize];
 
         } else {

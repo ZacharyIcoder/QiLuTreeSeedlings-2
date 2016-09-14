@@ -14,6 +14,7 @@
 #import "YLDJPGYSJJCell.h"
 #import "YLDJPGYSInfoLabCell.h"
 #import "YLDGCZXzizhiCell.h"
+#import "ZIKMyHonorViewController.h"
 @interface YLDJPZhongXinViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,copy)NSDictionary *dic;
@@ -41,7 +42,9 @@
     [HTTPCLIENT goldSupplierInfoSuccess:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
             self.dic=[responseObject objectForKey:@"result"];
+            APPDELEGATE.userModel.brief=self.dic[@"brief"];
             [self.tableView reloadData];
+            
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
@@ -97,6 +100,8 @@
         
         if (!cell) {
             cell=[YLDJPGYSDBigCell YLDJPGYSDBigCell];
+            [cell.touxiangBtn addTarget:self action:@selector(touxiangBtnAcion) forControlEvents:UIControlEventTouchUpInside];
+            [cell.backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
         }
         cell.myDic=self.dic;
         return cell;
@@ -157,13 +162,13 @@
         return cell;
     }
    
-    if (indexPath.row==0) {
+    if (indexPath.row==3) {
         YLDGCZXzizhiCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDGCZXzizhiCell"];
         if (!cell) {
             cell=[YLDGCZXzizhiCell yldGCZXzizhiCell];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        [cell setMessageWithImageName:@"GCZXgongsizizhi.png" andTitle:@"公司资质"];
+        [cell setMessageWithImageName:@"GCZXgongsizizhi.png" andTitle:@"金牌资质"];
         return cell;
     }
     UITableViewCell *cell=[UITableViewCell new];
@@ -176,10 +181,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.row==3)
     {
+        ZIKMyHonorViewController *zikMyHonorVC=[[ZIKMyHonorViewController alloc]init];
         
+        zikMyHonorVC.type=TypeMyJPGYSHonorOther;
+        zikMyHonorVC.memberUid=APPDELEGATE.userModel.access_id;
+        zikMyHonorVC.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:zikMyHonorVC animated:YES];
     }
 }
 -(void)chakanBtnAction
@@ -188,6 +198,10 @@
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:1 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
     
+}
+-(void)backBtnAction
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKBackHome" object:nil];
 }
 //获取字符串的高度
 -(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{

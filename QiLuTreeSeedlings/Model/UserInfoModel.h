@@ -24,6 +24,7 @@
 @property (nonatomic,copy) NSString *noReadCount;
 @property (nonatomic,copy) NSString *nrMessageCount;
 @property (nonatomic) NSInteger projectCompanyStatus;
+@property (nonatomic,copy) NSString *brief;
 +(UserInfoModel *)userInfoCreatByDic:(NSDictionary *)dic;
 -(void)reloadInfoByDic:(NSDictionary *)dic;
 @end

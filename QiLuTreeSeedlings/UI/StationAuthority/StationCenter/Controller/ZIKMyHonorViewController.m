@@ -63,8 +63,11 @@ static NSString *uid = nil;
         self.vcTitle = @"我的资质";
         [self.navBackView setBackgroundColor:NavYellowColor];
     }
-
-    if (self.type == TypeHonorOther || (self.type == TypeMiaoQiHonor && ![self.memberUid isEqualToString:APPDELEGATE.userModel.access_id]) ) {
+    if (self.type == TypeMyJPGYSHonorOther && [self.memberUid isEqualToString:APPDELEGATE.userModel.access_id]) {
+        self.vcTitle = @"我的荣誉";
+        [self.navBackView setBackgroundColor:NavYellowColor];
+    }
+    if (self.type == TypeHonorOther || (self.type == TypeMiaoQiHonor && ![self.memberUid isEqualToString:APPDELEGATE.userModel.access_id])|| self.type == TypeJPGYSHonorOther) {
         self.vcTitle = @"荣誉";
     }
     else{
@@ -91,6 +94,11 @@ static NSString *uid = nil;
                 if (self.type == TypeMiaoQiHonor) {
                     ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
                     addVC.miaoqiUid = weakSelf.memberUid;
+                    [weakSelf.navigationController pushViewController:addVC animated:YES];
+                }
+                if (self.type == TypeMyJPGYSHonorOther) {
+                    ZIKAddHonorViewController *addVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+                    addVC.type = 4;
                     [weakSelf.navigationController pushViewController:addVC animated:YES];
                 }
             };
@@ -135,6 +143,10 @@ static NSString *uid = nil;
     if (self.type == TypeMiaoQiHonor) {
         [self requestOtherHonorData];
     }
+    if (self.type == TypeJPGYSHonorOther||self.type == TypeMyJPGYSHonorOther) {
+        [self requestOtherJPGYSRRListHonorData];
+    }
+    
 }
 
 #pragma mark - 请求自己工作站荣誉数据
@@ -191,6 +203,63 @@ static NSString *uid = nil;
     }];
     [self.honorCollectionView headerBeginRefreshing];
 
+}
+#pragma mark - 请求其他金牌供应商荣誉数据
+- (void)requestOtherJPGYSRRListHonorData {
+    __weak typeof(self) weakSelf = self;//解决循环引用的问题
+    [self.honorCollectionView addHeaderWithCallback:^{
+        weakSelf.page = 1;
+        [weakSelf requestOtherJPGYSRRListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.honorCollectionView addFooterWithCallback:^{
+        weakSelf.page++;
+        [weakSelf requestOtherJPGYSRRListData:[NSString stringWithFormat:@"%ld",(long)weakSelf.page]];
+    }];
+    [self.honorCollectionView headerBeginRefreshing];
+    
+}
+-(void)requestOtherJPGYSRRListData:(NSString *)pageNumber
+{
+    [self.honorCollectionView headerEndRefreshing];
+    [HTTPCLIENT goldSupplierHonorListWithMemberUid:_memberUid withPage:pageNumber withPageSize:@"10" Success:^(id responseObject) {
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+        } else if ([responseObject[@"success"] integerValue] == 1) {
+            NSArray *array  = responseObject[@"result"][@"list"];
+            if (array.count == 0 && self.page == 1) {
+                [ToastView showToast:@"暂无数据" withOriginY:Width/2 withSuperView:self.view];
+                if (self.honorData.count > 0) {
+                    [self.honorData removeAllObjects];
+                }
+                [self.honorCollectionView footerEndRefreshing];
+                [self.honorCollectionView reloadData];
+                return ;
+            }
+            else if (array.count == 0 && self.page > 1) {
+                self.page--;
+                [self.honorCollectionView footerEndRefreshing];
+                //没有更多数据了
+                [ToastView showToast:@"已无更多信息" withOriginY:Width/2 withSuperView:self.view];
+                return;
+            }
+            else {
+                if (self.page == 1) {
+                    [self.honorData removeAllObjects];
+                }
+                [array enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                    ZIKStationHonorListModel *honorListModel = [ZIKStationHonorListModel yy_modelWithDictionary:dic];
+                    [self.honorData addObject:honorListModel];
+                }];
+                [self.honorCollectionView reloadData];
+                [self.honorCollectionView footerEndRefreshing];
+                
+            }
+        }
+
+    } failure:^(NSError *error) {
+        
+    }];
 }
 #pragma mark - 请求自己工程公司数据
 - (void)requestCompanyZZListData:(NSString *)pageNumber
@@ -393,6 +462,26 @@ static NSString *uid = nil;
                 uid = model.uid;
             };
 
+        }else if (self.type==TypeMyJPGYSHonorOther) {
+            __block  ZIKStationHonorListModel  *model = _honorData[indexPath.row];
+            ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
+            [cell loadData:modelAdapter];
+            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+            cell.editButtonBlock = ^(NSIndexPath *indexPath) {
+                ZIKAddHonorViewController *addhonorVC = [[ZIKAddHonorViewController alloc] initWithNibName:@"ZIKAddHonorViewController" bundle:nil];
+                addhonorVC.jinpaiUid =model.uid;
+                addhonorVC.type=5;
+                [weakSelf.navigationController pushViewController:addhonorVC animated:YES];
+            };
+            cell.deleteButtonBlock = ^(NSIndexPath *indexPath) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除提示" message:@"确定删除所选内容？" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alert show];
+                alert.tag = 300;
+                alert.delegate = weakSelf;
+                //                [weakSelf deleteRequest:model.uid];
+                uid = model.uid;
+            };
+            
         }else{
             __block  GCZZModel  *model = _honorData[indexPath.row];
             ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
@@ -428,7 +517,7 @@ static NSString *uid = nil;
         self.showHonorView = [ZIKStationShowHonorView instanceShowHonorView];
         self.showHonorView.frame = CGRectMake(0, kHeight, kWidth, kHeight);
     }
-    if (self.type == TypeHonor||self.type == TypeHonorOther || self.type == TypeMiaoQiHonor) {
+    if (self.type == TypeHonor||self.type == TypeHonorOther || self.type == TypeMiaoQiHonor||self.type == TypeMyJPGYSHonorOther||self.type == TypeJPGYSHonorOther) {
         ZIKStationHonorListModel  *model = _honorData[indexPath.row];
         ZIKBaseCertificateAdapter *modelAdapter = [[ZIKCertificateAdapter alloc] initWithData:model];
         [self.showHonorView loadData:modelAdapter];
@@ -481,6 +570,20 @@ static NSString *uid = nil;
             self.isEditState = NO;
             self.page = 1;
             [self requestHonorListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
+        } failure:^(NSError *error) {
+            ;
+        }];
+    }else if (self.type == TypeMyJPGYSHonorOther)
+    {
+        [HTTPCLIENT deletegoldSupplierHonordetialUid:uid Success:^(id responseObject) {
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            }
+            [ToastView showTopToast:@"删除成功"];
+            self.isEditState = NO;
+            self.page = 1;
+            [self requestOtherJPGYSRRListData:[NSString stringWithFormat:@"%ld",(long)self.page]];
         } failure:^(NSError *error) {
             ;
         }];

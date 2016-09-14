@@ -30,7 +30,7 @@
     [textField setBackgroundColor:[UIColor whiteColor]];
     self.textField=textField;
     [self.view addSubview:textField];
-    if (self.type==1) {
+    if (self.type==1||self.type==11) {
         self.vcTitle=@"联系人";
         textField.placeholder=@"请输入姓名";
     }
@@ -76,6 +76,29 @@
     if(self.type==4)
     {
          [self companyName:nil andlegalPerson:nil andphone:nil Withbrief:self.textField.text Withprovince:nil WithCity:nil Withcounty:nil WithAddress:nil];
+    }
+    if (self.type==11) {
+        ShowActionV();
+        [HTTPCLIENT changeUserInfoWithToken:nil WithAccessID:nil
+    WithClientID:nil WithClientSecret:nil WithDeviceID:nil withName:self.textField.text Success:^(id responseObject) {
+        if ([[responseObject objectForKey:@"success"] integerValue]) {
+            [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
+                RemoveActionV();
+                [ToastView showTopToast:@"编辑成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+            } failure:^(NSError *error) {
+               RemoveActionV();
+            }];
+        }else{
+            [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    }
+    if(self.type==13)
+    {
+        HTTPCLIENT 
     }
 }
 -(void)companyName:(NSString *)companyName andlegalPerson:(NSString *)legalPerson andphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county WithAddress:(NSString *)address

@@ -9,5 +9,7 @@
 #import "ZIKStationHonorListModel.h"
 
 @implementation ZIKStationHonorListModel
-
++ (NSArray *)modelPropertyBlacklist {
+    return @[@"compressImg"];
+}
 @end

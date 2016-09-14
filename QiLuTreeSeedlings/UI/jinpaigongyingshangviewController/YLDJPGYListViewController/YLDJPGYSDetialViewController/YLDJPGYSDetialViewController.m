@@ -18,12 +18,13 @@
 #import "yYLDGZZRongYaoTableCell.h"
 #import "ZIKBaseCertificateAdapter.h"
 #import "ZIKCertificateAdapter.h"
+#import "ZIKMyShopViewController.h"
 @interface YLDJPGYSDetialViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,copy)NSString *uid;
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,copy) NSDictionary *dic;
 @property (nonatomic) BOOL isShow;
-@property (nonatomic,copy) NSMutableArray *honorAry;
+@property (nonatomic,strong) NSMutableArray *honorAry;
 @property (nonatomic, strong) ZIKStationShowHonorView *showHonorView;
 @end
 
@@ -118,6 +119,7 @@
         if (!cell) {
             cell=[YLDJPGYSDBigCell YLDJPGYSDBigCell];
             [cell.backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.touxiangBtn addTarget:self action:@selector(touxiangBtnAction) forControlEvents:UIControlEventTouchUpInside];
         }
         
         cell.dic=self.dic;
@@ -211,8 +213,15 @@
 {
     ZIKMyHonorViewController *zsdasda=[[ZIKMyHonorViewController alloc]init];
     zsdasda.type = TypeJPGYSHonorOther;
-    zsdasda.workstationUid=self.uid;
+    zsdasda.memberUid=self.uid;
     [self.navigationController pushViewController:zsdasda animated:YES];
+}
+-(void)touxiangBtnAction
+{
+    ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
+    shopVC.memberUid = self.uid;
+    shopVC.type = 1;
+    [self.navigationController pushViewController:shopVC animated:YES];
 }
 -(void)chakanBtnAction
 {

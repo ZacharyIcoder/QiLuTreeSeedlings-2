@@ -9,5 +9,5 @@
 #import "NomarBaseViewController.h"
 
 @interface YLDJPGYSInfoViewController : NomarBaseViewController
-
+-(id)initWithDic:(NSDictionary *)dic;
 @end

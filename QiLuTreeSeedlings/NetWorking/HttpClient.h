@@ -1449,4 +1449,8 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 金牌供应商-荣誉删除----------
 -(void)deletegoldSupplierHonordetialUid:(NSString *)Uid Success:(void (^)(id responseObject))success
                                 failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 金牌供应商-自我介绍修改----------
+-(void)goldSupplierUpdatebrief:(NSString *)brief Success:(void (^)(id responseObject))success
+                       failure:(void (^)(NSError *error))failure;
+
 @end

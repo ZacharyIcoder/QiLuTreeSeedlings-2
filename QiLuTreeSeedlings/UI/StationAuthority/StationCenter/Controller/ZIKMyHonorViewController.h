@@ -12,7 +12,8 @@ typedef NS_ENUM(NSInteger, Type) {
     TypeQualification = 2, //我的资质
     TypeHonorOther    = 3, //其它工作站的资质
     TypeMiaoQiHonor   =4,
-    TypeJPGYSHonorOther    = 5 //其它金牌供应商的资质
+    TypeJPGYSHonorOther  = 5, //其它金牌供应商的资质
+    TypeMyJPGYSHonorOther  = 6 //其它金牌供应商的资质
 };
 @interface ZIKMyHonorViewController : ZIKRightBtnSringViewController
 /**

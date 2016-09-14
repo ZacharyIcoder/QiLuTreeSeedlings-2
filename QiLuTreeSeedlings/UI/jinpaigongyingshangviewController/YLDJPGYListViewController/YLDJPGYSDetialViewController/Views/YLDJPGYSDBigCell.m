@@ -20,13 +20,13 @@
 -(void)setDic:(NSDictionary *)dic{
     _dic=dic;
     NSInteger goldsupplier=[dic[@"goldsupplier"] integerValue];
-    if (goldsupplier==2) {
+    if (goldsupplier==1) {
         self.shenfenLab.text=@"金牌供应商";
     }
-    if (goldsupplier==1) {
+    if (goldsupplier==2) {
         self.shenfenLab.text=@"银牌供应商";
     }
-    if (goldsupplier==1) {
+    if (goldsupplier==3) {
         self.shenfenLab.text=@"铜牌供应商";
     }
     self.companyNameL.text=dic[@"companyName"];
