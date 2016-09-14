@@ -52,7 +52,7 @@
             compressSring = [compressSring stringByAppendingString:[NSString stringWithFormat:@",%@",dic[@"compressurl"]]];
         }];
         if (self.pickImageView.urlMArr.count != 0) {
-            urlSring         = [urlSring substringFromIndex:1];
+            urlSring      = [urlSring substringFromIndex:1];
             compressSring = [compressSring substringFromIndex:1];
         }
     }
@@ -65,6 +65,7 @@
             return ;
         } else if ([responseObject[@"success"] integerValue] == 1) {
             [ToastView showTopToast:@"上传成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *error) {
         ;

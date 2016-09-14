@@ -22,6 +22,7 @@
 #import "ZIKShaiDanDetailPinglunHeadFooterView.h"
 #import "ZIKShaiDanDetaiPingLunTableViewCell.h"
 
+#import "ZIKAddShaiDanViewController.h"//编辑页面
 static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewIdentifier";
 
 @interface ZIKStationShowListDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -38,6 +39,10 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
     // Do any additional setup after loading the view from its nib.
     [self initData];
     [self initUI];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self requestData];
 }
 
@@ -82,19 +87,53 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
         NSDictionary *shaiDanDic = result[@"shaidan"];
         NSArray *pingLunListArray = result[@"pingLunList"];
         ZIKShaiDanDetailModel  *shaiModel = [ZIKShaiDanDetailModel yy_modelWithDictionary:shaiDanDic];
+        shaiModel.num = 0;
         self.shaiModel = shaiModel;
         if ([shaiModel.memberUid isEqualToString:APPDELEGATE.userModel.access_id]) {
             self.rightBarBtnTitleString = @"编辑";
+            __weak typeof(self) weakSelf = self;//解决循环引用的问题
+
+            self.rightBarBtnBlock = ^{
+                ZIKAddShaiDanViewController *shaidanVC = [[ZIKAddShaiDanViewController alloc] initWithNibName:@"ZIKAddShaiDanViewController" bundle:nil];
+                [weakSelf.navigationController pushViewController:shaidanVC animated:YES];
+            };
         }
-        if (self.pingData.count > 0) {
-            [self.pingData removeAllObjects];
+
+        if (self.page == 1 && pingLunListArray.count == 0) {
+//            [ToastView showTopToast:@"暂无评论"];
+            [self.detailTableView footerEndRefreshing];
+            if(self.pingData.count > 0 ) {
+                [self.pingData removeAllObjects];
+            }
+            [self.detailTableView reloadData];
+            return ;
+        } else if (pingLunListArray.count == 0 && self.page > 1) {
+            [ToastView showTopToast:@"已无更多信息"];
+            self.page--;
+            [self.detailTableView footerEndRefreshing];
+            return;
+        } else {
+            if (self.page == 1) {
+                [self.pingData removeAllObjects];
+            }
+            [pingLunListArray enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                ZIKShaiDanDetailPingLunModel *pingModel = [ZIKShaiDanDetailPingLunModel yy_modelWithDictionary:dic];
+                [self.pingData addObject:pingModel];
+            }];
+            if (self.page == 1) {
+                [self.detailTableView reloadData];
+            } else {
+
+            }
+            [self.detailTableView footerEndRefreshing];
         }
-        [pingLunListArray enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-            ZIKShaiDanDetailPingLunModel *pingModel = [ZIKShaiDanDetailPingLunModel yy_modelWithDictionary:dic];
-            [self.pingData addObject:pingModel];
-        }];
-        [self.detailTableView reloadData];
-        [self.detailTableView footerEndRefreshing];
+
+//        if (self.page == 1 && self.pingData.count > 0) {
+//            [self.pingData removeAllObjects];
+//        } else if (self.page > 0 && self.pingData.count == 0 ) {
+//            [ToastView showTopToast:@"已无更多数据"];
+//        }
+
     } failure:^(NSError *error) {
         ;
     }];
@@ -165,8 +204,10 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
     }
     if (indexPath.section == 2) {
         ZIKShaiDanDetaiPingLunTableViewCell *cell = [ZIKShaiDanDetaiPingLunTableViewCell cellWithTableView: tableView];
-        ZIKShaiDanDetailPingLunModel *pingModel = self.pingData[indexPath.row];
-        [cell configureCell:pingModel];
+        if (self.pingData.count > 0) {
+            ZIKShaiDanDetailPingLunModel *pingModel = self.pingData[indexPath.row];
+            [cell configureCell:pingModel];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -202,12 +243,16 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
           [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
           return ;
       }
+      NSDictionary *result = responseObject[@"result"];
+      NSString *uid = result[@"uid"];
       if (dianZanUid) {
           [ToastView showTopToast:@"取消成功"];
           self.shaiModel.dianZanUid = nil;
+          self.shaiModel.num = 2;
       } else {
           [ToastView showTopToast:@"点赞成功"];
-          self.shaiModel.dianZanUid = @"youzhi";
+          self.shaiModel.dianZanUid = uid;
+          self.shaiModel.num = 1;
       }
       //一个section刷新
       NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:1];

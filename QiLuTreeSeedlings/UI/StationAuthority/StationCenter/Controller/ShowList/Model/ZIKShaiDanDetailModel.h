@@ -53,4 +53,6 @@
  *  评论列表
  */
 @property (nonatomic, strong) NSArray *pingLunList;
+
+@property (nonatomic, assign) NSInteger num;//0无，1，增加，2减少
 @end

@@ -17,6 +17,7 @@
 
 @end
 
+static NSInteger zanNum = 0;
 @implementation ZIKShaidanDetailPingZanTableViewCell
 
 - (void)awakeFromNib {
@@ -42,10 +43,21 @@
 
 - (void)configureCell:(ZIKShaiDanDetailModel *)model  {
     self.pingLabel.text = [NSString stringWithFormat:@"%@次",model.pingLun];
-    self.zanLabel.text = [NSString stringWithFormat:@"%@次",model.dianZan];
     if (model.dianZanUid) {
         [self.zanButton setBackgroundImage:[UIImage imageNamed:@"赞_on内容页"] forState:UIControlStateNormal];
     }
+    if (model.num == 0) {
+        self.zanLabel.text = [NSString stringWithFormat:@"%@次",model.dianZan];
+    } else if (model.num == 1) {
+
+         self.zanLabel.text = [NSString stringWithFormat:@"%ld次",zanNum + 1];
+    } else if (model.num == 2) {
+        self.zanLabel.text = [NSString stringWithFormat:@"%ld次",zanNum - 1];
+
+    }
+    NSString *string = [self.zanLabel.text substringToIndex:1];//截取掉下标0之后的字符串
+
+    zanNum = string.integerValue;
 }
 
 -(void)setZanButtonBlock:(ZanButtonBlock)zanButtonBlock {

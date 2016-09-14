@@ -13,4 +13,7 @@
 #import "ZIKShaiDanPickImageView.h"
 @interface ZIKAddShaiDanViewController : ZIKNavConfigViewController
 
+//-(id)initWithModel:(SupplyDetialMode*)model;
+
+@property (nonatomic, copy) NSString *uid;
 @end

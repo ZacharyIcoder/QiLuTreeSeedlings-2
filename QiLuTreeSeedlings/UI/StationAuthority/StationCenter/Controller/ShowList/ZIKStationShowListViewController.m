@@ -23,6 +23,8 @@
 #import "ZIKShaiDanModel.h"
 
 #import "ZIKStationShowListDetailViewController.h"//晒单详情
+
+
 @interface ZIKStationShowListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *showListTableView;
 @property (nonatomic, assign) NSInteger      page;            //页数从1开始
@@ -38,7 +40,7 @@
     // Do any additional setup after loading the view from its nib.
     [self initData];
     [self initUI];
-    [self requestData];
+//    [self requestData];
 }
 
 #pragma  mark - 初始化数据
@@ -47,6 +49,11 @@
     self.shaiData = [NSMutableArray array];
 //    _refreshMarr        = [[NSMutableArray alloc] init];
 //    _removeArray        = [[NSMutableArray alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self requestData];
 }
 
 - (void)initUI {
