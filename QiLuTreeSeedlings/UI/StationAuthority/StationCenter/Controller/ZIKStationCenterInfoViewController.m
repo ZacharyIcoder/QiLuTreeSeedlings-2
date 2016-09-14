@@ -49,7 +49,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    [self requestData];
+    if (![self.type isEqualToString: @"苗企"]) {
+        [self requestData];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,6 +78,8 @@
     }
     cell.textLabel.text = titlesArray[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:15.0f];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0f];
+
     cell.textLabel.textColor = DarkTitleColor;
     if (indexPath.row == 0) {
         cellHeadImageView.frame = CGRectMake(kWidth-75, 7, 30, 30);
@@ -107,7 +111,7 @@
         } else if (indexPath.row == 2) {
             cell.detailTextLabel.text = self.miaoModel.phone;
         } else if (indexPath.row == 3) {
-            cell.detailTextLabel.text = self.miaoModel.gybrief;
+            cell.detailTextLabel.text = self.miaoModel.grbrief;
         }
 
     }
@@ -138,7 +142,7 @@
         } else if (indexPath.row == 2) {
             changeInfoVC.setString = self.miaoModel.phone;
         } else if (indexPath.row == 3) {
-            changeInfoVC.setString = self.miaoModel.gybrief;
+            changeInfoVC.setString = self.miaoModel.grbrief;
         }
 
     }
@@ -272,20 +276,40 @@
     }
     NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
 
+    if (![self.type isEqualToString: @"苗企"]) {
+        [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:_masterModel.uid companyUid:nil type:@"2" saveTyep:@"2" Success:^(id responseObject) {
+            //        CLog(@"%@",responseObject);
+            if ([responseObject[@"success"] integerValue] == 0) {
+                [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+                return ;
+            } else if ([responseObject[@"success"] integerValue] == 1) {
+                _globalHeadImage = image;
+                cellHeadImageView.image = _globalHeadImage;
 
-    [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:_masterModel.uid companyUid:nil type:@"2" saveTyep:@"2" Success:^(id responseObject) {
-//        CLog(@"%@",responseObject);
-        if ([responseObject[@"success"] integerValue] == 0) {
-            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
-            return ;
-        } else if ([responseObject[@"success"] integerValue] == 1) {
-            _globalHeadImage = image;
-            cellHeadImageView.image = _globalHeadImage;
+            }
+        } failure:^(NSError *error) {
+            ;
+        }];
+    } else {
+        [HTTPCLIENT upDataUserImageWithToken:nil WithAccessID:nil WithClientID:nil WithClientSecret:nil WithDeviceID:nil WithUserIamge:image Success:^(id responseObject) {
+            //NSLog(@"%@",responseObject);
+            if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
+                [ToastView showTopToast:@"上传成功"];
+                _globalHeadImage = image;
+                cellHeadImageView.image = _globalHeadImage;
+                //[self.myTalbeView reloadData];
+                APPDELEGATE.userModel.headUrl = responseObject[@"url"];
+            }
+            else {
+                //NSLog(@"%@",responseObject[@"msg"]);
+                [ToastView showTopToast:responseObject[@"msg"]];
+            }
+        } failure:^(NSError *error) {
+            //NSLog(@"%@",error);
+        }];
+    }
 
-        }
-    } failure:^(NSError *error) {
-        ;
-    }];
+
 }
 -(NSData*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
 {

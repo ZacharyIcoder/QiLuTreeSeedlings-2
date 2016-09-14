@@ -46,6 +46,8 @@
  */
 @property (nonatomic, copy) NSString *starLevel;
 
+@property (nonatomic, copy) NSString *grbrief;
+
 @property (nonatomic, assign) BOOL isShow;
 
 - (void)initStatusType;
