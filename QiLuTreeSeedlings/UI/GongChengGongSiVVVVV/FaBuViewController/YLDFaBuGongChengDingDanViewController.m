@@ -96,7 +96,7 @@
     self.NameTextField=[self creatTextFieldWithName:@"项目名称" alortStr:@"请输入项目名称" andFrame:tempFrame];
     self.NameTextField.rangeNumber=30;
     tempFrame.origin.y+=50;
-    UIButton *areaBtn=[self danxuanViewWithName:@"用苗地址" alortStr:@"请选择用苗地" andFrame:tempFrame];
+    UIButton *areaBtn=[self danxuanViewWithName:@"供苗地址" alortStr:@"请选择供苗地" andFrame:tempFrame];
     self.areaBtn=areaBtn;
     [areaBtn addTarget:self action:@selector(areaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=55;
@@ -144,7 +144,7 @@
     self.NameTextField.text=nil;
     self.AreaProvinces=nil;
 //    self.AreaCity=nil;
-    [self.areaBtn setTitle:@"请选择用苗地" forState:UIControlStateNormal];
+    [self.areaBtn setTitle:@"请选择供苗地" forState:UIControlStateNormal];
     self.timeStr=nil;
     [self.timeBtn setTitle:@"请选择截止日期" forState:UIControlStateNormal];
     self.priceStr=nil;

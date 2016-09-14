@@ -187,6 +187,7 @@
 -(void)touxiangBtnAcion
 {
     YLDJPGYSInfoViewController *vvcc=[[YLDJPGYSInfoViewController alloc]init];
+    vvcc.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:vvcc animated:YES];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

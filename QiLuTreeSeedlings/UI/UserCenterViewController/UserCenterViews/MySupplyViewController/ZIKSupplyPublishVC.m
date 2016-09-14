@@ -221,6 +221,9 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 NSArray *imagesAry            = [resultdic objectForKey:@"images"];
                 NSArray *imagesCompressAry    = [resultdic objectForKey:@"imagesCompress"];
                 NSArray *imagesDetailAry      = resultdic[@"imagesDetail"];
+                if (imagesDetailAry.count<3) {
+                    imagesDetailAry=imagesCompressAry;
+                }
                 NSMutableArray *imagesUrlMAry = [NSMutableArray arrayWithCapacity:2];
                 for (int i = 0; i < imagesAry.count; i++) {
 

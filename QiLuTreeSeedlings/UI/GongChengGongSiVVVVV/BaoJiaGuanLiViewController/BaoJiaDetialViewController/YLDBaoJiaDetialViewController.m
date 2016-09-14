@@ -76,7 +76,7 @@
     self.searchV=searchV;
     searchV.delegate=self;
     searchV.hidden=YES;
-    searchV.textfield.placeholder=@"请输入工作站名称";
+    searchV.textfield.placeholder=@"请输入供应商名称";
     self.saerchBtn.hidden=YES;
     [self.navBackView addSubview:searchV];
 

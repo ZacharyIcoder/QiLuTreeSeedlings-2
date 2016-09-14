@@ -24,7 +24,7 @@
     self.titleLab.text=model.orderName;
     self.dingdanTypeLab.text=model.orderType;
     self.priceLab.text=model.quotation;
-    self.yongmiaodi.text=[NSString stringWithFormat:@"用苗地 %@",model.area];
+    self.yongmiaodi.text=[NSString stringWithFormat:@"供苗地 %@",model.area];
     
     self.miaomuPinZhongLab.text =model.miaomu;
     NSArray *fabutimeary=[model.orderDate componentsSeparatedByString:@" "];

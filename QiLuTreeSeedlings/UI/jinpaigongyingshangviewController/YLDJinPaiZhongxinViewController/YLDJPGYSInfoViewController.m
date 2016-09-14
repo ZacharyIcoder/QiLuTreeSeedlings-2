@@ -51,6 +51,14 @@
     return 4;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row==3) {
+        if (APPDELEGATE.userModel.brief.length>0) {
+          CGFloat height = [self getHeightWithContent:APPDELEGATE.userModel.brief width:200 font:16];
+            if (height>21) {
+                return height+30;
+            }
+        }
+    }
     return 50;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -82,7 +90,18 @@
         if (indexPath.row==3) {
             cell.titleLab.text=@"自我介绍";
             cell.NameLab.text=APPDELEGATE.userModel.brief;
+            cell.lineV.hidden=YES;
+            CGFloat height = [self getHeightWithContent:APPDELEGATE.userModel.brief width:200 font:16];
             
+            CGRect frame=cell.frame;
+            if (height>21) {
+                cell.NameLab.textAlignment=NSTextAlignmentLeft;
+                frame.size.height=height+30;
+            }else{
+                cell.NameLab.textAlignment=NSTextAlignmentRight;
+              frame.size.height=50;
+            }
+            cell.frame=frame;
         }
       
         return cell;
@@ -95,10 +114,22 @@
     if (indexPath.row==0) {
         [self addPicture];
         return;
-    }else if(indexPath.row==1||indexPath.row==3){
-        YLDGCGSBianJiViewController *vc=[[YLDGCGSBianJiViewController alloc]initWithType:indexPath.row+10];
+    }else if(indexPath.row==1){
+        YLDGCGSBianJiViewController *vc=[[YLDGCGSBianJiViewController alloc]initWithType:indexPath.row+10 andStr:APPDELEGATE.userModel.name];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if(indexPath.row==3){
+        YLDGCGSBianJiViewController *vc=[[YLDGCGSBianJiViewController alloc]initWithType:indexPath.row+10 andStr:APPDELEGATE.userModel.brief];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+//获取字符串的高度
+-(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
+    
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(width, 999)
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
+                                        context:nil];
+    return rect.size.height;
 }
 #pragma mark - 头像点击事件
 //头像点击事件
@@ -190,7 +221,11 @@
             [ToastView showTopToast:@"上传成功"];
             self.touxiangCell.imagev.image=image;
             //[self.myTalbeView reloadData];
-            APPDELEGATE.userModel.headUrl = responseObject[@"url"];
+            [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
+                
+            } failure:^(NSError *error) {
+                
+            }];
         }
         else {
             NSLog(@"%@",responseObject[@"msg"]);

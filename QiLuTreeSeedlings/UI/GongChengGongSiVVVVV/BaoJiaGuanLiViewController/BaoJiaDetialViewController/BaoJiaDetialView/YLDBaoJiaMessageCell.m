@@ -29,8 +29,11 @@
     }else{
         self.lianxirenLab.text=@"联系人：";
     }
-    
-    self.lianxirenWi.constant=model.chargelPerson.length*15+62;
+    CGFloat wwwww=model.chargelPerson.length*15+62;
+    if (wwwww>200) {
+        wwwww=200;
+    }
+    self.lianxirenWi.constant=wwwww;
     self.timeLab.text=model.quoteTime;
     
     self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",model.quantity];

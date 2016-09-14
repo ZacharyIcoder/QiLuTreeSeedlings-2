@@ -71,7 +71,7 @@
     tempFrame.origin.y+=50;
     self.NameTextField=[self creatTextFieldWithName:@"项目名称" alortStr:@"请输入项目名称" andFrame:tempFrame];
     tempFrame.origin.y+=50;
-    UIButton *areaBtn=[self danxuanViewWithName:@"用苗地址" alortStr:@"请选择用苗地" andFrame:tempFrame];
+    UIButton *areaBtn=[self danxuanViewWithName:@"供苗地址" alortStr:@"请选择供苗地" andFrame:tempFrame];
     self.areaBtn=areaBtn;
     [areaBtn addTarget:self action:@selector(areaBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     tempFrame.origin.y+=55;
@@ -252,7 +252,7 @@
         return;
     }
     if (!self.AreaProvinces) {
-        [ToastView showTopToast:@"请选择用苗地"];
+        [ToastView showTopToast:@"请选择供苗地"];
         return;
     }
     if (!self.timeStr) {

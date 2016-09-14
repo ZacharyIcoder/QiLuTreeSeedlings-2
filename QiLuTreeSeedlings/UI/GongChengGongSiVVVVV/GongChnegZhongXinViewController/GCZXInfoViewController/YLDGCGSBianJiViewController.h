@@ -10,4 +10,5 @@
 
 @interface YLDGCGSBianJiViewController : NomarBaseViewController
 -(id)initWithType:(NSInteger)type;
+-(id)initWithType:(NSInteger)type andStr:(NSString *)str;
 @end

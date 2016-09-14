@@ -150,7 +150,7 @@
 
     UILabel *orderAddressTitleLabel = [[UILabel alloc] init];
     orderAddressTitleLabel.frame = CGRectMake(orderStateTitleLabel.frame.origin.x, CGRectGetMaxY(orderTypeTitleLabel.frame)+40, 60, 60);
-    orderAddressTitleLabel.text = @"用苗地";
+    orderAddressTitleLabel.text = @"供苗地";
     orderAddressTitleLabel.textColor = DarkTitleColor;
     orderAddressTitleLabel.font = [UIFont systemFontOfSize:14.0f];
     [contentView addSubview:orderAddressTitleLabel];

@@ -52,9 +52,9 @@
 
 - (void)configureCell:(ZIKStationOrderModel *)model {
     if ([ZIKFunction xfunc_check_strEmpty:model.area]) {
-        self.addressLabel.text = @"用苗地:";
+        self.addressLabel.text = @"供苗地:";
     } else {
-        self.addressLabel.text    = [NSString stringWithFormat:@"用苗地:%@",model.area];
+        self.addressLabel.text    = [NSString stringWithFormat:@"供苗地:%@",model.area];
     }
        self.orderTitleLabel.text = model.orderName;
     self.startTimeLabel.text  = [NSString stringWithFormat:@"发布日期:%@",model.orderDate];

@@ -9,9 +9,12 @@
 #import "YLDGCGSBianJiViewController.h"
 #import "UIDefines.h"
 #import "HttpClient.h"
+#import "BWTextView.h"
 @interface YLDGCGSBianJiViewController ()
 @property (nonatomic)NSInteger type;
+@property (nonatomic,copy) NSString *str;
 @property (nonatomic,weak)UITextField *textField;
+@property (nonatomic,weak)BWTextView *textView;
 @end
 
 @implementation YLDGCGSBianJiViewController
@@ -20,6 +23,16 @@
     self=[super init];
     if (self) {
         self.type=type;
+        
+    }
+    return self;
+}
+-(id)initWithType:(NSInteger)type andStr:(NSString *)str
+{
+    self=[super init];
+    if (self) {
+        self.type=type;
+        self.str=str;
     }
     return self;
 }
@@ -30,8 +43,12 @@
     [textField setBackgroundColor:[UIColor whiteColor]];
     self.textField=textField;
     [self.view addSubview:textField];
+   
     if (self.type==1||self.type==11) {
         self.vcTitle=@"联系人";
+        if (self.str.length>0) {
+            textField.text=self.str;
+        }
         textField.placeholder=@"请输入姓名";
     }
     if (self.type==2) {
@@ -49,9 +66,23 @@
     }
     if (self.type==13) {
         self.vcTitle=@"自我介绍";
-        textField.placeholder=@"请输入自我介绍";
+//
+        [self.textField removeFromSuperview];
+        BWTextView *textView=[[BWTextView alloc]initWithFrame:CGRectMake(0, 70, kWidth, 100)];
+        [textView setBackgroundColor:[UIColor whiteColor]];
+        [self.view addSubview:textView];
+        textView.placeholder=@"请输入自我介绍";
+        if (self.str.length>0) {
+            textView.text=self.str;
+        }
+        [textView setFont:[UIFont systemFontOfSize:16]];
+        self.textView=textView;
     }
-    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 140, kWidth-80, 50)];
+    CGFloat yyy=140;
+    if (self.type==13) {
+        yyy=240;
+    }
+    UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, yyy, kWidth-80, 50)];
     [sureBtn setBackgroundColor:NavColor];
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
     [sureBtn addTarget:self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -60,7 +91,11 @@
 }
 -(void)sureBtnAction
 {
-    if (self.textField.text.length<=0) {
+    if (self.textField.text.length<=0&&self.type!=13) {
+        [ToastView showTopToast:@"请输入信息"];
+        return;
+    }
+    if (self.textView.text.length<=0&&self.type==13) {
         [ToastView showTopToast:@"请输入信息"];
         return;
     }
@@ -102,10 +137,10 @@
     }
     if(self.type==13)
     {
-        [HTTPCLIENT goldSupplierUpdatebrief:self.textField.text Success:^(id responseObject) {
+        [HTTPCLIENT goldSupplierUpdatebrief:self.textView.text Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 
-                APPDELEGATE.userModel.brief=self.textField.text;
+                APPDELEGATE.userModel.brief=self.textView.text;
                 [ToastView showTopToast:@"编辑成功"];
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
