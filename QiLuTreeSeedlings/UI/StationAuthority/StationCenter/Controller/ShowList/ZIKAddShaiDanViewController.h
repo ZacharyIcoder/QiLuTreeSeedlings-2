@@ -7,8 +7,10 @@
 //
 
 #import "ZIKNavConfigViewController.h"
-#import "YLDPickTimeView.h"
+//#import "YLDPickTimeView.h"
 #import "BWTextView.h"
+#import "ZHPickImageView.h"
+#import "ZIKShaiDanPickImageView.h"
 @interface ZIKAddShaiDanViewController : ZIKNavConfigViewController
 
 @end

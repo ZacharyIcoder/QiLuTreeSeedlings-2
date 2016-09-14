@@ -1246,10 +1246,12 @@ failure:(void (^)(NSError *error))failure;
                                  failure:(void (^)(NSError *error))failure;
 
 #pragma mark ---------- 站长晒单-全部晒单列表 -----------
-- (void)workstationAllShaiDanWithPageNumber:(NSString *)pageNumber
-                                pageSize:(NSString *)pageSize
-                                 Success:(void (^)(id responseObject))success
-                                 failure:(void (^)(NSError *error))failure;
+- (void)workstationAllShaiDanWithThpe:(NSInteger )type
+                           PageNumber:(NSString *)pageNumber
+                             pageSize:(NSString *)pageSize
+                              Success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure;
+
 
 #pragma mark ---------- 站长晒单-评论删除 -----------
 - (void)workStationShaiDanPingLunDeleteWithPingLunUid:(NSString *)pingLunUid//评论ID

@@ -4841,11 +4841,17 @@
     }];
 }
 #pragma mark ---------- 站长晒单-全部晒单列表 -----------
-- (void)workstationAllShaiDanWithPageNumber:(NSString *)pageNumber
-                                   pageSize:(NSString *)pageSize
-                                    Success:(void (^)(id responseObject))success
-                                    failure:(void (^)(NSError *error))failure {
-    NSString *postURL            = @"api/workstation/shaidan/list";
+- (void)workstationAllShaiDanWithThpe:(NSInteger )type
+                        PageNumber:(NSString *)pageNumber
+                          pageSize:(NSString *)pageSize
+                           Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure {
+    NSString *postURL            = nil;
+    if (type == 0) {//全部
+        postURL  = @"api/workstation/shaidan/list";
+    } else if (type == 1) {
+        postURL = @"api/workstation/shaidan/mylist";
+    }
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     NSString *str                = [userdefaults objectForKey:kdeviceToken];
 

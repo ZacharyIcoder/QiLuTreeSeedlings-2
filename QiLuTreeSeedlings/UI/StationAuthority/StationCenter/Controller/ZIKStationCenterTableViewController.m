@@ -184,7 +184,7 @@ static NSString *SectionHeaderViewIdentifier = @"StationCenterSectionHeaderViewI
             twocell.textLabel.text = @"站长晒单";
             twocell.textLabel.textColor = [UIColor darkGrayColor];
             twocell.textLabel.font = [UIFont systemFontOfSize:15.0f];
-            twocell.imageView.image = [UIImage imageNamed:@"图标"];
+            twocell.imageView.image = [UIImage imageNamed:@"站长中心_晒单ico"];
         }
 
         float sw=23/twocell.imageView.image.size.width;

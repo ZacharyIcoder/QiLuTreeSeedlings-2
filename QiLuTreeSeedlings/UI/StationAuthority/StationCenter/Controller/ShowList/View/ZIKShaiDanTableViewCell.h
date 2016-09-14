@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class  ZIKShaiDanModel;
 @interface ZIKShaiDanTableViewCell : UITableViewCell
-
++ (instancetype)cellWithTableView:(UITableView *)tableView ;
+- (void)configureCell:(ZIKShaiDanModel *)model ;
 @end
