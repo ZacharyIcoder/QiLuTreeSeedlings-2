@@ -16,6 +16,7 @@
     cell.touxiangImgV.layer.cornerRadius=40;
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.shareBtn.hidden=YES;
+    [cell.backBtn setEnlargeEdgeWithTop:10 right:100 bottom:20 left:20];
     return cell;
 }
 -(void)setDic:(NSDictionary *)dic{
@@ -31,7 +32,7 @@
         self.shenfenLab.text=@"铜牌供应商";
     }
     self.companyNameL.text=dic[@"companyName"];
-    self.nameLab.text=dic[@"name"];
+    self.nameLab.text=dic[@"memberName"];
     NSString *headUrl=dic[@"headUrl"];
     if (headUrl.length>0) {
         [self.touxiangImgV setImageWithURL:[NSURL URLWithString:headUrl]];
@@ -46,7 +47,7 @@
     self.backBtnW.constant=65;
     [self.backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.companyNameL.text=myDic[@"companyName"];
-    self.nameLab.text=myDic[@"name"];
+    self.nameLab.text=myDic[@"memberName"];
     NSString *headUrl=myDic[@"headUrl"];
     if (headUrl.length>0) {
         [self.touxiangImgV setImageWithURL:[NSURL URLWithString:headUrl]];

@@ -178,7 +178,7 @@
             cell=[YLDGCZXzizhiCell yldGCZXzizhiCell];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        [cell setMessageWithImageName:@"GCZXgongsizizhi.png" andTitle:@"金牌资质"];
+        [cell setMessageWithImageName:@"GCZXgongsizizhi.png" andTitle:@"我的荣誉"];
         return cell;
     }
     UITableViewCell *cell=[UITableViewCell new];

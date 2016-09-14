@@ -154,17 +154,19 @@ static BOOL isBuy = NO;
     self.numLab.text =[NSString stringWithFormat:@"%@棵",nubStr];
     self.priceLab.text=model.price;
         if (model.goldsupplier == 0 || model.goldsupplier == 10) {
-            shenfenLab.text=@"普通供应商";
-            logoImageV.image = [UIImage imageNamed:@"列表-普通供应商"];
+//            shenfenLab.text=@"普通供应商";
+            shenfenLab.hidden=YES;
+            logoImageV.hidden=YES;
+//            logoImageV.image = [UIImage imageNamed:@"列表-普通供应商"];
         } else if (model.goldsupplier == 1) {
             shenfenLab.text=@"金牌供应商";
-            logoImageV.image = [UIImage imageNamed:@"列表-金牌供应商"];
+            logoImageV.image = [UIImage imageNamed:@"列表-金牌供应商2"];
         } else if (model.goldsupplier == 2) {
             shenfenLab.text=@"银牌供应商";
-            logoImageV.image = [UIImage imageNamed:@"列表-银牌供应商"];
+            logoImageV.image = [UIImage imageNamed:@"列表-银牌供应商2"];
         } else if (model.goldsupplier == 3) {
             shenfenLab.text=@"铜牌供应商";
-            logoImageV.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+            logoImageV.image = [UIImage imageNamed:@"列表-铜牌供应商2"];
         } else if (model.goldsupplier == 4) {
             shenfenLab.text=@"认证供应商";
             logoImageV.image = [UIImage imageNamed:@"列表-认证供应商"];
@@ -177,6 +179,11 @@ static BOOL isBuy = NO;
         } else if (model.goldsupplier == 7) {
             shenfenLab.text=@"工程公司";
             logoImageV.image = [UIImage imageNamed:@"列表-工程公司"];
+        }else if(model.goldsupplier==8)
+        {
+            shenfenLab.text=@"合作苗企";
+            logoImageV.image = [UIImage imageNamed:@"合作苗企43x43"];
+            
         }
     if (self.isCaiGou) {
         if (isBuy) {

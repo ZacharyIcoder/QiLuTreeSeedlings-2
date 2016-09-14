@@ -72,7 +72,7 @@
     self.searchV=searchV;
     searchV.delegate=self;
     searchV.hidden=YES;
-    searchV.textfield.placeholder=@"请输入项目名称、苗木名称";
+    searchV.textfield.placeholder=@"请输入供应商名称、电话、联系人";
     [self.navBackView addSubview:searchV];
     
     [self.shangTalbView headerBeginRefreshing];

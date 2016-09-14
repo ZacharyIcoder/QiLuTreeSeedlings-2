@@ -89,13 +89,13 @@
             logoImageV.image = [UIImage imageNamed:@"列表-普通供应商"];
         } else if (model.goldsupplier == 1) {
             shenfenLab.text=@"金牌供应商";
-            logoImageV.image = [UIImage imageNamed:@"列表-金牌供应商"];
+            logoImageV.image = [UIImage imageNamed:@"列表-金牌供应商2"];
         } else if (model.goldsupplier == 2) {
             shenfenLab.text=@"银牌供应商";
-            logoImageV.image = [UIImage imageNamed:@"列表-银牌供应商"];
+            logoImageV.image = [UIImage imageNamed:@"列表-银牌供应商2"];
         } else if (model.goldsupplier == 3) {
             shenfenLab.text=@"铜牌供应商";
-            logoImageV.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+            logoImageV.image = [UIImage imageNamed:@"列表-铜牌供应商2"];
         } else if (model.goldsupplier == 4) {
             shenfenLab.text=@"认证供应商";
             logoImageV.image = [UIImage imageNamed:@"列表-认证供应商"];
