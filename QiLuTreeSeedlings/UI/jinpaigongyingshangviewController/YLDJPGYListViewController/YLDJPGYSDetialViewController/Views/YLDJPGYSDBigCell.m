@@ -15,6 +15,7 @@
     cell.touxiangImgV.layer.masksToBounds=YES;
     cell.touxiangImgV.layer.cornerRadius=40;
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    cell.shareBtn.hidden=YES;
     return cell;
 }
 -(void)setDic:(NSDictionary *)dic{

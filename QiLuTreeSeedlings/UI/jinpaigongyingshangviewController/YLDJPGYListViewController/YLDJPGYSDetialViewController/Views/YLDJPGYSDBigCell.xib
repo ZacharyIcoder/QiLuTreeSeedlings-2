@@ -27,6 +27,7 @@
                             <constraint firstAttribute="width" constant="24" id="2uw-el-Jr3"/>
                             <constraint firstAttribute="height" constant="24" id="Pv3-0C-eTu"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" image="BackBtn.png"/>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImageV.png" translatesAutoresizingMaskIntoConstraints="NO" id="h7j-i9-oHl">
@@ -71,12 +72,28 @@
                             <constraint firstAttribute="width" constant="80" id="cDd-xJ-Q1v"/>
                         </constraints>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfl-KM-5EX">
+                        <rect key="frame" x="244" y="24" width="60" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="Hv9-WP-GfP"/>
+                            <constraint firstAttribute="width" constant="60" id="sb4-W4-g4W"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="36" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="分享" image="分享.png">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="nfl-KM-5EX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="1MQ-ow-TXf"/>
                     <constraint firstItem="zDk-az-jNq" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1wT-dv-IzG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="M0l-vF-llj" secondAttribute="trailing" constant="-8" id="418-dG-38X"/>
                     <constraint firstItem="GrI-Jd-jkh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="F9K-DP-KoO"/>
                     <constraint firstItem="zDk-az-jNq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-2.5" id="H0z-h6-b4h"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nfl-KM-5EX" secondAttribute="trailing" constant="8" id="J3N-kO-iDz"/>
                     <constraint firstItem="VzI-LQ-f99" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="SUU-1g-NAD"/>
                     <constraint firstItem="GrI-Jd-jkh" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-4" id="UUO-vN-Z3z"/>
                     <constraint firstItem="h7j-i9-oHl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-2.5" id="YEF-qV-m2N"/>
@@ -97,6 +114,7 @@
                 <outlet property="backBtnW" destination="2uw-el-Jr3" id="MjG-Jo-Ulf"/>
                 <outlet property="companyNameL" destination="buQ-En-AaW" id="1wu-Xb-BZJ"/>
                 <outlet property="nameLab" destination="GrI-Jd-jkh" id="vo9-KR-7NN"/>
+                <outlet property="shareBtn" destination="nfl-KM-5EX" id="ggg-Om-AxO"/>
                 <outlet property="shenfenLab" destination="Eg0-Y8-5Qp" id="80K-Rw-PGv"/>
                 <outlet property="touxiangBtn" destination="zDk-az-jNq" id="qHS-n9-e4S"/>
                 <outlet property="touxiangImgV" destination="h7j-i9-oHl" id="sG3-xW-MPs"/>
@@ -106,6 +124,7 @@
     <resources>
         <image name="BackBtn.png" width="24" height="24"/>
         <image name="UserImageV.png" width="84" height="84"/>
+        <image name="分享.png" width="22" height="22"/>
         <image name="橙色背景.png" width="720" height="442"/>
     </resources>
 </document>

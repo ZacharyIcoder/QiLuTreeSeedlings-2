@@ -47,6 +47,10 @@
         self.vcTitle=@"公司简介";
         textField.placeholder=@"请输入公司简介";
     }
+    if (self.type==13) {
+        self.vcTitle=@"自我介绍";
+        textField.placeholder=@"请输入自我介绍";
+    }
     UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, 140, kWidth-80, 50)];
     [sureBtn setBackgroundColor:NavColor];
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
@@ -98,7 +102,18 @@
     }
     if(self.type==13)
     {
-        HTTPCLIENT 
+        [HTTPCLIENT goldSupplierUpdatebrief:self.textField.text Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                
+                APPDELEGATE.userModel.brief=self.textField.text;
+                [ToastView showTopToast:@"编辑成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
     }
 }
 -(void)companyName:(NSString *)companyName andlegalPerson:(NSString *)legalPerson andphone:(NSString *)phone Withbrief:(NSString *)brief Withprovince:(NSString *)province WithCity:(NSString *)city Withcounty:(NSString *)county WithAddress:(NSString *)address

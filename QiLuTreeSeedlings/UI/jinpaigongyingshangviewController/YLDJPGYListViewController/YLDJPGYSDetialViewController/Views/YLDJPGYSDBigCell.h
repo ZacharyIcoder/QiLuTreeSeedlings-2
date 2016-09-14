@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *touxiangBtn;
 @property (nonatomic,copy) NSDictionary *dic;
 @property (nonatomic,copy) NSDictionary *myDic;
+@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backBtnW;
 +(id)YLDJPGYSDBigCell;
 @end

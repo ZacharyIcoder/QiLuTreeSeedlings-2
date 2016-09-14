@@ -27,6 +27,7 @@
     [view setBackgroundColor:NavYellowColor];
     UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 26, 60, 30)];
      [backBtn setTitle:@"苗信通" forState:UIControlStateNormal];
+    [backBtn.titleLabel setFont:[UIFont systemFontOfSize:16]];
     [backBtn setEnlargeEdgeWithTop:15 right:30 bottom:10 left:10];
     [view addSubview:backBtn];
     self.backBtn=backBtn;
@@ -34,8 +35,6 @@
     titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
-    //[titleLab setText:self.vcTitle];
-    //titleLab.text = self.vcTitle;
     [titleLab setFont:titleFont];
     [view addSubview:titleLab];
     return view;
