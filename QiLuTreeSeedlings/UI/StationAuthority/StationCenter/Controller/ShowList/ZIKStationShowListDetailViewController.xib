@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZIKStationShowListDetailViewController">
             <connections>
+                <outlet property="detailTableView" destination="SDa-Sk-gLc" id="Hys-Jd-FiI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +15,20 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SDa-Sk-gLc">
+                    <rect key="frame" x="0.0" y="48" width="600" height="467"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="SDa-Sk-gLc" secondAttribute="trailing" id="1WS-z6-sN8"/>
+                <constraint firstItem="SDa-Sk-gLc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Mm-OQ-CnO"/>
+                <constraint firstItem="SDa-Sk-gLc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="48" id="95b-WF-87G"/>
+                <constraint firstAttribute="bottom" secondItem="SDa-Sk-gLc" secondAttribute="bottom" constant="85" id="Uf7-DN-ml8"/>
+            </constraints>
+            <point key="canvasLocation" x="377" y="380"/>
         </view>
     </objects>
 </document>

@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *engineeringCompanyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quoteQuantityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *quoteLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderNameLabelLayoutConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *companyLabelLayoutConstraint;
 
@@ -55,6 +56,7 @@
 
 - (void)configureCell:(ZIKMyOfferQuoteListModel *)model {
     self.createTimeLabel.text = model.createTime;
+    self.quoteLabel.text = [NSString stringWithFormat:@"报价要求:%@",model.quote];
     self.endDateLabel.text = [NSString stringWithFormat:@"截止日期: %@",model.endDate];
     if ([model.status isEqualToString:@"1"]) {//已报价
         self.statusImageView.image = [UIImage imageNamed:@"已报价"];
