@@ -29,7 +29,7 @@
     if (self) {
         self.frame=frame;
         //[self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
-        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(18, 10, 20, 20)];
+        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(18, 8, 20, 20)];
         [self.contentView addSubview:goldImageView];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18+22, 10, kWidth-20-22-10, 13)];
         [self.titleLab setTextColor:titleLabColor];
@@ -72,7 +72,7 @@
     self=[super initWithFrame:frame];
     if (self) {
         //self.frame=frame;
-        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(18, 10, 20, 20)];
+        goldImageView = [[UIImageView alloc] initWithFrame:CGRectMake(18, 8, 20, 20)];
         [self.contentView addSubview:goldImageView];
         [self setAccessibilityIdentifier:@"SellSearchTableViewCell2"];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(18+22, 10, kWidth-20-22-10, 13)];
@@ -167,19 +167,19 @@
         CGRect frame=self.titleLab.frame;
         frame.origin.x=40;
         self.titleLab.frame=frame;
-        goldImageView.image = [UIImage imageNamed:@"列表-金牌供应商"];
+        goldImageView.image = [UIImage imageNamed:@"列表-金牌供应商2"];
     } else if (hotBuyModel.goldsupplier == 2) {
         goldImageView.hidden=NO;
         CGRect frame=self.titleLab.frame;
         frame.origin.x=40;
         self.titleLab.frame=frame;
-        goldImageView.image = [UIImage imageNamed:@"列表-银牌供应商"];
+        goldImageView.image = [UIImage imageNamed:@"列表-银牌供应商2"];
     } else if (hotBuyModel.goldsupplier == 3) {
         goldImageView.hidden=NO;
         CGRect frame=self.titleLab.frame;
         frame.origin.x=40;
         self.titleLab.frame=frame;
-        goldImageView.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+        goldImageView.image = [UIImage imageNamed:@"列表-铜牌供应商2"];
     } else if (hotBuyModel.goldsupplier == 4) {
         goldImageView.hidden=NO;
         CGRect frame=self.titleLab.frame;
@@ -204,6 +204,12 @@
         frame.origin.x=40;
         self.titleLab.frame=frame;
         goldImageView.image = [UIImage imageNamed:@"列表-工程公司"];
+    }else if (hotBuyModel.goldsupplier == 8) {
+        goldImageView.hidden=NO;
+        CGRect frame=self.titleLab.frame;
+        frame.origin.x=40;
+        self.titleLab.frame=frame;
+        goldImageView.image = [UIImage imageNamed:@"合作苗企43x43"];
     }
 
 

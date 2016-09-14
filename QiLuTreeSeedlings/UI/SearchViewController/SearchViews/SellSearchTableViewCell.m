@@ -137,19 +137,19 @@
         CGRect frame=self.titleLab.frame;
         frame.origin.x=120;
         self.titleLab.frame=frame;
-        goldImageView.image = [UIImage imageNamed:@"列表-金牌供应商"];
+        goldImageView.image = [UIImage imageNamed:@"列表-金牌供应商2"];
     } else if (hotSellModel.goldsupplier == 2) {
         goldImageView.hidden=NO;
         CGRect frame=self.titleLab.frame;
         frame.origin.x=120;
         self.titleLab.frame=frame;
-        goldImageView.image = [UIImage imageNamed:@"列表-银牌供应商"];
+        goldImageView.image = [UIImage imageNamed:@"列表-银牌供应商2"];
     } else if (hotSellModel.goldsupplier == 3) {
         goldImageView.hidden=NO;
         CGRect frame=self.titleLab.frame;
         frame.origin.x=120;
         self.titleLab.frame=frame;
-        goldImageView.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+        goldImageView.image = [UIImage imageNamed:@"列表-铜牌供应商2"];
     } else if (hotSellModel.goldsupplier == 4) {
         goldImageView.hidden=NO;
         CGRect frame=self.titleLab.frame;

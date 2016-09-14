@@ -15,7 +15,7 @@
 #import "StringAttributeHelper.h"
 #import "ZIKHintTableViewCell.h"
 #import "YLDPickLocationView.h"
-
+#import "UIButton+ZIKEnlargeTouchArea.h"
 //#import "ZIKAddPickerView.h"
 #import "ZIKPickImageView.h"
 
@@ -252,6 +252,7 @@
             UIImageView *rowImageV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-45, 10, cell.frame.size.height-20, cell.frame.size.height-20)];
             [rowImageV setImage:[UIImage imageNamed:@"moreRow"]];
             self.addressButton = addressButton;
+            [addressButton setEnlargeEdgeWithTop:0 right:60 bottom:0 left:10];
             [cell addSubview:rowImageV];
             [cell addSubview:addressButton];
             [cell addSubview:arrowLabel];

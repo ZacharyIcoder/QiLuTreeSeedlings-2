@@ -60,13 +60,13 @@
         shenfenImageV.image = [UIImage imageNamed:@"列表-普通供应商"];
     } else if (model.goldsupplierflag == 1) {
        
-        shenfenImageV.image = [UIImage imageNamed:@"列表-金牌供应商"];
+        shenfenImageV.image = [UIImage imageNamed:@"列表-金牌供应商2"];
     } else if (model.goldsupplierflag == 2) {
         
-        shenfenImageV.image = [UIImage imageNamed:@"列表-银牌供应商"];
+        shenfenImageV.image = [UIImage imageNamed:@"列表-银牌供应商2"];
     } else if (model.goldsupplierflag == 3) {
         
-        shenfenImageV.image = [UIImage imageNamed:@"列表-铜牌牌供应商"];
+        shenfenImageV.image = [UIImage imageNamed:@"列表-铜牌供应商2"];
     } else if (model.goldsupplierflag == 4) {
         
         shenfenImageV.image = [UIImage imageNamed:@"列表-认证供应商"];

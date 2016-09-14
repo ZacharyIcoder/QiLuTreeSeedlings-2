@@ -1235,10 +1235,13 @@ static BOOL isCaiGouSuccess = NO;
         }
         if (self.model.state==0||self.model.state==4||self.model.state==2) {
             //0  已关闭 可打开  4 审核通过 可关闭
+            if (self.model.state==0) {
+                [self.editingBtn removeFromSuperview];
+            }
             [self.guoqiIamgV setImage:[UIImage imageNamed:@"guanbibiaoqian"]];
             [self.editingBtn setTitle:@"关闭" forState:UIControlStateNormal];
             [self.editingBtn setTitle:@"" forState:UIControlStateHighlighted];
-            [self.editingBtn setTitle:@"打开" forState:UIControlStateSelected];
+//            [self.editingBtn setTitle:@"打开" forState:UIControlStateSelected];
             [self.editingBtn addTarget:self action:@selector(openAndColseBtn:) forControlEvents:UIControlEventTouchUpInside];
             if (self.model.state==0) {
                 self.editingBtn.selected=YES;
@@ -1278,7 +1281,7 @@ static BOOL isCaiGouSuccess = NO;
     [backBtn setImage:[UIImage imageNamed:@"BackBtn"] forState:UIControlStateNormal];
     [view addSubview:backBtn];
     [backBtn addTarget:self action:@selector(backBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setEnlargeEdgeWithTop:10 right:60 bottom:10 left:10];
+    [backBtn setEnlargeEdgeWithTop:10 right:80 bottom:10 left:10];
     UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-80,26, 160, 30)];
     [titleLab setTextColor:[UIColor whiteColor]];
     [titleLab setTextAlignment:NSTextAlignmentCenter];
@@ -1517,11 +1520,11 @@ static BOOL isCaiGouSuccess = NO;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-//        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
-//            return 100;
-//        }else{
+        if (self.model.goldsupplier==0||self.model.goldsupplier==10) {
+            return 100;
+        }else{
             return 125;
-//        }
+        }
     }
     if (indexPath.section==1) {
         if (self.specAry) {

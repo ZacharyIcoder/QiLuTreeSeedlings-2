@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface YLDJPGYSDBigCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UILabel *shenfenLab;
