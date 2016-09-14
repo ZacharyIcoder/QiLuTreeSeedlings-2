@@ -160,12 +160,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *kZIKMySupplyTableViewCellID = @"kZIKMySupplyTableViewCellID";
-
-    ZIKShaiDanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKMySupplyTableViewCellID];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKShaiDanTableViewCell" owner:self options:nil] lastObject];
-    }
+//    static NSString *kZIKMySupplyTableViewCellID = @"kZIKMySupplyTableViewCellID";
+//
+//    ZIKShaiDanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kZIKMySupplyTableViewCellID];
+//    if (cell == nil) {
+//        cell = [[[NSBundle mainBundle] loadNibNamed:@"ZIKShaiDanTableViewCell" owner:self options:nil] lastObject];
+//    }
+    ZIKShaiDanTableViewCell *cell = [ZIKShaiDanTableViewCell cellWithTableView:tableView];
     if (self.shaiData.count > 0) {
         [cell configureCell:self.shaiData[indexPath.row]];
     }
@@ -173,7 +174,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZIKShaiDanModel *model = self.shaiData[indexPath.row];
     ZIKStationShowListDetailViewController *detailVC = [[ZIKStationShowListDetailViewController alloc] initWithNibName:@"ZIKStationShowListDetailViewController" bundle:nil];
+    detailVC.uid = model.uid;
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

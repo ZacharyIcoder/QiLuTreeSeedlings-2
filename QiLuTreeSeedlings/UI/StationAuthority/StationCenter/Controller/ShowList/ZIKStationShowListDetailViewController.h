@@ -9,5 +9,8 @@
 #import "ZIKNavConfigViewController.h"
 
 @interface ZIKStationShowListDetailViewController : ZIKNavConfigViewController
-
+/**
+ *  晒单uid
+ */
+@property (nonatomic, copy) NSString *uid;
 @end
