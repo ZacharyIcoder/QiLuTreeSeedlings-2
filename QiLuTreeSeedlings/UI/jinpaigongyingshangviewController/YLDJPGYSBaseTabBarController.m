@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backHome) name:@"ZIKBackHome" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backHome) name:@"YLDBackMiaoXinTong" object:nil];
+    self.delegate=self;
     //金牌供应商
     YLDJPGYSListViewController *JPGYSListVC = [[YLDJPGYSListViewController alloc] init];
     UINavigationController *JPGYSListNav = [[UINavigationController alloc] initWithRootViewController:JPGYSListVC];
