@@ -11,12 +11,15 @@
 #import "WHC_PictureListVC.h"
 #import "ZIKFunction.h"
 #import "HttpClient.h"
+#import "UIDefines.h"
+//static NSInteger viewWillAppear = 0;
 @interface ZIKAddShaiDanViewController ()<UIAlertViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,WHC_ChoicePictureVCDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet BWTextView *contentBWTextView;
 @property (weak, nonatomic) IBOutlet ZIKShaiDanPickImageView *pickImageView;
 
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
+@property (nonatomic, assign) NSInteger viewWillAppear;
 
 @end
 
@@ -30,9 +33,15 @@
 
 - (void)initUI {
     self.view.backgroundColor = [UIColor whiteColor];
+    _viewWillAppear = 0;
     self.vcTitle = @"新增晒单";
     self.leftBarBtnImgString = @"BackBtn";
     self.contentBWTextView.placeholder = @"请输入晒单内容";
+    self.contentBWTextView.placeholderColor = [UIColor colorWithRed:199/255.0 green:199/255.0 blue:205/255.0 alpha:1.0f];
+    self.contentBWTextView.textColor = [UIColor colorWithRed:173/255.0 green:173/255.0 blue:173/255.0 alpha:1.0f];
+
+    self.nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+//    self.contentBWTextView.clearsOnInsertion = YES;
     [self.pickImageView initUI];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
 
@@ -41,8 +50,62 @@
     };
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if (_viewWillAppear == 1) {
+        return;
+    }
+    if (_uid) {
+        [self requestShaiContent];
+        _viewWillAppear = 1;
+    }
+}
+
+- (void)requestShaiContent {
+    [HTTPCLIENT workstationShaiDanUpdateWithUid:_uid Success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+        if ([responseObject[@"success"] integerValue] == 0) {
+            [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            return ;
+
+        } else if ([responseObject[@"success"] integerValue] == 1) {
+            NSDictionary *shaidan = responseObject[@"result"][@"shaidan"];
+            self.nameTextField.text = shaidan[@"title"];
+            self.contentBWTextView.text = shaidan[@"content"];
+
+            NSString *imagesString = shaidan[@"images"];
+            if ([ZIKFunction xfunc_check_strEmpty:imagesString]) {
+                return;
+            }
+            NSArray *imagesArray = [imagesString componentsSeparatedByString:@","];
+            NSMutableArray *imagesUrlMAry = [NSMutableArray array];
+            [imagesArray enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
+                dic[@"url"]         = str;
+                dic[@"compressurl"] = str;
+                dic[@"detailurl"]   = str;
+                [imagesUrlMAry addObject:dic];
+            }];
+            self.pickImageView.urlMArr = imagesUrlMAry;
+
+        }
+    } failure:^(NSError *error) {
+        ;
+    }];
+}
 
 - (IBAction)sureButtonClick:(UIButton *)sender {
+    [self.nameTextField resignFirstResponder];
+    [self.contentBWTextView resignFirstResponder];
+
+    if ([ZIKFunction xfunc_check_strEmpty:self.nameTextField.text]) {
+        [ToastView showTopToast:@"请输入晒单名称"];
+        return;
+    }
+    if ([ZIKFunction xfunc_check_strEmpty:self.contentBWTextView.text]) {
+        [ToastView showTopToast:@"请输入晒单内容"];
+        return;
+    }
     __block NSString *urlSring      = @"";
     __block NSString *compressSring = @"";
 
@@ -58,7 +121,7 @@
     }
     CLog(@"%@",compressSring);
 
-    [HTTPCLIENT workstationShaiDanSaveWithUid:nil title:self.nameTextField.text content:self.contentBWTextView.text images:compressSring Success:^(id responseObject) {
+    [HTTPCLIENT workstationShaiDanSaveWithUid:_uid title:self.nameTextField.text content:self.contentBWTextView.text images:compressSring Success:^(id responseObject) {
         CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
@@ -75,6 +138,8 @@
 
 -(void)openMenu
 {
+    [self.nameTextField resignFirstResponder];
+    [self.contentBWTextView resignFirstResponder];
     //在这里呼出下方菜单按钮项
     self.myActionSheet = [[UIActionSheet alloc]
                           initWithTitle:nil
@@ -134,7 +199,7 @@
 {
     WHC_PictureListVC  * vc = [WHC_PictureListVC new];
     vc.delegate = self;
-    vc.maxChoiceImageNumberumber = 10-self.pickImageView.urlMArr.count;
+    vc.maxChoiceImageNumberumber = 100;
     [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
 }
 

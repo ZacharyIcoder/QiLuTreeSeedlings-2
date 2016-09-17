@@ -39,7 +39,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.maxChoiceImageNumber == 100) {
+        self.navigationItem.title = @"选择图片";
+    } else {
     self.navigationItem.title = [NSString stringWithFormat:kChoiceTitle , (int)self.maxChoiceImageNumber , 0];
+    }
     [self initData];
     [self layoutUI];
     // Do any additional setup after loading the view from its nib.
@@ -132,8 +136,16 @@
     BOOL isChoiced = NO;
     NSInteger count = [self getChoicedImageCount];
     if (selected) {
+        if (self.maxChoiceImageNumber == 100) {
+            self.navigationItem.title = @"选择图片";
+            return YES;
+        }
         self.navigationItem.title = [NSString stringWithFormat:kChoiceTitle ,(int)self.maxChoiceImageNumber , (int)count - 1];
     }else if (self.maxChoiceImageNumber > count){
+        if (self.maxChoiceImageNumber == 100) {
+            self.navigationItem.title = @"选择图片";
+            return YES;
+        }
         self.navigationItem.title = [NSString stringWithFormat:kChoiceTitle ,(int)self.maxChoiceImageNumber , (int)count + 1];
         isChoiced = YES;
     }

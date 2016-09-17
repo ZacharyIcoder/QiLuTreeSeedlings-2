@@ -16,24 +16,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="评_内容.png" translatesAutoresizingMaskIntoConstraints="NO" id="gcF-PQ-MgU">
-                        <rect key="frame" x="8" y="12" width="20" height="20"/>
+                        <rect key="frame" x="13" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="Y6L-Px-NAE"/>
                             <constraint firstAttribute="height" constant="20" id="xSm-0j-hhg"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNf-p5-USA">
-                        <rect key="frame" x="230" y="12" width="20" height="20"/>
+                        <rect key="frame" x="260" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="2Ow-hF-ePR"/>
                             <constraint firstAttribute="height" constant="20" id="Amv-pB-Jvd"/>
                         </constraints>
                         <state key="normal" backgroundImage="赞.png"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHE-RT-bZ4">
-                        <rect key="frame" x="252" y="12" width="60" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0次" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHE-RT-bZ4">
+                        <rect key="frame" x="282" y="12" width="30" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="4L6-1Q-A8G"/>
+                            <constraint firstAttribute="width" constant="30" id="4L6-1Q-A8G"/>
                             <constraint firstAttribute="height" constant="20" id="FbL-2T-X7L"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okF-vF-LF2">
-                        <rect key="frame" x="31" y="12" width="102" height="20"/>
+                        <rect key="frame" x="36" y="12" width="102" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="102" id="08p-nd-hG2"/>
                             <constraint firstAttribute="height" constant="20" id="tVr-L9-nV3"/>
@@ -55,7 +55,7 @@
                     <constraint firstItem="gcF-PQ-MgU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="1nT-II-0H3"/>
                     <constraint firstItem="qHE-RT-bZ4" firstAttribute="leading" secondItem="bNf-p5-USA" secondAttribute="trailing" constant="2" id="ElT-7c-NrU"/>
                     <constraint firstItem="okF-vF-LF2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="G9X-42-Sr3"/>
-                    <constraint firstItem="gcF-PQ-MgU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="PNv-Mq-8ym"/>
+                    <constraint firstItem="gcF-PQ-MgU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="PNv-Mq-8ym"/>
                     <constraint firstItem="okF-vF-LF2" firstAttribute="leading" secondItem="gcF-PQ-MgU" secondAttribute="trailing" constant="3" id="Tak-5J-9Q9"/>
                     <constraint firstItem="qHE-RT-bZ4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="bHw-oi-sqI"/>
                     <constraint firstItem="bNf-p5-USA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="gmz-XV-HZ6"/>

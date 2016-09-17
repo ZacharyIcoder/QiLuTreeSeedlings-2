@@ -8,6 +8,7 @@
 
 #import "ZIKShaiDanDetailFirstTableViewCell.h"
 #import "ZIKShaiDanDetailModel.h"
+#import "UIDefines.h"
 @interface ZIKShaiDanDetailFirstTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -20,6 +21,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.timeLabel.textColor = DarkTitleColor;
+    self.nameLabel.textColor = detialLabColor;
+    self.timeLabel.textColor = detialLabColor;
+    self.contentLabel.textColor = titleLabColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
