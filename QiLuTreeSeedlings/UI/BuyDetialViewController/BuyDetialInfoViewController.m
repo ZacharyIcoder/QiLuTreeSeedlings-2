@@ -1238,7 +1238,7 @@ static BOOL isCaiGouSuccess = NO;
             if (self.model.state==0) {
                 [self.editingBtn removeFromSuperview];
             }
-            [self.guoqiIamgV setImage:[UIImage imageNamed:@"guanbibiaoqian"]];
+            [self.guoqiIamgV setImage:[UIImage imageNamed:@"已成交"]];
             [self.editingBtn setTitle:@"关闭" forState:UIControlStateNormal];
             [self.editingBtn setTitle:@"" forState:UIControlStateHighlighted];
 //            [self.editingBtn setTitle:@"打开" forState:UIControlStateSelected];

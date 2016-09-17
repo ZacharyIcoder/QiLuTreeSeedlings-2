@@ -33,8 +33,8 @@
     UINavigationController *JPGYSListNav = [[UINavigationController alloc] initWithRootViewController:JPGYSListVC];
     //JPGYSListNav.viewControllers = @[JPGYSListVC];
 //    JPGYSListNav.tabBarItem.enabled = YES;
-    JPGYSListVC.vcTitle = @"金牌供应商";
-    JPGYSListVC.tabBarItem.title = @"金牌供应商";
+    JPGYSListVC.vcTitle = @"供应商";
+    JPGYSListVC.tabBarItem.title = @"供应商";
     JPGYSListVC.navigationController.navigationBar.hidden = YES;
     JPGYSListVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单金牌供应商off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     JPGYSListVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单金牌供应商on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -47,8 +47,8 @@
     jinpaigongyingVC.vcTitle = @"金牌供应";
     jinpaigongyingVC.tabBarItem.title = @"金牌供应";
     jinpaigongyingVC.navigationController.navigationBar.hidden = YES;
-    jinpaigongyingVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-站长供应off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    jinpaigongyingVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-站长供应On"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    jinpaigongyingVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单金牌供应off-"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    jinpaigongyingVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单金牌供应on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
  
  
     //我的报价

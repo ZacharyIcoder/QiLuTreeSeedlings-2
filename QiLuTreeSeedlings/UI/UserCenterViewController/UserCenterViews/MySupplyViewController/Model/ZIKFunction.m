@@ -118,6 +118,9 @@
                 [[[UIAlertView alloc] initWithTitle:@"提示"
                                             message:@"支付成功!"
                                    cancelButtonItem:[RIButtonItem itemWithLabel:@"确定" action:^{
+                    if (controller) {
+//                          [controller.navigationController popViewControllerAnimated:YES];
+                    }
 
                     //[controller.navigationController popToRootViewControllerAnimated:YES];
 

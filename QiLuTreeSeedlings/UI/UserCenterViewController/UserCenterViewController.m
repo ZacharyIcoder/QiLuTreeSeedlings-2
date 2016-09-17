@@ -573,36 +573,36 @@
 
         }
         if (indexPath.row==4) {
-            if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
+//            if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
                 [self hiddingSelfTabBar];
                 YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
                 [self.navigationController pushViewController:tab animated:YES];
-            }else{
-
-                if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
-                    [ToastView showTopToast:@"暂未审核，请耐心等待"];
-                    return;
-                }
-
-                if (APPDELEGATE.userModel.projectCompanyStatus==0) {
-                    [ToastView showTopToast:@"审核未通过"];
-                    YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
-                    
-                    [self hiddingSelfTabBar];
-                    [self.navigationController pushViewController:yldsda animated:YES];
-                    return;
-                }
-
-                [self hiddingSelfTabBar];
-                LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
-                [self.navigationController pushViewController:view animated:YES];
+//            }else{
+//
+//                if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+//                    [ToastView showTopToast:@"暂未审核，请耐心等待"];
+//                    return;
+//                }
+//
+//                if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+//                    [ToastView showTopToast:@"审核未通过"];
+//                    YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
+//                    
+//                    [self hiddingSelfTabBar];
+//                    [self.navigationController pushViewController:yldsda animated:YES];
+//                    return;
+//                }
+//
+//                [self hiddingSelfTabBar];
+//                LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+//                [self.navigationController pushViewController:view animated:YES];
             }
 
 //            [self hiddingSelfTabBar];
 //            YLDGongChengGongSiViewController *nuserListVC=[[YLDGongChengGongSiViewController alloc]init];
 //            [self.navigationController pushViewController:nuserListVC animated:YES];
 //            return;
-        }
+//        }
 
         /*         if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
          [self hiddingSelfTabBar];

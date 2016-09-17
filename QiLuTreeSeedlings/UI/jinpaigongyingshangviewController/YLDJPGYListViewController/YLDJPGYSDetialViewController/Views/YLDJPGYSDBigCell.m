@@ -31,8 +31,8 @@
     if (goldsupplier==3) {
         self.shenfenLab.text=@"铜牌供应商";
     }
-    self.companyNameL.text=dic[@"companyName"];
-    self.nameLab.text=dic[@"memberName"];
+    self.companyNameL.text=dic[@"memberName"];
+    self.nameLab.text=dic[@"phone"];
     NSString *headUrl=dic[@"headUrl"];
     if (headUrl.length>0) {
         [self.touxiangImgV setImageWithURL:[NSURL URLWithString:headUrl]];
@@ -46,8 +46,8 @@
     [self.backBtn setTitle:@"苗信通" forState:UIControlStateNormal];
     self.backBtnW.constant=65;
     [self.backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.companyNameL.text=myDic[@"companyName"];
-    self.nameLab.text=myDic[@"memberName"];
+    self.companyNameL.text=myDic[@"memberName"];
+    self.nameLab.text=myDic[@"phone"];
     NSString *headUrl=myDic[@"headUrl"];
     if (headUrl.length>0) {
         [self.touxiangImgV setImageWithURL:[NSURL URLWithString:headUrl]];

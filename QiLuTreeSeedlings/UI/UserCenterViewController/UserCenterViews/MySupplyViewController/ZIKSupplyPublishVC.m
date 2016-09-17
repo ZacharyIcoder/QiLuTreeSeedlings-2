@@ -221,7 +221,7 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                 NSArray *imagesAry            = [resultdic objectForKey:@"images"];
                 NSArray *imagesCompressAry    = [resultdic objectForKey:@"imagesCompress"];
                 NSArray *imagesDetailAry      = resultdic[@"imagesDetail"];
-                if (imagesDetailAry.count<3) {
+                if (imagesDetailAry.count==0) {
                     imagesDetailAry=imagesCompressAry;
                 }
                 NSMutableArray *imagesUrlMAry = [NSMutableArray arrayWithCapacity:2];
@@ -232,9 +232,16 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                         for (int k = 0; k < imagesDetailAry.count; k++) {
                             if (i == j && j == k) {
                                 NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-                                dic[@"url"]         = imagesAry[i];
-                                dic[@"compressurl"] = imagesCompressAry[i];
-                                dic[@"detailurl"]   = imagesDetailAry[i];
+                                NSString *url=imagesAry[i];
+                                url=[url stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                NSString *compressurl=imagesCompressAry[i];
+                                compressurl=[compressurl stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                NSString *detailurl=imagesDetailAry[i];
+                                
+                                detailurl=[detailurl stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                dic[@"url"]         =url;
+                                dic[@"compressurl"] = compressurl;
+                                dic[@"detailurl"]   = detailurl;
                                 [imagesUrlMAry addObject:dic];
                             }
                         }
@@ -505,7 +512,6 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
     
     for (int i=0; i < self.dataAry.count; i++) {
         FabutiaojiaCell *cell = [[FabutiaojiaCell alloc] initWithFrame:CGRectMake(0, Y, kWidth, 44) AndModel:self.dataAry[i] andAnswer:nil];
-        //cell.backgroundColor = [UIColor whiteColor];
         [_cellAry addObject:cell.model];
         Y = CGRectGetMaxY(cell.frame);
         [self.backScrollView addSubview:cell];

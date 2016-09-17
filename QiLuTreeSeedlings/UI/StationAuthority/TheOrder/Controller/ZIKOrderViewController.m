@@ -176,6 +176,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
         if (indexPath.section == 0) {
+            if ([self.title isEqualToString:@"金牌订单"]) {
+                
+                return 0.01;
+            }
+        
             return 160.f/320.f*kWidth;
         } else if (indexPath.section == 1) {
             return 38;
@@ -258,14 +263,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZIKStationOrderDetailViewController *orderDetailVC = [[ZIKStationOrderDetailViewController alloc] init];
-    orderDetailVC.hidesBottomBarWhenPushed  = YES;
-    if (self.orderMArr.count > 0) {
-        ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
-        orderDetailVC.orderUid   = model.uid;
-        orderDetailVC.statusType = model.statusType;
-        [self.navigationController pushViewController:orderDetailVC animated:YES];
+    if(indexPath.section==1)
+    {
+        ZIKStationOrderDetailViewController *orderDetailVC = [[ZIKStationOrderDetailViewController alloc] init];
+        orderDetailVC.hidesBottomBarWhenPushed  = YES;
+        if (self.orderMArr.count > 0) {
+            ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
+            orderDetailVC.orderUid   = model.uid;
+            orderDetailVC.statusType = model.statusType;
+            [self.navigationController pushViewController:orderDetailVC animated:YES];
+        }
     }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

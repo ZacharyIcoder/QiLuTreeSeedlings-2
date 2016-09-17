@@ -5283,6 +5283,8 @@
                                     province:(NSString *)province
                                         city:(NSString *)city
                                       county:(NSString *)county
+                                        page:(NSString *)page
+                                    pageSize:(NSString *)pageSize
                                      Success:(void (^)(id responseObject))success
                                      failure:(void (^)(NSError *error))failure {
     NSString *postURL            = @"api/cooperationcompany/list";
@@ -5296,12 +5298,13 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
 
-    parmers[@"searchTime"]       = searchTime;
+    parmers[@"keyword"]       = searchTime;
     parmers[@"starLevel"]        = starLevel;
     parmers[@"province"]         = province;
     parmers[@"city"]             = city;
     parmers[@"county"]           = county;
-
+    parmers[@"page"]             = page;
+    parmers[@"pageSize"]         = pageSize;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
 
@@ -5549,7 +5552,7 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"memberUid"]        = memberUid;
-    parmers[@"page"]             = page;
+    parmers[@"pageNumber"]       = page;
     parmers[@"pageSize"]         = pageSize;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {

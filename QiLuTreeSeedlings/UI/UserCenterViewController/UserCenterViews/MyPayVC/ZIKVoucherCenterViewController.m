@@ -68,6 +68,7 @@
     self.lastIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess:) name:@"PaySuccessNotification" object:nil];
+    
 }
 
 - (void)dealloc {

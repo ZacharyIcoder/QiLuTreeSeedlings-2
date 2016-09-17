@@ -29,4 +29,8 @@
  *  企业uid
  */
 @property (nonatomic, copy) NSString *uid;
+/**
+ *  企业星级
+ */
+@property(nonatomic)NSInteger starLevel;
 @end

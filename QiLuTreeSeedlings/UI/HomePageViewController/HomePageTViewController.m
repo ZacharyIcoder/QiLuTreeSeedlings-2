@@ -489,45 +489,10 @@
     if(index==5){
         if([APPDELEGATE isNeedLogin])
         {
-            if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
-                [self hiddingSelfTabBar];
-             YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
-                [self.navigationController pushViewController:tab animated:YES];
-            }else{
-                ShowActionV();
-               [HTTPCLIENT projectCompanyStatusSuccess:^(id responseObject) {
-                   if([[responseObject objectForKey:@"success"] integerValue])
-                   {
-                       APPDELEGATE.userModel.projectCompanyStatus=[[[responseObject objectForKey:@"result"] objectForKey:@"projectCompanyStatus"] integerValue];
-                       if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
-                           [ToastView showTopToast:@"暂未审核，请耐心等待"];
-                           return;
-                       }
-                       
-                       if (APPDELEGATE.userModel.projectCompanyStatus==0) {
-                           [ToastView showTopToast:@"审核未通过"];
-                           YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
-                           
-                           [self hiddingSelfTabBar];
-                           [self.navigationController pushViewController:yldsda animated:YES];
-                           return;
-                       }
-                       
-                       [self hiddingSelfTabBar];
-                       LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
-                       [self.navigationController pushViewController:view animated:YES];
-                   }
-                   else
-                   {
-                       [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
-                   }
-                   RemoveActionV();
-               } failure:^(NSError *error) {
-                   RemoveActionV();
-               }];
-                
-            }
-            
+            [self hiddingSelfTabBar];
+            YLDGongChengGongSiViewController *tab=[[YLDGongChengGongSiViewController alloc]init];
+            [self.navigationController pushViewController:tab animated:YES];
+                        
         }else
         {
              [ToastView showTopToast:@"请先登录"];

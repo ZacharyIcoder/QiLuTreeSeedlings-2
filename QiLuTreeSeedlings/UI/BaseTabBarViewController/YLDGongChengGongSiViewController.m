@@ -14,6 +14,9 @@
 #import "GongChengZhongXinViewController.h"
 #import "YLDBaoJiaGuanLiViewController.h"
 #import "UINavController.h"
+#import "LYDGCGSTiShiViewController.h"
+#import "HttpClient.h"
+#import "YLDGCGSZiZhiTiJiaoViewController.h"
 #define kTABBARH 50
 
 @interface YLDGongChengGongSiViewController ()
@@ -31,6 +34,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.labAry=[NSMutableArray array];
+            [HTTPCLIENT projectCompanyStatusSuccess:^(id responseObject) {
+                if([[responseObject objectForKey:@"success"] integerValue])
+                {
+                    APPDELEGATE.userModel.projectCompanyStatus=[[[responseObject objectForKey:@"result"] objectForKey:@"projectCompanyStatus"] integerValue];
+                  //                    [self hiddingSelfTabBar];
+    
+                }
+                else
+                {
+                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                }
+                RemoveActionV();
+            } failure:^(NSError *error) {
+                RemoveActionV();
+            }];
+
     self.TabBarHiden=NO;
     [self MakeUI];
     
@@ -179,7 +198,27 @@
 }
 -(void)FaBuButtonAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"YLDGONGChengFabuAction" object:nil];
+    
+    if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"YLDGONGChengFabuAction" object:nil];
+     
+    }else{
+        if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+            [ToastView showTopToast:@"暂未审核，请耐心等待"];
+            return;
+        }
+        
+        if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+            [ToastView showTopToast:@"审核未通过"];
+            YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
+            
+            [self.navigationController pushViewController:yldsda animated:YES];
+            return;
+        }
+        LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+        [self.navigationController pushViewController:view animated:YES];
+        
+    }
 }
 //标签栏的用户和首页的按钮点击
 -(void)ButtonSelect:(UIButton *)sender
@@ -187,20 +226,70 @@
     if (sender==self.nowBtn) {
         return;
     }
-    self.selectedIndex=sender.tag-1;
-    self.nowBtn.selected=NO;
-    sender.selected=YES;
-    for (int i=0; i<self.labAry.count; i++) {
-        if (i==sender.tag-1) {
-            UILabel *lab=self.labAry[i];
-            [lab setTextColor:yellowButtonColor];
-        }else{
-            UILabel *lab=self.labAry[i];
-            [lab setTextColor:detialLabColor];
-
+    if (APPDELEGATE.userModel.goldsupplierStatus==7||[APPDELEGATE.userModel.access_id isEqualToString:@"0F14ED77-78E2-4441-9F1A-8FE080C9A6C1"]) {
+        
+        self.selectedIndex=sender.tag-1;
+        self.nowBtn.selected=NO;
+        sender.selected=YES;
+        for (int i=0; i<self.labAry.count; i++) {
+            if (i==sender.tag-1) {
+                UILabel *lab=self.labAry[i];
+                [lab setTextColor:yellowButtonColor];
+            }else{
+                UILabel *lab=self.labAry[i];
+                [lab setTextColor:detialLabColor];
+                
+            }
         }
+        self.nowBtn=sender;
+    }else{
+        if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+            [ToastView showTopToast:@"暂未审核，请耐心等待"];
+            return;
+        }
+        
+        if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+            [ToastView showTopToast:@"审核未通过"];
+            YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
+            
+            [self.navigationController pushViewController:yldsda animated:YES];
+            return;
+        }
+        LYDGCGSTiShiViewController *view=[[ LYDGCGSTiShiViewController  alloc]init];
+        [self.navigationController pushViewController:view animated:YES];
+//        [HTTPCLIENT projectCompanyStatusSuccess:^(id responseObject) {
+//            if([[responseObject objectForKey:@"success"] integerValue])
+//            {
+//                APPDELEGATE.userModel.projectCompanyStatus=[[[responseObject objectForKey:@"result"] objectForKey:@"projectCompanyStatus"] integerValue];
+//                if (APPDELEGATE.userModel.projectCompanyStatus==-1) {
+//                    [ToastView showTopToast:@"暂未审核，请耐心等待"];
+//                    return;
+//                }
+//                
+//                if (APPDELEGATE.userModel.projectCompanyStatus==0) {
+//                    [ToastView showTopToast:@"审核未通过"];
+//                    YLDGCGSZiZhiTiJiaoViewController *yldsda=[[YLDGCGSZiZhiTiJiaoViewController alloc]initWithUid:@"xxxxxx"];
+//                    
+//                    [self hiddingSelfTabBar];
+//                    [self.navigationController pushViewController:yldsda animated:YES];
+//                    return;
+//                }
+//                
+//                [self hiddingSelfTabBar];
+
+//            }
+//            else
+//            {
+//                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+//            }
+//            RemoveActionV();
+//        } failure:^(NSError *error) {
+//            RemoveActionV();
+//        }];
+        
     }
-    self.nowBtn=sender;
+
+
 }
 
 - (void)didReceiveMemoryWarning {

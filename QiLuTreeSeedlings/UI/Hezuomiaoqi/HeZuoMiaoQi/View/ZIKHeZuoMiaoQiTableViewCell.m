@@ -49,6 +49,7 @@
     self.titleLabel.text   = model.companyName;
     self.addressLabel.text = model.companyAddress;
     self.personLabel.text  = model.legalPerson;
+ 
 }
 
 -(void)setPhoneButtonBlock:(PhoneButtonBlock)phoneButtonBlock {

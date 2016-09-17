@@ -242,6 +242,7 @@
         return;
     }
     [urlArr enumerateObjectsUsingBlock:^(NSDictionary *urlDic, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NSString *urdstring=urlDic[@"compressurl"];
             ZIKPickerBtn *imageBtn = [ZIKPickerBtn buttonWithType:UIButtonTypeCustom];
             [imageBtn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:urlDic[@"compressurl"]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
             imageBtn.image = imageBtn.currentBackgroundImage;

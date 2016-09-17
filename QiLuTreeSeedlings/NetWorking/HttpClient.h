@@ -1392,6 +1392,8 @@ failure:(void (^)(NSError *error))failure;
                                     province:(NSString *)province
                                         city:(NSString *)city
                                       county:(NSString *)county
+                                        page:(NSString *)page
+                                    pageSize:(NSString *)pageSize
                                      Success:(void (^)(id responseObject))success
                                      failure:(void (^)(NSError *error))failure;
 

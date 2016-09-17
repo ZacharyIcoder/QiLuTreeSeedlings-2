@@ -201,9 +201,6 @@
 //                    [ToastView showTopToast:@"您的余额不足，请先充值"];
                     _buyAlertView = [BuyMessageAlertView addActionVieWithMoney:[NSString stringWithFormat:@"%.2f",moneyNum]];
                    [_buyAlertView.rightBtn addTarget:self action:@selector(chongzhi) forControlEvents:UIControlEventTouchUpInside];
-
-//                    ZIKPayViewController *zikPayVC=[[ZIKPayViewController alloc]init];
-//                    [self.navigationController pushViewController:zikPayVC animated:YES];
                    return ;
               }
                 APPDELEGATE.isFromSingleVoucherCenter = NO;
@@ -393,7 +390,7 @@
 {
     //NSLog(@"%@",result);
     if ([result isEqualToString:@"success"]) {
-        //[self paySuccess:nil];
+//        [self paySuccess:nil];
     }
     else if ([result isEqualToString:@"fail"]) {
         //[XtomFunction openIntervalHUD:@"支付失败" view:nil];

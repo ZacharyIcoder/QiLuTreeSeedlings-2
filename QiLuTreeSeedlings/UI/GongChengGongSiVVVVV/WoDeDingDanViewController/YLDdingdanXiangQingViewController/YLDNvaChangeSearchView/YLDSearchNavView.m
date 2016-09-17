@@ -27,6 +27,7 @@
         textField.delegate=self;
         textField.tag=11;
         self.textfield=textField;
+        [textField setFont:[UIFont systemFontOfSize:14]];
         textField.clearButtonMode=UITextFieldViewModeWhileEditing;
         [textField addTarget:self  action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChanged:) name:UITextFieldTextDidChangeNotification object:textField];

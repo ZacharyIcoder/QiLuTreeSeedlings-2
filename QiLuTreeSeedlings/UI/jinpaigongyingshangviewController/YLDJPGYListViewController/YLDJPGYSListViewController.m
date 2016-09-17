@@ -39,12 +39,16 @@
     self.pageNum=1;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.vcTitle=@"金牌供应商";
+    UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+    iamgeV.image=[UIImage imageNamed:@"站长通-海报-2.png"];
+    [self.view addSubview:iamgeV];
     [self cityView];
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 110, kWidth, kHeight-64-46-44-30)];
+    
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 110+160.f/320.f*kWidth, kWidth, kHeight-64-46-44-30-160.f/320.f*kWidth)];
     tableView.delegate=self;
     tableView.dataSource=self;
     self.cityTalbView=tableView;
-    UITableView *shangTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-64-51-46)];
+    UITableView *shangTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115+160.f/320.f*kWidth, kWidth, kHeight-64-51-46-160.f/320.f*kWidth)];
     shangTableView.delegate=self;
     shangTableView.dataSource=self;
     shangTableView.tag=8;
@@ -94,8 +98,9 @@
             }else
             {
                 [self.dataAry addObjectsFromArray:ary2];
-                [self.shangTalbView reloadData];
+                
             }
+            [self.shangTalbView reloadData];
         }else
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -110,7 +115,7 @@
 }
 -(UIView *)cityView
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 51)];
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64+160.f/320.f*kWidth, kWidth, 51)];
     [view setBackgroundColor:BGColor];
     UIButton *shengBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/3, 46)];
     [shengBtn setTitle:@"全国" forState:UIControlStateNormal];
@@ -319,12 +324,13 @@
         }else{
             [self.shiBtn setSelected:YES];
             CityModel *model=self.cityAry[indexPath.row-1];
+            self.shiModel=model;
             [self.shiBtn setTitle:model.cityName forState:UIControlStateSelected];
             self.xianBtn.selected=NO;
             self.xianBtn.enabled=YES;
             self.xianModel=nil;
         }
-       
+        
     }
     if (tableView.tag==30) {
         
@@ -334,11 +340,12 @@
             self.xianModel=nil;
         }else{
             [self.xianBtn setSelected:YES];
+            
             CityModel *model=self.cityAry[indexPath.row-1];
-            [self.shiBtn setTitle:model.cityName forState:UIControlStateSelected];
-            self.xianBtn.selected=NO;
-            self.xianBtn.enabled=YES;
-            self.xianModel=nil;
+            self.xianModel=model;
+            [self.xianBtn setTitle:model.cityName forState:UIControlStateSelected];
+            self.xianBtn.selected=YES;
+            
         }
         
     }
@@ -364,6 +371,9 @@
     self.searchStr=textStr;
     [self getdata];
    
+}
+-(void)hidingAction
+{
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

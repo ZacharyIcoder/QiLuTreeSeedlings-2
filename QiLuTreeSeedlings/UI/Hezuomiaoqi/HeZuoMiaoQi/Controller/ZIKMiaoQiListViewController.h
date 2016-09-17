@@ -7,7 +7,7 @@
 //
 
 #import "ZIKBaseChangeNavViewController.h"
-
-@interface ZIKMiaoQiListViewController : ZIKBaseChangeNavViewController
+#import "ZIKArrowViewController.h"
+@interface ZIKMiaoQiListViewController : ZIKArrowViewController
 @property (nonatomic, assign) NSInteger starLevel;
 @end
