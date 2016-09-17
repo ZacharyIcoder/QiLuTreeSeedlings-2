@@ -17,6 +17,7 @@
 
 #import "ZIKMiaoQiDetailTableViewController.h"
 #import "ZIKMiaoQiListViewController.h"
+#import "AdvertView.h"
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 @interface ZIKHeZuoMiaoQiViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -180,9 +181,16 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-         ZIKOrderSingleTableViewCell *cell = [ZIKOrderSingleTableViewCell cellWithTableView:tableView];
-        return cell;
+    if(indexPath.section==0)
+    {
+        if (indexPath.row==0) {
+            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+            //            adView.delegate=self;
+            [adView setAdInfo];
+            [adView adStart];
+            return adView;
+            
+        }
     }
     else {
         ZIKHeZuoMiaoQiTableViewCell *cell = [ZIKHeZuoMiaoQiTableViewCell cellWithTableView:tableView];

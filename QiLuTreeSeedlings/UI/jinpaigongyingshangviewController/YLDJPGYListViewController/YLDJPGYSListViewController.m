@@ -15,6 +15,7 @@
 #import "MJRefresh.h"
 #import "YLDJPGYSListModel.h"
 #import "YLDJPGYSDetialViewController.h"
+#import "AdvertView.h"
 @interface YLDJPGYSListViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
 @property (nonatomic,strong)UIButton *shengBtn;
 @property (nonatomic,strong)UIButton *shiBtn;
@@ -29,6 +30,7 @@
 @property (nonatomic,strong) NSString *searchStr;
 @property (nonatomic) NSInteger pageNum;
 @property (nonatomic,strong) NSMutableArray *dataAry;
+@property (nonatomic,strong) UIView *cityView;
 @end
 
 @implementation YLDJPGYSListViewController
@@ -39,16 +41,16 @@
     self.pageNum=1;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.vcTitle=@"金牌供应商";
-    UIImageView *iamgeV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-    iamgeV.image=[UIImage imageNamed:@"站长通-海报-2.png"];
-    [self.view addSubview:iamgeV];
+    UIView *view =[self cityView];
+    self.cityView=view;
+
     [self cityView];
     
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 110+160.f/320.f*kWidth, kWidth, kHeight-64-46-44-30-160.f/320.f*kWidth)];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-44-30)];
     tableView.delegate=self;
     tableView.dataSource=self;
     self.cityTalbView=tableView;
-    UITableView *shangTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115+160.f/320.f*kWidth, kWidth, kHeight-64-51-46-160.f/320.f*kWidth)];
+    UITableView *shangTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-46) style:UITableViewStyleGrouped];
     shangTableView.delegate=self;
     shangTableView.dataSource=self;
     shangTableView.tag=8;
@@ -100,7 +102,9 @@
                 [self.dataAry addObjectsFromArray:ary2];
                 
             }
-            [self.shangTalbView reloadData];
+            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+            [self.shangTalbView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+//            [self.shangTalbView reloadData];
         }else
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
@@ -112,6 +116,29 @@
         [self.shangTalbView headerEndRefreshing];
         [self.shangTalbView footerEndRefreshing];
     }];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (tableView.tag==8) {
+        if (section==0) {
+            return 50;
+        }
+    }
+    
+    return 0.01;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (tableView.tag==8) {
+    if (section==0) {
+    return self.cityView;
+    }
+    }
+    UIView *view;
+    return view;
 }
 -(UIView *)cityView
 {
@@ -156,7 +183,7 @@
     self.xianBtn=xianBtn;
     [view addSubview:xianBtn];
     xianBtn.enabled=NO;
-    [self.view addSubview:view];
+//    [self.view addSubview:view];
     return view;
 }
 -(void)shengBtnAction:(UIButton *)sender
@@ -219,11 +246,21 @@
 
     
 }
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (tableView.tag==8) {
+        return 2;
+    }
+    return 1;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+   
     if (tableView.tag>=10) {
       return self.cityAry.count+1;
     }
     if (tableView.tag==8) {
+        if (section==0) {
+            return 1;
+        }
         return self.dataAry.count;
     }
         return 0;
@@ -232,14 +269,19 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (tableView.tag>=10) {
         return 44;
     }else{
+        if (indexPath.section==0) {
+            return 160.f/320.f*kWidth;
+        }
         return 130;
     }
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
     if (tableView.tag==10||tableView.tag==20||tableView.tag==30) {
         UITableViewCell *Cell=[tableView dequeueReusableCellWithIdentifier:@"ssssss"];
         if (!Cell) {
@@ -264,6 +306,17 @@
     }
     
     if (tableView.tag==8) {
+        if(indexPath.section==0)
+        {
+            if (indexPath.row==0) {
+                AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+                //            adView.delegate=self;
+                [adView setAdInfo];
+                [adView adStart];
+                return adView;
+                
+            }
+        }
         YLDJPGYListCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDJPGYListCell"];
         if (!cell) {
             cell=[YLDJPGYListCell yldJPGYListCell];
@@ -353,10 +406,13 @@
         [self.shangTalbView headerBeginRefreshing];
     }
     if (tableView.tag==8) {
-        YLDJPGYSListModel *model=self.dataAry[indexPath.row];
-        YLDJPGYSDetialViewController *yldJPGYSDetialVC=[[YLDJPGYSDetialViewController alloc]initWithUid:model.uid];
-        yldJPGYSDetialVC.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:yldJPGYSDetialVC animated:YES];
+        if (indexPath.section==1) {
+            YLDJPGYSListModel *model=self.dataAry[indexPath.row];
+            YLDJPGYSDetialViewController *yldJPGYSDetialVC=[[YLDJPGYSDetialViewController alloc]initWithUid:model.uid];
+            yldJPGYSDetialVC.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:yldJPGYSDetialVC animated:YES];
+        }
+       
     }
 }
 -(void)searchBtnAction:(UIButton *)sender

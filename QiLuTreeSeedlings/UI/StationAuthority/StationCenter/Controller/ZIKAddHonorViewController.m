@@ -11,6 +11,7 @@
 #import "UIButton+AFNetworking.h"
 #import "YLDPickTimeView.h"
 #import "ZIKFunction.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @interface ZIKAddHonorViewController ()<UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,YLDPickTimeDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *honorNameTextField;
 //@property (weak, nonatomic) IBOutlet UITextField *honorTimeTextField;

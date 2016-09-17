@@ -1201,6 +1201,10 @@ static BOOL isCaiGouSuccess = NO;
                 self.guoqiIamgV.hidden=YES;
             }
         }
+        if (self.model.state==0) {
+            [self.guoqiIamgV setImage:[UIImage imageNamed:@"已成交"]];
+        }
+
         if (self.model.state == 5) {//已删除
             [self.guoqiIamgV setImage:[UIImage imageNamed:@"已删除-2"]];
             _BuyMessageView.hidden = YES;
@@ -1346,6 +1350,7 @@ static BOOL isCaiGouSuccess = NO;
                 [ToastView showTopToast:@"关闭成功"];
                 sender.selected=YES;
                 self.guoqiIamgV.hidden=NO;
+                [sender removeFromSuperview];
             }else{
                 [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
             }

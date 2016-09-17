@@ -255,7 +255,7 @@
     self.searchV=searchV;
     searchV.delegate=self;
     searchV.hidden=YES;
-    searchV.textfield.placeholder=@"请输入苗期名称、电话、联系人";
+    searchV.textfield.placeholder=@"请输入苗企名称、电话、联系人";
     [self.navBackView addSubview:searchV];
     
     UITableView *qiTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-118)];

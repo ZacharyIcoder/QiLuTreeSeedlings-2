@@ -141,16 +141,16 @@
     if(indexPath.section==0)
     {
         if (indexPath.row==0) {
-//            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-//            adView.delegate=self;
-////            [adView setAdInfo];
-////            [adView adStart];
-//            return adView;
-            UITableViewCell *cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-            UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 160.f/320.f*kWidth)];
-            [imageV setImage:[UIImage imageNamed:@"站长通-海报-2.png"]];
-            [cell addSubview:imageV];
-            return cell;
+            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+            adView.delegate=self;
+            [adView setAdInfo];
+            [adView adStart];
+            return adView;
+//            UITableViewCell *cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+//            UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 160.f/320.f*kWidth)];
+//            [imageV setImage:[UIImage imageNamed:@"站长通-海报-2.png"]];
+//            [cell addSubview:imageV];
+//            return cell;
         }
     }
     if (indexPath.section==1) {
@@ -180,8 +180,6 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
     if (indexPath.section==1) {
          [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
         YLDWorkstationlistModel *model = self.workStationAry[indexPath.row];
