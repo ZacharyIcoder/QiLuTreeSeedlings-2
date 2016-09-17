@@ -919,6 +919,8 @@
 		FCBE036F1D8CEDDB0062CDFF /* WeiboImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBE036C1D8CEDDB0062CDFF /* WeiboImageBrowser.m */; };
 		FCBE03701D8CEDDB0062CDFF /* WeiboImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBE036E1D8CEDDB0062CDFF /* WeiboImageView.m */; };
 		FCBE03731D8CF0210062CDFF /* ZIKShaiDanDetailPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBE03721D8CF0210062CDFF /* ZIKShaiDanDetailPictureTableViewCell.m */; };
+		FCBE03751D8D16440062CDFF /* starbai.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FCBE03741D8D16440062CDFF /* starbai.jpg */; };
+		FCBE03771D8D18630062CDFF /* startouminga.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBE03761D8D18630062CDFF /* startouminga.png */; };
 		FCC160361D6AD6140030C4CB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC160321D6AD6140030C4CB /* libWeChatSDK.a */; };
 		FCC5719C1D2B5713004AA096 /* ZIKStationShowHonorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC5719B1D2B5713004AA096 /* ZIKStationShowHonorView.m */; };
 		FCC5719E1D2B5725004AA096 /* ZIKStationShowHonorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC5719D1D2B5725004AA096 /* ZIKStationShowHonorView.xib */; };
@@ -2452,6 +2454,8 @@
 		FCBE036E1D8CEDDB0062CDFF /* WeiboImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboImageView.m; sourceTree = "<group>"; };
 		FCBE03711D8CF0210062CDFF /* ZIKShaiDanDetailPictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKShaiDanDetailPictureTableViewCell.h; sourceTree = "<group>"; };
 		FCBE03721D8CF0210062CDFF /* ZIKShaiDanDetailPictureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKShaiDanDetailPictureTableViewCell.m; sourceTree = "<group>"; };
+		FCBE03741D8D16440062CDFF /* starbai.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starbai.jpg; sourceTree = "<group>"; };
+		FCBE03761D8D18630062CDFF /* startouminga.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startouminga.png; sourceTree = "<group>"; };
 		FCC160321D6AD6140030C4CB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		FCC160331D6AD6140030C4CB /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		FCC160341D6AD6140030C4CB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -5432,6 +5436,8 @@
 		FC6788CB1D87875700AB1429 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FCBE03761D8D18630062CDFF /* startouminga.png */,
+				FCBE03741D8D16440062CDFF /* starbai.jpg */,
 				FC6788CC1D87875700AB1429 /* 印章-分站.png */,
 				FC6788CD1D87875700AB1429 /* 合作苗企43x43.png */,
 				FC6788CE1D87875700AB1429 /* 底部菜单-合作苗企off.png */,
@@ -6065,6 +6071,7 @@
 				EAF0510F1C92B3E100F435A9 /* tabbarBackImage2@2x.png in Resources */,
 				EA03CCEC1C8FEFF80032BAD3 /* phoneImage@2x.png in Resources */,
 				EAAFCFB21CBE248800EB894F /* 2miaomu1136.png in Resources */,
+				FCBE03771D8D18630062CDFF /* startouminga.png in Resources */,
 				FC5612761D0C092F00E5743B /* 添加照片-单株.png in Resources */,
 				FC6789121D87875700AB1429 /* 底部菜单-苗企供应on.png in Resources */,
 				FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */,
@@ -6077,6 +6084,7 @@
 				EA552E821D0D400100FB88A0 /* gongchengzhongxinOn.png in Resources */,
 				FC6FED6F1CACF833000E2CA5 /* 下拉-2.png in Resources */,
 				EA4ADAFD1CD9CC510068C10F /* rolock@2x.png in Resources */,
+				FCBE03751D8D16440062CDFF /* starbai.jpg in Resources */,
 				FC56127D1D0C092F00E5743B /* duihao.png in Resources */,
 				FC830FAA1D62A5C2001E0CC6 /* ScanQR1@2x.png in Resources */,
 				EA4E64701D0E848900A7D731 /* kefuxitongyonghutouxiang.png in Resources */,

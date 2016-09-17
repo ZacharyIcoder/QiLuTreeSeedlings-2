@@ -129,7 +129,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="站长通-星级1.png"/>
-                            <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="站长通-星级2.png"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="startouminga.png"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="印章-分站.png" translatesAutoresizingMaskIntoConstraints="NO" id="8zb-BG-Idb">
@@ -188,8 +188,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="startouminga.png" width="15" height="15"/>
         <image name="印章-分站.png" width="160" height="160"/>
         <image name="站长通-星级1.png" width="36" height="36"/>
-        <image name="站长通-星级2.png" width="36" height="36"/>
     </resources>
 </document>
