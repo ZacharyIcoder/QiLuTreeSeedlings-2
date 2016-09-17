@@ -263,7 +263,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section==1)
+    if(indexPath.section==2)
     {
         ZIKStationOrderDetailViewController *orderDetailVC = [[ZIKStationOrderDetailViewController alloc] init];
         orderDetailVC.hidesBottomBarWhenPushed  = YES;
