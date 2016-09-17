@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZIKStationShowListViewController">
             <connections>
                 <outlet property="showListTableView" destination="ggl-cS-fyq" id="Sbb-3U-bhe"/>
+                <outlet property="tableBottomLayoutConstraint" destination="Jup-FD-nXj" id="hXO-us-nNG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
