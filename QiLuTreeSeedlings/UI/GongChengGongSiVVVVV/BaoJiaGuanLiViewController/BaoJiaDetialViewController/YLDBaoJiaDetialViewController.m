@@ -249,6 +249,7 @@
         
         UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             ShowActionV();
+            RemoveActionV();
             [HTTPCLIENT jianliHezuoWithBaoJiaID:model.uid Success:^(id responseObject) {
                 if ([[responseObject objectForKey:@"success"] integerValue]) {
                     [ToastView showTopToast:@"合作成功"];
@@ -256,7 +257,7 @@
                     ShowActionV();
                     [self getMessageListWtihKeyWord:self.searchStr WithPageNumber:[NSString stringWithFormat:@"%ld",(long)self.pageNum]];
                 }
-                RemoveActionV();
+                
             } failure:^(NSError *error) {
                 RemoveActionV();
             }];

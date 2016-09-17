@@ -205,6 +205,10 @@
         [ToastView showTopToast:@"请完善联系方式"];
         return;
     }
+    if (self.lianxifangshiField.text.length!=11) {
+        [ToastView showTopToast:@"电话需为11位"];
+        return;
+    }
     YLDFuBuTijiaoViewController *YLDtititiVC=[[YLDFuBuTijiaoViewController alloc]initWithType:self.typeStr andTypeName:self.typename andName:self.NameTextField.text andAreaSheng:self.AreaProvinces andAreaShi:self.AreaNames andTime:self.timeStr andPrice:self.priceStr andZhiL:self.qualityStr andXingJing:self.xiongjingField.text andDiJing:self.dijingField.text andLianxR:self.lianxirenField.text andPhone:self.lianxifangshiField.text andShuoMing:self.jianjieTextView.text];
     [self.navigationController pushViewController:YLDtititiVC animated:YES];
 }

@@ -130,7 +130,7 @@
                     <color key="textColor" red="0.6009070889261745" green="0.59988464765100669" blue="0.60114303691275173" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用苗地" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txP-v1-Kqo">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="供苗地" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txP-v1-Kqo">
                     <rect key="frame" x="8" y="176" width="65" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="9zo-B1-fQD"/>
