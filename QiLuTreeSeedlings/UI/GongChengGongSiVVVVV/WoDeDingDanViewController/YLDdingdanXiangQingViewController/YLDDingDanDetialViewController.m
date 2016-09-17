@@ -32,6 +32,7 @@
 @property (nonatomic,strong) NSMutableArray *dataAry;
 @property (nonatomic)NSInteger pageNum;
 @property (nonatomic)NSInteger type;
+@property (nonatomic)NSInteger  selfType;
 @end
 
 @implementation YLDDingDanDetialViewController
@@ -47,6 +48,10 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if (self.selfType==5) {
+        [self.tableView headerBeginRefreshing];
+        self.selfType=0;
+    }
  
 }
 - (void)viewDidLoad {
@@ -262,15 +267,19 @@
 }
 -(void)chakanActionWithTag:(NSInteger)tag andDic:(NSDictionary *)dic
 {
+    
     if (tag==1) {
+        self.selfType=5;
         YLDBaoJiaDetialViewController *yldBaoJiaVC=[[YLDBaoJiaDetialViewController alloc] initWithUid:[dic objectForKey:@"uid"]];
         [self.navigationController pushViewController:yldBaoJiaVC animated:YES];
     }
     if (tag==3) {
+        self.selfType=5;
         YLDHeZuoDetialViewController *hezuodeltai=[[YLDHeZuoDetialViewController alloc]initWithOrderUid:nil WithitemUid:[dic objectForKey:@"uid"]];
         [self.navigationController pushViewController:hezuodeltai animated:YES];
     }
     if (tag==4) {
+        self.selfType=5;
         YLDDingDanMMBianJiViewController *MMBJVC=[[YLDDingDanMMBianJiViewController alloc]initWithUid:[dic objectForKey:@"uid"]];
         MMBJVC.delegate=self;
         [self.navigationController pushViewController:MMBJVC animated:YES];
