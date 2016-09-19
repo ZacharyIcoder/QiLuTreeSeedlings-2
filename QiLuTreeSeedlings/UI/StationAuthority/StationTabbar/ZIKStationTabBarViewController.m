@@ -36,7 +36,7 @@
         _lastSelectedIndex = self.selectedIndex;
         //        CLog(@"2 OLD:%lu , NEW:%lu",(unsigned long)self.lastSelectedIndex,(unsigned long)tabIndex);
     }
-    if (tabIndex == 3 || tabIndex == 4) {
+    if (tabIndex == 2 || tabIndex == 3 || tabIndex == 4) {
         if (APPDELEGATE.userModel.goldsupplierStatus == 5 || APPDELEGATE.userModel.goldsupplierStatus == 6) {
             _isTiao = YES;//是苗企，可以进入苗企中心
         } else {
@@ -86,7 +86,7 @@
     workVC.tabBarItem.title = @"工作站";
     workVC.navigationController.navigationBar.hidden = YES;
     workVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工作站off(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    workVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工作站on(2)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    workVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-工作站on(1)"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     //我的报价
     ZIKMyOfferViewController *offerVC = [[ZIKMyOfferViewController alloc] init];

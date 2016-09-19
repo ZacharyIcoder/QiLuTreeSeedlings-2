@@ -43,6 +43,9 @@
 
 static BOOL isCaiGou = NO;
 static BOOL isCaiGouSuccess = NO;
+
+static BOOL isHezuo = NO;
+
 @interface BuyDetialInfoViewController ()<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate,ZIKCaiGouDetailHaveBuyTopViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *navTitleLab;
@@ -111,6 +114,9 @@ static BOOL isCaiGouSuccess = NO;
         return;
     }
     if (self.isFromDingzhi) {
+        return;
+    }
+    if (isHezuo) {
         return;
     }
     if (isCaiGou) {
@@ -507,6 +513,7 @@ static BOOL isCaiGouSuccess = NO;
         self.biaoqianView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 64, 50, 50)];
         self.isFromDingzhi = YES;//不是从定制列表进入的
         _biaoqianView.hidden=YES;
+        isHezuo = YES;
         //  NSLog(@"%@",uid);
         [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
                             WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
@@ -555,7 +562,7 @@ static BOOL isCaiGouSuccess = NO;
 //                                            else {
 //                                                _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
 //                                            }
-                                            _messageView = [self kefuView];
+                                            _BuyMessageView = [self kefuView];
 
 
                                             [_messageView removeFromSuperview];
@@ -842,12 +849,13 @@ static BOOL isCaiGouSuccess = NO;
 //合作苗企客服底部view
 - (UIView *)kefuView {
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
+    view.backgroundColor = [UIColor redColor];
 
-    UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2.5/5, 1)];
+    UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, 0, kWidth*2.5/5, 1)];
     topLineView.backgroundColor = kLineColor;
     [view addSubview:topLineView];
 
-    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth*1/5, 50)];
     [shopBtn setBackgroundColor:kBlueShopColor];
     [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
@@ -857,7 +865,7 @@ static BOOL isCaiGouSuccess = NO;
     [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
     [view addSubview:shopBtn];
 
-    UIButton *kefuBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*3/5, 50)];
+    UIButton *kefuBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5,0, kWidth*3/5, 50)];
     [kefuBtn setBackgroundColor:[UIColor whiteColor]];
     [kefuBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [kefuBtn setTitle:@"专属客服" forState:UIControlStateNormal];
@@ -869,7 +877,7 @@ static BOOL isCaiGouSuccess = NO;
     [view addSubview:kefuBtn];
 
 
-    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,kHeight-50, kWidth*1/5, 50)];
+    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,0, kWidth*1/5, 50)];
     [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
     [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);

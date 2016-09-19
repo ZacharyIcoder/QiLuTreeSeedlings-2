@@ -217,6 +217,8 @@
         [button setTitleColor:NavColor forState:UIControlStateSelected];
         [button setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
         [button setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+        [button setEnlargeEdgeWithTop:8 right:6 bottom:8 left:6];
+
         [button addTarget:self action:@selector(typeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:button];
 
