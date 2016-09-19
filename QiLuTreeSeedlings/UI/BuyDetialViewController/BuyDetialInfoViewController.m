@@ -33,6 +33,7 @@
 
 #import "ZIKStationOrderDetailViewController.h"//站长订单详情
 #import "ZIKCaiGouDetailHaveBuyTopView.h"//站长中心定制信息已购买详情顶部页面
+#import "ZIKHeZuoMiaoQiKeFuViewController.h"
 @interface BuyButton : UIButton
 @property (nonatomic, assign) float price;
 @property (nonatomic, strong) NSString *buyUid;
@@ -497,7 +498,103 @@ static BOOL isCaiGouSuccess = NO;
     sodvc.statusType = StationOrderStatusTypeQuotation;
     [self.navigationController pushViewController:sodvc animated:YES];
 }
+-(id)initWithHeZuoMiaoQiInfo:(NSString *)uid {
+    self=[super init];
+    if (self) {
+        self.isPuy=NO;
+        self.uid=uid;
+        self.type=1;
+        self.biaoqianView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-50, 64, 50, 50)];
+        self.isFromDingzhi = YES;//不是从定制列表进入的
+        _biaoqianView.hidden=YES;
+        //  NSLog(@"%@",uid);
+        [HTTPCLIENT buyDetailWithUid:uid WithAccessID:APPDELEGATE.userModel.access_id
+                            WithType:@"0" WithmemberCustomUid:@""                             Success:^(id responseObject) {
+                                if (![[responseObject objectForKey:@"success"] integerValue]) {
+                                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }
+                                NSDictionary *dic=[responseObject objectForKey:@"result"];
+                                self.infoDic=dic;
+                                self.memberUid = dic[@"memberUid"];
+                                self.model=[BuyDetialModel creatBuyDetialModelByDic:[dic objectForKey:@"detail"]];
+                                self.model.uid=uid;
+                                self.model.goldsupplier=[[dic objectForKey:@"goldsupplier"] integerValue];
+                                if (self.model.push||self.model.buy) {
+                                    self.isPuy=YES;
+                                    _biaoqianView.hidden=NO;
+                                    if (self.model.push) {
+                                        [_biaoqianView setImage:[UIImage imageNamed:@"dibgzhibiaoqian"]];
+                                    }
+                                    if (self.model.buy) {
+                                        [_biaoqianView setImage:[UIImage imageNamed:@"buybiaoqian"]];
+                                    }
+                                }else
+                                {
 
+                                    self.isPuy=NO;
+                                }
+                                if (!self.isPuy) {
+                                    if ([self.model.publishUid isEqualToString:APPDELEGATE.userModel.access_id]) {
+                                        self.tableView.frame=CGRectMake(0, 64, kWidth, kHeight-64-70);
+                                        [_BuyMessageView removeFromSuperview];
+
+                                        _BuyMessageView =nil;
+                                        myshareBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-60, kWidth-80, 50)];
+                                        [myshareBtn setBackgroundColor:NavColor];
+                                        [myshareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                                        [myshareBtn setTitle:@"分享" forState:UIControlStateNormal];
+                                        [self.view addSubview:myshareBtn];
+                                    }else
+                                    {
+                                        if (_BuyMessageView==nil) {
+                                            //_BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+//                                            if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
+//                                                _BuyMessageView =[self laobanShareViewWithPrice:self.model.buyPrice];
+//                                            }
+//                                            else {
+//                                                _BuyMessageView = [self laobanViewWithPrice:self.model.buyPrice];
+//                                            }
+                                            _messageView = [self kefuView];
+
+
+                                            [_messageView removeFromSuperview];
+                                            _messageView = nil;
+
+                                        }
+                                    }
+
+                                }else{
+                                    //_messageView = [self lianxiMessageShareView];
+//                                    if (self.model.state == 4 && APPDELEGATE.isNeedLogin) {
+//                                        _messageView = [self lianxiMessageShareView];
+//                                        
+//                                    }
+//                                    else {
+//                                        _messageView = [self lianxiMessageView];
+//                                    }
+                                    _messageView = [self kefuView];
+
+                                }
+                                
+                                [self reloadMyView];
+                            } failure:^(NSError *error) {
+                                
+                            }];
+        self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64-50) style:UITableViewStyleGrouped];
+        self.tableView.delegate=self;
+        self.tableView.dataSource=self;
+        [self.view addSubview:self.tableView];
+        [self.view addSubview:_biaoqianView];
+        UIImageView  *guoqiIamgV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-80, 50, 73, 48.3)];
+        [self.tableView addSubview:guoqiIamgV];
+        [guoqiIamgV bringSubviewToFront:self.view];
+        self.guoqiIamgV=guoqiIamgV;
+        
+    }
+    return self;
+
+}
 -(id)initWithSaercherInfo:(NSString *)uid
 {
     self=[super init];
@@ -742,7 +839,53 @@ static BOOL isCaiGouSuccess = NO;
     [self.view addSubview:view];
     return view;
 }
+//合作苗企客服底部view
+- (UIView *)kefuView {
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];
 
+    UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2.5/5, 1)];
+    topLineView.backgroundColor = kLineColor;
+    [view addSubview:topLineView];
+
+    UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+    [shopBtn setBackgroundColor:kBlueShopColor];
+    [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+    [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+    [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
+    [view addSubview:shopBtn];
+
+    UIButton *kefuBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*3/5, 50)];
+    [kefuBtn setBackgroundColor:[UIColor whiteColor]];
+    [kefuBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [kefuBtn setTitle:@"专属客服" forState:UIControlStateNormal];
+    [kefuBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+    kefuBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+    [kefuBtn setImage:[UIImage imageNamed:@"形状-6"] forState:UIControlStateNormal];
+    //        kefuBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 30, 15, 30);
+    [kefuBtn addTarget:self action:@selector(kefuBtnClcik) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:kefuBtn];
+
+
+    UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,kHeight-50, kWidth*1/5, 50)];
+    [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+    [shareBtn setImage:[UIImage imageNamed:@"分享.png"] forState:UIControlStateNormal];
+    [shareBtn setBackgroundColor:yellowButtonColor];
+    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:shareBtn];
+
+    [self.view addSubview:view];
+
+    return view;
+}
+- (void)kefuBtnClcik {
+    ZIKHeZuoMiaoQiKeFuViewController *kefuVC = [[ZIKHeZuoMiaoQiKeFuViewController alloc] initWithNibName:@"ZIKHeZuoMiaoQiKeFuViewController" bundle:nil];
+    [self.navigationController pushViewController:kefuVC animated:YES];
+}
 -(UIView *)lianxiMessageShareView
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth, 50)];

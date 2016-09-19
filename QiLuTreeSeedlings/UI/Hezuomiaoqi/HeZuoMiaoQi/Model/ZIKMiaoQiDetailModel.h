@@ -40,7 +40,7 @@
 /**
  *  企业简介
  */
-@property (nonatomic, copy) NSString *gybrief;
+@property (nonatomic, copy) NSString *qybrief;
 /**
  *  性别
  */
@@ -53,4 +53,7 @@
  *  荣誉列表
  */
 @property (nonatomic, copy) NSArray  *honor;
+
+@property (nonatomic, copy) NSString *headUrl;
+@property (nonatomic, copy) NSString *legalPerson;
 @end

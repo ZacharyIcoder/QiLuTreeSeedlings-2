@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *shareTextButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareImageButton;
 @end
 
 @implementation ZIKMiaoQiZhongXinHeaderFooterView
@@ -21,10 +23,21 @@
        [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKMiaoQiZhongXinUMShare" object:nil];
 }
 
+//- (void)awakeFromNib {
+//    [super awakeFromNib];
+//    // Initialization code
+//    CLog(@"%@",APPDELEGATE.userModel.headUrl)
+//    NSURL *imageURL = [NSURL URLWithString:APPDELEGATE.userModel.headUrl];
+//    [self.headImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"UserImage"]];
+//}
+
 - (void)configWithModel:(ZIKMiaoQiZhongXinModel *)model {
+    self.shareTextButton.hidden = YES;
+    self.shareImageButton.hidden = YES;
     
     NSURL *imageURL = [NSURL URLWithString:APPDELEGATE.userModel.headUrl];
     [self.headImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"UserImage"]];
+
     self.companyNameLabel.text  = model.companyName;
     self.nameLabel.text = model.name;
 

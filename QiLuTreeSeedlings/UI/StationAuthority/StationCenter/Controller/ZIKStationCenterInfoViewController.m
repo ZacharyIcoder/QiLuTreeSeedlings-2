@@ -51,6 +51,8 @@
     [super viewWillAppear:YES];
     if (![self.type isEqualToString: @"苗企"]) {
         [self requestData];
+    } else {
+        [self.myTableView reloadData];
     }
 }
 
@@ -107,15 +109,21 @@
         }
     } else {
         if (indexPath.row == 1) {
-            cell.detailTextLabel.text = self.miaoModel.name;
+            cell.detailTextLabel.text = APPDELEGATE.userModel.name;
         } else if (indexPath.row == 2) {
             cell.detailTextLabel.text = self.miaoModel.phone;
         } else if (indexPath.row == 3) {
-            cell.detailTextLabel.text = self.miaoModel.grbrief;
+            cell.detailTextLabel.text = APPDELEGATE.userModel.brief;
         }
 
     }
+    if (indexPath.row == 2) {
+        if (![self.type isEqualToString: @"苗企"]) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+        }
+    } else {
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+    }
     return cell;
 }
 
@@ -138,12 +146,13 @@
         }
     } else {
         if (indexPath.row == 1) {
-            changeInfoVC.setString = self.miaoModel.name;
+            changeInfoVC.setString = APPDELEGATE.userModel.name;
         } else if (indexPath.row == 2) {
             changeInfoVC.setString = self.miaoModel.phone;
         } else if (indexPath.row == 3) {
-            changeInfoVC.setString = self.miaoModel.grbrief;
+            changeInfoVC.setString = APPDELEGATE.userModel.brief;
         }
+        changeInfoVC.type = self.type;
 
     }
 
@@ -298,7 +307,7 @@
                 _globalHeadImage = image;
                 cellHeadImageView.image = _globalHeadImage;
                 //[self.myTalbeView reloadData];
-                APPDELEGATE.userModel.headUrl = responseObject[@"url"];
+                APPDELEGATE.userModel.headUrl = responseObject[@"result"][@"url"];
             }
             else {
                 //NSLog(@"%@",responseObject[@"msg"]);

@@ -74,6 +74,7 @@
     if (self.screenView) {
         self.screenView.hidden = NO;
     }
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (void)initData {
@@ -400,6 +401,7 @@
 - (IBAction)selectBtnClick:(id)sender {
     //self.citys = nil;
     ZIKCityListViewController *cityVC = [[ZIKCityListViewController alloc] init];
+    cityVC.hidesBottomBarWhenPushed = YES;
     cityVC.selectStyle = SelectStyleMultiSelect;
     self.selectStyle = SelectStyleMultiSelect;
     cityVC.delegate = self;

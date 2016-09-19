@@ -252,7 +252,7 @@
 
         NSString *myStringImageFile = [imageData base64EncodedStringWithOptions:(NSDataBase64Encoding64CharacterLineLength)];
         //NSLog(@"%ld",myStringImageFile.length);
-        [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"3" saveTyep:@"1" Success:^(id responseObject) {
+        [HTTPCLIENT upDataImageIOS:myStringImageFile workstationUid:nil companyUid:nil type:@"1" saveTyep:@"1" Success:^(id responseObject) {
             //CLog(@"%@",responseObject);
             if ([[responseObject objectForKey:@"success"] integerValue] == 1) {
 //                if (weakSelf.pickImageView.photos.count == 3) {

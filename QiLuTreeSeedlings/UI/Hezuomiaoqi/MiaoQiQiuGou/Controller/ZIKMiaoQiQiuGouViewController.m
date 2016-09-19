@@ -85,6 +85,9 @@
                 [self.buyMArr removeAllObjects];
             }
             NSArray *aryzz = [HotBuyModel creathotBuyModelAryByAry:array];
+            [aryzz enumerateObjectsUsingBlock:^(HotBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                model.goldsupplier = 8;
+            }];
             [self.buyMArr addObjectsFromArray:aryzz];
             [self.buyTableView reloadData];
             [self.buyTableView footerEndRefreshing];
@@ -128,7 +131,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     HotBuyModel *model = self.buyMArr[indexPath.row];
-    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithSaercherInfo:model.uid];
+    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithHeZuoMiaoQiInfo:model.uid];
     viewC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:viewC animated:YES];
 }

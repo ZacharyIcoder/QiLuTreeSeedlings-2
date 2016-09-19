@@ -8,6 +8,7 @@
 
 #import "ZIKMiaoQiDetailSecTableViewCell.h"
 #import "ZIKMiaoQiDetailModel.h"
+#import "UIDefines.h"
 @interface ZIKMiaoQiDetailSecTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
 @property (weak, nonatomic) IBOutlet HCSStarRatingView *starView;
@@ -25,6 +26,7 @@
     [super awakeFromNib];
     // Initialization code
     self.starView.userInteractionEnabled = NO;
+    self.moneyLabel.textColor = yellowButtonColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -45,8 +47,8 @@
 - (void)configureCell:(ZIKMiaoQiDetailModel *)model {
     self.companyNameLabel.text = model.companyName;
     self.starView.value        = [model.starLevel floatValue];
-    self.moneyLabel.text       = model.creditMargin;
-    self.daibiaoLabel.text     = model.name;
+    self.moneyLabel.text       = [NSString stringWithFormat:@"%@元",model.creditMargin];
+    self.daibiaoLabel.text     = model.legalPerson;
     self.phoneLabel.text       = model.phone;
     self.addressLabel.text     = model.address;
 }

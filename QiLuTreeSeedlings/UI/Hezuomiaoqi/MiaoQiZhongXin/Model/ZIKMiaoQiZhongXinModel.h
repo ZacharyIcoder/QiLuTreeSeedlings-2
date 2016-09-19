@@ -40,7 +40,7 @@
 /**
  *  简介
  */
-@property (nonatomic, copy) NSString *gybrief;
+@property (nonatomic, copy) NSString *qybrief;
 /**
  *  星级
  */

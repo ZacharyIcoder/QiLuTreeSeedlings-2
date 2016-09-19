@@ -9,7 +9,7 @@
 #import "ZIKStationOrderScreeningView.h"
 #import "UIDefines.h"
 
-
+#import "UIButton+ZIKEnlargeTouchArea.h"
 //@interface ZIKOrderStateButton : UIButton
 //@property (nonatomic, strong) NSString *name;
 //@property (nonatomic, strong) NSString *uid;
@@ -105,7 +105,7 @@
     [contentView addSubview:orderStateLabel];
     self.orderStateLabel  = orderStateLabel;
 
-    orderStateTitleArray  = [NSArray arrayWithObjects:@"报价中",@"已报价",@"已结束", nil];
+    orderStateTitleArray  = [NSArray arrayWithObjects:@"已结束",@"报价中",@"已报价", nil];
     for (NSInteger i = 0; i < 3; i++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(i*60 + 15+(10*i), CGRectGetMaxY(orderStateTitleLabel.frame)+10, 60, 20)];
         button.tag = 100 + i;
@@ -115,6 +115,7 @@
         [button setTitleColor:NavColor forState:UIControlStateSelected];
         [button setBackgroundImage:[UIImage imageNamed:@"unselectBtnAction"] forState:UIControlStateNormal];
         [button setBackgroundImage:[UIImage imageNamed:@"selectBtnAction2"] forState:UIControlStateSelected];
+        [button setEnlargeEdgeWithTop:8 right:6 bottom:8 left:6];
         [button addTarget:self action:@selector(stateBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [contentView addSubview:button];
     }
