@@ -42,7 +42,7 @@
         ZIKStationHonorListModel *model=dataAry[i];
         UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake((jianxi+90)*i+jianxi+(i)/3*jianxi, 5, 90, 70)];
         if (model.image.length>0) {
-            [btn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
+            [btn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
         }
        
         btn.tag=i;

@@ -40,8 +40,8 @@
 
 - (void)configureCell:(ZIKMiaoQiZhongXinModel *)model {
 //    self.briefLabel.text = [NSString stringWithFormat:@"简介:afwEFWIEFIWEFJO;WQJFIJQIOFJO WQQJWFIOJWIOQJFEIOJWQIOFJIOWQJFIOJWQIOJFIJWQIOFJIWQJFIJWQIJFIOJWQIOFJIWQJFIJWQIOFJIWJQIFJIWJFIOJWEIOFJIWJFIJWIJFIWJFIJWIOEQJFIOWJQFIOJWIQOFJIWJFIOWJQIOFWQIFJIOQWFJIOQWJFIOJQWFIQWJFIOOJWIFJIWOQEJFIWJQFIJWQIFJIWQJEFIWJQIFJWIQJFIWQJFIJWIQFJIWJQFIJWQIEFJWIQJFEWEIOFJWEIFJWIQJFIJWQIFJWIQJFIWJQFIOJWQIJFIWJQFIJWIFJWQEF %@",model.gybrief];
-    if (model.gybrief) {
-        self.briefLabel.text = [NSString stringWithFormat:@"简介: %@",model.gybrief];
+    if (model.grbrief) {
+        self.briefLabel.text = [NSString stringWithFormat:@"        简介: %@",model.grbrief];
     } else {
         self.briefLabel.text = [NSString stringWithFormat:@"简介: 暂无简介"];
     }

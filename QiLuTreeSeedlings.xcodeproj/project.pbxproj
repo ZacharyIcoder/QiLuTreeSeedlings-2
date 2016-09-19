@@ -959,6 +959,8 @@
 		FCD2E0971CC9EEFA000CFBA2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */; };
 		FCDE908E1CDB082D0009D157 /* 个人中心-购买记录.png in Resources */ = {isa = PBXBuildFile; fileRef = FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */; };
 		FCDE90921CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */; };
+		FCE26CC31D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE26CC11D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.m */; };
+		FCE26CC41D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCE26CC21D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.xib */; };
 		FCE458C01CE6D6AA00CBF802 /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE458BF1CE6D6AA00CBF802 /* UMMobClick.framework */; };
 		FCE458C31CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE458C21CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m */; };
 		FCE458C61CE7036600CBF802 /* ZIKHaveReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE458C51CE7036600CBF802 /* ZIKHaveReadModel.m */; };
@@ -2516,6 +2518,9 @@
 		FCDE908D1CDB082D0009D157 /* 个人中心-购买记录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "个人中心-购买记录.png"; sourceTree = "<group>"; };
 		FCDE90901CDB09D60009D157 /* ZIKPurchaseRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKPurchaseRecordsViewController.h; sourceTree = "<group>"; };
 		FCDE90911CDB09D60009D157 /* ZIKPurchaseRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKPurchaseRecordsViewController.m; sourceTree = "<group>"; };
+		FCE26CC01D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKMiaoQiDetailBriefTableViewCell.h; sourceTree = "<group>"; };
+		FCE26CC11D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKMiaoQiDetailBriefTableViewCell.m; sourceTree = "<group>"; };
+		FCE26CC21D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKMiaoQiDetailBriefTableViewCell.xib; sourceTree = "<group>"; };
 		FCE458BF1CE6D6AA00CBF802 /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
 		FCE458C11CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKHaveReadInfoViewController.h; sourceTree = "<group>"; };
 		FCE458C21CE6FDCE00CBF802 /* ZIKHaveReadInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKHaveReadInfoViewController.m; sourceTree = "<group>"; };
@@ -5429,6 +5434,9 @@
 				FC6788C81D87875700AB1429 /* ZIKMiaoQiDetailSecTableViewCell.h */,
 				FC6788C91D87875700AB1429 /* ZIKMiaoQiDetailSecTableViewCell.m */,
 				FC6788CA1D87875700AB1429 /* ZIKMiaoQiDetailSecTableViewCell.xib */,
+				FCE26CC01D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.h */,
+				FCE26CC11D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.m */,
+				FCE26CC21D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6357,6 +6365,7 @@
 				FC4B4F301CAB9F4F00EBB2F8 /* ZIKMyBalanceFirstTableViewCell.xib in Resources */,
 				EA1120C71CA6228A00857E48 /* myNuserAdd@2x.png in Resources */,
 				EA7419EC1C8FB0AE00F54478 /* delectLiteBtn@2x.png in Resources */,
+				FCE26CC41D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.xib in Resources */,
 				FC74AD671D3496A5009D8409 /* 列表-普通供应商.png in Resources */,
 				FC6789141D87875700AB1429 /* 底部菜单-苗企求购on.png in Resources */,
 				FC5612901D0C092F00E5743B /* ZIKSupplyPUblishNextFirstTableViewCell.xib in Resources */,
@@ -6816,6 +6825,7 @@
 				EA9EFCC61CEEE48C00A71F2D /* GuiGeCell.m in Sources */,
 				FC5612A11D0C092F00E5743B /* ZIKSupplyPublishVC.m in Sources */,
 				EAE32DDA1C7E97A600C4CEA2 /* AFURLRequestSerialization.m in Sources */,
+				FCE26CC31D8F7B6300E6CFCC /* ZIKMiaoQiDetailBriefTableViewCell.m in Sources */,
 				FC56126C1D0C092F00E5743B /* StringAttribute.m in Sources */,
 				FC5612661D0C092F00E5743B /* WHC_CameraVC.m in Sources */,
 				EA6B31C01CABA5F70068CCB5 /* NuseryDetialViewController.m in Sources */,

@@ -76,7 +76,7 @@
     self.nameLabel.text    = model.companyName;
     self.numberLabel.text  = model.name;
     self.addressLabel.text = model.area;
-    self.priceLabel.text   = model.creditMargin;
+    self.priceLabel.text   = [NSString stringWithFormat:@"%@元",model.creditMargin];
 
     self.typeImageView.image = [UIImage imageNamed:@"印章-分站"];
 }

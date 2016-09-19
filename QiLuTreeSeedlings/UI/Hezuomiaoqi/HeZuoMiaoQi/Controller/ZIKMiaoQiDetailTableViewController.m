@@ -20,6 +20,9 @@
 #import "ZIKStationShowHonorView.h"
 #import "ZIKBaseCertificateAdapter.h"
 #import "ZIKCertificateAdapter.h"
+
+#import "ZIKMyShopViewController.h"
+#import "ZIKMiaoQiDetailBriefTableViewCell.h"
 static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewIdentifier";
 
 #pragma mark -
@@ -66,7 +69,9 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
     view.backgroundColor = BGColor;
     [self.tableView setTableFooterView:view];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(back) name:@"ZIKMiaoQiDetailBackHome" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(back) name:@"ZIKMiaoQiDetailBackHome" object:nil];//ZIKMiaoQiDetailShopInfo
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showShop) name:@"ZIKMiaoQiDetailShopInfo" object:nil];
+
 }
 
 - (void)back {
@@ -108,21 +113,37 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 
 #pragma mark - Table view data source
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 1 || section == 2) {
+    if (section == 2) {
         return 10.0f;
+    }
+    if (section == 1) {
+        if (![ZIKFunction xfunc_check_strEmpty:self.miaoModel.qybrief]) {
+            return 10.0f;
+        } else {
+            return 0.02f;
+        }
     }
     return HEADER_HEIGHT;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
+        if (![ZIKFunction xfunc_check_strEmpty:self.miaoModel.qybrief]) {
+                    self.tableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
+                    self.tableView.estimatedRowHeight = 40;
+                    return self.tableView.rowHeight;
+        } else {
+            return 0;
+        }
+    }
+    if (indexPath.section == 1) {
 //        self.tableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
 //        self.tableView.estimatedRowHeight = 85;
 //        return self.tableView.rowHeight;
         return 186;
 
     }
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         if (self.miaoModel.honor.count<=0) {
             return 60;
         }
@@ -139,7 +160,13 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+//    if ([ZIKFunction xfunc_check_strEmpty:self.miaoModel.gybrief]) {
+//        return 2;
+//    } else {
+//        return 3;
+//    }
+//    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -148,6 +175,13 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
+        ZIKMiaoQiDetailBriefTableViewCell *gybriefCell = [ZIKMiaoQiDetailBriefTableViewCell cellWithTableView:tableView];
+        if (self.miaoModel) {
+            [gybriefCell configureCell:_miaoModel];
+        }
+        return gybriefCell;
+    }
+    if (indexPath.section == 1) {
         ZIKMiaoQiDetailSecTableViewCell *briefCell = [ZIKMiaoQiDetailSecTableViewCell cellWithTableView:tableView];
         if (self.miaoModel) {
             [briefCell configureCell:_miaoModel];
@@ -169,7 +203,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
         briefCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return briefCell;
     }
-    if(indexPath.section==1)
+    if(indexPath.section==2)
     {
         yYLDGZZRongYaoTableCell *cell=[tableView dequeueReusableCellWithIdentifier:@"yYLDGZZRongYaoTableCell"];
         if (!cell) {
@@ -214,6 +248,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKMiaoQiDetailBackHome" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKMiaoQiDetailShopInfo" object:nil];
 }
 
 -(void)allRongYuBtnAction:(UIButton *)sender
@@ -227,4 +262,11 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 }
 
 
+- (void)showShop {
+    ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
+
+    shopVC.memberUid = self.miaoModel.memberUid;
+    shopVC.type = 1;
+    [self.navigationController pushViewController:shopVC animated:YES];
+}
 @end

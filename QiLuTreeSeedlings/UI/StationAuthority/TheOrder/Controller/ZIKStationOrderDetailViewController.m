@@ -183,6 +183,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
 //            ZIKTestAddImageViewController *vc = [[ZIKTestAddImageViewController alloc] init];
 //            [weakSelf.navigationController pushViewController:vc animated:YES];
             ZIKStationOrderQuoteViewController *quoteVC = [[ZIKStationOrderQuoteViewController alloc] initWithNibName:@"ZIKStationOrderQuoteViewController" bundle:nil];
+            quoteVC.hidesBottomBarWhenPushed = YES;
             ZIKStationOrderDetailQuoteModel *model = weakSelf.quoteMArr[indexPath.section];
             quoteVC.name     = model.name;
             quoteVC.count    = model.quantity;

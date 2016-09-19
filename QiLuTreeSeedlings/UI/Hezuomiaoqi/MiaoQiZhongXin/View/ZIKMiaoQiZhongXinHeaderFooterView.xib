@@ -138,6 +138,8 @@
                 <outlet property="companyNameLabel" destination="9Bv-Mg-vP7" id="YdC-kW-6WR"/>
                 <outlet property="headImageView" destination="osA-3P-JnX" id="rrp-qS-rrq"/>
                 <outlet property="nameLabel" destination="k8j-wx-IER" id="OUk-yE-b8r"/>
+                <outlet property="shareImageButton" destination="sqv-tJ-rVm" id="w0W-gD-xCB"/>
+                <outlet property="shareTextButton" destination="aPO-fF-ojY" id="cOa-mg-eFG"/>
             </connections>
             <point key="canvasLocation" x="381" y="56"/>
         </view>

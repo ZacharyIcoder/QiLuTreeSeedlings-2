@@ -465,6 +465,10 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     }
 }
 
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

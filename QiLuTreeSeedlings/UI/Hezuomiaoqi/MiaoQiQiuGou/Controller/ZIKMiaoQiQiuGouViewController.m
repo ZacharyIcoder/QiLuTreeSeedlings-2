@@ -85,6 +85,9 @@
                 [self.buyMArr removeAllObjects];
             }
             NSArray *aryzz = [HotBuyModel creathotBuyModelAryByAry:array];
+            [aryzz enumerateObjectsUsingBlock:^(HotBuyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+                model.goldsupplier = 8;
+            }];
             [self.buyMArr addObjectsFromArray:aryzz];
             [self.buyTableView reloadData];
             [self.buyTableView footerEndRefreshing];
