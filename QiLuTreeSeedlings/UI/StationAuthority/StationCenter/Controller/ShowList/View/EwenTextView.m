@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UILabel *placeholderLabel;
 @property (nonatomic, strong) UIButton *sendButton;
+@property (nonatomic, strong) UIView *lineView;
 @end
 
 
@@ -46,13 +47,35 @@
     [self addGestureRecognizer:centerTap];
     return self;
 }
-
-- (void)createUI{
-    
+-(void)setButtonText:(NSString *)buttonText {
+    _buttonText = buttonText;
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(6);
+        make.top.mas_equalTo(11);
         make.left.mas_equalTo(5);
-        make.bottom.mas_equalTo(-6);
+        make.bottom.mas_equalTo(-8);
+        make.width.mas_equalTo(kScreenwidth-5);
+    }];
+
+    [self.sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(9);
+        make.right.mas_equalTo(-15);
+        make.width.mas_equalTo(50+5);
+    }];
+
+    [self.sendButton setTitle:buttonText forState:UIControlStateNormal];
+
+}
+- (void)createUI{
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.height.mas_equalTo(1);
+    }];
+
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(11);
+        make.left.mas_equalTo(5);
+        make.bottom.mas_equalTo(-8);
         make.width.mas_equalTo(kScreenwidth-65-40);
     }];
     
@@ -63,7 +86,7 @@
     }];
     
     [self.sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(8);
+        make.top.mas_equalTo(9);
         make.right.mas_equalTo(-5);
         make.width.mas_equalTo(50+40);
     }];
@@ -122,7 +145,9 @@
      */
     if (textView.text.length == 0) {
         self.placeholderLabel.text = placeholderText;
-        [self.sendButton setBackgroundColor:UIColorRGB(180, 180, 180)];
+//        [self.sendButton setBackgroundColor:UIColorRGB(180, 180, 180)];
+        [self.sendButton setBackgroundColor:NavColor];
+
         self.sendButton.userInteractionEnabled = NO;
     }else{
         self.placeholderLabel.text = @"";
@@ -155,6 +180,9 @@
 
 #pragma  mark -- 发送事件
 - (void)sendClick:(UIButton *)sender{
+    if (_buttonText) {
+        return;
+    }
     [self.textView endEditing:YES];
     if (self.EwenTextViewBlock) {
         self.EwenTextViewBlock(self.textView.text);
@@ -163,7 +191,9 @@
     //---- 发送成功之后清空 ------//
     self.textView.text = nil;
     self.placeholderLabel.text = placeholderText;
-    [self.sendButton setBackgroundColor:UIColorRGB(180, 180, 180)];
+//    [self.sendButton setBackgroundColor:UIColorRGB(180, 180, 180)];
+    [self.sendButton setBackgroundColor:NavColor];
+
     self.sendButton.userInteractionEnabled = NO;
     self.frame = CGRectMake(0, kScreenheight-49, kScreenwidth, 49);
     self.backGroundView.frame = CGRectMake(0, 0, kScreenwidth, 49);
@@ -175,18 +205,30 @@
 - (UIView *)backGroundView{
     if (!_backGroundView) {
         _backGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenwidth, 49)];
-        _backGroundView.backgroundColor = UIColorRGB(230, 230, 230);
+//        _backGroundView.backgroundColor = UIColorRGB(230, 230, 230);
+        _backGroundView.backgroundColor = [UIColor whiteColor];
+
         [self addSubview:_backGroundView];
     }
     return _backGroundView;
 }
 
+- (UIView *)lineView {
+    if (!_lineView) {
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = kLineColor;
+        [self.backGroundView addSubview:_lineView];
+    }
+    return _lineView;
+}
 - (UITextView *)textView{
     if (!_textView) {
         _textView = [[UITextView alloc]init];
-        _textView.font = [UIFont systemFontOfSize:16];
+        _textView.font = [UIFont systemFontOfSize:15];
         _textView.delegate = self;
         _textView.layer.cornerRadius = 5;
+        _textView.layer.borderWidth = 1;
+        _textView.layer.borderColor = [kLineColor CGColor];
         [self.backGroundView addSubview:_textView];
     }
     return _textView;
@@ -195,7 +237,7 @@
 - (UILabel *)placeholderLabel{
     if (!_placeholderLabel) {
         _placeholderLabel = [[UILabel alloc]init];
-        _placeholderLabel.font = [UIFont systemFontOfSize:16];
+        _placeholderLabel.font = [UIFont systemFontOfSize:15];
         _placeholderLabel.textColor = [UIColor grayColor];
         [self.backGroundView addSubview:_placeholderLabel];
     }
@@ -205,11 +247,18 @@
 - (UIButton *)sendButton{
     if (!_sendButton) {
         _sendButton = [[UIButton alloc]init];
-        [_sendButton setBackgroundColor:UIColorRGB(180, 180, 180)];
+//        [_sendButton setBackgroundColor:UIColorRGB(180, 180, 180)];
+        [_sendButton setBackgroundColor:NavColor];
+
+        if (self.buttonText) {
+            [_sendButton setTitle:self.buttonText forState:UIControlStateNormal];
+
+        } else {
         [_sendButton setTitle:@"发表评论" forState:UIControlStateNormal];
+        }
         [_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_sendButton addTarget:self action:@selector(sendClick:) forControlEvents:UIControlEventTouchUpInside];
-        _sendButton.layer.cornerRadius = 5;
+//        _sendButton.layer.cornerRadius = 5;
         _sendButton.userInteractionEnabled = NO;
         [self.backGroundView addSubview:_sendButton];
     }

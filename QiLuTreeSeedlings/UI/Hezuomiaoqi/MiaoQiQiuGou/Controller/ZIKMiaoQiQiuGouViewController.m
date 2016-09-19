@@ -131,7 +131,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     HotBuyModel *model = self.buyMArr[indexPath.row];
-    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithSaercherInfo:model.uid];
+    BuyDetialInfoViewController *viewC = [[BuyDetialInfoViewController alloc] initWithHeZuoMiaoQiInfo:model.uid];
     viewC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:viewC animated:YES];
 }

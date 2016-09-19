@@ -23,12 +23,21 @@
        [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKMiaoQiZhongXinUMShare" object:nil];
 }
 
+//- (void)awakeFromNib {
+//    [super awakeFromNib];
+//    // Initialization code
+//    CLog(@"%@",APPDELEGATE.userModel.headUrl)
+//    NSURL *imageURL = [NSURL URLWithString:APPDELEGATE.userModel.headUrl];
+//    [self.headImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"UserImage"]];
+//}
+
 - (void)configWithModel:(ZIKMiaoQiZhongXinModel *)model {
     self.shareTextButton.hidden = YES;
     self.shareImageButton.hidden = YES;
     
     NSURL *imageURL = [NSURL URLWithString:APPDELEGATE.userModel.headUrl];
     [self.headImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"UserImage"]];
+
     self.companyNameLabel.text  = model.companyName;
     self.nameLabel.text = model.name;
 

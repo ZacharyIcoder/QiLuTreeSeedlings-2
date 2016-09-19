@@ -506,10 +506,15 @@
 
 //        [ToastView showTopToast:@"敬请期待"];
 
-        ZIKMiaoQiTabBarViewController *hezuoTabBarVC = [[ZIKMiaoQiTabBarViewController alloc] initWithNibName:@"ZIKMiaoQiTabBarViewController" bundle:nil];
-        [self hiddingSelfTabBar];
-        [self.navigationController pushViewController:hezuoTabBarVC animated:YES];
-        return;
+        if([APPDELEGATE isNeedLogin])
+        {
+            [self hiddingSelfTabBar];
+            ZIKMiaoQiTabBarViewController *hezuoTabBarVC = [[ZIKMiaoQiTabBarViewController alloc] initWithNibName:@"ZIKMiaoQiTabBarViewController" bundle:nil];
+            [self.navigationController pushViewController:hezuoTabBarVC animated:YES];
+        }else
+        {
+            [ToastView showTopToast:@"请先登录"];
+        }
     }
     if (index==7) {
         if([APPDELEGATE isNeedLogin])

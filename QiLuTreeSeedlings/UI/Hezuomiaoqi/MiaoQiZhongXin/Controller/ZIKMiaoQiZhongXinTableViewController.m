@@ -90,6 +90,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiCenterSectionHeaderViewId
         NSDictionary *result = responseObject[@"result"];
         self.miaoModel = [ZIKMiaoQiZhongXinModel yy_modelWithDictionary:result];
         [self.miaoModel initStatusType];
+        APPDELEGATE.userModel.brief = self.miaoModel.grbrief;
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {

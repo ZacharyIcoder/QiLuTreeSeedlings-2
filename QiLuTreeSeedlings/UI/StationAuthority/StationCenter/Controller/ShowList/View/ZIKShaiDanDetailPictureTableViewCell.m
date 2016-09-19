@@ -54,24 +54,25 @@
     } else  {
         num = n;
     }
-    float imageWidth =  (kWidth - 50) / num * 1.0;
+    float imageWidth =  (kWidth - 70) / num * 1.0;
     float imageHeight = 0;
-    if (num == 1) {
-        imageHeight = (kWidth - 50) / 3.0 + 20;
-    } else {
-        imageHeight = (kWidth - 50) / 3.0;
-    }
+//    if (num == 1) {
+//        imageHeight = (kWidth - 50) / 3.0 + 20;
+//    } else {
+//        imageHeight = (kWidth - 50) / 3.0 ;
+//    }
+    imageHeight = imageWidth*0.60;
 
     for (NSInteger i = 0; i < n; i++) {
         [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:[_imageArray objectAtIndex:i]
                                                                  ] options:0
                                                        progress:^(NSInteger receivedSize, NSInteger expectedSize)
          {
-             NSLog(@"progress!!!");
+             CLog(@"progress!!!");
          }
                                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL)
          {
-             CGRect rect = CGRectMake(15 + (i % num) * (imageWidth + 10) ,  (i / num) * (imageWidth + 10), imageWidth, imageHeight);
+             CGRect rect = CGRectMake(25 + (i % num) * (imageWidth + 10) ,  (i / num) * (imageHeight + 10), imageWidth, imageHeight);
              UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
              CLog(@"%@",image);
              if (image == nil) {
@@ -85,7 +86,7 @@
              //}
              if ([image isEqual:[UIImage imageNamed:@"MoRentu"]] ) {
                  if (num == 1) {
-                     imageView.frame = CGRectMake(kWidth/2-50, 10, 100, 60);
+                     imageView.frame = CGRectMake(kWidth/2-65, 10, 130, 85);
                  }
              }
              imageView.clipsToBounds = YES;

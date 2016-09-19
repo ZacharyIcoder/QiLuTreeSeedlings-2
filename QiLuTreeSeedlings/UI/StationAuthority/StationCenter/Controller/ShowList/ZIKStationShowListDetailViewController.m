@@ -204,7 +204,7 @@ static ZIKShaiDanDetailModel *myModel =  nil;
     }
     if (indexPath.section == 1) {
         CGFloat h = 0;
-        float imageWidth = (kWidth - 50) / 3.0;
+        float imageWidth = (kWidth - 70) / 3.0;
         //        return 0;
         if (self.picArray.count == 0) {
             return 0;
@@ -215,9 +215,12 @@ static ZIKShaiDanDetailModel *myModel =  nil;
             h = self.picArray.count / 3;
         }
         if (self.picArray.count == 1) {
-            return h*imageWidth+30;
+            return  (kWidth - 50) * 0.60;
         }
-        return h*imageWidth+10;
+        if (self.picArray.count == 2) {
+            return (kWidth- 50)/2 * 0.60;
+        }
+        return h*imageWidth*0.66+10*(h-1);
     }
 
     if (indexPath.section == 2) {

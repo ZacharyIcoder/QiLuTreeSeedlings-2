@@ -27,6 +27,7 @@
 #import "UMSocial.h"
 
 #import "ZIKMyShopViewController.h"
+#import "ZIKHeZuoMiaoQiKeFuViewController.h"
 @interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIButton *collectionBtn;
@@ -91,6 +92,15 @@
     return self;
    
 }
+
+//- (instancetype)initWithHeZuoMiaoQiUid:(HotSellModel *)model {
+////
+//}
+
+- (void)setType:(NSInteger)type {
+    _type = type;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -105,6 +115,45 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
+    if (self.type == 0) {
+        self.tableView.frame = CGRectMake(0, 44, kWidth, kHeight-50-44);
+        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2.5/5, 1)];
+        topLineView.backgroundColor = kLineColor;
+        [self.view addSubview:topLineView];
+
+        UIButton *shopBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, kHeight-50, kWidth*1/5, 50)];
+        [shopBtn setBackgroundColor:kBlueShopColor];
+        [shopBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [shopBtn setTitle:@"店铺" forState:UIControlStateNormal];
+        [shopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        shopBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [shopBtn addTarget:self action:@selector(shopBtnAction) forControlEvents:UIControlEventTouchUpInside];
+        [shopBtn setImage:[UIImage imageNamed:@"1求购供应详情-店铺图标2"] forState:UIControlStateNormal];
+        [self.view addSubview:shopBtn];
+
+        UIButton *kefuBtn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*3/5, 50)];
+        [kefuBtn setBackgroundColor:[UIColor whiteColor]];
+        [kefuBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [kefuBtn setTitle:@"专属客服" forState:UIControlStateNormal];
+        [kefuBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
+        kefuBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [kefuBtn setImage:[UIImage imageNamed:@"形状-6"] forState:UIControlStateNormal];
+//        kefuBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 30, 15, 30);
+        [kefuBtn addTarget:self action:@selector(kefuBtnClcik) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:kefuBtn];
+
+
+        UIButton *shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*4/5,kHeight-50, kWidth*1/5, 50)];
+        [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+        [shareBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        shareBtn.titleEdgeInsets=UIEdgeInsetsMake(0, 5, 0, 0);
+        [shareBtn setImage:[UIImage imageNamed:@"分享.png"] forState:UIControlStateNormal];
+        [shareBtn setBackgroundColor:yellowButtonColor];
+        [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:shareBtn];
+
+        return;
+    }
 
     if (!APPDELEGATE.isNeedLogin) {
 
@@ -207,6 +256,10 @@
 
 
     //    [APPDELEGATE]
+}
+- (void)kefuBtnClcik {
+    ZIKHeZuoMiaoQiKeFuViewController *kefuVC = [[ZIKHeZuoMiaoQiKeFuViewController alloc] initWithNibName:@"ZIKHeZuoMiaoQiKeFuViewController" bundle:nil];
+    [self.navigationController pushViewController:kefuVC animated:YES];
 }
 - (void)shopBtnAction {
     if (_memberUid<=0) {

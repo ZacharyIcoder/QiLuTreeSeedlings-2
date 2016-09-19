@@ -15,4 +15,6 @@
 @property (nonatomic, copy) NSString *titleString;
 @property (nonatomic, copy) NSString *setString;
 @property (nonatomic, copy) NSString *placeholderString;
+
+@property (nonatomic, copy) NSString *type;
 @end

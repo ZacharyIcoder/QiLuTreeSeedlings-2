@@ -14,4 +14,7 @@
 -(id)initWithDingzhiModel:(ZIKCustomizedInfoListModel *)model;
 -(id)initMyDetialWithSaercherInfo:(NSString *)uid;
 -(id)initWithCaiGouModel:(ZIKCustomizedInfoListModel *)model;
+
+-(id)initWithHeZuoMiaoQiInfo:(NSString *)uid;
+
 @end
