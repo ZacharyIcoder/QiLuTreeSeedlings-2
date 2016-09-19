@@ -171,7 +171,7 @@
         
     }
     
-    UIButton *lastImageBtn = [self.imageBtnArr lastObject];
+//    UIButton *lastImageBtn = [self.imageBtnArr lastObject];
     self.mj_height = 100;
    // NSLog(@"-----------------------------------------CGRectGetMaxY(lastImageBtn.frame):%f",CGRectGetMaxY(lastImageBtn.frame));
 //    
