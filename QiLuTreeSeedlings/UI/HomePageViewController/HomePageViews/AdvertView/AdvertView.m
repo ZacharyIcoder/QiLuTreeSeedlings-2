@@ -85,7 +85,7 @@
 - (void)setAdInfo
 {
     
-    NSArray *imageAry= @[@"bannelSmall1.jpg", @"bannelSmall2.jpg",@"bannelSmall3.jpg", @"bannelSmall4.jpg"];
+    NSArray *imageAry= @[@"bannelSmall1.jpg", @"bannelSmall2.jpg",@"bannelSmall3.jpg", @"bannelSmall4.jpg",@"bannelSmall5.png"];
     [self.pageController setNumberOfPages:[imageAry count]];
     CGRect imageFrame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     imageFrame.origin = CGPointZero;

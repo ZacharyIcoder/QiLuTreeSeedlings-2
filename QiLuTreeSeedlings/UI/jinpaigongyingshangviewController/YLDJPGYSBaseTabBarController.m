@@ -58,7 +58,7 @@
     offerNav.tabBarItem.enabled = YES;
     offerVC.vcTitle = @"我的报价";
     offerVC.title = @"我的报价";
-//    offerVC.hidesBottomBarWhenPushed=YES;
+
     offerVC.navigationController.navigationBar.hidden = YES;
     offerVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-报价管理Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     offerVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-报价管理On"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -68,6 +68,7 @@
         ZIKOrderViewController *orderVC = [[ZIKOrderViewController alloc] init];
         UINavController *orderNav = [[UINavController alloc] initWithRootViewController:orderVC];
     orderVC.navigationController.navigationBar.hidden=YES;
+   
     orderVC.title=@"金牌订单";
     orderVC.vcTitle=@"金牌订单";
     orderVC.tabBarItem.image = [[UIImage imageNamed:@"jpwodedingdanoff"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

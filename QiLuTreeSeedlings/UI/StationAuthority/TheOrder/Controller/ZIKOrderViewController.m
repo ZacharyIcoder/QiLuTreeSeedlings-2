@@ -266,7 +266,10 @@
     if(indexPath.section==2)
     {
         ZIKStationOrderDetailViewController *orderDetailVC = [[ZIKStationOrderDetailViewController alloc] init];
-//        orderDetailVC.hidesBottomBarWhenPushed  = YES;
+        if ([self.title isEqualToString:@"金牌订单"]) {
+            orderDetailVC.hidesBottomBarWhenPushed  = YES;
+        }
+
         if (self.orderMArr.count > 0) {
             ZIKStationOrderModel *model = self.orderMArr[indexPath.row];
             orderDetailVC.orderUid   = model.uid;

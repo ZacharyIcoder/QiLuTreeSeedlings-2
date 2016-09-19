@@ -16,7 +16,7 @@
 #import "YYModel.h"//类型转换
 #import "ZIKFunction.h"
 #import "ZIKHeZuoMiaoQiModel.h"
-#import "ZIKHeZuoMiaoQiTableViewCell.h"
+#import "YLDHeZuoMiaoQiCell.h"
 #import "ZIKMiaoQiDetailTableViewController.h"
 @interface ZIKMiaoQiListViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
 @property (nonatomic, strong) NSString *province;//省
@@ -73,7 +73,7 @@
     if (tableView.tag>=10) {
         return 44;
     }else{
-        return 88;
+        return 100;
     }
     
 }
@@ -112,13 +112,13 @@
 
     }
     if (tableView.tag==8) {
-        ZIKHeZuoMiaoQiTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"ZIKHeZuoMiaoQiTableViewCell"];
+        YLDHeZuoMiaoQiCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDHeZuoMiaoQiCell"];
         if (!cell) {
-            cell=[[[NSBundle mainBundle] loadNibNamed:@"ZIKHeZuoMiaoQiTableViewCell" owner:self options:nil] lastObject];
+            cell=[[[NSBundle mainBundle] loadNibNamed:@"YLDHeZuoMiaoQiCell" owner:self options:nil] lastObject];
         }
         ZIKHeZuoMiaoQiModel *model=self.dataAry[indexPath.row];
-        cell.starNum =model.starLevel;
-        [cell configureCell:model];
+//        cell.starNum =model.starLevel;
+        cell.model=model;
         return cell;
     }
     

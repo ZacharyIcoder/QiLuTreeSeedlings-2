@@ -8,9 +8,10 @@
 
 #import "ZIKUserNameSetViewController.h"
 #define kMaxLength 20
+#import "YLDRangeTextField.h"
 @interface ZIKUserNameSetViewController ()
 {
-    UITextField *nameTextField;
+    YLDRangeTextField *nameTextField;
 }
 @end
 
@@ -26,7 +27,8 @@
     backView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:backView];
 
-    nameTextField = [[UITextField alloc] init];
+    nameTextField = [[YLDRangeTextField alloc] init];
+    nameTextField.rangeNumber=12;
     nameTextField.frame = CGRectMake(15, 7, kWidth-30, 30);
     nameTextField.textAlignment = NSTextAlignmentLeft;
     nameTextField.text = APPDELEGATE.userModel.name;

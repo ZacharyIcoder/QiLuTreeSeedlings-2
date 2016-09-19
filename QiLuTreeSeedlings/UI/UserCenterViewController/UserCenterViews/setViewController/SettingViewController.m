@@ -27,8 +27,13 @@
 }
 -(void)yijianfankuiBtn:(UIButton *)button
 {
-    YLDFeedbackViewController *feedbackVC=[[YLDFeedbackViewController alloc]init];
-    [self.navigationController pushViewController:feedbackVC animated:YES];
+    if ([APPDELEGATE isNeedLogin]) {
+        YLDFeedbackViewController *feedbackVC=[[YLDFeedbackViewController alloc]init];
+        [self.navigationController pushViewController:feedbackVC animated:YES];
+    }else{
+        [ToastView showTopToast:@"请先登录"];
+    }
+ 
 }
 
 -(void)abountUSBtn:(UIButton *)button
