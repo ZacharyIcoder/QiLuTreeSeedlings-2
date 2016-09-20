@@ -48,6 +48,8 @@
 
 @property (nonatomic, copy) NSString *grbrief;
 
+@property (nonatomic, copy) NSString *legalPerson;
+
 @property (nonatomic, assign) BOOL isShow;
 
 - (void)initStatusType;

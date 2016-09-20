@@ -74,7 +74,7 @@
     self.headFourLabel.text   = @"诚信保证金";
 
     self.nameLabel.text    = model.companyName;
-    self.numberLabel.text  = model.name;
+    self.numberLabel.text  = model.legalPerson;
     self.addressLabel.text = model.area;
     self.priceLabel.text   = [NSString stringWithFormat:@"%@元",model.creditMargin];
 
