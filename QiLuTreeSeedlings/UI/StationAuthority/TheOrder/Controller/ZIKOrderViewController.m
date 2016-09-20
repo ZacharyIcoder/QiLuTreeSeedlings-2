@@ -79,8 +79,8 @@
 
 - (void)initData {
     self.page           = 1;//页面page从1开始
-//    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
-    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"站长通-海报-2"]];
+    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg",@"bangde1.png"]];
+//    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"站长通-海报-2"]];
     self.areaMArr  = [NSMutableArray arrayWithCapacity:5];
     self.orderMArr = [[NSMutableArray alloc] init];
 }
@@ -326,6 +326,7 @@
     self.ordetTypeUid = orderType;
     if ([orderAddress isEqualToString:@"请选择地址"]) {
         self.area = nil;
+        [self.areaMArr removeAllObjects];
     }else{
         self.area = [self.areaMArr JSONString];
     }
