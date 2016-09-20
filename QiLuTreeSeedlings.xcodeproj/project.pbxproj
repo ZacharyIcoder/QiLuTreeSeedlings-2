@@ -631,6 +631,8 @@
 		FC523FF31D26137C002C001F /* ZIKStationChangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC523FF11D26137C002C001F /* ZIKStationChangeInfoViewController.m */; };
 		FC523FF41D26137C002C001F /* ZIKStationChangeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC523FF21D26137C002C001F /* ZIKStationChangeInfoViewController.xib */; };
 		FC523FF71D265933002C001F /* ZIKStationHonorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC523FF61D265933002C001F /* ZIKStationHonorListModel.m */; };
+		FC5245531D910AB000431255 /* ZIKChangeBriefViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5245511D910AB000431255 /* ZIKChangeBriefViewController.m */; };
+		FC5245541D910AB000431255 /* ZIKChangeBriefViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5245521D910AB000431255 /* ZIKChangeBriefViewController.xib */; };
 		FC5337AA1CBDF885008BFB11 /* ZIKStationAgentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337A91CBDF885008BFB11 /* ZIKStationAgentViewController.m */; };
 		FC5337C11CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5337BF1CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.m */; };
 		FC5337C21CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5337C01CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.xib */; };
@@ -2000,6 +2002,9 @@
 		FC523FF21D26137C002C001F /* ZIKStationChangeInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKStationChangeInfoViewController.xib; sourceTree = "<group>"; };
 		FC523FF51D265933002C001F /* ZIKStationHonorListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationHonorListModel.h; sourceTree = "<group>"; };
 		FC523FF61D265933002C001F /* ZIKStationHonorListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationHonorListModel.m; sourceTree = "<group>"; };
+		FC5245501D910AB000431255 /* ZIKChangeBriefViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKChangeBriefViewController.h; sourceTree = "<group>"; };
+		FC5245511D910AB000431255 /* ZIKChangeBriefViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKChangeBriefViewController.m; sourceTree = "<group>"; };
+		FC5245521D910AB000431255 /* ZIKChangeBriefViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIKChangeBriefViewController.xib; sourceTree = "<group>"; };
 		FC5337A81CBDF885008BFB11 /* ZIKStationAgentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationAgentViewController.h; sourceTree = "<group>"; };
 		FC5337A91CBDF885008BFB11 /* ZIKStationAgentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKStationAgentViewController.m; sourceTree = "<group>"; };
 		FC5337BE1CBE04F1008BFB11 /* ZIKStationAgentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKStationAgentTableViewCell.h; sourceTree = "<group>"; };
@@ -4461,6 +4466,9 @@
 				FC523FF01D26137C002C001F /* ZIKStationChangeInfoViewController.h */,
 				FC523FF11D26137C002C001F /* ZIKStationChangeInfoViewController.m */,
 				FC523FF21D26137C002C001F /* ZIKStationChangeInfoViewController.xib */,
+				FC5245501D910AB000431255 /* ZIKChangeBriefViewController.h */,
+				FC5245511D910AB000431255 /* ZIKChangeBriefViewController.m */,
+				FC5245521D910AB000431255 /* ZIKChangeBriefViewController.xib */,
 				FC224B961D29F48C001FFC47 /* ZIKAddHonorViewController.h */,
 				FC224B971D29F48C001FFC47 /* ZIKAddHonorViewController.m */,
 				FC224B981D29F48C001FFC47 /* ZIKAddHonorViewController.xib */,
@@ -6228,6 +6236,7 @@
 				FCCFA7141CF2E12400CC1313 /* ZIKCitySectionHeaderView.xib in Resources */,
 				FC2276711D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.xib in Resources */,
 				FC5612721D0C092F00E5743B /* 标签-已退回.png in Resources */,
+				FC5245541D910AB000431255 /* ZIKChangeBriefViewController.xib in Resources */,
 				EA4E646E1D0E83F000A7D731 /* YLDKeFuTableViewCell.xib in Resources */,
 				FC3D63BA1D4B2FF600F1515C /* ZIKQiugouEditWeihuViewController.xib in Resources */,
 				FC4470491D2F468A00EA0D82 /* 工程订单_排序off.png in Resources */,
@@ -6698,6 +6707,7 @@
 				FC5612581D0C092F00E5743B /* UIView+MJExtension.m in Sources */,
 				FC1D3B2D1D88E1F70033C525 /* ZIKShaiDanDetailFirstTableViewCell.m in Sources */,
 				EAE32DDD1C7E97A600C4CEA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				FC5245531D910AB000431255 /* ZIKChangeBriefViewController.m in Sources */,
 				FC4470441D2F425C00EA0D82 /* ZIKWorkstationSelectView.m in Sources */,
 				FC1D3B3B1D88F1110033C525 /* ZIKShaiDanDetailPinglunHeadFooterView.m in Sources */,
 				FC5612891D0C092F00E5743B /* ZIKSelectProductCategoryTableViewCell.m in Sources */,

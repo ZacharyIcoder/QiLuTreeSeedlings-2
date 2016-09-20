@@ -14,6 +14,7 @@
 #import "MasterInfoModel.h"
 
 #import "ZIKMiaoQiZhongXinModel.h"
+#import "ZIKChangeBriefViewController.h"
 @interface ZIKStationCenterInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
     UIImage        *_globalHeadImage;
@@ -112,6 +113,7 @@
             cell.detailTextLabel.text = APPDELEGATE.userModel.name;
         } else if (indexPath.row == 2) {
             cell.detailTextLabel.text = self.miaoModel.phone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 3) {
             cell.detailTextLabel.text = APPDELEGATE.userModel.brief;
         }
@@ -141,8 +143,13 @@
             changeInfoVC.setString = self.masterModel.chargelPerson;
         } else if (indexPath.row == 2) {
             changeInfoVC.setString = self.masterModel.phone;
-        } else if (indexPath.row == 3) {
-            changeInfoVC.setString = self.masterModel.brief;
+        }
+        else if (indexPath.row == 3) {
+            ZIKChangeBriefViewController *breifVC = [[ZIKChangeBriefViewController alloc] initWithNibName:@"ZIKChangeBriefViewController" bundle:nil];
+            breifVC.setString = self.masterModel.brief;
+            [self.navigationController pushViewController:breifVC animated:YES];
+            return;
+            return;
         }
     } else {
         if (indexPath.row == 1) {
@@ -151,8 +158,13 @@
             changeInfoVC.setString = self.miaoModel.phone;
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             return;
-        } else if (indexPath.row == 3) {
-            changeInfoVC.setString = APPDELEGATE.userModel.brief;
+        }
+        else if (indexPath.row == 3) {
+            ZIKChangeBriefViewController *breifVC = [[ZIKChangeBriefViewController alloc] initWithNibName:@"ZIKChangeBriefViewController" bundle:nil];
+            breifVC.type = self.type;
+            breifVC.setString = APPDELEGATE.userModel.brief;
+            [self.navigationController pushViewController:breifVC animated:YES];
+            return;
         }
         changeInfoVC.type = self.type;
 

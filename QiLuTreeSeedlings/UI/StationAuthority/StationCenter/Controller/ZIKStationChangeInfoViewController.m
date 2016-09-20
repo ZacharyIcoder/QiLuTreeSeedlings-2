@@ -34,7 +34,7 @@
         if ([self.titleString isEqualToString:@"姓名"]) {
             chargePerson = self.textField.text;
             if ([ZIKFunction xfunc_check_strEmpty:self.textField.text]) {
-                [ToastView showTopToast:@"姓名为空!!!"];
+                [ToastView showTopToast:@"用户名不允许为空"];
                 return;
             }
             else {
@@ -63,7 +63,7 @@
 
        if ([self.titleString isEqualToString:@"自我介绍"]) {
            if ([ZIKFunction xfunc_check_strEmpty:self.textField.text]) {
-               [ToastView showTopToast:@"内容为空!!!"];
+               [ToastView showTopToast:@"用户名不允许为空"];
                return;
            }
            else {

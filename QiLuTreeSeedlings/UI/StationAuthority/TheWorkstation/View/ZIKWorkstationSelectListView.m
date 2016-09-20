@@ -44,7 +44,7 @@
 
 - (void)showView {
     [UIView animateWithDuration:.001 animations:^{
-        self.frame = CGRectMake(0, 64+46+4, SCREEN_SIZE.width, SCREEN_SIZE.height-64-46-4);
+        self.frame = CGRectMake(0, 64+160.f/320.f*SCREEN_SIZE.width+4+46, SCREEN_SIZE.width, SCREEN_SIZE.height-64-160.f/320.f*SCREEN_SIZE.width-4-46);
     } completion:^(BOOL finished) {
         _isShow = YES;
     }];

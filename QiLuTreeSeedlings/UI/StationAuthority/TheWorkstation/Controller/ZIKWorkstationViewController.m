@@ -19,7 +19,11 @@
 #import "ZIKMyTeamModel.h"
 #import "YLDZhanZhangMessageViewController.h"//工作站详情
 #import "ZIKFunction.h"
-@interface ZIKWorkstationViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,ZIKWorkstationSelectViewDelegate,ZIKWorkstationSelectListViewDataSource,ZIKWorkstationSelectListViewDelegate>
+
+#import "AdvertView.h"
+#import "BigImageViewShowView.h"
+
+@interface ZIKWorkstationViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,ZIKWorkstationSelectViewDelegate,ZIKWorkstationSelectListViewDataSource,ZIKWorkstationSelectListViewDelegate,AdvertDelegate>
 @property (nonatomic, strong) UITableView *orderTableView;
 
 @property (nonatomic, strong) ZIKWorkstationSelectView *selectAreaView;
@@ -34,6 +38,8 @@
 @property (nonatomic, strong) NSMutableArray *stationMArr;//我的订单数组
 
 @property (nonatomic, strong) NSString *keyword;
+
+@property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
 @end
 
 @implementation ZIKWorkstationViewController
@@ -69,6 +75,9 @@
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:self.searchBarView.textField];
+
+    self.bigImageViewShowView = [[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg",@"bangde5.png"]];
+
 
     [self initUI];
     [self requestData];
@@ -147,15 +156,15 @@
 };
 
 - (void)initUI {
-    self.selectAreaView = [ZIKWorkstationSelectView instanceSelectAreaView];
-    self.selectAreaView.delegate = self;
-    [self.view addSubview:self.selectAreaView];
-    self.selectAreaView.frame = CGRectMake(0, 64, kWidth, 46);
+//    self.selectAreaView = [ZIKWorkstationSelectView instanceSelectAreaView];
+//    self.selectAreaView.delegate = self;
+//    [self.view addSubview:self.selectAreaView];
+//    self.selectAreaView.frame = CGRectMake(0, 64, kWidth, 46);
     CGRect frame;
     if (self.navigationController.childViewControllers.count>1) {
-        frame=CGRectMake(0, 64+46, kWidth, kHeight-64-46);
+        frame=CGRectMake(0, 64, kWidth, kHeight-64);
     }else{
-        frame=CGRectMake(0, 64+46, kWidth, kHeight-64-46-44);
+        frame=CGRectMake(0, 64, kWidth, kHeight-64-44);
     }
     UITableView *orderTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     orderTableView.dataSource = self;
@@ -178,7 +187,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.stationMArr.count;
+    return self.stationMArr.count+2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -186,17 +195,54 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 160.f/320.f*kWidth;
+    }
+    if (indexPath.section == 1) {
+        return 46;
+    }
     return 100;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0 || section == 1) {
+        return 0.01f;
+    }
     return 10.0f;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section==0)
+    {
+        if (indexPath.row==0) {
+            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+            adView.delegate=self;
+            [adView setAdInfo];
+            [adView adStart];
+            return adView;
+
+        }
+    }
+    if (indexPath.section == 1) {
+        static NSString *kSelectTableViewCellID = @"kSelectTableViewCellID";
+
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSelectTableViewCellID];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSelectTableViewCellID];
+            cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+            if (!self.selectAreaView) {
+                self.selectAreaView = [ZIKWorkstationSelectView instanceSelectAreaView];
+                self.selectAreaView.delegate = self;
+            }
+        }
+        [cell.contentView addSubview:self.selectAreaView];
+        self.selectAreaView.frame = CGRectMake(0, 0, kWidth, 46);
+        return cell;
+    }
+
     ZIKWorkstationTableViewCell *cell = [ZIKWorkstationTableViewCell cellWithTableView:tableView];
     if (self.stationMArr.count > 0) {
-        ZIKMyTeamModel *model = self.stationMArr[indexPath.section];
+        ZIKMyTeamModel *model = self.stationMArr[indexPath.section-2];
         [cell configureCell:model];
         cell.indexPath = indexPath;
         __weak typeof(self) weakSelf = self;
@@ -214,8 +260,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.stationMArr.count > 0) {
-        ZIKMyTeamModel *model = self.stationMArr[indexPath.section];
+    if (indexPath.section == 0 || indexPath.section == 1) {
+        return;
+    }
+    if (self.stationMArr.count > 0 && indexPath.section >1) {
+        ZIKMyTeamModel *model = self.stationMArr[indexPath.section-2];
         YLDZhanZhangMessageViewController *detailVC = [[YLDZhanZhangMessageViewController
                                                         alloc] initWithUid:model.uid];
         if (self.navigationController.childViewControllers.count>1) {
@@ -330,5 +379,12 @@
     [self requestMyOrderList:[NSString stringWithFormat:@"%ld",(long)self.page]];
 
 }
+
+//广告页面点击
+-(void)advertPush:(NSInteger)index
+{
+    [self.bigImageViewShowView showInKeyWindowWithIndex:index];
+}
+
 
 @end

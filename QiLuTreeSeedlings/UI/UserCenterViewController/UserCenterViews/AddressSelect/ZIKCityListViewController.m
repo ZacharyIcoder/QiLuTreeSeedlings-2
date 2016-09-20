@@ -44,7 +44,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 }
 -(void)backBtnAction:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 -(UIView *)makeNavView
@@ -121,7 +121,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         if ([weakSelf.delegate respondsToSelector:@selector(selectCityModels:)]) {
             [weakSelf.delegate selectCityModels:@[]];
         }
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        [weakSelf.navigationController popViewControllerAnimated:NO];
     };
 
 
@@ -467,7 +467,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)didReceiveMemoryWarning {

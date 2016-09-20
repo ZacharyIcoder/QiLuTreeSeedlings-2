@@ -65,6 +65,12 @@
 - (void)initView {
     self.isScreen = NO;
     [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth*0.2, kHeight)];
+    leftView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0f];
+    [self addSubview:leftView];
+    UITapGestureRecognizer *tapGR111 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSideViewAction)];
+    [leftView addGestureRecognizer:tapGR111];
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 64)];
     [backView setBackgroundColor:kRGB(210, 210, 210, 1)];
     [self addSubview:backView];

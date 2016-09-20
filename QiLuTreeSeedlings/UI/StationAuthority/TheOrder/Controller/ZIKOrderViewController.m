@@ -74,7 +74,7 @@
     if (self.screenView) {
         self.screenView.hidden = NO;
     }
-    self.hidesBottomBarWhenPushed = NO;
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)initData {
@@ -182,7 +182,8 @@
                 return 0.01;
             }
         
-            return 160.f/320.f*kWidth;
+//            return 160.f/320.f*kWidth;
+            return 0.01;
         } else if (indexPath.section == 1) {
             return 38;
         }
@@ -367,7 +368,7 @@
     cityVC.selectStyle = SelectStyleMultiSelect;
     self.selectStyle = SelectStyleMultiSelect;
     cityVC.delegate = self;
-    [self.navigationController pushViewController:cityVC animated:YES];
+    [self.navigationController pushViewController:cityVC animated:NO];
 //    [self presentViewController:cityVC animated:YES completion:^{
 //
 //    }];
