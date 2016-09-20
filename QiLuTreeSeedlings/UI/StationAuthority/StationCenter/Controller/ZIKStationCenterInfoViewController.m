@@ -15,6 +15,7 @@
 
 #import "ZIKMiaoQiZhongXinModel.h"
 #import "ZIKChangeBriefViewController.h"
+#import "ZIKFunction.h"
 @interface ZIKStationCenterInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
     UIImage        *_globalHeadImage;
@@ -40,12 +41,14 @@
     }
     titlesArray = @[@"我的头像",@"姓名",@"电话",@"自我介绍"];
 
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, 44*4) style:UITableViewStylePlain];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight) style:UITableViewStylePlain];
     tableview.dataSource = self;
     tableview.delegate   = self;
     [self.view addSubview:tableview];
     tableview.scrollEnabled = NO;
     self.myTableView = tableview;
+    self.myTableView.backgroundColor = BGColor;
+    [ZIKFunction setExtraCellLineHidden:self.myTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,6 +61,21 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 3) {
+        if (![self.type isEqualToString: @"苗企"]) {
+         CGRect rect =    [ZIKFunction getCGRectWithContent:self.masterModel.brief width:kWidth-100-30 font:15.0f];
+//                          cell.detailTextLabel.text = self.masterModel.brief;
+            return rect.size.height;
+
+        } else {
+//                          cell.detailTextLabel.text = APPDELEGATE.userModel.brief;
+            CGRect rect =    [ZIKFunction getCGRectWithContent:APPDELEGATE.userModel.brief width:kWidth-100-30 font:15.0f];
+            return rect.size.height;
+
+        }
+
+
+    }
     return 44;
 }
 
@@ -77,13 +95,13 @@
         if (!cellHeadImageView) {
             cellHeadImageView = [[UIImageView alloc] init];
         }
-
     }
     cell.textLabel.text = titlesArray[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:15.0f];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0f];
-
+    //CLog(@"%@",cell.detailTextLabel.description);
     cell.textLabel.textColor = DarkTitleColor;
+    cell.contentView.backgroundColor = [UIColor whiteColor];
     if (indexPath.row == 0) {
         cellHeadImageView.frame = CGRectMake(kWidth-75, 7, 30, 30);
         cellHeadImageView.layer.cornerRadius = 15.0f;
@@ -107,6 +125,8 @@
             cell.detailTextLabel.text = self.masterModel.phone;
         } else if (indexPath.row == 3) {
             cell.detailTextLabel.text = self.masterModel.brief;
+            cell.detailTextLabel.numberOfLines = 0;
+            cell.detailTextLabel.textAlignment = NSTextAlignmentLeft;
         }
     } else {
         if (indexPath.row == 1) {
@@ -116,6 +136,8 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 3) {
             cell.detailTextLabel.text = APPDELEGATE.userModel.brief;
+            cell.detailTextLabel.numberOfLines  = 0;
+            cell.detailTextLabel.textAlignment = NSTextAlignmentLeft;
         }
 
     }
@@ -195,6 +217,7 @@
         NSDictionary *masterInfo = result[@"masterInfo"];
         self.masterModel = [MasterInfoModel yy_modelWithDictionary:masterInfo];
         [self.myTableView reloadData];
+
 
     } failure:^(NSError *error) {
         ;

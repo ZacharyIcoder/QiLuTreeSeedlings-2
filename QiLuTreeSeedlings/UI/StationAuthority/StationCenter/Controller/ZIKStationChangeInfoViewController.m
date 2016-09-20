@@ -63,7 +63,7 @@
 
        if ([self.titleString isEqualToString:@"自我介绍"]) {
            if ([ZIKFunction xfunc_check_strEmpty:self.textField.text]) {
-               [ToastView showTopToast:@"用户名不允许为空"];
+               [ToastView showTopToast:@"自我介绍内容为空"];
                return;
            }
            else {
