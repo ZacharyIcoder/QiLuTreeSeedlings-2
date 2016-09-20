@@ -132,7 +132,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    if (buttonIndex == 1) {
+    if (buttonIndex == 0) {
         
         UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
@@ -146,26 +146,27 @@
             
         }];
         //[self presentModalViewController:pickerImage animated:YES];
-    }else if (buttonIndex == 0) {
-        
-        //先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
-        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-        if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
-            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }
-        //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
-        //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
-        //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
-        picker.delegate = self;
-        picker.allowsEditing = YES;//设置可编辑
-        picker.sourceType = sourceType;
-        [self presentViewController:picker animated:YES completion:^{
-            
-        }];
-        //[self presentModalViewController:picker animated:YES];//进入照相界面
     }
-    
+//    else if (buttonIndex == 0) {
+//        
+//        //先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
+//        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+//        if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+//            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//        }
+//        //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
+//        //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
+//        //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
+//        UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
+//        picker.delegate = self;
+//        picker.allowsEditing = YES;//设置可编辑
+//        picker.sourceType = sourceType;
+//        [self presentViewController:picker animated:YES completion:^{
+//            
+//        }];
+//        //[self presentModalViewController:picker animated:YES];//进入照相界面
+//    }
+//    
 }
 
 #pragma mark UIImagePickerControllerDelegate
