@@ -324,7 +324,12 @@
     //CLog(@"orderState:%@,orderType:%@,orderAddress:%@",orderState,orderType,orderAddress);
     self.status = orderState;
     self.ordetTypeUid = orderType;
-    self.area = [self.areaMArr JSONString];
+    if ([orderAddress isEqualToString:@"请选择地址"]) {
+        self.area = nil;
+    }else{
+        self.area = [self.areaMArr JSONString];
+    }
+    
     [self requestMyOrderList:@"1"];
     NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:0 inSection:1];
     ZIKOrderSecondTableViewCell *cell = (ZIKOrderSecondTableViewCell *)[self.orderTV cellForRowAtIndexPath:indexPath];
@@ -389,9 +394,15 @@
     [cityArray enumerateObjectsUsingBlock:^(NSString *cityCode, NSUInteger idx, BOOL * _Nonnull stop) {
         str = [str stringByAppendingString:[NSString stringWithFormat:@"%@,",[citydao getCityNameByCityUid:cityCode]]];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:2];
+        if (cityCode.length>2) {
+            dic[@"provinceCode"] = [citydao getCityParentCode:cityCode];
+            dic[@"cityCode"]     = cityCode;
+        }else{
+            dic[@"provinceCode"] = cityCode;
+        }
+        
         //{"provinceCode":"11", "cityCode":"110101"}
-        dic[@"provinceCode"] = [citydao getCityParentCode:cityCode];
-        dic[@"cityCode"]     = cityCode;
+       
         [self.areaMArr addObject:dic];
     }];
     [citydao closeDataBase];

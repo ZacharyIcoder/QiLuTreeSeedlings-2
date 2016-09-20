@@ -10,4 +10,5 @@
 #import "ZIKArrowViewController.h"
 @interface ZIKMiaoQiListViewController : ZIKArrowViewController
 @property (nonatomic, assign) NSInteger starLevel;
+-(id)initWithStarLeve:(NSUInteger )starLeve;
 @end

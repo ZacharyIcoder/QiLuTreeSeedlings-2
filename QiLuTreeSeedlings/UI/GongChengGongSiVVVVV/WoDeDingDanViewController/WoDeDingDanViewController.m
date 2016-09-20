@@ -45,6 +45,7 @@
     self.tableView.editing = NO;
     bottomcell.hidden = YES;
     self.tableView.frame = CGRectMake(0, 64+53, kWidth, kHeight-115-50);
+    [self.tableView headerBeginRefreshing];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

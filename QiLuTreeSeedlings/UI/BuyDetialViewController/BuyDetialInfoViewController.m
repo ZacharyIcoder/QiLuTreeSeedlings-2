@@ -1354,6 +1354,14 @@ static BOOL isHezuo = NO;
         }
         if (self.model.state==0) {
             [self.guoqiIamgV setImage:[UIImage imageNamed:@"已成交"]];
+            if (_isPuy) {
+                [_BuyMessageView removeFromSuperview];
+                _BuyMessageView=nil;
+            }else{
+                [_BuyMessageView removeFromSuperview];
+                _BuyMessageView=nil;
+                _messageView = [self lianxiMessageView];
+            }
         }
 
         if (self.model.state == 5) {//已删除

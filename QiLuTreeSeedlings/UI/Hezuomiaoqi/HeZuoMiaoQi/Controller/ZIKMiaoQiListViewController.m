@@ -42,7 +42,14 @@
 @end
 
 @implementation ZIKMiaoQiListViewController
-
+-(id)initWithStarLeve:(NSUInteger )starLeve
+{
+    self=[super init];
+    if (self) {
+        self.starLevel=starLeve;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataAry=[NSMutableArray array];
@@ -239,6 +246,30 @@
 //    self.leftBarBtnImgString = @"BackBtn";
 
     [self cityView];
+    if (self.starLevel>0) {
+        switch (self.starLevel) {
+            case 3:
+                [self.startBtn setTitle:@"三星" forState:UIControlStateSelected];
+                self.startBtn.selected=YES;
+                self.level=@"3";
+                break;
+            case 2:
+                [self.startBtn setTitle:@"四星" forState:UIControlStateSelected];
+                self.startBtn.selected=YES;
+                self.level=@"4";
+                break;
+            case 1:
+                [self.startBtn setTitle:@"五星" forState:UIControlStateSelected];
+                self.startBtn.selected=YES;
+                self.level=@"5";
+                break;
+
+
+                
+            default:
+                break;
+        }
+    }
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 110, kWidth, kHeight-64-46-44-30)];
     tableView.delegate=self;
     tableView.dataSource=self;
