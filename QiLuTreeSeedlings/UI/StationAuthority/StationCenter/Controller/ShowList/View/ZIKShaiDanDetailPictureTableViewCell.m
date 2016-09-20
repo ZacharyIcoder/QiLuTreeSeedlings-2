@@ -64,7 +64,7 @@
 //    } else {
 //        imageHeight = (kWidth - 50) / 3.0 ;
 //    }
-    imageHeight = imageWidth*0.60;
+    imageHeight = imageWidth*0.67;
 
     for (NSInteger i = 0; i < n; i++) {
         [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:[_imageArray objectAtIndex:i]
@@ -76,12 +76,13 @@
                                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL)
          {
              CGRect rect = CGRectMake(25 + (i % num) * (imageWidth + 10) ,  (i / num) * (imageHeight + 10), imageWidth, imageHeight);
-             UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
+             UIButton *imageView = [[UIButton alloc]initWithFrame:rect];
              CLog(@"%@",image);
              if (image == nil) {
                  image = [UIImage imageNamed:@"MoRentu"];
                 }
-             imageView.image = image;
+
+//             imageView.contentMode = UIViewContentModeScaleAspectFit;
 //             if (num == 1) {
 //                 imageView.frame = CGRectMake(kWidth/2-50, 10, 100, 60);
 //             } else {
@@ -91,9 +92,17 @@
                  if (num == 1) {
                      imageView.frame = CGRectMake(kWidth/2-65, 10, 130, 85);
                  }
+             } else {
+                 if (num == 1) {
+                     imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, imageView.frame.size.width+20, imageView.frame.size.height);
+                 }
              }
+
+             [imageView setBackgroundImage:image forState:UIControlStateNormal];
              imageView.clipsToBounds = YES;
              imageView.contentMode = UIViewContentModeScaleAspectFill;
+
+
              imageView.tag = i;
              imageView.userInteractionEnabled = YES;
              UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap:)];
@@ -135,6 +144,87 @@
     imageBrowser.currentSelectedIamge = (int)tap.view.tag;
     imageBrowser.bigImageArray = /*weiboInformation.pic_urls*/_imageArray;
     [imageBrowser showWeiboImages];
+}
+
+- (UIImage*)resizeImage:(UIImage*)image withWidth:(CGFloat)width withHeight:(CGFloat)height
+{
+    CGSize newSize = CGSizeMake(width, height);
+    CGFloat widthRatio = newSize.width/image.size.width;
+    CGFloat heightRatio = newSize.height/image.size.height;
+
+    if(widthRatio > heightRatio)
+    {
+        newSize=CGSizeMake(image.size.width*heightRatio,image.size.height*heightRatio);
+    }
+    else
+    {
+        newSize=CGSizeMake(image.size.width*widthRatio,image.size.height*widthRatio);
+    }
+
+
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return newImage;
+}
+
+
+-(UIImage *) imageCompressForSize:(UIImage *)sourceImage targetSize:(CGSize)size{
+
+    UIImage *newImage = nil;
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    CGFloat targetWidth = size.width;
+    CGFloat targetHeight = size.height;
+    CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    CGPoint thumbnailPoint = CGPointMake(0.0, 0.0);
+
+    if(CGSizeEqualToSize(imageSize, size) == NO){
+
+        CGFloat widthFactor = targetWidth / width;
+        CGFloat heightFactor = targetHeight / height;
+
+        if(widthFactor > heightFactor){
+            scaleFactor = widthFactor;
+
+        }
+        else{
+
+            scaleFactor = heightFactor;
+        }
+        scaledWidth = width * scaleFactor;
+        scaledHeight = height * scaleFactor;
+
+        if(widthFactor > heightFactor){
+
+            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
+        }else if(widthFactor < heightFactor){
+
+            thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
+        }
+    }
+
+    UIGraphicsBeginImageContext(size);
+
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
+
+    [sourceImage drawInRect:thumbnailRect];
+
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    if(newImage == nil){
+        NSLog(@"scale image fail");
+    }
+    
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end

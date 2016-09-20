@@ -171,6 +171,12 @@
     [addressSelectView addSubview:addressSelectLabel];
     self.orderAddressSelectLabel = addressSelectLabel;
 
+    UIImageView *arrowImageView = [[UIImageView alloc] init];
+    arrowImageView.frame = CGRectMake(addressSelectView.frame.size.width-30, 20, 20, 20);
+    arrowImageView.image = [UIImage imageNamed:@"moreRow"];
+//    arrowImageView.backgroundColor = [UIColor redColor];
+    [addressSelectView addSubview:arrowImageView];
+
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectAddress:)];
     [addressSelectView addGestureRecognizer:tapGR];
 

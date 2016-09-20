@@ -218,12 +218,12 @@ static ZIKShaiDanDetailModel *myModel =  nil;
             h = self.picArray.count / 3;
         }
         if (self.picArray.count == 1) {
-            return  (kWidth - 50) * 0.60;
+            return  (kWidth - 50) * 0.67;
         }
         if (self.picArray.count == 2) {
-            return (kWidth- 50)/2 * 0.60;
+            return (kWidth- 50)/2 * 0.67;
         }
-        return h*imageWidth*0.66+10*(h-1);
+        return h*imageWidth*0.67+10*(h-1);
     }
 
     if (indexPath.section == 2) {

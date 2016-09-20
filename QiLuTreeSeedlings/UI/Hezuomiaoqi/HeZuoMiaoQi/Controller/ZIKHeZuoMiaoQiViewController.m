@@ -18,9 +18,12 @@
 #import "ZIKMiaoQiDetailTableViewController.h"
 #import "ZIKMiaoQiListViewController.h"
 #import "AdvertView.h"
+
+#import "BigImageViewShowView.h"
+
 static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
-@interface ZIKHeZuoMiaoQiViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ZIKHeZuoMiaoQiViewController ()<UITableViewDelegate,UITableViewDataSource,AdvertDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mqTableView;
 
 @property (nonatomic, strong) NSMutableArray *fiveStarMArr;
@@ -28,6 +31,9 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 @property (nonatomic, strong) NSMutableArray *threeStarMArr;
 //@property (nonatomic, strong) NSMutableArray *twoStarMArr;
 //@property (nonatomic, strong) NSMutableArray *oneStarMarr;
+
+@property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
+
 
 @end
 
@@ -47,6 +53,8 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     self.threeStarMArr = [NSMutableArray array];
 //    self.twoStarMArr   = [NSMutableArray array];
 //    self.oneStarMarr   = [NSMutableArray array];
+    self.bigImageViewShowView =[[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg",@"bangde5.png"]];
+
 }
 
 - (void)initUI {
@@ -185,7 +193,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     {
         if (indexPath.row==0) {
             AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-            //            adView.delegate=self;
+            adView.delegate=self;
             [adView setAdInfo];
             [adView adStart];
             return adView;
@@ -263,4 +271,10 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 //    UIView *headerView = [[UIView alloc] init];
 //    return headerView;
 //}
+
+//广告页面点击
+-(void)advertPush:(NSInteger)index
+{
+    [self.bigImageViewShowView showInKeyWindowWithIndex:index];
+}
 @end
