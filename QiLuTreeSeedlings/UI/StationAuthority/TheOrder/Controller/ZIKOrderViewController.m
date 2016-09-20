@@ -74,13 +74,17 @@
     if (self.screenView) {
         self.screenView.hidden = NO;
     }
-    self.hidesBottomBarWhenPushed = YES;
+//    if (![self.title isEqualToString:@"金牌订单"]) {
+//        self.hidesBottomBarWhenPushed = YES;
+//        
+//    }
+    
 }
 
 - (void)initData {
     self.page           = 1;//页面page从1开始
-//    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg"]];
-    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"站长通-海报-2"]];
+    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg",@"bangde1.png"]];
+//    self.bigImageViewShowView = [[BigImageViewShowView alloc] initWithNomalImageAry:@[@"站长通-海报-2"]];
     self.areaMArr  = [NSMutableArray arrayWithCapacity:5];
     self.orderMArr = [[NSMutableArray alloc] init];
 }
@@ -319,13 +323,20 @@
 
 //    [self.view addSubview:self.screenView];
 }
-
+-(void)clearBtnAction
+{
+    _citysStr=nil;
+    [self.citys removeAllObjects];
+    [self.areaMArr removeAllObjects];
+    
+}
 -(void)screeningBtnClickSendOrderStateInfo:(NSString *)orderState orderTypeInfo:(NSString *)orderType orderAddressInfo:(NSString *)orderAddress {
     //CLog(@"orderState:%@,orderType:%@,orderAddress:%@",orderState,orderType,orderAddress);
     self.status = orderState;
     self.ordetTypeUid = orderType;
     if ([orderAddress isEqualToString:@"请选择地址"]) {
         self.area = nil;
+        [self.areaMArr removeAllObjects];
     }else{
         self.area = [self.areaMArr JSONString];
     }
@@ -368,7 +379,12 @@
 
 - (void)addressSelectLabelAction {
     ZIKCityListViewController *cityVC = [[ZIKCityListViewController alloc] init];
-    cityVC.hidesBottomBarWhenPushed = YES;
+    if ([self.title isEqualToString:@"金牌订单"]) {
+       cityVC.hidesBottomBarWhenPushed = YES;
+    }else{
+      
+    }
+    
     self.screenView.hidden = YES;
     cityVC.selectStyle = SelectStyleMultiSelect;
     self.selectStyle = SelectStyleMultiSelect;
@@ -377,6 +393,8 @@
 //    [self presentViewController:cityVC animated:YES completion:^{
 //
 //    }];
+    
+    [self.citys removeAllObjects];
     cityVC.citys = self.citys;
 }
 

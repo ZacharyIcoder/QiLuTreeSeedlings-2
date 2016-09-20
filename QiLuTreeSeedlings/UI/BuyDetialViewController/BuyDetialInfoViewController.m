@@ -1354,7 +1354,7 @@ static BOOL isHezuo = NO;
         }
         if (self.model.state==0) {
             [self.guoqiIamgV setImage:[UIImage imageNamed:@"已成交"]];
-            if (_isPuy) {
+            if (!_isPuy) {
                 [_BuyMessageView removeFromSuperview];
                 _BuyMessageView=nil;
             }else{
