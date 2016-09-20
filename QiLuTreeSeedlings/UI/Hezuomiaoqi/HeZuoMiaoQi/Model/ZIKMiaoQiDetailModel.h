@@ -56,4 +56,5 @@
 
 @property (nonatomic, copy) NSString *headUrl;
 @property (nonatomic, copy) NSString *legalPerson;
+@property (nonatomic, copy) NSString *memberPhone;
 @end

@@ -38,8 +38,8 @@
     NSURL *imageURL = [NSURL URLWithString:APPDELEGATE.userModel.headUrl];
     [self.headImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"UserImage"]];
 
-    self.companyNameLabel.text  = model.companyName;
-    self.nameLabel.text = model.name;
+    self.companyNameLabel.text  = model.name;
+    self.nameLabel.text = model.phone;
 
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
     UITapGestureRecognizer *tapGR2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];

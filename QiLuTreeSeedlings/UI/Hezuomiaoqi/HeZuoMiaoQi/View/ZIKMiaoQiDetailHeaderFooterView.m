@@ -27,7 +27,7 @@
 */
 - (void)configWithModel:(ZIKMiaoQiDetailModel *)model {
     self.companyNameLabel.text = model.name;
-    self.briefLabel.text = model.phone;
+    self.briefLabel.text = model.memberPhone;
     NSURL *imageURL = [NSURL URLWithString:model.headUrl];
     [self.headImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"UserImage"]];
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];

@@ -138,8 +138,11 @@ static ZIKShaiDanDetailModel *myModel =  nil;
         if (self.page == 1) {
             ZIKShaiDanDetailModel  *shaiModel = [ZIKShaiDanDetailModel yy_modelWithDictionary:shaiDanDic];
             shaiModel.num = 0;
-            NSArray *imagesArray = [shaiModel.images componentsSeparatedByString:@","];
-            self.picArray = imagesArray;
+            if (![ZIKFunction xfunc_check_strEmpty:shaiModel.images]) {
+                NSArray *imagesArray = [shaiModel.images componentsSeparatedByString:@","];
+                self.picArray = imagesArray;
+
+            }
             self.shaiModel = shaiModel;
             if ([shaiModel.memberUid isEqualToString:APPDELEGATE.userModel.access_id]) {
                 self.rightBarBtnTitleString = @"编辑";

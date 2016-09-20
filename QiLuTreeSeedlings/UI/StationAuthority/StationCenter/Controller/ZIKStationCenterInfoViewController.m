@@ -149,6 +149,8 @@
             changeInfoVC.setString = APPDELEGATE.userModel.name;
         } else if (indexPath.row == 2) {
             changeInfoVC.setString = self.miaoModel.phone;
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            return;
         } else if (indexPath.row == 3) {
             changeInfoVC.setString = APPDELEGATE.userModel.brief;
         }

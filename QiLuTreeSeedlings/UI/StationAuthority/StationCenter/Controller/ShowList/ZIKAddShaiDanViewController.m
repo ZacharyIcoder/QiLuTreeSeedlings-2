@@ -16,10 +16,12 @@
 @interface ZIKAddShaiDanViewController ()<UIAlertViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,WHC_ChoicePictureVCDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet BWTextView *contentBWTextView;
-@property (weak, nonatomic) IBOutlet ZIKShaiDanPickImageView *pickImageView;
+@property (strong, nonatomic) IBOutlet ZIKShaiDanPickImageView *pickImageView;
 
 @property (nonatomic, strong) UIActionSheet    *myActionSheet;
 @property (nonatomic, assign) NSInteger viewWillAppear;
+@property (strong, nonatomic) IBOutlet UIScrollView *pickScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *shaidanLabel;
 
 @end
 
@@ -42,12 +44,23 @@
 
     self.nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
 //    self.contentBWTextView.clearsOnInsertion = YES;
-    [self.pickImageView initUI];
+      self.pickScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.shaidanLabel.frame),CGRectGetMaxY(self.shaidanLabel.frame)-30, kWidth-CGRectGetMaxX(self.shaidanLabel.frame), kHeight-CGRectGetMaxY(self.shaidanLabel.frame)-95+30)];
+//    self.pickScrollView.frame = CGRectMake(110, 300, kWidth-110, 300);
+    [self.view addSubview:self.pickScrollView];
+//    self.pickScrollView.backgroundColor = [UIColor yellowColor];
+    self.pickScrollView.contentSize = CGSizeMake(0, self.pickScrollView.frame.size.height);
+    self.pickScrollView.scrollEnabled = YES;
+    self.pickScrollView.userInteractionEnabled = YES;
+
+    self.pickImageView = [[ZIKShaiDanPickImageView alloc] initWithFrame:CGRectMake(0, 0, self.pickScrollView.frame.size.width, self.pickScrollView.frame.size.height)];
+    [self.pickScrollView addSubview:self.pickImageView];
+//    [self.pickImageView initUI];
     __weak typeof(self) weakSelf = self;//解决循环引用的问题
 
     self.pickImageView.takePhotoBlock = ^{
         [weakSelf openMenu];
     };
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,6 +100,9 @@
                 [imagesUrlMAry addObject:dic];
             }];
             self.pickImageView.urlMArr = imagesUrlMAry;
+            if (self.pickImageView.urlMArr.count > 11) {
+                self.pickScrollView.contentSize = CGSizeMake(0, 600);
+            }
 
         }
     } failure:^(NSError *error) {
@@ -221,6 +237,10 @@
 //                    return ;
 //                }
                 [weakSelf.pickImageView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+                if (self.pickImageView.urlMArr.count > 11) {
+                    self.pickScrollView.contentSize = CGSizeMake(0, 600);
+                }
+
                 [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
             }
             else {
@@ -259,6 +279,11 @@
 //                    return ;
 //                }
                 [weakSelf.pickImageView addImage:[UIImage imageWithData:imageData]  withUrl:responseObject[@"result"]];
+                if (self.pickImageView.urlMArr.count > 11) {
+                    self.pickScrollView.contentSize = CGSizeMake(0, 600);
+                }
+
+
                 [ToastView showToast:@"图片上传成功" withOriginY:250 withSuperView:weakSelf.view];
             }
             else {

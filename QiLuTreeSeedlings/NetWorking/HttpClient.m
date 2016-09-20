@@ -5336,7 +5336,7 @@
     parmers[@"device_id"]        = str;
 
     parmers[@"memberUid"]        = memberUid;
-    parmers[@"page"]             = page;
+    parmers[@"pageNumber"]       = page;
     parmers[@"pageSize"]         = pageSize;
 
     ShowActionV();

@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="contentBWTextView" destination="9zN-Kc-Xbk" id="VDV-42-bKW"/>
                 <outlet property="nameTextField" destination="P7w-C3-vUY" id="2kP-3M-brG"/>
-                <outlet property="pickImageView" destination="cGW-c5-MJB" id="Csx-y4-f2t"/>
+                <outlet property="shaidanLabel" destination="TAN-k8-6Gj" id="RVr-O9-RtN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -90,27 +90,23 @@
                     <rect key="frame" x="560" y="123" width="20" height="20"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9zN-Kc-Xbk" customClass="BWTextView">
-                    <rect key="frame" x="91" y="123" width="501" height="100"/>
+                    <rect key="frame" x="91" y="123" width="501" height="80"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="cUv-i4-PSz"/>
+                        <constraint firstAttribute="height" constant="80" id="cUv-i4-PSz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wps-Ru-97V">
-                    <rect key="frame" x="0.0" y="246" width="600" height="10"/>
+                    <rect key="frame" x="0.0" y="226" width="600" height="10"/>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="4Vv-ag-D2y"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-c5-MJB" customClass="ZIKShaiDanPickImageView">
-                    <rect key="frame" x="98" y="270" width="484" height="225"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="晒单图片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAN-k8-6Gj">
-                    <rect key="frame" x="21" y="270" width="70" height="20"/>
+                    <rect key="frame" x="21" y="250" width="70" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Kzr-ta-rJq"/>
                         <constraint firstAttribute="width" constant="70" id="PN5-e1-5wX"/>
@@ -127,15 +123,11 @@
                 <constraint firstItem="wps-Ru-97V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1pE-5B-3iJ"/>
                 <constraint firstAttribute="trailing" secondItem="wps-Ru-97V" secondAttribute="trailing" id="34I-dp-YLX"/>
                 <constraint firstAttribute="trailing" secondItem="D0d-Xq-77V" secondAttribute="trailing" constant="8" id="8Nn-43-qER"/>
-                <constraint firstItem="opC-qv-Xli" firstAttribute="top" secondItem="cGW-c5-MJB" secondAttribute="bottom" constant="10" id="9gE-a0-HB7"/>
-                <constraint firstItem="cGW-c5-MJB" firstAttribute="leading" secondItem="TAN-k8-6Gj" secondAttribute="trailing" constant="7" id="9oY-6W-qBx"/>
                 <constraint firstItem="P7w-C3-vUY" firstAttribute="centerY" secondItem="saD-We-RZS" secondAttribute="centerY" id="AL1-IL-9wA"/>
                 <constraint firstAttribute="trailing" secondItem="P7w-C3-vUY" secondAttribute="trailing" constant="8" id="CZF-6W-VTc"/>
                 <constraint firstItem="saD-We-RZS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="Cef-bZ-DGR"/>
                 <constraint firstItem="TAN-k8-6Gj" firstAttribute="leading" secondItem="saD-We-RZS" secondAttribute="leading" id="EMj-bE-lsD"/>
                 <constraint firstAttribute="trailing" secondItem="b0Y-Fg-Tgt" secondAttribute="trailing" id="GTS-Ff-R2I"/>
-                <constraint firstAttribute="trailing" secondItem="cGW-c5-MJB" secondAttribute="trailing" constant="18" id="QjZ-wv-bHj"/>
-                <constraint firstItem="cGW-c5-MJB" firstAttribute="top" secondItem="wps-Ru-97V" secondAttribute="bottom" constant="14" id="TVX-Dh-Ccl"/>
                 <constraint firstItem="D0d-Xq-77V" firstAttribute="top" secondItem="P7w-C3-vUY" secondAttribute="bottom" constant="8" id="XKW-dK-eVA"/>
                 <constraint firstItem="0uF-2b-dm5" firstAttribute="leading" secondItem="saD-We-RZS" secondAttribute="leading" id="Yaa-X3-eQQ"/>
                 <constraint firstAttribute="bottom" secondItem="opC-qv-Xli" secondAttribute="bottom" id="e1Q-RB-Kge"/>
@@ -156,7 +148,7 @@
                     <exclude reference="FUj-u8-XHH"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="636" y="282"/>
+            <point key="canvasLocation" x="161" y="162"/>
         </view>
     </objects>
     <resources>

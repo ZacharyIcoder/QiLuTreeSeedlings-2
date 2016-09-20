@@ -20,7 +20,7 @@
 #import "WeiboImageView.h"
 #import "WeiboImageBrowser.h"
 
-
+#import "ZIKFunction.h"
 @implementation ZIKShaiDanDetailPictureTableViewCell
 
 - (void)awakeFromNib {
@@ -48,7 +48,10 @@
     if (n == 0) {
         return;
     }
-    NSInteger num = 0;
+//    if (n == 1) {
+//
+//    }
+     NSInteger num = 0;
     if (n >= 3) {
         num = 3;
     } else  {

@@ -79,7 +79,7 @@
 
     //最多允许添加9张图片
 
-    if (self.imageBtnArr.count == 10) {
+    if (self.imageBtnArr.count == 100) {
 
         self.pickBtn.hidden = YES;
     }
@@ -103,7 +103,7 @@
 
     //最多允许添加9张图片
 
-    if (self.imageBtnArr.count == 10) {
+    if (self.imageBtnArr.count == 100) {
 
         self.pickBtn.hidden = YES;
     }
@@ -151,7 +151,7 @@
 
     UIScrollView *scrollView = (UIScrollView *)self.superview;
 
-    NSInteger row_nums = 3;
+    NSInteger row_nums = 4;
     CGFloat marginX = 10;
     CGFloat imageViewW = (ScreenWidth-100 - (row_nums+1)*marginX)/row_nums;
     CGFloat imageViewH = imageViewW;
