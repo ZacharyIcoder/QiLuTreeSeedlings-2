@@ -12,6 +12,7 @@
 @required
 - (void)screeningBtnClickSendOrderStateInfo:(NSString *)orderState orderTypeInfo:(NSString *)orderType orderAddressInfo:(NSString *)orderAddress;
 - (void)StationOrderScreeningbackBtnAction;
+-(void)clearBtnAction;
 - (void)addressSelectLabelAction;
 @end
 

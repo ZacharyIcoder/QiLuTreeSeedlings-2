@@ -74,7 +74,11 @@
     if (self.screenView) {
         self.screenView.hidden = NO;
     }
-    self.hidesBottomBarWhenPushed = YES;
+//    if (![self.title isEqualToString:@"金牌订单"]) {
+//        self.hidesBottomBarWhenPushed = YES;
+//        
+//    }
+    
 }
 
 - (void)initData {
@@ -319,7 +323,13 @@
 
 //    [self.view addSubview:self.screenView];
 }
-
+-(void)clearBtnAction
+{
+    _citysStr=nil;
+    [self.citys removeAllObjects];
+    [self.areaMArr removeAllObjects];
+    
+}
 -(void)screeningBtnClickSendOrderStateInfo:(NSString *)orderState orderTypeInfo:(NSString *)orderType orderAddressInfo:(NSString *)orderAddress {
     //CLog(@"orderState:%@,orderType:%@,orderAddress:%@",orderState,orderType,orderAddress);
     self.status = orderState;
@@ -369,7 +379,12 @@
 
 - (void)addressSelectLabelAction {
     ZIKCityListViewController *cityVC = [[ZIKCityListViewController alloc] init];
-    cityVC.hidesBottomBarWhenPushed = YES;
+    if ([self.title isEqualToString:@"金牌订单"]) {
+       cityVC.hidesBottomBarWhenPushed = YES;
+    }else{
+      
+    }
+    
     self.screenView.hidden = YES;
     cityVC.selectStyle = SelectStyleMultiSelect;
     self.selectStyle = SelectStyleMultiSelect;
@@ -378,6 +393,8 @@
 //    [self presentViewController:cityVC animated:YES completion:^{
 //
 //    }];
+    
+    [self.citys removeAllObjects];
     cityVC.citys = self.citys;
 }
 

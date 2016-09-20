@@ -359,6 +359,9 @@
     self.orderType = _orderTypeAllUid;
     self.orderAddress = @"";
     self.orderAddressSelectLabel.text = @"请选择地址";
+    if ([self.delegate respondsToSelector:@selector(clearBtnAction)]) {
+        [self.delegate clearBtnAction];
+    }
 
 }
 
