@@ -74,7 +74,7 @@
     if (self.screenView) {
         self.screenView.hidden = NO;
     }
-    self.hidesBottomBarWhenPushed = NO;
+//    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (void)initData {

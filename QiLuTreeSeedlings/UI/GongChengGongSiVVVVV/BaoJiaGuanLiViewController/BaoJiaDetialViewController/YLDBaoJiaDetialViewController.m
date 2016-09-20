@@ -244,12 +244,10 @@
         
         // Create the actions.
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-//            NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
         }];
         
         UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             ShowActionV();
-            RemoveActionV();
             [HTTPCLIENT jianliHezuoWithBaoJiaID:model.uid Success:^(id responseObject) {
                 if ([[responseObject objectForKey:@"success"] integerValue]) {
                     [ToastView showTopToast:@"合作成功"];
@@ -261,7 +259,6 @@
             } failure:^(NSError *error) {
                 RemoveActionV();
             }];
-//            NSLog(@"The \"Okay/Cancel\" alert's other action occured.");
         }];
         
         // Add the actions.

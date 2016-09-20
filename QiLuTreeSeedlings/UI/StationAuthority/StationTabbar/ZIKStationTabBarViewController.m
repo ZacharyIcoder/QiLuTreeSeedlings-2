@@ -112,8 +112,8 @@
     stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-站长中心on(1)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 
-    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:workNav,buyNav,orderVC,offerNav,stationNav,nil];
-    self.viewControllers = list;
+//    NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:,nil];
+    self.viewControllers = @[workNav,buyNav,orderVC,offerNav,stationNav];
     self.delegate = self;
     UIColor *normalColor = [UIColor colorWithRed:88/255.0 green:88/255.0 blue:88/255.0 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
