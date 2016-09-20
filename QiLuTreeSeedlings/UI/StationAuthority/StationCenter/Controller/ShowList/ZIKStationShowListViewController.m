@@ -285,7 +285,7 @@
 
 #pragma mark - 长按触发事件
 - (void)tapGR {
-    if (self.shaiData.count == 0) {
+    if (self.shaiData.count == 0 || self.shaiType == 0) {
         return;
     }
     if (!self.showListTableView.editing) {
