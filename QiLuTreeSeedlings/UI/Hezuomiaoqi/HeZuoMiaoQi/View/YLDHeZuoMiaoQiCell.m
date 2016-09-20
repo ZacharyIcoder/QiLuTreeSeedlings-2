@@ -20,7 +20,14 @@
     self.titleLab.text=model.companyName;
     self.addressLab.text=model.companyAddress;
     self.personLab.text=[NSString stringWithFormat:@"%@ %@",model.legalPerson,model.phone];
-    self.startView.value = (CGFloat)model.starLevel;
+    self.startView.value = 5.0-(CGFloat)model.starLevel;
+    [self.phoneBtn addTarget:self action:@selector(phoneBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)phoneBtnAction:(UIButton *)sender
+{
+    NSString *allString = [NSString stringWithFormat:@"telprompt://%@",self.model.phone];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:allString]];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

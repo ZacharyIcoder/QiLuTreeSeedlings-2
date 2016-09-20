@@ -111,7 +111,7 @@
         _lastSelectedIndex = self.selectedIndex;
         //        CLog(@"2 OLD:%lu , NEW:%lu",(unsigned long)self.lastSelectedIndex,(unsigned long)tabIndex);
     }
-    if (tabIndex == 3 ||tabIndex == 4) {
+    if (tabIndex == 2||tabIndex == 3 ||tabIndex == 4) {
         if (APPDELEGATE.userModel.goldsupplierStatus == 1||APPDELEGATE.userModel.goldsupplierStatus == 2||APPDELEGATE.userModel.goldsupplierStatus ==3) {
             _isTiao = YES;//是苗企，可以进入苗企中心
         } else {

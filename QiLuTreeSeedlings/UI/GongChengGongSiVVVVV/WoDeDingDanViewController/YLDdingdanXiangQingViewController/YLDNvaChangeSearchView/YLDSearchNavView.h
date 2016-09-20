@@ -15,4 +15,5 @@
 @interface YLDSearchNavView : UIView<UITextFieldDelegate>
 @property (nonatomic,weak) id<YLDSearchNavViewDelegate> delegate;
 @property (nonatomic,weak) UITextField *textfield;
+@property (nonatomic,weak) UIButton *hidingBtn;
 @end

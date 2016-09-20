@@ -35,7 +35,7 @@
         UIButton *hidingBtn=[[UIButton alloc]initWithFrame:CGRectMake(texeView.frame.size.width-40, 1.5, 27, 27)];
         [hidingBtn setImage:[UIImage imageNamed:@"searchOrange"] forState:UIControlStateNormal];
         [hidingBtn addTarget: self action:@selector(hidingSelf) forControlEvents:UIControlEventTouchUpInside];
-        
+        self.hidingBtn=hidingBtn;
         [texeView addSubview:hidingBtn];
     }
     return self;

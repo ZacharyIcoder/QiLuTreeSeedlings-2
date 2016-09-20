@@ -73,7 +73,7 @@
     if (tableView.tag>=10) {
         return 44;
     }else{
-        return 100;
+        return 110;
     }
     
 }
@@ -256,6 +256,7 @@
     searchV.delegate=self;
     searchV.hidden=YES;
     searchV.textfield.placeholder=@"请输入苗企名称、电话、联系人";
+    [searchV.hidingBtn setImage:[UIImage imageNamed:@"searchBtnAction"] forState:UIControlStateNormal];
     [self.navBackView addSubview:searchV];
     
     UITableView *qiTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-118)];
@@ -300,6 +301,9 @@
     UIButton *startBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, kWidth/4, 46)];
     [startBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [startBtn setTitle:@"星级" forState:UIControlStateNormal];
+    startBtn.imageEdgeInsets = UIEdgeInsetsMake(0, kWidth/4-18, 0, 0);
+    startBtn.titleEdgeInsets =UIEdgeInsetsMake(0, -20, 0, 0);
+    
     [startBtn setBackgroundColor:[UIColor whiteColor]];
     [startBtn addTarget:self action:@selector(startBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [startBtn setTitleColor:DarkTitleColor forState:UIControlStateNormal];
@@ -320,6 +324,9 @@
     [shengBtn setImage:[UIImage imageNamed:@"工程订单_排序off"] forState:UIControlStateNormal];
     [shengBtn setTitleColor:NavYellowColor forState:UIControlStateSelected];
     [shengBtn setImage:[UIImage imageNamed:@"paixuOn"] forState:UIControlStateSelected];
+    shengBtn.imageEdgeInsets = UIEdgeInsetsMake(0, kWidth/4-18, 0, 0);
+    shengBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+    
     self.shengBtn=shengBtn;
     [view addSubview:shengBtn];
     UIImageView *line1=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth/4, 8, 0.5, 30)];
@@ -335,6 +342,8 @@
     [shiBtn setImage:[UIImage imageNamed:@"工程订单_排序off"] forState:UIControlStateNormal];
     [shiBtn setTitleColor:NavYellowColor forState:UIControlStateSelected];
     [shiBtn setImage:[UIImage imageNamed:@"paixuOn"] forState:UIControlStateSelected];
+    shiBtn.imageEdgeInsets = UIEdgeInsetsMake(0, kWidth/4-18, 0, 0);
+    shiBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     self.shiBtn=shiBtn;
     [view addSubview:shiBtn];
     shiBtn.enabled=NO;
@@ -350,6 +359,8 @@
     [xianBtn setImage:[UIImage imageNamed:@"工程订单_排序off"] forState:UIControlStateNormal];
     [xianBtn setTitleColor:NavYellowColor forState:UIControlStateSelected];
     [xianBtn setImage:[UIImage imageNamed:@"paixuOn"] forState:UIControlStateSelected];
+    xianBtn.imageEdgeInsets = UIEdgeInsetsMake(0, kWidth/4-18, 0, 0);
+    xianBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     self.xianBtn=xianBtn;
     [view addSubview:xianBtn];
     xianBtn.enabled=NO;
