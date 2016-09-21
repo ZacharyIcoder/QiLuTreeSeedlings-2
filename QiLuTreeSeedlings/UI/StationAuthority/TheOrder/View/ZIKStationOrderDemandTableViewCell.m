@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dingdangongsiTopLayoutConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *yongmiaodiTopLayoutConstraint;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *qitashuomingCenterYLayoutConstraint;
 @end
 
 
@@ -76,7 +77,7 @@
 
     CGRect nameRect =  [ZIKFunction getCGRectWithContent:model.person width:180 font:15.0f];
     self.nameWidthLayoutConstraint.constant = nameRect.size.width+5;
-    self.shuomingLabel.text = model.demandDescription;
+//    self.shuomingLabel.text = model.demandDescription;
 
     self.dianhuaLabel.text = model.phone;
     phone = model.phone;
@@ -154,6 +155,15 @@
         self.dingdangongsiLayoutConstraint.constant = (gongsiRect.size.height-20)/2 + 11;
         self.yongmiaodiTopLayoutConstraint.constant += (gongsiRect.size.height-20)/2;
     }
+
+    CGRect qitaRect = [ZIKFunction getCGRectWithContent:model.demandDescription width:self.shuomingLabel.frame.size.width font:15.0f];
+//    CLog(@"%ld",self.qitashuomingCenterYLayoutConstraint.constant);
+    if(qitaRect.size.height>18) {
+        if (qitaRect.size.height/2 > 15) {
+            self.qitashuomingCenterYLayoutConstraint.constant = qitaRect.size.height/2-15;
+        }
+    }
+    self.shuomingLabel.text = model.demandDescription;
 
 
 

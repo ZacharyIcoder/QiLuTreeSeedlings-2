@@ -62,16 +62,6 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系方式" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OU2-YZ-ATQ">
-                        <rect key="frame" x="10" y="197" width="65" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Lq2-KE-bh2"/>
-                            <constraint firstAttribute="width" constant="65" id="UOd-ex-CZ8"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他说明" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etu-g5-ydC">
                         <rect key="frame" x="10" y="237" width="65" height="21"/>
                         <constraints>
@@ -212,6 +202,16 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系方式" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OU2-YZ-ATQ">
+                        <rect key="frame" x="10" y="197" width="65" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Lq2-KE-bh2"/>
+                            <constraint firstAttribute="width" constant="65" id="UOd-ex-CZ8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yVK-hI-quC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="07y-x5-3fM"/>
@@ -297,6 +297,7 @@
                 <outlet property="nameWidthLayoutConstraint" destination="Wga-cA-Un3" id="6dJ-yk-RXM"/>
                 <outlet property="phoneLabel" destination="GxE-uj-XR4" id="WZQ-g1-e3c"/>
                 <outlet property="phoneWidthLayoutConstraint" destination="Nnm-Up-Ubh" id="FZv-jV-XX2"/>
+                <outlet property="qitashuomingCenterYLayoutConstraint" destination="6Io-6Y-A0J" id="gYm-pb-Gh0"/>
                 <outlet property="shuomingLabel" destination="LJg-El-T4k" id="qxC-IB-Cjy"/>
                 <outlet property="titleLabel" destination="kIR-e7-myd" id="Wqs-Tj-589"/>
                 <outlet property="typeImageView" destination="Wnl-Aj-ifZ" id="0Vm-0o-HQy"/>
@@ -304,7 +305,7 @@
                 <outlet property="yongmiaodiTopLayoutConstraint" destination="Ssc-8F-1EA" id="PuK-GA-Thh"/>
                 <outlet property="zhiliangLabel" destination="6mU-fg-kha" id="XPh-B2-zZV"/>
             </connections>
-            <point key="canvasLocation" x="397" y="221"/>
+            <point key="canvasLocation" x="281" y="213"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -28,6 +28,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderNameLabelLayoutConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *companyLabelLayoutConstraint;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameCenterYLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameHeightLayoutConstraint;
+
 @end
 
 @implementation ZIKMyQuotationTableViewCell
@@ -35,6 +38,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.bottomBgImageView.layer.cornerRadius = 6.0f;
+    self.bottomBgImageView.layer.masksToBounds = YES;
     
 }
 
@@ -122,6 +127,12 @@
     if (nameRect.size.height>22) {
         self.orderNameLabelLayoutConstraint.constant = 10;
         self.companyLabelLayoutConstraint.constant = 10;
+    }
+
+    CGRect companyNameRect = [ZIKFunction getCGRectWithContent:model.engineeringCompany width:self.engineeringCompanyLabel.frame.size.width font:16.0f];
+    if (companyNameRect.size.height>21) {
+        self.nameHeightLayoutConstraint.constant = companyNameRect.size.height+5;
+        self.nameCenterYLayoutConstraint.constant = companyNameRect.size.height/2-6;
     }
 }
 

@@ -116,7 +116,8 @@
     } failure:^(NSError *error) {
         RemoveActionV();
     }];
-    
+    self.quoteTableView.separatorStyle = UITableViewCellSelectionStyleNone;
+
    [ZIKFunction setExtraCellLineHidden:self.quoteTableView];
 }
 
@@ -143,6 +144,15 @@
 
 - (CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
+        if (indexPath.row == 3) {
+            CGRect standardRequirementRect =  [ZIKFunction getCGRectWithContent:self.standardRequirement width:kWidth-120 font:15.0f];
+            if (standardRequirementRect.size.height>20) {
+                return  standardRequirementRect.size.height+15;
+            }
+            return 36;
+
+        }
+
         return 36;
     }
     if (indexPath.section == 1 && indexPath.row == 3) {
@@ -162,6 +172,8 @@
 
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:tableViewCellId];
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
         if (indexPath.section == 0) {
             detailLabel = [[UILabel alloc] init];
             [cell addSubview:detailLabel];
@@ -203,6 +215,7 @@
         detailLabel.textAlignment = NSTextAlignmentLeft;
         detailLabel.textColor = DarkTitleColor;
         detailLabel.font = [UIFont systemFontOfSize:15.0f];
+        detailLabel.numberOfLines = 0;
         if (indexPath.row == 0) {
             detailLabel.text = self.name;
         } else if (indexPath.row == 1) {
@@ -210,6 +223,10 @@
         } else if (indexPath.row == 2) {
             detailLabel.text = self.quoteRequirement;
         } else if (indexPath.row == 3) {
+          CGRect standardRequirementRect =  [ZIKFunction getCGRectWithContent:self.standardRequirement width:kWidth-120 font:15.0f];
+            if (standardRequirementRect.size.height>20) {
+                detailLabel.frame = CGRectMake(100, 3, kWidth-120, standardRequirementRect.size.height+15);
+            }
             detailLabel.text = self.standardRequirement;
         }
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

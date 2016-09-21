@@ -213,6 +213,8 @@
                 <outlet property="engineeringCompanyLabel" destination="HKf-KW-FOS" id="JaE-hc-7kN"/>
                 <outlet property="itemNameLabel" destination="BRG-fZ-OlS" id="0yS-yR-ymO"/>
                 <outlet property="itemQuantityLabel" destination="28l-bF-h6f" id="pUB-H4-Y50"/>
+                <outlet property="nameCenterYLayoutConstraint" destination="1fX-oX-9Qo" id="Iw5-MR-XS7"/>
+                <outlet property="nameHeightLayoutConstraint" destination="qOo-xA-ixL" id="wGO-WC-2bY"/>
                 <outlet property="orderNameLabel" destination="rfY-In-F5i" id="NSJ-oV-v3T"/>
                 <outlet property="orderTypeImageView" destination="7Hb-B5-pb4" id="52q-et-AnH"/>
                 <outlet property="priceLabel" destination="8vN-PE-7TW" id="RHK-6e-KyL"/>
@@ -220,7 +222,7 @@
                 <outlet property="quoteQuantityLabel" destination="tOP-YB-jHO" id="lwg-MS-eV4"/>
                 <outlet property="statusImageView" destination="IG2-Te-vZ1" id="4Mf-J1-QnR"/>
             </connections>
-            <point key="canvasLocation" x="259" y="281.5"/>
+            <point key="canvasLocation" x="160" y="244.5"/>
         </tableViewCell>
     </objects>
     <resources>
