@@ -283,6 +283,10 @@
         [ToastView showTopToast:@"请完善联系方式"];
         return;
     }
+    if (self.lianxifangshiField.text.length!=11) {
+        [ToastView showTopToast:@"请输入正确手机号"];
+        return;
+    }
     [HTTPCLIENT fabuGongChengDingDanWithUid:self.uid WithprojectName:self.NameTextField.text WithorderName:self.typeBtn.titleLabel.text WithorderTypeUid:self.typeStr WithusedProvince:self.AreaProvinces WithusedCity:self.AreaNames WithendDate:self.timeStr WithchargePerson:self.lianxirenField.text Withphone:self.lianxifangshiField.text WithqualityRequirement:self.qualityStr WithquotationRequires:self.priceStr Withdbh:self.xiongjingField.text WithgroundDiameter:self.dijingField.text Withdescription:self.jianjieTextView.text With:nil Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"编辑成功，即将返回"];
