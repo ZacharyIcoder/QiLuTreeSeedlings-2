@@ -133,8 +133,8 @@
     CGRect companyNameRect = [ZIKFunction getCGRectWithContent:model.engineeringCompany width:self.engineeringCompanyLabel.frame.size.width font:16.0f];
     if (companyNameRect.size.height>21) {
         self.nameHeightLayoutConstraint.constant = companyNameRect.size.height+5;
-        if (companyNameRect.size.height/2>11) {
-            self.nameCenterYLayoutConstraint.constant = companyNameRect.size.height/2-11;
+        if (self.nameCenterYLayoutConstraint.constant>10) {
+            self.nameCenterYLayoutConstraint.constant = companyNameRect.size.height/2-10;
             self.bottomLayoutConstraint.constant = -14;
         }
     }
