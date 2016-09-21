@@ -144,6 +144,7 @@
     HotSellModel *model = self.gyMArr[indexPath.row];
     SellDetialViewController *viewC = [[SellDetialViewController alloc] initWithUid:model];
     viewC.hidesBottomBarWhenPushed = YES;
+    viewC.type = 2;
     [self.navigationController pushViewController:viewC animated:YES];
 
 }

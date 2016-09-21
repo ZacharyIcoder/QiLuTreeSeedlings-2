@@ -64,17 +64,17 @@
     if (indexPath.row == 3) {
         if (![self.type isEqualToString: @"苗企"]) {
          CGRect rect =    [ZIKFunction getCGRectWithContent:self.masterModel.brief width:kWidth-100-30 font:15.0f];
-//                          cell.detailTextLabel.text = self.masterModel.brief;
-            if(rect.size.height<44){
+            if(rect.size.height<21){
                 return 44;
             }
-            return rect.size.height;
+            return rect.size.height+20;
 
         } else {
-//                          cell.detailTextLabel.text = APPDELEGATE.userModel.brief;
             CGRect rect =    [ZIKFunction getCGRectWithContent:APPDELEGATE.userModel.brief width:kWidth-100-30 font:15.0f];
-            return rect.size.height;
-
+            if(rect.size.height<21){
+                return 44;
+            }
+            return rect.size.height+20;
         }
 
 

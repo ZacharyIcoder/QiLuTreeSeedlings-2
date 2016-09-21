@@ -59,6 +59,9 @@
     self.daibiaoLabel.text     = model.legalPerson;
     self.phoneLabel.text       = model.phone;
     self.addressLabel.text     = model.address;
+//    CLog(@"%@",self.description);
+//    CLog(@"%@",self.subviews);
+//    CLog(@"%@",self.contentView.subviews);
 }
 
 @end

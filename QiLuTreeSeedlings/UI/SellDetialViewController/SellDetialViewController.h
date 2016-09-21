@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HotSellModel.h"
 @interface SellDetialViewController : UIViewController
-@property (nonatomic, assign) NSInteger type;//type == 0,合作苗企
+@property (nonatomic, assign) NSInteger type;//type == 2,合作苗企
 -(id)initWithUid:(HotSellModel *)model;
 //- (instancetype)initWithHeZuoMiaoQiUid:(HotSellModel *)model;
 

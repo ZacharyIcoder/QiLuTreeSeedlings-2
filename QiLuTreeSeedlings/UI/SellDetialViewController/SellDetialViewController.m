@@ -115,7 +115,7 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIView *navView=[self makeNavView];
     [self.view addSubview:navView];
-    if (self.type == 0) {
+    if (self.type == 2) {
         self.tableView.frame = CGRectMake(0, 44, kWidth, kHeight-50-44);
         UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*1/5, kHeight-50, kWidth*2.5/5, 1)];
         topLineView.backgroundColor = kLineColor;

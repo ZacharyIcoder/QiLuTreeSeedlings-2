@@ -25,6 +25,8 @@
 #import "ZIKBaseCertificateAdapter.h"
 #import "ZIKCertificateAdapter.h"
 #import "ZIKMyShopViewController.h"
+
+#import "SearchViewController.h"
 @interface YLDZhanZhangMessageViewController ()<UITableViewDelegate,UITableViewDataSource,YLDZhanZhangMessageCellDelegate>
 @property (nonatomic,weak)UITableView *tableView;
 @property (nonatomic,copy)NSString *uid;
@@ -168,7 +170,7 @@
         return 0.01;
     }else if(section==4)
     {
-        return 46;
+        return 55;
     }else{
         return 10;
     }
@@ -268,7 +270,7 @@
 {
     
     if (section==4) {
-        return [self makeTitleViewWithTitle:@"供应" AndColor:NavColor andY:10];
+        return [self makeTitleViewWithTitle:@"供应" AndColor:NavColor andY:13];
     }
     UIView *view;
     return view;
@@ -324,23 +326,53 @@
 //构建小标题栏
 -(UIView *)makeTitleViewWithTitle:(NSString *)title AndColor:(UIColor *)color andY:(CGFloat )y
 {
+    UIView *sectionFourHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 55)];
+    sectionFourHeaderView.backgroundColor = [UIColor whiteColor];
+
+    UIView *bgColorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 10)];
+    bgColorView.backgroundColor = kRGB(239, 239, 244, 1);
+    [sectionFourHeaderView addSubview:bgColorView];
+
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, y, kWidth, 36)];
     [view setBackgroundColor:[UIColor whiteColor]];
-    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7, 5, 22)];
+    [sectionFourHeaderView addSubview:view];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7, 7, 22)];
     [imageV setBackgroundColor:color];
     [view addSubview:imageV];
-    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 70, 36)];
+    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(25, 0, 70, 36)];
     titleLab.text=title;
     [titleLab setTextColor:color];
     [titleLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:titleLab];
-    UIView *lineV=[[UIView alloc]initWithFrame:CGRectMake(10, 36, kWidth-20, 0.5)];
+
+    UIButton *button = [[UIButton alloc] init];
+    button.frame = CGRectMake(kWidth-46-15-10+5, 4, 46, 30);
+    [button setTitle:@"更多" forState:UIControlStateNormal];
+    [button setTitleColor:detialLabColor forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
+    [button.titleLabel setTextAlignment:NSTextAlignmentRight];
+    [view addSubview:button];
+
+    [button addTarget:self action:@selector(gongYingMoreButton) forControlEvents:UIControlEventTouchUpInside];
+
+    UIButton *imageButton = [[UIButton alloc] init];
+    imageButton.frame = CGRectMake(kWidth-10-15, 11, 15, 15);
+    [imageButton setBackgroundImage:[UIImage imageNamed:@"moreRow"] forState:UIControlStateNormal];
+    [view addSubview:imageButton];
+    [imageButton addTarget:self action:@selector(gongYingMoreButton) forControlEvents:UIControlEventTouchUpInside];
+
+
+    UIView *lineV=[[UIView alloc]initWithFrame:CGRectMake(10, 54, kWidth-20, 0.5)];
     [lineV setBackgroundColor:kLineColor];
-    [view addSubview:lineV];
-    return view;
+    [sectionFourHeaderView addSubview:lineV];
+    return sectionFourHeaderView;
     
 }
 
+- (void)gongYingMoreButton {
+    SearchViewController *searVC=[[SearchViewController alloc]initWithSearchType:1];
+    [self.navigationController pushViewController:searVC animated:YES];
+}
 /*
 #pragma mark - Navigation
 

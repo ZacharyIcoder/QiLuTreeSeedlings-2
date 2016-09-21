@@ -45,6 +45,10 @@
         self.briefLabel.userInteractionEnabled = YES;
         [self.briefLabel addGestureRecognizer:tapGR3];
 
+        NSLog(@"%@",self.description);
+        NSLog(@"%@",self.subviews);
+        NSLog(@"%@",self.contentView.subviews);
+
 }
 
 - (void)tapClick {
