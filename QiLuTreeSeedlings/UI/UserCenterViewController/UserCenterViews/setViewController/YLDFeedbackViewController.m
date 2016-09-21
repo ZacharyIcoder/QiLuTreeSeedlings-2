@@ -102,19 +102,17 @@
         [ToastView showTopToast:@"请输入内容"];
         return;
     }
-    NSArray *titleAry=[self.titleField.text  componentsSeparatedByString:@" "];
-    if (titleAry.count==0) {
+    NSString *titleStr=self.titleField.text;
+    titleStr=[titleStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (titleStr.length==0) {
         [ToastView showTopToast:@"标题不能为空格"];
         return;
     }
-    NSArray *messageAry=[self.messageField.text  componentsSeparatedByString:@" "];
-    if (messageAry.count==0) {
+    NSString *messageStr=self.messageField.text;
+    messageStr=[messageStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    messageStr=[messageStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    if (messageStr.length==0) {
         [ToastView showTopToast:@"内容不能为空格"];
-        return;
-    }
-    NSArray *messageAry2=[self.messageField.text  componentsSeparatedByString:@"\n"];
-    if (messageAry2.count==0) {
-        [ToastView showTopToast:@"内容不能为回撤"];
         return;
     }
     [HTTPCLIENT yijianfankuiWithcontent:self.messageField.text Withpic:self.url WithTitle:self.titleField.text Success:^(id responseObject) {
