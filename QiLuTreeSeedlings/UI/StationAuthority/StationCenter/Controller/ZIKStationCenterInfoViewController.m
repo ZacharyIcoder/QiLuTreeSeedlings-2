@@ -65,6 +65,9 @@
         if (![self.type isEqualToString: @"苗企"]) {
          CGRect rect =    [ZIKFunction getCGRectWithContent:self.masterModel.brief width:kWidth-100-30 font:15.0f];
 //                          cell.detailTextLabel.text = self.masterModel.brief;
+            if(rect.size.height<44){
+                return 44;
+            }
             return rect.size.height;
 
         } else {

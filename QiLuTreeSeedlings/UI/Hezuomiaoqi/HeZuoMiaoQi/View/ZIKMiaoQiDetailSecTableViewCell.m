@@ -9,6 +9,7 @@
 #import "ZIKMiaoQiDetailSecTableViewCell.h"
 #import "ZIKMiaoQiDetailModel.h"
 #import "UIDefines.h"
+#import "ZIKFunction.h"
 @interface ZIKMiaoQiDetailSecTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
 @property (weak, nonatomic) IBOutlet HCSStarRatingView *starView;
@@ -16,7 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *daibiaoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-
+/**
+ *  星级top
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *starTopLayoutConxtraint;
 
 @end
 
@@ -45,6 +49,10 @@
 }
 
 - (void)configureCell:(ZIKMiaoQiDetailModel *)model {
+    CGRect companyNameRect = [ZIKFunction getCGRectWithContent:model.companyName width:self.companyNameLabel.frame.size.width font:15.0f];
+    if (companyNameRect.size.height>21) {
+        self.starTopLayoutConxtraint.constant = companyNameRect.size.height-21-8;
+    }
     self.companyNameLabel.text = model.companyName;
     self.starView.value        = [model.starLevel floatValue];
     self.moneyLabel.text       = [NSString stringWithFormat:@"%@元",model.creditMargin];
