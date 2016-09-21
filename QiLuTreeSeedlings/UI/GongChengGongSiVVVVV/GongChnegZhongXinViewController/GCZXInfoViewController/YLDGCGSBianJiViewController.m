@@ -62,7 +62,18 @@
     }
     if (self.type==4) {
         self.vcTitle=@"公司简介";
-        textField.placeholder=@"请输入公司简介";
+//        textField.placeholder=@"";
+        [self.textField removeFromSuperview];
+        BWTextView *textView=[[BWTextView alloc]initWithFrame:CGRectMake(0, 70, kWidth, 100)];
+        [textView setBackgroundColor:[UIColor whiteColor]];
+        [self.view addSubview:textView];
+        textView.placeholder=@"请输入公司简介";
+        if (self.str.length>0) {
+            textView.text=self.str;
+        }
+        [textView setFont:[UIFont systemFontOfSize:16]];
+        self.textView=textView;
+
     }
     if (self.type==13) {
         self.vcTitle=@"自我介绍";
@@ -79,7 +90,7 @@
         self.textView=textView;
     }
     CGFloat yyy=140;
-    if (self.type==13) {
+    if (self.type==13||self.type==4) {
         yyy=240;
     }
     UIButton *sureBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, yyy, kWidth-80, 50)];
@@ -91,14 +102,19 @@
 }
 -(void)sureBtnAction
 {
-    if (self.textField.text.length<=0&&self.type!=13) {
-        [ToastView showTopToast:@"请输入信息"];
-        return;
+    if (self.type==13||self.type==4) {
+        if (self.textView.text.length<=0) {
+            [ToastView showTopToast:@"请输入信息"];
+            return;
+        }
+    }else{
+        if (self.textField.text.length<=0) {
+            [ToastView showTopToast:@"请输入信息"];
+            return;
+        }
     }
-    if (self.textView.text.length<=0&&self.type==13) {
-        [ToastView showTopToast:@"请输入信息"];
-        return;
-    }
+   
+    
     if(self.type==1)
     {
         [self companyName:nil andlegalPerson:self.textField.text andphone:nil Withbrief:nil Withprovince:nil WithCity:nil Withcounty:nil WithAddress:nil];
@@ -114,7 +130,7 @@
     }
     if(self.type==4)
     {
-         [self companyName:nil andlegalPerson:nil andphone:nil Withbrief:self.textField.text Withprovince:nil WithCity:nil Withcounty:nil WithAddress:nil];
+         [self companyName:nil andlegalPerson:nil andphone:nil Withbrief:self.textView.text Withprovince:nil WithCity:nil Withcounty:nil WithAddress:nil];
     }
     if (self.type==11) {
         ShowActionV();

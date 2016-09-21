@@ -257,6 +257,10 @@
         return;
     }
     else {
+        if(self.recordMarr.count==0)
+        {
+            return;
+        }
         HotBuyModel *model = self.recordMarr[indexPath.row];
         BuyDetialInfoViewController *buyDetialVC=[[BuyDetialInfoViewController alloc]initWithSaercherInfo:model.supplybuyUid];
         [self.navigationController pushViewController:buyDetialVC animated:YES];
@@ -271,7 +275,7 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     HotBuyModel *model = [self.recordMarr objectAtIndex:indexPath.row];
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([_removeArray containsObject:model]) {//删除反选数据
         [_removeArray removeObject:model];
     }

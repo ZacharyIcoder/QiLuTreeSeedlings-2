@@ -39,6 +39,7 @@
     [super viewDidLoad];
     self.vcTitle=@"金牌信息";
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
+    [self.navBackView setBackgroundColor:NavColor];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;

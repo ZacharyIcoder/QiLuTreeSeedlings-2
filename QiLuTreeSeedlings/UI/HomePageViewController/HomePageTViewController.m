@@ -438,6 +438,10 @@
         }else
         {
             [ToastView showTopToast:@"请先登录"];
+            // NSLog(@"登录");
+            [self hiddingSelfTabBar];
+            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            [self.navigationController pushViewController:loginViewController animated:YES];
         }
         
     }
@@ -452,6 +456,10 @@
         }else
         {
             [ToastView showTopToast:@"请先登录"];
+            // NSLog(@"登录");
+            [self hiddingSelfTabBar];
+            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
 
@@ -482,6 +490,10 @@
         else
         {
             [ToastView showTopToast:@"请先登录"];
+            // NSLog(@"登录");
+            [self hiddingSelfTabBar];
+            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
 
@@ -496,6 +508,10 @@
         }else
         {
              [ToastView showTopToast:@"请先登录"];
+            // NSLog(@"登录");
+            [self hiddingSelfTabBar];
+            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
     if (index == 6) {
@@ -514,6 +530,10 @@
         }else
         {
             [ToastView showTopToast:@"请先登录"];
+            // NSLog(@"登录");
+            [self hiddingSelfTabBar];
+            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
     if (index==7) {
@@ -525,6 +545,10 @@
             [self.navigationController pushViewController:gongyingV animated:YES];
             }else{
                [ToastView showTopToast:@"请先登录"];
+                // NSLog(@"登录");
+                [self hiddingSelfTabBar];
+                LoginViewController *loginViewController=[[LoginViewController alloc]init];
+                [self.navigationController pushViewController:loginViewController animated:YES];
         }
     
     }

@@ -102,6 +102,21 @@
         [ToastView showTopToast:@"请输入内容"];
         return;
     }
+    NSArray *titleAry=[self.titleField.text  componentsSeparatedByString:@" "];
+    if (titleAry.count==0) {
+        [ToastView showTopToast:@"标题不能为空格"];
+        return;
+    }
+    NSArray *messageAry=[self.messageField.text  componentsSeparatedByString:@" "];
+    if (messageAry.count==0) {
+        [ToastView showTopToast:@"内容不能为空格"];
+        return;
+    }
+    NSArray *messageAry2=[self.messageField.text  componentsSeparatedByString:@"\n"];
+    if (messageAry2.count==0) {
+        [ToastView showTopToast:@"内容不能为回撤"];
+        return;
+    }
     [HTTPCLIENT yijianfankuiWithcontent:self.messageField.text Withpic:self.url WithTitle:self.titleField.text Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]==1) {
             [ToastView showTopToast:@"提交成功，即将返回上一页"];

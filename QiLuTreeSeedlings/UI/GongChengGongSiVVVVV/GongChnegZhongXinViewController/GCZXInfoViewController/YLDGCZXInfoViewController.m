@@ -91,7 +91,24 @@
         [self addPicture];
         return;
     }else{
-        YLDGCGSBianJiViewController *vc=[[YLDGCGSBianJiViewController alloc]initWithType:indexPath.row];
+        NSString *str ;
+        switch (indexPath.row) {
+            case 1:
+                str=APPDELEGATE.GCGSModel.legalPerson;
+                break;
+            case 2:
+                str=APPDELEGATE.GCGSModel.phone;
+                break;
+            case 3:
+                str=APPDELEGATE.GCGSModel.address;
+                break;
+            case 4:
+                str=APPDELEGATE.GCGSModel.brief;
+                break;
+            default:
+                break;
+        }
+        YLDGCGSBianJiViewController *vc=[[YLDGCGSBianJiViewController alloc]initWithType:indexPath.row andStr:str];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
