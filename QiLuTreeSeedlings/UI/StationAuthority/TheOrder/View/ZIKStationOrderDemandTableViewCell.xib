@@ -294,6 +294,7 @@
                 <outlet property="dingdangongsiLayoutConstraint" destination="k0p-dY-QKb" id="bh5-di-fsR"/>
                 <outlet property="dingdangongsiTopLayoutConstraint" destination="k0p-dY-QKb" id="KHa-Zo-Ibm"/>
                 <outlet property="endDataLabel" destination="729-01-KlL" id="p2L-qI-fmo"/>
+                <outlet property="lianxiTopLayoutConstraint" destination="aMZ-iW-zDk" id="VEW-lS-xiT"/>
                 <outlet property="nameWidthLayoutConstraint" destination="Wga-cA-Un3" id="6dJ-yk-RXM"/>
                 <outlet property="phoneLabel" destination="GxE-uj-XR4" id="WZQ-g1-e3c"/>
                 <outlet property="phoneWidthLayoutConstraint" destination="Nnm-Up-Ubh" id="FZv-jV-XX2"/>

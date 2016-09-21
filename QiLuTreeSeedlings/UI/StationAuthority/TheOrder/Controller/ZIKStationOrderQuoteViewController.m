@@ -273,8 +273,14 @@
             [cell addSubview:rowImageV];
             [cell addSubview:addressButton];
             [cell addSubview:arrowLabel];
+
         } else if (indexPath.row == 3) {
             _contentTextView.frame = CGRectMake(100, 5, kWidth-120-20, 60);
+        }
+        if (indexPath.row != 3) {
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 43, kWidth-30, 0.5)];
+            lineView.backgroundColor = kLineColor;
+            [cell addSubview:lineView];
         }
     } else if (indexPath.section == 2)  {
         cell.textLabel.textColor = DarkTitleColor;

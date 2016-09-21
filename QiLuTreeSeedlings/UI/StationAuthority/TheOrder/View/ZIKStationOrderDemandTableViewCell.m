@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *yongmiaodiTopLayoutConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *qitashuomingCenterYLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lianxiTopLayoutConstraint;
 @end
 
 
@@ -155,6 +156,13 @@
         self.dingdangongsiLayoutConstraint.constant = (gongsiRect.size.height-20)/2 + 11;
         self.yongmiaodiTopLayoutConstraint.constant += (gongsiRect.size.height-20)/2;
     }
+
+    CGRect dizhiRect = [ZIKFunction getCGRectWithContent:model.area width:self.areaLabel.frame.size.width font:15.0f];
+    if (dizhiRect.size.height>18) {
+        self.dingdangongsiLayoutConstraint.constant = (dizhiRect.size.height-20)/2 + 11;
+        self.lianxiTopLayoutConstraint.constant += (dizhiRect.size.height-20)/2;
+    }
+
 
     CGRect qitaRect = [ZIKFunction getCGRectWithContent:model.demandDescription width:self.shuomingLabel.frame.size.width font:15.0f];
 //    CLog(@"%ld",self.qitashuomingCenterYLayoutConstraint.constant);
