@@ -452,9 +452,9 @@
     [view addSubview:nameLab];
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
-    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(110, 0, 190/320.f*kWidth, frame.size.height)];
+    UIButton *pickBtn=[[UIButton alloc]initWithFrame:CGRectMake(90, 0, 190/320.f*kWidth, frame.size.height)];
     pickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 17, 0, 0);
+    pickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
     [pickBtn setEnlargeEdgeWithTop:7 right:100 bottom:7 left:80];
     [pickBtn setTitle:alortStr forState:UIControlStateNormal];
     [pickBtn setTitleColor:MoreDarkTitleColor forState:UIControlStateNormal];
@@ -479,7 +479,7 @@
     [nameLab setTextColor:DarkTitleColor];
     [nameLab setFont:[UIFont systemFontOfSize:14]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110, 0, 160/320.f*kWidth, frame.size.height)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(105, 0, 160/320.f*kWidth, frame.size.height)];
     textField.placeholder=alortStr;
     [view addSubview:textField];
     [textField setFont:[UIFont systemFontOfSize:15]];
@@ -559,7 +559,7 @@
                                              selector:@selector(textViewChanged:)
                                                  name:UITextViewTextDidChangeNotification
                                                object:TextView];
-    TextView.frame=CGRectMake(110, 10, kWidth-120, frame.size.height-20);
+    TextView.frame=CGRectMake(100, 10, kWidth-120, frame.size.height-20);
     TextView.font=[UIFont systemFontOfSize:16];
     TextView.textColor=DarkTitleColor;
     [view addSubview:TextView];

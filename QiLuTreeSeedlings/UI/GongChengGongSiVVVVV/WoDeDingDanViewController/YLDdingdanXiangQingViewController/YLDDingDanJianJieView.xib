@@ -12,7 +12,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某绿化项目采购单" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-rJ-57p">
-                    <rect key="frame" x="8" y="15" width="250" height="21"/>
+                    <rect key="frame" x="8" y="3" width="250" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="PmS-y5-wW6"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.24868917785234898" green="0.24672294463087249" blue="0.2471686241610738" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -150,11 +153,8 @@
                     <color key="textColor" red="0.59949140099999998" green="0.60135276849999997" blue="0.59964869970000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山东省临沂市兰山区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-k8-GHU">
-                    <rect key="frame" x="85" y="176" width="219" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="uc4-VA-B5a"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山东省临沂市兰山区" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-k8-GHU">
+                    <rect key="frame" x="85" y="178" width="219" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.26447147651006714" green="0.26491715604026844" blue="0.26318687080536912" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -235,7 +235,8 @@
                 <constraint firstAttribute="trailing" secondItem="Di7-rJ-57p" secondAttribute="trailing" constant="62" id="7JW-wQ-Fjt"/>
                 <constraint firstItem="ZLT-Bt-znb" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="7q5-de-huP"/>
                 <constraint firstItem="8gK-z2-cOO" firstAttribute="leading" secondItem="MiS-QM-S7Y" secondAttribute="trailing" constant="1" id="9dl-bi-hVx"/>
-                <constraint firstItem="D05-lH-u2w" firstAttribute="top" secondItem="UPj-k8-GHU" secondAttribute="bottom" constant="8" id="APC-0k-DN3"/>
+                <constraint firstItem="D05-lH-u2w" firstAttribute="top" secondItem="UPj-k8-GHU" secondAttribute="bottom" constant="9" id="APC-0k-DN3"/>
+                <constraint firstItem="9m9-oZ-wGJ" firstAttribute="top" secondItem="D05-lH-u2w" secondAttribute="top" id="AXE-ww-v6C"/>
                 <constraint firstItem="vfP-uD-jR7" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="CXh-cJ-RL4"/>
                 <constraint firstItem="XKq-IN-gCK" firstAttribute="leading" secondItem="CrV-KM-jw7" secondAttribute="trailing" constant="6" id="DI9-rb-Nny"/>
                 <constraint firstItem="Yve-bX-cVH" firstAttribute="leading" secondItem="Vu1-4F-LWb" secondAttribute="trailing" constant="8" id="GXu-ly-5ZB"/>
@@ -244,7 +245,7 @@
                 <constraint firstItem="Di7-rJ-57p" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="Iia-aG-Bwc"/>
                 <constraint firstItem="bEk-yz-xLq" firstAttribute="top" secondItem="CaZ-e0-EX3" secondAttribute="bottom" constant="8" id="Izg-bZ-dMB"/>
                 <constraint firstAttribute="trailing" secondItem="UPj-k8-GHU" secondAttribute="trailing" constant="16" id="K9b-TO-1VZ"/>
-                <constraint firstItem="MiS-QM-S7Y" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="Kas-Zk-9eN"/>
+                <constraint firstItem="MiS-QM-S7Y" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="-1" id="Kas-Zk-9eN"/>
                 <constraint firstAttribute="trailing" secondItem="gOH-Po-3dg" secondAttribute="trailing" constant="10" id="KlI-sO-V0R"/>
                 <constraint firstAttribute="trailing" secondItem="SFq-eE-3aV" secondAttribute="trailing" id="MIR-W0-DxJ"/>
                 <constraint firstAttribute="trailing" secondItem="8gK-z2-cOO" secondAttribute="trailing" constant="8" id="MOX-3k-eGP"/>
@@ -253,7 +254,7 @@
                 <constraint firstItem="CaZ-e0-EX3" firstAttribute="leading" secondItem="ZLT-Bt-znb" secondAttribute="trailing" constant="12" id="PHd-pm-5dF"/>
                 <constraint firstItem="gOH-Po-3dg" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="10" id="PyH-YK-gRO"/>
                 <constraint firstItem="5Da-t7-iIq" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="10" id="RpG-zu-UEK"/>
-                <constraint firstItem="qtk-nv-uz0" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="Rr3-2j-RVA"/>
+                <constraint firstItem="qtk-nv-uz0" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="-1" id="Rr3-2j-RVA"/>
                 <constraint firstItem="Dpb-Sa-8zu" firstAttribute="top" secondItem="gOH-Po-3dg" secondAttribute="bottom" constant="14" id="Txd-T6-GoX"/>
                 <constraint firstItem="txP-v1-Kqo" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="UjV-TL-NDT"/>
                 <constraint firstItem="CrV-KM-jw7" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="10" id="UyF-go-WjM"/>
@@ -261,24 +262,29 @@
                 <constraint firstAttribute="bottom" secondItem="XKq-IN-gCK" secondAttribute="bottom" constant="23" id="VrP-YT-p28"/>
                 <constraint firstAttribute="trailing" secondItem="5Da-t7-iIq" secondAttribute="trailing" constant="10" id="W2l-w8-tD3"/>
                 <constraint firstItem="elB-X5-MPf" firstAttribute="top" secondItem="ZLT-Bt-znb" secondAttribute="bottom" constant="8" id="Zp2-4X-sMs"/>
-                <constraint firstItem="vfP-uD-jR7" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="cP4-en-gFD"/>
+                <constraint firstItem="vfP-uD-jR7" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="-1" id="cP4-en-gFD"/>
                 <constraint firstAttribute="trailing" secondItem="Yve-bX-cVH" secondAttribute="trailing" constant="20" id="cRH-w8-PSd"/>
-                <constraint firstItem="Di7-rJ-57p" firstAttribute="top" secondItem="7Pl-hZ-SPF" secondAttribute="top" constant="15" id="cUA-ha-zBd"/>
+                <constraint firstItem="Di7-rJ-57p" firstAttribute="top" secondItem="7Pl-hZ-SPF" secondAttribute="top" constant="3" id="cUA-ha-zBd"/>
                 <constraint firstAttribute="trailing" secondItem="bEk-yz-xLq" secondAttribute="trailing" constant="16" id="d6p-70-17h"/>
                 <constraint firstItem="Vu1-4F-LWb" firstAttribute="top" secondItem="gOH-Po-3dg" secondAttribute="bottom" constant="12" id="fs8-TP-FiT"/>
-                <constraint firstItem="UPj-k8-GHU" firstAttribute="top" secondItem="bEk-yz-xLq" secondAttribute="bottom" constant="8" id="jw6-Zc-ddp"/>
+                <constraint firstItem="UPj-k8-GHU" firstAttribute="top" secondItem="bEk-yz-xLq" secondAttribute="bottom" constant="10" id="jw6-Zc-ddp"/>
                 <constraint firstItem="7D8-LA-buL" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="8" id="mzJ-rY-ouh"/>
                 <constraint firstAttribute="trailing" secondItem="XKq-IN-gCK" secondAttribute="trailing" constant="10" id="nA0-oo-dGQ"/>
                 <constraint firstItem="txP-v1-Kqo" firstAttribute="top" secondItem="elB-X5-MPf" secondAttribute="bottom" constant="8" id="o17-MY-nzK"/>
-                <constraint firstItem="smz-st-c4t" firstAttribute="top" secondItem="UPj-k8-GHU" secondAttribute="bottom" constant="7" id="o6t-Kl-7Sd"/>
+                <constraint firstItem="smz-st-c4t" firstAttribute="top" secondItem="UPj-k8-GHU" secondAttribute="bottom" constant="8" id="o6t-Kl-7Sd"/>
                 <constraint firstItem="9m9-oZ-wGJ" firstAttribute="leading" secondItem="7Pl-hZ-SPF" secondAttribute="leading" constant="10" id="rPJ-Yv-CAx"/>
-                <constraint firstItem="8gK-z2-cOO" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="8" id="u9E-7o-zJL"/>
+                <constraint firstItem="8gK-z2-cOO" firstAttribute="top" secondItem="Di7-rJ-57p" secondAttribute="bottom" constant="-1" id="u9E-7o-zJL"/>
                 <constraint firstItem="Yve-bX-cVH" firstAttribute="top" secondItem="gOH-Po-3dg" secondAttribute="bottom" constant="12" id="xZQ-be-Knx"/>
                 <constraint firstItem="Dpb-Sa-8zu" firstAttribute="leading" secondItem="7D8-LA-buL" secondAttribute="trailing" constant="8" id="yMj-1e-nxX"/>
                 <constraint firstItem="SFq-eE-3aV" firstAttribute="top" secondItem="7Pl-hZ-SPF" secondAttribute="top" id="zhM-D6-veV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="57z-Pt-6Bs"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="areaLab" destination="UPj-k8-GHU" id="mru-ZY-hSs"/>
                 <outlet property="baojiaTypeLab" destination="Dpb-Sa-8zu" id="K51-N1-MRM"/>

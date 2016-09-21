@@ -60,6 +60,7 @@
    //    self.companyLab.text=model.
     self.shuomingTextField.text=model.descriptionzz;
     self.areaLab.text=model.area;
+    [self.areaLab sizeToFit];
     self.phoneLab.text=model.phone;
     if (model.auditStatus==0) {
         [self.logoImageV setImage:[UIImage imageNamed:@"待审核"]];
@@ -98,6 +99,7 @@
     //    self.companyLab.text=model.
     self.shuomingTextField.text=hezuomodel.descriptions;
     self.areaLab.text=hezuomodel.area;
+    [self.areaLab sizeToFit];
     self.phoneLab.text=hezuomodel.phone;
    
     if ([hezuomodel.status isEqualToString:@"已结束"]) {
