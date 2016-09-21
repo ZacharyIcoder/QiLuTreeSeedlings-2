@@ -7,7 +7,7 @@
 //
 
 #import "YLDGongChengZhongXinBigCell.h"
-
+#import "UIDefines.h"
 @implementation YLDGongChengZhongXinBigCell
 +(YLDGongChengZhongXinBigCell *)yldGongChengZhongXinBigCell
 {
@@ -23,8 +23,8 @@
 -(void)setModel:(YLDGCGSModel *)model
 {
     _model=model;
-    self.companyName.text=model.companyName;
-    self.personName.text=model.legalPerson;
+    self.companyName.text=APPDELEGATE.userModel.name;
+    self.personName.text=APPDELEGATE.userModel.phone;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

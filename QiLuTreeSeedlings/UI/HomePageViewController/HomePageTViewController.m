@@ -55,6 +55,7 @@
 @property (nonatomic,strong) UIView *NavView;
 @property (nonatomic,strong) UIButton *searchBtn;
 @property (nonatomic,strong) UIImageView *sreachiamgeV;
+@property (nonatomic)NSInteger pushType;//1查看定制信息
 @end
 
 @implementation HomePageTViewController
@@ -448,7 +449,9 @@
     if(index==3){
         if([APPDELEGATE isNeedLogin])
         {
+            
             [self hiddingSelfTabBar];
+            self.pushType=1;
             ZIKMyCustomizedInfoViewController *customInfoVC = [[ZIKMyCustomizedInfoViewController alloc] init];
             [self.navigationController pushViewController:customInfoVC animated:YES];
             return;
@@ -646,6 +649,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (self.pushType==1) {
+        ShowActionV();
+        [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            
+        }];
+        self.pushType=0;
+    }
     [[NSNotificationCenter defaultCenter]postNotificationName:@"showTabBar" object:nil];
     if (APPDELEGATE.isNeedLogin) {
         if (self.loginBtn.hidden==YES) {

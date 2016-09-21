@@ -65,6 +65,10 @@
             return 200;
         }
         if (indexPath.row==1) {
+          CGFloat hhh =  [self getHeightWithContent:APPDELEGATE.GCGSModel.companyName width:kWidth-100 font:15];
+            if (hhh>20) {
+                return 120+hhh;
+            }
             return 120;
         }
     }
@@ -116,6 +120,15 @@
     }
     UITableViewCell *cell=[UITableViewCell new];
     return cell;
+}
+//获取字符串的高度
+-(CGFloat)getHeightWithContent:(NSString *)content width:(CGFloat)width font:(CGFloat)font{
+    
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(width, 999)
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}
+                                        context:nil];
+    return rect.size.height;
 }
 -(void)gczzMessageAction
 {

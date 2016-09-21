@@ -62,11 +62,8 @@
                         <color key="textColor" red="0.60402684559999997" green="0.60523280199999996" blue="0.59860004190000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山东上升绿化工程有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ek-Mp-e35">
-                        <rect key="frame" x="92" y="8" width="220" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="wAG-GW-2n3"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山东上升绿化工程有限公司" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ek-Mp-e35">
+                        <rect key="frame" x="92" y="9" width="220" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.26898070469798657" green="0.26596581375838924" blue="0.26643770973154363" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -101,13 +98,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="MRY-DZ-vMt" firstAttribute="top" secondItem="FuF-yg-dXi" secondAttribute="bottom" constant="9" id="0zf-sv-jAt"/>
-                    <constraint firstItem="8Ek-Mp-e35" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="A9r-Ss-Ph6"/>
+                    <constraint firstItem="dv7-K3-Tv3" firstAttribute="top" secondItem="7vv-EJ-CQ4" secondAttribute="top" id="5O8-DH-FJv"/>
+                    <constraint firstItem="8Ek-Mp-e35" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="A9r-Ss-Ph6"/>
                     <constraint firstAttribute="trailingMargin" secondItem="hRF-zc-0Wk" secondAttribute="trailing" constant="10" id="DlA-Fr-tRO"/>
                     <constraint firstItem="dv7-K3-Tv3" firstAttribute="top" secondItem="gBX-wG-akJ" secondAttribute="bottom" constant="4" id="ER9-08-ibL"/>
                     <constraint firstItem="MRY-DZ-vMt" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="FGN-mn-eLc"/>
                     <constraint firstItem="29L-eV-zHC" firstAttribute="top" secondItem="dv7-K3-Tv3" secondAttribute="bottom" constant="7" id="HOU-fT-CcZ"/>
                     <constraint firstItem="8Ek-Mp-e35" firstAttribute="leading" secondItem="gBX-wG-akJ" secondAttribute="trailing" constant="25" id="Ih5-wX-C4R"/>
-                    <constraint firstItem="7vv-EJ-CQ4" firstAttribute="top" secondItem="8Ek-Mp-e35" secondAttribute="bottom" constant="4" id="Nui-7T-AIN"/>
+                    <constraint firstItem="7vv-EJ-CQ4" firstAttribute="top" secondItem="8Ek-Mp-e35" secondAttribute="bottom" constant="6" id="Nui-7T-AIN"/>
                     <constraint firstItem="dv7-K3-Tv3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="OpR-x8-ZEj"/>
                     <constraint firstItem="gBX-wG-akJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Q1T-Yj-odq"/>
                     <constraint firstItem="FuF-yg-dXi" firstAttribute="top" secondItem="7vv-EJ-CQ4" secondAttribute="bottom" constant="7" id="QOz-W2-sge"/>
@@ -123,6 +121,11 @@
                     <constraint firstItem="29L-eV-zHC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vGr-o9-hv0"/>
                     <constraint firstItem="gBX-wG-akJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="zuE-93-gCI"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="ER9-08-ibL"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="areaLab" destination="FuF-yg-dXi" id="Tuo-yy-NcF"/>

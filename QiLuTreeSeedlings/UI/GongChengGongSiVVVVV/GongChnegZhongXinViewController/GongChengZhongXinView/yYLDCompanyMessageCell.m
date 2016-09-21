@@ -18,6 +18,7 @@
 {
     _model=model;
     self.companyNameLab.text=model.companyName;
+    [self.companyNameLab sizeToFit];
     self.personName.text=model.legalPerson;
     self.areaLab.text=model.area;
     self.phoneLab.text=model.phone;
