@@ -44,6 +44,7 @@
     tableView.dataSource=self;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView=tableView;
+    [tableView setBackgroundColor:BGColor];
     [self.view addSubview:tableView];
     // Do any additional setup after loading the view.
 }
@@ -76,6 +77,7 @@
         YLDGCZXInfoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDGCZXInfoTableViewCell"];
         if (!cell) {
             cell=[YLDGCZXInfoTableViewCell yldGCZXInfoTableViewCell];
+            [cell setBackgroundColor:[UIColor whiteColor]];
         }
         if (indexPath.row==1) {
             cell.titleLab.text=@"联系人";

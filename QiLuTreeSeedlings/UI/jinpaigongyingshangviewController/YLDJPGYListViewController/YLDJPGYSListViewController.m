@@ -16,7 +16,8 @@
 #import "YLDJPGYSListModel.h"
 #import "YLDJPGYSDetialViewController.h"
 #import "AdvertView.h"
-@interface YLDJPGYSListViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
+#import "BigImageViewShowView.h"
+@interface YLDJPGYSListViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate,AdvertDelegate>
 @property (nonatomic,strong)UIButton *shengBtn;
 @property (nonatomic,strong)UIButton *shiBtn;
 @property (nonatomic,strong)UIButton *xianBtn;
@@ -31,6 +32,7 @@
 @property (nonatomic) NSInteger pageNum;
 @property (nonatomic,strong) NSMutableArray *dataAry;
 @property (nonatomic,strong) UIView *cityView;
+@property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
 @end
 
 @implementation YLDJPGYSListViewController
@@ -82,7 +84,7 @@
     [self.navBackView addSubview:searchV];
     
     [self.shangTalbView headerBeginRefreshing];
-    
+    self.bigImageViewShowView =[[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg",@"bangde5.png"]];
     // Do any additional setup after loading the view.
 }
 -(void)getdata
@@ -310,7 +312,7 @@
         {
             if (indexPath.row==0) {
                 AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-                //            adView.delegate=self;
+                            adView.delegate=self;
                 [adView setAdInfo];
                 [adView adStart];
                 return adView;
@@ -430,6 +432,12 @@
 }
 -(void)hidingAction
 {
+    self.searchV.hidden=YES;
+}
+//广告页面点击
+-(void)advertPush:(NSInteger)index
+{
+    [self.bigImageViewShowView showInKeyWindowWithIndex:index];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

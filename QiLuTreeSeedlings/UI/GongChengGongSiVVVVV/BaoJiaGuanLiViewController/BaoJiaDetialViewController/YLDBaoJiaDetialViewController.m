@@ -273,6 +273,11 @@
         [self.navigationController pushViewController:DAA animated:YES];
     }
 }
+-(void)hidingAction
+{
+//    [ removeFromSuperview];
+    self.searchV.hidden=YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

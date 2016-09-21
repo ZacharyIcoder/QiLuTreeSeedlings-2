@@ -227,7 +227,7 @@
     cell.bianhaoLab.text=[NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
     NSString *sdsadsa=DIC[@"description"];
 
-    CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求:%@",sdsadsa] width:kWidth-105 font:15];
+    CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求:%@",sdsadsa] width:kWidth-110 font:15];
     CGRect frame=cell.frame;
     if (height>20) {
         frame.size.height=70+height;
@@ -328,7 +328,7 @@
     NSDictionary *DIC=self.dataAry[indexPath.row];
     
     NSString *sdsadsa=DIC[@"description"];
-    CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求:%@",sdsadsa] width:kWidth-105 font:15];
+    CGFloat height=[self getHeightWithContent:[NSString stringWithFormat:@"规格要求:%@",sdsadsa] width:kWidth-110 font:15];
     //    CGRect frame=cell.frame;
     if (height>20) {
         return 70+height;

@@ -17,6 +17,7 @@
     frame.size.width=kWidth;
     frame.size.height=kHeight-115;
     yldBaoJiaMiaoMuView.frame=frame;
+    yldBaoJiaMiaoMuView.shuomingLab.userInteractionEnabled=NO;
     return yldBaoJiaMiaoMuView;
 }
 -(void)setModel:(YLDBaoJiaMiaoMuModel *)model
@@ -30,6 +31,7 @@
     
     
     self.areaLab.text=model.area;
+    [self.areaLab sizeToFit];
     self.priceLab.text=model.quote;
     self.shuomingLab.text=model.descriptions;
 }

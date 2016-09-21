@@ -55,10 +55,16 @@
         self.vcTitle=@"电话";
         textField.placeholder=@"请输入电话";
         textField.keyboardType=UIKeyboardTypeNumberPad;
+        if (self.str.length>0) {
+            textField.text=self.str;
+        }
     }
     if (self.type==3) {
         self.vcTitle=@"公司地址";
         textField.placeholder=@"请输入公司地址";
+        if (self.str.length>0) {
+            textField.text=self.str;
+        }
     }
     if (self.type==4) {
         self.vcTitle=@"公司简介";

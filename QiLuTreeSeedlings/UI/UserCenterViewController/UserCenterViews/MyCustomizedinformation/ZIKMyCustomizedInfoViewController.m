@@ -54,6 +54,11 @@
         }];
     }
     else {
+        [APPDELEGATE reloadUserInfoSuccess:^(id responseObject) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
