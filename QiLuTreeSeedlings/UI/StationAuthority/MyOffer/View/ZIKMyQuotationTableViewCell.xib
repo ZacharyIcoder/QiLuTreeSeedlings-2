@@ -208,6 +208,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bottomBgImageView" destination="7nC-ze-Eg6" id="p5M-eQ-3yj"/>
+                <outlet property="bottomLayoutConstraint" destination="sc6-MH-4sL" id="Kuk-0U-oVe"/>
                 <outlet property="createTimeLabel" destination="zb5-A8-I2g" id="gIo-VD-cP7"/>
                 <outlet property="endDateLabel" destination="Yd2-Ic-3iB" id="5XG-9J-ipa"/>
                 <outlet property="engineeringCompanyLabel" destination="HKf-KW-FOS" id="JaE-hc-7kN"/>

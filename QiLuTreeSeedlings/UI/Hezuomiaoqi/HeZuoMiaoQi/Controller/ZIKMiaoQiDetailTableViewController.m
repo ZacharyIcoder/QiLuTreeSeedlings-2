@@ -137,10 +137,22 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
         }
     }
     if (indexPath.section == 1) {
-        self.tableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
-        self.tableView.estimatedRowHeight = 186;
-        return self.tableView.rowHeight;
-//        return 186;
+//        self.tableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
+//        self.tableView.estimatedRowHeight = 85;
+//        return self.tableView.rowHeight;
+        CGFloat height = 186;
+//        CLog(@"self.miaoModel.companyName;%@",self.miaoModel.companyName);
+//        CLog(@"self.miaoModel.address%@",self.miaoModel.address);
+        CGRect companyNameRect = [ZIKFunction getCGRectWithContent:self.miaoModel.companyName width:kWidth-115 font:15.0f];
+        if (companyNameRect.size.height>21) {
+            height += companyNameRect.size.height - 21 + 6;
+        }
+        CGRect addressNameRect = [ZIKFunction getCGRectWithContent:self.miaoModel.address width:kWidth-115 font:15.0f];
+        if (addressNameRect.size.height>21) {
+            height += addressNameRect.size.height - 21 + 6;
+        }
+
+        return height;
 
     }
     if (indexPath.section == 2) {
@@ -160,6 +172,12 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    if ([ZIKFunction xfunc_check_strEmpty:self.miaoModel.gybrief]) {
+//        return 2;
+//    } else {
+//        return 3;
+//    }
+//    return 2;
     return 3;
 }
 
@@ -180,7 +198,20 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
         if (self.miaoModel) {
             [briefCell configureCell:_miaoModel];
         }
-
+//        briefCell.indexPath = indexPath;
+//        //按钮点击展开隐藏
+//
+//        __weak typeof(self) weakSelf = self;//解决循环引用的问题
+//
+//        briefCell.openButtonBlock = ^(NSIndexPath *indexPath){
+//            //            weakSelf.miaoModel.isShow = !weakSelf.miaoModel.isShow;
+//            //            //一个section刷新
+//            //            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
+//            //            [tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//            //            [tableView reloadData];
+//            weakSelf.miaoModel.isShow = !weakSelf.miaoModel.isShow;
+//            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+//        };
         briefCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return briefCell;
     }

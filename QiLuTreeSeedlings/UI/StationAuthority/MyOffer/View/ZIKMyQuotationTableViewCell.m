@@ -30,6 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameCenterYLayoutConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameHeightLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
 
 @end
 
@@ -132,7 +133,10 @@
     CGRect companyNameRect = [ZIKFunction getCGRectWithContent:model.engineeringCompany width:self.engineeringCompanyLabel.frame.size.width font:16.0f];
     if (companyNameRect.size.height>21) {
         self.nameHeightLayoutConstraint.constant = companyNameRect.size.height+5;
-        self.nameCenterYLayoutConstraint.constant = companyNameRect.size.height/2-6;
+        if (companyNameRect.size.height/2>11) {
+            self.nameCenterYLayoutConstraint.constant = companyNameRect.size.height/2-11;
+            self.bottomLayoutConstraint.constant = -14;
+        }
     }
 }
 
