@@ -45,6 +45,7 @@
     self.dingdanTypeLab.text=model.orderType;
     NSArray *timeAry=[model.endDate componentsSeparatedByString:@" "];
     self.companyLab.text=model.company;
+    [self.companyLab sizeToFit];
     self.endTimeLab.text=[timeAry firstObject];
     self.baojiaTypeLab.text=model.quotationRequired;
     self.zhiliangLab.text=model.quantityRequired;
