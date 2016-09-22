@@ -93,7 +93,7 @@
     stationVC.tabBarItem.title = @"苗企中心";
     stationVC.navigationController.navigationBar.hidden = YES;
 
-    stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程中心offf"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    stationVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-工程中心off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     stationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"底部菜单-工程中心onn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
 

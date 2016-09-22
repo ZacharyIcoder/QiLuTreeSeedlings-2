@@ -47,7 +47,7 @@
     jinpaigongyingVC.vcTitle = @"金牌供应";
     jinpaigongyingVC.tabBarItem.title = @"金牌供应";
     jinpaigongyingVC.navigationController.navigationBar.hidden = YES;
-    jinpaigongyingVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单金牌供应off-"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    jinpaigongyingVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单金牌供应off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     jinpaigongyingVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单金牌供应on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
  
  
@@ -71,8 +71,8 @@
    
     orderVC.title=@"金牌订单";
     orderVC.vcTitle=@"金牌订单";
-    orderVC.tabBarItem.image = [[UIImage imageNamed:@"jpwodedingdanoff"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"jpwodedingdanon"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    orderVC.tabBarItem.image = [[UIImage imageNamed:@"底部菜单-我的订单off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    orderVC.tabBarItem.selectedImage =[[UIImage imageNamed:@"底部菜单-我的订单on"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
     //金牌中心
