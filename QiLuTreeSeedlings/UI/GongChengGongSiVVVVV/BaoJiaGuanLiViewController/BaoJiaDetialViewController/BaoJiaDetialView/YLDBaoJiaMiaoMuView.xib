@@ -214,6 +214,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="ShUOlAB" destination="rc4-YD-LCh" id="UpK-uI-Ugf"/>
                 <outlet property="areaLab" destination="MLe-8I-SOd" id="B93-tw-Er4"/>
                 <outlet property="nameLab" destination="wbd-qi-FnN" id="i13-aC-FHB"/>
                 <outlet property="numLab" destination="RCq-wQ-1Li" id="soq-tQ-czw"/>

@@ -34,6 +34,7 @@
     tableView.dataSource=self;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView=tableView;
+    [tableView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:tableView];
     // Do any additional setup after loading the view.
 }
@@ -52,6 +53,7 @@
         if (!cell) {
             cell=[YLDGCZXTouxiangTableViewCell yldGCZXTouxiangTableViewCell];
               [cell.imagev setImageWithURL:[NSURL URLWithString:APPDELEGATE.GCGSModel.attachment] placeholderImage:[UIImage imageNamed:@"UserImage"]];
+            [cell setBackgroundColor:[UIColor whiteColor]];
         }
         self.touxiangCell=cell;
         return cell;
@@ -59,6 +61,7 @@
         YLDGCZXInfoTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"YLDGCZXInfoTableViewCell"];
         if (!cell) {
             cell=[YLDGCZXInfoTableViewCell yldGCZXInfoTableViewCell];
+            [cell setBackgroundColor:[UIColor whiteColor]];
         }
         if (indexPath.row==1) {
             cell.titleLab.text=@"联系人";
@@ -78,6 +81,7 @@
         if (indexPath.row==4) {
             cell.titleLab.text=@"公司简介";
             cell.NameLab.text=APPDELEGATE.GCGSModel.brief;
+            cell.lineV.hidden=YES;
             
         }
         return cell;

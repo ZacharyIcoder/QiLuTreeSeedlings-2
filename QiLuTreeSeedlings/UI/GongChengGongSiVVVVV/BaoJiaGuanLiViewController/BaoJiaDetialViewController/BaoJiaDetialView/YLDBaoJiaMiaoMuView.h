@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *zhiliangLab;
 @property (weak, nonatomic) IBOutlet UILabel *numLab;
 @property (weak, nonatomic) IBOutlet UILabel *areaLab;
+@property (weak, nonatomic) IBOutlet UILabel *ShUOlAB;
 @property (nonatomic,strong)YLDBaoJiaMiaoMuModel *model;
 @property (weak, nonatomic) IBOutlet UITextView *shuomingLab;
 +(YLDBaoJiaMiaoMuView *)yldBaoJiaMiaoMuView;

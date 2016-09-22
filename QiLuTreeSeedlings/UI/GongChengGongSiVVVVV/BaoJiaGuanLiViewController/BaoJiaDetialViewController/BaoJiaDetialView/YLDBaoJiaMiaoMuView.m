@@ -17,7 +17,7 @@
     frame.size.width=kWidth;
     frame.size.height=kHeight-116;
     yldBaoJiaMiaoMuView.frame=frame;
-//    [yldBaoJiaMiaoMuView setBackgroundColor:[UIColor clearColor]];
+    [yldBaoJiaMiaoMuView setBackgroundColor:[UIColor whiteColor]];
     yldBaoJiaMiaoMuView.shuomingLab.userInteractionEnabled=NO;
     return yldBaoJiaMiaoMuView;
 }
@@ -35,6 +35,12 @@
     [self.areaLab sizeToFit];
     self.priceLab.text=model.quote;
     self.shuomingLab.text=model.descriptions;
+    CGRect frame=self.frame;
+    frame.origin.y=116;
+    frame.size.width=kWidth;
+    CGFloat HH  =  CGRectGetMaxY(self.ShUOlAB.frame)+40;
+    frame.size.height=HH;
+    self.frame=frame;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
