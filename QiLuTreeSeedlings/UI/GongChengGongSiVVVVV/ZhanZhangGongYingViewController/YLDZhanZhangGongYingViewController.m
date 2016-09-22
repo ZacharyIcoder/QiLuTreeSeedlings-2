@@ -20,12 +20,14 @@
 #import "HotSellModel.h"
 #import "SellDetialViewController.h"
 #import "YLDZZsuppleyListViewController.h"
+#import "BigImageViewShowView.h"
 @interface YLDZhanZhangGongYingViewController ()<AdvertDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic)NSInteger pageNum;
 @property (nonatomic,strong)NSArray *workStationAry;
 @property (nonatomic,strong)NSMutableArray *supplyAry;
 @property (nonatomic,weak)UITableView *tableView;
+@property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
 @end
 
 @implementation YLDZhanZhangGongYingViewController
@@ -39,6 +41,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.bigImageViewShowView =[[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg",@"bangde5.png"]];
     self.pageNum=1;
     self.supplyAry=[NSMutableArray array];
     self.backBtn.frame=CGRectMake(13, 26, 60, 30);
@@ -176,7 +179,7 @@
 }
 - (void)advertPush:(NSInteger)index
 {
-    
+    [self.bigImageViewShowView showInKeyWindowWithIndex:index];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
