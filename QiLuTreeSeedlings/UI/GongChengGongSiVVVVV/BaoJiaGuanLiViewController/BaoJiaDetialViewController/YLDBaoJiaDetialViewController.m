@@ -48,7 +48,7 @@
     YLDBaoJiaMiaoMuView *yldBaoJiaMiaoMuView=[YLDBaoJiaMiaoMuView yldBaoJiaMiaoMuView];
     self.miaomuDetialV=yldBaoJiaMiaoMuView;
     [self.view addSubview:yldBaoJiaMiaoMuView];
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 115, kWidth, kHeight-115)];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 116, kWidth, kHeight-116)];
     self.tableView=tableView;
     tableView.delegate=self;
     tableView.dataSource=self;

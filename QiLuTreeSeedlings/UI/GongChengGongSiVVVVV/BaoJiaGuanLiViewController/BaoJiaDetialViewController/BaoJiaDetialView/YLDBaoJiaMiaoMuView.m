@@ -13,10 +13,11 @@
 {
     YLDBaoJiaMiaoMuView *yldBaoJiaMiaoMuView=[[[NSBundle mainBundle]loadNibNamed:@"YLDBaoJiaMiaoMuView" owner:self options:nil] lastObject];
     CGRect frame=yldBaoJiaMiaoMuView.frame;
-    frame.origin.y=115;
+    frame.origin.y=116;
     frame.size.width=kWidth;
-    frame.size.height=kHeight-115;
+    frame.size.height=kHeight-116;
     yldBaoJiaMiaoMuView.frame=frame;
+//    [yldBaoJiaMiaoMuView setBackgroundColor:[UIColor clearColor]];
     yldBaoJiaMiaoMuView.shuomingLab.userInteractionEnabled=NO;
     return yldBaoJiaMiaoMuView;
 }
