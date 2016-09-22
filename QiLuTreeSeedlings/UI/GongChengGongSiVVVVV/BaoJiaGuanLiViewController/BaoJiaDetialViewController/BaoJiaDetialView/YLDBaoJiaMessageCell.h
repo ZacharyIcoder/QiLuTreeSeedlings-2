@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageV1;
 @property (weak, nonatomic) IBOutlet UIImageView *imageV2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageV3;
+@property (weak, nonatomic) IBOutlet UIImageView *kLineV;
 @property (nonatomic,strong)YLDBaoJiaMessageModel *model;
 +(YLDBaoJiaMessageCell *)ylBdaoJiaMessageCell;
 + (UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth;

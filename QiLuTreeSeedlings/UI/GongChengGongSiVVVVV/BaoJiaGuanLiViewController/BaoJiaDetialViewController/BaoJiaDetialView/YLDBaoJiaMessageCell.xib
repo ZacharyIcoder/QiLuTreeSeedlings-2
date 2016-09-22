@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRG-lm-mte">
-                        <rect key="frame" x="86" y="84" width="219" height="21"/>
+                        <rect key="frame" x="86" y="88" width="219" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="syh-1g-l5g"/>
                         </constraints>
@@ -45,7 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-Ts-gAf">
-                        <rect key="frame" x="219" y="18" width="93" height="28"/>
+                        <rect key="frame" x="217" y="18" width="93" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="93" id="fai-m9-f3D"/>
                             <constraint firstAttribute="height" constant="28" id="hTq-ap-5cu"/>
@@ -127,7 +127,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山东省临沂市兰山区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R46-GF-i75">
-                        <rect key="frame" x="92" y="154" width="216" height="21"/>
+                        <rect key="frame" x="87" y="154" width="221" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="5bb-lA-oPq"/>
                             <constraint firstAttribute="height" constant="21" id="MEK-aw-Rde"/>
@@ -153,7 +153,7 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2xh-NF-m07">
                         <rect key="frame" x="20" y="219" width="280" height="1"/>
-                        <color key="backgroundColor" red="0.83184773489932751" green="0.83116610738255037" blue="0.83032718120805371" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="AfH-yW-L59"/>
                         </constraints>
@@ -184,7 +184,7 @@
                 <constraints>
                     <constraint firstItem="h5I-Ts-gAf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="1Tp-Cx-NVQ"/>
                     <constraint firstItem="7DF-na-Sz7" firstAttribute="top" secondItem="SsS-Fg-PL8" secondAttribute="bottom" constant="10" id="2LU-c0-WAa"/>
-                    <constraint firstItem="R46-GF-i75" firstAttribute="leading" secondItem="RGD-sC-ySa" secondAttribute="trailing" constant="7" id="347-SL-yk4"/>
+                    <constraint firstItem="R46-GF-i75" firstAttribute="leading" secondItem="RGD-sC-ySa" secondAttribute="trailing" constant="2" id="347-SL-yk4"/>
                     <constraint firstItem="Mbp-52-5Cs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="4jj-Db-UuM"/>
                     <constraint firstAttribute="trailingMargin" secondItem="HCT-cy-9fx" secondAttribute="trailing" id="7Kh-Yl-Fwz"/>
                     <constraint firstItem="8hJ-J1-hUJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="7qt-Lj-wQE"/>
@@ -192,7 +192,7 @@
                     <constraint firstItem="2xh-NF-m07" firstAttribute="top" secondItem="BjP-tC-k4J" secondAttribute="bottom" constant="8" id="9s3-IJ-FWl"/>
                     <constraint firstItem="8hJ-J1-hUJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="BFp-7h-Wwe"/>
                     <constraint firstItem="BjP-tC-k4J" firstAttribute="leading" secondItem="zeV-yW-fgG" secondAttribute="trailing" constant="8" id="Byo-8q-h3b"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="h5I-Ts-gAf" secondAttribute="trailing" id="D2H-7q-eUq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="h5I-Ts-gAf" secondAttribute="trailing" constant="2" id="D2H-7q-eUq"/>
                     <constraint firstItem="DRG-lm-mte" firstAttribute="leading" secondItem="SsS-Fg-PL8" secondAttribute="trailing" constant="1" id="DRF-a1-w7T"/>
                     <constraint firstItem="R46-GF-i75" firstAttribute="top" secondItem="2Pi-ir-uvP" secondAttribute="bottom" constant="15" id="Dpl-Tn-Cqx"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2Pi-ir-uvP" secondAttribute="trailing" constant="6" id="EAH-Vs-Y7V"/>
@@ -204,7 +204,7 @@
                     <constraint firstItem="R46-GF-i75" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="75" id="JBU-hj-HYJ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2xh-NF-m07" secondAttribute="trailing" constant="12" id="Kpg-lZ-Q9l"/>
                     <constraint firstAttribute="bottomMargin" secondItem="8hJ-J1-hUJ" secondAttribute="bottom" constant="1" id="L1I-i5-KZD"/>
-                    <constraint firstItem="2Pi-ir-uvP" firstAttribute="top" secondItem="DRG-lm-mte" secondAttribute="bottom" constant="13" id="LFh-wS-UdP"/>
+                    <constraint firstItem="2Pi-ir-uvP" firstAttribute="top" secondItem="DRG-lm-mte" secondAttribute="bottom" constant="9" id="LFh-wS-UdP"/>
                     <constraint firstItem="2xh-NF-m07" firstAttribute="top" secondItem="BjP-tC-k4J" secondAttribute="bottom" constant="8" id="NhR-rg-YxG"/>
                     <constraint firstItem="XHJ-Cx-smn" firstAttribute="top" secondItem="2xh-NF-m07" secondAttribute="bottom" constant="8" id="P9v-Rp-Xmw"/>
                     <constraint firstItem="zeV-yW-fgG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="PVd-Ii-ybT"/>
@@ -212,7 +212,7 @@
                     <constraint firstItem="9bL-cu-qmu" firstAttribute="top" secondItem="dUR-Dv-i6a" secondAttribute="bottom" constant="-5" id="Tsj-7l-6CP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="R46-GF-i75" secondAttribute="trailing" constant="4" id="UX7-R1-Hp1"/>
                     <constraint firstItem="RGD-sC-ySa" firstAttribute="top" secondItem="7DF-na-Sz7" secondAttribute="bottom" constant="13" id="UmD-XX-xGd"/>
-                    <constraint firstItem="h5I-Ts-gAf" firstAttribute="leading" secondItem="dUR-Dv-i6a" secondAttribute="trailing" constant="13" id="V2t-ey-kw8"/>
+                    <constraint firstItem="h5I-Ts-gAf" firstAttribute="leading" secondItem="dUR-Dv-i6a" secondAttribute="trailing" constant="11" id="V2t-ey-kw8"/>
                     <constraint firstItem="BjP-tC-k4J" firstAttribute="top" secondItem="R46-GF-i75" secondAttribute="bottom" constant="2" id="WVE-sd-lnb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="R46-GF-i75" secondAttribute="trailing" constant="13" id="YpK-ll-FlJ"/>
                     <constraint firstItem="R46-GF-i75" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="75" id="ZPl-L8-k8V"/>
@@ -238,7 +238,7 @@
                     <constraint firstItem="DRG-lm-mte" firstAttribute="leading" secondItem="SsS-Fg-PL8" secondAttribute="trailing" constant="1" id="tMw-hG-ezq"/>
                     <constraint firstItem="2mH-f8-e2h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="uBD-xd-yxp"/>
                     <constraint firstItem="SsS-Fg-PL8" firstAttribute="top" secondItem="Mbp-52-5Cs" secondAttribute="bottom" constant="13" id="xOA-wj-NnQ"/>
-                    <constraint firstItem="DRG-lm-mte" firstAttribute="top" secondItem="9bL-cu-qmu" secondAttribute="bottom" constant="6" id="xgP-Qb-ATo"/>
+                    <constraint firstItem="DRG-lm-mte" firstAttribute="top" secondItem="9bL-cu-qmu" secondAttribute="bottom" constant="10" id="xgP-Qb-ATo"/>
                     <constraint firstItem="zeV-yW-fgG" firstAttribute="top" secondItem="R46-GF-i75" secondAttribute="bottom" constant="8" id="xo6-nS-RRn"/>
                     <constraint firstItem="CDz-Kk-2cC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yui-0q-2AV"/>
                     <constraint firstItem="9bL-cu-qmu" firstAttribute="leading" secondItem="Mbp-52-5Cs" secondAttribute="trailing" constant="2" id="zM8-a0-Vcg"/>
@@ -268,6 +268,7 @@
                 <outlet property="imageV1" destination="2mH-f8-e2h" id="2Ct-It-76u"/>
                 <outlet property="imageV2" destination="CDz-Kk-2cC" id="won-Hl-qfa"/>
                 <outlet property="imageV3" destination="XHJ-Cx-smn" id="i6P-eP-gFA"/>
+                <outlet property="kLineV" destination="2xh-NF-m07" id="fr1-kK-wPg"/>
                 <outlet property="lianxirenLab" destination="Mbp-52-5Cs" id="9xb-Qg-G2m"/>
                 <outlet property="lianxirenWi" destination="IvK-hq-FYb" id="jhI-hJ-qLl"/>
                 <outlet property="numLab" destination="2Pi-ir-uvP" id="k03-1b-FuN"/>

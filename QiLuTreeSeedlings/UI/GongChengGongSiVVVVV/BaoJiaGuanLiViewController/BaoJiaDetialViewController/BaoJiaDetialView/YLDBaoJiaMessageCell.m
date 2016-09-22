@@ -39,7 +39,7 @@
     self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",model.quantity];
     
    
-    self.priceLab.text=model.price;
+    self.priceLab.text=[NSString stringWithFormat:@"¥%@",model.price];
     self.areaLab.text=model.area;
     self.shuomingTextView.text=model.explain;
     if ([model.status integerValue]==1) {
@@ -55,7 +55,10 @@
     for (int i=0; i<imageAry.count; i++) {
         NSString *sds=imageAry[0];
         if (sds.length<=0) {
+            self.kLineV.hidden=YES;
             break;
+        }else{
+            self.kLineV.hidden=NO;
         }
         if (i==0) {
             [self.imageV1 setImageWithURL:[NSURL URLWithString:imageAry[0]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];

@@ -41,6 +41,7 @@
     talbeView.dataSource=self;
     talbeView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.talbeView=talbeView;
+    [talbeView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:talbeView];
     
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fabubtnAction) name:@"YLDGONGChengFabuAction" object:nil];

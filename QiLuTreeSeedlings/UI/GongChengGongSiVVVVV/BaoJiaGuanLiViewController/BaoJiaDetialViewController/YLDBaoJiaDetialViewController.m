@@ -146,7 +146,16 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 310;
+    YLDBaoJiaMessageModel *model=self.dataAry[indexPath.row];
+    NSArray *imageAry=[model.image2 componentsSeparatedByString:@","];
+    NSString *sds=imageAry[0];
+    if(sds.length>0)
+    {
+      return 310;
+    }else{
+        return 230;
+    }
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -238,7 +238,7 @@
 {
      [[NSNotificationCenter defaultCenter]postNotificationName:@"YLDGongchengHidenTabBar" object:nil];
     ZIKWorkstationViewController *vc=[[ZIKWorkstationViewController alloc]init];
-    
+    vc.type=2;
     [self.navigationController pushViewController:vc animated:YES];
 }
 //构建小标题栏

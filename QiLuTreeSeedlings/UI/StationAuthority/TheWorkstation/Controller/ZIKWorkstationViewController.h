@@ -8,5 +8,5 @@
 
 #import "ZIKBaseChangeNavViewController.h"
 @interface ZIKWorkstationViewController : ZIKBaseChangeNavViewController
-
+@property (nonatomic)NSInteger type;
 @end

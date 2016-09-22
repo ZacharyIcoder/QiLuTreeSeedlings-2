@@ -61,6 +61,9 @@
     self.leftBarBtnBlock = ^{
         [weakSelf backBtnAction:nil];
     };
+    if (self.type==2) {
+        [self.navView setBackgroundColor:NavYellowColor];
+    }
 
     self.searchBarView.placeHolder = @"请输入工作站名称、电话、联系人";
     self.searchBarView.searchBlock = ^(NSString *searchText){
@@ -196,7 +199,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 160.f/320.f*kWidth;
+        if (self.type==2) {
+            return 0.01;
+        }else
+        {
+          return 160.f/320.f*kWidth;  
+        }
+        
     }
     if (indexPath.section == 1) {
         return 46;
@@ -215,11 +224,17 @@
     if(indexPath.section==0)
     {
         if (indexPath.row==0) {
-            AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
-            adView.delegate=self;
-            [adView setAdInfo];
-            [adView adStart];
-            return adView;
+            if (self.type==2) {
+                UITableViewCell *cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
+                return cell;
+            }else{
+                AdvertView *adView=[[AdvertView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 160.f/320.f*kWidth)];
+                adView.delegate=self;
+                [adView setAdInfo];
+                [adView adStart];
+                return adView;
+            }
+           
 
         }
     }
