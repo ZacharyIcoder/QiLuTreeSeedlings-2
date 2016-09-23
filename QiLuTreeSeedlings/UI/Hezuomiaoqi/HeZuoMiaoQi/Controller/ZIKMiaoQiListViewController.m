@@ -226,7 +226,7 @@
                     break;
             }
             self.startBtn.selected=YES;
-            self.level=[NSString stringWithFormat:@"%ld",indexPath.row+2];
+            self.level=[NSString stringWithFormat:@"%ld",(long)(indexPath.row+2)];
         }
     }
     if (tableView.tag>=10) {
@@ -416,7 +416,7 @@
 }
 -(void)getData
 {
-    [HTTPCLIENT  cooperationCompanyListWithSearchTime:self.searchStr starLevel:self.level province:self.shengModel.code city:self.shiModel.code county:self.xianModel.code page:[NSString stringWithFormat:@"%ld",self.pageNum] pageSize:@"15" Success:^(id responseObject) {
+    [HTTPCLIENT  cooperationCompanyListWithSearchTime:self.searchStr starLevel:self.level province:self.shengModel.code city:self.shiModel.code county:self.xianModel.code page:[NSString stringWithFormat:@"%ld",(long)self.pageNum] pageSize:@"15" Success:^(id responseObject) {
         RemoveActionV();
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             if (self.pageNum==1) {

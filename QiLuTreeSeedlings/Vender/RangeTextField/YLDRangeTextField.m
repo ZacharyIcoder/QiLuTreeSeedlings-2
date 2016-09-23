@@ -54,7 +54,7 @@
         if (toBeString.length > kssss) {
             //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%ld个字符",(long)kMaxLength] view:nil];
             //NSLog(@"最多%d个字符!!!",kMaxLength);
-            [ToastView showTopToast :[NSString stringWithFormat:@"最多%ld个字符",kssss]];
+            [ToastView showTopToast :[NSString stringWithFormat:@"最多%ld个字符",(long)kssss]];
             textField.text = [toBeString substringToIndex:kssss];
             return;
         }

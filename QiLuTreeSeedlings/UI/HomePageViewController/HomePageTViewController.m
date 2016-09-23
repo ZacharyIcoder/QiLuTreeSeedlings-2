@@ -518,17 +518,11 @@
         }
     }
     if (index == 6) {
-//        ZIKHezuomiaoqiViewController *hezuoVC = [[ZIKHezuomiaoqiViewController alloc] initWithNibName:@"ZIKHezuomiaoqiViewController" bundle:nil];
-//        [self hiddingSelfTabBar];
-//        [self.navigationController pushViewController:hezuoVC animated:YES];
-
-
-//        [ToastView showTopToast:@"敬请期待"];
 
         if([APPDELEGATE isNeedLogin])
         {
             [self hiddingSelfTabBar];
-            ZIKMiaoQiTabBarViewController *hezuoTabBarVC = [[ZIKMiaoQiTabBarViewController alloc] initWithNibName:@"ZIKMiaoQiTabBarViewController" bundle:nil];
+            ZIKMiaoQiTabBarViewController *hezuoTabBarVC = [[ZIKMiaoQiTabBarViewController alloc] init];
             [self.navigationController pushViewController:hezuoTabBarVC animated:YES];
         }else
         {

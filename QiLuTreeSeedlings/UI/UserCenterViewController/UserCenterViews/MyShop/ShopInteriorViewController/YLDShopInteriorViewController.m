@@ -86,10 +86,10 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"UITableViewCell%ld",indexPath.row]];
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"UITableViewCell%ld",(long)indexPath.row]];
     
     if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[NSString stringWithFormat:@"UITableViewCell%ld",indexPath.row]];
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[NSString stringWithFormat:@"UITableViewCell%ld",(long)indexPath.row]];
         CGRect frame=cell.frame;
         frame.size.height=50;
         cell.frame=frame;

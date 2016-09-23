@@ -237,8 +237,12 @@ UITextFieldDelegate,UIAlertViewDelegate,ZIKSelectViewUidDelegate,WHC_ChoicePictu
                                 NSString *compressurl=imagesCompressAry[i];
                                 compressurl=[compressurl stringByReplacingOccurrencesOfString:@" " withString:@""];
                                 NSString *detailurl=imagesDetailAry[i];
-                                
+
+                                if([ZIKFunction xfunc_check_strEmpty:detailurl]) {
+                                    detailurl = compressurl;
+                                } else {
                                 detailurl=[detailurl stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                }
                                 dic[@"url"]         =url;
                                 dic[@"compressurl"] = compressurl;
                                 dic[@"detailurl"]   = detailurl;

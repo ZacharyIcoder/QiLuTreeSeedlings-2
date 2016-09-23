@@ -52,7 +52,7 @@
         self.moneyLab.text=moneyStr;
     }
     
-    self.fangwenRiLab.text=[NSString stringWithFormat:@"%ld",model.visitDay];
+    self.fangwenRiLab.text=[NSString stringWithFormat:@"%ld",(long)model.visitDay];
     self.fengxhangZongLab.text=[NSString stringWithFormat:@"%ld",model.visitCount];
     self.fenxhangNumLab.text=[NSString stringWithFormat:@"%ld",model.shareCount];
     if (model.goldsupplierflag == 0 || model.goldsupplierflag == 10) {

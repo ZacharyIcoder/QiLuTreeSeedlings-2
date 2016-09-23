@@ -404,7 +404,7 @@
         if (!position) {
             if (toBeString.length > kssss) {
                 // NSLog(@"最多%d个字符!!!",kMaxLength);
-                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+                [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",(long)kssss] withOriginY:250 withSuperView:self.view];
                 //[XtomFunction openIntervalHUD:[NSString stringWithFormat:@"最多%d个字符",kMaxLength] view:nil];
                 textField.text = [toBeString substringToIndex:kssss];
                 return;
@@ -418,7 +418,7 @@
     // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
     else{
         if (toBeString.length > kssss) {
-            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",kssss] withOriginY:250 withSuperView:self.view];
+            [ToastView showToast:[NSString stringWithFormat:@"最多%ld个字符",(long)kssss] withOriginY:250 withSuperView:self.view];
             textField.text = [toBeString substringToIndex:kssss];
             return;
         }
