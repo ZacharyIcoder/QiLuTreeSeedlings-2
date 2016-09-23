@@ -17,4 +17,6 @@
  *  枚举的订单状态
  */
 @property (nonatomic, assign) StationOrderStatusType statusType;
+
+@property (nonatomic) UIColor *navColor;
 @end

@@ -51,7 +51,7 @@
     [messageView addSubview:pasdV];
     UILabel *pwsdLab=[[UILabel alloc]initWithFrame:CGRectMake(45/320.f*kWidth, lineView.frame.origin.y+15, 70, 30)];
     [pwsdLab setTextColor:titleLabColor];
-    [pwsdLab setText:@"密码"];
+    [pwsdLab setText:@"验证码"];
     UITextField *pasdTextField=[[UITextField alloc]initWithFrame:CGRectMake(120/320.f*kWidth,  lineView.frame.origin.y+15, 125/320.f*kWidth, 30)];
     pasdTextField.placeholder=@"请输入验证码";
     //pasdTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -94,7 +94,10 @@
         [ToastView showTopToast:@"手机号格式不正确"];
         return;
     }
-    if (![self.yanzhengTextField.text isEqualToString:authCodeView.authCodeStr]) {
+    NSString *yanzhengM=self.yanzhengTextField.text;
+    yanzhengM=[yanzhengM stringByReplacingOccurrencesOfString:@" " withString:@""];
+    yanzhengM=[yanzhengM stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    if (![yanzhengM isEqualToString:authCodeView.authCodeStr]) {
         [ToastView showTopToast:@"验证码不正确"];
         return;
     }

@@ -69,7 +69,6 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     [super viewWillAppear:YES];
     [self requestOrderDetail];
 }
-
 - (void)initData {
     self.vcTitle = @"订单详情";
     self.leftBarBtnImgString = @"BackBtn";
@@ -94,6 +93,9 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
     [self.view addSubview:orderTableView];
     [ZIKFunction setExtraCellLineHidden:orderTableView];
     self.orderTableView = orderTableView;
+    if (self.navColor) {
+        [self.navView setBackgroundColor:self.navColor];
+    }
 }
 
 - (void)requestOrderDetail {
