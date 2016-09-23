@@ -22,19 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *areaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *shuomingLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameWidthLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneWidthLayoutConstraint;
+
 @property (weak, nonatomic) IBOutlet UILabel *dianhuaLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *dianhuaImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *celiangyaoqiuLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dingdangongsiLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *baojiaLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dingdangongsiTopLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *yongmiaodiTopLayoutConstraint;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *qitashuomingCenterYLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lianxiTopLayoutConstraint;
 @end
 
 
@@ -73,17 +64,13 @@
     self.endDataLabel.text  = model.endDate;
     self.companyLabel.text  = model.company;
     self.areaLabel.text     = model.area;
+    [self.areaLabel sizeToFit];
     self.phoneLabel.text    = model.person;
 
 
-    CGRect nameRect =  [ZIKFunction getCGRectWithContent:model.person width:180 font:15.0f];
-    self.nameWidthLayoutConstraint.constant = nameRect.size.width+5;
-//    self.shuomingLabel.text = model.demandDescription;
 
     self.dianhuaLabel.text = model.phone;
     phone = model.phone;
-    CGRect phoneRect = [ZIKFunction getCGRectWithContent:model.phone width:180 font:15.0f];
-    self.phoneWidthLayoutConstraint.constant = phoneRect.size.width+5;
 
     self.dianhuaLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phone:)];
@@ -111,16 +98,12 @@
     NSRange range11 = [string1 rangeOfString:@"面"];
     NSRange range21 = [string2 rangeOfString:@"面"];//匹配得到的下标
     NSRange range22 = [string2 rangeOfString:@"处"];
-//    NSLog(@"%@",range1);
-//    NSLog(@"%@",range2);
-//    NSString *priceString = [NSString stringWithFormat:@"我的报价: ¥%@",model.price];
     FontAttribute *fullFont = [FontAttribute new];
     fullFont.font = [UIFont systemFontOfSize:15.0f];
     fullFont.effectRange  = NSMakeRange(0, celiangString.length);
     ForegroundColorAttribute *fullColor = [ForegroundColorAttribute new];
     fullColor.color = DarkTitleColor;
     fullColor.effectRange = NSMakeRange(0,celiangString.length);
-//    NSLog(@"%d,%d,%d,%d",(int)range11.location,(int)(range12.location-range11.location),(int)(range12.location+1+range21.location),(int)(range22.location-range21.location));
     //局部设置
     FontAttribute *partFont = [FontAttribute new];
     partFont.font = [UIFont systemFontOfSize:15.0f];
@@ -139,39 +122,7 @@
 
     self.celiangLabel.attributedText = [celiangString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,partFont2,fullColor,darkColor,darkColor2]];
 
-    CGRect celiangyaoqiuRect = [ZIKFunction getCGRectWithContent:celiangString width:kWidth-85  font:15.0f];
-    if (celiangyaoqiuRect.size.height>18) {
-        self.celiangyaoqiuLayoutConstraint.constant = 15;
-        self.dingdangongsiLayoutConstraint.constant = 15;
-    }
-
-    CGRect baojiaRect = [ZIKFunction getCGRectWithContent:model.quotationRequired width:self.baojiaLabel.frame.size.width font:15.0f];
-    if (baojiaRect.size.height>18) {
-        self.baojiaLayoutConstraint.constant = (baojiaRect.size.height-20)/2+9;
-        self.celiangyaoqiuLayoutConstraint.constant+= (baojiaRect.size.height-20)/2;
-    }
-
-    CGRect gongsiRect = [ZIKFunction getCGRectWithContent:model.company width:self.companyLabel.frame.size.width font:15.0f];
-    if (gongsiRect.size.height>18) {
-        self.dingdangongsiLayoutConstraint.constant = (gongsiRect.size.height-20)/2 + 11;
-        self.yongmiaodiTopLayoutConstraint.constant += (gongsiRect.size.height-20)/2;
-    }
-
-    CGRect dizhiRect = [ZIKFunction getCGRectWithContent:model.area width:self.areaLabel.frame.size.width font:15.0f];
-    if (dizhiRect.size.height>18) {
-        self.dingdangongsiLayoutConstraint.constant = (dizhiRect.size.height-20)/2 + 11;
-        self.lianxiTopLayoutConstraint.constant += (dizhiRect.size.height-20)/2;
-    }
-
-
-    CGRect qitaRect = [ZIKFunction getCGRectWithContent:model.demandDescription width:self.shuomingLabel.frame.size.width font:15.0f];
-//    CLog(@"%ld",self.qitashuomingCenterYLayoutConstraint.constant);
-    if(qitaRect.size.height>18) {
-        if (qitaRect.size.height/2 > 15) {
-            self.qitashuomingCenterYLayoutConstraint.constant = qitaRect.size.height/2-15;
-        }
-    }
-    self.shuomingLabel.text = model.demandDescription;
+//        self.shuomingLabel.text = model.demandDescription;
 
 
 

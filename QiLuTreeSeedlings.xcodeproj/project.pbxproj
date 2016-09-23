@@ -6143,10 +6143,8 @@
 				EAAFCFB21CBE248800EB894F /* 2miaomu1136.png in Resources */,
 				FCBE03771D8D18630062CDFF /* startouminga.png in Resources */,
 				FC5612761D0C092F00E5743B /* 添加照片-单株.png in Resources */,
-
 				EA6EAF451D93722200D050F5 /* 底部菜单金牌供应商off@2x.png in Resources */,
 				EA6EAF441D93722200D050F5 /* 底部菜单金牌供应on@2x.png in Resources */,
-				FC6789121D87875700AB1429 /* 底部菜单-苗企供应on.png in Resources */,
 				FC6FED8B1CAD103F000E2CA5 /* 支付宝支付.png in Resources */,
 				EA5A082A1D15333D005000E9 /* Gyichakan.png in Resources */,
 				FC0853F61D191847003A47BA /* ZIKWorkstationSelectAddressTableViewCell.xib in Resources */,

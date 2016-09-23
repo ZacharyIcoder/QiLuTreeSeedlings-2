@@ -150,7 +150,10 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
         self.orderTableView.estimatedRowHeight = 110;////必须设置好预估值
         return tableView.rowHeight;
     } else if (self.typeStyle == TypeStyleRequire) {
-        return 300.0f;
+        self.orderTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
+        self.orderTableView.estimatedRowHeight = 300;////必须设置好预估值
+        return tableView.rowHeight;
+
     }
     return 44.0f;
 }
