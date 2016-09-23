@@ -22,6 +22,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMessageComposeViewController.h>
 #import "LoginViewController.h"
+#import "UINavController.h"
 #import "ZIKPayViewController.h"
 
 //友盟
@@ -766,6 +767,17 @@ static BOOL isHezuo = NO;
 
 
 - (void)shopBtnAction {
+    if (![APPDELEGATE isNeedLogin]) {
+        LoginViewController *loginViewController=[[LoginViewController alloc] init];
+        [ToastView showTopToast:@"请先登录"];
+        UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+
+        [self presentViewController:navVC animated:YES completion:^{
+
+        }];
+        return;
+    }
+
     if ([ZIKFunction xfunc_check_strEmpty:_memberUid]) {
         [ToastView showTopToast:@"无店铺信息"];
         return;
@@ -1812,6 +1824,7 @@ static BOOL isHezuo = NO;
 }
 
 - (void)shareBtnClick {
+    
 //    self.type 1 热门求购  2我的求购
 //    self.isPuy YES 已定制或已付款  NO 未付款且未定制
 //    self.model.state  4 已通过
@@ -1819,6 +1832,7 @@ static BOOL isHezuo = NO;
 }
 #pragma mark - 求购分享
 - (void)requestShareData {
+
     ShowActionV();
     NSString *state = nil;
     if (self.type == 1 && self.model.push != 1 && self.model.buy != 1 ) {//:热门求购（热门求购中除去已定制和已购买的）

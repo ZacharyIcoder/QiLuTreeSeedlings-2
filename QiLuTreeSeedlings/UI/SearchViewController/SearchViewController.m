@@ -21,6 +21,10 @@
 #import "UMSocial.h"
 //end 友盟分享
 
+#import "LoginViewController.h"
+#import "UINavController.h"
+
+
 @interface SearchViewController ()<UITextFieldDelegate,SearchRecommendViewDelegate,SearchSuccessViewDelegatel,ScreeningViewDelegate,UMSocialUIDelegate>
 @property (nonatomic,weak) UIButton *chooseSBBtn;
 @property (nonatomic,copy) NSString *searchStr;
@@ -406,8 +410,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)canUmshare {
+                LoginViewController *loginViewController=[[LoginViewController alloc] init];
+                [ToastView showTopToast:@"请先登录"];
+                UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+    
+                [self presentViewController:navVC animated:YES completion:^{
+    
+                }];
+                return;
 
+}
 - (void)umshare:(NSString *)shareText title:(NSString *)shareTitle image:(UIImage *)shareImage url:(NSString *)shareUrl {
+
     self.shareText  = shareText;
     self.shareTitle = shareTitle;
     self.shareImage = shareImage;

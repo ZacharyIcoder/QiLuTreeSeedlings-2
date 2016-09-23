@@ -403,6 +403,14 @@
 
 //新增分组分享
 -(void)sendTimeInfo:(NSString *)timeStr {
+    if (![APPDELEGATE isNeedLogin]) {
+        if ([self.delegate respondsToSelector:@selector(canUmshare)]) {
+            [self.delegate canUmshare];
+        }
+
+        return;
+    }
+
     [HTTPCLIENT groupShareWithProductUid:self.productUid  productName:self.searchStr province:self.province city:self.City county:self.county startTime:timeStr spec_XXXXXX:self.shaixuanAry  Success:^(id responseObject) {
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];

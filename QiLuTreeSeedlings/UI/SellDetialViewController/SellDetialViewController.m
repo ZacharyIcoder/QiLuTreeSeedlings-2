@@ -28,6 +28,9 @@
 
 #import "ZIKMyShopViewController.h"
 #import "ZIKHeZuoMiaoQiKeFuViewController.h"
+
+#import "LoginViewController.h"
+#import "UINavController.h"
 @interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIButton *collectionBtn;
@@ -262,6 +265,16 @@
     [self.navigationController pushViewController:kefuVC animated:YES];
 }
 - (void)shopBtnAction {
+    if (![APPDELEGATE isNeedLogin]) {
+        LoginViewController *loginViewController=[[LoginViewController alloc] init];
+        [ToastView showTopToast:@"请先登录"];
+        UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
+
+        [self presentViewController:navVC animated:YES completion:^{
+
+        }];
+        return;
+    }
     if (_memberUid<=0) {
         [ToastView showTopToast:@"该店铺歇业中"];
         return;

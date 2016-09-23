@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface SearchViewController : UIViewController
 -(id)initWithSearchType:(NSInteger)type andSaerChStr:(NSString *)searchStr;
 -(id)initWithSearchType:(NSInteger)type;

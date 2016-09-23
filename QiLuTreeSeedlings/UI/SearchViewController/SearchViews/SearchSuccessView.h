@@ -20,6 +20,7 @@
  *  @param shareUrl   分享地址
  */
 - (void)umshare:(NSString *)shareText title:(NSString *)shareTitle image:(UIImage *)shareImage url:(NSString *)shareUrl;
+- (void)canUmshare;
 @end
 @interface SearchSuccessView : UIView
 @property (nonatomic,weak) id<SearchSuccessViewDelegatel> delegate;

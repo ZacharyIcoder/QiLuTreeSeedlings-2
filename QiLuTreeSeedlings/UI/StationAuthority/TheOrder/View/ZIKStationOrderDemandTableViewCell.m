@@ -67,7 +67,11 @@
     [self.areaLabel sizeToFit];
     self.phoneLabel.text    = model.person;
 
-
+    if ([ZIKFunction xfunc_check_strEmpty:model.phone]) {
+        self.dianhuaLabel.hidden = YES;
+        self.dianhuaImageView.hidden = YES;
+    }
+    else {
 
     self.dianhuaLabel.text = model.phone;
     phone = model.phone;
@@ -79,6 +83,7 @@
     self.dianhuaImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phone:)];
     [self.dianhuaImageView addGestureRecognizer:tapGesture2];
+    }
 
 
     if ([model.status isEqualToString:@"已结束"]) {
