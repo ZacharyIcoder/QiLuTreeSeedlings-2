@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger, TypeStyle) {
         NSDictionary *orderDetailDic = resultDic[@"orderDetail"];
         self.demandModel = [ZIKStationOrderDemandModel yy_modelWithDictionary:orderDetailDic];
         NSArray *itemListArray = orderDetailDic[@"itemList"];
-        if (self.quoteMArr.count != 0) {
+        if (self.quoteMArr.count!= 0) {
             [self.quoteMArr removeAllObjects];
         }
 

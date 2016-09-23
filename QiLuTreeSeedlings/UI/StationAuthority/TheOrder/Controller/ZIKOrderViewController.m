@@ -275,8 +275,6 @@
         if ([self.title isEqualToString:@"金牌订单"]) {
             orderDetailVC.hidesBottomBarWhenPushed  = YES;
             orderDetailVC.navColor =NavYellowColor;
-//            [orderDetailVC.navView setBackgroundColor:NavYellowColor];
-            
         }
 
         if (self.orderMArr.count > 0) {
