@@ -176,11 +176,12 @@
             }else
             {
                 [self.dataAry addObjectsFromArray:itemAry];
-                [self.tableView reloadData];
+                
             }
             if (self.pageNum<1) {
                 self.pageNum=1;
             }
+            [self.tableView reloadData];
         }else
         {
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];

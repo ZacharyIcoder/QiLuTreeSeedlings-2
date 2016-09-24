@@ -48,7 +48,13 @@
 {
     _messageDic=messageDic;
     self.nameLab.text=messageDic[@"name"];
-    self.numLab.text=[NSString stringWithFormat:@"%@棵(株)",messageDic[@"quantity"]];
+    
+    NSString *unit=messageDic[@"unit"];
+    if (unit.length>0) {
+       self.numLab.text=[NSString stringWithFormat:@"%@%@",messageDic[@"quantity"],unit];
+    }else{
+        self.numLab.text=[NSString stringWithFormat:@"%@",messageDic[@"quantity"]];
+    }
     NSString *shuomingStr=messageDic[@"description"];
     if (shuomingStr.length!=0) {
         self.jieshaoLab.text=[NSString stringWithFormat:@"规格要求：%@",messageDic[@"description"]];

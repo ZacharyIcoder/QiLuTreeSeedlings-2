@@ -15,10 +15,10 @@
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/2-45, 30)];
+        UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/7*3-45, 30)];
         nameTextField.tag=20;
         [nameTextField setFont:[UIFont systemFontOfSize:14]];
-        nameTextField.placeholder=@"请输入苗木品种";
+        nameTextField.placeholder=@"苗木品种";
         nameTextField.borderStyle=UITextBorderStyleRoundedRect;
         nameTextField.textColor=NavColor;
         self.nameTextField=nameTextField;
@@ -27,8 +27,8 @@
                                                  selector:@selector(textFieldChanged:)
                                                      name:UITextFieldTextDidChangeNotification
                                                    object:nameTextField];
-        UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-25, 5, kWidth/2-45, 30)];
-        numTextField.placeholder=@"请输入需求数量";
+        UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/7*3-27, 5, kWidth/7*2-25, 30)];
+        numTextField.placeholder=@"需求数量";
         numTextField.tag=7;
         [numTextField setFont:[UIFont systemFontOfSize:14]];
         numTextField.borderStyle=UITextBorderStyleRoundedRect;
@@ -40,11 +40,24 @@
                                                      name:UITextFieldTextDidChangeNotification
                                                    object:numTextField];
         [self addSubview:numTextField];
+        UITextField *unitTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/7*5-45, 5, kWidth/7*2-25, 30)];
+        unitTextField.placeholder=@"单位";
+        unitTextField.tag=4;
+        [unitTextField setFont:[UIFont systemFontOfSize:14]];
+        unitTextField.borderStyle=UITextBorderStyleRoundedRect;
+        unitTextField.textColor=NavYellowColor;
+//        unitTextField.keyboardType=UIKeyboardTypeNumberPad;
+        self.unitTextField=unitTextField;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(textFieldChanged:)
+                                                     name:UITextFieldTextDidChangeNotification
+                                                   object:unitTextField];
+        [self addSubview:unitTextField];
         BWTextView *shuomingTextView=[[BWTextView alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
-        shuomingTextView.placeholder=@"请输入苗木说明(100字以内)";
+        shuomingTextView.placeholder=@"请输入苗木说明";
        // shuomingTextView.borderStyle=UITextBorderStyleRoundedRect;
         shuomingTextView.textColor=DarkTitleColor;
-        shuomingTextView.tag=100;
+        shuomingTextView.tag=10000;
         self.shuomingTextView = shuomingTextView;
         [shuomingTextView setFont:[UIFont systemFontOfSize:14]];
         [self addSubview:shuomingTextView];
@@ -83,6 +96,10 @@
     if (shuomingStr.length>0) {
         self.shuomingTextView.text=shuomingStr;
     }
+    NSString *unitStr=messageDic[@"unit"];
+    if (unitStr.length>0) {
+        self.unitTextField.text=unitStr;
+    }
 }
 -(BOOL)checkChangeMessage
 {
@@ -112,7 +129,12 @@
     if (self.shuomingTextView.text.length>0) {
         self.messageDic[@"description"]=self.shuomingTextView.text;
     }else{
-        [self.messageDic removeObjectForKey:@"description"];
+        
+    }
+    if (self.unitTextField.text>0) {
+        self.messageDic[@"unit"]=self.unitTextField.text;
+    }else{
+        [self.messageDic removeObjectForKey:@"unit"];
     }
     
 }

@@ -17,6 +17,7 @@
 @property (nonatomic,weak) UITextField *nameTextField;
 @property (nonatomic,weak) UITextField *numTextField;
 @property (nonatomic,weak) BWTextView *shuomingTextView;
+@property (nonatomic,weak) UITextField *unitTextField;
 @property (nonatomic,weak) UIButton *deleteBtn;
 @property (nonatomic,weak) NSMutableDictionary *messageDic;
 @property (nonatomic,weak) id<YLDMMPiLiangBianJiCellDelegate> delegate;
