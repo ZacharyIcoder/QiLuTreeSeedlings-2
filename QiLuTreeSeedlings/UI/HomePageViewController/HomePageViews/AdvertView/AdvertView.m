@@ -144,7 +144,7 @@
     }
     else {
         self.pageController.currentPage = currentPage;
-        [self.scrollView setContentOffset:scrollOffset animated:NO];
+        [self.scrollView setContentOffset:scrollOffset animated:YES];
     }
     
     

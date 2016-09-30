@@ -37,9 +37,10 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, -20, kWidth, kHeight-50) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, -20, kWidth, kHeight-30) style:UITableViewStylePlain];
     tableView.dataSource=self;
     tableView.delegate=self;
+    [tableView setBackgroundColor:BGColor];
     self.tableView=tableView;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone; 
     [self.view addSubview:tableView];

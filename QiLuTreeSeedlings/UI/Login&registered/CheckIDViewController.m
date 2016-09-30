@@ -98,6 +98,8 @@
         [ToastView showTopToast:@"验证码不正确"];
         return;
     }
+    NSString *str=self.yanzhengTextField.text;
+    str=[str stringByReplacingOccurrencesOfString:@" " withString:@""];
     [HTTPCLIENT checkChongzhiPassWorldWihtPhone:self.phoneNum WithCode:self.yanzhengTextField.text Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             YLDNewPassWordViewController *yldNewPassWordVC=[[YLDNewPassWordViewController alloc]initWithPhone:self.phoneNum];
