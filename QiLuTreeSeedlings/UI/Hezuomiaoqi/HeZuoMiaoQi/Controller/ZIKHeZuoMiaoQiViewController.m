@@ -29,8 +29,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 @property (nonatomic, strong) NSMutableArray *fiveStarMArr;
 @property (nonatomic, strong) NSMutableArray *fourStarMArr;
 @property (nonatomic, strong) NSMutableArray *threeStarMArr;
-//@property (nonatomic, strong) NSMutableArray *twoStarMArr;
-//@property (nonatomic, strong) NSMutableArray *oneStarMarr;
+
 
 @property (nonatomic,strong) BigImageViewShowView *bigImageViewShowView;
 
@@ -51,8 +50,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     self.fiveStarMArr  = [NSMutableArray array];
     self.fourStarMArr  = [NSMutableArray array];
     self.threeStarMArr = [NSMutableArray array];
-//    self.twoStarMArr   = [NSMutableArray array];
-//    self.oneStarMarr   = [NSMutableArray array];
     self.bigImageViewShowView =[[BigImageViewShowView alloc]initWithNomalImageAry:@[@"bangde1.jpg",@"bangde2.jpg",@"bangde3.jpg",@"bangde4.jpg",@"bangde5.png"]];
 
 }
@@ -83,8 +80,7 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         NSArray *fiveArray  = resultDic[@"five"];
         NSArray *fourArray  = resultDic[@"four"];
         NSArray *threeArray = resultDic[@"three"];
-//        NSArray *twoArray   = resultDic[@"two"];
-//        NSArray *oneArray   = resultDic[@"one"];
+
 
         if (fiveArray.count>0) {
             [fiveArray enumerateObjectsUsingBlock:^(NSDictionary *fiveDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -104,18 +100,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
                 [self.threeStarMArr addObject:threeModel];
             }];
         }
-//        if (twoArray.count > 0) {
-//            [twoArray enumerateObjectsUsingBlock:^(NSDictionary *twoDic, NSUInteger idx, BOOL * _Nonnull stop) {
-//                ZIKHeZuoMiaoQiModel *twoModel = [ZIKHeZuoMiaoQiModel yy_modelWithDictionary:twoDic];
-//                [self.twoStarMArr addObject:twoModel];
-//            }];
-//        }
-//        if (oneArray.count > 0) {
-//            [oneArray enumerateObjectsUsingBlock:^(NSDictionary *oneDic, NSUInteger idx, BOOL * _Nonnull stop) {
-//                ZIKHeZuoMiaoQiModel *oneModel = [ZIKHeZuoMiaoQiModel yy_modelWithDictionary:oneDic];
-//                [self.oneStarMarr addObject:oneModel];
-//            }];
-//        }
         [self.mqTableView reloadData];
 
     } failure:^(NSError *error) {
@@ -133,11 +117,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     } else if (section == 3) {
         return self.threeStarMArr.count;
     }
-//    else if (section == 4) {
-//        return self.twoStarMArr.count;
-//    } else if (section == 5) {
-//        return self.oneStarMarr.count;
-//    }
     return 1;
 }
 
@@ -151,13 +130,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     }
     return 40;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return 0.01f;
-//    }
-//    return 10.0f;
-//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
@@ -210,11 +182,6 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
         } else if (indexPath.section == 3) {
             model = self.threeStarMArr[indexPath.row];
         }
-//        else if (indexPath.section == 4) {
-//            model = self.twoStarMArr[indexPath.row];
-//        } else if (indexPath.section == 5) {
-//            model = self.oneStarMarr[indexPath.row];
-//        }
         cell.starNum = 6-indexPath.section;
         [cell configureCell:model];
 
@@ -230,12 +197,10 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
 
         };
 
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     };
     return nil;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ZIKHeZuoMiaoQiModel *model = nil;
@@ -252,25 +217,11 @@ static NSString *SectionHeaderViewIdentifier = @"SectionHeaderViewIdentifier";
     [self.navigationController pushViewController:mqdVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    if (section != 0) {
-//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 10)];
-//        view.backgroundColor = BGColor;
-//        return view;
-//    }
-//    return nil;
-//
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (UIView *)makeViewWithTitle:(NSString *)title {
-//    UIView *headerView = [[UIView alloc] init];
-//    return headerView;
-//}
 
 //广告页面点击
 -(void)advertPush:(NSInteger)index

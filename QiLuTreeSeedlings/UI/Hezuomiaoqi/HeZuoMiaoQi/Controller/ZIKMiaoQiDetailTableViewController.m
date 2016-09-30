@@ -43,12 +43,6 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     [self initUI];
     [self requestData];
@@ -58,8 +52,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.sectionHeaderHeight    = HEADER_HEIGHT;
     //    if (self.view.frame.size.height>480) {
-    //        self.tableView.scrollEnabled  = NO; //设置tableview 不能滚动
-    //    } else {
+      //    } else {
     //        self.tableView.scrollEnabled  = YES; //设置tableview 可以滚动
     //    }
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
@@ -81,7 +74,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 #pragma mark - 请求数据
 - (void)requestData {
     [HTTPCLIENT cooperationCompanyDetailWithUid:self.uid Success:^(id responseObject) {
-        CLog(@"%@",responseObject);
+        //CLog(@"%@",responseObject);
         if ([responseObject[@"success"] integerValue] == 0) {
             [ToastView showTopToast:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
             return ;
@@ -172,12 +165,6 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    if ([ZIKFunction xfunc_check_strEmpty:self.miaoModel.gybrief]) {
-//        return 2;
-//    } else {
-//        return 3;
-//    }
-//    return 2;
     return 3;
 }
 
@@ -198,20 +185,6 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
         if (self.miaoModel) {
             [briefCell configureCell:_miaoModel];
         }
-//        briefCell.indexPath = indexPath;
-//        //按钮点击展开隐藏
-//
-//        __weak typeof(self) weakSelf = self;//解决循环引用的问题
-//
-//        briefCell.openButtonBlock = ^(NSIndexPath *indexPath){
-//            //            weakSelf.miaoModel.isShow = !weakSelf.miaoModel.isShow;
-//            //            //一个section刷新
-//            //            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
-//            //            [tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-//            //            [tableView reloadData];
-//            weakSelf.miaoModel.isShow = !weakSelf.miaoModel.isShow;
-//            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-//        };
         briefCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return briefCell;
     }
@@ -254,10 +227,6 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
     return nil;
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-//    view.tintColor = BGColor;
-//}
-
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKMiaoQiDetailBackHome" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ZIKMiaoQiDetailShopInfo" object:nil];
@@ -267,12 +236,10 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
 {
     ZIKMyHonorViewController *zsdasda=[[ZIKMyHonorViewController alloc]init];
     zsdasda.type = TypeMiaoQiHonor;
-//    zsdasda.workstationUid = self.miaoModel.uid;
     zsdasda.memberUid = self.miaoModel.memberUid;
     zsdasda.miaoqiOther = YES;
     [self.navigationController pushViewController:zsdasda animated:YES];
 }
-
 
 - (void)showShop {
     ZIKMyShopViewController *shopVC = [[ZIKMyShopViewController alloc] init];
