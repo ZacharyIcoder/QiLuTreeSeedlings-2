@@ -166,7 +166,7 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 120, kWidth, 80)];
     [view setBackgroundColor:[UIColor whiteColor]];
-    UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/2-45, 30)];
+    UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/7*3-45, 30)];
 
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.tag=20;
@@ -174,13 +174,13 @@
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:nameTextField];
-    nameTextField.placeholder=@"请输入苗木品种";
+    nameTextField.placeholder=@"苗木品种";
     nameTextField.borderStyle=UITextBorderStyleRoundedRect;
     nameTextField.textColor=NavColor;
     [view addSubview:nameTextField];
    
-    UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2-25, 5, kWidth/2-45, 30)];
-    numTextField.placeholder=@"请输入需求数量";
+    UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/7*3-27, 5, kWidth/7*2-25, 30)];
+    numTextField.placeholder=@"需求数量";
   
     numTextField.tag=7;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -192,13 +192,26 @@
     numTextField.textColor=NavYellowColor;
     numTextField.keyboardType=UIKeyboardTypeNumberPad;
     [view addSubview:numTextField];
+    UITextField *danweiTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/7*5-45, 5, kWidth/7*2-25, 30)];
+    danweiTextField.placeholder=@"单位";
+    
+    danweiTextField.tag=4;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:danweiTextField];
+    [danweiTextField setFont:[UIFont systemFontOfSize:14]];
+    danweiTextField.borderStyle=UITextBorderStyleRoundedRect;
+    danweiTextField.textColor=NavYellowColor;
+//    danweiTextField.keyboardType=UIKeyboardTypeNumberPad;
+    [view addSubview:danweiTextField];
     BWTextView *shuomingTextView=[[BWTextView alloc]initWithFrame:CGRectMake(10, 40, kWidth-80, 30)];
-    shuomingTextView.tag=100;
+    shuomingTextView.tag=10000;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textViewChanged:)
                                                  name:UITextViewTextDidChangeNotification
                                                object:shuomingTextView];
-    shuomingTextView.placeholder=@"请输入苗木说明(100字以内)";
+    shuomingTextView.placeholder=@"请输入苗木说明";
     
 //    shuomingTextView.borderStyle=UITextBorderStyleRoundedRect;
     shuomingTextView.layer.masksToBounds=YES;
@@ -225,7 +238,8 @@
 {
     UITextField *nameTextField=[self.addView viewWithTag:20];
     UITextField *numTextField=[self.addView viewWithTag:7];
-    UITextField *shuomingTextField=[self.addView viewWithTag:100];
+    UITextField *shuomingTextField=[self.addView viewWithTag:10000];
+    UITextField *danweiTextField=[self.addView viewWithTag:4];
     if (nameTextField.text.length==0) {
         [ToastView showTopToast:@"请输入苗木品种"];
         return;
@@ -246,14 +260,21 @@
     }else{
         miaomuDic[@"description"]=shuomingTextField.text;
     }
+    if (danweiTextField.text.length==0) {
+        danweiTextField.text=nil;
+    }else{
+        miaomuDic[@"unit"]=danweiTextField.text;
+    }
     
     [self.miaomuAry addObject:miaomuDic];
     nameTextField.text=nil;
     numTextField.text=nil;
     shuomingTextField.text=nil;
+    danweiTextField.text=nil;
     [nameTextField resignFirstResponder];
     [numTextField resignFirstResponder];
     [shuomingTextField resignFirstResponder];
+    [danweiTextField resignFirstResponder];
     [self.tableView reloadData];
 }
 -(UITextField *)creatTextFieldWithName:(NSString *)nameStr alortStr:(NSString *)alortStr andFrame:(CGRect)frame

@@ -15,6 +15,7 @@
 @property (nonatomic,weak)UITextField *nameTextField;
 @property (nonatomic,weak)UITextField *numTextField;
 @property (nonatomic,weak)UITextField *shuomingTextField;
+@property (nonatomic,weak)UITextField *unitTextField;
 @end
 
 @implementation YLDDingDanMMBianJiViewController
@@ -45,6 +46,9 @@
             if (item[@"description"]) {
             self.shuomingTextField.text=item[@"description"];
             }
+            if (item[@"unit"]) {
+                self.unitTextField.text=item[@"unit"];
+            }
         }else{
             [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
         }
@@ -63,7 +67,7 @@
         [ToastView  showTopToast:@"请输入苗木数量"];
         return;
     }
-    [HTTPCLIENT dingdanMMgengxinWithUid:self.uid WithName:self.nameTextField.text Withquantity:self.numTextField.text Withdecription:self.shuomingTextField.text Success:^(id responseObject) {
+    [HTTPCLIENT dingdanMMgengxinWithUid:self.uid WithName:self.nameTextField.text Withquantity:self.numTextField.text Withunit:self.unitTextField.text  Withdecription:self.shuomingTextField.text Success:^(id responseObject) {
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"编辑成功"];
             if (self.delegate) {
@@ -81,7 +85,7 @@
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 80)];
     [view setBackgroundColor:[UIColor whiteColor]];
-    UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/2-15, 30)];
+    UITextField *nameTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth/10*4-15, 30)];
     
     [nameTextField setFont:[UIFont systemFontOfSize:14]];
     nameTextField.tag=20;
@@ -90,13 +94,13 @@
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:nameTextField];
-    nameTextField.placeholder=@"请输入苗木品种";
+    nameTextField.placeholder=@"苗木品种";
     nameTextField.borderStyle=UITextBorderStyleRoundedRect;
     nameTextField.textColor=NavColor;
     [view addSubview:nameTextField];
     
-    UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/2+5, 5, kWidth/2-15, 30)];
-    numTextField.placeholder=@"请输入需求数量";
+    UITextField *numTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/10*4+5, 5, kWidth/10*3-15, 30)];
+    numTextField.placeholder=@"需求数量";
     self.numTextField=numTextField;
     numTextField.tag=7;
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -108,10 +112,23 @@
     numTextField.textColor=NavYellowColor;
     numTextField.keyboardType=UIKeyboardTypeNumberPad;
     [view addSubview:numTextField];
+    UITextField *unitTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/10*7+5, 5, kWidth/10*3-15, 30)];
+    unitTextField.placeholder=@"单位";
+    self.unitTextField=unitTextField;
+    unitTextField.tag=4;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:unitTextField];
+    [unitTextField setFont:[UIFont systemFontOfSize:14]];
+    unitTextField.borderStyle=UITextBorderStyleRoundedRect;
+    unitTextField.textColor=NavYellowColor;
+    unitTextField.keyboardType=UIKeyboardTypeNumberPad;
+    [view addSubview:unitTextField];
     UITextField *shuomingTextField=[[UITextField alloc]initWithFrame:CGRectMake(10, 40, kWidth-20, 30)];
     self.shuomingTextField=shuomingTextField;
-    shuomingTextField.tag=100;
-    shuomingTextField.placeholder=@"请输入苗木说明(100字以内)";
+    shuomingTextField.tag=10000;
+    shuomingTextField.placeholder=@"请输入苗木说明";
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldChanged:)
                                                  name:UITextFieldTextDidChangeNotification

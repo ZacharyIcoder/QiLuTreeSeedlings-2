@@ -140,11 +140,11 @@
     
     if (currentPage >= page) {
         self.pageController.currentPage = 0;
-        [self.scrollView setContentOffset:CGPointMake(scrollWidth, 0) animated:YES];
+        [self.scrollView setContentOffset:CGPointMake(scrollWidth, 0) animated:NO];
     }
     else {
         self.pageController.currentPage = currentPage;
-        [self.scrollView setContentOffset:scrollOffset animated:YES];
+        [self.scrollView setContentOffset:scrollOffset animated:NO];
     }
     
     

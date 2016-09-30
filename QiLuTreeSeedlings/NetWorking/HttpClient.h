@@ -1055,6 +1055,7 @@ failure:(void (^)(NSError *error))failure;
 -(void)dingdanMMgengxinWithUid:(NSString *)uid
                       WithName:(NSString *)name
                   Withquantity:(NSString *)quantity
+                      Withunit:(NSString *)unit
                 Withdecription:(NSString *)decription Success:(void (^)(id responseObject))success
                       failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－站长供应信息列表-----------
@@ -1459,4 +1460,14 @@ failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 金牌供应商-金牌中心分享----------
 -(void)goldsupplierShareSuccess:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure;
+
+#pragma mark ---------- 工程公司-订单开启与关闭----------
+-(void)GCGSOrderOpenWithUid:(NSString *)uid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程公司-订单明细释放----------
+-(void)GCGSOrderitemReleaseWithUid:(NSString *)uid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
+#pragma mark ---------- 工程公司-订单明细开启与关闭----------
+-(void)GCGSOrderItemOpenWithUid:(NSString *)uid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
 @end
