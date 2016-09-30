@@ -33,6 +33,7 @@
 @property (nonatomic)NSInteger pageNum;
 @property (nonatomic)NSInteger type;
 @property (nonatomic)NSInteger  selfType;
+@property (nonatomic,strong)UIButton *opensBtn;
 @end
 
 @implementation YLDDingDanDetialViewController
@@ -104,6 +105,16 @@
         tableView.frame=frame;
         
     }
+    UIButton *opensBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-60, 24, 50, 30)];
+    [opensBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
+    
+//    [opensBtn setImage:[UIImage imageNamed:@"edintBtn"] forState:UIControlStateNormal];
+    [opensBtn setTitle:@"关闭" forState:UIControlStateNormal];
+//    [opensBtn setTitle:@"打开" forState:UIControlStateSelected];
+    [opensBtn addTarget: self action:@selector(opensAndColseAction:) forControlEvents:UIControlEventTouchUpInside];
+//    opensBtn.hidden=YES;
+    self.opensBtn=opensBtn;
+
     UIButton *searchShowBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth-50, 24, 30, 30)];
     [searchShowBtn setEnlargeEdgeWithTop:5 right:10 bottom:10 left:20];
     [searchShowBtn setImage:[UIImage imageNamed:@"ico_顶部搜索"] forState:UIControlStateNormal];
@@ -161,7 +172,20 @@
                 self.model=model;
                 
                 self.jianjieView.model=model;
-                
+                if ([model.status isEqualToString:@"报价中"]) {
+                    if (model.auditStatus!=0&&_nowBtn.tag==0) {
+                        [self.navBackView addSubview:self.opensBtn];
+                        self.opensBtn.hidden=NO;
+                        if ([model.status isEqualToString:@"报价中"]) {
+                            self.opensBtn.selected=NO;
+                        }else{
+                            self.opensBtn.selected=YES;
+                        }
+                    }
+                   
+                }else{
+                    [self.opensBtn removeFromSuperview];
+                }
 //                if (![self.model.status isEqualToString:@"可编辑"]) {
 //                    [self.editingBtn removeFromSuperview];
 //                    self.editingBtn=nil;
@@ -239,7 +263,7 @@
     NSInteger stauts=[[DIC objectForKey:@"stauts"] integerValue];
    if (self.type!=weishenhe) {
       
-       if (stauts==4 ) {
+       if (stauts==4) {
            if (cell.chakanBtn.enabled==YES) {
                cell.chakanBtn.enabled=NO;
                cell.chakanBtn.hidden=YES;
@@ -262,13 +286,24 @@
        cell.deleteBtn.hidden=NO;
       
    }
-    //NSDictionary *DIC=self.miaomuAry[indexPath.row];
-//    cell.messageDic=DIC;
+    if ([self.model.status isEqualToString:@"报价中"]) {
+        if(self.model.auditStatus!=0&&self.model.opens==1){
+            cell.deleteBtn.enabled=YES;
+            cell.deleteBtn.hidden=NO;
+            NSInteger open=[DIC[@"opens"] integerValue];
+            if (open==1) {
+                cell.deleteBtn.tag=6;
+                [cell.deleteBtn setTitle:@"关闭" forState:UIControlStateNormal];
+            }else{
+                cell.deleteBtn.tag=7;
+                [cell.deleteBtn setTitle:@"开启" forState:UIControlStateNormal];
+            }
+        }
+    }
     return cell;
 }
 -(void)chakanActionWithTag:(NSInteger)tag andDic:(NSDictionary *)dic
 {
-    
     if (tag==1) {
         self.selfType=5;
         YLDBaoJiaDetialViewController *yldBaoJiaVC=[[YLDBaoJiaDetialViewController alloc] initWithUid:[dic objectForKey:@"uid"]];
@@ -286,14 +321,7 @@
         [self.navigationController pushViewController:MMBJVC animated:YES];
     }
     if (tag==5) {
-//        if (self.dataAry.count<=1) {
-//            [ToastView showTopToast:@"至少保留一条苗木信息"];
-//            return;
-//        }
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"订单苗木删除" message:@"您确定删除该苗木信息？" preferredStyle:UIAlertControllerStyleAlert];
-        
-        
-        
         [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
             
@@ -384,6 +412,13 @@
         self.tableView.hidden=YES;
         self.searchV.hidden=YES;
         [self.saerchBtn removeFromSuperview];
+        if ([self.model.status isEqualToString:@"报价中"]) {
+            if (self.model.auditStatus!=0) {
+                [self.navBackView addSubview:self.opensBtn];
+                self.opensBtn.hidden=NO;
+            }
+    }
+
     }
     if (sender.tag==1) {
         self.jianjieView.hidden=YES;
@@ -394,7 +429,7 @@
         }else{
           [self.navBackView addSubview:self.saerchBtn];  
         }
-       
+        [self.opensBtn removeFromSuperview];
         [self.tableView reloadData];
     }
     CGRect frame=_moveView.frame;
@@ -423,6 +458,41 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+-(void)opensAndColseAction:(UIButton *)sender
+{
+    NSString *title = NSLocalizedString(@"订单关闭", nil);
+    NSString *message = NSLocalizedString(@"您确认关闭该订单，关闭后无法再打开！", nil);
+    NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+    NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Create the actions.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//        NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+    }];
+    
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        NSLog(@"The \"Okay/Cancel\" alert's other action occured.");
+        [HTTPCLIENT GCGSOrderOpenWithUid:self.model.uid Withstatus:@"0" Success:^(id responseObject) {
+            if ([[responseObject objectForKey:@"success"] integerValue]) {
+                [ToastView showTopToast:@"关闭成功"];
+                ShowActionV();
+                [self getdataAction];
+            }else{
+                [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    }];
+    
+    // Add the actions.
+    [alertController addAction:cancelAction];
+    [alertController addAction:otherAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation

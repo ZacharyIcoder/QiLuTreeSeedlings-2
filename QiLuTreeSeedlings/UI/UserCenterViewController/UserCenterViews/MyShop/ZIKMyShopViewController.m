@@ -207,7 +207,7 @@ static NSString *flag = @"";
 
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
+- (void)webView:(UIWebView *)webView didFailLoadWithError:( NSError *)error {
     if ([flag isEqualToString:@"wu"]) {
         return;
     }

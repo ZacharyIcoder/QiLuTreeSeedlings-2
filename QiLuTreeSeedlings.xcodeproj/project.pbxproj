@@ -316,6 +316,7 @@
 		EA7514801C9B8E52003D63F1 /* supplyImageV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA75147F1C9B8E52003D63F1 /* supplyImageV@2x.png */; };
 		EA7514821C9B9181003D63F1 /* buyImageV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7514811C9B9181003D63F1 /* buyImageV@2x.png */; };
 		EA7514861C9BA41F003D63F1 /* buyFabuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7514851C9BA41F003D63F1 /* buyFabuViewController.m */; };
+		EA7716531D9D0BBB0017D7A6 /* zt已成交.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7716521D9D0BBB0017D7A6 /* zt已成交.png */; };
 		EA7757411D7D037400EEAC56 /* YLDFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7757401D7D037400EEAC56 /* YLDFeedbackViewController.m */; };
 		EA7AE8DF1C96538700B43073 /* SellDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8DE1C96538700B43073 /* SellDetialViewController.m */; };
 		EA7AE8E31C9655E500B43073 /* SellBanderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7AE8E21C9655E500B43073 /* SellBanderTableViewCell.m */; };
@@ -1435,6 +1436,7 @@
 		EA7514811C9B9181003D63F1 /* buyImageV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyImageV@2x.png"; sourceTree = "<group>"; };
 		EA7514841C9BA41F003D63F1 /* buyFabuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buyFabuViewController.h; sourceTree = "<group>"; };
 		EA7514851C9BA41F003D63F1 /* buyFabuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buyFabuViewController.m; sourceTree = "<group>"; };
+		EA7716521D9D0BBB0017D7A6 /* zt已成交.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zt已成交.png"; sourceTree = "<group>"; };
 		EA77573F1D7D037400EEAC56 /* YLDFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDFeedbackViewController.h; sourceTree = "<group>"; };
 		EA7757401D7D037400EEAC56 /* YLDFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDFeedbackViewController.m; sourceTree = "<group>"; };
 		EA7AE8DD1C96538700B43073 /* SellDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellDetialViewController.h; sourceTree = "<group>"; };
@@ -2933,6 +2935,7 @@
 		EA2726F81C8A735F000B0719 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EA7716521D9D0BBB0017D7A6 /* zt已成交.png */,
 				EA6EAF331D93722200D050F5 /* 底部菜单-报价管理On@2x.png */,
 				EA6EAF341D93722200D050F5 /* 底部菜单-报价管理Off@2x.png */,
 				EA6EAF351D93722200D050F5 /* 底部菜单-我的订单on@2x.png */,
@@ -6385,6 +6388,7 @@
 				EA605B3B1D48652500E0EF04 /* YLDShopJianJieViewController.xib in Resources */,
 				EAFB8FEB1D1A3D5B00FCF88B /* deleteRad.png in Resources */,
 				FCB3C48D1D937543005F8701 /* 底部菜单-站长求购off@2x.png in Resources */,
+				EA7716531D9D0BBB0017D7A6 /* zt已成交.png in Resources */,
 				FC6FED691CACF833000E2CA5 /* 列表-时间.png in Resources */,
 				FC1D3B381D88EE200033C525 /* ZIKShaidanDetailPingZanTableViewCell.xib in Resources */,
 				EA5AAC3D1C8D294700660FC9 /* HightLigerBuyMessageBtn@2x.png in Resources */,

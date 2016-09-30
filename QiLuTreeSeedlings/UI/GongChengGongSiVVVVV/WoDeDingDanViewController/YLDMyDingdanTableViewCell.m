@@ -71,6 +71,10 @@
         if ([model.status isEqualToString:@"已结束"]) {
             [self.loggV setImage:[UIImage imageNamed:@"zt已结束"]];
         }
+        if ([model.status isEqualToString:@"已成交"]) {
+            [self.loggV setImage:[UIImage imageNamed:@"zt已成交"]];
+        }
+        
  
     }
     self.frame=frame;
