@@ -21,7 +21,7 @@
 #import "UMSocial.h"
 //end 友盟分享
 
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 #import "UINavController.h"
 
 
@@ -411,7 +411,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)canUmshare {
-                LoginViewController *loginViewController=[[LoginViewController alloc] init];
+                YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc] init];
                 [ToastView showTopToast:@"请先登录"];
                 UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
     

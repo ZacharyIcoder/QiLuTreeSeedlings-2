@@ -7,7 +7,7 @@
 //
 
 #import "YLDNewPassWordViewController.h"
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 @interface YLDNewPassWordViewController ()
 @property (nonatomic,strong)UITextField *passWordTextField;
 @property (nonatomic,strong)UITextField *rePassWordTextField;
@@ -82,8 +82,8 @@
         if ([[responseObject objectForKey:@"success"] integerValue]) {
             [ToastView showTopToast:@"重置密码成功！"];
             for (UIViewController *controller in self.navigationController.viewControllers) {
-                if ([controller isKindOfClass:[LoginViewController class]]) {
-                     LoginViewController *owr = (LoginViewController *)controller;
+                if ([controller isKindOfClass:[YLDLoginViewController class]]) {
+                     YLDLoginViewController *owr = (YLDLoginViewController *)controller;
                     [self.navigationController popToViewController:owr animated:YES];
                 }
             }

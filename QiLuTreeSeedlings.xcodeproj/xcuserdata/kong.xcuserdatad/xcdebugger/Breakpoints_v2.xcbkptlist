@@ -458,7 +458,7 @@
             startingLineNumber = "292"
             endingLineNumber = "292"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -650,7 +650,7 @@
             startingLineNumber = "244"
             endingLineNumber = "244"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -692,7 +692,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyVC.m"
-                  timestampString = "496916645.580481"
+                  timestampString = "497521423.984756"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "491"
@@ -707,7 +707,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKMySupplyVC.m"
-                  timestampString = "496916645.581873"
+                  timestampString = "497521423.986089"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "492"
@@ -890,7 +890,7 @@
             startingLineNumber = "346"
             endingLineNumber = "346"
             landmarkName = "-screeningBtnClickSendOrderStateInfo:orderTypeInfo:orderAddressInfo:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -921,8 +921,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "360"
             endingLineNumber = "360"
-            landmarkName = "-sendTimeSortInfo:"
-            landmarkType = "5">
+            landmarkName = "-StationOrderScreeningbackBtnAction"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -938,7 +938,7 @@
             startingLineNumber = "305"
             endingLineNumber = "305"
             landmarkName = "-showSideView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1018,7 +1018,7 @@
             startingLineNumber = "378"
             endingLineNumber = "378"
             landmarkName = "-didReceiveMemoryWarning"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1130,7 +1130,7 @@
             startingLineNumber = "307"
             endingLineNumber = "307"
             landmarkName = "-showSideView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1204,13 +1204,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViewController.m"
-            timestampString = "491124828.241199"
+            timestampString = "497520826.918753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "660"
-            endingLineNumber = "660"
+            startingLineNumber = "661"
+            endingLineNumber = "661"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1220,13 +1220,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViewController.m"
-            timestampString = "491124828.241199"
+            timestampString = "497520826.918753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "687"
-            endingLineNumber = "687"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1236,11 +1236,11 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViewController.m"
-                  timestampString = "496916645.588387"
+                  timestampString = "497521423.992276"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "688"
-                  endingLineNumber = "688"
+                  startingLineNumber = "689"
+                  endingLineNumber = "689"
                   offsetFromSymbolStart = "1229">
                </Location>
                <Location
@@ -1251,11 +1251,11 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViewController.m"
-                  timestampString = "496916645.589766"
+                  timestampString = "497521423.993627"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "688"
-                  endingLineNumber = "688"
+                  startingLineNumber = "689"
+                  endingLineNumber = "689"
                   offsetFromSymbolStart = "51">
                </Location>
                <Location
@@ -1266,11 +1266,11 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViewController.m"
-                  timestampString = "496916645.591131"
+                  timestampString = "497521423.994964"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "688"
-                  endingLineNumber = "688"
+                  startingLineNumber = "689"
+                  endingLineNumber = "689"
                   offsetFromSymbolStart = "29">
                </Location>
                <Location
@@ -1281,11 +1281,11 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViewController.m"
-                  timestampString = "496916645.592484"
+                  timestampString = "497521423.996303"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "689"
-                  endingLineNumber = "689"
+                  startingLineNumber = "690"
+                  endingLineNumber = "690"
                   offsetFromSymbolStart = "44">
                </Location>
             </Locations>
@@ -1298,13 +1298,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViewController.m"
-            timestampString = "491124828.241199"
+            timestampString = "497520826.918753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "673"
-            endingLineNumber = "673"
+            startingLineNumber = "674"
+            endingLineNumber = "674"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1320,7 +1320,7 @@
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "-configureCell:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1336,7 +1336,7 @@
             startingLineNumber = "149"
             endingLineNumber = "149"
             landmarkName = "-requestMyOrderList:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1621,8 +1621,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "328"
             endingLineNumber = "328"
-            landmarkName = "-getDataWithLevel:"
-            landmarkType = "5">
+            landmarkName = "-backBtnAction:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1654,7 +1654,7 @@
             startingLineNumber = "302"
             endingLineNumber = "302"
             landmarkName = "-initWithDingzhiModel:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1670,7 +1670,7 @@
             startingLineNumber = "702"
             endingLineNumber = "702"
             landmarkName = "-initMyDetialWithSaercherInfo:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1686,7 +1686,7 @@
             startingLineNumber = "704"
             endingLineNumber = "704"
             landmarkName = "-initMyDetialWithSaercherInfo:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1780,7 +1780,7 @@
             startingLineNumber = "604"
             endingLineNumber = "604"
             landmarkName = "-initWithHeZuoMiaoQiInfo:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1822,7 +1822,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ZIKAddHonorViewController.m"
-                  timestampString = "496916645.653415"
+                  timestampString = "497521424.055372"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -1837,7 +1837,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ZIKAddHonorViewController.m"
-                  timestampString = "496916645.654821"
+                  timestampString = "497521424.056691"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -1852,7 +1852,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ZIKAddHonorViewController.m"
-                  timestampString = "496916645.656182"
+                  timestampString = "497521424.057989"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -1867,7 +1867,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ZIKAddHonorViewController.m"
-                  timestampString = "496916645.657743"
+                  timestampString = "497521424.059288"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "192"
@@ -2050,7 +2050,7 @@
             startingLineNumber = "355"
             endingLineNumber = "355"
             landmarkName = "-initWithDingzhiModel:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2066,7 +2066,7 @@
             startingLineNumber = "356"
             endingLineNumber = "356"
             landmarkName = "-initWithDingzhiModel:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2130,7 +2130,7 @@
             startingLineNumber = "649"
             endingLineNumber = "649"
             landmarkName = "-application:openURL:sourceApplication:annotation:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2146,7 +2146,7 @@
             startingLineNumber = "606"
             endingLineNumber = "606"
             landmarkName = "-saveContext"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2194,7 +2194,7 @@
             startingLineNumber = "591"
             endingLineNumber = "591"
             landmarkName = "-managedObjectContext"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2210,7 +2210,7 @@
             startingLineNumber = "598"
             endingLineNumber = "598"
             landmarkName = "-managedObjectContext"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2226,7 +2226,7 @@
             startingLineNumber = "661"
             endingLineNumber = "661"
             landmarkName = "-application:openURL:sourceApplication:annotation:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2274,7 +2274,7 @@
             startingLineNumber = "366"
             endingLineNumber = "366"
             landmarkName = "-initWithDingzhiModel:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2338,7 +2338,7 @@
             startingLineNumber = "1202"
             endingLineNumber = "1202"
             landmarkName = "-buyAction:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2434,7 +2434,7 @@
             startingLineNumber = "117"
             endingLineNumber = "117"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2450,7 +2450,7 @@
             startingLineNumber = "987"
             endingLineNumber = "987"
             landmarkName = "-lianxiMessageShareView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2466,7 +2466,7 @@
             startingLineNumber = "335"
             endingLineNumber = "335"
             landmarkName = "-initWithDingzhiModel:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2524,7 +2524,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ShowList/ZIKAddShowListViewController.m"
-                  timestampString = "496916645.75345"
+                  timestampString = "497521424.155149"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
@@ -2539,7 +2539,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ShowList/ZIKAddShowListViewController.m"
-                  timestampString = "496916645.754899"
+                  timestampString = "497521424.156499"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -2578,7 +2578,7 @@
             startingLineNumber = "419"
             endingLineNumber = "419"
             landmarkName = "-sendTimeInfo:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2594,7 +2594,7 @@
             startingLineNumber = "440"
             endingLineNumber = "440"
             landmarkName = "-umengShare"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2620,7 +2620,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "496916645.76548"
+                  timestampString = "497521424.166022"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1732"
@@ -2635,7 +2635,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "496916645.767083"
+                  timestampString = "497521424.167364"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1734"
@@ -2706,7 +2706,7 @@
             startingLineNumber = "323"
             endingLineNumber = "323"
             landmarkName = "-showSideView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2721,8 +2721,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "402"
             endingLineNumber = "402"
-            landmarkName = "-selectCitysInfo:"
-            landmarkType = "5">
+            landmarkName = "-addressSelectLabelAction"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2738,7 +2738,7 @@
             startingLineNumber = "364"
             endingLineNumber = "364"
             landmarkName = "-sendTimeSortInfo:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2754,7 +2754,7 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "-requestMySupplyList:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2882,7 +2882,7 @@
             startingLineNumber = "787"
             endingLineNumber = "787"
             landmarkName = "-shopBtnAction"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2898,7 +2898,7 @@
             startingLineNumber = "856"
             endingLineNumber = "856"
             landmarkName = "-lianxiMessageView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2914,7 +2914,7 @@
             startingLineNumber = "903"
             endingLineNumber = "903"
             landmarkName = "-kefuView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2930,7 +2930,7 @@
             startingLineNumber = "1057"
             endingLineNumber = "1057"
             landmarkName = "-laobanViewWithPrice:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2994,7 +2994,7 @@
             startingLineNumber = "357"
             endingLineNumber = "357"
             landmarkName = "-requestMiaoQiHonorListData:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3010,7 +3010,7 @@
             startingLineNumber = "356"
             endingLineNumber = "356"
             landmarkName = "-requestMiaoQiHonorListData:"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -3020,7 +3020,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ZIKMyHonorViewController.m"
-                  timestampString = "496916645.821276"
+                  timestampString = "497521424.220519"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "356"
@@ -3035,7 +3035,7 @@
                   moduleName = "QiLuTreeSeedlings"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kong/Desktop/QiLuTreeSeedlings-2/QiLuTreeSeedlings/UI/StationAuthority/StationCenter/Controller/ZIKMyHonorViewController.m"
-                  timestampString = "496916645.822625"
+                  timestampString = "497521424.221803"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
@@ -3074,7 +3074,7 @@
             startingLineNumber = "676"
             endingLineNumber = "676"
             landmarkName = "-application:openURL:sourceApplication:annotation:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3090,7 +3090,7 @@
             startingLineNumber = "739"
             endingLineNumber = "739"
             landmarkName = "-onResp:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3106,7 +3106,7 @@
             startingLineNumber = "735"
             endingLineNumber = "735"
             landmarkName = "-onResp:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3122,7 +3122,7 @@
             startingLineNumber = "745"
             endingLineNumber = "745"
             landmarkName = "-onResp:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3138,7 +3138,7 @@
             startingLineNumber = "120"
             endingLineNumber = "120"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3154,7 +3154,7 @@
             startingLineNumber = "123"
             endingLineNumber = "123"
             landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3170,7 +3170,7 @@
             startingLineNumber = "765"
             endingLineNumber = "765"
             landmarkName = "-caiGouPaySuccess:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3186,7 +3186,7 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "-requestData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3202,7 +3202,7 @@
             startingLineNumber = "694"
             endingLineNumber = "694"
             landmarkName = "-requestShareData"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

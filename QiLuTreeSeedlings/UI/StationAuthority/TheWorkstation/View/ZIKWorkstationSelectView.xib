@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,67 +14,61 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wqf-UZ-E9D" customClass="ZIKWorkstationSelectViewAboutAddressButton">
-                    <rect key="frame" x="209" y="12" width="183" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="2Vb-1C-nvS"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="工程订单_排序off.png">
-                        <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="cityButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="umT-eW-vCs"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCG-jk-31x" customClass="ZIKWorkstationSelectViewAboutAddressButton">
-                    <rect key="frame" x="409" y="12" width="183" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="IYf-F8-OE4"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="工程订单_排序off.png">
-                        <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="countryButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="9cP-NS-YMX"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-YB-Vyb">
-                    <rect key="frame" x="200" y="15" width="1" height="17"/>
-                    <color key="backgroundColor" red="0.73181452739999997" green="0.73482941830000004" blue="0.73482941830000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.73181452739999997" green="0.73482941830000004" blue="0.73482941830000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="VMB-ew-MXN"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzz-VL-Lha">
-                    <rect key="frame" x="400" y="15" width="1" height="17"/>
-                    <color key="backgroundColor" red="0.73181452739999997" green="0.73482941830000004" blue="0.73482941830000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.73181452739999997" green="0.73482941830000004" blue="0.73482941830000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="jiq-BC-3Ft"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0O-iI-6Wo" customClass="ZIKWorkstationSelectViewAboutAddressButton">
-                    <rect key="frame" x="8" y="12" width="184" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="A83-T1-fmY"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="工程订单_排序on.png">
-                        <color key="titleColor" red="0.41960784309999999" green="0.73725490199999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.41960784309999999" green="0.73725490199999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="provinceButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="w2o-GE-g1T"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Om-LH-4w0">
-                    <rect key="frame" x="0.0" y="44" width="600" height="2"/>
-                    <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="d4z-Nb-UsV"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="0Om-LH-4w0" secondAttribute="bottom" id="4yU-u6-KFm"/>
                 <constraint firstItem="e1A-YB-Vyb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Dfp-to-6VF"/>
@@ -105,7 +100,7 @@
         </view>
     </objects>
     <resources>
-        <image name="工程订单_排序off.png" width="15" height="9"/>
-        <image name="工程订单_排序on.png" width="15" height="10"/>
+        <image name="工程订单_排序off.png" width="10" height="6"/>
+        <image name="工程订单_排序on.png" width="10" height="7"/>
     </resources>
 </document>

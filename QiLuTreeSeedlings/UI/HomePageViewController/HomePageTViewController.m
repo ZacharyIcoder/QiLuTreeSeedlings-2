@@ -11,7 +11,7 @@
 #import "HttpClient.h"
 #import "UIDefines.h"
 #import "SearchViewController.h"
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 #import "FaBuViewController.h"
 #import "MyCollectViewController.h"
 #import "BuyDetialInfoViewController.h"
@@ -380,7 +380,7 @@
     if([APPDELEGATE isNeedLogin]==NO)
     {
         [self hiddingSelfTabBar];
-        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
         [self.navigationController pushViewController:loginViewController animated:YES];
         
         [ToastView showTopToast:@"请先登录"];
@@ -395,7 +395,7 @@
 {
     // NSLog(@"登录");
     [self hiddingSelfTabBar];
-    LoginViewController *loginViewController=[[LoginViewController alloc]init];
+    YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
     [self.navigationController pushViewController:loginViewController animated:YES];
 }
 //搜索按钮
@@ -441,7 +441,7 @@
             [ToastView showTopToast:@"请先登录"];
             // NSLog(@"登录");
             [self hiddingSelfTabBar];
-            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
             [self.navigationController pushViewController:loginViewController animated:YES];
         }
         
@@ -461,7 +461,7 @@
             [ToastView showTopToast:@"请先登录"];
             // NSLog(@"登录");
             [self hiddingSelfTabBar];
-            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
             [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
@@ -495,7 +495,7 @@
             [ToastView showTopToast:@"请先登录"];
             // NSLog(@"登录");
             [self hiddingSelfTabBar];
-            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
             [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
@@ -513,7 +513,7 @@
              [ToastView showTopToast:@"请先登录"];
             // NSLog(@"登录");
             [self hiddingSelfTabBar];
-            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
             [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
@@ -529,7 +529,7 @@
             [ToastView showTopToast:@"请先登录"];
             // NSLog(@"登录");
             [self hiddingSelfTabBar];
-            LoginViewController *loginViewController=[[LoginViewController alloc]init];
+            YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
             [self.navigationController pushViewController:loginViewController animated:YES];
         }
     }
@@ -544,7 +544,7 @@
                [ToastView showTopToast:@"请先登录"];
                 // NSLog(@"登录");
                 [self hiddingSelfTabBar];
-                LoginViewController *loginViewController=[[LoginViewController alloc]init];
+                YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
                 [self.navigationController pushViewController:loginViewController animated:YES];
         }
     

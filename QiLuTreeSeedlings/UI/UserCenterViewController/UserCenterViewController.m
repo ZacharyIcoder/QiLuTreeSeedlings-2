@@ -13,7 +13,7 @@
 #import "UserInfoNomerTableViewCell.h"
 #import "HttpClient.h"
 #import "MyCollectViewController.h"
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 #import "MyNuseryListViewController.h"
 #import "UINavController.h"
 #import "YLDMyBuyListViewController.h"
@@ -335,7 +335,7 @@
     if([APPDELEGATE isNeedLogin]==NO)
     {
         [self hiddingSelfTabBar];
-        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
         [self.navigationController pushViewController:loginViewController animated:YES];
         [ToastView showTopToast:@"请先登录"];
         
@@ -357,7 +357,7 @@
 -(void)clickedHeadImage
 {
     if (![APPDELEGATE isNeedLogin]) {
-        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
          [ToastView showTopToast:@"请先登录"];
         UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
         
@@ -375,13 +375,14 @@
 -(void)mycollectBtnAction
 {
     if (![APPDELEGATE isNeedLogin]) {
-        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
          [ToastView showTopToast:@"请先登录"];
         UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
         
         [self presentViewController:navVC animated:YES completion:^{
             
         }];
+
         return;
     }
     MyCollectViewController *myCollectVC=[MyCollectViewController new];
@@ -392,7 +393,7 @@
 -(void)myMessageBtnAciotn
 {
     if (![APPDELEGATE isNeedLogin]) {
-        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
         [ToastView showTopToast:@"请先登录"];
         UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
         
@@ -410,7 +411,7 @@
 -(void)myJifenBtnAction
 {
     if (![APPDELEGATE isNeedLogin]) {
-        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
         [ToastView showTopToast:@"请先登录"];
         UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
         
@@ -451,7 +452,7 @@
 -(void)shengjiBtnAction
 {
     if (![APPDELEGATE isNeedLogin]) {
-        LoginViewController *loginViewController=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
         [ToastView showTopToast:@"请先登录"];
         UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
         
@@ -518,7 +519,7 @@
       }
 
             if (![APPDELEGATE isNeedLogin]) {
-                LoginViewController *loginViewController=[[LoginViewController alloc]init];
+                YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc]init];
                 [ToastView showTopToast:@"请先登录"];
                 UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
     

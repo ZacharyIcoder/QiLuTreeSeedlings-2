@@ -328,7 +328,6 @@
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ZIKBackHome" object:nil];
     }
-
 }
 
 //获取到 第一个分类数据下拉菜单的模型数组

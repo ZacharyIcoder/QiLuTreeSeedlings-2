@@ -79,7 +79,7 @@
     };
     [self.view addSubview:selectMenuView];
 
-    UITableView *orderTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectMenuView.frame)+2, kWidth, kHeight-64-2-selectMenuView.frame.size.height-50) style:UITableViewStylePlain];
+    UITableView *orderTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(selectMenuView.frame)+3, kWidth, kHeight-64-3-selectMenuView.frame.size.height-50) style:UITableViewStylePlain];
     orderTableView.dataSource = self;
     orderTableView.delegate   = self;
     [self.view addSubview:orderTableView];
@@ -117,11 +117,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    self.quoteTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
-//    self.quoteTableView.estimatedRowHeight = 200;////必须设置好预估值
-//    return tableView.rowHeight;
+    self.quoteTableView.rowHeight = UITableViewAutomaticDimension;//设置cell的高度为自动计算，只有才xib或者storyboard上自定义的cell才会生效，而且需要设置好约束
+    self.quoteTableView.estimatedRowHeight = 237;////必须设置好预估值
+    return tableView.rowHeight;
 
-    return 205;
+//    return 205;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

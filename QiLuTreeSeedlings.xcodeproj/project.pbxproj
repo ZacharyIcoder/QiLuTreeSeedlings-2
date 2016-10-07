@@ -44,7 +44,6 @@
 		EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2B9F1C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld */; };
 		EA0B2BA31C59F5220018A7BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2BA21C59F5220018A7BD /* Assets.xcassets */; };
 		EA0B2BA61C59F5220018A7BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2BA41C59F5220018A7BD /* LaunchScreen.storyboard */; };
-		EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BCB1C59F6930018A7BD /* AppDelegate.m */; };
 		EA0B2BD61C59F6ED0018A7BD /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BD51C59F6ED0018A7BD /* BaseTabBarController.m */; };
 		EA0B2BD81C59F88D0018A7BD /* tabbarBackImag.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0B2BD71C59F88D0018A7BD /* tabbarBackImag.png */; };
 		EA0B2BDD1C5A06870018A7BD /* UINavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BDA1C5A06870018A7BD /* UINavController.m */; };
@@ -296,7 +295,6 @@
 		EA7419F01C8FB38600F54478 /* screenBtnAction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419EF1C8FB38600F54478 /* screenBtnAction@2x.png */; };
 		EA7419F41C8FB54D00F54478 /* unselectBtnAction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419F21C8FB54D00F54478 /* unselectBtnAction@2x.png */; };
 		EA7419F61C8FB5AA00F54478 /* selectBtnAction2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7419F51C8FB5AA00F54478 /* selectBtnAction2@2x.png */; };
-		EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7419F91C8FC64800F54478 /* LoginViewController.m */; };
 		EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7419FC1C8FC65E00F54478 /* RegisteredViewController.m */; };
 		EA741A001C8FC69B00F54478 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7419FF1C8FC69B00F54478 /* LoginView.m */; };
 		EA741A041C8FE9E100F54478 /* libGeTuiSdk-1.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA741A031C8FE9E100F54478 /* libGeTuiSdk-1.3.2.a */; };
@@ -741,6 +739,12 @@
 		FC56129F1D0C092F00E5743B /* ZIKMySupplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56123D1D0C092F00E5743B /* ZIKMySupplyVC.m */; };
 		FC5612A01D0C092F00E5743B /* ZIKSupplyPublishNextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC56123F1D0C092F00E5743B /* ZIKSupplyPublishNextVC.m */; };
 		FC5612A11D0C092F00E5743B /* ZIKSupplyPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5612411D0C092F00E5743B /* ZIKSupplyPublishVC.m */; };
+		FC5885A21DA77BCE000F8A78 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5885A11DA77BCE000F8A78 /* CoreMedia.framework */; };
+		FC5885A41DA77BEC000F8A78 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5885A31DA77BEC000F8A78 /* MobileCoreServices.framework */; };
+		FC5885A61DA77BF8000F8A78 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5885A51DA77BF8000F8A78 /* ImageIO.framework */; };
+		FC5885A81DA77C25000F8A78 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5885A71DA77C25000F8A78 /* libstdc++.6.0.9.tbd */; };
+		FC5887E51DA7836E000F8A78 /* YLDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5887E41DA7836E000F8A78 /* YLDLoginViewController.m */; };
+		FC5889811DA78D7F000F8A78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0B2BCB1C59F6930018A7BD /* AppDelegate.m */; };
 		FC59481F1D3C77850014E39B /* 已报价.png in Resources */ = {isa = PBXBuildFile; fileRef = FC59481E1D3C77850014E39B /* 已报价.png */; };
 		FC5948211D3C98A50014E39B /* 站长通-海报-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC5948201D3C98A50014E39B /* 站长通-海报-2.png */; };
 		FC5948251D3C9B410014E39B /* ZIKOrderSingleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5948231D3C9B410014E39B /* ZIKOrderSingleTableViewCell.m */; };
@@ -1410,8 +1414,6 @@
 		EA7419EF1C8FB38600F54478 /* screenBtnAction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenBtnAction@2x.png"; sourceTree = "<group>"; };
 		EA7419F21C8FB54D00F54478 /* unselectBtnAction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unselectBtnAction@2x.png"; sourceTree = "<group>"; };
 		EA7419F51C8FB5AA00F54478 /* selectBtnAction2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectBtnAction2@2x.png"; sourceTree = "<group>"; };
-		EA7419F81C8FC64800F54478 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		EA7419F91C8FC64800F54478 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EA7419FB1C8FC65E00F54478 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
 		EA7419FC1C8FC65E00F54478 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
 		EA7419FE1C8FC69B00F54478 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -2201,6 +2203,12 @@
 		FC56123F1D0C092F00E5743B /* ZIKSupplyPublishNextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishNextVC.m; sourceTree = "<group>"; };
 		FC5612401D0C092F00E5743B /* ZIKSupplyPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKSupplyPublishVC.h; sourceTree = "<group>"; };
 		FC5612411D0C092F00E5743B /* ZIKSupplyPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIKSupplyPublishVC.m; sourceTree = "<group>"; };
+		FC5885A11DA77BCE000F8A78 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		FC5885A31DA77BEC000F8A78 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		FC5885A51DA77BF8000F8A78 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		FC5885A71DA77C25000F8A78 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		FC5887E31DA7836E000F8A78 /* YLDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLDLoginViewController.h; sourceTree = "<group>"; };
+		FC5887E41DA7836E000F8A78 /* YLDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDLoginViewController.m; sourceTree = "<group>"; };
 		FC59481E1D3C77850014E39B /* 已报价.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已报价.png"; sourceTree = "<group>"; };
 		FC5948201D3C98A50014E39B /* 站长通-海报-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站长通-海报-2.png"; sourceTree = "<group>"; };
 		FC5948221D3C9B400014E39B /* ZIKOrderSingleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIKOrderSingleTableViewCell.h; sourceTree = "<group>"; };
@@ -2572,6 +2580,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5885A81DA77C25000F8A78 /* libstdc++.6.0.9.tbd in Frameworks */,
+				FC5885A61DA77BF8000F8A78 /* ImageIO.framework in Frameworks */,
+				FC5885A41DA77BEC000F8A78 /* MobileCoreServices.framework in Frameworks */,
+				FC5885A21DA77BCE000F8A78 /* CoreMedia.framework in Frameworks */,
 				FC50B1781CAE24AB0022A24C /* CoreGraphics.framework in Frameworks */,
 				FCD2E0971CC9EEFA000CFBA2 /* MessageUI.framework in Frameworks */,
 				EA5444BB1CC72AAD00971A50 /* AudioToolbox.framework in Frameworks */,
@@ -2804,6 +2816,7 @@
 		EA0B2BCD1C59F6930018A7BD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FC36F3121DA7924E00EFD1C6 /* LiaoTian */,
 				FC6788AA1D87875700AB1429 /* Hezuomiaoqi */,
 				EA6585361D810BE100BC5183 /* jinpaigongyingshangviewController */,
 				FC22761B1D177C9F0037B131 /* StationAuthority */,
@@ -3718,8 +3731,6 @@
 			children = (
 				EA7CB82F1CE01B910010EAE5 /* AuthcodeView */,
 				EAEB63BA1C90FC1E0001ABC9 /* NSString */,
-				EA7419F81C8FC64800F54478 /* LoginViewController.h */,
-				EA7419F91C8FC64800F54478 /* LoginViewController.m */,
 				EA7419FB1C8FC65E00F54478 /* RegisteredViewController.h */,
 				EA7419FC1C8FC65E00F54478 /* RegisteredViewController.m */,
 				EA7419FE1C8FC69B00F54478 /* LoginView.h */,
@@ -3730,6 +3741,8 @@
 				EA7CB8371CE02B960010EAE5 /* CheckIDViewController.m */,
 				EA7F5F351CE05A0A00B2EEFF /* YLDNewPassWordViewController.h */,
 				EA7F5F361CE05A0A00B2EEFF /* YLDNewPassWordViewController.m */,
+				FC5887E31DA7836E000F8A78 /* YLDLoginViewController.h */,
+				FC5887E41DA7836E000F8A78 /* YLDLoginViewController.m */,
 			);
 			path = "Login&registered";
 			sourceTree = "<group>";
@@ -3746,6 +3759,10 @@
 		EA741A131C8FEA5600F54478 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FC5885A71DA77C25000F8A78 /* libstdc++.6.0.9.tbd */,
+				FC5885A51DA77BF8000F8A78 /* ImageIO.framework */,
+				FC5885A31DA77BEC000F8A78 /* MobileCoreServices.framework */,
+				FC5885A11DA77BCE000F8A78 /* CoreMedia.framework */,
 				FCD2E0961CC9EEFA000CFBA2 /* MessageUI.framework */,
 				EA5444BA1CC72AAD00971A50 /* AudioToolbox.framework */,
 				FC50B1F81CAE45850022A24C /* Foundation.framework */,
@@ -4681,6 +4698,13 @@
 				FC828EA91D38BC4F0047731D /* ZIKWorkstationSelectViewAboutAddressButton.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FC36F3121DA7924E00EFD1C6 /* LiaoTian */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LiaoTian;
 			sourceTree = "<group>";
 		};
 		FC4470571D2F881700EA0D82 /* AddPickerView */ = {
@@ -6611,6 +6635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5889811DA78D7F000F8A78 /* AppDelegate.m in Sources */,
 				FCBE03701D8CEDDB0062CDFF /* WeiboImageView.m in Sources */,
 				EAAD2AB71D46F8520070F6CE /* YLDShopInteriorViewController.m in Sources */,
 				FC2276701D177C9F0037B131 /* ZIKStationCenterContentTableViewCell.m in Sources */,
@@ -6627,7 +6652,6 @@
 				FC2D132C1D211DA700F0973A /* ZIKQuoteTextField.m in Sources */,
 				FC56126E1D0C092F00E5743B /* ForegroundColorAttribute.m in Sources */,
 				FC7134351CB358720037D507 /* RIButtonItem.m in Sources */,
-				EA7419FA1C8FC64800F54478 /* LoginViewController.m in Sources */,
 				EA9FE6DF1D2F733D00110A71 /* YLDZZsuppleyListViewController.m in Sources */,
 				EA565EBB1D6FCDE80093EFA0 /* YLDPickProvinceViewController.m in Sources */,
 				EA9EFCC31CEEA2E000A71F2D /* GuiGeView.m in Sources */,
@@ -6744,7 +6768,6 @@
 				EA08F7C01D1912F800471C33 /* YLDGongChengAnLiViewController.m in Sources */,
 				EAEB63C21C9147D50001ABC9 /* UserInfoModel.m in Sources */,
 				FCBE03261D8CCF9F0062CDFF /* MASLayoutConstraint.m in Sources */,
-				EA0B2BD31C59F6930018A7BD /* AppDelegate.m in Sources */,
 				EA7419FD1C8FC65E00F54478 /* RegisteredViewController.m in Sources */,
 				FCC5C3001CFE728F004669ED /* ZIKExchangeSuccessView.m in Sources */,
 				FC6789301D87C8C500AB1429 /* ZIKShaiDanPickImageView.m in Sources */,
@@ -7043,6 +7066,7 @@
 				EA0B2BA11C59F5220018A7BD /* QiLuTreeSeedlings.xcdatamodeld in Sources */,
 				EA08F7A71D19009100471C33 /* yYLDCompanyMessageCell.m in Sources */,
 				FC50B3481CAE4C4A0022A24C /* MD5DataSigner.m in Sources */,
+				FC5887E51DA7836E000F8A78 /* YLDLoginViewController.m in Sources */,
 				FC50B3461CAE4C4A0022A24C /* DataSigner.m in Sources */,
 				FC56128D1D0C092F00E5743B /* ZIKSupplyPublishNameTableViewCell.m in Sources */,
 				FCA7E0631CD050B6002111FF /* ZIKPayRecordCell.m in Sources */,
@@ -7238,6 +7262,7 @@
 					"$(SRCROOT)/../",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟统计",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/Parse",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7261,6 +7286,11 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateFullSDK/lib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateSDK/lib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/UMeng",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -7289,6 +7319,7 @@
 					"$(SRCROOT)/../",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟统计",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/Parse",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7312,6 +7343,11 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateFullSDK/lib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateSDK/lib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/UMeng",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";

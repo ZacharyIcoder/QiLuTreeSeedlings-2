@@ -64,6 +64,18 @@
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 64)];
         [backView setBackgroundColor:kRGB(210, 210, 210, 1)];
         [self addSubview:backView];
+
+        UIView *backView1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth*0.2, kHeight)];
+        [backView1 setBackgroundColor:kRGB(0, 0, 0, 0.01)];
+        [self addSubview:backView1];
+
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSideViewAction)];
+        [backView1 addGestureRecognizer:tapGesture];
+
+//        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, kHeight)];
+//        contentView.backgroundColor = [UIColor whiteColor];
+//        [self addSubview:contentView];
+
         UIButton *backBtn=[[UIButton alloc]initWithFrame:CGRectMake(17, 7+20, 30, 30)];
         [backBtn setEnlargeEdgeWithTop:15 right:60 bottom:10 left:10];
         [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -491,6 +503,16 @@
         self.sideView.frame = CGRectMake(0, 0, kWidth, kHeight);
     }];
     [self addSubview:self.sideView];
+}
+
+#pragma mark - 隐藏视图
+- (void)removeSideViewAction
+{
+    [UIView animateWithDuration:.3 animations:^{
+        self.frame = CGRectMake(kWidth, 0, kWidth, kHeight);
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
 }
 
 - (void)didSelectorUid:(NSString *)selectId title:(NSString *)selectTitle {

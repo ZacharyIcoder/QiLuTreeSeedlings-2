@@ -29,7 +29,7 @@
 #import "ZIKMyShopViewController.h"
 #import "ZIKHeZuoMiaoQiKeFuViewController.h"
 
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 #import "UINavController.h"
 @interface SellDetialViewController ()<UITableViewDataSource,UITableViewDelegate,SellBanderDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UMSocialUIDelegate>
 @property (nonatomic,strong)UITableView *tableView;
@@ -266,7 +266,7 @@
 }
 - (void)shopBtnAction {
     if (![APPDELEGATE isNeedLogin]) {
-        LoginViewController *loginViewController=[[LoginViewController alloc] init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc] init];
         [ToastView showTopToast:@"请先登录"];
         UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
 

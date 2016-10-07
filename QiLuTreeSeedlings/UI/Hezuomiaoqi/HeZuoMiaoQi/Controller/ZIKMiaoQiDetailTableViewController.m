@@ -211,6 +211,7 @@ static NSString *SectionHeaderViewIdentifier = @"MiaoQiDetailSectionHeaderViewId
                 }];
             }];
         }
+        cell.layer.masksToBounds=YES;
         return cell;
     }
     return nil;
