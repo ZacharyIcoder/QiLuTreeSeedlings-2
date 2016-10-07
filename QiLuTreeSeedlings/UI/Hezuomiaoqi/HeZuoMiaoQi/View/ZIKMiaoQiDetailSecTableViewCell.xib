@@ -169,7 +169,7 @@
                 <outlet property="starTopLayoutConxtraint" destination="S0G-UH-oMB" id="MK2-op-x8S"/>
                 <outlet property="starView" destination="uUo-dz-XAZ" id="Dtp-2U-XMc"/>
             </connections>
-            <point key="canvasLocation" x="193" y="441"/>
+            <point key="canvasLocation" x="85" y="442"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -7149,8 +7149,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -7172,7 +7172,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "5b53d3f6-ec30-4b65-b953-84f0a64b308f";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -7197,8 +7197,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Linyi Zhongyi Information Technology Co., Ltd. (L674B6W9DX)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -7213,7 +7213,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "e6454912-dc94-43e7-bcfb-9365c2fbf9d6";
+				PROVISIONING_PROFILE = "5b53d3f6-ec30-4b65-b953-84f0a64b308f";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7264,8 +7264,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
-				PROVISIONING_PROFILE_SPECIFIER = miaoxintongfabu;
+				PROVISIONING_PROFILE = "5b53d3f6-ec30-4b65-b953-84f0a64b308f";
+				PROVISIONING_PROFILE_SPECIFIER = kongmiaomufabu;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -7315,8 +7315,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qilumiaomuwang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b89e959b-36d5-4876-897a-6483ad36ac2e";
-				PROVISIONING_PROFILE_SPECIFIER = miaoxintongfabu;
+				PROVISIONING_PROFILE = "5b53d3f6-ec30-4b65-b953-84f0a64b308f";
+				PROVISIONING_PROFILE_SPECIFIER = kongmiaomufabu;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
