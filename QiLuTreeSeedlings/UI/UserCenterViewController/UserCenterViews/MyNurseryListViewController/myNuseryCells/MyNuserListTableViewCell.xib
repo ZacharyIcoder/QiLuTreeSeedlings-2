@@ -24,8 +24,8 @@
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editngChange.png" translatesAutoresizingMaskIntoConstraints="NO" id="R6e-nC-Q2D">
                         <constraints>
-                            <constraint firstAttribute="height" constant="26" id="6sK-bX-YOy"/>
-                            <constraint firstAttribute="width" constant="26" id="wuY-9p-MMF"/>
+                            <constraint firstAttribute="height" constant="24" id="6sK-bX-YOy"/>
+                            <constraint firstAttribute="width" constant="24" id="wuY-9p-MMF"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hb-4S-fiQ">
@@ -62,7 +62,7 @@
                     <constraint firstAttribute="trailing" secondItem="jmU-yw-8yK" secondAttribute="trailing" id="1Vg-9z-JDw"/>
                     <constraint firstItem="68B-N2-HHv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="25" id="6FT-8b-2AQ"/>
                     <constraint firstItem="s1R-Qi-KJG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="22" id="7hK-YC-8ah"/>
-                    <constraint firstItem="R6e-nC-Q2D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="AAH-E6-Ey6"/>
+                    <constraint firstItem="R6e-nC-Q2D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="AAH-E6-Ey6"/>
                     <constraint firstAttribute="bottom" secondItem="jmU-yw-8yK" secondAttribute="bottom" constant="-1" id="NdV-3c-FzT"/>
                     <constraint firstItem="1Hb-4S-fiQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="25" id="Nf2-Lz-dAo"/>
                     <constraint firstItem="1Hb-4S-fiQ" firstAttribute="top" secondItem="s1R-Qi-KJG" secondAttribute="bottom" constant="11" id="QNq-3h-25N"/>
@@ -71,7 +71,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="68B-N2-HHv" secondAttribute="bottom" constant="12" id="pGQ-Bh-wkF"/>
                     <constraint firstAttribute="trailingMargin" secondItem="68B-N2-HHv" secondAttribute="trailing" constant="9" id="tcN-rl-90A"/>
                     <constraint firstItem="jmU-yw-8yK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uHc-Ro-gy0"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="R6e-nC-Q2D" secondAttribute="trailing" constant="16" id="xK6-Z3-KXg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="R6e-nC-Q2D" secondAttribute="trailing" constant="17" id="xK6-Z3-KXg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
