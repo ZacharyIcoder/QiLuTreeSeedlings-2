@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,18 +14,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                <frame key="frameInset" width="320" height="38"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc0-a9-aKm">
-                        <rect key="frame" x="0.0" y="36" width="320" height="2"/>
-                        <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="bhN-j7-uB8"/>
                         </constraints>
                     </view>
                     <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHO-Ck-Hpd">
-                        <rect key="frame" x="5" y="6" width="100" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="0CR-2M-kGa"/>
                         </constraints>
@@ -33,14 +32,13 @@
                         <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="76" minY="5" maxX="15" maxY="6"/>
                         <state key="normal" title="发布时间" image="ico_排序默认.png">
-                            <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
                             <action selector="startTimeButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GWI-85-yhy"/>
                         </connections>
                     </button>
                     <button opaque="NO" tag="2000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoJ-tU-dVg">
-                        <rect key="frame" x="115" y="6" width="100" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="EXo-eY-8Hp"/>
                         </constraints>
@@ -49,30 +47,27 @@
                         <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="76" minY="5" maxX="15" maxY="6"/>
                         <state key="normal" title="截止时间" image="ico_排序默认.png">
-                            <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
                             <action selector="endTimeButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="76K-CS-Vb9"/>
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1l-GZ-RXk">
-                        <rect key="frame" x="221" y="8" width="1" height="20"/>
-                        <color key="backgroundColor" red="0.91458333329999997" green="0.91649305560000005" blue="0.91843171300000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.91458333329999997" green="0.91649305560000005" blue="0.91843171300000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="IuB-uq-LuR"/>
                             <constraint firstAttribute="height" constant="20" id="hJ6-jS-pxX"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cA7-Ke-buq">
-                        <rect key="frame" x="112" y="8" width="1" height="20"/>
-                        <color key="backgroundColor" red="0.91458333329999997" green="0.91649305560000005" blue="0.91843171300000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.91458333329999997" green="0.91649305560000005" blue="0.91843171300000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="GoK-hT-Ajc"/>
                             <constraint firstAttribute="width" constant="1" id="bOh-Eb-xFr"/>
                         </constraints>
                     </view>
                     <button opaque="NO" tag="3000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8c-aw-iN0">
-                        <rect key="frame" x="212" y="6" width="100" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="jBy-NJ-0KE"/>
                         </constraints>
@@ -81,7 +76,7 @@
                         <inset key="titleEdgeInsets" minX="-54" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="51" minY="6" maxX="26" maxY="6"/>
                         <state key="normal" title="筛选" image="工程订单_筛选.png">
-                            <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
                 </subviews>

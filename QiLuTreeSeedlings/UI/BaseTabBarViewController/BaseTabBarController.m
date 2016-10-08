@@ -11,7 +11,7 @@
 #import "HomePageTViewController.h"
 #import "UserCenterViewController.h"
 #import "UIDefines.h"
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 #define kTABBARH 50
 @interface BaseTabBarController ()
 @property UIView *BTabBar;

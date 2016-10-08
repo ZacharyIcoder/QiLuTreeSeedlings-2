@@ -25,12 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quoteQuantityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quoteLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderNameLabelLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *companyLabelLayoutConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameCenterYLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameHeightLayoutConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemNameLabelLayoutConstraint;
 
 @end
 
@@ -41,6 +36,9 @@
     // Initialization code
     self.bottomBgImageView.layer.cornerRadius = 6.0f;
     self.bottomBgImageView.layer.masksToBounds = YES;
+
+    self.itemNameLabel.layer.cornerRadius = 6.0f;
+    self.itemNameLabel.layer.masksToBounds = YES;
     
 }
 
@@ -82,10 +80,13 @@
     self.orderNameLabel.text = model.orderName;
     self.engineeringCompanyLabel.text = model.engineeringCompany;
     self.itemNameLabel.text = model.itemName;
-//    CGRect rect =  [model.itemName boundingRectWithSize:CGSizeMake(kWidth/2, CGFLOAT_MAX)
-//                                                options:NSStringDrawingUsesLineFragmentOrigin
-//                                             attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0f]}
-//                                                context:nil];
+    [self.itemNameLabel sizeToFit];
+    CGRect rect =  [model.itemName boundingRectWithSize:CGSizeMake(kWidth/2-30, CGFLOAT_MAX)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0f]}
+                                                context:nil];
+    self.itemNameLabelLayoutConstraint.constant = rect.size.width+8;
+    
 
     NSString *priceString = [NSString stringWithFormat:@"报价单价: ¥%@",model.price];
     FontAttribute *fullFont = [FontAttribute new];
@@ -105,7 +106,7 @@
     self.priceLabel.attributedText = [priceString mutableAttributedStringWithStringAttributes:@[fullFont,partFont,fullColor,darkColor]];
 
 
-    NSString *quoteStr = [NSString stringWithFormat:@"报价数量: %@棵",model.quoteQuantity];
+    NSString *quoteStr = [NSString stringWithFormat:@"报价数量: %@棵(株)",model.quoteQuantity];
 
 
     FontAttribute *quotefullFont = [FontAttribute new];
@@ -117,27 +118,13 @@
     //局部设置
     FontAttribute *quotepartFont = [FontAttribute new];
     quotepartFont.font = [UIFont systemFontOfSize:18.0f];
-    quotepartFont.effectRange = NSMakeRange(5, quoteStr.length-6);
+    quotepartFont.effectRange = NSMakeRange(5, quoteStr.length-5-4);
     ForegroundColorAttribute *quotedarkColor = [ForegroundColorAttribute new];
     quotedarkColor.color = yellowButtonColor;
     quotedarkColor.effectRange = NSMakeRange(5, quoteStr.length-5);
 
     self.quoteQuantityLabel.attributedText = [quoteStr mutableAttributedStringWithStringAttributes:@[quotefullFont,quotepartFont,quotefullColor,quotedarkColor]];
 
-    CGRect nameRect = [ZIKFunction getCGRectWithContent:model.orderName width:self.orderNameLabel.frame.size.width font:17];
-    if (nameRect.size.height>22) {
-        self.orderNameLabelLayoutConstraint.constant = 10;
-        self.companyLabelLayoutConstraint.constant = 10;
-    }
-
-    CGRect companyNameRect = [ZIKFunction getCGRectWithContent:model.engineeringCompany width:self.engineeringCompanyLabel.frame.size.width font:16.0f];
-    if (companyNameRect.size.height>21) {
-        self.nameHeightLayoutConstraint.constant = companyNameRect.size.height+5;
-        if (self.nameCenterYLayoutConstraint.constant>10) {
-            self.nameCenterYLayoutConstraint.constant = companyNameRect.size.height/2-10;
-            self.bottomLayoutConstraint.constant = -14;
-        }
-    }
 }
 
 +(UIImage*)imageWithSize:(CGSize)size borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth

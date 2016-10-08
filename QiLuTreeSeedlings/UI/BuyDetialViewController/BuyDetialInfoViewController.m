@@ -21,7 +21,7 @@
 #import "BuyMessageAlertView.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMessageComposeViewController.h>
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 #import "UINavController.h"
 #import "ZIKPayViewController.h"
 
@@ -768,7 +768,7 @@ static BOOL isHezuo = NO;
 
 - (void)shopBtnAction {
     if (![APPDELEGATE isNeedLogin]) {
-        LoginViewController *loginViewController=[[LoginViewController alloc] init];
+        YLDLoginViewController *loginViewController=[[YLDLoginViewController alloc] init];
         [ToastView showTopToast:@"请先登录"];
         UINavController *navVC=[[UINavController alloc]initWithRootViewController:loginViewController];
 
@@ -1167,7 +1167,7 @@ static BOOL isHezuo = NO;
 {
     if (![APPDELEGATE isNeedLogin]) {
         [ToastView showTopToast:@"请先登录"];
-        LoginViewController *loginViewC=[[LoginViewController alloc]init];
+        YLDLoginViewController *loginViewC=[[YLDLoginViewController alloc]init];
         [self.navigationController pushViewController:loginViewC animated:YES];
         return;
     }

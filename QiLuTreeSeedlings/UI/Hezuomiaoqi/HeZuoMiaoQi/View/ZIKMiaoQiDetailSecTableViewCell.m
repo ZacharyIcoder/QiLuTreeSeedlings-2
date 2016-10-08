@@ -51,17 +51,17 @@
 - (void)configureCell:(ZIKMiaoQiDetailModel *)model {
     CGRect companyNameRect = [ZIKFunction getCGRectWithContent:model.companyName width:self.companyNameLabel.frame.size.width font:15.0f];
     if (companyNameRect.size.height>21) {
-        self.starTopLayoutConxtraint.constant = companyNameRect.size.height-21-8;
+        self.starTopLayoutConxtraint.constant = companyNameRect.size.height-21+8;
     }
     self.companyNameLabel.text = model.companyName;
+    [self.companyNameLabel sizeToFit];
     self.starView.value        = [model.starLevel floatValue];
     self.moneyLabel.text       = [NSString stringWithFormat:@"%@元",model.creditMargin];
     self.daibiaoLabel.text     = model.legalPerson;
     self.phoneLabel.text       = model.phone;
     self.addressLabel.text     = model.address;
-//    CLog(@"%@",self.description);
-//    CLog(@"%@",self.subviews);
-//    CLog(@"%@",self.contentView.subviews);
+    [self.addressLabel sizeToFit];
+
 }
 
 @end

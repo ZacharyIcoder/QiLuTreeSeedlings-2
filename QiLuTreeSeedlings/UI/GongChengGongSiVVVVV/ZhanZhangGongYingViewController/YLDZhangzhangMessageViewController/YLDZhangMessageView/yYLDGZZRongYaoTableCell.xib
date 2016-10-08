@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,61 +13,53 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                <frame key="frameInset" width="320" height="169"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GDI-gy-iCh">
-                        <rect key="frame" x="10" y="10" width="7" height="25"/>
-                        <color key="backgroundColor" red="0.99215686274509807" green="0.52156862745098043" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.99215686274509807" green="0.52156862745098043" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="o90-hM-hva"/>
                             <constraint firstAttribute="width" constant="7" id="sKK-qa-ISZ"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreRow.png" translatesAutoresizingMaskIntoConstraints="NO" id="0nL-AR-NFW">
-                        <rect key="frame" x="295" y="15" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="qRc-5H-HtK"/>
                             <constraint firstAttribute="width" constant="15" id="uN5-Hp-hXq"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="荣誉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNU-G4-91e">
-                        <rect key="frame" x="25" y="12" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="42" id="5C6-7h-U8f"/>
                             <constraint firstAttribute="height" constant="21" id="Gv8-DO-4HD"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.60213926174496624" green="0.59812814597315433" blue="0.59917680369127513" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.60213926174496624" green="0.59812814597315433" blue="0.59917680369127513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPX-5c-dbA">
-                        <rect key="frame" x="253" y="8" width="46" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="Q3H-z1-eB6"/>
                             <constraint firstAttribute="height" constant="30" id="R1m-mY-8e2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="全部">
-                            <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LNC-VQ-Rcp">
-                        <rect key="frame" x="10" y="50" width="300" height="1"/>
-                        <color key="backgroundColor" red="0.8666212248322146" green="0.86814177852348973" blue="0.86378984899328848" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.8666212248322146" green="0.86814177852348973" blue="0.86378984899328848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="sdx-fj-IWG"/>
                         </constraints>
                     </imageView>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6nx-V4-icO">
-                        <rect key="frame" x="10" y="59" width="300" height="82"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="82" id="Sm9-P6-Kje"/>
                         </constraints>
                     </scrollView>
-                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6M4-pR-xvh">
-                        <rect key="frame" x="140" y="137" width="39" height="37"/>
-                    </pageControl>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6M4-pR-xvh"/>
                 </subviews>
                 <constraints>
                     <constraint firstItem="LNC-VQ-Rcp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="0nf-Dt-j6K"/>

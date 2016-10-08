@@ -6,17 +6,17 @@
 //  Copyright © 2016年 guihuicaifu. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "YLDLoginViewController.h"
 #import "UIDefines.h"
 #import "LoginView.h"
 #import "HttpClient.h"
 #import "RegisteredViewController.h"
 #import "ForgetPassWorldViewController.h"
-@interface LoginViewController ()<LoginViewDelegate>
+@interface YLDLoginViewController ()<LoginViewDelegate>
 
 @end
 
-@implementation LoginViewController
+@implementation YLDLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -33,6 +33,13 @@
     self=[super initWithFrame:frame];
     if (self) {
         self.cityLeve=leve;
+
+        UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth*0.2, kHeight)];
+        [self addSubview:leftView];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removePickView)];
+        [leftView addGestureRecognizer:tapGesture];
+
+
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(kWidth*0.2, 0, kWidth*0.8, 64)];
         [backView setBackgroundColor:kRGB(210, 210, 210, 1)];
         [self addSubview:backView];
