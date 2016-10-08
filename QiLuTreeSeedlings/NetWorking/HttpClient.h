@@ -103,6 +103,7 @@
                     WithStatus:(NSString *)status
                WithStartNumber:(NSString *)startNumber
                 withSearchTime:(NSString *)searchTime
+              WithSearchStatus:(NSString *)searchStatus
                        Success:(void (^)(id responseObject))success
                 failure:(void (^)(NSError *error))failure;
 #pragma mark-求购检索
@@ -115,6 +116,7 @@
                 WithCity:(NSString *)city
               WithCounty:(NSString *)county
           WithsearchTime:(NSString *)searchTime
+        WithSearchStatus:(NSString *)searchStatus
                WithAry:(NSArray *)ary
                  Success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure;
@@ -949,6 +951,7 @@ failure:(void (^)(NSError *error))failure;
                           With:(NSString *)level
                 WithcompanyUid:(NSString *)companyUid
           WithissuingAuthority:(NSString *)issuingAuthority
+                      WithType:(NSString *)Type
                 Withattachment:(NSString *)attachment   Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程助手－我的资质删除-------
@@ -1468,6 +1471,6 @@ failure:(void (^)(NSError *error))failure;
 -(void)GCGSOrderitemReleaseWithUid:(NSString *)uid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
 #pragma mark ---------- 工程公司-订单明细开启与关闭----------
--(void)GCGSOrderItemOpenWithUid:(NSString *)uid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
+-(void)GCGSOrderItemOpenWithUid:(NSString *)uid andOrdeUid:(NSString *)orderUid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
                            failure:(void (^)(NSError *error))failure;
 @end

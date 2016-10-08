@@ -8,6 +8,7 @@
 
 #import "MyNuserListTableViewCell.h"
 #import "UIDefines.h"
+#import "UIButton+ZIKEnlargeTouchArea.h"
 @implementation MyNuserListTableViewCell
 
 - (void)awakeFromNib {
@@ -52,6 +53,7 @@
 + (instancetype)cellWithTableView:(UITableView *)tableView {
     static NSString *ZIKMyNuserListTableViewCellID = @"ZIKSupplyPublishNameTableViewCellID";
     MyNuserListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ZIKMyNuserListTableViewCellID];
+//    cell.
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyNuserListTableViewCell" owner:self options:nil] lastObject];
     }

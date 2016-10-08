@@ -197,9 +197,9 @@
     searchMessageField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [backView addSubview:searchMessageField];
     UIButton *searchBtn=[[UIButton alloc]initWithFrame:CGRectMake(backView.frame.size.width-45, 0, 40,34)];
-//    [searchBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-//    [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
-    [searchBtn setImage:[UIImage imageNamed:@"searchBtnAction"] forState:UIControlStateNormal];
+    [searchBtn setTitleColor:NavColor forState:UIControlStateNormal];
+    [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+//    [searchBtn setImage:[UIImage imageNamed:@"searchBtnAction"] forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:searchBtn];
     

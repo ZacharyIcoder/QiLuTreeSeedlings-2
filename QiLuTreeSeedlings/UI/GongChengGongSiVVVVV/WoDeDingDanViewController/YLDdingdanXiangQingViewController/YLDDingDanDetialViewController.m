@@ -351,6 +351,71 @@
 
         [self presentViewController:alertController animated:YES completion:nil];
     }
+    if (tag==6) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"订单苗木关闭" message:@"您确定关闭该苗木信息？" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+            
+        }]];
+        
+        
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            ShowActionV();
+            [HTTPCLIENT GCGSOrderItemOpenWithUid:[dic objectForKey:@"uid"] andOrdeUid:self.model.uid Withstatus:@"0"   Success:^(id responseObject) {
+                if ([[responseObject objectForKey:@"success"]integerValue]) {
+                    [ToastView showTopToast:@"苗木信息关闭成功"];
+//                    [self.dataAry removeObject:dic];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //回调或者说是通知主线程刷新，
+                        
+                        [self.tableView headerBeginRefreshing];
+                    });
+                }else{
+                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+            
+        }]];
+        
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    if (tag==7) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"订单苗木开启" message:@"您确定开启该苗木信息？" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+            
+        }]];
+        
+        
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            ShowActionV();
+            [HTTPCLIENT GCGSOrderItemOpenWithUid:[dic objectForKey:@"uid"] andOrdeUid:self.model.uid Withstatus:@"1"   Success:^(id responseObject) {
+                if ([[responseObject objectForKey:@"success"]integerValue]) {
+                    [ToastView showTopToast:@"苗木信息开启成功"];
+//                    [self.dataAry removeObject:dic];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //回调或者说是通知主线程刷新，
+                        
+                        [self.tableView headerBeginRefreshing];
+                    });
+                }else{
+                    [ToastView showTopToast:[responseObject objectForKey:@"msg"]];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+            
+        }]];
+        
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

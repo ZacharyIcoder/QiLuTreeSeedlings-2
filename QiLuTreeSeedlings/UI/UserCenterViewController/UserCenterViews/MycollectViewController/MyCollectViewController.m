@@ -34,6 +34,7 @@
 @property (nonatomic,strong)NSMutableArray *sellLikeAry;
 @property (nonatomic)NSInteger sellPageCount;
 @property (nonatomic)NSInteger buyPageCount;
+
 @end
 
 @implementation MyCollectViewController
@@ -494,7 +495,7 @@
     if (self.buyPageCount>1) {
         searhTimeStr=model.searchTime;
     }
-    [HTTPCLIENT BuyListWithWithPageSize:@"5" WithStatus:@"1" WithStartNumber:@"" withSearchTime:searhTimeStr  Success:^(id responseObject) {
+    [HTTPCLIENT BuyListWithWithPageSize:@"5" WithStatus:@"1" WithStartNumber:@""  withSearchTime:searhTimeStr WithSearchStatus:@"new" Success:^(id responseObject) {
         if([[responseObject objectForKey:@"success"] integerValue])
         {
             NSDictionary *dic=[responseObject objectForKey:@"result"];
