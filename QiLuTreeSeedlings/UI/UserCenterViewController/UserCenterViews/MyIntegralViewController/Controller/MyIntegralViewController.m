@@ -7,7 +7,7 @@
 //
 
 #import "MyIntegralViewController.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YYModel.h"
 #import "ZIKIntegraModel.h"
 #import "ZIKIntegraTableViewCell.h"

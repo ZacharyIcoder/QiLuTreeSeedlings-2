@@ -7,7 +7,7 @@
 //
 
 #import "ZIKSupplyBottomSelectButton.h"
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 @implementation ZIKSupplyBottomSelectButton
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

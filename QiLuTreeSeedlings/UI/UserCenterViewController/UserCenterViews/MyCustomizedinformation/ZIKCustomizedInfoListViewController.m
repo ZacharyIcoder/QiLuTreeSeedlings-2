@@ -9,7 +9,7 @@
 #import "ZIKCustomizedInfoListViewController.h"
 
 /*****工具******/
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YYModel.h"
 /*****工具******/
 

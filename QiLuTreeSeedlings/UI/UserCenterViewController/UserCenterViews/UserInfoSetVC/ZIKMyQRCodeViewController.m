@@ -7,7 +7,7 @@
 //
 
 #import "ZIKMyQRCodeViewController.h"
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 #import "NSString+Helper.h"
 #import "HttpDefines.h"
 @interface ZIKMyQRCodeViewController ()

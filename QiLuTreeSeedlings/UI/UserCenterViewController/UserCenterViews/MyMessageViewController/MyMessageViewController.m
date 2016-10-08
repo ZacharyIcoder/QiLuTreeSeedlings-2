@@ -8,7 +8,7 @@
 
 #import "MyMessageViewController.h"
 #import "UIDefines.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YLDMyMessageModel.h"
 #import "YLDMyMessageTableViewCell.h"
 #import "ZIKBottomDeleteTableViewCell.h"

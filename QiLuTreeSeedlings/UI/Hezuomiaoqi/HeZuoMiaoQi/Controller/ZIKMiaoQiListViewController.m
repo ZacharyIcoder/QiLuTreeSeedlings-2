@@ -12,7 +12,7 @@
 #import "GetCityDao.h"
 #import "HttpClient.h"
 #import "YLDSearchNavView.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YYModel.h"//类型转换
 #import "ZIKFunction.h"
 #import "ZIKHeZuoMiaoQiModel.h"

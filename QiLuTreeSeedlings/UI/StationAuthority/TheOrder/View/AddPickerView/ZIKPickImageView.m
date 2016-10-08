@@ -16,7 +16,7 @@
 #define ScreenHeight ((IS_IOS_7)?([UIScreen mainScreen].bounds.size.height):([UIScreen mainScreen].bounds.size.height - 20))
 
 #import "ZIKPickImageView.h"
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 
 #import "ZIKPickerBtn.h"
 #import "UIImageView+AFNetworking.h"

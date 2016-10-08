@@ -18,7 +18,7 @@
 
 #import "ZIKShaiDanPickImageView.h"
 //#import "ZIKPickImageView.h"
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 
 #import "ZIKPickerBtn.h"
 #import "UIImageView+AFNetworking.h"
