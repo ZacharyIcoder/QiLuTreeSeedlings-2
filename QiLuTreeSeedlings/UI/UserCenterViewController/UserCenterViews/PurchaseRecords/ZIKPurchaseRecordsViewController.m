@@ -9,7 +9,7 @@
 #import "ZIKPurchaseRecordsViewController.h"
 #import "BuySearchTableViewCell.h"
 #import "HotBuyModel.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "BuyDetialInfoViewController.h"
 #import "ZIKBottomDeleteTableViewCell.h"
 #import "ZIKEmptyTableViewCell.h"

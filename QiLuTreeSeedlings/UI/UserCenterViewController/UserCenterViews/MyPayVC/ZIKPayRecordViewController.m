@@ -11,7 +11,7 @@
 #import "ZIKPayRecordCell.h"
 #import "ZIKConsumeRecordModel.h"
 #import "ZIKConsumeRecordFrame.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YYModel.h"
 @interface ZIKPayRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
 {

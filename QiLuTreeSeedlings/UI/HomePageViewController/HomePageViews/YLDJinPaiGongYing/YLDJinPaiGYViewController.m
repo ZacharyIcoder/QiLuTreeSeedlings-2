@@ -11,7 +11,7 @@
 #import "SellDetialViewController.h"
 #import "HotSellModel.h"
 #import "HttpClient.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 
 @interface YLDJinPaiGYViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak)UIView *moveView;

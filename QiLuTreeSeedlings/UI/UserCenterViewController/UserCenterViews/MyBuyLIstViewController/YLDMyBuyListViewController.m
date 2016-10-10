@@ -8,7 +8,7 @@
 
 #import "YLDMyBuyListViewController.h"
 #import "buyFabuViewController.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "MybuyListTableViewCell.h"
 #import "HotBuyModel.h"
 #import "ZIKMySupplyCellBackButton.h"

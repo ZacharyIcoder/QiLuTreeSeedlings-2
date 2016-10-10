@@ -8,7 +8,7 @@
 
 #import "ZIKQiugouWeihuViewController.h"
 #import "YYModel.h"//类型转换
-#import "MJRefresh.h"//MJ刷新
+#import "KMJRefresh.h"//MJ刷新
 #import "ZIKShopBuyModel.h"
 #import "ZIKShopBuyTableViewCell.h"
 #import "ZIKFunction.h"

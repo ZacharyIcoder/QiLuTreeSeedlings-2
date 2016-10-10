@@ -11,7 +11,7 @@
 #import "ZIKStationAgentTableViewCell.h"
 #import "ZIKStationAgentModel.h"
 #import "YYModel.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "UIButton+ZIKEnlargeTouchArea.h"
 #import "ZIKFunction.h"
 #import "HttpClient.h"

@@ -26,6 +26,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 //引导页
 #import "EAIntroView.h"
+//环信
+
 #define kGtAppId           @"dxb5cYhXBW6yYLPsAfvtGA"
 #define kGtAppKey          @"m2iC5d15as6Vub2OGIaxP6"
 #define kGtAppSecret       @"9IHKXKIl7G7ozrvkOMQvx7"

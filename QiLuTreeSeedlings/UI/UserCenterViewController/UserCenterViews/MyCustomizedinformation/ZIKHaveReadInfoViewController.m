@@ -8,7 +8,7 @@
 
 #import "ZIKHaveReadInfoViewController.h"
 
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YYModel.h"
 
 #import "ZIKHaveReadTableViewCell.h"

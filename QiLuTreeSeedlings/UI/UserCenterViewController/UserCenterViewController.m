@@ -381,7 +381,7 @@
         
         [self presentViewController:navVC animated:YES completion:^{
             
-        }];
+        }]; 
 
         return;
     }

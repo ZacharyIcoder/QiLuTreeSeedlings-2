@@ -7,7 +7,7 @@
 //
 
 #import "ZHPickImageView.h"
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 
 #import "ZHPickerBtn.h"
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO

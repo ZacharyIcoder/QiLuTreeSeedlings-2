@@ -7,7 +7,7 @@
 //
 
 #import "ZIKPickerBtn.h"
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 
 @interface ZIKPickerBtn ()
 

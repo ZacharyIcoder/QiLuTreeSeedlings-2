@@ -13,7 +13,7 @@
 #import "ZIKWorkstationSelectListView.h"
 #import "GetCityDao.h"
 #import "YYModel.h"//类型转换
-#import "MJRefresh.h"//MJ刷新
+#import "KMJRefresh.h"//MJ刷新
 #import "UIDefines.h"
 #import "HttpClient.h"
 #import "ZIKMyTeamModel.h"

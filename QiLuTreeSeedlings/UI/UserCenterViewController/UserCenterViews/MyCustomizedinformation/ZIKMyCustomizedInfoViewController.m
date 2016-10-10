@@ -8,7 +8,7 @@
 
 #import "ZIKMyCustomizedInfoViewController.h"
 #import "ZIKCustomizedInfoListViewController.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YYModel.h"
 #import "ZIKCustomizedInfoListModel.h"
 #import "ZIKCustomizedInfoListTableViewCell.h"

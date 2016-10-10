@@ -8,7 +8,7 @@
 
 #import "ZIKShareButton.h"
 
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 #import "UIDefines.h"
 
 @implementation ZIKShareButton

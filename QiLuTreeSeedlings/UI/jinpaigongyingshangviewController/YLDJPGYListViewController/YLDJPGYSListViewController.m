@@ -12,7 +12,7 @@
 #import "YLDSearchNavView.h"
 #import "GetCityDao.h"
 #import "YLDJPGYListCell.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YLDJPGYSListModel.h"
 #import "YLDJPGYSDetialViewController.h"
 #import "AdvertView.h"

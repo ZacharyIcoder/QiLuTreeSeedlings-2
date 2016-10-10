@@ -11,7 +11,14 @@
 #import "UserInfoModel.h"
 #import "BusinessMesageModel.h"
 #import "YLDGCGSModel.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+#import "MainViewController.h"
+#import "ApplyViewController.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, EMChatManagerDelegate>
+{
+    EMConnectionState _connectionState;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 /////
@@ -26,6 +33,9 @@
  *  是否来自单条购买界面（用来判断单条购买界面余额不足，进行充值）
  */
 @property (nonatomic, assign) BOOL isFromSingleVoucherCenter;
+
+@property (strong, nonatomic) MainViewController *mainController;
+
 -(BOOL)isNeedLogin;
 -(BOOL)isNeedCompany;
 -(void)reloadUserInfoSuccess:(void (^)(id responseObject))success

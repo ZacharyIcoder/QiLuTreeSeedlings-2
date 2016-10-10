@@ -9,7 +9,7 @@
 #import "ZIKMiaoQiGongYingViewController.h"
 #import "HttpClient.h"
 #import "YYModel.h"//类型转换
-#import "MJRefresh.h"//MJ刷新
+#import "KMJRefresh.h"//MJ刷新
 #import "ZIKFunction.h"
 
 #import "HotSellModel.h"

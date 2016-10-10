@@ -7,7 +7,7 @@
 //
 
 #import "ZIKWorkstationSelectViewAboutAddressButton.h"
-#import "UIView+MJExtension.h"
+#import "UIView+KMJExtension.h"
 #import "UIDefines.h"
 @implementation ZIKWorkstationSelectViewAboutAddressButton
 

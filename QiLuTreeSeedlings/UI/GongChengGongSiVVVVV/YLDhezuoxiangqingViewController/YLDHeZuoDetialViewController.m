@@ -12,7 +12,7 @@
 #import "HttpClient.h"
 #import "YLDHeZuoDetial.h"
 #import "YLDHeZuoDEMessageCell.h"
-#import "MJRefresh.h"
+#import "KMJRefresh.h"
 #import "YLDSearchNavView.h"
 @interface YLDHeZuoDetialViewController ()<UITableViewDelegate,UITableViewDataSource,YLDSearchNavViewDelegate>
 @property (nonatomic,strong) UIButton *nowBtn;
