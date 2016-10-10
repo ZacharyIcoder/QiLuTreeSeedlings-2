@@ -9150,10 +9150,8 @@
 					"$(SRCROOT)/../",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟统计",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/Parse",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/3rdparty/Parse",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/SocialLibraries/QQ",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/UMSocialSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QiLuTreeSeedlings/Appdelegate/QiLuTreeSeedlings.pch";
@@ -9171,29 +9169,20 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/GtSdkLib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_5.0.1",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateFullSDK/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateSDK/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/UMeng",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/HyphenateSDK/lib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/HyphenateFullSDK/lib",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/RedacketSDK/AliPay/AlipayLib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/RedacketSDK/RedpacketStaticLib/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/3rdparty/UMeng",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/HyphenateFullSDK/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/SocialLibraries/QQ",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_5.2.1",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -9227,10 +9216,8 @@
 					"$(SRCROOT)/../",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟统计",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/Parse",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/3rdparty/Parse",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/SocialLibraries/QQ",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/UMSocialSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QiLuTreeSeedlings/Appdelegate/QiLuTreeSeedlings.pch";
@@ -9248,29 +9235,20 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/GtSdkLib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_5.0.1",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/支付",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/银联",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateFullSDK/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/HyphenateSDK/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/ChatDemo-UI3.0/3rdparty/UMeng",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/HyphenateSDK/lib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/HyphenateFullSDK/lib",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/RedacketSDK/AliPay/AlipayLib",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/RedacketSDK/RedpacketStaticLib/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/Chat-UI3.0/3rdparty/UMeng",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/UI/LiaoTian/Huanxin/HyphenateFullSDK/lib",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/SocialLibraries/QQ",
-					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_5.2.1",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/QiLuTreeSeedlings/Vender/友盟/友盟社会化分享/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (

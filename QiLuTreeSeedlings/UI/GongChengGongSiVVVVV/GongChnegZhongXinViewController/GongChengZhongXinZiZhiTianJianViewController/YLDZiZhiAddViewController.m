@@ -19,6 +19,7 @@
 @property (nonatomic,weak) UITextField *organizationalField;
 @property (nonatomic,copy) NSString *timeStr;
 @property (nonatomic,weak) UIButton *timeBtn;
+@property (nonatomic,weak) UIButton *typeBtn;
 @property (nonatomic,weak) UIButton *imageBtn;
 @property (nonatomic,copy) NSString *compressurl;
 @property (nonatomic,copy) NSString *url;
@@ -47,57 +48,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.vcTitle=@"资质添加";
+//    if (self.modelType==0) {
+//        self.modelType=1;
+//    }
     UIScrollView *backScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kWidth, kHeight-64)];
     [backScrollView setBackgroundColor:BGColor];
     self.backScrollView=backScrollView;
     [self.view addSubview:backScrollView];
     CGRect tempFrame=CGRectMake(0, 5, kWidth, 50);
-    self.nameTextField=[self makeViewWithName:@"资质名称" alert:@"请输入资质名称" unit:@"" withFrame:tempFrame];
-    self.nameTextField.tag=20;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldChanged:)
-                                                 name:UITextFieldTextDidChangeNotification
-                                               object:self.nameTextField];
-    tempFrame.origin.y+=50;
-    self.timeBtn=[self danxuanViewWithName:@"获取时间" alortStr:@"请选择获取时间" andFrame:tempFrame];
-    [self.timeBtn addTarget:self action:@selector(timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    tempFrame.origin.y+=50;
-    self.rankTextField=[self makeViewWithName:@"资质等级" alert:@"请输入资质等级" unit:@"" withFrame:tempFrame];
-    self.rankTextField.tag=10;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textFieldChanged:)
-                                                 name:UITextFieldTextDidChangeNotification
-                                               object:self.rankTextField];
-    tempFrame.origin.y+=50;
-    self.organizationalField=[self makeViewWithName:@"发证机关" alert:@"请输入发证机关" unit:@"" withFrame:tempFrame];
-    tempFrame.origin.y+=55;
-    tempFrame.size.height=110;
-    UIView *phoneView=[[UIView alloc]initWithFrame:tempFrame];
-    [phoneView setBackgroundColor:[UIColor whiteColor]];
-    [self.backScrollView addSubview:phoneView];
-    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, kWidth*0.3, 44)];
-    nameLab.text=@"荣誉图片";
-    [nameLab setTextColor:DarkTitleColor];
-    [nameLab setFont:[UIFont systemFontOfSize:15]];
     
-    [phoneView addSubview:nameLab];
-    UIButton *imageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.35, 10, 85, 90)];
-    [phoneView addSubview:imageBtn];
-    [imageBtn addTarget:self action:@selector(imageBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.imageBtn=imageBtn;
-    [imageBtn setImage:[UIImage imageNamed:@"添加图片"] forState:UIControlStateNormal];
-    tempFrame.origin.y+=130;
-    tempFrame.size.height=45;
-    tempFrame.origin.x=40;
-    tempFrame.size.width=kWidth-80;
-    UIButton *sureBtn=[[UIButton alloc]initWithFrame:tempFrame];
-    [sureBtn setBackgroundColor:NavColor];
-    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [sureBtn addTarget: self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.backScrollView addSubview:sureBtn];
-    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame))];
-    
+    self.typeBtn=[self danxuanViewWithName:@"资料类型" alortStr:@"请选择资料类型" andFrame:tempFrame];
+    [self.typeBtn addTarget:self action:@selector(modelTypeAction) forControlEvents:UIControlEventTouchUpInside];
+    [self reloadBackScrollView];
     if (self.model) {
         self.nameTextField.text=self.model.companyQualification;
         self.rankTextField.text=self.model.level;
@@ -110,28 +72,151 @@
     }
     // Do any additional setup after loading the view.
 }
+-(void)modelTypeAction
+{
+    NSString *title = NSLocalizedString(@"资料类型", nil);
+    NSString *message = NSLocalizedString(@"请选择资料类型。", nil);
+//    NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+//    NSString *otherButtonTitle = NSLocalizedString(@"", nil);
+//    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    // Create the actions.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"营业执照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+        self.modelType=1;
+        [self.typeBtn setTitle:@"营业执照" forState:UIControlStateNormal];
+        [self reloadBackScrollView];
+    }];
+    
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"办公场所" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        self.modelType=2;
+        [self.typeBtn setTitle:@"办公场所" forState:UIControlStateNormal];
+        [self reloadBackScrollView];
+    }];
+    UIAlertAction *other2Action = [UIAlertAction actionWithTitle:@"苗圃" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        self.modelType=3;
+        [self.typeBtn setTitle:@"苗圃" forState:UIControlStateNormal];
+        [self reloadBackScrollView];
+    }];
+    UIAlertAction *other3Action = [UIAlertAction actionWithTitle:@"个人荣誉" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        self.modelType=4;
+        [self.typeBtn setTitle:@"个人荣誉" forState:UIControlStateNormal];
+        [self reloadBackScrollView];
+    }];
+    UIAlertAction *other4Action = [UIAlertAction actionWithTitle:@"公司资质" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        self.modelType=5;
+        [self.typeBtn setTitle:@"公司资质" forState:UIControlStateNormal];
+        [self reloadBackScrollView];
+        
+        }];
+    
+    // Add the actions.
+    [alertController addAction:cancelAction];
+    [alertController addAction:otherAction];
+    [alertController addAction:other2Action];
+    [alertController addAction:other3Action];
+    [alertController addAction:other4Action];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+-(void)reloadBackScrollView
+{
+    int i=1;
+    for(UIView *view in [self.backScrollView subviews])
+    {
+        if (i!=1) {
+           [view removeFromSuperview];
+        }
+        i++;
+        
+    }
+    self.timeStr=nil;
+    self.compressurl=nil;
+    self.url=nil;
+    CGRect tempFrame=CGRectMake(0, 5, kWidth, 50);
+    tempFrame.origin.y+=50;
+    self.nameTextField=[self makeViewWithName:@"资料名称" alert:@"请输入资料名称" unit:@"" withFrame:tempFrame];
+    self.nameTextField.tag=20;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldChanged:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:self.nameTextField];
+    if (self.modelType==5) {
+        tempFrame.origin.y+=50;
+        self.timeBtn=[self danxuanViewWithName:@"获取时间" alortStr:@"请选择获取时间" andFrame:tempFrame];
+        [self.timeBtn addTarget:self action:@selector(timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        tempFrame.origin.y+=50;
+        self.rankTextField=[self makeViewWithName:@"资质等级" alert:@"请输入资质等级" unit:@"" withFrame:tempFrame];
+        self.rankTextField.tag=10;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(textFieldChanged:)
+                                                     name:UITextFieldTextDidChangeNotification
+                                                   object:self.rankTextField];
+        tempFrame.origin.y+=50;
+        self.organizationalField=[self makeViewWithName:@"发证机关" alert:@"请输入发证机关" unit:@"" withFrame:tempFrame];
+    }
+    
+   
+    tempFrame.origin.y+=55;
+    tempFrame.size.height=110;
+    UIView *phoneView=[[UIView alloc]initWithFrame:tempFrame];
+    [phoneView setBackgroundColor:[UIColor whiteColor]];
+    [self.backScrollView addSubview:phoneView];
+    UILabel *nameLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, kWidth*0.3, 44)];
+    nameLab.text=@"资料图片";
+    [nameLab setTextColor:DarkTitleColor];
+    [nameLab setFont:[UIFont systemFontOfSize:15]];
+    
+    [phoneView addSubview:nameLab];
+    UIButton *imageBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.35, 10, 85, 90)];
+    [phoneView addSubview:imageBtn];
+    [imageBtn addTarget:self action:@selector(imageBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.imageBtn=imageBtn;
+    [imageBtn setImage:[UIImage imageNamed:@"添加图片"] forState:UIControlStateNormal];
+    imageBtn.tag=3;
+    tempFrame.origin.y+=130;
+    tempFrame.size.height=45;
+    tempFrame.origin.x=40;
+    tempFrame.size.width=kWidth-80;
+    UIButton *sureBtn=[[UIButton alloc]initWithFrame:tempFrame];
+    [sureBtn setBackgroundColor:NavColor];
+    sureBtn.tag=3;
+    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [sureBtn addTarget: self action:@selector(sureBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.backScrollView addSubview:sureBtn];
+    [self.backScrollView setContentSize:CGSizeMake(0, CGRectGetMaxY(tempFrame))];
+
+}
 -(void)sureBtnAction
 {
   
+    if (self.modelType==0) {
+        [ToastView showTopToast:@"请选择资料类型"];
+        return;
+    }
     if (self.nameTextField.text.length<=0) {
-        [ToastView showTopToast:@"请输入资质名称"];
+        [ToastView showTopToast:@"请输入资料名称"];
         return;
     }
-    if (self.rankTextField.text.length<=0) {
-        [ToastView showTopToast:@"请输入资质等级"];
-        return;
+    if (self.modelType==5) {
+        if (self.rankTextField.text.length<=0) {
+            [ToastView showTopToast:@"请输入资质等级"];
+            return;
+        }
+        
+        if (self.organizationalField.text.length<=0) {
+            [ToastView showTopToast:@"请输入发证机关"];
+            return;
+        }
+        if (self.timeStr.length<=0) {
+            [ToastView showTopToast:@"请选择获得时间"];
+            return;
+        }
+ 
     }
-   
-    if (self.organizationalField.text.length<=0) {
-        [ToastView showTopToast:@"请输入发证机关"];
-        return;
-    }
-    if (self.timeStr.length<=0) {
-        [ToastView showTopToast:@"请选择获得时间"];
-        return;
-    }
-    if (self.compressurl.length<=0) {
-        [ToastView showTopToast:@"请上传资质图片"];
+        if (self.compressurl.length<=0) {
+        [ToastView showTopToast:@"请上传资料图片"];
         return;
     }
     if (self.type==1) {
@@ -147,7 +232,27 @@
         }
     }
     if (self.type==2) {
-        [HTTPCLIENT GCGSRongYuTijiaoWithuid:self.model.uid WtihcompanyQualification:self.nameTextField.text WithacquisitionTime:self.timeStr With:self.rankTextField.text WithcompanyUid:APPDELEGATE.GCGSModel.uid WithissuingAuthority:self.organizationalField.text Withattachment:self.compressurl Success:^(id responseObject) {
+        NSString *typeStr;
+        switch (self.modelType) {
+            case 1:
+                typeStr=@"营业执照";
+                break;
+            case 2:
+                typeStr=@"办公场所";
+                break;
+            case 3:
+                typeStr=@"苗圃";
+                break;
+            case 4:
+                typeStr=@"个人荣誉";
+                break;
+            case 5:
+                typeStr=@"公司资质";
+                break;
+            default:
+                break;
+        }
+        [HTTPCLIENT GCGSRongYuTijiaoWithuid:self.model.uid WtihcompanyQualification:self.nameTextField.text WithacquisitionTime:self.timeStr With:self.rankTextField.text WithcompanyUid:APPDELEGATE.GCGSModel.uid WithissuingAuthority:self.organizationalField.text WithType:typeStr Withattachment:self.compressurl Success:^(id responseObject) {
             if ([[responseObject objectForKey:@"success"] integerValue]) {
                 [ToastView showTopToast:@"保存成功"];
                 [self.navigationController popViewControllerAnimated:YES];
@@ -173,7 +278,7 @@
     [nameLab setFont:[UIFont systemFontOfSize:15]];
     [view setBackgroundColor:[UIColor whiteColor]];
     [view addSubview:nameLab];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.53, 44)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth*0.35, 3, kWidth*0.53, 44)];
     [textField setFont:[UIFont systemFontOfSize:15]];
     textField.clearButtonMode=UITextFieldViewModeWhileEditing;
 //    if ([name isEqualToString:@"电话"]) {
@@ -192,6 +297,7 @@
     [lineView setBackgroundColor:kLineColor];
     [view addSubview:lineView];
     [self.backScrollView addSubview:view];
+    view.tag=3;
     [view setBackgroundColor:[UIColor whiteColor]];
     return textField;
 }
@@ -221,6 +327,7 @@
     [view addSubview:imageVVV];
     
     [view addSubview:pickBtn];
+    view.tag=3;
     [self.backScrollView addSubview:view];
     return pickBtn;
 }

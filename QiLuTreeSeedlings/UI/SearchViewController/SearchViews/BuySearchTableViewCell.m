@@ -64,6 +64,10 @@
         [self.contentView addSubview:imageVLine];
         self.selectionStyle=UITableViewCellSelectionStyleBlue;
         
+        UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-45, 0, 45, 45)];
+        self.imageV=imageVVV;
+        [self.contentView addSubview:imageVVV];
+        
     }
     return self;
 }
@@ -108,6 +112,9 @@
         UIImageView *imageVLine=[[UIImageView alloc]initWithFrame:CGRectMake(13, frame.size.height-0.5, kWidth-26, 0.5)];
         [imageVLine setBackgroundColor:kLineColor];
         [self.contentView addSubview:imageVLine];
+        UIImageView *imageVVV=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-45, 0, 45, 45)];
+        self.imageV=imageVVV;
+        [self.contentView addSubview:imageVVV];
        // self.selectionStyle=UITableViewCellSelectionStyleBlue;
         
     }
@@ -212,11 +219,20 @@
         goldImageView.image = [UIImage imageNamed:@"合作苗企43x43"];
     }
 
-
+    if (hotBuyModel.state==4) {
+        [self.imageV setImage:[UIImage imageNamed:@"yiguanbi"]];
+    }else if(hotBuyModel.state==5)
+    {
+        [self.imageV setImage:[UIImage imageNamed:@"yiguoqi"]];
+    }else{
+        self.imageV.image = nil;
+    }
+    
 
 }
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

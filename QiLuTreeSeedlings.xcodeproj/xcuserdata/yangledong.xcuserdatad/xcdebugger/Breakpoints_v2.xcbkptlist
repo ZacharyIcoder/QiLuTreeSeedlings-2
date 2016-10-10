@@ -25,22 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/UI/GongChengGongSiVVVVV/GongChnegZhongXinViewController/GongChengZhongXinZiZhiTianJianViewController/YLDZiZhiAddViewController.m"
-            timestampString = "490868609.521417"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "-requestUploadHeadImage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "QiLuTreeSeedlings/UI/UserCenterViewController/UserCenterViews/MySupplyViewController/ZIKSupplyPublishVC.m"
             timestampString = "495770964.656021"
             startingColumnNumber = "9223372036854775807"
@@ -48,70 +32,6 @@
             startingLineNumber = "694"
             endingLineNumber = "694"
             landmarkName = "-WHCChoicePictureVCdidSelectedPhotoArr:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/NetWorking/HttpClient.m"
-            timestampString = "495527846.717252"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2558"
-            endingLineNumber = "2558"
-            landmarkName = "-huoqumiaomuGuiGeWithTreeName:andType:andMain:Success:failure:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HttpClient huoqumiaomuGuiGeWithTreeName:andType:andMain:Success:failure:]"
-                  moduleName = "QiLuTreeSeedlings"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "496908030.142614"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "2558"
-                  endingLineNumber = "2558"
-                  offsetFromSymbolStart = "492">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__75-[HttpClient huoqumiaomuGuiGeWithTreeName:andType:andMain:Success:failure:]_block_invoke"
-                  moduleName = "QiLuTreeSeedlings"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yangledong/Desktop/qilumiaomuwang/QiLuTreeSeedlings%202/QiLuTreeSeedlings/NetWorking/HttpClient.m"
-                  timestampString = "496908030.144283"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "2560"
-                  endingLineNumber = "2560"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiLuTreeSeedlings/UI/GongChengGongSiVVVVV/FaBuViewController/YLDFaBuGongChengDingDanViewController.m"
-            timestampString = "496140352.749903"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "-nextBtnAction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

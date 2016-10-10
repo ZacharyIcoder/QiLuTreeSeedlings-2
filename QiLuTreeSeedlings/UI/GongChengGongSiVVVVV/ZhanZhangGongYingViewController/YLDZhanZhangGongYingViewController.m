@@ -252,7 +252,7 @@
     UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7, 5, 22)];
     [imageV setBackgroundColor:color];
     [view addSubview:imageV];
-    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 70, 36)];
+    UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 90, 36)];
     titleLab.text=title;
     [titleLab setTextColor:color];
     [titleLab setFont:[UIFont systemFontOfSize:14]];

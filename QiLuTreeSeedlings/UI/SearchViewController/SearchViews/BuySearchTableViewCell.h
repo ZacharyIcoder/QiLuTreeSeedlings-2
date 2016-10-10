@@ -11,6 +11,7 @@
 @interface BuySearchTableViewCell : UITableViewCell
 @property (nonatomic,strong)NSMutableArray *dataAry;
 @property (nonatomic,strong)HotBuyModel *hotBuyModel;
+@property (nonatomic,strong)UIImageView *imageV;
 @property (nonatomic) BOOL isSelect;
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithFrame:(CGRect)frame;
 +(NSString *)IDStr;

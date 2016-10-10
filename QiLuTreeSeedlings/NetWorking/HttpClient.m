@@ -85,7 +85,9 @@
     parmers[@"client_id"] = kclient_id;
     parmers[@"client_secret"] = kclient_secret;
     parmers[@"device_id"] = str;
+    parmers[@"terminal"] = @"2";
     parmers[@"name"] = name;
+    
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -122,6 +124,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+     parmers[@"terminal"] = @"2";
     parmers[@"oldPassword"]      = oldPwd;
     parmers[@"plainPassword"]    = newPwd;
     ShowActionV();
@@ -200,6 +203,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+    parmers[@"terminal"]         = @"2";
     parmers[@"file"]             = myStringImageFile;
     parmers[@"fileName"]         = @"personHeadImage.png";
     //NSLog(@"%@",parameters);
@@ -274,6 +278,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+     parmers[@"terminal"] = @"2";
     parmers[@"workstationUId"]   = APPDELEGATE.userModel.workstationUId;
     parmers[@"areaCode"]         = areaCode;
     parmers[@"page"]             = page;
@@ -387,6 +392,7 @@
                     WithStatus:(NSString *)status
                WithStartNumber:(NSString *)startNumber
                 withSearchTime:(NSString *)searchTime
+              WithSearchStatus:(NSString *)searchStatus
                        Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure
 {
@@ -394,7 +400,7 @@
     NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:
                               pageSize,@"pageSize",
                               status,@"status",
-                              startNumber,@"startNumber",
+                              startNumber,@"startNumber",searchStatus,@"searchStatus",
                               nil];
     parameters[@"searchTime"]=searchTime;
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -417,6 +423,7 @@
                 WithCity:(NSString *)city
               WithCounty:(NSString *)county
           WithsearchTime:(NSString *)searchTime
+        WithSearchStatus:(NSString *)searchStatus
                  WithAry:(NSArray *)ary
                  Success:(void (^)(id responseObject))success
                  failure:(void (^)(NSError *error))failure
@@ -445,6 +452,7 @@
     if (county) {
         [parameters setObject:county forKey:@"county"];
     }
+    parameters[@"searchStatus"]=searchStatus;
     parameters[@"searchTime"]=searchTime;
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
@@ -455,7 +463,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"%@",responseObject);
         if (![[responseObject objectForKey:@"success"] integerValue]) {
-            NSLog(@"%@",[responseObject objectForKey:@"msg"]);
+//            NSLog(@"%@",[responseObject objectForKey:@"msg"]);
         }
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -737,6 +745,7 @@
                               phone,@"phone",
                               password,@"password",
                               repassword,@"repassword",
+                              @"2",@"terminal",
                               nil];
     ShowActionV();
     [self POST:postURL parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -999,6 +1008,7 @@
                               str,@"device_id",
                               kclient_id,@"client_id",
                               kclient_secret,@"client_secret",
+                              @"2",@"terminal",
                               nil];
     NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithDictionary:parameter];
     if (uid) {
@@ -1097,7 +1107,7 @@
                              APPDELEGATE.userModel.access_id,@"access_id",
                              str,@"device_id",
                              kclient_id,@"client_id",
-                             kclient_secret,@"client_secret",
+                             kclient_secret,@"client_secret",@"2",@"terminal",
                              nil];
     //NSLog(@"%@",parameter);
     NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithDictionary:parameter];
@@ -1242,7 +1252,7 @@
                              APPDELEGATE.userModel.access_id,@"access_id",
                              str,@"device_id",
                              kclient_id,@"client_id",
-                             kclient_secret,@"client_secret",
+                             kclient_secret,@"client_secret",@"2",@"terminal",
                              nil];
     NSMutableDictionary *parameters=[[NSMutableDictionary alloc]initWithDictionary:parameter];
     parameters[@"uid"]=uid;
@@ -1460,6 +1470,7 @@
     parmers[@"client_id"]         = kclient_id;
     parmers[@"client_secret"]     = kclient_secret;
     parmers[@"device_id"]         = str;
+     parmers[@"terminal"] = @"2";
     parmers[@"uid"]               = uid;
     parmers[@"title"]             = title;
     parmers[@"name"]              = name;
@@ -2827,6 +2838,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+    parmers[@"terminal"]        = @"2";
     parmers[@"uid"]              =uid;
     parmers[@"projectName"]      =projectName;
     parmers[@"orderName"]        =orderName;
@@ -3505,6 +3517,7 @@
                           With:(NSString *)level
                 WithcompanyUid:(NSString *)companyUid
           WithissuingAuthority:(NSString *)issuingAuthority
+                      WithType:(NSString *)Type 
                 Withattachment:(NSString *)attachment   Success:(void (^)(id responseObject))success
                        failure:(void (^)(NSError *error))failure
 {
@@ -3528,7 +3541,8 @@
     parmers[@"companyUid"]         = companyUid;
     parmers[@"issuingAuthority"]         = issuingAuthority;
     parmers[@"attachment"]         = attachment;
-    // parmers[@"address"]         = address;
+     parmers[@"Type"]         = Type;
+    
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -5102,6 +5116,7 @@
     parmers[@"client_id"]        = kclient_id;
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
+     parmers[@"terminal"] = @"2";
     parmers[@"title"]            = title;
     parmers[@"content"]          = content;
     parmers[@"pic"]              = pic;
@@ -5768,7 +5783,7 @@
     }];
 }
 #pragma mark ---------- 工程公司-订单明细开启与关闭----------
--(void)GCGSOrderItemOpenWithUid:(NSString *)uid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
+-(void)GCGSOrderItemOpenWithUid:(NSString *)uid andOrdeUid:(NSString *)orderUid Withstatus:(NSString *)status Success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure
 {
     NSString *postURL            = @"api/order/item/open";
@@ -5782,6 +5797,7 @@
     parmers[@"client_secret"]    = kclient_secret;
     parmers[@"device_id"]        = str;
     parmers[@"uid"]              = uid;
+    parmers[@"orderUid"]              = orderUid;
     parmers[@"status"]           = status;
     ShowActionV();
     [self POST:postURL parameters:parmers progress:^(NSProgress * _Nonnull uploadProgress) {

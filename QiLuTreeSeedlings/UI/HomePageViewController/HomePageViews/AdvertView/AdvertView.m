@@ -146,8 +146,6 @@
         self.pageController.currentPage = currentPage;
         [self.scrollView setContentOffset:scrollOffset animated:YES];
     }
-    
-    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:3
                                                   target:self
                                                 selector:@selector(changeTime)
