@@ -612,7 +612,7 @@
     if (county) {
         [parameters setObject:county forKey:@"county"];
     }
-    parameters[@"searchTime"]=searchTime;
+//    parameters[@"searchTime"]=searchTime;
     for (int i=0; i<ary.count; i++) {
         NSDictionary *dic=ary[i];
         [parameters setObject:[dic objectForKey:@"value"] forKey:[dic objectForKey:@"field"]];

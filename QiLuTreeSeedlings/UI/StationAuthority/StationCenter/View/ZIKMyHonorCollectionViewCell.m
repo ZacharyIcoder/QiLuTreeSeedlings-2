@@ -36,6 +36,7 @@
     self.issuingAuthority = [data issuingAuthority];
     self.level            = [data level];
     self.uid              = [data uid];
+//    self.types             = [data type];
 }
 
 #pragma mark - 重写setter,getter方法
@@ -45,7 +46,7 @@
 @synthesize issuingAuthority = _issuingAuthority;
 @synthesize level            = _level;
 @synthesize uid              = _uid;
-
+//@synthesize types            = _types;
 -(void)setName:(NSString *)name {
     _name = name;
     _honorTitleLabel.text = name;
@@ -103,6 +104,7 @@
 - (NSString *)uid {
     return _uid;
 }
+
 //-(void)setZZmodel:(GCZZModel *)ZZmodel
 //{
 //    _ZZmodel = ZZmodel;

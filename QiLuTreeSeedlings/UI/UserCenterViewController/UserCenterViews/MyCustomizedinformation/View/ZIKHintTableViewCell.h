@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #define HINT_VIEW_HEIGHT 30
 @interface ZIKHintTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *hintLabel;
 @property (nonatomic, copy) NSString *hintStr;
 @end

@@ -9,7 +9,7 @@
 #import "ZIKHintTableViewCell.h"
 #import "UIDefines.h"
 @interface ZIKHintTableViewCell ()
-@property (weak, nonatomic) IBOutlet UILabel *hintLabel;
+
 @end
 @implementation ZIKHintTableViewCell
 

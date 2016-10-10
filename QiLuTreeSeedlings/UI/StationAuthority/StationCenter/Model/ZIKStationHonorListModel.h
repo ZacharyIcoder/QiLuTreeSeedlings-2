@@ -25,4 +25,5 @@
  *  获奖Uid
  */
 @property (nonatomic, copy) NSString *uid;
+
 @end

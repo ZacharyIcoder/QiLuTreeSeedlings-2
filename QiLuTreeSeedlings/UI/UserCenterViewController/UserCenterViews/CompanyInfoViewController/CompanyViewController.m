@@ -70,8 +70,9 @@
     cityNameLab.text=@"地区";
     [cityNameLab setTextColor:titleLabColor];
     [cityNameLab setFont:[UIFont systemFontOfSize:14]];
-    UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.20, 0, kWidth*0.6, 44)];
-    [cityBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
+    UIButton *cityBtn=[[UIButton alloc]initWithFrame:CGRectMake(kWidth*0.35, 0, kWidth*0.6, 44)];
+    cityBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    cityBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [cityBtn setTitleColor:detialLabColor forState:UIControlStateNormal];
     [cityBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [cityBtn setTitle:@"请选择公司所在城市" forState:UIControlStateNormal];
@@ -106,17 +107,19 @@
     cell.hintStr=@"注：输入框后有＊的为必填项";
     cell.frame=tempFrame;
     [self.backScrollView addSubview:cell];
-    UILabel *warnLab=[[UILabel alloc]initWithFrame:CGRectMake(10,tempFrame.origin.y+36, kWidth-20, 35)];
-    [warnLab setFont:[UIFont systemFontOfSize:12]];
-    [warnLab setTextColor:kRedHintColor];
-    warnLab.numberOfLines=2;
-    [warnLab setText:@"    如果您的企业信息填写有误，请点击有误项进行二次编辑。"];
-    [self.backScrollView addSubview:warnLab];
-    self.warnLab=warnLab;
+   
     [self.backScrollView setContentSize:CGSizeMake(0, tempFrame.origin.y+tempFrame.size.height)];
     UITapGestureRecognizer *tapGest=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapScrollViewRgestFirst)];
     [self.backScrollView addGestureRecognizer:tapGest];
     
+    ZIKHintTableViewCell *cell2=[[[NSBundle mainBundle]loadNibNamed:@"ZIKHintTableViewCell" owner:self options:nil] lastObject];
+    [cell2.contentView setBackgroundColor:[UIColor clearColor]];
+    [cell2 setBackgroundColor:[UIColor clearColor]];
+    cell2.hintStr=@"如果您的企业信息填写有误，请点击有误项进行二次编辑。";
+    cell2.frame=CGRectMake(0, kHeight-110,kWidth,55);
+    [cell2.hintLabel setFont:[UIFont systemFontOfSize:13]];
+    cell2.hintLabel.frame=CGRectMake(15, 0, kWidth-20, 53);
+    [self.view addSubview:cell2];
     UIButton *nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(40, kHeight-64, kWidth-80, 44)];
     [nextBtn setBackgroundColor:NavColor];
     [nextBtn setTitle:@"确认提交" forState:UIControlStateNormal];
@@ -126,11 +129,11 @@
     // self.editingBtn.hidden=YES;
     if ([APPDELEGATE isNeedCompany]==NO) {
         [self beginEditing];
-        warnLab.hidden=YES;
+//        warnLab.hidden=YES;
     }
     else{
          [self beginEditing];
-        warnLab.hidden=NO;
+//        warnLab.hidden=NO;
         //[self endEditing];
         self.companyNameField.text=APPDELEGATE.companyModel.companyName;
         self.companyAddressField.text=APPDELEGATE.companyModel.companyAddress;
@@ -224,6 +227,7 @@
             //[blockSelf endEditing];
             [APPDELEGATE reloadCompanyInfo];
             [ToastView showTopToast:@"企业信息保存成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {
@@ -355,7 +359,7 @@
                                              selector:@selector(textViewChanged:)
                                                  name:UITextViewTextDidChangeNotification
                                                object:TextView];
-    TextView.frame=CGRectMake(kWidth*0.35, 10, kWidth*0.6, frame.size.height-20);
+    TextView.frame=CGRectMake(kWidth*0.35-8, 10, kWidth*0.6, frame.size.height-20);
     [view addSubview:TextView];
     return TextView;
 }
